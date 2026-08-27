@@ -1,34 +1,146 @@
-public interface apx {
-   aqk<bhw> a = a("damages_helmet");
-   aqk<bhw> b = a("bypasses_armor");
-   aqk<bhw> c = a("bypasses_shield");
-   aqk<bhw> d = a("bypasses_invulnerability");
-   aqk<bhw> e = a("bypasses_cooldown");
-   aqk<bhw> f = a("bypasses_effects");
-   aqk<bhw> g = a("bypasses_resistance");
-   aqk<bhw> h = a("bypasses_enchantments");
-   aqk<bhw> i = a("is_fire");
-   aqk<bhw> j = a("is_projectile");
-   aqk<bhw> k = a("witch_resistant_to");
-   aqk<bhw> l = a("is_explosion");
-   aqk<bhw> m = a("is_fall");
-   aqk<bhw> n = a("is_drowning");
-   aqk<bhw> o = a("is_freezing");
-   aqk<bhw> p = a("is_lightning");
-   aqk<bhw> q = a("no_anger");
-   aqk<bhw> r = a("no_impact");
-   aqk<bhw> s = a("always_most_significant_fall");
-   aqk<bhw> t = a("wither_immune_to");
-   aqk<bhw> u = a("ignites_armor_stands");
-   aqk<bhw> v = a("burns_armor_stands");
-   aqk<bhw> w = a("avoids_guardian_thorns");
-   aqk<bhw> x = a("always_triggers_silverfish");
-   aqk<bhw> y = a("always_hurts_ender_dragons");
-   aqk<bhw> z = a("no_knockback");
-   aqk<bhw> A = a("always_kills_armor_stands");
-   aqk<bhw> B = a("can_break_armor_stand");
+import com.mojang.logging.LogUtils;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-   private static aqk<bhw> a(String $$0) {
-      return aqk.a(jc.q, new aez($$0));
+public class apx extends apv {
+   private static final Logger d = LogUtils.getLogger();
+   private static final int e = 3;
+   private static final int f = 2;
+   private static final int g = 0;
+   private static final int h = 2;
+   private static final int i = -1;
+   private boolean j;
+   private final Socket k;
+   private final byte[] l = new byte[1460];
+   private final String m;
+   private final agm n;
+
+   apx(agm $$0, String $$1, Socket $$2) {
+      super("RCON Client " + $$2.getInetAddress());
+      this.n = $$0;
+      this.k = $$2;
+
+      try {
+         this.k.setSoTimeout(0);
+      } catch (Exception var5) {
+         this.a = false;
+      }
+
+      this.m = $$1;
+   }
+
+   @Override
+   public void run() {
+      try {
+         try {
+            while (this.a) {
+               BufferedInputStream $$0 = new BufferedInputStream(this.k.getInputStream());
+               int $$1 = $$0.read(this.l, 0, 1460);
+               if (10 > $$1) {
+                  return;
+               }
+
+               int $$2 = 0;
+               int $$3 = aps.b(this.l, 0, $$1);
+               if ($$3 != $$1 - 4) {
+                  return;
+               }
+
+               $$2 += 4;
+               int $$4 = aps.b(this.l, $$2, $$1);
+               $$2 += 4;
+               int $$5 = aps.a(this.l, $$2);
+               $$2 += 4;
+               switch ($$5) {
+                  case 2:
+                     if (this.j) {
+                        String $$7 = aps.a(this.l, $$2, $$1);
+
+                        try {
+                           this.a($$4, this.n.a($$7));
+                        } catch (Exception var15) {
+                           this.a($$4, "Error executing: " + $$7 + " (" + var15.getMessage() + ")");
+                        }
+                        break;
+                     }
+
+                     this.d();
+                     break;
+                  case 3:
+                     String $$6 = aps.a(this.l, $$2, $$1);
+                     $$2 += $$6.length();
+                     if (!$$6.isEmpty() && $$6.equals(this.m)) {
+                        this.j = true;
+                        this.a($$4, 2, "");
+                        break;
+                     }
+
+                     this.j = false;
+                     this.d();
+                     break;
+                  default:
+                     this.a($$4, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString($$5)));
+               }
+            }
+
+            return;
+         } catch (IOException var16) {
+         } catch (Exception var17) {
+            d.error("Exception whilst parsing RCON input", var17);
+         }
+      } finally {
+         this.e();
+         d.info("Thread {} shutting down", this.b);
+         this.a = false;
+      }
+   }
+
+   private void a(int $$0, int $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream(1248);
+      DataOutputStream $$4 = new DataOutputStream($$3);
+      byte[] $$5 = $$2.getBytes(StandardCharsets.UTF_8);
+      $$4.writeInt(Integer.reverseBytes($$5.length + 10));
+      $$4.writeInt(Integer.reverseBytes($$0));
+      $$4.writeInt(Integer.reverseBytes($$1));
+      $$4.write($$5);
+      $$4.write(0);
+      $$4.write(0);
+      this.k.getOutputStream().write($$3.toByteArray());
+   }
+
+   private void d() throws IOException {
+      this.a(-1, 2, "");
+   }
+
+   private void a(int $$0, String $$1) throws IOException {
+      int $$2 = $$1.length();
+
+      do {
+         int $$3 = 4096 <= $$2 ? 4096 : $$2;
+         this.a($$0, 0, $$1.substring(0, $$3));
+         $$1 = $$1.substring($$3);
+         $$2 = $$1.length();
+      } while (0 != $$2);
+   }
+
+   @Override
+   public void b() {
+      this.a = false;
+      this.e();
+      super.b();
+   }
+
+   private void e() {
+      try {
+         this.k.close();
+      } catch (IOException var2) {
+         d.warn("Failed to close socket", var2);
+      }
    }
 }

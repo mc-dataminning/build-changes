@@ -1,24 +1,12 @@
-public class xn implements ve<wx> {
-   private final boolean a;
-
-   public xn(boolean $$0) {
-      this.a = $$0;
-   }
-
-   public xn(so $$0) {
-      this.a = $$0.readBoolean();
-   }
-
+public interface xn extends we {
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
+   default tk b() {
+      return tk.e;
    }
 
-   public void a(wx $$0) {
-      $$0.a(this);
-   }
+   void a(xo var1);
 
-   public boolean a() {
-      return this.a;
-   }
+   void a(xp var1);
+
+   void a(xq var1);
 }

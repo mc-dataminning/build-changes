@@ -1,55 +1,80 @@
-public interface cqd {
-   int I_();
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
+import javax.annotation.Nullable;
 
-   int H_();
+public class cqd<T> extends AbstractIterator<T> {
+   private final eia a;
+   private final eik b;
+   private final hu c;
+   private final ht.a d;
+   private final eiy e;
+   private final cqj f;
+   private final boolean g;
+   @Nullable
+   private cqf h;
+   private long i;
+   private final BiFunction<ht.a, eiy, T> j;
 
-   default int aj() {
-      return this.H_() + this.I_();
+   public cqd(cqj $$0, @Nullable bjt $$1, eia $$2, boolean $$3, BiFunction<ht.a, eiy, T> $$4) {
+      this.b = $$1 == null ? eik.a() : eik.a($$1);
+      this.d = new ht.a();
+      this.e = eiv.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = asy.a($$2.a - 1.0E-7) - 1;
+      int $$6 = asy.a($$2.d + 1.0E-7) + 1;
+      int $$7 = asy.a($$2.b - 1.0E-7) - 1;
+      int $$8 = asy.a($$2.e + 1.0E-7) + 1;
+      int $$9 = asy.a($$2.c - 1.0E-7) - 1;
+      int $$10 = asy.a($$2.f + 1.0E-7) + 1;
+      this.c = new hu($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   default int ak() {
-      return this.am() - this.al();
+   @Nullable
+   private cqf a(int $$0, int $$1) {
+      int $$2 = iu.a($$0);
+      int $$3 = iu.a($$1);
+      long $$4 = cqg.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
+      } else {
+         cqf $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
+      }
    }
 
-   default int al() {
-      return hw.a(this.H_());
-   }
-
-   default int am() {
-      return hw.a(this.aj() - 1) + 1;
-   }
-
-   default boolean r(gw $$0) {
-      return this.d($$0.v());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 < this.H_() || $$0 >= this.aj();
-   }
-
-   default int e(int $$0) {
-      return this.f(hw.a($$0));
-   }
-
-   default int f(int $$0) {
-      return $$0 - this.al();
-   }
-
-   default int g(int $$0) {
-      return $$0 + this.al();
-   }
-
-   static cqd e(final int $$0, final int $$1) {
-      return new cqd() {
-         @Override
-         public int I_() {
-            return $$1;
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            cqf $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               dgb $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(cuc.bQ))) {
+                  eiy $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == eiv.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     eiy $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && eiv.c($$7, this.e, eij.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
+                  }
+               }
+            }
          }
+      }
 
-         @Override
-         public int H_() {
-            return $$0;
-         }
-      };
+      return (T)this.endOfData();
    }
 }

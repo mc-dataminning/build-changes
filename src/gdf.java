@@ -1,87 +1,99 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class gdf {
-   private final Set<gdf.a> a = Sets.newIdentityHashSet();
-   final ejf b;
-   final Executor c;
+public class gdf implements geo<gdf> {
+   public static final afp a = new afp("sounds", ".ogg");
+   private final afw b;
+   private final bhj c;
+   private final bhj d;
+   private final int e;
+   private final gdf.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public gdf(ejf $$0, Executor $$1) {
-      this.b = $$0;
+   public gdf(String $$0, bhj $$1, bhj $$2, int $$3, gdf.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new afw($$0);
       this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   public CompletableFuture<gdf.a> a(ejf.c $$0) {
-      CompletableFuture<gdf.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         eje $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            gdf.a $$3 = new gdf.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
-         }
-      });
-      return $$1;
+   public afw a() {
+      return this.b;
    }
 
-   public void a(Consumer<Stream<eje>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   public afw b() {
+      return a.a(this.b);
    }
 
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<gdf.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            gdf.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
+   public bhj c() {
+      return this.c;
    }
 
-   public void b() {
-      this.a.forEach(gdf.a::b);
-      this.a.clear();
+   public bhj d() {
+      return this.d;
    }
 
-   public class a {
+   @Override
+   public int e() {
+      return this.e;
+   }
+
+   public gdf a(ate $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(gej $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public gdf.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
       @Nullable
-      eje b;
-      private boolean c;
-
-      public boolean a() {
-         return this.c;
-      }
-
-      public a(eje $$1) {
-         this.b = $$1;
-      }
-
-      public void a(Consumer<eje> $$0) {
-         gdf.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
+      public static gdf.a a(String $$0) {
+         for (gdf.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
             }
-         });
-      }
+         }
 
-      public void b() {
-         this.c = true;
-         gdf.this.b.a(this.b);
-         this.b = null;
+         return null;
       }
    }
 }

@@ -1,101 +1,55 @@
-import com.google.common.hash.Hashing;
+public interface crb {
+   int J_();
 
-public class crb {
-   public static final int a = hp.a(8);
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 3;
-   private final crb.a e;
-   private final long f;
+   int I_();
 
-   public crb(crb.a $$0, long $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   default int aj() {
+      return this.I_() + this.J_();
    }
 
-   public static long a(long $$0) {
-      return Hashing.sha256().hashLong($$0).asLong();
+   default int ak() {
+      return this.am() - this.al();
    }
 
-   public crb a(crb.a $$0) {
-      return new crb($$0, this.f);
+   default int al() {
+      return iu.a(this.I_());
    }
 
-   public he<cqz> a(gw $$0) {
-      int $$1 = $$0.u() - 2;
-      int $$2 = $$0.v() - 2;
-      int $$3 = $$0.w() - 2;
-      int $$4 = $$1 >> 2;
-      int $$5 = $$2 >> 2;
-      int $$6 = $$3 >> 2;
-      double $$7 = (double)($$1 & 3) / 4.0;
-      double $$8 = (double)($$2 & 3) / 4.0;
-      double $$9 = (double)($$3 & 3) / 4.0;
-      int $$10 = 0;
-      double $$11 = Double.POSITIVE_INFINITY;
+   default int am() {
+      return iu.a(this.aj() - 1) + 1;
+   }
 
-      for (int $$12 = 0; $$12 < 8; $$12++) {
-         boolean $$13 = ($$12 & 4) == 0;
-         boolean $$14 = ($$12 & 2) == 0;
-         boolean $$15 = ($$12 & 1) == 0;
-         int $$16 = $$13 ? $$4 : $$4 + 1;
-         int $$17 = $$14 ? $$5 : $$5 + 1;
-         int $$18 = $$15 ? $$6 : $$6 + 1;
-         double $$19 = $$13 ? $$7 : $$7 - 1.0;
-         double $$20 = $$14 ? $$8 : $$8 - 1.0;
-         double $$21 = $$15 ? $$9 : $$9 - 1.0;
-         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
-         if ($$11 > $$22) {
-            $$10 = $$12;
-            $$11 = $$22;
+   default boolean r(ht $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.I_() || $$0 >= this.aj();
+   }
+
+   default int e(int $$0) {
+      return this.f(iu.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.al();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.al();
+   }
+
+   static crb e(final int $$0, final int $$1) {
+      return new crb() {
+         @Override
+         public int J_() {
+            return $$1;
          }
-      }
 
-      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
-      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
-      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
-      return this.e.getNoiseBiome($$23, $$24, $$25);
-   }
-
-   public he<cqz> a(double $$0, double $$1, double $$2) {
-      int $$3 = hp.a(asb.a($$0));
-      int $$4 = hp.a(asb.a($$1));
-      int $$5 = hp.a(asb.a($$2));
-      return this.a($$3, $$4, $$5);
-   }
-
-   public he<cqz> b(gw $$0) {
-      int $$1 = hp.a($$0.u());
-      int $$2 = hp.a($$0.v());
-      int $$3 = hp.a($$0.w());
-      return this.a($$1, $$2, $$3);
-   }
-
-   public he<cqz> a(int $$0, int $$1, int $$2) {
-      return this.e.getNoiseBiome($$0, $$1, $$2);
-   }
-
-   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      long $$7 = arx.a($$0, (long)$$1);
-      $$7 = arx.a($$7, (long)$$2);
-      $$7 = arx.a($$7, (long)$$3);
-      $$7 = arx.a($$7, (long)$$1);
-      $$7 = arx.a($$7, (long)$$2);
-      $$7 = arx.a($$7, (long)$$3);
-      double $$8 = b($$7);
-      $$7 = arx.a($$7, $$0);
-      double $$9 = b($$7);
-      $$7 = arx.a($$7, $$0);
-      double $$10 = b($$7);
-      return asb.k($$6 + $$10) + asb.k($$5 + $$9) + asb.k($$4 + $$8);
-   }
-
-   private static double b(long $$0) {
-      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
-      return ($$1 - 0.5) * 0.9;
-   }
-
-   public interface a {
-      he<cqz> getNoiseBiome(int var1, int var2, int var3);
+         @Override
+         public int I_() {
+            return $$0;
+         }
+      };
    }
 }

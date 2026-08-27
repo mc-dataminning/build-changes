@@ -1,25 +1,18 @@
-public class fug extends ftc<ccr> {
-   private static final aez a = new aez("textures/entity/llama/spit.png");
-   private final ffs<ccr> f;
+public class fug<T extends cav> extends fuw<T> {
+   private static final afw a = new afw("textures/entity/illager/evoker.png");
 
-   public fug(ftd.a $$0) {
-      super($$0);
-      this.f = new ffs<>($$0.a(fhw.at));
+   public fug(fud.a $$0) {
+      super($$0, new fgl<>($$0.a(fiv.V)), 0.5F);
+      this.a(new fye<T, fgl<T>>(this, $$0.d()) {
+         public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.go()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(ccr $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(asb.i($$2, $$0.N, $$0.dB()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(asb.i($$2, $$0.O, $$0.dD())));
-      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      eln $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, fyr.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aez a(ccr $$0) {
+   public afw a(T $$0) {
       return a;
    }
 }

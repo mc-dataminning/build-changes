@@ -1,239 +1,76 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class bhv {
-   private final hq<bhw> a;
-   private final bhu b;
-   private final bhu c;
-   private final bhu d;
-   private final bhu e;
-   private final bhu f;
-   private final bhu g;
-   private final bhu h;
-   private final bhu i;
-   private final bhu j;
-   private final bhu k;
-   private final bhu l;
-   private final bhu m;
-   private final bhu n;
-   private final bhu o;
-   private final bhu p;
-   private final bhu q;
-   private final bhu r;
-   private final bhu s;
-   private final bhu t;
-   private final bhu u;
-   private final bhu v;
-   private final bhu w;
-   private final bhu x;
-
-   public bhv(hr $$0) {
-      this.a = $$0.d(jc.q);
-      this.b = this.a(bhx.a);
-      this.c = this.a(bhx.b);
-      this.d = this.a(bhx.c);
-      this.e = this.a(bhx.d);
-      this.f = this.a(bhx.e);
-      this.g = this.a(bhx.f);
-      this.h = this.a(bhx.g);
-      this.i = this.a(bhx.h);
-      this.j = this.a(bhx.i);
-      this.k = this.a(bhx.j);
-      this.l = this.a(bhx.k);
-      this.m = this.a(bhx.l);
-      this.n = this.a(bhx.m);
-      this.o = this.a(bhx.n);
-      this.p = this.a(bhx.o);
-      this.q = this.a(bhx.p);
-      this.r = this.a(bhx.q);
-      this.s = this.a(bhx.r);
-      this.t = this.a(bhx.s);
-      this.u = this.a(bhx.t);
-      this.v = this.a(bhx.u);
-      this.w = this.a(bhx.Q);
-      this.x = this.a(bhx.R);
+   public static ckj a(List<ckj> $$0, int $$1, int $$2) {
+      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).b() && $$2 > 0 ? $$0.get($$1).a($$2) : ckj.b;
    }
 
-   private bhu a(aey<bhw> $$0) {
-      return new bhu(this.a.f($$0));
+   public static ckj a(List<ckj> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, ckj.b) : ckj.b;
    }
 
-   private bhu a(aey<bhw> $$0, @Nullable biw $$1) {
-      return new bhu(this.a.f($$0), $$1);
+   public static rt a(rt $$0, il<ckj> $$1) {
+      return a($$0, $$1, true);
    }
 
-   private bhu a(aey<bhw> $$0, @Nullable biw $$1, @Nullable biw $$2) {
-      return new bhu(this.a.f($$0), $$1, $$2);
+   public static rt a(rt $$0, il<ckj> $$1, boolean $$2) {
+      rz $$3 = new rz();
+
+      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+         ckj $$5 = $$1.get($$4);
+         if (!$$5.b()) {
+            rt $$6 = new rt();
+            $$6.a("Slot", (byte)$$4);
+            $$5.b($$6);
+            $$3.add($$6);
+         }
+      }
+
+      if (!$$3.isEmpty() || $$2) {
+         $$0.a("Items", $$3);
+      }
+
+      return $$0;
    }
 
-   public bhu a() {
-      return this.b;
+   public static void b(rt $$0, il<ckj> $$1) {
+      rz $$2 = $$0.c("Items", 10);
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         rt $$4 = $$2.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < $$1.size()) {
+            $$1.set($$5, ckj.a($$4));
+         }
+      }
    }
 
-   public bhu b() {
-      return this.c;
+   public static int a(bhu $$0, Predicate<ckj> $$1, int $$2, boolean $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         ckj $$6 = $$0.a($$5);
+         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
+         if ($$7 > 0 && !$$3 && $$6.b()) {
+            $$0.a($$5, ckj.b);
+         }
+
+         $$4 += $$7;
+      }
+
+      return $$4;
    }
 
-   public bhu c() {
-      return this.d;
-   }
-
-   public bhu d() {
-      return this.e;
-   }
-
-   public bhu e() {
-      return this.f;
-   }
-
-   public bhu f() {
-      return this.g;
-   }
-
-   public bhu g() {
-      return this.h;
-   }
-
-   public bhu h() {
-      return this.i;
-   }
-
-   public bhu i() {
-      return this.j;
-   }
-
-   public bhu j() {
-      return this.k;
-   }
-
-   public bhu k() {
-      return this.l;
-   }
-
-   public bhu l() {
-      return this.m;
-   }
-
-   public bhu m() {
-      return this.n;
-   }
-
-   public bhu n() {
-      return this.o;
-   }
-
-   public bhu o() {
-      return this.p;
-   }
-
-   public bhu p() {
-      return this.q;
-   }
-
-   public bhu q() {
-      return this.r;
-   }
-
-   public bhu r() {
-      return this.s;
-   }
-
-   public bhu s() {
-      return this.t;
-   }
-
-   public bhu t() {
-      return this.u;
-   }
-
-   public bhu u() {
-      return this.v;
-   }
-
-   public bhu a(biw $$0) {
-      return this.a(bhx.v, $$0);
-   }
-
-   public bhu b(biw $$0) {
-      return this.a(bhx.w, $$0);
-   }
-
-   public bhu c(biw $$0) {
-      return this.a(bhx.x, $$0);
-   }
-
-   public bhu a(bjm $$0) {
-      return this.a(bhx.y, $$0);
-   }
-
-   public bhu b(bjm $$0) {
-      return this.a(bhx.z, $$0);
-   }
-
-   public bhu c(bjm $$0) {
-      return this.a(bhx.A, $$0);
-   }
-
-   public bhu a(cca $$0) {
-      return this.a(bhx.B, $$0);
-   }
-
-   public bhu a(ccg $$0, @Nullable biw $$1) {
-      return this.a(bhx.C, $$0, $$1);
-   }
-
-   public bhu a(biw $$0, @Nullable biw $$1) {
-      return this.a(bhx.D, $$0, $$1);
-   }
-
-   public bhu a(biw $$0, @Nullable bjm $$1) {
-      return this.a(bhx.E, $$0, $$1);
-   }
-
-   public bhu a(ccn $$0, @Nullable biw $$1) {
-      return this.a(bhx.F, $$0, $$1);
-   }
-
-   public bhu a(ccm $$0, @Nullable biw $$1) {
-      return $$1 == null ? this.a(bhx.H, $$0) : this.a(bhx.G, $$0, $$1);
-   }
-
-   public bhu a(cdf $$0, biw $$1) {
-      return this.a(bhx.I, $$0, $$1);
-   }
-
-   public bhu b(biw $$0, @Nullable biw $$1) {
-      return this.a(bhx.J, $$0, $$1);
-   }
-
-   public bhu c(biw $$0, @Nullable biw $$1) {
-      return this.a(bhx.K, $$0, $$1);
-   }
-
-   public bhu d(biw $$0) {
-      return this.a(bhx.L, $$0);
-   }
-
-   public bhu a(@Nullable cpt $$0) {
-      return $$0 != null ? this.d($$0.f(), $$0.e()) : this.d(null, null);
-   }
-
-   public bhu d(@Nullable biw $$0, @Nullable biw $$1) {
-      return this.a($$1 != null && $$0 != null ? bhx.N : bhx.M, $$0, $$1);
-   }
-
-   public bhu e(biw $$0) {
-      return this.a(bhx.O, $$0);
-   }
-
-   public bhu a(ehh $$0) {
-      return new bhu(this.a.f(bhx.P), $$0);
-   }
-
-   public bhu v() {
-      return this.w;
-   }
-
-   public bhu w() {
-      return this.x;
+   public static int a(ckj $$0, Predicate<ckj> $$1, int $$2, boolean $$3) {
+      if ($$0.b() || !$$1.test($$0)) {
+         return 0;
+      } else if ($$3) {
+         return $$0.L();
+      } else {
+         int $$4 = $$2 < 0 ? $$0.L() : Math.min($$2, $$0.L());
+         $$0.h($$4);
+         return $$4;
+      }
    }
 }

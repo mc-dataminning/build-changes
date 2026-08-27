@@ -1,66 +1,66 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public abstract class edd implements ecv {
-   protected final List<efj> e;
-   private final Predicate<eck> a;
+public interface edd extends edf {
+   @Override
+   String g();
 
-   protected edd(List<efj> $$0) {
-      this.e = $$0;
-      this.a = efl.a($$0);
+   void a(boolean var1);
+
+   int l();
+
+   void f(int var1);
+
+   void e(int var1);
+
+   int j();
+
+   @Override
+   default void a(p $$0, crb $$1) {
+      edf.super.a($$0, $$1);
+      $$0.a("Level name", this::g);
+      $$0.a(
+         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
    }
 
-   protected static <T extends edd> P1<Mu<T>, List<efj>> a(Instance<T> $$0) {
-      return $$0.group(arj.a(efl.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
-   }
+   int h();
 
-   public void a(ect $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.b(".condition[" + $$1 + "]"));
-      }
-   }
+   void a(int var1);
 
-   protected final boolean a(eck $$0) {
-      return this.a.test($$0);
-   }
+   int v();
 
-   public abstract ede a();
+   void g(int var1);
 
-   public abstract static class a<T extends edd.a<T>> implements efc<T> {
-      private final Builder<efj> a = ImmutableList.builder();
+   int w();
 
-      protected abstract T ax_();
+   void h(int var1);
 
-      public T a(efj.a $$0) {
-         this.a.add($$0.build());
-         return this.ax_();
-      }
+   @Nullable
+   UUID x();
 
-      public final T e() {
-         return this.ax_();
-      }
+   void a(UUID var1);
 
-      protected List<efj> f() {
-         return this.a.build();
-      }
+   cqw m();
 
-      public ecu.a a(edd.a<?> $$0) {
-         return new ecu.a(this, $$0);
-      }
+   void a(dhs.c var1);
 
-      public ecz.a b(edd.a<?> $$0) {
-         return new ecz.a(this, $$0);
-      }
+   dhs.c r();
 
-      public edh.a c(edd.a<?> $$0) {
-         return new edh.a(this, $$0);
-      }
+   boolean p();
 
-      public abstract edd b();
-   }
+   void c(boolean var1);
+
+   boolean o();
+
+   void a(cqw var1);
+
+   ehs<MinecraftServer> u();
+
+   void a(long var1);
+
+   void b(long var1);
 }

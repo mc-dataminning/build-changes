@@ -1,53 +1,33 @@
-import java.util.function.Consumer;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class eon extends gex {
-   private static final tl b = tl.c("mco.reset.world.seed");
-   public static final tl a = tl.c("mco.reset.world.generate");
-   private static final int c = 10;
-   private static final int y = 210;
-   private final evu z = new evu(this);
-   private final Consumer<epj> A;
-   private est B;
-   private epd C = epd.a;
-   private boolean D = true;
-   private final tl E;
+public class eon {
+   public final epw a = new epw(ac.g(), TimeUnit.MILLISECONDS, ac.b);
+   private final List<epw.e<?>> h;
+   public final epw.e<List<enn>> b;
+   public final epw.e<eon.a> c;
+   public final epw.e<Integer> d;
+   public final epw.e<Boolean> e;
+   public final epw.e<enm> f;
+   public final eoo g = new eoo(new eqc());
 
-   public eon(Consumer<epj> $$0, tl $$1) {
-      super(a);
-      this.A = $$0;
-      this.E = $$1;
+   public eon(emx $$0) {
+      this.c = this.a.a("server list", () -> {
+         enq $$1 = $$0.b();
+         return ems.b() ? new eon.a($$1.a, $$0.c()) : new eon.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), epx.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), epx.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), epx.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), epx.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), epx.a);
+      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
    }
 
-   @Override
-   public void aH_() {
-      this.B = new est(this.i, 210, 20, tl.c("mco.reset.world.seed"));
-      this.B.l(32);
-      this.c(this.B);
-      this.z.a(new etr(this.e, this.i));
-      evy $$0 = this.z.c(evy.d()).a(10);
-      $$0.a(evq.a(this.i, this.B, b));
-      $$0.a(esr.a(epd::a).a(epd.values()).a(this.C).a(0, 0, 210, 20, tl.c("selectWorld.mapType"), ($$0x, $$1x) -> this.C = $$1x));
-      $$0.a(esr.b(this.D).a(0, 0, 210, 20, tl.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.D = $$1x));
-      evy $$1 = this.z.b(evy.e().a(10));
-      $$1.a(esk.a(this.E, $$0x -> this.A.accept(this.D())).a());
-      $$1.a(esk.a(tk.k, $$0x -> this.az_()).a());
-      this.z.a($$1x -> {
-         esi var10000 = this.d($$1x);
-      });
-      this.b();
+   public List<epw.e<?>> a() {
+      return this.h;
    }
 
-   private epj D() {
-      return new epj(this.B.a(), this.C, this.D);
-   }
-
-   @Override
-   protected void b() {
-      this.z.a();
-   }
-
-   @Override
-   public void az_() {
-      this.A.accept(null);
+   public static record a(List<eno> a, List<eno> b) {
    }
 }

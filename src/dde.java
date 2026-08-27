@@ -1,34 +1,30 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class dde extends dee {
-   public dde(gw $$0, dfd $$1) {
-      super(ddb.J, $$0, $$1);
+public class dde extends cxo {
+   public static final MapCodec<dde> c = b(dde::new);
+   protected static final eiy g = cua.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+
+   @Override
+   public MapCodec<dde> a() {
+      return c;
+   }
+
+   public dde(dga.d $$0) {
+      super($$0, hx.a, g, false, 0.1);
    }
 
    @Override
-   public djw.d c() {
-      return new dde.a(this.p());
+   protected int a(ate $$0) {
+      return cze.a($$0);
    }
 
-   protected class a extends dee.a {
-      public a(gw $$1) {
-         super($$1);
-      }
+   @Override
+   protected cua b() {
+      return cuc.oA;
+   }
 
-      @Override
-      public int a() {
-         return 16;
-      }
-
-      @Override
-      public boolean a(akt $$0, gw $$1, djn $$2, @Nullable djn.a $$3) {
-         int $$4 = this.a($$0, this.c, dde.this.q());
-         return $$4 != 0 && djw.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
-
-      private int a(cqb $$0, gw $$1, dfd $$2) {
-         ha $$3 = $$2.c(ctp.b).g();
-         return $$0.c($$1.a($$3), $$3);
-      }
+   @Override
+   protected boolean g(dgb $$0) {
+      return cze.a($$0);
    }
 }

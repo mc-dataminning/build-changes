@@ -1,249 +1,168 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class cxl extends cso {
+public class cxl extends cws {
    public static final MapCodec<cxl> a = b(cxl::new);
-   public static final dfx b = cww.aE;
-   public static final dfu c = dft.w;
-   public static final dfu d = dft.o;
-   public static final eia e = ctc.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   public static final eia f = ctc.a(4.0, 2.0, 4.0, 12.0, 14.0, 12.0);
-   public static final eia g = ehx.a(e, f);
-   public static final eia h = ctc.a(0.0, 15.0, 0.0, 16.0, 15.0, 16.0);
-   public static final eia i = ehx.a(g, h);
-   public static final eia j = ehx.a(
-      ctc.a(1.0, 10.0, 0.0, 5.333333, 14.0, 16.0), ctc.a(5.333333, 12.0, 0.0, 9.666667, 16.0, 16.0), ctc.a(9.666667, 14.0, 0.0, 14.0, 18.0, 16.0), g
-   );
-   public static final eia k = ehx.a(
-      ctc.a(0.0, 10.0, 1.0, 16.0, 14.0, 5.333333), ctc.a(0.0, 12.0, 5.333333, 16.0, 16.0, 9.666667), ctc.a(0.0, 14.0, 9.666667, 16.0, 18.0, 14.0), g
-   );
-   public static final eia l = ehx.a(
-      ctc.a(10.666667, 10.0, 0.0, 15.0, 14.0, 16.0), ctc.a(6.333333, 12.0, 0.0, 10.666667, 16.0, 16.0), ctc.a(2.0, 14.0, 0.0, 6.333333, 18.0, 16.0), g
-   );
-   public static final eia m = ehx.a(
-      ctc.a(0.0, 10.0, 10.666667, 16.0, 14.0, 15.0), ctc.a(0.0, 12.0, 6.333333, 16.0, 16.0, 10.666667), ctc.a(0.0, 14.0, 2.0, 16.0, 18.0, 6.333333), g
-   );
-   private static final int n = 2;
+   public static final eiy b = cua.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
+   public static final eiy c = cua.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
+   public static final eiy d = cua.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
+   public static final eiy e = cua.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
+   public static final eiy f = eiv.a(b, d);
+   public static final eiy g = eiv.a(c, e);
+   public static final eiy h = eiv.a(f, g);
+   public static final eiy i = eiv.a(h, cua.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
+   public static final eiy j = cua.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
+   public static final eiy k = cua.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
+   public static final eiy l = cua.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
+   public static final eiy m = cua.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
+   public static final eiy n = eiv.a(j, l);
+   public static final eiy o = eiv.a(k, m);
+   public static final eiy F = eiv.a(n, o);
+   public static final eiy G = eiv.a(F, cua.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
+   public static final eiy H = cua.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
+   public static final eiy I = cua.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
+   public static final eiy J = cua.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
+   public static final eiy L = cua.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
+   public static final eiy M = eiv.a(H, J);
+   public static final eiy N = eiv.a(I, L);
+   public static final eiy O = eiv.a(M, N);
+   public static final eiy P = eiv.a(O, cua.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
+   public static final eiy Q = cua.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
+   public static final eiy R = cua.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
+   public static final eiy S = cua.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
+   public static final eiy T = cua.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
+   public static final eiy U = eiv.a(Q, S);
+   public static final eiy V = eiv.a(R, T);
+   public static final eiy W = eiv.a(U, V);
+   public static final eiy X = eiv.a(W, cua.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
+   public static final eiy Y = cua.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
+   public static final eiy Z = cua.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
+   public static final eiy aa = cua.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
+   public static final eiy ab = cua.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
+   public static final eiy ac = eiv.a(Y, aa);
+   public static final eiy ad = eiv.a(Z, ab);
+   public static final eiy ae = eiv.a(ac, ad);
+   public static final eiy af = eiv.a(ae, cua.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
+   public static final eiy ag = cua.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
+   public static final eiy ah = cua.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
+   public static final eiy ai = cua.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
+   public static final eiy aj = cua.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
+   public static final eiy ak = eiv.a(ag, ai);
+   public static final eiy al = eiv.a(ah, aj);
+   public static final eiy am = eiv.a(ak, al);
+   public static final eiy an = eiv.a(am, cua.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
+   public static final eiy ao = cua.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
+   public static final eiy ap = cua.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
+   public static final eiy aq = cua.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
+   public static final eiy ar = cua.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
+   public static final eiy as = eiv.a(ao, aq);
+   public static final eiy at = eiv.a(ap, ar);
+   public static final eiy au = eiv.a(as, at);
+   public static final eiy av = eiv.a(au, cua.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
+   public static final eiy aw = cua.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
+   public static final eiy ax = cua.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
+   public static final eiy ay = cua.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
+   public static final eiy az = cua.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
+   public static final eiy aA = eiv.a(aw, ay);
+   public static final eiy aB = eiv.a(ax, az);
+   public static final eiy aC = eiv.a(aA, aB);
+   public static final eiy aD = eiv.a(aC, cua.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
+   private static final ui aR = ui.c("container.grindstone_title");
 
    @Override
    public MapCodec<cxl> a() {
       return a;
    }
 
-   protected cxl(dfc.d $$0) {
+   protected cxl(dga.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ha.c).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(aE, hx.c).a(K, dgm.b));
    }
 
    @Override
-   public czg b_(dfd $$0) {
-      return czg.c;
+   public dae b_(dgb $$0) {
+      return dae.c;
    }
 
-   @Override
-   public eia f(dfd $$0, cph $$1, gw $$2) {
-      return g;
-   }
+   private eiy n(dgb $$0) {
+      hx $$1 = $$0.c(aE);
+      switch ((dgm)$$0.c(K)) {
+         case a:
+            if ($$1 != hx.c && $$1 != hx.d) {
+               return G;
+            }
 
-   @Override
-   public boolean g_(dfd $$0) {
-      return true;
-   }
+            return i;
+         case b:
+            if ($$1 == hx.c) {
+               return X;
+            } else if ($$1 == hx.d) {
+               return P;
+            } else {
+               if ($$1 == hx.f) {
+                  return an;
+               }
 
-   @Override
-   public dfd a(clt $$0) {
-      cqb $$1 = $$0.q();
-      cjl $$2 = $$0.n();
-      cca $$3 = $$0.o();
-      boolean $$4 = false;
-      if (!$$1.B && $$3 != null && $$3.gp()) {
-         qw $$5 = che.a($$2);
-         if ($$5 != null && $$5.e("Book")) {
-            $$4 = true;
-         }
-      }
-
-      return this.o().a(b, $$0.g().g()).a(d, Boolean.valueOf($$4));
-   }
-
-   @Override
-   public eia c(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return i;
-   }
-
-   @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      switch ((ha)$$0.c(b)) {
+               return af;
+            }
          case c:
-            return k;
-         case d:
-            return m;
-         case f:
-            return l;
-         case e:
-            return j;
+            if ($$1 != hx.c && $$1 != hx.d) {
+               return aD;
+            }
+
+            return av;
          default:
-            return g;
+            return G;
       }
    }
 
    @Override
-   public dfd a(dfd $$0, czn $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public eiy c(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return this.n($$0);
    }
 
    @Override
-   public dfd a(dfd $$0, cxx $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return this.n($$0);
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b, c, d);
-   }
-
-   @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new dea($$0, $$1);
-   }
-
-   public static boolean a(@Nullable biw $$0, cqb $$1, gw $$2, dfd $$3, cjl $$4) {
-      if (!$$3.c(d)) {
-         if (!$$1.B) {
-            b($$0, $$1, $$2, $$3, $$4);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static void b(@Nullable biw $$0, cqb $$1, gw $$2, dfd $$3, cjl $$4) {
-      if ($$1.c_($$2) instanceof dea $$6) {
-         $$6.a($$4.a(1));
-         a($$0, $$1, $$2, $$3, true);
-         $$1.a(null, $$2, apg.cf, aph.e, 1.0F, 1.0F);
-      }
-   }
-
-   public static void a(@Nullable biw $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      dfd $$5 = $$3.a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf($$4));
-      $$1.a($$2, $$5, 3);
-      $$1.a(djn.c, $$2, djn.a.a($$0, $$5));
-      b($$1, $$2, $$3);
-   }
-
-   public static void a(cqb $$0, gw $$1, dfd $$2) {
-      a($$0, $$1, $$2, true);
-      $$0.a($$1, $$2.b(), 2);
-      $$0.c(1043, $$1, 0);
-   }
-
-   private static void a(cqb $$0, gw $$1, dfd $$2, boolean $$3) {
-      $$0.a($$1, $$2.a(c, Boolean.valueOf($$3)), 3);
-      b($$0, $$1, $$2);
-   }
-
-   private static void b(cqb $$0, gw $$1, dfd $$2) {
-      $$0.a($$1.d(), $$2.b());
-   }
-
-   @Override
-   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      a($$1, $$2, $$0, false);
-   }
-
-   @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$0.c(d)) {
-            this.d($$0, $$1, $$2);
-         }
-
-         if ($$0.c(c)) {
-            $$1.a($$2.d(), this);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   private void d(dfd $$0, cqb $$1, gw $$2) {
-      if ($$1.c_($$2) instanceof dea $$4) {
-         ha $$5 = $$0.c(b);
-         cjl $$6 = $$4.c().p();
-         float $$7 = 0.25F * (float)$$5.j();
-         float $$8 = 0.25F * (float)$$5.l();
-         byt $$9 = new byt($$1, (double)$$2.u() + 0.5 + (double)$$7, (double)($$2.v() + 1), (double)$$2.w() + 0.5 + (double)$$8, $$6);
-         $$9.t();
-         $$1.b($$9);
-         $$4.a();
-      }
-   }
-
-   @Override
-   public boolean f_(dfd $$0) {
+   public boolean a(dgb $$0, crc $$1, ht $$2) {
       return true;
    }
 
    @Override
-   public int a(dfd $$0, cph $$1, gw $$2, ha $$3) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   public int b(dfd $$0, cph $$1, gw $$2, ha $$3) {
-      return $$3 == ha.b && $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   public boolean d_(dfd $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfd $$0, cqb $$1, gw $$2) {
-      if ($$0.c(d)) {
-         dcz $$3 = $$1.c_($$2);
-         if ($$3 instanceof dea) {
-            return ((dea)$$3).i();
-         }
-      }
-
-      return 0;
-   }
-
-   @Override
-   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
-      if ($$0.c(d)) {
-         if (!$$1.B) {
-            this.a($$1, $$2, $$3);
-         }
-
-         return bhe.a($$1.B);
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      if ($$1.B) {
+         return bib.a;
       } else {
-         cjl $$6 = $$3.b($$4);
-         return !$$6.b() && !$$6.a(aqd.au) ? bhe.b : bhe.d;
-      }
-   }
-
-   @Nullable
-   @Override
-   public bhh b(dfd $$0, cqb $$1, gw $$2) {
-      return !$$0.c(d) ? null : super.b($$0, $$1, $$2);
-   }
-
-   private void a(cqb $$0, gw $$1, cca $$2) {
-      dcz $$3 = $$0.c_($$1);
-      if ($$3 instanceof dea) {
-         $$2.a((dea)$$3);
-         $$2.a(apq.au);
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(aqn.aD);
+         return bib.b;
       }
    }
 
    @Override
-   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
+   public bie b(dgb $$0, cqz $$1, ht $$2) {
+      return new bij(($$2x, $$3, $$4) -> new cgl($$2x, $$3, cga.a($$1, $$2)), aR);
+   }
+
+   @Override
+   public dgb a(dgb $$0, dal $$1) {
+      return $$0.a(aE, $$1.a($$0.c(aE)));
+   }
+
+   @Override
+   public dgb a(dgb $$0, cyv $$1) {
+      return $$0.a($$1.a($$0.c(aE)));
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(aE, K);
+   }
+
+   @Override
+   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
       return false;
    }
 }

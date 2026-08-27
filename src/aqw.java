@@ -1,32 +1,10 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Locale;
+public class aqw {
+   public static final arh<dub> a = a("visible");
 
-public record aqw(int b) {
-   private static final String c = "#";
-   public static final Codec<aqw> a = Codec.STRING.comapFlatMap($$0 -> {
-      if (!$$0.startsWith("#")) {
-         return DataResult.error(() -> "Not a color code: " + $$0);
-      } else {
-         try {
-            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
-            return DataResult.success(new aqw($$1));
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
-         }
-      }
-   }, aqw::b);
-
-   private String b() {
-      return String.format(Locale.ROOT, "#%08X", this.b);
+   private aqw() {
    }
 
-   @Override
-   public String toString() {
-      return this.b();
-   }
-
-   public int a() {
-      return this.b;
+   private static arh<dub> a(String $$0) {
+      return arh.a(jz.aw, new afw($$0));
    }
 }

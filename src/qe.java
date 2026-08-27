@@ -1,19 +1,95 @@
+import java.util.List;
+
 public class qe {
-   private static qp a = new qg();
+   public static final afv<dve> a = qd.a("crimson_fungi");
+   public static final afv<dve> b = qd.a("warped_fungi");
+   public static final afv<dve> c = qd.a("oak_checked");
+   public static final afv<dve> d = qd.a("dark_oak_checked");
+   public static final afv<dve> e = qd.a("birch_checked");
+   public static final afv<dve> f = qd.a("acacia_checked");
+   public static final afv<dve> g = qd.a("spruce_checked");
+   public static final afv<dve> h = qd.a("mangrove_checked");
+   public static final afv<dve> i = qd.a("cherry_checked");
+   public static final afv<dve> j = qd.a("pine_on_snow");
+   public static final afv<dve> k = qd.a("spruce_on_snow");
+   public static final afv<dve> l = qd.a("pine_checked");
+   public static final afv<dve> m = qd.a("jungle_tree");
+   public static final afv<dve> n = qd.a("fancy_oak_checked");
+   public static final afv<dve> o = qd.a("mega_jungle_tree_checked");
+   public static final afv<dve> p = qd.a("mega_spruce_checked");
+   public static final afv<dve> q = qd.a("mega_pine_checked");
+   public static final afv<dve> r = qd.a("tall_mangrove_checked");
+   public static final afv<dve> s = qd.a("jungle_bush");
+   public static final afv<dve> t = qd.a("super_birch_bees_0002");
+   public static final afv<dve> u = qd.a("super_birch_bees");
+   public static final afv<dve> v = qd.a("oak_bees_0002");
+   public static final afv<dve> w = qd.a("oak_bees_002");
+   public static final afv<dve> x = qd.a("birch_bees_0002");
+   public static final afv<dve> y = qd.a("birch_bees_002");
+   public static final afv<dve> z = qd.a("fancy_oak_bees_0002");
+   public static final afv<dve> A = qd.a("fancy_oak_bees_002");
+   public static final afv<dve> B = qd.a("fancy_oak_bees");
+   public static final afv<dve> C = qd.a("cherry_bees_005");
 
-   public static void a(qp $$0) {
-      a = $$0;
-   }
-
-   public static void a(pw $$0) {
-      a.a($$0);
-   }
-
-   public static void b(pw $$0) {
-      a.b($$0);
-   }
-
-   public static void a() {
-      a.a();
+   public static void a(oo<dve> $$0) {
+      ic<dob<?, ?>> $$1 = $$0.a(jz.at);
+      ib<dob<?, ?>> $$2 = $$1.b(pt.a);
+      ib<dob<?, ?>> $$3 = $$1.b(pt.c);
+      ib<dob<?, ?>> $$4 = $$1.b(pt.g);
+      ib<dob<?, ?>> $$5 = $$1.b(pt.h);
+      ib<dob<?, ?>> $$6 = $$1.b(pt.i);
+      ib<dob<?, ?>> $$7 = $$1.b(pt.j);
+      ib<dob<?, ?>> $$8 = $$1.b(pt.k);
+      ib<dob<?, ?>> $$9 = $$1.b(pt.x);
+      ib<dob<?, ?>> $$10 = $$1.b(pt.z);
+      ib<dob<?, ?>> $$11 = $$1.b(pt.l);
+      ib<dob<?, ?>> $$12 = $$1.b(pt.m);
+      ib<dob<?, ?>> $$13 = $$1.b(pt.n);
+      ib<dob<?, ?>> $$14 = $$1.b(pt.p);
+      ib<dob<?, ?>> $$15 = $$1.b(pt.q);
+      ib<dob<?, ?>> $$16 = $$1.b(pt.r);
+      ib<dob<?, ?>> $$17 = $$1.b(pt.y);
+      ib<dob<?, ?>> $$18 = $$1.b(pt.v);
+      ib<dob<?, ?>> $$19 = $$1.b(pt.s);
+      ib<dob<?, ?>> $$20 = $$1.b(pt.t);
+      ib<dob<?, ?>> $$21 = $$1.b(pt.A);
+      ib<dob<?, ?>> $$22 = $$1.b(pt.B);
+      ib<dob<?, ?>> $$23 = $$1.b(pt.D);
+      ib<dob<?, ?>> $$24 = $$1.b(pt.E);
+      ib<dob<?, ?>> $$25 = $$1.b(pt.G);
+      ib<dob<?, ?>> $$26 = $$1.b(pt.H);
+      ib<dob<?, ?>> $$27 = $$1.b(pt.J);
+      ib<dob<?, ?>> $$28 = $$1.b(pt.K);
+      qd.a($$0, a, $$2, duw.a(8), dus.a());
+      qd.a($$0, b, $$3, duw.a(8), dus.a());
+      qd.a($$0, c, $$4, qd.a(cuc.x));
+      qd.a($$0, d, $$5, qd.a(cuc.D));
+      qd.a($$0, e, $$6, qd.a(cuc.z));
+      qd.a($$0, f, $$7, qd.a(cuc.B));
+      qd.a($$0, g, $$8, qd.a(cuc.y));
+      qd.a($$0, h, $$9, qd.a(cuc.E));
+      qd.a($$0, i, $$10, qd.a(cuc.C));
+      dmr $$29 = dmr.a(hx.a.q(), cuc.dP, cuc.qC);
+      List<dvh> $$30 = List.of(duy.a(hx.b, dmr.a(dmr.a(cuc.qC)), 8), dut.a($$29));
+      qd.a($$0, j, $$11, $$30);
+      qd.a($$0, k, $$8, $$30);
+      qd.a($$0, l, $$11, qd.a(cuc.y));
+      qd.a($$0, m, $$12, qd.a(cuc.A));
+      qd.a($$0, n, $$13, qd.a(cuc.x));
+      qd.a($$0, o, $$14, qd.a(cuc.A));
+      qd.a($$0, p, $$15, qd.a(cuc.y));
+      qd.a($$0, q, $$16, qd.a(cuc.y));
+      qd.a($$0, r, $$17, qd.a(cuc.E));
+      qd.a($$0, s, $$18, qd.a(cuc.x));
+      qd.a($$0, t, $$19, qd.a(cuc.z));
+      qd.a($$0, u, $$20, qd.a(cuc.z));
+      qd.a($$0, v, $$21, qd.a(cuc.x));
+      qd.a($$0, w, $$22, qd.a(cuc.x));
+      qd.a($$0, x, $$23, qd.a(cuc.z));
+      qd.a($$0, y, $$24, qd.a(cuc.z));
+      qd.a($$0, z, $$25, qd.a(cuc.x));
+      qd.a($$0, A, $$26, qd.a(cuc.x));
+      qd.a($$0, B, $$27, qd.a(cuc.x));
+      qd.a($$0, C, $$28, qd.a(cuc.C));
    }
 }

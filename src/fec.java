@@ -1,258 +1,240 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Map;
-import org.joml.Vector3f;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fec<T extends bwe & bjk> extends fdw<T> {
-   public static final float a = 1.8849558F;
-   private final fhx b;
-   private final fhx f;
-   private final fhx g;
-   private final fhx h;
-   private final fhx i;
-   private final fhx j;
-   private final fhx k;
-   private final fhx l;
-   private final fhx m;
-   private final fhx n;
+public class fec {
+   private static final Logger a = LogUtils.getLogger();
+   private final ero b;
+   private final ecy c;
 
-   public fec(fhx $$0) {
-      super(true, 8.0F, 3.35F);
-      this.j = $$0.b("body");
-      this.k = this.j.b("head");
-      this.g = this.j.b("right_hind_leg");
-      this.f = this.j.b("left_hind_leg");
-      this.i = this.j.b("right_front_leg");
-      this.h = this.j.b("left_front_leg");
-      this.b = this.j.b("tail");
-      this.l = this.k.b("top_gills");
-      this.m = this.k.b("left_gills");
-      this.n = this.k.b("right_gills");
+   public fec(ero $$0, ecy $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static fid c() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      fig $$2 = $$1.a(
-         "body", fic.c().a(0, 11).a(-4.0F, -2.0F, -9.0F, 8.0F, 4.0F, 10.0F).a(2, 17).a(0.0F, -3.0F, -8.0F, 0.0F, 5.0F, 9.0F), fhz.a(0.0F, 20.0F, 5.0F)
-      );
-      fib $$3 = new fib(0.001F);
-      fig $$4 = $$2.a("head", fic.c().a(0, 1).a(-4.0F, -3.0F, -5.0F, 8.0F, 5.0F, 5.0F, $$3), fhz.a(0.0F, 0.0F, -9.0F));
-      fic $$5 = fic.c().a(3, 37).a(-4.0F, -3.0F, 0.0F, 8.0F, 3.0F, 0.0F, $$3);
-      fic $$6 = fic.c().a(0, 40).a(-3.0F, -5.0F, 0.0F, 3.0F, 7.0F, 0.0F, $$3);
-      fic $$7 = fic.c().a(11, 40).a(0.0F, -5.0F, 0.0F, 3.0F, 7.0F, 0.0F, $$3);
-      $$4.a("top_gills", $$5, fhz.a(0.0F, -3.0F, -1.0F));
-      $$4.a("left_gills", $$6, fhz.a(-4.0F, 0.0F, -1.0F));
-      $$4.a("right_gills", $$7, fhz.a(4.0F, 0.0F, -1.0F));
-      fic $$8 = fic.c().a(2, 13).a(-1.0F, 0.0F, 0.0F, 3.0F, 5.0F, 0.0F, $$3);
-      fic $$9 = fic.c().a(2, 13).a(-2.0F, 0.0F, 0.0F, 3.0F, 5.0F, 0.0F, $$3);
-      $$2.a("right_hind_leg", $$9, fhz.a(-3.5F, 1.0F, -1.0F));
-      $$2.a("left_hind_leg", $$8, fhz.a(3.5F, 1.0F, -1.0F));
-      $$2.a("right_front_leg", $$9, fhz.a(-3.5F, 1.0F, -8.0F));
-      $$2.a("left_front_leg", $$8, fhz.a(3.5F, 1.0F, -8.0F));
-      $$2.a("tail", fic.c().a(2, 19).a(0.0F, -3.0F, 0.0F, 0.0F, 5.0F, 12.0F), fhz.a(0.0F, 0.0F, 1.0F));
-      return fid.a($$0, 64, 64);
+   public void a(ezd $$0, String $$1) {
+      try {
+         this.a($$0, $$1, false, true);
+      } catch (OutOfMemoryError var8) {
+         asw.b();
+         System.gc();
+         String $$3 = "Ran out of memory trying to read level data of world folder \"" + $$1 + "\"";
+         a.error(LogUtils.FATAL_MARKER, $$3);
+         OutOfMemoryError $$4 = new OutOfMemoryError("Ran out of memory reading level data");
+         $$4.initCause(var8);
+         o $$5 = o.a($$4, $$3);
+         p $$6 = $$5.a("World details");
+         $$6.a("World folder", $$1);
+         throw new y($$5);
+      }
    }
 
-   @Override
-   protected Iterable<fhx> a() {
-      return ImmutableList.of();
-   }
+   public void a(String $$0, crd $$1, dmi $$2, Function<ip, dmf> $$3) {
+      ecy.c $$4 = this.a($$0);
+      if ($$4 != null) {
+         aoe $$5 = aoh.a($$4);
+         crs $$6 = $$1.g();
 
-   @Override
-   protected Iterable<fhx> b() {
-      return ImmutableList.of(this.j);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a($$0, $$4, $$5);
-      if ($$0.gk()) {
-         this.b($$4);
-         this.a($$0);
-      } else {
-         boolean $$6 = $$2 > 1.0E-5F || $$0.dD() != $$0.O || $$0.dB() != $$0.N;
-         if ($$0.ba()) {
-            if ($$6) {
-               this.d($$3, $$5);
-            } else {
-               this.a($$3);
-            }
-
-            this.a($$0);
-         } else {
-            if ($$0.aA()) {
-               if ($$6) {
-                  this.c($$3, $$4);
-               } else {
-                  this.b($$3, $$4);
-               }
-            }
-
-            this.a($$0);
+         try {
+            agq.d $$7 = new agq.d($$5, $$6, false, false);
+            agr $$8 = this.a($$7, $$3x -> {
+               dmf.b $$4x = $$3.apply($$3x.c()).a($$3x.d().d(jz.aJ));
+               return new agq.b<>(new edc($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
+            }, agr::new);
+            this.b.a($$0, $$4, $$5, $$8, true);
+         } catch (Exception var10) {
+            a.warn("Failed to load datapacks, can't proceed with server load", var10);
+            a($$4, $$0);
          }
       }
    }
 
-   private void a(T $$0) {
-      Map<String, Vector3f> $$1 = $$0.a();
-      $$1.put("body", this.a(this.j));
-      $$1.put("head", this.a(this.k));
-      $$1.put("right_hind_leg", this.a(this.g));
-      $$1.put("left_hind_leg", this.a(this.f));
-      $$1.put("right_front_leg", this.a(this.i));
-      $$1.put("left_front_leg", this.a(this.h));
-      $$1.put("tail", this.a(this.b));
-      $$1.put("top_gills", this.a(this.l));
-      $$1.put("left_gills", this.a(this.m));
-      $$1.put("right_gills", this.a(this.n));
-   }
-
-   private Vector3f a(fhx $$0) {
-      return new Vector3f($$0.e, $$0.f, $$0.g);
-   }
-
-   private void a(fhx $$0, Vector3f $$1) {
-      $$0.b($$1.x(), $$1.y(), $$1.z());
-   }
-
-   private void a(T $$0, float $$1, float $$2) {
-      this.j.b = 0.0F;
-      this.k.c = 0.0F;
-      this.j.c = 20.0F;
-      Map<String, Vector3f> $$3 = $$0.a();
-      if ($$3.isEmpty()) {
-         this.j.b($$2 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), 0.0F);
-         this.k.b(0.0F, 0.0F, 0.0F);
-         this.f.b(0.0F, 0.0F, 0.0F);
-         this.g.b(0.0F, 0.0F, 0.0F);
-         this.h.b(0.0F, 0.0F, 0.0F);
-         this.i.b(0.0F, 0.0F, 0.0F);
-         this.m.b(0.0F, 0.0F, 0.0F);
-         this.n.b(0.0F, 0.0F, 0.0F);
-         this.l.b(0.0F, 0.0F, 0.0F);
-         this.b.b(0.0F, 0.0F, 0.0F);
-      } else {
-         this.a(this.j, $$3.get("body"));
-         this.a(this.k, $$3.get("head"));
-         this.a(this.f, $$3.get("left_hind_leg"));
-         this.a(this.g, $$3.get("right_hind_leg"));
-         this.a(this.h, $$3.get("left_front_leg"));
-         this.a(this.i, $$3.get("right_front_leg"));
-         this.a(this.m, $$3.get("left_gills"));
-         this.a(this.n, $$3.get("right_gills"));
-         this.a(this.l, $$3.get("top_gills"));
-         this.a(this.b, $$3.get("tail"));
+   @Nullable
+   private ecy.c a(String $$0) {
+      try {
+         return this.c.d($$0);
+      } catch (IOException var3) {
+         a.warn("Failed to read level {} data", $$0, var3);
+         evq.a(this.b, $$0);
+         this.b.a(null);
+         return null;
+      } catch (ehu var4) {
+         a.warn("{}", var4.getMessage());
+         this.b.a(eyt.a(null));
+         return null;
       }
    }
 
-   private float a(float $$0, float $$1) {
-      return this.a(0.05F, $$0, $$1);
+   public void a(ecy.c $$0, agg $$1, ij<agf> $$2, ede $$3) {
+      aoe $$4 = aoh.a($$0);
+      aoj $$5 = (aoj)new agq.d($$4, $$3.F(), false, false).a().getSecond();
+      this.b.a($$0.b(), $$0, $$4, new agr($$5, $$1, $$2, $$3), true);
    }
 
-   private float a(float $$0, float $$1, float $$2) {
-      return asb.j($$0, $$1, $$2);
+   private agr a(ecy.c $$0, boolean $$1, aoe $$2) throws Exception {
+      agq.d $$3 = this.b($$0, $$1, $$2);
+      return this.a($$3, $$1x -> {
+         DynamicOps<sn> $$2x = afu.a(sf.a, $$1x.c());
+         io<djl> $$3x = $$1x.d().d(jz.aJ);
+         Pair<ede, dmf.b> $$4 = $$0.a($$2x, $$1x.b(), $$3x, $$1x.c().d());
+         if ($$4 == null) {
+            throw new IllegalStateException("Failed to load world");
+         } else {
+            return new agq.b<>((ede)$$4.getFirst(), ((dmf.b)$$4.getSecond()).b());
+         }
+      }, agr::new);
    }
 
-   private void a(fhx $$0, float $$1, float $$2, float $$3) {
-      $$0.b(this.a($$0.e, $$1), this.a($$0.f, $$2), this.a($$0.g, $$3));
+   public Pair<crd, fea> a(ecy.c $$0) throws Exception {
+      aoe $$1 = aoh.a($$0);
+      agq.d $$2 = this.b($$0, false, $$1);
+
+      record a(crd a, dmi b, io<djl> c) {
+      }
+
+      return this.a($$2, $$1x -> {
+         DynamicOps<sn> $$2x = afu.a(sf.a, $$1x.c());
+         io<djl> $$3 = new ik<>(jz.aJ, Lifecycle.stable()).l();
+         Pair<ede, dmf.b> $$4 = $$0.a($$2x, $$1x.b(), $$3, $$1x.c().d());
+         if ($$4 == null) {
+            throw new IllegalStateException("Failed to load world");
+         } else {
+            return new agq.b<>(new a(((ede)$$4.getFirst()).L(), ((ede)$$4.getFirst()).A(), ((dmf.b)$$4.getSecond()).c()), $$1x.d());
+         }
+      }, ($$0x, $$1x, $$2x, $$3) -> {
+         $$0x.close();
+         return Pair.of($$3.a, new fea($$3.b, new dmf($$3.c), $$2x, $$1x, $$3.a.g()));
+      });
    }
 
-   private void b(float $$0, float $$1) {
-      float $$2 = $$0 * 0.09F;
-      float $$3 = asb.a($$2);
-      float $$4 = asb.b($$2);
-      float $$5 = $$3 * $$3 - 2.0F * $$3;
-      float $$6 = $$4 * $$4 - 3.0F * $$3;
-      this.k.e = this.a(this.k.e, -0.09F * $$5);
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, -0.2F);
-      this.b.f = this.a(this.b.f, -0.1F + 0.1F * $$5);
-      this.l.e = this.a(this.l.e, 0.6F + 0.05F * $$6);
-      this.m.f = this.a(this.m.f, -this.l.e);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.a(this.f, 1.1F, 1.0F, 0.0F);
-      this.a(this.h, 0.8F, 2.3F, -0.5F);
-      this.d();
-      this.j.e = this.a(0.2F, this.j.e, 0.0F);
-      this.j.f = this.a(this.j.f, $$1 * (float) (Math.PI / 180.0));
-      this.j.g = this.a(this.j.g, 0.0F);
+   private agq.d b(ecy.c $$0, boolean $$1, aoe $$2) {
+      crs $$3 = $$0.e();
+      if ($$3 == null) {
+         throw new IllegalStateException("Failed to load data pack config");
+      } else {
+         return new agq.d($$2, $$3, $$1, false);
+      }
    }
 
-   private void c(float $$0, float $$1) {
-      float $$2 = $$0 * 0.11F;
-      float $$3 = asb.b($$2);
-      float $$4 = ($$3 * $$3 - 2.0F * $$3) / 5.0F;
-      float $$5 = 0.7F * $$3;
-      this.k.e = this.a(this.k.e, 0.0F);
-      this.k.f = this.a(this.k.f, 0.09F * $$3);
-      this.k.g = this.a(this.k.g, 0.0F);
-      this.b.f = this.a(this.b.f, this.k.f);
-      this.l.e = this.a(this.l.e, 0.6F - 0.08F * ($$3 * $$3 + 2.0F * asb.a($$2)));
-      this.m.f = this.a(this.m.f, -this.l.e);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.a(this.f, 0.9424779F, 1.5F - $$4, -0.1F);
-      this.a(this.h, 1.0995574F, (float) (Math.PI / 2) - $$5, 0.0F);
-      this.a(this.g, this.f.e, -1.0F - $$4, 0.0F);
-      this.a(this.i, this.h.e, (float) (-Math.PI / 2) - $$5, 0.0F);
-      this.j.e = this.a(0.2F, this.j.e, 0.0F);
-      this.j.f = this.a(this.j.f, $$1 * (float) (Math.PI / 180.0));
-      this.j.g = this.a(this.j.g, 0.0F);
+   public agr a(ecy.c $$0, boolean $$1) throws Exception {
+      aoe $$2 = aoh.a($$0);
+      return this.a($$0, $$1, $$2);
    }
 
-   private void a(float $$0) {
-      float $$1 = $$0 * 0.075F;
-      float $$2 = asb.b($$1);
-      float $$3 = asb.a($$1) * 0.15F;
-      this.j.e = this.a(this.j.e, -0.15F + 0.075F * $$2);
-      this.j.c -= $$3;
-      this.k.e = this.a(this.k.e, -this.j.e);
-      this.l.e = this.a(this.l.e, 0.2F * $$2);
-      this.m.f = this.a(this.m.f, -0.3F * $$2 - 0.19F);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.a(this.f, (float) (Math.PI * 3.0 / 4.0) - $$2 * 0.11F, 0.47123894F, 1.7278761F);
-      this.a(this.h, (float) (Math.PI / 4) - $$2 * 0.2F, 2.042035F, 0.0F);
-      this.d();
-      this.b.f = this.a(this.b.f, 0.5F * $$2);
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, 0.0F);
+   private <D, R> R a(agq.d $$0, agq.f<D> $$1, agq.e<D, R> $$2) throws Exception {
+      agq.c $$3 = new agq.c($$0, dv.a.c, 2);
+      CompletableFuture<R> $$4 = agq.a($$3, $$1, $$2, ac.f(), this.b);
+      this.b.c($$4::isDone);
+      return $$4.get();
    }
 
-   private void d(float $$0, float $$1) {
-      float $$2 = $$0 * 0.33F;
-      float $$3 = asb.a($$2);
-      float $$4 = asb.b($$2);
-      float $$5 = 0.13F * $$3;
-      this.j.e = this.a(0.1F, this.j.e, $$1 * (float) (Math.PI / 180.0) + $$5);
-      this.k.e = -$$5 * 1.8F;
-      this.j.c -= 0.45F * $$4;
-      this.l.e = this.a(this.l.e, -0.5F * $$3 - 0.8F);
-      this.m.f = this.a(this.m.f, 0.3F * $$3 + 0.9F);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.b.f = this.a(this.b.f, 0.3F * asb.b($$2 * 0.9F));
-      this.a(this.f, 1.8849558F, -0.4F * $$3, (float) (Math.PI / 2));
-      this.a(this.h, 1.8849558F, -0.2F * $$4 - 0.1F, (float) (Math.PI / 2));
-      this.d();
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, 0.0F);
+   private void a(ezd $$0, String $$1, boolean $$2, boolean $$3) {
+      ecy.c $$4 = this.a($$1);
+      if ($$4 != null) {
+         aoe $$5 = aoh.a($$4);
+
+         agr $$6;
+         try {
+            $$6 = this.a($$4, $$2, $$5);
+         } catch (Exception var11) {
+            a.warn("Failed to load level data or datapacks, can't proceed with server load", var11);
+            if (!$$2) {
+               this.b.a(new eyc(() -> this.a($$0, $$1, true, $$3)));
+            } else {
+               this.b
+                  .a(
+                     new exr(
+                        () -> this.b.a(null), ui.c("datapackFailure.safeMode.failed.title"), ui.c("datapackFailure.safeMode.failed.description"), uh.l, true
+                     )
+                  );
+            }
+
+            a($$4, $$1);
+            return;
+         }
+
+         ede $$9 = $$6.d();
+         boolean $$10 = $$9.A().e();
+         boolean $$11 = $$9.D() != Lifecycle.stable();
+         if (!$$3 || !$$10 && !$$11) {
+            this.b.ac().a($$4).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
+               a.warn("Failed to load pack: ", $$0x);
+               return this.a();
+            }, this.b).thenAcceptAsync($$5x -> {
+               if ($$5x) {
+                  this.b.a($$1, $$4, $$5, $$6, false);
+               } else {
+                  $$6.close();
+                  a($$4, $$1);
+                  this.b.ac().a().thenRunAsync(() -> this.b.a($$0), this.b);
+               }
+            }, this.b).exceptionally($$0x -> {
+               this.b.a(o.a($$0x, "Load world"));
+               return null;
+            });
+         } else {
+            this.a($$0, $$1, $$10, () -> this.a($$0, $$1, $$2, false));
+            $$6.close();
+            a($$4, $$1);
+         }
+      }
    }
 
-   private void b(float $$0) {
-      this.a(this.f, 1.4137167F, 1.0995574F, (float) (Math.PI / 4));
-      this.a(this.h, (float) (Math.PI / 4), 2.042035F, 0.0F);
-      this.j.e = this.a(this.j.e, -0.15F);
-      this.j.g = this.a(this.j.g, 0.35F);
-      this.d();
-      this.j.f = this.a(this.j.f, $$0 * (float) (Math.PI / 180.0));
-      this.k.e = this.a(this.k.e, 0.0F);
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, 0.0F);
-      this.b.f = this.a(this.b.f, 0.0F);
-      this.a(this.l, 0.0F, 0.0F, 0.0F);
-      this.a(this.m, 0.0F, 0.0F, 0.0F);
-      this.a(this.n, 0.0F, 0.0F, 0.0F);
+   private CompletableFuture<Boolean> a() {
+      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
+      this.b.a(new exx($$0::complete, ui.c("multiplayer.texturePrompt.failure.line1"), ui.c("multiplayer.texturePrompt.failure.line2"), uh.i, uh.e));
+      return $$0;
    }
 
-   private void d() {
-      this.a(this.g, this.f.e, -this.f.f, -this.f.g);
-      this.a(this.i, this.h.e, -this.h.f, -this.h.g);
+   private static void a(ecy.c $$0, String $$1) {
+      try {
+         $$0.close();
+      } catch (IOException var3) {
+         a.warn("Failed to unlock access to level {}", $$1, var3);
+      }
+   }
+
+   private void a(ezd $$0, String $$1, boolean $$2, Runnable $$3) {
+      ui $$4;
+      ui $$5;
+      if ($$2) {
+         $$4 = ui.c("selectWorld.backupQuestion.customized");
+         $$5 = ui.c("selectWorld.backupWarning.customized");
+      } else {
+         $$4 = ui.c("selectWorld.backupQuestion.experimental");
+         $$5 = ui.c("selectWorld.backupWarning.experimental");
+      }
+
+      this.b.a(new exs($$0, ($$2x, $$3x) -> {
+         if ($$2x) {
+            fdu.a(this.c, $$1);
+         }
+
+         $$3.run();
+      }, $$4, $$5, false));
+   }
+
+   public static void a(ero $$0, fds $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
+      BooleanConsumer $$5 = $$3x -> {
+         if ($$3x) {
+            $$3.run();
+         } else {
+            $$0.a($$1);
+         }
+      };
+      if ($$4 || $$2 == Lifecycle.stable()) {
+         $$3.run();
+      } else if ($$2 == Lifecycle.experimental()) {
+         $$0.a(new exx($$5, ui.c("selectWorld.warning.experimental.title"), ui.c("selectWorld.warning.experimental.question")));
+      } else {
+         $$0.a(new exx($$5, ui.c("selectWorld.warning.deprecated.title"), ui.c("selectWorld.warning.deprecated.question")));
+      }
    }
 }

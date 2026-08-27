@@ -1,23 +1,110 @@
-public class fql implements fqa<dea> {
-   private final feh a;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Objects;
 
-   public fql(fqb.a $$0) {
-      this.a = new feh($$0.a(fhw.m));
+public class fql implements gcj {
+   private final afw a;
+   private final j b;
+   private final boolean c;
+   private final int d;
+
+   public fql(afw $$0, j $$1, boolean $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public void a(dea $$0, float $$1, elj $$2, foa $$3, int $$4, int $$5) {
-      dfd $$6 = $$0.q();
-      if ($$6.c(cxl.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$7 = $$6.c(cxl.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$7));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         eln $$8 = fqj.a.a($$3, foi::c);
-         this.a.b($$2, $$8, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$2.b();
+   public afw a() {
+      return this.a;
+   }
+
+   @Override
+   public j b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fql $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
+   }
+
+   public static class a implements JsonDeserializer<fql> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
+      public fql a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         afw $$4 = this.b($$3);
+         gcc $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new fql($$4, $$5.b(), $$6, $$7);
+      }
+
+      private boolean d(JsonObject $$0) {
+         return aso.a($$0, "uvlock", false);
+      }
+
+      protected gcc a(JsonObject $$0) {
+         int $$1 = aso.a($$0, "x", 0);
+         int $$2 = aso.a($$0, "y", 0);
+         gcc $$3 = gcc.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
+         }
+      }
+
+      protected afw b(JsonObject $$0) {
+         return new afw(aso.i($$0, "model"));
+      }
+
+      protected int c(JsonObject $$0) {
+         int $$1 = aso.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
+         }
       }
    }
 }

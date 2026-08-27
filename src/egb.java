@@ -1,53 +1,33 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record egb(ege b, ege c) implements ege {
-   public static final Codec<egb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egf.a.fieldOf("n").forGetter(egb::c), egf.a.fieldOf("p").forGetter(egb::d)).apply($$0, egb::new)
-   );
+public record egb(Optional<bf> b) implements egh {
+   public static final Codec<egb> a = RecordCodecBuilder.create($$0 -> $$0.group(asg.a(bf.a, "predicate").forGetter(egb::c)).apply($$0, egb::new));
 
    @Override
-   public egd b() {
-      return egf.d;
+   public egi b() {
+      return egj.n;
    }
 
    @Override
-   public int a(eck $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      ash $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
-      }
-
-      return $$4;
+   public Set<efq<?>> a() {
+      return ImmutableSet.of(eft.f, eft.c);
    }
 
-   @Override
-   public float b(eck $$0) {
-      return (float)this.a($$0);
+   public boolean a(edi $$0) {
+      bir $$1 = $$0.c(eft.c);
+      eif $$2 = $$0.c(eft.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public static egb a(int $$0, float $$1) {
-      return new egb(egc.a((float)$$0), egc.a($$1));
+   public static egh.a a(bf.a $$0) {
+      return () -> new egb(Optional.of($$0.b()));
    }
 
-   @Override
-   public Set<ees<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public ege c() {
+   public Optional<bf> c() {
       return this.b;
-   }
-
-   public ege d() {
-      return this.c;
    }
 }

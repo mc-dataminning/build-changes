@@ -1,35 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record clq(aez c, he<cjg> d, tl e, boolean f) {
-   public static final Codec<clq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aez.a.fieldOf("asset_id").forGetter(clq::a),
-               aew.a(jc.E).fieldOf("template_item").forGetter(clq::b),
-               tn.a.fieldOf("description").forGetter(clq::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(clq::d)
-            )
-            .apply($$0, clq::new)
-   );
-   public static final Codec<he<clq>> b = aev.a(jc.aF, a);
-
-   public tl a(he<clo> $$0) {
-      return this.e.f().c($$0.a().e().a());
+public class clq extends clv {
+   public clq(cke.a $$0) {
+      super($$0);
    }
 
-   public aez a() {
-      return this.c;
-   }
-
-   public he<cjg> b() {
-      return this.d;
-   }
-
-   public tl c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
+   @Override
+   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
+      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqd.xf, aqe.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

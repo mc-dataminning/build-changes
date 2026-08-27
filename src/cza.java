@@ -1,345 +1,99 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cza {
-   private final cqb a;
-   private final gw b;
-   private final csr c;
-   private dfd d;
-   private final boolean e;
-   private final List<gw> f = Lists.newArrayList();
+public class cza extends cuj implements cud {
+   public static final MapCodec<cza> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(afv.a(jz.at).fieldOf("feature").forGetter($$0x -> $$0x.d), t()).apply($$0, cza::new)
+   );
+   protected static final float b = 3.0F;
+   protected static final eiy c = cua.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final afv<dob<?, ?>> d;
 
-   public cza(cqb $$0, gw $$1, dfd $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = (csr)$$2.b();
-      dgh $$3 = $$2.c(this.c.c());
-      this.e = this.c.b();
-      this.a($$3);
+   @Override
+   public MapCodec<cza> a() {
+      return a;
    }
 
-   public List<gw> a() {
-      return this.f;
+   public cza(afv<dob<?, ?>> $$0, dga.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
-   private void a(dgh $$0) {
-      this.f.clear();
-      switch ($$0) {
-         case a:
-            this.f.add(this.b.e());
-            this.f.add(this.b.f());
-            break;
-         case b:
-            this.f.add(this.b.g());
-            this.f.add(this.b.h());
-            break;
-         case c:
-            this.f.add(this.b.g());
-            this.f.add(this.b.h().c());
-            break;
-         case d:
-            this.f.add(this.b.g().c());
-            this.f.add(this.b.h());
-            break;
-         case e:
-            this.f.add(this.b.e().c());
-            this.f.add(this.b.f());
-            break;
-         case f:
-            this.f.add(this.b.e());
-            this.f.add(this.b.f().c());
-            break;
-         case g:
-            this.f.add(this.b.h());
-            this.f.add(this.b.f());
-            break;
-         case h:
-            this.f.add(this.b.g());
-            this.f.add(this.b.f());
-            break;
-         case i:
-            this.f.add(this.b.g());
-            this.f.add(this.b.e());
-            break;
-         case j:
-            this.f.add(this.b.h());
-            this.f.add(this.b.e());
-      }
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return c;
    }
 
-   private void d() {
-      for (int $$0 = 0; $$0 < this.f.size(); $$0++) {
-         cza $$1 = this.b(this.f.get($$0));
-         if ($$1 != null && $$1.a(this)) {
-            this.f.set($$0, $$1.b);
-         } else {
-            this.f.remove($$0--);
+   @Override
+   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
+
+         for (ht $$6 : ht.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
+            }
+         }
+
+         ht $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.t($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.t($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
          }
       }
    }
 
-   private boolean a(gw $$0) {
-      return csr.a(this.a, $$0) || csr.a(this.a, $$0.c()) || csr.a(this.a, $$0.d());
+   @Override
+   protected boolean d(dgb $$0, cqf $$1, ht $$2) {
+      return $$0.i($$1, $$2);
    }
 
-   @Nullable
-   private cza b(gw $$0) {
-      dfd $$2 = this.a.a_($$0);
-      if (csr.g($$2)) {
-         return new cza(this.a, $$0, $$2);
-      } else {
-         gw $$1 = $$0.c();
-         $$2 = this.a.a_($$1);
-         if (csr.g($$2)) {
-            return new cza(this.a, $$1, $$2);
-         } else {
-            $$1 = $$0.d();
-            $$2 = this.a.a_($$1);
-            return csr.g($$2) ? new cza(this.a, $$1, $$2) : null;
-         }
-      }
+   @Override
+   public boolean a(dgb $$0, crc $$1, ht $$2) {
+      ht $$3 = $$2.d();
+      dgb $$4 = $$1.a_($$3);
+      return $$4.a(aqs.aZ) ? true : $$1.b($$2, 0) < 13 && this.d($$4, $$1, $$3);
    }
 
-   private boolean a(cza $$0) {
-      return this.c($$0.b);
-   }
-
-   private boolean c(gw $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         gw $$2 = this.f.get($$1);
-         if ($$2.u() == $$0.u() && $$2.w() == $$0.w()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   protected int b() {
-      int $$0 = 0;
-
-      for (ha $$1 : ha.c.a) {
-         if (this.a(this.b.a($$1))) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean b(cza $$0) {
-      return this.a($$0) || this.f.size() != 2;
-   }
-
-   private void c(cza $$0) {
-      this.f.add($$0.b);
-      gw $$1 = this.b.e();
-      gw $$2 = this.b.f();
-      gw $$3 = this.b.g();
-      gw $$4 = this.b.h();
-      boolean $$5 = this.c($$1);
-      boolean $$6 = this.c($$2);
-      boolean $$7 = this.c($$3);
-      boolean $$8 = this.c($$4);
-      dgh $$9 = null;
-      if ($$5 || $$6) {
-         $$9 = dgh.a;
-      }
-
-      if ($$7 || $$8) {
-         $$9 = dgh.b;
-      }
-
-      if (!this.e) {
-         if ($$6 && $$8 && !$$5 && !$$7) {
-            $$9 = dgh.g;
-         }
-
-         if ($$6 && $$7 && !$$5 && !$$8) {
-            $$9 = dgh.h;
-         }
-
-         if ($$5 && $$7 && !$$6 && !$$8) {
-            $$9 = dgh.i;
-         }
-
-         if ($$5 && $$8 && !$$6 && !$$7) {
-            $$9 = dgh.j;
-         }
-      }
-
-      if ($$9 == dgh.a) {
-         if (csr.a(this.a, $$1.c())) {
-            $$9 = dgh.e;
-         }
-
-         if (csr.a(this.a, $$2.c())) {
-            $$9 = dgh.f;
-         }
-      }
-
-      if ($$9 == dgh.b) {
-         if (csr.a(this.a, $$4.c())) {
-            $$9 = dgh.c;
-         }
-
-         if (csr.a(this.a, $$3.c())) {
-            $$9 = dgh.d;
-         }
-      }
-
-      if ($$9 == null) {
-         $$9 = dgh.a;
-      }
-
-      this.d = this.d.a(this.c.c(), $$9);
-      this.a.a(this.b, this.d, 3);
-   }
-
-   private boolean d(gw $$0) {
-      cza $$1 = this.b($$0);
-      if ($$1 == null) {
+   public boolean a(alq $$0, ht $$1, dgb $$2, ate $$3) {
+      Optional<? extends ib<dob<?, ?>>> $$4 = $$0.H_().d(jz.at).b(this.d);
+      if ($$4.isEmpty()) {
          return false;
       } else {
-         $$1.d();
-         return $$1.b(this);
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.k().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
+            return false;
+         }
       }
    }
 
-   public cza a(boolean $$0, boolean $$1, dgh $$2) {
-      gw $$3 = this.b.e();
-      gw $$4 = this.b.f();
-      gw $$5 = this.b.g();
-      gw $$6 = this.b.h();
-      boolean $$7 = this.d($$3);
-      boolean $$8 = this.d($$4);
-      boolean $$9 = this.d($$5);
-      boolean $$10 = this.d($$6);
-      dgh $$11 = null;
-      boolean $$12 = $$7 || $$8;
-      boolean $$13 = $$9 || $$10;
-      if ($$12 && !$$13) {
-         $$11 = dgh.a;
-      }
-
-      if ($$13 && !$$12) {
-         $$11 = dgh.b;
-      }
-
-      boolean $$14 = $$8 && $$10;
-      boolean $$15 = $$8 && $$9;
-      boolean $$16 = $$7 && $$10;
-      boolean $$17 = $$7 && $$9;
-      if (!this.e) {
-         if ($$14 && !$$7 && !$$9) {
-            $$11 = dgh.g;
-         }
-
-         if ($$15 && !$$7 && !$$10) {
-            $$11 = dgh.h;
-         }
-
-         if ($$17 && !$$8 && !$$10) {
-            $$11 = dgh.i;
-         }
-
-         if ($$16 && !$$8 && !$$9) {
-            $$11 = dgh.j;
-         }
-      }
-
-      if ($$11 == null) {
-         if ($$12 && $$13) {
-            $$11 = $$2;
-         } else if ($$12) {
-            $$11 = dgh.a;
-         } else if ($$13) {
-            $$11 = dgh.b;
-         }
-
-         if (!this.e) {
-            if ($$0) {
-               if ($$14) {
-                  $$11 = dgh.g;
-               }
-
-               if ($$15) {
-                  $$11 = dgh.h;
-               }
-
-               if ($$16) {
-                  $$11 = dgh.j;
-               }
-
-               if ($$17) {
-                  $$11 = dgh.i;
-               }
-            } else {
-               if ($$17) {
-                  $$11 = dgh.i;
-               }
-
-               if ($$16) {
-                  $$11 = dgh.j;
-               }
-
-               if ($$15) {
-                  $$11 = dgh.h;
-               }
-
-               if ($$14) {
-                  $$11 = dgh.g;
-               }
-            }
-         }
-      }
-
-      if ($$11 == dgh.a) {
-         if (csr.a(this.a, $$3.c())) {
-            $$11 = dgh.e;
-         }
-
-         if (csr.a(this.a, $$4.c())) {
-            $$11 = dgh.f;
-         }
-      }
-
-      if ($$11 == dgh.b) {
-         if (csr.a(this.a, $$6.c())) {
-            $$11 = dgh.c;
-         }
-
-         if (csr.a(this.a, $$5.c())) {
-            $$11 = dgh.d;
-         }
-      }
-
-      if ($$11 == null) {
-         $$11 = $$2;
-      }
-
-      this.a($$11);
-      this.d = this.d.a(this.c.c(), $$11);
-      if ($$1 || this.a.a_(this.b) != this.d) {
-         this.a.a(this.b, this.d, 3);
-
-         for (int $$18 = 0; $$18 < this.f.size(); $$18++) {
-            cza $$19 = this.b(this.f.get($$18));
-            if ($$19 != null) {
-               $$19.d();
-               if ($$19.b(this)) {
-                  $$19.c(this);
-               }
-            }
-         }
-      }
-
-      return this;
+   @Override
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
+      return true;
    }
 
-   public dfd c() {
-      return this.d;
+   @Override
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

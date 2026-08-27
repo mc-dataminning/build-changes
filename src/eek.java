@@ -1,120 +1,93 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import java.util.stream.Collectors;
 
-public class eek extends edw {
+public class eek extends eeu {
    public static final Codec<eek> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  Codec.BOOL.fieldOf("replace").orElse(false).forGetter($$0x -> $$0x.b),
-                  tn.a.listOf().fieldOf("lore").forGetter($$0x -> $$0x.c),
-                  arj.a(eck.b.e, "entity").forGetter($$0x -> $$0x.d)
+                  jy.f.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dhe::f).toList())
                )
             )
             .apply($$0, eek::new)
    );
-   private final boolean b;
-   private final List<tl> c;
-   private final Optional<eck.b> d;
+   private final ib<cua> b;
+   private final Set<dhe<?>> c;
 
-   public eek(List<efj> $$0, boolean $$1, List<tl> $$2, Optional<eck.b> $$3) {
+   eek(List<egh> $$0, ib<cua> $$1, Set<dhe<?>> $$2) {
       super($$0);
       this.b = $$1;
-      this.c = List.copyOf($$2);
-      this.d = $$3;
+      this.c = $$2;
+   }
+
+   private eek(List<egh> $$0, ib<cua> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().n()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public edy b() {
-      return edz.u;
+   public eew b() {
+      return eex.x;
    }
 
    @Override
-   public Set<ees<?>> a() {
-      return this.d.<Set<ees<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+   public Set<efq<?>> a() {
+      return ImmutableSet.of(eft.g);
    }
 
    @Override
-   public cjl a(cjl $$0, eck $$1) {
-      rc $$2 = this.a($$0, !this.c.isEmpty());
+   protected ckj a(ckj $$0, edi $$1) {
+      dgb $$2 = $$1.c(eft.g);
       if ($$2 != null) {
-         if (this.b) {
-            $$2.clear();
+         rt $$3 = $$0.w();
+         rt $$4;
+         if ($$3.b("BlockStateTag", 10)) {
+            $$4 = $$3.p("BlockStateTag");
+         } else {
+            $$4 = new rt();
+            $$3.a("BlockStateTag", $$4);
          }
 
-         UnaryOperator<tl> $$3 = eel.a($$1, this.d.orElse(null));
-         this.c.stream().map($$3).map(tl.a::a).map(ro::a).forEach($$2::add);
+         for (dhe<?> $$6 : this.c) {
+            if ($$2.b($$6)) {
+               $$4.a($$6.f(), a($$2, $$6));
+            }
+         }
       }
 
       return $$0;
    }
 
-   @Nullable
-   private rc a(cjl $$0, boolean $$1) {
-      qw $$2;
-      if ($$0.u()) {
-         $$2 = $$0.v();
-      } else {
-         if (!$$1) {
-            return null;
-         }
-
-         $$2 = new qw();
-         $$0.c($$2);
-      }
-
-      qw $$5;
-      if ($$2.b("display", 10)) {
-         $$5 = $$2.p("display");
-      } else {
-         if (!$$1) {
-            return null;
-         }
-
-         $$5 = new qw();
-         $$2.a("display", $$5);
-      }
-
-      if ($$5.b("Lore", 9)) {
-         return $$5.c("Lore", 8);
-      } else if ($$1) {
-         rc $$8 = new rc();
-         $$5.a("Lore", $$8);
-         return $$8;
-      } else {
-         return null;
-      }
+   public static eek.a a(cua $$0) {
+      return new eek.a($$0);
    }
 
-   public static eek.a c() {
-      return new eek.a();
+   private static <T extends Comparable<T>> String a(dgb $$0, dhe<T> $$1) {
+      T $$2 = $$0.c($$1);
+      return $$1.a($$2);
    }
 
-   public static class a extends edw.a<eek.a> {
-      private boolean a;
-      private Optional<eck.b> b = Optional.empty();
-      private final Builder<tl> c = ImmutableList.builder();
+   public static class a extends eeu.a<eek.a> {
+      private final ib<cua> a;
+      private final Builder<dhe<?>> b = ImmutableSet.builder();
 
-      public eek.a a(boolean $$0) {
-         this.a = $$0;
-         return this;
+      a(cua $$0) {
+         this.a = $$0.r();
       }
 
-      public eek.a a(eck.b $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public eek.a a(tl $$0) {
-         this.c.add($$0);
-         return this;
+      public eek.a a(dhe<?> $$0) {
+         if (!this.a.a().n().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       protected eek.a a() {
@@ -122,8 +95,8 @@ public class eek extends edw {
       }
 
       @Override
-      public edx b() {
-         return new eek(this.g(), this.a, this.c.build(), this.b);
+      public eev b() {
+         return new eek(this.g(), this.a, this.b.build());
       }
    }
 }

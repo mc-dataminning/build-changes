@@ -1,36 +1,90 @@
-public class fqj implements fqa<dds> {
-   public static final gbe a = new gbe(fyz.e, new aez("entity/enchanting_table_book"));
-   private final feh b;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-   public fqj(fqb.a $$0) {
-      this.b = new feh($$0.a(fhw.m));
+public class fqj {
+   public static final fqj a = new fqj();
+   public final fqi b;
+   public final fqi c;
+   public final fqi d;
+   public final fqi e;
+   public final fqi f;
+   public final fqi g;
+   public final fqi h;
+   public final fqi i;
+
+   private fqj() {
+      this(fqi.a, fqi.a, fqi.a, fqi.a, fqi.a, fqi.a, fqi.a, fqi.a);
    }
 
-   public void a(dds $$0, float $$1, elj $$2, foa $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + asb.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public fqj(fqj $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+   }
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+   public fqj(fqi $$0, fqi $$1, fqi $$2, fqi $$3, fqi $$4, fqi $$5, fqi $$6, fqi $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public fqi a(ckg $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> fqi.a;
+      };
+   }
+
+   public boolean b(ckg $$0) {
+      return this.a($$0) != fqi.a;
+   }
+
+   protected static class a implements JsonDeserializer<fqj> {
+      public fqj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         fqi $$4 = this.a($$2, $$3, ckg.c);
+         fqi $$5 = this.a($$2, $$3, ckg.b);
+         if ($$5 == fqi.a) {
+            $$5 = $$4;
+         }
+
+         fqi $$6 = this.a($$2, $$3, ckg.e);
+         fqi $$7 = this.a($$2, $$3, ckg.d);
+         if ($$7 == fqi.a) {
+            $$7 = $$6;
+         }
+
+         fqi $$8 = this.a($$2, $$3, ckg.f);
+         fqi $$9 = this.a($$2, $$3, ckg.g);
+         fqi $$10 = this.a($$2, $$3, ckg.h);
+         fqi $$11 = this.a($$2, $$3, ckg.i);
+         return new fqj($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
+      private fqi a(JsonDeserializationContext $$0, JsonObject $$1, ckg $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (fqi)$$0.deserialize($$1.get($$3), fqi.class) : fqi.a;
       }
-
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = asb.i($$1, $$0.c, $$0.b);
-      float $$10 = asb.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = asb.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = asb.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, asb.a($$10, 0.0F, 1.0F), asb.a($$11, 0.0F, 1.0F), $$12);
-      eln $$13 = a.a($$3, foi::c);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
    }
 }

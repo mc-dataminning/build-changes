@@ -1,20 +1,21 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dnc extends dnq<dqb> {
-   public dnc(Codec<dqb> $$0) {
-      super($$0);
+public abstract class dnc implements dmr {
+   protected final iw f;
+
+   protected static <P extends dnc> P1<Mu<P>, iw> a(Instance<P> $$0) {
+      return $$0.group(iw.v(16).optionalFieldOf("offset", iw.g).forGetter($$0x -> $$0x.f));
    }
 
-   @Override
-   public boolean a(dns<dqb> $$0) {
-      cqv $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      ash $$3 = $$0.d();
-      if ($$1.t($$2) && $$1.a_($$2.d()).a(cte.fz)) {
-         cuh.a($$1, $$2, $$3, 8);
-         return true;
-      } else {
-         return false;
-      }
+   protected dnc(iw $$0) {
+      this.f = $$0;
    }
+
+   public final boolean a(crt $$0, ht $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
+   }
+
+   protected abstract boolean a(dgb var1);
 }

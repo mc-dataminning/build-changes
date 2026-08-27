@@ -1,62 +1,49 @@
-import java.util.Locale;
+public class etz extends etj {
+   private boolean a;
 
-public class etz extends ety {
-   private static final int f = -16711681;
-   private static final int g = -6250241;
-   private static final int h = -65536;
-   private static final int i = 1024;
-   private static final int j = 1048576;
-   private static final int k = 1048576;
-
-   public etz(erx $$0, asj $$1) {
-      super($$0, $$1);
+   public etz(int $$0, int $$1, etj.c $$2) {
+      super($$0, $$1, 20, 20, ui.c("narrator.button.difficulty_lock"), $$2, o);
    }
 
    @Override
-   protected void a(erz $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 64);
-      this.a($$0, $$1, $$2, $$3, 1024);
-      this.a($$0, $$1, $$2, $$3, 16384);
-      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
+   protected uw aI_() {
+      return uh.a(super.aI_(), this.a() ? ui.c("narrator.button.difficulty_lock.locked") : ui.c("narrator.button.difficulty_lock.unlocked"));
    }
 
-   private void a(erz $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
+   public boolean a() {
+      return this.a;
    }
 
-   private void a(erz $$0, int $$1, int $$2, int $$3, String $$4) {
-      this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(foi.D(), $$1, $$1 + $$2 - 1, $$3, -1);
+   public void b(boolean $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected String a(double $$0) {
-      return c(e($$0));
-   }
-
-   private static String c(double $$0) {
-      if ($$0 >= 1048576.0) {
-         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
+   public void b(esy $$0, int $$1, int $$2, float $$3) {
+      etz.a $$4;
+      if (!this.i) {
+         $$4 = this.a ? etz.a.c : etz.a.f;
+      } else if (this.n()) {
+         $$4 = this.a ? etz.a.b : etz.a.e;
       } else {
-         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", asb.a($$0));
+         $$4 = this.a ? etz.a.a : etz.a.d;
       }
+
+      $$0.a($$4.g, this.p(), this.r(), this.f, this.g);
    }
 
-   @Override
-   protected int b(double $$0) {
-      return d(e($$0));
-   }
+   static enum a {
+      a(new afw("widget/locked_button")),
+      b(new afw("widget/locked_button_highlighted")),
+      c(new afw("widget/locked_button_disabled")),
+      d(new afw("widget/unlocked_button")),
+      e(new afw("widget/unlocked_button_highlighted")),
+      f(new afw("widget/unlocked_button_disabled"));
 
-   private static int d(double $$0) {
-      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
-   }
+      final afw g;
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
-   }
-
-   private static double e(double $$0) {
-      return $$0 * 20.0;
+      private a(afw $$0) {
+         this.g = $$0;
+      }
    }
 }

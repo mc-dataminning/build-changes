@@ -1,82 +1,318 @@
-import java.util.List;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class ou {
-   public static final aey<dnd<?, ?>> a = or.a("ore_magma");
-   public static final aey<dnd<?, ?>> b = or.a("ore_soul_sand");
-   public static final aey<dnd<?, ?>> c = or.a("ore_nether_gold");
-   public static final aey<dnd<?, ?>> d = or.a("ore_quartz");
-   public static final aey<dnd<?, ?>> e = or.a("ore_gravel_nether");
-   public static final aey<dnd<?, ?>> f = or.a("ore_blackstone");
-   public static final aey<dnd<?, ?>> g = or.a("ore_dirt");
-   public static final aey<dnd<?, ?>> h = or.a("ore_gravel");
-   public static final aey<dnd<?, ?>> i = or.a("ore_granite");
-   public static final aey<dnd<?, ?>> j = or.a("ore_diorite");
-   public static final aey<dnd<?, ?>> k = or.a("ore_andesite");
-   public static final aey<dnd<?, ?>> l = or.a("ore_tuff");
-   public static final aey<dnd<?, ?>> m = or.a("ore_coal");
-   public static final aey<dnd<?, ?>> n = or.a("ore_coal_buried");
-   public static final aey<dnd<?, ?>> o = or.a("ore_iron");
-   public static final aey<dnd<?, ?>> p = or.a("ore_iron_small");
-   public static final aey<dnd<?, ?>> q = or.a("ore_gold");
-   public static final aey<dnd<?, ?>> r = or.a("ore_gold_buried");
-   public static final aey<dnd<?, ?>> s = or.a("ore_redstone");
-   public static final aey<dnd<?, ?>> t = or.a("ore_diamond_small");
-   public static final aey<dnd<?, ?>> u = or.a("ore_diamond_medium");
-   public static final aey<dnd<?, ?>> v = or.a("ore_diamond_large");
-   public static final aey<dnd<?, ?>> w = or.a("ore_diamond_buried");
-   public static final aey<dnd<?, ?>> x = or.a("ore_lapis");
-   public static final aey<dnd<?, ?>> y = or.a("ore_lapis_buried");
-   public static final aey<dnd<?, ?>> z = or.a("ore_infested");
-   public static final aey<dnd<?, ?>> A = or.a("ore_emerald");
-   public static final aey<dnd<?, ?>> B = or.a("ore_ancient_debris_large");
-   public static final aey<dnd<?, ?>> C = or.a("ore_ancient_debris_small");
-   public static final aey<dnd<?, ?>> D = or.a("ore_copper_small");
-   public static final aey<dnd<?, ?>> E = or.a("ore_copper_large");
-   public static final aey<dnd<?, ?>> F = or.a("ore_clay");
+   public static final afv<dxj> a = ov.a("village/plains/town_centers");
+   private static final afv<dxj> b = ov.a("village/plains/terminators");
 
-   public static void a(nr<dnd<?, ?>> $$0) {
-      dyp $$1 = new dyx(apv.bd);
-      dyp $$2 = new dyx(apv.be);
-      dyp $$3 = new dyx(apv.bf);
-      dyp $$4 = new dxy(cte.dV);
-      dyp $$5 = new dyx(apv.bg);
-      List<dqc.a> $$6 = List.of(dqc.a($$2, cte.P.o()), dqc.a($$3, cte.Q.o()));
-      List<dqc.a> $$7 = List.of(dqc.a($$2, cte.N.o()), dqc.a($$3, cte.O.o()));
-      List<dqc.a> $$8 = List.of(dqc.a($$2, cte.cx.o()), dqc.a($$3, cte.cy.o()));
-      List<dqc.a> $$9 = List.of(dqc.a($$2, cte.aR.o()), dqc.a($$3, cte.aS.o()));
-      List<dqc.a> $$10 = List.of(dqc.a($$2, cte.qN.o()), dqc.a($$3, cte.qO.o()));
-      List<dqc.a> $$11 = List.of(dqc.a($$2, cte.R.o()), dqc.a($$3, cte.S.o()));
-      or.a($$0, a, dnq.I, new dqc($$4, cte.kJ.o(), 33));
-      or.a($$0, b, dnq.I, new dqc($$4, cte.dW.o(), 12));
-      or.a($$0, c, dnq.I, new dqc($$4, cte.T.o(), 10));
-      or.a($$0, d, dnq.I, new dqc($$4, cte.hb.o(), 14));
-      or.a($$0, e, dnq.I, new dqc($$4, cte.L.o(), 33));
-      or.a($$0, f, dnq.I, new dqc($$4, cte.pr.o(), 33));
-      or.a($$0, g, dnq.I, new dqc($$1, cte.j.o(), 33));
-      or.a($$0, h, dnq.I, new dqc($$1, cte.L.o(), 33));
-      or.a($$0, i, dnq.I, new dqc($$1, cte.c.o(), 64));
-      or.a($$0, j, dnq.I, new dqc($$1, cte.e.o(), 64));
-      or.a($$0, k, dnq.I, new dqc($$1, cte.g.o(), 64));
-      or.a($$0, l, dnq.I, new dqc($$1, cte.qz.o(), 64));
-      or.a($$0, m, dnq.I, new dqc($$11, 17));
-      or.a($$0, n, dnq.I, new dqc($$11, 17, 0.5F));
-      or.a($$0, o, dnq.I, new dqc($$6, 9));
-      or.a($$0, p, dnq.I, new dqc($$6, 4));
-      or.a($$0, q, dnq.I, new dqc($$7, 9));
-      or.a($$0, r, dnq.I, new dqc($$7, 9, 0.5F));
-      or.a($$0, s, dnq.I, new dqc(List.of(dqc.a($$2, cte.dI.o()), dqc.a($$3, cte.dJ.o())), 8));
-      or.a($$0, t, dnq.I, new dqc($$8, 4, 0.5F));
-      or.a($$0, v, dnq.I, new dqc($$8, 12, 0.7F));
-      or.a($$0, w, dnq.I, new dqc($$8, 8, 1.0F));
-      or.a($$0, u, dnq.I, new dqc($$8, 8, 0.5F));
-      or.a($$0, x, dnq.I, new dqc($$9, 7));
-      or.a($$0, y, dnq.I, new dqc($$9, 7, 1.0F));
-      or.a($$0, z, dnq.I, new dqc(List.of(dqc.a($$2, cte.eN.o()), dqc.a($$3, cte.sc.o())), 9));
-      or.a($$0, A, dnq.I, new dqc(List.of(dqc.a($$2, cte.fE.o()), dqc.a($$3, cte.fF.o())), 3));
-      or.a($$0, B, dnq.ae, new dqc($$5, cte.pj.o(), 3, 1.0F));
-      or.a($$0, C, dnq.ae, new dqc($$5, cte.pj.o(), 2, 1.0F));
-      or.a($$0, D, dnq.I, new dqc($$10, 10));
-      or.a($$0, E, dnq.I, new dqc($$10, 20));
-      or.a($$0, F, dnq.I, new dqc($$1, cte.dR.o(), 33));
+   public static void a(oo<dxj> $$0) {
+      ic<dve> $$1 = $$0.a(jz.az);
+      ib<dve> $$2 = $$1.b(qg.f);
+      ib<dve> $$3 = $$1.b(qg.k);
+      ib<dve> $$4 = $$1.b(qg.a);
+      ic<dzr> $$5 = $$0.a(jz.aB);
+      ib<dzr> $$6 = $$5.b(ow.f);
+      ib<dzr> $$7 = $$5.b(ow.g);
+      ib<dzr> $$8 = $$5.b(ow.h);
+      ib<dzr> $$9 = $$5.b(ow.a);
+      ib<dzr> $$10 = $$5.b(ow.i);
+      ib<dzr> $$11 = $$5.b(ow.l);
+      ic<dxj> $$12 = $$0.a(jz.aD);
+      ib<dxj> $$13 = $$12.b(ov.a);
+      ib<dxj> $$14 = $$12.b(b);
+      $$0.a(
+         a,
+         new dxj(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
+               Pair.of(dxh.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
+               Pair.of(dxh.a("village/plains/town_centers/plains_meeting_point_2"), 50),
+               Pair.of(dxh.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
+               Pair.of(dxh.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
+               Pair.of(dxh.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
+               Pair.of(dxh.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
+               Pair.of(dxh.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "village/plains/streets",
+         new dxj(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/plains/streets/corner_01", $$10), 2),
+               Pair.of(dxh.a("village/plains/streets/corner_02", $$10), 2),
+               Pair.of(dxh.a("village/plains/streets/corner_03", $$10), 2),
+               Pair.of(dxh.a("village/plains/streets/straight_01", $$10), 4),
+               Pair.of(dxh.a("village/plains/streets/straight_02", $$10), 4),
+               Pair.of(dxh.a("village/plains/streets/straight_03", $$10), 7),
+               Pair.of(dxh.a("village/plains/streets/straight_04", $$10), 7),
+               Pair.of(dxh.a("village/plains/streets/straight_05", $$10), 3),
+               Pair.of(dxh.a("village/plains/streets/straight_06", $$10), 4),
+               Pair.of(dxh.a("village/plains/streets/crossroad_01", $$10), 2),
+               Pair.of(dxh.a("village/plains/streets/crossroad_02", $$10), 1),
+               Pair.of(dxh.a("village/plains/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(dxh.a("village/plains/streets/crossroad_04", $$10), 2),
+                  Pair.of(dxh.a("village/plains/streets/crossroad_05", $$10), 2),
+                  Pair.of(dxh.a("village/plains/streets/crossroad_06", $$10), 2),
+                  Pair.of(dxh.a("village/plains/streets/turn_01", $$10), 3)
+               }
+            ),
+            dxj.a.a
+         )
+      );
+      ov.a(
+         $$0,
+         "village/plains/zombie/streets",
+         new dxj(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/plains/zombie/streets/corner_01", $$10), 2),
+               Pair.of(dxh.a("village/plains/zombie/streets/corner_02", $$10), 2),
+               Pair.of(dxh.a("village/plains/zombie/streets/corner_03", $$10), 2),
+               Pair.of(dxh.a("village/plains/zombie/streets/straight_01", $$10), 4),
+               Pair.of(dxh.a("village/plains/zombie/streets/straight_02", $$10), 4),
+               Pair.of(dxh.a("village/plains/zombie/streets/straight_03", $$10), 7),
+               Pair.of(dxh.a("village/plains/zombie/streets/straight_04", $$10), 7),
+               Pair.of(dxh.a("village/plains/zombie/streets/straight_05", $$10), 3),
+               Pair.of(dxh.a("village/plains/zombie/streets/straight_06", $$10), 4),
+               Pair.of(dxh.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
+               Pair.of(dxh.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(dxh.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(dxh.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(dxh.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(dxh.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(dxh.a("village/plains/zombie/streets/turn_01", $$10), 3)
+               }
+            ),
+            dxj.a.a
+         )
+      );
+      ov.a(
+         $$0,
+         "village/plains/houses",
+         new dxj(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/plains/houses/plains_small_house_1", $$6), 2),
+               Pair.of(dxh.a("village/plains/houses/plains_small_house_2", $$6), 2),
+               Pair.of(dxh.a("village/plains/houses/plains_small_house_3", $$6), 2),
+               Pair.of(dxh.a("village/plains/houses/plains_small_house_4", $$6), 2),
+               Pair.of(dxh.a("village/plains/houses/plains_small_house_5", $$6), 2),
+               Pair.of(dxh.a("village/plains/houses/plains_small_house_6", $$6), 1),
+               Pair.of(dxh.a("village/plains/houses/plains_small_house_7", $$6), 2),
+               Pair.of(dxh.a("village/plains/houses/plains_small_house_8", $$6), 3),
+               Pair.of(dxh.a("village/plains/houses/plains_medium_house_1", $$6), 2),
+               Pair.of(dxh.a("village/plains/houses/plains_medium_house_2", $$6), 2),
+               Pair.of(dxh.a("village/plains/houses/plains_big_house_1", $$6), 2),
+               Pair.of(dxh.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
+               new Pair[]{
+                  Pair.of(dxh.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_shepherds_house_1"), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_tannery_1", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_cartographer_1", $$6), 1),
+                  Pair.of(dxh.a("village/plains/houses/plains_library_1", $$6), 5),
+                  Pair.of(dxh.a("village/plains/houses/plains_library_2", $$6), 1),
+                  Pair.of(dxh.a("village/plains/houses/plains_masons_house_1", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_temple_3", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_temple_4", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_stable_1", $$6), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_stable_2"), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_large_farm_1", $$11), 4),
+                  Pair.of(dxh.a("village/plains/houses/plains_small_farm_1", $$11), 4),
+                  Pair.of(dxh.a("village/plains/houses/plains_animal_pen_1"), 1),
+                  Pair.of(dxh.a("village/plains/houses/plains_animal_pen_2"), 1),
+                  Pair.of(dxh.a("village/plains/houses/plains_animal_pen_3"), 5),
+                  Pair.of(dxh.a("village/plains/houses/plains_accessory_1"), 1),
+                  Pair.of(dxh.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
+                  Pair.of(dxh.a("village/plains/houses/plains_meeting_point_5"), 1),
+                  Pair.of(dxh.g(), 10)
+               }
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "village/plains/zombie/houses",
+         new dxj(
+            $$14,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
+               Pair.of(dxh.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
+               Pair.of(dxh.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(dxh.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
+                  Pair.of(dxh.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
+                  Pair.of(dxh.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_tannery_1", $$9), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_cartographer_1", $$9), 1),
+                  Pair.of(dxh.a("village/plains/houses/plains_library_1", $$9), 3),
+                  Pair.of(dxh.a("village/plains/houses/plains_library_2", $$9), 1),
+                  Pair.of(dxh.a("village/plains/houses/plains_masons_house_1", $$9), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_temple_3", $$9), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_temple_4", $$9), 2),
+                  Pair.of(dxh.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_stable_2", $$9), 2),
+                  Pair.of(dxh.a("village/plains/houses/plains_large_farm_1", $$9), 4),
+                  Pair.of(dxh.a("village/plains/houses/plains_small_farm_1", $$9), 4),
+                  Pair.of(dxh.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
+                  Pair.of(dxh.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
+                  Pair.of(dxh.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
+                  Pair.of(dxh.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
+                  Pair.of(dxh.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
+                  Pair.of(dxh.g(), 10)
+               }
+            ),
+            dxj.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new dxj(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(dxh.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(dxh.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(dxh.a("village/plains/terminators/terminator_04", $$10), 1)
+            ),
+            dxj.a.a
+         )
+      );
+      ov.a($$0, "village/plains/trees", new dxj($$13, ImmutableList.of(Pair.of(dxh.a($$2), 1)), dxj.a.b));
+      ov.a(
+         $$0,
+         "village/plains/decor",
+         new dxj(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/plains/plains_lamp_1"), 2), Pair.of(dxh.a($$2), 1), Pair.of(dxh.a($$3), 1), Pair.of(dxh.a($$4), 1), Pair.of(dxh.g(), 2)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "village/plains/zombie/decor",
+         new dxj(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/plains/plains_lamp_1", $$9), 1),
+               Pair.of(dxh.a($$2), 1),
+               Pair.of(dxh.a($$3), 1),
+               Pair.of(dxh.a($$4), 1),
+               Pair.of(dxh.g(), 2)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "village/plains/villagers",
+         new dxj(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/plains/villagers/nitwit"), 1),
+               Pair.of(dxh.a("village/plains/villagers/baby"), 1),
+               Pair.of(dxh.a("village/plains/villagers/unemployed"), 10)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "village/plains/zombie/villagers",
+         new dxj(
+            $$13,
+            ImmutableList.of(Pair.of(dxh.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(dxh.a("village/plains/zombie/villagers/unemployed"), 10)),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "village/common/animals",
+         new dxj(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/common/animals/cows_1"), 7),
+               Pair.of(dxh.a("village/common/animals/pigs_1"), 7),
+               Pair.of(dxh.a("village/common/animals/horses_1"), 1),
+               Pair.of(dxh.a("village/common/animals/horses_2"), 1),
+               Pair.of(dxh.a("village/common/animals/horses_3"), 1),
+               Pair.of(dxh.a("village/common/animals/horses_4"), 1),
+               Pair.of(dxh.a("village/common/animals/horses_5"), 1),
+               Pair.of(dxh.a("village/common/animals/sheep_1"), 1),
+               Pair.of(dxh.a("village/common/animals/sheep_2"), 1),
+               Pair.of(dxh.g(), 5)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "village/common/sheep",
+         new dxj($$13, ImmutableList.of(Pair.of(dxh.a("village/common/animals/sheep_1"), 1), Pair.of(dxh.a("village/common/animals/sheep_2"), 1)), dxj.a.b)
+      );
+      ov.a(
+         $$0,
+         "village/common/cats",
+         new dxj(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/common/animals/cat_black"), 1),
+               Pair.of(dxh.a("village/common/animals/cat_british"), 1),
+               Pair.of(dxh.a("village/common/animals/cat_calico"), 1),
+               Pair.of(dxh.a("village/common/animals/cat_persian"), 1),
+               Pair.of(dxh.a("village/common/animals/cat_ragdoll"), 1),
+               Pair.of(dxh.a("village/common/animals/cat_red"), 1),
+               Pair.of(dxh.a("village/common/animals/cat_siamese"), 1),
+               Pair.of(dxh.a("village/common/animals/cat_tabby"), 1),
+               Pair.of(dxh.a("village/common/animals/cat_white"), 1),
+               Pair.of(dxh.a("village/common/animals/cat_jellie"), 1),
+               Pair.of(dxh.g(), 3)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "village/common/butcher_animals",
+         new dxj(
+            $$13,
+            ImmutableList.of(
+               Pair.of(dxh.a("village/common/animals/cows_1"), 3),
+               Pair.of(dxh.a("village/common/animals/pigs_1"), 3),
+               Pair.of(dxh.a("village/common/animals/sheep_1"), 1),
+               Pair.of(dxh.a("village/common/animals/sheep_2"), 1)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a($$0, "village/common/iron_golem", new dxj($$13, ImmutableList.of(Pair.of(dxh.a("village/common/iron_golem"), 1)), dxj.a.b));
+      ov.a($$0, "village/common/well_bottoms", new dxj($$13, ImmutableList.of(Pair.of(dxh.a("village/common/well_bottom"), 1)), dxj.a.b));
    }
 }

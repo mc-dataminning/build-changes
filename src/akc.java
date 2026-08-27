@@ -1,45 +1,47 @@
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+
 public class akc {
-   private static final int b = 33;
-   private static final int c = 32;
-   private static final int d = 31;
-   public static final int a = 33 + dhe.b();
+   private static final int a = -1;
 
-   public static dhe a(int $$0) {
-      return $$0 < 33 ? dhe.n : dhe.a($$0 - 33);
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("weather").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), -1)))
+                        .then(dv.a("duration", ff.a(1)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)dv.a("rain").executes($$0x -> b((du)$$0x.getSource(), -1)))
+                     .then(dv.a("duration", ff.a(1)).executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)dv.a("thunder").executes($$0x -> c((du)$$0x.getSource(), -1)))
+                  .then(dv.a("duration", ff.a(1)).executes($$0x -> c((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+            )
+      );
    }
 
-   public static int a(dhe $$0) {
-      return 33 + dhe.a($$0);
+   private static int a(du $$0, int $$1, bhg $$2) {
+      return $$1 == -1 ? $$2.a($$0.f().E_()) : $$1;
    }
 
-   public static akm b(int $$0) {
-      if ($$0 <= 31) {
-         return akm.d;
-      } else if ($$0 <= 32) {
-         return akm.c;
-      } else {
-         return $$0 <= 33 ? akm.b : akm.a;
-      }
+   private static int a(du $$0, int $$1) {
+      $$0.f().a(a($$0, $$1, alq.b), 0, false, false);
+      $$0.a(() -> ui.c("commands.weather.set.clear"), true);
+      return $$1;
    }
 
-   public static int a(akm $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
-      };
+   private static int b(du $$0, int $$1) {
+      $$0.f().a(0, a($$0, $$1, alq.c), true, false);
+      $$0.a(() -> ui.c("commands.weather.set.rain"), true);
+      return $$1;
    }
 
-   public static boolean c(int $$0) {
-      return $$0 <= 31;
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 <= 32;
-   }
-
-   public static boolean e(int $$0) {
-      return $$0 <= a;
+   private static int c(du $$0, int $$1) {
+      $$0.f().a(0, a($$0, $$1, alq.d), true, true);
+      $$0.a(() -> ui.c("commands.weather.set.thunder"), true);
+      return $$1;
    }
 }

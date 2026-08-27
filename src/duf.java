@@ -1,37 +1,52 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class duf extends dun {
+public class duf extends duh {
    public static final Codec<duf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+               dme.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dme.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
             )
             .apply($$0, duf::new)
    );
-   private final double c;
-   private final int d;
-   private final int e;
+   private static final Logger b = LogUtils.getLogger();
+   private final dme d;
+   private final dme e;
+   private final int f;
 
-   private duf(double $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private duf(dme $$0, dme $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static duf a(double $$0, int $$1, int $$2) {
+   public static duf a(dme $$0, dme $$1, int $$2) {
       return new duf($$0, $$1, $$2);
    }
 
    @Override
-   protected int a(ash $$0, gw $$1) {
-      double $$2 = cqz.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   public int a(ate $$0, dmh $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
    }
 
    @Override
-   public duk<?> b() {
-      return duk.h;
+   public dui<?> a() {
+      return dui.c;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

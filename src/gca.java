@@ -1,34 +1,70 @@
-public class gca extends gbr {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final bzk r;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public gca(bzk $$0) {
-      super(apg.kl, aph.f, gci.t());
-      this.r = $$0;
-      this.k = gci.a.a;
-      this.i = true;
-      this.j = 0;
+public class gca implements AutoCloseable {
+   private final Map<afw, gca.a> a;
+
+   public gca(Map<afw, afw> $$0, gab $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         fzz $$2 = new fzz((afw)$$1x.getKey());
+         $$1.a((afw)$$1x.getKey(), $$2);
+         return new gca.a($$2, (afw)$$1x.getValue());
+      }));
+   }
+
+   public fzz a(afw $$0) {
+      return this.a.get($$0).a();
    }
 
    @Override
-   public boolean s() {
-      return !this.r.aS();
+   public void close() {
+      this.a.values().forEach(gca.a::close);
+      this.a.clear();
    }
 
-   @Override
-   public void q() {
-      if (!this.r.dG() && this.r.q() == null) {
-         this.f = (double)((float)this.r.dq());
-         this.g = (double)((float)this.r.ds());
-         this.h = (double)((float)this.r.dw());
-         float $$0 = this.r.G(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
-      } else {
-         this.n();
+   public Map<afw, CompletableFuture<gca.b>> a(aot $$0, int $$1, Executor $$2) {
+      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
+         gca.a $$4 = $$3.getValue();
+         return fzv.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new gca.b($$4.a, $$1xx));
+      }));
+   }
+
+   static record a(fzz a, afw b) implements AutoCloseable {
+
+      @Override
+      public void close() {
+         this.a.f();
+      }
+   }
+
+   public static class b {
+      private final fzz a;
+      private final fzv.a b;
+
+      public b(fzz $$0, fzv.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Nullable
+      public gaa a(afw $$0) {
+         return this.b.f().get($$0);
+      }
+
+      public gaa a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
       }
    }
 }

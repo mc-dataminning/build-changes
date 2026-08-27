@@ -1,25 +1,27 @@
-public final class cqn implements dgw {
-   private final int a;
-   private final dfd[] b;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   public cqn(int $$0, dfd[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class cqn {
+   public static final cqn a = new cqn(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<cqn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, cqn::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
+
+   public cqn(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   @Override
-   public dfd a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : cte.a.o();
+   public List<String> a() {
+      return this.c;
    }
 
-   @Override
-   public void a(int $$0, dfd $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   public List<String> b() {
+      return this.d;
    }
 }

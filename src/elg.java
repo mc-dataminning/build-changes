@@ -1,104 +1,93 @@
-public interface elg extends eln {
-   elp i();
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-   void f();
+public final class elg {
+   private final long a;
+   private final List<elk> b;
+   private elk c;
+   private int d;
+   private int e;
 
-   void a(int var1, byte var2);
-
-   void a(int var1, short var2);
-
-   void a(int var1, float var2);
-
-   @Override
-   default eln a(double $$0, double $$1, double $$2) {
-      if (this.i().b() != elp.b.a) {
-         return this;
-      } else if (this.i().a() == elp.a.a && this.i().c() == 3) {
-         this.a(0, (float)$$0);
-         this.a(4, (float)$$1);
-         this.a(8, (float)$$2);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
+   public elg(long $$0) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+      this.a();
    }
 
-   @Override
-   default eln a(int $$0, int $$1, int $$2, int $$3) {
-      elp $$4 = this.i();
-      if ($$4.b() != elp.b.c) {
-         return this;
-      } else if ($$4.a() == elp.a.b && $$4.c() == 4) {
-         this.a(0, (byte)$$0);
-         this.a(1, (byte)$$1);
-         this.a(2, (byte)$$2);
-         this.a(3, (byte)$$3);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
+   public void a() {
+      RenderSystem.assertInInitPhase();
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
 
-   @Override
-   default eln a(float $$0, float $$1) {
-      elp $$2 = this.i();
-      if ($$2.b() == elp.b.d && $$2.d() == 0) {
-         if ($$2.a() == elp.a.a && $$2.c() == 2) {
-            this.a(0, $$0);
-            this.a(4, $$1);
-            this.f();
-            return this;
-         } else {
-            throw new IllegalStateException();
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         elk $$2 = new elk($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
          }
-      } else {
-         return this;
       }
+
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new elk($$5);
+   }
+
+   public elk a(Optional<elk> $$0) {
+      RenderSystem.assertInInitPhase();
+      if ($$0.isPresent()) {
+         elk $$1 = $$0.get();
+
+         for (elk $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
+            }
+         }
+      }
+
+      return this.b();
+   }
+
+   public int a(elk $$0) {
+      RenderSystem.assertInInitPhase();
+      return this.b.indexOf($$0);
+   }
+
+   public elk b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public elk a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int e() {
+      return this.b.size();
+   }
+
+   public long f() {
+      return this.a;
    }
 
    @Override
-   default eln a(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 1);
-   }
-
-   @Override
-   default eln b(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 2);
-   }
-
-   default eln a(short $$0, short $$1, int $$2) {
-      elp $$3 = this.i();
-      if ($$3.b() != elp.b.d || $$3.d() != $$2) {
-         return this;
-      } else if ($$3.a() == elp.a.e && $$3.c() == 2) {
-         this.a(0, $$0);
-         this.a(2, $$1);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   @Override
-   default eln a(float $$0, float $$1, float $$2) {
-      elp $$3 = this.i();
-      if ($$3.b() != elp.b.b) {
-         return this;
-      } else if ($$3.a() == elp.a.c && $$3.c() == 3) {
-         this.a(0, a($$0));
-         this.a(1, a($$1));
-         this.a(2, a($$2));
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   static byte a(float $$0) {
-      return (byte)((int)(asb.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   public String toString() {
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

@@ -1,70 +1,73 @@
-public class fdy {
-   public static void a(fhx $$0, fhx $$1, fhx $$2, boolean $$3) {
-      fhx $$4 = $$3 ? $$0 : $$1;
-      fhx $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
+
+public class fdy extends ezd {
+   private static final Logger k = LogUtils.getLogger();
+   public static final dmi a = new dmi((long)"test1".hashCode(), true, false);
+   protected final ezd b;
+   private etj l;
+   private etj m;
+   private etj n;
+   private etj o;
+   protected ets c;
+   private fed p;
+
+   public fdy(ezd $$0) {
+      super(ui.c("selectWorld.title"));
+      this.b = $$0;
    }
 
-   public static void a(fhx $$0, fhx $$1, bjm $$2, boolean $$3) {
-      fhx $$4 = $$3 ? $$0 : $$1;
-      fhx $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)cht.k($$2.fp());
-      float $$7 = asb.a((float)$$2.fr(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = asb.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = asb.i($$8, $$5.e, (float) (-Math.PI / 2));
+   @Override
+   protected void aM_() {
+      this.c = new ets(this.i, this.g / 2 - 100, 22, 200, 20, this.c, ui.c("selectWorld.search"));
+      this.c.b($$0 -> this.p.a($$0));
+      this.p = new fed(this, this.f, this.g, this.h, 48, this.h - 64, 36, this.c.a(), this.p);
+      this.e(this.c);
+      this.e(this.p);
+      this.m = this.d(etj.a(ui.c("selectWorld.select"), $$0 -> this.p.e().ifPresent(fed.c::c)).a(this.g / 2 - 154, this.h - 52, 150, 20).a());
+      this.d(etj.a(ui.c("selectWorld.create"), $$0 -> fds.a(this.f, this)).a(this.g / 2 + 4, this.h - 52, 150, 20).a());
+      this.n = this.d(etj.a(ui.c("selectWorld.edit"), $$0 -> this.p.e().ifPresent(fed.c::g)).a(this.g / 2 - 154, this.h - 28, 72, 20).a());
+      this.l = this.d(etj.a(ui.c("selectWorld.delete"), $$0 -> this.p.e().ifPresent(fed.c::e)).a(this.g / 2 - 76, this.h - 28, 72, 20).a());
+      this.o = this.d(etj.a(ui.c("selectWorld.recreate"), $$0 -> this.p.e().ifPresent(fed.c::h)).a(this.g / 2 + 4, this.h - 28, 72, 20).a());
+      this.d(etj.a(uh.k, $$0 -> this.f.a(this.b)).a(this.g / 2 + 82, this.h - 28, 72, 20).a());
+      this.a(false, false);
+      this.c(this.c);
    }
 
-   public static <T extends bjo> void a(fhx $$0, fhx $$1, T $$2, float $$3, float $$4) {
-      float $$5 = asb.a($$3 * (float) Math.PI);
-      float $$6 = asb.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fm() == bjg.b) {
-         $$0.e = -1.8849558F + asb.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + asb.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + asb.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + asb.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return super.a($$0, $$1, $$2) ? true : this.c.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void aC_() {
+      this.f.a(this.b);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   @Override
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.p.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+   }
+
+   public void a(boolean $$0, boolean $$1) {
+      this.m.i = $$0;
+      this.n.i = $$0;
+      this.o.i = $$0;
+      this.l.i = $$1;
+   }
+
+   @Override
+   public void aD_() {
+      if (this.p != null) {
+         this.p.i().forEach(fed.a::close);
       }
-
-      a($$0, $$1, $$4);
-   }
-
-   public static void a(fhx $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (asb.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * asb.a($$1 * 0.067F) * 0.05F;
-   }
-
-   public static void a(fhx $$0, fhx $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(fhx $$0, fhx $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = asb.a($$3 * (float) Math.PI);
-      float $$6 = asb.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
    }
 }

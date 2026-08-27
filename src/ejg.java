@@ -1,38 +1,83 @@
-import org.joml.Vector3f;
-import org.lwjgl.openal.AL10;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ejg {
-   private float a = 1.0F;
-   private ehh b;
-
-   public ejg() {
-      this.b = ehh.b;
+public abstract class ejg {
+   public boolean a(@Nullable ejg $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   public void a(ehh $$0) {
-      this.b = $$0;
-      AL10.alListener3f(4100, (float)$$0.c, (float)$$0.d, (float)$$0.e);
+   public abstract String b();
+
+   public abstract uw d(ui var1);
+
+   public abstract boolean i();
+
+   public abstract boolean h();
+
+   public abstract ejg.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract ejg.b k();
+
+   public abstract ejg.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, ejg.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ejg.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static ejg.a a(String $$0) {
+         return g.get($$0);
+      }
+
+      private a(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public ui a() {
+         return ui.c("team.collision." + this.e);
+      }
    }
 
-   public ehh a() {
-      return this.b;
-   }
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-   public void a(Vector3f $$0, Vector3f $$1) {
-      AL10.alListenerfv(4111, new float[]{$$0.x(), $$0.y(), $$0.z(), $$1.x(), $$1.y(), $$1.z()});
-   }
+      private static final Map<String, ejg.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ejg.b)$$0));
+      public final String e;
+      public final int f;
 
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
-      this.a = $$0;
-   }
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
+      }
 
-   public float b() {
-      return this.a;
-   }
+      @Nullable
+      public static ejg.b a(String $$0) {
+         return g.get($$0);
+      }
 
-   public void c() {
-      this.a(ehh.b);
-      this.a(new Vector3f(0.0F, 0.0F, -1.0F), new Vector3f(0.0F, 1.0F, 0.0F));
+      private b(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public ui b() {
+         return ui.c("team.visibility." + this.e);
+      }
    }
 }

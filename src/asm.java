@@ -1,54 +1,42 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
 import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public interface asm {
-   asm a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
+public class asm implements att, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
+   private final Executor d;
+   private volatile boolean e;
 
-   boolean validate(asl var1, byte[] var2);
-
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
-   }
-
-   private static boolean a(asl $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
-   }
-
-   static asm a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
+   public asm(Executor $$0) {
+      this.d = $$1 -> {
+         if (!this.e) {
+            $$0.execute($$1);
          }
       };
    }
 
-   @Nullable
-   static asm a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
+   @Override
+   public void append(att.a $$0) {
+      this.c = this.c.thenComposeAsync($$1 -> $$0.submit(this.d), this.d).exceptionally($$0x -> {
+         if ($$0x instanceof CompletionException $$1) {
+            $$0x = $$1.getCause();
+         }
 
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+         if ($$0x instanceof CancellationException $$2) {
+            throw $$2;
+         } else {
+            b.error("Chain link failed, continuing to next one", $$0x);
+            return null;
+         }
+      });
+   }
+
+   @Override
+   public void close() {
+      this.e = true;
    }
 }

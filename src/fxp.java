@@ -1,26 +1,17 @@
-public class fxp<T extends bjm> extends fxl<T, fgw<T>> {
-   private final fey<T> a;
+public class fxp<T extends bkj, M extends ffx<T>> extends fyl<T, M> {
+   private final fox a;
 
-   public fxp(fuy<T, fgw<T>> $$0, fht $$1) {
+   public fxp(fvy<T, M> $$0, fox $$1) {
       super($$0);
-      this.a = new fgw<>($$1.a(fhw.bn));
+      this.a = $$1;
    }
 
-   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      eqp $$10 = eqp.O();
-      boolean $$11 = $$10.b($$3) && $$3.cd();
-      if (!$$3.cd() || $$11) {
-         eln $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(foi.q(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(foi.i(this.a($$3)));
-         }
-
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, fue.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      $$0.a();
+      $$0.a(0.0F, 0.4F, -0.4F);
+      $$0.a(a.b.rotationDegrees(180.0F));
+      ckj $$10 = $$3.c(bjy.a);
+      this.a.a($$3, $$10, ckg.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

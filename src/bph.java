@@ -1,51 +1,40 @@
-public class bph extends bpk {
-   private final int l;
-   private final boolean m;
+import com.google.common.collect.ImmutableMap;
 
-   public bph(bjo $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
+public class bph extends bma<cck> {
+   public bph() {
+      super(ImmutableMap.of());
    }
 
-   @Override
-   public void a() {
-      if (this.k == bpk.a.b) {
-         this.k = bpk.a.a;
-         this.d.e(true);
-         double $$0 = this.e - this.d.dq();
-         double $$1 = this.f - this.d.ds();
-         double $$2 = this.g - this.d.dw();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.B(0.0F);
-            this.d.A(0.0F);
-            return;
+   protected boolean a(alq $$0, cck $$1, long $$2) {
+      return c($$1) || b($$1);
+   }
+
+   protected void b(alq $$0, cck $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         blj<?> $$3 = $$1.dN();
+         if (!$$3.c(cei.g)) {
+            $$3.b(btk.t);
+            $$3.b(btk.m);
+            $$3.b(btk.n);
+            $$3.b(btk.r);
+            $$3.b(btk.q);
          }
 
-         float $$4 = (float)(asb.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.r(this.a(this.d.dB(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aA()) {
-            $$5 = (float)(this.h * this.d.b(bks.m));
-         } else {
-            $$5 = (float)(this.h * this.d.b(bks.f));
-         }
-
-         this.d.w($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(asb.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.s(this.a(this.d.dD(), $$8, (float)this.l));
-            this.d.B($$1 > 0.0 ? $$5 : -$$5);
-         }
-      } else {
-         if (!this.m) {
-            this.d.e(false);
-         }
-
-         this.d.B(0.0F);
-         this.d.A(0.0F);
+         $$3.a(cei.g);
       }
+   }
+
+   protected void c(alq $$0, cck $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
+      }
+   }
+
+   public static boolean b(bkj $$0) {
+      return $$0.dN().a(btk.A);
+   }
+
+   public static boolean c(bkj $$0) {
+      return $$0.dN().a(btk.x);
    }
 }

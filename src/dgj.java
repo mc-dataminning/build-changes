@@ -1,37 +1,18 @@
-import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dgj {
-   private static final ask a = new ask(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+public class dgj implements Predicate<dgb> {
+   private final cua a;
 
-   public static int a() {
-      return b;
+   public dgj(cua $$0) {
+      this.a = $$0;
    }
 
-   public static int a(ha $$0) {
-      return a.a($$0);
+   public static dgj a(cua $$0) {
+      return new dgj($$0);
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
-   }
-
-   public static Optional<ha> a(int $$0) {
-      ha $$1 = switch ($$0) {
-         case 0 -> ha.c;
-         case 4 -> ha.f;
-         case 8 -> ha.d;
-         case 12 -> ha.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
-   }
-
-   public static float b(int $$0) {
-      return a.b($$0);
+   public boolean a(@Nullable dgb $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

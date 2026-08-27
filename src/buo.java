@@ -1,29 +1,47 @@
 import java.util.Set;
-import java.util.function.Predicate;
 
-public record buo(Set<dfd> b, int c, int d) {
-   public static final Predicate<he<buo>> a = $$0 -> false;
+public abstract class buo<E extends bkj> {
+   private static final ate a = ate.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final buv d = buv.b().a(16.0);
+   private static final buv e = buv.b().a(16.0).e();
+   private static final buv f = buv.a().a(16.0);
+   private static final buv g = buv.a().a(16.0).e();
+   private static final buv h = buv.a().a(16.0).d();
+   private static final buv i = buv.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   public buo(Set<dfd> b, int c, int d) {
-      b = Set.copyOf(b);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   public buo(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   public boolean a(dfd $$0) {
-      return this.b.contains($$0);
+   public buo() {
+      this(20);
    }
 
-   public Set<dfd> a() {
-      return this.b;
+   public final void b(alq $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
+      }
    }
 
-   public int b() {
-      return this.c;
+   protected abstract void a(alq var1, E var2);
+
+   public abstract Set<btk<?>> a();
+
+   public static boolean b(bkj $$0, bkj $$1) {
+      return $$0.dN().b(btk.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
    }
 
-   public int c() {
-      return this.d;
+   public static boolean c(bkj $$0, bkj $$1) {
+      return $$0.dN().b(btk.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   }
+
+   public static boolean d(bkj $$0, bkj $$1) {
+      return $$0.dN().b(btk.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

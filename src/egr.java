@@ -1,32 +1,50 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class egr implements egs<MinecraftServer> {
-   final aez a;
+public record egr(Optional<Boolean> b, Optional<Boolean> c) implements egh {
+   public static final Codec<egr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(asg.a(Codec.BOOL, "raining").forGetter(egr::d), asg.a(Codec.BOOL, "thundering").forGetter(egr::e)).apply($$0, egr::new)
+   );
 
-   public egr(aez $$0) {
-      this.a = $$0;
+   @Override
+   public egi b() {
+      return egj.p;
    }
 
-   public void a(MinecraftServer $$0, egu<MinecraftServer> $$1, long $$2) {
-      afn $$3 = $$0.aA();
-
-      for (dp $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.d());
-      }
+   public boolean a(edi $$0) {
+      alq $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.Z() ? false : !this.c.isPresent() || this.c.get() == $$1.Y();
    }
 
-   public static class a extends egs.a<MinecraftServer, egr> {
-      public a() {
-         super(new aez("function_tag"), egr.class);
+   public static egr.a c() {
+      return new egr.a();
+   }
+
+   public Optional<Boolean> d() {
+      return this.b;
+   }
+
+   public Optional<Boolean> e() {
+      return this.c;
+   }
+
+   public static class a implements egh.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public egr.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
       }
 
-      public void a(qw $$0, egr $$1) {
-         $$0.a("Name", $$1.a.toString());
+      public egr.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
       }
 
-      public egr a(qw $$0) {
-         aez $$1 = new aez($$0.l("Name"));
-         return new egr($$1);
+      public egr a() {
+         return new egr(this.a, this.b);
       }
    }
 }

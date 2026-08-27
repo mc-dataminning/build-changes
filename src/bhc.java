@@ -1,59 +1,44 @@
-import javax.annotation.concurrent.Immutable;
+import com.mojang.serialization.Codec;
 
-@Immutable
-public class bhc {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final bhb d;
-   private final float e;
+public class bhc extends bhe {
+   public static final bhc a = new bhc(0.0F);
+   public static final Codec<bhc> b = asg.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bhc::new, bhc::d);
+   private final float d;
 
-   public bhc(bhb $$0, long $$1, long $$2, float $$3) {
+   public static bhc a(float $$0) {
+      return $$0 == 0.0F ? a : new bhc($$0);
+   }
+
+   private bhc(float $$0) {
       this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
-   }
-
-   public bhb a() {
-      return this.d;
-   }
-
-   public float b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.e >= (float)bhb.d.ordinal();
-   }
-
-   public boolean a(float $$0) {
-      return this.e > $$0;
    }
 
    public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
-      }
+      return this.d;
    }
 
-   private float a(bhb $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == bhb.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == bhb.d;
-         float $$5 = 0.75F;
-         float $$6 = asb.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += asb.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += asb.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == bhb.b) {
-            $$7 *= 0.5F;
-         }
+   @Override
+   public float a(ate $$0) {
+      return this.d;
+   }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
-      }
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bhf<?> c() {
+      return bhf.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

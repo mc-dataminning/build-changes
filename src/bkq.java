@@ -1,123 +1,118 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Objects;
 import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bkq {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<bkq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               hx.a.fieldOf("UUID").forGetter(bkq::a),
-               Codec.STRING.fieldOf("Name").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("Amount").forGetter(bkq::c),
-               bkq.a.d.fieldOf("Operation").forGetter(bkq::b)
-            )
-            .apply($$0, bkq::new)
-   );
-   private final double c;
-   private final bkq.a d;
-   private final String e;
-   private final UUID f;
+public interface bkq {
+   String a_ = "AngerTime";
+   String b_ = "AngryAt";
 
-   public bkq(String $$0, double $$1, bkq.a $$2) {
-      this(asb.a(ash.c()), $$0, $$1, $$2);
-   }
+   int a();
 
-   public bkq(UUID $$0, String $$1, double $$2, bkq.a $$3) {
-      this.f = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+   void a(int var1);
 
-   public UUID a() {
-      return this.f;
-   }
+   @Nullable
+   UUID b();
 
-   public bkq.a b() {
-      return this.d;
-   }
+   void a(@Nullable UUID var1);
 
-   public double c() {
-      return this.c;
-   }
+   void c();
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         bkq $$1 = (bkq)$$0;
-         return Objects.equals(this.f, $$1.f);
-      } else {
-         return false;
+   default void c(rt $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.f.hashCode();
+   default void a(cqz $$0, rt $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof alq) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
+         } else {
+            UUID $$2 = $$1.a("AngryAt");
+            this.a($$2);
+            bjt $$3 = ((alq)$$0).a($$2);
+            if ($$3 != null) {
+               if ($$3 instanceof bkl) {
+                  this.a((bkl)$$3);
+               }
+
+               if ($$3.ag() == bjx.bt) {
+                  this.c((ccx)$$3);
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public String toString() {
-      return "AttributeModifier{amount=" + this.c + ", operation=" + this.d + ", name='" + this.e + "', id=" + this.f + "}";
+   default void a(alq $$0, boolean $$1) {
+      bkj $$2 = this.q();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.ev()) && $$3 != null && $$0.a($$3) instanceof bkl) {
+         this.V_();
+      } else {
+         if ($$2 != null && !Objects.equals($$3, $$2.cv())) {
+            this.a($$2.cv());
+            this.c();
+         }
+
+         if (this.a() > 0 && ($$2 == null || $$2.ag() != bjx.bt || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.V_();
+            }
+         }
+      }
    }
 
-   public qw d() {
-      qw $$0 = new qw();
-      $$0.a("Name", this.e);
-      $$0.a("Amount", this.c);
-      $$0.a("Operation", this.d.a());
-      $$0.a("UUID", this.f);
-      return $$0;
+   default boolean a_(bkj $$0) {
+      if (!this.c($$0)) {
+         return false;
+      } else {
+         return $$0.ag() == bjx.bt && this.a_($$0.dL()) ? true : $$0.cv().equals(this.b());
+      }
+   }
+
+   default boolean a_(cqz $$0) {
+      return $$0.X().b(cqv.L) && this.Y_() && this.b() == null;
+   }
+
+   default boolean Y_() {
+      return this.a() > 0;
+   }
+
+   default void a_(ccx $$0) {
+      if ($$0.dL().X().b(cqv.K)) {
+         if ($$0.cv().equals(this.b())) {
+            this.V_();
+         }
+      }
+   }
+
+   default void Z_() {
+      this.V_();
+      this.c();
+   }
+
+   default void V_() {
+      this.a(null);
+      this.a(null);
+      this.h(null);
+      this.a(0);
    }
 
    @Nullable
-   public static bkq a(qw $$0) {
-      try {
-         UUID $$1 = $$0.a("UUID");
-         bkq.a $$2 = bkq.a.a($$0.h("Operation"));
-         return new bkq($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
-      } catch (Exception var3) {
-         b.warn("Unable to create attribute: {}", var3.getMessage());
-         return null;
-      }
-   }
+   bkj eg();
 
-   public static enum a implements asu {
-      a("addition", 0),
-      b("multiply_base", 1),
-      c("multiply_total", 2);
+   void a(@Nullable bkj var1);
 
-      private static final bkq.a[] e = new bkq.a[]{a, b, c};
-      public static final Codec<bkq.a> d = asu.a(bkq.a::values);
-      private final String f;
-      private final int g;
+   void c(@Nullable ccx var1);
 
-      private a(String $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
+   void h(@Nullable bkj var1);
 
-      public int a() {
-         return this.g;
-      }
+   boolean c(bkj var1);
 
-      public static bkq.a a(int $$0) {
-         if ($$0 >= 0 && $$0 < e.length) {
-            return e[$$0];
-         } else {
-            throw new IllegalArgumentException("No operation with value " + $$0);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
-   }
+   @Nullable
+   bkj q();
 }

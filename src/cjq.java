@@ -1,51 +1,40 @@
-public class cjq extends cjg {
-   public cjq(cjg.a $$0) {
+public class cjq extends cke {
+   public cjq(cke.a $$0) {
       super($$0);
    }
 
    @Override
-   public bhe a(clv $$0) {
-      cqb $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      dfd $$3 = $$1.a_($$2);
-      if ($$3.a(apv.S)) {
-         cca $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return bhe.a($$1.B);
-      } else {
-         return bhe.d;
-      }
-   }
-
-   public static bhe a(cca $$0, cqb $$1, gw $$2) {
-      byn $$3 = null;
-      boolean $$4 = false;
-      double $$5 = 7.0;
-      int $$6 = $$2.u();
-      int $$7 = $$2.v();
-      int $$8 = $$2.w();
-
-      for (bjo $$10 : $$1.a(
-         bjo.class, new ehc((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
-      )) {
-         if ($$10.fT() == $$0) {
-            if ($$3 == null) {
-               $$3 = byn.b($$1, $$2);
-               $$3.C();
+   public bib a(cmt $$0) {
+      ccx $$1 = $$0.o();
+      cqz $$2 = $$0.q();
+      ht $$3 = $$0.a();
+      dgb $$4 = $$2.a_($$3);
+      if (!cuo.h($$4) && !cup.g($$4) && !cuq.g($$4)) {
+         ht $$5 = $$3.a($$0.k());
+         if (ctn.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, aqd.hU, aqe.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+            dgb $$6 = ctn.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, dkl.i, $$3);
+            ckj $$7 = $$0.n();
+            if ($$1 instanceof alr) {
+               al.y.a((alr)$$1, $$5, $$7);
+               $$7.a(1, $$1, $$1x -> $$1x.d($$0.p()));
             }
 
-            $$10.b($$3, true);
-            $$4 = true;
+            return bib.a($$2.x_());
+         } else {
+            return bib.e;
          }
-      }
+      } else {
+         $$2.a($$1, $$3, aqd.hU, aqe.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.a(dgr.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, dkl.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, $$1x -> $$1x.d($$0.p()));
+         }
 
-      if ($$4) {
-         $$1.a(djn.b, $$2, djn.a.a($$0));
+         return bib.a($$2.x_());
       }
-
-      return $$4 ? bhe.a : bhe.d;
    }
 }

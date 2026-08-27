@@ -1,26 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dqj implements dpu {
+public record dqj(List<dqj.a> b, hx c, dmr d, boolean e) implements dqs {
    public static final Codec<dqj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dfd.b.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dfd.b.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bgj.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+               dqj.a.a.listOf().fieldOf("layers").forGetter(dqj::a),
+               hx.g.fieldOf("direction").forGetter(dqj::b),
+               dmr.b.fieldOf("allowed_placement").forGetter(dqj::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dqj::d)
             )
             .apply($$0, dqj::new)
    );
-   public final dfd b;
-   public final dfd c;
-   private final bgj d;
 
-   public dqj(dfd $$0, dfd $$1, bgj $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public static dqj.a a(bhg $$0, dst $$1) {
+      return new dqj.a($$0, $$1);
    }
 
-   public bgj a() {
+   public static dqj b(bhg $$0, dst $$1) {
+      return new dqj(List.of(a($$0, $$1)), hx.b, dmr.c, false);
+   }
+
+   public List<dqj.a> a() {
+      return this.b;
+   }
+
+   public hx b() {
+      return this.c;
+   }
+
+   public dmr c() {
       return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(bhg b, dst c) {
+      public static final Codec<dqj.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bhg.d.fieldOf("height").forGetter(dqj.a::a), dst.a.fieldOf("provider").forGetter(dqj.a::b)).apply($$0, dqj.a::new)
+      );
+
+      public bhg a() {
+         return this.b;
+      }
+
+      public dst b() {
+         return this.c;
+      }
    }
 }

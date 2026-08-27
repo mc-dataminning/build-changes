@@ -1,115 +1,118 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.joml.Matrix4f;
+public class fno extends fnq {
+   fno(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
+   }
 
-public class fno {
-   private static final int a = 6;
-   private final aez[] b = new aez[6];
+   @Override
+   public fmu b() {
+      return fmu.b;
+   }
 
-   public fno(aez $$0) {
-      for (int $$1 = 0; $$1 < 6; $$1++) {
-         this.b[$$1] = $$0.c($$0.a() + "_" + $$1 + ".png");
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
       }
    }
 
-   public void a(eqp $$0, float $$1, float $$2, float $$3) {
-      ell $$4 = ell.a();
-      ele $$5 = $$4.c();
-      Matrix4f $$6 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aM().k() / (float)$$0.aM().l(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$6, elr.a);
-      elj $$7 = RenderSystem.getModelViewStack();
-      $$7.a();
-      $$7.e();
-      $$7.a(a.b.rotationDegrees(180.0F));
-      RenderSystem.applyModelViewMatrix();
-      RenderSystem.setShader(fnt::t);
-      RenderSystem.enableBlend();
-      RenderSystem.disableCull();
-      RenderSystem.depthMask(false);
-      int $$8 = 2;
+   public static class a implements fmt<jv> {
+      private final fnl a;
 
-      for (int $$9 = 0; $$9 < 4; $$9++) {
-         $$7.a();
-         float $$10 = ((float)($$9 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$11 = ((float)($$9 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$12 = 0.0F;
-         $$7.a($$10, $$11, 0.0F);
-         $$7.a(a.b.rotationDegrees($$1));
-         $$7.a(a.d.rotationDegrees($$2));
-         RenderSystem.applyModelViewMatrix();
-
-         for (int $$13 = 0; $$13 < 6; $$13++) {
-            RenderSystem.setShaderTexture(0, this.b[$$13]);
-            $$5.a(elo.b.h, elh.s);
-            int $$14 = Math.round(255.0F * $$3) / ($$9 + 1);
-            if ($$13 == 0) {
-               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 1) {
-               $$5.a(1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 2) {
-               $$5.a(1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 3) {
-               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 4) {
-               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            if ($$13 == 5) {
-               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
-               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
-               $$5.a(1.0, 1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
-            }
-
-            $$4.b();
-         }
-
-         $$7.b();
-         RenderSystem.applyModelViewMatrix();
-         RenderSystem.colorMask(true, true, true, false);
+      public a(fnl $$0) {
+         this.a = $$0;
       }
 
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.restoreProjectionMatrix();
-      $$7.b();
-      RenderSystem.applyModelViewMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.enableDepthTest();
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fno $$8 = new fno($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.E_().a(5));
+         return $$8;
+      }
    }
 
-   public CompletableFuture<Void> a(fzb $$0, Executor $$1) {
-      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
+   public static class b implements fmt<jv> {
+      private final fnl a;
 
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$2[$$3] = $$0.a(this.b[$$3], $$1);
+      public b(fnl $$0) {
+         this.a = $$0;
       }
 
-      return CompletableFuture.allOf($$2);
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fno $$8 = new fno($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.z.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
+   }
+
+   public static class c implements fmt<jv> {
+      private final fnl a;
+
+      public c(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fno $$8 = new fno($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class d implements fmt<jv> {
+      private final fnl a;
+
+      public d(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fno $$8 = new fno($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class e implements fmt<jv> {
+      private final fnl a;
+
+      public e(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fno $$8 = new fno($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

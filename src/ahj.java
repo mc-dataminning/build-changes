@@ -1,45 +1,89 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class ahj {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.jfr.start.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.b("commands.jfr.dump.failed", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.damage.invulnerable"));
 
-   private ahj() {
-   }
-
-   public static void a(CommandDispatcher<dt> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dp $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("jfr").requires($$0x -> $$0x.c(4)))
-               .then(du.a("start").executes($$0x -> a((dt)$$0x.getSource()))))
-            .then(du.a("stop").executes($$0x -> b((dt)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("damage").requires($$0x -> $$0x.c(2)))
+            .then(
+               dv.a("target", eg.a())
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (du)$$0x.getSource(), eg.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((du)$$0x.getSource()).f().ag().n()
+                                 )
+                           ))
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("damageType", es.a($$1, jz.q))
+                                    .executes(
+                                       $$0x -> a(
+                                             (du)$$0x.getSource(),
+                                             eg.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new bir(es.a($$0x, "damageType", jz.q))
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("at")
+                                       .then(
+                                          dv.a("location", ft.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      eg.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bir(es.a($$0x, "damageType", jz.q), ft.a($$0x, "location"))
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 dv.a("by")
+                                    .then(
+                                       ((RequiredArgumentBuilder)dv.a("entity", eg.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      eg.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bir(es.a($$0x, "damageType", jz.q), eg.a($$0x, "entity"))
+                                                   )
+                                             ))
+                                          .then(
+                                             dv.a("from")
+                                                .then(
+                                                   dv.a("cause", eg.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               eg.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new bir(es.a($$0x, "damageType", jz.q), eg.a($$0x, "entity"), eg.a($$0x, "cause"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(dt $$0) throws CommandSyntaxException {
-      bdz $$1 = bdz.a($$0.l());
-      if (!beb.e.a($$1)) {
-         throw a.create();
+   private static int a(du $$0, bjt $$1, float $$2, bir $$3) throws CommandSyntaxException {
+      if ($$1.a($$3, $$2)) {
+         $$0.a(() -> ui.a("commands.damage.success", $$2, $$1.O_()), true);
+         return 1;
       } else {
-         $$0.a(() -> tl.c("commands.jfr.started"), false);
-         return 1;
-      }
-   }
-
-   private static int b(dt $$0) throws CommandSyntaxException {
-      try {
-         Path $$1 = Paths.get(".").relativize(beb.e.b().normalize());
-         Path $$2 = $$0.l().p() && !aa.aT ? $$1 : $$1.toAbsolutePath();
-         tl $$3 = tl.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new tj(tj.a.f, $$2.toString())).a(new tr(tr.a.a, tl.c("chat.copy.click"))));
-         $$0.a(() -> tl.a("commands.jfr.stopped", $$3), false);
-         return 1;
-      } catch (Throwable var4) {
-         throw b.create(var4.getMessage());
+         throw a.create();
       }
    }
 }

@@ -1,49 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dsd(drv b, List<dsd.a> c) {
-   public static final Codec<dsd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(drv.a.fieldOf("fallback").forGetter(dsd::a), dsd.a.a.listOf().fieldOf("rules").forGetter(dsd::b)).apply($$0, dsd::new)
-   );
+public class dsd extends drz {
+   public static final Codec<dsd> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsd::new));
 
-   public static dsd a(drv $$0) {
-      return new dsd($$0, List.of());
+   public dsd(bhg $$0, bhg $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static dsd a(ctc $$0) {
-      return a(drv.a($$0));
+   @Override
+   protected dsf<?> a() {
+      return dsf.f;
    }
 
-   public dfd a(cqv $$0, ash $$1, gw $$2) {
-      for (dsd.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
+   @Override
+   protected void a(crf $$0, dse.b $$1, ate $$2, dro $$3, int $$4, dse.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public drv a() {
-      return this.b;
-   }
-
-   public List<dsd.a> b() {
-      return this.c;
-   }
-
-   public static record a(dlt b, drv c) {
-      public static final Codec<dsd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dlt.b.fieldOf("if_true").forGetter(dsd.a::a), drv.a.fieldOf("then").forGetter(dsd.a::b)).apply($$0, dsd.a::new)
-      );
-
-      public dlt a() {
-         return this.b;
-      }
-
-      public drv b() {
-         return this.c;
-      }
+   @Override
+   protected boolean a(ate $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return asy.k((float)$$1 + 0.5F) + asy.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

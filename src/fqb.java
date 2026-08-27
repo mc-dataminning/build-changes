@@ -1,50 +1,90 @@
-@FunctionalInterface
-public interface fqb<T extends dcz> {
-   fqa<T> create(fqb.a var1);
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-   public static class a {
-      private final fpz a;
-      private final fou b;
-      private final fub c;
-      private final ftb d;
-      private final fht e;
-      private final erx f;
+public class fqb {
+   public float[] a;
+   public final int b;
 
-      public a(fpz $$0, fou $$1, fub $$2, ftb $$3, fht $$4, erx $$5) {
+   public fqb(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
+   }
+
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<fqb> {
+      private static final int a = 0;
+
+      public fqb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new fqb($$4, $$5);
       }
 
-      public fpz a() {
-         return this.a;
+      protected int a(JsonObject $$0) {
+         int $$1 = aso.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+         }
       }
 
-      public fou b() {
-         return this.b;
-      }
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = aso.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
 
-      public ftb c() {
-         return this.d;
-      }
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = aso.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
 
-      public fub d() {
-         return this.c;
-      }
-
-      public fht e() {
-         return this.e;
-      }
-
-      public fhx a(fhv $$0) {
-         return this.e.a($$0);
-      }
-
-      public erx f() {
-         return this.f;
+               return $$2;
+            }
+         }
       }
    }
 }

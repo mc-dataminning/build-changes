@@ -1,30 +1,122 @@
-public class brr extends bqh {
-   private final bjv a;
+import java.util.EnumSet;
 
-   public brr(bjv $$0) {
+public abstract class brr extends bre {
+   private static final int g = 1200;
+   private static final int h = 1200;
+   private static final int i = 200;
+   protected final bks a;
+   public final double b;
+   protected int c;
+   protected int d;
+   private int j;
+   protected ht e = ht.b;
+   private boolean k;
+   private final int l;
+   private final int m;
+   protected int f;
+
+   public brr(bks $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, 1);
+   }
+
+   public brr(bks $$0, double $$1, int $$2, int $$3) {
       this.a = $$0;
+      this.b = $$1;
+      this.l = $$2;
+      this.f = 0;
+      this.m = $$3;
+      this.a(EnumSet.of(bre.a.a, bre.a.c));
    }
 
    @Override
    public boolean a() {
-      return this.a.aA() && !this.a.dL().b_(this.a.dl()).a(aqa.a);
+      if (this.c > 0) {
+         this.c--;
+         return false;
+      } else {
+         this.c = this.a(this.a);
+         return this.n();
+      }
+   }
+
+   protected int a(bks $$0) {
+      return b(200 + $$0.ef().a(200));
+   }
+
+   @Override
+   public boolean b() {
+      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dL(), this.e);
    }
 
    @Override
    public void c() {
-      gw $$0 = null;
+      this.h();
+      this.d = 0;
+      this.j = this.a.ef().a(this.a.ef().a(1200) + 1200) + 1200;
+   }
 
-      for (gw $$2 : gw.b(
-         asb.a(this.a.dq() - 2.0), asb.a(this.a.ds() - 2.0), asb.a(this.a.dw() - 2.0), asb.a(this.a.dq() + 2.0), this.a.dr(), asb.a(this.a.dw() + 2.0)
-      )) {
-         if (this.a.dL().b_($$2).a(aqa.a)) {
-            $$0 = $$2;
-            break;
+   protected void h() {
+      this.a.L().a((double)((float)this.e.u()) + 0.5, (double)(this.e.v() + 1), (double)((float)this.e.w()) + 0.5, this.b);
+   }
+
+   public double i() {
+      return 1.0;
+   }
+
+   protected ht k() {
+      return this.e.c();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      ht $$0 = this.k();
+      if (!$$0.a(this.a.dj(), this.i())) {
+         this.k = false;
+         this.d++;
+         if (this.l()) {
+            this.a.L().a((double)((float)$$0.u()) + 0.5, (double)$$0.v(), (double)((float)$$0.w()) + 0.5, this.b);
+         }
+      } else {
+         this.k = true;
+         this.d--;
+      }
+   }
+
+   public boolean l() {
+      return this.d % 40 == 0;
+   }
+
+   protected boolean m() {
+      return this.k;
+   }
+
+   protected boolean n() {
+      int $$0 = this.l;
+      int $$1 = this.m;
+      ht $$2 = this.a.dl();
+      ht.a $$3 = new ht.a();
+
+      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
+               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
+                  $$3.a($$2, $$6, $$4 - 1, $$7);
+                  if (this.a.a($$3) && this.a(this.a.dL(), $$3)) {
+                     this.e = $$3;
+                     return true;
+                  }
+               }
+            }
          }
       }
 
-      if ($$0 != null) {
-         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+      return false;
    }
+
+   protected abstract boolean a(crc var1, ht var2);
 }

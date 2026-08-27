@@ -1,29 +1,33 @@
-import java.nio.file.Path;
-import java.util.Map;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-interface amu {
+public interface amu {
    amu a = new amu() {
       @Override
-      public String toString() {
-         return "empty";
+      public void a() {
       }
-   };
-   amu b = new amu() {
+
       @Override
-      public String toString() {
-         return "relative";
+      public void b() {
+      }
+
+      @Override
+      public CompletableFuture<amh> a(String $$0) {
+         return CompletableFuture.completedFuture(amh.a($$0));
+      }
+
+      @Override
+      public CompletableFuture<List<amh>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(amh::a).collect(ImmutableList.toImmutableList()));
       }
    };
 
-   public static record a(Map<String, amr> c) implements amu {
-      public Map<String, amr> a() {
-         return this.c;
-      }
-   }
+   void a();
 
-   public static record b(Path c) implements amu {
-      public Path a() {
-         return this.c;
-      }
-   }
+   void b();
+
+   CompletableFuture<amh> a(String var1);
+
+   CompletableFuture<List<amh>> a(List<String> var1);
 }

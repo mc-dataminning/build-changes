@@ -1,41 +1,127 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class bte extends btr<bjm> {
-   private static final int a = 200;
-   private static final int c = 599;
+public abstract class bte extends bre {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int c = 2;
+   protected final bkl e;
+   protected final boolean f;
+   private final boolean d;
+   private int i;
+   private int j;
+   private int k;
+   @Nullable
+   protected bkj g;
+   protected int h = 60;
 
-   public bte() {
-      this(200);
+   public bte(bkl $$0, boolean $$1) {
+      this($$0, $$1, false);
    }
 
-   public bte(int $$0) {
-      super($$0);
+   public bte(bkl $$0, boolean $$1, boolean $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.d = $$2;
    }
 
    @Override
-   protected void a(akt $$0, bjm $$1) {
-      a($$1);
-   }
+   public boolean b() {
+      bkj $$0 = this.e.q();
+      if ($$0 == null) {
+         $$0 = this.g;
+      }
 
-   @Override
-   public Set<bsn<?>> a() {
-      return ImmutableSet.of(bsn.g);
-   }
+      if ($$0 == null) {
+         return false;
+      } else if (!this.e.c($$0)) {
+         return false;
+      } else {
+         ejg $$1 = this.e.cf();
+         ejg $$2 = $$0.cf();
+         if ($$1 != null && $$2 == $$1) {
+            return false;
+         } else {
+            double $$3 = this.l();
+            if (this.e.f($$0) > $$3 * $$3) {
+               return false;
+            } else {
+               if (this.f) {
+                  if (this.e.M().a($$0)) {
+                     this.k = 0;
+                  } else if (++this.k > b(this.h)) {
+                     return false;
+                  }
+               }
 
-   public static void a(bjm $$0) {
-      Optional<List<bjm>> $$1 = $$0.dN().c(bsn.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ag().equals(bja.ac));
-         if ($$2) {
-            b($$0);
+               this.e.h($$0);
+               return true;
+            }
          }
       }
    }
 
-   public static void b(bjm $$0) {
-      $$0.dN().a(bsn.F, true, 599L);
+   protected double l() {
+      return this.e.b(blp.g);
+   }
+
+   @Override
+   public void c() {
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   @Override
+   public void d() {
+      this.e.h(null);
+      this.g = null;
+   }
+
+   protected boolean a(@Nullable bkj $$0, buv $$1) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$1.a(this.e, $$0)) {
+         return false;
+      } else if (!this.e.a($$0.dl())) {
+         return false;
+      } else {
+         if (this.d) {
+            if (--this.j <= 0) {
+               this.i = 0;
+            }
+
+            if (this.i == 0) {
+               this.i = this.a($$0) ? 1 : 2;
+            }
+
+            if (this.i == 2) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(bkj $$0) {
+      this.j = b(10 + this.e.ef().a(5));
+      ebt $$1 = this.e.L().a($$0, 0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         ebr $$2 = $$1.d();
+         if ($$2 == null) {
+            return false;
+         } else {
+            int $$3 = $$2.a - $$0.dp();
+            int $$4 = $$2.c - $$0.dv();
+            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
+         }
+      }
+   }
+
+   public bte c(int $$0) {
+      this.h = $$0;
+      return this;
    }
 }

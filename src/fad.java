@@ -1,50 +1,107 @@
-public abstract class fad<T extends cfr> extends ezd<T> implements cfd {
-   private final aez x;
+public abstract class fad<T extends cfq> extends fac<T> implements fcw {
+   public final fcm x;
+   private boolean y;
+   private final afw z;
+   private final afw A;
+   private final afw B;
 
-   public fad(T $$0, cbz $$1, tl $$2, aez $$3) {
-      super($$0, $$1, $$2);
-      this.x = $$3;
-   }
-
-   protected void F() {
-   }
-
-   @Override
-   protected void aH_() {
-      super.aH_();
-      this.F();
-      this.p.a(this);
+   public fad(T $$0, fcm $$1, ccw $$2, ui $$3, afw $$4, afw $$5, afw $$6) {
+      super($$0, $$2, $$3);
+      this.x = $$1;
+      this.z = $$4;
+      this.A = $$5;
+      this.B = $$6;
    }
 
    @Override
-   public void h() {
-      super.h();
-      this.p.b(this);
+   public void aM_() {
+      super.aM_();
+      this.y = this.g < 379;
+      this.x.a(this.g, this.h, this.f, this.y, this.p);
+      this.t = this.x.a(this.g, this.c);
+      this.d(new etv(this.t + 20, this.h / 2 - 49, 20, 18, fcq.a, $$0 -> {
+         this.x.f();
+         this.t = this.x.a(this.g, this.c);
+         $$0.b(this.t + 20, this.h / 2 - 49);
+      }));
+      this.l = (this.c - this.i.a(this.e)) / 2;
    }
 
    @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
+   public void C() {
+      super.C();
+      this.x.h();
+   }
+
+   @Override
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
+      if (this.x.g() && this.y) {
+         this.b($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, this.t, this.u, true, $$3);
+      }
+
       this.a($$0, $$1, $$2);
-   }
-
-   protected void d(erz $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   protected void a(erz $$0, float $$1, int $$2, int $$3) {
-      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
-      this.c($$0, this.t, this.u);
-   }
-
-   protected abstract void c(erz var1, int var2, int var3);
-
-   @Override
-   public void a(cer $$0, int $$1, int $$2) {
+      this.x.a($$0, this.t, this.u, $$1, $$2);
    }
 
    @Override
-   public void a(cer $$0, int $$1, cjl $$2) {
+   protected void a(esy $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.p.s()) {
+         int $$6 = 14;
+         int $$7 = asy.f(this.p.r() * 13.0F) + 1;
+         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+      }
+
+      int $$8 = 24;
+      int $$9 = asy.f(this.p.q() * 24.0F);
+      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.y && this.x.g() ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a(chh $$0, int $$1, int $$2, cfy $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.x.a($$0);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? false : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
+      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public void E() {
+      this.x.i();
+   }
+
+   @Override
+   public fcq F() {
+      return this.x;
    }
 }

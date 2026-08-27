@@ -1,16 +1,41 @@
-public class fsw extends ftr {
-   public static final aez a = new aez("textures/entity/guardian_elder.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public fsw(ftd.a $$0) {
-      super($$0, 1.2F, fhw.P);
-   }
+public class fsw implements fsj.a {
+   private static final int a = 60;
+   private final Set<iu> b = Sets.newHashSet();
 
-   protected void a(bzk $$0, elj $$1, float $$2) {
-      $$1.b(bzd.b, bzd.b, bzd.b);
+   fsw() {
    }
 
    @Override
-   public aez a(bzk $$0) {
-      return a;
+   public void a() {
+      this.b.clear();
+   }
+
+   public void a(iu $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(iu $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(emh $$0, fpb $$1, double $$2, double $$3, double $$4) {
+      ht $$5 = ht.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(emh $$0, fpb $$1, iu $$2) {
+      int $$3 = 1;
+      ht $$4 = $$2.q();
+      ht $$5 = $$4.b(-1, -1, -1);
+      ht $$6 = $$4.b(1, 1, 1);
+      fsj.a($$0, $$1, $$5, $$6, 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

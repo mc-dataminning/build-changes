@@ -1,31 +1,72 @@
 import com.mojang.serialization.MapCodec;
 
-public class cux extends ctc {
-   public static final MapCodec<cux> a = b(cux::new);
+public class cux extends cxo implements cud, cuw {
+   public static final MapCodec<cux> c = b(cux::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<cux> a() {
-      return a;
+      return c;
    }
 
-   public cux(dfc.d $$0) {
-      super($$0);
+   public cux(dga.d $$0) {
+      super($$0, hx.a, r_, false, 0.1);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(s_, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      if ($$3.a(5) == 0) {
-         ha $$4 = ha.b($$3);
-         if ($$4 != ha.b) {
-            gw $$5 = $$2.a($$4);
-            dfd $$6 = $$1.a_($$5);
-            if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
-               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
-               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
-               $$1.a(iv.ay, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
-            }
-         }
-      }
+   protected int a(ate $$0) {
+      return 1;
+   }
+
+   @Override
+   protected boolean g(dgb $$0) {
+      return $$0.i();
+   }
+
+   @Override
+   protected cua b() {
+      return cuc.rv;
+   }
+
+   @Override
+   protected dgb a(dgb $$0, dgb $$1) {
+      return $$1.a(s_, $$0.c(s_));
+   }
+
+   @Override
+   protected dgb a(dgb $$0, ate $$1) {
+      return super.a($$0, $$1).a(s_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   public ckj a(crc $$0, ht $$1, dgb $$2) {
+      return new ckj(ckm.vw);
+   }
+
+   @Override
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      return cuw.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      super.a($$0);
+      $$0.a(s_);
+   }
+
+   @Override
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
+      return !$$2.c(s_);
+   }
+
+   @Override
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
    }
 }

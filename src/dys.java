@@ -1,15 +1,48 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dys {
-   @Nullable
-   public dyv.c a(cqe $$0, gw $$1, gw $$2, dyv.c $$3, dyv.c $$4, dyr $$5) {
-      return $$4;
+public class dys extends dzg {
+   public static final Codec<dys> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               hx.a.e.fieldOf("axis").orElse(hx.a.b).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dys::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final hx.a g;
+
+   public dys(float $$0, float $$1, int $$2, int $$3, hx.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+      }
    }
 
-   protected abstract dyu<?> a();
+   @Override
+   public boolean a(ht $$0, ht $$1, ht $$2, ate $$3) {
+      hx $$4 = hx.a(hx.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= asy.b(this.b, this.d, asy.g((float)$$8, (float)this.e, (float)this.f));
+   }
 
-   public List<dyv.c> a(cqq $$0, gw $$1, gw $$2, List<dyv.c> $$3, List<dyv.c> $$4, dyr $$5) {
-      return $$4;
+   @Override
+   protected dzh<?> a() {
+      return dzh.c;
    }
 }

@@ -1,26 +1,76 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class dtw extends duj {
-   public static final Codec<dtw> a = dki.a.c.fieldOf("step").xmap(dtw::new, $$0 -> $$0.c).codec();
-   private final dki.a c;
+public abstract class dtw {
+   public static final Codec<dtw> c = jy.Y.q().dispatch(dtw::a, dtx::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   private dtw(dki.a $$0) {
-      this.c = $$0;
+   protected static <P extends dtw> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public static dtw a(dki.a $$0) {
-      return new dtw($$0);
+   public dtw(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public Stream<gw> a_(duh $$0, ash $$1, gw $$2) {
-      cpi $$3 = new cpi($$2);
-      return $$0.a($$3, this.c).a($$3);
+   protected abstract dtx<?> a();
+
+   public abstract List<dse.a> a(crf var1, BiConsumer<ht, dgb> var2, ate var3, int var4, ht var5, dro var6);
+
+   public int a(ate $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
    }
 
-   @Override
-   public duk<?> b() {
-      return duk.o;
+   private static boolean c(crf $$0, ht $$1) {
+      return $$0.a($$1, $$0x -> doo.b($$0x) && !$$0x.a(cuc.i) && !$$0x.a(cuc.fl));
+   }
+
+   protected static void a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, ht $$3, dro $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
+      }
+   }
+
+   protected boolean b(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, ht $$3, dro $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, ht $$3, dro $$4, Function<dgb, dgb> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, ht.a $$3, dro $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(crf $$0, ht $$1) {
+      return dqa.c($$0, $$1);
+   }
+
+   public boolean b(crf $$0, ht $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(aqs.t));
    }
 }

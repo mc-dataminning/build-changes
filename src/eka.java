@@ -1,17 +1,11 @@
-import java.util.OptionalInt;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.Nonnull;
+import javax.annotation.meta.TypeQualifierDefault;
 
-public class eka {
-   public final int a;
-   public final int b;
-   public final OptionalInt c;
-   public final OptionalInt d;
-   public final boolean e;
-
-   public eka(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
+@Nonnull
+@TypeQualifierDefault({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface eka {
 }

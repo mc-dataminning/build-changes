@@ -1,160 +1,60 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class fcm extends esq<fck> {
-   private final fcn a;
-   private final List<fck> m = Lists.newArrayList();
+public abstract class fcm extends fcq {
+   private static final euw i = new euw(
+      new afw("recipe_book/furnace_filter_enabled"),
+      new afw("recipe_book/furnace_filter_disabled"),
+      new afw("recipe_book/furnace_filter_enabled_highlighted"),
+      new afw("recipe_book/furnace_filter_disabled_highlighted")
+   );
    @Nullable
-   private String n;
+   private cnk j;
 
-   public fcm(fcn $$0, eqp $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$0;
-      this.a(false);
+   @Override
+   protected void a() {
+      this.f.a(i);
    }
 
    @Override
-   protected void a(erz $$0) {
-      $$0.c(this.j, this.g + 4, this.i, this.h);
-   }
-
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, fck> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
-   }
-
-   private void a(Collection<UUID> $$0, Map<UUID, fck> $$1) {
-      fit $$2 = this.c.s.cn;
-
-      for (UUID $$3 : $$0) {
-         fjb $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new fck(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
-         }
+   public void a(@Nullable chh $$0) {
+      super.a($$0);
+      if ($$0 != null && $$0.e < this.g.p()) {
+         this.e.a();
       }
    }
 
-   private void a(Map<UUID, fck> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.aX().b())) {
-         fck $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               fck $$2 = new fck(this.c, this.a, $$3.getId(), $$3.getName(), this.c.al().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
-         } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
-            }
+   @Override
+   public void a(cno<?> $$0, List<chh> $$1) {
+      ckj $$2 = $$0.b().a(this.h.r.H_());
+      this.e.a($$0);
+      this.e.a(cnk.a($$2), $$1.get(2).f, $$1.get(2).g);
+      il<cnk> $$3 = $$0.b().a();
+      chh $$4 = $$1.get(1);
+      if ($$4.e().b()) {
+         if (this.j == null) {
+            this.j = cnk.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.G())).map(ckj::new));
          }
 
-         $$4.d(true);
-      }
-   }
-
-   private static Collection<GameProfile> a(fjh $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
-
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         fjj $$3 = $$0.b($$2);
-         if ($$3 instanceof fjk.a) {
-            fjk.a $$4 = (fjk.a)$$3;
-            if ($$4.g().h()) {
-               $$1.add($$4.f());
-            }
-         }
+         this.e.a(this.j, $$4.f, $$4.g);
       }
 
-      return $$1;
-   }
+      Iterator<cnk> $$5 = $$3.iterator();
 
-   private void e() {
-      this.m.sort(Comparator.<fck, Integer>comparing($$0 -> {
-         if (this.c.b($$0.e())) {
-            return 0;
-         } else if (this.c.aX().a($$0.e())) {
-            return 1;
-         } else if ($$0.e().version() == 2) {
-            return 4;
-         } else {
-            return $$0.h() ? 2 : 3;
-         }
-      }).thenComparing($$0 -> {
-         if (!$$0.d().isBlank()) {
-            int $$1 = $$0.d().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(fck::d, String::compareToIgnoreCase));
-   }
-
-   private void a(Collection<fck> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
-      this.e();
-      this.w();
-      this.a(this.m);
-      this.a($$1);
-   }
-
-   private void w() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.d().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
-      }
-   }
-
-   public void a(String $$0) {
-      this.n = $$0;
-   }
-
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(fjb $$0, fcn.a $$1) {
-      UUID $$2 = $$0.a().getId();
-
-      for (fck $$3 : this.m) {
-         if ($$3.e().equals($$2)) {
-            $$3.c(false);
+      for (int $$6 = 0; $$6 < 2; $$6++) {
+         if (!$$5.hasNext()) {
             return;
          }
-      }
 
-      if (($$1 == fcn.a.a || this.c.aK().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         fck $$5 = new fck(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b($$5);
-         this.m.add($$5);
-      }
-   }
-
-   public void a(UUID $$0) {
-      for (fck $$1 : this.m) {
-         if ($$1.e().equals($$0)) {
-            $$1.c(true);
-            return;
+         cnk $$7 = $$5.next();
+         if (!$$7.c()) {
+            chh $$8 = $$1.get($$6);
+            this.e.a($$7, $$8.f, $$8.g);
          }
       }
    }
+
+   protected abstract Set<cke> b();
 }

@@ -1,40 +1,24 @@
-public class acd implements ve<abd> {
+public class acd implements wb<aca> {
    private final int a;
-   private final aez b;
-   private final boolean c;
 
-   public acd(int $$0, cmq<?> $$1, boolean $$2) {
+   public acd(int $$0) {
       this.a = $$0;
-      this.b = $$1.a();
-      this.c = $$2;
    }
 
-   public acd(so $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.t();
-      this.c = $$0.readBoolean();
+   public acd(tl $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.k(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(tl $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(abd $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
    public int a() {
       return this.a;
-   }
-
-   public aez d() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

@@ -1,170 +1,226 @@
 import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Collection;
+import com.google.common.collect.Sets;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class agn {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.b("commands.datapack.unknown", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.b("commands.datapack.enable.failed", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.b("commands.datapack.disable.failed", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> tl.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
-   );
-   private static final SuggestionProvider<dt> e = ($$0, $$1) -> dw.b(
-         ((dt)$$0.getSource()).l().aB().d().stream().map(StringArgumentType::escapeIfRequired), $$1
-      );
-   private static final SuggestionProvider<dt> f = ($$0, $$1) -> {
-      anh $$2 = ((dt)$$0.getSource()).l().aB();
-      Collection<String> $$3 = $$2.d();
-      cei $$4 = ((dt)$$0.getSource()).w();
-      return dw.b(
-         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(ane::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
-      );
-   };
+public class agn extends eje {
+   private final MinecraftServer a;
+   private final Set<ejb> b = Sets.newHashSet();
+   private final List<Runnable> c = Lists.newArrayList();
 
-   public static void a(CommandDispatcher<dt> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("datapack").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     du.a("enable")
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
-                                             "name", StringArgumentType.string()
-                                          )
-                                          .suggests(f)
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dt)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.i().a($$0xx, $$1, $$0xxx -> $$0xxx, false)
-                                                )
-                                          ))
-                                       .then(
-                                          du.a("after")
-                                             .then(
-                                                du.a("existing", StringArgumentType.string())
-                                                   .suggests(e)
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (dt)$$0x.getSource(),
-                                                            a($$0x, "name", true),
-                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
-                                                         )
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       du.a("before")
-                                          .then(
-                                             du.a("existing", StringArgumentType.string())
-                                                .suggests(e)
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (dt)$$0x.getSource(),
-                                                         a($$0x, "name", true),
-                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(du.a("last").executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", true), List::add))))
-                              .then(du.a("first").executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
-                        )
-                  ))
-               .then(
-                  du.a("disable").then(du.a("name", StringArgumentType.string()).suggests(e).executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", false))))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("list").executes($$0x -> a((dt)$$0x.getSource())))
-                     .then(du.a("available").executes($$0x -> b((dt)$$0x.getSource()))))
-                  .then(du.a("enabled").executes($$0x -> c((dt)$$0x.getSource())))
-            )
-      );
+   public agn(MinecraftServer $$0) {
+      this.a = $$0;
    }
 
-   private static int a(dt $$0, ane $$1, agn.a $$2) throws CommandSyntaxException {
-      anh $$3 = $$0.l().aB();
-      List<ane> $$4 = Lists.newArrayList($$3.f());
-      $$2.apply($$4, $$1);
-      $$0.a(() -> tl.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      aib.a($$4.stream().map(ane::f).collect(Collectors.toList()), $$0);
-      return $$4.size();
-   }
-
-   private static int a(dt $$0, ane $$1) {
-      anh $$2 = $$0.l().aB();
-      List<ane> $$3 = Lists.newArrayList($$2.f());
-      $$3.remove($$1);
-      $$0.a(() -> tl.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      aib.a($$3.stream().map(ane::f).collect(Collectors.toList()), $$0);
-      return $$3.size();
-   }
-
-   private static int a(dt $$0) {
-      return c($$0) + b($$0);
-   }
-
-   private static int b(dt $$0) {
-      anh $$1 = $$0.l().aB();
-      $$1.a();
-      Collection<ane> $$2 = $$1.f();
-      Collection<ane> $$3 = $$1.c();
-      cei $$4 = $$0.w();
-      List<ane> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
-      if ($$5.isEmpty()) {
-         $$0.a(() -> tl.c("commands.datapack.list.available.none"), false);
-      } else {
-         $$0.a(() -> tl.a("commands.datapack.list.available.success", $$5.size(), to.b($$5, $$0xx -> $$0xx.a(false))), false);
+   @Override
+   public void a(ejd $$0) {
+      super.a($$0);
+      if (this.b.contains($$0.d())) {
+         this.a.ac().a(new abe(agn.a.a, $$0.d().b(), $$0.e(), $$0.b()));
       }
 
-      return $$5.size();
+      this.a();
    }
 
-   private static int c(dt $$0) {
-      anh $$1 = $$0.l().aB();
-      $$1.a();
-      Collection<? extends ane> $$2 = $$1.f();
-      if ($$2.isEmpty()) {
-         $$0.a(() -> tl.c("commands.datapack.list.enabled.none"), false);
-      } else {
-         $$0.a(() -> tl.a("commands.datapack.list.enabled.success", $$2.size(), to.b($$2, $$0xx -> $$0xx.a(true))), false);
+   @Override
+   public void a(String $$0) {
+      super.a($$0);
+      this.a.ac().a(new abe(agn.a.b, null, $$0, 0));
+      this.a();
+   }
+
+   @Override
+   public void a(String $$0, ejb $$1) {
+      super.a($$0, $$1);
+      if (this.b.contains($$1)) {
+         this.a.ac().a(new abe(agn.a.b, $$1.b(), $$0, 0));
       }
 
-      return $$2.size();
+      this.a();
    }
 
-   private static ane a(CommandContext<dt> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
-      String $$3 = StringArgumentType.getString($$0, $$1);
-      anh $$4 = ((dt)$$0.getSource()).l().aB();
-      ane $$5 = $$4.c($$3);
-      if ($$5 == null) {
-         throw a.create($$3);
-      } else {
-         boolean $$6 = $$4.f().contains($$5);
-         if ($$2 && $$6) {
-            throw b.create($$3);
-         } else if (!$$2 && !$$6) {
-            throw c.create($$3);
+   @Override
+   public void a(eja $$0, @Nullable ejb $$1) {
+      ejb $$2 = this.a($$0);
+      super.a($$0, $$1);
+      if ($$2 != $$1 && $$2 != null) {
+         if (this.h($$2) > 0) {
+            this.a.ac().a(new aau($$0, $$1));
          } else {
-            cei $$7 = ((dt)$$0.getSource()).w();
-            cei $$8 = $$5.d();
-            if (!$$8.a($$7)) {
-               throw d.create($$3, cek.a($$7, $$8));
-            } else {
-               return $$5;
-            }
+            this.g($$2);
          }
       }
+
+      if ($$1 != null) {
+         if (this.b.contains($$1)) {
+            this.a.ac().a(new aau($$0, $$1));
+         } else {
+            this.e($$1);
+         }
+      }
+
+      this.a();
    }
 
-   interface a {
-      void apply(List<ane> var1, ane var2) throws CommandSyntaxException;
+   @Override
+   public boolean a(String $$0, ejc $$1) {
+      if (super.a($$0, $$1)) {
+         this.a.ac().a(abd.a($$1, $$0, abd.a.a));
+         this.a();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void b(String $$0, ejc $$1) {
+      super.b($$0, $$1);
+      this.a.ac().a(abd.a($$1, $$0, abd.a.b));
+      this.a();
+   }
+
+   @Override
+   public void a(ejb $$0) {
+      super.a($$0);
+      this.a();
+   }
+
+   @Override
+   public void b(ejb $$0) {
+      super.b($$0);
+      if (this.b.contains($$0)) {
+         this.a.ac().a(new abb($$0, 2));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void c(ejb $$0) {
+      super.c($$0);
+      if (this.b.contains($$0)) {
+         this.g($$0);
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(ejc $$0) {
+      super.a($$0);
+      this.a.ac().a(abd.a($$0, true));
+      this.a();
+   }
+
+   @Override
+   public void b(ejc $$0) {
+      super.b($$0);
+      this.a.ac().a(abd.a($$0, false));
+      this.a();
+   }
+
+   @Override
+   public void c(ejc $$0) {
+      super.c($$0);
+      this.a.ac().a(abd.a($$0));
+      this.a();
+   }
+
+   public void a(Runnable $$0) {
+      this.c.add($$0);
+   }
+
+   protected void a() {
+      for (Runnable $$0 : this.c) {
+         $$0.run();
+      }
+   }
+
+   public List<wb<?>> d(ejb $$0) {
+      List<wb<?>> $$1 = Lists.newArrayList();
+      $$1.add(new abb($$0, 0));
+
+      for (eja $$2 : eja.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new aau($$2, $$0));
+         }
+      }
+
+      for (ejd $$3 : this.i($$0)) {
+         $$1.add(new abe(agn.a.a, $$3.d().b(), $$3.e(), $$3.b()));
+      }
+
+      return $$1;
+   }
+
+   public void e(ejb $$0) {
+      List<wb<?>> $$1 = this.d($$0);
+
+      for (alr $$2 : this.a.ac().t()) {
+         for (wb<?> $$3 : $$1) {
+            $$2.c.b($$3);
+         }
+      }
+
+      this.b.add($$0);
+   }
+
+   public List<wb<?>> f(ejb $$0) {
+      List<wb<?>> $$1 = Lists.newArrayList();
+      $$1.add(new abb($$0, 1));
+
+      for (eja $$2 : eja.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new aau($$2, $$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public void g(ejb $$0) {
+      List<wb<?>> $$1 = this.f($$0);
+
+      for (alr $$2 : this.a.ac().t()) {
+         for (wb<?> $$3 : $$1) {
+            $$2.c.b($$3);
+         }
+      }
+
+      this.b.remove($$0);
+   }
+
+   public int h(ejb $$0) {
+      int $$1 = 0;
+
+      for (eja $$2 : eja.values()) {
+         if (this.a($$2) == $$0) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   public ecj.a<ejf> b() {
+      return new ecj.a<>(this::i, this::a, aud.n);
+   }
+
+   private ejf i() {
+      ejf $$0 = new ejf(this);
+      this.a($$0::c);
+      return $$0;
+   }
+
+   private ejf a(rt $$0) {
+      return this.i().b($$0);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

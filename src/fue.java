@@ -1,245 +1,179 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 import org.slf4j.Logger;
 
-public abstract class fue<T extends bjm, M extends fey<T>> extends ftc<T> implements fuy<T, M> {
+public class fue {
    private static final Logger a = LogUtils.getLogger();
-   private static final float h = 0.1F;
-   protected M f;
-   protected final List<fxl<T, M>> g = Lists.newArrayList();
+   private static final Map<bjx<?>, fud<?>> b = new Object2ObjectOpenHashMap();
+   private static final Map<gba.a, fud<fnz>> c = Map.of(gba.a.b, $$0 -> new fzd($$0, false), gba.a.a, $$0 -> new fzd($$0, true));
 
-   public fue(ftd.a $$0, M $$1, float $$2) {
-      super($$0);
-      this.f = $$1;
-      this.d = $$2;
+   private static <T extends bjt> void a(bjx<? extends T> $$0, fud<T> $$1) {
+      b.put($$0, $$1);
    }
 
-   protected final boolean a(fxl<T, M> $$0) {
-      return this.g.add($$0);
+   public static Map<bjx<?>, fuc<?>> a(fud.a $$0) {
+      Builder<bjx<?>, fuc<?>> $$1 = ImmutableMap.builder();
+      b.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalArgumentException("Failed to create model for " + jy.h.b((bjx<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
    }
 
-   @Override
-   public M a() {
-      return this.f;
+   public static Map<gba.a, fuc<? extends ccx>> b(fud.a $$0) {
+      Builder<gba.a, fuc<? extends ccx>> $$1 = ImmutableMap.builder();
+      c.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalArgumentException("Failed to create player model for " + $$2, var5);
+         }
+      });
+      return $$1.build();
    }
 
-   public void a(T $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
-      $$3.a();
-      this.f.c = this.d($$0, $$2);
-      this.f.d = $$0.bN();
-      this.f.e = $$0.m_();
-      float $$6 = asb.j($$2, $$0.aV, $$0.aU);
-      float $$7 = asb.j($$2, $$0.aX, $$0.aW);
-      float $$8 = $$7 - $$6;
-      if ($$0.bN() && $$0.cY() instanceof bjm $$9) {
-         $$6 = asb.j($$2, $$9.aV, $$9.aU);
-         $$8 = $$7 - $$6;
-         float $$10 = asb.g($$8);
-         if ($$10 < -85.0F) {
-            $$10 = -85.0F;
-         }
+   public static boolean a() {
+      boolean $$0 = true;
 
-         if ($$10 >= 85.0F) {
-            $$10 = 85.0F;
-         }
-
-         $$6 = $$7 - $$10;
-         if ($$10 * $$10 > 2500.0F) {
-            $$6 += $$10 * 0.2F;
-         }
-
-         $$8 = $$7 - $$6;
-      }
-
-      float $$11 = asb.i($$2, $$0.O, $$0.dD());
-      if (e($$0)) {
-         $$11 *= -1.0F;
-         $$8 *= -1.0F;
-      }
-
-      if ($$0.c(bjy.c)) {
-         ha $$12 = $$0.fF();
-         if ($$12 != null) {
-            float $$13 = $$0.d(bjy.a) - 0.1F;
-            $$3.a((float)(-$$12.j()) * $$13, 0.0F, (float)(-$$12.l()) * $$13);
+      for (bjx<?> $$1 : jy.h) {
+         if ($$1 != bjx.bt && !b.containsKey($$1)) {
+            a.warn("No renderer registered for {}", jy.h.b($$1));
+            $$0 = false;
          }
       }
 
-      float $$14 = this.a($$0, $$2);
-      this.a($$0, $$3, $$14, $$6, $$2);
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.a($$0, $$3, $$2);
-      $$3.a(0.0F, -1.501F, 0.0F);
-      float $$15 = 0.0F;
-      float $$16 = 0.0F;
-      if (!$$0.bN() && $$0.bv()) {
-         $$15 = $$0.aQ.b($$2);
-         $$16 = $$0.aQ.c($$2);
-         if ($$0.m_()) {
-            $$16 *= 3.0F;
-         }
-
-         if ($$15 > 1.0F) {
-            $$15 = 1.0F;
-         }
-      }
-
-      this.f.a($$0, $$16, $$15, $$2);
-      this.f.a($$0, $$16, $$15, $$14, $$8, $$11);
-      eqp $$17 = eqp.O();
-      boolean $$18 = this.d($$0);
-      boolean $$19 = !$$18 && !$$0.d($$17.s);
-      boolean $$20 = $$17.b($$0);
-      foi $$21 = this.a($$0, $$18, $$19, $$20);
-      if ($$21 != null) {
-         eln $$22 = $$4.getBuffer($$21);
-         int $$23 = c($$0, this.b($$0, $$2));
-         this.f.a($$3, $$22, $$5, $$23, 1.0F, 1.0F, 1.0F, $$19 ? 0.15F : 1.0F);
-      }
-
-      if (!$$0.M_()) {
-         for (fxl<T, M> $$24 : this.g) {
-            $$24.a($$3, $$4, $$5, $$0, $$16, $$15, $$2, $$14, $$8, $$11);
-         }
-      }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return !$$0;
    }
 
-   @Nullable
-   protected foi a(T $$0, boolean $$1, boolean $$2, boolean $$3) {
-      aez $$4 = this.a($$0);
-      if ($$2) {
-         return foi.g($$4);
-      } else if ($$1) {
-         return this.f.a($$4);
-      } else {
-         return $$3 ? foi.q($$4) : null;
-      }
-   }
-
-   public static int c(bjm $$0, float $$1) {
-      return fyr.a(fyr.a($$1), fyr.a($$0.aK > 0 || $$0.aM > 0));
-   }
-
-   protected boolean d(T $$0) {
-      return !$$0.cd();
-   }
-
-   private static float a(ha $$0) {
-      switch ($$0) {
-         case d:
-            return 90.0F;
-         case e:
-            return 0.0F;
-         case c:
-            return 270.0F;
-         case f:
-            return 180.0F;
-         default:
-            return 0.0F;
-      }
-   }
-
-   protected boolean a(T $$0) {
-      return $$0.ck();
-   }
-
-   protected void a(T $$0, elj $$1, float $$2, float $$3, float $$4) {
-      if (this.a($$0)) {
-         $$3 += (float)(Math.cos((double)$$0.ah * 3.25) * Math.PI * 0.4F);
-      }
-
-      if (!$$0.c(bjy.c)) {
-         $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      }
-
-      if ($$0.aM > 0) {
-         float $$5 = ((float)$$0.aM + $$4 - 1.0F) / 20.0F * 1.6F;
-         $$5 = asb.c($$5);
-         if ($$5 > 1.0F) {
-            $$5 = 1.0F;
-         }
-
-         $$1.a(a.f.rotationDegrees($$5 * this.c($$0)));
-      } else if ($$0.fj()) {
-         $$1.a(a.b.rotationDegrees(-90.0F - $$0.dD()));
-         $$1.a(a.d.rotationDegrees(((float)$$0.ah + $$4) * -75.0F));
-      } else if ($$0.c(bjy.c)) {
-         ha $$6 = $$0.fF();
-         float $$7 = $$6 != null ? a($$6) : $$3;
-         $$1.a(a.d.rotationDegrees($$7));
-         $$1.a(a.f.rotationDegrees(this.c($$0)));
-         $$1.a(a.d.rotationDegrees(270.0F));
-      } else if (e($$0)) {
-         $$1.a(0.0F, $$0.dg() + 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(180.0F));
-      }
-   }
-
-   protected float d(T $$0, float $$1) {
-      return $$0.x($$1);
-   }
-
-   protected float a(T $$0, float $$1) {
-      return (float)$$0.ah + $$1;
-   }
-
-   protected float c(T $$0) {
-      return 90.0F;
-   }
-
-   protected float b(T $$0, float $$1) {
-      return 0.0F;
-   }
-
-   protected void a(T $$0, elj $$1, float $$2) {
-   }
-
-   protected boolean b(T $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bU() ? 32.0F : 64.0F;
-      if ($$1 >= (double)($$2 * $$2)) {
-         return false;
-      } else {
-         eqp $$3 = eqp.O();
-         fnc $$4 = $$3.s;
-         boolean $$5 = !$$0.d($$4);
-         if ($$0 != $$4) {
-            eii $$6 = $$0.cf();
-            eii $$7 = $$4.cf();
-            if ($$6 != null) {
-               eii.b $$8 = $$6.j();
-               switch ($$8) {
-                  case a:
-                     return $$5;
-                  case b:
-                     return false;
-                  case c:
-                     return $$7 == null ? $$5 : $$6.a($$7) && ($$6.i() || $$5);
-                  case d:
-                     return $$7 == null ? $$5 : !$$6.a($$7) && $$5;
-                  default:
-                     return true;
-               }
-            }
-         }
-
-         return eqp.K() && $$0 != $$3.am() && $$5 && !$$0.bO();
-      }
-   }
-
-   public static boolean e(bjm $$0) {
-      if ($$0 instanceof cca || $$0.ac()) {
-         String $$1 = n.a($$0.ab().getString());
-         if ("Dinnerbone".equals($$1) || "Grumm".equals($$1)) {
-            return !($$0 instanceof cca) || ((cca)$$0).a(ccb.a);
-         }
-      }
-
-      return false;
+   static {
+      a(bjx.b, ftc::new);
+      a(bjx.c, fvl::new);
+      a(bjx.d, ftd::new);
+      a(bjx.e, fwq::new);
+      a(bjx.f, ftf::new);
+      a(bjx.g, ftg::new);
+      a(bjx.h, fth::new);
+      a(bjx.i, fti::new);
+      a(bjx.j, fts.a::new);
+      a(bjx.k, $$0 -> new ftj($$0, false));
+      a(bjx.m, ftl::new);
+      a(bjx.l, $$0 -> new ftk($$0, fiv.p));
+      a(bjx.n, ftm::new);
+      a(bjx.o, $$0 -> new ftj($$0, true));
+      a(bjx.p, $$0 -> new fvi<>($$0, fiv.s));
+      a(bjx.q, fto::new);
+      a(bjx.r, ftp::new);
+      a(bjx.s, $$0 -> new fvi<>($$0, fiv.v));
+      a(bjx.t, ftq::new);
+      a(bjx.u, ftr::new);
+      a(bjx.v, ftt::new);
+      a(bjx.w, $$0 -> new ftn<>($$0, 0.87F, fiv.H));
+      a(bjx.x, ftu::new);
+      a(bjx.y, ftv::new);
+      a(bjx.z, fwo::new);
+      a(bjx.A, ftw::new);
+      a(bjx.E, ftz::new);
+      a(bjx.F, fua::new);
+      a(bjx.C, fty::new);
+      a(bjx.D, fwo::new);
+      a(bjx.B, ftx::new);
+      a(bjx.G, fug::new);
+      a(bjx.H, fuf::new);
+      a(bjx.I, fwo::new);
+      a(bjx.J, fuh::new);
+      a(bjx.K, $$0 -> new fwo<>($$0, 1.0F, true));
+      a(bjx.L, fui::new);
+      a(bjx.ag, $$0 -> new fwo<>($$0, 3.0F, true));
+      a(bjx.M, fuj::new);
+      a(bjx.bu, fuk::new);
+      a(bjx.N, ful::new);
+      a(bjx.O, fum::new);
+      a(bjx.P, $$0 -> new fvi<>($$0, fiv.Z));
+      a(bjx.Q, fun::new);
+      a(bjx.R, $$0 -> new fuo($$0, 6.0F));
+      a(bjx.S, fva::new);
+      a(bjx.T, $$0 -> new fup($$0, new fhz<>($$0.a(fiv.ae))));
+      a(bjx.U, fuq::new);
+      a(bjx.V, fur::new);
+      a(bjx.W, fus::new);
+      a(bjx.X, $$0 -> new fvi<>($$0, fiv.ai));
+      a(bjx.Y, fut::new);
+      a(bjx.Z, fuv::new);
+      a(bjx.aa, fux::new);
+      a(bjx.ab, fvl::new);
+      a(bjx.ac, fuy::new);
+      a(bjx.ad, fuz::new);
+      a(bjx.ae, fts.b::new);
+      a(bjx.af, fva::new);
+      a(bjx.ah, fvc::new);
+      a(bjx.ai, fvd::new);
+      a(bjx.aj, $$0 -> new fvf($$0, fiv.ar));
+      a(bjx.ak, fvg::new);
+      a(bjx.al, fvh::new);
+      a(bjx.am, fvl::new);
+      a(bjx.an, $$0 -> new fvi<>($$0, fiv.av));
+      a(bjx.ao, fvk::new);
+      a(bjx.ap, $$0 -> new ftn<>($$0, 0.92F, fiv.ax));
+      a(bjx.aq, fvm::new);
+      a(bjx.ar, fvn::new);
+      a(bjx.as, fvo::new);
+      a(bjx.at, fvp::new);
+      a(bjx.au, fvq::new);
+      a(bjx.av, fvr::new);
+      a(bjx.aw, $$0 -> new fvs($$0, fiv.aD, fiv.aI, fiv.aJ, false));
+      a(bjx.ax, $$0 -> new fvs($$0, fiv.aE, fiv.aF, fiv.aG, false));
+      a(bjx.ay, fvt::new);
+      a(bjx.az, fvu::new);
+      a(bjx.aA, fwo::new);
+      a(bjx.aB, fvv::new);
+      a(bjx.aC, fvw::new);
+      a(bjx.aD, fvx::new);
+      a(bjx.aE, fvz::new);
+      a(bjx.aF, fwa::new);
+      a(bjx.aG, fwc::new);
+      a(bjx.aH, fwb::new);
+      a(bjx.aI, fwd::new);
+      a(bjx.aJ, fwe::new);
+      a(bjx.aK, $$0 -> new fwv($$0, fiv.bi));
+      a(bjx.aL, fwf::new);
+      a(bjx.aM, $$0 -> new fwo<>($$0, 0.75F, true));
+      a(bjx.aN, fwg::new);
+      a(bjx.aP, fwo::new);
+      a(bjx.aO, fwh::new);
+      a(bjx.aQ, $$0 -> new fvi<>($$0, fiv.bq));
+      a(bjx.aR, fwi::new);
+      a(bjx.aS, fwj::new);
+      a(bjx.aT, $$0 -> new fwk<>($$0, new fhz<>($$0.a(fiv.bs))));
+      a(bjx.aU, fwl::new);
+      a(bjx.aV, fwm::new);
+      a(bjx.aW, fwn::new);
+      a(bjx.aX, fts.c::new);
+      a(bjx.aY, fws::new);
+      a(bjx.aZ, fwr::new);
+      a(bjx.ba, $$0 -> new fvf($$0, fiv.bB));
+      a(bjx.bb, fwp::new);
+      a(bjx.bc, fwt::new);
+      a(bjx.bd, fwu::new);
+      a(bjx.be, fww::new);
+      a(bjx.bf, fwx::new);
+      a(bjx.bg, fwy::new);
+      a(bjx.bi, fxa::new);
+      a(bjx.bh, fwz::new);
+      a(bjx.bj, fxb::new);
+      a(bjx.bk, fxc::new);
+      a(bjx.bl, fxd::new);
+      a(bjx.bm, fxe::new);
+      a(bjx.bn, fxf::new);
+      a(bjx.bo, fxg::new);
+      a(bjx.bp, fxh::new);
+      a(bjx.bq, $$0 -> new fwv($$0, fiv.bZ));
+      a(bjx.br, fxi::new);
+      a(bjx.bs, $$0 -> new fvs($$0, fiv.cf, fiv.cg, fiv.ch, true));
    }
 }

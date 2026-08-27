@@ -1,113 +1,81 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class daf extends cvi implements ctf, dab {
-   public static final MapCodec<daf> c = b(daf::new);
-   private static final dfu g = dft.C;
-   public static final dfx d = dft.R;
-   protected static final float e = 6.0F;
-   protected static final eia f = ctc.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class daf extends cwa {
+   public static final MapCodec<daf> a = b(daf::new);
+   public static final dgs b = dgr.s;
+   public static final dhb e = dgr.aA;
 
    @Override
    public MapCodec<daf> a() {
-      return c;
+      return a;
    }
 
-   public daf(dfc.d $$0) {
+   protected daf(dga.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dfz.b).a(g, Boolean.valueOf(false)).a(d, ha.c));
+      this.k(this.E.b().a(aE, hx.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return f;
-   }
-
-   @Override
-   protected boolean d(dfd $$0, cph $$1, gw $$2) {
-      return $$0.a(apv.bw) || $$1.b_($$2.c()).a(eah.c) && super.d($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public dfd a(clt $$0) {
-      dfd $$1 = super.a($$0);
-      return $$1 != null ? c($$0.q(), $$0.a(), $$1.a(d, $$0.g().g())) : null;
-   }
-
-   @Override
-   public void a(cqb $$0, gw $$1, dfd $$2, bjm $$3, cjl $$4) {
-      if (!$$0.w_()) {
-         gw $$5 = $$1.c();
-         dfd $$6 = cvi.c($$0, $$5, this.o().a(b, dfz.a).a(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
-      }
-   }
-
-   @Override
-   public eag c_(dfd $$0) {
-      return $$0.c(g) ? eah.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(dfd $$0, cqe $$1, gw $$2) {
-      if ($$0.c(b) == dfz.a) {
-         return super.a($$0, $$1, $$2);
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      if (!$$3.fT().e) {
+         return bib.d;
       } else {
-         gw $$3 = $$2.d();
-         dfd $$4 = $$1.a_($$3);
-         return this.d($$4, $$1, $$3);
+         $$1.a($$2, $$0.a(e), 3);
+         return bib.a($$1.B);
       }
    }
 
    @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if ($$0.c(g)) {
-         $$3.a($$4, eah.c, eah.c.a($$3));
+   protected int g(dgb $$0) {
+      return $$0.c(e) * 2;
+   }
+
+   @Override
+   public dgb a(cmr $$0) {
+      dgb $$1 = super.a($$0);
+      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
+   }
+
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if ($$1 == hx.a && !this.b($$3, $$5, $$2)) {
+         return cuc.a.o();
+      } else {
+         return !$$3.x_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b, g, d);
+   public boolean c(crc $$0, ht $$1, dgb $$2) {
+      return this.a((crp)$$0, $$1, $$2) > 0;
    }
 
    @Override
-   public boolean b(cqe $$0, gw $$1, dfd $$2) {
+   protected boolean b() {
       return true;
    }
 
    @Override
-   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
-      return true;
-   }
+   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
+      if ($$0.c(d)) {
+         hx $$4 = $$0.c(aE);
+         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
+         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         float $$8 = -5.0F;
+         if ($$3.h()) {
+            $$8 = (float)($$0.c(e) * 2 - 1);
+         }
 
-   @Override
-   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
-      if ($$3.c(cvi.b) == dfz.b) {
-         gw $$4 = $$2.c();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         csz.a($$0, $$1, $$2, $$3.c(d));
-      } else {
-         gw $$5 = $$2.d();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
+         $$8 /= 16.0F;
+         double $$9 = (double)($$8 * (float)$$4.j());
+         double $$10 = (double)($$8 * (float)$$4.l());
+         $$1.a(jm.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   public dfd a(dfd $$0, czn $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   public dfd a(dfd $$0, cxx $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   public float ar_() {
-      return 0.1F;
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(aE, e, b, d);
    }
 }

@@ -1,94 +1,44 @@
-import com.mojang.serialization.Lifecycle;
 import java.util.Locale;
-import java.util.Set;
 import javax.annotation.Nullable;
 
 public interface ecg {
-   int c = 19133;
-   int d = 19132;
+   hx[] a = new hx[]{hx.e, hx.f, hx.a, hx.b, hx.c, hx.d};
 
-   cqu F();
+   void a(hx var1, dgb var2, ht var3, ht var4, int var5, int var6);
 
-   void a(cqu var1);
+   void a(ht var1, cua var2, ht var3);
 
-   boolean H();
+   void a(dgb var1, ht var2, cua var3, ht var4, boolean var5);
 
-   Set<String> I();
-
-   Set<String> J();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.I()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.J()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.H()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.z();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.i($$0x));
-      });
-   }
-
-   default String i(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   default void a(ht $$0, cua $$1, @Nullable hx $$2) {
+      for (hx $$3 : a) {
+         if ($$3 != $$2) {
+            this.a($$0.a($$3), $$1, $$0);
+         }
       }
    }
 
-   @Nullable
-   qw G();
+   static void a(cra $$0, hx $$1, dgb $$2, ht $$3, ht $$4, int $$5, int $$6) {
+      dgb $$7 = $$0.a_($$3);
+      dgb $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
+      cua.a($$7, $$8, $$0, $$3, $$5, $$6);
+   }
 
-   void a(@Nullable qw var1);
-
-   ecf K();
-
-   cqf L();
-
-   qw a(hr var1, @Nullable qw var2);
-
-   boolean n();
-
-   int z();
-
-   String g();
-
-   cpy m();
-
-   void a(cpy var1);
-
-   boolean o();
-
-   bhb s();
-
-   void a(bhb var1);
-
-   boolean t();
-
-   void d(boolean var1);
-
-   cpx q();
-
-   @Nullable
-   qw y();
-
-   dip.a E();
-
-   void a(dip.a var1);
-
-   dlk A();
-
-   boolean B();
-
-   boolean C();
-
-   Lifecycle D();
-
-   default cei M() {
-      return this.F().b();
+   static void a(cqz $$0, dgb $$1, ht $$2, cua $$3, ht $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", jy.f.b($$3), $$3.h(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + jy.f.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new y($$7);
+      }
    }
 }

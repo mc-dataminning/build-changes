@@ -1,45 +1,18 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bdq implements bdu {
-   public static final bdq a = new bdq();
-
-   private bdq() {
+public class bdq extends bbi {
+   public bdq(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public List<bdx> a(String $$0) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register($$1, "minecraft:decorated_pot", () -> DSL.optionalFields("shards", DSL.list(baa.z.in($$0)), "item", baa.t.in($$0)));
+      $$0.register($$1, "minecraft:suspicious_sand", () -> DSL.optionalFields("item", baa.t.in($$0)));
+      return $$1;
    }
 }

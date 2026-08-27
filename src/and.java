@@ -1,94 +1,85 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class and implements anj {
-   static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final aml c;
-   private final ani d;
-   private final egx e;
+public class and implements anh {
+   private final anh c;
+   private final List<anh> d;
 
-   public and(Path $$0, aml $$1, ani $$2, egx $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public and(anh $$0, List<anh> $$1) {
+      this.c = $$0;
+      List<anh> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
-   private static String a(Path $$0) {
-      return $$0.getFileName().toString();
+   @Nullable
+   @Override
+   public aol<InputStream> a(String... $$0) {
+      return this.c.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public aol<InputStream> a(ani $$0, afw $$1) {
+      for (anh $$2 : this.d) {
+         aol<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
+         }
+      }
+
+      return null;
    }
 
    @Override
-   public void a(Consumer<ane> $$0) {
-      try {
-         v.c(this.b);
-         a(this.b, this.e, false, ($$1, $$2) -> {
-            String $$3 = a($$1);
-            ane $$4 = ane.a("file/" + $$3, tl.b($$3), false, $$2, this.c, ane.b.a, this.d);
-            if ($$4 != null) {
-               $$0.accept($$4);
-            }
-         });
-      } catch (IOException var3) {
-         a.warn("Failed to list packs in {}", this.b, var3);
+   public void a(ani $$0, String $$1, String $$2, anh.a $$3) {
+      Map<afw, aol<InputStream>> $$4 = new HashMap<>();
+
+      for (anh $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
       }
+
+      $$4.forEach($$3);
    }
 
-   public static void a(Path $$0, egx $$1, boolean $$2, BiConsumer<Path, ane.c> $$3) throws IOException {
-      and.a $$4 = new and.a($$1, $$2);
+   @Override
+   public Set<String> a(ani $$0) {
+      Set<String> $$1 = new HashSet<>();
 
-      try (DirectoryStream<Path> $$5 = Files.newDirectoryStream($$0)) {
-         for (Path $$6 : $$5) {
-            try {
-               List<egy> $$7 = new ArrayList<>();
-               ane.c $$8 = $$4.a($$6, $$7);
-               if (!$$7.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", egw.a($$6, $$7));
-               } else if ($$8 != null) {
-                  $$3.accept($$6, $$8);
-               } else {
-                  a.info("Found non-pack entry '{}', ignoring", $$6);
-               }
-            } catch (IOException var11) {
-               a.warn("Failed to read properties of '{}', ignoring", $$6, var11);
-            }
-         }
+      for (anh $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
       }
+
+      return $$1;
    }
 
-   static class a extends ang<ane.c> {
-      private final boolean a;
+   @Nullable
+   @Override
+   public <T> T a(ant<T> $$0) throws IOException {
+      return this.c.a($$0);
+   }
 
-      protected a(egx $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
-      }
+   @Override
+   public String a() {
+      return this.c.a();
+   }
 
-      @Nullable
-      protected ane.c a(Path $$0) {
-         FileSystem $$1 = $$0.getFileSystem();
-         if ($$1 != FileSystems.getDefault() && !($$1 instanceof amt)) {
-            and.a.info("Can't open pack archive at {}", $$0);
-            return null;
-         } else {
-            return new ami.a($$0, this.a);
-         }
-      }
+   @Override
+   public boolean b() {
+      return this.c.b();
+   }
 
-      protected ane.c b(Path $$0) {
-         return new amm.a($$0, this.a);
-      }
+   @Override
+   public void close() {
+      this.d.forEach(anh::close);
    }
 }

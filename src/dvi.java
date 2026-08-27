@@ -1,44 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dvi(List<dvi.a> c, dvz d) {
-   public static final Codec<dvi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dvi.a.a.listOf().fieldOf("structures").forGetter(dvi::a), dvz.b.fieldOf("placement").forGetter(dvi::b)).apply($$0, dvi::new)
-   );
-   public static final Codec<he<dvi>> b = aev.a(jc.aC, a);
+public interface dvi<P extends dvh> {
+   dvi<dut> a = a("block_predicate_filter", dut.a);
+   dvi<dvk> b = a("rarity_filter", dvk.a);
+   dvi<dvm> c = a("surface_relative_threshold_filter", dvm.a);
+   dvi<dvn> d = a("surface_water_depth_filter", dvn.a);
+   dvi<dus> e = a("biome", dus.a);
+   dvi<dux> f = a("count", dux.a);
+   dvi<dvc> g = a("noise_based_count", dvc.a);
+   dvi<dvd> h = a("noise_threshold_count", dvd.a);
+   dvi<duw> i = a("count_on_every_layer", duw.a);
+   dvi<duy> j = a("environment_scan", duy.a);
+   dvi<dva> k = a("heightmap", dva.a);
+   dvi<duz> l = a("height_range", duz.a);
+   dvi<dvb> m = a("in_square", dvb.a);
+   dvi<dvj> n = a("random_offset", dvj.a);
+   dvi<duu> o = a("carving_mask", duu.a);
 
-   public dvi(he<dvc> $$0, dvz $$1) {
-      this(List.of(new dvi.a($$0, 1)), $$1);
-   }
+   Codec<P> codec();
 
-   public static dvi.a a(he<dvc> $$0, int $$1) {
-      return new dvi.a($$0, $$1);
-   }
-
-   public static dvi.a a(he<dvc> $$0) {
-      return new dvi.a($$0, 1);
-   }
-
-   public List<dvi.a> a() {
-      return this.c;
-   }
-
-   public dvz b() {
-      return this.d;
-   }
-
-   public static record a(he<dvc> b, int c) {
-      public static final Codec<dvi.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dvc.b.fieldOf("structure").forGetter(dvi.a::a), arj.j.fieldOf("weight").forGetter(dvi.a::b)).apply($$0, dvi.a::new)
-      );
-
-      public he<dvc> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   private static <P extends dvh> dvi<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.V, $$0, () -> $$1);
    }
 }

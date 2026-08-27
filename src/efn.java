@@ -1,29 +1,42 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class efn implements efj {
-   private static final efn b = new efn();
-   public static final Codec<efn> a = Codec.unit(b);
+public class efn extends eeu {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<efn> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, efn::new));
 
-   private efn() {
+   private efn(List<egh> $$0) {
+      super($$0);
    }
 
    @Override
-   public efk b() {
-      return efl.h;
+   public eew b() {
+      return eex.h;
    }
 
    @Override
-   public Set<ees<?>> a() {
-      return ImmutableSet.of(eev.b);
+   public ckj a(ckj $$0, edi $$1) {
+      if ($$0.b()) {
+         return $$0;
+      } else {
+         Optional<cno<coa>> $$2 = $$1.d().q().a(cnr.b, new bii($$0), $$1.d());
+         if ($$2.isPresent()) {
+            ckj $$3 = $$2.get().b().a($$1.d().H_());
+            if (!$$3.b()) {
+               return $$3.c($$0.L());
+            }
+         }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
+      }
    }
 
-   public boolean a(eck $$0) {
-      return $$0.a(eev.b);
-   }
-
-   public static efj.a c() {
-      return () -> b;
+   public static eeu.a<?> c() {
+      return a(efn::new);
    }
 }

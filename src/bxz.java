@@ -1,100 +1,142 @@
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class bxz extends bxq {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
-   @Nullable
-   private bit g;
+public class bxz extends bxt {
+   private final bya bT = new bya(this);
+   private static final int bU = 18000;
+   private boolean bW;
+   private int bX;
 
-   public bxz(bxn $$0) {
-      super($$0);
+   public bxz(bjx<? extends bxz> $$0, cqz $$1) {
+      super($$0, $$1);
+   }
+
+   public static blo.a s() {
+      return gE().a(blp.l, 15.0).a(blp.m, 0.2F);
    }
 
    @Override
-   public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         ehh $$0 = this.a.D(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.e.dq();
-         double $$2 = this.a.e.e(0.5);
-         double $$3 = this.a.e.dw();
+   protected void a(ate $$0) {
+      this.a(blp.h).a(a($$0::j));
+   }
 
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.ef().k() / 2.0;
-            double $$6 = $$2 + this.a.ef().k() / 2.0;
-            double $$7 = $$3 + this.a.ef().k() / 2.0;
+   @Override
+   protected void gu() {
+   }
 
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dL().a(iv.i, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
-            }
+   @Override
+   protected aqc w() {
+      return this.a(aqx.a) ? aqd.vx : aqd.vt;
+   }
 
-            $$0.b((float) (Math.PI / 16));
+   @Override
+   protected aqc m_() {
+      return aqd.vu;
+   }
+
+   @Override
+   protected aqc d(bir $$0) {
+      return aqd.vv;
+   }
+
+   @Override
+   protected aqc aL() {
+      if (this.aA()) {
+         if (!this.bO()) {
+            return aqd.vA;
          }
+
+         this.cu++;
+         if (this.cu > 5 && this.cu % 3 == 0) {
+            return aqd.vy;
+         }
+
+         if (this.cu <= 5) {
+            return aqd.vA;
+         }
+      }
+
+      return aqd.vw;
+   }
+
+   @Override
+   protected void e(float $$0) {
+      if (this.aA()) {
+         super.e(0.3F);
+      } else {
+         super.e(Math.min(0.1F, $$0 * 25.0F));
       }
    }
 
    @Override
-   public void c() {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.gb().a(byd.e);
+   protected void gL() {
+      if (this.aX()) {
+         this.a(aqd.vz, 0.4F, 1.0F);
+      } else {
+         super.gL();
+      }
+   }
+
+   @Override
+   public bko eR() {
+      return bko.b;
+   }
+
+   @Override
+   protected Vector3f a(bjt $$0, bju $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b - (this.n_() ? 0.03125F : 0.28125F) * $$2, 0.0F);
+   }
+
+   @Override
+   public void c_() {
+      super.c_();
+      if (this.t() && this.bX++ >= 18000) {
+         this.ak();
+      }
+   }
+
+   @Override
+   public void b(rt $$0) {
+      super.b($$0);
+      $$0.a("SkeletonTrap", this.t());
+      $$0.a("SkeletonTrapTime", this.bX);
+   }
+
+   @Override
+   public void a(rt $$0) {
+      super.a($$0);
+      this.w($$0.q("SkeletonTrap"));
+      this.bX = $$0.h("SkeletonTrapTime");
+   }
+
+   @Override
+   protected float fc() {
+      return 0.96F;
+   }
+
+   public boolean t() {
+      return this.bW;
+   }
+
+   public void w(boolean $$0) {
+      if ($$0 != this.bW) {
+         this.bW = $$0;
+         if ($$0) {
+            this.bO.a(1, this.bT);
          } else {
-            this.a.gb().a(byd.g);
+            this.bO.a(this.bT);
          }
-      } else if (this.e == 10) {
-         ehh $$0 = new ehh(this.a.e.dq() - this.a.dq(), 0.0, this.a.e.dw() - this.a.dw()).d();
-         float $$1 = 5.0F;
-         double $$2 = this.a.e.dq() + $$0.c * 5.0 / 2.0;
-         double $$3 = this.a.e.dw() + $$0.e * 5.0 / 2.0;
-         double $$4 = this.a.e.e(0.5);
-         double $$5 = $$4;
-         gw.a $$6 = new gw.a($$2, $$4, $$3);
-
-         while (this.a.dL().t($$6)) {
-            if (--$$5 < 0.0) {
-               $$5 = $$4;
-               break;
-            }
-
-            $$6.b($$2, $$5, $$3);
-         }
-
-         $$5 = (double)(asb.a($$5) + 1);
-         this.g = new bit(this.a.dL(), $$2, $$5, $$3);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.b(200);
-         this.g.a(iv.i);
-         this.g.a(new bij(bil.g));
-         this.a.dL().b(this.g);
       }
    }
 
+   @Nullable
    @Override
-   public void d() {
-      this.e = 0;
-      this.f++;
+   public bjo a(alq $$0, bjo $$1) {
+      return bjx.aK.a((cqz)$$0);
    }
 
    @Override
-   public void e() {
-      if (this.g != null) {
-         this.g.ak();
-         this.g = null;
-      }
-   }
-
-   @Override
-   public byd<bxz> i() {
-      return byd.f;
-   }
-
-   public void j() {
-      this.f = 0;
+   public bib b(ccx $$0, bia $$1) {
+      return !this.gt() ? bib.d : super.b($$0, $$1);
    }
 }

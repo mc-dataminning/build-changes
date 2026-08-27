@@ -1,58 +1,13 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public abstract class aoy implements Runnable {
-   private static final Logger d = LogUtils.getLogger();
-   private static final AtomicInteger e = new AtomicInteger(0);
-   private static final int f = 5;
-   protected volatile boolean a;
-   protected final String b;
-   @Nullable
-   protected Thread c;
-
-   protected aoy(String $$0) {
-      this.b = $$0;
+public abstract class aoy<T> implements aon {
+   @Override
+   public final CompletableFuture<Void> a(aon.a $$0, aot $$1, bes $$2, bes $$3, Executor $$4, Executor $$5) {
+      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
    }
 
-   public synchronized boolean a() {
-      if (this.a) {
-         return true;
-      } else {
-         this.a = true;
-         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
-         this.c.setUncaughtExceptionHandler(new s(d));
-         this.c.start();
-         d.info("Thread {} started", this.b);
-         return true;
-      }
-   }
+   protected abstract T b(aot var1, bes var2);
 
-   public synchronized void b() {
-      this.a = false;
-      if (null != this.c) {
-         int $$0 = 0;
-
-         while (this.c.isAlive()) {
-            try {
-               this.c.join(1000L);
-               if (++$$0 >= 5) {
-                  d.warn("Waited {} seconds attempting force stop!", $$0);
-               } else if (this.c.isAlive()) {
-                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
-                  this.c.interrupt();
-               }
-            } catch (InterruptedException var3) {
-            }
-         }
-
-         d.info("Thread {} stopped", this.b);
-         this.c = null;
-      }
-   }
-
-   public boolean c() {
-      return this.a;
-   }
+   protected abstract void a(T var1, aot var2, bes var3);
 }

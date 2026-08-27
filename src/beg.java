@@ -1,44 +1,44 @@
-import java.net.SocketAddress;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.Reader;
+import javax.annotation.Nullable;
 
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class beg extends Event {
-   @Name("protocolId")
-   @Label("Protocol Id")
-   public final String protocolId;
-   @Name("packetId")
-   @Label("Packet Id")
-   public final int packetId;
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("bytes")
-   @Label("Bytes")
-   @DataAmount
-   public final int bytes;
+public interface beg<T> extends Closeable {
+   static <T> beg<T> a(final Codec<T> $$0, Reader $$1) {
+      final JsonReader $$2 = new JsonReader($$1);
+      $$2.setLenient(true);
+      return new beg<T>() {
+         @Nullable
+         @Override
+         public T a() throws IOException {
+            try {
+               if (!$$2.hasNext()) {
+                  return null;
+               } else {
+                  JsonElement $$0 = JsonParser.parseReader($$2);
+                  return ac.a($$0.parse(JsonOps.INSTANCE, $$0), IOException::new);
+               }
+            } catch (JsonParseException var2) {
+               throw new IOException(var2);
+            } catch (EOFException var3) {
+               return null;
+            }
+         }
 
-   public beg(String $$0, int $$1, SocketAddress $$2, int $$3) {
-      this.protocolId = $$0;
-      this.packetId = $$1;
-      this.remoteAddress = $$2.toString();
-      this.bytes = $$3;
+         @Override
+         public void close() throws IOException {
+            $$2.close();
+         }
+      };
    }
 
-   public static final class a {
-      public static final String a = "remoteAddress";
-      public static final String b = "protocolId";
-      public static final String c = "packetId";
-      public static final String d = "bytes";
-
-      private a() {
-      }
-   }
+   @Nullable
+   T a() throws IOException;
 }

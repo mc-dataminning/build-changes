@@ -1,80 +1,29 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class bom extends bon {
-   private static final List<cjg> c = ImmutableList.of(cjo.oH, cjo.ur);
+public class bom {
+   public static bmb<bkj> a(int $$0, BiPredicate<bkj, bkj> $$1) {
+      return bpm.a(
+         (Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$2 -> $$2.group($$2.b(btk.o), $$2.a(btk.aa), $$2.c(btk.ah), $$2.a(btk.ai))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bkj $$10 = $$2.b($$3);
+                     if (!$$10.ev()) {
+                        return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
+                        }
 
-   @Override
-   protected void a(akt $$0, cbn $$1) {
-      Optional<hd> $$2 = $$1.dN().c(bsn.c);
-      if (!$$2.isEmpty()) {
-         hd $$3 = $$2.get();
-         dfd $$4 = $$0.a_($$3.b());
-         if ($$4.a(cte.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
-         }
-      }
-   }
+                        $$5.a($$10.dl(), (long)$$0);
+                        if ($$10.ag() != bjx.bt || $$7.X().b(cqv.K)) {
+                           $$3.b();
+                           $$4.b();
+                        }
 
-   private void a(akt $$0, cbn $$1, hd $$2, dfd $$3) {
-      gw $$4 = $$2.b();
-      if ($$3.c(cun.e) == 8) {
-         $$3 = cun.a($$1, $$3, (cqb)$$0, $$4);
-      }
-
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bhl $$8 = $$1.y();
-      int $$9 = $$8.b();
-      dfd $$10 = $$3;
-
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         cjl $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.d());
-         if ($$13 != -1) {
-            int $$14 = $$12.L();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
-
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = cun.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(cun.e) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
-                  }
-               }
-            }
-         }
-      }
-
-      this.a($$0, $$3, $$4, $$10);
-   }
-
-   private void a(akt $$0, dfd $$1, gw $$2, dfd $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
-   }
-
-   private void a(cbn $$0) {
-      bhl $$1 = $$0.y();
-      if ($$1.a_(cjo.oJ) <= 36) {
-         int $$2 = $$1.a_(cjo.oI);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(cjo.oI, $$6);
-            cjl $$7 = $$1.a(new cjl(cjo.oJ, $$5));
-            if (!$$7.b()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
-      }
+                        return true;
+                     }
+                  }))
+      );
    }
 }

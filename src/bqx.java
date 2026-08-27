@@ -1,65 +1,70 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bqx extends bqh {
-   private final bjo a;
-   private bjm b;
-   private int c;
+public class bqx extends bre {
+   protected final bks a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final cqz f;
 
-   public bqx(bjo $$0) {
+   public bqx(bks $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(bqh.a.a, bqh.a.b));
+      this.e = $$1;
+      this.f = $$0.dL();
+      this.a(EnumSet.of(bre.a.a));
    }
 
    @Override
    public boolean a() {
-      bjm $$0 = this.a.q();
+      if (this.a.q() != null) {
+         return false;
+      } else if (!this.f.N()) {
+         return false;
+      } else if (!this.a.bM()) {
+         return false;
+      } else if (!this.f.g(this.a.dl())) {
+         return false;
+      } else {
+         return !this.a.c(bjy.f).b() ? false : this.h();
+      }
+   }
+
+   protected boolean h() {
+      eif $$0 = this.i();
       if ($$0 == null) {
          return false;
       } else {
-         this.b = $$0;
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
          return true;
       }
    }
 
    @Override
    public boolean b() {
-      if (!this.b.bv()) {
-         return false;
-      } else {
-         return this.a.f(this.b) > 225.0 ? false : !this.a.L().l() || this.a();
-      }
+      return !this.a.L().l();
    }
 
    @Override
-   public void d() {
-      this.b = null;
-      this.a.L().n();
+   public void c() {
+      this.a.L().a(this.b, this.c, this.d, this.e);
    }
 
-   @Override
-   public boolean Q_() {
-      return true;
-   }
+   @Nullable
+   protected eif i() {
+      ate $$0 = this.a.ef();
+      ht $$1 = this.a.dl();
 
-   @Override
-   public void e() {
-      this.a.G().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.df() * 2.0F * this.a.df() * 2.0F);
-      double $$1 = this.a.i(this.b.dq(), this.b.ds(), this.b.dw());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.L().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.C(this.b);
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         ht $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.g($$3) && this.a.h($$3) < 0.0F) {
+            return eif.c($$3);
          }
       }
+
+      return null;
    }
 }

@@ -1,34 +1,106 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Lifecycle;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class ip extends iq {
-   public static final Vector3f a = ehh.a(16711680).j();
-   public static final ip b = new ip(a, 1.0F);
-   public static final Codec<ip> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arj.d.fieldOf("color").forGetter($$0x -> $$0x.g), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)).apply($$0, ip::new)
-   );
-   public static final it.a<ip> d = new it.a<ip>() {
-      public ip a(iu<ip> $$0, StringReader $$1) throws CommandSyntaxException {
-         Vector3f $$2 = iq.a($$1);
-         $$1.expect(' ');
-         float $$3 = $$1.readFloat();
-         return new ip($$2, $$3);
-      }
+public interface ip extends id.b {
+   Logger a = LogUtils.getLogger();
+   ip.b b = new ip.c(Map.of()).c();
 
-      public ip a(iu<ip> $$0, so $$1) {
-         return new ip(iq.b($$1), $$1.readFloat());
-      }
-   };
-
-   public ip(Vector3f $$0, float $$1) {
-      super($$0, $$1);
-   }
+   <E> Optional<io<E>> c(afv<? extends io<? extends E>> var1);
 
    @Override
-   public iu<ip> b() {
-      return iv.o;
+   default <T> Optional<id.c<T>> a(afv<? extends io<? extends T>> $$0) {
+      return this.c($$0).map(io::p);
+   }
+
+   default <E> io<E> d(afv<? extends io<? extends E>> $$0) {
+      return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
+   }
+
+   Stream<ip.d<?>> b();
+
+   static ip.b a(final io<? extends io<?>> $$0) {
+      return new ip.b() {
+         @Override
+         public <T> Optional<io<T>> c(afv<? extends io<? extends T>> $$0x) {
+            io<io<T>> $$1 = (io<io<T>>)$$0;
+            return $$1.d((afv<io<T>>)$$0);
+         }
+
+         @Override
+         public Stream<ip.d<?>> b() {
+            return $$0.g().stream().map(ip.d::a);
+         }
+
+         @Override
+         public ip.b c() {
+            return this;
+         }
+      };
+   }
+
+   default ip.b c() {
+      class a extends ip.c implements ip.b {
+         protected a(Stream<ip.d<?>> $$1) {
+            super($$1);
+         }
+      }
+
+      return new a(this.b().map(ip.d::c));
+   }
+
+   default Lifecycle d() {
+      return this.b().map($$0 -> $$0.b.d()).reduce(Lifecycle.stable(), Lifecycle::add);
+   }
+
+   public interface b extends ip {
+   }
+
+   public static class c implements ip {
+      private final Map<? extends afv<? extends io<?>>, ? extends io<?>> c;
+
+      public c(List<? extends io<?>> $$0) {
+         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(io::c, $$0x -> $$0x));
+      }
+
+      public c(Map<? extends afv<? extends io<?>>, ? extends io<?>> $$0) {
+         this.c = Map.copyOf($$0);
+      }
+
+      public c(Stream<ip.d<?>> $$0) {
+         this.c = $$0.collect(ImmutableMap.toImmutableMap(ip.d::a, ip.d::b));
+      }
+
+      @Override
+      public <E> Optional<io<E>> c(afv<? extends io<? extends E>> $$0) {
+         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
+      }
+
+      @Override
+      public Stream<ip.d<?>> b() {
+         return this.c.entrySet().stream().map(ip.d::a);
+      }
+   }
+
+   public static record d<T>(afv<? extends io<T>> a, io<T> b) {
+
+      private static <T, R extends io<? extends T>> ip.d<T> a(Entry<? extends afv<? extends io<?>>, R> $$0) {
+         return a((afv<? extends io<?>>)$$0.getKey(), $$0.getValue());
+      }
+
+      private static <T> ip.d<T> a(afv<? extends io<?>> $$0, io<?> $$1) {
+         return new ip.d<>((afv<? extends io<T>>)$$0, (io<T>)$$1);
+      }
+
+      private ip.d<T> c() {
+         return new ip.d<>(this.a, this.b.l());
+      }
    }
 }

@@ -1,77 +1,57 @@
-import com.google.common.collect.Lists;
-import java.util.AbstractList;
-import java.util.Arrays;
-import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.LongArgumentType;
 
-public class hn<E> extends AbstractList<E> {
-   private final List<E> a;
-   @Nullable
-   private final E b;
+public class hn implements hf<LongArgumentType, hn.a> {
+   public void a(hn.a $$0, tl $$1) {
+      boolean $$2 = $$0.b != Long.MIN_VALUE;
+      boolean $$3 = $$0.c != Long.MAX_VALUE;
+      $$1.k(hh.a($$2, $$3));
+      if ($$2) {
+         $$1.b($$0.b);
+      }
 
-   public static <E> hn<E> a() {
-      return new hn<>(Lists.newArrayList(), null);
+      if ($$3) {
+         $$1.b($$0.c);
+      }
    }
 
-   public static <E> hn<E> a(int $$0) {
-      return new hn<>(Lists.newArrayListWithCapacity($$0), null);
+   public hn.a a(tl $$0) {
+      byte $$1 = $$0.readByte();
+      long $$2 = hh.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
+      long $$3 = hh.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
+      return new hn.a($$2, $$3);
    }
 
-   public static <E> hn<E> a(int $$0, E $$1) {
-      Validate.notNull($$1);
-      Object[] $$2 = new Object[$$0];
-      Arrays.fill($$2, $$1);
-      return new hn<>(Arrays.asList((E[])$$2), $$1);
+   public void a(hn.a $$0, JsonObject $$1) {
+      if ($$0.b != Long.MIN_VALUE) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      if ($$0.c != Long.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
    }
 
-   @SafeVarargs
-   public static <E> hn<E> a(E $$0, E... $$1) {
-      return new hn<>(Arrays.asList($$1), $$0);
+   public hn.a a(LongArgumentType $$0) {
+      return new hn.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   protected hn(List<E> $$0, @Nullable E $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public final class a implements hf.a<LongArgumentType> {
+      final long b;
+      final long c;
 
-   @Nonnull
-   @Override
-   public E get(int $$0) {
-      return this.a.get($$0);
-   }
+      a(long $$1, long $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-   @Override
-   public E set(int $$0, E $$1) {
-      Validate.notNull($$1);
-      return this.a.set($$0, $$1);
-   }
+      public LongArgumentType a(dp $$0) {
+         return LongArgumentType.longArg(this.b, this.c);
+      }
 
-   @Override
-   public void add(int $$0, E $$1) {
-      Validate.notNull($$1);
-      this.a.add($$0, $$1);
-   }
-
-   @Override
-   public E remove(int $$0) {
-      return this.a.remove($$0);
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public void clear() {
-      if (this.b == null) {
-         super.clear();
-      } else {
-         for (int $$0 = 0; $$0 < this.size(); $$0++) {
-            this.set($$0, this.b);
-         }
+      @Override
+      public hf<LongArgumentType, ?> a() {
+         return hn.this;
       }
    }
 }

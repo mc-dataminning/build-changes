@@ -1,92 +1,44 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import java.util.zip.Deflater;
 
-public record ti(String b, List<ti.a> c, ui d) {
-   public static final Codec<ti> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(ti::a),
-               ti.a.d.listOf().fieldOf("parameters").forGetter(ti::b),
-               ui.b.b.optionalFieldOf("style", ui.a).forGetter(ti::c)
-            )
-            .apply($$0, ti::new)
-   );
+public class ti extends MessageToByteEncoder<ByteBuf> {
+   private final byte[] a = new byte[8192];
+   private final Deflater b;
+   private int c;
 
-   public static ti a(String $$0) {
-      return new ti($$0, List.of(ti.a.a, ti.a.c), ui.a);
+   public ti(int $$0) {
+      this.c = $$0;
+      this.b = new Deflater();
    }
 
-   public static ti b(String $$0) {
-      ui $$1 = ui.a.a(n.h).b(true);
-      return new ti($$0, List.of(ti.a.a, ti.a.c), $$1);
-   }
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      if ($$3 < this.c) {
+         tz.a($$2, 0);
+         $$2.writeBytes($$1);
+      } else {
+         byte[] $$4 = new byte[$$3];
+         $$1.readBytes($$4);
+         tz.a($$2, $$4.length);
+         this.b.setInput($$4, 0, $$3);
+         this.b.finish();
 
-   public static ti c(String $$0) {
-      ui $$1 = ui.a.a(n.h).b(true);
-      return new ti($$0, List.of(ti.a.b, ti.a.c), $$1);
-   }
+         while (!this.b.finished()) {
+            int $$5 = this.b.deflate(this.a);
+            $$2.writeBytes(this.a, 0, $$5);
+         }
 
-   public static ti d(String $$0) {
-      return new ti($$0, List.of(ti.a.b, ti.a.a, ti.a.c), ui.a);
-   }
-
-   public tl a(tl $$0, th.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return tl.a(this.b, $$2).c(this.d);
-   }
-
-   private tl[] b(tl $$0, th.a $$1) {
-      tl[] $$2 = new tl[this.c.size()];
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         ti.a $$4 = this.c.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+         this.b.reset();
       }
-
-      return $$2;
    }
 
-   public String a() {
-      return this.b;
-   }
-
-   public List<ti.a> b() {
+   public int a() {
       return this.c;
    }
 
-   public ui c() {
-      return this.d;
-   }
-
-   public static enum a implements asu {
-      a("sender", ($$0, $$1) -> $$1.b()),
-      b("target", ($$0, $$1) -> $$1.c()),
-      c("content", ($$0, $$1) -> $$0);
-
-      public static final Codec<ti.a> d = asu.a(ti.a::values);
-      private final String e;
-      private final ti.a.a f;
-
-      private a(String $$0, ti.a.a $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public tl a(tl $$0, th.a $$1) {
-         tl $$2 = this.f.select($$0, $$1);
-         return Objects.requireNonNullElse($$2, tk.a);
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      public interface a {
-         @Nullable
-         tl select(tl var1, th.a var2);
-      }
+   public void a(int $$0) {
+      this.c = $$0;
    }
 }

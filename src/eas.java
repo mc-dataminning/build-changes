@@ -1,301 +1,321 @@
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.EnumSet;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
 
-public class eas extends eba {
-   private final Long2ObjectMap<ear> l = new Long2ObjectOpenHashMap();
-   private static final float m = 1.5F;
-   private static final int n = 10;
+public abstract class eas<M extends eap<M>> {
+   private final cri i;
+   protected final dil a;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   protected volatile M c;
+   protected final M d;
+   protected final LongSet e = new LongOpenHashSet();
+   protected final LongSet f = new LongOpenHashSet();
+   protected final Long2ObjectMap<did> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
+   private final LongSet k = new LongOpenHashSet();
+   private final LongSet l = new LongOpenHashSet();
+   protected volatile boolean h;
 
-   @Override
-   public void a(cqo $$0, bjo $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
-      $$1.C();
+   protected eas(cri $$0, dil $$1, M $$2) {
+      this.i = $$0;
+      this.a = $$1;
+      this.d = $$2;
+      this.c = $$2.b();
+      this.c.d();
+      this.b.defaultReturnValue((byte)0);
    }
 
-   @Override
-   public void b() {
-      this.b.E();
-      this.l.clear();
-      super.b();
-   }
-
-   @Override
-   public eat a() {
-      int $$0;
-      if (this.f() && this.b.aX()) {
-         $$0 = this.b.dr();
-         gw.a $$1 = new gw.a(this.b.dq(), (double)$$0, this.b.dw());
-
-         for (dfd $$2 = this.a.a_($$1); $$2.a(cte.G); $$2 = this.a.a_($$1)) {
-            $$1.b(this.b.dq(), (double)(++$$0), this.b.dw());
-         }
-      } else {
-         $$0 = asb.a(this.b.ds() + 0.5);
-      }
-
-      gw $$4 = gw.a(this.b.dq(), (double)$$0, this.b.dw());
-      if (!this.a($$4)) {
-         for (gw $$5 : this.a(this.b)) {
-            if (this.a($$5)) {
-               return super.c($$5);
-            }
-         }
-      }
-
-      return super.c($$4);
-   }
-
-   @Override
-   protected boolean a(gw $$0) {
-      ear $$1 = this.a(this.b, $$0);
-      return this.b.a($$1) >= 0.0F;
-   }
-
-   @Override
-   public eaz a(double $$0, double $$1, double $$2) {
-      return this.a(this.b(asb.a($$0), asb.a($$1), asb.a($$2)));
-   }
-
-   @Override
-   public int a(eat[] $$0, eat $$1) {
-      int $$2 = 0;
-      eat $$3 = this.a($$1.a, $$1.b, $$1.c + 1);
-      if (this.c($$3)) {
-         $$0[$$2++] = $$3;
-      }
-
-      eat $$4 = this.a($$1.a - 1, $$1.b, $$1.c);
-      if (this.c($$4)) {
-         $$0[$$2++] = $$4;
-      }
-
-      eat $$5 = this.a($$1.a + 1, $$1.b, $$1.c);
-      if (this.c($$5)) {
-         $$0[$$2++] = $$5;
-      }
-
-      eat $$6 = this.a($$1.a, $$1.b, $$1.c - 1);
-      if (this.c($$6)) {
-         $$0[$$2++] = $$6;
-      }
-
-      eat $$7 = this.a($$1.a, $$1.b + 1, $$1.c);
-      if (this.c($$7)) {
-         $$0[$$2++] = $$7;
-      }
-
-      eat $$8 = this.a($$1.a, $$1.b - 1, $$1.c);
-      if (this.c($$8)) {
-         $$0[$$2++] = $$8;
-      }
-
-      eat $$9 = this.a($$1.a, $$1.b + 1, $$1.c + 1);
-      if (this.c($$9) && this.b($$3) && this.b($$7)) {
-         $$0[$$2++] = $$9;
-      }
-
-      eat $$10 = this.a($$1.a - 1, $$1.b + 1, $$1.c);
-      if (this.c($$10) && this.b($$4) && this.b($$7)) {
-         $$0[$$2++] = $$10;
-      }
-
-      eat $$11 = this.a($$1.a + 1, $$1.b + 1, $$1.c);
-      if (this.c($$11) && this.b($$5) && this.b($$7)) {
-         $$0[$$2++] = $$11;
-      }
-
-      eat $$12 = this.a($$1.a, $$1.b + 1, $$1.c - 1);
-      if (this.c($$12) && this.b($$6) && this.b($$7)) {
-         $$0[$$2++] = $$12;
-      }
-
-      eat $$13 = this.a($$1.a, $$1.b - 1, $$1.c + 1);
-      if (this.c($$13) && this.b($$3) && this.b($$8)) {
-         $$0[$$2++] = $$13;
-      }
-
-      eat $$14 = this.a($$1.a - 1, $$1.b - 1, $$1.c);
-      if (this.c($$14) && this.b($$4) && this.b($$8)) {
-         $$0[$$2++] = $$14;
-      }
-
-      eat $$15 = this.a($$1.a + 1, $$1.b - 1, $$1.c);
-      if (this.c($$15) && this.b($$5) && this.b($$8)) {
-         $$0[$$2++] = $$15;
-      }
-
-      eat $$16 = this.a($$1.a, $$1.b - 1, $$1.c - 1);
-      if (this.c($$16) && this.b($$6) && this.b($$8)) {
-         $$0[$$2++] = $$16;
-      }
-
-      eat $$17 = this.a($$1.a + 1, $$1.b, $$1.c - 1);
-      if (this.c($$17) && this.b($$6) && this.b($$5)) {
-         $$0[$$2++] = $$17;
-      }
-
-      eat $$18 = this.a($$1.a + 1, $$1.b, $$1.c + 1);
-      if (this.c($$18) && this.b($$3) && this.b($$5)) {
-         $$0[$$2++] = $$18;
-      }
-
-      eat $$19 = this.a($$1.a - 1, $$1.b, $$1.c - 1);
-      if (this.c($$19) && this.b($$6) && this.b($$4)) {
-         $$0[$$2++] = $$19;
-      }
-
-      eat $$20 = this.a($$1.a - 1, $$1.b, $$1.c + 1);
-      if (this.c($$20) && this.b($$3) && this.b($$4)) {
-         $$0[$$2++] = $$20;
-      }
-
-      eat $$21 = this.a($$1.a + 1, $$1.b + 1, $$1.c - 1);
-      if (this.c($$21) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$7) && this.b($$12) && this.b($$11)) {
-         $$0[$$2++] = $$21;
-      }
-
-      eat $$22 = this.a($$1.a + 1, $$1.b + 1, $$1.c + 1);
-      if (this.c($$22) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$7) && this.b($$9) && this.b($$11)) {
-         $$0[$$2++] = $$22;
-      }
-
-      eat $$23 = this.a($$1.a - 1, $$1.b + 1, $$1.c - 1);
-      if (this.c($$23) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$7) && this.b($$12) && this.b($$10)) {
-         $$0[$$2++] = $$23;
-      }
-
-      eat $$24 = this.a($$1.a - 1, $$1.b + 1, $$1.c + 1);
-      if (this.c($$24) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$7) && this.b($$9) && this.b($$10)) {
-         $$0[$$2++] = $$24;
-      }
-
-      eat $$25 = this.a($$1.a + 1, $$1.b - 1, $$1.c - 1);
-      if (this.c($$25) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$8) && this.b($$16) && this.b($$15)) {
-         $$0[$$2++] = $$25;
-      }
-
-      eat $$26 = this.a($$1.a + 1, $$1.b - 1, $$1.c + 1);
-      if (this.c($$26) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$8) && this.b($$13) && this.b($$15)) {
-         $$0[$$2++] = $$26;
-      }
-
-      eat $$27 = this.a($$1.a - 1, $$1.b - 1, $$1.c - 1);
-      if (this.c($$27) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$8) && this.b($$16) && this.b($$14)) {
-         $$0[$$2++] = $$27;
-      }
-
-      eat $$28 = this.a($$1.a - 1, $$1.b - 1, $$1.c + 1);
-      if (this.c($$28) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$8) && this.b($$13) && this.b($$14)) {
-         $$0[$$2++] = $$28;
-      }
-
-      return $$2;
-   }
-
-   private boolean b(@Nullable eat $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
-   }
-
-   private boolean c(@Nullable eat $$0) {
-      return $$0 != null && !$$0.i;
+   protected boolean b(long $$0) {
+      return this.a($$0, true) != null;
    }
 
    @Nullable
-   @Override
-   protected eat a(int $$0, int $$1, int $$2) {
-      eat $$3 = null;
-      ear $$4 = this.c($$0, $$1, $$2);
-      float $$5 = this.b.a($$4);
-      if ($$5 >= 0.0F) {
-         $$3 = this.b($$0, $$1, $$2);
-         $$3.l = $$4;
-         $$3.k = Math.max($$3.k, $$5);
-         if ($$4 == ear.c) {
-            $$3.k++;
-         }
-      }
-
-      return $$3;
+   protected did a(long $$0, boolean $$1) {
+      return this.a($$1 ? this.d : this.c, $$0);
    }
 
-   private ear c(int $$0, int $$1, int $$2) {
-      return (ear)this.l.computeIfAbsent(gw.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2, this.b));
+   @Nullable
+   protected did a(M $$0, long $$1) {
+      return $$0.c($$1);
    }
 
-   @Override
-   public ear a(cph $$0, int $$1, int $$2, int $$3, bjo $$4) {
-      EnumSet<ear> $$5 = EnumSet.noneOf(ear.class);
-      ear $$6 = ear.a;
-      gw $$7 = $$4.dl();
-      $$6 = super.a($$0, $$1, $$2, $$3, $$5, $$6, $$7);
-      if ($$5.contains(ear.h)) {
-         return ear.h;
+   @Nullable
+   protected did c(long $$0) {
+      did $$1 = this.d.c($$0);
+      if ($$1 == null) {
+         return null;
       } else {
-         ear $$8 = ear.a;
-
-         for (ear $$9 : $$5) {
-            if ($$4.a($$9) < 0.0F) {
-               return $$9;
-            }
-
-            if ($$4.a($$9) >= $$4.a($$8)) {
-               $$8 = $$9;
-            }
+         if (this.e.add($$0)) {
+            $$1 = $$1.b();
+            this.d.a($$0, $$1);
+            this.d.c();
          }
 
-         return $$6 == ear.b && $$4.a($$8) == 0.0F ? ear.b : $$8;
+         return $$1;
       }
    }
 
-   @Override
-   public ear a(cph $$0, int $$1, int $$2, int $$3) {
-      gw.a $$4 = new gw.a();
-      ear $$5 = b($$0, $$4.d($$1, $$2, $$3));
-      if ($$5 == ear.b && $$2 >= $$0.H_() + 1) {
-         ear $$6 = b($$0, $$4.d($$1, $$2 - 1, $$3));
-         if ($$6 == ear.o || $$6 == ear.i) {
-            $$5 = ear.o;
-         } else if ($$6 == ear.q) {
-            $$5 = ear.q;
-         } else if ($$6 == ear.x) {
-            $$5 = ear.x;
-         } else if ($$6 == ear.h) {
-            if (!$$4.equals(this.b.dl())) {
-               $$5 = ear.h;
+   @Nullable
+   public did d(long $$0) {
+      did $$1 = (did)this.g.get($$0);
+      return $$1 != null ? $$1 : this.a($$0, false);
+   }
+
+   protected abstract int a(long var1);
+
+   protected int e(long $$0) {
+      long $$1 = iu.e($$0);
+      did $$2 = this.a($$1, true);
+      return $$2.a(iu.b(ht.a($$0)), iu.b(ht.b($$0)), iu.b(ht.c($$0)));
+   }
+
+   protected void a(long $$0, int $$1) {
+      long $$2 = iu.e($$0);
+      did $$3;
+      if (this.e.add($$2)) {
+         $$3 = this.d.a($$2);
+      } else {
+         $$3 = this.a($$2, true);
+      }
+
+      $$3.a(iu.b(ht.a($$0)), iu.b(ht.b($$0)), iu.b(ht.c($$0)), $$1);
+      iu.a($$0, this.f::add);
+   }
+
+   protected void f(long $$0) {
+      int $$1 = iu.b($$0);
+      int $$2 = iu.c($$0);
+      int $$3 = iu.d($$0);
+
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               this.f.add(iu.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
             }
+         }
+      }
+   }
+
+   protected did g(long $$0) {
+      did $$1 = (did)this.g.get($$0);
+      return $$1 != null ? $$1 : new did();
+   }
+
+   protected boolean a() {
+      return this.h;
+   }
+
+   protected void a(eav<M, ?> $$0) {
+      if (this.h) {
+         this.h = false;
+         LongIterator $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$1 = (Long)$$5.next();
+            did $$2 = (did)this.g.remove($$1);
+            did $$3 = this.d.d($$1);
+            if (this.k.contains(iu.f($$1))) {
+               if ($$2 != null) {
+                  this.g.put($$1, $$2);
+               } else if ($$3 != null) {
+                  this.g.put($$1, $$3);
+               }
+            }
+         }
+
+         this.d.c();
+         $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$4 = (Long)$$5.next();
+            this.i($$4);
+            this.e.add($$4);
+         }
+
+         this.l.clear();
+         ObjectIterator<Entry<did>> $$5x = Long2ObjectMaps.fastIterator(this.g);
+
+         while ($$5x.hasNext()) {
+            Entry<did> $$6 = (Entry<did>)$$5x.next();
+            long $$7 = $$6.getLongKey();
+            if (this.b($$7)) {
+               did $$8 = (did)$$6.getValue();
+               if (this.d.c($$7) != $$8) {
+                  this.d.a($$7, $$8);
+                  this.e.add($$7);
+               }
+
+               $$5x.remove();
+            }
+         }
+
+         this.d.c();
+      }
+   }
+
+   protected void h(long $$0) {
+   }
+
+   protected void i(long $$0) {
+   }
+
+   protected void b(long $$0, boolean $$1) {
+      if ($$1) {
+         this.j.add($$0);
+      } else {
+         this.j.remove($$0);
+      }
+   }
+
+   protected boolean j(long $$0) {
+      long $$1 = iu.f($$0);
+      return this.j.contains($$1);
+   }
+
+   public void c(long $$0, boolean $$1) {
+      if ($$1) {
+         this.k.add($$0);
+      } else {
+         this.k.remove($$0);
+      }
+   }
+
+   protected void a(long $$0, @Nullable did $$1) {
+      if ($$1 != null) {
+         this.g.put($$0, $$1);
+         this.h = true;
+      } else {
+         this.g.remove($$0);
+      }
+   }
+
+   protected void d(long $$0, boolean $$1) {
+      byte $$2 = this.b.get($$0);
+      byte $$3 = eas.a.a($$2, !$$1);
+      if ($$2 != $$3) {
+         this.a($$0, $$3);
+         int $$4 = $$1 ? -1 : 1;
+
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               for (int $$7 = -1; $$7 <= 1; $$7++) {
+                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
+                     long $$8 = iu.a($$0, $$5, $$6, $$7);
+                     byte $$9 = this.b.get($$8);
+                     this.a($$8, eas.a.a($$9, eas.a.b($$9) + $$4));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   protected void a(long $$0, byte $$1) {
+      if ($$1 != 0) {
+         if (this.b.put($$0, $$1) == 0) {
+            this.l($$0);
+         }
+      } else if (this.b.remove($$0) != 0) {
+         this.m($$0);
+      }
+   }
+
+   private void l(long $$0) {
+      if (!this.l.remove($$0)) {
+         this.d.a($$0, this.g($$0));
+         this.e.add($$0);
+         this.h($$0);
+         this.f($$0);
+         this.h = true;
+      }
+   }
+
+   private void m(long $$0) {
+      this.l.add($$0);
+      this.h = true;
+   }
+
+   protected void b() {
+      if (!this.e.isEmpty()) {
+         M $$0 = this.d.b();
+         $$0.d();
+         this.c = $$0;
+         this.e.clear();
+      }
+
+      if (!this.f.isEmpty()) {
+         LongIterator $$1 = this.f.iterator();
+
+         while ($$1.hasNext()) {
+            long $$2 = $$1.nextLong();
+            this.a.a(this.i, iu.a($$2));
+         }
+
+         this.f.clear();
+      }
+   }
+
+   public eas.b k(long $$0) {
+      return eas.a.c(this.b.get($$0));
+   }
+
+   protected static class a {
+      public static final byte a = 0;
+      private static final int b = 0;
+      private static final int c = 26;
+      private static final byte d = 32;
+      private static final byte e = 31;
+
+      public static byte a(byte $$0, boolean $$1) {
+         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
+      }
+
+      public static byte a(byte $$0, int $$1) {
+         if ($$1 >= 0 && $$1 <= 26) {
+            return (byte)($$0 & -32 | $$1 & 31);
          } else {
-            $$5 = $$6 != ear.c && $$6 != ear.b && $$6 != ear.j ? ear.c : ear.b;
+            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
          }
       }
 
-      if ($$5 == ear.c || $$5 == ear.b) {
-         $$5 = a($$0, $$4.d($$1, $$2, $$3), $$5);
+      public static boolean a(byte $$0) {
+         return ($$0 & 32) != 0;
       }
 
-      return $$5;
+      public static int b(byte $$0) {
+         return $$0 & 31;
+      }
+
+      public static eas.b c(byte $$0) {
+         if ($$0 == 0) {
+            return eas.b.a;
+         } else {
+            return a($$0) ? eas.b.c : eas.b.b;
+         }
+      }
    }
 
-   private Iterable<gw> a(bjo $$0) {
-      float $$1 = 1.0F;
-      ehc $$2 = $$0.cG();
-      boolean $$3 = $$2.a() < 1.0;
-      if (!$$3) {
-         return List.of(
-            gw.a($$2.a, (double)$$0.dr(), $$2.c),
-            gw.a($$2.a, (double)$$0.dr(), $$2.f),
-            gw.a($$2.d, (double)$$0.dr(), $$2.c),
-            gw.a($$2.d, (double)$$0.dr(), $$2.f)
-         );
-      } else {
-         double $$4 = Math.max(0.0, (1.5 - $$2.d()) / 2.0);
-         double $$5 = Math.max(0.0, (1.5 - $$2.b()) / 2.0);
-         double $$6 = Math.max(0.0, (1.5 - $$2.c()) / 2.0);
-         ehc $$7 = $$2.c($$5, $$6, $$4);
-         return gw.a($$0.ef(), 10, asb.a($$7.a), asb.a($$7.b), asb.a($$7.c), asb.a($$7.d), asb.a($$7.e), asb.a($$7.f));
+   public static enum b {
+      a("2"),
+      b("1"),
+      c("0");
+
+      private final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
       }
    }
 }

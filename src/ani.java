@@ -1,33 +1,14 @@
-import java.util.function.UnaryOperator;
+public enum ani {
+   a("assets"),
+   b("data");
 
-public interface ani {
-   UnaryOperator<tl> a = UnaryOperator.identity();
-   ani b = a(a, true);
-   ani c = a(a("pack.source.builtin"), true);
-   ani d = a(a("pack.source.feature"), false);
-   ani e = a(a("pack.source.world"), true);
-   ani f = a(a("pack.source.server"), true);
+   private final String c;
 
-   tl a(tl var1);
-
-   boolean a();
-
-   static ani a(final UnaryOperator<tl> $$0, final boolean $$1) {
-      return new ani() {
-         @Override
-         public tl a(tl $$0x) {
-            return $$0.apply($$0);
-         }
-
-         @Override
-         public boolean a() {
-            return $$1;
-         }
-      };
+   private ani(String $$0) {
+      this.c = $$0;
    }
 
-   private static UnaryOperator<tl> a(String $$0) {
-      tl $$1 = tl.c($$0);
-      return $$1x -> tl.a("pack.nameAndSource", $$1x, $$1).a(n.h);
+   public String a() {
+      return this.c;
    }
 }

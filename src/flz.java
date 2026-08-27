@@ -1,40 +1,30 @@
-public class flz extends fmq {
-   private final fml a;
+public class flz extends fll {
+   private static final int a = 12235202;
 
-   flz(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fml $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public flu b() {
-      return flu.c;
+   protected flz(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fnl $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)asi.b.b(12235202) / 255.0F - $$9;
+      this.w = (float)asi.b.c(12235202) / 255.0F - $$9;
+      this.x = (float)asi.b.d(12235202) / 255.0F - $$9;
    }
 
    @Override
    public void a() {
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
       super.a();
-      this.b(this.a);
    }
 
-   public static record a(fml a) implements flt<iw> {
-      public flq a(iw $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         flz $$8 = new flz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.c();
-         $$8.z = $$0.c();
-         $$8.a($$1.z.a(12) + 8);
-         return $$8;
+   public static class a implements fmt<jv> {
+      private final fnl a;
+
+      public a(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new flz($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

@@ -1,65 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
 
 public class aim {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.setblock.failed"));
+   public static void a(CommandDispatcher<du> $$0) {
+      LiteralCommandNode<du> $$1 = $$0.register(
+         (LiteralArgumentBuilder)dv.a("msg").then(dv.a("targets", eg.d()).then(dv.a("message", ek.a()).executes($$0x -> {
+            Collection<alr> $$1x = eg.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               ek.a($$0x, "message", $$2 -> a((du)$$0x.getSource(), $$1x, $$2));
+            }
 
-   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("setblock").requires($$0x -> $$0x.c(2)))
-            .then(
-               du.a("pos", fk.a())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("block", fh.a($$1))
-                                 .executes($$0x -> a((dt)$$0x.getSource(), fk.a($$0x, "pos"), fh.a($$0x, "block"), aim.b.a, null)))
-                              .then(du.a("destroy").executes($$0x -> a((dt)$$0x.getSource(), fk.a($$0x, "pos"), fh.a($$0x, "block"), aim.b.b, null))))
-                           .then(
-                              du.a("keep")
-                                 .executes($$0x -> a((dt)$$0x.getSource(), fk.a($$0x, "pos"), fh.a($$0x, "block"), aim.b.a, $$0xx -> $$0xx.c().t($$0xx.d())))
-                           ))
-                        .then(du.a("replace").executes($$0x -> a((dt)$$0x.getSource(), fk.a($$0x, "pos"), fh.a($$0x, "block"), aim.b.a, null)))
-                  )
-            )
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)dv.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)dv.a("w").redirect($$1));
    }
 
-   private static int a(dt $$0, gw $$1, ff $$2, aim.b $$3, @Nullable Predicate<dfh> $$4) throws CommandSyntaxException {
-      akt $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dfh($$5, $$1, true))) {
-         throw a.create();
-      } else {
-         boolean $$6;
-         if ($$3 == aim.b.b) {
-            $$5.b($$1, true);
-            $$6 = !$$2.a().i() || !$$5.a_($$1).i();
-         } else {
-            dcz $$7 = $$5.c_($$1);
-            bgv.a_($$7);
-            $$6 = true;
-         }
+   private static void a(du $$0, Collection<alr> $$1, uy $$2) {
+      ue.a $$3 = ue.a(ue.e, $$0);
+      ux $$4 = ux.a($$2);
+      boolean $$5 = false;
 
-         if ($$6 && !$$2.a($$5, $$1, 2)) {
-            throw a.create();
-         } else {
-            $$5.b($$1, $$2.a().b());
-            $$0.a(() -> tl.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
-         }
+      for (alr $$6 : $$1) {
+         ue.a $$7 = ue.a(ue.f, $$0).c($$6.O_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.i();
       }
-   }
 
-   public interface a {
-      @Nullable
-      ff filter(duu var1, gw var2, ff var3, akt var4);
-   }
-
-   public static enum b {
-      a,
-      b;
+      if ($$5) {
+         $$0.a(apg.f);
+      }
    }
 }

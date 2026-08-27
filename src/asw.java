@@ -1,22 +1,14 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface asw {
-   Logger a = LogUtils.getLogger();
+public class asw {
+   @Nullable
+   private static byte[] a = null;
 
-   static asw immediate(Executor $$0) {
-      return $$1 -> $$1.submit($$0).exceptionally($$0xx -> {
-            a.error("Task failed", $$0xx);
-            return null;
-         });
+   public static void a() {
+      a = new byte[10485760];
    }
 
-   void append(asw.a var1);
-
-   public interface a {
-      CompletableFuture<?> submit(Executor var1);
+   public static void b() {
+      a = new byte[0];
    }
 }

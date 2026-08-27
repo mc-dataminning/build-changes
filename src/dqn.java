@@ -1,16 +1,18 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public class dqn implements dpu {
-   public static final Codec<dqn> a = arj.b(dug.c).fieldOf("features").xmap(dqn::new, $$0 -> $$0.b).codec();
-   public final hi<dug> b;
+public class dqn implements dqs {
+   public static final Codec<dqn> a = bhg.b(0, 256).fieldOf("count").xmap(dqn::new, dqn::a).codec();
+   private final bhg b;
 
-   public dqn(hi<dug> $$0) {
+   public dqn(int $$0) {
+      this.b = bhd.a($$0);
+   }
+
+   public dqn(bhg $$0) {
       this.b = $$0;
    }
 
-   @Override
-   public Stream<dnd<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public bhg a() {
+      return this.b;
    }
 }

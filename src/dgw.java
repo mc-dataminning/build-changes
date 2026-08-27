@@ -1,5 +1,14 @@
-public interface dgw {
-   dfd a(int var1);
+public enum dgw implements atr {
+   a,
+   b;
 
-   void a(int var1, dfd var2);
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this == a ? "left" : "right";
+   }
 }

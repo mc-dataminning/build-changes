@@ -1,18 +1,5 @@
-public record wv() implements ve<wu> {
-   public wv(so $$0) {
-      this();
-   }
-
+public record wv(afw a) implements wu {
    @Override
-   public void a(so $$0) {
-   }
-
-   public void a(wu $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public sn c() {
-      return sn.b;
+   public void a(tl $$0) {
    }
 }

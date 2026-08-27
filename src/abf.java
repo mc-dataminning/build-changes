@@ -1,3 +1,14 @@
-public interface abf extends su {
-   void a(aec var1);
+public record abf(int a) implements wb<xu> {
+   public abf(tl $$0) {
+      this($$0.n());
+   }
+
+   @Override
+   public void a(tl $$0) {
+      $$0.c(this.a);
+   }
+
+   public void a(xu $$0) {
+      $$0.a(this);
+   }
 }

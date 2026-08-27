@@ -1,60 +1,65 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record egg(egm b, String c, float d) implements ege {
-   public static final Codec<egg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egn.a.fieldOf("target").forGetter(egg::c),
-               Codec.STRING.fieldOf("score").forGetter(egg::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(egg::e)
-            )
-            .apply($$0, egg::new)
+public record egg(ib<cua> b, Optional<da> c) implements egh {
+   public static final Codec<egg> a = asg.a(
+      RecordCodecBuilder.create($$0 -> $$0.group(jy.f.r().fieldOf("block").forGetter(egg::c), asg.a(da.a, "properties").forGetter(egg::d)).apply($$0, egg::new)),
+      egg::a
    );
 
-   @Override
-   public egd b() {
-      return egf.e;
+   private static DataResult<egg> a(egg $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().n()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
    }
 
    @Override
-   public Set<ees<?>> a() {
-      return this.b.b();
-   }
-
-   public static egg a(eck.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static egg a(eck.b $$0, String $$1, float $$2) {
-      return new egg(egj.a($$0), $$1, $$2);
+   public egi b() {
+      return egj.j;
    }
 
    @Override
-   public float b(eck $$0) {
-      String $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         eig $$2 = $$0.d().f();
-         eid $$3 = $$2.b(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            return !$$2.b($$1, $$3) ? 0.0F : (float)$$2.c($$1, $$3).b() * this.d;
-         }
-      }
+   public Set<efq<?>> a() {
+      return Set.of(eft.g);
    }
 
-   public egm c() {
+   public boolean a(edi $$0) {
+      dgb $$1 = $$0.c(eft.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   }
+
+   public static egg.a a(cua $$0) {
+      return new egg.a($$0);
+   }
+
+   public ib<cua> c() {
       return this.b;
    }
 
-   public String d() {
+   public Optional<da> d() {
       return this.c;
    }
 
-   public float e() {
-      return this.d;
+   public static class a implements egh.a {
+      private final ib<cua> a;
+      private Optional<da> b = Optional.empty();
+
+      public a(cua $$0) {
+         this.a = $$0.r();
+      }
+
+      public egg.a a(da.a $$0) {
+         this.b = $$0.b();
+         return this;
+      }
+
+      @Override
+      public egh build() {
+         return new egg(this.a, this.b);
+      }
    }
 }

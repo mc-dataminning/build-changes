@@ -1,43 +1,35 @@
-import java.util.Locale;
+public class eua {
+   public static final afw a = new afw("textures/gui/title/minecraft.png");
+   public static final afw b = new afw("textures/gui/title/minceraft.png");
+   public static final afw c = new afw("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)ate.a().i() < 1.0E-4;
+   private final boolean o;
 
-public class eua extends ety {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 30;
-   private static final double j = 33.333333333333336;
-
-   public eua(erx $$0, asj $$1) {
-      super($$0, $$1);
+   public eua(boolean $$0) {
+      this.o = $$0;
    }
 
-   @Override
-   protected void a(erz $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(foi.D(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = eqp.O().m.g().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(foi.D(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
-      }
+   public void a(esy $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
-   }
-
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   public void a(esy $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

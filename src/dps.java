@@ -1,46 +1,60 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dps implements dpu {
-   public static final Codec<dps> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               bgj.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               bgj.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               bgj.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bgh.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bgh.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, dps::new)
-   );
-   public final int b;
-   public final bgj c;
-   public final bgj d;
-   public final int e;
-   public final int f;
-   public final bgj g;
-   public final bgh h;
-   public final bgh i;
-   public final float j;
-   public final int k;
-   public final int l;
+public class dps extends doo<drj> {
+   public dps(Codec<drj> $$0) {
+      super($$0);
+   }
 
-   public dps(int $$0, bgj $$1, bgj $$2, int $$3, int $$4, bgj $$5, bgh $$6, bgh $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   @Override
+   public boolean a(doq<drj> $$0) {
+      crt $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         drj $$3 = $$0.f();
+         ate $$4 = $$0.d();
+         dat $$5 = dat.b();
+         int $$6 = $$3.f() + $$3.d();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         ht $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, cuc.qH.o(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            ht $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), hx.b)) {
+               $$1.a($$14, cuc.qI.o().a(das.d, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(cra $$0, ht $$1) {
+      dgb $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dao) {
+         return true;
+      } else {
+         return !$$2.i() && (!$$2.a(cuc.G) || !$$2.u().b()) ? false : hx.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+      }
    }
 }

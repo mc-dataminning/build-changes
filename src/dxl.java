@@ -1,32 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public class dxl {
+   public static class a extends dwe {
+      public a(ht $$0) {
+         super(dwr.aa, 0, new dvs($$0));
+      }
 
-public class dxl extends dvc {
-   public static final Codec<dxl> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, dxl::new)
-   );
-   public final boolean e;
+      public a(rt $$0) {
+         super(dwr.aa, $$0);
+      }
 
-   public dxl(dvc.c $$0, boolean $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+      @Override
+      protected void a(dwq $$0, rt $$1) {
+      }
 
-   @Override
-   public Optional<dvc.b> a(dvc.a $$0) {
-      dkm.a $$1 = this.e ? dkm.a.a : dkm.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
-   }
+      @Override
+      public void a(crt $$0, crr $$1, dhy $$2, ate $$3, dvs $$4, cqg $$5, ht $$6) {
+         int $$7 = $$0.a(dlk.a.c, this.f.g(), this.f.i());
+         ht.a $$8 = new ht.a(this.f.g(), $$7, this.f.i());
 
-   private void a(dvu $$0, dvc.a $$1) {
-      czn $$2 = czn.a($$1.f());
-      gw $$3 = new gw($$1.h().d(), 90, $$1.h().e());
-      dxk.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
-   }
+         while ($$8.v() > $$0.I_()) {
+            dgb $$9 = $$0.a_($$8);
+            dgb $$10 = $$0.a_($$8.d());
+            if ($$10 == cuc.aV.o() || $$10 == cuc.b.o() || $$10 == cuc.g.o() || $$10 == cuc.c.o() || $$10 == cuc.e.o()) {
+               dgb $$11 = !$$9.i() && !this.b($$9) ? $$9 : cuc.I.o();
 
-   @Override
-   public dvl<?> e() {
-      return dvl.m;
+               for (hx $$12 : hx.values()) {
+                  ht $$13 = $$8.a($$12);
+                  dgb $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     ht $$15 = $$13.d();
+                     dgb $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != hx.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new dvs($$8);
+               this.a($$0, $$4, $$3, $$8, edg.G, null);
+               return;
+            }
+
+            $$8.e(0, -1, 0);
+         }
+      }
+
+      private boolean b(dgb $$0) {
+         return $$0 == cuc.G.o() || $$0 == cuc.H.o();
+      }
    }
 }

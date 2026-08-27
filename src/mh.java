@@ -1,56 +1,76 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class mh {
-   private static final ht a = new ht()
-      .a(jc.av, nu::a)
-      .a(jc.as, ns::a)
-      .a(jc.at, or::a)
-      .a(jc.az, pg::a)
-      .a(jc.aA, od::a)
-      .a(jc.aC, oc::a)
-      .a(jc.aB, nz::a)
-      .a(jc.aD, ny::a)
-      .a(jc.aq, oj::a)
-      .a(jc.aH, cro::a)
-      .a(jc.ay, nv::a)
-      .a(jc.au, dkt::a)
-      .a(jc.ax, dkr::a)
-      .a(jc.aG, dus::a)
-      .a(jc.aw, dte::a)
-      .a(jc.ar, th::a)
-      .a(jc.aF, clr::a)
-      .a(jc.aE, clp::a)
-      .a(jc.q, bhx::a);
+public final class mh {
+   public static final mh a = a("all");
+   public static final mh b = a("texture", a);
+   public static final mh c = a("particle", b);
+   public static final mh d = a("end", a);
+   public static final mh e = a("bottom", d);
+   public static final mh f = a("top", d);
+   public static final mh g = a("front", a);
+   public static final mh h = a("back", a);
+   public static final mh i = a("side", a);
+   public static final mh j = a("north", i);
+   public static final mh k = a("south", i);
+   public static final mh l = a("east", i);
+   public static final mh m = a("west", i);
+   public static final mh n = a("up");
+   public static final mh o = a("down");
+   public static final mh p = a("cross");
+   public static final mh q = a("plant");
+   public static final mh r = a("wall", a);
+   public static final mh s = a("rail");
+   public static final mh t = a("wool");
+   public static final mh u = a("pattern");
+   public static final mh v = a("pane");
+   public static final mh w = a("edge");
+   public static final mh x = a("fan");
+   public static final mh y = a("stem");
+   public static final mh z = a("upperstem");
+   public static final mh A = a("crop");
+   public static final mh B = a("dirt");
+   public static final mh C = a("fire");
+   public static final mh D = a("lantern");
+   public static final mh E = a("platform");
+   public static final mh F = a("unsticky");
+   public static final mh G = a("torch");
+   public static final mh H = a("layer0");
+   public static final mh I = a("layer1");
+   public static final mh J = a("layer2");
+   public static final mh K = a("lit_log");
+   public static final mh L = a("candle");
+   public static final mh M = a("inside");
+   public static final mh N = a("content");
+   public static final mh O = a("inner_top");
+   public static final mh P = a("flowerbed");
+   private final String Q;
+   @Nullable
+   private final mh R;
 
-   private static void a(hg.b $$0) {
-      a($$0.b(jc.az), $$0.b(jc.aq));
+   private static mh a(String $$0) {
+      return new mh($$0, null);
    }
 
-   public static void a(hf<dug> $$0, hg<cqz> $$1) {
-      $$1.b().forEach($$1x -> {
-         aez $$2 = $$1x.g().a();
-         List<hi<dug>> $$3 = ((cqz)$$1x.a()).d().b();
-         $$3.stream().flatMap(hi::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               he.c<dug> $$3xx = $$0.b($$2xx);
-               if (!a($$3xx.a())) {
-                  ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
-               }
-            }).ifRight($$1xxx -> {
-               if (!a($$1xxx)) {
-                  ac.a("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
-               }
-            }));
-      });
+   private static mh a(String $$0, mh $$1) {
+      return new mh($$0, $$1);
    }
 
-   private static boolean a(dug $$0) {
-      return $$0.c().contains(dtu.a());
+   private mh(String $$0, @Nullable mh $$1) {
+      this.Q = $$0;
+      this.R = $$1;
    }
 
-   public static hg.b a() {
-      hr.b $$0 = hr.a(jb.aq);
-      hg.b $$1 = a.a($$0);
-      a($$1);
-      return $$1;
+   public String a() {
+      return this.Q;
+   }
+
+   @Nullable
+   public mh b() {
+      return this.R;
+   }
+
+   @Override
+   public String toString() {
+      return "#" + this.Q;
    }
 }

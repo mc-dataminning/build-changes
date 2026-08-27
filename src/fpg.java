@@ -1,68 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
-
 public class fpg {
-   private final aez a;
-   private final List<fpg.b> b;
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   public fpg(aez $$0, List<fpg.b> $$1) {
+   public fpg(int $$0, int $$1, int $$2, int $$3) {
       this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public aez a() {
+   public fpg a(fpg $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
+   }
+
+   public int a() {
       return this.a;
    }
 
-   public Stream<fpg.b> b() {
-      return this.b.stream();
+   public int b() {
+      return this.b;
    }
 
-   protected static class a implements JsonDeserializer<fpg> {
-      public fpg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         aez $$4 = new aez(arr.i($$3, "model"));
-         List<fpg.b> $$5 = this.a($$3);
-         return new fpg($$4, $$5);
-      }
-
-      protected List<fpg.b> a(JsonObject $$0) {
-         Map<aez, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = arr.u($$0, "predicate");
-
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(new aez($$3.getKey()), arr.e($$3.getValue(), $$3.getKey()));
-         }
-
-         return $$1.entrySet().stream().map($$0x -> new fpg.b((aez)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
-      }
+   public void a(int $$0) {
+      this.a = $$0;
    }
 
-   public static class b {
-      private final aez a;
-      private final float b;
+   public void b(int $$0) {
+      this.b = $$0;
+   }
 
-      public b(aez $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public int c() {
+      return this.c;
+   }
 
-      public aez a() {
-         return this.a;
-      }
+   public int d() {
+      return this.d;
+   }
 
-      public float b() {
-         return this.b;
-      }
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

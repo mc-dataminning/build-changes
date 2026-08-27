@@ -1,193 +1,45 @@
-import java.util.EnumSet;
-import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public abstract class bzy extends byw {
-   private static final aef<Byte> e = aei.a(bzy.class, aeh.a);
-   protected int b;
-   private bzy.a bT = bzy.a.a;
+public interface bzy extends cap {
+   void b(boolean var1);
 
-   protected bzy(bja<? extends bzy> $$0, cqb $$1) {
-      super($$0, $$1);
+   void a(bkj var1, ckj var2, cdp var3, float var4);
+
+   @Nullable
+   bkj q();
+
+   void a();
+
+   default void b(bkj $$0, float $$1) {
+      bia $$2 = cdq.a($$0, ckm.uZ);
+      ckj $$3 = $$0.b($$2);
+      if ($$0.b(ckm.uZ)) {
+         cir.a($$0.dL(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dL().ai().a() * 4));
+      }
+
+      this.a();
    }
 
-   @Override
-   protected void a_() {
-      super.a_();
-      this.an.a(e, (byte)0);
+   default void a(bkj $$0, bkj $$1, cdp $$2, float $$3, float $$4) {
+      double $$5 = $$1.dq() - $$0.dq();
+      double $$6 = $$1.dw() - $$0.dw();
+      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
+      double $$8 = $$1.e(0.3333333333333333) - $$2.ds() + $$7 * 0.2F;
+      Vector3f $$9 = this.a($$0, new eif($$5, $$8, $$6), $$3);
+      $$2.c((double)$$9.x(), (double)$$9.y(), (double)$$9.z(), $$4, (float)(14 - $$0.dL().ai().a() * 4));
+      $$0.a(aqd.fq, 1.0F, 1.0F / ($$0.ef().i() * 0.4F + 0.8F));
    }
 
-   @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      this.b = $$0.h("SpellTicks");
-   }
-
-   @Override
-   public void b(qw $$0) {
-      super.b($$0);
-      $$0.a("SpellTicks", this.b);
-   }
-
-   @Override
-   public byw.a s() {
-      if (this.go()) {
-         return byw.a.c;
-      } else {
-         return this.gv() ? byw.a.g : byw.a.a;
-      }
-   }
-
-   public boolean go() {
-      return this.dL().B ? this.an.b(e) > 0 : this.b > 0;
-   }
-
-   public void a(bzy.a $$0) {
-      this.bT = $$0;
-      this.an.b(e, (byte)$$0.h);
-   }
-
-   protected bzy.a gp() {
-      return !this.dL().B ? this.bT : bzy.a.a(this.an.b(e));
-   }
-
-   @Override
-   protected void X() {
-      super.X();
-      if (this.b > 0) {
-         this.b--;
-      }
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.dL().B && this.go()) {
-         bzy.a $$0 = this.gp();
-         double $$1 = $$0.i[0];
-         double $$2 = $$0.i[1];
-         double $$3 = $$0.i[2];
-         float $$4 = this.aU * (float) (Math.PI / 180.0) + asb.b((float)this.ah * 0.6662F) * 0.25F;
-         float $$5 = asb.b($$4);
-         float $$6 = asb.a($$4);
-         this.dL().a(iv.v, this.dq() + (double)$$5 * 0.6, this.ds() + 1.8, this.dw() + (double)$$6 * 0.6, $$1, $$2, $$3);
-         this.dL().a(iv.v, this.dq() - (double)$$5 * 0.6, this.ds() + 1.8, this.dw() - (double)$$6 * 0.6, $$1, $$2, $$3);
-      }
-   }
-
-   protected int gq() {
-      return this.b;
-   }
-
-   protected abstract apf ge();
-
-   protected static enum a {
-      a(0, 0.0, 0.0, 0.0),
-      b(1, 0.7, 0.7, 0.8),
-      c(2, 0.4, 0.3, 0.35),
-      d(3, 0.7, 0.5, 0.2),
-      e(4, 0.3, 0.3, 0.8),
-      f(5, 0.1, 0.1, 0.2);
-
-      private static final IntFunction<bzy.a> g = aqu.a($$0 -> $$0.h, values(), aqu.a.a);
-      final int h;
-      final double[] i;
-
-      private a(int $$0, double $$1, double $$2, double $$3) {
-         this.h = $$0;
-         this.i = new double[]{$$1, $$2, $$3};
+   default Vector3f a(bkj $$0, eif $$1, float $$2) {
+      Vector3f $$3 = $$1.j().normalize();
+      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
+      if ((double)$$4.lengthSquared() <= 1.0E-7) {
+         eif $$5 = $$0.i(1.0F);
+         $$4 = new Vector3f($$3).cross($$5.j());
       }
 
-      public static bzy.a a(int $$0) {
-         return g.apply($$0);
-      }
-   }
-
-   protected class b extends bqh {
-      public b() {
-         this.a(EnumSet.of(bqh.a.a, bqh.a.b));
-      }
-
-      @Override
-      public boolean a() {
-         return bzy.this.gq() > 0;
-      }
-
-      @Override
-      public void c() {
-         super.c();
-         bzy.this.bN.n();
-      }
-
-      @Override
-      public void d() {
-         super.d();
-         bzy.this.a(bzy.a.a);
-      }
-
-      @Override
-      public void e() {
-         if (bzy.this.q() != null) {
-            bzy.this.G().a(bzy.this.q(), (float)bzy.this.Z(), (float)bzy.this.Y());
-         }
-      }
-   }
-
-   protected abstract class c extends bqh {
-      protected int b;
-      protected int c;
-
-      @Override
-      public boolean a() {
-         bjm $$0 = bzy.this.q();
-         if ($$0 == null || !$$0.bv()) {
-            return false;
-         } else {
-            return bzy.this.go() ? false : bzy.this.ah >= this.c;
-         }
-      }
-
-      @Override
-      public boolean b() {
-         bjm $$0 = bzy.this.q();
-         return $$0 != null && $$0.bv() && this.b > 0;
-      }
-
-      @Override
-      public void c() {
-         this.b = this.a(this.n());
-         bzy.this.b = this.h();
-         this.c = bzy.this.ah + this.i();
-         apf $$0 = this.l();
-         if ($$0 != null) {
-            bzy.this.a($$0, 1.0F, 1.0F);
-         }
-
-         bzy.this.a(this.m());
-      }
-
-      @Override
-      public void e() {
-         this.b--;
-         if (this.b == 0) {
-            this.k();
-            bzy.this.a(bzy.this.ge(), 1.0F, 1.0F);
-         }
-      }
-
-      protected abstract void k();
-
-      protected int n() {
-         return 20;
-      }
-
-      protected abstract int h();
-
-      protected abstract int i();
-
-      @Nullable
-      protected abstract apf l();
-
-      protected abstract bzy.a m();
+      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
+      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
    }
 }

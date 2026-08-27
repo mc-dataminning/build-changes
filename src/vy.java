@@ -1,5 +1,10 @@
-public record vy(aez a) implements vx {
+public class vy<T extends tr> implements wb<T> {
    @Override
-   public void a(so $$0) {
+   public final void a(tl $$0) {
+   }
+
+   @Override
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 }

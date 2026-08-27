@@ -1,91 +1,245 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import java.util.Optional;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class csd extends ctl {
-   public static final MapCodec<csd> a = RecordCodecBuilder.mapCodec(
+public class csd {
+   public static final Codec<csd> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               aey.a(jc.e).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               aey.a(jc.e).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               aey.a(jc.E).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               t()
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               csd.b.d.optionalFieldOf("grass_color_modifier", csd.b.a).forGetter($$0x -> $$0x.h),
+               crw.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               aqc.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               crv.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               cru.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               aqa.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
             )
             .apply($$0, csd::new)
    );
-   public static final dfx b = cww.aE;
-   protected static final float c = 2.0F;
-   private static final Map<ha, eia> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         ha.d,
-         ctc.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         ha.e,
-         ctc.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         ha.c,
-         ctc.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         ha.f,
-         ctc.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final aey<ctc> e;
-   private final aey<ctc> f;
-   private final aey<cjg> g;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final csd.b h;
+   private final Optional<crw> i;
+   private final Optional<ib<aqc>> j;
+   private final Optional<crv> k;
+   private final Optional<cru> l;
+   private final Optional<aqa> m;
 
-   @Override
-   public MapCodec<csd> a() {
-      return a;
+   csd(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      csd.b $$6,
+      Optional<crw> $$7,
+      Optional<ib<aqc>> $$8,
+      Optional<crv> $$9,
+      Optional<cru> $$10,
+      Optional<aqa> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
    }
 
-   protected csd(aey<ctc> $$0, aey<ctc> $$1, aey<cjg> $$2, dfc.d $$3) {
-      super($$3);
-      this.k(this.E.b().a(b, ha.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return d.get($$0.c(b));
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
-         Optional<ctc> $$6 = $$3.G_().d(jc.e).d(this.f);
-         if ($$6.isPresent()) {
-            return $$6.get().o().b(daw.c, Integer.valueOf(7));
-         }
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
+      return this.f;
+   }
+
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public csd.b g() {
+      return this.h;
+   }
+
+   public Optional<crw> h() {
+      return this.i;
+   }
+
+   public Optional<ib<aqc>> i() {
+      return this.j;
+   }
+
+   public Optional<crv> j() {
+      return this.k;
+   }
+
+   public Optional<cru> k() {
+      return this.l;
+   }
+
+   public Optional<aqa> l() {
+      return this.m;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private csd.b g = csd.b.a;
+      private Optional<crw> h = Optional.empty();
+      private Optional<ib<aqc>> i = Optional.empty();
+      private Optional<crv> j = Optional.empty();
+      private Optional<cru> k = Optional.empty();
+      private Optional<aqa> l = Optional.empty();
+
+      public csd.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      public csd.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public csd.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public csd.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public csd.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public csd.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public csd.a a(csd.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public csd.a a(crw $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public csd.a a(ib<aqc> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public csd.a a(crv $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public csd.a a(cru $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public csd.a a(@Nullable aqa $$0) {
+         this.l = Optional.ofNullable($$0);
+         return this;
+      }
+
+      public csd a() {
+         return new csd(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
+         );
+      }
    }
 
-   @Override
-   protected boolean d(dfd $$0, cph $$1, gw $$2) {
-      return $$0.a(cte.cC);
-   }
+   public static enum b implements atr {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = crx.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
 
-   @Override
-   public cjl a(cqe $$0, gw $$1, dfd $$2) {
-      return new cjl((cqa)DataFixUtils.orElse($$0.G_().d(jc.E).d(this.g), this));
-   }
+      private final String e;
+      public static final Codec<csd.b> d = atr.a(csd.b::values);
 
-   @Override
-   public dfd a(dfd $$0, czn $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
+      public abstract int a(double var1, double var3, int var5);
 
-   @Override
-   public dfd a(dfd $$0, cxx $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
+      b(String $$0) {
+         this.e = $$0;
+      }
 
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b);
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

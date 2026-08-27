@@ -1,19 +1,53 @@
-public final class bhm implements bhh {
-   private final tl a;
-   private final cfv b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   public bhm(cfv $$0, tl $$1) {
+public class bhm extends bhg {
+   public static final Codec<bhm> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bhm::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final int b;
+   private final int f;
+
+   private bhm(int $$0, int $$1) {
       this.b = $$0;
-      this.a = $$1;
+      this.f = $$1;
+   }
+
+   public static bhm a(int $$0, int $$1) {
+      return new bhm($$0, $$1);
    }
 
    @Override
-   public tl N_() {
-      return this.a;
+   public int a(ate $$0) {
+      return asy.b($$0, this.b, this.f);
    }
 
    @Override
-   public cer createMenu(int $$0, cbz $$1, cca $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   public int a() {
+      return this.b;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bhh<?> c() {
+      return bhh.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

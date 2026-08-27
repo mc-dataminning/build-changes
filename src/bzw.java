@@ -1,114 +1,55 @@
-public class bzw extends byx {
-   private static final int c = 300;
-   private static final aef<Boolean> d = aei.a(bzw.class, aeh.k);
-   public static final String b = "StrayConversionTime";
-   private int e;
-   private int bT;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public bzw(bja<? extends bzw> $$0, cqb $$1) {
+public class bzw extends caw {
+   public bzw(bjx<? extends bzw> $$0, cqz $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void a_() {
-      super.a_();
-      this.al().a(d, false);
-   }
-
-   public boolean gf() {
-      return this.al().b(d);
-   }
-
-   public void w(boolean $$0) {
-      this.an.b(d, $$0);
+   public static blo.a s() {
+      return caw.t().a(blp.l, 12.0);
    }
 
    @Override
-   public boolean ge() {
-      return this.gf();
-   }
-
-   @Override
-   public void l() {
-      if (!this.dL().B && this.bv() && !this.fU()) {
-         if (this.aA) {
-            if (this.gf()) {
-               this.bT--;
-               if (this.bT < 0) {
-                  this.gg();
-               }
-            } else {
-               this.e++;
-               if (this.e >= 140) {
-                  this.b(300);
-               }
+   public boolean C(bjt $$0) {
+      if (super.C($$0)) {
+         if ($$0 instanceof bkj) {
+            int $$1 = 0;
+            if (this.dL().ai() == bhy.c) {
+               $$1 = 7;
+            } else if (this.dL().ai() == bhy.d) {
+               $$1 = 15;
             }
-         } else {
-            this.e = -1;
-            this.w(false);
+
+            if ($$1 > 0) {
+               ((bkj)$$0).b(new bjg(bji.s, $$1 * 20, 0), this);
+            }
          }
-      }
 
-      super.l();
-   }
-
-   @Override
-   public void b(qw $$0) {
-      super.b($$0);
-      $$0.a("StrayConversionTime", this.gf() ? this.bT : -1);
-   }
-
-   @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
-         this.b($$0.h("StrayConversionTime"));
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private void b(int $$0) {
-      this.bT = $$0;
-      this.w(true);
-   }
-
-   protected void gg() {
-      this.a(bja.aU, true);
-      if (!this.aS()) {
-         this.dL().a(null, 1048, this.dl(), 0);
-      }
+   @Nullable
+   @Override
+   public blc a(cro $$0, bhz $$1, bkn $$2, @Nullable blc $$3, @Nullable rt $$4) {
+      return $$3;
    }
 
    @Override
-   public boolean dz() {
-      return false;
+   protected float b(bkv $$0, bju $$1) {
+      return 0.45F;
    }
 
    @Override
-   protected apf w() {
-      return apg.vo;
+   protected Vector3f a(bjt $$0, bju $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b, 0.0F);
    }
 
    @Override
-   protected apf d(bhu $$0) {
-      return apg.vz;
-   }
-
-   @Override
-   protected apf l_() {
-      return apg.vq;
-   }
-
-   @Override
-   apf t() {
-      return apg.vB;
-   }
-
-   @Override
-   protected void a(bhu $$0, int $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$0.d() instanceof bza $$4 && $$4.gf()) {
-         $$4.gg();
-         this.a(cjo.tr);
-      }
+   protected float l(bjt $$0) {
+      return $$0.df() <= this.df() ? -0.21875F : 0.0F;
    }
 }

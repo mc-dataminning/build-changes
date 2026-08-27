@@ -1,22 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpw implements dpu {
-   public static final Codec<dpw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               drv.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               drv.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dpw::new)
-   );
-   public final drv b;
-   public final drv c;
-   public final int d;
+public class dpw extends doo<drl> {
+   public dpw(Codec<drl> $$0) {
+      super($$0);
+   }
 
-   public dpw(drv $$0, drv $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   @Override
+   public boolean a(doq<drl> $$0) {
+      ate $$1 = $$0.d();
+      drl $$2 = $$0.f();
+      crt $$3 = $$0.b();
+      ht $$4 = $$0.e();
+      dhy $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      dve $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

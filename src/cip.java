@@ -1,123 +1,285 @@
 import com.google.common.collect.Lists;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.IntFunction;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class cip extends cjg {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final String b = "Fireworks";
-   public static final String c = "Explosion";
-   public static final String d = "Explosions";
-   public static final String e = "Flight";
-   public static final String f = "Type";
-   public static final String g = "Trail";
-   public static final String h = "Flicker";
-   public static final String i = "Colors";
-   public static final String j = "FadeColors";
-   public static final double k = 0.15;
+public class cip {
+   private final ui a;
+   String b = "items.png";
+   boolean c = true;
+   boolean d = true;
+   boolean e = false;
+   private final cip.f f;
+   private final int g;
+   private final cip.h h;
+   @Nullable
+   private ckj i;
+   private Collection<ckj> j = ckk.a();
+   private Set<ckj> k = ckk.a();
+   @Nullable
+   private Consumer<List<ckj>> l;
+   private final Supplier<ckj> m;
+   private final cip.b n;
 
-   public cip(cjg.a $$0) {
-      super($$0);
+   cip(cip.f $$0, int $$1, cip.h $$2, ui $$3, Supplier<ckj> $$4, cip.b $$5) {
+      this.f = $$0;
+      this.g = $$1;
+      this.a = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.h = $$2;
    }
 
-   @Override
-   public bhe a(clv $$0) {
-      cqb $$1 = $$0.q();
-      if (!$$1.B) {
-         cjl $$2 = $$0.n();
-         ehh $$3 = $$0.l();
-         ha $$4 = $$0.k();
-         ccn $$5 = new ccn($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.h(1);
+   public static cip.a a(cip.f $$0, int $$1) {
+      return new cip.a($$0, $$1);
+   }
+
+   public ui a() {
+      return this.a;
+   }
+
+   public ckj b() {
+      if (this.i == null) {
+         this.i = this.m.get();
       }
 
-      return bhe.a($$1.B);
+      return this.i;
    }
 
-   @Override
-   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
-      if ($$1.fw()) {
-         cjl $$3 = $$1.b($$2);
-         if (!$$0.B) {
-            ccn $$4 = new ccn($$0, $$3, $$1);
-            $$0.b($$4);
-            if (!$$1.fT().d) {
-               $$3.h(1);
-            }
+   public String c() {
+      return this.b;
+   }
 
-            $$1.b(apq.c.b(this));
-         }
+   public boolean d() {
+      return this.d;
+   }
 
-         return bhf.a($$1.b($$2), $$0.w_());
-      } else {
-         return bhf.c($$1.b($$2));
+   public boolean e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   public cip.f g() {
+      return this.f;
+   }
+
+   public boolean h() {
+      return !this.j.isEmpty();
+   }
+
+   public boolean i() {
+      return this.h != cip.h.a || this.h();
+   }
+
+   public boolean j() {
+      return this.e;
+   }
+
+   public cip.h k() {
+      return this.h;
+   }
+
+   public void a(cip.d $$0) {
+      cip.c $$1 = new cip.c(this, $$0.a);
+      afv<cip> $$2 = jy.ap.c(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
+      this.n.accept($$0, $$1);
+      this.j = $$1.a;
+      this.k = $$1.b;
+      this.n();
+   }
+
+   public Collection<ckj> l() {
+      return this.j;
+   }
+
+   public Collection<ckj> m() {
+      return this.k;
+   }
+
+   public boolean a(ckj $$0) {
+      return this.k.contains($$0);
+   }
+
+   public void a(Consumer<List<ckj>> $$0) {
+      this.l = $$0;
+   }
+
+   public void n() {
+      if (this.l != null) {
+         this.l.accept(Lists.newArrayList(this.k));
       }
    }
 
-   @Override
-   public void a(cjl $$0, @Nullable cqb $$1, List<tl> $$2, clc $$3) {
-      qw $$4 = $$0.b("Fireworks");
-      if ($$4 != null) {
-         if ($$4.b("Flight", 99)) {
-            $$2.add(tl.c("item.minecraft.firework_rocket.flight").b(tk.u).f(String.valueOf($$4.f("Flight"))).a(n.h));
-         }
+   public static class a {
+      private static final cip.b a = ($$0, $$1) -> {
+      };
+      private final cip.f b;
+      private final int c;
+      private ui d = ui.i();
+      private Supplier<ckj> e = () -> ckj.b;
+      private cip.b f = a;
+      private boolean g = true;
+      private boolean h = true;
+      private boolean i = false;
+      private cip.h j = cip.h.a;
+      private String k = "items.png";
 
-         rc $$5 = $$4.c("Explosions", 10);
-         if (!$$5.isEmpty()) {
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               qw $$7 = $$5.a($$6);
-               List<tl> $$8 = Lists.newArrayList();
-               ciq.a($$7, $$8);
-               if (!$$8.isEmpty()) {
-                  for (int $$9 = 1; $$9 < $$8.size(); $$9++) {
-                     $$8.set($$9, tl.b("  ").b($$8.get($$9)).a(n.h));
+      public a(cip.f $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public cip.a a(ui $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public cip.a a(Supplier<ckj> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public cip.a a(cip.b $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public cip.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public cip.a b() {
+         this.h = false;
+         return this;
+      }
+
+      public cip.a c() {
+         this.g = false;
+         return this;
+      }
+
+      protected cip.a a(cip.h $$0) {
+         this.j = $$0;
+         return this;
+      }
+
+      public cip.a a(String $$0) {
+         this.k = $$0;
+         return this;
+      }
+
+      public cip d() {
+         if ((this.j == cip.h.c || this.j == cip.h.b) && this.f != a) {
+            throw new IllegalStateException("Special tabs can't have display items");
+         } else {
+            cip $$0 = new cip(this.b, this.c, this.j, this.d, this.e, this.f);
+            $$0.e = this.i;
+            $$0.d = this.h;
+            $$0.c = this.g;
+            $$0.b = this.k;
+            return $$0;
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void accept(cip.d var1, cip.e var2);
+   }
+
+   static class c implements cip.e {
+      public final Collection<ckj> a = ckk.a();
+      public final Set<ckj> b = ckk.a();
+      private final cip c;
+      private final cfg d;
+
+      public c(cip $$0, cfg $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public void a(ckj $$0, cip.g $$1) {
+         if ($$0.L() != 1) {
+            throw new IllegalArgumentException("Stack size must be exactly 1");
+         } else {
+            boolean $$2 = this.a.contains($$0) && $$1 != cip.g.c;
+            if ($$2) {
+               throw new IllegalStateException(
+                  "Accidentally adding the same item stack twice " + $$0.J().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
+               );
+            } else {
+               if ($$0.d().a(this.d)) {
+                  switch ($$1) {
+                     case a:
+                        this.a.add($$0);
+                        this.b.add($$0);
+                        break;
+                     case b:
+                        this.a.add($$0);
+                        break;
+                     case c:
+                        this.b.add($$0);
                   }
-
-                  $$2.addAll($$8);
                }
             }
          }
       }
    }
 
-   public static void a(cjl $$0, byte $$1) {
-      $$0.a("Fireworks").a("Flight", $$1);
+   public static record d(cfg a, boolean b, id.b c) {
+
+      public boolean a(cfg $$0, boolean $$1, id.b $$2) {
+         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+      }
    }
 
-   @Override
-   public cjl ai_() {
-      cjl $$0 = new cjl(this);
-      a($$0, (byte)1);
-      return $$0;
+   public interface e {
+      void a(ckj var1, cip.g var2);
+
+      default void a(ckj $$0) {
+         this.a($$0, cip.g.a);
+      }
+
+      default void a(cqy $$0, cip.g $$1) {
+         this.a(new ckj($$0), $$1);
+      }
+
+      default void a(cqy $$0) {
+         this.a(new ckj($$0), cip.g.a);
+      }
+
+      default void a(Collection<ckj> $$0, cip.g $$1) {
+         $$0.forEach($$1x -> this.a($$1x, $$1));
+      }
+
+      default void a(Collection<ckj> $$0) {
+         this.a($$0, cip.g.a);
+      }
    }
 
-   public static enum a {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
+   public static enum f {
+      a,
+      b;
+   }
 
-      private static final IntFunction<cip.a> f = aqu.a(cip.a::a, values(), aqu.a.a);
-      private final int g;
-      private final String h;
+   protected static enum g {
+      a,
+      b,
+      c;
+   }
 
-      private a(int $$0, String $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
-
-      public int a() {
-         return this.g;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static cip.a a(int $$0) {
-         return f.apply($$0);
-      }
+   public static enum h {
+      a,
+      b,
+      c,
+      d;
    }
 }

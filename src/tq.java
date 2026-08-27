@@ -1,99 +1,39 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageCodec;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+import io.netty.util.ReferenceCountUtil;
 import java.util.List;
-import java.util.Optional;
+import org.slf4j.Logger;
 
-public interface tq {
-   Optional<atc> a = Optional.of(atc.a);
-   tq b = new tq() {
-      @Override
-      public <T> Optional<T> a(tq.a<T> $$0) {
-         return Optional.empty();
+public class tq extends MessageToMessageCodec<wb<?>, wb<?>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final AttributeKey<tk.a<?>> b;
+   private final AttributeKey<tk.a<?>> c;
+
+   public tq(AttributeKey<tk.a<?>> $$0, AttributeKey<tk.a<?>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private static void a(ChannelHandlerContext $$0, wb<?> $$1, List<Object> $$2, AttributeKey<tk.a<?>> $$3) {
+      Attribute<tk.a<?>> $$4 = $$0.channel().attr($$3);
+      tk.a<?> $$5 = (tk.a<?>)$$4.get();
+      if (!$$5.b($$1)) {
+         a.error("Unrecognized packet in pipeline {}:{} - {}", new Object[]{$$5.a().a(), $$5.b(), $$1});
       }
 
-      @Override
-      public <T> Optional<T> a(tq.b<T> $$0, ui $$1) {
-         return Optional.empty();
-      }
-   };
-
-   <T> Optional<T> a(tq.a<T> var1);
-
-   <T> Optional<T> a(tq.b<T> var1, ui var2);
-
-   static tq e(final String $$0) {
-      return new tq() {
-         @Override
-         public <T> Optional<T> a(tq.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(tq.b<T> $$0x, ui $$1) {
-            return $$0.accept($$1, $$0);
-         }
-      };
+      ReferenceCountUtil.retain($$1);
+      $$2.add($$1);
+      tt.a($$4, $$1);
    }
 
-   static tq a(final String $$0, final ui $$1) {
-      return new tq() {
-         @Override
-         public <T> Optional<T> a(tq.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(tq.b<T> $$0x, ui $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
+   protected void a(ChannelHandlerContext $$0, wb<?> $$1, List<Object> $$2) throws Exception {
+      a($$0, $$1, $$2, this.b);
    }
 
-   static tq a(tq... $$0) {
-      return a(ImmutableList.copyOf($$0));
-   }
-
-   static tq a(final List<? extends tq> $$0) {
-      return new tq() {
-         @Override
-         public <T> Optional<T> a(tq.a<T> $$0x) {
-            for (tq $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
-               }
-            }
-
-            return Optional.empty();
-         }
-
-         @Override
-         public <T> Optional<T> a(tq.b<T> $$0x, ui $$1) {
-            for (tq $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
-         }
-      };
-   }
-
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      Optional<T> accept(String var1);
-   }
-
-   public interface b<T> {
-      Optional<T> accept(ui var1, String var2);
+   protected void b(ChannelHandlerContext $$0, wb<?> $$1, List<Object> $$2) throws Exception {
+      a($$0, $$1, $$2, this.c);
    }
 }

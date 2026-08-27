@@ -1,24 +1,18 @@
-public class vk implements ve<vh> {
-   private final long a;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-   public vk(long $$0) {
-      this.a = $$0;
-   }
+public interface vk {
+   MapCodec<vk> c = uk.a(new vk.a[]{vl.b, vj.b, vs.b}, vk.a::a, vk::a);
 
-   public vk(so $$0) {
-      this.a = $$0.readLong();
-   }
+   Stream<rt> a(du var1) throws CommandSyntaxException;
 
-   @Override
-   public void a(so $$0) {
-      $$0.b(this.a);
-   }
+   vk.a<?> a();
 
-   public void a(vh $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
+   public static record a<T extends vk>(MapCodec<T> a, String b) implements atr {
+      @Override
+      public String c() {
+         return this.b;
+      }
    }
 }

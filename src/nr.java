@@ -1,11 +1,13 @@
-import com.mojang.serialization.Lifecycle;
+import java.util.concurrent.CompletableFuture;
 
-public interface nr<T> {
-   he.c<T> a(aey<T> var1, T var2, Lifecycle var3);
-
-   default he.c<T> a(aey<T> $$0, T $$1) {
-      return this.a($$0, $$1, Lifecycle.stable());
+public class nr extends nu<ebd> {
+   public nr(kh $$0, CompletableFuture<id.b> $$1) {
+      super($$0, jz.x, $$1, $$0x -> $$0x.k().g());
    }
 
-   <S> hf<S> a(aey<? extends hq<? extends S>> var1);
+   @Override
+   protected void a(id.b $$0) {
+      this.a(aqx.a).a(ebf.c, ebf.b);
+      this.a(aqx.b).a(ebf.e, ebf.d);
+   }
 }

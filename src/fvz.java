@@ -1,18 +1,29 @@
-public class fvz extends fuj<cbt, fhj<cbt>> {
-   private static final aez a = new aez("textures/entity/wandering_trader.png");
+public class fvz extends fvj<bwp, fhl<bwp>> {
+   private static final afw a = new afw("textures/entity/fish/salmon.png");
 
-   public fvz(ftd.a $$0) {
-      super($$0, new fhj<>($$0.a(fhw.bM)), 0.5F);
-      this.a(new fwq<>(this, $$0.f(), $$0.d()));
-      this.a(new fwp<>(this, $$0.d()));
+   public fvz(fud.a $$0) {
+      super($$0, new fhl<>($$0.a(fiv.ba)), 0.4F);
    }
 
-   public aez a(cbt $$0) {
+   public afw a(bwp $$0) {
       return a;
    }
 
-   protected void a(cbt $$0, elj $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   protected void a(bwp $$0, emh $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = 1.0F;
+      float $$6 = 1.0F;
+      if (!$$0.aX()) {
+         $$5 = 1.3F;
+         $$6 = 1.7F;
+      }
+
+      float $$7 = $$5 * 4.3F * asy.a($$6 * 0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, 0.0F, -0.4F);
+      if (!$$0.aX()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

@@ -1,89 +1,145 @@
-public interface sb extends rn {
-   sb a = new sb() {
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+
+public class sb extends sh {
+   private static final int b = 16;
+   public static final sp<sb> a = new sp.a<sb>() {
+      public sb a(DataInput $$0, sc $$1) throws IOException {
+         return sb.a(d($$0, $$1));
+      }
+
+      @Override
+      public sk.b a(DataInput $$0, sk $$1, sc $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static long d(DataInput $$0, sc $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readLong();
+      }
+
+      @Override
+      public int c() {
+         return 8;
+      }
+
+      @Override
+      public String a() {
+         return "LONG";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Long";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
    };
+   private final long c;
 
-   @Override
-   default rn.b a() {
-      return rn.b.a;
+   sb(long $$0) {
+      this.c = $$0;
+   }
+
+   public static sb a(long $$0) {
+      return $$0 >= -128L && $$0 <= 1024L ? sb.a.a[(int)$$0 - -128] : new sb($$0);
    }
 
    @Override
-   default rn.b a(String $$0) {
-      return rn.b.a;
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeLong(this.c);
    }
 
    @Override
-   default rn.b a(byte $$0) {
-      return rn.b.a;
+   public int a() {
+      return 16;
    }
 
    @Override
-   default rn.b a(short $$0) {
-      return rn.b.a;
+   public byte b() {
+      return 4;
    }
 
    @Override
-   default rn.b a(int $$0) {
-      return rn.b.a;
+   public sp<sb> c() {
+      return a;
+   }
+
+   public sb e() {
+      return this;
    }
 
    @Override
-   default rn.b a(long $$0) {
-      return rn.b.a;
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof sb && this.c == ((sb)$$0).c;
    }
 
    @Override
-   default rn.b a(float $$0) {
-      return rn.b.a;
+   public int hashCode() {
+      return (int)(this.c ^ this.c >>> 32);
    }
 
    @Override
-   default rn.b a(double $$0) {
-      return rn.b.a;
+   public void a(sr $$0) {
+      $$0.a(this);
    }
 
    @Override
-   default rn.b a(byte[] $$0) {
-      return rn.b.a;
+   public long f() {
+      return this.c;
    }
 
    @Override
-   default rn.b a(int[] $$0) {
-      return rn.b.a;
+   public int g() {
+      return (int)(this.c & -1L);
    }
 
    @Override
-   default rn.b a(long[] $$0) {
-      return rn.b.a;
+   public short h() {
+      return (short)((int)(this.c & 65535L));
    }
 
    @Override
-   default rn.b a(rs<?> $$0, int $$1) {
-      return rn.b.a;
+   public byte i() {
+      return (byte)((int)(this.c & 255L));
    }
 
    @Override
-   default rn.a b(rs<?> $$0, int $$1) {
-      return rn.a.b;
+   public double j() {
+      return (double)this.c;
    }
 
    @Override
-   default rn.a a(rs<?> $$0) {
-      return rn.a.b;
+   public float k() {
+      return (float)this.c;
    }
 
    @Override
-   default rn.a a(rs<?> $$0, String $$1) {
-      return rn.a.b;
+   public Number l() {
+      return this.c;
    }
 
    @Override
-   default rn.b b() {
-      return rn.b.a;
+   public sk.b a(sk $$0) {
+      return $$0.a(this.c);
    }
 
-   @Override
-   default rn.b b(rs<?> $$0) {
-      return rn.b.a;
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final sb[] a = new sb[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new sb((long)(-128 + $$0));
+         }
+      }
    }
 }

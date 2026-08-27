@@ -1,72 +1,61 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class bpz extends bqh {
-   private static final int a = 40;
-   private static final Predicate<dfd> b = dfm.a(cte.bt);
-   private final bjo c;
-   private final cqb d;
-   private int e;
+public class bpz extends bma<ccb> {
+   private static final int d = 15;
+   private static final int e = 20;
+   private static final double f = 0.5;
+   private static final double g = 2.5;
+   public static final int c = 40;
+   private static final int h = asy.c(34.0);
+   private static final int i = asy.f(60.0F);
 
-   public bpz(bjo $$0) {
-      this.c = $$0;
-      this.d = $$0.dL();
-      this.a(EnumSet.of(bqh.a.a, bqh.a.b, bqh.a.c));
+   public bpz() {
+      super(ImmutableMap.of(btk.o, btl.a, btk.aI, btl.b, btk.aJ, btl.c, btk.aK, btl.c), i);
    }
 
-   @Override
-   public boolean a() {
-      if (this.c.ef().a(this.c.m_() ? 50 : 1000) != 0) {
-         return false;
-      } else {
-         gw $$0 = this.c.dl();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(cte.i);
+   protected boolean a(alq $$0, ccb $$1) {
+      return $$1.a($$1.dN().c(btk.o).get(), 15.0, 20.0);
+   }
+
+   protected boolean a(alq $$0, ccb $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(alq $$0, ccb $$1, long $$2) {
+      $$1.dN().a(btk.p, true, (long)i);
+      $$1.dN().a(btk.aK, atz.a, (long)h);
+      $$0.a($$1, (byte)62);
+      $$1.a(aqd.zO, 3.0F, 1.0F);
+   }
+
+   protected void c(alq $$0, ccb $$1, long $$2) {
+      $$1.dN().c(btk.o).ifPresent($$1x -> $$1.G().a($$1x.dj()));
+      if (!$$1.dN().a(btk.aK) && !$$1.dN().a(btk.aJ)) {
+         $$1.dN().a(btk.aJ, atz.a, (long)(i - h));
+         $$1.dN().c(btk.o).filter($$1::a).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            eif $$3 = $$1.dj().b(0.0, 1.6F, 0.0);
+            eif $$4 = $$2x.bp().d($$3);
+            eif $$5 = $$4.d();
+
+            for (int $$6 = 1; $$6 < asy.a($$4.f()) + 7; $$6++) {
+               eif $$7 = $$3.e($$5.a((double)$$6));
+               $$0.a(js.y, $$7.c, $$7.d, $$7.e, 1, 0.0, 0.0, 0.0, 0.0);
+            }
+
+            $$1.a(aqd.zN, 3.0F, 1.0F);
+            $$2x.a($$0.ag().e($$1), 10.0F);
+            double $$8 = 0.5 * (1.0 - $$2x.b(blp.i));
+            double $$9 = 2.5 * (1.0 - $$2x.b(blp.i));
+            $$2x.j($$5.a() * $$9, $$5.b() * $$8, $$5.c() * $$9);
+         });
       }
    }
 
-   @Override
-   public void c() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.L().n();
+   protected void d(alq $$0, ccb $$1, long $$2) {
+      a($$1, 40);
    }
 
-   @Override
-   public void d() {
-      this.e = 0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.e > 0;
-   }
-
-   public int h() {
-      return this.e;
-   }
-
-   @Override
-   public void e() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         gw $$0 = this.c.dl();
-         if (b.test(this.d.a_($$0))) {
-            if (this.d.X().b(cpx.c)) {
-               this.d.b($$0, false);
-            }
-
-            this.c.N();
-         } else {
-            gw $$1 = $$0.d();
-            if (this.d.a_($$1).a(cte.i)) {
-               if (this.d.X().b(cpx.c)) {
-                  this.d.c(2001, $$1, ctc.i(cte.i.o()));
-                  this.d.a($$1, cte.j.o(), 2);
-               }
-
-               this.c.N();
-            }
-         }
-      }
+   public static void a(bkj $$0, int $$1) {
+      $$0.dN().a(btk.aI, atz.a, (long)$$1);
    }
 }

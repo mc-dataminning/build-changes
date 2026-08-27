@@ -1,34 +1,38 @@
-import java.util.Locale;
+public class ebx extends ebr {
+   private float m = Float.MAX_VALUE;
+   private ebr n;
+   private boolean o;
 
-public interface ebx {
-   int a();
+   public ebx(ebr $$0) {
+      super($$0.a, $$0.b, $$0.c);
+   }
 
-   int b();
+   public ebx(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   int c();
+   public void a(float $$0, ebr $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+   }
 
-   float d();
+   public ebr d() {
+      return this.n;
+   }
 
-   long e();
+   public void e() {
+      this.o = true;
+   }
 
-   long f();
+   public boolean f() {
+      return this.o;
+   }
 
-   boolean i();
-
-   boolean k();
-
-   void b(boolean var1);
-
-   boolean n();
-
-   cpx q();
-
-   bhb s();
-
-   boolean t();
-
-   default void a(p $$0, cqd $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a(), this.b(), this.c()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.e(), this.f()));
+   public static ebx c(tl $$0) {
+      ebx $$1 = new ebx($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

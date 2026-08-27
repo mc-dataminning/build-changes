@@ -1,14 +1,10 @@
-import java.util.function.Consumer;
+public enum alj {
+   a,
+   b,
+   c,
+   d;
 
-public interface alj {
-   void a(Consumer<ve<?>> var1);
-
-   alj.a a();
-
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
-      }
+   public boolean a(alj $$0) {
+      return this.ordinal() >= $$0.ordinal();
    }
 }

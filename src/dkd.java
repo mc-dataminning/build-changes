@@ -1,108 +1,410 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Queue;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class dkd extends dha {
-   public static final Codec<dkd> c = RecordCodecBuilder.create($$0 -> $$0.group(aex.d(crg.b)).apply($$0, $$0.stable(dkd::new)));
-   private static final int h = 2;
-   private static final List<dfd> i = StreamSupport.stream(jb.f.spliterator(), false).flatMap($$0 -> $$0.n().a().stream()).collect(Collectors.toList());
-   private static final int j = asb.f(asb.c((float)i.size()));
-   private static final int k = asb.f((float)i.size() / (float)j);
-   protected static final dfd d = cte.a.o();
-   protected static final dfd e = cte.hW.o();
-   public static final int f = 70;
-   public static final int g = 60;
+public class dkd<T extends djs> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   final Set<UUID> b = Sets.newHashSet();
+   final dka<T> c;
+   private final djv<T> d;
+   private final dju<T> e;
+   final djx<T> f;
+   private final dkb<T> g;
+   private final Long2ObjectMap<dkf> h = new Long2ObjectOpenHashMap();
+   private final Long2ObjectMap<dkd.b> i = new Long2ObjectOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   private final Queue<djq<T>> k = Queues.newConcurrentLinkedQueue();
 
-   public dkd(he.c<cqz> $$0) {
-      super(new crk($$0));
+   public dkd(Class<T> $$0, dka<T> $$1, djv<T> $$2) {
+      this.e = new dju<>();
+      this.f = new djx<>($$0, this.h);
+      this.h.defaultReturnValue(dkf.a);
+      this.i.defaultReturnValue(dkd.b.a);
+      this.c = $$1;
+      this.d = $$2;
+      this.g = new dkc<>(this.e, this.f);
    }
 
-   @Override
-   protected Codec<? extends dha> a() {
-      return c;
+   void a(long $$0, djw<T> $$1) {
+      if ($$1.a()) {
+         this.f.e($$0);
+      }
    }
 
-   @Override
-   public void a(ala $$0, cqt $$1, dla $$2, dgz $$3) {
+   private boolean b(T $$0) {
+      if (!this.b.add($$0.cv())) {
+         a.warn("UUID of added entity already exists: {}", $$0);
+         return false;
+      } else {
+         return true;
+      }
    }
 
-   @Override
-   public void a(cqv $$0, dgz $$1, cqt $$2) {
-      gw.a $$3 = new gw.a();
-      cpi $$4 = $$1.f();
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
+   public boolean a(T $$0) {
+      return this.a($$0, false);
+   }
 
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            int $$9 = hw.a($$5, $$7);
-            int $$10 = hw.a($$6, $$8);
-            $$0.a($$3.d($$9, 60, $$10), e, 2);
-            dfd $$11 = a($$9, $$10);
-            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
+   private boolean a(T $$0, boolean $$1) {
+      if (!this.b($$0)) {
+         return false;
+      } else {
+         long $$2 = iu.c($$0.dl());
+         djw<T> $$3 = this.f.c($$2);
+         $$3.a($$0);
+         $$0.a(new dkd.a($$0, $$2, $$3));
+         if (!$$1) {
+            this.c.g($$0);
+         }
+
+         dkf $$4 = a($$0, $$3.c());
+         if ($$4.b()) {
+            this.e($$0);
+         }
+
+         if ($$4.a()) {
+            this.c($$0);
+         }
+
+         return true;
+      }
+   }
+
+   static <T extends djs> dkf a(T $$0, dkf $$1) {
+      return $$0.dK() ? dkf.c : $$1;
+   }
+
+   public void a(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, true));
+   }
+
+   public void b(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, false));
+   }
+
+   void c(T $$0) {
+      this.c.e($$0);
+   }
+
+   void d(T $$0) {
+      this.c.d($$0);
+   }
+
+   void e(T $$0) {
+      this.e.a($$0);
+      this.c.c($$0);
+   }
+
+   void f(T $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+   }
+
+   public void a(cqg $$0, alj $$1) {
+      dkf $$2 = dkf.a($$1);
+      this.a($$0, $$2);
+   }
+
+   public void a(cqg $$0, dkf $$1) {
+      long $$2 = $$0.a();
+      if ($$1 == dkf.a) {
+         this.h.remove($$2);
+         this.j.add($$2);
+      } else {
+         this.h.put($$2, $$1);
+         this.j.remove($$2);
+         this.b($$2);
+      }
+
+      this.f.b($$2).forEach($$1x -> {
+         dkf $$2x = $$1x.a($$1);
+         boolean $$3 = $$2x.b();
+         boolean $$4 = $$1.b();
+         boolean $$5 = $$2x.a();
+         boolean $$6 = $$1.a();
+         if ($$5 && !$$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::d);
+         }
+
+         if ($$3 && !$$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::f);
+         } else if (!$$3 && $$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::e);
+         }
+
+         if (!$$5 && $$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::c);
+         }
+      });
+   }
+
+   private void b(long $$0) {
+      dkd.b $$1 = (dkd.b)this.i.get($$0);
+      if ($$1 == dkd.b.a) {
+         this.c($$0);
+      }
+   }
+
+   private boolean a(long $$0, Consumer<T> $$1) {
+      dkd.b $$2 = (dkd.b)this.i.get($$0);
+      if ($$2 == dkd.b.b) {
+         return false;
+      } else {
+         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(djs::dJ)).collect(Collectors.toList());
+         if ($$3.isEmpty()) {
+            if ($$2 == dkd.b.c) {
+               this.d.a(new djq<>(new cqg($$0), ImmutableList.of()));
+            }
+
+            return true;
+         } else if ($$2 == dkd.b.a) {
+            this.c($$0);
+            return false;
+         } else {
+            this.d.a(new djq<>(new cqg($$0), $$3));
+            $$3.forEach($$1);
+            return true;
          }
       }
    }
 
-   @Override
-   public CompletableFuture<dgz> a(Executor $$0, dlo $$1, dla $$2, cqt $$3, dgz $$4) {
-      return CompletableFuture.completedFuture($$4);
+   private void c(long $$0) {
+      this.i.put($$0, dkd.b.b);
+      cqg $$1 = new cqg($$0);
+      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
+         a.error("Failed to read chunk {}", $$1, $$1x);
+         return null;
+      });
+   }
+
+   private boolean d(long $$0) {
+      boolean $$1 = this.a($$0, $$0x -> $$0x.cS().forEach(this::g));
+      if (!$$1) {
+         return false;
+      } else {
+         this.i.remove($$0);
+         return true;
+      }
+   }
+
+   private void g(djs $$0) {
+      $$0.b(bjt.c.c);
+      $$0.a(djt.a);
+   }
+
+   private void f() {
+      this.j.removeIf($$0 -> this.h.get($$0) != dkf.a ? true : this.d($$0));
+   }
+
+   private void g() {
+      djq<T> $$0;
+      while (($$0 = this.k.poll()) != null) {
+         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
+         this.i.put($$0.a().a(), dkd.b.c);
+      }
+   }
+
+   public void a() {
+      this.g();
+      this.f();
+   }
+
+   private LongSet h() {
+      LongSet $$0 = this.f.a();
+      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
+
+      while (var2.hasNext()) {
+         Entry<dkd.b> $$1 = (Entry<dkd.b>)var2.next();
+         if ($$1.getValue() == dkd.b.c) {
+            $$0.add($$1.getLongKey());
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b() {
+      this.h().forEach($$0 -> {
+         boolean $$1 = this.h.get($$0) == dkf.a;
+         if ($$1) {
+            this.d($$0);
+         } else {
+            this.a($$0, $$0x -> {
+            });
+         }
+      });
+   }
+
+   public void c() {
+      LongSet $$0 = this.h();
+
+      while (!$$0.isEmpty()) {
+         this.d.a(false);
+         this.g();
+         $$0.removeIf($$0x -> {
+            boolean $$1 = this.h.get($$0x) == dkf.a;
+            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
+            });
+         });
+      }
+
+      this.d.a(true);
    }
 
    @Override
-   public int a(int $$0, int $$1, dkm.a $$2, cqd $$3, dla $$4) {
-      return 0;
+   public void close() throws IOException {
+      this.c();
+      this.d.close();
    }
 
-   @Override
-   public cqn a(int $$0, int $$1, cqd $$2, dla $$3) {
-      return new cqn(0, new dfd[0]);
+   public boolean a(UUID $$0) {
+      return this.b.contains($$0);
    }
 
-   @Override
-   public void a(List<String> $$0, dla $$1, gw $$2) {
+   public dkb<T> d() {
+      return this.g;
    }
 
-   public static dfd a(int $$0, int $$1) {
-      dfd $$2 = d;
-      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
-         $$0 /= 2;
-         $$1 /= 2;
-         if ($$0 <= j && $$1 <= k) {
-            int $$3 = asb.a($$0 * j + $$1);
-            if ($$3 < i.size()) {
-               $$2 = i.get($$3);
+   public boolean a(ht $$0) {
+      return ((dkf)this.h.get(cqg.a($$0))).a();
+   }
+
+   public boolean a(cqg $$0) {
+      return ((dkf)this.h.get($$0.a())).a();
+   }
+
+   public boolean a(long $$0) {
+      return this.i.get($$0) == dkd.b.c;
+   }
+
+   public void a(Writer $$0) throws IOException {
+      arz $$1 = arz.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
+      this.f.a().forEach($$1x -> {
+         dkd.b $$2 = (dkd.b)this.i.get($$1x);
+         this.f.a($$1x).forEach($$2x -> {
+            djw<T> $$3 = this.f.d($$2x);
+            if ($$3 != null) {
+               try {
+                  $$1.a(iu.b($$2x), iu.c($$2x), iu.d($$2x), $$3.c(), $$2, $$3.d());
+               } catch (IOException var7) {
+                  throw new UncheckedIOException(var7);
+               }
+            }
+         });
+      });
+   }
+
+   @aua
+   public String e() {
+      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
+   }
+
+   class a implements djt {
+      private final T c;
+      private long d;
+      private djw<T> e;
+
+      a(T $$0, long $$1, djw<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      @Override
+      public void a() {
+         ht $$0 = this.c.dl();
+         long $$1 = iu.c($$0);
+         if ($$1 != this.d) {
+            dkf $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               dkd.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, iu.a(this.d), $$1});
+            }
+
+            dkd.this.a(this.d, this.e);
+            djw<T> $$3 = dkd.this.f.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            this.a($$2, $$3.c());
+         }
+      }
+
+      private void a(dkf $$0, dkf $$1) {
+         dkf $$2 = dkd.a(this.c, $$0);
+         dkf $$3 = dkd.a(this.c, $$1);
+         if ($$2 == $$3) {
+            if ($$3.b()) {
+               dkd.this.c.a(this.c);
+            }
+         } else {
+            boolean $$4 = $$2.b();
+            boolean $$5 = $$3.b();
+            if ($$4 && !$$5) {
+               dkd.this.f(this.c);
+            } else if (!$$4 && $$5) {
+               dkd.this.e(this.c);
+            }
+
+            boolean $$6 = $$2.a();
+            boolean $$7 = $$3.a();
+            if ($$6 && !$$7) {
+               dkd.this.d(this.c);
+            } else if (!$$6 && $$7) {
+               dkd.this.c(this.c);
+            }
+
+            if ($$5) {
+               dkd.this.c.a(this.c);
             }
          }
       }
 
-      return $$2;
+      @Override
+      public void a(bjt.c $$0) {
+         if (!this.e.b(this.c)) {
+            dkd.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, iu.a(this.d), $$0});
+         }
+
+         dkf $$1 = dkd.a(this.c, this.e.c());
+         if ($$1.a()) {
+            dkd.this.d(this.c);
+         }
+
+         if ($$1.b()) {
+            dkd.this.f(this.c);
+         }
+
+         if ($$0.a()) {
+            dkd.this.c.f(this.c);
+         }
+
+         dkd.this.b.remove(this.c.cv());
+         this.c.a(a);
+         dkd.this.a(this.d, this.e);
+      }
    }
 
-   @Override
-   public void a(ala $$0, long $$1, dla $$2, crb $$3, cqt $$4, dgz $$5, dki.a $$6) {
-   }
-
-   @Override
-   public void a(ala $$0) {
-   }
-
-   @Override
-   public int f() {
-      return 0;
-   }
-
-   @Override
-   public int d() {
-      return 384;
-   }
-
-   @Override
-   public int e() {
-      return 63;
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

@@ -1,49 +1,90 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Splitter;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+import org.apache.commons.lang3.math.NumberUtils;
 
 public class ayv extends DataFix {
-   public ayv(Schema $$0) {
-      super($$0, false);
+   private static final String b = "generatorOptions";
+   @VisibleForTesting
+   static final String a = "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+   private static final Splitter c = Splitter.on(';').limit(5);
+   private static final Splitter d = Splitter.on(',');
+   private static final Splitter e = Splitter.on('x').limit(2);
+   private static final Splitter f = Splitter.on('*').limit(2);
+   private static final Splitter g = Splitter.on(':').limit(3);
+
+   public ayv(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.c);
-      OpticFinder<?> $$1 = $$0.findField("block_ticks");
-      return this.fixTypeEverywhereTyped("Handle ticks saved in the wrong chunk", $$0, $$1x -> {
-         Optional<? extends Typed<?>> $$2 = $$1x.getOptionalTyped($$1);
-         Optional<? extends Dynamic<?>> $$3 = $$2.isPresent() ? $$2.get().write().result() : Optional.empty();
-         return $$1x.update(DSL.remainderFinder(), $$1xx -> {
-            int $$2x = $$1xx.get("xPos").asInt(0);
-            int $$3x = $$1xx.get("zPos").asInt(0);
-            Optional<? extends Dynamic<?>> $$4 = $$1xx.get("fluid_ticks").get().result();
-            $$1xx = a($$1xx, $$2x, $$3x, $$3, "neighbor_block_ticks");
-            return a($$1xx, $$2x, $$3x, $$4, "neighbor_fluid_ticks");
-         });
-      });
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("LevelFlatGeneratorInfoFix", this.getInputSchema().getType(baa.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2, Optional<? extends Dynamic<?>> $$3, String $$4) {
-      if ($$3.isPresent()) {
-         List<? extends Dynamic<?>> $$5 = $$3.get().asStream().filter($$2x -> {
-            int $$3x = $$2x.get("x").asInt(0);
-            int $$4x = $$2x.get("z").asInt(0);
-            int $$5x = Math.abs($$1 - ($$3x >> 4));
-            int $$6 = Math.abs($$2 - ($$4x >> 4));
-            return ($$5x != 0 || $$6 != 0) && $$5x <= 1 && $$6 <= 1;
-         }).toList();
-         if (!$$5.isEmpty()) {
-            $$0 = $$0.set("UpgradeData", $$0.get("UpgradeData").orElseEmptyMap().set($$4, $$0.createList($$5.stream())));
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("generatorName").asString("").equalsIgnoreCase("flat")
+         ? $$0.update("generatorOptions", $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map(this::a).map($$0x::createString).result(), $$0x))
+         : $$0;
+   }
+
+   @VisibleForTesting
+   String a(String $$0) {
+      if ($$0.isEmpty()) {
+         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+      } else {
+         Iterator<String> $$1 = c.split($$0).iterator();
+         String $$2 = $$1.next();
+         int $$3;
+         String $$4;
+         if ($$1.hasNext()) {
+            $$3 = NumberUtils.toInt($$2, 0);
+            $$4 = $$1.next();
+         } else {
+            $$3 = 0;
+            $$4 = $$2;
+         }
+
+         if ($$3 >= 0 && $$3 <= 3) {
+            StringBuilder $$7 = new StringBuilder();
+            Splitter $$8 = $$3 < 3 ? e : f;
+            $$7.append(StreamSupport.<String>stream(d.split($$4).spliterator(), false).map($$2x -> {
+               List<String> $$3x = $$8.splitToList($$2x);
+               int $$4x;
+               String $$5x;
+               if ($$3x.size() == 2) {
+                  $$4x = NumberUtils.toInt($$3x.get(0));
+                  $$5x = $$3x.get(1);
+               } else {
+                  $$4x = 1;
+                  $$5x = $$3x.get(0);
+               }
+
+               List<String> $$8x = g.splitToList($$5x);
+               int $$9 = $$8x.get(0).equals("minecraft") ? 1 : 0;
+               String $$10 = $$8x.get($$9);
+               int $$11 = $$3 == 3 ? awh.a("minecraft:" + $$10) : NumberUtils.toInt($$10, 0);
+               int $$12 = $$9 + 1;
+               int $$13 = $$8x.size() > $$12 ? NumberUtils.toInt($$8x.get($$12), 0) : 0;
+               return ($$4x == 1 ? "" : $$4x + "*") + avi.b($$11 << 4 | $$13).get("Name").asString("");
+            }).collect(Collectors.joining(",")));
+
+            while ($$1.hasNext()) {
+               $$7.append(';').append($$1.next());
+            }
+
+            return $$7.toString();
+         } else {
+            return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
          }
       }
-
-      return $$0;
    }
 }

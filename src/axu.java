@@ -1,35 +1,70 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 
 public class axu extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("down", "down_south")
-      .put("up", "up_north")
-      .put("north", "north_up")
-      .put("south", "south_up")
-      .put("west", "west_up")
-      .put("east", "east_up")
-      .build();
-
    public axu(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      return $$1.equals(Optional.of("minecraft:jigsaw")) ? $$0.update("Properties", $$0x -> {
-         String $$1x = $$0x.get("facing").asString("north");
-         return $$0x.remove("facing").set("orientation", $$0x.createString(a.getOrDefault($$1x, $$1x)));
-      }) : $$0;
+   protected TypeRewriteRule makeRule() {
+      return this.a(this.getOutputSchema().getTypeRaw(baa.F));
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(azd.u), $$0 -> $$0.update(DSL.remainderFinder(), axu::a));
+   private <R> TypeRewriteRule a(Type<R> $$0) {
+      Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1 = DSL.and(
+         DSL.optional(DSL.field("RecipesUsed", DSL.and(DSL.compoundList($$0, DSL.intType()), DSL.remainderType()))), DSL.remainderType()
+      );
+      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:furnace", this.getInputSchema().getChoiceType(baa.s, "minecraft:furnace"));
+      OpticFinder<?> $$3 = DSL.namedChoice("minecraft:blast_furnace", this.getInputSchema().getChoiceType(baa.s, "minecraft:blast_furnace"));
+      OpticFinder<?> $$4 = DSL.namedChoice("minecraft:smoker", this.getInputSchema().getChoiceType(baa.s, "minecraft:smoker"));
+      Type<?> $$5 = this.getOutputSchema().getChoiceType(baa.s, "minecraft:furnace");
+      Type<?> $$6 = this.getOutputSchema().getChoiceType(baa.s, "minecraft:blast_furnace");
+      Type<?> $$7 = this.getOutputSchema().getChoiceType(baa.s, "minecraft:smoker");
+      Type<?> $$8 = this.getInputSchema().getType(baa.s);
+      Type<?> $$9 = this.getOutputSchema().getType(baa.s);
+      return this.fixTypeEverywhereTyped(
+         "FurnaceRecipesFix",
+         $$8,
+         $$9,
+         $$8x -> $$8x.updateTyped($$2, $$5, $$2xx -> this.a($$0, $$1, $$2xx))
+               .updateTyped($$3, $$6, $$2xx -> this.a($$0, $$1, $$2xx))
+               .updateTyped($$4, $$7, $$2xx -> this.a($$0, $$1, $$2xx))
+      );
+   }
+
+   private <R> Typed<?> a(Type<R> $$0, Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1, Typed<?> $$2) {
+      Dynamic<?> $$3 = (Dynamic<?>)$$2.getOrCreate(DSL.remainderFinder());
+      int $$4 = $$3.get("RecipesUsedSize").asInt(0);
+      $$3 = $$3.remove("RecipesUsedSize");
+      List<Pair<R, Integer>> $$5 = Lists.newArrayList();
+
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         String $$7 = "RecipeLocation" + $$6;
+         String $$8 = "RecipeAmount" + $$6;
+         Optional<? extends Dynamic<?>> $$9 = $$3.get($$7).result();
+         int $$10 = $$3.get($$8).asInt(0);
+         if ($$10 > 0) {
+            $$9.ifPresent($$3x -> {
+               Optional<? extends Pair<R, ? extends Dynamic<?>>> $$4x = $$0.read($$3x).result();
+               $$4x.ifPresent($$2xx -> $$5.add(Pair.of($$2xx.getFirst(), $$10)));
+            });
+         }
+
+         $$3 = $$3.remove($$7).remove($$8);
+      }
+
+      return $$2.set(DSL.remainderFinder(), $$1, Pair.of(Either.left(Pair.of($$5, $$3.emptyMap())), $$3));
    }
 }

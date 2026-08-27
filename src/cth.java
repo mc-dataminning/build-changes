@@ -1,104 +1,67 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class cth extends cso implements cvv {
-   public static final MapCodec<cth> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jb.f.q().fieldOf("turns_into").forGetter(cth::b),
-               jb.c.q().fieldOf("brush_sound").forGetter(cth::c),
-               jb.c.q().fieldOf("brush_comleted_sound").forGetter(cth::d),
-               t()
-            )
-            .apply($$0, cth::new)
-   );
-   private static final dgd c = dft.bv;
-   public static final int b = 2;
-   private final ctc d;
-   private final apf e;
-   private final apf f;
+public class cth extends cua implements daz {
+   public static final MapCodec<cth> a = b(cth::new);
+   public static final dgs b = dgr.C;
 
    @Override
    public MapCodec<cth> a() {
       return a;
    }
 
-   public cth(ctc $$0, apf $$1, apf $$2, dfc.d $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected cth(dga.d $$0) {
+      super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(c);
+   public boolean c(dgb $$0, cqf $$1, ht $$2) {
+      return true;
    }
 
    @Override
-   public czg b_(dfd $$0) {
-      return czg.c;
+   public dae b_(dgb $$0) {
+      return dae.a;
    }
 
    @Override
-   public void b(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      $$1.a($$2, this, 2);
+   public float b(dgb $$0, cqf $$1, ht $$2) {
+      return 1.0F;
    }
 
    @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      $$3.a($$4, this, 2);
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, ebf.c, ebf.c.a($$3));
+      }
+
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      if ($$1.c_($$2) instanceof ddd $$4) {
-         $$4.c();
-      }
-
-      if (cvw.h($$1.a_($$2.d())) && $$2.v() >= $$1.H_()) {
-         bys $$5 = bys.a($$1, $$2, $$0);
-         $$5.s();
-      }
-   }
-
-   @Override
-   public void a(cqb $$0, gw $$1, bys $$2) {
-      ehh $$3 = $$2.cG().f();
-      $$0.c(2001, gw.a($$3), ctc.i($$2.t()));
-      $$0.a($$2, djn.f, $$3);
-   }
-
-   @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      if ($$3.a(16) == 0) {
-         gw $$4 = $$2.d();
-         if (cvw.h($$1.a_($$4))) {
-            double $$5 = (double)$$2.u() + $$3.j();
-            double $$6 = (double)$$2.v() - 0.05;
-            double $$7 = (double)$$2.w() + $$3.j();
-            $$1.a(new in(iv.z, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
-         }
-      }
+   public ebe c_(dgb $$0) {
+      return $$0.c(b) ? ebf.c.a(false) : super.c_($$0);
    }
 
    @Nullable
    @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new ddd($$0, $$1);
+   public dgb a(cmr $$0) {
+      return this.o().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == ebf.c));
    }
 
-   public ctc b() {
-      return this.d;
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(b);
    }
 
-   public apf c() {
-      return this.e;
+   @Override
+   public ckj a(@Nullable ccx $$0, cra $$1, ht $$2, dgb $$3) {
+      return $$0 != null && $$0.f() ? daz.super.a($$0, $$1, $$2, $$3) : ckj.b;
    }
 
-   public apf d() {
-      return this.f;
+   @Override
+   public boolean a(@Nullable ccx $$0, cqf $$1, ht $$2, dgb $$3, ebd $$4) {
+      return $$0 != null && $$0.f() ? daz.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

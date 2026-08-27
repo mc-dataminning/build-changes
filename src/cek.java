@@ -1,38 +1,39 @@
-import com.mojang.serialization.Codec;
-import java.util.Set;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class cek {
-   public static final ceg a;
-   public static final ceg b;
-   public static final ceg c;
-   public static final ceh d;
-   public static final Codec<cei> e;
-   public static final cei f;
-   public static final cei g;
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final cek c = a("empty").a(0, cei.b).a();
+   public static final cek d = a("simple").a(5000, cei.c).a(11000, cei.e).a();
+   public static final cek e = a("villager_baby").a(10, cei.b).a(3000, cei.d).a(6000, cei.b).a(10000, cei.d).a(12000, cei.e).a();
+   public static final cek f = a("villager_default").a(10, cei.b).a(2000, cei.c).a(9000, cei.f).a(11000, cei.b).a(12000, cei.e).a();
+   private final Map<cei, cem> g = Maps.newHashMap();
 
-   public static String a(cei $$0, cei $$1) {
-      return a(d, $$0, $$1);
+   protected static cel a(String $$0) {
+      cek $$1 = io.a(jy.E, $$0, new cek());
+      return new cel($$1);
    }
 
-   public static String a(ceh $$0, cei $$1, cei $$2) {
-      Set<aez> $$3 = $$0.b($$2);
-      Set<aez> $$4 = $$0.b($$1);
-      return $$3.stream().filter($$1x -> !$$4.contains($$1x)).map(aez::toString).collect(Collectors.joining(", "));
+   protected void a(cei $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cem());
+      }
    }
 
-   public static boolean a(cei $$0) {
-      return !$$0.a(f);
+   protected cem b(cei $$0) {
+      return this.g.get($$0);
    }
 
-   static {
-      ceh.a $$0 = new ceh.a("main");
-      a = $$0.a("vanilla");
-      b = $$0.a("bundle");
-      c = $$0.a("trade_rebalance");
-      d = $$0.a();
-      e = d.b();
-      f = cei.a(a);
-      g = f;
+   protected List<cem> c(cei $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   }
+
+   public cei a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cei.b);
    }
 }

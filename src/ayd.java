@@ -1,192 +1,186 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
 public class ayd extends DataFix {
-   private static final Int2ObjectMap<String> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, "minecraft:speed");
-      $$0.put(2, "minecraft:slowness");
-      $$0.put(3, "minecraft:haste");
-      $$0.put(4, "minecraft:mining_fatigue");
-      $$0.put(5, "minecraft:strength");
-      $$0.put(6, "minecraft:instant_health");
-      $$0.put(7, "minecraft:instant_damage");
-      $$0.put(8, "minecraft:jump_boost");
-      $$0.put(9, "minecraft:nausea");
-      $$0.put(10, "minecraft:regeneration");
-      $$0.put(11, "minecraft:resistance");
-      $$0.put(12, "minecraft:fire_resistance");
-      $$0.put(13, "minecraft:water_breathing");
-      $$0.put(14, "minecraft:invisibility");
-      $$0.put(15, "minecraft:blindness");
-      $$0.put(16, "minecraft:night_vision");
-      $$0.put(17, "minecraft:hunger");
-      $$0.put(18, "minecraft:weakness");
-      $$0.put(19, "minecraft:poison");
-      $$0.put(20, "minecraft:wither");
-      $$0.put(21, "minecraft:health_boost");
-      $$0.put(22, "minecraft:absorption");
-      $$0.put(23, "minecraft:saturation");
-      $$0.put(24, "minecraft:glowing");
-      $$0.put(25, "minecraft:levitation");
-      $$0.put(26, "minecraft:luck");
-      $$0.put(27, "minecraft:unluck");
-      $$0.put(28, "minecraft:slow_falling");
-      $$0.put(29, "minecraft:conduit_power");
-      $$0.put(30, "minecraft:dolphins_grace");
-      $$0.put(31, "minecraft:bad_omen");
-      $$0.put(32, "minecraft:hero_of_the_village");
-      $$0.put(33, "minecraft:darkness");
+   private static final int b = 16384;
+   private static final String[] c = (String[])DataFixUtils.make(new String[128], $$0 -> {
+      $$0[0] = "minecraft:water";
+      $$0[1] = "minecraft:regeneration";
+      $$0[2] = "minecraft:swiftness";
+      $$0[3] = "minecraft:fire_resistance";
+      $$0[4] = "minecraft:poison";
+      $$0[5] = "minecraft:healing";
+      $$0[6] = "minecraft:night_vision";
+      $$0[7] = null;
+      $$0[8] = "minecraft:weakness";
+      $$0[9] = "minecraft:strength";
+      $$0[10] = "minecraft:slowness";
+      $$0[11] = "minecraft:leaping";
+      $$0[12] = "minecraft:harming";
+      $$0[13] = "minecraft:water_breathing";
+      $$0[14] = "minecraft:invisibility";
+      $$0[15] = null;
+      $$0[16] = "minecraft:awkward";
+      $$0[17] = "minecraft:regeneration";
+      $$0[18] = "minecraft:swiftness";
+      $$0[19] = "minecraft:fire_resistance";
+      $$0[20] = "minecraft:poison";
+      $$0[21] = "minecraft:healing";
+      $$0[22] = "minecraft:night_vision";
+      $$0[23] = null;
+      $$0[24] = "minecraft:weakness";
+      $$0[25] = "minecraft:strength";
+      $$0[26] = "minecraft:slowness";
+      $$0[27] = "minecraft:leaping";
+      $$0[28] = "minecraft:harming";
+      $$0[29] = "minecraft:water_breathing";
+      $$0[30] = "minecraft:invisibility";
+      $$0[31] = null;
+      $$0[32] = "minecraft:thick";
+      $$0[33] = "minecraft:strong_regeneration";
+      $$0[34] = "minecraft:strong_swiftness";
+      $$0[35] = "minecraft:fire_resistance";
+      $$0[36] = "minecraft:strong_poison";
+      $$0[37] = "minecraft:strong_healing";
+      $$0[38] = "minecraft:night_vision";
+      $$0[39] = null;
+      $$0[40] = "minecraft:weakness";
+      $$0[41] = "minecraft:strong_strength";
+      $$0[42] = "minecraft:slowness";
+      $$0[43] = "minecraft:strong_leaping";
+      $$0[44] = "minecraft:strong_harming";
+      $$0[45] = "minecraft:water_breathing";
+      $$0[46] = "minecraft:invisibility";
+      $$0[47] = null;
+      $$0[48] = null;
+      $$0[49] = "minecraft:strong_regeneration";
+      $$0[50] = "minecraft:strong_swiftness";
+      $$0[51] = "minecraft:fire_resistance";
+      $$0[52] = "minecraft:strong_poison";
+      $$0[53] = "minecraft:strong_healing";
+      $$0[54] = "minecraft:night_vision";
+      $$0[55] = null;
+      $$0[56] = "minecraft:weakness";
+      $$0[57] = "minecraft:strong_strength";
+      $$0[58] = "minecraft:slowness";
+      $$0[59] = "minecraft:strong_leaping";
+      $$0[60] = "minecraft:strong_harming";
+      $$0[61] = "minecraft:water_breathing";
+      $$0[62] = "minecraft:invisibility";
+      $$0[63] = null;
+      $$0[64] = "minecraft:mundane";
+      $$0[65] = "minecraft:long_regeneration";
+      $$0[66] = "minecraft:long_swiftness";
+      $$0[67] = "minecraft:long_fire_resistance";
+      $$0[68] = "minecraft:long_poison";
+      $$0[69] = "minecraft:healing";
+      $$0[70] = "minecraft:long_night_vision";
+      $$0[71] = null;
+      $$0[72] = "minecraft:long_weakness";
+      $$0[73] = "minecraft:long_strength";
+      $$0[74] = "minecraft:long_slowness";
+      $$0[75] = "minecraft:long_leaping";
+      $$0[76] = "minecraft:harming";
+      $$0[77] = "minecraft:long_water_breathing";
+      $$0[78] = "minecraft:long_invisibility";
+      $$0[79] = null;
+      $$0[80] = "minecraft:awkward";
+      $$0[81] = "minecraft:long_regeneration";
+      $$0[82] = "minecraft:long_swiftness";
+      $$0[83] = "minecraft:long_fire_resistance";
+      $$0[84] = "minecraft:long_poison";
+      $$0[85] = "minecraft:healing";
+      $$0[86] = "minecraft:long_night_vision";
+      $$0[87] = null;
+      $$0[88] = "minecraft:long_weakness";
+      $$0[89] = "minecraft:long_strength";
+      $$0[90] = "minecraft:long_slowness";
+      $$0[91] = "minecraft:long_leaping";
+      $$0[92] = "minecraft:harming";
+      $$0[93] = "minecraft:long_water_breathing";
+      $$0[94] = "minecraft:long_invisibility";
+      $$0[95] = null;
+      $$0[96] = "minecraft:thick";
+      $$0[97] = "minecraft:regeneration";
+      $$0[98] = "minecraft:swiftness";
+      $$0[99] = "minecraft:long_fire_resistance";
+      $$0[100] = "minecraft:poison";
+      $$0[101] = "minecraft:strong_healing";
+      $$0[102] = "minecraft:long_night_vision";
+      $$0[103] = null;
+      $$0[104] = "minecraft:long_weakness";
+      $$0[105] = "minecraft:strength";
+      $$0[106] = "minecraft:long_slowness";
+      $$0[107] = "minecraft:leaping";
+      $$0[108] = "minecraft:strong_harming";
+      $$0[109] = "minecraft:long_water_breathing";
+      $$0[110] = "minecraft:long_invisibility";
+      $$0[111] = null;
+      $$0[112] = null;
+      $$0[113] = "minecraft:regeneration";
+      $$0[114] = "minecraft:swiftness";
+      $$0[115] = "minecraft:long_fire_resistance";
+      $$0[116] = "minecraft:poison";
+      $$0[117] = "minecraft:strong_healing";
+      $$0[118] = "minecraft:long_night_vision";
+      $$0[119] = null;
+      $$0[120] = "minecraft:long_weakness";
+      $$0[121] = "minecraft:strength";
+      $$0[122] = "minecraft:long_slowness";
+      $$0[123] = "minecraft:leaping";
+      $$0[124] = "minecraft:strong_harming";
+      $$0[125] = "minecraft:long_water_breathing";
+      $$0[126] = "minecraft:long_invisibility";
+      $$0[127] = null;
    });
-   private static final Set<String> b = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
+   public static final String a = "minecraft:water";
 
-   public ayd(Schema $$0) {
-      super($$0, false);
+   public ayd(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   private static <T> Optional<Dynamic<T>> a(Dynamic<T> $$0, String $$1) {
-      return $$0.get($$1).asNumber().result().map($$0x -> (String)a.get($$0x.intValue())).map($$0::createString);
-   }
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(baa.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(baa.z.typeName(), bbi.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped("ItemPotionFix", $$0, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:potion")) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
+            Optional<? extends Typed<?>> $$5 = $$2x.getOptionalTyped($$2);
+            short $$6 = $$4.get("Damage").asShort((short)0);
+            if ($$5.isPresent()) {
+               Typed<?> $$7 = $$2x;
+               Dynamic<?> $$8 = (Dynamic<?>)$$5.get().get(DSL.remainderFinder());
+               Optional<String> $$9 = $$8.get("Potion").asString().result();
+               if ($$9.isEmpty()) {
+                  String $$10 = c[$$6 & 127];
+                  Typed<?> $$11 = $$5.get().set(DSL.remainderFinder(), $$8.set("Potion", $$8.createString($$10 == null ? "minecraft:water" : $$10)));
+                  $$7 = $$2x.set($$2, $$11);
+                  if (($$6 & 16384) == 16384) {
+                     $$7 = $$7.set($$1, Pair.of(baa.z.typeName(), "minecraft:splash_potion"));
+                  }
+               }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, Optional<Dynamic<T>> $$2) {
-      return $$2.isEmpty() ? $$0 : $$0.set($$1, $$2.get());
-   }
+               if ($$6 != 0) {
+                  $$4 = $$4.set("Damage", $$4.createShort((short)0));
+               }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, Optional<Dynamic<T>> $$3) {
-      return a($$0.remove($$1), $$2, $$3);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2) {
-      return a($$0.remove($$1), $$2, $$0.get($$1).result());
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, Dynamic<T> $$2, String $$3) {
-      Optional<Dynamic<T>> $$4 = a($$0, $$1);
-      return a($$2, $$1, $$3, $$4);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0, String $$1, String $$2) {
-      return a($$0, $$1, $$0, $$2);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      $$0 = b($$0, "Id", "id");
-      $$0 = a($$0, "Ambient", "ambient");
-      $$0 = a($$0, "Amplifier", "amplifier");
-      $$0 = a($$0, "Duration", "duration");
-      $$0 = a($$0, "ShowParticles", "show_particles");
-      $$0 = a($$0, "ShowIcon", "show_icon");
-      $$0 = a($$0, "FactorCalculationData", "factor_calculation_data");
-      Optional<Dynamic<T>> $$1 = $$0.get("HiddenEffect").result().map(ayd::a);
-      return a($$0, "HiddenEffect", "hidden_effect", $$1);
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0, String $$1, String $$2) {
-      Optional<Dynamic<T>> $$3 = $$0.get($$1).asStreamOpt().result().map($$1x -> $$0.createList($$1x.map(ayd::a)));
-      return a($$0, $$1, $$2, $$3);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, Dynamic<T> $$1) {
-      $$1 = a($$0, "EffectId", $$1, "id");
-      Optional<Dynamic<T>> $$2 = $$0.get("EffectDuration").result();
-      return a($$1, "EffectDuration", "duration", $$2);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return a($$0, $$0);
-   }
-
-   private Typed<?> a(Typed<?> $$0, TypeReference $$1, String $$2, Function<Dynamic<?>, Dynamic<?>> $$3) {
-      Type<?> $$4 = this.getInputSchema().getChoiceType($$1, $$2);
-      Type<?> $$5 = this.getOutputSchema().getChoiceType($$1, $$2);
-      return $$0.updateTyped(DSL.namedChoice($$2, $$4), $$5, $$1x -> $$1x.update(DSL.remainderFinder(), $$3));
-   }
-
-   private TypeRewriteRule a() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.s);
-      return this.fixTypeEverywhereTyped("BlockEntityMobEffectIdFix", $$0, $$0x -> this.a($$0x, azd.s, "minecraft:beacon", $$0xx -> {
-            $$0xx = b($$0xx, "Primary", "primary_effect");
-            return b($$0xx, "Secondary", "secondary_effect");
-         }));
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = $$0.emptyMap();
-      Dynamic<T> $$2 = a($$0, $$1);
-      if (!$$2.equals($$1)) {
-         $$0 = $$0.set("stew_effects", $$0.createList(Stream.of($$2)));
-      }
-
-      return $$0.remove("EffectId").remove("EffectDuration");
-   }
-
-   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
-      return c($$0, "CustomPotionEffects", "custom_potion_effects");
-   }
-
-   private static <T> Dynamic<T> e(Dynamic<T> $$0) {
-      return c($$0, "Effects", "effects");
-   }
-
-   private static Dynamic<?> f(Dynamic<?> $$0) {
-      return c($$0, "ActiveEffects", "active_effects");
-   }
-
-   private TypeRewriteRule b() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.x);
-      return this.fixTypeEverywhereTyped("EntityMobEffectIdFix", $$0, $$0x -> {
-         $$0x = this.a($$0x, azd.x, "minecraft:mooshroom", ayd::c);
-         $$0x = this.a($$0x, azd.x, "minecraft:arrow", ayd::d);
-         $$0x = this.a($$0x, azd.x, "minecraft:area_effect_cloud", ayd::e);
-         return $$0x.update(DSL.remainderFinder(), ayd::f);
-      });
-   }
-
-   private TypeRewriteRule c() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.b);
-      return this.fixTypeEverywhereTyped("PlayerMobEffectIdFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), ayd::f));
-   }
-
-   private static <T> Dynamic<T> g(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Effects").asStreamOpt().result().map($$1x -> $$0.createList($$1x.map(ayd::b)));
-      return a($$0, "Effects", "effects", $$1);
-   }
-
-   private TypeRewriteRule d() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(azd.z.typeName(), bal.a()));
-      Type<?> $$1 = this.getInputSchema().getType(azd.t);
-      OpticFinder<?> $$2 = $$1.findField("tag");
-      return this.fixTypeEverywhereTyped("ItemStackMobEffectIdFix", $$1, $$2x -> {
-         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$0);
-         if ($$3.isPresent()) {
-            String $$4 = (String)$$3.get().getSecond();
-            if ($$4.equals("minecraft:suspicious_stew")) {
-               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), ayd::g));
-            }
-
-            if (b.contains($$4)) {
-               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> c($$0xxx, "CustomPotionEffects", "custom_potion_effects")));
+               return $$7.set(DSL.remainderFinder(), $$4);
             }
          }
 
          return $$2x;
       });
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.a(), new TypeRewriteRule[]{this.b(), this.c(), this.d()});
    }
 }

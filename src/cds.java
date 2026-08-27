@@ -1,151 +1,61 @@
-import javax.annotation.Nullable;
-
-public abstract class cds extends cdr implements cdv {
-   private hn<cjl> c = hn.a(36, cjl.b);
-   @Nullable
-   private aez d;
-   private long e;
-
-   protected cds(bja<?> $$0, cqb $$1) {
+public class cds extends cdj {
+   public cds(bjx<? extends cds> $$0, cqz $$1) {
       super($$0, $$1);
    }
 
-   protected cds(bja<?> $$0, double $$1, double $$2, double $$3, cqb $$4) {
-      super($$0, $$4, $$1, $$2, $$3);
+   public cds(cqz $$0, bkj $$1, double $$2, double $$3, double $$4) {
+      super(bjx.aM, $$1, $$2, $$3, $$4, $$0);
+   }
+
+   public cds(cqz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super(bjx.aM, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
    }
 
    @Override
-   public void a(bhu $$0) {
+   protected void a(eic $$0) {
       super.a($$0);
-      this.a($$0, this.dL(), this);
-   }
-
-   @Override
-   public cjl a(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public cjl a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cjl b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cjl $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bke a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cca $$0) {
-      return this.g($$0);
-   }
-
-   @Override
-   public void a(biw.c $$0) {
-      if (!this.dL().B && $$0.a()) {
-         bha.a(this.dL(), this, this);
+      if (!this.dL().B) {
+         bjt $$1 = $$0.a();
+         bjt $$2 = this.v();
+         int $$3 = $$1.ax();
+         $$1.g(5);
+         if (!$$1.a(this.dM().a((cdj)this, $$2), 5.0F)) {
+            $$1.h($$3);
+         } else if ($$2 instanceof bkj) {
+            this.a((bkj)$$2, $$1);
+         }
       }
+   }
 
+   @Override
+   protected void a(eib $$0) {
       super.a($$0);
+      if (!this.dL().B) {
+         bjt $$1 = this.v();
+         if (!($$1 instanceof bkl) || this.dL().X().b(cqv.c)) {
+            ht $$2 = $$0.a().a($$0.b());
+            if (this.dL().t($$2)) {
+               this.dL().b($$2, ctn.a(this.dL(), $$2));
+            }
+         }
+      }
    }
 
    @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      this.c($$0);
-   }
-
-   @Override
-   protected void a(qw $$0) {
+   protected void a(eid $$0) {
       super.a($$0);
-      this.b_($$0);
-   }
-
-   @Override
-   public bhe a(cca $$0, bhd $$1) {
-      return this.c_($$0);
-   }
-
-   @Override
-   protected void v() {
-      float $$0 = 0.98F;
-      if (this.d == null) {
-         int $$1 = 15 - cer.b(this);
-         $$0 += (float)$$1 * 0.001F;
-      }
-
-      if (this.aX()) {
-         $$0 *= 0.95F;
-      }
-
-      this.f(this.do().d((double)$$0, 0.0, (double)$$0));
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   public void a(aez $$0, long $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Nullable
-   @Override
-   public cer createMenu(int $$0, cbz $$1, cca $$2) {
-      if (this.d != null && $$2.M_()) {
-         return null;
-      } else {
-         this.f($$1.m);
-         return this.a($$0, $$1);
+      if (!this.dL().B) {
+         this.ak();
       }
    }
 
-   protected abstract cer a(int var1, cbz var2);
-
-   @Nullable
    @Override
-   public aez G() {
-      return this.d;
+   public boolean br() {
+      return false;
    }
 
    @Override
-   public void a(@Nullable aez $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public long H() {
-      return this.e;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public hn<cjl> I() {
-      return this.c;
-   }
-
-   @Override
-   public void K() {
-      this.c = hn.a(this.b(), cjl.b);
+   public boolean a(bir $$0, float $$1) {
+      return false;
    }
 }

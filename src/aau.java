@@ -1,40 +1,40 @@
-public class aau implements ve<wx> {
-   private final int a;
-   private final int b;
-   private final int c;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public aau(int $$0, int $$1, int $$2) {
+public class aau implements wb<xu> {
+   private final eja a;
+   private final String b;
+
+   public aau(eja $$0, @Nullable ejb $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      if ($$1 == null) {
+         this.b = "";
+      } else {
+         this.b = $$1.b();
+      }
    }
 
-   public aau(so $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
-      this.c = $$0.n();
+   public aau(tl $$0) {
+      this.a = $$0.a(eja.u);
+      this.b = $$0.s();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public void a(tl $$0) {
+      $$0.a(eja::a, this.a);
+      $$0.a(this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public eja a() {
       return this.a;
    }
 
-   public int d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Nullable
+   public String d() {
+      return Objects.equals(this.b, "") ? null : this.b;
    }
 }

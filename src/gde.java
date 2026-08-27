@@ -1,10 +1,31 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+public class gde extends gcr {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final byg p;
 
-public interface gde extends Closeable {
-   AudioFormat a();
+   public gde(byg $$0) {
+      super(aqd.wJ, aqe.g, gdi.t());
+      this.p = $$0;
+      this.k = gdi.a.b;
+      this.i = false;
+      this.j = 0;
+   }
 
-   ByteBuffer a(int var1) throws IOException;
+   @Override
+   public boolean s() {
+      return !this.p.aS();
+   }
+
+   @Override
+   public void q() {
+      if (!this.p.dG() && this.p.q() == null && this.p.gk()) {
+         this.f = (double)((float)this.p.dq());
+         this.g = (double)((float)this.p.ds());
+         this.h = (double)((float)this.p.dw());
+         this.d = 1.0F;
+         this.e = 1.0F;
+      } else {
+         this.n();
+      }
+   }
 }

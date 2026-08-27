@@ -1,63 +1,81 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cvn extends cso {
+public class cvn extends ctm implements daz {
    public static final MapCodec<cvn> a = b(cvn::new);
+   public static final dgs b = dgr.C;
+   private static final int d = 3;
+   protected static final eiy c = cua.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<cvn> a() {
       return a;
    }
 
-   protected cvn(dfc.d $$0) {
+   public cvn(dga.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new den($$0, $$1);
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public ddx a(ht $$0, dgb $$1) {
+      return new dej($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
-      return a($$2, ddb.v, $$0.B ? den::a : den::b);
+   public <T extends ddx> ddy<T> a(cqz $$0, dgb $$1, ddz<T> $$2) {
+      return a($$2, ddz.z, $$0.B ? dej::a : dej::b);
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      dcz $$4 = $$1.c_($$2);
-      if ($$4 instanceof den) {
-         int $$5 = ((den)$$4).g();
+   public dae b_(dgb $$0) {
+      return dae.b;
+   }
 
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
-            }
+   @Override
+   public ebe c_(dgb $$0) {
+      return $$0.c(b) ? ebf.c.a(false) : super.c_($$0);
+   }
 
-            $$1.a(iv.X, $$7, $$8, $$9, $$10, $$11, $$12);
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, ebf.c, ebf.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return c;
+   }
+
+   @Override
+   public void a(cqz $$0, ht $$1, dgb $$2, @Nullable bkj $$3, ckj $$4) {
+      if ($$4.A()) {
+         ddx $$5 = $$0.c_($$1);
+         if ($$5 instanceof dds) {
+            ((dds)$$5).a($$4.y());
          }
       }
    }
 
+   @Nullable
    @Override
-   public cjl a(cqe $$0, gw $$1, dfd $$2) {
-      return cjl.b;
+   public dgb a(cmr $$0) {
+      ebe $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(aqx.a) && $$1.e() == 8));
    }
 
    @Override
-   public boolean a(dfd $$0, eaf $$1) {
+   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
       return false;
    }
 }

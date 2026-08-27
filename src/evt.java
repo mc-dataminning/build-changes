@@ -1,218 +1,84 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class evt extends evp {
-   private final List<evw> c = new ArrayList<>();
-   private final List<evt.a> d = new ArrayList<>();
-   private final evx e = evx.i();
-   private int f = 0;
-   private int g = 0;
+public class evt implements evr {
+   private static final afw g = new afw("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final evt.a h;
+   private final ui i;
+   @Nullable
+   private final ui j;
+   private evr.a k = evr.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   public evt() {
-      this(0, 0);
-   }
-
-   public evt(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
+   public evt(evt.a $$0, ui $$1, @Nullable ui $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = 0;
-      int $$1 = 0;
-
-      for (evt.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
-      }
-
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
-
-      for (evt.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
-
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
-         }
-
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
-
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
-         }
-      }
-
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
-      }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (evt.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
-         }
-
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.r() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.t() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
-   }
-
-   public <T extends evw> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
-   }
-
-   public <T extends evw> T a(T $$0, int $$1, int $$2, evx $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
-   }
-
-   public <T extends evw> T a(T $$0, int $$1, int $$2, Consumer<evx> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
-   }
-
-   public <T extends evw> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends evw> T a(T $$0, int $$1, int $$2, int $$3, int $$4, evx $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
+   public evr.a a(esy $$0, evs $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
       } else {
-         this.d.add(new evt.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
-      }
-   }
-
-   public <T extends evw> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<evx> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
-   }
-
-   public evt a(int $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public evt b(int $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public evt c(int $$0) {
-      return this.a($$0).b($$0);
-   }
-
-   @Override
-   public void b(Consumer<evw> $$0) {
-      this.c.forEach($$0);
-   }
-
-   public evx b() {
-      return this.e.g();
-   }
-
-   public evx c() {
-      return this.e;
-   }
-
-   public evt.b d(int $$0) {
-      return new evt.b($$0);
-   }
-
-   static class a extends evp.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(evw $$0, int $$1, int $$2, int $$3, int $$4, evx $$5) {
-         super($$0, $$5.h());
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
       }
 
-      public int c() {
-         return this.c + this.e - 1;
-      }
-
-      public int d() {
-         return this.d + this.f - 1;
-      }
-   }
-
-   public final class b {
-      private final int b;
-      private int c;
-
-      b(int $$1) {
-         this.b = $$1;
-      }
-
-      public <T extends evw> T a(T $$0) {
-         return this.a($$0, 1);
-      }
-
-      public <T extends evw> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
-      }
-
-      public <T extends evw> T a(T $$0, evx $$1) {
-         return this.a($$0, 1, $$1);
-      }
-
-      public <T extends evw> T a(T $$0, int $$1, evx $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = asb.d(this.c, this.b);
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = asy.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
          }
 
-         this.c += $$1;
-         return evt.this.a($$0, $$3, $$4, 1, $$1, $$2);
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
       }
 
-      public evt a() {
-         return evt.this;
+      return this.k;
+   }
+
+   public void c() {
+      this.k = evr.a.b;
+   }
+
+   public void a(float $$0) {
+      this.n = $$0;
+   }
+
+   public static enum a {
+      a(new afw("toast/movement_keys")),
+      b(new afw("toast/mouse")),
+      c(new afw("toast/tree")),
+      d(new afw("toast/recipe_book")),
+      e(new afw("toast/wooden_planks")),
+      f(new afw("toast/social_interactions")),
+      g(new afw("toast/right_click"));
+
+      private final afw h;
+
+      private a(afw $$0) {
+         this.h = $$0;
       }
 
-      public evx b() {
-         return evt.this.b();
-      }
-
-      public evx c() {
-         return evt.this.c();
+      public void a(esy $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
    }
 }

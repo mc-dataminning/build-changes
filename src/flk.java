@@ -1,53 +1,49 @@
-public class flk extends flq {
-   private static final int a = 3;
-   private final fog b;
-   private final biw D;
-   private final biw E;
-   private int F;
-   private final ftb G;
+public class flk extends fnq {
+   private final fnl a;
 
-   public flk(ftb $$0, fog $$1, fis $$2, biw $$3, biw $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.do());
-   }
-
-   private flk(ftb $$0, fog $$1, fis $$2, biw $$3, biw $$4, ehh $$5) {
-      super($$2, $$3.dq(), $$3.ds(), $$3.dw(), $$5.c, $$5.d, $$5.e);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-   }
-
-   private biw a(biw $$0) {
-      return (biw)(!($$0 instanceof byt) ? $$0 : ((byt)$$0).C());
+   flk(fjr $$0, double $$1, double $$2, double $$3, double $$4, fnl $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
    @Override
-   public flu b() {
-      return flu.e;
-   }
-
-   @Override
-   public void a(eln $$0, eqa $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = asb.d((double)$$2, this.E.ac, this.E.dq());
-      double $$5 = asb.d((double)$$2, this.E.ad, (this.E.ds() + this.E.du()) / 2.0);
-      double $$6 = asb.d((double)$$2, this.E.ae, this.E.dw());
-      double $$7 = asb.d((double)$$3, this.D.dq(), $$4);
-      double $$8 = asb.d((double)$$3, this.D.ds(), $$5);
-      double $$9 = asb.d((double)$$3, this.D.dw(), $$6);
-      foa.a $$10 = this.b.b();
-      ehh $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dB(), $$2, new elj(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
    public void a() {
-      this.F++;
-      if (this.F == 3) {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public fmu b() {
+      return fmu.d;
+   }
+
+   public static class a implements fmt<jv> {
+      private final fnl a;
+
+      public a(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new flk($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

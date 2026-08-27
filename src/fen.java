@@ -1,64 +1,112 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class fen<T extends biw> extends fdw<T> {
-   public static final String a = "red_thing";
-   private final fhx b;
-   private final fhx f;
-   private final fhx g;
-   private final fhx h;
-   private final fhx i;
-   private final fhx j;
-   private final fhx k;
-   private final fhx l;
+public class fen implements fei, fej {
+   private static final afw a = new afw("spectator/teleport_to_team");
+   private static final ui b = ui.c("spectatorMenu.team_teleport");
+   private static final ui c = ui.c("spectatorMenu.team_teleport.prompt");
+   private final List<fej> d;
 
-   public fen(fhx $$0) {
-      this.b = $$0.b("head");
-      this.k = $$0.b("beak");
-      this.l = $$0.b("red_thing");
-      this.f = $$0.b("body");
-      this.g = $$0.b("right_leg");
-      this.h = $$0.b("left_leg");
-      this.i = $$0.b("right_wing");
-      this.j = $$0.b("left_wing");
+   public fen() {
+      ero $$0 = ero.O();
+      this.d = a($$0, $$0.r.I());
    }
 
-   public static fid c() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      int $$2 = 16;
-      $$1.a("head", fic.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fhz.a(0.0F, 15.0F, -4.0F));
-      $$1.a("beak", fic.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fhz.a(0.0F, 15.0F, -4.0F));
-      $$1.a("red_thing", fic.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fhz.a(0.0F, 15.0F, -4.0F));
-      $$1.a("body", fic.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fhz.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fic $$3 = fic.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$3, fhz.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$3, fhz.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", fic.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fhz.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", fic.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fhz.a(4.0F, 13.0F, 0.0F));
-      return fid.a($$0, 64, 32);
+   private static List<fej> a(ero $$0, eje $$1) {
+      return $$1.g().stream().flatMap($$1x -> fen.a.a($$0, $$1x).stream()).toList();
    }
 
    @Override
-   protected Iterable<fhx> a() {
-      return ImmutableList.of(this.b, this.k, this.l);
+   public List<fej> a() {
+      return this.d;
    }
 
    @Override
-   protected Iterable<fhx> b() {
-      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
+   public ui b() {
+      return c;
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = this.b.e;
-      this.k.f = this.b.f;
-      this.l.e = this.b.e;
-      this.l.f = this.b.f;
-      this.g.e = asb.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.h.e = asb.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.g = $$3;
-      this.j.g = -$$3;
+   public void a(feh $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public ui aN_() {
+      return b;
+   }
+
+   @Override
+   public void a(esy $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aO_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fej {
+      private final ejc a;
+      private final Supplier<gba> b;
+      private final List<fka> c;
+
+      private a(ejc $$0, List<fka> $$1, Supplier<gba> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
+
+      public static Optional<fej> a(ero $$0, ejc $$1) {
+         List<fka> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            fka $$4 = $$0.J().a($$3);
+            if ($$4 != null && $$4.e() != cqw.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(ate.a().a($$2.size())).a();
+            Supplier<gba> $$6 = $$0.al().a($$5);
+            return Optional.of(new fen.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(feh $$0) {
+         $$0.a(new fem(this.c));
+      }
+
+      @Override
+      public ui aN_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(esy $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, asy.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         eui.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aO_() {
+         return true;
+      }
    }
 }

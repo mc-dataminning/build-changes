@@ -1,40 +1,15 @@
-public class cjt extends cjg {
-   private static final int a = 32;
-
-   public cjt(cjg.a $$0) {
+public class cjt extends cke implements cli {
+   public cjt(cke.a $$0) {
       super($$0);
    }
 
    @Override
-   public cjl a(cjl $$0, cqb $$1, bjm $$2) {
-      if ($$2 instanceof aku $$3) {
-         al.z.a($$3, $$0);
-         $$3.b(apq.c.b(this));
+   public boolean a(cqz $$0, dff $$1, boolean $$2, ccx $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.p(), aqd.jv, aqe.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
       }
-
-      if ($$2 instanceof cca && !((cca)$$2).fT().d) {
-         $$0.h(1);
-      }
-
-      if (!$$1.B) {
-         $$2.eq();
-      }
-
-      return $$0.b() ? new cjl(cjo.pK) : $$0;
-   }
-
-   @Override
-   public int b(cjl $$0) {
-      return 32;
-   }
-
-   @Override
-   public cle c(cjl $$0) {
-      return cle.c;
-   }
-
-   @Override
-   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
-      return cjn.a($$0, $$1, $$2);
    }
 }

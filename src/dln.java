@@ -1,132 +1,348 @@
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class dln implements ash {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dln> b = dlm.a.xmap($$0 -> new dln($$0), $$0 -> $$0.e);
-   private dlm e;
-   private final dko f = new dko(this);
+public final class dln extends dhy {
+   public static final Codec<dln> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(csb.a.fieldOf("biome_source").forGetter($$0x -> $$0x.b), dlp.b.fieldOf("settings").forGetter($$0x -> $$0x.e))
+            .apply($$0, $$0.stable(dln::new))
+   );
+   private static final dgb d = cuc.a.o();
+   private final ib<dlp> e;
+   private final Supplier<dkw.a> f;
 
-   public dln(long $$0) {
-      this.e = new dlm(dlb.c($$0));
+   public dln(csb $$0, ib<dlp> $$1) {
+      super($$0);
+      this.e = $$1;
+      this.f = Suppliers.memoize(() -> a($$1.a()));
    }
 
-   public dln(dlb.a $$0) {
-      this.e = new dlm($$0);
-   }
-
-   public dln(long $$0, long $$1) {
-      this.e = new dlm($$0, $$1);
-   }
-
-   private dln(dlm $$0) {
-      this.e = $$0;
+   private static dkw.a a(dlp $$0) {
+      dkw.b $$1 = new dkw.b(-54, cuc.H.o());
+      int $$2 = $$0.l();
+      dkw.b $$3 = new dkw.b($$2, $$0.h());
+      dkw.b $$4 = new dkw.b(djk.e * 2, cuc.a.o());
+      return ($$4x, $$5, $$6) -> $$5 < Math.min(-54, $$2) ? $$1 : $$3;
    }
 
    @Override
-   public ash d() {
-      return new dln(this.e.a(), this.e.a());
+   public CompletableFuture<dhx> a(Executor $$0, dly $$1, dmm $$2, crr $$3, dhx $$4) {
+      return CompletableFuture.supplyAsync(ac.a("init_biomes", () -> {
+         this.a($$2, $$1, $$3, $$4);
+         return $$4;
+      }), ac.f());
+   }
+
+   private void a(dmm $$0, dly $$1, crr $$2, dhx $$3) {
+      dlo $$4 = $$3.a($$3x -> this.a($$3x, $$2, $$0, $$1));
+      csa $$5 = dky.a($$0.a(this.b), $$3);
+      $$3.a($$5, $$4.a($$1.a(), this.e.a().k()));
+   }
+
+   private dlo a(dhx $$0, crr $$1, dmm $$2, dly $$3) {
+      return dlo.a($$0, $$3, dkx.a($$1, $$0.f()), this.e.a(), this.f.get(), $$2);
    }
 
    @Override
-   public dkz e() {
-      return new dln.a(this.e.a(), this.e.a());
+   protected Codec<? extends dhy> a() {
+      return c;
+   }
+
+   public ib<dlp> g() {
+      return this.e;
+   }
+
+   public boolean a(afv<dlp> $$0) {
+      return this.e.a($$0);
    }
 
    @Override
-   public void b(long $$0) {
-      this.e = new dlm(dlb.c($$0));
-      this.f.a();
+   public int a(int $$0, int $$1, dlk.a $$2, crb $$3, dly $$4) {
+      return this.a($$3, $$4, $$0, $$1, null, $$2.e()).orElse($$3.I_());
+   }
+
+   @Override
+   public crl a(int $$0, int $$1, crb $$2, dly $$3) {
+      MutableObject<crl> $$4 = new MutableObject();
+      this.a($$2, $$3, $$0, $$1, $$4, null);
+      return (crl)$$4.getValue();
+   }
+
+   @Override
+   public void a(List<String> $$0, dly $$1, ht $$2) {
+      DecimalFormat $$3 = new DecimalFormat("0.000");
+      dlq $$4 = $$1.a();
+      dld.e $$5 = new dld.e($$2.u(), $$2.v(), $$2.w());
+      double $$6 = $$4.j().a($$5);
+      $$0.add(
+         "NoiseRouter T: "
+            + $$3.format($$4.e().a($$5))
+            + " V: "
+            + $$3.format($$4.f().a($$5))
+            + " C: "
+            + $$3.format($$4.g().a($$5))
+            + " E: "
+            + $$3.format($$4.h().a($$5))
+            + " D: "
+            + $$3.format($$4.i().a($$5))
+            + " W: "
+            + $$3.format($$6)
+            + " PV: "
+            + $$3.format((double)dlr.a((float)$$6))
+            + " AS: "
+            + $$3.format($$4.k().a($$5))
+            + " N: "
+            + $$3.format($$4.l().a($$5))
+      );
+   }
+
+   private OptionalInt a(crb $$0, dly $$1, int $$2, int $$3, @Nullable MutableObject<crl> $$4, @Nullable Predicate<dgb> $$5) {
+      dls $$6 = this.e.a().f().a($$0);
+      int $$7 = $$6.a();
+      int $$8 = $$6.c();
+      int $$9 = asy.a($$8, $$7);
+      int $$10 = asy.a($$6.d(), $$7);
+      if ($$10 <= 0) {
+         return OptionalInt.empty();
+      } else {
+         dgb[] $$11;
+         if ($$4 == null) {
+            $$11 = null;
+         } else {
+            $$11 = new dgb[$$6.d()];
+            $$4.setValue(new crl($$8, $$11));
+         }
+
+         int $$13 = $$6.b();
+         int $$14 = Math.floorDiv($$2, $$13);
+         int $$15 = Math.floorDiv($$3, $$13);
+         int $$16 = Math.floorMod($$2, $$13);
+         int $$17 = Math.floorMod($$3, $$13);
+         int $$18 = $$14 * $$13;
+         int $$19 = $$15 * $$13;
+         double $$20 = (double)$$16 / (double)$$13;
+         double $$21 = (double)$$17 / (double)$$13;
+         dlo $$22 = new dlo(1, $$1, $$18, $$19, $$6, dle.b.a, this.e.a(), this.f.get(), dmm.a());
+         $$22.f();
+         $$22.b(0);
+
+         for (int $$23 = $$10 - 1; $$23 >= 0; $$23--) {
+            $$22.b($$23, 0);
+
+            for (int $$24 = $$7 - 1; $$24 >= 0; $$24--) {
+               int $$25 = ($$9 + $$23) * $$7 + $$24;
+               double $$26 = (double)$$24 / (double)$$7;
+               $$22.a($$25, $$26);
+               $$22.b($$2, $$20);
+               $$22.c($$3, $$21);
+               dgb $$27 = $$22.e();
+               dgb $$28 = $$27 == null ? this.e.a().g() : $$27;
+               if ($$11 != null) {
+                  int $$29 = $$23 * $$7 + $$24;
+                  $$11[$$29] = $$28;
+               }
+
+               if ($$5 != null && $$5.test($$28)) {
+                  $$22.g();
+                  return OptionalInt.of($$25 + 1);
+               }
+            }
+         }
+
+         $$22.g();
+         return OptionalInt.empty();
+      }
+   }
+
+   @Override
+   public void a(alx $$0, crr $$1, dly $$2, dhx $$3) {
+      if (!aa.a($$3.f())) {
+         dmh $$4 = new dmh(this, $$0);
+         this.a($$3, $$4, $$2, $$1, $$0.F_(), $$0.H_().d(jz.aq), dmm.a($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public void a(dhx $$0, dmh $$1, dly $$2, crr $$3, crz $$4, io<crx> $$5, dmm $$6) {
+      dlo $$7 = $$0.a($$3x -> this.a($$3x, $$3, $$6, $$2));
+      dlp $$8 = this.e.a();
+      $$2.c().a($$2, $$4, $$5, $$8.n(), $$1, $$0, $$7, $$8.j());
+   }
+
+   @Override
+   public void a(alx $$0, long $$1, dly $$2, crz $$3, crr $$4, dhx $$5, dlg.a $$6) {
+      crz $$7 = $$3.a(($$1x, $$2x, $$3x) -> this.b.getNoiseBiome($$1x, $$2x, $$3x, $$2.b()));
+      dmj $$8 = new dmj(new dll(dlz.a()));
+      int $$9 = 8;
+      cqg $$10 = $$5.f();
+      dlo $$11 = $$5.a($$3x -> this.a($$3x, $$4, dmm.a($$0), $$2));
+      dkw $$12 = $$11.i();
+      dnk $$13 = new dnk(this, $$0.H_(), $$5.z(), $$11, $$2, this.e.a().j());
+      dhw $$14 = ((dis)$$5).b($$6);
+
+      for (int $$15 = -8; $$15 <= 8; $$15++) {
+         for (int $$16 = -8; $$16 <= 8; $$16++) {
+            cqg $$17 = new cqg($$10.e + $$15, $$10.f + $$16);
+            dhx $$18 = $$0.a($$17.e, $$17.f);
+            cry $$19 = $$18.a(() -> this.a(this.b.getNoiseBiome(in.a($$17.d()), 0, in.a($$17.e()), $$2.b())));
+            Iterable<ib<dnn<?>>> $$20 = $$19.a($$6);
+            int $$21 = 0;
+
+            for (ib<dnn<?>> $$22 : $$20) {
+               dnn<?> $$23 = $$22.a();
+               $$8.c($$1 + (long)$$21, $$17.e, $$17.f);
+               if ($$23.a($$8)) {
+                  $$23.a($$13, $$5, $$7::a, $$8, $$12, $$17, $$14);
+               }
+
+               $$21++;
+            }
+         }
+      }
+   }
+
+   @Override
+   public CompletableFuture<dhx> a(Executor $$0, dmm $$1, dly $$2, crr $$3, dhx $$4) {
+      dls $$5 = this.e.a().f().a($$4.z());
+      int $$6 = $$5.c();
+      int $$7 = asy.a($$6, $$5.a());
+      int $$8 = asy.a($$5.d(), $$5.a());
+      if ($$8 <= 0) {
+         return CompletableFuture.completedFuture($$4);
+      } else {
+         int $$9 = $$4.e($$8 * $$5.a() - 1 + $$6);
+         int $$10 = $$4.e($$6);
+         Set<dij> $$11 = Sets.newHashSet();
+
+         for (int $$12 = $$9; $$12 >= $$10; $$12--) {
+            dij $$13 = $$4.b($$12);
+            $$13.a();
+            $$11.add($$13);
+         }
+
+         return CompletableFuture.supplyAsync(ac.a("wgen_fill_noise", () -> this.a($$1, $$3, $$2, $$4, $$7, $$8)), ac.f()).whenCompleteAsync(($$1x, $$2x) -> {
+            for (dij $$3x : $$11) {
+               $$3x.b();
+            }
+         }, $$0);
+      }
+   }
+
+   private dhx a(dmm $$0, crr $$1, dly $$2, dhx $$3, int $$4, int $$5) {
+      dlo $$6 = $$3.a($$3x -> this.a($$3x, $$1, $$0, $$2));
+      dlk $$7 = $$3.a(dlk.a.c);
+      dlk $$8 = $$3.a(dlk.a.a);
+      cqg $$9 = $$3.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      dkw $$12 = $$6.i();
+      $$6.f();
+      ht.a $$13 = new ht.a();
+      int $$14 = $$6.j();
+      int $$15 = $$6.k();
+      int $$16 = 16 / $$14;
+      int $$17 = 16 / $$14;
+
+      for (int $$18 = 0; $$18 < $$16; $$18++) {
+         $$6.b($$18);
+
+         for (int $$19 = 0; $$19 < $$17; $$19++) {
+            int $$20 = $$3.ak() - 1;
+            dij $$21 = $$3.b($$20);
+
+            for (int $$22 = $$5 - 1; $$22 >= 0; $$22--) {
+               $$6.b($$22, $$19);
+
+               for (int $$23 = $$15 - 1; $$23 >= 0; $$23--) {
+                  int $$24 = ($$4 + $$22) * $$15 + $$23;
+                  int $$25 = $$24 & 15;
+                  int $$26 = $$3.e($$24);
+                  if ($$20 != $$26) {
+                     $$20 = $$26;
+                     $$21 = $$3.b($$26);
+                  }
+
+                  double $$27 = (double)$$23 / (double)$$15;
+                  $$6.a($$24, $$27);
+
+                  for (int $$28 = 0; $$28 < $$14; $$28++) {
+                     int $$29 = $$10 + $$18 * $$14 + $$28;
+                     int $$30 = $$29 & 15;
+                     double $$31 = (double)$$28 / (double)$$14;
+                     $$6.b($$29, $$31);
+
+                     for (int $$32 = 0; $$32 < $$14; $$32++) {
+                        int $$33 = $$11 + $$19 * $$14 + $$32;
+                        int $$34 = $$33 & 15;
+                        double $$35 = (double)$$32 / (double)$$14;
+                        $$6.c($$33, $$35);
+                        dgb $$36 = $$6.e();
+                        if ($$36 == null) {
+                           $$36 = this.e.a().g();
+                        }
+
+                        $$36 = this.a($$6, $$29, $$24, $$33, $$36);
+                        if ($$36 != d && !aa.a($$3.f())) {
+                           $$21.a($$30, $$25, $$34, $$36, false);
+                           $$7.a($$30, $$24, $$34, $$36);
+                           $$8.a($$30, $$24, $$34, $$36);
+                           if ($$12.a() && !$$36.u().c()) {
+                              $$13.d($$29, $$24, $$33);
+                              $$3.e($$13);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         $$6.h();
+      }
+
+      $$6.g();
+      return $$3;
+   }
+
+   private dgb a(dlo $$0, int $$1, int $$2, int $$3, dgb $$4) {
+      return $$4;
+   }
+
+   @Override
+   public int d() {
+      return this.e.a().f().d();
+   }
+
+   @Override
+   public int e() {
+      return this.e.a().l();
    }
 
    @Override
    public int f() {
-      return (int)this.e.a();
+      return this.e.a().f().c();
    }
 
    @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
-      }
-   }
-
-   @Override
-   public long g() {
-      return this.e.a();
-   }
-
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
-   }
-
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
-
-   @Override
-   public double k() {
-      return this.f.b();
-   }
-
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
-
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
-
-   public static class a implements dkz {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public ash a(int $$0, int $$1, int $$2) {
-         long $$3 = asb.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dln($$4, this.b);
-      }
-
-      @Override
-      public ash a(String $$0) {
-         dlb.a $$1 = dlb.a($$0);
-         return new dln($$1.a(this.a, this.b));
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+   public void a(alx $$0) {
+      if (!this.e.a().a()) {
+         cqg $$1 = $$0.a();
+         ib<crx> $$2 = $$0.s($$1.l().h($$0.aj() - 1));
+         dmj $$3 = new dmj(new dll(dlz.a()));
+         $$3.a($$0.A(), $$1.d(), $$1.e());
+         crk.a($$0, $$2, $$1, $$3);
       }
    }
 }

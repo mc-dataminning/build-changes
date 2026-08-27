@@ -1,40 +1,107 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class fsu extends ftc<ccj> {
-   private static final aez a = new aez("textures/entity/enderdragon/dragon_fireball.png");
-   private static final foi f = foi.e(a);
+public class fsu implements fsj.a {
+   private final ero a;
+   private final Map<afv<cqz>, Map<String, dvs>> b = Maps.newIdentityHashMap();
+   private final Map<afv<cqz>, Map<String, xi.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
 
-   public fsu(ftd.a $$0) {
-      super($$0);
+   public fsu(ero $$0) {
+      this.a = $$0;
    }
 
-   protected int a(ccj $$0, gw $$1) {
-      return 15;
+   @Override
+   public void a(emh $$0, fpb $$1, double $$2, double $$3, double $$4) {
+      eqz $$5 = this.a.j.m();
+      afv<cqz> $$6 = this.a.r.ac();
+      ht $$7 = ht.a($$5.b().c, 0.0, $$5.b().e);
+      eml $$8 = $$1.getBuffer(fpj.x());
+      if (this.b.containsKey($$6)) {
+         for (dvs $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.f(), 500.0)) {
+               foz.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.g() - $$2,
+                  (double)$$9.h() - $$3,
+                  (double)$$9.i() - $$4,
+                  (double)($$9.j() + 1) - $$2,
+                  (double)($$9.k() + 1) - $$3,
+                  (double)($$9.l() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
+         }
+      }
+
+      Map<String, xi.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (xi.a $$11 : $$10.values()) {
+            dvs $$12 = $$11.a();
+            if ($$7.a($$12.f(), 500.0)) {
+               if ($$11.b()) {
+                  foz.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.g() - $$2,
+                     (double)$$12.h() - $$3,
+                     (double)$$12.i() - $$4,
+                     (double)($$12.j() + 1) - $$2,
+                     (double)($$12.k() + 1) - $$3,
+                     (double)($$12.l() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  foz.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.g() - $$2,
+                     (double)$$12.h() - $$3,
+                     (double)$$12.i() - $$4,
+                     (double)($$12.j() + 1) - $$2,
+                     (double)($$12.k() + 1) - $$3,
+                     (double)($$12.l() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
+      }
    }
 
-   public void a(ccj $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
-      $$3.a();
-      $$3.b(2.0F, 2.0F, 2.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      elj.a $$6 = $$3.c();
-      Matrix4f $$7 = $$6.a();
-      Matrix3f $$8 = $$6.b();
-      eln $$9 = $$4.getBuffer(f);
-      a($$9, $$7, $$8, $$5, 0.0F, 0, 0, 1);
-      a($$9, $$7, $$8, $$5, 1.0F, 0, 1, 1);
-      a($$9, $$7, $$8, $$5, 1.0F, 1, 1, 0);
-      a($$9, $$7, $$8, $$5, 0.0F, 1, 0, 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(dvs $$0, List<xi.a> $$1, afv<cqz> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, xi.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (xi.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
    }
 
-   private static void a(eln $$0, Matrix4f $$1, Matrix3f $$2, int $$3, float $$4, int $$5, int $$6, int $$7) {
-      $$0.a($$1, $$4 - 0.5F, (float)$$5 - 0.25F, 0.0F).a(255, 255, 255, 255).a((float)$$6, (float)$$7).c(fyr.d).b($$3).a($$2, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   public aez a(ccj $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

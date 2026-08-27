@@ -1,60 +1,142 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class edi extends edf {
-   public static final Codec<edi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aqk.a(jc.E).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, edi::new)
-   );
-   private final aqk<cjg> j;
-   private final boolean k;
+public class edi {
+   private final edo a;
+   private final ate b;
+   private final edm c;
+   private final Set<edi.c<?>> d = Sets.newLinkedHashSet();
 
-   private edi(aqk<cjg> $$0, boolean $$1, int $$2, int $$3, List<efj> $$4, List<edx> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   edi(edo $$0, ate $$1, edm $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public ede a() {
-      return edb.f;
+   public boolean a(efq<?> $$0) {
+      return this.a.a($$0);
    }
 
-   @Override
-   public void a(Consumer<cjl> $$0, eck $$1) {
-      jb.i.c(this.j).forEach($$1x -> $$0.accept(new cjl($$1x)));
+   public <T> T b(efq<T> $$0) {
+      return this.a.b($$0);
    }
 
-   private boolean a(eck $$0, Consumer<edc> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final he<cjg> $$2 : jb.i.c(this.j)) {
-            $$1.accept(new edf.c() {
-               @Override
-               public void a(Consumer<cjl> $$0, eck $$1) {
-                  $$0.accept(new cjl($$2));
-               }
-            });
+   public void a(afw $$0, Consumer<ckj> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Nullable
+   public <T> T c(efq<T> $$0) {
+      return this.a.d($$0);
+   }
+
+   public boolean a(edi.c<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean b(edi.c<?> $$0) {
+      return this.d.add($$0);
+   }
+
+   public void c(edi.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public edm a() {
+      return this.c;
+   }
+
+   public ate b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.b();
+   }
+
+   public alq d() {
+      return this.a.a();
+   }
+
+   public static edi.c<edq> a(edq $$0) {
+      return new edi.c<>(edn.c, $$0);
+   }
+
+   public static edi.c<egh> a(egh $$0) {
+      return new edi.c<>(edn.a, $$0);
+   }
+
+   public static edi.c<eev> a(eev $$0) {
+      return new edi.c<>(edn.b, $$0);
+   }
+
+   public static class a {
+      private final edo a;
+      @Nullable
+      private ate b;
+
+      public a(edo $$0) {
+         this.a = $$0;
+      }
+
+      public edi.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = ate.a($$0);
          }
 
-         return true;
+         return this;
+      }
+
+      public alq a() {
+         return this.a.a();
+      }
+
+      public edi a(Optional<afw> $$0) {
+         alq $$1 = this.a();
+         MinecraftServer $$2 = $$1.n();
+         ate $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
+         return new edi(this.a, $$3, $$2.aH());
       }
    }
 
-   @Override
-   public boolean expand(eck $$0, Consumer<edc> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public static enum b implements atr {
+      a("this", eft.a),
+      b("killer", eft.d),
+      c("direct_killer", eft.e),
+      d("killer_player", eft.b);
+
+      public static final atr.a<edi.b> e = atr.a(edi.b::values);
+      private final String f;
+      private final efq<? extends bjt> g;
+
+      private b(String $$0, efq<? extends bjt> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public efq<? extends bjt> a() {
+         return this.g;
+      }
+
+      public static edi.b a(String $$0) {
+         edi.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 
-   public static edf.a<?> a(aqk<cjg> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new edi($$0, false, $$1, $$2, $$3, $$4));
-   }
-
-   public static edf.a<?> b(aqk<cjg> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new edi($$0, true, $$1, $$2, $$3, $$4));
+   public static record c<T>(edn<T> a, T b) {
    }
 }

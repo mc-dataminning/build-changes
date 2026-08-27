@@ -1,73 +1,111 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.function.Consumer;
 
-public class ewx extends ewy {
-   private static final tl k = tl.c("chat.copy");
-   private static final tl l = tl.c("chat.link.warning");
-   private final String m;
-   private final boolean n;
+public class ewx implements ewu {
+   private final ews a;
+   private final ewx.a b;
+   private int c = 0;
 
-   public ewx(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), tl.b($$1), $$1, $$2 ? tk.e : tk.g, $$2);
+   private ewx(ewx.a $$0) {
+      this(0, 0, $$0);
    }
 
-   public ewx(BooleanConsumer $$0, tl $$1, String $$2, boolean $$3) {
-      this($$0, $$1, $$2, $$3 ? tk.e : tk.g, $$3);
+   public ewx(int $$0, int $$1, ewx.a $$2) {
+      this.a = new ews($$0, $$1);
+      this.b = $$2;
    }
 
-   public ewx(BooleanConsumer $$0, tl $$1, String $$2, tl $$3, boolean $$4) {
-      this($$0, $$1, a($$4, $$2), $$2, $$3, $$4);
+   public ewx a(int $$0) {
+      this.b.a(this.a, $$0);
+      return this;
    }
 
-   public ewx(BooleanConsumer $$0, tl $$1, tl $$2, String $$3, tl $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (tl)($$5 ? tl.c("chat.link.open") : tk.f);
-      this.b = $$4;
-      this.n = !$$5;
-      this.m = $$3;
+   public eww b() {
+      return this.a.b();
    }
 
-   protected static tz a(boolean $$0, String $$1) {
-      return c($$0).b(tk.u).b(tl.b($$1));
+   public eww c() {
+      return this.a.c();
    }
 
-   protected static tz c(boolean $$0) {
-      return tl.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   public <T extends ewv> T a(T $$0, eww $$1) {
+      return this.b.a(this.a, $$0, this.c++, $$1);
    }
 
-   @Override
-   protected void a(int $$0) {
-      this.d(esk.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
-      this.d(esk.a(k, $$0x -> {
-         this.k();
-         this.c.accept(false);
-      }).a(this.g / 2 - 50, $$0, 100, 20).a());
-      this.d(esk.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
+   public <T extends ewv> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public void k() {
-      this.f.o.a(this.m);
+   public <T extends ewv> T a(T $$0, Consumer<eww> $$1) {
+      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
    }
 
    @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.n) {
-         $$0.a(this.i, l, this.g / 2, 110, 16764108);
-      }
+   public void b(Consumer<ewv> $$0) {
+      this.a.b($$0);
    }
 
-   public static void a(String $$0, eye $$1, boolean $$2) {
-      eqp $$3 = eqp.O();
-      $$3.a(new ewx($$3x -> {
-         if ($$3x) {
-            ac.i().a($$0);
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public int k() {
+      return this.a.k();
+   }
+
+   @Override
+   public int i() {
+      return this.a.i();
+   }
+
+   @Override
+   public void f(int $$0) {
+      this.a.f($$0);
+   }
+
+   @Override
+   public void g(int $$0) {
+      this.a.g($$0);
+   }
+
+   @Override
+   public int p() {
+      return this.a.p();
+   }
+
+   @Override
+   public int r() {
+      return this.a.r();
+   }
+
+   public static ewx d() {
+      return new ewx(ewx.a.b);
+   }
+
+   public static ewx e() {
+      return new ewx(ewx.a.a);
+   }
+
+   public static enum a {
+      a,
+      b;
+
+      void a(ews $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1);
+               break;
+            case b:
+               $$0.b($$1);
          }
+      }
 
-         $$3.a($$1);
-      }, $$0, $$2));
-   }
-
-   public static esk.c b(String $$0, eye $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
+      public <T extends ewv> T a(ews $$0, T $$1, int $$2, eww $$3) {
+         return (T)(switch (this) {
+            case a -> $$0.a($$1, 0, $$2, $$3);
+            case b -> $$0.a($$1, $$2, 0, $$3);
+         });
+      }
    }
 }

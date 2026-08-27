@@ -1,81 +1,69 @@
 import java.util.List;
+import java.util.function.Predicate;
 
-public interface cid {
-   String o_ = "color";
-   String p_ = "display";
-   int q_ = 10511680;
+public class cid extends cke {
+   private static final Predicate<bjt> a = bjw.f.and(bjt::br);
+   private final ceq.b b;
+   private final boolean c;
 
-   default boolean a(cjl $$0) {
-      qw $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99);
+   public cid(boolean $$0, ceq.b $$1, cke.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
    }
 
-   default int e_(cjl $$0) {
-      qw $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
-   }
-
-   default void f_(cjl $$0) {
-      qw $$1 = $$0.b("display");
-      if ($$1 != null && $$1.e("color")) {
-         $$1.r("color");
-      }
-   }
-
-   default void a(cjl $$0, int $$1) {
-      $$0.a("display").a("color", $$1);
-   }
-
-   static cjl a(cjl $$0, List<cia> $$1) {
-      cjl $$2 = cjl.b;
-      int[] $$3 = new int[3];
-      int $$4 = 0;
-      int $$5 = 0;
-      cid $$6 = null;
-      cjg $$7 = $$0.d();
-      if ($$7 instanceof cid) {
-         $$6 = (cid)$$7;
-         $$2 = $$0.c(1);
-         if ($$6.a($$0)) {
-            int $$8 = $$6.e_($$2);
-            float $$9 = (float)($$8 >> 16 & 0xFF) / 255.0F;
-            float $$10 = (float)($$8 >> 8 & 0xFF) / 255.0F;
-            float $$11 = (float)($$8 & 0xFF) / 255.0F;
-            $$4 += (int)(Math.max($$9, Math.max($$10, $$11)) * 255.0F);
-            $$3[0] += (int)($$9 * 255.0F);
-            $$3[1] += (int)($$10 * 255.0F);
-            $$3[2] += (int)($$11 * 255.0F);
-            $$5++;
-         }
-
-         for (cia $$12 : $$1) {
-            float[] $$13 = $$12.d().d();
-            int $$14 = (int)($$13[0] * 255.0F);
-            int $$15 = (int)($$13[1] * 255.0F);
-            int $$16 = (int)($$13[2] * 255.0F);
-            $$4 += Math.max($$14, Math.max($$15, $$16));
-            $$3[0] += $$14;
-            $$3[1] += $$15;
-            $$3[2] += $$16;
-            $$5++;
-         }
-      }
-
-      if ($$6 == null) {
-         return cjl.b;
+   @Override
+   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
+      ckj $$3 = $$1.b($$2);
+      eid $$4 = a($$0, $$1, cqi.b.c);
+      if ($$4.c() == eid.a.a) {
+         return bic.c($$3);
       } else {
-         int $$17 = $$3[0] / $$5;
-         int $$18 = $$3[1] / $$5;
-         int $$19 = $$3[2] / $$5;
-         float $$20 = (float)$$4 / (float)$$5;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int var26 = ($$17 << 8) + $$18;
-         var26 = (var26 << 8) + $$19;
-         $$6.a($$2, var26);
-         return $$2;
+         eif $$5 = $$1.f(1.0F);
+         double $$6 = 5.0;
+         List<bjt> $$7 = $$0.a($$1, $$1.cG().b($$5.a(5.0)).g(1.0), a);
+         if (!$$7.isEmpty()) {
+            eif $$8 = $$1.bp();
+
+            for (bjt $$9 : $$7) {
+               eia $$10 = $$9.cG().g((double)$$9.bD());
+               if ($$10.d($$8)) {
+                  return bic.c($$3);
+               }
+            }
+         }
+
+         if ($$4.c() == eid.a.b) {
+            ceq $$11 = this.a($$0, $$4, $$3, $$1);
+            $$11.a(this.b);
+            $$11.r($$1.dB());
+            if (!$$0.a($$11, $$11.cG())) {
+               return bic.d($$3);
+            } else {
+               if (!$$0.B) {
+                  $$0.b($$11);
+                  $$0.a($$1, dkl.t, $$4.e());
+                  if (!$$1.fT().d) {
+                     $$3.h(1);
+                  }
+               }
+
+               $$1.b(aqn.c.b(this));
+               return bic.a($$3, $$0.x_());
+            }
+         } else {
+            return bic.c($$3);
+         }
       }
+   }
+
+   private ceq a(cqz $$0, eid $$1, ckj $$2, ccx $$3) {
+      eif $$4 = $$1.e();
+      ceq $$5 = (ceq)(this.c ? new cer($$0, $$4.c, $$4.d, $$4.e) : new ceq($$0, $$4.c, $$4.d, $$4.e));
+      if ($$0 instanceof alq $$6) {
+         bjx.<ceq>a($$6, $$2, $$3).accept($$5);
+      }
+
+      return $$5;
    }
 }

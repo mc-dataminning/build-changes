@@ -1,96 +1,87 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class cxd extends cso {
+public class cxd extends cxw {
    public static final MapCodec<cxd> a = b(cxd::new);
-   public static final dfu b = dft.n;
+   public static final int b = 3;
+   public static final dhb c = dgr.as;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
    public MapCodec<cxd> a() {
       return a;
    }
 
-   protected cxd(dfc.d $$0) {
+   public cxd(dga.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(cqb $$0, gw $$1, dfd $$2, @Nullable bjm $$3, cjl $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      qw $$5 = che.a($$4);
-      if ($$5 != null && $$5.e("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
-      }
+   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof ddz $$6) {
-         $$6.v();
-         return bhe.a($$1.B);
-      } else {
-         return bhe.d;
-      }
-   }
+   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.z($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         ht.a $$4 = new ht.a();
 
-   @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof ddz $$5) {
-            $$5.v();
+         for (hx $$5 : hx.values()) {
+            $$4.a($$2, $$5);
+            dgb $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, asy.a($$3, 20, 40));
+            }
          }
+      } else {
+         $$1.a($$2, this, asy.a($$3, 20, 40));
+      }
+   }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+   private boolean e(dgb $$0, cqz $$1, ht $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
       }
    }
 
    @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new ddz($$0, $$1);
+   public void a(dgb $$0, cqz $$1, ht $$2, cua $$3, ht $$4, boolean $$5) {
+      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public boolean f_(dfd $$0) {
+   private boolean a(cqf $$0, ht $$1, int $$2) {
+      int $$3 = 0;
+      ht.a $$4 = new ht.a();
+
+      for (hx $$5 : hx.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
       return true;
    }
 
    @Override
-   public int a(dfd $$0, cph $$1, gw $$2, ha $$3) {
-      if ($$1.c_($$2) instanceof ddz $$4 && $$4.f()) {
-         return 15;
-      }
-
-      return 0;
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public boolean d_(dfd $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfd $$0, cqb $$1, gw $$2) {
-      if ($$1.c_($$2) instanceof ddz $$3 && $$3.i().d() instanceof ckd $$4) {
-         return $$4.h();
-      }
-
-      return 0;
-   }
-
-   @Override
-   public czg b_(dfd $$0) {
-      return czg.c;
-   }
-
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
-      return $$1.c(b) ? a($$2, ddb.e, ddz::a) : null;
+   public ckj a(crc $$0, ht $$1, dgb $$2) {
+      return ckj.b;
    }
 }

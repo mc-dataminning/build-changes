@@ -1,33 +1,49 @@
-public class fem<T extends bwv> extends ffj<T> {
-   private final fhx g = this.b.b("left_chest");
-   private final fhx h = this.b.b("right_chest");
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
-   public fem(fhx $$0) {
-      super($$0);
+public class fem implements fei, fej {
+   private static final afw a = new afw("spectator/teleport_to_player");
+   private static final Comparator<fka> b = Comparator.comparing($$0 -> $$0.a().getId());
+   private static final ui c = ui.c("spectatorMenu.teleport");
+   private static final ui d = ui.c("spectatorMenu.teleport.prompt");
+   private final List<fej> e;
+
+   public fem() {
+      this(ero.O().J().n());
    }
 
-   public static fid c() {
-      fif $$0 = ffj.a(fib.a);
-      fig $$1 = $$0.a();
-      fig $$2 = $$1.a("body");
-      fic $$3 = fic.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$2.a("left_chest", $$3, fhz.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$2.a("right_chest", $$3, fhz.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      fig $$4 = $$1.a("head_parts").a("head");
-      fic $$5 = fic.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$4.a("left_ear", $$5, fhz.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$4.a("right_ear", $$5, fhz.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-      return fid.a($$0, 64, 64);
+   public fem(Collection<fka> $$0) {
+      this.e = $$0.stream().filter($$0x -> $$0x.e() != cqw.d).sorted(b).map($$0x -> new fef($$0x.a())).toList();
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.t()) {
-         this.g.k = true;
-         this.h.k = true;
-      } else {
-         this.g.k = false;
-         this.h.k = false;
-      }
+   @Override
+   public List<fej> a() {
+      return this.e;
+   }
+
+   @Override
+   public ui b() {
+      return d;
+   }
+
+   @Override
+   public void a(feh $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public ui aN_() {
+      return c;
+   }
+
+   @Override
+   public void a(esy $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aO_() {
+      return !this.e.isEmpty();
    }
 }

@@ -1,80 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class byc extends bxp {
-   private boolean b;
-   @Nullable
-   private eav c;
-   @Nullable
-   private ehh d;
+public enum byc implements atr {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   public byc(bxn $$0) {
-      super($$0);
+   public static final Codec<byc> h = atr.a(byc::values);
+   private static final IntFunction<byc> i = arr.a(byc::a, values(), arr.a.b);
+   private final int j;
+   private final String k;
+
+   private byc(int $$0, String $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public int a() {
+      return this.j;
+   }
+
+   public static byc a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   public void c() {
-      if (!this.b && this.c != null) {
-         gw $$0 = this.a.dL().a(dkm.a.f, dnp.a(this.a.s()));
-         if (!$$0.a(this.a.dj(), 10.0)) {
-            this.a.gb().a(byd.a);
-         }
-      } else {
-         this.b = false;
-         this.j();
-      }
-   }
-
-   @Override
-   public void d() {
-      this.b = true;
-      this.c = null;
-      this.d = null;
-   }
-
-   private void j() {
-      int $$0 = this.a.y();
-      ehh $$1 = this.a.D(1.0F);
-      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
-      if (this.a.gc() != null && this.a.gc().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
-
-      this.c = this.a.a($$0, $$2, null);
-      this.k();
-   }
-
-   private void k() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            hy $$0 = this.c.g();
-            this.c.a();
-
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
-
-            this.d = new ehh((double)$$0.u(), $$1, (double)$$0.w());
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public ehh g() {
-      return this.d;
-   }
-
-   @Override
-   public byd<byc> i() {
-      return byd.e;
+   public String c() {
+      return this.k;
    }
 }

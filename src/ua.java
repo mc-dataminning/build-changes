@@ -1,35 +1,48 @@
-public interface ua {
-   tl a();
+import io.netty.buffer.ByteBuf;
 
-   void a(aku var1, boolean var2, th.a var3);
+public class ua {
+   private static final int a = 10;
+   private static final int b = 127;
+   private static final int c = 128;
+   private static final int d = 7;
 
-   static ua a(ub $$0) {
-      return (ua)($$0.g() ? new ua.a($$0.c()) : new ua.b($$0));
-   }
-
-   public static record a(tl a) implements ua {
-      @Override
-      public void a(aku $$0, boolean $$1, th.a $$2) {
-         $$0.c.a(this.a, $$2);
-      }
-   }
-
-   public static record b(ub a) implements ua {
-      @Override
-      public tl a() {
-         return this.a.c();
-      }
-
-      @Override
-      public void a(aku $$0, boolean $$1, th.a $$2) {
-         ub $$3 = this.a.a($$1);
-         if (!$$3.i()) {
-            $$0.c.a($$3, $$2);
+   public static int a(long $$0) {
+      for (int $$1 = 1; $$1 < 10; $$1++) {
+         if (($$0 & -1L << $$1 * 7) == 0L) {
+            return $$1;
          }
       }
 
-      public ub b() {
-         return this.a;
+      return 10;
+   }
+
+   public static boolean a(byte $$0) {
+      return ($$0 & 128) == 128;
+   }
+
+   public static long a(ByteBuf $$0) {
+      long $$1 = 0L;
+      int $$2 = 0;
+
+      byte $$3;
+      do {
+         $$3 = $$0.readByte();
+         $$1 |= (long)($$3 & 127) << $$2++ * 7;
+         if ($$2 > 10) {
+            throw new RuntimeException("VarLong too big");
+         }
+      } while (a($$3));
+
+      return $$1;
+   }
+
+   public static ByteBuf a(ByteBuf $$0, long $$1) {
+      while (($$1 & -128L) != 0L) {
+         $$0.writeByte((int)($$1 & 127L) | 128);
+         $$1 >>>= 7;
       }
+
+      $$0.writeByte((int)$$1);
+      return $$0;
    }
 }

@@ -1,25 +1,14 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 
-public class atv extends DataFix {
-   public atv(Schema $$0) {
-      super($$0, false);
-   }
+@FunctionalInterface
+public interface atv {
+   long get(TimeUnit var1);
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(azd.c);
-      return this.fixTypeEverywhereTyped(
-         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
-      );
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      return $$2 ? $$0 : $$0.remove("blending_data");
+   public interface a extends atv, LongSupplier {
+      @Override
+      default long get(TimeUnit $$0) {
+         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
+      }
    }
 }

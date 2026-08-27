@@ -1,55 +1,64 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
 import java.util.List;
 
-public class aab implements ve<wx> {
-   private static final byte a = -128;
-   private final int b;
-   private final List<Pair<bjb, cjl>> c;
+public class aab implements wb<xu> {
+   private final aab.a a;
+   private final List<afw> b;
+   private final List<afw> c;
+   private final aqh d;
 
-   public aab(int $$0, List<Pair<bjb, cjl>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aab(aab.a $$0, Collection<afw> $$1, Collection<afw> $$2, aqh $$3) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      this.c = ImmutableList.copyOf($$2);
+      this.d = $$3;
    }
 
-   public aab(so $$0) {
-      this.b = $$0.n();
-      bjb[] $$1 = bjb.values();
-      this.c = Lists.newArrayList();
-
-      int $$2;
-      do {
-         $$2 = $$0.readByte();
-         bjb $$3 = $$1[$$2 & 127];
-         cjl $$4 = $$0.r();
-         this.c.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
-   }
-
-   @Override
-   public void a(so $$0) {
-      $$0.c(this.b);
-      int $$1 = this.c.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bjb, cjl> $$3 = this.c.get($$2);
-         bjb $$4 = (bjb)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.k($$5 ? $$6 | -128 : $$6);
-         $$0.a((cjl)$$3.getSecond());
+   public aab(tl $$0) {
+      this.a = $$0.b(aab.a.class);
+      this.d = aqh.a($$0);
+      this.b = $$0.a(tl::t);
+      if (this.a == aab.a.a) {
+         this.c = $$0.a(tl::t);
+      } else {
+         this.c = ImmutableList.of();
       }
    }
 
-   public void a(wx $$0) {
+   @Override
+   public void a(tl $$0) {
+      $$0.a(this.a);
+      this.d.b($$0);
+      $$0.a(this.b, tl::a);
+      if (this.a == aab.a.a) {
+         $$0.a(this.c, tl::a);
+      }
+   }
+
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public List<afw> a() {
       return this.b;
    }
 
-   public List<Pair<bjb, cjl>> d() {
+   public List<afw> d() {
       return this.c;
+   }
+
+   public aqh e() {
+      return this.d;
+   }
+
+   public aab.a f() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

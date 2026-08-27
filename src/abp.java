@@ -1,32 +1,32 @@
-public class abp implements ve<abd> {
-   private final int a;
-   private final String b;
+public class abp implements wb<xu> {
+   private final ui a;
+   private final ui b;
 
-   public abp(int $$0, String $$1) {
+   public abp(ui $$0, ui $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public abp(so $$0) {
-      this.a = $$0.n();
-      this.b = $$0.d(32500);
+   public abp(tl $$0) {
+      this.a = $$0.m();
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, 32500);
+   public void a(tl $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(abd $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public ui a() {
       return this.a;
    }
 
-   public String d() {
+   public ui d() {
       return this.b;
    }
 }

@@ -1,139 +1,73 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class cxn extends cvu {
-   public static final MapCodec<cxn> a = b(cxn::new);
-   public static final dfu b = dft.w;
-   protected static final int c = 6;
-   protected static final int d = 6;
-   protected static final int e = 8;
-   protected static final eia f = ctc.a(5.0, 4.0, 10.0, 11.0, 12.0, 16.0);
-   protected static final eia g = ctc.a(5.0, 4.0, 0.0, 11.0, 12.0, 6.0);
-   protected static final eia h = ctc.a(10.0, 4.0, 5.0, 16.0, 12.0, 11.0);
-   protected static final eia i = ctc.a(0.0, 4.0, 5.0, 6.0, 12.0, 11.0);
-   protected static final eia j = ctc.a(5.0, 0.0, 4.0, 11.0, 6.0, 12.0);
-   protected static final eia k = ctc.a(4.0, 0.0, 5.0, 12.0, 6.0, 11.0);
-   protected static final eia l = ctc.a(5.0, 10.0, 4.0, 11.0, 16.0, 12.0);
-   protected static final eia m = ctc.a(4.0, 10.0, 5.0, 12.0, 16.0, 11.0);
-
-   @Override
-   public MapCodec<cxn> a() {
-      return a;
-   }
-
-   protected cxn(dfc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(aE, ha.c).a(b, Boolean.valueOf(false)).a(K, dfo.b));
+public abstract class cxn extends cxm implements cud {
+   protected cxn(dga.d $$0, hx $$1, eiy $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      switch ((dfo)$$0.c(K)) {
-         case a:
-            switch ($$0.c(aE).o()) {
-               case a:
-                  return k;
-               case c:
-               default:
-                  return j;
-            }
-         case b:
-            switch ((ha)$$0.c(aE)) {
-               case f:
-                  return i;
-               case e:
-                  return h;
-               case d:
-                  return g;
-               case c:
-               default:
-                  return f;
-            }
-         case c:
-         default:
-            switch ($$0.c(aE).o()) {
-               case a:
-                  return m;
-               case c:
-               default:
-                  return l;
-            }
+   protected abstract MapCodec<? extends cxn> a();
+
+   protected dgb a(dgb $$0, dgb $$1) {
+      return $$1;
+   }
+
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
-   }
 
-   @Override
-   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
-      if ($$1.B) {
-         dfd $$6 = $$0.a(b);
-         if ($$6.c(b)) {
-            a($$6, $$1, $$2, 1.0F);
-         }
-
-         return bhe.a;
+      cxo $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
       } else {
-         dfd $$7 = this.d($$0, $$1, $$2);
-         float $$8 = $$7.c(b) ? 0.6F : 0.5F;
-         $$1.a(null, $$2, apg.ms, aph.e, 0.3F, $$8);
-         $$1.a($$3, $$7.c(b) ? djn.a : djn.e, $$2);
-         return bhe.b;
-      }
-   }
-
-   public dfd d(dfd $$0, cqb $$1, gw $$2) {
-      $$0 = $$0.a(b);
-      $$1.a($$2, $$0, 3);
-      this.e($$0, $$1, $$2);
-      return $$0;
-   }
-
-   private static void a(dfd $$0, cqc $$1, gw $$2, float $$3) {
-      ha $$4 = $$0.c(aE).g();
-      ha $$5 = h($$0).g();
-      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
-      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
-      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
-      $$1.a(new ip(ip.a, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      if ($$0.c(b) && $$3.i() < 0.25F) {
-         a($$0, $$1, $$2, 0.5F);
-      }
-   }
-
-   @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if ($$0.c(b)) {
-            this.e($$0, $$1, $$2);
+         if (this.b) {
+            $$3.a($$4, ebf.c, ebf.c.a($$3));
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   public int a(dfd $$0, cph $$1, gw $$2, ha $$3) {
-      return $$0.c(b) ? 15 : 0;
+   public ckj a(crc $$0, ht $$1, dgb $$2) {
+      return new ckj(this.c());
    }
 
    @Override
-   public int b(dfd $$0, cph $$1, gw $$2, ha $$3) {
-      return $$0.c(b) && h($$0) == $$3 ? 15 : 0;
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
+      Optional<ht> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
    }
 
    @Override
-   public boolean f_(dfd $$0) {
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
       return true;
    }
 
-   private void e(dfd $$0, cqb $$1, gw $$2) {
-      $$1.a($$2, this);
-      $$1.a($$2.a(h($$0).g()), this);
+   @Override
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      Optional<ht> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dgb $$5 = $$0.a_($$4.get());
+         ((cxo)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<ht> a(cqf $$0, ht $$1, cua $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(K, aE, b);
+   public boolean a(dgb $$0, cmr $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().k()) ? false : $$2;
+   }
+
+   @Override
+   protected cua b() {
+      return this;
    }
 }

@@ -1,15 +1,18 @@
-public class cnc extends clx {
-   public cnc(String $$0, cmd $$1, cmm $$2, cjl $$3, float $$4, int $$5) {
-      super(cmt.b, $$0, $$1, $$2, $$3, $$4, $$5);
+public enum cnc implements atr {
+   a("building"),
+   b("redstone"),
+   c("equipment"),
+   d("misc");
+
+   public static final atr.a<cnc> e = atr.a(cnc::values);
+   private final String f;
+
+   private cnc(String $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public cjl g() {
-      return new cjl(cte.cD);
-   }
-
-   @Override
-   public cms<?> an_() {
-      return cms.p;
+   public String c() {
+      return this.f;
    }
 }

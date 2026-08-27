@@ -1,40 +1,54 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.logging.LogUtils;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.SignatureException;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class atj extends DataFix {
-   public atj(Schema $$0) {
-      super($$0, false);
+public interface atj {
+   atj a = ($$0, $$1) -> true;
+   Logger b = LogUtils.getLogger();
+
+   boolean validate(ati var1, byte[] var2);
+
+   default boolean a(byte[] $$0, byte[] $$1) {
+      return this.validate($$1x -> $$1x.update($$0), $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(azd.x), this::a);
+   private static boolean a(ati $$0, byte[] $$1, Signature $$2) throws SignatureException {
+      $$0.update($$2::update);
+      return $$2.verify($$1);
    }
 
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:arrow", atj::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", atj::a);
-      return this.a($$0, "minecraft:trident", atj::a);
+   static atj a(PublicKey $$0, String $$1) {
+      return ($$2, $$3) -> {
+         try {
+            Signature $$4 = Signature.getInstance($$1);
+            $$4.initVerify($$0);
+            return a($$2, $$3, $$4);
+         } catch (Exception var5) {
+            b.error("Failed to verify signature", var5);
+            return false;
+         }
+      };
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("pickup").result().isPresent()) {
-         return $$0;
-      } else {
-         boolean $$1 = $$0.get("player").asBoolean(true);
-         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
-      }
-   }
+   @Nullable
+   static atj a(ServicesKeySet $$0, ServicesKeyType $$1) {
+      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
+      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
+            Signature $$3 = $$2xx.signature();
 
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(azd.x, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(azd.x, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+            try {
+               return a($$1x, $$2x, $$3);
+            } catch (SignatureException var5) {
+               b.error("Failed to verify Services signature", var5);
+               return false;
+            }
+         });
    }
 }

@@ -1,23 +1,25 @@
-public class eto {
-   public static final eto a = new eto("Merry X-mas!");
-   public static final eto b = new eto("Happy new year!");
-   public static final eto c = new eto("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public eto(String $$0) {
-      this.f = $$0;
+public class eto {
+   private static final ask a = ask.codepoint(32, vf.a);
+
+   private static String a(String $$0) {
+      return ero.O().m.H().c() ? $$0 : n.a($$0);
    }
 
-   public void a(erz $$0, int $$1, erx $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - asb.e(asb.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   public static List<ask> a(un $$0, int $$1, esw $$2) {
+      ere $$3 = new ere();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(un.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, vf.a);
+      List<ask> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, vf.a, ($$1x, $$2x) -> {
+         ask $$3x = ro.a().a($$1x);
+         $$4.add($$2x ? ask.composite(a, $$3x) : $$3x);
+      });
+      return (List<ask>)($$4.isEmpty() ? Lists.newArrayList(new ask[]{ask.a}) : $$4);
    }
 }

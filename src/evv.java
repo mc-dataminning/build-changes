@@ -1,18 +1,16 @@
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import javax.annotation.Nullable;
 
-public interface evv extends evw {
-   void b(Consumer<evw> var1);
-
+public class evv implements ekk {
+   @Nullable
    @Override
-   default void a(Consumer<esi> $$0) {
-      this.b($$1 -> $$1.a($$0));
+   public ekj a(int $$0) {
+      return ewe.b;
    }
 
-   default void a() {
-      this.b($$0 -> {
-         if ($$0 instanceof evv $$1) {
-            $$1.a();
-         }
-      });
+   @Override
+   public IntSet a() {
+      return IntSets.EMPTY_SET;
    }
 }

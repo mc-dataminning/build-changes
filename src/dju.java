@@ -1,70 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map;
 import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record dju(djn b, float c, ehh d, @Nullable UUID e, @Nullable UUID f, @Nullable biw g) {
-   public static final Codec<dju> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jb.b.q().fieldOf("game_event").forGetter(dju::a),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dju::b),
-               ehh.a.fieldOf("pos").forGetter(dju::c),
-               hx.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
-               hx.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dju($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
-   );
+public class dju<T extends djs> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
+   private final Map<UUID, T> c = Maps.newHashMap();
 
-   public dju(djn $$0, float $$1, ehh $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
-      this($$0, $$1, $$2, $$3, $$4, null);
-   }
+   public <U extends T> void a(djz<T, U> $$0, arn<U> $$1) {
+      ObjectIterator var3 = this.b.values().iterator();
 
-   public dju(djn $$0, float $$1, ehh $$2, @Nullable biw $$3) {
-      this($$0, $$1, $$2, $$3 == null ? null : $$3.cv(), a($$3), $$3);
-   }
-
-   @Nullable
-   private static UUID a(@Nullable biw $$0) {
-      if ($$0 instanceof ccs $$1 && $$1.v() != null) {
-         return $$1.v().cv();
+      while (var3.hasNext()) {
+         T $$2 = (T)var3.next();
+         U $$3 = (U)$$0.a($$2);
+         if ($$3 != null && $$1.accept($$3).a()) {
+            return;
+         }
       }
-
-      return null;
    }
 
-   public Optional<biw> a(akt $$0) {
-      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   public Iterable<T> a() {
+      return Iterables.unmodifiableIterable(this.b.values());
    }
 
-   public Optional<biw> b(akt $$0) {
-      return this.a($$0).filter($$0x -> $$0x instanceof ccs).map($$0x -> (ccs)$$0x).map(ccs::v).or(() -> Optional.ofNullable(this.f).map($$0::a));
+   public void a(T $$0) {
+      UUID $$1 = $$0.cv();
+      if (this.c.containsKey($$1)) {
+         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
+      } else {
+         this.c.put($$1, $$0);
+         this.b.put($$0.ah(), $$0);
+      }
    }
 
-   public djn a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public ehh c() {
-      return this.d;
+   public void b(T $$0) {
+      this.c.remove($$0.cv());
+      this.b.remove($$0.ah());
    }
 
    @Nullable
-   public UUID d() {
-      return this.e;
+   public T a(int $$0) {
+      return (T)this.b.get($$0);
    }
 
    @Nullable
-   public UUID e() {
-      return this.f;
+   public T a(UUID $$0) {
+      return this.c.get($$0);
    }
 
-   @Nullable
-   public biw f() {
-      return this.g;
+   public int b() {
+      return this.c.size();
    }
 }

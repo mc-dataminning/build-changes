@@ -1,87 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dba extends ctc {
-   public static final MapCodec<dba> a = b(dba::new);
-   public static final dgd b = dft.aw;
-   protected static final float c = 6.0F;
-   protected static final eia d = ctc.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
-
-   @Override
-   public MapCodec<dba> a() {
-      return a;
-   }
-
-   protected dba(dfc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
-   }
+public class dba extends csw {
+   public static final MapCodec<dba> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dba.a.b.fieldOf("kind").forGetter(csw::b), t()).apply($$0, dba::new));
+   public static final int d = dhh.a();
+   private static final int b = d + 1;
+   public static final dhb e = dgr.ba;
+   protected static final eiy f = cua.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final eiy g = cua.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return d;
+   public MapCodec<? extends dba> a() {
+      return c;
+   }
+
+   protected dba(dba.a $$0, dga.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return this.b() == dba.b.h ? g : f;
+   }
+
+   @Override
+   public eiy f(dgb $$0, cqf $$1, ht $$2) {
+      return eiv.a();
+   }
+
+   @Override
+   public dgb a(cmr $$0) {
+      return super.a($$0).a(e, Integer.valueOf(dhh.a($$0.i())));
+   }
+
+   @Override
+   public dgb a(dgb $$0, dal $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   public dgb a(dgb $$0, cyv $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends atr {
+      Map<String, dba.a> a = new Object2ObjectArrayMap();
+      Codec<dba.a> b = asg.a(atr::c, a::get);
+   }
+
+   public static enum b implements dba.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      if ($$1.t($$2.c())) {
-         int $$4 = 1;
-
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
-         }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(b);
-            if ($$5 == 15) {
-               $$1.b($$2.c(), this.o());
-               $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 4);
-            } else {
-               $$1.a($$2, $$0.a(b, Integer.valueOf($$5 + 1)), 4);
-            }
-         }
+      @Override
+      public String c() {
+         return this.j;
       }
-   }
-
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dfd $$0, cqe $$1, gw $$2) {
-      dfd $$3 = $$1.a_($$2.d());
-      if ($$3.a(this)) {
-         return true;
-      } else {
-         if ($$3.a(apv.af) || $$3.a(apv.H)) {
-            gw $$4 = $$2.d();
-
-            for (ha $$5 : ha.c.a) {
-               dfd $$6 = $$1.a_($$4.a($$5));
-               eag $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(aqa.a) || $$6.a(cte.kI)) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b);
    }
 }

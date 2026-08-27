@@ -1,23 +1,45 @@
-public class fxy<T extends bjm> extends fwp<T, fhm<T>> {
-   public fxy(fuy<T, fhm<T>> $$0, fnw $$1) {
-      super($$0, $$1);
+public class fxy extends fyl<bwe, ffz<bwe>> {
+   private final fox a;
+
+   public fxy(fvy<bwe, ffz<bwe>> $$0, fox $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cjl $$10 = $$3.eS();
+   public void a(emh $$0, fpb $$1, int $$2, bwe $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fD();
+      boolean $$11 = $$3.n_();
       $$0.a();
-      if ($$10.a(cjo.rv)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.E($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.n_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
+      }
+
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
+      }
+
+      ckj $$14 = $$3.c(bjy.a);
+      this.a.a($$3, $$14, ckg.h, false, $$0, $$1, $$2);
       $$0.b();
    }
 }

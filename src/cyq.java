@@ -1,34 +1,41 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class cyq extends dac {
-   public static final MapCodec<cyq> b = b(cyq::new);
+public class cyq extends cxu {
+   public static final MapCodec<cyq> a = b(cyq::new);
+   private static final ui b = ui.c("container.loom");
 
    @Override
    public MapCodec<cyq> a() {
-      return b;
+      return a;
    }
 
-   protected cyq(dfc.d $$0) {
-      super(dac.b.e, $$0);
+   protected cyq(dga.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(cqb $$0, gw $$1, dfd $$2, @Nullable bjm $$3, cjl $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$0.c_($$1) instanceof dej $$6) {
-         GameProfile $$7 = null;
-         if ($$4.u()) {
-            qw $$8 = $$4.v();
-            if ($$8.b("SkullOwner", 10)) {
-               $$7 = rj.a($$8.p("SkullOwner"));
-            } else if ($$8.b("SkullOwner", 8) && !ac.b($$8.l("SkullOwner"))) {
-               $$7 = new GameProfile(ac.d, $$8.l("SkullOwner"));
-            }
-         }
-
-         $$6.a($$7);
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      if ($$1.B) {
+         return bib.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(aqn.ax);
+         return bib.b;
       }
+   }
+
+   @Override
+   public bie b(dgb $$0, cqz $$1, ht $$2) {
+      return new bij(($$2x, $$3, $$4) -> new cgs($$2x, $$3, cga.a($$1, $$2)), b);
+   }
+
+   @Override
+   public dgb a(cmr $$0) {
+      return this.o().a(aE, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(aE);
    }
 }

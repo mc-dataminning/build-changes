@@ -1,12 +1,40 @@
-public abstract class ftu<T extends bjo, M extends ffl<T>> extends fuj<T, M> {
-   public ftu(ftd.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+
+public class ftu extends fuc<cdg> {
+   private static final afw a = new afw("textures/entity/enderdragon/dragon_fireball.png");
+   private static final fpj f = fpj.e(a);
+
+   public ftu(fud.a $$0) {
+      super($$0);
    }
 
-   public ftu(ftd.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new fwq<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new fwu<>(this, $$0.f()));
-      this.a(new fxe<>(this, $$0.d()));
+   protected int a(cdg $$0, ht $$1) {
+      return 15;
+   }
+
+   public void a(cdg $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
+      $$3.a();
+      $$3.b(2.0F, 2.0F, 2.0F);
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      emh.a $$6 = $$3.c();
+      Matrix4f $$7 = $$6.a();
+      Matrix3f $$8 = $$6.b();
+      eml $$9 = $$4.getBuffer(f);
+      a($$9, $$7, $$8, $$5, 0.0F, 0, 0, 1);
+      a($$9, $$7, $$8, $$5, 1.0F, 0, 1, 1);
+      a($$9, $$7, $$8, $$5, 1.0F, 1, 1, 0);
+      a($$9, $$7, $$8, $$5, 0.0F, 1, 0, 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private static void a(eml $$0, Matrix4f $$1, Matrix3f $$2, int $$3, float $$4, int $$5, int $$6, int $$7) {
+      $$0.a($$1, $$4 - 0.5F, (float)$$5 - 0.25F, 0.0F).a(255, 255, 255, 255).a((float)$$6, (float)$$7).c(fzr.d).b($$3).a($$2, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public afw a(cdg $$0) {
+      return a;
    }
 }

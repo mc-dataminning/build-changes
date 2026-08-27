@@ -1,28 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class bnq {
-   public static ble<bjm> a(Function<bjm, Optional<bmq>> $$0, Predicate<bjm> $$1, int $$2, int $$3, float $$4) {
-      return bop.a(
-         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$5 -> $$5.group($$5.a(bsn.n), $$5.a(bsn.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<bmq> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        bmq $$11 = $$10.get();
-                        if ($$8.dj().a((ho)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           bmq $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new bsq($$12, $$4, $$2));
-                           return true;
-                        }
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class bnq extends bma<bkl> {
+   private final bhg c;
+   private final float d;
+   private final float e;
+   private final float f;
+
+   public bnq(bhg $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(btk.n, btl.b, btk.P, btl.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
+
+   protected void a(alq $$0, bkl $$1, long $$2) {
+      ate $$3 = $$1.ef();
+      float $$4 = asy.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = asy.g($$1.dB() + 2.0F * $$3.i() * this.d - this.d);
+      eif $$6 = eif.a($$4, $$5);
+      $$1.dN().a(btk.n, new bmd($$1.bp().e($$6)));
+      $$1.dN().a(btk.P, this.c.a($$3));
    }
 }

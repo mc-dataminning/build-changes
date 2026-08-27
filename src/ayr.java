@@ -1,30 +1,35 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.Optional;
 
 public class ayr extends DataFix {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("down", "down_south")
+      .put("up", "up_north")
+      .put("north", "north_up")
+      .put("south", "south_up")
+      .put("west", "west_up")
+      .put("east", "east_up")
+      .build();
+
    public ayr(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsKeyTranslationFix",
-         this.getInputSchema().getType(azd.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
-                     if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
-                        String $$2 = ((Dynamic)$$1x.getValue()).asString("");
-                        if (!$$2.startsWith("key.mouse") && !$$2.startsWith("scancode.")) {
-                           return Pair.of((Dynamic)$$1x.getKey(), $$0x.createString("key.keyboard." + $$2.substring("key.".length())));
-                        }
-                     }
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      return $$1.equals(Optional.of("minecraft:jigsaw")) ? $$0.update("Properties", $$0x -> {
+         String $$1x = $$0x.get("facing").asString("north");
+         return $$0x.remove("facing").set("orientation", $$0x.createString(a.getOrDefault($$1x, $$1x)));
+      }) : $$0;
+   }
 
-                     return Pair.of((Dynamic)$$1x.getKey(), (Dynamic)$$1x.getValue());
-                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
-      );
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(baa.u), $$0 -> $$0.update(DSL.remainderFinder(), ayr::a));
    }
 }

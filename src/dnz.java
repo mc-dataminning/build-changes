@@ -1,31 +1,48 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class dnz implements dpu {
-   public static final Codec<dnz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dfd.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dfd.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dfd.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dfd.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               dlt.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dnz::new)
-   );
-   public final dfd b;
-   public final dfd c;
-   public final dfd d;
-   public final dfd e;
-   public final dlt f;
-   public final boolean g;
+public class dnz extends doo<dqz> {
+   public dnz(Codec<dqz> $$0) {
+      super($$0);
+   }
 
-   public dnz(dfd $$0, dfd $$1, dfd $$2, dfd $$3, dlt $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   public boolean a(doq<dqz> $$0) {
+      ate $$1 = $$0.d();
+      crt $$2 = $$0.b();
+      cqg $$3 = new cqg($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      ht.a $$6 = new ht.a();
+      IntListIterator var8 = $$4.iterator();
+
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            ht $$9 = $$2.a(dlk.a.f, $$6);
+            if ($$2.t($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, cuc.cv.o(), 2);
+               dfa.a($$2, $$1, $$9, edg.b);
+               dgb $$10 = cuc.cp.o();
+
+               for (hx $$11 : hx.c.a) {
+                  ht $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 }

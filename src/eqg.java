@@ -1,38 +1,18 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
 public class eqg {
-   private final fit a;
-   private int b = -1;
-   @Nullable
-   private Consumer<qw> c;
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   public eqg(fit $$0) {
-      this.a = $$0;
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   public boolean a(int $$0, @Nullable qw $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   private int a(Consumer<qw> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<qw> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new abv($$2, $$0));
-   }
-
-   public void a(gw $$0, Consumer<qw> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new abh($$2, $$0));
+   public static void a(long $$0, String $$1) {
+      a.put($$0, $$1);
    }
 }

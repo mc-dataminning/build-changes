@@ -1,18 +1,23 @@
 import com.mojang.serialization.Codec;
 
-public class dpp implements dpu {
-   public static final Codec<dpp> a = bgj.b(0, 256).fieldOf("count").xmap(dpp::new, dpp::a).codec();
-   private final bgj b;
-
-   public dpp(int $$0) {
-      this.b = bgg.a($$0);
+public class dpp extends doo<drg> {
+   public dpp(Codec<drg> $$0) {
+      super($$0);
    }
 
-   public dpp(bgj $$0) {
-      this.b = $$0;
-   }
+   @Override
+   public boolean a(doq<drg> $$0) {
+      crt $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      drg $$3 = $$0.f();
 
-   public bgj a() {
-      return this.b;
+      for (dra.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
+         }
+      }
+
+      return true;
    }
 }

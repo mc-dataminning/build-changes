@@ -1,181 +1,142 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cug extends cso {
+public class cug extends cua implements cuh {
    public static final MapCodec<cug> a = b(cug::new);
-   private static final int d = 6;
-   public static final int b = 3;
-   public static final List<dfu> c = List.of(dft.bp, dft.bq, dft.br, dft.bs, dft.bt, dft.bu);
+   public static final dgs b = dgr.e;
+   private static final int c = 5;
 
    @Override
    public MapCodec<cug> a() {
       return a;
    }
 
-   public cug(dfc.d $$0) {
+   public cug(dga.d $$0) {
       super($$0);
-      dfd $$1 = this.E.b().a(cww.aE, ha.c);
-
-      for (dfu $$2 : c) {
-         $$1 = $$1.a($$2, Boolean.valueOf(false));
-      }
-
-      this.k($$1);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   public czg b_(dfd $$0) {
-      return czg.c;
-   }
+   public void a(dgb $$0, cqz $$1, ht $$2, bjt $$3) {
+      dgb $$4 = $$1.a_($$2.c());
+      if ($$4.i()) {
+         $$3.k($$0.c(b));
+         if (!$$1.B) {
+            alq $$5 = (alq)$$1;
 
-   @Override
-   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
-      if ($$1.c_($$2) instanceof ddi $$6) {
-         Optional<ehg> $$8 = a($$5, $$0.c(cww.aE));
-         if ($$8.isEmpty()) {
-            return bhe.d;
-         } else {
-            int $$9 = a($$8.get());
-            if ($$0.c(c.get($$9))) {
-               a($$1, $$2, $$3, $$6, $$9);
-               return bhe.a($$1.B);
-            } else {
-               cjl $$10 = $$3.b($$4);
-               if ($$10.a(aqd.av)) {
-                  a($$1, $$2, $$3, $$6, $$10, $$9);
-                  return bhe.a($$1.B);
-               } else {
-                  return bhe.b;
-               }
+            for (int $$6 = 0; $$6 < 2; $$6++) {
+               $$5.a(js.ag, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
+               $$5.a(js.e, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.01, 0.0, 0.2);
             }
          }
       } else {
-         return bhe.d;
+         $$3.l($$0.c(b));
       }
-   }
-
-   private static Optional<ehg> a(ehd $$0, ha $$1) {
-      ha $$2 = $$0.b();
-      if ($$1 != $$2) {
-         return Optional.empty();
-      } else {
-         gw $$3 = $$0.a().a($$2);
-         ehh $$4 = $$0.e().a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
-         double $$5 = $$4.a();
-         double $$6 = $$4.b();
-         double $$7 = $$4.c();
-
-         return switch ($$2) {
-            case c -> Optional.of(new ehg((float)(1.0 - $$5), (float)$$6));
-            case d -> Optional.of(new ehg((float)$$5, (float)$$6));
-            case e -> Optional.of(new ehg((float)$$7, (float)$$6));
-            case f -> Optional.of(new ehg((float)(1.0 - $$7), (float)$$6));
-            case a, b -> Optional.empty();
-         };
-      }
-   }
-
-   private static int a(ehg $$0) {
-      int $$1 = $$0.j >= 0.5F ? 0 : 1;
-      int $$2 = a($$0.i);
-      return $$2 + $$1 * 3;
-   }
-
-   private static int a(float $$0) {
-      float $$1 = 0.0625F;
-      float $$2 = 0.375F;
-      if ($$0 < 0.375F) {
-         return 0;
-      } else {
-         float $$3 = 0.6875F;
-         return $$0 < 0.6875F ? 1 : 2;
-      }
-   }
-
-   private static void a(cqb $$0, gw $$1, cca $$2, ddi $$3, cjl $$4, int $$5) {
-      if (!$$0.B) {
-         $$2.b(apq.c.b($$4.d()));
-         apf $$6 = $$4.a(cjo.tC) ? apg.et : apg.es;
-         $$3.a($$5, $$4.a(1));
-         $$0.a(null, $$1, $$6, aph.e, 1.0F, 1.0F);
-         if ($$2.f()) {
-            $$4.g(1);
-         }
-      }
-   }
-
-   private static void a(cqb $$0, gw $$1, cca $$2, ddi $$3, int $$4) {
-      if (!$$0.B) {
-         cjl $$5 = $$3.a($$4, 1);
-         apf $$6 = $$5.a(cjo.tC) ? apg.ew : apg.ev;
-         $$0.a(null, $$1, $$6, aph.e, 1.0F, 1.0F);
-         if (!$$2.fS().e($$5)) {
-            $$2.a($$5, false);
-         }
-
-         $$0.a($$2, djn.c, $$1);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new ddi($$0, $$1);
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(cww.aE);
-      c.forEach($$1 -> $$0.a($$1));
+   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      a($$1, $$2, $$0, $$1.a_($$2.d()));
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof ddi $$6 && !$$6.af_()) {
-            for (int $$7 = 0; $$7 < 6; $$7++) {
-               cjl $$8 = $$6.a($$7);
-               if (!$$8.b()) {
-                  bha.a($$1, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$8);
-               }
+   public ebe c_(dgb $$0) {
+      return ebf.c.a(false);
+   }
+
+   public static void b(cra $$0, ht $$1, dgb $$2) {
+      a($$0, $$1, $$0.a_($$1), $$2);
+   }
+
+   public static void a(cra $$0, ht $$1, dgb $$2, dgb $$3) {
+      if (h($$2)) {
+         dgb $$4 = n($$3);
+         $$0.a($$1, $$4, 2);
+         ht.a $$5 = $$1.j().c(hx.b);
+
+         while (h($$0.a_($$5))) {
+            if (!$$0.a($$5, $$4, 2)) {
+               return;
             }
 
-            $$6.a();
-            $$1.c($$2, this);
+            $$5.c(hx.b);
          }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
-   @Override
-   public dfd a(clt $$0) {
-      return this.o().a(cww.aE, $$0.g().g());
+   private static boolean h(dgb $$0) {
+      return $$0.a(cuc.nd) || $$0.a(cuc.G) && $$0.u().e() >= 8 && $$0.u().b();
    }
 
-   @Override
-   public dfd a(dfd $$0, czn $$1) {
-      return $$0.a(cww.aE, $$1.a($$0.c(cww.aE)));
-   }
-
-   @Override
-   public dfd a(dfd $$0, cxx $$1) {
-      return $$0.a($$1.a($$0.c(cww.aE)));
-   }
-
-   @Override
-   public boolean d_(dfd $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfd $$0, cqb $$1, gw $$2) {
-      if ($$1.w_()) {
-         return 0;
+   private static dgb n(dgb $$0) {
+      if ($$0.a(cuc.nd)) {
+         return $$0;
+      } else if ($$0.a(cuc.dW)) {
+         return cuc.nd.o().a(b, Boolean.valueOf(false));
       } else {
-         return $$1.c_($$2) instanceof ddi $$3 ? $$3.g() + 1 : 0;
+         return $$0.a(cuc.kJ) ? cuc.nd.o().a(b, Boolean.valueOf(true)) : cuc.G.o();
       }
+   }
+
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
+      double $$4 = (double)$$2.u();
+      double $$5 = (double)$$2.v();
+      double $$6 = (double)$$2.w();
+      if ($$0.c(b)) {
+         $$1.b(js.aj, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, aqd.ct, aqe.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      } else {
+         $$1.b(js.ak, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
+         $$1.b(js.ak, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, aqd.cr, aqe.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      }
+   }
+
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      $$3.a($$4, ebf.c, ebf.c.a($$3));
+      if (!$$0.a($$3, $$4) || $$1 == hx.a || $$1 == hx.b && !$$2.a(cuc.nd) && h($$2)) {
+         $$3.a($$4, this, 5);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dgb $$0, crc $$1, ht $$2) {
+      dgb $$3 = $$1.a_($$2.d());
+      return $$3.a(cuc.nd) || $$3.a(cuc.kJ) || $$3.a(cuc.dW);
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return eiv.a();
+   }
+
+   @Override
+   public dae b_(dgb $$0) {
+      return dae.a;
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public ckj a(@Nullable ccx $$0, cra $$1, ht $$2, dgb $$3) {
+      $$1.a($$2, cuc.a.o(), 11);
+      return new ckj(ckm.pL);
+   }
+
+   @Override
+   public Optional<aqc> at_() {
+      return ebf.c.j();
    }
 }

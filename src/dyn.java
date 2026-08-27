@@ -1,26 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dyn extends dyp {
-   public static final Codec<dyn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dfd.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, dyn::new)
-   );
-   private final dfd b;
-   private final float d;
+public class dyn extends dwa {
+   public static final Codec<dyn> d = a(dyn::new);
 
-   public dyn(dfd $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public dyn(dwa.c $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dfd $$0, ash $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
+   public Optional<dwa.b> a(dwa.a $$0) {
+      return a($$0, dlk.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(dws $$0, dwa.a $$1) {
+      $$0.a(new dym($$1.f(), $$1.h().d(), $$1.h().e()));
    }
 
    @Override
-   protected dyq<?> a() {
-      return dyq.f;
+   public dwj<?> e() {
+      return dwj.o;
    }
 }

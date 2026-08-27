@@ -1,27 +1,26 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class avl extends ayf {
-   public avl(Schema $$0) {
-      super($$0, false, "EntityBrushableBlockFieldsRenameFix", azd.s, "minecraft:brushable_block");
+public class avl extends DataFix {
+   public avl(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return this.a(this.a($$0, "loot_table", "LootTable"), "loot_table_seed", "LootTableSeed");
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
+         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
+         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
+      } else {
+         return $$0;
+      }
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2) {
-      Optional<? extends Dynamic<?>> $$3 = $$0.get($$1).result();
-      Optional<? extends Dynamic<?>> $$4 = $$3.map($$3x -> $$0.remove($$1).set($$2, $$3x));
-      return (Dynamic<?>)DataFixUtils.orElse($$4, $$0);
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(baa.u), $$0 -> $$0.update(DSL.remainderFinder(), avl::a));
    }
 }

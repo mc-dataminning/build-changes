@@ -1,71 +1,50 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class fcd extends ezd {
+   private static final int a = 600;
+   private final tj b;
+   private etj c;
+   private int k;
+   private final ewx l = ewx.d();
 
-public class fcd {
-   private final fjh a;
-   private final fjp b;
-   private final Predicate<fjk.a> c;
-   @Nullable
-   private ug d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private ub g;
-
-   public fcd(fjv $$0, Predicate<fjk.a> $$1) {
-      this.a = $$0.b();
-      this.b = new fjp($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   public fcd(ui $$0, tj $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public void a(int $$0, fcd.a $$1) {
-      int $$2 = 0;
+   @Override
+   public boolean aB_() {
+      return false;
+   }
 
-      while ($$2 < $$0) {
-         fjj $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
-         }
+   @Override
+   protected void aM_() {
+      this.l.c().b().a(10);
+      this.l.a(new euq(this.e, this.i));
+      this.c = this.l.a(etj.a(uh.p, $$0 -> this.b.a(exy.a)).a());
+      this.c.i = false;
+      this.l.a();
+      this.l.a($$1 -> {
+         eth var10000 = this.d($$1);
+      });
+      this.c();
+   }
 
-         int $$4 = this.e--;
-         if ($$3 instanceof fjk.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(tl.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
+   @Override
+   protected void c() {
+      ewr.a(this.l, this.s());
+   }
 
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
-            }
-
-            this.g = $$5.g();
-         }
+   @Override
+   public void d() {
+      super.d();
+      this.k++;
+      if (this.k == 600) {
+         this.c.i = true;
       }
-   }
 
-   private boolean a(fcd.a $$0, fjk.a $$1) {
-      ub $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.j())) {
-            $$0.a(tl.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
-         }
-
-         this.d = $$2.j();
-         return true;
+      if (this.b.k()) {
+         this.b.d();
       } else {
-         return $$3;
+         this.b.p();
       }
-   }
-
-   public interface a {
-      void a(int var1, fjk.a var2);
-
-      void a(tl var1);
    }
 }

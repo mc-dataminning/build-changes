@@ -1,78 +1,95 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-@Deprecated
-public class dty extends duj {
-   public static final Codec<dty> a = bgj.b(0, 256).fieldOf("count").xmap(dty::new, $$0 -> $$0.c).codec();
-   private final bgj c;
+public class dty extends dtw {
+   public static final Codec<dty> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  bhg.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
+                  bhg.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
+                  iq.a(jz.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
+               )
+            )
+            .apply($$0, dty::new)
+   );
+   private final bhg b;
+   private final float h;
+   private final bhg i;
+   private final ig<cua> j;
 
-   private dty(bgj $$0) {
-      this.c = $$0;
-   }
-
-   public static dty a(bgj $$0) {
-      return new dty($$0);
-   }
-
-   public static dty a(int $$0) {
-      return a(bgg.a($$0));
-   }
-
-   @Override
-   public Stream<gw> a_(duh $$0, ash $$1, gw $$2) {
-      Builder<gw> $$3 = Stream.builder();
-      int $$4 = 0;
-
-      boolean $$5;
-      do {
-         $$5 = false;
-
-         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
-            int $$7 = $$1.a(16) + $$2.u();
-            int $$8 = $$1.a(16) + $$2.w();
-            int $$9 = $$0.a(dkm.a.e, $$7, $$8);
-            int $$10 = a($$0, $$7, $$9, $$8, $$4);
-            if ($$10 != Integer.MAX_VALUE) {
-               $$3.add(new gw($$7, $$10, $$8));
-               $$5 = true;
-            }
-         }
-
-         $$4++;
-      } while ($$5);
-
-      return $$3.build();
+   public dty(int $$0, int $$1, int $$2, bhg $$3, float $$4, bhg $$5, ig<cua> $$6) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
    @Override
-   public duk<?> b() {
-      return duk.i;
+   protected dtx<?> a() {
+      return dtx.h;
    }
 
-   private static int a(duh $$0, int $$1, int $$2, int $$3, int $$4) {
-      gw.a $$5 = new gw.a($$1, $$2, $$3);
-      int $$6 = 0;
-      dfd $$7 = $$0.a($$5);
+   @Override
+   public List<dse.a> a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, int $$3, ht $$4, dro $$5) {
+      List<dse.a> $$6 = Lists.newArrayList();
+      ht.a $$7 = new ht.a();
 
-      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
-         $$5.q($$8 - 1);
-         dfd $$9 = $$0.a($$5);
-         if (!a($$9) && a($$7) && !$$9.a(cte.F)) {
-            if ($$6 == $$4) {
-               return $$5.v() + 1;
-            }
-
-            $$6++;
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         int $$9 = $$4.v() + $$8;
+         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
+            hx $$10 = hx.c.a.a($$2);
+            int $$11 = this.i.a($$2);
+            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
+            int $$13 = this.b.a($$2);
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
          }
 
-         $$7 = $$9;
+         if ($$8 == $$3 - 1) {
+            $$6.add(new dse.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
+         }
       }
 
-      return Integer.MAX_VALUE;
+      return $$6;
    }
 
-   private static boolean a(dfd $$0) {
-      return $$0.i() || $$0.a(cte.G) || $$0.a(cte.H);
+   private void a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, int $$3, dro $$4, List<dse.a> $$5, ht.a $$6, int $$7, hx $$8, int $$9, int $$10) {
+      int $$11 = $$7 + $$9;
+      int $$12 = $$6.u();
+      int $$13 = $$6.w();
+      int $$14 = $$9;
+
+      while ($$14 < $$3 && $$10 > 0) {
+         if ($$14 >= 1) {
+            int $$15 = $$7 + $$14;
+            $$12 += $$8.j();
+            $$13 += $$8.l();
+            $$11 = $$15;
+            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
+               $$11 = $$15 + 1;
+            }
+
+            $$5.add(new dse.a($$6.i(), 0, false));
+         }
+
+         $$14++;
+         $$10--;
+      }
+
+      if ($$11 - $$7 > 1) {
+         ht $$16 = new ht($$12, $$11, $$13);
+         $$5.add(new dse.a($$16, 0, false));
+         $$5.add(new dse.a($$16.c(2), 0, false));
+      }
+   }
+
+   @Override
+   protected boolean a(crf $$0, ht $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
    }
 }

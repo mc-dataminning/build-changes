@@ -1,80 +1,36 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.google.common.base.Preconditions;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class uu implements tm {
-   private static final Logger d = LogUtils.getLogger();
-   public static final MapCodec<uu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(uu::b), arj.a(tn.a, "separator").forGetter(uu::d)).apply($$0, uu::new)
-   );
-   public static final tm.a<uu> b = new tm.a<>(a, "selector");
-   private final String e;
-   @Nullable
-   private final gc f;
-   protected final Optional<tl> c;
+public record uu(byte[] c) {
+   public static final Codec<uu> a = asg.n.xmap(uu::new, uu::b);
+   public static final int b = 256;
 
-   public uu(String $$0, Optional<tl> $$1) {
-      this.e = $$0;
-      this.c = $$1;
-      this.f = a($$0);
+   public uu(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   @Nullable
-   private static gc a(String $$0) {
-      gc $$1 = null;
-
-      try {
-         gd $$2 = new gd(new StringReader($$0));
-         $$1 = $$2.t();
-      } catch (CommandSyntaxException var3) {
-         d.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
-      }
-
-      return $$1;
+   public static uu a(tl $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new uu($$1);
    }
 
-   @Override
-   public tm.a<?> a() {
-      return b;
+   public static void a(tl $$0, uu $$1) {
+      $$0.c($$1.c);
    }
 
-   public String b() {
-      return this.e;
+   public boolean a(atj $$0, ati $$1) {
+      return $$0.validate($$1, this.c);
    }
 
-   @Nullable
-   public gc c() {
-      return this.f;
-   }
-
-   public Optional<tl> d() {
-      return this.c;
-   }
-
-   @Override
-   public tz a(@Nullable dt $$0, @Nullable biw $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.f != null) {
-         Optional<? extends tl> $$3 = to.a($$0, this.c, $$1, $$2);
-         return to.a(this.f.b($$0), $$3, biw::N_);
-      } else {
-         return tl.i();
-      }
-   }
-
-   @Override
-   public <T> Optional<T> a(tq.b<T> $$0, ui $$1) {
-      return $$0.accept($$1, this.e);
-   }
-
-   @Override
-   public <T> Optional<T> a(tq.a<T> $$0) {
-      return $$0.accept(this.e);
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
    }
 
    @Override
@@ -82,7 +38,7 @@ public class uu implements tm {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof uu $$1 && this.e.equals($$1.e) && this.c.equals($$1.c)) {
+         if ($$0 instanceof uu $$1 && Arrays.equals(this.c, $$1.c)) {
             return true;
          }
 
@@ -92,12 +48,57 @@ public class uu implements tm {
 
    @Override
    public int hashCode() {
-      int $$0 = this.e.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+      return Arrays.hashCode(this.c);
    }
 
    @Override
    public String toString() {
-      return "pattern{" + this.e + "}";
+      return Base64.getEncoder().encodeToString(this.c);
+   }
+
+   public uu.a a(uv $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new uu.a($$1) : new uu.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable uu c) {
+      public static final int a = -1;
+
+      public a(uu $$0) {
+         this(-1, $$0);
+      }
+
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static uu.a a(tl $$0) {
+         int $$1 = $$0.n() - 1;
+         return $$1 == -1 ? new uu.a(uu.a($$0)) : new uu.a($$1);
+      }
+
+      public static void a(tl $$0, uu.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            uu.a($$0, $$1.b());
+         }
+      }
+
+      public Optional<uu> a(uv $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public uu b() {
+         return this.c;
+      }
    }
 }

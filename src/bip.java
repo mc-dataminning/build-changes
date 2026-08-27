@@ -1,17 +1,28 @@
-class bip extends bih {
-   protected bip(bii $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bip implements atr {
+   a("hurt", aqd.sB),
+   b("thorns", aqd.xM),
+   c("drowning", aqd.sC),
+   d("burning", aqd.sE),
+   e("poking", aqd.sF),
+   f("freezing", aqd.sD);
+
+   public static final Codec<bip> g = atr.a(bip::values);
+   private final String h;
+   private final aqc i;
+
+   private bip(String $$0, aqc $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public void a(bjm $$0, int $$1) {
-      super.a($$0, $$1);
-      $$0.a($$0.dM().p(), 1.0F);
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public aqc a() {
+      return this.i;
    }
 }

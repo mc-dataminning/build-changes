@@ -1,40 +1,36 @@
-public class aad implements ve<wx> {
-   private final float a;
-   private final int b;
-   private final float c;
+import javax.annotation.Nullable;
 
-   public aad(float $$0, int $$1, float $$2) {
+public class aad implements wb<xu> {
+   private final int a;
+   private final bje b;
+
+   public aad(int $$0, bje $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public aad(so $$0) {
-      this.a = $$0.readFloat();
-      this.b = $$0.n();
-      this.c = $$0.readFloat();
+   public aad(tl $$0) {
+      this.a = $$0.n();
+      this.b = $$0.a(jy.e);
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public void a(tl $$0) {
+      $$0.c(this.a);
+      $$0.a(jy.e, this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public float a() {
-      return this.a;
+   @Nullable
+   public bjt a(cqz $$0) {
+      return $$0.a(this.a);
    }
 
-   public int d() {
+   @Nullable
+   public bje a() {
       return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

@@ -1,63 +1,65 @@
-import java.util.Arrays;
-import java.util.function.IntConsumer;
-import org.apache.commons.lang3.Validate;
+import io.netty.util.internal.ThreadLocalRandom;
 
-public class ate implements aqs {
-   public static final long[] a = new long[0];
-   private final int b;
+public interface ate {
+   @Deprecated
+   double a = 2.297;
 
-   public ate(int $$0) {
-      this.b = $$0;
+   static ate a() {
+      return a(dlz.a());
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, 0L, (long)$$1);
-      return 0;
+   @Deprecated
+   static ate b() {
+      return new dmd(dlz.a());
    }
 
-   @Override
-   public void b(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+   static ate a(long $$0) {
+      return new dll($$0);
    }
 
-   @Override
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      return 0;
+   static ate c() {
+      return new dma(ThreadLocalRandom.current().nextLong());
    }
 
-   @Override
-   public long[] a() {
-      return a;
+   ate d();
+
+   dlx e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
    }
 
-   @Override
-   public int b() {
-      return this.b;
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
    }
 
-   @Override
-   public int c() {
-      return 0;
-   }
-
-   @Override
-   public void a(IntConsumer $$0) {
-      for (int $$1 = 0; $$1 < this.b; $$1++) {
-         $$0.accept(0);
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
       }
    }
 
-   @Override
-   public void a(int[] $$0) {
-      Arrays.fill($$0, 0, this.b, 0);
-   }
-
-   @Override
-   public aqs d() {
-      return this;
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
+      } else {
+         return $$0 + this.a($$1 - $$0);
+      }
    }
 }

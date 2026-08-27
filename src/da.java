@@ -20,7 +20,7 @@ public record da(List<da.c> b) {
       );
    public static final Codec<da> a = c.xmap(da::new, da::b);
 
-   public <S extends dff<?, S>> boolean a(dfe<?, S> $$0, S $$1) {
+   public <S extends dgd<?, S>> boolean a(dgc<?, S> $$0, S $$1) {
       for (da.c $$2 : this.b) {
          if (!$$2.a($$0, $$1)) {
             return false;
@@ -30,15 +30,15 @@ public record da(List<da.c> b) {
       return true;
    }
 
-   public boolean a(dfd $$0) {
+   public boolean a(dgb $$0) {
       return this.a($$0.b().n(), $$0);
    }
 
-   public boolean a(eag $$0) {
+   public boolean a(ebe $$0) {
       return this.a($$0.a().f(), $$0);
    }
 
-   public Optional<String> a(dfe<?, ?> $$0) {
+   public Optional<String> a(dgc<?, ?> $$0) {
       for (da.c $$1 : this.b) {
          Optional<String> $$2 = $$1.a($$0);
          if ($$2.isPresent()) {
@@ -49,7 +49,7 @@ public record da(List<da.c> b) {
       return Optional.empty();
    }
 
-   public void a(dfe<?, ?> $$0, Consumer<String> $$1) {
+   public void a(dgc<?, ?> $$0, Consumer<String> $$1) {
       this.b.forEach($$2 -> $$2.a($$0).ifPresent($$1));
    }
 
@@ -71,20 +71,20 @@ public record da(List<da.c> b) {
          return new da.a();
       }
 
-      public da.a a(dgg<?> $$0, String $$1) {
+      public da.a a(dhe<?> $$0, String $$1) {
          this.a.add(new da.c($$0.f(), new da.b($$1)));
          return this;
       }
 
-      public da.a a(dgg<Integer> $$0, int $$1) {
+      public da.a a(dhe<Integer> $$0, int $$1) {
          return this.a($$0, Integer.toString($$1));
       }
 
-      public da.a a(dgg<Boolean> $$0, boolean $$1) {
+      public da.a a(dhe<Boolean> $$0, boolean $$1) {
          return this.a($$0, Boolean.toString($$1));
       }
 
-      public <T extends Comparable<T> & asu> da.a a(dgg<T> $$0, T $$1) {
+      public <T extends Comparable<T> & atr> da.a a(dhe<T> $$0, T $$1) {
          return this.a($$0, $$1.c());
       }
 
@@ -97,7 +97,7 @@ public record da(List<da.c> b) {
       public static final Codec<da.b> a = Codec.STRING.xmap(da.b::new, da.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dff<?, ?> $$0, dgg<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dgd<?, ?> $$0, dhe<T> $$1) {
          T $$2 = $$0.c($$1);
          Optional<T> $$3 = $$1.b(this.c);
          return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
@@ -109,24 +109,24 @@ public record da(List<da.c> b) {
    }
 
    static record c(String a, da.e b) {
-      public <S extends dff<?, S>> boolean a(dfe<?, S> $$0, S $$1) {
-         dgg<?> $$2 = $$0.a(this.a);
+      public <S extends dgd<?, S>> boolean a(dgc<?, S> $$0, S $$1) {
+         dhe<?> $$2 = $$0.a(this.a);
          return $$2 != null && this.b.a($$1, $$2);
       }
 
-      public Optional<String> a(dfe<?, ?> $$0) {
-         dgg<?> $$1 = $$0.a(this.a);
+      public Optional<String> a(dgc<?, ?> $$0) {
+         dhe<?> $$1 = $$0.a(this.a);
          return $$1 != null ? Optional.empty() : Optional.of(this.a);
       }
    }
 
    static record d(Optional<String> c, Optional<String> d) implements da.e {
       public static final Codec<da.d> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(arj.a(Codec.STRING, "min").forGetter(da.d::a), arj.a(Codec.STRING, "max").forGetter(da.d::b)).apply($$0, da.d::new)
+         $$0 -> $$0.group(asg.a(Codec.STRING, "min").forGetter(da.d::a), asg.a(Codec.STRING, "max").forGetter(da.d::b)).apply($$0, da.d::new)
       );
 
       @Override
-      public <T extends Comparable<T>> boolean a(dff<?, ?> $$0, dgg<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dgd<?, ?> $$0, dhe<T> $$1) {
          T $$2 = $$0.c($$1);
          if (this.c.isPresent()) {
             Optional<T> $$3 = $$1.b(this.c.get());
@@ -165,6 +165,6 @@ public record da(List<da.c> b) {
          }
       });
 
-      <T extends Comparable<T>> boolean a(dff<?, ?> var1, dgg<T> var2);
+      <T extends Comparable<T>> boolean a(dgd<?, ?> var1, dhe<T> var2);
    }
 }

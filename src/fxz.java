@@ -1,24 +1,34 @@
-public class fxz extends fww<byh, fhn<byh>> {
-   private static final aez a = new aez("textures/entity/wither/wither_armor.png");
-   private final fhn<byh> b;
+public class fxz extends fyl<bxv, fgi<bxv>> {
+   private final fgi<bxv> a;
 
-   public fxz(fuy<byh, fhn<byh>> $$0, fht $$1) {
+   public fxz(fvy<bxv, fgi<bxv>> $$0, fis $$1) {
       super($$0);
-      this.b = new fhn<>($$1.a(fhw.bP));
+      this.a = new fgi<>($$1.a(fiv.ak));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return asb.b($$0 * 0.02F) * 3.0F;
-   }
+   public void a(emh $$0, fpb $$1, int $$2, bxv $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ckj $$10 = $$3.s();
+      if ($$10.d() instanceof cjz) {
+         cjz $$11 = (cjz)$$10.d();
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$13;
+         float $$14;
+         float $$15;
+         if ($$11 instanceof cja) {
+            int $$12 = ((cja)$$11).e_($$10);
+            $$13 = (float)($$12 >> 16 & 0xFF) / 255.0F;
+            $$14 = (float)($$12 >> 8 & 0xFF) / 255.0F;
+            $$15 = (float)($$12 & 0xFF) / 255.0F;
+         } else {
+            $$13 = 1.0F;
+            $$14 = 1.0F;
+            $$15 = 1.0F;
+         }
 
-   @Override
-   protected aez a() {
-      return a;
-   }
-
-   @Override
-   protected fey<byh> b() {
-      return this.b;
+         eml $$19 = $$1.getBuffer(fpj.e($$11.h()));
+         this.a.a($$0, $$19, $$2, fzr.d, $$13, $$14, $$15, 1.0F);
+      }
    }
 }

@@ -1,28 +1,26 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drh<P extends drg> {
-   public static final drh<drb> a = a("blob_foliage_placer", drb.a);
-   public static final drh<drm> b = a("spruce_foliage_placer", drm.a);
-   public static final drh<drk> c = a("pine_foliage_placer", drk.a);
-   public static final drh<dra> d = a("acacia_foliage_placer", dra.a);
-   public static final drh<drc> e = a("bush_foliage_placer", drc.c);
-   public static final drh<drf> f = a("fancy_foliage_placer", drf.c);
-   public static final drh<dri> g = a("jungle_foliage_placer", dri.a);
-   public static final drh<drj> h = a("mega_pine_foliage_placer", drj.a);
-   public static final drh<dre> i = a("dark_oak_foliage_placer", dre.a);
-   public static final drh<drl> j = a("random_spread_foliage_placer", drl.a);
-   public static final drh<drd> k = a("cherry_foliage_placer", drd.a);
-   private final Codec<P> l;
+public class drh implements dqs {
+   public static final Codec<drh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dgb.b.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dgb.b.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bhg.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, drh::new)
+   );
+   public final dgb b;
+   public final dgb c;
+   private final bhg d;
 
-   private static <P extends drg> drh<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.X, $$0, new drh<>($$1));
+   public drh(dgb $$0, dgb $$1, bhg $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private drh(Codec<P> $$0) {
-      this.l = $$0;
-   }
-
-   public Codec<P> a() {
-      return this.l;
+   public bhg a() {
+      return this.d;
    }
 }

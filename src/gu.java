@@ -1,80 +1,43 @@
-public enum gu {
-   a {
-      @Override
-      public int a(int $$0, int $$1, int $$2, ha.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.List;
+
+public class gu<T, P> implements gm<T> {
+   private final gu.a<T, P> a;
+   private final List<P> b;
+   private final gj<T> c;
+   private int d;
+
+   private gu(gu.a<T, P> $$0, List<P> $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = new gj<>($$2, this);
+   }
+
+   @Override
+   public void execute(gn<T> $$0, int $$1) throws CommandSyntaxException {
+      P $$2 = this.b.get(this.d);
+      $$0.a(this.a.create($$1, $$2));
+      if (++this.d < this.b.size()) {
+         $$0.a(this.c);
       }
+   }
 
-      @Override
-      public double a(double $$0, double $$1, double $$2, ha.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+   public static <T, P> void a(gn<T> $$0, int $$1, List<P> $$2, gu.a<T, P> $$3) {
+      int $$4 = $$2.size();
+      if ($$4 != 0) {
+         if ($$4 == 1) {
+            $$0.a($$3.create($$1, $$2.get(0)));
+         } else if ($$4 == 2) {
+            $$0.a($$3.create($$1, $$2.get(0)));
+            $$0.a($$3.create($$1, $$2.get(1)));
+         } else {
+            $$0.a((new gu<>($$3, $$2, $$1)).c);
+         }
       }
+   }
 
-      @Override
-      public ha.a a(ha.a $$0) {
-         return $$0;
-      }
-
-      @Override
-      public gu a() {
-         return this;
-      }
-   },
-   b {
-      @Override
-      public int a(int $$0, int $$1, int $$2, ha.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public double a(double $$0, double $$1, double $$2, ha.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public ha.a a(ha.a $$0) {
-         return d[Math.floorMod($$0.ordinal() + 1, 3)];
-      }
-
-      @Override
-      public gu a() {
-         return c;
-      }
-   },
-   c {
-      @Override
-      public int a(int $$0, int $$1, int $$2, ha.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
-
-      @Override
-      public double a(double $$0, double $$1, double $$2, ha.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
-
-      @Override
-      public ha.a a(ha.a $$0) {
-         return d[Math.floorMod($$0.ordinal() - 1, 3)];
-      }
-
-      @Override
-      public gu a() {
-         return b;
-      }
-   };
-
-   public static final ha.a[] d = ha.a.values();
-   public static final gu[] e = values();
-
-   public abstract int a(int var1, int var2, int var3, ha.a var4);
-
-   public abstract double a(double var1, double var3, double var5, ha.a var7);
-
-   public abstract ha.a a(ha.a var1);
-
-   public abstract gu a();
-
-   public static gu a(ha.a $$0, ha.a $$1) {
-      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
+   @FunctionalInterface
+   public interface a<T, P> {
+      gj<T> create(int var1, P var2);
    }
 }

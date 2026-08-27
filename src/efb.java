@@ -1,58 +1,82 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
 
-public record efb(aez b) implements efj {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<efb> a = RecordCodecBuilder.create($$0 -> $$0.group(aez.a.fieldOf("name").forGetter(efb::c)).apply($$0, efb::new));
+public class efb extends eeu {
+   private static final Codec<Pair<ib<ddo>, cix>> b = Codec.mapPair(jy.am.r().fieldOf("pattern"), cix.q.fieldOf("color")).codec();
+   public static final Codec<efb> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
+            .apply($$0, efb::new)
+   );
+   private final List<Pair<ib<ddo>, cix>> c;
+   private final boolean d;
 
-   @Override
-   public efk b() {
-      return efl.q;
+   efb(List<egh> $$0, List<Pair<ib<ddo>, cix>> $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public void a(ect $$0) {
-      ecm<efj> $$1 = new ecm<>(ecp.a, this.b);
-      if ($$0.a($$1)) {
-         $$0.a("Condition " + this.b + " is recursively called");
-      } else {
-         efj.super.a($$0);
-         $$0.b()
-            .getElementOptional($$1)
-            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.a("Unknown condition table called " + this.b));
+   protected ckj a(ckj $$0, edi $$1) {
+      rt $$2 = cic.a($$0);
+      if ($$2 == null) {
+         $$2 = new rt();
       }
-   }
 
-   public boolean a(eck $$0) {
-      efj $$1 = $$0.a().getElement(ecp.a, this.b);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b);
-         return false;
+      ddo.a $$3 = new ddo.a();
+      this.c.forEach($$3::a);
+      rz $$4 = $$3.a();
+      rz $$5;
+      if (this.d) {
+         $$5 = $$2.c("Patterns", 10).e();
+         $$5.addAll($$4);
       } else {
-         eck.c<?> $$2 = eck.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
+         $$5 = $$4;
       }
+
+      $$2.a("Patterns", $$5);
+      cic.a($$0, ddz.t, $$2);
+      return $$0;
    }
 
-   public static efj.a a(aez $$0) {
-      return () -> new efb($$0);
+   @Override
+   public eew b() {
+      return eex.y;
    }
 
-   public aez c() {
-      return this.b;
+   public static efb.a a(boolean $$0) {
+      return new efb.a($$0);
+   }
+
+   public static class a extends eeu.a<efb.a> {
+      private final Builder<Pair<ib<ddo>, cix>> a = ImmutableList.builder();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected efb.a a() {
+         return this;
+      }
+
+      @Override
+      public eev b() {
+         return new efb(this.g(), this.a.build(), this.b);
+      }
+
+      public efb.a a(afv<ddo> $$0, cix $$1) {
+         return this.a(jy.am.f($$0), $$1);
+      }
+
+      public efb.a a(ib<ddo> $$0, cix $$1) {
+         this.a.add(Pair.of($$0, $$1));
+         return this;
+      }
    }
 }

@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface dfn {
+   void a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dfn {
+   boolean b();
+
+   ht c();
+
+   String d();
 }

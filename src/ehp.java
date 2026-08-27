@@ -1,38 +1,32 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import net.minecraft.server.MinecraftServer;
 
-public final class ehp implements eht {
-   private final ehn a;
-   private final int b;
-   private final int c;
+public class ehp implements ehq<MinecraftServer> {
+   final afw a;
 
-   ehp(int $$0, int $$1) {
-      this.a = new ehn((int)ehx.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   public ehp(afw $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public boolean a(eht.a $$0) {
-      int $$1 = this.a.size() - 1;
+   public void a(MinecraftServer $$0, ehs<MinecraftServer> $$1, long $$2) {
+      agk $$3 = $$0.aA();
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
+      for (gx<du> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
+      }
+   }
+
+   public static class a extends ehq.a<MinecraftServer, ehp> {
+      public a() {
+         super(new afw("function_tag"), ehp.class);
       }
 
-      return true;
-   }
+      public void a(rt $$0, ehp $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+      public ehp a(rt $$0) {
+         afw $$1 = new afw($$0.l("Name"));
+         return new ehp($$1);
+      }
    }
 }

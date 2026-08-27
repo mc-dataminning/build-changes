@@ -1,29 +1,36 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class egq implements egs<MinecraftServer> {
-   final aez a;
+public record egq(ehc b, edh c) implements egh {
+   public static final Codec<egq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ehd.a.fieldOf("value").forGetter(egq::c), edh.a.fieldOf("range").forGetter(egq::d)).apply($$0, egq::new)
+   );
 
-   public egq(aez $$0) {
-      this.a = $$0;
+   @Override
+   public egi b() {
+      return egj.s;
    }
 
-   public void a(MinecraftServer $$0, egu<MinecraftServer> $$1, long $$2) {
-      afn $$3 = $$0.aA();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.d()));
+   @Override
+   public Set<efq<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   public static class a extends egs.a<MinecraftServer, egq> {
-      public a() {
-         super(new aez("function"), egq.class);
-      }
+   public boolean a(edi $$0) {
+      return this.c.b($$0, this.b.a($$0));
+   }
 
-      public void a(qw $$0, egq $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   public static egh.a a(ehc $$0, edh $$1) {
+      return () -> new egq($$0, $$1);
+   }
 
-      public egq a(qw $$0) {
-         aez $$1 = new aez($$0.l("Name"));
-         return new egq($$1);
-      }
+   public ehc c() {
+      return this.b;
+   }
+
+   public edh d() {
+      return this.c;
    }
 }

@@ -1,50 +1,30 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
 
-public class emf extends enf {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public Date b;
-   public long c;
-   private boolean g;
-   public Map<String, String> d = Maps.newHashMap();
-   public Map<String, String> e = Maps.newHashMap();
-
-   public static emf a(JsonElement $$0) {
-      JsonObject $$1 = $$0.getAsJsonObject();
-      emf $$2 = new emf();
-
-      try {
-         $$2.a = epc.a("backupId", $$1, "");
-         $$2.b = epc.b("lastModifiedDate", $$1);
-         $$2.c = epc.a("size", $$1, 0L);
-         if ($$1.has("metadata")) {
-            JsonObject $$3 = $$1.getAsJsonObject("metadata");
-
-            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
-               if (!$$5.getValue().isJsonNull()) {
-                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
-               }
-            }
-         }
-      } catch (Exception var7) {
-         f.error("Could not parse Backup: {}", var7.getMessage());
-      }
-
-      return $$2;
-   }
-
-   public boolean a() {
-      return this.g;
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-   }
+public class emf {
+   public static final emn a = new emn(0, emn.a.a, emn.b.a, 3);
+   public static final emn b = new emn(0, emn.a.b, emn.b.c, 4);
+   public static final emn c = new emn(0, emn.a.a, emn.b.d, 2);
+   public static final emn d = new emn(1, emn.a.e, emn.b.d, 2);
+   public static final emn e = new emn(2, emn.a.e, emn.b.d, 2);
+   public static final emn f = new emn(0, emn.a.c, emn.b.b, 3);
+   public static final emn g = new emn(0, emn.a.c, emn.b.e, 1);
+   public static final emn h = c;
+   public static final emm i = new emm(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
+   public static final emm j = new emm(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final emm k = new emm(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final emm l = new emm(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
+   public static final emm m = new emm(ImmutableMap.builder().put("Position", a).build());
+   public static final emm n = new emm(ImmutableMap.builder().put("Position", a).put("Color", b).build());
+   public static final emm o = new emm(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public static final emm p = new emm(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
+   public static final emm q = new emm(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
+   public static final emm r = new emm(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
+   public static final emm s = new emm(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
+   public static final emm t = new emm(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
+   public static final emm u = new emm(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
+   public static final emm v = new emm(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
 }

@@ -1,132 +1,240 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class cub extends daa {
-   public static final MapCodec<cub> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgq.a.fieldOf("wood_type").forGetter(daa::d), t()).apply($$0, cub::new));
-   public static final dgd b = dft.ba;
-   public static final dfu c = dft.a;
-   protected static final float d = 5.0F;
-   protected static final eia e = ctc.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   private static final Map<Integer, eia> i = Maps.newHashMap(
-      ImmutableMap.of(
-         0,
-         ctc.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         4,
-         ctc.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
-         8,
-         ctc.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         12,
-         ctc.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
-      )
-   );
+public class cub {
+   public static final MapCodec<cua> a = jy.ah.q().dispatchMap(cua::a, MapCodec::codec);
 
-   @Override
-   public MapCodec<cub> a() {
-      return a;
-   }
-
-   public cub(dgq $$0, dfc.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
-      if ($$1.c_($$2) instanceof deh $$6) {
-         cjl $$7 = $$3.b($$4);
-         if (this.a($$3, $$5, $$6, $$7)) {
-            return bhe.d;
-         }
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(cca $$0, ehd $$1, deh $$2, cjl $$3) {
-      return !$$2.a($$2.a($$0), $$0) && $$3.d() instanceof cix && $$1.b().equals(ha.a);
-   }
-
-   @Override
-   public boolean a(dfd $$0, cqe $$1, gw $$2) {
-      return $$1.a_($$2.c()).a($$1, $$2.c(), ha.a, dbb.b);
-   }
-
-   @Override
-   public dfd a(clt $$0) {
-      cqb $$1 = $$0.q();
-      eag $$2 = $$1.b_($$0.a());
-      gw $$3 = $$0.a().c();
-      dfd $$4 = $$1.a_($$3);
-      boolean $$5 = $$4.a(apv.az);
-      ha $$6 = ha.a((double)$$0.i());
-      boolean $$7 = !ctc.a($$4.k($$1, $$3), ha.a) || $$0.h();
-      if ($$5 && !$$0.h()) {
-         if ($$4.b(dbw.b)) {
-            ha $$8 = $$4.c(dbw.b);
-            if ($$8.o().a($$6)) {
-               $$7 = false;
-            }
-         } else if ($$4.b(b)) {
-            Optional<ha> $$9 = dgj.a($$4.c(b));
-            if ($$9.isPresent() && $$9.get().o().a($$6)) {
-               $$7 = false;
-            }
-         }
-      }
-
-      int $$10 = !$$7 ? dgj.a($$6.g()) : dgj.a($$0.i() + 180.0F);
-      return this.o().a(c, Boolean.valueOf($$7)).a(b, Integer.valueOf($$10)).a(f, Boolean.valueOf($$2.a() == eah.c));
-   }
-
-   @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      eia $$4 = i.get($$0.c(b));
-      return $$4 == null ? e : $$4;
-   }
-
-   @Override
-   public eia b_(dfd $$0, cph $$1, gw $$2) {
-      return this.a($$0, $$1, $$2, ehm.a());
-   }
-
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      return $$1 == ha.b && !this.a($$0, $$3, $$4) ? cte.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public float g(dfd $$0) {
-      return dgj.b($$0.c(b));
-   }
-
-   @Override
-   public dfd a(dfd $$0, czn $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   public dfd a(dfd $$0, cxx $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b, c, f);
-   }
-
-   @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new ddv($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
-      return a($$2, ddb.i, deh::a);
+   public static MapCodec<? extends cua> a(io<MapCodec<? extends cua>> $$0) {
+      MapCodec<? extends cua> $$1 = io.a($$0, "block", cua.p);
+      io.a($$0, "air", csx.a);
+      io.a($$0, "amethyst", csy.a);
+      io.a($$0, "amethyst_cluster", csz.b);
+      io.a($$0, "anvil", cta.a);
+      io.a($$0, "attached_stem", ctb.a);
+      io.a($$0, "azalea", ctc.a);
+      io.a($$0, "bamboo_sapling", ctd.a);
+      io.a($$0, "bamboo_stalk", cte.a);
+      io.a($$0, "banner", ctf.a);
+      io.a($$0, "barrel", ctg.a);
+      io.a($$0, "barrier", cth.a);
+      io.a($$0, "base_coral_fan", cti.a);
+      io.a($$0, "base_coral_plant", ctj.a);
+      io.a($$0, "base_coral_wall_fan", ctl.b);
+      io.a($$0, "beacon", cts.a);
+      io.a($$0, "bed", ctt.a);
+      io.a($$0, "beehive", ctu.a);
+      io.a($$0, "beetroot", ctv.a);
+      io.a($$0, "bell", ctw.a);
+      io.a($$0, "big_dripleaf", ctx.a);
+      io.a($$0, "big_dripleaf_stem", cty.a);
+      io.a($$0, "blast_furnace", ctz.c);
+      io.a($$0, "brewing_stand", cue.a);
+      io.a($$0, "brushable", cuf.a);
+      io.a($$0, "bubble_column", cug.a);
+      io.a($$0, "budding_amethyst", cui.b);
+      io.a($$0, "button", cuk.a);
+      io.a($$0, "cactus", cul.a);
+      io.a($$0, "cake", cum.a);
+      io.a($$0, "calibrated_sculk_sensor", cun.a);
+      io.a($$0, "campfire", cuo.a);
+      io.a($$0, "candle_cake", cuq.c);
+      io.a($$0, "candle", cup.c);
+      io.a($$0, "carpet", cur.a);
+      io.a($$0, "carrot", cus.a);
+      io.a($$0, "cartography_table", cut.a);
+      io.a($$0, "carved_pumpkin", cwr.c);
+      io.a($$0, "cauldron", cuv.d);
+      io.a($$0, "cave_vines", cux.c);
+      io.a($$0, "cave_vines_plant", cuy.c);
+      io.a($$0, "ceiling_hanging_sign", cuz.a);
+      io.a($$0, "chain", cva.a);
+      io.a($$0, "cherry_leaves", cvc.a);
+      io.a($$0, "chest", cvd.b);
+      io.a($$0, "chiseled_book_shelf", cve.a);
+      io.a($$0, "chorus_flower", cvf.a);
+      io.a($$0, "chorus_plant", cvg.a);
+      io.a($$0, "cocoa", cvh.a);
+      io.a($$0, "colored_falling", cvi.a);
+      io.a($$0, "command", cvj.a);
+      io.a($$0, "comparator", cvk.a);
+      io.a($$0, "composter", cvl.a);
+      io.a($$0, "concrete_powder", cvm.a);
+      io.a($$0, "conduit", cvn.a);
+      io.a($$0, "coral", cvo.b);
+      io.a($$0, "coral_fan", cvp.b);
+      io.a($$0, "coral_plant", cvq.a);
+      io.a($$0, "coral_wall_fan", cvr.e);
+      io.a($$0, "crafting_table", cvs.a);
+      io.a($$0, "crop", cvt.d);
+      io.a($$0, "crying_obsidian", cvv.a);
+      io.a($$0, "daylight_detector", cvw.a);
+      io.a($$0, "dead_bush", cvx.a);
+      io.a($$0, "decorated_pot", cvy.a);
+      io.a($$0, "detector_rail", cvz.d);
+      io.a($$0, "dirt_path", cwc.a);
+      io.a($$0, "dispenser", cwd.a);
+      io.a($$0, "door", cwe.a);
+      io.a($$0, "double_plant", cwg.a);
+      io.a($$0, "dragon_egg", cwh.a);
+      io.a($$0, "drop_experience", cwi.a);
+      io.a($$0, "dropper", cwj.d);
+      io.a($$0, "enchantment_table", cwk.a);
+      io.a($$0, "ender_chest", cwp.b);
+      io.a($$0, "end_gateway", cwl.a);
+      io.a($$0, "end_portal", cwm.a);
+      io.a($$0, "end_portal_frame", cwn.a);
+      io.a($$0, "end_rod", cwo.b);
+      io.a($$0, "farm", cwv.a);
+      io.a($$0, "fence", cww.i);
+      io.a($$0, "fence_gate", cwx.a);
+      io.a($$0, "fire", cwy.c);
+      io.a($$0, "fletching_table", cwz.b);
+      io.a($$0, "flower", cxa.b);
+      io.a($$0, "flower_pot", cxb.a);
+      io.a($$0, "frogspawn", cxc.a);
+      io.a($$0, "frosted_ice", cxd.a);
+      io.a($$0, "fungus", cxe.a);
+      io.a($$0, "furnace", cxf.c);
+      io.a($$0, "glass", cxh.a);
+      io.a($$0, "glazed_terracotta", cxi.a);
+      io.a($$0, "glow_lichen", cxj.a);
+      io.a($$0, "grass", cxk.a);
+      io.a($$0, "grindstone", cxl.a);
+      io.a($$0, "half_transparent", cxp.d);
+      io.a($$0, "hanging_roots", cxq.a);
+      io.a($$0, "hay", cxr.a);
+      io.a($$0, "honey", cxs.a);
+      io.a($$0, "hopper", cxt.a);
+      io.a($$0, "huge_mushroom", cxv.a);
+      io.a($$0, "ice", cxw.e);
+      io.a($$0, "infested", cxx.a);
+      io.a($$0, "infested_rotated_pillar", cxy.b);
+      io.a($$0, "iron_bars", cxz.i);
+      io.a($$0, "jack_o_lantern", cuu.a);
+      io.a($$0, "jigsaw", cya.a);
+      io.a($$0, "jukebox", cyb.a);
+      io.a($$0, "kelp", cyc.c);
+      io.a($$0, "kelp_plant", cyd.c);
+      io.a($$0, "ladder", cye.a);
+      io.a($$0, "lantern", cyf.a);
+      io.a($$0, "lava_cauldron", cyg.d);
+      io.a($$0, "layered_cauldron", cyh.d);
+      io.a($$0, "leaves", cyi.b);
+      io.a($$0, "lectern", cyj.a);
+      io.a($$0, "lever", cyl.a);
+      io.a($$0, "light", cym.a);
+      io.a($$0, "lightning_rod", cyn.b);
+      io.a($$0, "liquid", cyo.a);
+      io.a($$0, "loom", cyq.a);
+      io.a($$0, "magma", cyr.a);
+      io.a($$0, "mangrove_leaves", cys.a);
+      io.a($$0, "mangrove_propagule", cyt.a);
+      io.a($$0, "mangrove_roots", cyu.a);
+      io.a($$0, "moss", cyw.a);
+      io.a($$0, "moving_piston", dft.a);
+      io.a($$0, "mud", cyx.a);
+      io.a($$0, "mushroom", cza.a);
+      io.a($$0, "mycelium", czb.a);
+      io.a($$0, "nether_portal", czc.a);
+      io.a($$0, "netherrack", czg.a);
+      io.a($$0, "nether_sprouts", czd.a);
+      io.a($$0, "nether_wart", czf.a);
+      io.a($$0, "note", czh.a);
+      io.a($$0, "nylium", czi.a);
+      io.a($$0, "observer", czj.b);
+      io.a($$0, "piglinwallskull", czk.b);
+      io.a($$0, "pink_petals", czl.a);
+      io.a($$0, "piston_base", dfu.b);
+      io.a($$0, "piston_head", dfv.b);
+      io.a($$0, "pitcher_crop", czn.c);
+      io.a($$0, "player_head", czo.b);
+      io.a($$0, "player_wall_head", czp.b);
+      io.a($$0, "pointed_dripstone", czq.a);
+      io.a($$0, "potato", czr.a);
+      io.a($$0, "powder_snow", czs.a);
+      io.a($$0, "powered", czt.a);
+      io.a($$0, "powered_rail", czu.d);
+      io.a($$0, "pressure_plate", czv.e);
+      io.a($$0, "pumpkin", czw.a);
+      io.a($$0, "rail", czx.d);
+      io.a($$0, "redstone_lamp", dab.a);
+      io.a($$0, "redstone_ore", czz.a);
+      io.a($$0, "redstone_torch", dac.c);
+      io.a($$0, "redstone_wall_torch", dad.h);
+      io.a($$0, "redstone_wire", daa.a);
+      io.a($$0, "repeater", daf.a);
+      io.a($$0, "respawn_anchor", dag.a);
+      io.a($$0, "rooted_dirt", dai.a);
+      io.a($$0, "roots", daj.a);
+      io.a($$0, "rotated_pillar", dak.h);
+      io.a($$0, "sapling", dam.e);
+      io.a($$0, "scaffolding", dan.a);
+      io.a($$0, "sculk_catalyst", daq.a);
+      io.a($$0, "sculk", dap.b);
+      io.a($$0, "sculk_sensor", dar.c);
+      io.a($$0, "sculk_shrieker", das.a);
+      io.a($$0, "sculk_vein", dau.c);
+      io.a($$0, "seagrass", daw.a);
+      io.a($$0, "sea_pickle", dav.a);
+      io.a($$0, "shulker_box", dax.a);
+      io.a($$0, "skull", dba.c);
+      io.a($$0, "slab", dbb.a);
+      io.a($$0, "slime", dbc.a);
+      io.a($$0, "small_dripleaf", dbd.c);
+      io.a($$0, "smithing_table", dbe.b);
+      io.a($$0, "smoker", dbf.c);
+      io.a($$0, "sniffer_egg", dbg.a);
+      io.a($$0, "snow_layer", dbh.a);
+      io.a($$0, "snowy_dirt", dbi.b);
+      io.a($$0, "soul_fire", dbj.c);
+      io.a($$0, "soul_sand", dbk.a);
+      io.a($$0, "spawner", dbm.a);
+      io.a($$0, "sponge", dbn.a);
+      io.a($$0, "spore_blossom", dbo.a);
+      io.a($$0, "stained_glass_pane", dbr.j);
+      io.a($$0, "stained_glass", dbq.a);
+      io.a($$0, "stair", dbs.a);
+      io.a($$0, "standing_sign", dbt.a);
+      io.a($$0, "stem", dbu.a);
+      io.a($$0, "stonecutter", dbv.a);
+      io.a($$0, "structure", dbw.a);
+      io.a($$0, "structure_void", dbx.a);
+      io.a($$0, "sugar_cane", dby.a);
+      io.a($$0, "sweet_berry_bush", dcb.a);
+      io.a($$0, "tall_flower", dcc.c);
+      io.a($$0, "tall_grass", dcd.a);
+      io.a($$0, "tall_seagrass", dce.c);
+      io.a($$0, "target", dcf.a);
+      io.a($$0, "tinted_glass", dcg.a);
+      io.a($$0, "tnt", dch.a);
+      io.a($$0, "torchflower_crop", dcj.a);
+      io.a($$0, "torch", dci.d);
+      io.a($$0, "trapdoor", dck.a);
+      io.a($$0, "trapped_chest", dcl.n);
+      io.a($$0, "trip_wire_hook", dcn.a);
+      io.a($$0, "tripwire", dcm.a);
+      io.a($$0, "turtle_egg", dco.a);
+      io.a($$0, "twisting_vines_plant", dcq.c);
+      io.a($$0, "twisting_vines", dcp.c);
+      io.a($$0, "vine", dcr.a);
+      io.a($$0, "wall_banner", dcs.a);
+      io.a($$0, "wall_hanging_sign", dcu.a);
+      io.a($$0, "wall_sign", dcv.a);
+      io.a($$0, "wall_skull", dcw.c);
+      io.a($$0, "wall_torch", dcx.f);
+      io.a($$0, "wall", dct.a);
+      io.a($$0, "waterlily", dcy.a);
+      io.a($$0, "weathering_copper_full", dda.d);
+      io.a($$0, "weathering_copper_slab", ddb.f);
+      io.a($$0, "weathering_copper_stair", ddc.I);
+      io.a($$0, "web", ddd.a);
+      io.a($$0, "weeping_vines_plant", ddf.c);
+      io.a($$0, "weeping_vines", dde.c);
+      io.a($$0, "weighted_pressure_plate", ddg.e);
+      io.a($$0, "wet_sponge", ddh.a);
+      io.a($$0, "wither_rose", ddi.e);
+      io.a($$0, "wither_skull", ddj.b);
+      io.a($$0, "wither_wall_skull", ddk.b);
+      io.a($$0, "wool_carpet", ddl.c);
+      return $$1;
    }
 }

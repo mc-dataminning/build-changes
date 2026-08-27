@@ -1,36 +1,30 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public interface amk extends AutoCloseable {
-   String a = ".mcmeta";
-   String b = "pack.mcmeta";
+public class amk implements aea {
+   private final MinecraftServer a;
+   private final tj b;
 
-   @Nullable
-   ano<InputStream> a(String... var1);
-
-   @Nullable
-   ano<InputStream> a(aml var1, aez var2);
-
-   void a(aml var1, String var2, String var3, amk.a var4);
-
-   Set<String> a(aml var1);
-
-   @Nullable
-   <T> T a(amw<T> var1) throws IOException;
-
-   String a();
-
-   default boolean b() {
-      return false;
+   public amk(MinecraftServer $$0, tj $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   void close();
+   public void a(adz $$0) {
+      if ($$0.f() != ady.b) {
+         throw new UnsupportedOperationException("Invalid intention " + $$0.f());
+      } else {
+         this.b.a(ady.b);
+         this.b.a(new amr(this.a, this.b));
+      }
+   }
 
-   @FunctionalInterface
-   public interface a extends BiConsumer<aez, ano<InputStream>> {
+   @Override
+   public void a(ui $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.b.k();
    }
 }

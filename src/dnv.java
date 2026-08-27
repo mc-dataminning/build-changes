@@ -1,35 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dnv implements dpu {
-   public static final Codec<dnv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aez.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               aez.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               dyu.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               dyu.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dnv::new)
-   );
-   public final List<aez> b;
-   public final List<aez> c;
-   public final he<dyt> d;
-   public final he<dyt> e;
-   public final int f;
+public class dnv extends doo<dql> {
+   public dnv(Codec<dql> $$0) {
+      super($$0);
+   }
 
-   public dnv(List<aez> $$0, List<aez> $$1, he<dyt> $$2, he<dyt> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+   @Override
+   public boolean a(doq<dql> $$0) {
+      ht $$1 = $$0.e();
+      crt $$2 = $$0.b();
+      ate $$3 = $$0.d();
+
+      dql $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.d()) {
+         if (!$$2.t($$1.d())) {
+            dgb $$5 = $$2.a_($$1.d());
+            if (b($$5) || a($$5)) {
+               break;
+            }
+         }
+      }
+
+      if ($$1.v() <= $$2.I_() + 3) {
+         return false;
       } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+
+            for (ht $$11 : ht.a($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
+               }
+            }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+         }
+
+         return true;
       }
    }
 }

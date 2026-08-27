@@ -1,69 +1,59 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fzr extends anc {
-   private static final amy c = new amy(tl.c("resourcePack.vanilla.description"), aa.b().a(aml.a), Optional.empty());
-   private static final amf d = amf.a(amy.b, c);
-   private static final tl e = tl.c("resourcePack.vanilla.name");
-   public static final String b = "high_contrast";
-   private static final Map<String, tl> f = Map.of(
-      "programmer_art", tl.c("resourcePack.programmer_art.name"), "high_contrast", tl.c("resourcePack.high_contrast.name")
-   );
-   private static final aez g = new aez("minecraft", "resourcepacks");
-   @Nullable
-   private final Path h;
+public class fzr implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final fzn f = new fzn(16, 16, false);
 
-   public fzr(Path $$0, egx $$1) {
-      super(aml.a, b($$0), g, $$1);
-      this.h = this.a($$0);
-   }
+   public fzr() {
+      eli $$0 = this.f.e();
 
-   @Nullable
-   private Path a(Path $$0) {
-      if (aa.aT && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1308622593);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, $$3 << 24 | 16777215);
+            }
          }
       }
 
-      return null;
-   }
-
-   private static amn b(Path $$0) {
-      amo $$1 = new amo().a(d).a("minecraft", "realms");
-      return $$1.b().a().a(aml.a, $$0).c();
-   }
-
-   @Override
-   protected tl a(String $$0) {
-      tl $$1 = f.get($$0);
-      return (tl)($$1 != null ? $$1 : tl.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected ane a(amk $$0) {
-      return ane.a("vanilla", e, true, b($$0), aml.a, ane.b.b, ani.c);
-   }
-
-   @Nullable
-   @Override
-   protected ane a(String $$0, ane.c $$1, tl $$2) {
-      return ane.a($$0, $$2, false, $$1, aml.a, ane.b.a, ani.c);
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
    }
 
    @Override
-   protected void a(BiConsumer<String, Function<String, ane>> $$0) {
-      super.a($$0);
-      if (this.h != null) {
-         this.a(this.h, $$0);
-      }
+   public void close() {
+      this.f.close();
+   }
+
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f::a, 16);
+   }
+
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
+   }
+
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
+
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
+
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

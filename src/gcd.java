@@ -1,58 +1,57 @@
-public class gcd extends gbq {
-   public gcd(apf $$0, aph $$1, float $$2, float $$3, ash $$4, gw $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class gcd implements gcb {
+   private final fqj a;
+   private final fqh b;
+   private final gaa c;
+   private final boolean d;
+
+   public gcd(fqj $$0, fqh $$1, gaa $$2, boolean $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static gcd a(apf $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   @Override
+   public List<fpx> a(@Nullable dgb $$0, @Nullable hx $$1, ate $$2) {
+      return Collections.emptyList();
    }
 
-   public static gcd a(he<apf> $$0, float $$1) {
-      return a($$0.a(), $$1);
+   @Override
+   public boolean a() {
+      return false;
    }
 
-   public static gcd a(apf $$0, float $$1, float $$2) {
-      return new gcd($$0.a(), aph.a, $$2, $$1, gci.t(), false, 0, gci.a.a, 0.0, 0.0, 0.0, true);
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public static gcd a(apf $$0) {
-      return new gcd($$0.a(), aph.b, 1.0F, 1.0F, gci.t(), false, 0, gci.a.a, 0.0, 0.0, 0.0, true);
+   @Override
+   public boolean c() {
+      return this.d;
    }
 
-   public static gcd a(apf $$0, ehh $$1) {
-      return new gcd($$0, aph.c, 4.0F, 1.0F, gci.t(), false, 0, gci.a.b, $$1.c, $$1.d, $$1.e);
+   @Override
+   public boolean d() {
+      return true;
    }
 
-   public static gcd b(apf $$0, float $$1, float $$2) {
-      return new gcd($$0.a(), aph.i, $$2, $$1, gci.t(), false, 0, gci.a.a, 0.0, 0.0, 0.0, true);
+   @Override
+   public gaa e() {
+      return this.c;
    }
 
-   public static gcd b(apf $$0) {
-      return b($$0, 1.0F, 1.0F);
+   @Override
+   public fqj f() {
+      return this.a;
    }
 
-   public static gcd a(apf $$0, ash $$1, double $$2, double $$3, double $$4) {
-      return new gcd($$0, aph.i, 1.0F, 1.0F, $$1, false, 0, gci.a.b, $$2, $$3, $$4);
-   }
-
-   public gcd(apf $$0, aph $$1, float $$2, float $$3, ash $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, gci.a.b, $$5, $$6, $$7);
-   }
-
-   private gcd(apf $$0, aph $$1, float $$2, float $$3, ash $$4, boolean $$5, int $$6, gci.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public gcd(aez $$0, aph $$1, float $$2, float $$3, ash $$4, boolean $$5, int $$6, gci.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+   @Override
+   public fqh g() {
+      return this.b;
    }
 }

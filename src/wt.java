@@ -1,17 +1,17 @@
-import java.util.HashSet;
-import java.util.Set;
+public record wt(String b) implements wu {
+   public static final afw a = new afw("brand");
 
-public record wt(Set<aez> a) implements ve<wq> {
-   public wt(so $$0) {
-      this($$0.a(HashSet::new, so::t));
+   public wt(tl $$0) {
+      this($$0.s());
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a, so::a);
+   public void a(tl $$0) {
+      $$0.a(this.b);
    }
 
-   public void a(wq $$0) {
-      $$0.a(this);
+   @Override
+   public afw a() {
+      return a;
    }
 }

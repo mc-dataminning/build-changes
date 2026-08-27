@@ -1,24 +1,51 @@
-public class cko extends cjg {
-   public cko(cjg.a $$0) {
+public class cko extends cke {
+   public cko(cke.a $$0) {
       super($$0);
    }
 
    @Override
-   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
-      cjl $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), apg.wN, aph.g, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         ccw $$4 = new ccw($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
+   public bib a(cmt $$0) {
+      cqz $$1 = $$0.q();
+      ht $$2 = $$0.a();
+      dgb $$3 = $$1.a_($$2);
+      if ($$3.a(aqs.S)) {
+         ccx $$4 = $$0.o();
+         if (!$$1.B && $$4 != null) {
+            a($$4, $$1, $$2);
+         }
+
+         return bib.a($$1.B);
+      } else {
+         return bib.d;
+      }
+   }
+
+   public static bib a(ccx $$0, cqz $$1, ht $$2) {
+      bzk $$3 = null;
+      boolean $$4 = false;
+      double $$5 = 7.0;
+      int $$6 = $$2.u();
+      int $$7 = $$2.v();
+      int $$8 = $$2.w();
+
+      for (bkl $$10 : $$1.a(
+         bkl.class, new eia((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
+      )) {
+         if ($$10.fT() == $$0) {
+            if ($$3 == null) {
+               $$3 = bzk.b($$1, $$2);
+               $$3.C();
+            }
+
+            $$10.b($$3, true);
+            $$4 = true;
+         }
       }
 
-      $$1.b(apq.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
+      if ($$4) {
+         $$1.a(dkl.b, $$2, dkl.a.a($$0));
       }
 
-      return bhf.a($$3, $$0.w_());
+      return $$4 ? bib.a : bib.d;
    }
 }

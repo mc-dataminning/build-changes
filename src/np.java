@@ -1,229 +1,28 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.concurrent.CompletableFuture;
 
-public class np {
-   public static void a(nr<dwl> $$0) {
-      hf<dyt> $$1 = $$0.a(jc.aB);
-      he<dyt> $$2 = $$1.b(nz.s);
-      he<dyt> $$3 = $$1.b(nz.B);
-      he<dyt> $$4 = $$1.b(nz.r);
-      he<dyt> $$5 = $$1.b(nz.C);
-      he<dyt> $$6 = $$1.b(nz.A);
-      hf<dwl> $$7 = $$0.a(jc.aD);
-      he<dwl> $$8 = $$7.b(ny.a);
-      ny.a($$0, "bastion/treasure/bases", new dwl($$8, ImmutableList.of(Pair.of(dwj.b("bastion/treasure/bases/lava_basin", $$2), 1)), dwl.a.b));
-      ny.a($$0, "bastion/treasure/stairs", new dwl($$8, ImmutableList.of(Pair.of(dwj.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), dwl.a.b));
-      ny.a(
-         $$0,
-         "bastion/treasure/bases/centers",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/bases/centers/center_0", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/bases/centers/center_1", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/bases/centers/center_2", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/bases/centers/center_3", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a($$0, "bastion/treasure/brains", new dwl($$8, ImmutableList.of(Pair.of(dwj.b("bastion/treasure/brains/center_brain", $$2), 1)), dwl.a.b));
-      ny.a(
-         $$0,
-         "bastion/treasure/walls",
-         new dwl(
-            $$8,
-            ImmutableList.of(Pair.of(dwj.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(dwj.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/walls/outer",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/walls/bottom",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/walls/mid",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/walls/top",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/top/wall_0", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/walls/top/wall_1", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/connectors",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a($$0, "bastion/treasure/entrances", new dwl($$8, ImmutableList.of(Pair.of(dwj.b("bastion/treasure/entrances/entrance_0", $$2), 1)), dwl.a.b));
-      ny.a(
-         $$0,
-         "bastion/treasure/ramparts",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
-               Pair.of(dwj.b("bastion/treasure/ramparts/top_wall", $$5), 1),
-               Pair.of(dwj.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/corners/bottom",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(dwj.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/corners/edges",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/corners/edges/bottom", $$3), 1),
-               Pair.of(dwj.b("bastion/treasure/corners/edges/middle", $$3), 1),
-               Pair.of(dwj.b("bastion/treasure/corners/edges/top", $$3), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/corners/middle",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(dwj.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/corners/top",
-         new dwl(
-            $$8,
-            ImmutableList.of(Pair.of(dwj.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(dwj.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/extensions/large_pool",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/empty", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/extensions/small_pool",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
-               Pair.of(dwj.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/extensions/houses",
-         new dwl(
-            $$8,
-            ImmutableList.of(Pair.of(dwj.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(dwj.b("bastion/treasure/extensions/house_1", $$2), 1)),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/treasure/roofs",
-         new dwl(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/treasure/roofs/wall_roof", $$6), 1),
-               Pair.of(dwj.b("bastion/treasure/roofs/corner_roof", $$6), 1),
-               Pair.of(dwj.b("bastion/treasure/roofs/center_roof", $$6), 1)
-            ),
-            dwl.a.b
-         )
-      );
+public class np extends nu<bjx<?>> {
+   public np(kh $$0, CompletableFuture<id.b> $$1) {
+      super($$0, jz.t, $$1, $$0x -> $$0x.r().g());
+   }
+
+   @Override
+   protected void a(id.b $$0) {
+      this.a(aqv.a).a(bjx.aJ, bjx.aU, bjx.bl, bjx.aK);
+      this.a(aqv.b).a(bjx.bq, bjx.bp, bjx.br, bjx.bs, bjx.bo, bjx.y, bjx.Z);
+      this.a(aqv.c).a(bjx.G, bjx.ay, bjx.aD, bjx.bg, bjx.aa, bjx.bj);
+      this.a(aqv.d).a(aqv.a).a(aqv.b).a(bjx.bk).a(bjx.au);
+      this.a(aqv.e).a(bjx.h);
+      this.a(aqv.f).a(bjx.e, bjx.aR);
+      this.a(aqv.g).a(aqv.f).a(bjx.aP, bjx.ag, bjx.aM, bjx.z, bjx.bb, bjx.x, bjx.bm);
+      this.a(aqv.h).a(bjx.aC, bjx.F, bjx.aI, bjx.N);
+      this.a(aqv.j).a(bjx.bc, bjx.aB, bjx.aE, bjx.r, bjx.aT, bjx.T, bjx.aW);
+      this.a(aqv.i).a(bjx.y, bjx.V, bjx.A);
+      this.a(aqv.k).a(bjx.aU, bjx.az, bjx.aO, bjx.bk);
+      this.a(aqv.l).a(bjx.aV, bjx.i, bjx.al);
+      this.a(aqv.m).a(aqv.d).a(bjx.f, bjx.O, bjx.V, bjx.A, bjx.bd, bjx.T, bjx.r, bjx.aB, bjx.aE, bjx.aT, bjx.bc, bjx.aW, bjx.d);
+      this.a(aqv.n).a(bjx.aL, bjx.al);
+      this.a(aqv.o).a(bjx.ac, bjx.aO, bjx.aG, bjx.b, bjx.g, bjx.h, bjx.i, bjx.m, bjx.q, bjx.Q, bjx.au, bjx.al, bjx.aq, bjx.at, bjx.bk);
+      this.a(aqv.p).a(bjx.l, bjx.q, bjx.w, bjx.Y, bjx.aj, bjx.ap, bjx.av, bjx.aD, bjx.aS, bjx.aV, bjx.ba, bjx.bq);
+      this.a(aqv.q).a(bjx.aL, bjx.al);
    }
 }

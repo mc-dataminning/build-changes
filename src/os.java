@@ -1,55 +1,72 @@
-import java.util.List;
-
 public class os {
-   public static final aey<dnd<?, ?>> a = or.a("ice_spike");
-   public static final aey<dnd<?, ?>> b = or.a("ice_patch");
-   public static final aey<dnd<?, ?>> c = or.a("forest_rock");
-   public static final aey<dnd<?, ?>> d = or.a("iceberg_packed");
-   public static final aey<dnd<?, ?>> e = or.a("iceberg_blue");
-   public static final aey<dnd<?, ?>> f = or.a("blue_ice");
-   public static final aey<dnd<?, ?>> g = or.a("lake_lava");
-   public static final aey<dnd<?, ?>> h = or.a("disk_clay");
-   public static final aey<dnd<?, ?>> i = or.a("disk_gravel");
-   public static final aey<dnd<?, ?>> j = or.a("disk_sand");
-   public static final aey<dnd<?, ?>> k = or.a("freeze_top_layer");
-   public static final aey<dnd<?, ?>> l = or.a("disk_grass");
-   public static final aey<dnd<?, ?>> m = or.a("bonus_chest");
-   public static final aey<dnd<?, ?>> n = or.a("void_start_platform");
-   public static final aey<dnd<?, ?>> o = or.a("desert_well");
-   public static final aey<dnd<?, ?>> p = or.a("spring_lava_overworld");
-   public static final aey<dnd<?, ?>> q = or.a("spring_lava_frozen");
-   public static final aey<dnd<?, ?>> r = or.a("spring_water");
+   @Deprecated
+   public static final eah.a a = new eah.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   public static void a(nr<dnd<?, ?>> $$0) {
-      or.a($$0, a, dnq.s);
-      or.a($$0, b, dnq.G, new dpr(dsd.a(cte.iC), dlt.c(List.of(cte.j, cte.i, cte.l, cte.k, cte.fl, cte.dP, cte.dO)), bgp.a(2, 3), 1));
-      or.a($$0, c, dnq.F, new dpn(cte.cn.o()));
-      or.a($$0, d, dnq.E, new dpn(cte.iC.o()));
-      or.a($$0, e, dnq.E, new dpn(cte.mW.o()));
-      or.a($$0, f, dnq.D);
-      or.a($$0, g, dnq.H, new dof.a(drv.a(cte.H.o()), drv.a(cte.b.o())));
-      or.a($$0, h, dnq.G, new dpr(dsd.a(cte.dR), dlt.c(List.of(cte.j, cte.dR)), bgp.a(2, 3), 1));
-      or.a($$0, i, dnq.G, new dpr(dsd.a(cte.L), dlt.c(List.of(cte.j, cte.i)), bgp.a(2, 5), 2));
-      or.a(
-         $$0, j, dnq.G, new dpr(new dsd(drv.a(cte.I), List.of(new dsd.a(dlt.a(ha.a.q(), cte.a), drv.a(cte.aV)))), dlt.c(List.of(cte.j, cte.i)), bgp.a(2, 6), 2)
-      );
-      or.a($$0, k, dnq.u);
-      or.a(
-         $$0,
-         l,
-         dnq.G,
-         new dpr(
-            new dsd(drv.a(cte.j), List.of(new dsd.a(dlt.a(dlt.b(dlt.b(ha.b.q()), dlt.a(ha.b.q(), eah.c))), drv.a(cte.i)))),
-            dlt.c(List.of(cte.j, cte.rH)),
-            bgp.a(2, 6),
-            2
-         )
-      );
-      or.a($$0, m, dnq.ac);
-      or.a($$0, n, dnq.n);
-      or.a($$0, o, dnq.o);
-      or.a($$0, p, dnq.k, new dqp(eah.e.g(), true, 4, 1, hi.a(ctc::r, cte.b, cte.c, cte.e, cte.g, cte.rI, cte.qz, cte.qA, cte.j)));
-      or.a($$0, q, dnq.k, new dqp(eah.e.g(), true, 4, 1, hi.a(ctc::r, cte.dP, cte.qC, cte.iC)));
-      or.a($$0, r, dnq.k, new dqp(eah.c.g(), true, 4, 1, hi.a(ctc::r, cte.b, cte.c, cte.e, cte.g, cte.rI, cte.qz, cte.qA, cte.j, cte.dP, cte.qC, cte.iC)));
+   public static void a(oo<eah.a> $$0) {
+      a($$0, 0, dlt.a, dlt.b, dlt.c, dlt.d);
+      a($$0, -2, dlt.e, dlt.f, dlt.g, dlt.h);
+      a($$0, dlt.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(dlt.j, a);
+      a($$0, dlt.k, -3, 1.0);
+      a($$0, dlt.l, -7, 1.0);
+      a($$0, dlt.m, -1, 1.0);
+      a($$0, dlt.n, -5, 1.0);
+      a($$0, dlt.o, -7, 1.0, 1.0);
+      a($$0, dlt.p, -8, 1.0);
+      a($$0, dlt.q, -8, 1.0);
+      a($$0, dlt.r, -7, 1.0);
+      a($$0, dlt.s, -8, 1.0);
+      a($$0, dlt.t, -11, 1.0);
+      a($$0, dlt.u, -11, 1.0);
+      a($$0, dlt.v, -7, 1.0);
+      a($$0, dlt.w, -7, 1.0);
+      a($$0, dlt.x, -11, 1.0);
+      a($$0, dlt.y, -8, 1.0);
+      a($$0, dlt.z, -5, 1.0);
+      a($$0, dlt.A, -8, 1.0);
+      a($$0, dlt.B, -7, 0.4, 0.5, 1.0);
+      a($$0, dlt.C, -8, 1.0);
+      a($$0, dlt.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, dlt.E, -8, 1.0);
+      a($$0, dlt.F, -7, 1.0);
+      a($$0, dlt.G, -7, 1.0);
+      a($$0, dlt.H, -5, 1.0);
+      a($$0, dlt.I, -8, 1.0);
+      a($$0, dlt.J, -8, 1.0);
+      a($$0, dlt.K, -7, 1.0);
+      a($$0, dlt.L, -7, 1.0);
+      a($$0, dlt.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dlt.N, -6, 1.0, 1.0, 1.0);
+      a($$0, dlt.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, dlt.P, -8, 1.0);
+      a($$0, dlt.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dlt.R, -8, 1.0);
+      a($$0, dlt.S, -6, 1.0, 1.0, 1.0);
+      a($$0, dlt.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dlt.U, -3, 1.0);
+      a($$0, dlt.V, -6, 1.0, 1.0, 1.0);
+      a($$0, dlt.W, -2, 1.0);
+      a($$0, dlt.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dlt.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dlt.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dlt.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dlt.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, dlt.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dlt.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dlt.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, dlt.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, dlt.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, dlt.ah, -4, 1.0);
+   }
+
+   private static void a(oo<eah.a> $$0, int $$1, afv<eah.a> $$2, afv<eah.a> $$3, afv<eah.a> $$4, afv<eah.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(oo<eah.a> $$0, afv<eah.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new eah.a($$2, $$3, $$4));
    }
 }

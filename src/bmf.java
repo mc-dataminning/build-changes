@@ -1,48 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
+import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bmf<E extends bjo> extends bmg<E> {
-   private final aqk<ctc> m;
-   private final float n;
-   private final List<bmg.a> o = new ArrayList<>();
-   private boolean p;
-
-   public bmf(bgp $$0, int $$1, int $$2, float $$3, Function<E, apf> $$4, aqk<ctc> $$5, float $$6, BiPredicate<E, gw> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
-   }
-
-   @Override
-   protected void a(akt $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.ef().i() < this.n;
-   }
-
-   @Override
-   protected Optional<bmg.a> a(akt $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         gw.a $$1 = new gw.a();
-
-         while (!this.h.isEmpty()) {
-            Optional<bmg.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bmg.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), ha.a)).a(this.m)) {
-                  return $$2;
-               }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+public class bmf {
+   public static <E extends bkj, T> bmb<E> a(Predicate<E> $$0, btk<? extends T> $$1, btk<T> $$2, bhm $$3) {
+      return bpm.a(
+         (Function<bpm.b<E>, ? extends App<bpm.c<E>, bpp<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
+                  }
+               }))
+      );
    }
 }

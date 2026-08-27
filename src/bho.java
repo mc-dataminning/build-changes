@@ -1,3 +1,8 @@
-public interface bho {
-   bhn a(dfd var1, cqc var2, gw var3);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bho {
 }

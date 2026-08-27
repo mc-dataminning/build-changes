@@ -1,6 +1,4 @@
-import java.util.Set;
-import java.util.function.Supplier;
-
+@FunctionalInterface
 public interface bfb {
-   Set<bez> a(Supplier<bdt> var1);
+   void finish();
 }

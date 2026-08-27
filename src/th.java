@@ -1,98 +1,85 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.DecoderException;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.zip.DataFormatException;
+import java.util.zip.Inflater;
 
-public record th(ti j, ti k) {
-   public static final Codec<th> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ti.a.fieldOf("chat").forGetter(th::a), ti.a.fieldOf("narration").forGetter(th::b)).apply($$0, th::new)
-   );
-   public static final ti b = ti.a("chat.type.text");
-   public static final aey<th> c = a("chat");
-   public static final aey<th> d = a("say_command");
-   public static final aey<th> e = a("msg_command_incoming");
-   public static final aey<th> f = a("msg_command_outgoing");
-   public static final aey<th> g = a("team_msg_command_incoming");
-   public static final aey<th> h = a("team_msg_command_outgoing");
-   public static final aey<th> i = a("emote_command");
+public class th extends ByteToMessageDecoder {
+   public static final int a = 2097152;
+   public static final int b = 8388608;
+   private final Inflater c;
+   private int d;
+   private boolean e;
 
-   private static aey<th> a(String $$0) {
-      return aey.a(jc.ar, new aez($$0));
+   public th(int $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.c = new Inflater();
    }
 
-   public static void a(nr<th> $$0) {
-      $$0.a(c, new th(b, ti.a("chat.type.text.narrate")));
-      $$0.a(d, new th(ti.a("chat.type.announcement"), ti.a("chat.type.text.narrate")));
-      $$0.a(e, new th(ti.b("commands.message.display.incoming"), ti.a("chat.type.text.narrate")));
-      $$0.a(f, new th(ti.c("commands.message.display.outgoing"), ti.a("chat.type.text.narrate")));
-      $$0.a(g, new th(ti.d("chat.type.team.text"), ti.a("chat.type.text.narrate")));
-      $$0.a(h, new th(ti.d("chat.type.team.sent"), ti.a("chat.type.text.narrate")));
-      $$0.a(i, new th(ti.a("chat.type.emote"), ti.a("chat.type.emote")));
-   }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      if ($$1.readableBytes() != 0) {
+         int $$3 = tz.a($$1);
+         if ($$3 == 0) {
+            $$2.add($$1.readBytes($$1.readableBytes()));
+         } else {
+            if (this.e) {
+               if ($$3 < this.d) {
+                  throw new DecoderException("Badly compressed packet - size of " + $$3 + " is below server threshold of " + this.d);
+               }
 
-   public static th.a a(aey<th> $$0, biw $$1) {
-      return a($$0, $$1.dL().G_(), $$1.N_());
-   }
+               if ($$3 > 8388608) {
+                  throw new DecoderException("Badly compressed packet - size of " + $$3 + " is larger than protocol maximum of 8388608");
+               }
+            }
 
-   public static th.a a(aey<th> $$0, dt $$1) {
-      return a($$0, $$1.v(), $$1.b());
-   }
-
-   public static th.a a(aey<th> $$0, hr $$1, tl $$2) {
-      hq<th> $$3 = $$1.d(jc.ar);
-      return $$3.e($$0).a($$2);
-   }
-
-   public th.a a(tl $$0) {
-      return new th.a(this, $$0);
-   }
-
-   public ti a() {
-      return this.j;
-   }
-
-   public ti b() {
-      return this.k;
-   }
-
-   public static record a(th a, tl b, @Nullable tl c) {
-      a(th $$0, tl $$1) {
-         this($$0, $$1, null);
-      }
-
-      public tl a(tl $$0) {
-         return this.a.a().a($$0, this);
-      }
-
-      public tl b(tl $$0) {
-         return this.a.b().a($$0, this);
-      }
-
-      public th.a c(tl $$0) {
-         return new th.a(this.a, this.b, $$0);
-      }
-
-      public th.b a(hr $$0) {
-         hq<th> $$1 = $$0.d(jc.ar);
-         return new th.b($$1.a(this.a), this.b, this.c);
+            this.a($$1);
+            ByteBuf $$4 = this.a($$0, $$3);
+            this.c.reset();
+            $$2.add($$4);
+         }
       }
    }
 
-   public static record b(int a, tl b, @Nullable tl c) {
-      public b(so $$0) {
-         this($$0.n(), $$0.m(), $$0.c(so::m));
+   private void a(ByteBuf $$0) {
+      ByteBuffer $$1;
+      if ($$0.nioBufferCount() > 0) {
+         $$1 = $$0.nioBuffer();
+         $$0.skipBytes($$0.readableBytes());
+      } else {
+         $$1 = ByteBuffer.allocateDirect($$0.readableBytes());
+         $$0.readBytes($$1);
+         $$1.flip();
       }
 
-      public void a(so $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c, so::a);
-      }
+      this.c.setInput($$1);
+   }
 
-      public Optional<th.a> a(hr $$0) {
-         hq<th> $$1 = $$0.d(jc.ar);
-         th $$2 = $$1.a(this.a);
-         return Optional.ofNullable($$2).map($$0x -> new th.a($$0x, this.b, this.c));
+   private ByteBuf a(ChannelHandlerContext $$0, int $$1) throws DataFormatException {
+      ByteBuf $$2 = $$0.alloc().directBuffer($$1);
+
+      try {
+         ByteBuffer $$3 = $$2.internalNioBuffer(0, $$1);
+         int $$4 = $$3.position();
+         this.c.inflate($$3);
+         int $$5 = $$3.position() - $$4;
+         if ($$5 != $$1) {
+            throw new DecoderException("Badly compressed packet - actual length of uncompressed payload " + $$5 + " is does not match declared size " + $$1);
+         } else {
+            $$2.writerIndex($$2.writerIndex() + $$5);
+            return $$2;
+         }
+      } catch (Exception var7) {
+         $$2.release();
+         throw var7;
       }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 }

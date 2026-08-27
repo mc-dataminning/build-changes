@@ -1,5 +1,8 @@
-public interface vx {
-   void a(so var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   aez a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface vx {
 }

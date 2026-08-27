@@ -1,44 +1,34 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
 
-public class azk extends atl {
-   private static final Logger b = LogUtils.getLogger();
-
-   public azk(Schema $$0) {
-      super($$0, azd.l);
+public class azk extends DataFix {
+   public azk(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
+   public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "SavedDataUUIDFix",
-         this.getInputSchema().getType(this.a),
+         "OptionsAddTextBackgroundFix",
+         this.getInputSchema().getType(baa.e),
          $$0 -> $$0.update(
                DSL.remainderFinder(),
-               $$0x -> $$0x.update(
-                     "data",
-                     $$0xx -> $$0xx.update(
-                           "Raids",
-                           $$0xxx -> $$0xxx.createList(
-                                 $$0xxx.asStream()
-                                    .map(
-                                       $$0xxxx -> $$0xxxx.update(
-                                             "HeroesOfTheVillage",
-                                             $$0xxxxx -> $$0xxxxx.createList(
-                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
-                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
-                                                         return $$0xxxxxx;
-                                                      }))
-                                                )
-                                          )
-                                    )
-                              )
-                        )
+               $$0x -> (Dynamic)DataFixUtils.orElse(
+                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
                   )
             )
       );
+   }
+
+   private double a(String $$0) {
+      try {
+         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
+         return $$1 / 2.0;
+      } catch (NumberFormatException var4) {
+         return 0.5;
+      }
    }
 }

@@ -1,97 +1,105 @@
-import com.google.common.collect.Queues;
-import java.util.Deque;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWMonitorCallback;
+import org.slf4j.Logger;
 
 public class elj {
-   private final Deque<elj.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
-      Matrix4f $$1 = new Matrix4f();
-      Matrix3f $$2 = new Matrix3f();
-      $$0.add(new elj.a($$1, $$2));
-   });
+   private static final Logger a = LogUtils.getLogger();
+   private final Long2ObjectMap<elg> b = new Long2ObjectOpenHashMap();
+   private final elh c;
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
+   public elj(elh $$0) {
+      RenderSystem.assertInInitPhase();
+      this.c = $$0;
+      GLFW.glfwSetMonitorCallback(this::a);
+      PointerBuffer $$1 = GLFW.glfwGetMonitors();
+      if ($$1 != null) {
+         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
+            long $$3 = $$1.get($$2);
+            this.b.put($$3, $$0.createMonitor($$3));
+         }
+      }
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      elj.a $$3 = this.a.getLast();
-      $$3.a.translate($$0, $$1, $$2);
+   private void a(long $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if ($$1 == 262145) {
+         this.b.put($$0, this.c.createMonitor($$0));
+         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
+      } else if ($$1 == 262146) {
+         this.b.remove($$0);
+         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
+      }
    }
 
-   public void b(float $$0, float $$1, float $$2) {
-      elj.a $$3 = this.a.getLast();
-      $$3.a.scale($$0, $$1, $$2);
-      if ($$0 == $$1 && $$1 == $$2) {
-         if ($$0 > 0.0F) {
-            return;
+   @Nullable
+   public elg a(long $$0) {
+      RenderSystem.assertInInitPhase();
+      return (elg)this.b.get($$0);
+   }
+
+   @Nullable
+   public elg a(ell $$0) {
+      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
+      if ($$1 != 0L) {
+         return this.a($$1);
+      } else {
+         int $$2 = $$0.q();
+         int $$3 = $$2 + $$0.m();
+         int $$4 = $$0.r();
+         int $$5 = $$4 + $$0.n();
+         int $$6 = -1;
+         elg $$7 = null;
+         long $$8 = GLFW.glfwGetPrimaryMonitor();
+         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
+         ObjectIterator var12 = this.b.values().iterator();
+
+         while (var12.hasNext()) {
+            elg $$9 = (elg)var12.next();
+            int $$10 = $$9.c();
+            int $$11 = $$10 + $$9.b().a();
+            int $$12 = $$9.d();
+            int $$13 = $$12 + $$9.b().b();
+            int $$14 = a($$2, $$10, $$11);
+            int $$15 = a($$3, $$10, $$11);
+            int $$16 = a($$4, $$12, $$13);
+            int $$17 = a($$5, $$12, $$13);
+            int $$18 = Math.max(0, $$15 - $$14);
+            int $$19 = Math.max(0, $$17 - $$16);
+            int $$20 = $$18 * $$19;
+            if ($$20 > $$6) {
+               $$7 = $$9;
+               $$6 = $$20;
+            } else if ($$20 == $$6 && $$8 == $$9.f()) {
+               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
+               $$7 = $$9;
+            }
          }
 
-         $$3.b.scale(-1.0F);
+         a.debug("Selected monitor: {}", $$7);
+         return $$7;
       }
-
-      float $$4 = 1.0F / $$0;
-      float $$5 = 1.0F / $$1;
-      float $$6 = 1.0F / $$2;
-      float $$7 = asb.j($$4 * $$5 * $$6);
-      $$3.b.scale($$7 * $$4, $$7 * $$5, $$7 * $$6);
    }
 
-   public void a(Quaternionf $$0) {
-      elj.a $$1 = this.a.getLast();
-      $$1.a.rotate($$0);
-      $$1.b.rotate($$0);
-   }
-
-   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
-      elj.a $$4 = this.a.getLast();
-      $$4.a.rotateAround($$0, $$1, $$2, $$3);
-      $$4.b.rotate($$0);
+   public static int a(int $$0, int $$1, int $$2) {
+      if ($$0 < $$1) {
+         return $$1;
+      } else {
+         return $$0 > $$2 ? $$2 : $$0;
+      }
    }
 
    public void a() {
-      elj.a $$0 = this.a.getLast();
-      this.a.addLast(new elj.a(new Matrix4f($$0.a), new Matrix3f($$0.b)));
-   }
-
-   public void b() {
-      this.a.removeLast();
-   }
-
-   public elj.a c() {
-      return this.a.getLast();
-   }
-
-   public boolean d() {
-      return this.a.size() == 1;
-   }
-
-   public void e() {
-      elj.a $$0 = this.a.getLast();
-      $$0.a.identity();
-      $$0.b.identity();
-   }
-
-   public void a(Matrix4f $$0) {
-      this.a.getLast().a.mul($$0);
-   }
-
-   public static final class a {
-      final Matrix4f a;
-      final Matrix3f b;
-
-      a(Matrix4f $$0, Matrix3f $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public Matrix4f a() {
-         return this.a;
-      }
-
-      public Matrix3f b() {
-         return this.b;
+      RenderSystem.assertOnRenderThread();
+      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
+      if ($$0 != null) {
+         $$0.free();
       }
    }
 }

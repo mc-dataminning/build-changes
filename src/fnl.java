@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fnl {
+   gaa a(int var1, int var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fnl {
+   gaa a(ate var1);
 }

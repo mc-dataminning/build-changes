@@ -1,238 +1,379 @@
-import com.google.common.collect.Lists;
-import com.google.common.math.DoubleMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class eia {
-   protected final ehq a;
-   @Nullable
-   private eia[] b;
+public class eia {
+   private static final double g = 1.0E-7;
+   public final double a;
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
+   public final double f;
 
-   eia(ehq $$0) {
-      this.a = $$0;
+   public eia(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this.a = Math.min($$0, $$3);
+      this.b = Math.min($$1, $$4);
+      this.c = Math.min($$2, $$5);
+      this.d = Math.max($$0, $$3);
+      this.e = Math.max($$1, $$4);
+      this.f = Math.max($$2, $$5);
    }
 
-   public double b(ha.a $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$1);
+   public eia(ht $$0) {
+      this((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), (double)($$0.u() + 1), (double)($$0.v() + 1), (double)($$0.w() + 1));
    }
 
-   public double c(ha.a $$0) {
-      int $$1 = this.a.b($$0);
-      return $$1 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$1);
+   public eia(ht $$0, ht $$1) {
+      this((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
-   public ehc a() {
-      if (this.c()) {
-         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("No bounds for empty shape."));
+   public eia(eif $$0, eif $$1) {
+      this($$0.c, $$0.d, $$0.e, $$1.c, $$1.d, $$1.e);
+   }
+
+   public static eia a(dvs $$0) {
+      return new eia((double)$$0.g(), (double)$$0.h(), (double)$$0.i(), (double)($$0.j() + 1), (double)($$0.k() + 1), (double)($$0.l() + 1));
+   }
+
+   public static eia a(eif $$0) {
+      return new eia($$0.c, $$0.d, $$0.e, $$0.c + 1.0, $$0.d + 1.0, $$0.e + 1.0);
+   }
+
+   public eia a(double $$0) {
+      return new eia($$0, this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public eia b(double $$0) {
+      return new eia(this.a, $$0, this.c, this.d, this.e, this.f);
+   }
+
+   public eia c(double $$0) {
+      return new eia(this.a, this.b, $$0, this.d, this.e, this.f);
+   }
+
+   public eia d(double $$0) {
+      return new eia(this.a, this.b, this.c, $$0, this.e, this.f);
+   }
+
+   public eia e(double $$0) {
+      return new eia(this.a, this.b, this.c, this.d, $$0, this.f);
+   }
+
+   public eia f(double $$0) {
+      return new eia(this.a, this.b, this.c, this.d, this.e, $$0);
+   }
+
+   public double a(hx.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
+
+   public double b(hx.a $$0) {
+      return $$0.a(this.d, this.e, this.f);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof eia $$1)) {
+         return false;
+      } else if (Double.compare($$1.a, this.a) != 0) {
+         return false;
+      } else if (Double.compare($$1.b, this.b) != 0) {
+         return false;
+      } else if (Double.compare($$1.c, this.c) != 0) {
+         return false;
+      } else if (Double.compare($$1.d, this.d) != 0) {
+         return false;
       } else {
-         return new ehc(this.b(ha.a.a), this.b(ha.a.b), this.b(ha.a.c), this.c(ha.a.a), this.c(ha.a.b), this.c(ha.a.c));
-      }
-   }
-
-   public eia b() {
-      return this.c() ? ehx.a() : ehx.a(this.b(ha.a.a), this.b(ha.a.b), this.b(ha.a.c), this.c(ha.a.a), this.c(ha.a.b), this.c(ha.a.c));
-   }
-
-   protected double a(ha.a $$0, int $$1) {
-      return this.a($$0).getDouble($$1);
-   }
-
-   protected abstract DoubleList a(ha.a var1);
-
-   public boolean c() {
-      return this.a.a();
-   }
-
-   public eia a(double $$0, double $$1, double $$2) {
-      return (eia)(this.c() ? ehx.a() : new ehj(this.a, new ehw(this.a(ha.a.a), $$0), new ehw(this.a(ha.a.b), $$1), new ehw(this.a(ha.a.c), $$2)));
-   }
-
-   public eia d() {
-      eia[] $$0 = new eia[]{ehx.a()};
-      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0[0] = ehx.b($$0[0], ehx.a($$1, $$2, $$3, $$4, $$5, $$6), ehl.o));
-      return $$0[0];
-   }
-
-   public void a(ehx.a $$0) {
-      this.a
-         .a(
-            ($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.consume(
-                  this.a(ha.a.a, $$1), this.a(ha.a.b, $$2), this.a(ha.a.c, $$3), this.a(ha.a.a, $$4), this.a(ha.a.b, $$5), this.a(ha.a.c, $$6)
-               ),
-            true
-         );
-   }
-
-   public void b(ehx.a $$0) {
-      DoubleList $$1 = this.a(ha.a.a);
-      DoubleList $$2 = this.a(ha.a.b);
-      DoubleList $$3 = this.a(ha.a.c);
-      this.a
-         .b(
-            ($$4, $$5, $$6, $$7, $$8, $$9) -> $$0.consume(
-                  $$1.getDouble($$4), $$2.getDouble($$5), $$3.getDouble($$6), $$1.getDouble($$7), $$2.getDouble($$8), $$3.getDouble($$9)
-               ),
-            true
-         );
-   }
-
-   public List<ehc> e() {
-      List<ehc> $$0 = Lists.newArrayList();
-      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.add(new ehc($$1, $$2, $$3, $$4, $$5, $$6)));
-      return $$0;
-   }
-
-   public double a(ha.a $$0, double $$1, double $$2) {
-      ha.a $$3 = gu.b.a($$0);
-      ha.a $$4 = gu.c.a($$0);
-      int $$5 = this.a($$3, $$1);
-      int $$6 = this.a($$4, $$2);
-      int $$7 = this.a.a($$0, $$5, $$6);
-      return $$7 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$7);
-   }
-
-   public double b(ha.a $$0, double $$1, double $$2) {
-      ha.a $$3 = gu.b.a($$0);
-      ha.a $$4 = gu.c.a($$0);
-      int $$5 = this.a($$3, $$1);
-      int $$6 = this.a($$4, $$2);
-      int $$7 = this.a.b($$0, $$5, $$6);
-      return $$7 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$7);
-   }
-
-   protected int a(ha.a $$0, double $$1) {
-      return asb.a(0, this.a.c($$0) + 1, $$2 -> $$1 < this.a($$0, $$2)) - 1;
-   }
-
-   @Nullable
-   public ehd a(ehh $$0, ehh $$1, gw $$2) {
-      if (this.c()) {
-         return null;
-      } else {
-         ehh $$3 = $$1.d($$0);
-         if ($$3.g() < 1.0E-7) {
-            return null;
-         } else {
-            ehh $$4 = $$0.e($$3.a(0.001));
-            return this.a.d(this.a(ha.a.a, $$4.c - (double)$$2.u()), this.a(ha.a.b, $$4.d - (double)$$2.v()), this.a(ha.a.c, $$4.e - (double)$$2.w()))
-               ? new ehd($$4, ha.a($$3.c, $$3.d, $$3.e).g(), $$2, true)
-               : ehc.a(this.e(), $$0, $$1, $$2);
-         }
-      }
-   }
-
-   public Optional<ehh> a(ehh $$0) {
-      if (this.c()) {
-         return Optional.empty();
-      } else {
-         ehh[] $$1 = new ehh[1];
-         this.b(($$2, $$3, $$4, $$5, $$6, $$7) -> {
-            double $$8 = asb.a($$0.a(), $$2, $$5);
-            double $$9 = asb.a($$0.b(), $$3, $$6);
-            double $$10 = asb.a($$0.c(), $$4, $$7);
-            if ($$1[0] == null || $$0.c($$8, $$9, $$10) < $$0.g($$1[0])) {
-               $$1[0] = new ehh($$8, $$9, $$10);
-            }
-         });
-         return Optional.of($$1[0]);
-      }
-   }
-
-   public eia a(ha $$0) {
-      if (!this.c() && this != ehx.b()) {
-         if (this.b != null) {
-            eia $$1 = this.b[$$0.ordinal()];
-            if ($$1 != null) {
-               return $$1;
-            }
-         } else {
-            this.b = new eia[6];
-         }
-
-         eia $$2 = this.b($$0);
-         this.b[$$0.ordinal()] = $$2;
-         return $$2;
-      } else {
-         return this;
-      }
-   }
-
-   private eia b(ha $$0) {
-      ha.a $$1 = $$0.o();
-      DoubleList $$2 = this.a($$1);
-      if ($$2.size() == 2 && DoubleMath.fuzzyEquals($$2.getDouble(0), 0.0, 1.0E-7) && DoubleMath.fuzzyEquals($$2.getDouble(1), 1.0, 1.0E-7)) {
-         return this;
-      } else {
-         ha.b $$3 = $$0.f();
-         int $$4 = this.a($$1, $$3 == ha.b.a ? 0.9999999 : 1.0E-7);
-         return new ehy(this, $$1, $$4);
-      }
-   }
-
-   public double a(ha.a $$0, ehc $$1, double $$2) {
-      return this.a(gu.a($$0, ha.a.a), $$1, $$2);
-   }
-
-   protected double a(gu $$0, ehc $$1, double $$2) {
-      if (this.c()) {
-         return $$2;
-      } else if (Math.abs($$2) < 1.0E-7) {
-         return 0.0;
-      } else {
-         gu $$3 = $$0.a();
-         ha.a $$4 = $$3.a(ha.a.a);
-         ha.a $$5 = $$3.a(ha.a.b);
-         ha.a $$6 = $$3.a(ha.a.c);
-         double $$7 = $$1.b($$4);
-         double $$8 = $$1.a($$4);
-         int $$9 = this.a($$4, $$8 + 1.0E-7);
-         int $$10 = this.a($$4, $$7 - 1.0E-7);
-         int $$11 = Math.max(0, this.a($$5, $$1.a($$5) + 1.0E-7));
-         int $$12 = Math.min(this.a.c($$5), this.a($$5, $$1.b($$5) - 1.0E-7) + 1);
-         int $$13 = Math.max(0, this.a($$6, $$1.a($$6) + 1.0E-7));
-         int $$14 = Math.min(this.a.c($$6), this.a($$6, $$1.b($$6) - 1.0E-7) + 1);
-         int $$15 = this.a.c($$4);
-         if ($$2 > 0.0) {
-            for (int $$16 = $$10 + 1; $$16 < $$15; $$16++) {
-               for (int $$17 = $$11; $$17 < $$12; $$17++) {
-                  for (int $$18 = $$13; $$18 < $$14; $$18++) {
-                     if (this.a.a($$3, $$16, $$17, $$18)) {
-                        double $$19 = this.a($$4, $$16) - $$7;
-                        if ($$19 >= -1.0E-7) {
-                           $$2 = Math.min($$2, $$19);
-                        }
-
-                        return $$2;
-                     }
-                  }
-               }
-            }
-         } else if ($$2 < 0.0) {
-            for (int $$20 = $$9 - 1; $$20 >= 0; $$20--) {
-               for (int $$21 = $$11; $$21 < $$12; $$21++) {
-                  for (int $$22 = $$13; $$22 < $$14; $$22++) {
-                     if (this.a.a($$3, $$20, $$21, $$22)) {
-                        double $$23 = this.a($$4, $$20 + 1) - $$8;
-                        if ($$23 <= 1.0E-7) {
-                           $$2 = Math.max($$2, $$23);
-                        }
-
-                        return $$2;
-                     }
-                  }
-               }
-            }
-         }
-
-         return $$2;
+         return Double.compare($$1.e, this.e) != 0 ? false : Double.compare($$1.f, this.f) == 0;
       }
    }
 
    @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.a);
+      int $$1 = (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.b);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.c);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.d);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.e);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.f);
+      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+   }
+
+   public eia a(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 -= $$0;
+      } else if ($$0 > 0.0) {
+         $$6 -= $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 -= $$1;
+      } else if ($$1 > 0.0) {
+         $$7 -= $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 -= $$2;
+      } else if ($$2 > 0.0) {
+         $$8 -= $$2;
+      }
+
+      return new eia($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public eia b(eif $$0) {
+      return this.b($$0.c, $$0.d, $$0.e);
+   }
+
+   public eia b(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 += $$0;
+      } else if ($$0 > 0.0) {
+         $$6 += $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 += $$1;
+      } else if ($$1 > 0.0) {
+         $$7 += $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 += $$2;
+      } else if ($$2 > 0.0) {
+         $$8 += $$2;
+      }
+
+      return new eia($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public eia c(double $$0, double $$1, double $$2) {
+      double $$3 = this.a - $$0;
+      double $$4 = this.b - $$1;
+      double $$5 = this.c - $$2;
+      double $$6 = this.d + $$0;
+      double $$7 = this.e + $$1;
+      double $$8 = this.f + $$2;
+      return new eia($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public eia g(double $$0) {
+      return this.c($$0, $$0, $$0);
+   }
+
+   public eia a(eia $$0) {
+      double $$1 = Math.max(this.a, $$0.a);
+      double $$2 = Math.max(this.b, $$0.b);
+      double $$3 = Math.max(this.c, $$0.c);
+      double $$4 = Math.min(this.d, $$0.d);
+      double $$5 = Math.min(this.e, $$0.e);
+      double $$6 = Math.min(this.f, $$0.f);
+      return new eia($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public eia b(eia $$0) {
+      double $$1 = Math.min(this.a, $$0.a);
+      double $$2 = Math.min(this.b, $$0.b);
+      double $$3 = Math.min(this.c, $$0.c);
+      double $$4 = Math.max(this.d, $$0.d);
+      double $$5 = Math.max(this.e, $$0.e);
+      double $$6 = Math.max(this.f, $$0.f);
+      return new eia($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public eia d(double $$0, double $$1, double $$2) {
+      return new eia(this.a + $$0, this.b + $$1, this.c + $$2, this.d + $$0, this.e + $$1, this.f + $$2);
+   }
+
+   public eia a(ht $$0) {
+      return new eia(
+         this.a + (double)$$0.u(),
+         this.b + (double)$$0.v(),
+         this.c + (double)$$0.w(),
+         this.d + (double)$$0.u(),
+         this.e + (double)$$0.v(),
+         this.f + (double)$$0.w()
+      );
+   }
+
+   public eia c(eif $$0) {
+      return this.d($$0.c, $$0.d, $$0.e);
+   }
+
+   public boolean c(eia $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return this.a < $$3 && this.d > $$0 && this.b < $$4 && this.e > $$1 && this.c < $$5 && this.f > $$2;
+   }
+
+   public boolean a(eif $$0, eif $$1) {
+      return this.a(
+         Math.min($$0.c, $$1.c), Math.min($$0.d, $$1.d), Math.min($$0.e, $$1.e), Math.max($$0.c, $$1.c), Math.max($$0.d, $$1.d), Math.max($$0.e, $$1.e)
+      );
+   }
+
+   public boolean d(eif $$0) {
+      return this.e($$0.c, $$0.d, $$0.e);
+   }
+
+   public boolean e(double $$0, double $$1, double $$2) {
+      return $$0 >= this.a && $$0 < this.d && $$1 >= this.b && $$1 < this.e && $$2 >= this.c && $$2 < this.f;
+   }
+
+   public double a() {
+      double $$0 = this.b();
+      double $$1 = this.c();
+      double $$2 = this.d();
+      return ($$0 + $$1 + $$2) / 3.0;
+   }
+
+   public double b() {
+      return this.d - this.a;
+   }
+
+   public double c() {
+      return this.e - this.b;
+   }
+
+   public double d() {
+      return this.f - this.c;
+   }
+
+   public eia f(double $$0, double $$1, double $$2) {
+      return this.c(-$$0, -$$1, -$$2);
+   }
+
+   public eia h(double $$0) {
+      return this.g(-$$0);
+   }
+
+   public Optional<eif> b(eif $$0, eif $$1) {
+      double[] $$2 = new double[]{1.0};
+      double $$3 = $$1.c - $$0.c;
+      double $$4 = $$1.d - $$0.d;
+      double $$5 = $$1.e - $$0.e;
+      hx $$6 = a(this, $$0, $$2, null, $$3, $$4, $$5);
+      if ($$6 == null) {
+         return Optional.empty();
+      } else {
+         double $$7 = $$2[0];
+         return Optional.of($$0.b($$7 * $$3, $$7 * $$4, $$7 * $$5));
+      }
+   }
+
+   @Nullable
+   public static eib a(Iterable<eia> $$0, eif $$1, eif $$2, ht $$3) {
+      double[] $$4 = new double[]{1.0};
+      hx $$5 = null;
+      double $$6 = $$2.c - $$1.c;
+      double $$7 = $$2.d - $$1.d;
+      double $$8 = $$2.e - $$1.e;
+
+      for (eia $$9 : $$0) {
+         $$5 = a($$9.a($$3), $$1, $$4, $$5, $$6, $$7, $$8);
+      }
+
+      if ($$5 == null) {
+         return null;
+      } else {
+         double $$10 = $$4[0];
+         return new eib($$1.b($$10 * $$6, $$10 * $$7, $$10 * $$8), $$5, $$3, false);
+      }
+   }
+
+   @Nullable
+   private static hx a(eia $$0, eif $$1, double[] $$2, @Nullable hx $$3, double $$4, double $$5, double $$6) {
+      if ($$4 > 1.0E-7) {
+         $$3 = a($$2, $$3, $$4, $$5, $$6, $$0.a, $$0.b, $$0.e, $$0.c, $$0.f, hx.e, $$1.c, $$1.d, $$1.e);
+      } else if ($$4 < -1.0E-7) {
+         $$3 = a($$2, $$3, $$4, $$5, $$6, $$0.d, $$0.b, $$0.e, $$0.c, $$0.f, hx.f, $$1.c, $$1.d, $$1.e);
+      }
+
+      if ($$5 > 1.0E-7) {
+         $$3 = a($$2, $$3, $$5, $$6, $$4, $$0.b, $$0.c, $$0.f, $$0.a, $$0.d, hx.a, $$1.d, $$1.e, $$1.c);
+      } else if ($$5 < -1.0E-7) {
+         $$3 = a($$2, $$3, $$5, $$6, $$4, $$0.e, $$0.c, $$0.f, $$0.a, $$0.d, hx.b, $$1.d, $$1.e, $$1.c);
+      }
+
+      if ($$6 > 1.0E-7) {
+         $$3 = a($$2, $$3, $$6, $$4, $$5, $$0.c, $$0.a, $$0.d, $$0.b, $$0.e, hx.c, $$1.e, $$1.c, $$1.d);
+      } else if ($$6 < -1.0E-7) {
+         $$3 = a($$2, $$3, $$6, $$4, $$5, $$0.f, $$0.a, $$0.d, $$0.b, $$0.e, hx.d, $$1.e, $$1.c, $$1.d);
+      }
+
+      return $$3;
+   }
+
+   @Nullable
+   private static hx a(
+      double[] $$0,
+      @Nullable hx $$1,
+      double $$2,
+      double $$3,
+      double $$4,
+      double $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      hx $$10,
+      double $$11,
+      double $$12,
+      double $$13
+   ) {
+      double $$14 = ($$5 - $$11) / $$2;
+      double $$15 = $$12 + $$14 * $$3;
+      double $$16 = $$13 + $$14 * $$4;
+      if (0.0 < $$14 && $$14 < $$0[0] && $$6 - 1.0E-7 < $$15 && $$15 < $$7 + 1.0E-7 && $$8 - 1.0E-7 < $$16 && $$16 < $$9 + 1.0E-7) {
+         $$0[0] = $$14;
+         return $$10;
+      } else {
+         return $$1;
+      }
+   }
+
+   public double e(eif $$0) {
+      double $$1 = Math.max(Math.max(this.a - $$0.c, $$0.c - this.d), 0.0);
+      double $$2 = Math.max(Math.max(this.b - $$0.d, $$0.d - this.e), 0.0);
+      double $$3 = Math.max(Math.max(this.c - $$0.e, $$0.e - this.f), 0.0);
+      return asy.f($$1, $$2, $$3);
+   }
+
+   @Override
    public String toString() {
-      return this.c() ? "EMPTY" : "VoxelShape[" + this.a() + "]";
+      return "AABB[" + this.a + ", " + this.b + ", " + this.c + "] -> [" + this.d + ", " + this.e + ", " + this.f + "]";
+   }
+
+   public boolean e() {
+      return Double.isNaN(this.a) || Double.isNaN(this.b) || Double.isNaN(this.c) || Double.isNaN(this.d) || Double.isNaN(this.e) || Double.isNaN(this.f);
+   }
+
+   public eif f() {
+      return new eif(asy.d(0.5, this.a, this.d), asy.d(0.5, this.b, this.e), asy.d(0.5, this.c, this.f));
+   }
+
+   public static eia a(eif $$0, double $$1, double $$2, double $$3) {
+      return new eia($$0.c - $$1 / 2.0, $$0.d - $$2 / 2.0, $$0.e - $$3 / 2.0, $$0.c + $$1 / 2.0, $$0.d + $$2 / 2.0, $$0.e + $$3 / 2.0);
    }
 }

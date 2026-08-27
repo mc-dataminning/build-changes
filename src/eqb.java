@@ -1,26 +1,22 @@
 public enum eqb {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+   a(0, dvq.a),
+   b(1, dvq.b),
+   c(2, dvq.c),
+   d(3, dvq.d);
 
-   private static final eqb[] d = values();
-   private final boolean e;
-   private final boolean f;
+   private final int e;
+   private final ui f;
 
-   private eqb(boolean $$0, boolean $$1) {
+   private eqb(int $$0, afv<dvp> $$1) {
       this.e = $$0;
-      this.f = $$1;
+      this.f = ui.c($$1.a().f("generator"));
    }
 
-   public boolean a() {
-      return this.e;
-   }
-
-   public boolean b() {
+   public ui a() {
       return this.f;
    }
 
-   public eqb c() {
-      return d[(this.ordinal() + 1) % d.length];
+   public int b() {
+      return this.e;
    }
 }

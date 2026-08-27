@@ -1,11 +1,24 @@
-public class fxo extends fxl<bzu, fgr<bzu>> {
-   public fxo(fuy<bzu, fgr<bzu>> $$0) {
+public class fxo extends fxw<bzx, ffr<bzx>> {
+   private static final afw a = new afw("textures/entity/creeper/creeper_armor.png");
+   private final ffr<bzx> b;
+
+   public fxo(fvy<bzx, ffr<bzx>> $$0, fis $$1) {
       super($$0);
+      this.b = new ffr<>($$1.a(fiv.C));
    }
 
-   public void a(elj $$0, foa $$1, int $$2, bzu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      aez $$10 = fvc.a($$3.gf());
-      eln $$11 = $$1.getBuffer(foi.c($$10));
-      this.c().c().a($$0, $$11, $$2, fue.c($$3, 0.0F));
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected afw a() {
+      return a;
+   }
+
+   @Override
+   protected ffx<bzx> b() {
+      return this.b;
    }
 }

@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 public record bv(Optional<Boolean> d) implements br {
    public static final bv b = new bv(Optional.empty());
-   public static final MapCodec<bv> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(arj.a(Codec.BOOL, "in_open_water").forGetter(bv::b)).apply($$0, bv::new));
+   public static final MapCodec<bv> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(asg.a(Codec.BOOL, "in_open_water").forGetter(bv::b)).apply($$0, bv::new));
 
    public static bv a(boolean $$0) {
       return new bv(Optional.of($$0));
@@ -18,11 +18,11 @@ public record bv(Optional<Boolean> d) implements br {
    }
 
    @Override
-   public boolean a(biw $$0, akt $$1, @Nullable ehh $$2) {
+   public boolean a(bjt $$0, alq $$1, @Nullable eif $$2) {
       if (this.d.isEmpty()) {
          return true;
       } else {
-         return $$0 instanceof cco $$3 ? this.d.get() == $$3.q() : false;
+         return $$0 instanceof cdl $$3 ? this.d.get() == $$3.q() : false;
       }
    }
 

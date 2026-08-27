@@ -1,59 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cxe extends cwq implements cxr {
-   public static final MapCodec<cxe> c = b(cxe::new);
-   protected static final eia g = ctc.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class cxe extends cuj implements cud {
+   public static final MapCodec<cxe> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(afv.a(jz.at).fieldOf("feature").forGetter($$0x -> $$0x.e), jy.f.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, cxe::new)
+   );
+   protected static final eiy b = cua.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final cua d;
+   private final afv<dob<?, ?>> e;
 
    @Override
    public MapCodec<cxe> a() {
-      return c;
+      return a;
    }
 
-   protected cxe(dfc.d $$0) {
-      super($$0, ha.b, g, true, 0.14);
-   }
-
-   @Override
-   protected boolean g(dfd $$0) {
-      return $$0.a(cte.G);
+   protected cxe(afv<dob<?, ?>> $$0, cua $$1, dga.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected ctc b() {
-      return cte.md;
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return b;
    }
 
    @Override
-   protected boolean h(dfd $$0) {
-      return !$$0.a(cte.kJ);
+   protected boolean d(dgb $$0, cqf $$1, ht $$2) {
+      return $$0.a(aqs.aK) || $$0.a(cuc.fl) || $$0.a(cuc.dX) || super.d($$0, $$1, $$2);
+   }
+
+   private Optional<? extends ib<dob<?, ?>>> a(crc $$0) {
+      return $$0.H_().d(jz.at).b(this.e);
    }
 
    @Override
-   public boolean a(@Nullable cca $$0, cph $$1, gw $$2, dfd $$3, eaf $$4) {
-      return false;
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
+      dgb $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
    }
 
    @Override
-   public boolean a(cqc $$0, gw $$1, dfd $$2, eag $$3) {
-      return false;
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected int a(ash $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dfd a(clt $$0) {
-      eag $$1 = $$0.q().b_($$0.a());
-      return $$1.a(aqa.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   public eag c_(dfd $$0) {
-      return eah.c.a(false);
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      this.a($$0).ifPresent($$3x -> ((dob)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2));
    }
 }

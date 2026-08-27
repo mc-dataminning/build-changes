@@ -1,74 +1,100 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class fqp implements fqa<dej> {
-   private final Map<dac.a, fgv> a;
-   private static final Map<dac.a, aez> b = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dac.b.c, new aez("textures/entity/skeleton/skeleton.png"));
-      $$0.put(dac.b.d, new aez("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(dac.b.f, new aez("textures/entity/zombie/zombie.png"));
-      $$0.put(dac.b.g, new aez("textures/entity/creeper/creeper.png"));
-      $$0.put(dac.b.i, new aez("textures/entity/enderdragon/dragon.png"));
-      $$0.put(dac.b.h, new aez("textures/entity/piglin/piglin.png"));
-      $$0.put(dac.b.e, fzs.a());
-   });
+public class fqp implements gcm {
+   private final dgc<cua, dgb> a;
+   private final List<fqr> b;
 
-   public static Map<dac.a, fgv> a(fht $$0) {
-      Builder<dac.a, fgv> $$1 = ImmutableMap.builder();
-      $$1.put(dac.b.c, new fgu($$0.a(fhw.bl)));
-      $$1.put(dac.b.d, new fgu($$0.a(fhw.bT)));
-      $$1.put(dac.b.e, new fgu($$0.a(fhw.aN)));
-      $$1.put(dac.b.f, new fgu($$0.a(fhw.bY)));
-      $$1.put(dac.b.g, new fgu($$0.a(fhw.D)));
-      $$1.put(dac.b.i, new fhr($$0.a(fhw.K)));
-      $$1.put(dac.b.h, new fgb($$0.a(fhw.aH)));
-      return $$1.build();
+   public fqp(dgc<cua, dgb> $$0, List<fqr> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public fqp(fqb.a $$0) {
-      this.a = a($$0.e());
+   public List<fqr> a() {
+      return this.b;
    }
 
-   public void a(dej $$0, float $$1, elj $$2, foa $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      dfd $$7 = $$0.q();
-      boolean $$8 = $$7.b() instanceof dby;
-      ha $$9 = $$8 ? $$7.c(dby.d) : null;
-      int $$10 = $$8 ? dgj.a($$9.g()) : $$7.c(dac.e);
-      float $$11 = dgj.b($$10);
-      dac.a $$12 = ((cry)$$7.b()).b();
-      fgv $$13 = this.a.get($$12);
-      foi $$14 = a($$12, $$0.d());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
-   }
+   public Set<fqk> b() {
+      Set<fqk> $$0 = Sets.newHashSet();
 
-   public static void a(@Nullable ha $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5, fgv $$6, foi $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
-      } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+      for (fqr $$1 : this.b) {
+         $$0.add($$1.a());
       }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      eln $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, fyr.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
+      return $$0;
    }
 
-   public static foi a(dac.a $$0, @Nullable GameProfile $$1) {
-      aez $$2 = b.get($$0);
-      if ($$0 == dac.b.e && $$1 != null) {
-         gab $$3 = eqp.O().al();
-         return foi.i($$3.b($$1).a());
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         return foi.f($$2);
+         return !($$0 instanceof fqp $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
+   }
+
+   @Override
+   public Collection<afw> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<afw, gcm> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
+
+   @Nullable
+   @Override
+   public gcb a(gcf $$0, Function<gce, gaa> $$1, gcj $$2, afw $$3) {
+      gck.a $$4 = new gck.a();
+
+      for (fqr $$5 : this.a()) {
+         gcb $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
+         }
+      }
+
+      return $$4.a();
+   }
+
+   public static class a implements JsonDeserializer<fqp> {
+      private final fqd.a a;
+
+      public a(fqd.a $$0) {
+         this.a = $$0;
+      }
+
+      public fqp a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new fqp(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<fqr> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<fqr> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((fqr)$$0.deserialize($$3, fqr.class));
+         }
+
+         return $$2;
       }
    }
 }

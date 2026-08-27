@@ -1,45 +1,88 @@
-public class cfm extends cgj {
-   private final cca a;
-   private int b;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-   public cfm(cca $$0, bgx $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
+public class cfm {
+   private final int a;
+   private final float b;
+   private final boolean c;
+   private final boolean d;
+   private final boolean e;
+   private final List<Pair<bjg, Float>> f;
+
+   cfm(int $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, List<Pair<bjg, Float>> $$5) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(cjl $$0) {
-      return false;
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public cjl a(int $$0) {
-      if (this.f()) {
-         this.b = this.b + Math.min($$0, this.e().L());
+   public float b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public List<Pair<bjg, Float>> f() {
+      return this.f;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+      private boolean d;
+      private boolean e;
+      private final List<Pair<bjg, Float>> f = Lists.newArrayList();
+
+      public cfm.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      return super.a($$0);
-   }
-
-   @Override
-   public void a(cca $$0, cjl $$1) {
-      this.b_($$1);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(cjl $$0, int $$1) {
-      this.b += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cjl $$0) {
-      $$0.a(this.a.dL(), this.a, this.b);
-      if (this.a instanceof aku $$1 && this.d instanceof dco $$2) {
-         $$2.a($$1);
+      public cfm.a a(float $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      this.b = 0;
+      public cfm.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public cfm.a b() {
+         this.d = true;
+         return this;
+      }
+
+      public cfm.a c() {
+         this.e = true;
+         return this;
+      }
+
+      public cfm.a a(bjg $$0, float $$1) {
+         this.f.add(Pair.of($$0, $$1));
+         return this;
+      }
+
+      public cfm d() {
+         return new cfm(this.a, this.b, this.c, this.d, this.e, this.f);
+      }
    }
 }

@@ -1,84 +1,201 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class ebt {
-   private static final String a = "command_storage_";
-   private final Map<String, ebt.a> b = Maps.newHashMap();
-   private final ebw c;
+   private final List<ebr> a;
+   @Nullable
+   private ebt.a b;
+   private int c;
+   private final ht d;
+   private final float e;
+   private final boolean f;
 
-   public ebt(ebw $$0) {
+   public ebt(List<ebr> $$0, ht $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
+   }
+
+   public void a() {
+      this.c++;
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public boolean c() {
+      return this.c >= this.a.size();
+   }
+
+   @Nullable
+   public ebr d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   }
+
+   public ebr a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
+      }
+   }
+
+   public void a(int $$0, ebr $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
       this.c = $$0;
    }
 
-   private ebt.a a(String $$0) {
-      ebt.a $$1 = new ebt.a();
-      this.b.put($$0, $$1);
+   public eif a(bjt $$0, int $$1) {
+      ebr $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.df() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.df() + 1.0F)) * 0.5;
+      return new eif($$3, $$4, $$5);
+   }
+
+   public ht d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public eif a(bjt $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public ht g() {
+      return this.a.get(this.c).a();
+   }
+
+   public ebr h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public ebr i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable ebt $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            ebr $$2 = this.a.get($$1);
+            ebr $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @aua
+   void a(ebr[] $$0, ebr[] $$1, Set<ebx> $$2) {
+      this.b = new ebt.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public ebt.a k() {
+      return this.b;
+   }
+
+   public void a(tl $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.p(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
+   }
+
+   public static ebt b(tl $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      ht $$3 = $$0.e();
+      List<ebr> $$4 = $$0.a(ebr::b);
+      ebt.a $$5 = ebt.a.b($$0);
+      ebt $$6 = new ebt($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
+   }
+
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public ht l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static ebr[] c(tl $$0) {
+      ebr[] $$1 = new ebr[$$0.n()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = ebr.b($$0);
+      }
+
       return $$1;
    }
 
-   private ebl.a<ebt.a> b(String $$0) {
-      return new ebl.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), atg.h);
+   static void a(tl $$0, ebr[] $$1) {
+      $$0.c($$1.length);
+
+      for (ebr $$2 : $$1) {
+         $$2.a($$0);
+      }
    }
 
-   public qw a(aez $$0) {
-      String $$1 = $$0.b();
-      ebt.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new qw();
+   public ebt n() {
+      ebt $$0 = new ebt(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
    }
 
-   public void a(aez $$0, qw $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
-   }
+   public static record a(ebr[] a, ebr[] b, Set<ebx> c) {
 
-   public Stream<aez> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
-   }
-
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends ebl {
-      private static final String a = "contents";
-      private final Map<String, qw> b = Maps.newHashMap();
-
-      ebt.a b(qw $$0) {
-         qw $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
-         }
-
-         return this;
+      public void a(tl $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         ebt.a($$0, this.a);
+         ebt.a($$0, this.b);
       }
 
-      @Override
-      public qw a(qw $$0) {
-         qw $$1 = new qw();
-         this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
-         $$0.a("contents", $$1);
-         return $$0;
-      }
-
-      public qw a(String $$0) {
-         qw $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new qw();
-      }
-
-      public void a(String $$0, qw $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.c();
-      }
-
-      public Stream<aez> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new aez($$0, $$1));
+      public static ebt.a b(tl $$0) {
+         HashSet<ebx> $$1 = $$0.a(HashSet::new, ebx::c);
+         ebr[] $$2 = ebt.c($$0);
+         ebr[] $$3 = ebt.c($$0);
+         return new ebt.a($$2, $$3, $$1);
       }
    }
 }

@@ -1,17 +1,61 @@
-public class fmw extends fmq {
-   protected fmw(fis $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class fmw extends fnq {
+   private final double a;
+   private final double b;
+   private final double F;
+
+   protected fmw(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.a = this.g;
+      this.b = this.h;
+      this.F = this.i;
+      this.D = 0.1F * (this.r.i() * 0.2F + 0.5F);
+      float $$7 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$7 * 0.9F;
+      this.w = $$7 * 0.3F;
+      this.x = $$7;
+      this.t = (int)(Math.random() * 10.0) + 40;
    }
 
    @Override
-   public flu b() {
-      return flu.b;
+   public fmu b() {
+      return fmu.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = 1.0F - $$1;
+      $$1 *= $$1;
+      $$1 = 1.0F - $$1;
+      return this.D * $$1;
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      float $$2 = (float)this.s / (float)this.t;
+      $$2 *= $$2;
+      $$2 *= $$2;
+      int $$3 = $$1 & 0xFF;
+      int $$4 = $$1 >> 16 & 0xFF;
+      $$4 += (int)($$2 * 15.0F * 16.0F);
+      if ($$4 > 240) {
+         $$4 = 240;
+      }
+
+      return $$3 | $$4 << 16;
    }
 
    @Override
@@ -19,42 +63,27 @@ public class fmw extends fmq {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.t-- <= 0) {
+      if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-
-         gw $$0 = gw.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).k(this.c, $$0).b(ha.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((cph)this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
-            this.k();
-         }
+         float $$0 = (float)this.s / (float)this.t;
+         float var3 = -$$0 + $$0 * $$0 * 2.0F;
+         float var4 = 1.0F - var3;
+         this.g = this.a + this.j * (double)var4;
+         this.h = this.b + this.k * (double)var4 + (double)(1.0F - $$0);
+         this.i = this.F + this.l * (double)var4;
       }
    }
 
-   public static class a implements flt<iy> {
-      private final fml a;
+   public static class a implements fmt<jv> {
+      private final fnl a;
 
-      public a(fml $$0) {
+      public a(fnl $$0) {
          this.a = $$0;
       }
 
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmw $$8 = new fmw($$1, $$2, $$3, $$4);
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fmw $$8 = new fmw($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          return $$8;
       }

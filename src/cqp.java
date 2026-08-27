@@ -1,41 +1,19 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Optional;
 
-public class cqp {
-   private final List<cqp.a> a = Lists.newArrayList();
+public class cqp extends cqs {
+   private final bjt a;
 
-   public void a(gw $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new cqp.a($$0, $$1));
-      }
+   public cqp(bjt $$0) {
+      this.a = $$0;
    }
 
-   public double b(gw $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (cqp.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   @Override
+   public Optional<Float> a(cqr $$0, cqf $$1, ht $$2, dgb $$3, ebe $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   static class a {
-      private final gw a;
-      private final double b;
-
-      public a(gw $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public double a(gw $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   @Override
+   public boolean a(cqr $$0, cqf $$1, ht $$2, dgb $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

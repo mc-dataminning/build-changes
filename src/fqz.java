@@ -1,155 +1,95 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fqz {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final ha[] l = ha.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ac.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+public class fqz implements aou {
+   private Map<ddz<?>, fra<?>> d = ImmutableMap.of();
+   private final esw e;
+   private final fis f;
+   public cqz a;
+   public eqz b;
+   public eid c;
+   private final Supplier<fpu> g;
+   private final Supplier<fvb> h;
+   private final Supplier<fub> i;
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
+   public fqz(esw $$0, fis $$1, Supplier<fpu> $$2, Supplier<fvb> $$3, Supplier<fub> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   @Nullable
+   public <E extends ddx> fra<E> a(E $$0) {
+      return (fra<E>)this.d.get($$0.u());
+   }
+
+   public void a(cqz $$0, eqz $$1, eid $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
+
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends ddx> void a(E $$0, float $$1, emh $$2, fpb $$3) {
+      fra<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.u().a($$0.q())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
             }
          }
       }
-   });
-   private int o = 4096;
-
-   public void a(gw $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
    }
 
-   private static int b(gw $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
-   }
-
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public fra a() {
-      fra $$0 = new fra();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
+   private static <T extends ddx> void a(fra<T> $$0, T $$1, float $$2, emh $$3, fpb $$4) {
+      cqz $$5 = $$1.k();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = foz.a($$5, $$1.p());
       } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
-         }
+         $$6 = 15728880;
       }
 
-      return $$0;
+      $$0.a($$1, $$2, $$3, $$4, $$6, fzr.d);
    }
 
-   private Set<ha> a(int $$0) {
-      Set<ha> $$1 = EnumSet.noneOf(ha.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (ha $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void a(int $$0, Set<ha> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(ha.e);
-      } else if ($$2 == 15) {
-         $$1.add(ha.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(ha.a);
-      } else if ($$3 == 15) {
-         $$1.add(ha.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(ha.c);
-      } else if ($$4 == 15) {
-         $$1.add(ha.d);
+   public <E extends ddx> boolean a(E $$0, emh $$1, fpb $$2, int $$3, int $$4) {
+      fra<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
       }
    }
 
-   private int a(int $$0, ha $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
+   private static void a(ddx $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new y($$3);
       }
+   }
+
+   public void a(@Nullable cqz $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(aot $$0) {
+      frb.a $$1 = new frb.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = frc.a($$1);
    }
 }

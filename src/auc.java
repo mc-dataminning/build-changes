@@ -1,26 +1,33 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.function.UnaryOperator;
+import com.google.gson.JsonObject;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 
-public class auc extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
+public class auc {
+   private static final String a = a("");
 
-   private auc(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, true);
-      this.a = $$1;
-      this.b = $$2;
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = a($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(azd.s);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(azd.s);
-      return this.fixTypeEverywhere(this.a, $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst(this.b));
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
    }
 
-   public static DataFix a(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      return new auc($$0, $$1, $$2);
+   private static String a(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return aso.e($$1);
+   }
+
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(aso.e($$2)));
+   }
+
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
    }
 }

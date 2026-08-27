@@ -1,39 +1,53 @@
 import com.mojang.serialization.Codec;
 
-public class doz extends dnq<dqb> {
-   public doz(Codec<dqb> $$0) {
+public class doz extends dnr {
+   public doz(Codec<dqu> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dns<dqb> $$0) {
-      cqv $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      gw.a $$3 = new gw.a();
-      gw.a $$4 = new gw.a();
+   protected void a(cra $$0, ate $$1, ht $$2, int $$3, ht.a $$4, dqu $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(dkm.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(ha.a, 1);
-            cqz $$10 = $$1.s($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, cte.dO.o(), 2);
-            }
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  if (!$$0.a_($$4).i($$0, $$4)) {
+                     dgb $$17 = $$5.b.a($$1, $$2);
+                     if ($$17.b(cxv.e) && $$17.b(cxv.c) && $$17.b(cxv.b) && $$17.b(cxv.d) && $$17.b(cxv.f)) {
+                        $$17 = $$17.a(cxv.f, Boolean.valueOf($$6 >= $$3 - 1))
+                           .a(cxv.e, Boolean.valueOf($$9 < -$$8))
+                           .a(cxv.c, Boolean.valueOf($$9 > $$8))
+                           .a(cxv.b, Boolean.valueOf($$10 < -$$8))
+                           .a(cxv.d, Boolean.valueOf($$10 > $$8));
+                     }
 
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, cte.dN.o(), 2);
-               dfd $$11 = $$1.a_($$4);
-               if ($$11.b(dak.c)) {
-                  $$1.a($$4, $$11.a(dak.c, Boolean.valueOf(true)), 2);
+                     this.a($$0, $$4, $$17);
+                  }
                }
             }
          }
       }
+   }
 
-      return true;
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
+      }
+
+      return $$4;
    }
 }

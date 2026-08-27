@@ -1,8 +1,11 @@
-import javax.annotation.Nullable;
-
-public interface chx {
-   default void a(@Nullable cca $$0, cqb $$1, cjl $$2, gw $$3) {
+public class chx extends cke {
+   public chx(cke.a $$0) {
+      super($$0);
    }
 
-   boolean a(@Nullable cca var1, cqb var2, gw var3, @Nullable ehd var4);
+   public cdd a(cqz $$0, ckj $$1, bkj $$2) {
+      cdf $$3 = new cdf($$0, $$2);
+      $$3.a($$1);
+      return $$3;
+   }
 }

@@ -1,18 +1,25 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public interface bhi {
-   tl ab();
+public class bhi implements bhj {
+   private final bhj[] a;
 
-   default boolean ac() {
-      return this.ad() != null;
+   public bhi(bhj... $$0) {
+      this.a = $$0;
    }
 
-   default tl N_() {
-      return this.ab();
+   @Override
+   public float a(ate $$0) {
+      float $$1 = 1.0F;
+
+      for (bhj $$2 : this.a) {
+         $$1 *= $$2.a($$0);
+      }
+
+      return $$1;
    }
 
-   @Nullable
-   default tl ad() {
-      return null;
+   @Override
+   public String toString() {
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

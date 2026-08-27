@@ -1,17 +1,18 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.datafixers.types.Type;
 
-public class awc extends azn {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
+public class awc extends DataFix {
+   private static final String a = "minecraft:decorated_pot";
 
-   public awc(Schema $$0, boolean $$1) {
-      super("EntityPufferfishRenameFix", $$0, $$1);
+   public awc(Schema $$0) {
+      super($$0, true);
    }
 
-   @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(baa.s, "minecraft:decorated_pot");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(baa.s, "minecraft:decorated_pot");
+      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
    }
 }

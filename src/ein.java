@@ -1,55 +1,38 @@
-public interface ein extends bgx {
-   cjl i();
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   cjl c(int var1);
+public final class ein implements eir {
+   private final eil a;
+   private final int b;
+   private final int c;
 
-   void a(cjl var1);
-
-   dcz j();
-
-   default cjl av_() {
-      return this.c(this.ag_());
+   ein(int $$0, int $$1) {
+      this.a = new eil((int)eiv.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
    @Override
-   default int b() {
-      return 1;
-   }
+   public boolean a(eir.a $$0) {
+      int $$1 = this.a.size() - 1;
 
-   @Override
-   default boolean af_() {
-      return this.i().b();
-   }
-
-   @Override
-   default void a() {
-      this.av_();
-   }
-
-   @Override
-   default cjl b(int $$0) {
-      return this.a($$0, this.ag_());
-   }
-
-   @Override
-   default cjl a(int $$0) {
-      return $$0 == 0 ? this.i() : cjl.b;
-   }
-
-   @Override
-   default cjl a(int $$0, int $$1) {
-      return $$0 != 0 ? cjl.b : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cjl $$1) {
-      if ($$0 == 0) {
-         this.a($$1);
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
       }
+
+      return true;
    }
 
    @Override
-   default boolean a(cca $$0) {
-      return bgx.a(this.j(), $$0);
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

@@ -1,24 +1,50 @@
-public class fbc extends fbg {
-   private static final tl b = tl.c("title.32bit.deprecation.realms.header").a(n.r);
-   private static final tl c = tl.c("title.32bit.deprecation.realms");
-   private static final tl k = tl.c("title.32bit.deprecation.realms.check");
-   private static final tl l = b.f().f("\n").b(c);
-   private final eye m;
+public abstract class fbc<T extends cgp> extends fac<T> implements cgb {
+   private final afw x;
 
-   public fbc(eye $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+   public fbc(T $$0, ccw $$1, ui $$2, afw $$3) {
+      super($$0, $$1, $$2);
+      this.x = $$3;
+   }
+
+   protected void E() {
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(esk.a(tk.d, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.w = true;
-            this.f.m.ar();
-         }
+   protected void aM_() {
+      super.aM_();
+      this.E();
+      this.p.a(this);
+   }
 
-         this.f.a(this.m);
-      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
+   @Override
+   public void aD_() {
+      super.aD_();
+      this.p.b(this);
+   }
+
+   @Override
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(esy $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(esy $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
+      this.c($$0, this.t, this.u);
+   }
+
+   protected abstract void c(esy var1, int var2, int var3);
+
+   @Override
+   public void a(cfp $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(cfp $$0, int $$1, ckj $$2) {
    }
 }

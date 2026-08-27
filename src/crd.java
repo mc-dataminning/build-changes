@@ -1,141 +1,78 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Dynamic;
 
-public abstract class crd implements crc {
-   public static final Codec<crd> a = jb.ac.q().dispatchStable(crd::a, Function.identity());
-   private final Supplier<Set<he<cqz>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
+public final class crd {
+   private final String a;
+   private final cqw b;
+   private final boolean c;
+   private final bhy d;
+   private final boolean e;
+   private final cqv f;
+   private final crs g;
 
-   protected crd() {
+   public crd(String $$0, cqw $$1, boolean $$2, bhy $$3, boolean $$4, cqv $$5, crs $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   protected abstract Codec<? extends crd> a();
-
-   protected abstract Stream<he<cqz>> b();
-
-   public Set<he<cqz>> c() {
-      return this.b.get();
+   public static crd a(Dynamic<?> $$0, crs $$1) {
+      cqw $$2 = cqw.a($$0.get("GameType").asInt(0));
+      return new crd(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> bhy.a($$0x.byteValue())).result().orElse(bhy.c),
+         $$0.get("allowCommands").asBoolean($$2 == cqw.b),
+         new cqv($$0.get("GameRules")),
+         $$1
+      );
    }
 
-   public Set<he<cqz>> a(int $$0, int $$1, int $$2, int $$3, cri.f $$4) {
-      int $$5 = hp.a($$0 - $$3);
-      int $$6 = hp.a($$1 - $$3);
-      int $$7 = hp.a($$2 - $$3);
-      int $$8 = hp.a($$0 + $$3);
-      int $$9 = hp.a($$1 + $$3);
-      int $$10 = hp.a($$2 + $$3);
-      int $$11 = $$8 - $$5 + 1;
-      int $$12 = $$9 - $$6 + 1;
-      int $$13 = $$10 - $$7 + 1;
-      Set<he<cqz>> $$14 = Sets.newHashSet();
-
-      for (int $$15 = 0; $$15 < $$13; $$15++) {
-         for (int $$16 = 0; $$16 < $$11; $$16++) {
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               int $$18 = $$5 + $$16;
-               int $$19 = $$6 + $$17;
-               int $$20 = $$7 + $$15;
-               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
-            }
-         }
-      }
-
-      return $$14;
+   public String a() {
+      return this.a;
    }
 
-   @Nullable
-   public Pair<gw, he<cqz>> a(int $$0, int $$1, int $$2, int $$3, Predicate<he<cqz>> $$4, ash $$5, cri.f $$6) {
-      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   public cqw b() {
+      return this.b;
    }
 
-   @Nullable
-   public Pair<gw, he<cqz>> a(gw $$0, int $$1, int $$2, int $$3, Predicate<he<cqz>> $$4, cri.f $$5, cqe $$6) {
-      Set<he<cqz>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
-      if ($$7.isEmpty()) {
-         return null;
-      } else {
-         int $$8 = Math.floorDiv($$1, $$2);
-         int[] $$9 = asb.a($$0.v(), $$6.H_() + 1, $$6.aj(), $$3).toArray();
-
-         for (gw.a $$10 : gw.a(gw.b, $$8, ha.f, ha.d)) {
-            int $$11 = $$0.u() + $$10.u() * $$2;
-            int $$12 = $$0.w() + $$10.w() * $$2;
-            int $$13 = hp.a($$11);
-            int $$14 = hp.a($$12);
-
-            for (int $$15 : $$9) {
-               int $$16 = hp.a($$15);
-               he<cqz> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
-               if ($$7.contains($$17)) {
-                  return Pair.of(new gw($$11, $$15, $$12), $$17);
-               }
-            }
-         }
-
-         return null;
-      }
+   public boolean c() {
+      return this.c;
    }
 
-   @Nullable
-   public Pair<gw, he<cqz>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<he<cqz>> $$5, ash $$6, boolean $$7, cri.f $$8) {
-      int $$9 = hp.a($$0);
-      int $$10 = hp.a($$2);
-      int $$11 = hp.a($$3);
-      int $$12 = hp.a($$1);
-      Pair<gw, he<cqz>> $$13 = null;
-      int $$14 = 0;
-      int $$15 = $$7 ? 0 : $$11;
-      int $$16 = $$15;
-
-      while ($$16 <= $$11) {
-         for (int $$17 = aa.aq ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
-            boolean $$18 = Math.abs($$17) == $$16;
-
-            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
-               if ($$7) {
-                  boolean $$20 = Math.abs($$19) == $$16;
-                  if (!$$20 && !$$18) {
-                     continue;
-                  }
-               }
-
-               int $$21 = $$9 + $$19;
-               int $$22 = $$10 + $$17;
-               he<cqz> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
-               if ($$5.test($$23)) {
-                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
-                     gw $$24 = new gw(hp.c($$21), $$1, hp.c($$22));
-                     if ($$7) {
-                        return Pair.of($$24, $$23);
-                     }
-
-                     $$13 = Pair.of($$24, $$23);
-                  }
-
-                  $$14++;
-               }
-            }
-         }
-
-         $$16 += $$4;
-      }
-
-      return $$13;
+   public bhy d() {
+      return this.d;
    }
 
-   @Override
-   public abstract he<cqz> getNoiseBiome(int var1, int var2, int var3, cri.f var4);
+   public boolean e() {
+      return this.e;
+   }
 
-   public void a(List<String> $$0, gw $$1, cri.f $$2) {
+   public cqv f() {
+      return this.f;
+   }
+
+   public crs g() {
+      return this.g;
+   }
+
+   public crd a(cqw $$0) {
+      return new crd(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   }
+
+   public crd a(bhy $$0) {
+      return new crd(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   }
+
+   public crd a(crs $$0) {
+      return new crd(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
+
+   public crd h() {
+      return new crd(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
    }
 }

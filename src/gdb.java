@@ -1,100 +1,48 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gdb extends gcr {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final ceo s;
+   private float t = 0.0F;
 
-public class gdb {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
-
-   public static class a extends Thread {
-      private final gdb.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
-
-      public a(gdb.b $$0) throws IOException {
-         super("LanServerDetector #" + gdb.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(gdb.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
-      }
-
-      @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
-
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               gdb.b.error("Couldn't ping server", var6);
-               break;
-            }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            gdb.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
-         }
-
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
-         }
-
-         this.c.close();
-      }
+   public gdb(ceo $$0) {
+      super(aqd.nk, aqe.g, gdi.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dq());
+      this.g = (double)((float)$$0.ds());
+      this.h = (double)((float)$$0.dw());
    }
 
-   public static class b {
-      private final List<gda> a = Lists.newArrayList();
-      private boolean b;
+   @Override
+   public boolean s() {
+      return !this.s.aS();
+   }
 
-      @Nullable
-      public synchronized List<gda> a() {
-         if (this.b) {
-            List<gda> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.s.dG()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dq());
+         this.g = (double)((float)this.s.ds());
+         this.h = (double)((float)this.s.dw());
+         float $$0 = (float)this.s.do().h();
+         if ($$0 >= 0.01F) {
+            this.t = asy.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = asy.i(asy.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
          } else {
-            return null;
-         }
-      }
-
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = gdc.a($$0);
-         String $$3 = gdc.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
-
-            for (gda $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
-            }
-
-            if (!$$4) {
-               this.a.add(new gda($$2, $$3));
-               this.b = true;
-            }
+            this.t = 0.0F;
+            this.d = 0.0F;
          }
       }
    }

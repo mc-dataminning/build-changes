@@ -1,14 +1,13 @@
-import com.mojang.serialization.Codec;
+import java.time.Instant;
 
-public interface bgi<P extends bgh> {
-   bgi<bgf> a = a("constant", bgf.b);
-   bgi<bgo> b = a("uniform", bgo.a);
-   bgi<bgd> c = a("clamped_normal", bgd.a);
-   bgi<bgn> d = a("trapezoid", bgn.a);
+public final class bgi {
+   public final Instant a;
+   public final int b;
+   public final ber c;
 
-   Codec<P> codec();
-
-   static <P extends bgh> bgi<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.M, $$0, () -> $$1);
+   public bgi(Instant $$0, int $$1, ber $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 }

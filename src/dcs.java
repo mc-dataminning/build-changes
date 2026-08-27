@@ -1,108 +1,87 @@
-public class dcs extends dec {
-   private hn<cjl> c = hn.a(27, cjl.b);
-   private final ddm f = new ddm() {
-      @Override
-      protected void a(cqb $$0, gw $$1, dfd $$2) {
-         dcs.this.a($$2, apg.bk);
-         dcs.this.a($$2, true);
-      }
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-      @Override
-      protected void b(cqb $$0, gw $$1, dfd $$2) {
-         dcs.this.a($$2, apg.bj);
-         dcs.this.a($$2, false);
-      }
+public class dcs extends csq {
+   public static final MapCodec<dcs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cix.q.fieldOf("color").forGetter(csq::b), t()).apply($$0, dcs::new));
+   public static final dgv b = cxu.aE;
+   private static final Map<hx, eiy> c = Maps.newEnumMap(
+      ImmutableMap.of(
+         hx.c,
+         cua.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
+         hx.d,
+         cua.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
+         hx.e,
+         cua.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
+         hx.f,
+         cua.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
+      )
+   );
 
-      @Override
-      protected void a(cqb $$0, gw $$1, dfd $$2, int $$3, int $$4) {
-      }
+   @Override
+   public MapCodec<dcs> a() {
+      return a;
+   }
 
-      @Override
-      protected boolean a(cca $$0) {
-         if ($$0.bS instanceof cey) {
-            bgx $$1 = ((cey)$$0.bS).l();
-            return $$1 == dcs.this;
-         } else {
-            return false;
+   public dcs(cix $$0, dga.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, hx.c));
+   }
+
+   @Override
+   public String h() {
+      return this.k().a();
+   }
+
+   @Override
+   public boolean a(dgb $$0, crc $$1, ht $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? cuc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return c.get($$0.c(b));
+   }
+
+   @Override
+   public dgb a(cmr $$0) {
+      dgb $$1 = this.o();
+      crc $$2 = $$0.q();
+      ht $$3 = $$0.a();
+      hx[] $$4 = $$0.f();
+
+      for (hx $$5 : $$4) {
+         if ($$5.o().d()) {
+            hx $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
       }
-   };
 
-   public dcs(gw $$0, dfd $$1) {
-      super(ddb.A, $$0, $$1);
+      return null;
    }
 
    @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      if (!this.e($$0)) {
-         bgy.a($$0, this.c);
-      }
+   public dgb a(dgb $$0, dal $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      this.c = hn.a(this.b(), cjl.b);
-      if (!this.d($$0)) {
-         bgy.b($$0, this.c);
-      }
+   public dgb a(dgb $$0, cyv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected hn<cjl> f() {
-      return this.c;
-   }
-
-   @Override
-   protected void a(hn<cjl> $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   protected tl g() {
-      return tl.c("container.barrel");
-   }
-
-   @Override
-   protected cer a(int $$0, cbz $$1) {
-      return cey.a($$0, $$1, this);
-   }
-
-   @Override
-   public void d_(cca $$0) {
-      if (!this.q && !$$0.M_()) {
-         this.f.a($$0, this.k(), this.p(), this.q());
-      }
-   }
-
-   @Override
-   public void c(cca $$0) {
-      if (!this.q && !$$0.M_()) {
-         this.f.b($$0, this.k(), this.p(), this.q());
-      }
-   }
-
-   public void i() {
-      if (!this.q) {
-         this.f.c(this.k(), this.p(), this.q());
-      }
-   }
-
-   void a(dfd $$0, boolean $$1) {
-      this.o.a(this.p(), $$0.a(csi.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dfd $$0, apf $$1) {
-      hy $$2 = $$0.c(csi.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, aph.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(b);
    }
 }

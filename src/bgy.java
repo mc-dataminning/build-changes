@@ -1,76 +1,53 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class bgy {
-   public static cjl a(List<cjl> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).b() && $$2 > 0 ? $$0.get($$1).a($$2) : cjl.b;
+public class bgy extends bhg {
+   public static final Codec<bgy> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bgy::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final int b;
+   private final int f;
+
+   private bgy(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   public static cjl a(List<cjl> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cjl.b) : cjl.b;
+   public static bgy a(int $$0, int $$1) {
+      return new bgy($$0, $$1);
    }
 
-   public static qw a(qw $$0, hn<cjl> $$1) {
-      return a($$0, $$1, true);
+   @Override
+   public int a(ate $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
-   public static qw a(qw $$0, hn<cjl> $$1, boolean $$2) {
-      rc $$3 = new rc();
-
-      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-         cjl $$5 = $$1.get($$4);
-         if (!$$5.b()) {
-            qw $$6 = new qw();
-            $$6.a("Slot", (byte)$$4);
-            $$5.b($$6);
-            $$3.add($$6);
-         }
-      }
-
-      if (!$$3.isEmpty() || $$2) {
-         $$0.a("Items", $$3);
-      }
-
-      return $$0;
+   @Override
+   public int a() {
+      return this.b;
    }
 
-   public static void b(qw $$0, hn<cjl> $$1) {
-      rc $$2 = $$0.c("Items", 10);
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         qw $$4 = $$2.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < $$1.size()) {
-            $$1.set($$5, cjl.a($$4));
-         }
-      }
+   @Override
+   public int b() {
+      return this.f;
    }
 
-   public static int a(bgx $$0, Predicate<cjl> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cjl $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.b()) {
-            $$0.a($$5, cjl.b);
-         }
-
-         $$4 += $$7;
-      }
-
-      return $$4;
+   @Override
+   public bhh<?> c() {
+      return bhh.c;
    }
 
-   public static int a(cjl $$0, Predicate<cjl> $$1, int $$2, boolean $$3) {
-      if ($$0.b() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.L();
-      } else {
-         int $$4 = $$2 < 0 ? $$0.L() : Math.min($$2, $$0.L());
-         $$0.h($$4);
-         return $$4;
-      }
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

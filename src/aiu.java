@@ -1,44 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import javax.annotation.Nullable;
 
 public class aiu {
-   public static void a(CommandDispatcher<dt> $$0) {
-      RequiredArgumentBuilder<dt, gc> $$1 = (RequiredArgumentBuilder<dt, gc>)((RequiredArgumentBuilder)du.a("targets", ee.d())
-            .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), null, null)))
-         .then(du.a("*").then(du.a("sound", es.a()).suggests(gm.c).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), null, es.e($$0x, "sound")))));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.publish.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ui.b("commands.publish.alreadyPublished", $$0));
 
-      for (aph $$2 : aph.values()) {
-         $$1.then(
-            ((LiteralArgumentBuilder)du.a($$2.a()).executes($$1x -> a((dt)$$1x.getSource(), ee.f($$1x, "targets"), $$2, null)))
-               .then(du.a("sound", es.a()).suggests(gm.c).executes($$1x -> a((dt)$$1x.getSource(), ee.f($$1x, "targets"), $$2, es.e($$1x, "sound"))))
-         );
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("publish").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((du)$$0x.getSource(), asp.a(), false, null)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("allowCommands", BoolArgumentType.bool())
+                     .executes($$0x -> a((du)$$0x.getSource(), asp.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("gamemode", eh.a())
+                           .executes($$0x -> a((du)$$0x.getSource(), asp.a(), BoolArgumentType.getBool($$0x, "allowCommands"), eh.a($$0x, "gamemode"))))
+                        .then(
+                           dv.a("port", IntegerArgumentType.integer(0, 65535))
+                              .executes(
+                                 $$0x -> a(
+                                       (du)$$0x.getSource(),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       BoolArgumentType.getBool($$0x, "allowCommands"),
+                                       eh.a($$0x, "gamemode")
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   private static int a(dt $$0, Collection<aku> $$1, @Nullable aph $$2, @Nullable aez $$3) {
-      aaq $$4 = new aaq($$3, $$2);
-
-      for (aku $$5 : $$1) {
-         $$5.c.b($$4);
-      }
-
-      if ($$2 != null) {
-         if ($$3 != null) {
-            $$0.a(() -> tl.a("commands.stopsound.success.source.sound", tl.a($$3), $$2.a()), true);
-         } else {
-            $$0.a(() -> tl.a("commands.stopsound.success.source.any", $$2.a()), true);
-         }
-      } else if ($$3 != null) {
-         $$0.a(() -> tl.a("commands.stopsound.success.sourceless.sound", tl.a($$3)), true);
+   private static int a(du $$0, int $$1, boolean $$2, @Nullable cqw $$3) throws CommandSyntaxException {
+      if ($$0.m().p()) {
+         throw b.create($$0.m().M());
+      } else if (!$$0.m().a($$3, $$2, $$1)) {
+         throw a.create();
       } else {
-         $$0.a(() -> tl.c("commands.stopsound.success.sourceless.any"), true);
+         $$0.a(() -> a($$1), true);
+         return $$1;
       }
+   }
 
-      return $$1.size();
+   public static uw a(int $$0) {
+      ui $$1 = ul.a(String.valueOf($$0));
+      return ui.a("commands.publish.started", $$1);
    }
 }

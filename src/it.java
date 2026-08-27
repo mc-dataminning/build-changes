@@ -1,17 +1,52 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+public class it {
+   protected final float a;
+   protected final float b;
+   protected final float c;
 
-public interface it {
-   iu<?> b();
+   public it(float $$0, float $$1, float $$2) {
+      this.a = !Float.isInfinite($$0) && !Float.isNaN($$0) ? $$0 % 360.0F : 0.0F;
+      this.b = !Float.isInfinite($$1) && !Float.isNaN($$1) ? $$1 % 360.0F : 0.0F;
+      this.c = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
+   }
 
-   void a(so var1);
+   public it(rz $$0) {
+      this($$0.i(0), $$0.i(1), $$0.i(2));
+   }
 
-   String a();
+   public rz a() {
+      rz $$0 = new rz();
+      $$0.add(rw.a(this.a));
+      $$0.add(rw.a(this.b));
+      $$0.add(rw.a(this.c));
+      return $$0;
+   }
 
-   @Deprecated
-   public interface a<T extends it> {
-      T b(iu<T> var1, StringReader var2) throws CommandSyntaxException;
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof it $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   }
 
-      T b(iu<T> var1, so var2);
+   public float b() {
+      return this.a;
+   }
+
+   public float c() {
+      return this.b;
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   public float e() {
+      return asy.g(this.a);
+   }
+
+   public float f() {
+      return asy.g(this.b);
+   }
+
+   public float g() {
+      return asy.g(this.c);
    }
 }

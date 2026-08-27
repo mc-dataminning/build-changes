@@ -1,52 +1,49 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dth extends dtj {
-   public static final Codec<dth> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dlg.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dlg.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dth::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dlg d;
-   private final dlg e;
-   private final int f;
+public class dth extends dtk {
+   public static final Codec<dth> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dth::new, $$0 -> $$0.d).codec();
+   private static final hx b = hx.d;
+   private static final hx[] c = hx.c.a.a().filter($$0 -> $$0 != b.g()).toArray(hx[]::new);
+   private final float d;
 
-   private dth(dlg $$0, dlg $$1, int $$2) {
+   public dth(float $$0) {
       this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static dth a(dlg $$0, dlg $$1, int $$2) {
-      return new dth($$0, $$1, $$2);
    }
 
    @Override
-   public int a(ash $$0, dlj $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
-         return $$0.a($$4 + this.f) + $$2;
+   protected dtl<?> a() {
+      return dtl.d;
+   }
+
+   @Override
+   public void a(dtk.a $$0) {
+      ate $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<ht> $$2 = $$0.d();
+         List<ht> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<ht> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<ht> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), cuc.pe.o().a(ctu.b, b));
+               $$0.a().a($$6.get(), ddz.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
+
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     rt $$4x = new rt();
+                     $$4x.a("id", jy.h.b(bjx.h).toString());
+                     $$1x.a($$4x, $$1.a(599), false);
+                  }
+               });
+            }
+         }
       }
-   }
-
-   @Override
-   public dtk<?> a() {
-      return dtk.c;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

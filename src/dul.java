@@ -1,42 +1,53 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class dul extends duj {
+public class dul extends duh {
    public static final Codec<dul> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bgj.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bgj.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+      $$0 -> $$0.group(
+               dme.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dme.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
             .apply($$0, dul::new)
    );
-   private final bgj c;
-   private final bgj d;
+   private static final Logger b = LogUtils.getLogger();
+   private final dme d;
+   private final dme e;
+   private final int f;
 
-   public static dul a(bgj $$0, bgj $$1) {
-      return new dul($$0, $$1);
+   private dul(dme $$0, dme $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static dul a(bgj $$0) {
-      return new dul(bgg.a(0), $$0);
-   }
-
-   public static dul b(bgj $$0) {
-      return new dul($$0, bgg.a(0));
-   }
-
-   private dul(bgj $$0, bgj $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public static dul a(dme $$0, dme $$1, int $$2) {
+      return new dul($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<gw> a_(duh $$0, ash $$1, gw $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new gw($$3, $$4, $$5));
+   public int a(ate $$0, dmh $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = asy.a($$0, $$2 + this.f, $$3);
+         int $$5 = asy.a($$0, $$2, $$4 - 1);
+         return asy.a($$0, $$2, $$5 - 1 + this.f);
+      }
    }
 
    @Override
-   public duk<?> b() {
-      return duk.n;
+   public dui<?> a() {
+      return dui.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

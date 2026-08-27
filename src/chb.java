@@ -1,38 +1,30 @@
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
 
-public class chb extends cku {
-   private static final String c = "block.minecraft.banner.";
+public interface chb {
+   void a(@Nullable cno<?> var1);
 
-   public chb(ctc $$0, ctc $$1, cjg.a $$2) {
-      super($$0, $$1, $$2, ha.a);
-      Validate.isInstanceOf(crs.class, $$0);
-      Validate.isInstanceOf(crs.class, $$1);
-   }
+   @Nullable
+   cno<?> d();
 
-   public static void a(cjl $$0, List<tl> $$1) {
-      qw $$2 = che.a($$0);
-      if ($$2 != null && $$2.e("Patterns")) {
-         rc $$3 = $$2.c("Patterns", 10);
-
-         for (int $$4 = 0; $$4 < $$3.size() && $$4 < 6; $$4++) {
-            qw $$5 = $$3.a($$4);
-            chz $$6 = chz.a($$5.h("Color"));
-            he<dcq> $$7 = dcq.a($$5.l("Pattern"));
-            if ($$7 != null) {
-               $$7.e().map($$0x -> $$0x.a().e()).ifPresent($$2x -> $$1.add(tl.c("block.minecraft.banner." + $$2x + "." + $$6.b()).a(n.h)));
-            }
+   default void a(ccx $$0, List<ckj> $$1) {
+      cno<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().ap_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
          }
       }
    }
 
-   public chz b() {
-      return ((crs)this.e()).b();
-   }
-
-   @Override
-   public void a(cjl $$0, @Nullable cqb $$1, List<tl> $$2, clc $$3) {
-      a($$0, $$2);
+   default boolean a(cqz $$0, alr $$1, cno<?> $$2) {
+      if (!$$2.b().ap_() && $$0.X().b(cqv.v) && !$$1.G().b($$2)) {
+         return false;
+      } else {
+         this.a($$2);
+         return true;
+      }
    }
 }

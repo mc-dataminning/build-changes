@@ -1,146 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class ecr {
-   public static final Codec<ecr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               edb.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               arj.a(efl.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
-               arj.a(edz.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
-               egf.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               egf.a.fieldOf("bonus_rolls").orElse(egc.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ecr::new)
-   );
-   private final List<edd> b;
-   private final List<efj> c;
-   private final Predicate<eck> d;
-   private final List<edx> e;
-   private final BiFunction<cjl, eck, cjl> f;
-   private final ege g;
-   private final ege h;
+   private static final String a = "command_storage_";
+   private final Map<String, ecr.a> b = Maps.newHashMap();
+   private final ecu c;
 
-   ecr(List<edd> $$0, List<efj> $$1, List<edx> $$2, ege $$3, ege $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = efl.a($$1);
-      this.e = $$2;
-      this.f = edz.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   public ecr(ecu $$0) {
+      this.c = $$0;
    }
 
-   private void b(Consumer<cjl> $$0, eck $$1) {
-      ash $$2 = $$1.b();
-      List<edc> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   private ecr.a a(String $$0) {
+      ecr.a $$1 = new ecr.a();
+      this.b.put($$0, $$1);
+      return $$1;
+   }
 
-      for (edd $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   private ecj.a<ecr.a> b(String $$0) {
+      return new ecj.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), aud.h);
+   }
+
+   public rt a(afw $$0) {
+      String $$1 = $$0.b();
+      ecr.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new rt();
+   }
+
+   public void a(afw $$0, rt $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   }
+
+   public Stream<afw> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   }
+
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends ecj {
+      private static final String a = "contents";
+      private final Map<String, rt> b = Maps.newHashMap();
+
+      ecr.a b(rt $$0) {
+         rt $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
+
+         return this;
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      @Override
+      public rt a(rt $$0) {
+         rt $$1 = new rt();
+         this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
+         $$0.a("contents", $$1);
+         return $$0;
+      }
+
+      public rt a(String $$0) {
+         rt $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new rt();
+      }
+
+      public void a(String $$0, rt $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
          } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (edc $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+            this.b.put($$0, $$1);
          }
-      }
-   }
 
-   public void a(Consumer<cjl> $$0, eck $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cjl> $$2 = edx.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + asb.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
-   }
-
-   public void a(ect $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".condition[" + $$1 + "]"));
+         this.c();
       }
 
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.b(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.b(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.b(".rolls"));
-      this.h.a($$0.b(".bonusRolls"));
-   }
-
-   public static ecr.a a() {
-      return new ecr.a();
-   }
-
-   public static class a implements edu<ecr.a>, efc<ecr.a> {
-      private final Builder<edd> a = ImmutableList.builder();
-      private final Builder<efj> b = ImmutableList.builder();
-      private final Builder<edx> c = ImmutableList.builder();
-      private ege d = egc.a(1.0F);
-      private ege e = egc.a(0.0F);
-
-      public ecr.a a(ege $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ecr.a a() {
-         return this;
-      }
-
-      public ecr.a b(ege $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ecr.a a(edd.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public ecr.a a(efj.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public ecr.a a(edx.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public ecr b() {
-         return new ecr(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
+      public Stream<afw> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> new afw($$0, $$1));
       }
    }
 }

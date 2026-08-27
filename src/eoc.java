@@ -1,274 +1,99 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eoc extends gex {
+public class eoc extends eod {
    private static final Logger a = LogUtils.getLogger();
-   private static final ReentrantLock b = new ReentrantLock();
-   private static final int c = 200;
-   private static final int y = 80;
-   private static final int z = 95;
-   private static final int A = 1;
-   private final eye B;
-   private final eng C;
-   private final tl D;
-   private final RateLimiter E;
-   private esk F;
-   private final String G;
-   private final eoc.a H;
+   private static final String b = "http://";
+   private static final int c = 8080;
+   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
+   private final boolean e;
    @Nullable
-   private volatile tl I;
-   private volatile tl J = tl.c("mco.download.preparing");
-   @Nullable
-   private volatile String K;
-   private volatile boolean L;
-   private volatile boolean M = true;
-   private volatile boolean N;
-   private volatile boolean O;
-   @Nullable
-   private Long P;
-   @Nullable
-   private Long Q;
-   private long R;
-   private int S;
-   private static final String[] T = new String[]{"", ".", ". .", ". . ."};
-   private int U;
-   private boolean V;
-   private final BooleanConsumer W;
+   private final String f;
+   private final URI g;
 
-   public eoc(eye $$0, eng $$1, String $$2, BooleanConsumer $$3) {
-      super(eqh.a);
-      this.W = $$3;
-      this.B = $$0;
-      this.G = $$2;
-      this.C = $$1;
-      this.H = new eoc.a();
-      this.D = tl.c("mco.download.title");
-      this.E = RateLimiter.create(0.1F);
+   private eoc(boolean $$0, @Nullable String $$1, URI $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public void aH_() {
-      this.F = this.d(esk.a(tk.e, $$0 -> {
-         this.L = true;
-         this.F();
-      }).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
-      this.D();
-   }
-
-   private void D() {
-      if (!this.N) {
-         if (!this.V && this.a(this.C.a) >= 5368709120L) {
-            tl $$0 = tl.a("mco.download.confirmation.line1", elv.b(5368709120L));
-            tl $$1 = tl.c("mco.download.confirmation.line2");
-            this.f.a(new eof($$0x -> {
-               this.V = true;
-               this.f.a(this);
-               this.G();
-            }, eof.a.a, $$0, $$1, false));
-         } else {
-            this.G();
+   @Nullable
+   public static eoc a(String $$0) {
+      try {
+         JsonParser $$1 = new JsonParser();
+         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+         String $$3 = eqa.a("uploadEndpoint", $$2, null);
+         if ($$3 != null) {
+            int $$4 = eqa.a("port", $$2, -1);
+            URI $$5 = a($$3, $$4);
+            if ($$5 != null) {
+               boolean $$6 = eqa.a("worldClosed", $$2, false);
+               String $$7 = eqa.a("token", $$2, null);
+               return new eoc($$6, $$7, $$5);
+            }
          }
+      } catch (Exception var8) {
+         a.error("Could not parse UploadInfo: {}", var8.getMessage());
+      }
+
+      return null;
+   }
+
+   @Nullable
+   @VisibleForTesting
+   public static URI a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      String $$3 = a($$0, $$2);
+
+      try {
+         URI $$4 = new URI($$3);
+         int $$5 = a($$1, $$4.getPort());
+         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
+      } catch (URISyntaxException var6) {
+         a.warn("Failed to parse URI {}", $$3, var6);
+         return null;
       }
    }
 
-   private long a(String $$0) {
-      elw $$1 = new elw();
-      return $$1.a($$0);
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.S++;
-      if (this.J != null && this.E.tryAcquire(1)) {
-         tl $$0 = this.E();
-         this.f.aV().c($$0);
-      }
-   }
-
-   private tl E() {
-      List<tl> $$0 = Lists.newArrayList();
-      $$0.add(this.D);
-      $$0.add(this.J);
-      if (this.K != null) {
-         $$0.add(tl.a("mco.download.percent", this.K));
-         $$0.add(tl.a("mco.download.speed.narration", elv.b(this.R)));
-      }
-
-      if (this.I != null) {
-         $$0.add(this.I);
-      }
-
-      return tk.a($$0);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.L = true;
-         this.F();
-         return true;
+   private static int a(int $$0, int $$1) {
+      if ($$0 != -1) {
+         return $$0;
       } else {
-         return super.a($$0, $$1, $$2);
+         return $$1 != -1 ? $$1 : 8080;
       }
    }
 
-   private void F() {
-      if (this.N && this.W != null && this.I == null) {
-         this.W.accept(true);
+   private static String a(String $$0, Matcher $$1) {
+      return $$1.find() ? $$0 : "http://" + $$0;
+   }
+
+   public static String b(@Nullable String $$0) {
+      JsonObject $$1 = new JsonObject();
+      if ($$0 != null) {
+         $$1.addProperty("token", $$0);
       }
 
-      this.f.a(this.B);
+      return $$1.toString();
    }
 
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.D, this.g / 2, 20, 16777215);
-      $$0.a(this.i, this.J, this.g / 2, 50, 16777215);
-      if (this.M) {
-         this.c($$0);
-      }
-
-      if (this.H.a != 0L && !this.L) {
-         this.d($$0);
-         this.e($$0);
-      }
-
-      if (this.I != null) {
-         $$0.a(this.i, this.I, this.g / 2, 110, 16711680);
-      }
+   @Nullable
+   public String a() {
+      return this.f;
    }
 
-   private void c(erz $$0) {
-      int $$1 = this.i.a(this.J);
-      if (this.S % 10 == 0) {
-         this.U++;
-      }
-
-      $$0.a(this.i, T[this.U % T.length], this.g / 2 + $$1 / 2 + 5, 50, 16777215, false);
+   public URI b() {
+      return this.g;
    }
 
-   private void d(erz $$0) {
-      double $$1 = Math.min((double)this.H.a / (double)this.H.b, 1.0);
-      this.K = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.g - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -2501934);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.i, tl.a("mco.download.percent", this.K), this.g / 2, 84, 16777215);
-   }
-
-   private void e(erz $$0) {
-      if (this.S % 20 == 0) {
-         if (this.P != null) {
-            long $$1 = ac.b() - this.Q;
-            if ($$1 == 0L) {
-               $$1 = 1L;
-            }
-
-            this.R = 1000L * (this.H.a - this.P) / $$1;
-            this.a($$0, this.R);
-         }
-
-         this.P = this.H.a;
-         this.Q = ac.b();
-      } else {
-         this.a($$0, this.R);
-      }
-   }
-
-   private void a(erz $$0, long $$1) {
-      if ($$1 > 0L) {
-         int $$2 = this.i.b(this.K);
-         $$0.a(this.i, tl.a("mco.download.speed", elv.b($$1)), this.g / 2 + $$2 / 2 + 15, 84, 16777215, false);
-      }
-   }
-
-   private void G() {
-      new Thread(() -> {
-         try {
-            try {
-               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
-                  this.J = tl.c("mco.download.failed");
-                  return;
-               }
-
-               if (this.L) {
-                  this.H();
-                  return;
-               }
-
-               this.J = tl.a("mco.download.downloading", this.G);
-               elw $$0 = new elw();
-               $$0.a(this.C.a);
-               $$0.a(this.C, this.G, this.H, this.f.l());
-
-               while (!$$0.b()) {
-                  if ($$0.c()) {
-                     $$0.a();
-                     this.I = tl.c("mco.download.failed");
-                     this.F.b(tk.d);
-                     return;
-                  }
-
-                  if ($$0.d()) {
-                     if (!this.O) {
-                        this.J = tl.c("mco.download.extracting");
-                     }
-
-                     this.O = true;
-                  }
-
-                  if (this.L) {
-                     $$0.a();
-                     this.H();
-                     return;
-                  }
-
-                  try {
-                     Thread.sleep(500L);
-                  } catch (InterruptedException var8) {
-                     a.error("Failed to check Realms backup download status");
-                  }
-               }
-
-               this.N = true;
-               this.J = tl.c("mco.download.done");
-               this.F.b(tk.d);
-               return;
-            } catch (InterruptedException var9) {
-               a.error("Could not acquire upload lock");
-            } catch (Exception var10) {
-               this.I = tl.c("mco.download.failed");
-               a.info("Exception while downloading world", var10);
-            }
-         } finally {
-            if (!b.isHeldByCurrentThread()) {
-               return;
-            } else {
-               b.unlock();
-               this.M = false;
-               this.N = true;
-            }
-         }
-      }).start();
-   }
-
-   private void H() {
-      this.J = tl.c("mco.download.cancelled");
-   }
-
-   public static class a {
-      public volatile long a;
-      public volatile long b;
+   public boolean c() {
+      return this.e;
    }
 }

@@ -1,59 +1,102 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bsm<T> {
-   private final T a;
-   private long b;
+public class bsm extends bre {
+   private static final buv c = buv.b().a(10.0).d();
+   private final buv d;
+   protected final bks a;
+   private final double e;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
+   @Nullable
+   protected ccx b;
+   private int k;
+   private boolean l;
+   private final cnk m;
+   private final boolean n;
 
-   public bsm(T $$0, long $$1) {
+   public bsm(bks $$0, double $$1, cnk $$2, boolean $$3) {
       this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> bsm<T> a(T $$0) {
-      return new bsm<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> bsm<T> a(T $$0, long $$1) {
-      return new bsm<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(bre.a.a, bre.a.b));
+      this.d = c.c().a(this::a);
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean a() {
+      if (this.k > 0) {
+         this.k--;
+         return false;
+      } else {
+         this.b = this.a.dL().a(this.d, this.a);
+         return this.b != null;
+      }
    }
 
-   @atd
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   private boolean a(bkj $$0) {
+      return this.m.a($$0.eS()) || this.m.a($$0.eT());
    }
 
-   public static <T> Codec<bsm<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new bsm<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public boolean b() {
+      if (this.h()) {
+         if (this.a.f(this.b) < 36.0) {
+            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
+            }
+
+            if (Math.abs((double)this.b.dD() - this.i) > 5.0 || Math.abs((double)this.b.dB() - this.j) > 5.0) {
+               return false;
+            }
+         } else {
+            this.f = this.b.dq();
+            this.g = this.b.ds();
+            this.h = this.b.dw();
+         }
+
+         this.i = (double)this.b.dD();
+         this.j = (double)this.b.dB();
+      }
+
+      return this.a();
+   }
+
+   protected boolean h() {
+      return this.n;
+   }
+
+   @Override
+   public void c() {
+      this.f = this.b.dq();
+      this.g = this.b.ds();
+      this.h = this.b.dw();
+      this.l = true;
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+      this.a.L().n();
+      this.k = b(100);
+      this.l = false;
+   }
+
+   @Override
+   public void e() {
+      this.a.G().a(this.b, (float)(this.a.Z() + 20), (float)this.a.Y());
+      if (this.a.f(this.b) < 6.25) {
+         this.a.L().n();
+      } else {
+         this.a.L().a(this.b, this.e);
+      }
+   }
+
+   public boolean i() {
+      return this.l;
    }
 }

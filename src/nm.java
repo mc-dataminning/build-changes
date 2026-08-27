@@ -1,111 +1,139 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.concurrent.CompletableFuture;
 
-public class nm {
-   public static void a(nr<dwl> $$0) {
-      hf<dyt> $$1 = $$0.a(jc.aB);
-      he<dyt> $$2 = $$1.b(nz.t);
-      hf<dwl> $$3 = $$0.a(jc.aD);
-      he<dwl> $$4 = $$3.b(ny.a);
-      ny.a(
-         $$0,
-         "bastion/units/center_pieces",
-         new dwl(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/units/center_pieces/center_0", $$2), 1),
-               Pair.of(dwj.b("bastion/units/center_pieces/center_1", $$2), 1),
-               Pair.of(dwj.b("bastion/units/center_pieces/center_2", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/units/pathways",
-         new dwl(
-            $$4,
-            ImmutableList.of(Pair.of(dwj.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(dwj.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/units/walls/wall_bases",
-         new dwl(
-            $$4,
-            ImmutableList.of(Pair.of(dwj.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(dwj.b("bastion/units/walls/connected_wall", $$2), 1)),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/units/stages/stage_0",
-         new dwl(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/units/stages/stage_0_0", $$2), 1),
-               Pair.of(dwj.b("bastion/units/stages/stage_0_1", $$2), 1),
-               Pair.of(dwj.b("bastion/units/stages/stage_0_2", $$2), 1),
-               Pair.of(dwj.b("bastion/units/stages/stage_0_3", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/units/stages/stage_1",
-         new dwl(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/units/stages/stage_1_0", $$2), 1),
-               Pair.of(dwj.b("bastion/units/stages/stage_1_1", $$2), 1),
-               Pair.of(dwj.b("bastion/units/stages/stage_1_2", $$2), 1),
-               Pair.of(dwj.b("bastion/units/stages/stage_1_3", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a($$0, "bastion/units/stages/rot/stage_1", new dwl($$4, ImmutableList.of(Pair.of(dwj.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), dwl.a.b));
-      ny.a(
-         $$0,
-         "bastion/units/stages/stage_2",
-         new dwl(
-            $$4, ImmutableList.of(Pair.of(dwj.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(dwj.b("bastion/units/stages/stage_2_1", $$2), 1)), dwl.a.b
-         )
-      );
-      ny.a(
-         $$0,
-         "bastion/units/stages/stage_3",
-         new dwl(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/units/stages/stage_3_0", $$2), 1),
-               Pair.of(dwj.b("bastion/units/stages/stage_3_1", $$2), 1),
-               Pair.of(dwj.b("bastion/units/stages/stage_3_2", $$2), 1),
-               Pair.of(dwj.b("bastion/units/stages/stage_3_3", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a($$0, "bastion/units/fillers/stage_0", new dwl($$4, ImmutableList.of(Pair.of(dwj.b("bastion/units/fillers/stage_0", $$2), 1)), dwl.a.b));
-      ny.a($$0, "bastion/units/edges", new dwl($$4, ImmutableList.of(Pair.of(dwj.b("bastion/units/edges/edge_0", $$2), 1)), dwl.a.b));
-      ny.a($$0, "bastion/units/wall_units", new dwl($$4, ImmutableList.of(Pair.of(dwj.b("bastion/units/wall_units/unit_0", $$2), 1)), dwl.a.b));
-      ny.a($$0, "bastion/units/edge_wall_units", new dwl($$4, ImmutableList.of(Pair.of(dwj.b("bastion/units/wall_units/edge_0_large", $$2), 1)), dwl.a.b));
-      ny.a(
-         $$0,
-         "bastion/units/ramparts",
-         new dwl(
-            $$4,
-            ImmutableList.of(
-               Pair.of(dwj.b("bastion/units/ramparts/ramparts_0", $$2), 1),
-               Pair.of(dwj.b("bastion/units/ramparts/ramparts_1", $$2), 1),
-               Pair.of(dwj.b("bastion/units/ramparts/ramparts_2", $$2), 1)
-            ),
-            dwl.a.b
-         )
-      );
-      ny.a($$0, "bastion/units/large_ramparts", new dwl($$4, ImmutableList.of(Pair.of(dwj.b("bastion/units/ramparts/ramparts_0", $$2), 1)), dwl.a.b));
-      ny.a($$0, "bastion/units/rampart_plates", new dwl($$4, ImmutableList.of(Pair.of(dwj.b("bastion/units/rampart_plates/plate_0", $$2), 1)), dwl.a.b));
+public class nm extends nz<crx> {
+   public nm(kh $$0, CompletableFuture<id.b> $$1) {
+      super($$0, jz.aq, $$1);
+   }
+
+   @Override
+   protected void a(id.b $$0) {
+      this.b(aqr.a).a(cse.X).a(cse.V).a(cse.T).a(cse.R);
+      this.b(aqr.b).b(aqr.a).a(cse.W).a(cse.S).a(cse.U).a(cse.Q).a(cse.P);
+      this.b(aqr.c).a(cse.M).a(cse.N);
+      this.b(aqr.d).a(cse.K).a(cse.L);
+      this.b(aqr.e).a(cse.D).a(cse.H).a(cse.I).a(cse.J).a(cse.G).a(cse.E);
+      this.b(aqr.f).a(cse.A).a(cse.B).a(cse.C);
+      this.b(aqr.g).a(cse.t).a(cse.v).a(cse.u);
+      this.b(aqr.h).a(cse.p).a(cse.q).a(cse.n).a(cse.o);
+      this.b(aqr.i).a(cse.z).a(cse.x).a(cse.y);
+      this.b(aqr.j).a(cse.i).a(cse.j).a(cse.k).a(cse.m).a(cse.l).a(cse.F);
+      this.b(aqr.k).a(cse.r).a(cse.s).a(cse.w);
+      nz.b<crx> $$1 = this.b(aqr.m);
+      csl.a.a.a().forEach($$1::a);
+      nz.b<crx> $$2 = this.b(aqr.l);
+      csl.a.b.a().forEach($$2::a);
+      this.b(aqr.n).a(cse.ah).a(cse.ai).a(cse.aj).a(cse.ak).a(cse.al);
+      this.b(aqr.p).b(aqr.c);
+      this.b(aqr.q).a(cse.f);
+      this.b(aqr.r).a(cse.q).a(cse.d).a(cse.G);
+      this.b(aqr.s).a(cse.z).a(cse.x);
+      this.b(aqr.t)
+         .b(aqr.b)
+         .b(aqr.d)
+         .b(aqr.c)
+         .b(aqr.e)
+         .b(aqr.g)
+         .b(aqr.h)
+         .b(aqr.i)
+         .b(aqr.j)
+         .a(cse.O)
+         .a(cse.Y)
+         .a(cse.e)
+         .a(cse.w)
+         .a(cse.f)
+         .a(cse.r)
+         .a(cse.d)
+         .a(cse.b)
+         .a(cse.c)
+         .a(cse.g)
+         .a(cse.h)
+         .a(cse.s)
+         .a(cse.Z)
+         .a(cse.aa);
+      this.b(aqr.u).b(aqr.f);
+      this.b(aqr.X).a(cse.ab);
+      this.b(aqr.v).b(aqr.a);
+      this.b(aqr.W).b(aqr.b).b(aqr.d);
+      this.b(aqr.w).a(cse.W).a(cse.U).a(cse.S).a(cse.X).a(cse.V).a(cse.T);
+      this.b(aqr.x).a(cse.Q).a(cse.P).a(cse.R);
+      this.b(aqr.y).a(cse.f).a(cse.b).a(cse.r).a(cse.d).a(cse.p).b(aqr.e).a(cse.F);
+      this.b(aqr.z).a(cse.f);
+      this.b(aqr.A).b(aqr.i);
+      this.b(aqr.B).b(aqr.b);
+      this.b(aqr.C).a(cse.g).a(cse.h);
+      this.b(aqr.D).b(aqr.f).b(aqr.g).a(cse.s).a(cse.w).a(cse.O).b(aqr.e);
+      this.b(aqr.E).b(aqr.c).b(aqr.d).b(aqr.h).b(aqr.j).a(cse.Y).a(cse.e).a(cse.Z).a(cse.aa).a(cse.r).a(cse.d).a(cse.b).a(cse.c);
+      this.b(aqr.F).b(aqr.c);
+      this.b(aqr.G).b(aqr.b);
+      this.b(aqr.I).a(cse.g);
+      this.b(aqr.J).a(cse.f);
+      this.b(aqr.K).a(cse.b).a(cse.D);
+      this.b(aqr.L).a(cse.r);
+      this.b(aqr.M).a(cse.d);
+      this.b(aqr.N).a(cse.p);
+      this.b(aqr.O).a(cse.p).a(cse.q).a(cse.n).a(cse.o).a(cse.m).a(cse.x);
+      this.b(aqr.P).a(cse.l);
+      this.b(aqr.o)
+         .a(cse.b)
+         .a(cse.c)
+         .a(cse.d)
+         .a(cse.e)
+         .a(cse.f)
+         .a(cse.i)
+         .a(cse.j)
+         .a(cse.k)
+         .a(cse.l)
+         .a(cse.m)
+         .a(cse.n)
+         .a(cse.o)
+         .a(cse.p)
+         .a(cse.q)
+         .a(cse.r)
+         .a(cse.s)
+         .a(cse.t)
+         .a(cse.u)
+         .a(cse.v)
+         .a(cse.w)
+         .a(cse.x)
+         .a(cse.y)
+         .a(cse.z)
+         .a(cse.A)
+         .a(cse.B)
+         .a(cse.C)
+         .a(cse.D)
+         .a(cse.F)
+         .a(cse.G)
+         .a(cse.H)
+         .a(cse.I)
+         .a(cse.J)
+         .a(cse.Y)
+         .a(cse.Z)
+         .a(cse.aa);
+      this.b(aqr.H).b(aqr.l);
+      this.b(aqr.Q).b(aqr.m);
+      this.b(aqr.R).a(cse.af);
+      this.b(aqr.S).a(cse.ae).a(cse.ac).a(cse.af).a(cse.ad);
+      this.b(aqr.T).a(cse.ab);
+      this.b(aqr.U).b(aqr.m);
+      this.b(aqr.V).a(cse.ai).a(cse.aj);
+      this.b(aqr.ab).a(cse.P);
+      this.b(aqr.Y).b(aqr.b).b(aqr.d);
+      this.b(aqr.Z).a(cse.g).a(cse.h);
+      this.b(aqr.aa).b(aqr.b).b(aqr.d).a(cse.g).a(cse.h);
+      this.b(aqr.ae).a(cse.Y);
+      this.b(aqr.af).a(cse.Y);
+      this.b(aqr.ag).a(cse.a);
+      this.b(aqr.ah).a(cse.d).a(cse.e).a(cse.H).a(cse.I).a(cse.G).a(cse.W).a(cse.X).a(cse.F).a(cse.ab).a(cse.L).a(cse.q).a(cse.N).b(aqr.n);
+      this.b(aqr.ai).a(cse.f).a(cse.P).b(aqr.i).b(aqr.k).b(aqr.m).b(aqr.f).a(cse.h);
+      this.b(aqr.aj).a(cse.f);
+      this.b(aqr.ak).a(cse.d).a(cse.e).a(cse.W).a(cse.q).a(cse.L).a(cse.N).a(cse.H).a(cse.I).a(cse.G).a(cse.F);
+      this.b(aqr.al).b(aqr.d);
+      this.b(aqr.am).a(cse.aa);
+      this.b(aqr.an).a(cse.W).a(cse.X);
+      this.b(aqr.ao).b(aqr.d);
+      this.b(aqr.ap).a(cse.g).a(cse.h);
+      this.b(aqr.aq).a(cse.d).a(cse.e).a(cse.W).a(cse.q).a(cse.L).a(cse.N).a(cse.H).a(cse.I).a(cse.G).a(cse.F);
+      this.b(aqr.ac).a(cse.z).a(cse.Y).a(cse.h).a(cse.G).a(cse.H).a(cse.I).a(cse.g).a(cse.x);
+      this.b(aqr.ad).a(cse.A).a(cse.ag).a(cse.ae).a(cse.f).a(cse.B).a(cse.ac).a(cse.r).a(cse.s).a(cse.af).a(cse.ad).a(cse.w).a(cse.C);
    }
 }

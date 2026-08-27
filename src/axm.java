@@ -1,35 +1,19 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
 
-public class axm extends DataFix {
+public class axm extends azc {
    public axm(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "EntityWolfColorFix", baa.x, "minecraft:wolf");
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(azd.z.typeName(), bal.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
-         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
-            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
-            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
-            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
-            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
-         } else {
-            return $$2x;
-         }
-      });
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("CollarColor", $$0x -> $$0x.createByte((byte)(15 - $$0x.asInt(0))));
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

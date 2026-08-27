@@ -1,32 +1,16 @@
-import java.nio.file.Path;
-import java.util.List;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public interface bdu {
-   char d = '\u001e';
-
-   List<bdx> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+public class bdu extends Schema {
+   public bdu(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   default int f() {
-      return this.d() - this.b();
-   }
-
-   String e();
-
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "PolarBear", () -> bbj.a($$0));
+      return $$1;
    }
 }

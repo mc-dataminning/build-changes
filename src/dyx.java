@@ -1,20 +1,41 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dyx extends dyp {
-   public static final Codec<dyx> a = aqk.a(jc.e).fieldOf("tag").xmap(dyx::new, $$0 -> $$0.b).codec();
-   private final aqk<ctc> b;
+public class dyx extends dzq {
+   public static final Codec<dyx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iq.a(jz.e).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dyx::new)
+   );
+   private final Optional<ig<cua>> b;
+   private final float c;
 
-   public dyx(aqk<ctc> $$0) {
+   public dyx(ig<cua> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public dyx(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private dyx(Optional<ig<cua>> $$0, float $$1) {
+      this.c = $$1;
       this.b = $$0;
    }
 
+   @Nullable
    @Override
-   public boolean a(dfd $$0, ash $$1) {
-      return $$0.a(this.b);
+   public dzt.c a(crc $$0, ht $$1, ht $$2, dzt.c $$3, dzt.c $$4, dzp $$5) {
+      ate $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   protected dyq<?> a() {
-      return dyq.d;
+   protected dzs<?> a() {
+      return dzs.f;
    }
 }

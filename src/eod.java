@@ -1,57 +1,32 @@
-public class eod extends gex {
-   private final eye a;
-   private final eod.a b;
-   private etd c = etd.a;
+import com.google.gson.annotations.SerializedName;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
-   public eod(enm $$0, eye $$1) {
-      super(eqh.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public eod(tl $$0, eye $$1) {
-      super(eqh.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public eod(tl $$0, tl $$1, eye $$2) {
-      super(eqh.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static eod.a a(enm $$0) {
-      emb $$1 = $$0.a;
-      return a(tl.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static eod.a a(tl $$0) {
-      return a(tl.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static eod.a a(tl $$0, tl $$1) {
-      return new eod.a($$0, $$1);
-   }
-
+public abstract class eod {
    @Override
-   public void aH_() {
-      this.d(esk.a(tk.h, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
-      this.c = etd.a(this.i, this.b.b, this.g * 3 / 4);
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("{");
+
+      for (Field $$1 : this.getClass().getFields()) {
+         if (!b($$1)) {
+            try {
+               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
+            } catch (IllegalAccessException var7) {
+            }
+         }
+      }
+
+      $$0.deleteCharAt($$0.length() - 1);
+      $$0.append('}');
+      return $$0.toString();
    }
 
-   @Override
-   public tl g() {
-      return tl.i().b(this.b.a).f(": ").b(this.b.b);
+   private static String a(Field $$0) {
+      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
+      return $$1 != null ? $$1.value() : $$0.getName();
    }
 
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
-      this.c.a($$0, this.g / 2, 100, 9, -65536);
-   }
-
-   static record a(tl a, tl b) {
+   private static boolean b(Field $$0) {
+      return Modifier.isStatic($$0.getModifiers());
    }
 }

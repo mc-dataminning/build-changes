@@ -1,204 +1,195 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.IntStream;
+import java.util.Collection;
 
-public class dau extends ctc implements dab {
-   public static final MapCodec<dau> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dfd.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), t()).apply($$0, dau::new)
-   );
-   public static final dfx b = cww.aE;
-   public static final dgb<dgc> c = dft.af;
-   public static final dgb<dgm> d = dft.bi;
-   public static final dfu e = dft.C;
-   protected static final eia f = dad.e;
-   protected static final eia g = dad.d;
-   protected static final eia h = ctc.a(0.0, 0.0, 0.0, 8.0, 8.0, 8.0);
-   protected static final eia i = ctc.a(0.0, 0.0, 8.0, 8.0, 8.0, 16.0);
-   protected static final eia j = ctc.a(0.0, 8.0, 0.0, 8.0, 16.0, 8.0);
-   protected static final eia k = ctc.a(0.0, 8.0, 8.0, 8.0, 16.0, 16.0);
-   protected static final eia l = ctc.a(8.0, 0.0, 0.0, 16.0, 8.0, 8.0);
-   protected static final eia m = ctc.a(8.0, 0.0, 8.0, 16.0, 8.0, 16.0);
-   protected static final eia n = ctc.a(8.0, 8.0, 0.0, 16.0, 16.0, 8.0);
-   protected static final eia o = ctc.a(8.0, 8.0, 8.0, 16.0, 16.0, 16.0);
-   protected static final eia[] F = a(f, h, l, i, m);
-   protected static final eia[] G = a(g, j, n, k, o);
-   private static final int[] I = new int[]{12, 5, 3, 10, 14, 13, 7, 11, 13, 7, 11, 14, 8, 4, 1, 2, 4, 1, 2, 8};
-   private final ctc J;
-   protected final dfd H;
+public class dau extends cyy implements dao, daz {
+   public static final MapCodec<dau> c = b(dau::new);
+   private static final dgs d = dgr.C;
+   private final cyz e = new cyz(new dau.a(cyz.a));
+   private final cyz f = new cyz(new dau.a(cyz.e.a));
 
    @Override
-   public MapCodec<? extends dau> a() {
-      return a;
+   public MapCodec<dau> a() {
+      return c;
    }
 
-   private static eia[] a(eia $$0, eia $$1, eia $$2, eia $$3, eia $$4) {
-      return IntStream.range(0, 16).mapToObj($$5 -> a($$5, $$0, $$1, $$2, $$3, $$4)).toArray(eia[]::new);
-   }
-
-   private static eia a(int $$0, eia $$1, eia $$2, eia $$3, eia $$4, eia $$5) {
-      eia $$6 = $$1;
-      if (($$0 & 1) != 0) {
-         $$6 = ehx.a($$1, $$2);
-      }
-
-      if (($$0 & 2) != 0) {
-         $$6 = ehx.a($$6, $$3);
-      }
-
-      if (($$0 & 4) != 0) {
-         $$6 = ehx.a($$6, $$4);
-      }
-
-      if (($$0 & 8) != 0) {
-         $$6 = ehx.a($$6, $$5);
-      }
-
-      return $$6;
-   }
-
-   protected dau(dfd $$0, dfc.d $$1) {
-      super($$1);
-      this.k(this.E.b().a(b, ha.c).a(c, dgc.b).a(d, dgm.a).a(e, Boolean.valueOf(false)));
-      this.J = $$0.b();
-      this.H = $$0;
+   public dau(dga.d $$0) {
+      super($$0);
+      this.k(this.o().a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean g_(dfd $$0) {
-      return true;
+   public cyz c() {
+      return this.e;
    }
 
-   @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return ($$0.c(c) == dgc.a ? F : G)[I[this.n($$0)]];
+   public cyz g() {
+      return this.f;
    }
 
-   private int n(dfd $$0) {
-      return $$0.c(d).ordinal() * 4 + $$0.c(b).e();
-   }
+   public static boolean a(cra $$0, ht $$1, dgb $$2, Collection<hx> $$3) {
+      boolean $$4 = false;
+      dgb $$5 = cuc.qG.o();
 
-   @Override
-   public float e() {
-      return this.J.e();
-   }
-
-   @Override
-   public dfd a(clt $$0) {
-      ha $$1 = $$0.k();
-      gw $$2 = $$0.a();
-      eag $$3 = $$0.q().b_($$2);
-      dfd $$4 = this.o()
-         .a(b, $$0.g())
-         .a(c, $$1 != ha.a && ($$1 == ha.b || !($$0.l().d - (double)$$2.v() > 0.5)) ? dgc.b : dgc.a)
-         .a(e, Boolean.valueOf($$3.a() == eah.c));
-      return $$4.a(d, i($$4, $$0.q(), $$2));
-   }
-
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, eah.c, eah.c.a($$3));
-      }
-
-      return $$1.o().d() ? $$0.a(d, i($$0, $$3, $$4)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private static dgm i(dfd $$0, cph $$1, gw $$2) {
-      ha $$3 = $$0.c(b);
-      dfd $$4 = $$1.a_($$2.a($$3));
-      if (h($$4) && $$0.c(c) == $$4.c(c)) {
-         ha $$5 = $$4.c(b);
-         if ($$5.o() != $$0.c(b).o() && c($$0, $$1, $$2, $$5.g())) {
-            if ($$5 == $$3.i()) {
-               return dgm.d;
-            }
-
-            return dgm.e;
+      for (hx $$6 : $$3) {
+         ht $$7 = $$1.a($$6);
+         if (a($$0, $$6, $$7, $$0.a_($$7))) {
+            $$5 = $$5.a(b($$6), Boolean.valueOf(true));
+            $$4 = true;
          }
       }
 
-      dfd $$6 = $$1.a_($$2.a($$3.g()));
-      if (h($$6) && $$0.c(c) == $$6.c(c)) {
-         ha $$7 = $$6.c(b);
-         if ($$7.o() != $$0.c(b).o() && c($$0, $$1, $$2, $$7)) {
-            if ($$7 == $$3.i()) {
-               return dgm.b;
-            }
+      if (!$$4) {
+         return false;
+      } else {
+         if (!$$2.u().c()) {
+            $$5 = $$5.a(d, Boolean.valueOf(true));
+         }
 
-            return dgm.c;
+         $$0.a($$1, $$5, 3);
+         return true;
+      }
+   }
+
+   @Override
+   public void a(cra $$0, dgb $$1, ht $$2, ate $$3) {
+      if ($$1.a(this)) {
+         for (hx $$4 : b) {
+            dgs $$5 = b($$4);
+            if ($$1.c($$5) && $$0.a_($$2.a($$4)).a(cuc.qF)) {
+               $$1 = $$1.a($$5, Boolean.valueOf(false));
+            }
+         }
+
+         if (!n($$1)) {
+            ebe $$6 = $$0.b_($$2);
+            $$1 = ($$6.c() ? cuc.a : cuc.G).o();
+         }
+
+         $$0.a($$2, $$1, 3);
+         dao.super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public int a(dat.a $$0, cra $$1, ht $$2, ate $$3, dat $$4, boolean $$5) {
+      if ($$5 && this.a($$4, $$1, $$0.a(), $$3)) {
+         return $$0.b() - 1;
+      } else {
+         return $$3.a($$4.f()) == 0 ? asy.d((float)$$0.b() * 0.5F) : $$0.b();
+      }
+   }
+
+   private boolean a(dat $$0, cra $$1, ht $$2, ate $$3) {
+      dgb $$4 = $$1.a_($$2);
+      arh<cua> $$5 = $$0.c();
+
+      for (hx $$6 : hx.a($$3)) {
+         if (a($$4, $$6)) {
+            ht $$7 = $$2.a($$6);
+            dgb $$8 = $$1.a_($$7);
+            if ($$8.a($$5)) {
+               dgb $$9 = cuc.qF.o();
+               $$1.a($$7, $$9, 3);
+               cua.a($$8, $$9, $$1, $$7);
+               $$1.a(null, $$7, aqd.ui, aqe.e, 1.0F, 1.0F);
+               this.e.a($$9, $$1, $$7, $$0.h());
+               hx $$10 = $$6.g();
+
+               for (hx $$11 : b) {
+                  if ($$11 != $$10) {
+                     ht $$12 = $$7.a($$11);
+                     dgb $$13 = $$1.a_($$12);
+                     if ($$13.a(this)) {
+                        this.a($$1, $$13, $$12, $$3);
+                     }
+                  }
+               }
+
+               return true;
+            }
          }
       }
 
-      return dgm.a;
-   }
-
-   private static boolean c(dfd $$0, cph $$1, gw $$2, ha $$3) {
-      dfd $$4 = $$1.a_($$2.a($$3));
-      return !h($$4) || $$4.c(b) != $$0.c(b) || $$4.c(c) != $$0.c(c);
-   }
-
-   public static boolean h(dfd $$0) {
-      return $$0.b() instanceof dau;
-   }
-
-   @Override
-   public dfd a(dfd $$0, czn $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dfd a(dfd $$0, cxx $$1) {
-      ha $$2 = $$0.c(b);
-      dgm $$3 = $$0.c(d);
-      switch ($$1) {
-         case b:
-            if ($$2.o() == ha.a.c) {
-               switch ($$3) {
-                  case b:
-                     return $$0.a(czn.c).a(d, dgm.c);
-                  case c:
-                     return $$0.a(czn.c).a(d, dgm.b);
-                  case d:
-                     return $$0.a(czn.c).a(d, dgm.e);
-                  case e:
-                     return $$0.a(czn.c).a(d, dgm.d);
-                  default:
-                     return $$0.a(czn.c);
-               }
-            }
-            break;
-         case c:
-            if ($$2.o() == ha.a.a) {
-               switch ($$3) {
-                  case b:
-                     return $$0.a(czn.c).a(d, dgm.b);
-                  case c:
-                     return $$0.a(czn.c).a(d, dgm.c);
-                  case d:
-                     return $$0.a(czn.c).a(d, dgm.e);
-                  case e:
-                     return $$0.a(czn.c).a(d, dgm.d);
-                  case a:
-                     return $$0.a(czn.c);
-               }
-            }
-      }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b, c, d, e);
-   }
-
-   @Override
-   public eag c_(dfd $$0) {
-      return $$0.c(e) ? eah.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
       return false;
+   }
+
+   public static boolean a(cra $$0, dgb $$1, ht $$2) {
+      if (!$$1.a(cuc.qG)) {
+         return false;
+      } else {
+         for (hx $$3 : b) {
+            if (a($$1, $$3) && $$0.a_($$2.a($$3)).a(aqs.bL)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, ebf.c, ebf.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      super.a($$0);
+      $$0.a(d);
+   }
+
+   @Override
+   public boolean a(dgb $$0, cmr $$1) {
+      return !$$1.n().a(ckm.fM) || super.a($$0, $$1);
+   }
+
+   @Override
+   public ebe c_(dgb $$0) {
+      return $$0.c(d) ? ebf.c.a(false) : super.c_($$0);
+   }
+
+   class a extends cyz.a {
+      private final cyz.e[] c;
+
+      public a(cyz.e... $$0) {
+         super(dau.this);
+         this.c = $$0;
+      }
+
+      @Override
+      public boolean a(cqf $$0, ht $$1, ht $$2, hx $$3, dgb $$4) {
+         dgb $$5 = $$0.a_($$2.a($$3));
+         if (!$$5.a(cuc.qF) && !$$5.a(cuc.qH) && !$$5.a(cuc.bQ)) {
+            if ($$1.k($$2) == 2) {
+               ht $$6 = $$1.a($$3.g());
+               if ($$0.a_($$6).d($$0, $$6, $$3)) {
+                  return false;
+               }
+            }
+
+            ebe $$7 = $$4.u();
+            if (!$$7.c() && !$$7.b(ebf.c)) {
+               return false;
+            } else {
+               return $$4.a(aqs.aJ) ? false : $$4.r() || super.a($$0, $$1, $$2, $$3, $$4);
+            }
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public cyz.e[] a() {
+         return this.c;
+      }
+
+      @Override
+      public boolean a(dgb $$0) {
+         return !$$0.a(cuc.qG);
+      }
    }
 }

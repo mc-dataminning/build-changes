@@ -1,16 +1,39 @@
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 
-public class baq extends Schema {
-   public baq(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class baq extends DataFix {
+   public baq(Schema $$0) {
+      super($$0, false);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("Minecart");
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(baa.I);
+      OpticFinder<?> $$1 = $$0.findField("dimensions");
+      return this.fixTypeEverywhereTyped("StructureSettingsFlatten", $$0, $$1x -> $$1x.updateTyped($$1, $$1xx -> {
+            Dynamic<?> $$2 = (Dynamic<?>)$$1xx.write().result().orElseThrow();
+            Dynamic<?> $$3 = $$2.updateMapValues(baq::a);
+            return (Typed)((Pair)$$1.type().readTyped($$3).result().orElseThrow()).getFirst();
+         }));
+   }
+
+   private static Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
+      Dynamic<?> $$1 = (Dynamic<?>)$$0.getSecond();
+      return Pair.of((Dynamic)$$0.getFirst(), $$1.update("generator", $$0x -> $$0x.update("settings", $$0xx -> $$0xx.update("structures", baq::a))));
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Dynamic<?> $$1 = $$0.get("structures")
+         .orElseEmptyMap()
+         .updateMapValues($$1x -> $$1x.mapSecond($$1xx -> $$1xx.set("type", $$0.createString("minecraft:random_spread"))));
+      return (Dynamic<?>)DataFixUtils.orElse(
+         $$0.get("stronghold").result().map($$2 -> $$1.set("minecraft:stronghold", $$2.set("type", $$0.createString("minecraft:concentric_rings")))), $$1
+      );
    }
 }

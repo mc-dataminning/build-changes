@@ -1,77 +1,20 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+public interface dkn {
+   dkp a();
 
-public class dkn implements dkb {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dko i = new dko(this);
+   int b();
 
-   public dkn(long $$0) {
-      this.b($$0);
+   boolean a(alq var1, dkl var2, dkl.a var3, eif var4);
+
+   default dkn.a c() {
+      return dkn.a.a;
    }
 
-   @Override
-   public ash d() {
-      return new dkn(this.g());
+   public static enum a {
+      a,
+      b;
    }
 
-   @Override
-   public dkz e() {
-      return new dkn.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw asx.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
-      }
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw asx.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
-   }
-
-   public static class a implements dkz {
-      private final long a;
-
-      public a(long $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public ash a(int $$0, int $$1, int $$2) {
-         long $$3 = asb.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dkn($$4);
-      }
-
-      @Override
-      public ash a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dkn((long)$$1 ^ this.a);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
-      }
+   public interface b<T extends dkn> {
+      T d();
    }
 }

@@ -1,35 +1,35 @@
-public class bvs extends buw {
-   public bvs(bja<? extends bvs> $$0, cqb $$1) {
+import javax.annotation.Nullable;
+
+public abstract class bvs extends bks {
+   protected bvs(bjx<? extends bvs> $$0, cqz $$1) {
       super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public int gg() {
-      return 5;
+   protected aqc w() {
+      return null;
+   }
+
+   @Nullable
+   @Override
+   protected aqc d(bir $$0) {
+      return null;
+   }
+
+   @Nullable
+   @Override
+   protected aqc m_() {
+      return null;
    }
 
    @Override
-   public cjl b() {
-      return new cjl(cjo.pS);
+   public int O() {
+      return 120;
    }
 
    @Override
-   protected apf w() {
-      return apg.tS;
-   }
-
-   @Override
-   protected apf l_() {
-      return apg.tT;
-   }
-
-   @Override
-   protected apf d(bhu $$0) {
-      return apg.tV;
-   }
-
-   @Override
-   protected apf gf() {
-      return apg.tU;
+   public boolean h(double $$0) {
+      return false;
    }
 }

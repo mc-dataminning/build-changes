@@ -1,16 +1,41 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.types.templates.Hook.HookFunction;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bbk extends bal {
+public class bbk extends Schema {
    public bbk(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:cat", () -> bam.a($$0));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         true,
+         baa.t,
+         () -> DSL.hook(
+               DSL.optionalFields(
+                  "id",
+                  baa.z.in($$0),
+                  "tag",
+                  DSL.optionalFields(
+                     "EntityTag",
+                     baa.w.in($$0),
+                     "BlockEntityTag",
+                     baa.s.in($$0),
+                     "CanDestroy",
+                     DSL.list(baa.y.in($$0)),
+                     "CanPlaceOn",
+                     DSL.list(baa.y.in($$0)),
+                     "Items",
+                     DSL.list(baa.t.in($$0))
+                  )
+               ),
+               bec.a,
+               HookFunction.IDENTITY
+            )
+      );
    }
 }

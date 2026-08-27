@@ -1,67 +1,31 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class epu extends epp {
-   private static final Logger b = LogUtils.getLogger();
-   private static final tl c = tl.c("mco.backup.restoring");
-   private final emf d;
-   private final long e;
-   private final enz f;
+public class epu {
+   public final int a;
+   @Nullable
+   public final String b;
 
-   public epu(emf $$0, long $$1, enz $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   epu(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void run() {
-      elz $$0 = elz.a();
-      int $$1 = 0;
+   public static class a {
+      private int a = -1;
+      private String b;
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(this.f.f());
-            return;
-         } catch (enn var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (enm var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var5);
-            a(new eod(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
-         }
+      public epu.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
-   }
 
-   @Override
-   public tl a() {
-      return c;
+      public epu.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public epu a() {
+         return new epu(this.a, this.b);
+      }
    }
 }

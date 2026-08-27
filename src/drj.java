@@ -1,49 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drj extends drg {
+public record drj(int b, int c, int d, int e, int f, bhg g, float h) implements dqs {
    public static final Codec<drj> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bgj.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, drj::new)
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(drj::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(drj::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(drj::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(drj::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(drj::f),
+               bhg.c.fieldOf("extra_rare_growths").forGetter(drj::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(drj::h)
+            )
+            .apply($$0, drj::new)
    );
-   private final bgj b;
 
-   public drj(bgj $$0, bgj $$1, bgj $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected drh<?> a() {
-      return drh.h;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(cqh $$0, drg.b $$1, ash $$2, dqq $$3, int $$4, drg.a $$5, int $$6, int $$7, int $$8) {
-      gw $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + asb.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new gw($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
-      }
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   public int a(ash $$0, int $$1, dqq $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(ash $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public int d() {
+      return this.e;
    }
 }

@@ -1,92 +1,55 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-public class aay implements ve<wx> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final int d;
-   private final bih e;
-   private final byte f;
-   private final int g;
-   private final byte h;
-   @Nullable
-   private final bij.a i;
+public class aay implements wb<xu> {
+   private static final byte a = -128;
+   private final int b;
+   private final List<Pair<bjy, ckj>> c;
 
-   public aay(int $$0, bij $$1) {
-      this.d = $$0;
-      this.e = $$1.c();
-      this.f = (byte)($$1.e() & 0xFF);
-      this.g = $$1.d();
-      byte $$2 = 0;
-      if ($$1.f()) {
-         $$2 = (byte)($$2 | 1);
-      }
-
-      if ($$1.g()) {
-         $$2 = (byte)($$2 | 2);
-      }
-
-      if ($$1.h()) {
-         $$2 = (byte)($$2 | 4);
-      }
-
-      this.h = $$2;
-      this.i = $$1.a().orElse(null);
+   public aay(int $$0, List<Pair<bjy, ckj>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public aay(so $$0) {
-      this.d = $$0.n();
-      this.e = $$0.a(jb.e);
-      this.f = $$0.readByte();
-      this.g = $$0.n();
-      this.h = $$0.readByte();
-      this.i = $$0.c($$0x -> $$0x.a(ri.a, bij.a.a));
+   public aay(tl $$0) {
+      this.b = $$0.n();
+      bjy[] $$1 = bjy.values();
+      this.c = Lists.newArrayList();
+
+      int $$2;
+      do {
+         $$2 = $$0.readByte();
+         bjy $$3 = $$1[$$2 & 127];
+         ckj $$4 = $$0.r();
+         this.c.add(Pair.of($$3, $$4));
+      } while (($$2 & -128) != 0);
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.d);
-      $$0.a(jb.e, this.e);
-      $$0.k(this.f);
-      $$0.c(this.g);
-      $$0.k(this.h);
-      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(ri.a, bij.a.a, $$1));
+   public void a(tl $$0) {
+      $$0.c(this.b);
+      int $$1 = this.c.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<bjy, ckj> $$3 = this.c.get($$2);
+         bjy $$4 = (bjy)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.k($$5 ? $$6 | -128 : $$6);
+         $$0.a((ckj)$$3.getSecond());
+      }
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.d;
+      return this.b;
    }
 
-   public bih d() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return (this.h & 2) == 2;
-   }
-
-   public boolean h() {
-      return (this.h & 1) == 1;
-   }
-
-   public boolean i() {
-      return (this.h & 4) == 4;
-   }
-
-   @Nullable
-   public bij.a j() {
-      return this.i;
+   public List<Pair<bjy, ckj>> d() {
+      return this.c;
    }
 }

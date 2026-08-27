@@ -1,111 +1,194 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Locale;
 
-public class ake<T> {
-   public static final int a = akc.a + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Optional<T>>>> b = IntStream.range(0, a)
-      .mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap())
-      .collect(Collectors.toList());
-   private volatile int c = a;
-   private final String d;
-   private final LongSet e = new LongOpenHashSet();
-   private final int f;
+public class ake {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.worldborder.center.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.c("commands.worldborder.set.failed.nochange"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ui.c("commands.worldborder.set.failed.small"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ui.a("commands.worldborder.set.failed.big", 5.999997E7F));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ui.a("commands.worldborder.set.failed.far", 2.9999984E7));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(ui.c("commands.worldborder.warning.time.failed"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(ui.c("commands.worldborder.warning.distance.failed"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(ui.c("commands.worldborder.damage.buffer.failed"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(ui.c("commands.worldborder.damage.amount.failed"));
 
-   public ake(String $$0, int $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
+                                 "worldborder"
+                              )
+                              .requires($$0x -> $$0x.c(2)))
+                           .then(
+                              dv.a("add")
+                                 .then(
+                                    ((RequiredArgumentBuilder)dv.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   ((du)$$0x.getSource()).f().C_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   0L
+                                                )
+                                          ))
+                                       .then(
+                                          dv.a("time", IntegerArgumentType.integer(0))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      ((du)$$0x.getSource()).f().C_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                      ((du)$$0x.getSource()).f().C_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                   )
+                                             )
+                                       )
+                                 )
+                           ))
+                        .then(
+                           dv.a("set")
+                              .then(
+                                 ((RequiredArgumentBuilder)dv.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                       .executes($$0x -> a((du)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
+                                    .then(
+                                       dv.a("time", IntegerArgumentType.integer(0))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                )
+                                          )
+                                    )
+                              )
+                        ))
+                     .then(dv.a("center").then(dv.a("pos", fs.a()).executes($$0x -> a((du)$$0x.getSource(), fs.a($$0x, "pos"))))))
+                  .then(
+                     ((LiteralArgumentBuilder)dv.a("damage")
+                           .then(
+                              dv.a("amount")
+                                 .then(
+                                    dv.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
+                                       .executes($$0x -> b((du)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
+                                 )
+                           ))
+                        .then(
+                           dv.a("buffer")
+                              .then(
+                                 dv.a("distance", FloatArgumentType.floatArg(0.0F))
+                                    .executes($$0x -> a((du)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
+                              )
+                        )
+                  ))
+               .then(dv.a("get").executes($$0x -> a((du)$$0x.getSource()))))
+            .then(
+               ((LiteralArgumentBuilder)dv.a("warning")
+                     .then(
+                        dv.a("distance")
+                           .then(
+                              dv.a("distance", IntegerArgumentType.integer(0))
+                                 .executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
+                           )
+                     ))
+                  .then(
+                     dv.a("time")
+                        .then(
+                           dv.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                        )
+                  )
+            )
+      );
    }
 
-   protected void a(int $$0, cpi $$1, int $$2) {
-      if ($$0 < a) {
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$3 = this.b.get($$0);
-         List<Optional<T>> $$4 = (List<Optional<T>>)$$3.remove($$1.a());
-         if ($$0 == this.c) {
-            while (this.b() && this.b.get(this.c).isEmpty()) {
-               this.c++;
-            }
-         }
-
-         if ($$4 != null && !$$4.isEmpty()) {
-            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
-            this.c = Math.min(this.c, $$2);
-         }
-      }
-   }
-
-   protected void a(Optional<T> $$0, long $$1, int $$2) {
-      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
-      this.c = Math.min(this.c, $$2);
-   }
-
-   protected void a(long $$0, boolean $$1) {
-      for (Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$2 : this.b) {
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$2.get($$0);
-         if ($$3 != null) {
-            if ($$1) {
-               $$3.clear();
-            } else {
-               $$3.removeIf($$0x -> $$0x.isEmpty());
-            }
-
-            if ($$3.isEmpty()) {
-               $$2.remove($$0);
-            }
-         }
-      }
-
-      while (this.b() && this.b.get(this.c).isEmpty()) {
-         this.c++;
-      }
-
-      this.e.remove($$0);
-   }
-
-   private Runnable a(long $$0) {
-      return () -> this.e.add($$0);
-   }
-
-   @Nullable
-   public Stream<Either<T, Runnable>> a() {
-      if (this.e.size() >= this.f) {
-         return null;
-      } else if (!this.b()) {
-         return null;
+   private static int a(du $$0, float $$1) throws CommandSyntaxException {
+      dhs $$2 = $$0.m().D().C_();
+      if ($$2.n() == (double)$$1) {
+         throw h.create();
       } else {
-         int $$0 = this.c;
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$1 = this.b.get($$0);
-         long $$2 = $$1.firstLongKey();
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$1.removeFirst();
-
-         while (this.b() && this.b.get(this.c).isEmpty()) {
-            this.c++;
-         }
-
-         return $$3.stream().map($$1x -> $$1x.map(Either::left).orElseGet(() -> Either.right(this.a($$2))));
+         $$2.b((double)$$1);
+         $$0.a(() -> ui.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
       }
    }
 
-   public boolean b() {
-      return this.c < a;
+   private static int b(du $$0, float $$1) throws CommandSyntaxException {
+      dhs $$2 = $$0.m().D().C_();
+      if ($$2.o() == (double)$$1) {
+         throw i.create();
+      } else {
+         $$2.c((double)$$1);
+         $$0.a(() -> ui.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
+      }
    }
 
-   @Override
-   public String toString() {
-      return this.d + " " + this.c + "...";
+   private static int a(du $$0, int $$1) throws CommandSyntaxException {
+      dhs $$2 = $$0.m().D().C_();
+      if ($$2.q() == $$1) {
+         throw f.create();
+      } else {
+         $$2.b($$1);
+         $$0.a(() -> ui.a("commands.worldborder.warning.time.success", $$1), true);
+         return $$1;
+      }
    }
 
-   @VisibleForTesting
-   LongSet c() {
-      return new LongOpenHashSet(this.e);
+   private static int b(du $$0, int $$1) throws CommandSyntaxException {
+      dhs $$2 = $$0.m().D().C_();
+      if ($$2.r() == $$1) {
+         throw g.create();
+      } else {
+         $$2.c($$1);
+         $$0.a(() -> ui.a("commands.worldborder.warning.distance.success", $$1), true);
+         return $$1;
+      }
+   }
+
+   private static int a(du $$0) {
+      double $$1 = $$0.m().D().C_().i();
+      $$0.a(() -> ui.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
+      return asy.a($$1 + 0.5);
+   }
+
+   private static int a(du $$0, eie $$1) throws CommandSyntaxException {
+      dhs $$2 = $$0.m().D().C_();
+      if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
+         throw a.create();
+      } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
+         $$2.c((double)$$1.i, (double)$$1.j);
+         $$0.a(() -> ui.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
+         return 0;
+      } else {
+         throw e.create();
+      }
+   }
+
+   private static int a(du $$0, double $$1, long $$2) throws CommandSyntaxException {
+      dhs $$3 = $$0.m().D().C_();
+      double $$4 = $$3.i();
+      if ($$4 == $$1) {
+         throw b.create();
+      } else if ($$1 < 1.0) {
+         throw c.create();
+      } else if ($$1 > 5.999997E7F) {
+         throw d.create();
+      } else {
+         if ($$2 > 0L) {
+            $$3.a($$4, $$1, $$2);
+            if ($$1 > $$4) {
+               $$0.a(() -> ui.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+            } else {
+               $$0.a(() -> ui.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+            }
+         } else {
+            $$3.a($$1);
+            $$0.a(() -> ui.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
+         }
+
+         return (int)($$1 - $$4);
+      }
    }
 }

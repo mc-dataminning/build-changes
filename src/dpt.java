@@ -1,32 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dpt implements dpu {
-   public static final Codec<dpt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(gw.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dpt::new)
-   );
-   private final Optional<gw> b;
-   private final boolean c;
-
-   private dpt(Optional<gw> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dpt extends doo<dqn> {
+   public dpt(Codec<dqn> $$0) {
+      super($$0);
    }
 
-   public static dpt a(gw $$0, boolean $$1) {
-      return new dpt(Optional.of($$0), $$1);
-   }
+   @Override
+   public boolean a(doq<dqn> $$0) {
+      int $$1 = 0;
+      ate $$2 = $$0.d();
+      crt $$3 = $$0.b();
+      ht $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-   public static dpt a() {
-      return new dpt(Optional.empty(), false);
-   }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dlk.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         ht $$10 = new ht($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dgb $$11 = cuc.mV.o().a(dav.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(cuc.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
+      }
 
-   public Optional<gw> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+      return $$1 > 0;
    }
 }

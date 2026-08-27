@@ -1,78 +1,141 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.Socket;
+import java.util.List;
+import java.util.Locale;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.Scanner;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class agx {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.b("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.b("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.b("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.b("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("commands.enchant.failed"));
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 5;
+   private final String c;
+   private final int d;
+   private final MinecraftServer e;
+   private volatile boolean f;
+   @Nullable
+   private Socket g;
+   @Nullable
+   private Thread h;
 
-   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("enchant").requires($$0x -> $$0x.c(2)))
-            .then(
-               du.a("targets", ee.b())
-                  .then(
-                     ((RequiredArgumentBuilder)du.a("enchantment", eq.a($$1, jc.s))
-                           .executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"), eq.g($$0x, "enchantment"), 1)))
-                        .then(
-                           du.a("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a(
-                                       (dt)$$0x.getSource(), ee.b($$0x, "targets"), eq.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   public agx(String $$0, int $$1, MinecraftServer $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static int a(dt $$0, Collection<? extends biw> $$1, he<cnu> $$2, int $$3) throws CommandSyntaxException {
-      cnu $$4 = $$2.a();
-      if ($$3 > $$4.a()) {
-         throw d.create($$3, $$4.a());
-      } else {
-         int $$5 = 0;
+   public void a() {
+      if (this.h != null && this.h.isAlive()) {
+         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
+      }
 
-         for (biw $$6 : $$1) {
-            if ($$6 instanceof bjm) {
-               bjm $$7 = (bjm)$$6;
-               cjl $$8 = $$7.eS();
-               if (!$$8.b()) {
-                  if ($$4.a($$8) && cnw.a(cnw.a($$8).keySet(), $$4)) {
-                     $$8.a($$4, $$3);
-                     $$5++;
-                  } else if ($$1.size() == 1) {
-                     throw c.create($$8.d().m($$8).getString());
+      this.f = true;
+      this.h = new Thread(this::c, "chase-client");
+      this.h.setDaemon(true);
+      this.h.start();
+   }
+
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+      this.h = null;
+   }
+
+   public void c() {
+      String $$0 = this.c + ":" + this.d;
+
+      while (this.f) {
+         try {
+            a.info("Connecting to remote control server {}", $$0);
+            this.g = new Socket(this.c, this.d);
+            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
+
+            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
+               while (this.f) {
+                  String $$2 = $$1.readLine();
+                  if ($$2 == null) {
+                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+                     break;
                   }
-               } else if ($$1.size() == 1) {
-                  throw b.create($$7.ab().getString());
+
+                  this.a($$2);
                }
-            } else if ($$1.size() == 1) {
-               throw a.create($$6.ab().getString());
+            } catch (IOException var8) {
+               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
             }
+         } catch (IOException var9) {
+            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
          }
 
-         if ($$5 == 0) {
-            throw e.create();
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> tl.a("commands.enchant.success.single", $$4.d($$3), $$1.iterator().next().N_()), true);
-            } else {
-               $$0.a(() -> tl.a("commands.enchant.success.multiple", $$4.d($$3), $$1.size()), true);
+         if (this.f) {
+            try {
+               Thread.sleep(5000L);
+            } catch (InterruptedException var5) {
             }
-
-            return $$5;
          }
       }
+   }
+
+   private void a(String $$0) {
+      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
+         $$1.useLocale(Locale.ROOT);
+         String $$2 = $$1.next();
+         if ("t".equals($$2)) {
+            this.a($$1);
+         } else {
+            a.warn("Unknown message type '{}'", $$2);
+         }
+      } catch (NoSuchElementException var7) {
+         a.warn("Could not parse message '{}', ignoring", $$0);
+      }
+   }
+
+   private void a(Scanner $$0) {
+      this.b($$0)
+         .ifPresent(
+            $$0x -> this.b(
+                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.c, $$0x.b.d, $$0x.b.e, $$0x.c.j, $$0x.c.i)
+               )
+         );
+   }
+
+   private Optional<agx.a> b(Scanner $$0) {
+      afv<cqz> $$1 = (afv<cqz>)ahg.a.get($$0.next());
+      if ($$1 == null) {
+         return Optional.empty();
+      } else {
+         float $$2 = $$0.nextFloat();
+         float $$3 = $$0.nextFloat();
+         float $$4 = $$0.nextFloat();
+         float $$5 = $$0.nextFloat();
+         float $$6 = $$0.nextFloat();
+         return Optional.of(new agx.a($$1, new eif((double)$$2, (double)$$3, (double)$$4), new eie($$6, $$5)));
+      }
+   }
+
+   private void b(String $$0) {
+      this.e.execute(() -> {
+         List<alr> $$1 = this.e.ac().t();
+         if (!$$1.isEmpty()) {
+            alr $$2 = $$1.get(0);
+            alq $$3 = this.e.D();
+            du $$4 = new du($$2, eif.a($$3.R()), eie.a, $$3, 4, "", uh.a, this.e, $$2);
+            dv $$5 = this.e.aC();
+            $$5.a($$4, $$0);
+         }
+      });
+   }
+
+   static record a(afv<cqz> a, eif b, eie c) {
    }
 }

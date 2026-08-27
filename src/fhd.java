@@ -1,25 +1,62 @@
-public class fhd extends ffu {
-   public static final aez a = new aez("textures/entity/trident.png");
-   private final fhx b;
-
-   public fhd(fhx $$0) {
-      super(foi::c);
-      this.b = $$0;
+public class fhd<T extends bwm> extends fhh<T> {
+   public fhd(fiw $$0) {
+      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
    }
 
-   public static fid a() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      fig $$2 = $$1.a("pole", fic.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), fhz.a);
-      $$2.a("base", fic.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), fhz.a);
-      $$2.a("left_spike", fic.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), fhz.a);
-      $$2.a("middle_spike", fic.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), fhz.a);
-      $$2.a("right_spike", fic.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), fhz.a);
-      return fid.a($$0, 32, 32);
+   public static fjc c() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      $$1.a(
+         "head",
+         fjb.c()
+            .a(0, 0)
+            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
+            .a(0, 44)
+            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
+            .a(26, 0)
+            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
+            .a(26, 0)
+            .a()
+            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
+         fiy.a(0.0F, 10.0F, -16.0F)
+      );
+      $$1.a(
+         "body",
+         fjb.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
+         fiy.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      int $$2 = 10;
+      fjb $$3 = fjb.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
+      $$1.a("right_hind_leg", $$3, fiy.a(-4.5F, 14.0F, 6.0F));
+      $$1.a("left_hind_leg", $$3, fiy.a(4.5F, 14.0F, 6.0F));
+      fjb $$4 = fjb.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
+      $$1.a("right_front_leg", $$4, fiy.a(-3.5F, 14.0F, -8.0F));
+      $$1.a("left_front_leg", $$4, fiy.a(3.5F, 14.0F, -8.0F));
+      return fjc.a($$0, 128, 64);
    }
 
-   @Override
-   public void a(elj $$0, eln $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$3 - (float)$$0.ah;
+      float $$7 = $$0.E($$6);
+      $$7 *= $$7;
+      float $$8 = 1.0F - $$7;
+      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
+      this.b.c = 9.0F * $$8 + 11.0F * $$7;
+      this.h.c = 14.0F * $$8 - 6.0F * $$7;
+      this.h.d = -8.0F * $$8 - 4.0F * $$7;
+      this.h.e -= $$7 * (float) Math.PI * 0.45F;
+      this.i.c = this.h.c;
+      this.i.d = this.h.d;
+      this.i.e -= $$7 * (float) Math.PI * 0.45F;
+      if (this.e) {
+         this.a.c = 10.0F * $$8 - 9.0F * $$7;
+         this.a.d = -16.0F * $$8 - 7.0F * $$7;
+      } else {
+         this.a.c = 10.0F * $$8 - 14.0F * $$7;
+         this.a.d = -16.0F * $$8 - 3.0F * $$7;
+      }
+
+      this.a.e += $$7 * (float) Math.PI * 0.15F;
    }
 }

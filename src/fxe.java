@@ -1,39 +1,37 @@
-public class fxe<T extends bjm, M extends fey<T> & fdz> extends fxl<T, M> {
-   private final fnw a;
+public class fxe extends fuc<cec> {
+   private static final afw a = new afw("textures/entity/wither/wither_invulnerable.png");
+   private static final afw f = new afw("textures/entity/wither/wither.png");
+   private final fht g;
 
-   public fxe(fuy<T, M> $$0, fnw $$1) {
+   public fxe(fud.a $$0) {
       super($$0);
-      this.a = $$1;
+      this.g = new fht($$0.a(fiv.bU));
    }
 
-   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == bjg.b;
-      cjl $$11 = $$10 ? $$3.eT() : $$3.eS();
-      cjl $$12 = $$10 ? $$3.eS() : $$3.eT();
-      if (!$$11.b() || !$$12.b()) {
-         $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
-         }
-
-         this.a($$3, $$12, cji.c, bjg.b, $$0, $$1, $$2);
-         this.a($$3, $$11, cji.b, bjg.a, $$0, $$1, $$2);
-         $$0.b();
-      }
+   public static fjc a() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      $$1.a("head", fjb.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fiy.a);
+      return fjc.a($$0, 64, 64);
    }
 
-   protected void a(bjm $$0, cjl $$1, cji $$2, bjg $$3, elj $$4, foa $$5, int $$6) {
-      if (!$$1.b()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == bjg.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
-      }
+   protected int a(cec $$0, ht $$1) {
+      return 15;
+   }
+
+   public void a(cec $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      float $$6 = asy.j($$2, $$0.N, $$0.dB());
+      float $$7 = asy.i($$2, $$0.O, $$0.dD());
+      eml $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
+      this.g.a(0.0F, $$6, $$7);
+      this.g.a($$3, $$8, $$5, fzr.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public afw a(cec $$0) {
+      return $$0.w() ? a : f;
    }
 }

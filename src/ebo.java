@@ -1,46 +1,145 @@
+import java.util.Arrays;
+
 public class ebo {
-   private final gw a;
-   private final int b;
-   private final int c;
+   private ebr[] a = new ebr[128];
+   private int b;
 
-   public ebo(gw $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public ebr a(ebr $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            ebr[] $$1 = new ebr[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
+
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
+      }
    }
 
-   public static ebo a(qw $$0) {
-      gw $$1 = rj.b($$0.p("Pos"));
-      int $$2 = $$0.h("Rotation");
-      int $$3 = $$0.h("EntityId");
-      return new ebo($$1, $$2, $$3);
+   public void a() {
+      this.b = 0;
    }
 
-   public qw a() {
-      qw $$0 = new qw();
-      $$0.a("Pos", rj.a(this.a));
-      $$0.a("Rotation", this.b);
-      $$0.a("EntityId", this.c);
+   public ebr b() {
+      return this.a[0];
+   }
+
+   public ebr c() {
+      ebr $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
       return $$0;
    }
 
-   public gw b() {
-      return this.a;
+   public void b(ebr $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
+      }
+
+      $$0.d = -1;
    }
 
-   public int c() {
-      return this.b;
+   public void a(ebr $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
    }
 
    public int d() {
-      return this.c;
+      return this.b;
    }
 
-   public String e() {
-      return a(this.a);
+   private void a(int $$0) {
+      ebr $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         ebr $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
    }
 
-   public static String a(gw $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   private void b(int $$0) {
+      ebr $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         ebr $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         ebr $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public ebr[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

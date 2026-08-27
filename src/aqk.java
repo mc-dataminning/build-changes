@@ -1,43 +1,50 @@
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record aqk<T>(aey<? extends hq<T>> a, aez b) {
-   private static final Interner<aqk<?>> c = Interners.newWeakInterner();
+public class aqk<T> extends ejh {
+   private final aql n;
+   private final T o;
+   private final aqm<T> p;
 
-   @Deprecated
-   public aqk(aey<? extends hq<T>> a, aez b) {
-      this.a = a;
-      this.b = b;
+   protected aqk(aqm<T> $$0, T $$1, aql $$2) {
+      super(a($$0, $$1));
+      this.p = $$0;
+      this.n = $$2;
+      this.o = $$1;
    }
 
-   public static <T> Codec<aqk<T>> a(aey<? extends hq<T>> $$0) {
-      return aez.a.xmap($$1 -> a($$0, $$1), aqk::b);
+   public static <T> String a(aqm<T> $$0, T $$1) {
+      return a(jy.y.b($$0)) + ":" + a($$0.a().b($$1));
    }
 
-   public static <T> Codec<aqk<T>> b(aey<? extends hq<T>> $$0) {
-      return Codec.STRING
-         .comapFlatMap(
-            $$1 -> $$1.startsWith("#") ? aez.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
-         );
+   private static <T> String a(@Nullable afw $$0) {
+      return $$0.toString().replace(':', '.');
    }
 
-   public static <T> aqk<T> a(aey<? extends hq<T>> $$0, aez $$1) {
-      return (aqk<T>)c.intern(new aqk<>($$0, $$1));
+   public aqm<T> a() {
+      return this.p;
    }
 
-   public boolean c(aey<? extends hq<?>> $$0) {
-      return this.a == $$0;
+   public T b() {
+      return this.o;
    }
 
-   public <E> Optional<aqk<E>> d(aey<? extends hq<E>> $$0) {
-      return this.c($$0) ? Optional.of((aqk<E>)this) : Optional.empty();
+   public String a(int $$0) {
+      return this.n.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof aqk && Objects.equals(this.d(), ((aqk)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
    }
 
    @Override
    public String toString() {
-      return "TagKey[" + this.a.a() + " / " + this.b + "]";
+      return "Stat{name=" + this.d() + ", formatter=" + this.n + "}";
    }
 }

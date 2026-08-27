@@ -1,50 +1,56 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class gei {
-   private final gep a;
-   private final eqt b;
-   @Nullable
-   private euu c;
+   private final aow a;
+   private final Map<afw, CompletableFuture<ekh>> b = Maps.newHashMap();
 
-   public gei(gep $$0, eqt $$1) {
+   public gei(aow $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
-      }
+   public CompletableFuture<ekh> a(afw $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               ekh var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  ekf $$2 = new ekf($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new ekh($$3, $$2.a());
+               }
 
-      tl $$0 = tl.c("tutorial.bundleInsert.title");
-      tl $$1 = tl.c("tutorial.bundleInsert.description");
-      this.c = new euu(euu.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
-   }
-
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
-
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.ar();
-      }
-   }
-
-   public void a(cjl $$0, cjl $$1, cez $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(cjo.qg)) {
-            if ($$2 == cez.a) {
-               this.a();
-            } else if ($$2 == cez.b) {
-               this.b();
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
             }
-         } else if ($$0.a(cjo.qg) && !$$1.b() && $$2 == cez.b) {
-            this.b();
+         }, ac.f()));
+   }
+
+   public CompletableFuture<gee> a(afw $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (gee)($$1 ? new geg(ekf::new, $$2) : new ekf($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
          }
-      }
+      }, ac.f());
+   }
+
+   public void a() {
+      this.b.values().forEach($$0 -> $$0.thenAccept(ekh::b));
+      this.b.clear();
+   }
+
+   public CompletableFuture<?> a(Collection<gdf> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

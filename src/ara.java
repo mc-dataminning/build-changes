@@ -1,234 +1,108 @@
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.bytes.ByteArrays;
-import java.nio.charset.StandardCharsets;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.MessageDigest;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.spec.EncodedKeySpec;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.Base64.Encoder;
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
+public final class ara {
+   public static final arh<cke> a = a("wool");
+   public static final arh<cke> b = a("planks");
+   public static final arh<cke> c = a("stone_bricks");
+   public static final arh<cke> d = a("wooden_buttons");
+   public static final arh<cke> e = a("stone_buttons");
+   public static final arh<cke> f = a("buttons");
+   public static final arh<cke> g = a("wool_carpets");
+   public static final arh<cke> h = a("wooden_doors");
+   public static final arh<cke> i = a("wooden_stairs");
+   public static final arh<cke> j = a("wooden_slabs");
+   public static final arh<cke> k = a("wooden_fences");
+   public static final arh<cke> l = a("fence_gates");
+   public static final arh<cke> m = a("wooden_pressure_plates");
+   public static final arh<cke> n = a("wooden_trapdoors");
+   public static final arh<cke> o = a("doors");
+   public static final arh<cke> p = a("saplings");
+   public static final arh<cke> q = a("logs_that_burn");
+   public static final arh<cke> r = a("logs");
+   public static final arh<cke> s = a("dark_oak_logs");
+   public static final arh<cke> t = a("oak_logs");
+   public static final arh<cke> u = a("birch_logs");
+   public static final arh<cke> v = a("acacia_logs");
+   public static final arh<cke> w = a("cherry_logs");
+   public static final arh<cke> x = a("jungle_logs");
+   public static final arh<cke> y = a("spruce_logs");
+   public static final arh<cke> z = a("mangrove_logs");
+   public static final arh<cke> A = a("crimson_stems");
+   public static final arh<cke> B = a("warped_stems");
+   public static final arh<cke> C = a("bamboo_blocks");
+   public static final arh<cke> D = a("wart_blocks");
+   public static final arh<cke> E = a("banners");
+   public static final arh<cke> F = a("sand");
+   public static final arh<cke> G = a("smelts_to_glass");
+   public static final arh<cke> H = a("stairs");
+   public static final arh<cke> I = a("slabs");
+   public static final arh<cke> J = a("walls");
+   public static final arh<cke> K = a("anvil");
+   public static final arh<cke> L = a("rails");
+   public static final arh<cke> M = a("leaves");
+   public static final arh<cke> N = a("trapdoors");
+   public static final arh<cke> O = a("small_flowers");
+   public static final arh<cke> P = a("beds");
+   public static final arh<cke> Q = a("fences");
+   public static final arh<cke> R = a("tall_flowers");
+   public static final arh<cke> S = a("flowers");
+   public static final arh<cke> T = a("piglin_repellents");
+   public static final arh<cke> U = a("piglin_loved");
+   public static final arh<cke> V = a("ignored_by_piglin_babies");
+   public static final arh<cke> W = a("piglin_food");
+   public static final arh<cke> X = a("fox_food");
+   public static final arh<cke> Y = a("gold_ores");
+   public static final arh<cke> Z = a("iron_ores");
+   public static final arh<cke> aa = a("diamond_ores");
+   public static final arh<cke> ab = a("redstone_ores");
+   public static final arh<cke> ac = a("lapis_ores");
+   public static final arh<cke> ad = a("coal_ores");
+   public static final arh<cke> ae = a("emerald_ores");
+   public static final arh<cke> af = a("copper_ores");
+   public static final arh<cke> ag = a("non_flammable_wood");
+   public static final arh<cke> ah = a("soul_fire_base_blocks");
+   public static final arh<cke> ai = a("candles");
+   public static final arh<cke> aj = a("dirt");
+   public static final arh<cke> ak = a("terracotta");
+   public static final arh<cke> al = a("completes_find_tree_tutorial");
+   public static final arh<cke> am = a("boats");
+   public static final arh<cke> an = a("chest_boats");
+   public static final arh<cke> ao = a("fishes");
+   public static final arh<cke> ap = a("signs");
+   public static final arh<cke> aq = a("music_discs");
+   public static final arh<cke> ar = a("creeper_drop_music_discs");
+   public static final arh<cke> as = a("coals");
+   public static final arh<cke> at = a("arrows");
+   public static final arh<cke> au = a("lectern_books");
+   public static final arh<cke> av = a("bookshelf_books");
+   public static final arh<cke> aw = a("beacon_payment_items");
+   public static final arh<cke> ax = a("stone_tool_materials");
+   public static final arh<cke> ay = a("stone_crafting_materials");
+   public static final arh<cke> az = a("freeze_immune_wearables");
+   public static final arh<cke> aA = a("axolotl_tempt_items");
+   public static final arh<cke> aB = a("dampens_vibrations");
+   public static final arh<cke> aC = a("cluster_max_harvestables");
+   public static final arh<cke> aD = a("compasses");
+   public static final arh<cke> aE = a("hanging_signs");
+   public static final arh<cke> aF = a("creeper_igniters");
+   public static final arh<cke> aG = a("noteblock_top_instruments");
+   public static final arh<cke> aH = a("trimmable_armor");
+   public static final arh<cke> aI = a("trim_materials");
+   public static final arh<cke> aJ = a("trim_templates");
+   public static final arh<cke> aK = a("sniffer_food");
+   public static final arh<cke> aL = a("decorated_pot_sherds");
+   public static final arh<cke> aM = a("decorated_pot_ingredients");
+   public static final arh<cke> aN = a("swords");
+   public static final arh<cke> aO = a("axes");
+   public static final arh<cke> aP = a("hoes");
+   public static final arh<cke> aQ = a("pickaxes");
+   public static final arh<cke> aR = a("shovels");
+   public static final arh<cke> aS = a("tools");
+   public static final arh<cke> aT = a("breaks_decorated_pots");
+   public static final arh<cke> aU = a("villager_plantable_seeds");
 
-public class ara {
-   private static final String h = "AES";
-   private static final int i = 128;
-   private static final String j = "RSA";
-   private static final int k = 1024;
-   private static final String l = "ISO_8859_1";
-   private static final String m = "SHA-1";
-   public static final String a = "SHA256withRSA";
-   public static final int b = 256;
-   private static final String n = "-----BEGIN RSA PRIVATE KEY-----";
-   private static final String o = "-----END RSA PRIVATE KEY-----";
-   public static final String c = "-----BEGIN RSA PUBLIC KEY-----";
-   private static final String p = "-----END RSA PUBLIC KEY-----";
-   public static final String d = "\n";
-   public static final Encoder e = Base64.getMimeEncoder(76, "\n".getBytes(StandardCharsets.UTF_8));
-   public static final Codec<PublicKey> f = Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(b($$0));
-      } catch (arb var2) {
-         return DataResult.error(var2::getMessage);
-      }
-   }, ara::a);
-   public static final Codec<PrivateKey> g = Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(a($$0));
-      } catch (arb var2) {
-         return DataResult.error(var2::getMessage);
-      }
-   }, ara::a);
-
-   public static SecretKey a() throws arb {
-      try {
-         KeyGenerator $$0 = KeyGenerator.getInstance("AES");
-         $$0.init(128);
-         return $$0.generateKey();
-      } catch (Exception var1) {
-         throw new arb(var1);
-      }
+   private ara() {
    }
 
-   public static KeyPair b() throws arb {
-      try {
-         KeyPairGenerator $$0 = KeyPairGenerator.getInstance("RSA");
-         $$0.initialize(1024);
-         return $$0.generateKeyPair();
-      } catch (Exception var1) {
-         throw new arb(var1);
-      }
-   }
-
-   public static byte[] a(String $$0, PublicKey $$1, SecretKey $$2) throws arb {
-      try {
-         return a($$0.getBytes("ISO_8859_1"), $$2.getEncoded(), $$1.getEncoded());
-      } catch (Exception var4) {
-         throw new arb(var4);
-      }
-   }
-
-   private static byte[] a(byte[]... $$0) throws Exception {
-      MessageDigest $$1 = MessageDigest.getInstance("SHA-1");
-
-      for (byte[] $$2 : $$0) {
-         $$1.update($$2);
-      }
-
-      return $$1.digest();
-   }
-
-   private static <T extends Key> T a(String $$0, String $$1, String $$2, ara.a<T> $$3) throws arb {
-      int $$4 = $$0.indexOf($$1);
-      if ($$4 != -1) {
-         $$4 += $$1.length();
-         int $$5 = $$0.indexOf($$2, $$4);
-         $$0 = $$0.substring($$4, $$5 + 1);
-      }
-
-      try {
-         return $$3.apply(Base64.getMimeDecoder().decode($$0));
-      } catch (IllegalArgumentException var6) {
-         throw new arb(var6);
-      }
-   }
-
-   public static PrivateKey a(String $$0) throws arb {
-      return a($$0, "-----BEGIN RSA PRIVATE KEY-----", "-----END RSA PRIVATE KEY-----", ara::b);
-   }
-
-   public static PublicKey b(String $$0) throws arb {
-      return a($$0, "-----BEGIN RSA PUBLIC KEY-----", "-----END RSA PUBLIC KEY-----", ara::a);
-   }
-
-   public static String a(PublicKey $$0) {
-      if (!"RSA".equals($$0.getAlgorithm())) {
-         throw new IllegalArgumentException("Public key must be RSA");
-      } else {
-         return "-----BEGIN RSA PUBLIC KEY-----\n" + e.encodeToString($$0.getEncoded()) + "\n-----END RSA PUBLIC KEY-----\n";
-      }
-   }
-
-   public static String a(PrivateKey $$0) {
-      if (!"RSA".equals($$0.getAlgorithm())) {
-         throw new IllegalArgumentException("Private key must be RSA");
-      } else {
-         return "-----BEGIN RSA PRIVATE KEY-----\n" + e.encodeToString($$0.getEncoded()) + "\n-----END RSA PRIVATE KEY-----\n";
-      }
-   }
-
-   private static PrivateKey b(byte[] $$0) throws arb {
-      try {
-         EncodedKeySpec $$1 = new PKCS8EncodedKeySpec($$0);
-         KeyFactory $$2 = KeyFactory.getInstance("RSA");
-         return $$2.generatePrivate($$1);
-      } catch (Exception var3) {
-         throw new arb(var3);
-      }
-   }
-
-   public static PublicKey a(byte[] $$0) throws arb {
-      try {
-         EncodedKeySpec $$1 = new X509EncodedKeySpec($$0);
-         KeyFactory $$2 = KeyFactory.getInstance("RSA");
-         return $$2.generatePublic($$1);
-      } catch (Exception var3) {
-         throw new arb(var3);
-      }
-   }
-
-   public static SecretKey a(PrivateKey $$0, byte[] $$1) throws arb {
-      byte[] $$2 = b($$0, $$1);
-
-      try {
-         return new SecretKeySpec($$2, "AES");
-      } catch (Exception var4) {
-         throw new arb(var4);
-      }
-   }
-
-   public static byte[] a(Key $$0, byte[] $$1) throws arb {
-      return a(1, $$0, $$1);
-   }
-
-   public static byte[] b(Key $$0, byte[] $$1) throws arb {
-      return a(2, $$0, $$1);
-   }
-
-   private static byte[] a(int $$0, Key $$1, byte[] $$2) throws arb {
-      try {
-         return a($$0, $$1.getAlgorithm(), $$1).doFinal($$2);
-      } catch (Exception var4) {
-         throw new arb(var4);
-      }
-   }
-
-   private static Cipher a(int $$0, String $$1, Key $$2) throws Exception {
-      Cipher $$3 = Cipher.getInstance($$1);
-      $$3.init($$0, $$2);
-      return $$3;
-   }
-
-   public static Cipher a(int $$0, Key $$1) throws arb {
-      try {
-         Cipher $$2 = Cipher.getInstance("AES/CFB8/NoPadding");
-         $$2.init($$0, $$1, new IvParameterSpec($$1.getEncoded()));
-         return $$2;
-      } catch (Exception var3) {
-         throw new arb(var3);
-      }
-   }
-
-   interface a<T extends Key> {
-      T apply(byte[] var1) throws arb;
-   }
-
-   public static record b(long b, byte[] c) {
-      public static final ara.b a = new ara.b(0L, ByteArrays.EMPTY_ARRAY);
-
-      public b(so $$0) {
-         this($$0.readLong(), $$0.b());
-      }
-
-      public boolean a() {
-         return this.c.length > 0;
-      }
-
-      public static void a(so $$0, ara.b $$1) {
-         $$0.b($$1.b);
-         $$0.a($$1.c);
-      }
-
-      public byte[] b() {
-         return Longs.toByteArray(this.b);
-      }
-
-      public long c() {
-         return this.b;
-      }
-
-      public byte[] d() {
-         return this.c;
-      }
-   }
-
-   public static class c {
-      private static final SecureRandom a = new SecureRandom();
-
-      public static long a() {
-         return a.nextLong();
-      }
+   private static arh<cke> a(String $$0) {
+      return arh.a(jz.E, new afw($$0));
    }
 }

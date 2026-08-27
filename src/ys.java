@@ -1,43 +1,27 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class ys implements ve<wx> {
-   private final int a;
-   private final cfw<?> b;
-   private final tl c;
-
-   public ys(int $$0, cfw<?> $$1, tl $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public ys(so $$0) {
-      this.a = $$0.n();
-      this.b = $$0.a(jb.s);
-      this.c = $$0.m();
+public record ys(ys.a a, List<String> b) implements wb<xu> {
+   public ys(tl $$0) {
+      this($$0.b(ys.a.class), $$0.a(tl::s));
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.a(jb.s, this.b);
-      $$0.a(this.c);
+   public void a(tl $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, tl::a);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   @Nullable
-   public cfw<?> d() {
+   public List<String> d() {
       return this.b;
    }
 
-   public tl e() {
-      return this.c;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

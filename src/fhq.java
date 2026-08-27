@@ -1,44 +1,58 @@
-public class fhq<T extends cah> extends ffl<T> implements fhi {
-   private final fhx a = this.l.b("hat_rim");
+import com.google.common.collect.ImmutableList;
 
-   public fhq(fhx $$0) {
-      super($$0);
+public class fhq<T extends car> extends fgp<T> {
+   private static final String a = "lid";
+   private static final String b = "base";
+   private final fiw f;
+   private final fiw g;
+   private final fiw h;
+
+   public fhq(fiw $$0) {
+      super(fpj::f);
+      this.g = $$0.b("lid");
+      this.f = $$0.b("base");
+      this.h = $$0.b("head");
    }
 
-   public static fid c() {
-      fif $$0 = ffl.a(fib.a, 0.0F);
-      fig $$1 = $$0.a();
-      $$1.a("head", new fic().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), fhz.a);
-      fig $$2 = $$1.a("hat", fic.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fib(0.5F)), fhz.a);
-      $$2.a("hat_rim", fic.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fhz.b((float) (-Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("body", fic.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fib(0.05F)), fhz.a);
-      $$1.a("right_arm", fic.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhz.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fic.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhz.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fic.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhz.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", fic.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fhz.a(2.0F, 12.0F, 0.0F));
-      return fid.a($$0, 64, 64);
-   }
-
-   public static fid a(fib $$0) {
-      fif $$1 = ffl.a($$0, 0.0F);
-      fig $$2 = $$1.a();
-      $$2.a("head", fic.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fhz.a);
-      $$2.a("body", fic.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), fhz.a);
-      $$2.a("right_leg", fic.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fhz.a(-2.0F, 12.0F, 0.0F));
-      $$2.a("left_leg", fic.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fhz.a(2.0F, 12.0F, 0.0F));
-      $$2.a("hat").a("hat_rim", fic.c(), fhz.a);
-      return fid.a($$1, 64, 32);
+   public static fjc a() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      $$1.a("lid", fjb.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fiy.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", fjb.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fiy.a(0.0F, 24.0F, 0.0F));
+      $$1.a("head", fjb.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fiy.a(0.0F, 12.0F, 0.0F));
+      return fjc.a($$0, 64, 64);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      fdy.a(this.o, this.n, $$0.fW(), this.c, $$3);
+      float $$6 = $$3 - (float)$$0.ah;
+      float $$7 = (0.5F + $$0.E($$6)) * (float) Math.PI;
+      float $$8 = -1.0F + asy.a($$7);
+      float $$9 = 0.0F;
+      if ($$7 > (float) Math.PI) {
+         $$9 = asy.a($$3 * 0.1F) * 0.7F;
+      }
+
+      this.g.a(0.0F, 16.0F + asy.a($$7) * 8.0F + $$9, 0.0F);
+      if ($$0.E($$6) > 0.3F) {
+         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
+      } else {
+         this.g.f = 0.0F;
+      }
+
+      this.h.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.f = ($$0.aW - 180.0F - $$0.aU) * (float) (Math.PI / 180.0);
    }
 
    @Override
-   public void a(boolean $$0) {
-      this.k.k = $$0;
-      this.l.k = $$0;
-      this.a.k = $$0;
+   public Iterable<fiw> d() {
+      return ImmutableList.of(this.f, this.g);
+   }
+
+   public fiw b() {
+      return this.g;
+   }
+
+   public fiw c() {
+      return this.h;
    }
 }

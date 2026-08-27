@@ -1,38 +1,17 @@
-import com.google.common.collect.ForwardingList;
-import java.util.List;
-
-public class fne extends ForwardingList<cjl> {
-   private final hn<cjl> a = hn.a(cbz.g(), cjl.b);
-
-   protected List<cjl> delegate() {
-      return this.a;
+public class fne extends fll {
+   protected fne(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fnl $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
    }
 
-   public rc a() {
-      rc $$0 = new rc();
+   public static class a implements fmt<jv> {
+      private final fnl a;
 
-      for (cjl $$1 : this.delegate()) {
-         $$0.add($$1.b(new qw()));
+      public a(fnl $$0) {
+         this.a = $$0;
       }
 
-      return $$0;
-   }
-
-   public void a(rc $$0) {
-      List<cjl> $$1 = this.delegate();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.set($$2, cjl.a($$0.a($$2)));
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fne($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
-   }
-
-   public boolean isEmpty() {
-      for (cjl $$0 : this.delegate()) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
    }
 }

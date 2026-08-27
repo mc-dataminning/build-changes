@@ -1,77 +1,22 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bpt extends bqh {
-   private static final bty d = bty.b().a(8.0).d();
-   protected final bux a;
-   private final Class<? extends bux> e;
-   protected final cqb b;
-   @Nullable
-   protected bux c;
-   private int f;
-   private final double g;
-
-   public bpt(bux $$0, double $$1) {
-      this($$0, $$1, (Class<? extends bux>)$$0.getClass());
+public class bpt<E extends ccb> extends bma<E> {
+   public bpt(int $$0) {
+      super(ImmutableMap.of(btk.aB, btl.a, btk.m, btl.b, btk.n, btl.c), $$0);
    }
 
-   public bpt(bux $$0, double $$1, Class<? extends bux> $$2) {
-      this.a = $$0;
-      this.b = $$0.dL();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(bqh.a.a, bqh.a.b));
+   protected boolean a(alq $$0, E $$1, long $$2) {
+      return true;
    }
 
-   @Override
-   public boolean a() {
-      if (!this.a.gi()) {
-         return false;
-      } else {
-         this.c = this.h();
-         return this.c != null;
+   protected void b(alq $$0, E $$1, long $$2) {
+      $$1.b(bkv.n);
+      $$1.a(aqd.zD, 5.0F, 1.0F);
+   }
+
+   protected void c(alq $$0, E $$1, long $$2) {
+      if ($$1.c(bkv.n)) {
+         $$1.b(bkv.a);
       }
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.bv() && this.c.gi() && this.f < 60 && !this.c.gb();
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-      this.f = 0;
-   }
-
-   @Override
-   public void e() {
-      this.a.G().a(this.c, 10.0F, (float)this.a.Y());
-      this.a.L().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
-         this.g();
-      }
-   }
-
-   @Nullable
-   private bux h() {
-      List<? extends bux> $$0 = this.b.a(this.e, d, this.a, this.a.cG().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      bux $$2 = null;
-
-      for (bux $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gb() && this.a.f($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.f($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a((akt)this.b, this.c);
    }
 }

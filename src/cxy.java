@@ -1,29 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cxy extends ctc implements ctf {
-   public static final MapCodec<cxy> a = b(cxy::new);
+public class cxy extends cxx {
+   public static final MapCodec<cxy> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jy.f.q().fieldOf("host").forGetter(cxx::b), t()).apply($$0, cxy::new));
 
    @Override
    public MapCodec<cxy> a() {
-      return a;
+      return b;
    }
 
-   public cxy(dfc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(cqe $$0, gw $$1, dfd $$2) {
-      return $$0.a_($$1.c()).i();
+   public cxy(cua $$0, dga.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(dak.i, hx.a.b));
    }
 
    @Override
-   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
-      return true;
+   public dgb a(dgb $$0, dal $$1) {
+      return dak.b($$0, $$1);
    }
 
    @Override
-   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
-      $$0.G_().c(jc.at).flatMap($$0x -> $$0x.b(op.n)).ifPresent($$3x -> ((dnd)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2.c()));
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(dak.i);
+   }
+
+   @Override
+   public dgb a(cmr $$0) {
+      return this.o().a(dak.i, $$0.k().o());
    }
 }

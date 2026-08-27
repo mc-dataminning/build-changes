@@ -1,60 +1,41 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.List;
-import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class bsp {
-   private static final bsp a = new bsp();
-   private final List<bjm> b;
-   private final Predicate<bjm> c;
+public class bsp<T extends bkl> extends bre {
+   private final T a;
+   private final ckj b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final aqc d;
 
-   private bsp() {
-      this.b = List.of();
-      this.c = $$0 -> false;
-   }
-
-   public bsp(bjm $$0, List<bjm> $$1) {
+   public bsp(T $$0, ckj $$1, @Nullable aqc $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
       this.b = $$1;
-      Object2BooleanOpenHashMap<bjm> $$2 = new Object2BooleanOpenHashMap($$1.size());
-      Predicate<bjm> $$3 = $$1x -> btr.b($$0, $$1x);
-      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
+      this.d = $$2;
+      this.c = $$3;
    }
 
-   public static bsp a() {
-      return a;
+   @Override
+   public boolean a() {
+      return this.c.test(this.a);
    }
 
-   public Optional<bjm> a(Predicate<bjm> $$0) {
-      for (bjm $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
-         }
+   @Override
+   public boolean b() {
+      return this.a.fn();
+   }
+
+   @Override
+   public void c() {
+      this.a.a(bjy.a, this.b.p());
+      this.a.c(bia.a);
+   }
+
+   @Override
+   public void d() {
+      this.a.a(bjy.a, ckj.b);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.ef().i() * 0.2F + 0.9F);
       }
-
-      return Optional.empty();
-   }
-
-   public Iterable<bjm> b(Predicate<bjm> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public Stream<bjm> c(Predicate<bjm> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public boolean a(bjm $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
-
-   public boolean d(Predicate<bjm> $$0) {
-      for (bjm $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

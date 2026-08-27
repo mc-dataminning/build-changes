@@ -1,368 +1,572 @@
-import java.util.function.IntConsumer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.Contract;
 
-public class aso implements aqs {
-   private static final int[] a = new int[]{
-      -1,
-      -1,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      0,
-      1431655765,
-      1431655765,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      1,
-      858993459,
-      858993459,
-      0,
-      715827882,
-      715827882,
-      0,
-      613566756,
-      613566756,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      2,
-      477218588,
-      477218588,
-      0,
-      429496729,
-      429496729,
-      0,
-      390451572,
-      390451572,
-      0,
-      357913941,
-      357913941,
-      0,
-      330382099,
-      330382099,
-      0,
-      306783378,
-      306783378,
-      0,
-      286331153,
-      286331153,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      3,
-      252645135,
-      252645135,
-      0,
-      238609294,
-      238609294,
-      0,
-      226050910,
-      226050910,
-      0,
-      214748364,
-      214748364,
-      0,
-      204522252,
-      204522252,
-      0,
-      195225786,
-      195225786,
-      0,
-      186737708,
-      186737708,
-      0,
-      178956970,
-      178956970,
-      0,
-      171798691,
-      171798691,
-      0,
-      165191049,
-      165191049,
-      0,
-      159072862,
-      159072862,
-      0,
-      153391689,
-      153391689,
-      0,
-      148102320,
-      148102320,
-      0,
-      143165576,
-      143165576,
-      0,
-      138547332,
-      138547332,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      4,
-      130150524,
-      130150524,
-      0,
-      126322567,
-      126322567,
-      0,
-      122713351,
-      122713351,
-      0,
-      119304647,
-      119304647,
-      0,
-      116080197,
-      116080197,
-      0,
-      113025455,
-      113025455,
-      0,
-      110127366,
-      110127366,
-      0,
-      107374182,
-      107374182,
-      0,
-      104755299,
-      104755299,
-      0,
-      102261126,
-      102261126,
-      0,
-      99882960,
-      99882960,
-      0,
-      97612893,
-      97612893,
-      0,
-      95443717,
-      95443717,
-      0,
-      93368854,
-      93368854,
-      0,
-      91382282,
-      91382282,
-      0,
-      89478485,
-      89478485,
-      0,
-      87652393,
-      87652393,
-      0,
-      85899345,
-      85899345,
-      0,
-      84215045,
-      84215045,
-      0,
-      82595524,
-      82595524,
-      0,
-      81037118,
-      81037118,
-      0,
-      79536431,
-      79536431,
-      0,
-      78090314,
-      78090314,
-      0,
-      76695844,
-      76695844,
-      0,
-      75350303,
-      75350303,
-      0,
-      74051160,
-      74051160,
-      0,
-      72796055,
-      72796055,
-      0,
-      71582788,
-      71582788,
-      0,
-      70409299,
-      70409299,
-      0,
-      69273666,
-      69273666,
-      0,
-      68174084,
-      68174084,
-      0,
-      Integer.MIN_VALUE,
-      0,
-      5
-   };
-   private final long[] b;
-   private final int c;
-   private final long d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class aso {
+   private static final Gson a = new GsonBuilder().create();
 
-   public aso(int $$0, int $$1, int[] $$2) {
-      this($$0, $$1);
-      int $$3 = 0;
-
-      int $$4;
-      for ($$4 = 0; $$4 <= $$1 - this.f; $$4 += this.f) {
-         long $$5 = 0L;
-
-         for (int $$6 = this.f - 1; $$6 >= 0; $$6--) {
-            $$5 <<= $$0;
-            $$5 |= (long)$$2[$$4 + $$6] & this.d;
-         }
-
-         this.b[$$3++] = $$5;
-      }
-
-      int $$7 = $$1 - $$4;
-      if ($$7 > 0) {
-         long $$8 = 0L;
-
-         for (int $$9 = $$7 - 1; $$9 >= 0; $$9--) {
-            $$8 <<= $$0;
-            $$8 |= (long)$$2[$$4 + $$9] & this.d;
-         }
-
-         this.b[$$3] = $$8;
-      }
+   public static boolean a(JsonObject $$0, String $$1) {
+      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isString();
    }
 
-   public aso(int $$0, int $$1) {
-      this($$0, $$1, (long[])null);
+   public static boolean a(JsonElement $$0) {
+      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isString();
    }
 
-   public aso(int $$0, int $$1, @Nullable long[] $$2) {
-      Validate.inclusiveBetween(1L, 32L, (long)$$0);
-      this.e = $$1;
-      this.c = $$0;
-      this.d = (1L << $$0) - 1L;
-      this.f = (char)(64 / $$0);
-      int $$3 = 3 * (this.f - 1);
-      this.g = a[$$3 + 0];
-      this.h = a[$$3 + 1];
-      this.i = a[$$3 + 2];
-      int $$4 = ($$1 + this.f - 1) / this.f;
-      if ($$2 != null) {
-         if ($$2.length != $$4) {
-            throw new aso.a("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$4);
-         }
+   public static boolean b(JsonObject $$0, String $$1) {
+      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isNumber();
+   }
 
-         this.b = $$2;
+   public static boolean b(JsonElement $$0) {
+      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isNumber();
+   }
+
+   public static boolean c(JsonObject $$0, String $$1) {
+      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isBoolean();
+   }
+
+   public static boolean c(JsonElement $$0) {
+      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isBoolean();
+   }
+
+   public static boolean d(JsonObject $$0, String $$1) {
+      return !g($$0, $$1) ? false : $$0.get($$1).isJsonArray();
+   }
+
+   public static boolean e(JsonObject $$0, String $$1) {
+      return !g($$0, $$1) ? false : $$0.get($$1).isJsonObject();
+   }
+
+   public static boolean f(JsonObject $$0, String $$1) {
+      return !g($$0, $$1) ? false : $$0.get($$1).isJsonPrimitive();
+   }
+
+   public static boolean g(@Nullable JsonObject $$0, String $$1) {
+      return $$0 == null ? false : $$0.get($$1) != null;
+   }
+
+   public static JsonElement h(JsonObject $$0, String $$1) {
+      JsonElement $$2 = $$0.get($$1);
+      if ($$2 != null && !$$2.isJsonNull()) {
+         return $$2;
       } else {
-         this.b = new long[$$4];
+         throw new JsonSyntaxException("Missing field " + $$1);
       }
    }
 
-   private int b(int $$0) {
-      long $$1 = Integer.toUnsignedLong(this.g);
-      long $$2 = Integer.toUnsignedLong(this.h);
-      return (int)((long)$$0 * $$1 + $$2 >> 32 >> this.i);
+   public static String a(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive()) {
+         return $$0.getAsString();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a string, was " + d($$0));
+      }
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, this.d, (long)$$1);
-      int $$2 = this.b($$0);
-      long $$3 = this.b[$$2];
-      int $$4 = ($$0 - $$2 * this.f) * this.c;
-      int $$5 = (int)($$3 >> $$4 & this.d);
-      this.b[$$2] = $$3 & ~(this.d << $$4) | ((long)$$1 & this.d) << $$4;
-      return $$5;
+   public static String i(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return a($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a string");
+      }
    }
 
-   @Override
-   public void b(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, this.d, (long)$$1);
-      int $$2 = this.b($$0);
-      long $$3 = this.b[$$2];
-      int $$4 = ($$0 - $$2 * this.f) * this.c;
-      this.b[$$2] = $$3 & ~(this.d << $$4) | ((long)$$1 & this.d) << $$4;
+   @Nullable
+   @Contract("_,_,!null->!null;_,_,null->_")
+   public static String a(JsonObject $$0, String $$1, @Nullable String $$2) {
+      return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
    }
 
-   @Override
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      int $$1 = this.b($$0);
-      long $$2 = this.b[$$1];
-      int $$3 = ($$0 - $$1 * this.f) * this.c;
-      return (int)($$2 >> $$3 & this.d);
+   public static ib<cke> b(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive()) {
+         String $$2 = $$0.getAsString();
+         return jy.i
+            .b(afv.a(jz.E, new afw($$2)))
+            .orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be an item, was " + d($$0));
+      }
    }
 
-   @Override
-   public long[] a() {
-      return this.b;
+   public static ib<cke> j(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return b($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find an item");
+      }
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   @Nullable
+   @Contract("_,_,!null->!null;_,_,null->_")
+   public static ib<cke> a(JsonObject $$0, String $$1, @Nullable ib<cke> $$2) {
+      return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
    }
 
-   @Override
-   public int c() {
-      return this.c;
+   public static boolean c(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive()) {
+         return $$0.getAsBoolean();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Boolean, was " + d($$0));
+      }
    }
 
-   @Override
-   public void a(IntConsumer $$0) {
-      int $$1 = 0;
+   public static boolean k(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return c($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Boolean");
+      }
+   }
 
-      for (long $$2 : this.b) {
-         for (int $$3 = 0; $$3 < this.f; $$3++) {
-            $$0.accept((int)($$2 & this.d));
-            $$2 >>= this.c;
-            if (++$$1 >= this.e) {
-               return;
+   public static boolean a(JsonObject $$0, String $$1, boolean $$2) {
+      return $$0.has($$1) ? c($$0.get($$1), $$1) : $$2;
+   }
+
+   public static double d(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsDouble();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Double, was " + d($$0));
+      }
+   }
+
+   public static double l(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return d($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Double");
+      }
+   }
+
+   public static double a(JsonObject $$0, String $$1, double $$2) {
+      return $$0.has($$1) ? d($$0.get($$1), $$1) : $$2;
+   }
+
+   public static float e(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsFloat();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Float, was " + d($$0));
+      }
+   }
+
+   public static float m(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return e($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Float");
+      }
+   }
+
+   public static float a(JsonObject $$0, String $$1, float $$2) {
+      return $$0.has($$1) ? e($$0.get($$1), $$1) : $$2;
+   }
+
+   public static long f(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsLong();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Long, was " + d($$0));
+      }
+   }
+
+   public static long n(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return f($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Long");
+      }
+   }
+
+   public static long a(JsonObject $$0, String $$1, long $$2) {
+      return $$0.has($$1) ? f($$0.get($$1), $$1) : $$2;
+   }
+
+   public static int g(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsInt();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Int, was " + d($$0));
+      }
+   }
+
+   public static int o(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return g($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Int");
+      }
+   }
+
+   public static int a(JsonObject $$0, String $$1, int $$2) {
+      return $$0.has($$1) ? g($$0.get($$1), $$1) : $$2;
+   }
+
+   public static byte h(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsByte();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Byte, was " + d($$0));
+      }
+   }
+
+   public static byte p(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return h($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Byte");
+      }
+   }
+
+   public static byte a(JsonObject $$0, String $$1, byte $$2) {
+      return $$0.has($$1) ? h($$0.get($$1), $$1) : $$2;
+   }
+
+   public static char i(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsCharacter();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Character, was " + d($$0));
+      }
+   }
+
+   public static char q(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return i($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Character");
+      }
+   }
+
+   public static char a(JsonObject $$0, String $$1, char $$2) {
+      return $$0.has($$1) ? i($$0.get($$1), $$1) : $$2;
+   }
+
+   public static BigDecimal j(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsBigDecimal();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a BigDecimal, was " + d($$0));
+      }
+   }
+
+   public static BigDecimal r(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return j($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a BigDecimal");
+      }
+   }
+
+   public static BigDecimal a(JsonObject $$0, String $$1, BigDecimal $$2) {
+      return $$0.has($$1) ? j($$0.get($$1), $$1) : $$2;
+   }
+
+   public static BigInteger k(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsBigInteger();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a BigInteger, was " + d($$0));
+      }
+   }
+
+   public static BigInteger s(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return k($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a BigInteger");
+      }
+   }
+
+   public static BigInteger a(JsonObject $$0, String $$1, BigInteger $$2) {
+      return $$0.has($$1) ? k($$0.get($$1), $$1) : $$2;
+   }
+
+   public static short l(JsonElement $$0, String $$1) {
+      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
+         return $$0.getAsShort();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a Short, was " + d($$0));
+      }
+   }
+
+   public static short t(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return l($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Short");
+      }
+   }
+
+   public static short a(JsonObject $$0, String $$1, short $$2) {
+      return $$0.has($$1) ? l($$0.get($$1), $$1) : $$2;
+   }
+
+   public static JsonObject m(JsonElement $$0, String $$1) {
+      if ($$0.isJsonObject()) {
+         return $$0.getAsJsonObject();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a JsonObject, was " + d($$0));
+      }
+   }
+
+   public static JsonObject u(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return m($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a JsonObject");
+      }
+   }
+
+   @Nullable
+   @Contract("_,_,!null->!null;_,_,null->_")
+   public static JsonObject a(JsonObject $$0, String $$1, @Nullable JsonObject $$2) {
+      return $$0.has($$1) ? m($$0.get($$1), $$1) : $$2;
+   }
+
+   public static JsonArray n(JsonElement $$0, String $$1) {
+      if ($$0.isJsonArray()) {
+         return $$0.getAsJsonArray();
+      } else {
+         throw new JsonSyntaxException("Expected " + $$1 + " to be a JsonArray, was " + d($$0));
+      }
+   }
+
+   public static JsonArray v(JsonObject $$0, String $$1) {
+      if ($$0.has($$1)) {
+         return n($$0.get($$1), $$1);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a JsonArray");
+      }
+   }
+
+   @Nullable
+   @Contract("_,_,!null->!null;_,_,null->_")
+   public static JsonArray a(JsonObject $$0, String $$1, @Nullable JsonArray $$2) {
+      return $$0.has($$1) ? n($$0.get($$1), $$1) : $$2;
+   }
+
+   public static <T> T a(@Nullable JsonElement $$0, String $$1, JsonDeserializationContext $$2, Class<? extends T> $$3) {
+      if ($$0 != null) {
+         return (T)$$2.deserialize($$0, $$3);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1);
+      }
+   }
+
+   public static <T> T a(JsonObject $$0, String $$1, JsonDeserializationContext $$2, Class<? extends T> $$3) {
+      if ($$0.has($$1)) {
+         return a($$0.get($$1), $$1, $$2, $$3);
+      } else {
+         throw new JsonSyntaxException("Missing " + $$1);
+      }
+   }
+
+   @Nullable
+   @Contract("_,_,!null,_,_->!null;_,_,null,_,_->_")
+   public static <T> T a(JsonObject $$0, String $$1, @Nullable T $$2, JsonDeserializationContext $$3, Class<? extends T> $$4) {
+      return $$0.has($$1) ? a($$0.get($$1), $$1, $$3, $$4) : $$2;
+   }
+
+   public static String d(@Nullable JsonElement $$0) {
+      String $$1 = StringUtils.abbreviateMiddle(String.valueOf($$0), "...", 10);
+      if ($$0 == null) {
+         return "null (missing)";
+      } else if ($$0.isJsonNull()) {
+         return "null (json)";
+      } else if ($$0.isJsonArray()) {
+         return "an array (" + $$1 + ")";
+      } else if ($$0.isJsonObject()) {
+         return "an object (" + $$1 + ")";
+      } else {
+         if ($$0.isJsonPrimitive()) {
+            JsonPrimitive $$2 = $$0.getAsJsonPrimitive();
+            if ($$2.isNumber()) {
+               return "a number (" + $$1 + ")";
+            }
+
+            if ($$2.isBoolean()) {
+               return "a boolean (" + $$1 + ")";
             }
          }
+
+         return $$1;
       }
    }
 
-   @Override
-   public void a(int[] $$0) {
-      int $$1 = this.b.length;
-      int $$2 = 0;
+   @Nullable
+   public static <T> T a(Gson $$0, Reader $$1, Class<T> $$2, boolean $$3) {
+      try {
+         JsonReader $$4 = new JsonReader($$1);
+         $$4.setLenient($$3);
+         return (T)$$0.getAdapter($$2).read($$4);
+      } catch (IOException var5) {
+         throw new JsonParseException(var5);
+      }
+   }
 
-      for (int $$3 = 0; $$3 < $$1 - 1; $$3++) {
-         long $$4 = this.b[$$3];
+   public static <T> T b(Gson $$0, Reader $$1, Class<T> $$2, boolean $$3) {
+      T $$4 = a($$0, $$1, $$2, $$3);
+      if ($$4 == null) {
+         throw new JsonParseException("JSON data was null or empty");
+      } else {
+         return $$4;
+      }
+   }
 
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            $$0[$$2 + $$5] = (int)($$4 & this.d);
-            $$4 >>= this.c;
+   @Nullable
+   public static <T> T a(Gson $$0, Reader $$1, TypeToken<T> $$2, boolean $$3) {
+      try {
+         JsonReader $$4 = new JsonReader($$1);
+         $$4.setLenient($$3);
+         return (T)$$0.getAdapter($$2).read($$4);
+      } catch (IOException var5) {
+         throw new JsonParseException(var5);
+      }
+   }
+
+   public static <T> T b(Gson $$0, Reader $$1, TypeToken<T> $$2, boolean $$3) {
+      T $$4 = a($$0, $$1, $$2, $$3);
+      if ($$4 == null) {
+         throw new JsonParseException("JSON data was null or empty");
+      } else {
+         return $$4;
+      }
+   }
+
+   @Nullable
+   public static <T> T a(Gson $$0, String $$1, TypeToken<T> $$2, boolean $$3) {
+      return a($$0, new StringReader($$1), $$2, $$3);
+   }
+
+   public static <T> T a(Gson $$0, String $$1, Class<T> $$2, boolean $$3) {
+      return b($$0, new StringReader($$1), $$2, $$3);
+   }
+
+   @Nullable
+   public static <T> T b(Gson $$0, String $$1, Class<T> $$2, boolean $$3) {
+      return a($$0, new StringReader($$1), $$2, $$3);
+   }
+
+   public static <T> T a(Gson $$0, Reader $$1, TypeToken<T> $$2) {
+      return b($$0, $$1, $$2, false);
+   }
+
+   @Nullable
+   public static <T> T a(Gson $$0, String $$1, TypeToken<T> $$2) {
+      return a($$0, $$1, $$2, false);
+   }
+
+   public static <T> T a(Gson $$0, Reader $$1, Class<T> $$2) {
+      return b($$0, $$1, $$2, false);
+   }
+
+   public static <T> T a(Gson $$0, String $$1, Class<T> $$2) {
+      return a($$0, $$1, $$2, false);
+   }
+
+   public static JsonObject a(String $$0, boolean $$1) {
+      return a(new StringReader($$0), $$1);
+   }
+
+   public static JsonObject a(Reader $$0, boolean $$1) {
+      return b(a, $$0, JsonObject.class, $$1);
+   }
+
+   public static JsonObject a(String $$0) {
+      return a($$0, false);
+   }
+
+   public static JsonObject a(Reader $$0) {
+      return a($$0, false);
+   }
+
+   public static JsonArray b(String $$0) {
+      return b(new StringReader($$0));
+   }
+
+   public static JsonArray b(Reader $$0) {
+      return b(a, $$0, JsonArray.class, false);
+   }
+
+   public static String e(JsonElement $$0) {
+      StringWriter $$1 = new StringWriter();
+      JsonWriter $$2 = new JsonWriter($$1);
+
+      try {
+         a($$2, $$0, Comparator.naturalOrder());
+      } catch (IOException var4) {
+         throw new AssertionError(var4);
+      }
+
+      return $$1.toString();
+   }
+
+   public static void a(JsonWriter $$0, @Nullable JsonElement $$1, @Nullable Comparator<String> $$2) throws IOException {
+      if ($$1 == null || $$1.isJsonNull()) {
+         $$0.nullValue();
+      } else if ($$1.isJsonPrimitive()) {
+         JsonPrimitive $$3 = $$1.getAsJsonPrimitive();
+         if ($$3.isNumber()) {
+            $$0.value($$3.getAsNumber());
+         } else if ($$3.isBoolean()) {
+            $$0.value($$3.getAsBoolean());
+         } else {
+            $$0.value($$3.getAsString());
+         }
+      } else if ($$1.isJsonArray()) {
+         $$0.beginArray();
+
+         for (JsonElement $$4 : $$1.getAsJsonArray()) {
+            a($$0, $$4, $$2);
          }
 
-         $$2 += this.f;
-      }
-
-      int $$6 = this.e - $$2;
-      if ($$6 > 0) {
-         long $$7 = this.b[$$1 - 1];
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$0[$$2 + $$8] = (int)($$7 & this.d);
-            $$7 >>= this.c;
+         $$0.endArray();
+      } else {
+         if (!$$1.isJsonObject()) {
+            throw new IllegalArgumentException("Couldn't write " + $$1.getClass());
          }
+
+         $$0.beginObject();
+
+         for (Entry<String, JsonElement> $$5 : a($$1.getAsJsonObject().entrySet(), $$2)) {
+            $$0.name($$5.getKey());
+            a($$0, $$5.getValue(), $$2);
+         }
+
+         $$0.endObject();
       }
    }
 
-   @Override
-   public aqs d() {
-      return new aso(this.c, this.e, (long[])this.b.clone());
-   }
-
-   public static class a extends RuntimeException {
-      a(String $$0) {
-         super($$0);
+   private static Collection<Entry<String, JsonElement>> a(Collection<Entry<String, JsonElement>> $$0, @Nullable Comparator<String> $$1) {
+      if ($$1 == null) {
+         return $$0;
+      } else {
+         List<Entry<String, JsonElement>> $$2 = new ArrayList<>($$0);
+         $$2.sort(Entry.comparingByKey($$1));
+         return $$2;
       }
    }
 }

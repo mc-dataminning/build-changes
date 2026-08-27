@@ -1,23 +1,34 @@
-public class gda {
-   private final String a;
-   private final String b;
-   private long c;
+public class gda extends gcr {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cah r;
 
-   public gda(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ac.b();
+   public gda(cah $$0) {
+      super(aqd.kn, aqe.f, gdi.t());
+      this.r = $$0;
+      this.k = gdi.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
-   public String a() {
-      return this.a;
+   @Override
+   public boolean s() {
+      return !this.r.aS();
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public void c() {
-      this.c = ac.b();
+   @Override
+   public void q() {
+      if (!this.r.dG() && this.r.q() == null) {
+         this.f = (double)((float)this.r.dq());
+         this.g = (double)((float)this.r.ds());
+         this.h = (double)((float)this.r.dw());
+         float $$0 = this.r.G(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
+      }
    }
 }

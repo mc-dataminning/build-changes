@@ -1,63 +1,56 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class byd<T extends bxx> {
-   private static byd<?>[] l = new byd[0];
-   public static final byd<bxt> a = a(bxt.class, "HoldingPattern");
-   public static final byd<byb> b = a(byb.class, "StrafePlayer");
-   public static final byd<bxv> c = a(bxv.class, "LandingApproach");
-   public static final byd<bxw> d = a(bxw.class, "Landing");
-   public static final byd<byc> e = a(byc.class, "Takeoff");
-   public static final byd<bxz> f = a(bxz.class, "SittingFlaming");
-   public static final byd<bya> g = a(bya.class, "SittingScanning");
-   public static final byd<bxy> h = a(bxy.class, "SittingAttacking");
-   public static final byd<bxr> i = a(bxr.class, "ChargingPlayer");
-   public static final byd<bxs> j = a(bxs.class, "Dying");
-   public static final byd<bxu> k = a(bxu.class, "Hover");
-   private final Class<? extends bxx> m;
-   private final int n;
-   private final String o;
-
-   private byd(int $$0, Class<? extends bxx> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
+public class byd extends bxt {
+   public byd(bjx<? extends byd> $$0, cqz $$1) {
+      super($$0, $$1);
    }
 
-   public bxx a(bxn $$0) {
-      try {
-         Constructor<? extends bxx> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends bxx> a() throws NoSuchMethodException {
-      return this.m.getConstructor(bxn.class);
-   }
-
-   public int b() {
-      return this.n;
+   public static blo.a s() {
+      return gE().a(blp.l, 15.0).a(blp.m, 0.2F);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   protected void a(ate $$0) {
+      this.a(blp.h).a(a($$0::j));
    }
 
-   public static byd<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public bko eR() {
+      return bko.b;
    }
 
-   public static int c() {
-      return l.length;
+   @Override
+   protected aqc w() {
+      return aqd.Bk;
    }
 
-   private static <T extends bxx> byd<T> a(Class<T> $$0, String $$1) {
-      byd<T> $$2 = new byd<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   protected aqc m_() {
+      return aqd.Bl;
+   }
+
+   @Override
+   protected aqc d(bir $$0) {
+      return aqd.Bm;
+   }
+
+   @Nullable
+   @Override
+   public bjo a(alq $$0, bjo $$1) {
+      return bjx.bq.a((cqz)$$0);
+   }
+
+   @Override
+   public bib b(ccx $$0, bia $$1) {
+      return !this.gt() ? bib.d : super.b($$0, $$1);
+   }
+
+   @Override
+   protected void gu() {
+   }
+
+   @Override
+   protected float a(bju $$0, float $$1) {
+      return $$0.b - (this.n_() ? 0.03125F : 0.28125F) * $$1;
    }
 }

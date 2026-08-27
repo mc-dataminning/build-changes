@@ -1,45 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmz extends dnq<dpm> {
-   public dmz(Codec<dpm> $$0) {
-      super($$0);
+class dmz implements dmr {
+   public static final Codec<dmz> a = RecordCodecBuilder.create($$0 -> $$0.group(dmr.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dmz::new));
+   private final dmr e;
+
+   public dmz(dmr $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(crt $$0, ht $$1) {
+      return !this.e.test($$0, $$1);
    }
 
    @Override
-   public boolean a(dns<dpm> $$0) {
-      gw $$1 = $$0.e();
-      cqv $$2 = $$0.b();
-      ash $$3 = $$0.d();
-      dpm $$4 = $$0.f();
-      if ($$1.v() < $$2.H_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
-
-         for (gw $$7 : gw.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(cqc $$0, gw $$1, ash $$2) {
-      gw $$3 = $$1.d();
-      dfd $$4 = $$0.a_($$3);
-      return $$4.a(cte.kE) ? $$2.h() : $$4.d($$0, $$3, ha.b);
-   }
-
-   private void a(cqc $$0, gw $$1, ash $$2, dpm $$3) {
-      if ($$0.t($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
-      }
+   public dms<?> a() {
+      return dms.k;
    }
 }

@@ -1,74 +1,49 @@
-import org.joml.FrustumIntersection;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
 public class frc {
-   public static final int a = 4;
-   private final FrustumIntersection b = new FrustumIntersection();
-   private final Matrix4f c = new Matrix4f();
-   private Vector4f d;
-   private double e;
-   private double f;
-   private double g;
+   private static final Map<ddz<?>, frb<?>> a = Maps.newHashMap();
 
-   public frc(Matrix4f $$0, Matrix4f $$1) {
-      this.a($$0, $$1);
+   private static <T extends ddx> void a(ddz<? extends T> $$0, frb<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public frc(frc $$0) {
-      this.b.set($$0.c);
-      this.c.set($$0.c);
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.d = $$0.d;
+   public static Map<ddz<?>, fra<?>> a(frb.a $$0) {
+      Builder<ddz<?>, fra<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + jy.l.b((ddz<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
    }
 
-   public frc a(int $$0) {
-      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
-      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
-      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
-      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
-      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
-
-      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
-         this.b
-               .intersectAab(
-                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
-               )
-            != -2;
-         this.g = this.g - (double)(this.d.z() * 4.0F)
-      ) {
-         this.e = this.e - (double)(this.d.x() * 4.0F);
-         this.f = this.f - (double)(this.d.y() * 4.0F);
-      }
-
-      return this;
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   private void a(Matrix4f $$0, Matrix4f $$1) {
-      $$1.mul($$0, this.c);
-      this.b.set(this.c);
-      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
-   }
-
-   public boolean a(ehc $$0) {
-      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
-   }
-
-   private boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - this.e);
-      float $$7 = (float)($$1 - this.f);
-      float $$8 = (float)($$2 - this.g);
-      float $$9 = (float)($$3 - this.e);
-      float $$10 = (float)($$4 - this.f);
-      float $$11 = (float)($$5 - this.g);
-      return this.b.testAab($$6, $$7, $$8, $$9, $$10, $$11);
+   static {
+      a(ddz.h, fro::new);
+      a(ddz.i, frk::new);
+      a(ddz.j, frq::new);
+      a(ddz.k, frm::new);
+      a(ddz.b, frg::new);
+      a(ddz.d, frg::new);
+      a(ddz.c, frg::new);
+      a(ddz.m, frj::new);
+      a(ddz.D, frl::new);
+      a(ddz.n, frt::new);
+      a(ddz.v, frs::new);
+      a(ddz.o, fqw::new);
+      a(ddz.p, frp::new);
+      a(ddz.t, fqv::new);
+      a(ddz.u, frr::new);
+      a(ddz.x, frn::new);
+      a(ddz.y, fqx::new);
+      a(ddz.z, frh::new);
+      a(ddz.E, fqy::new);
+      a(ddz.G, frf::new);
+      a(ddz.N, fre::new);
+      a(ddz.O, fri::new);
    }
 }

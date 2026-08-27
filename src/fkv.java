@@ -1,83 +1,75 @@
-public class fkv extends fmq {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final fml M;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-   fkv(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fml $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = asb.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = asb.a(this.r, 0.0F, 0.0F);
-      this.x = asb.a(this.r, 0.8235294F, 0.9764706F);
-      this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
-      this.n = false;
-      this.M = $$7;
-      this.b($$7);
+public class fkv extends fkq {
+   final Supplier<gba> f;
+
+   fkv(UUID $$0, Instant $$1, UUID $$2, Supplier<gba> $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
+   }
+
+   public Supplier<gba> a() {
+      return this.f;
+   }
+
+   public fkv c() {
+      fkv $$0 = new fkv(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      return $$0;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
-
-         if (this.L) {
-            this.k += 0.002;
-         }
-
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
-         }
-      }
+   public ezd a(ezd $$0, fku $$1) {
+      return new fdh($$0, $$1, this);
    }
 
-   @Override
-   public flu b() {
-      return flu.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * asb.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements flt<iy> {
-      private final fml a;
-
-      public a(fml $$0) {
-         this.a = $$0;
+   public static class a extends fkq.a<fkv> {
+      public a(fkv $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fkv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public a(UUID $$0, Supplier<gba> $$1, AbuseReportLimits $$2) {
+         super(new fkv(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
+      }
+
+      @Nullable
+      @Override
+      public fkq.b c() {
+         if (this.a.e == null) {
+            return fkq.b.a;
+         } else {
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fkq.b.d : null;
+         }
+      }
+
+      @Override
+      public Either<fkq.c, fkq.b> a(fku $$0) {
+         fkq.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportedEntity $$3 = new ReportedEntity(this.a.c);
+            gba $$4 = this.a.f.get();
+            String $$5 = $$4.b();
+            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
+            return Either.left(new fkq.c(this.a.a, fkt.b, $$6));
+         }
       }
    }
 }

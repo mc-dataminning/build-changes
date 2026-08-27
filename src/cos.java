@@ -1,11 +1,11 @@
-public class cos extends cnu {
-   protected cos(cnu.a $$0, bjb... $$1) {
-      super($$0, cnv.g, $$1);
+public class cos extends cot {
+   protected cos(cot.a $$0, bjy... $$1) {
+      super($$0, cou.g, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15;
+      return 1 + 10 * ($$0 - 1);
    }
 
    @Override
@@ -14,7 +14,12 @@ public class cos extends cnu {
    }
 
    @Override
-   public boolean a(cnu $$0) {
-      return super.a($$0) && $$0 != cny.x;
+   public int a() {
+      return 5;
+   }
+
+   @Override
+   public boolean a(ckj $$0) {
+      return $$0.a(ckm.rg) ? true : super.a($$0);
    }
 }

@@ -1,48 +1,60 @@
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
+import com.mojang.serialization.Codec;
+import java.time.Instant;
 import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface fkh {
-   Logger a = LogUtils.getLogger();
-   fkh b = $$0 -> Optional.empty();
+public enum fkh implements atr {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   Optional<fke> lookupRedirect(fke var1);
+   public static final Codec<fkh> d = atr.a(fkh::values);
+   private final String e;
 
-   static fkh createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   private fkh(String $$0) {
+      this.e = $$0;
+   }
+
+   public static fkh a(uy $$0, ui $$1, Instant $$2) {
+      if (!$$0.h() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
       }
+   }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new fke($$4x[3], fke.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
+   private static boolean a(uy $$0, ui $$1) {
+      if (!$$1.getString().contains($$0.b())) {
+         return true;
+      } else {
+         ui $$2 = $$0.m();
+         return $$2 == null ? false : a($$2);
+      }
+   }
 
-         return Optional.empty();
+   private static boolean a(ui $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), vf.a).orElse(false);
+   }
+
+   private static boolean a(vf $$0) {
+      return !$$0.k().equals(vf.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public erj a(uy $$0) {
+      return switch (this) {
+         case b -> erj.a($$0.b());
+         case c -> erj.c();
+         default -> null;
       };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

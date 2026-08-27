@@ -8,7 +8,7 @@ public class bk extends cw<bk.a> {
       return new bk.a($$1, $$3, $$4);
    }
 
-   public void a(aku $$0, cjl $$1, int $$2) {
+   public void a(alr $$0, ckj $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -26,7 +26,7 @@ public class bk extends cw<bk.a> {
          return al.i.a(new bk.a(Optional.empty(), Optional.empty(), cl.d.c));
       }
 
-      public boolean a(cjl $$0, int $$1) {
+      public boolean a(ckj $$0, int $$1) {
          return this.a.isPresent() && !this.a.get().a($$0) ? false : this.b.d($$1);
       }
 

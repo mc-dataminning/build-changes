@@ -1,145 +1,166 @@
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.util.function.LongPredicate;
 
-public class eaq {
-   private eat[] a = new eat[128];
-   private int b;
+public abstract class eaq {
+   public static final long e = Long.MAX_VALUE;
+   private static final int a = 255;
+   protected final int f;
+   private final eau b;
+   private final Long2ByteMap c;
+   private volatile boolean d;
 
-   public eat a(eat $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
+   protected eaq(int $$0, int $$1, final int $$2) {
+      if ($$0 >= 254) {
+         throw new IllegalArgumentException("Level count must be < 254.");
       } else {
-         if (this.b == this.a.length) {
-            eat[] $$1 = new eat[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
+         this.f = $$0;
+         this.b = new eau($$0, $$1);
+         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$2) {
+                  super.rehash($$0);
+               }
+            }
+         };
+         this.c.defaultReturnValue((byte)-1);
+      }
+   }
+
+   protected void e(long $$0) {
+      int $$1 = this.c.remove($$0) & 255;
+      if ($$1 != 255) {
+         int $$2 = this.c($$0);
+         int $$3 = this.a($$2, $$1);
+         this.b.a($$0, $$3, this.f);
+         this.d = !this.b.b();
+      }
+   }
+
+   public void a(LongPredicate $$0) {
+      LongList $$1 = new LongArrayList();
+      this.c.keySet().forEach($$2 -> {
+         if ($$0.test($$2)) {
+            $$1.add($$2);
+         }
+      });
+      $$1.forEach(this::e);
+   }
+
+   private int a(int $$0, int $$1) {
+      return Math.min(Math.min($$0, $$1), this.f - 1);
+   }
+
+   protected void f(long $$0) {
+      this.a($$0, $$0, this.f - 1, false);
+   }
+
+   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
+      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
+      this.d = !this.b.b();
+   }
+
+   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if (!this.a($$1)) {
+         $$2 = asy.a($$2, 0, this.f - 1);
+         $$3 = asy.a($$3, 0, this.f - 1);
+         boolean $$6 = $$4 == 255;
+         if ($$6) {
+            $$4 = $$3;
          }
 
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
+         int $$7;
+         if ($$5) {
+            $$7 = Math.min($$4, $$2);
+         } else {
+            $$7 = asy.a(this.a($$1, $$0, $$2), 0, this.f - 1);
+         }
+
+         int $$9 = this.a($$3, $$4);
+         if ($$3 != $$7) {
+            int $$10 = this.a($$3, $$7);
+            if ($$9 != $$10 && !$$6) {
+               this.b.a($$1, $$9, $$10);
+            }
+
+            this.b.a($$1, $$10);
+            this.c.put($$1, (byte)$$7);
+         } else if (!$$6) {
+            this.b.a($$1, $$9, this.f);
+            this.c.remove($$1);
+         }
+      }
+   }
+
+   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
+      int $$4 = this.c.get($$1) & 255;
+      int $$5 = asy.a(this.b($$0, $$1, $$2), 0, this.f - 1);
+      if ($$3) {
+         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
+      } else {
+         boolean $$6 = $$4 == 255;
+         int $$7;
+         if ($$6) {
+            $$7 = asy.a(this.c($$1), 0, this.f - 1);
+         } else {
+            $$7 = $$4;
+         }
+
+         if ($$5 == $$7) {
+            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
+         }
+      }
+   }
+
+   protected final boolean b() {
+      return this.d;
+   }
+
+   protected final int b(int $$0) {
+      if (this.b.b()) {
+         return $$0;
+      } else {
+         while (!this.b.b() && $$0 > 0) {
+            $$0--;
+            long $$1 = this.b.a();
+            int $$2 = asy.a(this.c($$1), 0, this.f - 1);
+            int $$3 = this.c.remove($$1) & 255;
+            if ($$3 < $$2) {
+               this.a($$1, $$3);
+               this.a($$1, $$3, true);
+            } else if ($$3 > $$2) {
+               this.a($$1, this.f - 1);
+               if ($$3 != this.f - 1) {
+                  this.b.a($$1, this.a(this.f - 1, $$3));
+                  this.c.put($$1, (byte)$$3);
+               }
+
+               this.a($$1, $$2, false);
+            }
+         }
+
+         this.d = !this.b.b();
          return $$0;
       }
    }
 
-   public void a() {
-      this.b = 0;
+   public int c() {
+      return this.c.size();
    }
 
-   public eat b() {
-      return this.a[0];
+   protected boolean a(long $$0) {
+      return $$0 == Long.MAX_VALUE;
    }
 
-   public eat c() {
-      eat $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
-      }
+   protected abstract int a(long var1, long var3, int var5);
 
-      $$0.d = -1;
-      return $$0;
-   }
+   protected abstract void a(long var1, int var3, boolean var4);
 
-   public void b(eat $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
-         } else {
-            this.b($$0.d);
-         }
-      }
+   protected abstract int c(long var1);
 
-      $$0.d = -1;
-   }
+   protected abstract void a(long var1, int var3);
 
-   public void a(eat $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
-      } else {
-         this.b($$0.d);
-      }
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   private void a(int $$0) {
-      eat $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         eat $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      eat $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         eat $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         eat $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
-         }
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   public boolean e() {
-      return this.b == 0;
-   }
-
-   public eat[] f() {
-      return Arrays.copyOf(this.a, this.b);
-   }
+   protected abstract int b(long var1, long var3, int var5);
 }

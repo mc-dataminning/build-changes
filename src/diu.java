@@ -1,24 +1,18 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public interface diu {
-   int ah();
+   @Nullable
+   dwi a(dwa var1);
 
-   UUID cv();
+   void a(dwa var1, dwi var2);
 
-   gw dl();
+   LongSet b(dwa var1);
 
-   ehc cG();
+   void a(dwa var1, long var2);
 
-   void a(div var1);
+   Map<dwa, LongSet> h();
 
-   Stream<? extends diu> cR();
-
-   Stream<? extends diu> cS();
-
-   void b(biw.c var1);
-
-   boolean dJ();
-
-   boolean dK();
+   void b(Map<dwa, LongSet> var1);
 }

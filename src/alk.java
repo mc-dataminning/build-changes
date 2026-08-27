@@ -1,35 +1,35 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.Set;
 
-public record alk(String b, tp c) {
-   public static final alk a = a("");
+public final class alk {
+   private final Object2BooleanMap<alr> a = new Object2BooleanOpenHashMap();
 
-   public static alk a(String $$0) {
-      return new alk($$0, tp.c);
+   public Set<alr> a() {
+      return this.a.keySet();
    }
 
-   public static alk b(String $$0) {
-      return new alk($$0, tp.b);
+   public void a(alr $$0, boolean $$1) {
+      this.a.put($$0, $$1);
    }
 
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
+   public void a(alr $$0) {
+      this.a.removeBoolean($$0);
    }
 
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
+   public void b(alr $$0) {
+      this.a.replace($$0, true);
    }
 
-   public boolean c() {
-      return !this.c.a();
+   public void c(alr $$0) {
+      this.a.replace($$0, false);
    }
 
-   public String d() {
-      return this.b;
+   public boolean d(alr $$0) {
+      return this.a.getOrDefault($$0, true);
    }
 
-   public tp e() {
-      return this.c;
+   public boolean e(alr $$0) {
+      return this.a.getBoolean($$0);
    }
 }

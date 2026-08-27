@@ -1,96 +1,158 @@
 import com.mojang.serialization.Codec;
+import java.util.BitSet;
+import java.util.function.Function;
 
-public class dpj extends dnq<dqb> {
-   private static final ha[] a = ha.values();
-
-   public dpj(Codec<dqb> $$0) {
+public class dpj extends doo<dra> {
+   public dpj(Codec<dra> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dns<dqb> $$0) {
-      cqv $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      ash $$3 = $$0.d();
-      if (!$$1.t($$2)) {
+   public boolean a(doq<dra> $$0) {
+      ate $$1 = $$0.d();
+      ht $$2 = $$0.e();
+      crt $$3 = $$0.b();
+      dra $$4 = $$0.f();
+      float $$5 = $$1.i() * (float) Math.PI;
+      float $$6 = (float)$$4.c / 8.0F;
+      int $$7 = asy.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
+      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
+      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
+      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
+      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
+      int $$12 = 2;
+      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
+      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
+      int $$15 = $$2.u() - asy.f($$6) - $$7;
+      int $$16 = $$2.v() - 2 - $$7;
+      int $$17 = $$2.w() - asy.f($$6) - $$7;
+      int $$18 = 2 * (asy.f($$6) + $$7);
+      int $$19 = 2 * (2 + $$7);
+
+      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
+         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
+            if ($$16 <= $$3.a(dlk.a.c, $$20, $$21)) {
+               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
+            }
+         }
+      }
+
+      return false;
+   }
+
+   protected boolean a(
+      crt $$0, ate $$1, dra $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
+   ) {
+      int $$14 = 0;
+      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
+      ht.a $$16 = new ht.a();
+      int $$17 = $$2.c;
+      double[] $$18 = new double[$$17 * 4];
+
+      for (int $$19 = 0; $$19 < $$17; $$19++) {
+         float $$20 = (float)$$19 / (float)$$17;
+         double $$21 = asy.d((double)$$20, $$3, $$4);
+         double $$22 = asy.d((double)$$20, $$7, $$8);
+         double $$23 = asy.d((double)$$20, $$5, $$6);
+         double $$24 = $$1.j() * (double)$$17 / 16.0;
+         double $$25 = ((double)(asy.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
+         $$18[$$19 * 4 + 0] = $$21;
+         $$18[$$19 * 4 + 1] = $$22;
+         $$18[$$19 * 4 + 2] = $$23;
+         $$18[$$19 * 4 + 3] = $$25;
+      }
+
+      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
+         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
+            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
+               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
+                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
+                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
+                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
+                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
+                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
+                     if ($$31 > 0.0) {
+                        $$18[$$27 * 4 + 3] = -1.0;
+                     } else {
+                        $$18[$$26 * 4 + 3] = -1.0;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      try (dhv $$32 = new dhv($$0)) {
+         for (int $$33 = 0; $$33 < $$17; $$33++) {
+            double $$34 = $$18[$$33 * 4 + 3];
+            if (!($$34 < 0.0)) {
+               double $$35 = $$18[$$33 * 4 + 0];
+               double $$36 = $$18[$$33 * 4 + 1];
+               double $$37 = $$18[$$33 * 4 + 2];
+               int $$38 = Math.max(asy.a($$35 - $$34), $$9);
+               int $$39 = Math.max(asy.a($$36 - $$34), $$10);
+               int $$40 = Math.max(asy.a($$37 - $$34), $$11);
+               int $$41 = Math.max(asy.a($$35 + $$34), $$38);
+               int $$42 = Math.max(asy.a($$36 + $$34), $$39);
+               int $$43 = Math.max(asy.a($$37 + $$34), $$40);
+
+               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
+                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
+                  if ($$45 * $$45 < 1.0) {
+                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
+                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
+                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
+                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
+                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
+                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.d($$46)) {
+                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
+                                 if (!$$15.get($$50)) {
+                                    $$15.set($$50);
+                                    $$16.d($$44, $$46, $$48);
+                                    if ($$0.f_($$16)) {
+                                       dij $$51 = $$32.a($$16);
+                                       if ($$51 != null) {
+                                          int $$52 = iu.b($$44);
+                                          int $$53 = iu.b($$46);
+                                          int $$54 = iu.b($$48);
+                                          dgb $$55 = $$51.a($$52, $$53, $$54);
+
+                                          for (dra.a $$56 : $$2.b) {
+                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
+                                                $$51.a($$52, $$53, $$54, $$56.c, false);
+                                                $$14++;
+                                                break;
+                                             }
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return $$14 > 0;
+   }
+
+   public static boolean a(dgb $$0, Function<ht, dgb> $$1, ate $$2, dra $$3, dra.a $$4, ht.a $$5) {
+      if (!$$4.b.a($$0, $$2)) {
          return false;
       } else {
-         dfd $$4 = $$1.a_($$2.c());
-         if (!$$4.a(cte.dV) && !$$4.a(cte.kK)) {
-            return false;
-         } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
-         }
+         return a($$2, $$3.d) ? true : !a($$1, $$5);
       }
    }
 
-   private void a(cqc $$0, ash $$1, gw $$2) {
-      $$0.a($$2, cte.kK.o(), 2);
-      gw.a $$3 = new gw.a();
-      gw.a $$4 = new gw.a();
-
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.t($$3)) {
-            int $$6 = 0;
-
-            for (ha $$7 : a) {
-               dfd $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(cte.dV) || $$8.a(cte.kK)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
-               }
-            }
-
-            if ($$6 == 1) {
-               $$0.a($$3, cte.kK.o(), 2);
-            }
-         }
-      }
-   }
-
-   private void b(cqc $$0, ash $$1, gw $$2) {
-      gw.a $$3 = new gw.a();
-
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.t($$3)) {
-            dfd $$5 = $$0.a_($$3.c());
-            if ($$5.a(cte.dV) || $$5.a(cte.kK)) {
-               int $$6 = asb.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
-               }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
-            }
-         }
-      }
-   }
-
-   public static void a(cqc $$0, ash $$1, gw.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.t($$2)) {
-            if ($$6 == $$3 || !$$0.t($$2.d())) {
-               $$0.a($$2, cte.oz.o().a(cwq.e, Integer.valueOf(asb.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, cte.oA.o(), 2);
-         }
-
-         $$2.c(ha.a);
+   protected static boolean a(ate $$0, float $$1) {
+      if ($$1 <= 0.0F) {
+         return true;
+      } else {
+         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
       }
    }
 }

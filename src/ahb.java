@@ -1,85 +1,166 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import java.util.UUID;
 
 public class ahb {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.b("commands.fill.toobig", $$0, $$1));
-   static final ff b = new ff(cte.a.o(), Collections.emptySet(), null);
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.fill.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ui.b("commands.attribute.failed.entity", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> ui.b("commands.attribute.failed.no_attribute", $$0, $$1)
+   );
+   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> ui.b("commands.attribute.failed.no_modifier", $$1, $$0, $$2)
+   );
+   private static final Dynamic3CommandExceptionType d = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> ui.b("commands.attribute.failed.modifier_already_present", $$2, $$1, $$0)
+   );
 
-   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
+   public static void a(CommandDispatcher<du> $$0, dp $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("fill").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("attribute").requires($$0x -> $$0x.c(2)))
             .then(
-               du.a("from", fk.a())
+               dv.a("target", eg.a())
                   .then(
-                     du.a("to", fk.a())
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
-                                                "block", fh.a($$1)
-                                             )
-                                             .executes(
-                                                $$0x -> a((dt)$$0x.getSource(), duu.a(fk.a($$0x, "from"), fk.a($$0x, "to")), fh.a($$0x, "block"), ahb.a.a, null)
-                                             ))
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("attribute", es.a($$1, jz.b))
+                              .then(
+                                 ((LiteralArgumentBuilder)dv.a("get")
+                                       .executes($$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"), es.a($$0x, "attribute"), 1.0)))
+                                    .then(
+                                       dv.a("scale", DoubleArgumentType.doubleArg())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   eg.a($$0x, "target"),
+                                                   es.a($$0x, "attribute"),
+                                                   DoubleArgumentType.getDouble($$0x, "scale")
+                                                )
+                                          )
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)dv.a("base")
+                                    .then(
+                                       dv.a("set")
                                           .then(
-                                             ((LiteralArgumentBuilder)du.a("replace")
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (dt)$$0x.getSource(),
-                                                            duu.a(fk.a($$0x, "from"), fk.a($$0x, "to")),
-                                                            fh.a($$0x, "block"),
-                                                            ahb.a.a,
-                                                            null
-                                                         )
-                                                   ))
-                                                .then(
-                                                   du.a("filter", fg.a($$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (dt)$$0x.getSource(),
-                                                               duu.a(fk.a($$0x, "from"), fk.a($$0x, "to")),
-                                                               fh.a($$0x, "block"),
-                                                               ahb.a.a,
-                                                               fg.a($$0x, "filter")
-                                                            )
+                                             dv.a("value", DoubleArgumentType.doubleArg())
+                                                .executes(
+                                                   $$0x -> c(
+                                                         (du)$$0x.getSource(),
+                                                         eg.a($$0x, "target"),
+                                                         es.a($$0x, "attribute"),
+                                                         DoubleArgumentType.getDouble($$0x, "value")
                                                       )
                                                 )
-                                          ))
-                                       .then(
-                                          du.a("keep")
-                                             .executes(
-                                                $$0x -> a(
-                                                      (dt)$$0x.getSource(),
-                                                      duu.a(fk.a($$0x, "from"), fk.a($$0x, "to")),
-                                                      fh.a($$0x, "block"),
-                                                      ahb.a.a,
-                                                      $$0xx -> $$0xx.c().t($$0xx.d())
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       du.a("outline")
-                                          .executes(
-                                             $$0x -> a((dt)$$0x.getSource(), duu.a(fk.a($$0x, "from"), fk.a($$0x, "to")), fh.a($$0x, "block"), ahb.a.b, null)
                                           )
                                     ))
                                  .then(
-                                    du.a("hollow")
-                                       .executes(
-                                          $$0x -> a((dt)$$0x.getSource(), duu.a(fk.a($$0x, "from"), fk.a($$0x, "to")), fh.a($$0x, "block"), ahb.a.c, null)
+                                    ((LiteralArgumentBuilder)dv.a("get")
+                                          .executes($$0x -> b((du)$$0x.getSource(), eg.a($$0x, "target"), es.a($$0x, "attribute"), 1.0)))
+                                       .then(
+                                          dv.a("scale", DoubleArgumentType.doubleArg())
+                                             .executes(
+                                                $$0x -> b(
+                                                      (du)$$0x.getSource(),
+                                                      eg.a($$0x, "target"),
+                                                      es.a($$0x, "attribute"),
+                                                      DoubleArgumentType.getDouble($$0x, "scale")
+                                                   )
+                                             )
+                                       )
+                                 )
+                           ))
+                        .then(
+                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("modifier")
+                                    .then(
+                                       dv.a("add")
+                                          .then(
+                                             dv.a("uuid", fg.a())
+                                                .then(
+                                                   dv.a("name", StringArgumentType.string())
+                                                      .then(
+                                                         ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("value", DoubleArgumentType.doubleArg())
+                                                                  .then(
+                                                                     dv.a("add")
+                                                                        .executes(
+                                                                           $$0x -> a(
+                                                                                 (du)$$0x.getSource(),
+                                                                                 eg.a($$0x, "target"),
+                                                                                 es.a($$0x, "attribute"),
+                                                                                 fg.a($$0x, "uuid"),
+                                                                                 StringArgumentType.getString($$0x, "name"),
+                                                                                 DoubleArgumentType.getDouble($$0x, "value"),
+                                                                                 bln.a.a
+                                                                              )
+                                                                        )
+                                                                  ))
+                                                               .then(
+                                                                  dv.a("multiply")
+                                                                     .executes(
+                                                                        $$0x -> a(
+                                                                              (du)$$0x.getSource(),
+                                                                              eg.a($$0x, "target"),
+                                                                              es.a($$0x, "attribute"),
+                                                                              fg.a($$0x, "uuid"),
+                                                                              StringArgumentType.getString($$0x, "name"),
+                                                                              DoubleArgumentType.getDouble($$0x, "value"),
+                                                                              bln.a.c
+                                                                           )
+                                                                     )
+                                                               ))
+                                                            .then(
+                                                               dv.a("multiply_base")
+                                                                  .executes(
+                                                                     $$0x -> a(
+                                                                           (du)$$0x.getSource(),
+                                                                           eg.a($$0x, "target"),
+                                                                           es.a($$0x, "attribute"),
+                                                                           fg.a($$0x, "uuid"),
+                                                                           StringArgumentType.getString($$0x, "name"),
+                                                                           DoubleArgumentType.getDouble($$0x, "value"),
+                                                                           bln.a.b
+                                                                        )
+                                                                  )
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("remove")
+                                       .then(
+                                          dv.a("uuid", fg.a())
+                                             .executes($$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"), es.a($$0x, "attribute"), fg.a($$0x, "uuid")))
                                        )
                                  ))
                               .then(
-                                 du.a("destroy")
-                                    .executes($$0x -> a((dt)$$0x.getSource(), duu.a(fk.a($$0x, "from"), fk.a($$0x, "to")), fh.a($$0x, "block"), ahb.a.d, null))
+                                 dv.a("value")
+                                    .then(
+                                       dv.a("get")
+                                          .then(
+                                             ((RequiredArgumentBuilder)dv.a("uuid", fg.a())
+                                                   .executes(
+                                                      $$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"), es.a($$0x, "attribute"), fg.a($$0x, "uuid"), 1.0)
+                                                   ))
+                                                .then(
+                                                   dv.a("scale", DoubleArgumentType.doubleArg())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               eg.a($$0x, "target"),
+                                                               es.a($$0x, "attribute"),
+                                                               fg.a($$0x, "uuid"),
+                                                               DoubleArgumentType.getDouble($$0x, "scale")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
                               )
                         )
                   )
@@ -87,76 +168,87 @@ public class ahb {
       );
    }
 
-   private static int a(dt $$0, duu $$1, ff $$2, ahb.a $$3, @Nullable Predicate<dfh> $$4) throws CommandSyntaxException {
-      int $$5 = $$1.c() * $$1.d() * $$1.e();
-      int $$6 = $$0.e().X().c(cpx.x);
-      if ($$5 > $$6) {
-         throw a.create($$6, $$5);
+   private static bll a(bjt $$0, ib<blk> $$1) throws CommandSyntaxException {
+      bll $$2 = a($$0).eQ().a($$1);
+      if ($$2 == null) {
+         throw b.create($$0.ab(), a($$1));
       } else {
-         List<gw> $$7 = Lists.newArrayList();
-         akt $$8 = $$0.e();
-         int $$9 = 0;
-
-         for (gw $$10 : gw.b($$1.g(), $$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l())) {
-            if ($$4 == null || $$4.test(new dfh($$8, $$10, true))) {
-               ff $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
-               if ($$11 != null) {
-                  dcz $$12 = $$8.c_($$10);
-                  bgv.a_($$12);
-                  if ($$11.a($$8, $$10, 2)) {
-                     $$7.add($$10.i());
-                     $$9++;
-                  }
-               }
-            }
-         }
-
-         for (gw $$13 : $$7) {
-            ctc $$14 = $$8.a_($$13).b();
-            $$8.b($$13, $$14);
-         }
-
-         if ($$9 == 0) {
-            throw c.create();
-         } else {
-            int $$15 = $$9;
-            $$0.a(() -> tl.a("commands.fill.success", $$15), true);
-            return $$9;
-         }
+         return $$2;
       }
    }
 
-   static enum a {
-      a(($$0, $$1, $$2, $$3) -> $$2),
-      b(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.g()
-                  && $$1.u() != $$0.j()
-                  && $$1.v() != $$0.h()
-                  && $$1.v() != $$0.k()
-                  && $$1.w() != $$0.i()
-                  && $$1.w() != $$0.l()
-               ? null
-               : $$2
-      ),
-      c(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.g()
-                  && $$1.u() != $$0.j()
-                  && $$1.v() != $$0.h()
-                  && $$1.v() != $$0.k()
-                  && $$1.w() != $$0.i()
-                  && $$1.w() != $$0.l()
-               ? ahb.b
-               : $$2
-      ),
-      d(($$0, $$1, $$2, $$3) -> {
-         $$3.b($$1, true);
-         return $$2;
-      });
-
-      public final aim.a e;
-
-      private a(aim.a $$0) {
-         this.e = $$0;
+   private static bkj a(bjt $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bkj)) {
+         throw a.create($$0.ab());
+      } else {
+         return (bkj)$$0;
       }
+   }
+
+   private static bkj b(bjt $$0, ib<blk> $$1) throws CommandSyntaxException {
+      bkj $$2 = a($$0);
+      if (!$$2.eQ().b($$1)) {
+         throw b.create($$0.ab(), a($$1));
+      } else {
+         return $$2;
+      }
+   }
+
+   private static int a(du $$0, bjt $$1, ib<blk> $$2, double $$3) throws CommandSyntaxException {
+      bkj $$4 = b($$1, $$2);
+      double $$5 = $$4.a($$2);
+      $$0.a(() -> ui.a("commands.attribute.value.get.success", a($$2), $$1.ab(), $$5), false);
+      return (int)($$5 * $$3);
+   }
+
+   private static int b(du $$0, bjt $$1, ib<blk> $$2, double $$3) throws CommandSyntaxException {
+      bkj $$4 = b($$1, $$2);
+      double $$5 = $$4.b($$2);
+      $$0.a(() -> ui.a("commands.attribute.base_value.get.success", a($$2), $$1.ab(), $$5), false);
+      return (int)($$5 * $$3);
+   }
+
+   private static int a(du $$0, bjt $$1, ib<blk> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
+      bkj $$5 = b($$1, $$2);
+      blm $$6 = $$5.eQ();
+      if (!$$6.a($$2, $$3)) {
+         throw c.create($$1.ab(), a($$2), $$3);
+      } else {
+         double $$7 = $$6.b($$2, $$3);
+         $$0.a(() -> ui.a("commands.attribute.modifier.value.get.success", ui.a($$3), a($$2), $$1.ab(), $$7), false);
+         return (int)($$7 * $$4);
+      }
+   }
+
+   private static int c(du $$0, bjt $$1, ib<blk> $$2, double $$3) throws CommandSyntaxException {
+      a($$1, $$2).a($$3);
+      $$0.a(() -> ui.a("commands.attribute.base_value.set.success", a($$2), $$1.ab(), $$3), false);
+      return 1;
+   }
+
+   private static int a(du $$0, bjt $$1, ib<blk> $$2, UUID $$3, String $$4, double $$5, bln.a $$6) throws CommandSyntaxException {
+      bll $$7 = a($$1, $$2);
+      bln $$8 = new bln($$3, $$4, $$5, $$6);
+      if ($$7.a($$8)) {
+         throw d.create($$1.ab(), a($$2), $$3);
+      } else {
+         $$7.c($$8);
+         $$0.a(() -> ui.a("commands.attribute.modifier.add.success", ui.a($$3), a($$2), $$1.ab()), false);
+         return 1;
+      }
+   }
+
+   private static int a(du $$0, bjt $$1, ib<blk> $$2, UUID $$3) throws CommandSyntaxException {
+      bll $$4 = a($$1, $$2);
+      if ($$4.c($$3)) {
+         $$0.a(() -> ui.a("commands.attribute.modifier.remove.success", ui.a($$3), a($$2), $$1.ab()), false);
+         return 1;
+      } else {
+         throw c.create($$1.ab(), a($$2), $$3);
+      }
+   }
+
+   private static ui a(ib<blk> $$0) {
+      return ui.c($$0.a().c());
    }
 }

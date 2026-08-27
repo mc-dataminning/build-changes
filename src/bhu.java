@@ -1,120 +1,83 @@
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class bhu {
-   private final he<bhw> a;
-   @Nullable
-   private final biw b;
-   @Nullable
-   private final biw c;
-   @Nullable
-   private final ehh d;
+public interface bhu extends bhs {
+   int m_ = 64;
+   int n_ = 8;
 
-   @Override
-   public String toString() {
-      return "DamageSource (" + this.j().a() + ")";
+   int b();
+
+   boolean ai_();
+
+   ckj a(int var1);
+
+   ckj a(int var1, int var2);
+
+   ckj b(int var1);
+
+   void a(int var1, ckj var2);
+
+   default int aj_() {
+      return 64;
    }
 
-   public float a() {
-      return this.j().c();
+   void e();
+
+   boolean a(ccx var1);
+
+   default void d_(ccx $$0) {
    }
 
-   public boolean b() {
-      return this.b != this.c;
+   default void c(ccx $$0) {
    }
 
-   private bhu(he<bhw> $$0, @Nullable biw $$1, @Nullable biw $$2, @Nullable ehh $$3) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+   default boolean b(int $$0, ckj $$1) {
+      return true;
    }
 
-   public bhu(he<bhw> $$0, @Nullable biw $$1, @Nullable biw $$2) {
-      this($$0, $$1, $$2, null);
+   default boolean a(bhu $$0, int $$1, ckj $$2) {
+      return true;
    }
 
-   public bhu(he<bhw> $$0, ehh $$1) {
-      this($$0, null, null, $$1);
-   }
+   default int a_(cke $$0) {
+      int $$1 = 0;
 
-   public bhu(he<bhw> $$0, @Nullable biw $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public bhu(he<bhw> $$0) {
-      this($$0, null, null, null);
-   }
-
-   @Nullable
-   public biw c() {
-      return this.c;
-   }
-
-   @Nullable
-   public biw d() {
-      return this.b;
-   }
-
-   public tl a(bjm $$0) {
-      String $$1 = "death.attack." + this.j().a();
-      if (this.b == null && this.c == null) {
-         bjm $$5 = $$0.eK();
-         String $$6 = $$1 + ".player";
-         return $$5 != null ? tl.a($$6, $$0.N_(), $$5.N_()) : tl.a($$1, $$0.N_());
-      } else {
-         tl $$2 = this.b == null ? this.c.N_() : this.b.N_();
-         cjl $$4 = this.b instanceof bjm $$3 ? $$3.eS() : cjl.b;
-         return !$$4.b() && $$4.A() ? tl.a($$1 + ".item", $$0.N_(), $$2, $$4.J()) : tl.a($$1, $$0.N_(), $$2);
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         ckj $$3 = this.a($$2);
+         if ($$3.d().equals($$0)) {
+            $$1 += $$3.L();
+         }
       }
+
+      return $$1;
    }
 
-   public String e() {
-      return this.j().a();
+   default boolean a(Set<cke> $$0) {
+      return this.a_($$1 -> !$$1.b() && $$0.contains($$1.d()));
    }
 
-   public boolean f() {
-      return switch (this.j().b()) {
-         case a -> false;
-         case b -> this.b instanceof bjm && !(this.b instanceof cca);
-         case c -> true;
-      };
-   }
-
-   public boolean g() {
-      if (this.d() instanceof cca $$0 && $$0.fT().d) {
-         return true;
+   default boolean a_(Predicate<ckj> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         ckj $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
       }
 
       return false;
    }
 
-   @Nullable
-   public ehh h() {
-      if (this.d != null) {
-         return this.d;
+   static boolean a(ddx $$0, ccx $$1) {
+      return a($$0, $$1, 8);
+   }
+
+   static boolean a(ddx $$0, ccx $$1, int $$2) {
+      cqz $$3 = $$0.k();
+      ht $$4 = $$0.p();
+      if ($$3 == null) {
+         return false;
       } else {
-         return this.c != null ? this.c.dj() : null;
+         return $$3.c_($$4) != $$0 ? false : $$1.i((double)$$4.u() + 0.5, (double)$$4.v() + 0.5, (double)$$4.w() + 0.5) <= (double)($$2 * $$2);
       }
-   }
-
-   @Nullable
-   public ehh i() {
-      return this.d;
-   }
-
-   public boolean a(aqk<bhw> $$0) {
-      return this.a.a($$0);
-   }
-
-   public boolean a(aey<bhw> $$0) {
-      return this.a.a($$0);
-   }
-
-   public bhw j() {
-      return this.a.a();
-   }
-
-   public he<bhw> k() {
-      return this.a;
    }
 }

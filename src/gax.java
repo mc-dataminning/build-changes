@@ -1,20 +1,17 @@
+import java.io.IOException;
+import java.io.InputStream;
+
 public class gax {
-   public static final gay a = new gay();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+   @Deprecated
+   public static int[] a(aot $$0, afw $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         eli $$3 = eli.a($$2);
+      ) {
+         var4 = $$3.e();
+      }
 
-   public gax(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public boolean a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
+      return var4;
    }
 }

@@ -1,14 +1,18 @@
-public record abm(uc.a a) implements ve<abd> {
-   public abm(so $$0) {
-      this(uc.a.a($$0));
+public record abm() implements wb<xu> {
+   public abm(tl $$0) {
+      this();
    }
 
    @Override
-   public void a(so $$0) {
-      uc.a.a($$0, this.a);
+   public void a(tl $$0) {
    }
 
-   public void a(abd $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public tk c() {
+      return tk.e;
    }
 }

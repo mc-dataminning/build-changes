@@ -1,15 +1,32 @@
-public class cma extends clx {
-   public cma(String $$0, cmd $$1, cmm $$2, cjl $$3, float $$4, int $$5) {
-      super(cmt.c, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+public interface cma {
+   cma.a a = new cma.a(false, false);
+   cma.a b = new cma.a(true, false);
 
-   @Override
-   public cjl g() {
-      return new cjl(cte.nW);
-   }
+   boolean a();
 
-   @Override
-   public cms<?> an_() {
-      return cms.q;
+   boolean b();
+
+   public static record a(boolean c, boolean d) implements cma {
+      @Override
+      public boolean a() {
+         return this.c;
+      }
+
+      @Override
+      public boolean b() {
+         return this.d;
+      }
+
+      public cma.a c() {
+         return new cma.a(this.c, true);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 }

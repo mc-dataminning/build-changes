@@ -1,79 +1,100 @@
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class aex<T> extends aer<T> {
-   private final aex.b b;
+public record aex(ui b, Optional<aex.b> c, Optional<aex.c> d, Optional<aex.a> e, boolean f) {
+   public static final Codec<aex> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               uk.a.optionalFieldOf("description", uh.a).forGetter(aex::a),
+               aex.b.a.optionalFieldOf("players").forGetter(aex::b),
+               aex.c.a.optionalFieldOf("version").forGetter(aex::c),
+               aex.a.a.optionalFieldOf("favicon").forGetter(aex::d),
+               Codec.BOOL.optionalFieldOf("enforcesSecureChat", false).forGetter(aex::e)
+            )
+            .apply($$0, aex::new)
+   );
 
-   private static aex.b a(final aex.b $$0) {
-      return new aex.b() {
-         private final Map<aey<? extends hq<?>>, Optional<? extends aex.a<?>>> b = new HashMap<>();
+   public ui a() {
+      return this.b;
+   }
 
-         @Override
-         public <T> Optional<aex.a<T>> a(aey<? extends hq<? extends T>> $$0x) {
-            return (Optional<aex.a<T>>)this.b.computeIfAbsent($$0, $$0::a);
+   public Optional<aex.b> b() {
+      return this.c;
+   }
+
+   public Optional<aex.c> c() {
+      return this.d;
+   }
+
+   public Optional<aex.a> d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public static record a(byte[] b) {
+      private static final String c = "data:image/png;base64,";
+      public static final Codec<aex.a> a = Codec.STRING.comapFlatMap($$0 -> {
+         if (!$$0.startsWith("data:image/png;base64,")) {
+            return DataResult.error(() -> "Unknown format");
+         } else {
+            try {
+               String $$1 = $$0.substring("data:image/png;base64,".length()).replaceAll("\n", "");
+               byte[] $$2 = Base64.getDecoder().decode($$1.getBytes(StandardCharsets.UTF_8));
+               return DataResult.success(new aex.a($$2));
+            } catch (IllegalArgumentException var3) {
+               return DataResult.error(() -> "Malformed base64 server icon");
+            }
          }
-      };
+      }, $$0 -> "data:image/png;base64," + new String(Base64.getEncoder().encode($$0.b), StandardCharsets.UTF_8));
+
+      public byte[] a() {
+         return this.b;
+      }
    }
 
-   public static <T> aex<T> a(DynamicOps<T> $$0, final hg.b $$1) {
-      return a($$0, a(new aex.b() {
-         @Override
-         public <E> Optional<aex.a<E>> a(aey<? extends hq<? extends E>> $$0) {
-            return $$1.a($$0).map($$0x -> (aex.a<E>)(new aex.a<>($$0x, $$0x, $$0x.g())));
-         }
-      }));
+   public static record b(int b, int c, List<GameProfile> d) {
+      private static final Codec<GameProfile> e = RecordCodecBuilder.create(
+         $$0 -> $$0.group(iv.b.fieldOf("id").forGetter(GameProfile::getId), Codec.STRING.fieldOf("name").forGetter(GameProfile::getName))
+               .apply($$0, GameProfile::new)
+      );
+      public static final Codec<aex.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.INT.fieldOf("max").forGetter(aex.b::a),
+                  Codec.INT.fieldOf("online").forGetter(aex.b::b),
+                  e.listOf().optionalFieldOf("sample", List.of()).forGetter(aex.b::c)
+               )
+               .apply($$0, aex.b::new)
+      );
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public List<GameProfile> c() {
+         return this.d;
+      }
    }
 
-   public static <T> aex<T> a(DynamicOps<T> $$0, aex.b $$1) {
-      return new aex<>($$0, $$1);
-   }
+   public static record c(String b, int c) {
+      public static final Codec<aex.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(aex.c::b), Codec.INT.fieldOf("protocol").forGetter(aex.c::c)).apply($$0, aex.c::new)
+      );
 
-   private aex(DynamicOps<T> $$0, aex.b $$1) {
-      super($$0);
-      this.b = $$1;
-   }
-
-   public <E> Optional<hh<E>> a(aey<? extends hq<? extends E>> $$0) {
-      return this.b.a($$0).map(aex.a::a);
-   }
-
-   public <E> Optional<hf<E>> b(aey<? extends hq<? extends E>> $$0) {
-      return this.b.a($$0).map(aex.a::b);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, hf<E>> c(aey<? extends hq<? extends E>> $$0) {
-      return arj.b(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof aex<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, he.c<E>> d(aey<E> $$0) {
-      aey<? extends hq<E>> $$1 = aey.a($$0.b());
-      return arj.b(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof aex<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static record a<T>(hh<T> a, hf<T> b, Lifecycle c) {
-   }
-
-   public interface b {
-      <T> Optional<aex.a<T>> a(aey<? extends hq<? extends T>> var1);
+      public static aex.c a() {
+         ad $$0 = aa.b();
+         return new aex.c($$0.c(), $$0.e());
+      }
    }
 }

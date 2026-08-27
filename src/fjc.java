@@ -1,26 +1,17 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+public class fjc {
+   private final fje a;
+   private final fjd b;
 
-public interface fjc {
-   fjc a = new fjc() {
-      @Override
-      public CompletableFuture<Optional<ccc>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
-
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static fjc a(UserApiService $$0, ere $$1, Path $$2) {
-      return (fjc)($$1.g() == ere.a.c ? new fil($$0, $$1.b(), $$2) : a);
+   private fjc(fje $$0, fjd $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   CompletableFuture<Optional<ccc>> a();
+   public fiw a() {
+      return this.a.a().a(this.b.a, this.b.b);
+   }
 
-   boolean b();
+   public static fjc a(fje $$0, int $$1, int $$2) {
+      return new fjc($$0, new fjd($$1, $$2));
+   }
 }

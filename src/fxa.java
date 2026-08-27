@@ -1,24 +1,20 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fxa extends fvj<ccb, fij<ccb>> {
+   private static final afw a = new afw("textures/entity/warden/warden.png");
+   private static final afw i = new afw("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final afw j = new afw("textures/entity/warden/warden_heart.png");
+   private static final afw k = new afw("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final afw l = new afw("textures/entity/warden/warden_pulsating_spots_2.png");
 
-public class fxa extends fxl<bwy, ffj<bwy>> {
-   private static final Map<bxa, aez> a = ac.a(Maps.newEnumMap(bxa.class), $$0 -> {
-      $$0.put(bxa.a, null);
-      $$0.put(bxa.b, new aez("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(bxa.c, new aez("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(bxa.d, new aez("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(bxa.e, new aez("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public fxa(fuy<bwy, ffj<bwy>> $$0) {
-      super($$0);
+   public fxa(fud.a $$0) {
+      super($$0, new fij<>($$0.a(fiv.bL)), 0.9F);
+      this.a(new fyx<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fij::e));
+      this.a(new fyx<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, asy.b($$2 * 0.045F) * 0.25F), fij::f));
+      this.a(new fyx<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, asy.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fij::f));
+      this.a(new fyx<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fij::c));
+      this.a(new fyx<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fij::d));
    }
 
-   public void a(elj $$0, foa $$1, int $$2, bwy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      aez $$10 = a.get($$3.ge());
-      if ($$10 != null && !$$3.cd()) {
-         eln $$11 = $$1.getBuffer(foi.i($$10));
-         this.c().a($$0, $$11, $$2, fue.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   public afw a(ccb $$0) {
+      return a;
    }
 }

@@ -1,27 +1,6 @@
-public abstract class bfy<R extends Runnable> extends bfu<R> {
-   private int b;
+import java.util.Set;
+import java.util.function.Supplier;
 
-   public bfy(String $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean at() {
-      return this.br() || super.at();
-   }
-
-   protected boolean br() {
-      return this.b != 0;
-   }
-
-   @Override
-   public void d(R $$0) {
-      this.b++;
-
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
-      }
-   }
+public interface bfy {
+   Set<bfw> a(Supplier<beq> var1);
 }

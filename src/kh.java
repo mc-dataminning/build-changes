@@ -1,143 +1,51 @@
-import java.util.function.BiConsumer;
+import java.nio.file.Path;
 
-public class kh implements kd {
-   @Override
-   public void generate(BiConsumer<aez, ecs.a> $$0) {
-      $$0.accept(
-         eci.aC,
-         ecs.b()
-            .a(
-               ecr.a()
-                  .a(egc.a(1.0F))
-                  .a(eda.a(cjo.wP).a(2))
-                  .a(eda.a(cjo.wR).a(2))
-                  .a(eda.a(cjo.pX))
-                  .a(eda.a(cjo.nL))
-                  .a(eda.a(cjo.oB))
-                  .a(
-                     eda.a(cjo.va)
-                        .a(
-                           eeo.c()
-                              .a(bil.p, egh.a(7.0F, 10.0F))
-                              .a(bil.h, egh.a(7.0F, 10.0F))
-                              .a(bil.r, egh.a(6.0F, 8.0F))
-                              .a(bil.o, egh.a(5.0F, 7.0F))
-                              .a(bil.s, egh.a(10.0F, 20.0F))
-                              .a(bil.w, egh.a(7.0F, 10.0F))
-                        )
-                  )
-            )
-      );
-      $$0.accept(
-         eci.aD,
-         ecs.b()
-            .a(
-               ecr.a()
-                  .a(egc.a(1.0F))
-                  .a(eda.a(cjo.wO))
-                  .a(eda.a(cjo.wZ))
-                  .a(eda.a(cjo.xc))
-                  .a(eda.a(cjo.xf))
-                  .a(eda.a(cjo.nK))
-                  .a(eda.a(cjo.lH))
-                  .a(eda.a(cjo.oG))
-                  .a(eda.a(cjo.nL))
-            )
-      );
-      $$0.accept(
-         eci.aE,
-         ecs.b()
-            .a(
-               ecr.a()
-                  .a(egc.a(1.0F))
-                  .a(eda.a(cjo.nL).a(2))
-                  .a(eda.a(cjo.oI).a(2))
-                  .a(eda.a(cjo.ob).a(2))
-                  .a(eda.a(cjo.eB).a(2))
-                  .a(eda.a(cjo.pX).a(2))
-                  .a(eda.a(cjo.qy).a(2))
-                  .a(eda.a(cjo.qF).a(2))
-                  .a(eda.a(cjo.qx).a(2))
-                  .a(eda.a(cjo.qu).a(2))
-                  .a(eda.a(cjo.qv).a(2))
-                  .a(eda.a(cjo.wj).a(2))
-                  .a(eda.a(cjo.wi).a(2))
-                  .a(eda.a(cjo.wf).a(2))
-                  .a(eda.a(cjo.wh).a(2))
-                  .a(eda.a(cjo.hZ))
-                  .a(eda.a(cjo.id))
-                  .a(eda.a(cjo.ii))
-                  .a(eda.a(cjo.ia))
-                  .a(eda.a(cjo.il))
-                  .a(eda.a(cjo.ib))
-                  .a(eda.a(cjo.ih))
-                  .a(eda.a(cjo.pA))
-                  .a(eda.a(cjo.pz))
-                  .a(eda.a(cjo.rt))
-                  .a(eda.a(cjo.nI))
-                  .a(eda.a(cjo.oH))
-                  .a(eda.a(cjo.ur))
-                  .a(eda.a(cjo.cv))
-                  .a(eda.a(cjo.tk))
-                  .a(eda.a(cjo.oE))
-                  .a(eda.a(cjo.tQ))
-            )
-      );
-      $$0.accept(
-         eci.aF,
-         ecs.b()
-            .a(
-               ecr.a()
-                  .a(egc.a(1.0F))
-                  .a(eda.a(cjo.wS))
-                  .a(eda.a(cjo.wT))
-                  .a(eda.a(cjo.wV))
-                  .a(eda.a(cjo.wW))
-                  .a(eda.a(cjo.wX))
-                  .a(eda.a(cjo.wY))
-                  .a(eda.a(cjo.xd))
-                  .a(eda.a(cjo.wI))
-                  .a(eda.a(cjo.wL))
-                  .a(eda.a(cjo.wJ))
-                  .a(eda.a(cjo.wM))
-                  .a(eda.a(cjo.uR))
-            )
-      );
-      $$0.accept(
-         eci.aG,
-         ecs.b()
-            .a(
-               ecr.a()
-                  .a(egc.a(1.0F))
-                  .a(eda.a(cjo.wN))
-                  .a(eda.a(cjo.xe))
-                  .a(eda.a(cjo.xg))
-                  .a(eda.a(cjo.jU))
-                  .a(eda.a(cjo.op))
-                  .a(eda.a(cjo.nL).a(2))
-                  .a(eda.a(cjo.oI).a(2))
-                  .a(eda.a(cjo.ob).a(2))
-                  .a(eda.a(cjo.nI).a(2))
-                  .a(eda.a(cjo.rt).a(2))
-            )
-      );
-      $$0.accept(
-         eci.aH,
-         ecs.b()
-            .a(
-               ecr.a()
-                  .a(egc.a(1.0F))
-                  .a(eda.a(cjo.wQ))
-                  .a(eda.a(cjo.wU))
-                  .a(eda.a(cjo.xa))
-                  .a(eda.a(cjo.xb))
-                  .a(eda.a(cjo.op))
-                  .a(eda.a(cjo.nL).a(2))
-                  .a(eda.a(cjo.oI).a(2))
-                  .a(eda.a(cjo.ob).a(2))
-                  .a(eda.a(cjo.nI).a(2))
-                  .a(eda.a(cjo.rt).a(2))
-            )
-      );
+public class kh {
+   private final Path a;
+
+   public kh(Path $$0) {
+      this.a = $$0;
+   }
+
+   public Path a() {
+      return this.a;
+   }
+
+   public Path a(kh.b $$0) {
+      return this.a().resolve($$0.d);
+   }
+
+   public kh.a a(kh.b $$0, String $$1) {
+      return new kh.a(this, $$0, $$1);
+   }
+
+   public static class a {
+      private final Path a;
+      private final String b;
+
+      a(kh $$0, kh.b $$1, String $$2) {
+         this.a = $$0.a($$1);
+         this.b = $$2;
+      }
+
+      public Path a(afw $$0, String $$1) {
+         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
+      }
+
+      public Path a(afw $$0) {
+         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
+      }
+   }
+
+   public static enum b {
+      a("data"),
+      b("assets"),
+      c("reports");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
    }
 }

@@ -1,62 +1,13 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class aji implements ajj {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.data.block.invalid"));
-   public static final Function<String, ajk.c> a = $$0 -> new ajk.c() {
-         @Override
-         public ajj a(CommandContext<dt> $$0x) throws CommandSyntaxException {
-            gw $$1 = fk.a($$0, $$0 + "Pos");
-            dcz $$2 = ((dt)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw aji.b.create();
-            } else {
-               return new aji($$2, $$1);
-            }
-         }
-
-         @Override
-         public ArgumentBuilder<dt, ?> a(ArgumentBuilder<dt, ?> $$0x, Function<ArgumentBuilder<dt, ?>, ArgumentBuilder<dt, ?>> $$1) {
-            return $$0.then(du.a("block").then($$1.apply(du.a($$0 + "Pos", fk.a()))));
-         }
-      };
-   private final dcz c;
-   private final gw d;
-
-   public aji(dcz $$0, gw $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public void a(qw $$0) {
-      dfd $$1 = this.c.k().a_(this.d);
-      this.c.a($$0);
-      this.c.e();
-      this.c.k().a(this.d, $$1, $$1, 3);
-   }
-
-   @Override
-   public qw a() {
-      return this.c.m();
-   }
-
-   @Override
-   public tl b() {
-      return tl.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
-   }
-
-   @Override
-   public tl a(rq $$0) {
-      return tl.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), rj.c($$0));
-   }
-
-   @Override
-   public tl a(ej.g $$0, double $$1, int $$2) {
-      return tl.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+public class aji {
+   public static void a(CommandDispatcher<du> $$0, boolean $$1) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
+         long $$1x = ((du)$$0x.getSource()).f().A();
+         ui $$2 = ul.a(String.valueOf($$1x));
+         ((du)$$0x.getSource()).a(() -> ui.a("commands.seed.success", $$2), false);
+         return (int)$$1x;
+      }));
    }
 }

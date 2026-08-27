@@ -1,25 +1,18 @@
-public class fvk<T extends bvw> extends fuj<T, fha<T>> {
-   private static final aez a = new aez("textures/entity/squid/squid.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fvk(ftd.a $$0, fha<T> $$1) {
-      super($$0, $$1, 0.7F);
+public class fvk extends fvj<bwh, ffq<bwh>> {
+   private static final Map<bwh.a, afw> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(bwh.a.b, new afw("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(bwh.a.a, new afw("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public fvk(fud.a $$0) {
+      super($$0, new ffq<>($$0.a(fiv.aw)), 0.7F);
+      this.a(new fyg<>(this, $$0.c()));
    }
 
-   public aez a(T $$0) {
-      return a;
-   }
-
-   protected void a(T $$0, elj $$1, float $$2, float $$3, float $$4) {
-      float $$5 = asb.i($$4, $$0.c, $$0.b);
-      float $$6 = asb.i($$4, $$0.e, $$0.d);
-      $$1.a(0.0F, 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      $$1.a(a.b.rotationDegrees($$5));
-      $$1.a(a.d.rotationDegrees($$6));
-      $$1.a(0.0F, -1.2F, 0.0F);
-   }
-
-   protected float a(T $$0, float $$1) {
-      return asb.i($$1, $$0.bW, $$0.bV);
+   public afw a(bwh $$0) {
+      return a.get($$0.t());
    }
 }

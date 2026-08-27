@@ -1,37 +1,66 @@
-public class fln extends flq {
-   private final ffu a;
-   private final foi b = foi.i(fsw.a);
+public class fln extends fnq {
+   private final float a;
+   private final float b;
 
-   fln(fis $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new fff(eqp.O().aP().a(fhw.P));
-      this.u = 0.0F;
-      this.t = 30;
+   fln(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ckj $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public flu b() {
-      return flu.e;
+   public fmu b() {
+      return fmu.a;
+   }
+
+   protected fln(fjr $$0, double $$1, double $$2, double $$3, ckj $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(ero.O().aq().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public void a(eln $$0, eqa $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * asb.a($$3 * (float) Math.PI);
-      elj $$5 = new elj();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      foa.a $$6 = eqp.O().aO().b();
-      eln $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, fyr.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
-   public static class a implements flt<iy> {
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fln($$1, $$2, $$3, $$4);
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements fmt<jo> {
+      public fmq a(jo $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fln($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
+      }
+   }
+
+   public static class b implements fmt<jv> {
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fln($$1, $$2, $$3, $$4, new ckj(ckm.qc));
+      }
+   }
+
+   public static class c implements fmt<jv> {
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fln($$1, $$2, $$3, $$4, new ckj(ckm.pO));
       }
    }
 }

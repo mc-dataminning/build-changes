@@ -1,107 +1,50 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class ckn extends cjg {
-   private static final n a = n.h;
-   private static final n b = n.j;
-   private static final tl c = tl.c(ac.a("item", new aez("smithing_template.ingredients"))).a(a);
-   private static final tl d = tl.c(ac.a("item", new aez("smithing_template.applies_to"))).a(a);
-   private static final tl e = tl.c(ac.a("upgrade", new aez("netherite_upgrade"))).a(a);
-   private static final tl f = tl.c(ac.a("item", new aez("smithing_template.armor_trim.applies_to"))).a(b);
-   private static final tl g = tl.c(ac.a("item", new aez("smithing_template.armor_trim.ingredients"))).a(b);
-   private static final tl h = tl.c(ac.a("item", new aez("smithing_template.armor_trim.base_slot_description")));
-   private static final tl i = tl.c(ac.a("item", new aez("smithing_template.armor_trim.additions_slot_description")));
-   private static final tl j = tl.c(ac.a("item", new aez("smithing_template.netherite_upgrade.applies_to"))).a(b);
-   private static final tl k = tl.c(ac.a("item", new aez("smithing_template.netherite_upgrade.ingredients"))).a(b);
-   private static final tl r = tl.c(ac.a("item", new aez("smithing_template.netherite_upgrade.base_slot_description")));
-   private static final tl s = tl.c(ac.a("item", new aez("smithing_template.netherite_upgrade.additions_slot_description")));
-   private static final aez t = new aez("item/empty_armor_slot_helmet");
-   private static final aez u = new aez("item/empty_armor_slot_chestplate");
-   private static final aez v = new aez("item/empty_armor_slot_leggings");
-   private static final aez w = new aez("item/empty_armor_slot_boots");
-   private static final aez x = new aez("item/empty_slot_hoe");
-   private static final aez y = new aez("item/empty_slot_axe");
-   private static final aez z = new aez("item/empty_slot_sword");
-   private static final aez A = new aez("item/empty_slot_shovel");
-   private static final aez B = new aez("item/empty_slot_pickaxe");
-   private static final aez C = new aez("item/empty_slot_ingot");
-   private static final aez D = new aez("item/empty_slot_redstone_dust");
-   private static final aez E = new aez("item/empty_slot_quartz");
-   private static final aez F = new aez("item/empty_slot_emerald");
-   private static final aez G = new aez("item/empty_slot_diamond");
-   private static final aez H = new aez("item/empty_slot_lapis_lazuli");
-   private static final aez I = new aez("item/empty_slot_amethyst_shard");
-   private final tl J;
-   private final tl K;
-   private final tl L;
-   private final tl M;
-   private final tl N;
-   private final List<aez> O;
-   private final List<aez> P;
+public class ckn extends cke {
+   private static final String a = "Recipes";
+   private static final Logger b = LogUtils.getLogger();
 
-   public ckn(tl $$0, tl $$1, tl $$2, tl $$3, tl $$4, List<aez> $$5, List<aez> $$6) {
-      super(new cjg.a());
-      this.J = $$0;
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.N = $$4;
-      this.O = $$5;
-      this.P = $$6;
-   }
-
-   public static ckn a(aey<clq> $$0) {
-      return a($$0.a());
-   }
-
-   public static ckn a(aez $$0) {
-      return new ckn(f, g, tl.c(ac.a("trim_pattern", $$0)).a(a), h, i, A(), B());
-   }
-
-   public static ckn h() {
-      return new ckn(j, k, e, r, s, C(), D());
-   }
-
-   private static List<aez> A() {
-      return List.of(t, u, v, w);
-   }
-
-   private static List<aez> B() {
-      return List.of(C, D, H, E, G, F, I);
-   }
-
-   private static List<aez> C() {
-      return List.of(t, z, u, B, v, y, w, x, A);
-   }
-
-   private static List<aez> D() {
-      return List.of(C);
+   public ckn(cke.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(cjl $$0, @Nullable cqb $$1, List<tl> $$2, clc $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$2.add(this.L);
-      $$2.add(tk.a);
-      $$2.add(d);
-      $$2.add(tk.a().b(this.J));
-      $$2.add(c);
-      $$2.add(tk.a().b(this.K));
-   }
+   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
+      ckj $$3 = $$1.b($$2);
+      rt $$4 = $$3.v();
+      if (!$$1.fT().d) {
+         $$1.a($$2, ckj.b);
+      }
 
-   public tl i() {
-      return this.M;
-   }
+      if ($$4 != null && $$4.b("Recipes", 9)) {
+         if (!$$0.B) {
+            rz $$5 = $$4.c("Recipes", 8);
+            List<cno<?>> $$6 = Lists.newArrayList();
+            cnp $$7 = $$0.n().aE();
 
-   public tl x() {
-      return this.N;
-   }
+            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
+               String $$9 = $$5.j($$8);
+               Optional<cno<?>> $$10 = $$7.a(new afw($$9));
+               if (!$$10.isPresent()) {
+                  b.error("Invalid recipe: {}", $$9);
+                  return bic.d($$3);
+               }
 
-   public List<aez> y() {
-      return this.O;
-   }
+               $$6.add($$10.get());
+            }
 
-   public List<aez> z() {
-      return this.P;
+            $$1.a($$6);
+            $$1.b(aqn.c.b(this));
+         }
+
+         return bic.a($$3, $$0.x_());
+      } else {
+         b.error("Tag not valid: {}", $$4);
+         return bic.d($$3);
+      }
    }
 }

@@ -1,3 +1,8 @@
-public interface bzs {
-   void a(bjm var1, float var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bzs {
 }

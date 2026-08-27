@@ -1,14 +1,9 @@
-import com.google.gson.JsonObject;
-
-public class gay implements amw<gax> {
-   public gax b(JsonObject $$0) {
-      boolean $$1 = arr.a($$0, "blur", false);
-      boolean $$2 = arr.a($$0, "clamp", false);
-      return new gax($$1, $$2);
+public class gay extends gbd {
+   public gay(gab $$0) {
+      super($$0, new afw("textures/atlas/mob_effects.png"), new afw("mob_effects"));
    }
 
-   @Override
-   public String a() {
-      return "texture";
+   public gaa a(bje $$0) {
+      return this.a(jy.e.b($$0));
    }
 }

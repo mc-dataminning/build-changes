@@ -1,71 +1,39 @@
-public abstract class ety {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final erx d;
-   protected final asj e;
+import javax.annotation.Nullable;
 
-   protected ety(erx $$0, asj $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class ety extends eth {
+   private final esw a;
+
+   public ety(esw $$0, ui $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.a() + 2, $$0);
+   @Override
+   protected void b(esy $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.p() + this.k() / 2;
+      int $$5 = this.r() + this.i() / 2;
+      ui $$6 = this.l();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = eyp.a(ac.b());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
-   public void a(erz $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(foi.D(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.a() - ($$2 - 2));
-      int $$8 = this.e.b() - $$7;
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         long $$11 = this.e.a($$7 + $$9);
-         $$5 = Math.min($$5, $$11);
-         $$6 = Math.max($$6, $$11);
-         $$4 += $$11;
-         int $$12 = this.b((double)$$11);
-         int $$13 = this.a($$11);
-         $$0.a(foi.D(), $$10, $$3 - $$12, $$10 + 1, $$3, $$13);
-      }
-
-      $$0.a(foi.D(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(foi.D(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(foi.D(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(foi.D(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$14 = this.a((double)$$5) + " min";
-         String $$15 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$16 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$14, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$15, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$16, $$1 + $$2 - this.d.b($$16) - 2, $$3 - 60 - 9, 14737632);
-      }
-
-      this.a($$0, $$1, $$2, $$3);
+   @Override
+   protected void a(exc $$0) {
    }
 
-   protected void a(erz $$0, int $$1, int $$2, int $$3) {
+   @Override
+   public void a(gem $$0) {
    }
 
-   protected void a(erz $$0, String $$1, int $$2, int $$3) {
-      $$0.a(foi.D(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   @Override
+   public boolean aJ_() {
+      return false;
    }
 
-   protected abstract String a(double var1);
-
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = asb.a($$0, $$1, $$5);
-      return $$0 < $$3 ? arl.b.a((float)($$0 / ($$3 - $$1)), $$2, $$4) : arl.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+   @Nullable
+   @Override
+   public esv a(exi $$0) {
+      return null;
    }
 }

@@ -1,240 +1,398 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fdd {
-   private static final Logger a = LogUtils.getLogger();
-   private final eqp b;
-   private final eca c;
-
-   public fdd(eqp $$0, eca $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public void a(eye $$0, String $$1) {
-      try {
-         this.a($$0, $$1, false, true);
-      } catch (OutOfMemoryError var8) {
-         arz.b();
-         System.gc();
-         String $$3 = "Ran out of memory trying to read level data of world folder \"" + $$1 + "\"";
-         a.error(LogUtils.FATAL_MARKER, $$3);
-         OutOfMemoryError $$4 = new OutOfMemoryError("Ran out of memory reading level data");
-         $$4.initCause(var8);
-         o $$5 = o.a($$4, $$3);
-         p $$6 = $$5.a("World details");
-         $$6.a("World folder", $$1);
-         throw new y($$5);
-      }
-   }
-
-   public void a(String $$0, cqf $$1, dlk $$2, Function<hr, dlh> $$3) {
-      eca.c $$4 = this.a($$0);
-      if ($$4 != null) {
-         anh $$5 = ank.a($$4);
-         cqu $$6 = $$1.g();
-
-         try {
-            aft.d $$7 = new aft.d($$5, $$6, false, false);
-            afu $$8 = this.a($$7, $$3x -> {
-               dlh.b $$4x = $$3.apply($$3x.c()).a($$3x.d().d(jc.aJ));
-               return new aft.b<>(new ece($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
-            }, afu::new);
-            this.b.a($$0, $$4, $$5, $$8, true);
-         } catch (Exception var10) {
-            a.warn("Failed to load datapacks, can't proceed with server load", var10);
-            a($$4, $$0);
-         }
-      }
-   }
-
+public class fdd extends ezd {
+   static final afw a = new afw("icon/checkmark");
+   private static final ui b = ui.c("gui.chatSelection.title");
+   private static final ui c = ui.c("gui.chatSelection.context").a(n.h);
    @Nullable
-   private eca.c a(String $$0) {
-      try {
-         return this.c.d($$0);
-      } catch (IOException var3) {
-         a.warn("Failed to read level {} data", $$0, var3);
-         eur.a(this.b, $$0);
-         this.b.a(null);
-         return null;
-      } catch (egw var4) {
-         a.warn("{}", var4.getMessage());
-         this.b.a(exu.a(null));
-         return null;
+   private final ezd k;
+   private final fku l;
+   private etj m;
+   private euc n;
+   @Nullable
+   private fdd.a o;
+   final fkn.a p;
+   private final Consumer<fkn.a> q;
+   private fdc s;
+
+   public fdd(@Nullable ezd $$0, fku $$1, fkn.a $$2, Consumer<fkn.a> $$3) {
+      super(b);
+      this.k = $$0;
+      this.l = $$1;
+      this.p = $$2.d();
+      this.q = $$3;
+   }
+
+   @Override
+   protected void aM_() {
+      this.s = new fdc(this.l, this::a);
+      this.n = euc.a(this.i, c, this.g - 16);
+      this.o = new fdd.a(this.f, (this.n.a() + 1) * 9);
+      this.e(this.o);
+      this.d(etj.a(uh.k, $$0 -> this.aC_()).a(this.g / 2 - 155, this.h - 32, 150, 20).a());
+      this.m = this.d(etj.a(uh.d, $$0 -> {
+         this.q.accept(this.p);
+         this.aC_();
+      }).a(this.g / 2 - 155 + 160, this.h - 32, 150, 20).a());
+      this.D();
+      this.l();
+      this.o.a((double)this.o.m());
+   }
+
+   private boolean a(fkj $$0) {
+      return $$0.a(this.p.f());
+   }
+
+   private void l() {
+      int $$0 = this.o.e();
+      this.s.a($$0, this.o);
+   }
+
+   @Override
+   void C() {
+      this.l();
+   }
+
+   void D() {
+      this.m.i = !this.p.a().isEmpty();
+   }
+
+   @Override
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.o.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      AbuseReportLimits $$4 = this.l.a().b();
+      int $$5 = this.p.a().size();
+      int $$6 = $$4.maxReportedMessageCount();
+      ui $$7 = ui.a("gui.chatSelection.selected", $$5, $$6);
+      $$0.a(this.i, $$7, this.g / 2, 16 + 9 * 3 / 2, 10526880);
+      this.n.a($$0, this.g / 2, this.o.v());
+   }
+
+   @Override
+   public void b(esy $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public void aC_() {
+      this.f.a(this.k);
+   }
+
+   @Override
+   public ui h() {
+      return uh.a(super.h(), c);
+   }
+
+   public class a extends euf<fdd.a.b> implements fdc.a {
+      @Nullable
+      private fdd.a.c m;
+
+      public a(ero $$1, int $$2) {
+         super($$1, fdd.this.g, fdd.this.h, 40, fdd.this.h - 40 - $$2, 16);
       }
-   }
 
-   public void a(eca.c $$0, afj $$1, hl<afi> $$2, ecg $$3) {
-      anh $$4 = ank.a($$0);
-      anm $$5 = (anm)new aft.d($$4, $$3.F(), false, false).a().getSecond();
-      this.b.a($$0.b(), $$0, $$4, new afu($$5, $$1, $$2, $$3), true);
-   }
-
-   private afu a(eca.c $$0, boolean $$1, anh $$2) throws Exception {
-      aft.d $$3 = this.b($$0, $$1, $$2);
-      return this.a($$3, $$1x -> {
-         DynamicOps<rq> $$2x = aex.a(ri.a, $$1x.c());
-         hq<din> $$3x = $$1x.d().d(jc.aJ);
-         Pair<ecg, dlh.b> $$4 = $$0.a($$2x, $$1x.b(), $$3x, $$1x.c().d());
-         if ($$4 == null) {
-            throw new IllegalStateException("Failed to load world");
-         } else {
-            return new aft.b<>((ecg)$$4.getFirst(), ((dlh.b)$$4.getSecond()).b());
+      @Override
+      public void a(double $$0) {
+         double $$1 = this.l();
+         super.a($$0);
+         if ((float)this.m() > 1.0E-5F && $$0 <= 1.0E-5F && !asy.b($$0, $$1)) {
+            fdd.this.C();
          }
-      }, afu::new);
-   }
-
-   public Pair<cqf, fdb> a(eca.c $$0) throws Exception {
-      anh $$1 = ank.a($$0);
-      aft.d $$2 = this.b($$0, false, $$1);
-
-      record a(cqf a, dlk b, hq<din> c) {
       }
 
-      return this.a($$2, $$1x -> {
-         DynamicOps<rq> $$2x = aex.a(ri.a, $$1x.c());
-         hq<din> $$3 = new hm<>(jc.aJ, Lifecycle.stable()).l();
-         Pair<ecg, dlh.b> $$4 = $$0.a($$2x, $$1x.b(), $$3, $$1x.c().d());
-         if ($$4 == null) {
-            throw new IllegalStateException("Failed to load world");
-         } else {
-            return new aft.b<>(new a(((ecg)$$4.getFirst()).L(), ((ecg)$$4.getFirst()).A(), ((dlh.b)$$4.getSecond()).c()), $$1x.d());
+      @Override
+      public void a(int $$0, fkj.a $$1) {
+         boolean $$2 = $$1.a(fdd.this.p.f());
+         fkh $$3 = $$1.h();
+         erj $$4 = $$3.a($$1.g());
+         fdd.a.b $$5 = new fdd.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
+         this.c($$5);
+         this.a($$1, $$2);
+      }
+
+      private void a(fkj.a $$0, boolean $$1) {
+         fdd.a.b $$2 = new fdd.a.e($$0.f(), $$0.d(), $$1);
+         this.c($$2);
+         fdd.a.c $$3 = new fdd.a.c($$0.e(), $$2);
+         if (this.m != null && this.m.a($$3)) {
+            this.d(this.m.b());
          }
-      }, ($$0x, $$1x, $$2x, $$3) -> {
-         $$0x.close();
-         return Pair.of($$3.a, new fdb($$3.b, new dlh($$3.c), $$2x, $$1x, $$3.a.g()));
-      });
-   }
 
-   private aft.d b(eca.c $$0, boolean $$1, anh $$2) {
-      cqu $$3 = $$0.e();
-      if ($$3 == null) {
-         throw new IllegalStateException("Failed to load data pack config");
-      } else {
-         return new aft.d($$2, $$3, $$1, false);
+         this.m = $$3;
       }
-   }
 
-   public afu a(eca.c $$0, boolean $$1) throws Exception {
-      anh $$2 = ank.a($$0);
-      return this.a($$0, $$1, $$2);
-   }
+      @Override
+      public void a(ui $$0) {
+         this.c(new fdd.a.f());
+         this.c(new fdd.a.a($$0));
+         this.c(new fdd.a.f());
+         this.m = null;
+      }
 
-   private <D, R> R a(aft.d $$0, aft.f<D> $$1, aft.e<D, R> $$2) throws Exception {
-      aft.c $$3 = new aft.c($$0, du.a.c, 2);
-      CompletableFuture<R> $$4 = aft.a($$3, $$1, $$2, ac.f(), this.b);
-      this.b.c($$4::isDone);
-      return $$4.get();
-   }
+      @Override
+      protected int c() {
+         return (this.e + this.b()) / 2;
+      }
 
-   private void a(eye $$0, String $$1, boolean $$2, boolean $$3) {
-      eca.c $$4 = this.a($$1);
-      if ($$4 != null) {
-         anh $$5 = ank.a($$4);
+      @Override
+      public int b() {
+         return Math.min(350, this.e - 50);
+      }
 
-         afu $$6;
-         try {
-            $$6 = this.a($$4, $$2, $$5);
-         } catch (Exception var11) {
-            a.warn("Failed to load level data or datapacks, can't proceed with server load", var11);
-            if (!$$2) {
-               this.b.a(new exd(() -> this.a($$0, $$1, true, $$3)));
+      public int e() {
+         return asy.e(this.h - this.g, this.d);
+      }
+
+      @Override
+      protected void a(esy $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+         fdd.a.b $$9 = this.d($$4);
+         if (this.b($$9)) {
+            boolean $$10 = this.f() == $$9;
+            int $$11 = this.aG_() && $$10 ? -1 : -8355712;
+            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
+         }
+
+         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.r() == $$9, $$3);
+      }
+
+      private boolean b(fdd.a.b $$0) {
+         if ($$0.c()) {
+            boolean $$1 = this.f() == $$0;
+            boolean $$2 = this.f() == null;
+            boolean $$3 = this.r() == $$0;
+            return $$1 || $$2 && $$3 && $$0.e();
+         } else {
+            return false;
+         }
+      }
+
+      @Nullable
+      protected fdd.a.b b(exk $$0) {
+         return this.a($$0, fdd.a.b::c);
+      }
+
+      public void a(@Nullable fdd.a.b $$0) {
+         super.a($$0);
+         fdd.a.b $$1 = this.b(exk.a);
+         if ($$1 == null) {
+            fdd.this.C();
+         }
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         fdd.a.b $$3 = this.f();
+         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+
+      public int v() {
+         return this.h + 9;
+      }
+
+      public class a extends fdd.a.b {
+         private static final int c = -6250336;
+         private final ui d;
+
+         public a(ui $$1) {
+            this.d = $$1;
+         }
+
+         @Override
+         public void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$2 + $$5 / 2;
+            int $$11 = $$3 + $$4 - 8;
+            int $$12 = fdd.this.i.a(this.d);
+            int $$13 = ($$3 + $$11 - $$12) / 2;
+            int $$14 = $$10 - 9 / 2;
+            $$0.b(fdd.this.i, this.d, $$13, $$14, -6250336);
+         }
+
+         @Override
+         public ui a() {
+            return this.d;
+         }
+      }
+
+      public abstract class b extends euf.a<fdd.a.b> {
+         @Override
+         public ui a() {
+            return uh.a;
+         }
+
+         public boolean b() {
+            return false;
+         }
+
+         public boolean c() {
+            return false;
+         }
+
+         public boolean e() {
+            return this.c();
+         }
+      }
+
+      static record c(UUID a, fdd.a.b b) {
+         public boolean a(fdd.a.c $$0) {
+            return $$0.a.equals(this.a);
+         }
+      }
+
+      public class d extends fdd.a.b {
+         private static final int c = 9;
+         private static final int d = 8;
+         private static final int e = 11;
+         private static final int f = 4;
+         private final int g;
+         private final un h;
+         private final ui i;
+         @Nullable
+         private final List<ask> j;
+         @Nullable
+         private final erj.a k;
+         @Nullable
+         private final List<ask> l;
+         private final boolean m;
+         private final boolean n;
+
+         public d(int $$1, ui $$2, ui $$3, @Nullable erj $$4, boolean $$5, boolean $$6) {
+            this.g = $$1;
+            this.k = x.a($$4, erj::f);
+            this.l = $$4 != null && $$4.g() != null ? fdd.this.i.c($$4.g(), a.this.b()) : null;
+            this.m = $$5;
+            this.n = $$6;
+            un $$7 = fdd.this.i.a($$2, this.f() - fdd.this.i.a(uh.t));
+            if ($$2 != $$7) {
+               this.h = un.a($$7, uh.t);
+               this.j = fdd.this.i.c($$2, a.this.b());
             } else {
-               this.b
-                  .a(
-                     new ews(
-                        () -> this.b.a(null), tl.c("datapackFailure.safeMode.failed.title"), tl.c("datapackFailure.safeMode.failed.description"), tk.l, true
-                     )
-                  );
+               this.h = $$2;
+               this.j = null;
             }
 
-            a($$4, $$1);
-            return;
+            this.i = $$3;
          }
 
-         ecg $$9 = $$6.d();
-         boolean $$10 = $$9.A().e();
-         boolean $$11 = $$9.D() != Lifecycle.stable();
-         if (!$$3 || !$$10 && !$$11) {
-            this.b.ac().a($$4).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
-               a.warn("Failed to load pack: ", $$0x);
-               return this.a();
-            }, this.b).thenAcceptAsync($$5x -> {
-               if ($$5x) {
-                  this.b.a($$1, $$4, $$5, $$6, false);
-               } else {
-                  $$6.close();
-                  a($$4, $$1);
-                  this.b.ac().a().thenRunAsync(() -> this.b.a($$0), this.b);
+         @Override
+         public void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            if (this.b() && this.m) {
+               this.a($$0, $$2, $$3, $$5);
+            }
+
+            int $$10 = $$3 + this.g();
+            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fdd.this.i, ro.a().a(this.h), $$10, $$11, this.m ? -1 : -1593835521);
+            if (this.j != null && $$8) {
+               fdd.this.b(this.j);
+            }
+
+            int $$12 = fdd.this.i.a(this.h);
+            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
+         }
+
+         private void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+            if (this.k != null) {
+               int $$6 = $$2 + ($$3 - this.k.d) / 2;
+               this.k.a($$0, $$1, $$6);
+               if (this.l != null && $$4 >= $$1 && $$4 <= $$1 + this.k.c && $$5 >= $$6 && $$5 <= $$6 + this.k.d) {
+                  fdd.this.b(this.l);
                }
-            }, this.b).exceptionally($$0x -> {
-               this.b.a(o.a($$0x, "Load world"));
-               return null;
-            });
-         } else {
-            this.a($$0, $$1, $$10, () -> this.a($$0, $$1, $$2, false));
-            $$6.close();
-            a($$4, $$1);
-         }
-      }
-   }
-
-   private CompletableFuture<Boolean> a() {
-      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
-      this.b.a(new ewy($$0::complete, tl.c("multiplayer.texturePrompt.failure.line1"), tl.c("multiplayer.texturePrompt.failure.line2"), tk.i, tk.e));
-      return $$0;
-   }
-
-   private static void a(eca.c $$0, String $$1) {
-      try {
-         $$0.close();
-      } catch (IOException var3) {
-         a.warn("Failed to unlock access to level {}", $$1, var3);
-      }
-   }
-
-   private void a(eye $$0, String $$1, boolean $$2, Runnable $$3) {
-      tl $$4;
-      tl $$5;
-      if ($$2) {
-         $$4 = tl.c("selectWorld.backupQuestion.customized");
-         $$5 = tl.c("selectWorld.backupWarning.customized");
-      } else {
-         $$4 = tl.c("selectWorld.backupQuestion.experimental");
-         $$5 = tl.c("selectWorld.backupWarning.experimental");
-      }
-
-      this.b.a(new ewt($$0, ($$2x, $$3x) -> {
-         if ($$2x) {
-            fcv.a(this.c, $$1);
+            }
          }
 
-         $$3.run();
-      }, $$4, $$5, false));
-   }
-
-   public static void a(eqp $$0, fct $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
-      BooleanConsumer $$5 = $$3x -> {
-         if ($$3x) {
-            $$3.run();
-         } else {
-            $$0.a($$1);
+         private void a(esy $$0, int $$1, int $$2, int $$3) {
+            int $$5 = $$1 + ($$3 - 8) / 2;
+            RenderSystem.enableBlend();
+            $$0.a(fdd.a, $$2, $$5, 9, 8);
+            RenderSystem.disableBlend();
          }
-      };
-      if ($$4 || $$2 == Lifecycle.stable()) {
-         $$3.run();
-      } else if ($$2 == Lifecycle.experimental()) {
-         $$0.a(new ewy($$5, tl.c("selectWorld.warning.experimental.title"), tl.c("selectWorld.warning.experimental.question")));
-      } else {
-         $$0.a(new ewy($$5, tl.c("selectWorld.warning.deprecated.title"), tl.c("selectWorld.warning.deprecated.question")));
+
+         private int f() {
+            int $$0 = this.k != null ? this.k.c + 4 : 0;
+            return a.this.b() - this.g() - 4 - $$0;
+         }
+
+         private int g() {
+            return this.n ? 11 : 0;
+         }
+
+         @Override
+         public ui a() {
+            return (ui)(this.b() ? ui.a("narrator.select", this.i) : this.i);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(null);
+            return this.h();
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            return exh.a($$0) ? this.h() : false;
+         }
+
+         @Override
+         public boolean b() {
+            return fdd.this.p.b(this.g);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+
+         @Override
+         public boolean e() {
+            return this.m;
+         }
+
+         private boolean h() {
+            if (this.m) {
+               fdd.this.p.a(this.g);
+               fdd.this.D();
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public class e extends fdd.a.b {
+         private static final int c = 12;
+         private final ui d;
+         private final Supplier<gba> e;
+         private final boolean f;
+
+         public e(GameProfile $$1, ui $$2, boolean $$3) {
+            this.d = $$2;
+            this.f = $$3;
+            this.e = a.this.c.al().a($$1);
+         }
+
+         @Override
+         public void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 - 12 - 4;
+            int $$11 = $$2 + ($$5 - 12) / 2;
+            eui.a($$0, this.e.get(), $$10, $$11, 12);
+            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fdd.this.i, this.d, $$3, $$12, this.f ? -1 : -1593835521);
+         }
+      }
+
+      public class f extends fdd.a.b {
+         @Override
+         public void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         }
       }
    }
 }

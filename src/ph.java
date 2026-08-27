@@ -1,95 +1,32 @@
-import java.util.List;
-
 public class ph {
-   public static final aey<dug> a = pg.a("crimson_fungi");
-   public static final aey<dug> b = pg.a("warped_fungi");
-   public static final aey<dug> c = pg.a("oak_checked");
-   public static final aey<dug> d = pg.a("dark_oak_checked");
-   public static final aey<dug> e = pg.a("birch_checked");
-   public static final aey<dug> f = pg.a("acacia_checked");
-   public static final aey<dug> g = pg.a("spruce_checked");
-   public static final aey<dug> h = pg.a("mangrove_checked");
-   public static final aey<dug> i = pg.a("cherry_checked");
-   public static final aey<dug> j = pg.a("pine_on_snow");
-   public static final aey<dug> k = pg.a("spruce_on_snow");
-   public static final aey<dug> l = pg.a("pine_checked");
-   public static final aey<dug> m = pg.a("jungle_tree");
-   public static final aey<dug> n = pg.a("fancy_oak_checked");
-   public static final aey<dug> o = pg.a("mega_jungle_tree_checked");
-   public static final aey<dug> p = pg.a("mega_spruce_checked");
-   public static final aey<dug> q = pg.a("mega_pine_checked");
-   public static final aey<dug> r = pg.a("tall_mangrove_checked");
-   public static final aey<dug> s = pg.a("jungle_bush");
-   public static final aey<dug> t = pg.a("super_birch_bees_0002");
-   public static final aey<dug> u = pg.a("super_birch_bees");
-   public static final aey<dug> v = pg.a("oak_bees_0002");
-   public static final aey<dug> w = pg.a("oak_bees_002");
-   public static final aey<dug> x = pg.a("birch_bees_0002");
-   public static final aey<dug> y = pg.a("birch_bees_002");
-   public static final aey<dug> z = pg.a("fancy_oak_bees_0002");
-   public static final aey<dug> A = pg.a("fancy_oak_bees_002");
-   public static final aey<dug> B = pg.a("fancy_oak_bees");
-   public static final aey<dug> C = pg.a("cherry_bees_005");
+   private static crx a(cry.a $$0) {
+      csj.a $$1 = new csj.a();
+      on.j($$1);
+      return new crx.a().a(false).a(0.5F).b(0.5F).a(new csd.a().b(4159204).c(329011).a(10518688).d(0).a(crv.b).a()).a($$1.a()).a($$0.a()).a();
+   }
 
-   public static void a(nr<dug> $$0) {
-      hf<dnd<?, ?>> $$1 = $$0.a(jc.at);
-      he<dnd<?, ?>> $$2 = $$1.b(ow.a);
-      he<dnd<?, ?>> $$3 = $$1.b(ow.c);
-      he<dnd<?, ?>> $$4 = $$1.b(ow.g);
-      he<dnd<?, ?>> $$5 = $$1.b(ow.h);
-      he<dnd<?, ?>> $$6 = $$1.b(ow.i);
-      he<dnd<?, ?>> $$7 = $$1.b(ow.j);
-      he<dnd<?, ?>> $$8 = $$1.b(ow.k);
-      he<dnd<?, ?>> $$9 = $$1.b(ow.x);
-      he<dnd<?, ?>> $$10 = $$1.b(ow.z);
-      he<dnd<?, ?>> $$11 = $$1.b(ow.l);
-      he<dnd<?, ?>> $$12 = $$1.b(ow.m);
-      he<dnd<?, ?>> $$13 = $$1.b(ow.n);
-      he<dnd<?, ?>> $$14 = $$1.b(ow.p);
-      he<dnd<?, ?>> $$15 = $$1.b(ow.q);
-      he<dnd<?, ?>> $$16 = $$1.b(ow.r);
-      he<dnd<?, ?>> $$17 = $$1.b(ow.y);
-      he<dnd<?, ?>> $$18 = $$1.b(ow.v);
-      he<dnd<?, ?>> $$19 = $$1.b(ow.s);
-      he<dnd<?, ?>> $$20 = $$1.b(ow.t);
-      he<dnd<?, ?>> $$21 = $$1.b(ow.A);
-      he<dnd<?, ?>> $$22 = $$1.b(ow.B);
-      he<dnd<?, ?>> $$23 = $$1.b(ow.D);
-      he<dnd<?, ?>> $$24 = $$1.b(ow.E);
-      he<dnd<?, ?>> $$25 = $$1.b(ow.G);
-      he<dnd<?, ?>> $$26 = $$1.b(ow.H);
-      he<dnd<?, ?>> $$27 = $$1.b(ow.J);
-      he<dnd<?, ?>> $$28 = $$1.b(ow.K);
-      pg.a($$0, a, $$2, dty.a(8), dtu.a());
-      pg.a($$0, b, $$3, dty.a(8), dtu.a());
-      pg.a($$0, c, $$4, pg.a(cte.x));
-      pg.a($$0, d, $$5, pg.a(cte.D));
-      pg.a($$0, e, $$6, pg.a(cte.z));
-      pg.a($$0, f, $$7, pg.a(cte.B));
-      pg.a($$0, g, $$8, pg.a(cte.y));
-      pg.a($$0, h, $$9, pg.a(cte.E));
-      pg.a($$0, i, $$10, pg.a(cte.C));
-      dlt $$29 = dlt.a(ha.a.q(), cte.dP, cte.qC);
-      List<duj> $$30 = List.of(dua.a(ha.b, dlt.a(dlt.a(cte.qC)), 8), dtv.a($$29));
-      pg.a($$0, j, $$11, $$30);
-      pg.a($$0, k, $$8, $$30);
-      pg.a($$0, l, $$11, pg.a(cte.y));
-      pg.a($$0, m, $$12, pg.a(cte.A));
-      pg.a($$0, n, $$13, pg.a(cte.x));
-      pg.a($$0, o, $$14, pg.a(cte.A));
-      pg.a($$0, p, $$15, pg.a(cte.y));
-      pg.a($$0, q, $$16, pg.a(cte.y));
-      pg.a($$0, r, $$17, pg.a(cte.E));
-      pg.a($$0, s, $$18, pg.a(cte.x));
-      pg.a($$0, t, $$19, pg.a(cte.z));
-      pg.a($$0, u, $$20, pg.a(cte.z));
-      pg.a($$0, v, $$21, pg.a(cte.x));
-      pg.a($$0, w, $$22, pg.a(cte.x));
-      pg.a($$0, x, $$23, pg.a(cte.z));
-      pg.a($$0, y, $$24, pg.a(cte.z));
-      pg.a($$0, z, $$25, pg.a(cte.x));
-      pg.a($$0, A, $$26, pg.a(cte.x));
-      pg.a($$0, B, $$27, pg.a(cte.x));
-      pg.a($$0, C, $$28, pg.a(cte.C));
+   public static crx a(ic<dve> $$0, ic<dnn<?>> $$1) {
+      cry.a $$2 = new cry.a($$0, $$1);
+      return a($$2);
+   }
+
+   public static crx b(ic<dve> $$0, ic<dnn<?>> $$1) {
+      cry.a $$2 = new cry.a($$0, $$1).a(dlg.b.e, pz.a);
+      return a($$2);
+   }
+
+   public static crx c(ic<dve> $$0, ic<dnn<?>> $$1) {
+      cry.a $$2 = new cry.a($$0, $$1);
+      return a($$2);
+   }
+
+   public static crx d(ic<dve> $$0, ic<dnn<?>> $$1) {
+      cry.a $$2 = new cry.a($$0, $$1).a(dlg.b.e, pz.b).a(dlg.b.j, pz.c);
+      return a($$2);
+   }
+
+   public static crx e(ic<dve> $$0, ic<dnn<?>> $$1) {
+      cry.a $$2 = new cry.a($$0, $$1).a(dlg.b.a, pz.d);
+      return a($$2);
    }
 }

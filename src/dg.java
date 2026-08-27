@@ -7,7 +7,7 @@ public class dg extends cw<dg.a> {
       return new dg.a($$1, $$3);
    }
 
-   public void a(aku $$0, gw $$1) {
+   public void a(alr $$0, ht $$1) {
       double $$2 = $$0.dq() - (double)$$1.u();
       double $$3 = $$0.dw() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;

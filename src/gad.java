@@ -1,42 +1,44 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class gad implements anq, AutoCloseable {
-   private final fyz a;
-   private final aez b;
-   private final Set<amw<?>> c;
+@FunctionalInterface
+public interface gad {
+   Logger a = LogUtils.getLogger();
 
-   public gad(fzb $$0, aez $$1, aez $$2) {
-      this($$0, $$1, $$2, fyv.a);
+   static gad create(Collection<ant<?>> $$0) {
+      return ($$1, $$2) -> {
+         aov $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         eli $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = eli.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         gbl $$11 = $$3.a(gbl.a).orElse(gbl.e);
+         gbn $$12 = $$11.a($$7.a(), $$7.b());
+         if (asy.c($$7.a(), $$12.a()) && asy.c($$7.b(), $$12.b())) {
+            return new fzu($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   public gad(fzb $$0, aez $$1, aez $$2, Set<amw<?>> $$3) {
-      this.b = $$2;
-      this.a = new fyz($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
-   }
-
-   protected fza a(aez $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public final CompletableFuture<Void> a(anq.a $$0, anw $$1, bdv $$2, bdv $$3, Executor $$4, Executor $$5) {
-      return fyv.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(fyv.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(fyv.a $$0, bdv $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
-   }
-
-   @Override
-   public void close() {
-      this.a.f();
-   }
+   @Nullable
+   fzu loadSprite(afw var1, aor var2);
 }

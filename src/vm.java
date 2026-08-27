@@ -1,57 +1,70 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class vm implements ve<vh> {
-   public static final int a = 40;
-   private final String b;
+public class vm implements uj {
+   public static final MapCodec<vm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, vm::new)
+   );
+   public static final uj.a<vm> b = new uj.a<>(a, "keybind");
    private final String c;
-   private final boolean d;
    @Nullable
-   private final tl e;
+   private Supplier<ui> d;
 
-   public vm(String $$0, String $$1, boolean $$2, @Nullable tl $$3) {
-      if ($$1.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + $$1.length() + ")");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
+   public vm(String $$0) {
+      this.c = $$0;
    }
 
-   public vm(so $$0) {
-      this.b = $$0.s();
-      this.c = $$0.d(40);
-      this.d = $$0.readBoolean();
-      this.e = $$0.c(so::m);
+   private ui c() {
+      if (this.d == null) {
+         this.d = vn.a.apply(this.c);
+      }
+
+      return this.d.get();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, so::a);
+   public <T> Optional<T> a(un.a<T> $$0) {
+      return this.c().a($$0);
    }
 
-   public void a(vh $$0) {
-      $$0.a(this);
+   @Override
+   public <T> Optional<T> a(un.b<T> $$0, vf $$1) {
+      return this.c().a($$0, $$1);
    }
 
-   public String a() {
-      return this.b;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof vm $$1 && this.c.equals($$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public String d() {
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "keybind{" + this.c + "}";
+   }
+
+   public String b() {
       return this.c;
    }
 
-   public boolean e() {
-      return this.d;
-   }
-
-   @Nullable
-   public tl f() {
-      return this.e;
+   @Override
+   public uj.a<?> a() {
+      return b;
    }
 }

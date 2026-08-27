@@ -1,53 +1,79 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ehv extends AbstractDoubleList implements eht {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
+public class ehv {
+   private final PathMatcher a;
 
-   protected ehv(DoubleList $$0, DoubleList $$1, boolean $$2) {
+   public ehv(PathMatcher $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   @Override
-   public int size() {
-      return this.a.size() + this.b.size();
+   public void a(Path $$0, List<ehw> $$1) throws IOException {
+      Path $$2 = Files.readSymbolicLink($$0);
+      if (!this.a.matches($$2)) {
+         $$1.add(new ehw($$0, $$2));
+      }
    }
 
-   @Override
-   public boolean a(eht.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   public List<ehw> a(Path $$0) throws IOException {
+      List<ehw> $$1 = new ArrayList<>();
+      this.a($$0, $$1);
+      return $$1;
    }
 
-   private boolean b(eht.a $$0) {
-      int $$1 = this.a.size();
+   public List<ehw> a(Path $$0, boolean $$1) throws IOException {
+      List<ehw> $$2 = new ArrayList<>();
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return $$2;
       }
 
-      int $$3 = this.b.size() - 1;
+      if ($$3.isRegularFile()) {
+         throw new IOException("Path " + $$0 + " is not a directory");
+      } else {
+         if ($$3.isSymbolicLink()) {
+            if (!$$1) {
+               this.a($$0, $$2);
+               return $$2;
+            }
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
+            $$0 = Files.readSymbolicLink($$0);
          }
+
+         this.b($$0, $$2);
+         return $$2;
       }
-
-      return true;
    }
 
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
+   public void b(Path $$0, final List<ehw> $$1) throws IOException {
+      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            if ($$1.isSymbolicLink()) {
+               ehv.this.a($$0, $$1);
+            }
+         }
 
-   @Override
-   public DoubleList a() {
-      return this;
+         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.preVisitDirectory($$0, $$1);
+         }
+
+         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.visitFile($$0, $$1);
+         }
+      });
    }
 }

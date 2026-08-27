@@ -1,11 +1,11 @@
-public class coj extends cnu {
-   public coj(cnu.a $$0, bjb... $$1) {
-      super($$0, cnv.b, $$1);
+public class coj extends cot {
+   public coj(cot.a $$0, bjy... $$1) {
+      super($$0, cou.k, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 1 + ($$0 - 1) * 10;
    }
 
    @Override
@@ -14,22 +14,7 @@ public class coj extends cnu {
    }
 
    @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
-   }
-
-   @Override
    public int a() {
-      return 3;
+      return 5;
    }
 }

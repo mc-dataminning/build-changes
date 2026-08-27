@@ -1,22 +1,14 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public abstract class aon<T> {
-   @Nullable
-   private final T a;
+public interface aon {
+   CompletableFuture<Void> a(aon.a var1, aot var2, bes var3, bes var4, Executor var5, Executor var6);
 
-   public aon(@Nullable T $$0) {
-      this.a = $$0;
+   default String c() {
+      return this.getClass().getSimpleName();
    }
 
-   @Nullable
-   T g() {
-      return this.a;
+   public interface a {
+      <T> CompletableFuture<T> a(T var1);
    }
-
-   boolean f() {
-      return false;
-   }
-
-   protected abstract void a(JsonObject var1);
 }

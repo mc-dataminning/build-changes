@@ -1,55 +1,117 @@
-public class fmu extends fmq {
-   private final fml a;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   fmu(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fml $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$7;
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.b($$7);
-      this.u = 0.0F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-   }
-
-   @Override
-   public flu b() {
-      return flu.b;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      int $$0 = 60 - this.t;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         float $$1 = (float)$$0 * 0.001F;
-         this.b($$1, $$1);
-         this.a(this.a.a($$0 % 4, 4));
-      }
-   }
-
-   public static class a implements flt<iy> {
-      private final fml a;
-
-      public a(fml $$0) {
-         this.a = $$0;
+public interface fmu {
+   fmu a = new fmu() {
+      @Override
+      public void a(emc $$0, gab $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, fzz.e);
+         $$0.a(emm.b.h, emf.l);
       }
 
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fmu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      @Override
+      public void a(emj $$0) {
+         $$0.b();
       }
-   }
+
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   fmu b = new fmu() {
+      @Override
+      public void a(emc $$0, gab $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(fou::u);
+         RenderSystem.setShaderTexture(0, fzz.f);
+         $$0.a(emm.b.h, emf.l);
+      }
+
+      @Override
+      public void a(emj $$0) {
+         $$0.b();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   fmu c = new fmu() {
+      @Override
+      public void a(emc $$0, gab $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, fzz.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         $$0.a(emm.b.h, emf.l);
+      }
+
+      @Override
+      public void a(emj $$0) {
+         $$0.b();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   fmu d = new fmu() {
+      @Override
+      public void a(emc $$0, gab $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, fzz.f);
+         $$0.a(emm.b.h, emf.l);
+      }
+
+      @Override
+      public void a(emj $$0) {
+         $$0.b();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
+      }
+   };
+   fmu e = new fmu() {
+      @Override
+      public void a(emc $$0, gab $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+      }
+
+      @Override
+      public void a(emj $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   fmu f = new fmu() {
+      @Override
+      public void a(emc $$0, gab $$1) {
+      }
+
+      @Override
+      public void a(emj $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   void a(emc var1, gab var2);
+
+   void a(emj var1);
 }

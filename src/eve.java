@@ -1,13 +1,58 @@
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public class eve extends evd {
-   public static final eve a = new eve();
+public interface eve extends eut {
+   long r = 250L;
 
-   public eve() {
-      super(evb.b(new aez("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   default void e(double $$0, double $$1) {
    }
 
-   @Override
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, eln $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
+   }
+
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean b(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
+   }
+
+   @Nullable
+   default esv a(exi $$0) {
+      return null;
+   }
+
+   default boolean a_(double $$0, double $$1) {
+      return false;
+   }
+
+   void b_(boolean var1);
+
+   boolean aG_();
+
+   @Nullable
+   default esv aK_() {
+      return this.aG_() ? esv.a(this) : null;
+   }
+
+   default exm s() {
+      return exm.a();
    }
 }

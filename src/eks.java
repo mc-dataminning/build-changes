@@ -1,95 +1,94 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class eks {
-   public void a(float $$0) {
+   private final List<ConcurrentLinkedQueue<ekr>> a = ImmutableList.of(
+      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
+   );
+   private volatile boolean b;
+   private volatile int c;
+   private volatile boolean d;
+   private volatile int e;
+   private volatile int f;
+
+   public eks() {
+      this.c = this.e = this.f + 1;
    }
 
-   public void a(float $$0, float $$1) {
+   public boolean a() {
+      return !this.b && this.c == this.e;
    }
 
-   public void a(float $$0, float $$1, float $$2) {
+   public boolean b() {
+      if (this.b) {
+         throw new RuntimeException("ALREADY RECORDING !!!");
+      } else if (this.a()) {
+         this.c = (this.e + 1) % this.a.size();
+         this.b = true;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
+   public void a(ekr $$0) {
+      if (!this.b) {
+         throw new RuntimeException("NOT RECORDING !!!");
+      } else {
+         ConcurrentLinkedQueue<ekr> $$1 = this.i();
+         $$1.add($$0);
+      }
    }
 
-   public void b(float $$0, float $$1, float $$2, float $$3) {
+   public void c() {
+      if (this.b) {
+         this.b = false;
+      } else {
+         throw new RuntimeException("NOT RECORDING !!!");
+      }
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
+   public boolean d() {
+      return !this.d && this.c != this.e;
    }
 
-   public void a(int $$0) {
+   public boolean e() {
+      if (this.d) {
+         throw new RuntimeException("ALREADY PROCESSING !!!");
+      } else if (this.d()) {
+         this.d = true;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public void a(int $$0, int $$1) {
+   public void f() {
+      if (!this.d) {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
    }
 
-   public void a(int $$0, int $$1, int $$2) {
+   public void g() {
+      if (this.d) {
+         this.d = false;
+         this.f = this.e;
+         this.e = this.c;
+      } else {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
    }
 
-   public void b(int $$0, int $$1, int $$2, int $$3) {
+   public ConcurrentLinkedQueue<ekr> h() {
+      return this.a.get(this.f);
    }
 
-   public void a(float[] $$0) {
+   public ConcurrentLinkedQueue<ekr> i() {
+      return this.a.get(this.c);
    }
 
-   public void a(Vector3f $$0) {
-   }
-
-   public void a(Vector4f $$0) {
-   }
-
-   public void c(float $$0, float $$1, float $$2, float $$3) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-   }
-
-   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-   }
-
-   public void a(
-      float $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-   }
-
-   public void a(Matrix4f $$0) {
-   }
-
-   public void a(Matrix3f $$0) {
+   public ConcurrentLinkedQueue<ekr> j() {
+      return this.a.get(this.e);
    }
 }

@@ -1,33 +1,37 @@
-import com.google.gson.JsonObject;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 public class atf {
-   private static final String a = a("");
+   public static final Codec<atf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(asg.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), asg.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, atf::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<afw> f;
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
-      String $$2 = a($$1);
-      return new Dynamic($$0, $$0.createString($$2));
+   private atf(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
    }
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      return new Dynamic($$0, $$0.createString(a));
+   public Predicate<String> a() {
+      return this.c;
    }
 
-   private static String a(String $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("text", $$0);
-      return arr.e($$1);
+   public Predicate<String> b() {
+      return this.e;
    }
 
-   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("translate", $$1);
-      return new Dynamic($$0, $$0.createString(arr.e($$2)));
-   }
-
-   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
+   public Predicate<afw> c() {
+      return this.f;
    }
 }

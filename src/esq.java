@@ -1,193 +1,164 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
 
-public abstract class esq<E extends esq.a<E>> extends esf<E> {
-   public esq(eqp $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public class esq {
+   private static final int a = 256;
+   private final ThreadLocal<esq.b> b = ThreadLocal.withInitial(esq.b::new);
+   private final Long2ObjectLinkedOpenHashMap<esq.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<ht> e;
+
+   public esq(ToIntFunction<ht> $$0) {
+      this.e = $$0;
    }
 
-   @Nullable
-   @Override
-   public erw a(ewj $$0) {
-      if (this.k() == 0) {
-         return null;
-      } else if (!($$0 instanceof ewj.a $$1)) {
-         return super.a($$0);
-      } else {
-         E $$2 = this.h();
-         if ($$1.b().a() == ewk.a && $$2 != null) {
-            return erw.a(this, $$2.a($$0));
-         } else {
-            int $$3 = -1;
-            ewl $$4 = $$1.b();
-            if ($$2 != null) {
-               $$3 = $$2.i().indexOf($$2.t());
-            }
+   public int a(ht $$0) {
+      int $$1 = iu.a($$0.u());
+      int $$2 = iu.a($$0.w());
+      esq.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
+      }
 
-            if ($$3 == -1) {
-               switch ($$4) {
-                  case c:
-                     $$3 = Integer.MAX_VALUE;
-                     $$4 = ewl.b;
-                     break;
-                  case d:
-                     $$3 = 0;
-                     $$4 = ewl.b;
-                     break;
-                  default:
-                     $$3 = 0;
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
+      } else {
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
+      }
+   }
+
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
+
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = cqg.c($$0 + $$2, $$1 + $$3);
+               esq.a $$5 = (esq.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
                }
             }
-
-            E $$5 = $$2;
-
-            erw $$6;
-            do {
-               $$5 = this.a($$4, $$0x -> !$$0x.i().isEmpty(), $$5);
-               if ($$5 == null) {
-                  return null;
-               }
-
-               $$6 = $$5.a($$1, $$3);
-            } while ($$6 == null);
-
-            return erw.a(this, $$6);
          }
+      } finally {
+         this.d.writeLock().unlock();
       }
    }
 
-   @Override
-   public void a(@Nullable euf $$0) {
-      super.a($$0);
-      if ($$0 == null) {
-         this.a(null);
+   public void a() {
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(esq.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
       }
    }
 
-   @Override
-   public ewb.a q() {
-      return this.aC_() ? ewb.a.c : super.q();
-   }
+   private esq.a b(int $$0, int $$1) {
+      long $$2 = cqg.c($$0, $$1);
+      this.d.readLock().lock();
 
-   @Override
-   protected boolean e(int $$0) {
-      return false;
-   }
-
-   @Override
-   public void b(ewd $$0) {
-      E $$1 = this.r();
-      if ($$1 != null) {
-         $$1.a($$0.a());
-         this.a($$0, $$1);
-      } else {
-         E $$2 = this.h();
-         if ($$2 != null) {
-            $$2.a($$0.a());
-            this.a($$0, $$2);
+      try {
+         esq.a $$3 = (esq.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
          }
+      } finally {
+         this.d.readLock().unlock();
       }
 
-      $$0.a(ewc.d, tl.c("narration.component_list.usage"));
-   }
+      this.d.writeLock().lock();
 
-   public abstract static class a<E extends esq.a<E>> extends esf.a<E> implements eue {
-      @Nullable
-      private euf a;
-      @Nullable
-      private ewb b;
-      private boolean c;
-
-      @Override
-      public boolean aB_() {
-         return this.c;
-      }
-
-      @Override
-      public void b(boolean $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return eue.super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(@Nullable euf $$0) {
-         if (this.a != null) {
-            this.a.b_(false);
-         }
-
-         if ($$0 != null) {
-            $$0.b_(true);
-         }
-
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public euf t() {
-         return this.a;
-      }
-
-      @Nullable
-      public erw a(ewj $$0, int $$1) {
-         if (this.i().isEmpty()) {
-            return null;
-         } else {
-            erw $$2 = this.i().get(Math.min($$1, this.i().size() - 1)).a($$0);
-            return erw.a(this, $$2);
-         }
-      }
-
-      @Nullable
-      @Override
-      public erw a(ewj $$0) {
-         if ($$0 instanceof ewj.a $$1) {
-            int $$2 = switch ($$1.b()) {
-               case c -> -1;
-               case d -> 1;
-               case a, b -> 0;
-            };
-            if ($$2 == 0) {
-               return null;
-            }
-
-            int $$3 = asb.a($$2 + this.i().indexOf(this.t()), 0, this.i().size() - 1);
-
-            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.i().size(); $$4 += $$2) {
-               euf $$5 = this.i().get($$4);
-               erw $$6 = $$5.a($$0);
+      esq.a $$5;
+      try {
+         esq.a $$4 = (esq.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new esq.a();
+            if (this.c.size() >= 256) {
+               esq.a $$6 = (esq.a)this.c.removeFirst();
                if ($$6 != null) {
-                  return erw.a(this, $$6);
+                  $$6.b();
                }
             }
+
+            this.c.put($$2, $$5);
+            return $$5;
          }
 
-         return eue.super.a($$0);
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
       }
 
-      public abstract List<? extends ewb> b();
+      return $$5;
+   }
 
-      void a(ewd $$0) {
-         List<? extends ewb> $$1 = this.b();
-         eye.b $$2 = eye.a($$1, this.b);
-         if ($$2 != null) {
-            if ($$2.c.a()) {
-               this.b = $$2.a;
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = asy.h(16);
+      private volatile boolean d;
+
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
             }
-
-            if ($$1.size() > 1) {
-               $$0.a(ewc.b, tl.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
-               if ($$2.c == ewb.a.c) {
-                  $$0.a(ewc.d, tl.c("narration.component_list.usage"));
-               }
-            }
-
-            $$2.a.b($$0.a());
+         } finally {
+            this.b.readLock().unlock();
          }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
+      }
+
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
+         return $$0;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
+      }
+   }
+
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      esq.a c;
+
+      private b() {
       }
    }
 }

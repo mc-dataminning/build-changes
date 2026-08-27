@@ -1,33 +1,31 @@
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record wd(int b, gw c, List<wd.a> d) implements vx {
-   public static final aez a = new aez("debug/goal_selector");
+public class wd {
+   private static final Logger a = LogUtils.getLogger();
 
-   public wd(so $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(wd.a::new));
+   public static <T extends tr> void a(wb<T> $$0, T $$1, alq $$2) throws agh {
+      a($$0, $$1, $$2.n());
    }
 
-   @Override
-   public void a(so $$0) {
-      $$0.p(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
-   }
+   public static <T extends tr> void a(wb<T> $$0, T $$1, bgr<?> $$2) throws agh {
+      if (!$$2.bl()) {
+         $$2.c(() -> {
+            if ($$1.a($$0)) {
+               try {
+                  $$0.a($$1);
+               } catch (Exception var4) {
+                  if (var4 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
+                     throw var4;
+                  }
 
-   @Override
-   public aez a() {
-      return a;
-   }
-
-   public static record a(int a, boolean b, String c) {
-      public a(so $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
-      }
-
-      public void a(so $$0) {
-         $$0.p(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
+                  a.error("Failed to handle packet {}, suppressing error", $$0, var4);
+               }
+            } else {
+               a.debug("Ignoring packet due to disconnection: {}", $$0);
+            }
+         });
+         throw agh.a;
       }
    }
 }

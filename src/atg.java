@@ -1,76 +1,41 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+public class atg {
+   public static final int a = 240;
+   private final long[] b = new long[240];
+   private int c;
+   private int d;
 
-public enum atg {
-   a(azd.a),
-   b(azd.b),
-   c(azd.c),
-   d(azd.d),
-   e(azd.e),
-   f(azd.f),
-   g(azd.g),
-   h(azd.h),
-   i(azd.i),
-   j(azd.j),
-   k(azd.k),
-   l(azd.l),
-   m(azd.m),
-   n(azd.o),
-   o(azd.n),
-   p(azd.p),
-   q(azd.q),
-   r(azd.I),
-   s(azd.r);
-
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private atg(TypeReference $$0) {
-      this.u = $$0;
+   public void a(long $$0) {
+      int $$1 = this.b(this.c + this.d);
+      this.b[$$1] = $$0;
+      if (this.d < 240) {
+         this.d++;
+      } else {
+         this.c = this.b(this.c + 1);
+      }
    }
 
-   static int a() {
-      return aa.b().d().c();
+   public int a() {
+      return this.b.length;
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(atg.a())));
-         }
-
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = atg.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
-         }
-      };
+   public int b() {
+      return this.d;
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
+   public long a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.d) {
+         return this.b[this.b(this.c + $$0)];
+      } else {
+         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.d);
+      }
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
+   private int b(int $$0) {
+      return $$0 % 240;
    }
 
-   public qw a(DataFixer $$0, qw $$1, int $$2, int $$3) {
-      return (qw)this.a($$0, new Dynamic(ri.a, $$1), $$2, $$3).getValue();
-   }
-
-   public qw a(DataFixer $$0, qw $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+   public void c() {
+      this.c = 0;
+      this.d = 0;
    }
 }

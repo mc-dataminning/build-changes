@@ -1,94 +1,86 @@
-import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class brg extends bqh {
-   private final bjo a;
-   private final bzs b;
+public class brg extends bsb {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
+
+   public brg(bks $$0, double $$1) {
+      super($$0, $$1, 240, false);
+   }
+
    @Nullable
-   private bjm c;
-   private int d = -1;
-   private final double e;
-   private int f;
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-
-   public brg(bzs $$0, double $$1, int $$2, float $$3) {
-      this($$0, $$1, $$2, $$2, $$3);
-   }
-
-   public brg(bzs $$0, double $$1, int $$2, int $$3, float $$4) {
-      if (!($$0 instanceof bjm)) {
-         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+   @Override
+   protected eif h() {
+      float $$0 = this.b.dL().z.i();
+      if (this.b.dL().z.i() < 0.3F) {
+         return this.k();
       } else {
-         this.b = $$0;
-         this.a = (bjo)$$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-         this.j = $$4 * $$4;
-         this.a(EnumSet.of(bqh.a.a, bqh.a.b));
-      }
-   }
-
-   @Override
-   public boolean a() {
-      bjm $$0 = this.a.q();
-      if ($$0 != null && $$0.bv()) {
-         this.c = $$0;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return this.a() || this.c.bv() && !this.a.L().l();
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-      this.f = 0;
-      this.d = -1;
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      double $$0 = this.a.i(this.c.dq(), this.c.ds(), this.c.dw());
-      boolean $$1 = this.a.M().a(this.c);
-      if ($$1) {
-         this.f++;
-      } else {
-         this.f = 0;
-      }
-
-      if (!($$0 > (double)this.j) && this.f >= 5) {
-         this.a.L().n();
-      } else {
-         this.a.L().a(this.c, this.e);
-      }
-
-      this.a.G().a(this.c, 30.0F, 30.0F);
-      if (--this.d == 0) {
-         if (!$$1) {
-            return;
+         eif $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
+         } else {
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
+            }
          }
 
-         float $$2 = (float)Math.sqrt($$0) / this.i;
-         float $$3 = asb.a($$2, 0.1F, 1.0F);
-         this.b.a(this.c, $$3);
-         this.d = asb.d($$2 * (float)(this.h - this.g) + (float)this.g);
-      } else if (this.d < 0) {
-         this.d = asb.a(asb.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
+         return $$1 == null ? this.k() : $$1;
       }
+   }
+
+   @Nullable
+   private eif k() {
+      return bvc.a(this.b, 10, 7);
+   }
+
+   @Nullable
+   private eif l() {
+      alq $$0 = (alq)this.b.dL();
+      List<cck> $$1 = $$0.a(bjx.bf, this.b.cG().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         cck $$2 = $$1.get(this.b.dL().z.a($$1.size()));
+         eif $$3 = $$2.dj();
+         return bvc.a(this.b, 10, 7, $$3);
+      }
+   }
+
+   @Nullable
+   private eif m() {
+      iu $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         ht $$1 = this.a($$0);
+         return $$1 == null ? null : bvc.a(this.b, 10, 7, eif.c($$1));
+      }
+   }
+
+   @Nullable
+   private iu n() {
+      alq $$0 = (alq)this.b.dL();
+      List<iu> $$1 = iu.a(iu.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
+   }
+
+   @Nullable
+   private ht a(iu $$0) {
+      alq $$1 = (alq)this.b.dL();
+      bvi $$2 = $$1.w();
+      List<ht> $$3 = $$2.c($$0x -> true, $$0.q(), 8, bvi.b.b).map(bvj::f).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
+   }
+
+   private boolean a(cck $$0) {
+      return $$0.a(this.b.dL().V());
    }
 }

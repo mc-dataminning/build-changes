@@ -1,19 +1,24 @@
-public record wh(gw b, String c, int d) implements vx {
-   public static final aez a = new aez("debug/poi_added");
+public class wh implements wb<we> {
+   private final long a;
 
-   public wh(so $$0) {
-      this($$0.e(), $$0.s(), $$0.readInt());
+   public wh(long $$0) {
+      this.a = $$0;
+   }
+
+   public wh(tl $$0) {
+      this.a = $$0.readLong();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.p(this.d);
+   public void a(tl $$0) {
+      $$0.b(this.a);
    }
 
-   @Override
-   public aez a() {
-      return a;
+   public void a(we $$0) {
+      $$0.a(this);
+   }
+
+   public long a() {
+      return this.a;
    }
 }

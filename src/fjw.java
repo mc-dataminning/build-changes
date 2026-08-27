@@ -1,75 +1,68 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.List;
 
-public class fjw extends fjr {
-   final Supplier<gaa> f;
+public class fjw extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final fld b;
+   private final fjw.a c;
 
-   fjw(UUID $$0, Instant $$1, UUID $$2, Supplier<gaa> $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public fjw(fld $$0, fjw.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public Supplier<gaa> a() {
-      return this.f;
-   }
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
 
-   public fjw c() {
-      fjw $$0 = new fjw(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
-   }
-
-   @Override
-   public eye a(eye $$0, fjv $$1) {
-      return new fci($$0, $$1, this);
-   }
-
-   public static class a extends fjr.a<fjw> {
-      public a(fjw $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         ami.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         ami.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
       }
+   }
 
-      public a(UUID $$0, Supplier<gaa> $$1, AbuseReportLimits $$2) {
-         super(new fjw(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
-      }
-
-      @Nullable
-      @Override
-      public fjr.b c() {
-         if (this.a.e == null) {
-            return fjr.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fjr.b.d : null;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = ami.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = asy.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = asy.a($$4.get(4), -1);
+            int $$9 = asy.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
          }
       }
 
-      @Override
-      public Either<fjr.c, fjr.b> a(fjv $$0) {
-         fjr.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            gaa $$4 = this.a.f.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new fjr.c(this.a.a, fju.b, $$6));
-         }
-      }
+      $$0.close();
+   }
+
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

@@ -1,86 +1,33 @@
-import com.google.gson.JsonElement;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
-public class ll {
-   public static final ll.a a = a(lj::a, li.c);
-   public static final ll.a b = a(lj::a, li.d);
-   public static final ll.a c = a(lj::k, li.i);
-   public static final ll.a d = a(lj::k, li.j);
-   public static final ll.a e = a(lj::q, li.m);
-   public static final ll.a f = a(lj::l, li.l);
-   public static final ll.a g = a(lj::B, li.n);
-   public static final ll.a h = a(lj::A, li.o);
-   public static final ll.a i = a(lj::f, li.au);
-   public static final ll.a j = a(lj::g, li.av);
-   public static final ll.a k = a(lj::g, li.aw);
-   public static final ll.a l = a(lj::g, li.ax);
-   public static final ll.a m = a(lj::g, li.ay);
-   public static final ll.a n = a(lj::i, li.aB);
-   public static final ll.a o = a(lj::j, li.az);
-   public static final ll.a p = a(lj::u, li.Y);
-   public static final ll.a q = a(lj::D, li.aQ);
-   public static final ll.a r = a(lj::a, li.ab);
-   public static final ll.a s = a(lj::x, li.bb);
-   public static final ll.a t = a(lj::x, li.bc);
-   public static final ll.a u = a(lj::b, li.bi);
-   public static final ll.a v = a(lj::n, li.i);
-   public static final ll.a w = a(lj::n, li.j);
-   public static final ll.a x = a(lj::r, li.m);
-   public static final ll.a y = a(lj::s, li.i);
-   private final lj z;
-   private final lh A;
-
-   private ll(lj $$0, lh $$1) {
-      this.z = $$0;
-      this.A = $$1;
-   }
-
-   public lh a() {
-      return this.A;
-   }
-
-   public lj b() {
-      return this.z;
-   }
-
-   public ll a(Consumer<lj> $$0) {
-      $$0.accept(this.z);
-      return this;
-   }
-
-   public aez a(ctc $$0, BiConsumer<aez, Supplier<JsonElement>> $$1) {
-      return this.A.a($$0, this.z, $$1);
-   }
-
-   public aez a(ctc $$0, String $$1, BiConsumer<aez, Supplier<JsonElement>> $$2) {
-      return this.A.a($$0, $$1, this.z, $$2);
-   }
-
-   private static ll.a a(Function<ctc, lj> $$0, lh $$1) {
-      return $$2 -> new ll($$0.apply($$2), $$1);
-   }
-
-   public static ll a(aez $$0) {
-      return new ll(lj.b($$0), li.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      ll get(ctc var1);
-
-      default aez create(ctc $$0, BiConsumer<aez, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
-
-      default aez createWithSuffix(ctc $$0, String $$1, BiConsumer<aez, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
-
-      default ll.a updateTexture(Consumer<lj> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+public class ll implements la {
+   @Override
+   public void generate(BiConsumer<afw, edq.a> $$0) {
+      $$0.accept(
+         edg.aB,
+         edq.b()
+            .a(
+               edp.a()
+                  .a(eha.a(1.0F))
+                  .a(edy.a(ckm.qb).a(5).a(new een.a().a(cox.l)))
+                  .a(edy.a(ckm.oV).a(8).a(new een.a().a(cox.l)))
+                  .a(edy.a(ckm.rv).a(8).a(efl.a(cmj.n)))
+                  .a(edy.a(ckm.uu).a(8).a(efl.a(cmj.n)))
+                  .a(edy.a(ckm.rv).a(10).a(efl.a(cmj.c)))
+                  .a(edy.a(ckm.uB).a(10).a(efg.a(ehf.a(10.0F, 36.0F))))
+                  .a(edy.a(ckm.rq).a(10).a(efg.a(ehf.a(2.0F, 4.0F))))
+                  .a(edy.a(ckm.oE).a(20).a(efg.a(ehf.a(3.0F, 9.0F))))
+                  .a(edy.a(ckm.nN).a(20).a(efg.a(ehf.a(5.0F, 12.0F))))
+                  .a(edy.a(ckm.ei).a(40))
+                  .a(edy.a(ckm.vG).a(40).a(efg.a(ehf.a(1.0F, 3.0F))))
+                  .a(edy.a(ckm.tf).a(40))
+                  .a(edy.a(ckm.pP).a(40).a(efg.a(ehf.a(2.0F, 4.0F))))
+                  .a(edy.a(ckm.eS).a(40).a(efg.a(ehf.a(2.0F, 8.0F))))
+                  .a(edy.a(ckm.tD).a(40).a(efg.a(ehf.a(2.0F, 8.0F))))
+                  .a(edy.a(ckm.uv).a(40).a(efg.a(ehf.a(6.0F, 12.0F))))
+                  .a(edy.a(ckm.W).a(40).a(efg.a(ehf.a(8.0F, 16.0F))))
+                  .a(edy.a(ckm.vH).a(40).a(efg.a(ehf.a(8.0F, 16.0F))))
+            )
+      );
    }
 }

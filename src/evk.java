@@ -1,28 +1,9 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.function.Consumer;
 
-public enum evk implements asu {
-   a("bitmap", evi.a.a),
-   b("ttf", evm.a),
-   c("space", ejo.a.a),
-   d("unihex", evn.b.a),
-   e("reference", evl.a);
+public interface evk {
+   ui a();
 
-   public static final Codec<evk> f = asu.a(evk::values);
-   private final String g;
-   private final MapCodec<? extends evj> h;
+   void a(Consumer<eth> var1);
 
-   private evk(String $$0, MapCodec<? extends evj> $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   @Override
-   public String c() {
-      return this.g;
-   }
-
-   public MapCodec<? extends evj> a() {
-      return this.h;
-   }
+   void a(exm var1);
 }

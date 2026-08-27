@@ -1,29 +1,24 @@
-public class abo implements ve<abd> {
-   private final abo.a a;
-
-   public abo(abo.a $$0) {
-      this.a = $$0;
-   }
-
-   public abo(so $$0) {
-      this.a = $$0.b(abo.a.class);
+public record abo(ui a, boolean b) implements wb<xu> {
+   public abo(tl $$0) {
+      this($$0.m(), $$0.readBoolean());
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(tl $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(abd $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public abo.a a() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean d() {
+      return this.b;
    }
 }

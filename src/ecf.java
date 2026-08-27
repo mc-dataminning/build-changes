@@ -1,66 +1,23 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public class ecf implements ecg {
+   private final cqz b;
 
-public interface ecf extends ech {
-   @Override
-   String g();
-
-   void a(boolean var1);
-
-   int l();
-
-   void f(int var1);
-
-   void e(int var1);
-
-   int j();
-
-   @Override
-   default void a(p $$0, cqd $$1) {
-      ech.super.a($$0, $$1);
-      $$0.a("Level name", this::g);
-      $$0.a(
-         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
+   public ecf(cqz $$0) {
+      this.b = $$0;
    }
 
-   int h();
+   @Override
+   public void a(hx $$0, dgb $$1, ht $$2, ht $$3, int $$4, int $$5) {
+      ecg.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   }
 
-   void a(int var1);
+   @Override
+   public void a(ht $$0, cua $$1, ht $$2) {
+      dgb $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
+   }
 
-   int v();
-
-   void g(int var1);
-
-   int w();
-
-   void h(int var1);
-
-   @Nullable
-   UUID x();
-
-   void a(UUID var1);
-
-   cpy m();
-
-   void a(dgu.c var1);
-
-   dgu.c r();
-
-   boolean p();
-
-   void c(boolean var1);
-
-   boolean o();
-
-   void a(cpy var1);
-
-   egu<MinecraftServer> u();
-
-   void a(long var1);
-
-   void b(long var1);
+   @Override
+   public void a(dgb $$0, ht $$1, cua $$2, ht $$3, boolean $$4) {
+      ecg.a(this.b, $$0, $$1, $$2, $$3, $$4);
+   }
 }

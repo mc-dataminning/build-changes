@@ -1,23 +1,16 @@
-public enum dgm implements asu {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+public enum dgm implements atr {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
-   private final String f;
+   private final String d;
 
    private dgm(String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.f;
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
    }
 }

@@ -1,84 +1,77 @@
-import java.util.function.LongFunction;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dll extends dkn {
-   private final ash d;
-   private int e;
+public class dll implements dkz {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dlm i = new dlm(this);
 
-   public dll(ash $$0) {
-      super(0L);
-      this.d = $$0;
-   }
-
-   public int l() {
-      return this.e;
-   }
-
-   @Override
-   public ash d() {
-      return this.d.d();
+   public dll(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public dkz e() {
-      return this.d.e();
+   public ate d() {
+      return new dll(this.g());
+   }
+
+   @Override
+   public dlx e() {
+      return new dll.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw atu.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
    }
 
    @Override
    public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dkn $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw atu.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
    }
 
    @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
+   public double k() {
+      return this.i.b();
    }
 
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
+   public static class a implements dlx {
+      private final long a;
 
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static ash a(int $$0, int $$1, long $$2, long $$3) {
-      return ash.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dkn::new),
-      b(dln::new);
-
-      private final LongFunction<ash> c;
-
-      private a(LongFunction<ash> $$0) {
-         this.c = $$0;
+      public a(long $$0) {
+         this.a = $$0;
       }
 
-      public ash a(long $$0) {
-         return this.c.apply($$0);
+      @Override
+      public ate a(int $$0, int $$1, int $$2) {
+         long $$3 = asy.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dll($$4);
+      }
+
+      @Override
+      public ate a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new dll((long)$$1 ^ this.a);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
       }
    }
 }

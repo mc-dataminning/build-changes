@@ -1,55 +1,34 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.regex.Pattern;
 
-public abstract class ang<T> {
-   private final egx a;
+public record ang(List<ang.a> b) {
+   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
+   private static final Codec<ang> d = RecordCodecBuilder.create($$0 -> $$0.group(ang.a.c.listOf().fieldOf("entries").forGetter(ang::a)).apply($$0, ang::new));
+   public static final anu<ang> a = anu.a("overlays", d);
 
-   protected ang(egx $$0) {
-      this.a = $$0;
+   private static DataResult<String> a(String $$0) {
+      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
    }
 
-   @Nullable
-   public T a(Path $$0, List<egy> $$1) throws IOException {
-      Path $$2 = $$0;
-
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return null;
-      }
-
-      if ($$3.isSymbolicLink()) {
-         this.a.a($$0, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
-         }
-
-         $$2 = Files.readSymbolicLink($$0);
-         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      }
-
-      if ($$3.isDirectory()) {
-         this.a.b($$2, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
-         } else {
-            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
-         }
-      } else {
-         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
-      }
+   public List<String> a(int $$0) {
+      return this.b.stream().filter($$1 -> $$1.a($$0)).map(ang.a::b).toList();
    }
 
-   @Nullable
-   protected abstract T d(Path var1) throws IOException;
+   public List<ang.a> a() {
+      return this.b;
+   }
 
-   @Nullable
-   protected abstract T c(Path var1) throws IOException;
+   public static record a(asq<Integer> a, String b) {
+      static final Codec<ang.a> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(asq.a(Codec.INT).fieldOf("formats").forGetter(ang.a::a), asg.<String>a(Codec.STRING, ang::a).fieldOf("directory").forGetter(ang.a::b))
+               .apply($$0, ang.a::new)
+      );
+
+      public boolean a(int $$0) {
+         return this.a.a($$0);
+      }
+   }
 }

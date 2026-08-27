@@ -1,19 +1,17 @@
-public class ftn extends fuj<bzi, ffc<bzi>> {
-   private static final aez a = new aez("textures/entity/ghast/ghast.png");
-   private static final aez i = new aez("textures/entity/ghast/ghast_shooting.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public ftn(ftd.a $$0) {
-      super($$0, new ffc<>($$0.a(fhw.aa)), 1.5F);
+public class ftn<T extends bxs> extends fta<T, ffl<T>> {
+   private static final Map<bjx<?>, afw> a = Maps.newHashMap(
+      ImmutableMap.of(bjx.w, new afw("textures/entity/horse/donkey.png"), bjx.ap, new afw("textures/entity/horse/mule.png"))
+   );
+
+   public ftn(fud.a $$0, float $$1, fiu $$2) {
+      super($$0, new ffl<>($$0.a($$2)), $$1);
    }
 
-   public aez a(bzi $$0) {
-      return $$0.s() ? i : a;
-   }
-
-   protected void a(bzi $$0, elj $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public afw a(T $$0) {
+      return a.get($$0.ag());
    }
 }

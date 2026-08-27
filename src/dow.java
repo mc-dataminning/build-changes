@@ -1,40 +1,46 @@
 import com.mojang.serialization.Codec;
 
-public class dow extends dnq<dqe> {
-   public dow(Codec<dqe> $$0) {
+public class dow extends dnr {
+   public dow(Codec<dqu> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dns<dqe> $$0) {
-      boolean $$1 = false;
-      ash $$2 = $$0.d();
-      cqv $$3 = $$0.b();
-      gw $$4 = $$0.e();
-      dqe $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(dkm.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      gw $$9 = new gw($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(cte.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dfd $$11 = $$10 ? cte.bx.o() : cte.bw.o();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dfd $$12 = $$11.a(dbg.d, dfz.a);
-               gw $$13 = $$9.c();
-               if ($$3.a_($$13).a(cte.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
+   protected void a(cra $$0, ate $$1, ht $$2, int $$3, ht.a $$4, dqu $$5) {
+      int $$6 = $$5.d;
 
-            $$1 = true;
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).i($$0, $$4)) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dgb $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(cxv.e) && $$19.b(cxv.c) && $$19.b(cxv.b) && $$19.b(cxv.d)) {
+                     $$19 = $$19.a(cxv.e, Boolean.valueOf($$15))
+                        .a(cxv.c, Boolean.valueOf($$16))
+                        .a(cxv.b, Boolean.valueOf($$17))
+                        .a(cxv.d, Boolean.valueOf($$18));
+                  }
+
+                  this.a($$0, $$4, $$19);
+               }
+            }
          }
       }
+   }
 
-      return $$1;
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

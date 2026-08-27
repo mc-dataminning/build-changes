@@ -1,25 +1,29 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class dtv extends dui {
-   public static final Codec<dtv> a = RecordCodecBuilder.create($$0 -> $$0.group(dlt.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, dtv::new));
-   private final dlt c;
+public class dtv extends dtw {
+   public static final Codec<dtv> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dtv::new));
 
-   private dtv(dlt $$0) {
-      this.c = $$0;
-   }
-
-   public static dtv a(dlt $$0) {
-      return new dtv($$0);
+   public dtv(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(duh $$0, ash $$1, gw $$2) {
-      return this.c.test($$0.d(), $$2);
+   protected dtx<?> a() {
+      return dtx.a;
    }
 
    @Override
-   public duk<?> b() {
-      return duk.a;
+   public List<dse.a> a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, int $$3, ht $$4, dro $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      }
+
+      return ImmutableList.of(new dse.a($$4.b($$3), 0, false));
    }
 }

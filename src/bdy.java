@@ -1,47 +1,22 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bdy {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bdt f = bds.a;
-
-   public bdy(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
+public class bdy extends Schema {
+   public bdy(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public bdv a() {
-      this.f = new bdo(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
-   }
-
-   public void b() {
-      if (this.f != bds.a) {
-         bdu $$0 = this.f.d();
-         this.f = bds.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
-         }
-      }
-   }
-
-   @Nullable
-   public static bdy a(String $$0) {
-      return null;
-   }
-
-   public static bdv a(bdv $$0, @Nullable bdy $$1) {
-      return $$1 != null ? bdv.a($$1.a(), $$0) : $$0;
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$1.remove("EntityHorse");
+      $$0.register($$1, "Horse", () -> DSL.optionalFields("ArmorItem", baa.t.in($$0), "SaddleItem", baa.t.in($$0), bbj.a($$0)));
+      $$0.register($$1, "Donkey", () -> DSL.optionalFields("Items", DSL.list(baa.t.in($$0)), "SaddleItem", baa.t.in($$0), bbj.a($$0)));
+      $$0.register($$1, "Mule", () -> DSL.optionalFields("Items", DSL.list(baa.t.in($$0)), "SaddleItem", baa.t.in($$0), bbj.a($$0)));
+      $$0.register($$1, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", baa.t.in($$0), bbj.a($$0)));
+      $$0.register($$1, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", baa.t.in($$0), bbj.a($$0)));
+      return $$1;
    }
 }

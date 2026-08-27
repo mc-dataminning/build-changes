@@ -6,7 +6,7 @@ public class cs extends cw<cs.a> {
       return new cs.a($$1);
    }
 
-   public void a(aku $$0) {
+   public void a(alr $$0) {
       this.a($$0, $$0x -> true);
    }
 
@@ -43,7 +43,7 @@ public class cs extends cw<cs.a> {
          return al.w.a(new cs.a(Optional.empty()));
       }
 
-      public static am<cs.a> a(ctc $$0, cjg $$1) {
+      public static am<cs.a> a(cua $$0, cke $$1) {
          return a(bq.a.a().a(bn.a.a().d(cb.a.a().a($$1))).b(cj.a.a().a(av.a.a().a($$0))));
       }
    }

@@ -1,105 +1,73 @@
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class exw extends eye {
-   private static final tl a = tl.c("options.skinCustomisation");
-   private static final tl b = tl.c("options.sounds");
-   private static final tl c = tl.c("options.video");
-   private static final tl k = tl.c("options.controls");
-   private static final tl l = tl.c("options.language");
-   private static final tl m = tl.c("options.chat");
-   private static final tl n = tl.c("options.resourcepack");
-   private static final tl o = tl.c("options.accessibility");
-   private static final tl p = tl.c("options.telemetry");
-   private static final tl q = tl.c("options.credits_and_attribution");
-   private static final int s = 2;
-   private final eye t;
-   private final eqt u;
-   private esr<bhb> v;
-   private eta w;
+public class exw extends exx {
+   private static final ui k = ui.c("chat.copy");
+   private static final ui l = ui.c("chat.link.warning");
+   private final String m;
+   private final boolean n;
 
-   public exw(eye $$0, eqt $$1) {
-      super(tl.c("options.title"));
-      this.t = $$0;
-      this.u = $$1;
+   public exw(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), ui.b($$1), $$1, $$2 ? uh.e : uh.g, $$2);
+   }
+
+   public exw(BooleanConsumer $$0, ui $$1, String $$2, boolean $$3) {
+      this($$0, $$1, $$2, $$3 ? uh.e : uh.g, $$3);
+   }
+
+   public exw(BooleanConsumer $$0, ui $$1, String $$2, ui $$3, boolean $$4) {
+      this($$0, $$1, a($$4, $$2), $$2, $$3, $$4);
+   }
+
+   public exw(BooleanConsumer $$0, ui $$1, ui $$2, String $$3, ui $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (ui)($$5 ? ui.c("chat.link.open") : uh.f);
+      this.b = $$4;
+      this.n = !$$5;
+      this.m = $$3;
+   }
+
+   protected static uw a(boolean $$0, String $$1) {
+      return c($$0).b(uh.u).b(ui.b($$1));
+   }
+
+   protected static uw c(boolean $$0) {
+      return ui.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   protected void aH_() {
-      evt $$0 = new evt();
-      $$0.c().f(5).e(4).b();
-      evt.b $$1 = $$0.d(2);
-      $$1.a(this.u.ad().a(this.f.m, 0, 0, 150));
-      $$1.a(this.l());
-      $$1.a(evz.b(26), 2);
-      $$1.a(this.a(a, () -> new eyh(this, this.u)));
-      $$1.a(this.a(b, () -> new eyi(this, this.u)));
-      $$1.a(this.a(c, () -> new eyl(this, this.u)));
-      $$1.a(this.a(k, () -> new eyw(this, this.u)));
-      $$1.a(this.a(l, () -> new exo(this, this.u, this.f.ae())));
-      $$1.a(this.a(m, () -> new ewv(this, this.u)));
-      $$1.a(this.a(n, () -> new fbk(this.f.aa(), this::a, this.f.ad(), tl.c("resourcePack.title"))));
-      $$1.a(this.a(o, () -> new ewr(this, this.u)));
-      $$1.a(this.a(p, () -> new fcq(this, this.u)));
-      $$1.a(this.a(q, () -> new exc(this)));
-      $$1.a(esk.a(tk.d, $$0x -> this.f.a(this.t)).a(200).a(), 2, $$1.b().c(6));
-      $$0.a();
-      evs.a($$0, 0, this.h / 6 - 12, this.g, this.h, 0.5F, 0.0F);
-      $$0.a(this::d);
+   protected void a(int $$0) {
+      this.d(etj.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
+      this.d(etj.a(k, $$0x -> {
+         this.k();
+         this.c.accept(false);
+      }).a(this.g / 2 - 50, $$0, 100, 20).a());
+      this.d(etj.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
    }
 
-   private void a(anh $$0) {
-      this.u.a($$0);
-      this.f.a(this);
-   }
-
-   private evw l() {
-      if (this.f.r != null && this.f.S()) {
-         this.v = a(0, 0, "options.difficulty", this.f);
-         if (!this.f.r.k().n()) {
-            this.w = new eta(0, 0, $$0x -> this.f.a(new ewy(this::c, tl.c("difficulty.lock.title"), tl.a("difficulty.lock.question", this.f.r.k().s().b()))));
-            this.v.d(this.v.l() - this.w.l());
-            this.w.b(this.f.r.k().t());
-            this.w.i = !this.w.a();
-            this.v.i = !this.w.a();
-            evr $$0 = new evr(150, 0, evr.b.a);
-            $$0.a(this.v);
-            $$0.a(this.w);
-            return $$0;
-         } else {
-            this.v.i = false;
-            return this.v;
-         }
-      } else {
-         return esk.a(tl.c("options.online"), $$0x -> this.f.a(exv.a(this.f, this, this.u))).a(this.g / 2 + 5, this.h / 6 - 12 + 24, 150, 20).a();
-      }
-   }
-
-   public static esr<bhb> a(int $$0, int $$1, String $$2, eqp $$3) {
-      return esr.a(bhb::b).a(bhb.values()).a($$3.r.ai()).a($$0, $$1, 150, 20, tl.c($$2), ($$1x, $$2x) -> $$3.J().b(new abi($$2x)));
-   }
-
-   private void c(boolean $$0) {
-      this.f.a(this);
-      if ($$0 && this.f.r != null) {
-         this.f.J().b(new aby(true));
-         this.w.b(true);
-         this.w.i = false;
-         this.v.i = false;
-      }
+   public void k() {
+      this.f.o.a(this.m);
    }
 
    @Override
-   public void h() {
-      this.u.ar();
-   }
-
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
+      if (this.n) {
+         $$0.a(this.i, l, this.g / 2, 110, 16764108);
+      }
    }
 
-   private esk a(tl $$0, Supplier<eye> $$1) {
-      return esk.a($$0, $$1x -> this.f.a($$1.get())).a();
+   public static void a(String $$0, ezd $$1, boolean $$2) {
+      ero $$3 = ero.O();
+      $$3.a(new exw($$3x -> {
+         if ($$3x) {
+            ac.i().a($$0);
+         }
+
+         $$3.a($$1);
+      }, $$0, $$2));
+   }
+
+   public static etj.c b(String $$0, ezd $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
    }
 }

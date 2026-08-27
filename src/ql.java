@@ -1,41 +1,24 @@
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class ql implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ql {
+   int a() default 100;
 
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      if (py.b($$1)) {
-         return $$1;
-      } else {
-         Message $$2 = tl.b("No such test class: " + $$1);
-         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
-      }
-   }
+   String b() default "defaultBatch";
 
-   public static ql a() {
-      return new ql();
-   }
+   int c() default 0;
 
-   public static String a(CommandContext<dt> $$0, String $$1) {
-      return (String)$$0.getArgument($$1, String.class);
-   }
+   boolean d() default true;
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dw.b(py.b().stream(), $$1);
-   }
+   String e() default "";
 
-   public Collection<String> getExamples() {
-      return a;
-   }
+   long f() default 0L;
+
+   int g() default 1;
+
+   int h() default 1;
 }

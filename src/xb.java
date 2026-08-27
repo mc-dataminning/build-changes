@@ -1,40 +1,31 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+public record xb(xb.a b) implements wu {
+   public static final afw a = new afw("debug/hive");
 
-public class xb implements ve<wx> {
-   private final Object2IntMap<apn<?>> a;
-
-   public xb(Object2IntMap<apn<?>> $$0) {
-      this.a = $$0;
-   }
-
-   public xb(so $$0) {
-      this.a = $$0.a(Object2IntOpenHashMap::new, $$1 -> {
-         app<?> $$2 = $$1.a(jb.y);
-         return a($$0, $$2);
-      }, so::n);
-   }
-
-   private static <T> apn<T> a(so $$0, app<T> $$1) {
-      return $$1.b($$0.a($$1.a()));
-   }
-
-   public void a(wx $$0) {
-      $$0.a(this);
+   public xb(tl $$0) {
+      this(new xb.a($$0));
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a, xb::a, so::c);
+   public void a(tl $$0) {
+      this.b.a($$0);
    }
 
-   private static <T> void a(so $$0, apn<T> $$1) {
-      $$0.a(jb.y, $$1.a());
-      $$0.a($$1.a().a(), $$1.b());
+   @Override
+   public afw a() {
+      return a;
    }
 
-   public Map<apn<?>, Integer> a() {
-      return this.a;
+   public static record a(ht a, String b, int c, int d, boolean e) {
+      public a(tl $$0) {
+         this($$0.e(), $$0.s(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(tl $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
    }
 }

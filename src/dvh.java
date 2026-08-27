@@ -1,8 +1,10 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public interface dvh {
-   void a(dvg var1);
+public abstract class dvh {
+   public static final Codec<dvh> b = jy.V.q().dispatch(dvh::b, dvi::codec);
 
-   @Nullable
-   dvg a(duu var1);
+   public abstract Stream<ht> a_(dvf var1, ate var2, ht var3);
+
+   public abstract dvi<?> b();
 }

@@ -1,58 +1,56 @@
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class buf {
-   @Nullable
-   public static ehh a(bjv $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::h);
+public class buf extends buo<bkl> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
+
+   public buf() {
+      super(20);
    }
 
-   @Nullable
-   public static ehh a(bjv $$0, int $$1, int $$2, ToDoubleFunction<gw> $$3) {
-      boolean $$4 = bud.a($$0, $$1);
-      return bug.a(() -> {
-         gw $$4x = bug.a($$0.ef(), $$1, $$2);
-         gw $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
+   @Override
+   public Set<btk<?>> a() {
+      return ImmutableSet.of(btk.w);
    }
 
-   @Nullable
-   public static ehh a(bjv $$0, int $$1, int $$2, ehh $$3) {
-      ehh $$4 = $$3.a($$0.dq(), $$0.ds(), $$0.dw());
-      boolean $$5 = bud.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   public static ehh b(bjv $$0, int $$1, int $$2, ehh $$3) {
-      ehh $$4 = $$0.dj().d($$3);
-      boolean $$5 = bud.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   private static ehh a(bjv $$0, int $$1, int $$2, ehh $$3, boolean $$4) {
-      return bug.a($$0, () -> {
-         gw $$5 = bug.a($$0.ef(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            gw $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
+   protected void a(alq $$0, bkl $$1) {
+      if ($$1.n_()) {
+         this.f = 0;
+         this.g = $$0.V() + (long)$$0.E_().a(20);
+         bvi $$2 = $$0.w();
+         Predicate<ht> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<ib<bvl>, ht>> $$4 = $$2.b($$0x -> $$0x.a(bvm.n), $$3, $$1.dl(), 48, bvi.b.c).collect(Collectors.toSet());
+         ebt $$5 = blt.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            ht $$6 = $$5.l();
+            Optional<ib<bvl>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dN().a(btk.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
          }
-      });
-   }
-
-   @Nullable
-   public static gw a(bjv $$0, gw $$1) {
-      $$1 = bug.a($$1, $$0.dL().aj(), $$1x -> bud.c($$0, $$1x));
-      return !bud.a($$0, $$1) && !bud.b($$0, $$1) ? $$1 : null;
-   }
-
-   @Nullable
-   public static gw a(bjv $$0, int $$1, boolean $$2, gw $$3) {
-      gw $$4 = bug.a($$0, $$1, $$0.ef(), $$3);
-      return !bud.a($$4, $$0) && !bud.a($$2, $$0, $$4) && !bud.a($$0.L(), $$4) ? $$4 : null;
+      }
    }
 }

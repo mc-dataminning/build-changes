@@ -1,210 +1,133 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ebv implements ecf {
-   private final ecg a;
-   private final ecf b;
+public class ebv {
+   private static final float a = 1.5F;
+   private final ebr[] b = new ebr[32];
+   private final int c;
+   private final ebs d;
+   private static final boolean e = false;
+   private final ebo f = new ebo();
 
-   public ebv(ecg $$0, ecf $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ebv(ebs $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public int a() {
-      return this.b.a();
+   @Nullable
+   public ebt a(crm $$0, bkl $$1, Set<ht> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      ebr $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
+      } else {
+         Map<ebx, ht> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         ebt $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
+      }
    }
 
-   @Override
-   public int b() {
-      return this.b.b();
+   @Nullable
+   private ebt a(bes $$0, ebr $$1, Map<ebx, ht> $$2, float $$3, int $$4, float $$5) {
+      $$0.a("find_path");
+      $$0.a(bfv.a);
+      Set<ebx> $$6 = $$2.keySet();
+      $$1.e = 0.0F;
+      $$1.f = this.a($$1, $$6);
+      $$1.g = $$1.f;
+      this.f.a();
+      this.f.a($$1);
+      Set<ebr> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<ebx> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$5);
+
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
+            break;
+         }
+
+         ebr $$11 = this.f.c();
+         $$11.i = true;
+
+         for (ebx $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$4) {
+               $$12.e();
+               $$9.add($$12);
+            }
+         }
+
+         if (!$$9.isEmpty()) {
+            break;
+         }
+
+         if (!($$11.a($$1) >= $$3)) {
+            int $$13 = this.d.a(this.b, $$11);
+
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               ebr $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
+                  }
+               }
+            }
+         }
+      }
+
+      Optional<ebt> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(ebt::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(ebt::m).thenComparingInt(ebt::e));
+      $$0.c();
+      return $$18.isEmpty() ? null : $$18.get();
    }
 
-   @Override
-   public int c() {
-      return this.b.c();
+   protected float a(ebr $$0, ebr $$1) {
+      return $$0.a($$1);
    }
 
-   @Override
-   public float d() {
-      return this.b.d();
+   private float a(ebr $$0, Set<ebx> $$1) {
+      float $$2 = Float.MAX_VALUE;
+
+      for (ebx $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
+      }
+
+      return $$2;
    }
 
-   @Override
-   public long e() {
-      return this.b.e();
-   }
+   private ebt a(ebr $$0, ht $$1, boolean $$2) {
+      List<ebr> $$3 = Lists.newArrayList();
+      ebr $$4 = $$0;
+      $$3.add(0, $$0);
 
-   @Override
-   public long f() {
-      return this.b.f();
-   }
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
+      }
 
-   @Override
-   public String g() {
-      return this.a.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public boolean k() {
-      return this.b.k();
-   }
-
-   @Override
-   public int l() {
-      return this.b.l();
-   }
-
-   @Override
-   public cpy m() {
-      return this.a.m();
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public void a(float $$0) {
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(gw $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void f(int $$0) {
-   }
-
-   @Override
-   public void a(cpy $$0) {
-   }
-
-   @Override
-   public boolean n() {
-      return this.a.n();
-   }
-
-   @Override
-   public boolean o() {
-      return this.a.o();
-   }
-
-   @Override
-   public boolean p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public cpx q() {
-      return this.a.q();
-   }
-
-   @Override
-   public dgu.c r() {
-      return this.b.r();
-   }
-
-   @Override
-   public void a(dgu.c $$0) {
-   }
-
-   @Override
-   public bhb s() {
-      return this.a.s();
-   }
-
-   @Override
-   public boolean t() {
-      return this.a.t();
-   }
-
-   @Override
-   public egu<MinecraftServer> u() {
-      return this.b.u();
-   }
-
-   @Override
-   public int v() {
-      return 0;
-   }
-
-   @Override
-   public void g(int $$0) {
-   }
-
-   @Override
-   public int w() {
-      return 0;
-   }
-
-   @Override
-   public void h(int $$0) {
-   }
-
-   @Override
-   public UUID x() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, cqd $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+      return new ebt($$3, $$1, $$2);
    }
 }

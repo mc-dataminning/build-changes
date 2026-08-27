@@ -1,8 +1,5 @@
-public interface wu extends vo {
-   @Override
-   default sn b() {
-      return sn.e;
-   }
+public interface wu {
+   void a(tl var1);
 
-   void a(wv var1);
+   afw a();
 }

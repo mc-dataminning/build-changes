@@ -1,23 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cjd(he<apf> b, int c, float d) {
-   public static final Codec<cjd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               apf.b.fieldOf("sound_event").forGetter(cjd::a), arj.j.fieldOf("use_duration").forGetter(cjd::b), arj.k.fieldOf("range").forGetter(cjd::c)
-            )
-            .apply($$0, cjd::new)
-   );
-
-   public he<apf> a() {
-      return this.b;
+public class cjd extends cke implements cjk {
+   public cjd(cke.a $$0) {
+      super($$0);
+      cwd.a(this, cht.a);
    }
 
-   public int b() {
-      return this.c;
+   public static boolean d(ckj $$0) {
+      return $$0.k() < $$0.l() - 1;
    }
 
-   public float c() {
-      return this.d;
+   @Override
+   public boolean a(ckj $$0, ckj $$1) {
+      return $$1.a(ckm.uW);
+   }
+
+   @Override
+   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
+
+   @Override
+   public aqc ar_() {
+      return aqd.ae;
+   }
+
+   @Override
+   public bjy g() {
+      return bjy.e;
    }
 }

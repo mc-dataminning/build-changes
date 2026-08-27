@@ -1,35 +1,59 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class cso extends ctc implements cvs {
-   protected cso(dfc.d $$0) {
-      super($$0);
+public class cso extends csb {
+   public static final Codec<cso> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(afu.d(cse.ah), afu.d(cse.ai), afu.d(cse.aj), afu.d(cse.ak), afu.d(cse.al)).apply($$0, $$0.stable(cso::new))
+   );
+   private final ib<crx> c;
+   private final ib<crx> d;
+   private final ib<crx> e;
+   private final ib<crx> f;
+   private final ib<crx> g;
+
+   public static cso a(ic<crx> $$0) {
+      return new cso($$0.b(cse.ah), $$0.b(cse.ai), $$0.b(cse.aj), $$0.b(cse.ak), $$0.b(cse.al));
+   }
+
+   private cso(ib<crx> $$0, ib<crx> $$1, ib<crx> $$2, ib<crx> $$3, ib<crx> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected abstract MapCodec<? extends cso> a();
-
-   @Override
-   public czg b_(dfd $$0) {
-      return czg.a;
+   protected Stream<ib<crx>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   public boolean a(dfd $$0, cqb $$1, gw $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dcz $$5 = $$1.c_($$2);
-      return $$5 == null ? false : $$5.a_($$3, $$4);
+   protected Codec<? extends csb> a() {
+      return b;
    }
 
-   @Nullable
    @Override
-   public bhh b(dfd $$0, cqb $$1, gw $$2) {
-      dcz $$3 = $$1.c_($$2);
-      return $$3 instanceof bhh ? (bhh)$$3 : null;
-   }
-
-   @Nullable
-   protected static <E extends dcz, A extends dcz> dda<A> a(ddb<A> $$0, ddb<E> $$1, dda<? super E> $$2) {
-      return $$1 == $$0 ? $$2 : null;
+   public ib<crx> getNoiseBiome(int $$0, int $$1, int $$2, csg.f $$3) {
+      int $$4 = in.c($$0);
+      int $$5 = in.c($$1);
+      int $$6 = in.c($$2);
+      int $$7 = iu.a($$4);
+      int $$8 = iu.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (iu.a($$4) * 2 + 1) * 8;
+         int $$10 = (iu.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dld.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
+         }
+      }
    }
 }

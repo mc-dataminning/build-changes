@@ -1,84 +1,112 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
+import com.google.common.base.Suppliers;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class crm extends crd {
-   private static final MapCodec<he<cqz>> d = cqz.c.fieldOf("biome");
-   public static final MapCodec<cri.c<he<cqz>>> b = cri.c.a(d).fieldOf("biomes");
-   private static final MapCodec<he<crn>> e = crn.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final Codec<crm> c = Codec.mapEither(b, e).xmap(crm::new, $$0 -> $$0.f).codec();
-   private final Either<cri.c<he<cqz>>, he<crn>> f;
+public class crm implements cqf, cqj {
+   protected final int a;
+   protected final int b;
+   protected final dhx[][] c;
+   protected boolean d;
+   protected final cqz e;
+   private final Supplier<ib<crx>> f;
 
-   private crm(Either<cri.c<he<cqz>>, he<crn>> $$0) {
-      this.f = $$0;
+   public crm(cqz $$0, ht $$1, ht $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.H_().d(jz.aq).f(cse.b));
+      this.a = iu.a($$1.u());
+      this.b = iu.a($$1.w());
+      int $$3 = iu.a($$2.u());
+      int $$4 = iu.a($$2.w());
+      this.c = new dhx[$$3 - this.a + 1][$$4 - this.b + 1];
+      dib $$5 = $$0.J();
+      this.d = true;
+
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+         }
+      }
+
+      for (int $$8 = iu.a($$1.u()); $$8 <= iu.a($$2.u()); $$8++) {
+         for (int $$9 = iu.a($$1.w()); $$9 <= iu.a($$2.w()); $$9++) {
+            dhx $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
    }
 
-   public static crm a(cri.c<he<cqz>> $$0) {
-      return new crm(Either.left($$0));
+   private dhx d(ht $$0) {
+      return this.a(iu.a($$0.u()), iu.a($$0.w()));
    }
 
-   public static crm a(he<crn> $$0) {
-      return new crm(Either.right($$0));
-   }
-
-   private cri.c<he<cqz>> d() {
-      return (cri.c<he<cqz>>)this.f.map($$0 -> $$0, $$0 -> ((crn)$$0.a()).a());
+   private dhx a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dhx $$4 = this.c[$$2][$$3];
+         return (dhx)($$4 != null ? $$4 : new die(this.e, new cqg($$0, $$1), this.f.get()));
+      } else {
+         return new die(this.e, new cqg($$0, $$1), this.f.get());
+      }
    }
 
    @Override
-   protected Stream<he<cqz>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   public dhs C_() {
+      return this.e.C_();
    }
 
    @Override
-   protected Codec<? extends crd> a() {
-      return c;
-   }
-
-   public boolean a(aey<crn> $$0) {
-      Optional<he<crn>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
+   public cqf c(int $$0, int $$1) {
+      return this.a($$0, $$1);
    }
 
    @Override
-   public he<cqz> getNoiseBiome(int $$0, int $$1, int $$2, cri.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
+   public List<eiy> c(@Nullable bjt $$0, eia $$1) {
+      return List.of();
    }
 
-   @atd
-   public he<cqz> a(cri.h $$0) {
-      return this.d().a($$0);
+   @Nullable
+   @Override
+   public ddx c_(ht $$0) {
+      dhx $$1 = this.d($$0);
+      return $$1.c_($$0);
    }
 
    @Override
-   public void a(List<String> $$0, gw $$1, cri.f $$2) {
-      int $$3 = hp.a($$1.u());
-      int $$4 = hp.a($$1.v());
-      int $$5 = hp.a($$1.w());
-      cri.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = cri.a($$6.d());
-      float $$8 = cri.a($$6.e());
-      float $$9 = cri.a($$6.b());
-      float $$10 = cri.a($$6.c());
-      float $$11 = cri.a($$6.g());
-      double $$12 = (double)dkt.a($$11);
-      crp $$13 = new crp();
-      $$0.add(
-         "Biome builder PV: "
-            + crp.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public dgb a_(ht $$0) {
+      if (this.r($$0)) {
+         return cuc.a.o();
+      } else {
+         dhx $$1 = this.d($$0);
+         return $$1.a_($$0);
+      }
+   }
+
+   @Override
+   public ebe b_(ht $$0) {
+      if (this.r($$0)) {
+         return ebf.a.g();
+      } else {
+         dhx $$1 = this.d($$0);
+         return $$1.b_($$0);
+      }
+   }
+
+   @Override
+   public int I_() {
+      return this.e.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.e.J_();
+   }
+
+   public bes a() {
+      return this.e.ad();
    }
 }

@@ -1,16 +1,27 @@
-public interface bui {
-   bui a = a("zombie_villager_cured");
-   bui b = a("golem_killed");
-   bui c = a("villager_hurt");
-   bui d = a("villager_killed");
-   bui e = a("trade");
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-   static bui a(final String $$0) {
-      return new bui() {
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+public abstract class bui extends buo<bkj> {
+   protected abstract boolean a(bkj var1, bkj var2);
+
+   protected abstract btk<bkj> b();
+
+   @Override
+   public Set<btk<?>> a() {
+      return ImmutableSet.of(this.b());
+   }
+
+   @Override
+   protected void a(alq $$0, bkj $$1) {
+      $$1.dN().a(this.b(), this.b($$1));
+   }
+
+   private Optional<bkj> b(bkj $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
+
+   protected Optional<btm> a(bkj $$0) {
+      return $$0.dN().c(btk.h);
    }
 }

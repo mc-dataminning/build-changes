@@ -1,60 +1,20 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.function.Consumer;
 
-public class edt extends edw {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<edt> a = RecordCodecBuilder.create($$0 -> a($$0).and(aez.a.fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, edt::new));
-   private final aez c;
+@FunctionalInterface
+interface edt {
+   edt b = ($$0, $$1) -> false;
+   edt c = ($$0, $$1) -> true;
 
-   private edt(List<efj> $$0, aez $$1) {
-      super($$0);
-      this.c = $$1;
+   boolean expand(edi var1, Consumer<eea> var2);
+
+   default edt and(edt $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
    }
 
-   @Override
-   public edy b() {
-      return edz.B;
-   }
-
-   @Override
-   public void a(ect $$0) {
-      ecm<edx> $$1 = new ecm<>(ecp.b, this.c);
-      if ($$0.a($$1)) {
-         $$0.a("Function " + this.c + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.c + "}", $$1)), () -> $$0.a("Unknown function table called " + this.c));
-      }
-   }
-
-   @Override
-   protected cjl a(cjl $$0, eck $$1) {
-      edx $$2 = $$1.a().getElement(ecp.b, this.c);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c);
-         return $$0;
-      } else {
-         eck.c<?> $$3 = eck.a($$2);
-         if ($$1.b($$3)) {
-            cjl var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
-      }
-   }
-
-   public static edw.a<?> a(aez $$0) {
-      return a($$1 -> new edt($$1, $$0));
+   default edt or(edt $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
    }
 }

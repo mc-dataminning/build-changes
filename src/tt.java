@@ -1,77 +1,15 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import io.netty.util.Attribute;
 
-public class tt {
-   private final tv[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private tx d;
-
-   public tt(int $$0) {
-      this.a = new tv[$$0];
-   }
-
-   public boolean a(tx $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new tv($$0, true) : null);
-         return true;
-      }
-   }
-
-   private void a(@Nullable tv $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
-   }
-
-   public void a(tx $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         tv $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
+public interface tt {
+   static void a(Attribute<tk.a<?>> $$0, wb<?> $$1) {
+      tk $$2 = $$1.c();
+      if ($$2 != null) {
+         tk.a<?> $$3 = (tk.a<?>)$$0.get();
+         tk $$4 = $$3.a();
+         if ($$2 != $$4) {
+            tk.a<?> $$5 = $$2.b($$3.b());
+            $$0.set($$5);
          }
       }
-   }
-
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public tt.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<tx> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         tv $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
-      }
-
-      ts $$6 = new ts($$2);
-      ts.b $$7 = new ts.b($$0, $$1);
-      return new tt.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(ts a, ts.b b) {
    }
 }

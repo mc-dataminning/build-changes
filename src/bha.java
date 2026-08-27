@@ -1,35 +1,64 @@
-public class bha {
-   public static void a(cqb $$0, gw $$1, bgx $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+
+public class bha extends bhe {
+   public static final Codec<bha> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, bha::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0),
+         Function.identity()
+      );
+   private final float b;
+   private final float d;
+   private final float e;
+   private final float f;
+
+   public static bha a(float $$0, float $$1, float $$2, float $$3) {
+      return new bha($$0, $$1, $$2, $$3);
    }
 
-   public static void a(cqb $$0, biw $$1, bgx $$2) {
-      a($$0, $$1.dq(), $$1.ds(), $$1.dw(), $$2);
+   private bha(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   private static void a(cqb $$0, double $$1, double $$2, double $$3, bgx $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
+   @Override
+   public float a(ate $$0) {
+      return a($$0, this.b, this.d, this.e, this.f);
    }
 
-   public static void a(cqb $$0, gw $$1, hn<cjl> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   public static float a(ate $$0, float $$1, float $$2, float $$3, float $$4) {
+      return asy.a(asy.c($$0, $$1, $$2), $$3, $$4);
    }
 
-   public static void a(cqb $$0, double $$1, double $$2, double $$3, cjl $$4) {
-      double $$5 = (double)bja.ad.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+   @Override
+   public float a() {
+      return this.e;
+   }
 
-      while (!$$4.b()) {
-         byt $$11 = new byt($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   @Override
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public bhf<?> c() {
+      return bhf.c;
+   }
+
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
    }
 }

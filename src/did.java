@@ -1,231 +1,141 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.Arrays;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class did implements dhz, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicBoolean b = new AtomicBoolean();
-   private final bfx<bfz.b> c;
-   private final dig d;
-   private final Map<cpi, did.a> e = Maps.newLinkedHashMap();
-   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
-   private static final int g = 1024;
+public class did {
+   public static final int a = 16;
+   public static final int b = 128;
+   public static final int c = 2048;
+   private static final int e = 4;
+   @Nullable
+   protected byte[] d;
+   private int f;
 
-   protected did(Path $$0, boolean $$1, String $$2) {
-      this.d = new dig($$0, $$1);
-      this.c = new bfx<>(new bfz.a(did.b.values().length), ac.g(), "IOWorker-" + $$2);
+   public did() {
+      this(0);
    }
 
-   public boolean a(cpi $$0, int $$1) {
-      cpi $$2 = new cpi($$0.e - $$1, $$0.f - $$1);
-      cpi $$3 = new cpi($$0.e + $$1, $$0.f + $$1);
-
-      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
-         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
-            BitSet $$6 = this.a($$4, $$5).join();
-            if (!$$6.isEmpty()) {
-               cpi $$7 = cpi.a($$4, $$5);
-               int $$8 = Math.max($$2.e - $$7.e, 0);
-               int $$9 = Math.max($$2.f - $$7.f, 0);
-               int $$10 = Math.min($$3.e - $$7.e, 31);
-               int $$11 = Math.min($$3.f - $$7.f, 31);
-
-               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
-                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
-                     int $$14 = $$13 * 32 + $$12;
-                     if ($$6.get($$14)) {
-                        return true;
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return false;
+   public did(int $$0) {
+      this.f = $$0;
    }
 
-   private CompletableFuture<BitSet> a(int $$0, int $$1) {
-      long $$2 = cpi.c($$0, $$1);
-      synchronized (this.f) {
-         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
-         if ($$3 == null) {
-            $$3 = this.b($$0, $$1);
-            this.f.putAndMoveToFirst($$2, $$3);
-            if (this.f.size() > 1024) {
-               this.f.removeLast();
-            }
-         }
-
-         return $$3;
+   public did(byte[] $$0) {
+      this.d = $$0;
+      this.f = 0;
+      if ($$0.length != 2048) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
       }
    }
 
-   private CompletableFuture<BitSet> b(int $$0, int $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         cpi $$2 = cpi.a($$0, $$1);
-         cpi $$3 = cpi.b($$0, $$1);
-         BitSet $$4 = new BitSet();
-         cpi.a($$2, $$3).forEach($$1xx -> {
-            rx $$2x = new rx(new rz(rb.a, "DataVersion"), new rz(qw.b, "blending_data"));
-
-            try {
-               this.a($$1xx, $$2x).join();
-            } catch (Exception var7) {
-               a.warn("Failed to scan chunk {}", $$1xx, var7);
-               return;
-            }
-
-            if ($$2x.d() instanceof qw $$5 && this.a($$5)) {
-               int $$6 = $$1xx.k() * 32 + $$1xx.j();
-               $$4.set($$6);
-            }
-         });
-         return $$4;
-      }, ac.f());
+   public int a(int $$0, int $$1, int $$2) {
+      return this.d(b($$0, $$1, $$2));
    }
 
-   private boolean a(qw $$0) {
-      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.a(b($$0, $$1, $$2), $$3);
    }
 
-   public CompletableFuture<Void> a(cpi $$0, @Nullable qw $$1) {
-      return this.a(() -> {
-         did.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new did.a($$1));
-         $$2.a = $$1;
-         return Either.left($$2.b);
-      }).thenCompose(Function.identity());
+   private static int b(int $$0, int $$1, int $$2) {
+      return $$1 << 8 | $$2 << 4 | $$0;
    }
 
-   public CompletableFuture<Optional<qw>> a(cpi $$0) {
-      return this.a(() -> {
-         did.a $$1 = this.e.get($$0);
-         if ($$1 != null) {
-            return Either.left(Optional.ofNullable($$1.a));
-         } else {
-            try {
-               qw $$2 = this.d.a($$0);
-               return Either.left(Optional.ofNullable($$2));
-            } catch (Exception var4) {
-               a.warn("Failed to read chunk {}", $$0, var4);
-               return Either.right(var4);
-            }
+   private int d(int $$0) {
+      if (this.d == null) {
+         return this.f;
+      } else {
+         int $$1 = f($$0);
+         int $$2 = e($$0);
+         return this.d[$$1] >> 4 * $$2 & 15;
+      }
+   }
+
+   private void a(int $$0, int $$1) {
+      byte[] $$2 = this.a();
+      int $$3 = f($$0);
+      int $$4 = e($$0);
+      int $$5 = ~(15 << 4 * $$4);
+      int $$6 = ($$1 & 15) << 4 * $$4;
+      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
+   }
+
+   private static int e(int $$0) {
+      return $$0 & 1;
+   }
+
+   private static int f(int $$0) {
+      return $$0 >> 1;
+   }
+
+   public void a(int $$0) {
+      this.f = $$0;
+      this.d = null;
+   }
+
+   private static byte g(int $$0) {
+      byte $$1 = (byte)$$0;
+
+      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
+         $$1 = (byte)($$1 | $$0 << $$2);
+      }
+
+      return $$1;
+   }
+
+   public byte[] a() {
+      if (this.d == null) {
+         this.d = new byte[2048];
+         if (this.f != 0) {
+            Arrays.fill(this.d, g(this.f));
          }
-      });
+      }
+
+      return this.d;
    }
 
-   public CompletableFuture<Void> a(boolean $$0) {
-      CompletableFuture<Void> $$1 = this.a(
-            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
-         )
-         .thenCompose(Function.identity());
-      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
-            try {
-               this.d.a();
-               return Either.left(null);
-            } catch (Exception var2x) {
-               a.warn("Failed to synchronize chunks", var2x);
-               return Either.right(var2x);
-            }
-         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
+   public did b() {
+      return this.d == null ? new did(this.f) : new did((byte[])this.d.clone());
    }
 
    @Override
-   public CompletableFuture<Void> a(cpi $$0, rn $$1) {
-      return this.a(() -> {
-         try {
-            did.a $$2 = this.e.get($$0);
-            if ($$2 != null) {
-               if ($$2.a != null) {
-                  $$2.a.b($$1);
-               }
-            } else {
-               this.d.a($$0, $$1);
-            }
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
 
-            return Either.left(null);
-         } catch (Exception var4) {
-            a.warn("Failed to bulk scan chunk {}", $$0, var4);
-            return Either.right(var4);
+      for (int $$1 = 0; $$1 < 4096; $$1++) {
+         $$0.append(Integer.toHexString(this.d($$1)));
+         if (($$1 & 15) == 15) {
+            $$0.append("\n");
          }
-      });
-   }
 
-   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
-      return this.c.c($$1 -> new bfz.b(did.b.a.ordinal(), () -> {
-            if (!this.b.get()) {
-               $$1.a($$0.get());
-            }
-
-            this.b();
-         }));
-   }
-
-   private void a() {
-      if (!this.e.isEmpty()) {
-         Iterator<Entry<cpi, did.a>> $$0 = this.e.entrySet().iterator();
-         Entry<cpi, did.a> $$1 = $$0.next();
-         $$0.remove();
-         this.a($$1.getKey(), $$1.getValue());
-         this.b();
-      }
-   }
-
-   private void b() {
-      this.c.a(new bfz.b(did.b.b.ordinal(), this::a));
-   }
-
-   private void a(cpi $$0, did.a $$1) {
-      try {
-         this.d.a($$0, $$1.a);
-         $$1.b.complete(null);
-      } catch (Exception var4) {
-         a.error("Failed to store chunk {}", $$0, var4);
-         $$1.b.completeExceptionally(var4);
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      if (this.b.compareAndSet(false, true)) {
-         this.c.b($$0 -> new bfz.b(did.b.c.ordinal(), () -> $$0.a(atc.a))).join();
-         this.c.close();
-
-         try {
-            this.d.close();
-         } catch (Exception var2) {
-            a.error("Failed to close storage", var2);
+         if (($$1 & 0xFF) == 255) {
+            $$0.append("\n");
          }
       }
+
+      return $$0.toString();
    }
 
-   static class a {
-      @Nullable
-      qw a;
-      final CompletableFuture<Void> b = new CompletableFuture<>();
+   @aua
+   public String b(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
 
-      public a(@Nullable qw $$0) {
-         this.a = $$0;
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         $$1.append(Integer.toHexString(this.d($$2)));
+         if (($$2 & 15) == 15) {
+            $$1.append("\n");
+         }
       }
+
+      return $$1.toString();
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   public boolean c() {
+      return this.d == null;
+   }
+
+   public boolean c(int $$0) {
+      return this.d == null && this.f == $$0;
+   }
+
+   public boolean d() {
+      return this.d == null && this.f == 0;
    }
 }

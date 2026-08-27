@@ -1,30 +1,49 @@
-public class cig extends chq {
-   public cig(cjg.a $$0) {
+import java.util.List;
+
+public class cig extends cke {
+   public cig(cke.a $$0) {
       super($$0);
    }
 
    @Override
-   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
-      cjl $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bhf.a($$3);
-      } else {
-         if (!$$1.fT().d) {
-            $$3.h(1);
+   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
+      List<bjq> $$3 = $$0.a(bjq.class, $$1.cG().g(2.0), $$0x -> $$0x != null && $$0x.bv() && $$0x.s() instanceof byk);
+      ckj $$4 = $$1.b($$2);
+      if (!$$3.isEmpty()) {
+         bjq $$5 = $$3.get(0);
+         $$5.a($$5.h() - 0.5F);
+         $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqd.cj, aqe.g, 1.0F, 1.0F);
+         $$0.a($$1, dkl.y, $$1.dj());
+         if ($$1 instanceof alr $$6) {
+            al.Q.a($$6, $$4, $$5);
          }
 
-         $$1.b(apq.c.b(this));
-         $$1.dL().a(null, $$1, apg.yx, $$1.da(), 1.0F, 1.0F);
-         cjl $$4 = cjs.a($$0, $$1.dp(), $$1.dv(), (byte)0, true, false);
-         if ($$3.b()) {
-            return bhf.b($$4);
+         return bic.a(this.a($$4, $$1, new ckj(ckm.ut)), $$0.x_());
+      } else {
+         eib $$7 = a($$0, $$1, cqi.b.b);
+         if ($$7.c() == eid.a.a) {
+            return bic.c($$4);
          } else {
-            if (!$$1.fS().e($$4.p())) {
-               $$1.a($$4, false);
+            if ($$7.c() == eid.a.b) {
+               ht $$8 = $$7.a();
+               if (!$$0.a($$1, $$8)) {
+                  return bic.c($$4);
+               }
+
+               if ($$0.b_($$8).a(aqx.a)) {
+                  $$0.a($$1, $$1.dq(), $$1.ds(), $$1.dw(), aqd.ci, aqe.g, 1.0F, 1.0F);
+                  $$0.a($$1, dkl.y, $$8);
+                  return bic.a(this.a($$4, $$1, cmi.a(new ckj(ckm.rv), cmj.c)), $$0.x_());
+               }
             }
 
-            return bhf.b($$3);
+            return bic.c($$4);
          }
       }
+   }
+
+   protected ckj a(ckj $$0, ccx $$1, ckj $$2) {
+      $$1.b(aqn.c.b(this));
+      return ckl.a($$0, $$1, $$2);
    }
 }

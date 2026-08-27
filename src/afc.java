@@ -1,80 +1,39 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+public class afc<T> {
+   private final int a;
+   private final afd<T> b;
 
-public class afc extends IOException {
-   private final List<afc.a> a = Lists.newArrayList();
-   private final String b;
-
-   public afc(String $$0) {
-      this.a.add(new afc.a());
-      this.b = $$0;
+   public afc(int $$0, afd<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public afc(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new afc.a());
-      this.b = $$0;
+   public int a() {
+      return this.a;
    }
 
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new afc.a());
+   public afd<T> b() {
+      return this.b;
    }
 
    @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
-   }
-
-   public static afc a(Exception $$0) {
-      if ($$0 instanceof afc) {
-         return (afc)$$0;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         afc<?> $$1 = (afc<?>)$$0;
+         return this.a == $$1.a;
       } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new afc($$1, $$0);
+         return false;
       }
    }
 
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
+   @Override
+   public int hashCode() {
+      return this.a;
+   }
 
-      a() {
-      }
-
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
-
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
-         }
-      }
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
    }
 }

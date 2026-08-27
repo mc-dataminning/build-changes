@@ -1,10 +1,8 @@
-public class apz {
-   public static final aqk<dtd> a = a("visible");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private apz() {
-   }
-
-   private static aqk<dtd> a(String $$0) {
-      return aqk.a(jc.aw, new aez($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface apz {
 }

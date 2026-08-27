@@ -1,37 +1,77 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
+import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gcn<T> extends gco<T> {
-   private final List<T> c;
-   private final Function<T, Stream<String>> d;
-   private gcr<T> e = gcr.a();
+public class gcn implements gcb {
+   private final int a;
+   private final List<bgn.b<gcb>> b;
+   private final gcb c;
 
-   public gcn(Function<T, Stream<String>> $$0, Function<T, Stream<aez>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = $$2;
-      this.d = $$0;
+   public gcn(List<bgn.b<gcb>> $$0) {
+      this.b = $$0;
+      this.a = bgo.a($$0);
+      this.c = $$0.get(0).b();
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.e = gcr.a(this.c, this.d);
+   public List<fpx> a(@Nullable dgb $$0, @Nullable hx $$1, ate $$2) {
+      return bgo.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
    }
 
    @Override
-   protected List<T> a(String $$0) {
-      return this.e.search($$0);
+   public boolean a() {
+      return this.c.a();
    }
 
    @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.e.search($$1);
-      Iterator<T> $$5 = new gcq<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new gcp<T>($$2.iterator(), $$5, this.a));
+   public boolean b() {
+      return this.c.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.c();
+   }
+
+   @Override
+   public boolean d() {
+      return this.c.d();
+   }
+
+   @Override
+   public gaa e() {
+      return this.c.e();
+   }
+
+   @Override
+   public fqj f() {
+      return this.c.f();
+   }
+
+   @Override
+   public fqh g() {
+      return this.c.g();
+   }
+
+   public static class a {
+      private final List<bgn.b<gcb>> a = Lists.newArrayList();
+
+      public gcn.a a(@Nullable gcb $$0, int $$1) {
+         if ($$0 != null) {
+            this.a.add(bgn.a($$0, $$1));
+         }
+
+         return this;
+      }
+
+      @Nullable
+      public gcb a() {
+         if (this.a.isEmpty()) {
+            return null;
+         } else {
+            return (gcb)(this.a.size() == 1 ? this.a.get(0).b() : new gcn(this.a));
+         }
+      }
    }
 }

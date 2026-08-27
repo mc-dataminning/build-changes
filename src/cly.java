@@ -1,71 +1,56 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.function.Supplier;
 
-public class cly extends cmh {
-   public cly(cme $$0) {
-      super($$0);
-   }
+public enum cly implements clw {
+   a(0, 59, 2.0F, 0.0F, 15, () -> cnk.a(ara.b)),
+   b(1, 131, 4.0F, 1.0F, 5, () -> cnk.a(ara.ax)),
+   c(2, 250, 6.0F, 2.0F, 14, () -> cnk.a(ckm.nQ)),
+   d(3, 1561, 8.0F, 3.0F, 10, () -> cnk.a(ckm.nK)),
+   e(0, 32, 12.0F, 0.0F, 22, () -> cnk.a(ckm.nU)),
+   f(4, 2031, 9.0F, 4.0F, 15, () -> cnk.a(ckm.nV));
 
-   public boolean a(cff $$0, cqb $$1) {
-      cjl $$2 = cjl.b;
-      List<cjl> $$3 = Lists.newArrayList();
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final ast<cnk> l;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cjl $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof cid) {
-               if (!$$2.b()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.d() instanceof cia)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.b() && !$$3.isEmpty();
-   }
-
-   public cjl a(cff $$0, hr $$1) {
-      List<cia> $$2 = Lists.newArrayList();
-      cjl $$3 = cjl.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cjl $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            cjg $$6 = $$5.d();
-            if ($$6 instanceof cid) {
-               if (!$$3.b()) {
-                  return cjl.b;
-               }
-
-               $$3 = $$5.p();
-            } else {
-               if (!($$6 instanceof cia)) {
-                  return cjl.b;
-               }
-
-               $$2.add((cia)$$6);
-            }
-         }
-      }
-
-      return !$$3.b() && !$$2.isEmpty() ? cid.a($$3, $$2) : cjl.b;
+   private cly(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cnk> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = new ast<>($$5);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public int a() {
+      return this.h;
    }
 
    @Override
-   public cms<?> an_() {
-      return cms.c;
+   public float b() {
+      return this.i;
+   }
+
+   @Override
+   public float c() {
+      return this.j;
+   }
+
+   @Override
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public int e() {
+      return this.k;
+   }
+
+   @Override
+   public cnk f() {
+      return this.l.a();
    }
 }

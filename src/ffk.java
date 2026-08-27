@@ -1,13 +1,30 @@
-public class ffk<T extends bjm> extends ffl<T> {
-   public ffk(fhx $$0) {
+import com.google.common.collect.ImmutableList.Builder;
+
+public class ffk extends fhj {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
+
+   public ffk(fiw $$0) {
       super($$0);
    }
 
-   public static fif a(fib $$0) {
-      fif $$1 = ffl.a($$0, 0.0F);
-      fig $$2 = $$1.a();
-      $$2.a("right_leg", fic.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fhz.a(-1.9F, 12.0F, 0.0F));
-      $$2.a("left_leg", fic.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fhz.a(1.9F, 12.0F, 0.0F));
+   @Override
+   protected Builder<fiw> a(fiw $$0) {
+      Builder<fiw> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
       return $$1;
+   }
+
+   public static fjc a() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      fhj.a($$1);
+      $$1.a("chest_bottom", fjb.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fiy.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fjb.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fiy.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fjb.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fiy.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fjc.a($$0, 128, 128);
    }
 }

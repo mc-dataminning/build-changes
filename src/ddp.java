@@ -1,110 +1,91 @@
-import java.util.Map;
-import javax.annotation.Nullable;
-
 public class ddp {
-   private static final String b = "decorated_pot_base";
-   public static final aey<String> a = a("decorated_pot_base");
-   private static final String c = "decorated_pot_side";
-   private static final String d = "angler_pottery_pattern";
-   private static final String e = "archer_pottery_pattern";
-   private static final String f = "arms_up_pottery_pattern";
-   private static final String g = "blade_pottery_pattern";
-   private static final String h = "brewer_pottery_pattern";
-   private static final String i = "burn_pottery_pattern";
-   private static final String j = "danger_pottery_pattern";
-   private static final String k = "explorer_pottery_pattern";
-   private static final String l = "friend_pottery_pattern";
-   private static final String m = "heart_pottery_pattern";
-   private static final String n = "heartbreak_pottery_pattern";
-   private static final String o = "howl_pottery_pattern";
-   private static final String p = "miner_pottery_pattern";
-   private static final String q = "mourner_pottery_pattern";
-   private static final String r = "plenty_pottery_pattern";
-   private static final String s = "prize_pottery_pattern";
-   private static final String t = "sheaf_pottery_pattern";
-   private static final String u = "shelter_pottery_pattern";
-   private static final String v = "skull_pottery_pattern";
-   private static final String w = "snort_pottery_pattern";
-   private static final aey<String> x = a("decorated_pot_side");
-   private static final aey<String> y = a("angler_pottery_pattern");
-   private static final aey<String> z = a("archer_pottery_pattern");
-   private static final aey<String> A = a("arms_up_pottery_pattern");
-   private static final aey<String> B = a("blade_pottery_pattern");
-   private static final aey<String> C = a("brewer_pottery_pattern");
-   private static final aey<String> D = a("burn_pottery_pattern");
-   private static final aey<String> E = a("danger_pottery_pattern");
-   private static final aey<String> F = a("explorer_pottery_pattern");
-   private static final aey<String> G = a("friend_pottery_pattern");
-   private static final aey<String> H = a("heart_pottery_pattern");
-   private static final aey<String> I = a("heartbreak_pottery_pattern");
-   private static final aey<String> J = a("howl_pottery_pattern");
-   private static final aey<String> K = a("miner_pottery_pattern");
-   private static final aey<String> L = a("mourner_pottery_pattern");
-   private static final aey<String> M = a("plenty_pottery_pattern");
-   private static final aey<String> N = a("prize_pottery_pattern");
-   private static final aey<String> O = a("sheaf_pottery_pattern");
-   private static final aey<String> P = a("shelter_pottery_pattern");
-   private static final aey<String> Q = a("skull_pottery_pattern");
-   private static final aey<String> R = a("snort_pottery_pattern");
-   private static final Map<cjg, aey<String>> S = Map.ofEntries(
-      Map.entry(cjo.pX, x),
-      Map.entry(cjo.wN, y),
-      Map.entry(cjo.wO, z),
-      Map.entry(cjo.wP, A),
-      Map.entry(cjo.wQ, B),
-      Map.entry(cjo.wR, C),
-      Map.entry(cjo.wS, D),
-      Map.entry(cjo.wT, E),
-      Map.entry(cjo.wU, F),
-      Map.entry(cjo.wV, G),
-      Map.entry(cjo.wW, H),
-      Map.entry(cjo.wX, I),
-      Map.entry(cjo.wY, J),
-      Map.entry(cjo.wZ, K),
-      Map.entry(cjo.xa, L),
-      Map.entry(cjo.xb, M),
-      Map.entry(cjo.xc, N),
-      Map.entry(cjo.xd, O),
-      Map.entry(cjo.xe, P),
-      Map.entry(cjo.xf, Q),
-      Map.entry(cjo.xg, R)
-   );
+   public static final afv<ddo> a = a("base");
+   public static final afv<ddo> b = a("square_bottom_left");
+   public static final afv<ddo> c = a("square_bottom_right");
+   public static final afv<ddo> d = a("square_top_left");
+   public static final afv<ddo> e = a("square_top_right");
+   public static final afv<ddo> f = a("stripe_bottom");
+   public static final afv<ddo> g = a("stripe_top");
+   public static final afv<ddo> h = a("stripe_left");
+   public static final afv<ddo> i = a("stripe_right");
+   public static final afv<ddo> j = a("stripe_center");
+   public static final afv<ddo> k = a("stripe_middle");
+   public static final afv<ddo> l = a("stripe_downright");
+   public static final afv<ddo> m = a("stripe_downleft");
+   public static final afv<ddo> n = a("small_stripes");
+   public static final afv<ddo> o = a("cross");
+   public static final afv<ddo> p = a("straight_cross");
+   public static final afv<ddo> q = a("triangle_bottom");
+   public static final afv<ddo> r = a("triangle_top");
+   public static final afv<ddo> s = a("triangles_bottom");
+   public static final afv<ddo> t = a("triangles_top");
+   public static final afv<ddo> u = a("diagonal_left");
+   public static final afv<ddo> v = a("diagonal_up_right");
+   public static final afv<ddo> w = a("diagonal_up_left");
+   public static final afv<ddo> x = a("diagonal_right");
+   public static final afv<ddo> y = a("circle");
+   public static final afv<ddo> z = a("rhombus");
+   public static final afv<ddo> A = a("half_vertical");
+   public static final afv<ddo> B = a("half_horizontal");
+   public static final afv<ddo> C = a("half_vertical_right");
+   public static final afv<ddo> D = a("half_horizontal_bottom");
+   public static final afv<ddo> E = a("border");
+   public static final afv<ddo> F = a("curly_border");
+   public static final afv<ddo> G = a("gradient");
+   public static final afv<ddo> H = a("gradient_up");
+   public static final afv<ddo> I = a("bricks");
+   public static final afv<ddo> J = a("globe");
+   public static final afv<ddo> K = a("creeper");
+   public static final afv<ddo> L = a("skull");
+   public static final afv<ddo> M = a("flower");
+   public static final afv<ddo> N = a("mojang");
+   public static final afv<ddo> O = a("piglin");
 
-   private static aey<String> a(String $$0) {
-      return aey.a(jc.ap, new aez($$0));
+   private static afv<ddo> a(String $$0) {
+      return afv.a(jz.c, new afw($$0));
    }
 
-   public static aez a(aey<String> $$0) {
-      return $$0.a().d("entity/decorated_pot/");
-   }
-
-   @Nullable
-   public static aey<String> a(cjg $$0) {
-      return S.get($$0);
-   }
-
-   public static String a(hq<String> $$0) {
-      hq.a($$0, x, "decorated_pot_side");
-      hq.a($$0, y, "angler_pottery_pattern");
-      hq.a($$0, z, "archer_pottery_pattern");
-      hq.a($$0, A, "arms_up_pottery_pattern");
-      hq.a($$0, B, "blade_pottery_pattern");
-      hq.a($$0, C, "brewer_pottery_pattern");
-      hq.a($$0, D, "burn_pottery_pattern");
-      hq.a($$0, E, "danger_pottery_pattern");
-      hq.a($$0, F, "explorer_pottery_pattern");
-      hq.a($$0, G, "friend_pottery_pattern");
-      hq.a($$0, H, "heart_pottery_pattern");
-      hq.a($$0, I, "heartbreak_pottery_pattern");
-      hq.a($$0, J, "howl_pottery_pattern");
-      hq.a($$0, K, "miner_pottery_pattern");
-      hq.a($$0, L, "mourner_pottery_pattern");
-      hq.a($$0, M, "plenty_pottery_pattern");
-      hq.a($$0, N, "prize_pottery_pattern");
-      hq.a($$0, O, "sheaf_pottery_pattern");
-      hq.a($$0, P, "shelter_pottery_pattern");
-      hq.a($$0, Q, "skull_pottery_pattern");
-      hq.a($$0, R, "snort_pottery_pattern");
-      return hq.a($$0, a, "decorated_pot_base");
+   public static ddo a(io<ddo> $$0) {
+      io.a($$0, a, new ddo("b"));
+      io.a($$0, b, new ddo("bl"));
+      io.a($$0, c, new ddo("br"));
+      io.a($$0, d, new ddo("tl"));
+      io.a($$0, e, new ddo("tr"));
+      io.a($$0, f, new ddo("bs"));
+      io.a($$0, g, new ddo("ts"));
+      io.a($$0, h, new ddo("ls"));
+      io.a($$0, i, new ddo("rs"));
+      io.a($$0, j, new ddo("cs"));
+      io.a($$0, k, new ddo("ms"));
+      io.a($$0, l, new ddo("drs"));
+      io.a($$0, m, new ddo("dls"));
+      io.a($$0, n, new ddo("ss"));
+      io.a($$0, o, new ddo("cr"));
+      io.a($$0, p, new ddo("sc"));
+      io.a($$0, q, new ddo("bt"));
+      io.a($$0, r, new ddo("tt"));
+      io.a($$0, s, new ddo("bts"));
+      io.a($$0, t, new ddo("tts"));
+      io.a($$0, u, new ddo("ld"));
+      io.a($$0, v, new ddo("rd"));
+      io.a($$0, w, new ddo("lud"));
+      io.a($$0, x, new ddo("rud"));
+      io.a($$0, y, new ddo("mc"));
+      io.a($$0, z, new ddo("mr"));
+      io.a($$0, A, new ddo("vh"));
+      io.a($$0, B, new ddo("hh"));
+      io.a($$0, C, new ddo("vhr"));
+      io.a($$0, D, new ddo("hhb"));
+      io.a($$0, E, new ddo("bo"));
+      io.a($$0, F, new ddo("cbo"));
+      io.a($$0, G, new ddo("gra"));
+      io.a($$0, H, new ddo("gru"));
+      io.a($$0, I, new ddo("bri"));
+      io.a($$0, J, new ddo("glb"));
+      io.a($$0, K, new ddo("cre"));
+      io.a($$0, L, new ddo("sku"));
+      io.a($$0, M, new ddo("flo"));
+      io.a($$0, N, new ddo("moj"));
+      return io.a($$0, O, new ddo("pig"));
    }
 }

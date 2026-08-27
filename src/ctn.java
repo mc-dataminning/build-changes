@@ -1,98 +1,173 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class ctn extends ctc {
-   public static final MapCodec<ctn> a = b(ctn::new);
-   public static final dgd b = dft.aw;
-   public static final int c = 15;
-   protected static final int d = 1;
-   protected static final eia e = ctc.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   protected static final eia f = ctc.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public abstract class ctn extends cua {
+   private static final int c = 8;
+   private final float d;
+   protected static final float a = 1.0F;
+   protected static final eiy b = cua.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
-   @Override
-   public MapCodec<ctn> a() {
-      return a;
-   }
-
-   protected ctn(dfc.d $$0) {
+   public ctn(dga.d $$0, float $$1) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      this.d = $$1;
    }
 
    @Override
-   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected abstract MapCodec<? extends ctn> a();
+
+   @Override
+   public dgb a(cmr $$0) {
+      return a($$0.q(), $$0.a());
+   }
+
+   public static dgb a(cqf $$0, ht $$1) {
+      ht $$2 = $$1.d();
+      dgb $$3 = $$0.a_($$2);
+      return dbj.h($$3) ? cuc.cs.o() : ((cwy)cuc.cr).b($$0, $$1);
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return b;
+   }
+
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
+      if ($$3.a(24) == 0) {
+         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, aqd.hO, aqe.e, 1.0F + $$3.i(), $$3.i() * 0.7F + 0.3F, false);
       }
-   }
 
-   @Override
-   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      gw $$4 = $$2.c();
-      if ($$1.t($$4)) {
-         int $$5 = 1;
-
-         while ($$1.a_($$2.c($$5)).a(this)) {
-            $$5++;
-         }
-
-         if ($$5 < 3) {
-            int $$6 = $$0.c(b);
-            if ($$6 == 15) {
-               $$1.b($$4, this.o());
-               dfd $$7 = $$0.a(b, Integer.valueOf(0));
-               $$1.a($$2, $$7, 4);
-               $$1.a($$7, $$4, this, $$2, false);
-            } else {
-               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
+      ht $$4 = $$2.d();
+      dgb $$5 = $$1.a_($$4);
+      if (!this.f($$5) && !$$5.d($$1, $$4, hx.b)) {
+         if (this.f($$1.a_($$2.g()))) {
+            for (int $$10 = 0; $$10 < 2; $$10++) {
+               double $$11 = (double)$$2.u() + $$3.j() * 0.1F;
+               double $$12 = (double)$$2.v() + $$3.j();
+               double $$13 = (double)$$2.w() + $$3.j();
+               $$1.a(js.S, $$11, $$12, $$13, 0.0, 0.0, 0.0);
             }
          }
+
+         if (this.f($$1.a_($$2.h()))) {
+            for (int $$14 = 0; $$14 < 2; $$14++) {
+               double $$15 = (double)($$2.u() + 1) - $$3.j() * 0.1F;
+               double $$16 = (double)$$2.v() + $$3.j();
+               double $$17 = (double)$$2.w() + $$3.j();
+               $$1.a(js.S, $$15, $$16, $$17, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if (this.f($$1.a_($$2.e()))) {
+            for (int $$18 = 0; $$18 < 2; $$18++) {
+               double $$19 = (double)$$2.u() + $$3.j();
+               double $$20 = (double)$$2.v() + $$3.j();
+               double $$21 = (double)$$2.w() + $$3.j() * 0.1F;
+               $$1.a(js.S, $$19, $$20, $$21, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if (this.f($$1.a_($$2.f()))) {
+            for (int $$22 = 0; $$22 < 2; $$22++) {
+               double $$23 = (double)$$2.u() + $$3.j();
+               double $$24 = (double)$$2.v() + $$3.j();
+               double $$25 = (double)($$2.w() + 1) - $$3.j() * 0.1F;
+               $$1.a(js.S, $$23, $$24, $$25, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if (this.f($$1.a_($$2.c()))) {
+            for (int $$26 = 0; $$26 < 2; $$26++) {
+               double $$27 = (double)$$2.u() + $$3.j();
+               double $$28 = (double)($$2.v() + 1) - $$3.j() * 0.1F;
+               double $$29 = (double)$$2.w() + $$3.j();
+               $$1.a(js.S, $$27, $$28, $$29, 0.0, 0.0, 0.0);
+            }
+         }
+      } else {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j() * 0.5 + 0.5;
+            double $$9 = (double)$$2.w() + $$3.j();
+            $$1.a(js.S, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+         }
       }
    }
 
-   @Override
-   public eia c(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return e;
-   }
+   protected abstract boolean f(dgb var1);
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return f;
-   }
-
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dfd $$0, cqe $$1, gw $$2) {
-      for (ha $$3 : ha.c.a) {
-         dfd $$4 = $$1.a_($$2.a($$3));
-         if ($$4.e() || $$1.b_($$2.a($$3)).a(aqa.b)) {
-            return false;
+   public void a(dgb $$0, cqz $$1, ht $$2, bjt $$3) {
+      if (!$$3.aW()) {
+         $$3.h($$3.ax() + 1);
+         if ($$3.ax() == 0) {
+            $$3.g(8);
          }
       }
 
-      dfd $$5 = $$1.a_($$2.d());
-      return ($$5.a(cte.dQ) || $$5.a(apv.H)) && !$$1.a_($$2.c()).k();
+      $$3.a($$1.ag().a(), this.d);
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, biw $$3) {
-      $$3.a($$1.ag().j(), 1.0F);
+   public void b(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         if (a($$1)) {
+            Optional<ecc> $$5 = ecc.a($$1, $$2, hx.a.a);
+            if ($$5.isPresent()) {
+               $$5.get().b();
+               return;
+            }
+         }
+
+         if (!$$0.a((crc)$$1, $$2)) {
+            $$1.a($$2, false);
+         }
+      }
+   }
+
+   private static boolean a(cqz $$0) {
+      return $$0.ac() == cqz.h || $$0.ac() == cqz.i;
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b);
+   protected void a(cqz $$0, ccx $$1, ht $$2, dgb $$3) {
    }
 
    @Override
-   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
-      return false;
+   public dgb a(cqz $$0, ht $$1, dgb $$2, ccx $$3) {
+      if (!$$0.x_()) {
+         $$0.a(null, 1009, $$1, 0);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   public static boolean a(cqz $$0, ht $$1, hx $$2) {
+      dgb $$3 = $$0.a_($$1);
+      return !$$3.i() ? false : a($$0, $$1).a((crc)$$0, $$1) || b($$0, $$1, $$2);
+   }
+
+   private static boolean b(cqz $$0, ht $$1, hx $$2) {
+      if (!a($$0)) {
+         return false;
+      } else {
+         ht.a $$3 = $$1.j();
+         boolean $$4 = false;
+
+         for (hx $$5 : hx.values()) {
+            if ($$0.a_($$3.g($$1).c($$5)).a(cuc.co)) {
+               $$4 = true;
+               break;
+            }
+         }
+
+         if (!$$4) {
+            return false;
+         } else {
+            hx.a $$6 = $$2.o().d() ? $$2.i().o() : hx.c.a.b($$0.z);
+            return ecc.a($$0, $$1, $$6).isPresent();
+         }
+      }
    }
 }

@@ -1,173 +1,154 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-class fda {
-   private static final int a = 44;
-   private final List<fda.c> b;
+public abstract class fda<B extends fkq.a<?>> extends ezd {
+   private static final ui s = ui.c("gui.abuseReport.report_sent_msg");
+   private static final ui t = ui.c("gui.abuseReport.sending.title").a(n.r);
+   private static final ui u = ui.c("gui.abuseReport.sent.title").a(n.r);
+   private static final ui v = ui.c("gui.abuseReport.error.title").a(n.r);
+   private static final ui w = ui.c("gui.abuseReport.send.generic_error");
+   protected static final ui a = ui.c("gui.abuseReport.send");
+   protected static final ui b = ui.c("gui.abuseReport.observed_what");
+   protected static final ui c = ui.c("gui.abuseReport.select_reason");
+   private static final ui x = ui.c("gui.abuseReport.describe");
+   protected static final ui k = ui.c("gui.abuseReport.more_comments");
+   private static final ui y = ui.c("gui.abuseReport.comments");
+   protected static final int l = 20;
+   protected static final int m = 280;
+   protected static final int n = 8;
+   private static final Logger z = LogUtils.getLogger();
+   protected final ezd o;
+   protected final fku p;
+   protected B q;
 
-   fda(List<fda.c> $$0) {
-      this.b = $$0;
+   protected fda(ui $$0, ezd $$1, fku $$2, B $$3) {
+      super($$0);
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
    }
 
-   public void a() {
-      this.b.forEach(fda.c::a);
+   protected eub a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.p.a().b();
+      eub $$4 = new eub(this.i, 0, 0, $$0, $$1, x, y);
+      $$4.a(this.q.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
    }
 
-   public static fda.a a(int $$0) {
-      return new fda.a($$0);
+   protected void l() {
+      this.q.a(this.p).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.p.a().a($$0.a(), $$0.b(), $$0.c());
+         this.f.a(eyl.a(t, uh.e, () -> {
+            this.f.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.C();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.f);
+      }).ifRight($$0 -> this.a($$0.b()));
    }
 
-   public static class a {
-      final int a;
-      private final List<fda.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fda.b> f = Optional.empty();
-
-      public a(int $$0) {
-         this.a = $$0;
-      }
-
-      void a() {
-         this.e++;
-      }
-
-      public fda.d a(tl $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fda.d $$3 = new fda.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fda.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fda.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fda a(Consumer<evw> $$0) {
-         evt $$1 = new evt().b(this.d);
-         $$1.a(evz.a(this.a - 44), 0, 0);
-         $$1.a(evz.a(44), 0, 1);
-         List<fda.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fda.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
-         }
-
-         $$1.a();
-         $$0.accept($$1);
-         fda $$4 = new fda($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public fda.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fda.b($$0, $$1));
-         return this;
-      }
+   private void C() {
+      this.E();
+      this.f.a(eyl.a(u, s, uh.d, () -> this.f.a(null)));
    }
 
-   static record b(int a, boolean b) {
+   private void a(Throwable $$0) {
+      z.error("Encountered error while sending abuse report", $$0);
+      ui $$2;
+      if ($$0.getCause() instanceof vi $$1) {
+         $$2 = $$1.b();
+      } else {
+         $$2 = w;
+      }
+
+      this.a($$2);
    }
 
-   static record c(esr<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.i = this.c.getAsBoolean();
-         }
-      }
+   private void a(ui $$0) {
+      ui $$1 = $$0.f().a(n.m);
+      this.f.a(eyl.a(v, $$1, uh.k, () -> this.f.a(this)));
+   }
 
-      public esr<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
+   void D() {
+      if (this.q.b()) {
+         this.p.a(this.q.e().b());
       }
    }
 
-   public static class d {
-      private final tl a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private tl d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
+   void E() {
+      this.p.a(null);
+   }
 
-      d(tl $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
+   @Override
+   public void aC_() {
+      if (this.q.b()) {
+         this.f.a(new fda.a());
+      } else {
+         this.f.a(this.o);
+      }
+   }
+
+   @Override
+   public void aD_() {
+      this.D();
+      super.aD_();
+   }
+
+   class a extends fcf {
+      private static final int c = 20;
+      private static final ui k = ui.c("gui.abuseReport.discard.title").a(n.r);
+      private static final ui l = ui.c("gui.abuseReport.discard.content");
+      private static final ui m = ui.c("gui.abuseReport.discard.return");
+      private static final ui n = ui.c("gui.abuseReport.discard.draft");
+      private static final ui o = ui.c("gui.abuseReport.discard.discard");
+
+      protected a() {
+         super(k, l, l);
       }
 
-      public fda.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
+      @Override
+      protected void a(int $$0) {
+         this.d(etj.a(m, $$0x -> this.aC_()).a(this.g / 2 - 155, 100 + $$0).a());
+         this.d(etj.a(n, $$0x -> {
+            fda.this.D();
+            this.f.a(fda.this.o);
+         }).a(this.g / 2 + 5, 100 + $$0).a());
+         this.d(etj.a(o, $$0x -> {
+            fda.this.E();
+            this.f.a(fda.this.o);
+         }).a(this.g / 2 - 75, 130 + $$0).a());
       }
 
-      public fda.d a(tl $$0) {
-         this.d = $$0;
-         return this;
+      @Override
+      public void aC_() {
+         this.f.a(fda.this);
       }
 
-      fda.c a(fda.a $$0, evt $$1, int $$2) {
-         $$0.a();
-         etr $$3 = new etr(this.a, eqp.O().h).e();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fda.b> $$4 = $$0.f;
-         esr.a<Boolean> $$5 = esr.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            etv $$7 = etv.a(this.d);
-            $$5.a($$1x -> $$7);
-         }
+      @Override
+      public boolean aB_() {
+         return false;
+      }
 
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> tk.a(this.a, $$0x.b(), this.d));
-         } else {
-            $$5.a($$0x -> tk.a(this.a, $$0x.b()));
-         }
-
-         esr<Boolean> $$8 = $$5.a(0, 0, this.f, 20, tl.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.i = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               tl $$4x = this.d.f().a(n.h);
-               erx $$5x = eqp.O().h;
-               ete $$6x = new ete($$4x, $$5x);
-               $$6x.j($$0.a - $$0.c - this.f);
-               $$6x.k($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.i() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new fda.c($$8, this.b, this.e);
+      @Override
+      protected void c(esy $$0) {
+         $$0.b(this.i, this.e, this.g / 2 - 155, 30, -1);
       }
    }
 }

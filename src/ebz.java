@@ -1,12 +1,8 @@
-public class ebz extends RuntimeException {
-   private final tl a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public ebz(tl $$0) {
-      super($$0.getString());
-      this.a = $$0;
-   }
-
-   public tl a() {
-      return this.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ebz {
 }

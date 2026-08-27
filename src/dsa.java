@@ -1,48 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dsa extends dry {
-   public static final Codec<dsa> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dfd.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dfd.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dfd.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, dsa::new)
-   );
-   private final float g;
-   private final float h;
-   private final dfd i;
-   private final List<dfd> j;
-   private final List<dfd> k;
+public class dsa extends drz {
+   public static final Codec<dsa> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsa::new));
 
-   public dsa(long $$0, dzj.a $$1, float $$2, float $$3, float $$4, dfd $$5, List<dfd> $$6, List<dfd> $$7) {
+   public dsa(bhg $$0, bhg $$1, int $$2) {
       super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
    }
 
    @Override
-   protected drw<?> a() {
-      return drw.c;
+   protected dsf<?> a() {
+      return dsf.e;
    }
 
    @Override
-   public dfd a(ash $$0, gw $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
+   protected void a(crf $$0, dse.b $$1, ate $$2, dro $$3, int $$4, dse.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
+   }
+
+   @Override
+   protected boolean a(ate $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

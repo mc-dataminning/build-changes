@@ -1,24 +1,17 @@
-public class xq implements ve<wx> {
-   private final int a;
+import java.util.HashSet;
+import java.util.Set;
 
-   public xq(int $$0) {
-      this.a = $$0;
-   }
-
-   public xq(so $$0) {
-      this.a = $$0.readUnsignedByte();
+public record xq(Set<afw> a) implements wb<xn> {
+   public xq(tl $$0) {
+      this($$0.a(HashSet::new, tl::t));
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.k(this.a);
+   public void a(tl $$0) {
+      $$0.a(this.a, tl::a);
    }
 
-   public void a(wx $$0) {
+   public void a(xn $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
    }
 }

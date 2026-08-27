@@ -1,121 +1,139 @@
-import java.util.Locale;
+import com.google.gson.JsonObject;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class env extends gex {
-   private static final tl a = tl.c("mco.backup.info.title");
-   private static final tl b = tl.c("mco.backup.unknown");
-   private final eye c;
-   final emf y;
-   final evu z = new evu(this);
-   private env.a A;
+public class env extends eod {
+   public final boolean a;
+   public final boolean b;
+   public final boolean c;
+   public final boolean d;
+   public final int e;
+   public final boolean f;
+   public final boolean g;
+   public final int h;
+   public final int i;
+   @Nullable
+   private final String m;
+   public long j;
+   @Nullable
+   public String k;
+   public boolean l;
+   private static final boolean n = false;
+   private static final boolean o = true;
+   private static final boolean p = true;
+   private static final boolean q = true;
+   private static final boolean r = true;
+   private static final int s = 0;
+   private static final boolean t = false;
+   private static final int u = 2;
+   private static final int v = 0;
+   private static final String w = "";
+   private static final long x = -1L;
+   private static final String y = null;
 
-   public env(eye $$0, emf $$1) {
-      super(a);
-      this.c = $$0;
-      this.y = $$1;
+   public env(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, @Nullable String $$9) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.g = $$8;
+      this.m = $$9;
    }
 
-   @Override
-   public void aH_() {
-      this.z.a(new etr(a, this.i));
-      this.A = new env.a(this.f);
-      this.d(this.A);
-      this.z.b(esk.a(tk.k, $$0 -> this.az_()).a());
-      this.z.a();
-      this.z.a($$1 -> {
-         esi var10000 = this.d($$1);
-      });
+   public static env a() {
+      return new env(true, true, true, true, 0, false, 2, 0, false, "");
    }
 
-   @Override
-   protected void b() {
-      this.z.a();
-      this.A.a(this.g, this.h, this.z.c(), this.h - this.z.b());
+   public static env b() {
+      env $$0 = a();
+      $$0.a(true);
+      return $$0;
    }
 
-   @Override
-   public void az_() {
-      this.f.a(this.c);
+   public void a(boolean $$0) {
+      this.l = $$0;
    }
 
-   tl a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
+   public static env a(JsonObject $$0) {
+      env $$1 = new env(
+         eqa.a("pvp", $$0, true),
+         eqa.a("spawnAnimals", $$0, true),
+         eqa.a("spawnMonsters", $$0, true),
+         eqa.a("spawnNPCs", $$0, true),
+         eqa.a("spawnProtection", $$0, 0),
+         eqa.a("commandBlocks", $$0, false),
+         eqa.a("difficulty", $$0, 2),
+         eqa.a("gameMode", $$0, 0),
+         eqa.a("forceGameMode", $$0, false),
+         eqa.a("slotName", $$0, "")
+      );
+      $$1.j = eqa.a("worldTemplateId", $$0, -1L);
+      $$1.k = eqa.a("worldTemplateImage", $$0, y);
+      return $$1;
+   }
+
+   public String a(int $$0) {
+      if (this.m != null && !this.m.isEmpty()) {
+         return this.m;
       } else {
-         return (tl)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : tl.b($$1));
+         return this.l ? gbg.a("mco.configure.world.slot.empty") : this.b($$0);
       }
    }
 
-   private tl a(String $$0) {
-      try {
-         return eos.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
-      }
+   public String b(int $$0) {
+      return gbg.a("mco.configure.world.slot", $$0);
    }
 
-   private tl b(String $$0) {
-      try {
-         return eos.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
+   public String c() {
+      JsonObject $$0 = new JsonObject();
+      if (!this.a) {
+         $$0.addProperty("pvp", this.a);
       }
+
+      if (!this.b) {
+         $$0.addProperty("spawnAnimals", this.b);
+      }
+
+      if (!this.c) {
+         $$0.addProperty("spawnMonsters", this.c);
+      }
+
+      if (!this.d) {
+         $$0.addProperty("spawnNPCs", this.d);
+      }
+
+      if (this.e != 0) {
+         $$0.addProperty("spawnProtection", this.e);
+      }
+
+      if (this.f) {
+         $$0.addProperty("commandBlocks", this.f);
+      }
+
+      if (this.h != 2) {
+         $$0.addProperty("difficulty", this.h);
+      }
+
+      if (this.i != 0) {
+         $$0.addProperty("gameMode", this.i);
+      }
+
+      if (this.g) {
+         $$0.addProperty("forceGameMode", this.g);
+      }
+
+      if (!Objects.equals(this.m, "")) {
+         $$0.addProperty("slotName", this.m);
+      }
+
+      return $$0.toString();
    }
 
-   class a extends etg<env.b> {
-      public a(eqp $$0) {
-         super($$0, env.this.g, env.this.h, env.this.z.c(), env.this.h - env.this.z.b(), 36);
-         if (env.this.y.e != null) {
-            env.this.y.e.forEach(($$0x, $$1) -> this.b(env.this.new b($$0x, $$1)));
-         }
-      }
-   }
-
-   class b extends etg.a<env.b> {
-      private static final tl b = tl.c("mco.backup.entry.templateName");
-      private static final tl c = tl.c("mco.backup.entry.gameDifficulty");
-      private static final tl d = tl.c("mco.backup.entry.name");
-      private static final tl e = tl.c("mco.backup.entry.gameServerVersion");
-      private static final tl f = tl.c("mco.backup.entry.uploaded");
-      private static final tl g = tl.c("mco.backup.entry.enabledPack");
-      private static final tl h = tl.c("mco.backup.entry.description");
-      private static final tl i = tl.c("mco.backup.entry.gameMode");
-      private static final tl j = tl.c("mco.backup.entry.seed");
-      private static final tl k = tl.c("mco.backup.entry.worldType");
-      private static final tl l = tl.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
-
-      public b(String $$0, String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
-
-      @Override
-      public void a(erz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(env.this.i, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(env.this.i, env.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
-
-      private tl a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_pack" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
-      }
-
-      @Override
-      public tl a() {
-         return tl.a("narrator.select", this.m + " " + this.n);
-      }
+   public env d() {
+      return new env(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.m);
    }
 }

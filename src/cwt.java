@@ -1,20 +1,11 @@
-import com.mojang.serialization.MapCodec;
-
-public class cwt extends czm {
-   public static final MapCodec<cwt> a = b(cwt::new);
-
-   @Override
-   public MapCodec<cwt> a() {
-      return a;
+public interface cwt {
+   default void a(cqz $$0, ht $$1, dgb $$2, dgb $$3, bzp $$4) {
    }
 
-   public cwt(dfc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(i, ha.a.b));
+   default void a(cqz $$0, ht $$1, bzp $$2) {
    }
 
-   @Override
-   public void a(cqb $$0, dfd $$1, gw $$2, biw $$3, float $$4) {
-      $$3.a($$4, 0.2F, $$0.ag().k());
+   default bir a(bjt $$0) {
+      return $$0.dM().a($$0);
    }
 }

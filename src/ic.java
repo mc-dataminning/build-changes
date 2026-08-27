@@ -1,28 +1,23 @@
-public abstract class ic extends ig {
-   @Override
-   public cjl a(id $$0, cjl $$1) {
-      cqb $$2 = $$0.b();
-      ho $$3 = cvf.a($$0);
-      ha $$4 = $$0.d().c(cvf.b);
-      ccs $$5 = this.a($$2, $$3, $$1);
-      $$5.c((double)$$4.j(), (double)((float)$$4.k() + 0.1F), (double)$$4.l(), this.b(), this.a());
-      $$2.b($$5);
-      $$1.h(1);
-      return $$1;
+import java.util.Optional;
+
+public interface ic<T> {
+   Optional<ib.c<T>> a(afv<T> var1);
+
+   default ib.c<T> b(afv<T> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
    }
 
-   @Override
-   protected void a(id $$0) {
-      $$0.b().c(1002, $$0.c(), 0);
+   Optional<ig.c<T>> a(arh<T> var1);
+
+   default ig.c<T> b(arh<T> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
    }
 
-   protected abstract ccs a(cqb var1, ho var2, cjl var3);
+   public interface a {
+      <T> Optional<ic<T>> a(afv<? extends io<? extends T>> var1);
 
-   protected float a() {
-      return 6.0F;
-   }
-
-   protected float b() {
-      return 1.1F;
+      default <T> ic<T> b(afv<? extends io<? extends T>> $$0) {
+         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      }
    }
 }

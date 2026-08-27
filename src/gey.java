@@ -1,29 +1,110 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class gey {
-   private final float a;
-   private final AtomicReference<gey.a> b = new AtomicReference<>();
+   final Map<gex<?>, Object> a;
 
-   public gey(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   gey(Map<gex<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public void a(eqh $$0, tl $$1) {
-      gey.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gey.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   public static gey.a a() {
+      return new gey.a();
+   }
+
+   public static Codec<gey> a(final List<gex<?>> $$0) {
+      return (new MapCodec<gey>() {
+         public <T> RecordBuilder<T> a(gey $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
+
+            for (gex<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
+
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(gey $$0x, RecordBuilder<T> $$1, gex<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<gey> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<gey.a> $$2 = DataResult.success(new gey.a());
+
+            for (gex<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(gey.a::a);
+         }
+
+         private <T, V> DataResult<gey.a> a(DataResult<gey.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gex<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(gex::b).map($$0::createString);
+         }
+      }).codec();
+   }
+
+   @Nullable
+   public <T> T a(gex<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public Set<gex<?>> b() {
+      return this.a.keySet();
+   }
+
+   public static class a {
+      private final Map<gex<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
       }
-   }
 
-   static class a {
-      final tl a;
-      final RateLimiter b;
+      public <T> gey.a a(gex<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
 
-      a(tl $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      public <T> gey.a b(gex<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public gey.a a(gey $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public gey a() {
+         return new gey(this.a);
       }
    }
 }

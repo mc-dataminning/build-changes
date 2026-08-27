@@ -1,47 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class cwc extends ctl implements dbc {
-   protected static final MapCodec<List<dbc.a>> a = dbc.a.b.fieldOf("suspicious_stew_effects");
-   public static final MapCodec<cwc> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(cwc::b), t()).apply($$0, cwc::new));
-   protected static final float c = 3.0F;
-   protected static final eia d = ctc.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
-   private final List<dbc.a> e;
+public class cwc extends cua {
+   public static final MapCodec<cwc> a = b(cwc::new);
+   protected static final eiy b = cwv.c;
 
    @Override
-   public MapCodec<? extends cwc> a() {
+   public MapCodec<cwc> a() {
+      return a;
+   }
+
+   protected cwc(dga.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean g_(dgb $$0) {
+      return true;
+   }
+
+   @Override
+   public dgb a(cmr $$0) {
+      return !this.o().a((crc)$$0.q(), $$0.a()) ? cua.a(this.o(), cuc.j.o(), $$0.q(), $$0.a()) : super.a($$0);
+   }
+
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if ($$1 == hx.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      cwv.a(null, $$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(dgb $$0, crc $$1, ht $$2) {
+      dgb $$3 = $$1.a_($$2.c());
+      return !$$3.e() || $$3.b() instanceof cwx;
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
       return b;
    }
 
-   public cwc(bih $$0, int $$1, dfc.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public cwc(List<dbc.a> $$0, dfc.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   protected static List<dbc.a> a(bih $$0, int $$1) {
-      int $$2;
-      if ($$0.a()) {
-         $$2 = $$1;
-      } else {
-         $$2 = $$1 * 20;
-      }
-
-      return List.of(new dbc.a($$0, $$2));
-   }
-
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      ehh $$4 = $$0.n($$1, $$2);
-      return d.a($$4.c, $$4.d, $$4.e);
-   }
-
-   @Override
-   public List<dbc.a> b() {
-      return this.e;
+   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
+      return false;
    }
 }

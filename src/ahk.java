@@ -1,39 +1,170 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ahk {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.kick.owner.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ui.b("commands.datapack.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ui.b("commands.datapack.enable.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ui.b("commands.datapack.disable.failed", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> ui.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
+   );
+   private static final SuggestionProvider<du> e = ($$0, $$1) -> dy.b(
+         ((du)$$0.getSource()).m().aB().d().stream().map(StringArgumentType::escapeIfRequired), $$1
+      );
+   private static final SuggestionProvider<du> f = ($$0, $$1) -> {
+      aoe $$2 = ((du)$$0.getSource()).m().aB();
+      Collection<String> $$3 = $$2.d();
+      cfg $$4 = ((du)$$0.getSource()).w();
+      return dy.b(
+         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(aob::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
+      );
+   };
 
-   public static void a(CommandDispatcher<dt> $$0) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("kick").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("datapack").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     dv.a("enable")
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
+                                             "name", StringArgumentType.string()
+                                          )
+                                          .suggests(f)
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.i().a($$0xx, $$1, $$0xxx -> $$0xxx, false)
+                                                )
+                                          ))
+                                       .then(
+                                          dv.a("after")
+                                             .then(
+                                                dv.a("existing", StringArgumentType.string())
+                                                   .suggests(e)
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (du)$$0x.getSource(),
+                                                            a($$0x, "name", true),
+                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
+                                                         )
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       dv.a("before")
+                                          .then(
+                                             dv.a("existing", StringArgumentType.string())
+                                                .suggests(e)
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (du)$$0x.getSource(),
+                                                         a($$0x, "name", true),
+                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(dv.a("last").executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", true), List::add))))
+                              .then(dv.a("first").executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
+                        )
+                  ))
+               .then(
+                  dv.a("disable").then(dv.a("name", StringArgumentType.string()).suggests(e).executes($$0x -> a((du)$$0x.getSource(), a($$0x, "name", false))))
+               ))
             .then(
-               ((RequiredArgumentBuilder)du.a("targets", ee.d())
-                     .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), tl.c("multiplayer.disconnect.kicked"))))
-                  .then(du.a("reason", ei.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ei.a($$0x, "reason"))))
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("list").executes($$0x -> a((du)$$0x.getSource())))
+                     .then(dv.a("available").executes($$0x -> b((du)$$0x.getSource()))))
+                  .then(dv.a("enabled").executes($$0x -> c((du)$$0x.getSource())))
             )
       );
    }
 
-   private static int a(dt $$0, Collection<aku> $$1, tl $$2) throws CommandSyntaxException {
-      int $$3 = 0;
+   private static int a(du $$0, aob $$1, ahk.a $$2) throws CommandSyntaxException {
+      aoe $$3 = $$0.m().aB();
+      List<aob> $$4 = Lists.newArrayList($$3.f());
+      $$2.apply($$4, $$1);
+      $$0.a(() -> ui.a("commands.datapack.modify.enable", $$1.a(true)), true);
+      aiy.a($$4.stream().map(aob::f).collect(Collectors.toList()), $$0);
+      return $$4.size();
+   }
 
-      for (aku $$4 : $$1) {
-         if (!$$0.l().a($$4.fR())) {
-            $$4.c.b($$2);
-            $$0.a(() -> tl.a("commands.kick.success", $$4.N_(), $$2), true);
-            $$3++;
+   private static int a(du $$0, aob $$1) {
+      aoe $$2 = $$0.m().aB();
+      List<aob> $$3 = Lists.newArrayList($$2.f());
+      $$3.remove($$1);
+      $$0.a(() -> ui.a("commands.datapack.modify.disable", $$1.a(true)), true);
+      aiy.a($$3.stream().map(aob::f).collect(Collectors.toList()), $$0);
+      return $$3.size();
+   }
+
+   private static int a(du $$0) {
+      return c($$0) + b($$0);
+   }
+
+   private static int b(du $$0) {
+      aoe $$1 = $$0.m().aB();
+      $$1.a();
+      Collection<aob> $$2 = $$1.f();
+      Collection<aob> $$3 = $$1.c();
+      cfg $$4 = $$0.w();
+      List<aob> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
+      if ($$5.isEmpty()) {
+         $$0.a(() -> ui.c("commands.datapack.list.available.none"), false);
+      } else {
+         $$0.a(() -> ui.a("commands.datapack.list.available.success", $$5.size(), ul.b($$5, $$0xx -> $$0xx.a(false))), false);
+      }
+
+      return $$5.size();
+   }
+
+   private static int c(du $$0) {
+      aoe $$1 = $$0.m().aB();
+      $$1.a();
+      Collection<? extends aob> $$2 = $$1.f();
+      if ($$2.isEmpty()) {
+         $$0.a(() -> ui.c("commands.datapack.list.enabled.none"), false);
+      } else {
+         $$0.a(() -> ui.a("commands.datapack.list.enabled.success", $$2.size(), ul.b($$2, $$0xx -> $$0xx.a(true))), false);
+      }
+
+      return $$2.size();
+   }
+
+   private static aob a(CommandContext<du> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+      String $$3 = StringArgumentType.getString($$0, $$1);
+      aoe $$4 = ((du)$$0.getSource()).m().aB();
+      aob $$5 = $$4.c($$3);
+      if ($$5 == null) {
+         throw a.create($$3);
+      } else {
+         boolean $$6 = $$4.f().contains($$5);
+         if ($$2 && $$6) {
+            throw b.create($$3);
+         } else if (!$$2 && !$$6) {
+            throw c.create($$3);
+         } else {
+            cfg $$7 = ((du)$$0.getSource()).w();
+            cfg $$8 = $$5.d();
+            if (!$$8.a($$7)) {
+               throw d.create($$3, cfi.a($$7, $$8));
+            } else {
+               return $$5;
+            }
          }
       }
+   }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
-      }
+   interface a {
+      void apply(List<aob> var1, aob var2) throws CommandSyntaxException;
    }
 }

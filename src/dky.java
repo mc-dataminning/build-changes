@@ -1,60 +1,97 @@
-public class dky implements cpo {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-   @Override
-   public int a(akt $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.X().b(cpx.A)) {
-         return 0;
-      } else {
-         ash $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.A_() < 5 && $$0.C_().g()) {
-               return 0;
-            } else {
-               int $$4 = 0;
+public final class dky {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dic> e = jy.o
+      .q()
+      .comapFlatMap($$0 -> $$0 == dic.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dky> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dky::a),
+               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dky::new)
+   );
+   private static final Set<afv<crx>> f = Set.of(cse.aa, cse.Z, cse.ab);
+   public static final crb b = new crb() {
+      @Override
+      public int J_() {
+         return 64;
+      }
 
-               for (aku $$5 : $$0.v()) {
-                  if (!$$5.M_()) {
-                     gw $$6 = $$5.dl();
-                     if (!$$0.C_().g() || $$6.v() >= $$0.y_() && $$0.g($$6)) {
-                        bhc $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           apm $$8 = $$5.F();
-                           int $$9 = asb.a($$8.a(apq.i.b(apq.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              gw $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              dfd $$12 = $$0.a_($$11);
-                              eag $$13 = $$0.b_($$11);
-                              if (cqm.a($$0, $$11, $$12, $$13, bja.au)) {
-                                 bkf $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+      @Override
+      public int I_() {
+         return -64;
+      }
+   };
+   private final dic g;
+   private final BitSet h;
 
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    bzq $$17 = bja.au.a((cqb)$$0);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, bjq.a, $$14, null);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
+   private dky(dic $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
+   }
 
-               return $$4;
+   @Nullable
+   public static dky a(rt $$0) {
+      dic $$1 = dic.a($$0.l("target_status"));
+      return $$1 == dic.c ? null : new dky($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
+
+   public static void a(dis $$0) {
+      int $$1 = 4;
+      ht.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(cuc.F)) {
+            $$0.a($$1x, cuc.rI.o(), false);
+         }
+      });
+   }
+
+   public void b(dis $$0) {
+      crb $$1 = $$0.z();
+      int $$2 = $$1.I_();
+      int $$3 = $$1.aj() - 1;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               ht.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, cuc.a.o(), false));
             }
          }
+      }
+   }
+
+   public dic a() {
+      return this.g;
+   }
+
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static csa a(csa $$0, dhx $$1) {
+      if (!$$1.y()) {
+         return $$0;
+      } else {
+         Predicate<afv<crx>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            ib<crx> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
    }
 }

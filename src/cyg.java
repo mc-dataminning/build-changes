@@ -1,19 +1,36 @@
-public class cyg {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dfd $$0) {
-      return $$0.i();
+public class cyg extends css {
+   public static final MapCodec<cyg> d = b(cyg::new);
+
+   @Override
+   public MapCodec<cyg> a() {
+      return d;
    }
 
-   public static int a(ash $$0) {
-      double $$1 = 1.0;
+   public cyg(dga.d $$0) {
+      super($$0, iy.e);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
+   @Override
+   protected double b(dgb $$0) {
+      return 0.9375;
+   }
+
+   @Override
+   public boolean d(dgb $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, bjt $$3) {
+      if (this.a($$0, $$2, $$3)) {
+         $$3.aw();
       }
+   }
 
-      return $$2;
+   @Override
+   public int a(dgb $$0, cqz $$1, ht $$2) {
+      return 3;
    }
 }

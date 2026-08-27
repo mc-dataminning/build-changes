@@ -1,127 +1,181 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public final class dla {
-   final dkz a;
-   private final hf<dzj.a> b;
-   private final dks c;
-   private final cri.f d;
-   private final dle e;
-   private final dkz f;
-   private final dkz g;
-   private final Map<aey<dzj.a>, dzj> h;
-   private final Map<aez, dkz> i;
-
-   public static dla a(hf.a $$0, aey<dkr> $$1, long $$2) {
-      return a($$0.b(jc.ax).b($$1).a(), $$0.b(jc.ay), $$2);
+public abstract class dla {
+   public static dla.b a(int $$0, int $$1) {
+      return new dla.b($$0 - 1, $$1 + 1);
    }
 
-   public static dla a(dkr $$0, hf<dzj.a> $$1, long $$2) {
-      return new dla($$0, $$1, $$2);
+   public static dla.b b(int $$0, int $$1) {
+      return new dla.b($$0, $$1);
    }
 
-   private dla(dkr $$0, hf<dzj.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new aez("aquifer")).e();
-      this.g = this.a.a(new aez("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dle(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
+   public static dla a(int $$0) {
+      return new dla.c($$0, false);
+   }
 
-      class a implements dkf.f {
-         private final Map<dkf, dkf> d = new HashMap<>();
+   public static dla b(int $$0) {
+      return new dla.c($$0 + 1, false);
+   }
 
-         private ash a(long $$0) {
-            return new dkn($$2 + $$0);
-         }
+   public static dla c(int $$0) {
+      return new dla.c($$0, true);
+   }
 
-         @Override
-         public dkf.c a(dkf.c $$0) {
-            he<dzj.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dkv.a)) {
-                  dzj $$2 = dzj.a(this.a(0L), new dzj.a(-7, 1.0, 1.0));
-                  return new dkf.c($$1, $$2);
-               }
+   public static dla d(int $$0) {
+      return new dla.c($$0 - 1, true);
+   }
 
-               if ($$1.a(dkv.b)) {
-                  dzj $$3 = dzj.a(this.a(1L), new dzj.a(-7, 1.0, 1.0));
-                  return new dkf.c($$1, $$3);
-               }
+   public static dla a() {
+      return dla.a.a;
+   }
 
-               if ($$1.a(dkv.j)) {
-                  dzj $$4 = dzj.b(dla.this.a.a(dkv.j.a()), new dzj.a(0, 0.0));
-                  return new dkf.c($$1, $$4);
-               }
-            }
+   public static dla a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
+   }
 
-            dzj $$5 = dla.this.a($$1.e().orElseThrow());
-            return new dkf.c($$1, $$5);
-         }
+   public abstract OptionalInt b();
 
-         private dkf a(dkf $$0) {
-            if ($$0 instanceof dzg $$1) {
-               ash $$2 = $$3 ? this.a(0L) : dla.this.a.a(new aez("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (dkf)($$0 instanceof dkg.i ? new dkg.i($$2) : $$0);
-            }
-         }
+   public abstract OptionalInt c();
 
-         @Override
-         public dkf apply(dkf $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
+   public abstract OptionalInt d();
+
+   public dla a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public dla b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<dla> a(crf $$0, ht $$1, int $$2, Predicate<dgb> $$3, Predicate<dgb> $$4) {
+      ht.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, hx.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, hx.a);
+         return Optional.of(a($$8, $$7));
+      }
+   }
+
+   private static OptionalInt a(crf $$0, int $$1, Predicate<dgb> $$2, Predicate<dgb> $$3, ht.a $$4, int $$5, hx $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends dla {
+      static final dla.a a = new dla.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends dla {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
          }
       }
 
-      this.c = $$0.i().a(new a());
-      dkf.f $$4 = new dkf.f() {
-         private final Map<dkf, dkf> b = new HashMap<>();
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
 
-         private dkf a(dkf $$0) {
-            if ($$0 instanceof dkg.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dkg.l $$2 ? $$2.k() : $$0;
-            }
-         }
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
 
-         @Override
-         public dkf apply(dkf $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new cri.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   public dzj a(aey<dzj.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dkv.a(this.b, this.a, $$0));
-   }
+   public static final class c extends dla {
+      private final int a;
+      private final boolean b;
 
-   public dkz a(aez $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public dks a() {
-      return this.c;
-   }
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
 
-   public cri.f b() {
-      return this.d;
-   }
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
 
-   public dle c() {
-      return this.e;
-   }
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
 
-   public dkz d() {
-      return this.f;
-   }
-
-   public dkz e() {
-      return this.g;
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

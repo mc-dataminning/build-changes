@@ -1,26 +1,55 @@
-import java.util.function.Function;
+public interface ejl extends bhu {
+   ckj v();
 
-public interface ejl {
-   float getAdvance();
+   ckj c(int var1);
 
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   void b(ckj var1);
+
+   ddx w();
+
+   default ckj ax_() {
+      return this.c(this.aj_());
    }
 
-   default float a() {
-      return 1.0F;
+   @Override
+   default int b() {
+      return 1;
    }
 
-   default float b() {
-      return 1.0F;
+   @Override
+   default boolean ai_() {
+      return this.v().b();
    }
 
-   evd bake(Function<ejn, evd> var1);
+   @Override
+   default void a() {
+      this.ax_();
+   }
 
-   public interface a extends ejl {
-      @Override
-      default evd bake(Function<ejn, evd> $$0) {
-         return eve.a;
+   @Override
+   default ckj b(int $$0) {
+      return this.a($$0, this.aj_());
+   }
+
+   @Override
+   default ckj a(int $$0) {
+      return $$0 == 0 ? this.v() : ckj.b;
+   }
+
+   @Override
+   default ckj a(int $$0, int $$1) {
+      return $$0 != 0 ? ckj.b : this.c($$1);
+   }
+
+   @Override
+   default void a(int $$0, ckj $$1) {
+      if ($$0 == 0) {
+         this.b($$1);
       }
+   }
+
+   @Override
+   default boolean a(ccx $$0) {
+      return bhu.a(this.w(), $$0);
    }
 }

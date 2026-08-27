@@ -1,49 +1,88 @@
-public class exf extends eye {
-   private static final aez a = new aez("textures/gui/demo_background.png");
-   private etd b = etd.a;
-   private etd c = etd.a;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public exf() {
-      super(tl.c("demo.help.title"));
+public class exf {
+   int a;
+   final Map<exf.a, exf.b> b = Maps.newTreeMap(Comparator.<exf.a, exb>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<exc> $$0) {
+      this.a++;
+      $$0.accept(new exf.c(0));
    }
 
-   @Override
-   protected void aH_() {
-      int $$0 = -16;
-      this.d(esk.a(tl.c("demo.help.buy"), $$0x -> {
-         $$0x.i = false;
-         ac.i().a("https://aka.ms/BuyMinecraftJava");
-      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
-      this.d(esk.a(tl.c("demo.help.later"), $$0x -> {
-         this.f.a(null);
-         this.f.n.i();
-      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
-      eqt $$1 = this.f.m;
-      this.b = etd.a(
-         this.i,
-         tl.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
-         tl.c("demo.help.movementMouse"),
-         tl.a("demo.help.jump", $$1.B.k()),
-         tl.a("demo.help.inventory", $$1.E.k())
-      );
-      this.c = etd.a(this.i, tl.c("demo.help.fullWrapped"), 218);
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean c = true;
+
+         public void a(String $$0) {
+            if (!this.c) {
+               $$1.append(". ");
+            }
+
+            this.c = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   public void b(erz $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = (this.g - 248) / 2;
-      int $$5 = (this.h - 166) / 2;
-      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
+   static class a {
+      final exb a;
+      final int b;
+
+      a(exb $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.g - 248) / 2 + 10;
-      int $$5 = (this.h - 166) / 2 + 8;
-      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
-      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
-      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
+   static class b {
+      exe<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = exe.a;
+         this.b = -1;
+      }
+
+      public exf.b a(int $$0, exe<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
+   }
+
+   class c implements exc {
+      private final int b;
+
+      c(int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(exb $$0, exe<?> $$1) {
+         exf.this.b.computeIfAbsent(new exf.a($$0, this.b), $$0x -> new exf.b()).a(exf.this.a, $$1);
+      }
+
+      @Override
+      public exc a() {
+         return exf.this.new c(this.b + 1);
+      }
    }
 }

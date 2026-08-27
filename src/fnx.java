@@ -1,47 +1,26 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public class fnx extends fll {
+   private static final int a = 12235202;
 
-public class fnx {
-   public final Int2ObjectMap<gbi> a = new Int2ObjectOpenHashMap(256);
-   private final Int2ObjectMap<gbb> b = new Int2ObjectOpenHashMap(256);
-   private final gbh c;
-
-   public fnx(gbh $$0) {
-      this.c = $$0;
+   protected fnx(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fnl $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)asi.b.b(12235202) / 255.0F;
+      this.w = (float)asi.b.c(12235202) / 255.0F;
+      this.x = (float)asi.b.d(12235202) / 255.0F;
    }
 
-   public gbb a(cjl $$0) {
-      gbb $$1 = this.a($$0.d());
-      return $$1 == null ? this.c.a() : $$1;
-   }
+   public static class a implements fmt<jv> {
+      private final fnl a;
 
-   @Nullable
-   public gbb a(cjg $$0) {
-      return (gbb)this.b.get(b($$0));
-   }
+      public a(fnl $$0) {
+         this.a = $$0;
+      }
 
-   private static int b(cjg $$0) {
-      return cjg.a($$0);
-   }
-
-   public void a(cjg $$0, gbi $$1) {
-      this.a.put(b($$0), $$1);
-   }
-
-   public gbh a() {
-      return this.c;
-   }
-
-   public void b() {
-      this.b.clear();
-      ObjectIterator var1 = this.a.entrySet().iterator();
-
-      while (var1.hasNext()) {
-         Entry<Integer, gbi> $$0 = (Entry<Integer, gbi>)var1.next();
-         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ate $$8 = $$1.z;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new fnx($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
    }
 }

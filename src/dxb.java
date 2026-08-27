@@ -1,42 +1,59 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 
-public class dxb extends dvc {
-   public static final bfs<crl.c> d = bfs.a(
-      new crl.c(bja.i, 10, 2, 3), new crl.c(bja.bs, 5, 4, 4), new crl.c(bja.bl, 8, 5, 5), new crl.c(bja.aJ, 2, 5, 5), new crl.c(bja.al, 3, 4, 4)
-   );
-   public static final Codec<dxb> e = a(dxb::new);
+public class dxb extends dxh {
+   public static final Codec<dxb> a = RecordCodecBuilder.create($$0 -> $$0.group(dve.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, dxb::new));
+   private final ib<dve> b;
+   private final rt c;
 
-   public dxb(dvc.c $$0) {
-      super($$0);
+   protected dxb(ib<dve> $$0, dxj.a $$1) {
+      super($$1);
+      this.b = $$0;
+      this.c = this.b();
+   }
+
+   private rt b() {
+      rt $$0 = new rt();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dew.a.a.c());
+      return $$0;
    }
 
    @Override
-   public Optional<dvc.b> a(dvc.a $$0) {
-      cpi $$1 = $$0.h();
-      gw $$2 = new gw($$1.d(), 64, $$1.e());
-      return Optional.of(new dvc.b($$2, (Consumer<dvu>)($$1x -> a($$1x, $$0))));
-   }
-
-   private static void a(dvu $$0, dvc.a $$1) {
-      dxa.q $$2 = new dxa.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<dvg> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         dvg $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
-      }
-
-      $$0.a($$1.f(), 48, 70);
+   public iw a(dzu $$0, dal $$1) {
+      return iw.g;
    }
 
    @Override
-   public dvl<?> e() {
-      return dvl.d;
+   public List<dzt.c> a(dzu $$0, ht $$1, dal $$2, ate $$3) {
+      List<dzt.c> $$4 = Lists.newArrayList();
+      $$4.add(new dzt.c($$1, cuc.pb.o().a(cya.b, hz.a(hx.a, hx.d)), this.c));
+      return $$4;
+   }
+
+   @Override
+   public dvs a(dzu $$0, ht $$1, dal $$2) {
+      iw $$3 = this.a($$0, $$2);
+      return new dvs($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   }
+
+   @Override
+   public boolean a(dzu $$0, crt $$1, crr $$2, dhy $$3, ht $$4, ht $$5, dal $$6, dvs $$7, ate $$8, boolean $$9) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
+   }
+
+   @Override
+   public dxi<?> a() {
+      return dxi.c;
+   }
+
+   @Override
+   public String toString() {
+      return "Feature[" + this.b + "]";
    }
 }

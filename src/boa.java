@@ -1,46 +1,33 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class boa {
-   public static ble<bjv> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bop.a(
-         (Function<bop.b<bjv>, ? extends App<bop.c<bjv>, bos<bjv>>>)($$3 -> $$3.group($$3.c(bsn.o), $$3.c(bsn.m), $$3.a(bsn.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dl()).a(aqa.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           ehm $$8 = ehm.a($$6);
-                           gw $$9 = $$6.dl();
-                           gw.a $$10 = new gw.a();
+   private static final int a = 300;
 
-                           label45:
-                           for (gw $$11 : gw.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, ha.a)).b($$5x, $$11, $$8).c()) {
-                                 for (ha $$12 : ha.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(ha.a)).a(cte.G)) {
-                                       $$5.a(new blg($$11));
-                                       $$4.a(new bsq(new blg($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
-                           }
-
-                           $$2.setValue($$7 + 40L);
-                           return true;
+   public static bmb<bkj> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return bpm.a(
+         (Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$3x -> $$3x.group($$3x.b(btk.C), $$3x.b(btk.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        ht $$11 = $$3x.<ia>b($$4).b();
+                        if ($$11.a($$7.dl(), (double)$$1)) {
+                           $$3.increment();
                         }
+
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dN().a($$6.W(), $$6.V());
+                        $$3.setValue(0);
+                        return true;
                      }
-               ))
+                  }))
       );
    }
 }

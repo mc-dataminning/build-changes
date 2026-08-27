@@ -1,53 +1,60 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class axz extends atl {
-   private static final Logger b = LogUtils.getLogger();
-
-   public axz(Schema $$0) {
-      super($$0, azd.a);
+public class axz extends DataFix {
+   public axz(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LevelUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> $$0.updateTyped(DSL.remainderFinder(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-                  $$0xx = this.d($$0xx);
-                  $$0xx = this.c($$0xx);
-                  return this.b($$0xx);
-               }))
-      );
-   }
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(baa.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(baa.z.typeName(), bbi.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
+      return this.fixTypeEverywhereTyped("ItemBannerColorFix", $$0, $$3x -> {
+         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
+         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:banner")) {
+            Dynamic<?> $$5 = (Dynamic<?>)$$3x.get(DSL.remainderFinder());
+            Optional<? extends Typed<?>> $$6 = $$3x.getOptionalTyped($$2);
+            if ($$6.isPresent()) {
+               Typed<?> $$7 = (Typed<?>)$$6.get();
+               Optional<? extends Typed<?>> $$8 = $$7.getOptionalTyped($$3);
+               if ($$8.isPresent()) {
+                  Typed<?> $$9 = (Typed<?>)$$8.get();
+                  Dynamic<?> $$10 = (Dynamic<?>)$$7.get(DSL.remainderFinder());
+                  Dynamic<?> $$11 = (Dynamic<?>)$$9.getOrCreate(DSL.remainderFinder());
+                  if ($$11.get("Base").asNumber().result().isPresent()) {
+                     $$5 = $$5.set("Damage", $$5.createShort((short)($$11.get("Base").asInt(0) & 15)));
+                     Optional<? extends Dynamic<?>> $$12 = $$10.get("display").result();
+                     if ($$12.isPresent()) {
+                        Dynamic<?> $$13 = (Dynamic<?>)$$12.get();
+                        Dynamic<?> $$14 = $$13.createMap(ImmutableMap.of($$13.createString("Lore"), $$13.createList(Stream.of($$13.createString("(+NBT")))));
+                        if (Objects.equals($$13, $$14)) {
+                           return $$3x.set(DSL.remainderFinder(), $$5);
+                        }
+                     }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
-   }
+                     $$11.remove("Base");
+                     return $$3x.set(DSL.remainderFinder(), $$5).set($$2, $$7.set($$3, $$9.set(DSL.remainderFinder(), $$11)));
+                  }
+               }
+            }
 
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.update(
-         "DimensionData",
-         $$0x -> $$0x.updateMapValues(
-               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
-            )
-      );
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.update(
-         "CustomBossEvents",
-         $$0x -> $$0x.updateMapValues(
-               $$0xx -> $$0xx.mapSecond(
-                     $$0xxx -> $$0xxx.update("Players", $$1 -> $$0xxx.createList($$1.asStream().map($$0xxxxx -> (Dynamic)a($$0xxxxx).orElseGet(() -> {
-                                 b.warn("CustomBossEvents contains invalid UUIDs.");
-                                 return $$0xxxxx;
-                              }))))
-                  )
-            )
-      );
+            return $$3x.set(DSL.remainderFinder(), $$5);
+         } else {
+            return $$3x;
+         }
+      });
    }
 }

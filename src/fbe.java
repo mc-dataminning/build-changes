@@ -1,50 +1,95 @@
-public class fbe extends eye {
-   private static final int a = 600;
-   private final sm b;
-   private esk c;
-   private int k;
-   private final evy l = evy.d();
+public class fbe extends faj implements fbg<cgr> {
+   private final cgr q;
+   private final cgb s = new cgb() {
+      @Override
+      public void a(cfp $$0, int $$1, ckj $$2) {
+         fbe.this.I();
+      }
 
-   public fbe(tl $$0, sm $$1) {
-      super($$0);
-      this.b = $$1;
+      @Override
+      public void a(cfp $$0, int $$1, int $$2) {
+         if ($$1 == 0) {
+            fbe.this.J();
+         }
+      }
+   };
+
+   public fbe(cgr $$0, ccw $$1, ui $$2) {
+      this.q = $$0;
+   }
+
+   public cgr H() {
+      return this.q;
    }
 
    @Override
-   public boolean ay_() {
+   protected void aM_() {
+      super.aM_();
+      this.q.a(this.s);
+   }
+
+   @Override
+   public void aC_() {
+      this.f.s.q();
+      super.aC_();
+   }
+
+   @Override
+   public void aD_() {
+      super.aD_();
+      this.q.b(this.s);
+   }
+
+   @Override
+   protected void l() {
+      if (this.f.s.ge()) {
+         this.d(etj.a(uh.d, $$0 -> this.aC_()).a(this.g / 2 - 100, 196, 98, 20).a());
+         this.d(etj.a(ui.c("lectern.take_book"), $$0 -> this.c(3)).a(this.g / 2 + 2, 196, 98, 20).a());
+      } else {
+         super.l();
+      }
+   }
+
+   @Override
+   protected void E() {
+      this.c(1);
+   }
+
+   @Override
+   protected void F() {
+      this.c(2);
+   }
+
+   @Override
+   protected boolean b(int $$0) {
+      if ($$0 != this.q.m()) {
+         this.c(100 + $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void c(int $$0) {
+      this.f.q.a(this.q.j, $$0);
+   }
+
+   @Override
+   public boolean j() {
       return false;
    }
 
-   @Override
-   protected void aH_() {
-      this.l.c().b().a(10);
-      this.l.a(new etr(this.e, this.i));
-      this.c = this.l.a(esk.a(tk.p, $$0 -> this.b.a(ewz.a)).a());
-      this.c.i = false;
-      this.l.a();
-      this.l.a($$1 -> {
-         esi var10000 = this.d($$1);
-      });
-      this.b();
+   void I() {
+      ckj $$0 = this.q.l();
+      this.a(faj.a.a($$0));
+   }
+
+   void J() {
+      this.a(this.q.m());
    }
 
    @Override
-   protected void b() {
-      evs.a(this.l, this.s());
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.k++;
-      if (this.k == 600) {
-         this.c.i = true;
-      }
-
-      if (this.b.k()) {
-         this.b.d();
-      } else {
-         this.b.p();
-      }
+   protected void G() {
+      this.f.s.q();
    }
 }

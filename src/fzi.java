@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fzi {
+@Deprecated
+public interface fzi {
+   float call(ckj var1, @Nullable fjr var2, @Nullable bkj var3, int var4);
 }

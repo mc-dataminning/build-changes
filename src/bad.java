@@ -1,22 +1,12 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bad extends ayf {
-   public bad(Schema $$0, boolean $$1) {
-      super($$0, $$1, "WeaponSmithChestLootTableFix", azd.s, "minecraft:chest");
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            String $$1 = $$0x.get("LootTable").asString("");
-            return $$1.equals("minecraft:chests/village_blacksmith")
-               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
-               : $$0x;
-         }
-      );
-   }
+public class bad {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
+      .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
+      .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
+      .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
+      .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
+      .build();
 }

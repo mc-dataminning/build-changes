@@ -1,28 +1,38 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import net.minecraft.server.MinecraftServer;
 
 public class blw {
-   private static gw a(bjo $$0, gw $$1) {
-      ash $$2 = $$0.dL().z;
-      return $$1.b(a($$2), 0, a($$2));
-   }
-
-   private static int a(ash $$0) {
-      return $$0.a(3) - 1;
-   }
-
-   public static <E extends bjo> bmn<E> a(bsn<gw> $$0, int $$1, float $$2) {
-      return bop.a(
-         (Function<bop.b<E>, ? extends App<bop.c<E>, bos<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(bsn.o), $$3.c(bsn.m), $$3.a(bsn.n))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     gw $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dl(), (double)$$1);
-                     if (!$$8) {
-                        blf.a($$5x, a($$5x, $$7), $$2, $$1);
+   public static bmb<cck> a() {
+      return bpm.a(
+         (Function<bpm.b<cck>, ? extends App<bpm.c<cck>, bpp<cck>>>)($$0 -> $$0.group($$0.b(btk.d), $$0.a(btk.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        ia $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.dj(), 2.0) && !$$4.go()) {
+                           return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if ($$4.gp().b() != ccn.b) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.n();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.w().c($$6.b()))
+                                 .flatMap($$0xxx -> jy.A.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gp().a($$2xx));
+                                    $$4.c($$3);
+                                 });
+                              return true;
+                           }
+                        }
                      }
-
-                     return true;
-                  }))
+               ))
       );
    }
 }

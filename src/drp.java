@@ -1,20 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record drp(drv b, float c) {
+public record drp(int b, int c, int d) implements dqs {
    public static final Codec<drp> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               drv.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+               asg.j.fieldOf("spread_width").forGetter(drp::a), asg.j.fieldOf("spread_height").forGetter(drp::b), asg.j.fieldOf("max_height").forGetter(drp::c)
             )
             .apply($$0, drp::new)
    );
 
-   public drv a() {
+   public int a() {
       return this.b;
    }
 
-   public float b() {
+   public int b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

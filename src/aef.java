@@ -1,39 +1,42 @@
-public class aef<T> {
-   private final int a;
-   private final aeg<T> b;
+import java.security.PublicKey;
 
-   public aef(int $$0, aeg<T> $$1) {
+public class aef implements wb<aec> {
+   private final String a;
+   private final byte[] b;
+   private final byte[] c;
+
+   public aef(String $$0, byte[] $$1, byte[] $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public int a() {
+   public aef(tl $$0) {
+      this.a = $$0.d(20);
+      this.b = $$0.b();
+      this.c = $$0.b();
+   }
+
+   @Override
+   public void a(tl $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   public void a(aec $$0) {
+      $$0.a(this);
+   }
+
+   public String a() {
       return this.a;
    }
 
-   public aeg<T> b() {
-      return this.b;
+   public PublicKey d() throws ary {
+      return arx.a(this.b);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aef<?> $$1 = (aef<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
+   public byte[] e() {
+      return this.c;
    }
 }

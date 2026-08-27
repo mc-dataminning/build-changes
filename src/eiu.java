@@ -1,5 +1,20 @@
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface eiu<T> {
-   rq b(long var1, Function<T, String> var3);
+public class eiu extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
+
+   public eiu(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
+   }
+
+   public int size() {
+      return this.a.size();
+   }
 }

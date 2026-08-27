@@ -1,56 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record efr(Optional<Long> b, ecj c) implements efj {
-   public static final Codec<efr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arj.a(Codec.LONG, "period").forGetter(efr::c), ecj.a.fieldOf("value").forGetter(efr::d)).apply($$0, efr::new)
-   );
+public class efr {
+   private final Set<efq<?>> a;
+   private final Set<efq<?>> b;
 
-   @Override
-   public efk b() {
-      return efl.r;
+   efr(Set<efq<?>> $$0, Set<efq<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
    }
 
-   @Override
-   public Set<ees<?>> a() {
-      return this.c.a();
+   public boolean a(efq<?> $$0) {
+      return this.b.contains($$0);
    }
 
-   public boolean a(eck $$0) {
-      akt $$1 = $$0.d();
-      long $$2 = $$1.W();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   public Set<efq<?>> a() {
+      return this.a;
    }
 
-   public static efr.a a(ecj $$0) {
-      return new efr.a($$0);
-   }
-
-   public Optional<Long> c() {
+   public Set<efq<?>> b() {
       return this.b;
    }
 
-   public ecj d() {
-      return this.c;
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
    }
 
-   public static class a implements efj.a {
-      private Optional<Long> a = Optional.empty();
-      private final ecj b;
+   public void a(edr $$0, edj $$1) {
+      Set<efq<?>> $$2 = $$1.a();
+      Set<efq<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.a("Parameters " + $$3 + " are not provided in this context");
+      }
+   }
 
-      public a(ecj $$0) {
-         this.b = $$0;
+   public static efr.a c() {
+      return new efr.a();
+   }
+
+   public static class a {
+      private final Set<efq<?>> a = Sets.newIdentityHashSet();
+      private final Set<efq<?>> b = Sets.newIdentityHashSet();
+
+      public efr.a a(efq<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
       }
 
-      public efr.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
+      public efr.a b(efq<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       public efr a() {

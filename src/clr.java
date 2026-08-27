@@ -1,52 +1,40 @@
-import java.util.Optional;
+public class clr extends cke {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class clr {
-   public static final aey<clq> a = a("sentry");
-   public static final aey<clq> b = a("dune");
-   public static final aey<clq> c = a("coast");
-   public static final aey<clq> d = a("wild");
-   public static final aey<clq> e = a("ward");
-   public static final aey<clq> f = a("eye");
-   public static final aey<clq> g = a("vex");
-   public static final aey<clq> h = a("tide");
-   public static final aey<clq> i = a("snout");
-   public static final aey<clq> j = a("rib");
-   public static final aey<clq> k = a("spire");
-   public static final aey<clq> l = a("wayfinder");
-   public static final aey<clq> m = a("shaper");
-   public static final aey<clq> n = a("silence");
-   public static final aey<clq> o = a("raiser");
-   public static final aey<clq> p = a("host");
-
-   public static void a(nr<clq> $$0) {
-      a($$0, cjo.wx, a);
-      a($$0, cjo.wy, b);
-      a($$0, cjo.wz, c);
-      a($$0, cjo.wA, d);
-      a($$0, cjo.wB, e);
-      a($$0, cjo.wC, f);
-      a($$0, cjo.wD, g);
-      a($$0, cjo.wE, h);
-      a($$0, cjo.wF, i);
-      a($$0, cjo.wG, j);
-      a($$0, cjo.wH, k);
-      a($$0, cjo.wI, l);
-      a($$0, cjo.wJ, m);
-      a($$0, cjo.wK, n);
-      a($$0, cjo.wL, o);
-      a($$0, cjo.wM, p);
+   public clr(cke.a $$0) {
+      super($$0);
    }
 
-   public static Optional<he.c<clq>> a(hr $$0, cjl $$1) {
-      return $$0.d(jc.aF).h().filter($$1x -> $$1.a(((clq)$$1x.a()).b())).findFirst();
+   @Override
+   public int b(ckj $$0) {
+      return 1200;
    }
 
-   private static void a(nr<clq> $$0, cjg $$1, aey<clq> $$2) {
-      clq $$3 = new clq($$2.a(), jb.i.d($$1), tl.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   @Override
+   public cmc c(ckj $$0) {
+      return cmc.h;
    }
 
-   private static aey<clq> a(String $$0) {
-      return aey.a(jc.aF, new aez($$0));
+   @Override
+   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
+      $$1.a(aqd.xm, 1.0F, 1.0F);
+      $$1.b(aqn.c.b(this));
+      return ckl.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public ckj a(ckj $$0, cqz $$1, bkj $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(ckj $$0, cqz $$1, bkj $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(bkj $$0) {
+      $$0.a(aqd.xn, 1.0F, 1.0F);
    }
 }

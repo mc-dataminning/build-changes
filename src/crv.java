@@ -1,16 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class crv<E extends dcz> extends cso {
-   protected final Supplier<ddb<? extends E>> a;
+public class crv {
+   public static final Codec<crv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aqc.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, crv::new)
+   );
+   public static final crv b = new crv(aqd.h, 6000, 8, 2.0);
+   private final ib<aqc> c;
+   private final int d;
+   private final int e;
+   private final double f;
 
-   protected crv(dfc.d $$0, Supplier<ddb<? extends E>> $$1) {
-      super($$0);
-      this.a = $$1;
+   public crv(ib<aqc> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   protected abstract MapCodec<? extends crv<E>> a();
+   public ib<aqc> a() {
+      return this.c;
+   }
 
-   public abstract cvh.c<? extends ddg> a(dfd var1, cqb var2, gw var3, boolean var4);
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public double d() {
+      return this.f;
+   }
 }

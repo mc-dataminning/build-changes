@@ -1,64 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-public class bge extends bgj {
-   public static final Codec<bge> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, bge::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+public class bge {
+   private final Set<String> a = new ObjectOpenHashSet();
 
-   public static bge a(float $$0, float $$1, int $$2, int $$3) {
-      return new bge($$0, $$1, $$2, $$3);
+   public Set<bfw> a(Supplier<beq> $$0) {
+      Set<bfw> $$1 = $$0.get()
+         .e()
+         .stream()
+         .filter($$0x -> !this.a.contains($$0x.getLeft()))
+         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bfv)$$1x.getRight()))
+         .collect(Collectors.toSet());
+
+      for (bfw $$2 : $$1) {
+         this.a.add($$2.d());
+      }
+
+      return $$1;
    }
 
-   private bge(float $$0, float $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-   }
-
-   @Override
-   public int a(ash $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
-   }
-
-   public static int a(ash $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)asb.a(asb.c($$0, $$1, $$2), $$3, $$4);
-   }
-
-   @Override
-   public int a() {
-      return this.g;
-   }
-
-   @Override
-   public int b() {
-      return this.h;
-   }
-
-   @Override
-   public bgk<?> c() {
-      return bgk.f;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+   private static bfw a(Supplier<beq> $$0, String $$1, bfv $$2) {
+      return bfw.a($$1, $$2, () -> {
+         bel.a $$2x = $$0.get().c($$1);
+         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)atw.b;
+      });
    }
 }

@@ -1,73 +1,84 @@
 import com.mojang.serialization.MapCodec;
 
-public class dap extends ctc {
-   public static final MapCodec<dap> a = b(dap::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final ha[] d = ha.values();
+public class dap extends cwi implements dao {
+   public static final MapCodec<dap> b = b(dap::new);
 
    @Override
    public MapCodec<dap> a() {
-      return a;
+      return b;
    }
 
-   protected dap(dfc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void b(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   public dap(dga.d $$0) {
+      super(bhd.a(1), $$0);
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ctc $$3, gw $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public int a(dat.a $$0, cra $$1, ht $$2, ate $$3, dat $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         ht $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               ht $$10 = $$7.c();
+               dgb $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.w().e(), aqe.e, 1.0F, 1.0F);
+            }
 
-   protected void a(cqb $$0, gw $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, cte.aP.o(), 2);
-         $$0.a(null, $$1, apg.xj, aph.e, 1.0F, 1.0F);
-      }
-   }
-
-   private boolean b(cqb $$0, gw $$1) {
-      return gw.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (ha $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
+            return Math.max(0, $$6 - $$9);
          } else {
-            dfd $$3 = $$0.a_($$2);
-            eag $$4 = $$0.b_($$2);
-            if (!$$4.a(aqa.a)) {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+         }
+      } else {
+         return $$6;
+      }
+   }
+
+   private static int a(dat $$0, ht $$1, ht $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = asy.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = asy.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private dgb a(cra $$0, ht $$1, ate $$2, boolean $$3) {
+      dgb $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = cuc.qI.o().a(das.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = cuc.qD.o();
+      }
+
+      return $$4.b(dgr.C) && !$$0.b_($$1).c() ? $$4.a(dgr.C, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(cra $$0, ht $$1) {
+      dgb $$2 = $$0.a_($$1.c());
+      if ($$2.i() || $$2.a(cuc.G) && $$2.u().b(ebf.c)) {
+         int $$3 = 0;
+
+         for (ht $$4 : ht.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dgb $$5 = $$0.a_($$4);
+            if ($$5.a(cuc.qD) || $$5.a(cuc.qI)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
                return false;
-            } else {
-               if ($$3.b() instanceof ctj $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
-                  return true;
-               }
-
-               if ($$3.b() instanceof cxq) {
-                  $$0.a($$2, cte.a.o(), 3);
-               } else {
-                  if (!$$3.a(cte.mc) && !$$3.a(cte.md) && !$$3.a(cte.bw) && !$$3.a(cte.bx)) {
-                     return false;
-                  }
-
-                  dcz $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, cte.a.o(), 3);
-               }
-
-               return true;
             }
          }
-      }) > 1;
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean d() {
+      return false;
    }
 }

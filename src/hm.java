@@ -1,432 +1,57 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
-import org.slf4j.Logger;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 
-public class hm<T> implements hz<T> {
-   private static final Logger b = LogUtils.getLogger();
-   final aey<? extends hq<T>> c;
-   private final ObjectList<he.c<T>> d = new ObjectArrayList(256);
-   private final Reference2IntMap<T> e = ac.a(new Reference2IntOpenHashMap(), $$0x -> $$0x.defaultReturnValue(-1));
-   private final Map<aez, he.c<T>> f = new HashMap<>();
-   private final Map<aey<T>, he.c<T>> g = new HashMap<>();
-   private final Map<T, he.c<T>> h = new IdentityHashMap<>();
-   private final Map<T, Lifecycle> i = new IdentityHashMap<>();
-   private Lifecycle j;
-   private volatile Map<aqk<T>, hi.c<T>> k = new IdentityHashMap<>();
-   private boolean l;
-   @Nullable
-   private Map<T, he.c<T>> m;
-   @Nullable
-   private List<he.c<T>> n;
-   private int o;
-   private final hg.c<T> p = new hg.c<T>() {
-      @Override
-      public aey<? extends hq<? extends T>> f() {
-         return hm.this.c;
-      }
-
-      @Override
-      public Lifecycle g() {
-         return hm.this.d();
-      }
-
-      @Override
-      public Optional<he.c<T>> a(aey<T> $$0) {
-         return hm.this.b($$0);
-      }
-
-      @Override
-      public Stream<he.c<T>> b() {
-         return hm.this.h();
-      }
-
-      @Override
-      public Optional<hi.c<T>> a(aqk<T> $$0) {
-         return hm.this.b($$0);
-      }
-
-      @Override
-      public Stream<hi.c<T>> d() {
-         return hm.this.i().map(Pair::getSecond);
-      }
-   };
-
-   public hm(aey<? extends hq<T>> $$0, Lifecycle $$1) {
-      this($$0, $$1, false);
-   }
-
-   public hm(aey<? extends hq<T>> $$0, Lifecycle $$1, boolean $$2) {
-      afb.a(() -> "registry " + $$0);
-      this.c = $$0;
-      this.j = $$1;
+public class hm implements hf<IntegerArgumentType, hm.a> {
+   public void a(hm.a $$0, tl $$1) {
+      boolean $$2 = $$0.b != Integer.MIN_VALUE;
+      boolean $$3 = $$0.c != Integer.MAX_VALUE;
+      $$1.k(hh.a($$2, $$3));
       if ($$2) {
-         this.m = new IdentityHashMap<>();
+         $$1.p($$0.b);
+      }
+
+      if ($$3) {
+         $$1.p($$0.c);
       }
    }
 
-   @Override
-   public aey<? extends hq<T>> c() {
-      return this.c;
+   public hm.a a(tl $$0) {
+      byte $$1 = $$0.readByte();
+      int $$2 = hh.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
+      int $$3 = hh.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
+      return new hm.a($$2, $$3);
    }
 
-   @Override
-   public String toString() {
-      return "Registry[" + this.c + " (" + this.j + ")]";
-   }
-
-   private List<he.c<T>> a() {
-      if (this.n == null) {
-         this.n = this.d.stream().filter(Objects::nonNull).toList();
+   public void a(hm.a $$0, JsonObject $$1) {
+      if ($$0.b != Integer.MIN_VALUE) {
+         $$1.addProperty("min", $$0.b);
       }
 
-      return this.n;
-   }
-
-   private void v() {
-      if (this.l) {
-         throw new IllegalStateException("Registry is already frozen");
+      if ($$0.c != Integer.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
       }
    }
 
-   private void g(aey<T> $$0) {
-      if (this.l) {
-         throw new IllegalStateException("Registry is already frozen (trying to add key " + $$0 + ")");
-      }
+   public hm.a a(IntegerArgumentType $$0) {
+      return new hm.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public he.c<T> a(int $$0, aey<T> $$1, T $$2, Lifecycle $$3) {
-      this.g($$1);
-      Validate.notNull($$1);
-      Validate.notNull($$2);
-      if (this.f.containsKey($$1.a())) {
-         ac.b(new IllegalStateException("Adding duplicate key '" + $$1 + "' to registry"));
-      }
+   public final class a implements hf.a<IntegerArgumentType> {
+      final int b;
+      final int c;
 
-      if (this.h.containsKey($$2)) {
-         ac.b(new IllegalStateException("Adding duplicate value '" + $$2 + "' to registry"));
+      a(int $$1, int $$2) {
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      he.c<T> $$4;
-      if (this.m != null) {
-         $$4 = this.m.remove($$2);
-         if ($$4 == null) {
-            throw new AssertionError("Missing intrusive holder for " + $$1 + ":" + $$2);
-         }
-
-         $$4.b($$1);
-      } else {
-         $$4 = this.g.computeIfAbsent($$1, $$0x -> he.c.a(this.o(), $$0x));
+      public IntegerArgumentType a(dp $$0) {
+         return IntegerArgumentType.integer(this.b, this.c);
       }
 
-      this.g.put($$1, $$4);
-      this.f.put($$1.a(), $$4);
-      this.h.put($$2, $$4);
-      this.d.size(Math.max(this.d.size(), $$0 + 1));
-      this.d.set($$0, $$4);
-      this.e.put($$2, $$0);
-      if (this.o <= $$0) {
-         this.o = $$0 + 1;
+      @Override
+      public hf<IntegerArgumentType, ?> a() {
+         return hm.this;
       }
-
-      this.i.put($$2, $$3);
-      this.j = this.j.add($$3);
-      this.n = null;
-      return $$4;
-   }
-
-   @Override
-   public he.c<T> a(aey<T> $$0, T $$1, Lifecycle $$2) {
-      return this.a(this.o, $$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public aez b(T $$0) {
-      he.c<T> $$1 = this.h.get($$0);
-      return $$1 != null ? $$1.g().a() : null;
-   }
-
-   @Override
-   public Optional<aey<T>> c(T $$0) {
-      return Optional.ofNullable(this.h.get($$0)).map(he.c::g);
-   }
-
-   @Override
-   public int a(@Nullable T $$0) {
-      return this.e.getInt($$0);
-   }
-
-   @Nullable
-   @Override
-   public T a(@Nullable aey<T> $$0) {
-      return a(this.g.get($$0));
-   }
-
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return $$0 >= 0 && $$0 < this.d.size() ? a((he.c<T>)this.d.get($$0)) : null;
-   }
-
-   @Override
-   public Optional<he.c<T>> c(int $$0) {
-      return $$0 >= 0 && $$0 < this.d.size() ? Optional.ofNullable((he.c<T>)this.d.get($$0)) : Optional.empty();
-   }
-
-   @Override
-   public Optional<he.c<T>> b(aey<T> $$0) {
-      return Optional.ofNullable(this.g.get($$0));
-   }
-
-   @Override
-   public he<T> d(T $$0) {
-      he.c<T> $$1 = this.h.get($$0);
-      return (he<T>)($$1 != null ? $$1 : he.a($$0));
-   }
-
-   he.c<T> h(aey<T> $$0) {
-      return this.g.computeIfAbsent($$0, $$0x -> {
-         if (this.m != null) {
-            throw new IllegalStateException("This registry can't create new holders without value");
-         } else {
-            this.g($$0x);
-            return he.c.a(this.o(), $$0x);
-         }
-      });
-   }
-
-   @Override
-   public int b() {
-      return this.g.size();
-   }
-
-   @Override
-   public Lifecycle e(T $$0) {
-      return this.i.get($$0);
-   }
-
-   @Override
-   public Lifecycle d() {
-      return this.j;
-   }
-
-   @Override
-   public Iterator<T> iterator() {
-      return Iterators.transform(this.a().iterator(), he::a);
-   }
-
-   @Nullable
-   @Override
-   public T a(@Nullable aez $$0) {
-      he.c<T> $$1 = this.f.get($$0);
-      return a($$1);
-   }
-
-   @Nullable
-   private static <T> T a(@Nullable he.c<T> $$0) {
-      return $$0 != null ? $$0.a() : null;
-   }
-
-   @Override
-   public Set<aez> e() {
-      return Collections.unmodifiableSet(this.f.keySet());
-   }
-
-   @Override
-   public Set<aey<T>> f() {
-      return Collections.unmodifiableSet(this.g.keySet());
-   }
-
-   @Override
-   public Set<Entry<aey<T>, T>> g() {
-      return Collections.unmodifiableSet(Maps.transformValues(this.g, he::a).entrySet());
-   }
-
-   @Override
-   public Stream<he.c<T>> h() {
-      return this.a().stream();
-   }
-
-   @Override
-   public Stream<Pair<aqk<T>, hi.c<T>>> i() {
-      return this.k.entrySet().stream().map($$0 -> Pair.of($$0.getKey(), $$0.getValue()));
-   }
-
-   @Override
-   public hi.c<T> a(aqk<T> $$0) {
-      hi.c<T> $$1 = this.k.get($$0);
-      if ($$1 == null) {
-         $$1 = this.d($$0);
-         Map<aqk<T>, hi.c<T>> $$2 = new IdentityHashMap<>(this.k);
-         $$2.put($$0, $$1);
-         this.k = $$2;
-      }
-
-      return $$1;
-   }
-
-   private hi.c<T> d(aqk<T> $$0) {
-      return new hi.c<>(this.o(), $$0);
-   }
-
-   @Override
-   public Stream<aqk<T>> j() {
-      return this.k.keySet().stream();
-   }
-
-   @Override
-   public boolean k() {
-      return this.g.isEmpty();
-   }
-
-   @Override
-   public Optional<he.c<T>> a(ash $$0) {
-      return ac.b(this.a(), $$0);
-   }
-
-   @Override
-   public boolean c(aez $$0) {
-      return this.f.containsKey($$0);
-   }
-
-   @Override
-   public boolean c(aey<T> $$0) {
-      return this.g.containsKey($$0);
-   }
-
-   @Override
-   public hq<T> l() {
-      if (this.l) {
-         return this;
-      } else {
-         this.l = true;
-         this.h.forEach(($$0x, $$1) -> $$1.b((T)$$0x));
-         List<aez> $$0 = this.g.entrySet().stream().filter($$0x -> !((he.c)$$0x.getValue()).b()).map($$0x -> ((aey)$$0x.getKey()).a()).sorted().toList();
-         if (!$$0.isEmpty()) {
-            throw new IllegalStateException("Unbound values in registry " + this.c() + ": " + $$0);
-         } else {
-            if (this.m != null) {
-               if (!this.m.isEmpty()) {
-                  throw new IllegalStateException("Some intrusive holders were not registered: " + this.m.values());
-               }
-
-               this.m = null;
-            }
-
-            return this;
-         }
-      }
-   }
-
-   @Override
-   public he.c<T> f(T $$0) {
-      if (this.m == null) {
-         throw new IllegalStateException("This registry can't create intrusive holders");
-      } else {
-         this.v();
-         return this.m.computeIfAbsent($$0, $$0x -> he.c.a(this.p(), (T)$$0x));
-      }
-   }
-
-   @Override
-   public Optional<hi.c<T>> b(aqk<T> $$0) {
-      return Optional.ofNullable(this.k.get($$0));
-   }
-
-   @Override
-   public void a(Map<aqk<T>, List<he<T>>> $$0) {
-      Map<he.c<T>, List<aqk<T>>> $$1 = new IdentityHashMap<>();
-      this.g.values().forEach($$1x -> $$1.put($$1x, new ArrayList<>()));
-      $$0.forEach(($$1x, $$2x) -> {
-         for (he<T> $$3x : $$2x) {
-            if (!$$3x.a(this.p())) {
-               throw new IllegalStateException("Can't create named set " + $$1x + " containing value " + $$3x + " from outside registry " + this);
-            }
-
-            if (!($$3x instanceof he.c<T> $$4)) {
-               throw new IllegalStateException("Found direct holder " + $$3x + " value in tag " + $$1x);
-            }
-
-            $$1.get($$4).add($$1x);
-         }
-      });
-      Set<aqk<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
-      if (!$$2.isEmpty()) {
-         b.warn(
-            "Not all defined tags for registry {} are present in data pack: {}",
-            this.c(),
-            $$2.stream().map($$0x -> $$0x.b().toString()).sorted().collect(Collectors.joining(", "))
-         );
-      }
-
-      Map<aqk<T>, hi.c<T>> $$3 = new IdentityHashMap<>(this.k);
-      $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
-      $$1.forEach(he.c::a);
-      this.k = $$3;
-   }
-
-   @Override
-   public void m() {
-      this.k.values().forEach($$0 -> $$0.b(List.of()));
-      this.g.values().forEach($$0 -> $$0.a(Set.of()));
-   }
-
-   @Override
-   public hf<T> n() {
-      this.v();
-      return new hf<T>() {
-         @Override
-         public Optional<he.c<T>> a(aey<T> $$0) {
-            return Optional.of(this.b($$0));
-         }
-
-         @Override
-         public he.c<T> b(aey<T> $$0) {
-            return hm.this.h($$0);
-         }
-
-         @Override
-         public Optional<hi.c<T>> a(aqk<T> $$0) {
-            return Optional.of(this.b($$0));
-         }
-
-         @Override
-         public hi.c<T> b(aqk<T> $$0) {
-            return hm.this.a($$0);
-         }
-      };
-   }
-
-   @Override
-   public hh<T> o() {
-      return this.p;
-   }
-
-   @Override
-   public hg.c<T> p() {
-      return this.p;
    }
 }

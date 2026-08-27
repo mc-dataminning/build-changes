@@ -1,28 +1,18 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
-public class aop extends aoo<GameProfile, aoq> {
-   public aop(File $$0) {
-      super($$0);
+public interface aop {
+   CompletableFuture<?> a();
+
+   float b();
+
+   default boolean c() {
+      return this.a().isDone();
    }
 
-   @Override
-   protected aon<GameProfile> a(JsonObject $$0) {
-      return new aoq($$0);
-   }
-
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
-   }
-
-   @Override
-   public String[] a() {
-      return this.d().stream().map(aon::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
-
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   default void d() {
+      CompletableFuture<?> $$0 = this.a();
+      if ($$0.isCompletedExceptionally()) {
+         $$0.join();
+      }
    }
 }

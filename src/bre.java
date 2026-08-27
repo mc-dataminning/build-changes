@@ -1,87 +1,57 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bre extends bqh {
-   public static final int a = 120;
-   protected final bjv b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
+public abstract class bre {
+   private final EnumSet<bre.a> a = EnumSet.noneOf(bre.a.class);
 
-   public bre(bjv $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
+   public abstract boolean a();
 
-   public bre(bjv $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public bre(bjv $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(bqh.a.a));
-   }
-
-   @Override
-   public boolean a() {
-      if (this.b.cO()) {
-         return false;
-      } else {
-         if (!this.h) {
-            if (this.i && this.b.ek() >= 100) {
-               return false;
-            }
-
-            if (this.b.ef().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         ehh $$0 = this.h();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            this.h = false;
-            return true;
-         }
-      }
-   }
-
-   @Nullable
-   protected ehh h() {
-      return buc.a(this.b, 10, 7);
-   }
-
-   @Override
    public boolean b() {
-      return !this.b.L().l() && !this.b.cO();
+      return this.a();
    }
 
-   @Override
+   public boolean Q_() {
+      return true;
+   }
+
    public void c() {
-      this.b.L().a(this.c, this.d, this.e, this.f);
+   }
+
+   public void d() {
+   }
+
+   public boolean R_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bre.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public void d() {
-      this.b.L().n();
-      super.d();
+   public String toString() {
+      return this.getClass().getSimpleName();
    }
 
-   public void i() {
-      this.h = true;
+   public EnumSet<bre.a> j() {
+      return this.a;
    }
 
-   public void c(int $$0) {
-      this.g = $$0;
+   protected int a(int $$0) {
+      return this.R_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return asy.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

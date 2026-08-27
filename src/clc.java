@@ -1,32 +1,20 @@
-public interface clc {
-   clc.a a = new clc.a(false, false);
-   clc.a b = new clc.a(true, false);
+public class clc extends cke {
+   public clc(cke.a $$0) {
+      super($$0);
+   }
 
-   boolean a();
+   @Override
+   public bib a(ckj $$0, ccx $$1, bkj $$2, bia $$3) {
+      if ($$2 instanceof bkz $$4 && $$2.bv() && !$$4.i() && $$4.g()) {
+         if (!$$1.dL().B) {
+            $$4.a(aqe.g);
+            $$2.dL().a($$2, dkl.v, $$2.dj());
+            $$0.h(1);
+         }
 
-   boolean b();
-
-   public static record a(boolean c, boolean d) implements clc {
-      @Override
-      public boolean a() {
-         return this.c;
+         return bib.a($$1.dL().B);
       }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public clc.a c() {
-         return new clc.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+      return bib.d;
    }
 }

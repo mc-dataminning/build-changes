@@ -1,69 +1,79 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
 
-public abstract class fmd extends flq {
-   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+public class fmd extends fnq {
+   private final float a;
+   private final fnl b;
 
-   protected fmd(fis $$0, double $$1, double $$2, double $$3) {
+   fmd(fjr $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fnl $$7) {
       super($$0, $$1, $$2, $$3);
-   }
-
-   protected fmd(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public void a(eln $$0, eqa $$1, float $$2) {
-      ehh $$3 = $$1.b();
-      float $$4 = (float)(asb.d((double)$$2, this.d, this.g) - $$3.a());
-      float $$5 = (float)(asb.d((double)$$2, this.e, this.h) - $$3.b());
-      float $$6 = (float)(asb.d((double)$$2, this.f, this.i) - $$3.c());
-      Quaternionf $$7;
-      if (this.z == 0.0F) {
-         $$7 = $$1.f();
-      } else {
-         $$7 = new Quaternionf($$1.f());
-         $$7.rotateZ(asb.i($$2, this.A, this.z));
-      }
-
-      Vector3f[] $$9 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$10 = this.b($$2);
-
-      for (int $$11 = 0; $$11 < 4; $$11++) {
-         Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$7);
-         $$12.mul($$10);
-         $$12.add($$4, $$5, $$6);
-      }
-
-      float $$13 = this.c();
-      float $$14 = this.d();
-      float $$15 = this.e();
-      float $$16 = this.f();
-      int $$17 = this.a($$2);
-      $$0.a((double)$$9[0].x(), (double)$$9[0].y(), (double)$$9[0].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[1].x(), (double)$$9[1].y(), (double)$$9[1].z()).a($$14, $$15).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[2].x(), (double)$$9[2].y(), (double)$$9[2].z()).a($$13, $$15).a(this.v, this.w, this.x, this.y).b($$17).e();
-      $$0.a((double)$$9[3].x(), (double)$$9[3].y(), (double)$$9[3].z()).a($$13, $$16).a(this.v, this.w, this.x, this.y).b($$17).e();
+   public fmu b() {
+      return fmu.b;
    }
 
+   @Override
    public float b(float $$0) {
-      return this.D;
+      return this.D * asy.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
-   public flq d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
+      }
    }
 
-   protected abstract float c();
+   public static class a implements fmt<jk> {
+      private final fnl a;
 
-   protected abstract float d();
+      public a(fnl $$0) {
+         this.a = $$0;
+      }
 
-   protected abstract float e();
+      @Nullable
+      public fmq a(jk $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dgb $$8 = $$0.c();
+         if (!$$8.i() && $$8.l() == dae.a) {
+            return null;
+         } else {
+            ht $$9 = ht.a($$2, $$3, $$4);
+            int $$10 = ero.O().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof cwu) {
+               $$10 = ((cwu)$$8.b()).d($$8, $$1, $$9);
+            }
 
-   protected abstract float f();
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new fmd($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
+      }
+   }
 }

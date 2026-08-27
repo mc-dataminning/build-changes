@@ -1,54 +1,122 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class bmp {
-   public static ble<cbn> a() {
-      return bop.a(
-         (Function<bop.b<cbn>, ? extends App<bop.c<cbn>, bos<cbn>>>)($$0 -> $$0.group($$0.b(bsn.c), $$0.b(bsn.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        hd $$6 = $$0.b($$1);
-                        $$3.w()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bjm>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cbn && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cbn)$$0xxxx)
-                                    .filter(bjm::bv)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, bmp::a)
-                           );
-                        return true;
-                     }
-               ))
-      );
+public class bmp extends bma<cck> {
+   private static final int c = 5;
+   private static final int d = 600;
+   private static final int e = 6600;
+   private static final int f = 20;
+   private static final Map<ccn, afw> g = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(ccn.c, edg.an);
+      $$0.put(ccn.d, edg.ao);
+      $$0.put(ccn.e, edg.ap);
+      $$0.put(ccn.f, edg.aq);
+      $$0.put(ccn.g, edg.ar);
+      $$0.put(ccn.h, edg.as);
+      $$0.put(ccn.i, edg.at);
+      $$0.put(ccn.j, edg.au);
+      $$0.put(ccn.k, edg.av);
+      $$0.put(ccn.l, edg.aw);
+      $$0.put(ccn.n, edg.ax);
+      $$0.put(ccn.o, edg.ay);
+      $$0.put(ccn.p, edg.az);
+   });
+   private static final float h = 0.5F;
+   private int i = 600;
+   private boolean j;
+   private long k;
+
+   public bmp(int $$0) {
+      super(ImmutableMap.of(btk.m, btl.c, btk.n, btl.c, btk.q, btl.c, btk.k, btl.a), $$0);
    }
 
-   private static cbn a(cbn $$0, cbn $$1) {
-      cbn $$2;
-      cbn $$3;
-      if ($$0.t() > $$1.t()) {
-         $$2 = $$0;
-         $$3 = $$1;
+   protected boolean a(alq $$0, cck $$1) {
+      if (!this.b($$1)) {
+         return false;
+      } else if (this.i > 0) {
+         this.i--;
+         return false;
       } else {
-         $$2 = $$1;
-         $$3 = $$0;
+         return true;
       }
-
-      $$3.dN().b(bsn.c);
-      return $$2;
    }
 
-   private static boolean a(hd $$0, he<buo> $$1, cbn $$2) {
-      Optional<hd> $$3 = $$2.dN().c(bsn.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gp().b());
+   protected void a(alq $$0, cck $$1, long $$2) {
+      this.j = false;
+      this.k = $$2;
+      ccx $$3 = this.c($$1).get();
+      $$1.dN().a(btk.q, $$3);
+      bmc.a($$1, $$3);
    }
 
-   private static boolean a(he<buo> $$0, cbq $$1) {
-      return $$1.b().test($$0);
+   protected boolean b(alq $$0, cck $$1, long $$2) {
+      return this.b($$1) && !this.j;
+   }
+
+   protected void c(alq $$0, cck $$1, long $$2) {
+      ccx $$3 = this.c($$1).get();
+      bmc.a($$1, $$3);
+      if (this.a($$1, $$3)) {
+         if ($$2 - this.k > 20L) {
+            this.a($$1, (bkj)$$3);
+            this.j = true;
+         }
+      } else {
+         bmc.a($$1, $$3, 0.5F, 5);
+      }
+   }
+
+   protected void d(alq $$0, cck $$1, long $$2) {
+      this.i = a($$0);
+      $$1.dN().b(btk.q);
+      $$1.dN().b(btk.m);
+      $$1.dN().b(btk.n);
+   }
+
+   private void a(cck $$0, bkj $$1) {
+      for (ckj $$3 : this.a($$0)) {
+         bmc.a($$0, $$3, $$1.dj());
+      }
+   }
+
+   private List<ckj> a(cck $$0) {
+      if ($$0.n_()) {
+         return ImmutableList.of(new ckj(ckm.cP));
+      } else {
+         ccn $$1 = $$0.gp().b();
+         if (g.containsKey($$1)) {
+            edq $$2 = $$0.dL().n().aH().getLootTable(g.get($$1));
+            edo $$3 = new edo.a((alq)$$0.dL()).a(eft.f, $$0.dj()).a(eft.a, $$0).a(efs.i);
+            return $$2.a($$3);
+         } else {
+            return ImmutableList.of(new ckj(ckm.oH));
+         }
+      }
+   }
+
+   private boolean b(cck $$0) {
+      return this.c($$0).isPresent();
+   }
+
+   private Optional<ccx> c(cck $$0) {
+      return $$0.dN().c(btk.k).filter(this::a);
+   }
+
+   private boolean a(ccx $$0) {
+      return $$0.a(bji.F);
+   }
+
+   private boolean a(cck $$0, ccx $$1) {
+      ht $$2 = $$1.dl();
+      ht $$3 = $$0.dl();
+      return $$3.a($$2, 5.0);
+   }
+
+   private static int a(alq $$0) {
+      return 600 + $$0.z.a(6001);
    }
 }

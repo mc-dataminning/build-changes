@@ -1,185 +1,135 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class dfa {
-   public static final int a = 12;
-   private final cqb b;
-   private final gw c;
-   private final boolean d;
-   private final gw e;
-   private final ha f;
-   private final List<gw> g = Lists.newArrayList();
-   private final List<gw> h = Lists.newArrayList();
-   private final ha i;
+public abstract class dfa extends ddr {
+   public static final String d = "LootTable";
+   public static final String e = "LootTableSeed";
+   @Nullable
+   protected afw h;
+   protected long i;
 
-   public dfa(cqb $$0, gw $$1, ha $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.i = $$2;
-      this.d = $$3;
-      if ($$3) {
-         this.f = $$2;
-         this.e = $$1.a($$2);
-      } else {
-         this.f = $$2.g();
-         this.e = $$1.a($$2, 2);
+   protected dfa(ddz<?> $$0, ht $$1, dgb $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public static void a(cqf $$0, ate $$1, ht $$2, afw $$3) {
+      ddx $$4 = $$0.c_($$2);
+      if ($$4 instanceof dfa) {
+         ((dfa)$$4).a($$3, $$1.g());
       }
    }
 
-   public boolean a() {
-      this.g.clear();
-      this.h.clear();
-      dfd $$0 = this.b.a_(this.e);
-      if (!dew.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.o() == eal.b) {
-            this.h.add(this.e);
-            return true;
-         } else {
-            return false;
-         }
-      } else if (!this.a(this.e, this.f)) {
+   protected boolean d(rt $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.h = new afw($$0.l("LootTable"));
+         this.i = $$0.i("LootTableSeed");
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean e(rt $$0) {
+      if (this.h == null) {
          return false;
       } else {
-         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-            gw $$2 = this.g.get($$1);
-            if (a(this.b.a_($$2)) && !this.a($$2)) {
-               return false;
-            }
+         $$0.a("LootTable", this.h.toString());
+         if (this.i != 0L) {
+            $$0.a("LootTableSeed", this.i);
          }
 
          return true;
       }
    }
 
-   private static boolean a(dfd $$0) {
-      return $$0.a(cte.hV) || $$0.a(cte.pg);
+   public void e(@Nullable ccx $$0) {
+      if (this.h != null && this.o.n() != null) {
+         edq $$1 = this.o.n().aH().getLootTable(this.h);
+         if ($$0 instanceof alr) {
+            al.N.a((alr)$$0, this.h);
+         }
+
+         this.h = null;
+         edo.a $$2 = new edo.a((alq)this.o).a(eft.f, eif.b(this.p));
+         if ($$0 != null) {
+            $$2.a($$0.go()).a(eft.a, $$0);
+         }
+
+         $$1.a(this, $$2.a(efs.c), this.i);
+      }
    }
 
-   private static boolean a(dfd $$0, dfd $$1) {
-      if ($$0.a(cte.pg) && $$1.a(cte.hV)) {
-         return false;
+   public void a(afw $$0, long $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public boolean ai_() {
+      this.e(null);
+      return this.f().stream().allMatch(ckj::b);
+   }
+
+   @Override
+   public ckj a(int $$0) {
+      this.e(null);
+      return this.f().get($$0);
+   }
+
+   @Override
+   public ckj a(int $$0, int $$1) {
+      this.e(null);
+      ckj $$2 = bhv.a(this.f(), $$0, $$1);
+      if (!$$2.b()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public ckj b(int $$0) {
+      this.e(null);
+      return bhv.a(this.f(), $$0);
+   }
+
+   @Override
+   public void a(int $$0, ckj $$1) {
+      this.e(null);
+      this.f().set($$0, $$1);
+      if ($$1.L() > this.aj_()) {
+         $$1.f(this.aj_());
+      }
+
+      this.e();
+   }
+
+   @Override
+   public boolean a(ccx $$0) {
+      return bhu.a(this, $$0);
+   }
+
+   @Override
+   public void a() {
+      this.f().clear();
+   }
+
+   protected abstract il<ckj> f();
+
+   protected abstract void a(il<ckj> var1);
+
+   @Override
+   public boolean d(ccx $$0) {
+      return super.d($$0) && (this.h == null || !$$0.N_());
+   }
+
+   @Nullable
+   @Override
+   public cfp createMenu(int $$0, ccw $$1, ccx $$2) {
+      if (this.d($$2)) {
+         this.e($$1.m);
+         return this.a($$0, $$1);
       } else {
-         return $$0.a(cte.hV) && $$1.a(cte.pg) ? false : a($$0) || a($$1);
+         return null;
       }
-   }
-
-   private boolean a(gw $$0, ha $$1) {
-      dfd $$2 = this.b.a_($$0);
-      if ($$2.i()) {
-         return true;
-      } else if (!dew.a($$2, this.b, $$0, this.f, false, $$1)) {
-         return true;
-      } else if ($$0.equals(this.c)) {
-         return true;
-      } else if (this.g.contains($$0)) {
-         return true;
-      } else {
-         int $$3 = 1;
-         if ($$3 + this.g.size() > 12) {
-            return false;
-         } else {
-            while (a($$2)) {
-               gw $$4 = $$0.a(this.f.g(), $$3);
-               dfd $$5 = $$2;
-               $$2 = this.b.a_($$4);
-               if ($$2.i() || !a($$5, $$2) || !dew.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
-                  break;
-               }
-
-               if (++$$3 + this.g.size() > 12) {
-                  return false;
-               }
-            }
-
-            int $$6 = 0;
-
-            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
-               this.g.add($$0.a(this.f.g(), $$7));
-               $$6++;
-            }
-
-            int $$8 = 1;
-
-            while (true) {
-               gw $$9 = $$0.a(this.f, $$8);
-               int $$10 = this.g.indexOf($$9);
-               if ($$10 > -1) {
-                  this.a($$6, $$10);
-
-                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
-                     gw $$12 = this.g.get($$11);
-                     if (a(this.b.a_($$12)) && !this.a($$12)) {
-                        return false;
-                     }
-                  }
-
-                  return true;
-               }
-
-               $$2 = this.b.a_($$9);
-               if ($$2.i()) {
-                  return true;
-               }
-
-               if (!dew.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
-                  return false;
-               }
-
-               if ($$2.o() == eal.b) {
-                  this.h.add($$9);
-                  return true;
-               }
-
-               if (this.g.size() >= 12) {
-                  return false;
-               }
-
-               this.g.add($$9);
-               $$6++;
-               $$8++;
-            }
-         }
-      }
-   }
-
-   private void a(int $$0, int $$1) {
-      List<gw> $$2 = Lists.newArrayList();
-      List<gw> $$3 = Lists.newArrayList();
-      List<gw> $$4 = Lists.newArrayList();
-      $$2.addAll(this.g.subList(0, $$1));
-      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
-      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
-      this.g.clear();
-      this.g.addAll($$2);
-      this.g.addAll($$3);
-      this.g.addAll($$4);
-   }
-
-   private boolean a(gw $$0) {
-      dfd $$1 = this.b.a_($$0);
-
-      for (ha $$2 : ha.values()) {
-         if ($$2.o() != this.f.o()) {
-            gw $$3 = $$0.a($$2);
-            dfd $$4 = this.b.a_($$3);
-            if (a($$4, $$1) && !this.a($$3, $$2)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   public ha b() {
-      return this.f;
-   }
-
-   public List<gw> c() {
-      return this.g;
-   }
-
-   public List<gw> d() {
-      return this.h;
    }
 }

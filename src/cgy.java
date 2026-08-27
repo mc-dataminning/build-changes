@@ -1,42 +1,74 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class cgy extends cjg {
-   public cgy(cjg.a $$0) {
-      super($$0);
+public class cgy extends bii {
+   @Nullable
+   private der c;
+
+   public cgy() {
+      super(27);
+   }
+
+   public void a(der $$0) {
+      this.c = $$0;
+   }
+
+   public boolean b(der $$0) {
+      return this.c == $$0;
    }
 
    @Override
-   public bhe a(clv $$0) {
-      ha $$1 = $$0.k();
-      if ($$1 == ha.a) {
-         return bhe.e;
-      } else {
-         cqb $$2 = $$0.q();
-         clt $$3 = new clt($$0);
-         gw $$4 = $$3.a();
-         cjl $$5 = $$0.n();
-         ehh $$6 = ehh.c($$4);
-         ehc $$7 = bja.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof akt $$8) {
-               Consumer<byj> $$9 = bja.a($$8, $$5, $$0.o());
-               byj $$10 = bja.d.b($$8, $$5.v(), $$9, $$4, bjq.m, true, true);
-               if ($$10 == null) {
-                  return bhe.e;
-               }
+   public void a(rz $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         this.a($$1, ckj.b);
+      }
 
-               float $$11 = (float)asb.d((asb.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dq(), $$10.ds(), $$10.dw(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dq(), $$10.ds(), $$10.dw(), apg.ao, aph.e, 0.75F, 0.8F);
-               $$10.a(djn.t, $$0.o());
-            }
-
-            $$5.h(1);
-            return bhe.a($$2.B);
-         } else {
-            return bhe.e;
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         rt $$3 = $$0.a($$2);
+         int $$4 = $$3.f("Slot") & 255;
+         if ($$4 >= 0 && $$4 < this.b()) {
+            this.a($$4, ckj.a($$3));
          }
       }
+   }
+
+   @Override
+   public rz g() {
+      rz $$0 = new rz();
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         ckj $$2 = this.a($$1);
+         if (!$$2.b()) {
+            rt $$3 = new rt();
+            $$3.a("Slot", (byte)$$1);
+            $$2.b($$3);
+            $$0.add($$3);
+         }
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public boolean a(ccx $$0) {
+      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
+   }
+
+   @Override
+   public void d_(ccx $$0) {
+      if (this.c != null) {
+         this.c.a($$0);
+      }
+
+      super.d_($$0);
+   }
+
+   @Override
+   public void c(ccx $$0) {
+      if (this.c != null) {
+         this.c.b($$0);
+      }
+
+      super.c($$0);
+      this.c = null;
    }
 }

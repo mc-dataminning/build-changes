@@ -1,113 +1,80 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.List;
+import com.google.gson.JsonObject;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class apb extends aoy {
-   private static final Logger d = LogUtils.getLogger();
-   private final ServerSocket e;
-   private final String f;
-   private final List<apa> g = Lists.newArrayList();
-   private final afp h;
+public abstract class apb<T> extends apk<T> {
+   public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
+   public static final String b = "forever";
+   protected final Date c;
+   protected final String d;
+   @Nullable
+   protected final Date e;
+   protected final String f;
 
-   private apb(afp $$0, ServerSocket $$1, String $$2) {
-      super("RCON Listener");
-      this.h = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public apb(@Nullable T $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0);
+      this.c = $$1 == null ? new Date() : $$1;
+      this.d = $$2 == null ? "(Unknown)" : $$2;
+      this.e = $$3;
+      this.f = $$4 == null ? "Banned by an operator." : $$4;
    }
 
-   private void d() {
-      this.g.removeIf($$0 -> !$$0.c());
-   }
+   protected apb(@Nullable T $$0, JsonObject $$1) {
+      super($$0);
 
-   @Override
-   public void run() {
+      Date $$2;
       try {
-         while (this.a) {
-            try {
-               Socket $$0 = this.e.accept();
-               apa $$1 = new apa(this.h, this.f, $$0);
-               $$1.a();
-               this.g.add($$1);
-               this.d();
-            } catch (SocketTimeoutException var7) {
-               this.d();
-            } catch (IOException var8) {
-               if (this.a) {
-                  d.info("IO exception: ", var8);
-               }
-            }
-         }
-      } finally {
-         this.a(this.e);
+         $$2 = $$1.has("created") ? a.parse($$1.get("created").getAsString()) : new Date();
+      } catch (ParseException var7) {
+         $$2 = new Date();
       }
+
+      this.c = $$2;
+      this.d = $$1.has("source") ? $$1.get("source").getAsString() : "(Unknown)";
+
+      Date $$5;
+      try {
+         $$5 = $$1.has("expires") ? a.parse($$1.get("expires").getAsString()) : null;
+      } catch (ParseException var6) {
+         $$5 = null;
+      }
+
+      this.e = $$5;
+      this.f = $$1.has("reason") ? $$1.get("reason").getAsString() : "Banned by an operator.";
+   }
+
+   public Date a() {
+      return this.c;
+   }
+
+   public String b() {
+      return this.d;
    }
 
    @Nullable
-   public static apb a(afp $$0) {
-      ajr $$1 = $$0.a();
-      String $$2 = $$0.b();
-      if ($$2.isEmpty()) {
-         $$2 = "0.0.0.0";
-      }
+   public Date c() {
+      return this.e;
+   }
 
-      int $$3 = $$1.s;
-      if (0 < $$3 && 65535 >= $$3) {
-         String $$4 = $$1.t;
-         if ($$4.isEmpty()) {
-            d.warn("No rcon password set in server.properties, rcon disabled!");
-            return null;
-         } else {
-            try {
-               ServerSocket $$5 = new ServerSocket($$3, 0, InetAddress.getByName($$2));
-               $$5.setSoTimeout(500);
-               apb $$6 = new apb($$0, $$5, $$4);
-               if (!$$6.a()) {
-                  return null;
-               } else {
-                  d.info("RCON running on {}:{}", $$2, $$3);
-                  return $$6;
-               }
-            } catch (IOException var7) {
-               d.warn("Unable to initialise RCON on {}:{}", new Object[]{$$2, $$3, var7});
-               return null;
-            }
-         }
-      } else {
-         d.warn("Invalid rcon port {} found in server.properties, rcon disabled!", $$3);
-         return null;
-      }
+   public String d() {
+      return this.f;
+   }
+
+   public abstract ui e();
+
+   @Override
+   boolean f() {
+      return this.e == null ? false : this.e.before(new Date());
    }
 
    @Override
-   public void b() {
-      this.a = false;
-      this.a(this.e);
-      super.b();
-
-      for (apa $$0 : this.g) {
-         if ($$0.c()) {
-            $$0.b();
-         }
-      }
-
-      this.g.clear();
-   }
-
-   private void a(ServerSocket $$0) {
-      d.debug("closeSocket: {}", $$0);
-
-      try {
-         $$0.close();
-      } catch (IOException var3) {
-         d.warn("Failed to close socket", var3);
-      }
+   protected void a(JsonObject $$0) {
+      $$0.addProperty("created", a.format(this.c));
+      $$0.addProperty("source", this.d);
+      $$0.addProperty("expires", this.e == null ? "forever" : a.format(this.e));
+      $$0.addProperty("reason", this.f);
    }
 }

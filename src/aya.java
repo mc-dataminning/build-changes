@@ -1,19 +1,43 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class aya extends DataFix {
    public aya(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<String> $$3 = $$2.get("Name").asString().result();
+         if ($$3.isPresent()) {
+            $$2 = $$2.set("Name", auc.a($$2.getOps(), $$3.get()));
+         } else {
+            Optional<String> $$4 = $$2.get("LocName").asString().result();
+            if ($$4.isPresent()) {
+               $$2 = $$2.set("Name", auc.b($$2.getOps(), $$4.get()));
+               $$2 = $$2.remove("LocName");
+            }
+         }
+
+         return $$0.set("display", $$2);
+      } else {
+         return $$0;
+      }
+   }
+
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(baa.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
       return this.fixTypeEverywhereTyped(
-         "Map id fix",
-         this.getInputSchema().getType(azd.j),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.createMap(ImmutableMap.of($$0x.createString("data"), $$0x)))
+         "ItemCustomNameToComponentFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
       );
    }
 }

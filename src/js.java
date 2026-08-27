@@ -1,112 +1,115 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class js implements jm {
-   @Override
-   public void a(hg.b $$0, Consumer<af> $$1) {
-      af $$2 = ae.a.a()
-         .a(
-            cte.i,
-            tl.c("advancements.story.root.title"),
-            tl.c("advancements.story.root.description"),
-            new aez("textures/gui/advancements/backgrounds/stone.png"),
-            ar.a,
-            false,
-            false,
-            false
-         )
-         .a("crafting_table", bz.a.a(cte.cA))
-         .a($$1, "story/root");
-      af $$3 = ae.a.a()
-         .a($$2)
-         .a(cjo.nZ, tl.c("advancements.story.mine_stone.title"), tl.c("advancements.story.mine_stone.description"), null, ar.a, true, true, false)
-         .a("get_stone", bz.a.a(cb.a.a().a(aqd.ax)))
-         .a($$1, "story/mine_stone");
-      af $$4 = ae.a.a()
-         .a($$3)
-         .a(cjo.oe, tl.c("advancements.story.upgrade_tools.title"), tl.c("advancements.story.upgrade_tools.description"), null, ar.a, true, true, false)
-         .a("stone_pickaxe", bz.a.a(cjo.oe))
-         .a($$1, "story/upgrade_tools");
-      af $$5 = ae.a.a()
-         .a($$4)
-         .a(cjo.nQ, tl.c("advancements.story.smelt_iron.title"), tl.c("advancements.story.smelt_iron.description"), null, ar.a, true, true, false)
-         .a("iron", bz.a.a(cjo.nQ))
-         .a($$1, "story/smelt_iron");
-      af $$6 = ae.a.a()
-         .a($$5)
-         .a(cjo.oo, tl.c("advancements.story.iron_tools.title"), tl.c("advancements.story.iron_tools.description"), null, ar.a, true, true, false)
-         .a("iron_pickaxe", bz.a.a(cjo.oo))
-         .a($$1, "story/iron_tools");
-      af $$7 = ae.a.a()
-         .a($$6)
-         .a(cjo.nK, tl.c("advancements.story.mine_diamond.title"), tl.c("advancements.story.mine_diamond.description"), null, ar.a, true, true, false)
-         .a("diamond", bz.a.a(cjo.nK))
-         .a($$1, "story/mine_diamond");
-      af $$8 = ae.a.a()
-         .a($$5)
-         .a(cjo.pM, tl.c("advancements.story.lava_bucket.title"), tl.c("advancements.story.lava_bucket.description"), null, ar.a, true, true, false)
-         .a("lava_bucket", bz.a.a(cjo.pM))
-         .a($$1, "story/lava_bucket");
-      af $$9 = ae.a.a()
-         .a($$5)
-         .a(cjo.oT, tl.c("advancements.story.obtain_armor.title"), tl.c("advancements.story.obtain_armor.description"), null, ar.a, true, true, false)
-         .a(ai.a.b)
-         .a("iron_helmet", bz.a.a(cjo.oS))
-         .a("iron_chestplate", bz.a.a(cjo.oT))
-         .a("iron_leggings", bz.a.a(cjo.oU))
-         .a("iron_boots", bz.a.a(cjo.oV))
-         .a($$1, "story/obtain_armor");
-      ae.a.a()
-         .a($$7)
-         .a(cjo.tC, tl.c("advancements.story.enchant_item.title"), tl.c("advancements.story.enchant_item.description"), null, ar.a, true, true, false)
-         .a("enchanted_item", bk.a.c())
-         .a($$1, "story/enchant_item");
-      af $$10 = ae.a.a()
-         .a($$8)
-         .a(cte.co, tl.c("advancements.story.form_obsidian.title"), tl.c("advancements.story.form_obsidian.description"), null, ar.a, true, true, false)
-         .a("obsidian", bz.a.a(cte.co))
-         .a($$1, "story/form_obsidian");
-      ae.a.a()
-         .a($$9)
-         .a(cjo.uy, tl.c("advancements.story.deflect_arrow.title"), tl.c("advancements.story.deflect_arrow.description"), null, ar.a, true, true, false)
-         .a("deflected_projectile", bp.a.a(be.a.a().a(bf.a.a().a(dc.a(apx.j))).a(true)))
-         .a($$1, "story/deflect_arrow");
-      ae.a.a()
-         .a($$7)
-         .a(cjo.oX, tl.c("advancements.story.shiny_gear.title"), tl.c("advancements.story.shiny_gear.description"), null, ar.a, true, true, false)
-         .a(ai.a.b)
-         .a("diamond_helmet", bz.a.a(cjo.oW))
-         .a("diamond_chestplate", bz.a.a(cjo.oX))
-         .a("diamond_leggings", bz.a.a(cjo.oY))
-         .a("diamond_boots", bz.a.a(cjo.oZ))
-         .a($$1, "story/shiny_gear");
-      af $$11 = ae.a.a()
-         .a($$10)
-         .a(cjo.nE, tl.c("advancements.story.enter_the_nether.title"), tl.c("advancements.story.enter_the_nether.description"), null, ar.a, true, true, false)
-         .a("entered_nether", ay.a.a(cqb.i))
-         .a($$1, "story/enter_the_nether");
-      ae.a.a()
-         .a($$11)
-         .a(
-            cjo.pm,
-            tl.c("advancements.story.cure_zombie_villager.title"),
-            tl.c("advancements.story.cure_zombie_villager.description"),
-            null,
-            ar.c,
-            true,
-            true,
-            false
-         )
-         .a("cured_zombie", bd.a.c())
-         .a($$1, "story/cure_zombie_villager");
-      af $$12 = ae.a.a()
-         .a($$11)
-         .a(cjo.rD, tl.c("advancements.story.follow_ender_eye.title"), tl.c("advancements.story.follow_ender_eye.description"), null, ar.a, true, true, false)
-         .a("in_stronghold", cs.a.a(cj.a.c(duw.k)))
-         .a($$1, "story/follow_ender_eye");
-      ae.a.a()
-         .a($$12)
-         .a(cte.fz, tl.c("advancements.story.enter_the_end.title"), tl.c("advancements.story.enter_the_end.description"), null, ar.a, true, true, false)
-         .a("entered_end", ay.a.a(cqb.j))
-         .a($$1, "story/enter_the_end");
+public class js {
+   public static final jv a = a("ambient_entity_effect", false);
+   public static final jv b = a("angry_villager", false);
+   public static final jr<jk> c = a("block", false, jk.a, jk::a);
+   public static final jr<jk> d = a("block_marker", true, jk.a, jk::a);
+   public static final jv e = a("bubble", false);
+   public static final jv f = a("cloud", false);
+   public static final jv g = a("crit", false);
+   public static final jv h = a("damage_indicator", true);
+   public static final jv i = a("dragon_breath", false);
+   public static final jv j = a("dripping_lava", false);
+   public static final jv k = a("falling_lava", false);
+   public static final jv l = a("landing_lava", false);
+   public static final jv m = a("dripping_water", false);
+   public static final jv n = a("falling_water", false);
+   public static final jr<jm> o = a("dust", false, jm.d, $$0 -> jm.c);
+   public static final jr<jl> p = a("dust_color_transition", false, jl.d, $$0 -> jl.c);
+   public static final jv q = a("effect", false);
+   public static final jv r = a("elder_guardian", true);
+   public static final jv s = a("enchanted_hit", false);
+   public static final jv t = a("enchant", false);
+   public static final jv u = a("end_rod", false);
+   public static final jv v = a("entity_effect", false);
+   public static final jv w = a("explosion_emitter", true);
+   public static final jv x = a("explosion", true);
+   public static final jv y = a("sonic_boom", true);
+   public static final jr<jk> z = a("falling_dust", false, jk.a, jk::a);
+   public static final jv A = a("firework", false);
+   public static final jv B = a("fishing", false);
+   public static final jv C = a("flame", false);
+   public static final jv D = a("cherry_leaves", false);
+   public static final jv E = a("sculk_soul", false);
+   public static final jr<jt> F = a("sculk_charge", true, jt.b, $$0 -> jt.a);
+   public static final jv G = a("sculk_charge_pop", true);
+   public static final jv H = a("soul_fire_flame", false);
+   public static final jv I = a("soul", false);
+   public static final jv J = a("flash", false);
+   public static final jv K = a("happy_villager", false);
+   public static final jv L = a("composter", false);
+   public static final jv M = a("heart", false);
+   public static final jv N = a("instant_effect", false);
+   public static final jr<jo> O = a("item", false, jo.a, jo::a);
+   public static final jr<jw> P = a("vibration", true, jw.b, $$0 -> jw.a);
+   public static final jv Q = a("item_slime", false);
+   public static final jv R = a("item_snowball", false);
+   public static final jv S = a("large_smoke", false);
+   public static final jv T = a("lava", false);
+   public static final jv U = a("mycelium", false);
+   public static final jv V = a("note", false);
+   public static final jv W = a("poof", true);
+   public static final jv X = a("portal", false);
+   public static final jv Y = a("rain", false);
+   public static final jv Z = a("smoke", false);
+   public static final jv aa = a("sneeze", false);
+   public static final jv ab = a("spit", true);
+   public static final jv ac = a("squid_ink", true);
+   public static final jv ad = a("sweep_attack", true);
+   public static final jv ae = a("totem_of_undying", false);
+   public static final jv af = a("underwater", false);
+   public static final jv ag = a("splash", false);
+   public static final jv ah = a("witch", false);
+   public static final jv ai = a("bubble_pop", false);
+   public static final jv aj = a("current_down", false);
+   public static final jv ak = a("bubble_column_up", false);
+   public static final jv al = a("nautilus", false);
+   public static final jv am = a("dolphin", false);
+   public static final jv an = a("campfire_cosy_smoke", true);
+   public static final jv ao = a("campfire_signal_smoke", true);
+   public static final jv ap = a("dripping_honey", false);
+   public static final jv aq = a("falling_honey", false);
+   public static final jv ar = a("landing_honey", false);
+   public static final jv as = a("falling_nectar", false);
+   public static final jv at = a("falling_spore_blossom", false);
+   public static final jv au = a("ash", false);
+   public static final jv av = a("crimson_spore", false);
+   public static final jv aw = a("warped_spore", false);
+   public static final jv ax = a("spore_blossom_air", false);
+   public static final jv ay = a("dripping_obsidian_tear", false);
+   public static final jv az = a("falling_obsidian_tear", false);
+   public static final jv aA = a("landing_obsidian_tear", false);
+   public static final jv aB = a("reverse_portal", false);
+   public static final jv aC = a("white_ash", false);
+   public static final jv aD = a("small_flame", false);
+   public static final jv aE = a("snowflake", false);
+   public static final jv aF = a("dripping_dripstone_lava", false);
+   public static final jv aG = a("falling_dripstone_lava", false);
+   public static final jv aH = a("dripping_dripstone_water", false);
+   public static final jv aI = a("falling_dripstone_water", false);
+   public static final jv aJ = a("glow_squid_ink", true);
+   public static final jv aK = a("glow", true);
+   public static final jv aL = a("wax_on", true);
+   public static final jv aM = a("wax_off", true);
+   public static final jv aN = a("electric_spark", true);
+   public static final jv aO = a("scrape", true);
+   public static final jr<ju> aP = a("shriek", false, ju.b, $$0 -> ju.a);
+   public static final jv aQ = a("egg_crack", false);
+   public static final jv aR = a("dust_plume", false);
+   public static final Codec<jq> aS = jy.k.q().dispatch("type", jq::b, jr::e);
+
+   private static jv a(String $$0, boolean $$1) {
+      return io.a(jy.k, $$0, new jv($$1));
+   }
+
+   private static <T extends jq> jr<T> a(String $$0, boolean $$1, jq.a<T> $$2, final Function<jr<T>, Codec<T>> $$3) {
+      return io.a(jy.k, $$0, new jr<T>($$1, $$2) {
+         @Override
+         public Codec<T> e() {
+            return $$3.apply(this);
+         }
+      });
    }
 }

@@ -1,20 +1,35 @@
-public class fuf extends fuj<bwz, ffr<bwz>> {
-   private static final aez a = new aez("textures/entity/llama/creamy.png");
-   private static final aez i = new aez("textures/entity/llama/white.png");
-   private static final aez j = new aez("textures/entity/llama/brown.png");
-   private static final aez k = new aez("textures/entity/llama/gray.png");
+public class fuf extends fuc<cdh> {
+   private static final afw a = new afw("textures/entity/illager/evoker_fangs.png");
+   private final ffy<cdh> f;
 
-   public fuf(ftd.a $$0, fhv $$1) {
-      super($$0, new ffr<>($$0.a($$1)), 0.7F);
-      this.a(new fxf(this, $$0.f()));
+   public fuf(fud.a $$0) {
+      super($$0);
+      this.f = new ffy<>($$0.a(fiv.W));
    }
 
-   public aez a(bwz $$0) {
-      return switch ($$0.gq()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   public void a(cdh $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
+         }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dB()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dB(), $$0.dD());
+         eml $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, fzr.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   public afw a(cdh $$0) {
+      return a;
    }
 }

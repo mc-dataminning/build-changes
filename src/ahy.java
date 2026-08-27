@@ -1,154 +1,162 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class ahy {
-   public static void a(CommandDispatcher<dt> $$0) {
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> ui.b("commands.fill.toobig", $$0, $$1));
+   static final fh b = new fh(cuc.a.o(), Collections.emptySet(), null);
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ui.c("commands.fill.failed"));
+
+   public static void a(CommandDispatcher<du> $$0, dp $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a(
-                                    "raid"
-                                 )
-                                 .requires($$0x -> $$0x.c(3)))
-                              .then(
-                                 du.a("start")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("fill").requires($$0x -> $$0x.c(2)))
+            .then(
+               dv.a("from", fm.a())
+                  .then(
+                     dv.a("to", fm.a())
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a(
+                                                "block", fj.a($$1)
+                                             )
+                                             .executes(
+                                                $$0x -> a((du)$$0x.getSource(), dvs.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ahy.a.a, null)
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)dv.a("replace")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (du)$$0x.getSource(),
+                                                            dvs.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
+                                                            fj.a($$0x, "block"),
+                                                            ahy.a.a,
+                                                            null
+                                                         )
+                                                   ))
+                                                .then(
+                                                   dv.a("filter", fi.a($$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               dvs.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
+                                                               fj.a($$0x, "block"),
+                                                               ahy.a.a,
+                                                               fi.a($$0x, "filter")
+                                                            )
+                                                      )
+                                                )
+                                          ))
+                                       .then(
+                                          dv.a("keep")
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      dvs.a(fm.a($$0x, "from"), fm.a($$0x, "to")),
+                                                      fj.a($$0x, "block"),
+                                                      ahy.a.a,
+                                                      $$0xx -> $$0xx.c().t($$0xx.d())
+                                                   )
+                                             )
+                                       ))
                                     .then(
-                                       du.a("omenlvl", IntegerArgumentType.integer(0))
-                                          .executes($$0x -> b((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
-                                    )
-                              ))
-                           .then(du.a("stop").executes($$0x -> c((dt)$$0x.getSource()))))
-                        .then(du.a("check").executes($$0x -> d((dt)$$0x.getSource()))))
-                     .then(du.a("sound").then(du.a("type", ea.a()).executes($$0x -> a((dt)$$0x.getSource(), ea.a($$0x, "type"))))))
-                  .then(du.a("spawnleader").executes($$0x -> b((dt)$$0x.getSource()))))
-               .then(
-                  du.a("setomen")
-                     .then(
-                        du.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
-                     )
-               ))
-            .then(du.a("glow").executes($$0x -> a((dt)$$0x.getSource())))
+                                       dv.a("outline")
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), dvs.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ahy.a.b, null)
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("hollow")
+                                       .executes(
+                                          $$0x -> a((du)$$0x.getSource(), dvs.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ahy.a.c, null)
+                                       )
+                                 ))
+                              .then(
+                                 dv.a("destroy")
+                                    .executes($$0x -> a((du)$$0x.getSource(), dvs.a(fm.a($$0x, "from"), fm.a($$0x, "to")), fj.a($$0x, "block"), ahy.a.d, null))
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(dt $$0) throws CommandSyntaxException {
-      cdh $$1 = a($$0.h());
-      if ($$1 != null) {
-         for (cdi $$3 : $$1.h()) {
-            $$3.b(new bij(bil.x, 1000, 1));
+   private static int a(du $$0, dvs $$1, fh $$2, ahy.a $$3, @Nullable Predicate<dgf> $$4) throws CommandSyntaxException {
+      int $$5 = $$1.c() * $$1.d() * $$1.e();
+      int $$6 = $$0.f().X().c(cqv.y);
+      if ($$5 > $$6) {
+         throw a.create($$6, $$5);
+      } else {
+         List<ht> $$7 = Lists.newArrayList();
+         alq $$8 = $$0.f();
+         int $$9 = 0;
+
+         for (ht $$10 : ht.b($$1.g(), $$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l())) {
+            if ($$4 == null || $$4.test(new dgf($$8, $$10, true))) {
+               fh $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
+               if ($$11 != null) {
+                  ddx $$12 = $$8.c_($$10);
+                  bhs.a_($$12);
+                  if ($$11.a($$8, $$10, 2)) {
+                     $$7.add($$10.i());
+                     $$9++;
+                  }
+               }
+            }
          }
-      }
 
-      return 1;
-   }
+         for (ht $$13 : $$7) {
+            cua $$14 = $$8.a_($$13).b();
+            $$8.b($$13, $$14);
+         }
 
-   private static int a(dt $$0, int $$1) throws CommandSyntaxException {
-      cdh $$2 = a($$0.h());
-      if ($$2 != null) {
-         int $$3 = $$2.l();
-         if ($$1 > $$3) {
-            $$0.b(tl.b("Sorry, the max bad omen level you can set is " + $$3));
+         if ($$9 == 0) {
+            throw c.create();
          } else {
-            int $$4 = $$2.m();
-            $$2.a($$1);
-            $$0.a(() -> tl.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
+            int $$15 = $$9;
+            $$0.a(() -> ui.a("commands.fill.success", $$15), true);
+            return $$9;
          }
-      } else {
-         $$0.b(tl.b("No raid found here"));
-      }
-
-      return 1;
-   }
-
-   private static int b(dt $$0) {
-      $$0.a(() -> tl.b("Spawned a raid captain"), false);
-      cdi $$1 = bja.ay.a((cqb)$$0.e());
-      if ($$1 == null) {
-         $$0.b(tl.b("Pillager failed to spawn"));
-         return 0;
-      } else {
-         $$1.w(true);
-         $$1.a(bjb.f, cdh.s());
-         $$1.e($$0.d().c, $$0.d().d, $$0.d().e);
-         $$1.a($$0.e(), $$0.e().d_(gw.a($$0.d())), bjq.n, null, null);
-         $$0.e().a_($$1);
-         return 1;
       }
    }
 
-   private static int a(dt $$0, @Nullable tl $$1) {
-      if ($$1 != null && $$1.getString().equals("local")) {
-         akt $$2 = $$0.e();
-         ehh $$3 = $$0.d().b(5.0, 0.0, 0.0);
-         $$2.a(null, $$3.c, $$3.d, $$3.e, apg.tp, aph.g, 2.0F, 1.0F, $$2.z.g());
+   static enum a {
+      a(($$0, $$1, $$2, $$3) -> $$2),
+      b(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.g()
+                  && $$1.u() != $$0.j()
+                  && $$1.v() != $$0.h()
+                  && $$1.v() != $$0.k()
+                  && $$1.w() != $$0.i()
+                  && $$1.w() != $$0.l()
+               ? null
+               : $$2
+      ),
+      c(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.g()
+                  && $$1.u() != $$0.j()
+                  && $$1.v() != $$0.h()
+                  && $$1.v() != $$0.k()
+                  && $$1.w() != $$0.i()
+                  && $$1.w() != $$0.l()
+               ? ahy.b
+               : $$2
+      ),
+      d(($$0, $$1, $$2, $$3) -> {
+         $$3.b($$1, true);
+         return $$2;
+      });
+
+      public final ajj.a e;
+
+      private a(ajj.a $$0) {
+         this.e = $$0;
       }
-
-      return 1;
-   }
-
-   private static int b(dt $$0, int $$1) throws CommandSyntaxException {
-      aku $$2 = $$0.h();
-      gw $$3 = $$2.dl();
-      if ($$2.x().d($$3)) {
-         $$0.b(tl.b("Raid already started close by"));
-         return -1;
-      } else {
-         cdj $$4 = $$2.x().x();
-         cdh $$5 = $$4.a($$2);
-         if ($$5 != null) {
-            $$5.a($$1);
-            $$4.c();
-            $$0.a(() -> tl.b("Created a raid in your local village"), false);
-         } else {
-            $$0.b(tl.b("Failed to create a raid in your local village"));
-         }
-
-         return 1;
-      }
-   }
-
-   private static int c(dt $$0) throws CommandSyntaxException {
-      aku $$1 = $$0.h();
-      gw $$2 = $$1.dl();
-      cdh $$3 = $$1.x().c($$2);
-      if ($$3 != null) {
-         $$3.n();
-         $$0.a(() -> tl.b("Stopped raid"), false);
-         return 1;
-      } else {
-         $$0.b(tl.b("No raid here"));
-         return -1;
-      }
-   }
-
-   private static int d(dt $$0) throws CommandSyntaxException {
-      cdh $$1 = a($$0.h());
-      if ($$1 != null) {
-         StringBuilder $$2 = new StringBuilder();
-         $$2.append("Found a started raid! ");
-         $$0.a(() -> tl.b($$2.toString()), false);
-         StringBuilder $$3 = new StringBuilder();
-         $$3.append("Num groups spawned: ");
-         $$3.append($$1.k());
-         $$3.append(" Bad omen level: ");
-         $$3.append($$1.m());
-         $$3.append(" Num mobs: ");
-         $$3.append($$1.r());
-         $$3.append(" Raid health: ");
-         $$3.append($$1.q());
-         $$3.append(" / ");
-         $$3.append($$1.g());
-         $$0.a(() -> tl.b($$3.toString()), false);
-         return 1;
-      } else {
-         $$0.b(tl.b("Found no started raids"));
-         return 0;
-      }
-   }
-
-   @Nullable
-   private static cdh a(aku $$0) {
-      return $$0.x().c($$0.dl());
    }
 }

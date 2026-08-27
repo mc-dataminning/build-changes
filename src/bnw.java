@@ -1,24 +1,15 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
 
-public class bnw extends bld<bjo> {
-   private final float c;
-
-   public bnw(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
+public class bnw<E extends bkj> extends bmo<E> {
+   public bnw(List<Pair<? extends bmb<? super E>, Integer>> $$0) {
+      this(ImmutableMap.of(), $$0);
    }
 
-   protected boolean a(akt $$0, bjo $$1) {
-      return $$1.aX() && $$1.b(aqa.a) > $$1.de() || $$1.bl();
-   }
-
-   protected boolean a(akt $$0, bjo $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(akt $$0, bjo $$1, long $$2) {
-      if ($$1.ef().i() < this.c) {
-         $$1.K().a();
-      }
+   public bnw(Map<btk<?>, btl> $$0, List<Pair<? extends bmb<? super E>, Integer>> $$1) {
+      super($$0, ImmutableSet.of(), bmo.a.b, bmo.b.a, $$1);
    }
 }

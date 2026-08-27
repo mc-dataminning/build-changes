@@ -1,47 +1,78 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.google.gson.JsonObject;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-public abstract class mx<T> extends nc<T> {
-   private final Function<T, aey<T>> d;
+public class mx {
+   private final mp a;
+   private final cnk b;
+   private final cnk c;
+   private final cnk d;
+   private final Map<String, am<?>> e = new LinkedHashMap<>();
+   private final cnq<?> f;
 
-   public mx(jk $$0, aey<? extends hq<T>> $$1, CompletableFuture<hg.b> $$2, Function<T, aey<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
-   }
-
-   public mx(jk $$0, aey<? extends hq<T>> $$1, CompletableFuture<hg.b> $$2, CompletableFuture<nc.c<T>> $$3, Function<T, aey<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
+   public mx(cnq<?> $$0, mp $$1, cnk $$2, cnk $$3, cnk $$4) {
+      this.a = $$1;
+      this.f = $$0;
+      this.b = $$2;
+      this.c = $$3;
       this.d = $$4;
    }
 
-   protected mx.a<T> a(aqk<T> $$0) {
-      aqh $$1 = this.c($$0);
-      return new mx.a<>($$1, this.d);
+   public static mx a(cnk $$0, cnk $$1, cnk $$2, mp $$3) {
+      return new mx(cnq.v, $$3, $$0, $$1, $$2);
    }
 
-   protected static class a<T> extends nc.b<T> {
-      private final Function<T, aey<T>> a;
+   public mx a(String $$0, am<?> $$1) {
+      this.e.put($$0, $$1);
+      return this;
+   }
 
-      a(aqh $$0, Function<T, aey<T>> $$1) {
-         super($$0);
-         this.a = $$1;
+   public void a(mq $$0, afw $$1) {
+      this.a($$1);
+      ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
+      this.e.forEach($$2::a);
+      $$0.a(new mx.a($$1, this.f, this.b, this.c, this.d, $$2.b($$1.d("recipes/" + this.a.a() + "/"))));
+   }
+
+   private void a(afw $$0) {
+      if (this.e.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0);
+      }
+   }
+
+   public static record a(afw a, cnq<?> b, cnk c, cnk d, cnk e, af f) implements mn {
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("template", this.c.a(true));
+         $$0.add("base", this.d.a(true));
+         $$0.add("addition", this.e.a(true));
       }
 
-      public mx.a<T> a(aqk<T> $$0) {
-         super.b($$0);
-         return this;
+      @Override
+      public afw b() {
+         return this.a;
       }
 
-      public final mx.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
+      @Override
+      public cnq<?> c() {
+         return this.b;
       }
 
-      @SafeVarargs
-      public final mx.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
+      public cnk e() {
+         return this.c;
+      }
+
+      public cnk f() {
+         return this.d;
+      }
+
+      public cnk g() {
+         return this.e;
+      }
+
+      @Override
+      public af d() {
+         return this.f;
       }
    }
 }

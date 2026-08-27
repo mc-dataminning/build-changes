@@ -1,59 +1,59 @@
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fcf extends fcb<fjq.a> {
-   private static final int s = 120;
-   private static final tl t = tl.c("gui.abuseReport.name.title");
-   private final evy u = evy.d().a(8);
-   private etc v;
-   private esk w;
+public abstract class fcf extends ezd {
+   private final ui b;
+   @Nullable
+   private final ui c;
+   private final ui k;
+   @Nullable
+   protected etl a;
+   private euc l = euc.a;
 
-   private fcf(eye $$0, fjv $$1, fjq.a $$2) {
-      super(t, $$0, $$1, $$2);
+   protected fcf(ui $$0, ui $$1, ui $$2) {
+      this($$0, $$1, null, $$2);
    }
 
-   public fcf(eye $$0, fjv $$1, UUID $$2, String $$3) {
-      this($$0, $$1, new fjq.a($$2, $$3, $$1.a().b()));
+   protected fcf(ui $$0, ui $$1, @Nullable ui $$2, ui $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+      this.k = $$3;
    }
 
-   public fcf(eye $$0, fjv $$1, fjq $$2) {
-      this($$0, $$1, new fjq.a($$2, $$1.a().b()));
+   protected abstract void a(int var1);
+
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.l = euc.a(this.i, this.b, this.g - 100);
+      int $$0 = (this.l.a() + 1) * this.l();
+      if (this.c != null) {
+         int $$1 = this.i.a(this.c);
+         this.a = new etl(this.g / 2 - $$1 / 2 - 8, 76 + $$0, $$1 + 24, 20, this.c, false);
+         this.d(this.a);
+      }
+
+      this.a($$0);
    }
 
    @Override
-   protected void aH_() {
-      this.u.c().b();
-      this.u.a(new etr(this.e, this.i));
-      tl $$0 = tl.b(this.q.e().a()).a(n.o);
-      this.u.a(new etr(tl.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
-      this.v = this.a(280, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.D();
-      });
-      this.u.a(evq.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
-      evy $$1 = this.u.a(evy.e().a(8));
-      $$1.a(esk.a(tk.k, $$0x -> this.az_()).a(120).a());
-      this.w = $$1.a(esk.a(a, $$0x -> this.l()).a(120).a());
-      this.D();
-      this.u.a($$1x -> {
-         esi var10000 = this.d($$1x);
-      });
-      this.b();
+   public ui h() {
+      return this.k;
    }
 
    @Override
-   protected void b() {
-      this.u.a();
-      evs.a(this.u, this.s());
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      int $$4 = this.g / 2 - this.l.b() / 2;
+      this.l.b($$0, $$4, 70, this.l(), 16777215);
    }
 
-   private void D() {
-      fjr.b $$0 = this.q.c();
-      this.w.i = $$0 == null;
-      this.w.a(x.a($$0, fjr.b::a));
+   protected void c(esy $$0) {
+      $$0.b(this.i, this.e, 25, 30, 16777215);
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.v.b($$0, $$1, $$2);
+   protected int l() {
+      return 9 * 2;
    }
 }

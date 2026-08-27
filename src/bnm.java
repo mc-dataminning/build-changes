@@ -1,81 +1,54 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
 
-public class bnm extends bld<bjm> {
-   public static final int c = 100;
-   private long d;
-
-   public bnm() {
-      super(ImmutableMap.of(bsn.b, bso.a, bsn.H, bso.c));
+public class bnm {
+   public static bmb<cck> a() {
+      return bpm.a(
+         (Function<bpm.b<cck>, ? extends App<bpm.c<cck>, bpp<cck>>>)($$0 -> $$0.group($$0.b(btk.c), $$0.b(btk.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        ia $$6 = $$0.b($$1);
+                        $$3.w()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<bkj>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof cck && $$1xxx != $$4)
+                                    .map($$0xxxx -> (cck)$$0xxxx)
+                                    .filter(bkj::bv)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, bnm::a)
+                           );
+                        return true;
+                     }
+               ))
+      );
    }
 
-   @Override
-   protected boolean a(akt $$0, bjm $$1) {
-      if ($$1.bN()) {
-         return false;
+   private static cck a(cck $$0, cck $$1) {
+      cck $$2;
+      cck $$3;
+      if ($$0.t() > $$1.t()) {
+         $$2 = $$0;
+         $$3 = $$1;
       } else {
-         bkm<?> $$2 = $$1.dN();
-         hd $$3 = $$2.c(bsn.b).get();
-         if ($$0.ac() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(bsn.H);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.V() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
-
-            dfd $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.dj(), 2.0) && $$6.a(apv.R) && !$$6.c(csv.c);
-         }
+         $$2 = $$1;
+         $$3 = $$0;
       }
+
+      $$3.dN().b(btk.c);
+      return $$2;
    }
 
-   @Override
-   protected boolean a(akt $$0, bjm $$1, long $$2) {
-      Optional<hd> $$3 = $$1.dN().c(bsn.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         gw $$4 = $$3.get().b();
-         return $$1.dN().c(cdl.e) && $$1.ds() > (double)$$4.v() + 0.4 && $$4.a($$1.dj(), 1.14);
-      }
+   private static boolean a(ia $$0, ib<bvl> $$1, cck $$2) {
+      Optional<ia> $$3 = $$2.dN().c(btk.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gp().b());
    }
 
-   @Override
-   protected void d(akt $$0, bjm $$1, long $$2) {
-      if ($$2 > this.d) {
-         bkm<?> $$3 = $$1.dN();
-         if ($$3.a(bsn.v)) {
-            Set<hd> $$4 = $$3.c(bsn.v).get();
-            Optional<List<bjm>> $$5;
-            if ($$3.a(bsn.g)) {
-               $$5 = $$3.c(bsn.g);
-            } else {
-               $$5 = Optional.empty();
-            }
-
-            bmb.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.dN().c(bsn.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(akt $$0, bjm $$1, long $$2) {
-      if ($$1.fD()) {
-         $$1.fE();
-         this.d = $$2 + 40L;
-      }
+   private static boolean a(ib<bvl> $$0, ccn $$1) {
+      return $$1.b().test($$0);
    }
 }

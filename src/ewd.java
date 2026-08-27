@@ -1,19 +1,13 @@
-import com.google.common.collect.ImmutableList;
+import org.joml.Matrix4f;
 
-public interface ewd {
-   default void a(ewc $$0, tl $$1) {
-      this.a($$0, ewf.a($$1.getString()));
+public class ewd extends ewc {
+   public static final ewd a = new ewd();
+
+   public ewd() {
+      super(ewa.b(new afw("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
-   default void a(ewc $$0, String $$1) {
-      this.a($$0, ewf.a($$1));
+   @Override
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, eml $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
-
-   default void a(ewc $$0, tl... $$1) {
-      this.a($$0, ewf.a(ImmutableList.copyOf($$1)));
-   }
-
-   void a(ewc var1, ewf<?> var2);
-
-   ewd a();
 }

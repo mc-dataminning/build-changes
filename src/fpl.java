@@ -1,110 +1,140 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Objects;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fpl implements gbj {
-   private final aez a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class fpl {
+   private static final afw a = new afw("textures/misc/underwater.png");
 
-   public fpl(aez $$0, j $$1, boolean $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public aez a() {
-      return this.a;
-   }
-
-   @Override
-   public j b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fpl $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
-   }
-
-   public static class a implements JsonDeserializer<fpl> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
-      public fpl a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         aez $$4 = this.b($$3);
-         gbc $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new fpl($$4, $$5.b(), $$6, $$7);
-      }
-
-      private boolean d(JsonObject $$0) {
-         return arr.a($$0, "uvlock", false);
-      }
-
-      protected gbc a(JsonObject $$0) {
-         int $$1 = arr.a($$0, "x", 0);
-         int $$2 = arr.a($$0, "y", 0);
-         gbc $$3 = gbc.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
-         } else {
-            return $$3;
+   public static void a(ero $$0, emh $$1) {
+      ccx $$2 = $$0.s;
+      if (!$$2.af) {
+         dgb $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.an().a().a($$3), $$1);
          }
       }
 
-      protected aez b(JsonObject $$0) {
-         return new aez(arr.i($$0, "model"));
-      }
+      if (!$$0.s.N_()) {
+         if ($$0.s.a(aqx.a)) {
+            b($$0, $$1);
+         }
 
-      protected int c(JsonObject $$0) {
-         int $$1 = arr.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
+         if ($$0.s.bM()) {
+            c($$0, $$1);
          }
       }
+   }
+
+   @Nullable
+   private static dgb a(ccx $$0) {
+      ht.a $$1 = new ht.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dq() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.df() * 0.8F);
+         double $$4 = $$0.du() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F);
+         double $$5 = $$0.dw() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.df() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dgb $$6 = $$0.dL().a_($$1);
+         if ($$6.l() != dae.a && $$6.p($$0.dL(), $$1)) {
+            return $$6;
+         }
+      }
+
+      return null;
+   }
+
+   private static void a(gaa $$0, emh $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(fou::r);
+      emc $$2 = emj.a().c();
+      float $$3 = 0.1F;
+      float $$4 = -1.0F;
+      float $$5 = 1.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -0.5F;
+      float $$9 = $$0.c();
+      float $$10 = $$0.d();
+      float $$11 = $$0.g();
+      float $$12 = $$0.h();
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(emm.b.h, emf.r);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
+      emd.a($$2.d());
+   }
+
+   private static void b(ero $$0, emh $$1) {
+      RenderSystem.setShader(fou::s);
+      RenderSystem.setShaderTexture(0, a);
+      emc $$2 = emj.a().c();
+      ht $$3 = ht.a($$0.s.dq(), $$0.s.du(), $$0.s.dw());
+      float $$4 = fpa.a($$0.s.dL().D_(), $$0.s.dL().z($$3));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
+      float $$5 = 4.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -1.0F;
+      float $$9 = 1.0F;
+      float $$10 = -0.5F;
+      float $$11 = -$$0.s.dB() / 64.0F;
+      float $$12 = $$0.s.dD() / 64.0F;
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(emm.b.h, emf.q);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
+      emd.a($$2.d());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+   }
+
+   private static void c(ero $$0, emh $$1) {
+      emc $$2 = emj.a().c();
+      RenderSystem.setShader(fou::r);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      gaa $$3 = gcg.b.c();
+      RenderSystem.setShaderTexture(0, $$3.i());
+      float $$4 = $$3.c();
+      float $$5 = $$3.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$3.g();
+      float $$8 = $$3.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$3.k();
+      float $$11 = asy.i($$10, $$4, $$6);
+      float $$12 = asy.i($$10, $$5, $$6);
+      float $$13 = asy.i($$10, $$7, $$9);
+      float $$14 = asy.i($$10, $$8, $$9);
+      float $$15 = 1.0F;
+
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$1.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$1.c().a();
+         $$2.a(emm.b.h, emf.r);
+         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
+         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
+         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
+         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
+         emd.a($$2.d());
+         $$1.b();
+      }
+
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

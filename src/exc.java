@@ -1,42 +1,19 @@
-public class exc extends eye {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final tl c = tl.c("credits_and_attribution.screen.title");
-   private static final tl k = tl.c("credits_and_attribution.button.credits");
-   private static final tl l = tl.c("credits_and_attribution.button.attribution");
-   private static final tl m = tl.c("credits_and_attribution.button.licenses");
-   private final eye n;
-   private final evu o = new evu(this);
+import com.google.common.collect.ImmutableList;
 
-   public exc(eye $$0) {
-      super(c);
-      this.n = $$0;
+public interface exc {
+   default void a(exb $$0, ui $$1) {
+      this.a($$0, exe.a($$1.getString()));
    }
 
-   @Override
-   protected void aH_() {
-      this.o.a(new etr(this.m(), this.i));
-      evy $$0 = this.o.c(evy.d()).a(8);
-      $$0.c().b();
-      $$0.a(esk.a(k, $$0x -> this.l()).a(210).a());
-      $$0.a(esk.a(l, ewx.b("https://aka.ms/MinecraftJavaAttribution", this, true)).a(210).a());
-      $$0.a(esk.a(m, ewx.b("https://aka.ms/MinecraftJavaLicenses", this, true)).a(210).a());
-      this.o.b(esk.a(tk.d, $$0x -> this.az_()).a());
-      this.o.a();
-      this.o.a(this::d);
+   default void a(exb $$0, String $$1) {
+      this.a($$0, exe.a($$1));
    }
 
-   @Override
-   protected void b() {
-      this.o.a();
+   default void a(exb $$0, ui... $$1) {
+      this.a($$0, exe.a(ImmutableList.copyOf($$1)));
    }
 
-   private void l() {
-      this.f.a(new eym(false, () -> this.f.a(this)));
-   }
+   void a(exb var1, exe<?> var2);
 
-   @Override
-   public void az_() {
-      this.f.a(this.n);
-   }
+   exc a();
 }

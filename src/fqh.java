@@ -1,103 +1,111 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fqh implements fqa<ddl> {
-   public static final gbe a = new gbe(fyz.e, new aez("entity/conduit/base"));
-   public static final gbe b = new gbe(fyz.e, new aez("entity/conduit/cage"));
-   public static final gbe c = new gbe(fyz.e, new aez("entity/conduit/wind"));
-   public static final gbe d = new gbe(fyz.e, new aez("entity/conduit/wind_vertical"));
-   public static final gbe e = new gbe(fyz.e, new aez("entity/conduit/open_eye"));
-   public static final gbe f = new gbe(fyz.e, new aez("entity/conduit/closed_eye"));
-   private final fhx g;
-   private final fhx h;
-   private final fhx i;
-   private final fhx j;
-   private final fpz k;
+public class fqh {
+   public static final fqh a = new fqh();
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final fqh.a[] c;
+   private final afw[] d;
 
-   public fqh(fqb.a $$0) {
-      this.k = $$0.a();
-      this.g = $$0.a(fhw.x);
-      this.h = $$0.a(fhw.z);
-      this.i = $$0.a(fhw.y);
-      this.j = $$0.a(fhw.w);
+   private fqh() {
+      this.c = new fqh.a[0];
+      this.d = new afw[0];
    }
 
-   public static fid b() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      $$1.a("eye", fic.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fib(0.01F)), fhz.a);
-      return fid.a($$0, 16, 16);
+   public fqh(gcf $$0, fqc $$1, List<fqg> $$2) {
+      this.d = $$2.stream().flatMap(fqg::b).map(fqg.b::a).distinct().toArray(afw[]::new);
+      Object2IntMap<afw> $$3 = new Object2IntOpenHashMap();
+
+      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
+         $$3.put(this.d[$$4], $$4);
+      }
+
+      List<fqh.a> $$5 = Lists.newArrayList();
+
+      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
+         fqg $$7 = $$2.get($$6);
+         gcb $$8 = this.a($$0, $$1, $$7);
+         fqh.b[] $$9 = $$7.b().map($$1x -> {
+            int $$2x = $$3.getInt($$1x.a());
+            return new fqh.b($$2x, $$1x.b());
+         }).toArray(fqh.b[]::new);
+         $$5.add(new fqh.a($$9, $$8));
+      }
+
+      this.c = $$5.toArray(new fqh.a[0]);
    }
 
-   public static fid c() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      $$1.a("wind", fic.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fhz.a);
-      return fid.a($$0, 64, 32);
+   @Nullable
+   private gcb a(gcf $$0, fqc $$1, fqg $$2) {
+      gcm $$3 = $$0.a($$2.a());
+      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gcc.a);
    }
 
-   public static fid d() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      $$1.a("shell", fic.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fhz.a);
-      return fid.a($$0, 32, 16);
-   }
+   @Nullable
+   public gcb a(gcb $$0, ckj $$1, @Nullable fjr $$2, @Nullable bkj $$3, int $$4) {
+      if (this.c.length != 0) {
+         cke $$5 = $$1.d();
+         int $$6 = this.d.length;
+         float[] $$7 = new float[$$6];
 
-   public static fid e() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      $$1.a("shell", fic.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhz.a);
-      return fid.a($$0, 32, 16);
-   }
-
-   public void a(ddl $$0, float $$1, elj $$2, foa $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      if (!$$0.d()) {
-         float $$7 = $$0.a(0.0F);
-         eln $$8 = a.a($$3, foi::c);
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
-         this.i.a($$2, $$8, $$4, $$5);
-         $$2.b();
-      } else {
-         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
-         float $$10 = asb.a($$6 * 0.1F) / 2.0F + 0.5F;
-         $$10 = $$10 * $$10 + $$10;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
-         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
-         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
-         this.j.a($$2, b.a($$3, foi::e), $$4, $$5);
-         $$2.b();
-         int $$12 = $$0.a / 66 % 3;
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         if ($$12 == 1) {
-            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
-         } else if ($$12 == 2) {
-            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            afw $$9 = this.d[$$8];
+            fzi $$10 = fzh.a($$5, $$9);
+            if ($$10 != null) {
+               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
+            } else {
+               $$7[$$8] = Float.NEGATIVE_INFINITY;
+            }
          }
 
-         eln $$13 = ($$12 == 1 ? d : c).a($$3, foi::e);
-         this.h.a($$2, $$13, $$4, $$5);
-         $$2.b();
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.b(0.875F, 0.875F, 0.875F);
-         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
-         this.h.a($$2, $$13, $$4, $$5);
-         $$2.b();
-         eqa $$14 = this.k.b;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
-         $$2.b(0.5F, 0.5F, 0.5F);
-         float $$15 = -$$14.e();
-         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
-         float $$16 = 1.3333334F;
-         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
-         this.g.a($$2, ($$0.f() ? e : f).a($$3, foi::e), $$4, $$5);
-         $$2.b();
+         for (fqh.a $$11 : this.c) {
+            if ($$11.a($$7)) {
+               gcb $$12 = $$11.b;
+               if ($$12 == null) {
+                  return $$0;
+               }
+
+               return $$12;
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   static class a {
+      private final fqh.b[] a;
+      @Nullable
+      final gcb b;
+
+      a(fqh.b[] $$0, @Nullable gcb $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      boolean a(float[] $$0) {
+         for (fqh.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   static class b {
+      public final int a;
+      public final float b;
+
+      b(int $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

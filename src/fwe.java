@@ -1,37 +1,20 @@
-public class fwe extends ftc<cdf> {
-   private static final aez a = new aez("textures/entity/wither/wither_invulnerable.png");
-   private static final aez f = new aez("textures/entity/wither/wither.png");
-   private final fgu g;
+public class fwe extends fuu<bzu, fhs<bzu>> {
+   private static final afw a = new afw("textures/entity/skeleton/skeleton.png");
 
-   public fwe(ftd.a $$0) {
-      super($$0);
-      this.g = new fgu($$0.a(fhw.bU));
+   public fwe(fud.a $$0) {
+      this($$0, fiv.bh, fiv.bj, fiv.bk);
    }
 
-   public static fid a() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      $$1.a("head", fic.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhz.a);
-      return fid.a($$0, 64, 64);
+   public fwe(fud.a $$0, fiu $$1, fiu $$2, fiu $$3) {
+      super($$0, new fhs<>($$0.a($$1)), 0.5F);
+      this.a(new fyb<>(this, new fhs($$0.a($$2)), new fhs($$0.a($$3)), $$0.g()));
    }
 
-   protected int a(cdf $$0, gw $$1) {
-      return 15;
+   public afw a(bzu $$0) {
+      return a;
    }
 
-   public void a(cdf $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      float $$6 = asb.j($$2, $$0.N, $$0.dB());
-      float $$7 = asb.i($$2, $$0.O, $$0.dD());
-      eln $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
-      this.g.a(0.0F, $$6, $$7);
-      this.g.a($$3, $$8, $$5, fyr.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aez a(cdf $$0) {
-      return $$0.w() ? a : f;
+   protected boolean b(bzu $$0) {
+      return $$0.ge();
    }
 }

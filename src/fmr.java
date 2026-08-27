@@ -1,29 +1,27 @@
-public class fmr extends fmc {
-   fmr(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fml $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      }
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
+
+public class fmr {
+   private final List<afw> a;
+
+   private fmr(List<afw> $$0) {
+      this.a = $$0;
    }
 
-   public static class a implements flt<iy> {
-      private final fml a;
+   public List<afw> a() {
+      return this.a;
+   }
 
-      public a(fml $$0) {
-         this.a = $$0;
-      }
-
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fmr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   public static fmr a(JsonObject $$0) {
+      JsonArray $$1 = aso.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new fmr(List.of());
+      } else {
+         List<afw> $$2 = Streams.stream($$1).map($$0x -> aso.a($$0x, "texture")).map(afw::new).collect(ImmutableList.toImmutableList());
+         return new fmr($$2);
       }
    }
 }

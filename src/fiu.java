@@ -1,13 +1,37 @@
-import java.util.List;
+public final class fiu {
+   private final afw a;
+   private final String b;
 
-public enum fiu {
-   a,
-   b;
+   public fiu(afw $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   private static final List<fiu> c = List.of(values());
-   private static final hr.b d = hr.a(jb.aq);
+   public afw a() {
+      return this.a;
+   }
 
-   public static hl<fiu> a() {
-      return new hl<>(c).a(a, d);
+   public String b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fiu $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.a + "#" + this.b;
    }
 }

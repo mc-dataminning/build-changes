@@ -1,16 +1,55 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class brt extends bru {
-   public brt(bjv $$0, double $$1) {
-      super($$0, $$1);
+public class brt extends bre {
+   private final bks a;
+   @Nullable
+   private bkj b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
+
+   public brt(bks $$0, double $$1, float $$2) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(bre.a.a));
    }
 
-   @Nullable
    @Override
-   protected ehh h() {
-      ehh $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      ehh $$2 = bue.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : bua.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean a() {
+      this.b = this.a.q();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
+         return false;
+      } else {
+         eif $$0 = buz.a(this.a, 16, 7, this.b.dj(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return !this.a.L().l() && this.b.bv() && this.b.f(this.a) < (double)(this.g * this.g);
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public void c() {
+      this.a.L().a(this.c, this.d, this.e, this.f);
    }
 }

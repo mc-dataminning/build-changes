@@ -1,25 +1,20 @@
-import java.util.Vector;
-import javax.swing.JList;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class ajx extends JList<String> {
-   private final MinecraftServer a;
-   private int b;
+public class ajx {
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tellraw").requires($$0x -> $$0x.c(2)))
+            .then(dv.a("targets", eg.d()).then(dv.a("message", ec.a()).executes($$0x -> {
+               int $$1 = 0;
 
-   public ajx(MinecraftServer $$0) {
-      this.a = $$0;
-      $$0.b(this::a);
-   }
+               for (alr $$2 : eg.f($$0x, "targets")) {
+                  $$2.b(ul.a((du)$$0x.getSource(), ec.a($$0x, "message"), $$2, 0), false);
+                  $$1++;
+               }
 
-   public void a() {
-      if (this.b++ % 20 == 0) {
-         Vector<String> $$0 = new Vector<>();
-
-         for (int $$1 = 0; $$1 < this.a.ac().t().size(); $$1++) {
-            $$0.add(this.a.ac().t().get($$1).fR().getName());
-         }
-
-         this.setListData($$0);
-      }
+               return $$1;
+            })))
+      );
    }
 }

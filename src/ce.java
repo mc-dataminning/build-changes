@@ -6,8 +6,8 @@ public class ce extends cw<ce.a> {
       return new ce.a($$1, bq.a($$0, "entity", $$2), bf.a($$0.get("killing_blow")));
    }
 
-   public void a(aku $$0, biw $$1, bhu $$2) {
-      eck $$3 = bq.b($$0, $$1);
+   public void a(alr $$0, bjt $$1, bir $$2) {
+      edi $$3 = bq.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
@@ -81,7 +81,7 @@ public class ce extends cw<ce.a> {
          return al.c.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(aku $$0, eck $$1, bhu $$2) {
+      public boolean a(alr $$0, edi $$1, bir $$2) {
          return this.b.isPresent() && !this.b.get().a($$0, $$2) ? false : this.a.isEmpty() || this.a.get().a($$1);
       }
 

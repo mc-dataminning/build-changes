@@ -1,49 +1,31 @@
-public interface dn {
-   <T> hg<T> a(aey<? extends hq<T>> var1);
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   static dn a(final hg.b $$0, final cei $$1) {
-      return new dn() {
-         @Override
-         public <T> hg<T> a(aey<? extends hq<T>> $$0x) {
-            return $$0.b($$0).a($$1);
-         }
-      };
+public class dn {
+   public static final dn a = new dn(null);
+   @Nullable
+   private final afw b;
+   private boolean c;
+   private Optional<gx<du>> d = Optional.empty();
+
+   public dn(@Nullable afw $$0) {
+      this.b = $$0;
    }
 
-   static dn.a a(final hr $$0, final cei $$1) {
-      return new dn.a() {
-         dn.b c = dn.b.b;
-
-         @Override
-         public void a(dn.b $$0x) {
-            this.c = $$0;
+   public Optional<gx<du>> a(agk $$0) {
+      if (!this.c) {
+         if (this.b != null) {
+            this.d = $$0.a(this.b);
          }
 
-         @Override
-         public <T> hg<T> a(aey<? extends hq<T>> $$0x) {
-            hq<T> $$1 = $$0.d($$0);
-            final hg.c<T> $$2 = $$1.p();
-            final hg.c<T> $$3 = $$1.u();
-            hg.c<T> $$4 = new hg.c.a<T>() {
-               @Override
-               protected hg.c<T> a() {
-                  return switch (c) {
-                     case b -> $$2;
-                     case a -> $$3;
-                  };
-               }
-            };
-            return $$4.a($$1);
-         }
-      };
+         this.c = true;
+      }
+
+      return this.d;
    }
 
-   public interface a extends dn {
-      void a(dn.b var1);
-   }
-
-   public static enum b {
-      a,
-      b;
+   @Nullable
+   public afw a() {
+      return this.d.<afw>map(gx::a).orElse(this.b);
    }
 }

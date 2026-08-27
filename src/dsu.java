@@ -1,77 +1,24 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
 
-public class dsu extends dsy {
-   public static final Codec<dsu> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsu::new));
+public class dsu<P extends dst> {
+   public static final dsu<dtc> a = a("simple_state_provider", dtc.b);
+   public static final dsu<dtd> b = a("weighted_state_provider", dtd.b);
+   public static final dsu<dsy> c = a("noise_threshold_provider", dsy.b);
+   public static final dsu<dsx> d = a("noise_provider", dsx.g);
+   public static final dsu<dsv> e = a("dual_noise_provider", dsv.b);
+   public static final dsu<dta> f = a("rotated_block_provider", dta.b);
+   public static final dsu<dsz> g = a("randomized_int_state_provider", dsz.b);
+   private final Codec<P> h;
 
-   public dsu(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends dst> dsu<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.W, $$0, new dsu<>($$1));
    }
 
-   @Override
-   protected dsz<?> a() {
-      return dsz.b;
+   private dsu(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public List<drg.a> a(cqh $$0, BiConsumer<gw, dfd> $$1, ash $$2, int $$3, gw $$4, dqq $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      List<drg.a> $$6 = Lists.newArrayList();
-      ha $$7 = ha.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      gw.a $$10 = new gw.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new drg.a(new gw($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      ha $$16 = ha.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new drg.a(new gw($$11, $$13.getAsInt(), $$12), 0, false));
-         }
-      }
-
-      return $$6;
+   public Codec<P> a() {
+      return this.h;
    }
 }

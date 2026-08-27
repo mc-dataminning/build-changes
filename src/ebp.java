@@ -1,48 +1,37 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+public enum ebp {
+   a(-1.0F),
+   b(0.0F),
+   c(0.0F),
+   d(0.0F),
+   e(0.0F),
+   f(-1.0F),
+   g(0.0F),
+   h(-1.0F),
+   i(-1.0F),
+   j(8.0F),
+   k(8.0F),
+   l(0.0F),
+   m(-1.0F),
+   n(8.0F),
+   o(16.0F),
+   p(8.0F),
+   q(-1.0F),
+   r(0.0F),
+   s(-1.0F),
+   t(-1.0F),
+   u(4.0F),
+   v(-1.0F),
+   w(8.0F),
+   x(0.0F),
+   y(0.0F);
 
-public class ebp extends ebl {
-   public static final String a = "idcounts";
-   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
+   private final float z;
 
-   public static ebl.a<ebp> a() {
-      return new ebl.a<>(ebp::new, ebp::b, atg.k);
+   private ebp(float $$0) {
+      this.z = $$0;
    }
 
-   public ebp() {
-      this.b.defaultReturnValue(-1);
-   }
-
-   public static ebp b(qw $$0) {
-      ebp $$1 = new ebp();
-
-      for (String $$2 : $$0.e()) {
-         if ($$0.b($$2, 99)) {
-            $$1.b.put($$2, $$0.h($$2));
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public qw a(qw $$0) {
-      ObjectIterator var2 = this.b.object2IntEntrySet().iterator();
-
-      while (var2.hasNext()) {
-         Entry<String> $$1 = (Entry<String>)var2.next();
-         $$0.a((String)$$1.getKey(), $$1.getIntValue());
-      }
-
-      return $$0;
-   }
-
-   public int b() {
-      int $$0 = this.b.getInt("map") + 1;
-      this.b.put("map", $$0);
-      this.c();
-      return $$0;
+   public float a() {
+      return this.z;
    }
 }

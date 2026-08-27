@@ -1,102 +1,66 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fjp {
-   final int a;
-   private final List<fjp.a> b = new ArrayList<>();
+public class fjp extends fjo implements tx, xn {
+   private static final Logger g = LogUtils.getLogger();
+   private final GameProfile h;
+   private ip.b i;
+   private cfg j;
 
-   public fjp(int $$0) {
-      this.a = $$0;
+   public fjp(ero $$0, tj $$1, fjv $$2) {
+      super($$0, $$1, $$2);
+      this.h = $$2.a();
+      this.i = $$2.c();
+      this.j = $$2.d();
    }
 
-   public void a(fjh $$0, IntCollection $$1, fjp.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
-
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         fjj $$6 = $$0.b($$4);
-         if ($$6 instanceof fjk.a) {
-            fjk.a $$5 = (fjk.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
-            }
-         }
-      }
+   @Override
+   public boolean c() {
+      return this.b.k();
    }
 
-   public void a(ub $$0) {
-      this.b.add(new fjp.a($$0));
+   @Override
+   protected ip.b f() {
+      return this.i;
    }
 
-   public boolean b(ub $$0) {
-      boolean $$1 = false;
-      Iterator<fjp.a> $$2 = this.b.iterator();
+   @Override
+   protected void a(wu $$0) {
+      this.b($$0);
+   }
 
-      while ($$2.hasNext()) {
-         fjp.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
-         }
+   private void b(wu $$0) {
+      g.warn("Unknown custom packet payload: {}", $$0.a());
+   }
+
+   @Override
+   public void a(xp $$0) {
+      wd.a($$0, this, this.a);
+      ip.b $$1 = fjt.a().a(fjt.b, $$0.a()).a();
+      if (!this.b.g()) {
+         $$1.b().forEach($$0x -> $$0x.b().m());
       }
 
-      return $$1;
+      this.i = $$1;
    }
 
-   public boolean a() {
-      return !this.b.isEmpty();
+   @Override
+   public void a(xq $$0) {
+      this.j = cfi.d.a($$0.a());
    }
 
-   class a {
-      private final Set<tx> b;
-      private ub c;
-      private boolean d = true;
-      private int e;
-
-      a(ub $$0) {
-         this.b = new ObjectOpenHashSet($$0.l().d().a());
-         this.c = $$0;
-      }
-
-      boolean a(ub $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
-         } else {
-            boolean $$1 = this.b.remove($$0.k());
-            if (this.d && this.c.f().equals($$0.f())) {
-               if (this.c.j().a($$0.j())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
-            return $$1;
-         }
-      }
-
-      boolean a() {
-         return this.e >= fjp.this.a || !this.d && this.b.isEmpty();
-      }
+   @Override
+   public void a(xo $$0) {
+      this.b.a();
+      wd.a($$0, this, this.a);
+      this.b.a(new fjs(this.a, this.b, new fjv(this.h, this.e, this.i, this.j, this.d, this.c, this.f)));
+      this.b.b();
+      this.b.a(new xs());
    }
 
-   public interface b {
-      void accept(int var1, fjk.a var2);
+   @Override
+   public void e() {
+      this.g();
    }
 }

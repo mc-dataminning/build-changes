@@ -1,23 +1,18 @@
-import java.util.Optional;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.ArgumentType;
 
-public interface hf<T> {
-   Optional<he.c<T>> a(aey<T> var1);
+public interface hf<A extends ArgumentType<?>, T extends hf.a<A>> {
+   void a(T var1, tl var2);
 
-   default he.c<T> b(aey<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
-   }
+   T b(tl var1);
 
-   Optional<hi.c<T>> a(aqk<T> var1);
+   void a(T var1, JsonObject var2);
 
-   default hi.c<T> b(aqk<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
-   }
+   T a(A var1);
 
-   public interface a {
-      <T> Optional<hf<T>> a(aey<? extends hq<? extends T>> var1);
+   public interface a<A extends ArgumentType<?>> {
+      A b(dp var1);
 
-      default <T> hf<T> b(aey<? extends hq<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
-      }
+      hf<A, ?> a();
    }
 }

@@ -1,26 +1,28 @@
-public class fgo<T extends bvt> extends fgi<T> {
-   private float j;
+public class fgo<T extends bjt> extends fgg<T> {
+   private static final String a = "knot";
+   private final fiw b;
+   private final fiw f;
 
-   public fgo(fhx $$0) {
-      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
+   public fgo(fiw $$0) {
+      this.b = $$0;
+      this.f = $$0.b("knot");
    }
 
-   public static fid c() {
-      fif $$0 = fgi.a(12, fib.a);
-      fig $$1 = $$0.a();
-      $$1.a("head", fic.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fhz.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fic.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fhz.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return fid.a($$0, 64, 32);
+   public static fjc b() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      $$1.a("knot", fjb.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fiy.a);
+      return fjc.a($$0, 32, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.c = 6.0F + $$0.E($$3) * 9.0F;
-      this.j = $$0.F($$3);
+   @Override
+   public fiw a() {
+      return this.b;
    }
 
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.e = this.j;
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

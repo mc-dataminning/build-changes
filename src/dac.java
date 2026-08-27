@@ -1,82 +1,133 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.List;
 import java.util.Map;
+import java.util.WeakHashMap;
 
-public class dac extends cry {
-   public static final MapCodec<dac> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dac.a.b.fieldOf("kind").forGetter(cry::b), t()).apply($$0, dac::new));
-   public static final int d = dgj.a();
-   private static final int b = d + 1;
-   public static final dgd e = dft.ba;
-   protected static final eia f = ctc.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final eia g = ctc.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+public class dac extends ctq {
+   public static final MapCodec<dac> c = b(dac::new);
+   public static final dgs d = dgr.r;
+   private static final Map<cqf, List<dac.a>> h = new WeakHashMap<>();
+   public static final int e = 60;
+   public static final int f = 8;
+   public static final int g = 160;
+   private static final int i = 2;
 
    @Override
    public MapCodec<? extends dac> a() {
       return c;
    }
 
-   protected dac(dac.a $$0, dfc.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(e, Integer.valueOf(0)));
+   protected dac(dga.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return this.b() == dac.b.h ? g : f;
+   public void b(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
+      for (hx $$5 : hx.values()) {
+         $$1.a($$2.a($$5), this);
+      }
    }
 
    @Override
-   public eia f(dfd $$0, cph $$1, gw $$2) {
-      return ehx.a();
+   public void a(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
+      if (!$$4) {
+         for (hx $$5 : hx.values()) {
+            $$1.a($$2.a($$5), this);
+         }
+      }
    }
 
    @Override
-   public dfd a(clt $$0) {
-      return super.a($$0).a(e, Integer.valueOf(dgj.a($$0.i())));
+   public int a(dgb $$0, cqf $$1, ht $$2, hx $$3) {
+      return $$0.c(d) && hx.b != $$3 ? 15 : 0;
+   }
+
+   protected boolean a(cqz $$0, ht $$1, dgb $$2) {
+      return $$0.b($$1.d(), hx.a);
    }
 
    @Override
-   public dfd a(dfd $$0, czn $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
+   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      boolean $$4 = this.a($$1, $$2, $$0);
+      List<dac.a> $$5 = h.get($$1);
 
-   @Override
-   public dfd a(dfd $$0, cxx $$1) {
-      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends asu {
-      Map<String, dac.a> a = new Object2ObjectArrayMap();
-      Codec<dac.a> b = arj.a(asu::c, a::get);
-   }
-
-   public static enum b implements dac.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+      while ($$5 != null && !$$5.isEmpty() && $$1.V() - $$5.get(0).b > 60L) {
+         $$5.remove(0);
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      if ($$0.c(d)) {
+         if ($$4) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
+            if (a($$1, $$2, true)) {
+               $$1.c(1502, $$2, 0);
+               $$1.a($$2, $$1.a_($$2).b(), 160);
+            }
+         }
+      } else if (!$$4 && !a($$1, $$2, false)) {
+         $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
+      }
+   }
+
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, cua $$3, ht $$4, boolean $$5) {
+      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.L().b($$2, this)) {
+         $$1.a($$2, this, 2);
+      }
+   }
+
+   @Override
+   public int b(dgb $$0, cqf $$1, ht $$2, hx $$3) {
+      return $$3 == hx.a ? $$0.b($$1, $$2, $$3) : 0;
+   }
+
+   @Override
+   public boolean f_(dgb $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
+      if ($$0.c(d)) {
+         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         $$1.a(jm.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(d);
+   }
+
+   private static boolean a(cqz $$0, ht $$1, boolean $$2) {
+      List<dac.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
+      if ($$2) {
+         $$3.add(new dac.a($$1.i(), $$0.V()));
+      }
+
+      int $$4 = 0;
+
+      for (dac.a $$5 : $$3) {
+         if ($$5.a.equals($$1)) {
+            if (++$$4 >= 8) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public static class a {
+      final ht a;
+      final long b;
+
+      public a(ht $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

@@ -1,96 +1,52 @@
-import java.util.ArrayList;
-import javax.annotation.Nullable;
-
-public class cpa extends ArrayList<coz> {
-   public cpa() {
+public class cpa extends cot {
+   public cpa(cot.a $$0, bjy... $$1) {
+      super($$0, cou.b, $$1);
    }
 
-   private cpa(int $$0) {
-      super($$0);
+   @Override
+   public int a(int $$0) {
+      return $$0 * 10;
    }
 
-   public cpa(qw $$0) {
-      rc $$1 = $$0.c("Recipes", 10);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.add(new coz($$1.a($$2)));
-      }
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 15;
    }
 
-   @Nullable
-   public coz a(cjl $$0, cjl $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         coz $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
-      } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            coz $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public int a() {
+      return 2;
+   }
+
+   public static void a(bkj $$0, cqz $$1, ht $$2, int $$3) {
+      if ($$0.aA()) {
+         dgb $$4 = cuc.kI.o();
+         int $$5 = Math.min(16, 2 + $$3);
+         ht.a $$6 = new ht.a();
+
+         for (ht $$7 : ht.a($$2.b(-$$5, -1, -$$5), $$2.b($$5, -1, $$5))) {
+            if ($$7.a($$0.dj(), (double)$$5)) {
+               $$6.d($$7.u(), $$7.v() + 1, $$7.w());
+               dgb $$8 = $$1.a_($$6);
+               if ($$8.i()) {
+                  dgb $$9 = $$1.a_($$7);
+                  if ($$9 == cxd.b() && $$4.a((crc)$$1, $$7) && $$1.a($$4, $$7, eik.a())) {
+                     $$1.b($$7, $$4);
+                     $$1.a($$7, cuc.kI, asy.a($$0.ef(), 60, 120));
+                  }
+               }
             }
          }
-
-         return null;
       }
    }
 
-   public void a(so $$0) {
-      $$0.a(this, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.d());
-         $$0x.a($$1.c());
-         $$0x.a($$1.p());
-         $$0x.p($$1.g());
-         $$0x.p($$1.i());
-         $$0x.p($$1.o());
-         $$0x.p($$1.m());
-         $$0x.a($$1.n());
-         $$0x.p($$1.k());
-      });
-   }
-
-   public static cpa b(so $$0) {
-      return $$0.a(cpa::new, $$0x -> {
-         cjl $$1 = $$0x.r();
-         cjl $$2 = $$0x.r();
-         cjl $$3 = $$0x.r();
-         boolean $$4 = $$0x.readBoolean();
-         int $$5 = $$0x.readInt();
-         int $$6 = $$0x.readInt();
-         int $$7 = $$0x.readInt();
-         int $$8 = $$0x.readInt();
-         float $$9 = $$0x.readFloat();
-         int $$10 = $$0x.readInt();
-         coz $$11 = new coz($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
-         if ($$4) {
-            $$11.q();
-         }
-
-         $$11.b($$8);
-         return $$11;
-      });
-   }
-
-   public qw a() {
-      qw $$0 = new qw();
-      rc $$1 = new rc();
-
-      for (int $$2 = 0; $$2 < this.size(); $$2++) {
-         coz $$3 = this.get($$2);
-         $$1.add($$3.t());
-      }
-
-      $$0.a("Recipes", $$1);
-      return $$0;
-   }
-
-   public cpa b() {
-      cpa $$0 = new cpa(this.size());
-
-      for (coz $$1 : this) {
-         $$0.add($$1.u());
-      }
-
-      return $$0;
+   @Override
+   public boolean a(cot $$0) {
+      return super.a($$0) && $$0 != cox.i;
    }
 }

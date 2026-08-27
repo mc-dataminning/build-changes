@@ -1,78 +1,87 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class dby extends cry {
-   public static final MapCodec<dby> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dac.a.b.fieldOf("kind").forGetter(cry::b), t()).apply($$0, dby::new));
-   public static final dfx d = cww.aE;
-   private static final Map<ha, eia> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         ha.c,
-         ctc.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
-         ha.d,
-         ctc.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         ha.f,
-         ctc.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
-         ha.e,
-         ctc.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
-      )
-   );
+public class dby extends cua {
+   public static final MapCodec<dby> a = b(dby::new);
+   public static final dhb b = dgr.aw;
+   protected static final float c = 6.0F;
+   protected static final eiy d = cua.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
-   public MapCodec<? extends dby> a() {
-      return c;
+   public MapCodec<dby> a() {
+      return a;
    }
 
-   protected dby(dac.a $$0, dfc.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(d, ha.c));
+   protected dby(dga.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public String h() {
-      return this.k().a();
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return d;
    }
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return b.get($$0.c(d));
+   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   public dfd a(clt $$0) {
-      dfd $$1 = super.a($$0);
-      cph $$2 = $$0.q();
-      gw $$3 = $$0.a();
-      ha[] $$4 = $$0.f();
+   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if ($$1.t($$2.c())) {
+         int $$4 = 1;
 
-      for (ha $$5 : $$4) {
-         if ($$5.o().d()) {
-            ha $$6 = $$5.g();
-            $$1 = $$1.a(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
+         while ($$1.a_($$2.c($$4)).a(this)) {
+            $$4++;
+         }
+
+         if ($$4 < 3) {
+            int $$5 = $$0.c(b);
+            if ($$5 == 15) {
+               $$1.b($$2.c(), this.o());
+               $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 4);
+            } else {
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$5 + 1)), 4);
             }
          }
       }
-
-      return null;
    }
 
    @Override
-   public dfd a(dfd $$0, czn $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dfd a(dfd $$0, cxx $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   public boolean a(dgb $$0, crc $$1, ht $$2) {
+      dgb $$3 = $$1.a_($$2.d());
+      if ($$3.a(this)) {
+         return true;
+      } else {
+         if ($$3.a(aqs.af) || $$3.a(aqs.H)) {
+            ht $$4 = $$2.d();
+
+            for (hx $$5 : hx.c.a) {
+               dgb $$6 = $$1.a_($$4.a($$5));
+               ebe $$7 = $$1.b_($$4.a($$5));
+               if ($$7.a(aqx.a) || $$6.a(cuc.kI)) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(b);
    }
 }

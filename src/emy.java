@@ -1,19 +1,18 @@
-import com.google.gson.annotations.SerializedName;
+import java.net.Proxy;
+import javax.annotation.Nullable;
 
-public class emy extends enf implements emz {
-   @SerializedName("seed")
-   private final String a;
-   @SerializedName("worldTemplateId")
-   private final long b;
-   @SerializedName("levelType")
-   private final int c;
-   @SerializedName("generateStructures")
-   private final boolean d;
+public class emy {
+   @Nullable
+   private static Proxy a;
 
-   public emy(String $$0, long $$1, int $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   @Nullable
+   public static Proxy a() {
+      return a;
+   }
+
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
+      }
    }
 }

@@ -1,47 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class dnx extends dnq<dqb> {
-   public dnx(Codec<dqb> $$0) {
+public class dnx extends doo<dqk> {
+   public dnx(Codec<dqk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dns<dqb> $$0) {
-      cqv $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      ash $$3 = $$0.d();
-      if (!$$1.t($$2)) {
+   public boolean a(doq<dqk> $$0) {
+      ht $$1 = $$0.e();
+      crt $$2 = $$0.b();
+      ate $$3 = $$0.d();
+      dqk $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
          return false;
       } else {
-         dfd $$4 = $$1.a_($$2.c());
-         if (!$$4.a(cte.dV) && !$$4.a(cte.dY) && !$$4.a(cte.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, cte.ec.o(), 2);
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               gw $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
-
-                  for (ha $$8 : ha.values()) {
-                     if ($$1.a_($$6.a($$8)).a(cte.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, cte.ec.o(), 2);
-                  }
-               }
+         for (ht $$7 : ht.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
-
-            return true;
          }
+
+         return true;
+      }
+   }
+
+   private boolean a(cra $$0, ht $$1, ate $$2) {
+      ht $$3 = $$1.d();
+      dgb $$4 = $$0.a_($$3);
+      return $$4.a(cuc.kE) ? $$2.h() : $$4.d($$0, $$3, hx.b);
+   }
+
+   private void a(cra $$0, ht $$1, ate $$2, dqk $$3) {
+      if ($$0.t($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
    }
 }

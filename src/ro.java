@@ -1,154 +1,96 @@
-import java.io.DataInput;
-import java.io.DataOutput;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.UTFDataFormatException;
-import java.util.Objects;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class ro implements rq {
-   private static final int b = 36;
-   public static final rs<ro> a = new rs.b<ro>() {
-      public ro a(DataInput $$0, rf $$1) throws IOException {
-         return ro.a(d($$0, $$1));
-      }
+public abstract class ro {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new Gson();
+   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
+   public static final String a = "en_us";
+   private static volatile ro e = c();
 
-      @Override
-      public rn.b a(DataInput $$0, rn $$1, rf $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static String d(DataInput $$0, rf $$1) throws IOException {
-         $$1.b(36L);
-         String $$2 = $$0.readUTF();
-         $$1.a(2L, (long)$$2.length());
-         return $$2;
-      }
-
-      @Override
-      public void b(DataInput $$0, rf $$1) throws IOException {
-         ro.a($$0);
-      }
-
-      @Override
-      public String a() {
-         return "STRING";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_String";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private static final ro c = new ro("");
-   private static final char w = '"';
-   private static final char x = '\'';
-   private static final char y = '\\';
-   private static final char z = '\u0000';
-   private final String A;
-
-   public static void a(DataInput $$0) throws IOException {
-      $$0.skipBytes($$0.readUnsignedShort());
-   }
-
-   private ro(String $$0) {
-      Objects.requireNonNull($$0, "Null string not allowed");
-      this.A = $$0;
-   }
-
-   public static ro a(String $$0) {
-      return $$0.isEmpty() ? c : new ro($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      try {
-         $$0.writeUTF(this.A);
-      } catch (UTFDataFormatException var3) {
-         ac.a("Failed to write NBT String", var3);
-         $$0.writeUTF("");
-      }
-   }
-
-   @Override
-   public int a() {
-      return 36 + 2 * this.A.length();
-   }
-
-   @Override
-   public byte b() {
-      return 8;
-   }
-
-   @Override
-   public rs<ro> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return rq.super.r_();
-   }
-
-   public ro e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ro && Objects.equals(this.A, ((ro)$$0).A);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.A.hashCode();
-   }
-
-   @Override
-   public String r_() {
-      return this.A;
-   }
-
-   @Override
-   public void a(ru $$0) {
-      $$0.a(this);
-   }
-
-   public static String b(String $$0) {
-      StringBuilder $$1 = new StringBuilder(" ");
-      char $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
-         char $$4 = $$0.charAt($$3);
-         if ($$4 == '\\') {
-            $$1.append('\\');
-         } else if ($$4 == '"' || $$4 == '\'') {
-            if ($$2 == 0) {
-               $$2 = (char)($$4 == '"' ? 39 : 34);
-            }
-
-            if ($$2 == $$4) {
-               $$1.append('\\');
-            }
+   private static ro c() {
+      Builder<String, String> $$0 = ImmutableMap.builder();
+      BiConsumer<String, String> $$1 = $$0::put;
+      a($$1, "/assets/minecraft/lang/en_us.json");
+      final Map<String, String> $$2 = $$0.build();
+      return new ro() {
+         @Override
+         public String a(String $$0, String $$1) {
+            return $$2.getOrDefault($$0, $$1);
          }
 
-         $$1.append($$4);
-      }
+         @Override
+         public boolean b(String $$0) {
+            return $$2.containsKey($$0);
+         }
 
-      if ($$2 == 0) {
-         $$2 = '"';
-      }
+         @Override
+         public boolean b() {
+            return false;
+         }
 
-      $$1.setCharAt(0, $$2);
-      $$1.append($$2);
-      return $$1.toString();
+         @Override
+         public ask a(un $$0) {
+            return $$1 -> $$0.a(($$1x, $$2xxx) -> atq.c($$2xxx, $$1x, $$1) ? Optional.empty() : un.a, vf.a).isPresent();
+         }
+      };
    }
 
-   @Override
-   public rn.b a(rn $$0) {
-      return $$0.a(this.A);
+   private static void a(BiConsumer<String, String> $$0, String $$1) {
+      try (InputStream $$2 = ro.class.getResourceAsStream($$1)) {
+         a($$2, $$0);
+      } catch (JsonParseException | IOException var7) {
+         b.error("Couldn't read strings from {}", $$1, var7);
+      }
+   }
+
+   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
+      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
+
+      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+         String $$4 = d.matcher(aso.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         $$1.accept($$3.getKey(), $$4);
+      }
+   }
+
+   public static ro a() {
+      return e;
+   }
+
+   public static void a(ro $$0) {
+      e = $$0;
+   }
+
+   public String a(String $$0) {
+      return this.a($$0, $$0);
+   }
+
+   public abstract String a(String var1, String var2);
+
+   public abstract boolean b(String var1);
+
+   public abstract boolean b();
+
+   public abstract ask a(un var1);
+
+   public List<ask> a(List<un> $$0) {
+      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

@@ -1,41 +1,54 @@
-public class esv extends ete {
-   private static final int a = 1426063360;
-   private static final int b = 4;
-   private final boolean c;
+import javax.annotation.Nullable;
 
-   public esv(int $$0, tl $$1, erx $$2) {
-      this($$0, $$1, $$2, true);
+public interface esv {
+   static esv a(eve $$0) {
+      return new esv.a($$0);
    }
 
-   public esv(int $$0, tl $$1, erx $$2, boolean $$3) {
-      super($$1, $$2);
-      this.j($$0);
-      this.b(true);
-      this.i = true;
-      this.c = $$3;
+   @Nullable
+   static esv a(evd $$0, @Nullable esv $$1) {
+      return $$1 == null ? null : new esv.b($$0, $$1);
    }
 
-   @Override
-   protected void a(ewd $$0) {
-      $$0.a(ewc.a, this.m());
-   }
+   static esv a(eve $$0, evd... $$1) {
+      esv $$2 = a($$0);
 
-   @Override
-   public void b(erz $$0, int $$1, int $$2, float $$3) {
-      if (this.aC_() || this.c) {
-         int $$4 = this.r() - 4;
-         int $$5 = this.t() - 4;
-         int $$6 = this.l() + 8;
-         int $$7 = this.i() + 8;
-         int $$8 = this.c ? (this.aC_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, 1426063360);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
+      for (evd $$3 : $$1) {
+         $$2 = a($$3, $$2);
       }
 
-      super.b($$0, $$1, $$2, $$3);
+      return $$2;
    }
 
-   @Override
-   public void a(gdm $$0) {
+   eve a();
+
+   void a(boolean var1);
+
+   public static record a(eve a) implements esv {
+      @Override
+      public void a(boolean $$0) {
+         this.a.b_($$0);
+      }
+   }
+
+   public static record b(evd a, esv b) implements esv {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public evd b() {
+         return this.a;
+      }
+
+      public esv c() {
+         return this.b;
+      }
    }
 }

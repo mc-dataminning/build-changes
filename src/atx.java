@@ -1,33 +1,50 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-public class atx extends ayf {
-   public atx(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBlockStateFix", azd.s, "minecraft:piston");
+public interface atx<C> {
+   atx<Float> a = a($$0 -> $$0);
+
+   float a(C var1);
+
+   float b();
+
+   float c();
+
+   static atx<Float> a(final Float2FloatFunction $$0) {
+      return new atx<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
+         }
+
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
+         }
+      };
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(azd.s, "minecraft:piston");
-      Type<?> $$2 = $$1.findFieldType("blockState");
-      OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
-      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      int $$5 = $$4.get("blockId").asInt(0);
-      $$4 = $$4.remove("blockId");
-      int $$6 = $$4.get("blockData").asInt(0) & 15;
-      $$4 = $$4.remove("blockData");
-      Dynamic<?> $$7 = auk.b($$5 << 4 | $$6);
-      Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
-      return $$8.set(DSL.remainderFinder(), $$4)
-         .set(
-            $$3,
-            (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
-               .getFirst()
-         );
+   default <C2> atx<C2> a(final Function<C2, C> $$0) {
+      final atx<C> $$1 = this;
+      return new atx<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
+
+         @Override
+         public float b() {
+            return $$1.b();
+         }
+
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

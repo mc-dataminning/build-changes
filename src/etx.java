@@ -1,17 +1,31 @@
-public record etx(aez a, aez b, aez c, aez d) {
-   public etx(aez $$0, aez $$1) {
-      this($$0, $$0, $$1, $$1);
+import java.util.UUID;
+
+public class etx extends bhr {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
+
+   public etx(UUID $$0, ui $$1, float $$2, bhr.a $$3, bhr.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.b();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
-   public etx(aez $$0, aez $$1, aez $$2) {
-      this($$0, $$1, $$2, $$1);
+   @Override
+   public void a(float $$0) {
+      this.b = this.k();
+      this.h = $$0;
+      this.i = ac.b();
    }
 
-   public aez a(boolean $$0, boolean $$1) {
-      if ($$0) {
-         return $$1 ? this.c : this.a;
-      } else {
-         return $$1 ? this.d : this.b;
-      }
+   @Override
+   public float k() {
+      long $$0 = ac.b() - this.i;
+      float $$1 = asy.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return asy.i($$1, this.b, this.h);
    }
 }

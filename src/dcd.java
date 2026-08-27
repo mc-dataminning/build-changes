@@ -1,33 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcd extends dad implements dcb {
-   public static final MapCodec<dcd> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dcb.a.e.fieldOf("weathering_state").forGetter(cud::c), t()).apply($$0, dcd::new)
-   );
-   private final dcb.a g;
+public class dcd extends cuj implements cud {
+   public static final MapCodec<dcd> a = b(dcd::new);
+   protected static final float b = 6.0F;
+   protected static final eiy c = cua.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dcd> a() {
-      return f;
+      return a;
    }
 
-   public dcd(dcb.a $$0, dfc.d $$1) {
-      super($$1);
-      this.g = $$0;
-   }
-
-   @Override
-   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dcd(dga.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean e_(dfd $$0) {
-      return dcb.c($$0.b()).isPresent();
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return c;
    }
 
-   public dcb.a g() {
-      return this.g;
+   @Override
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      cwg $$4 = (cwg)($$3.a(cuc.bu) ? cuc.iI : cuc.iH);
+      if ($$4.o().a($$0, $$2) && $$0.t($$2.c())) {
+         cwg.a($$0, $$4.o(), $$2, 2);
+      }
    }
 }

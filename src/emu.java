@@ -1,54 +1,408 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.common.hash.Hashing;
+import com.google.common.io.Files;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Path;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.output.CountingOutputStream;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 
-public class emu extends enf {
-   private static final Logger c = LogUtils.getLogger();
-   public long a;
-   public List<UUID> b;
+public class emu {
+   static final Logger a = LogUtils.getLogger();
+   volatile boolean b;
+   volatile boolean c;
+   volatile boolean d;
+   volatile boolean e;
+   @Nullable
+   private volatile File f;
+   volatile File g;
+   @Nullable
+   private volatile HttpGet h;
+   @Nullable
+   private Thread i;
+   private final RequestConfig j = RequestConfig.custom().setSocketTimeout(120000).setConnectTimeout(120000).build();
+   private static final String[] k = new String[]{
+      "CON",
+      "COM",
+      "PRN",
+      "AUX",
+      "CLOCK$",
+      "NUL",
+      "COM1",
+      "COM2",
+      "COM3",
+      "COM4",
+      "COM5",
+      "COM6",
+      "COM7",
+      "COM8",
+      "COM9",
+      "LPT1",
+      "LPT2",
+      "LPT3",
+      "LPT4",
+      "LPT5",
+      "LPT6",
+      "LPT7",
+      "LPT8",
+      "LPT9"
+   };
 
-   public static emu a(JsonObject $$0) {
-      emu $$1 = new emu();
+   public long a(String $$0) {
+      CloseableHttpClient $$1 = null;
+      HttpGet $$2 = null;
 
+      long var5;
       try {
-         $$1.a = epc.a("serverId", $$0, -1L);
-         String $$2 = epc.a("playerList", $$0, null);
+         $$2 = new HttpGet($$0);
+         $$1 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
+         CloseableHttpResponse $$3 = $$1.execute($$2);
+         return Long.parseLong($$3.getFirstHeader("Content-Length").getValue());
+      } catch (Throwable var16) {
+         a.error("Unable to get content length for download");
+         var5 = 0L;
+      } finally {
          if ($$2 != null) {
-            JsonElement $$3 = JsonParser.parseString($$2);
-            if ($$3.isJsonArray()) {
-               $$1.b = a($$3.getAsJsonArray());
-            } else {
-               $$1.b = Lists.newArrayList();
-            }
-         } else {
-            $$1.b = Lists.newArrayList();
+            $$2.releaseConnection();
          }
-      } catch (Exception var4) {
-         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
+
+         if ($$1 != null) {
+            try {
+               $$1.close();
+            } catch (IOException var15) {
+               a.error("Could not close http client", var15);
+            }
+         }
       }
 
-      return $$1;
+      return var5;
    }
 
-   private static List<UUID> a(JsonArray $$0) {
-      List<UUID> $$1 = new ArrayList<>($$0.size());
+   public void a(eoe $$0, String $$1, epa.a $$2, ecy $$3) {
+      if (this.i == null) {
+         this.i = new Thread(() -> {
+            CloseableHttpClient $$4 = null;
 
-      for (JsonElement $$2 : $$0) {
-         if ($$2.isJsonObject()) {
-            UUID $$3 = epc.a("playerId", $$2.getAsJsonObject(), null);
-            if ($$3 != null) {
-               $$1.add($$3);
+            try {
+               this.f = File.createTempFile("backup", ".tar.gz");
+               this.h = new HttpGet($$0.a);
+               $$4 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
+               HttpResponse $$5 = $$4.execute(this.h);
+               $$2.b = Long.parseLong($$5.getFirstHeader("Content-Length").getValue());
+               if ($$5.getStatusLine().getStatusCode() == 200) {
+                  OutputStream $$12 = new FileOutputStream(this.f);
+                  emu.b $$13 = new emu.b($$1.trim(), this.f, $$3, $$2);
+                  emu.a $$14 = new emu.a($$12);
+                  $$14.a($$13);
+                  IOUtils.copy($$5.getEntity().getContent(), $$14);
+                  return;
+               }
+
+               this.d = true;
+               this.h.abort();
+            } catch (Exception var93) {
+               a.error("Caught exception while downloading: {}", var93.getMessage());
+               this.d = true;
+               return;
+            } finally {
+               this.h.releaseConnection();
+               if (this.f != null) {
+                  this.f.delete();
+               }
+
+               if (!this.d) {
+                  if (!$$0.b.isEmpty() && !$$0.c.isEmpty()) {
+                     try {
+                        this.f = File.createTempFile("resources", ".tar.gz");
+                        this.h = new HttpGet($$0.b);
+                        HttpResponse $$28 = $$4.execute(this.h);
+                        $$2.b = Long.parseLong($$28.getFirstHeader("Content-Length").getValue());
+                        if ($$28.getStatusLine().getStatusCode() != 200) {
+                           this.d = true;
+                           this.h.abort();
+                           return;
+                        }
+
+                        OutputStream $$29 = new FileOutputStream(this.f);
+                        emu.c $$30 = new emu.c(this.f, $$2, $$0);
+                        emu.a $$31 = new emu.a($$29);
+                        $$31.a($$30);
+                        IOUtils.copy($$28.getEntity().getContent(), $$31);
+                     } catch (Exception var91) {
+                        a.error("Caught exception while downloading: {}", var91.getMessage());
+                        this.d = true;
+                     } finally {
+                        this.h.releaseConnection();
+                        if (this.f != null) {
+                           this.f.delete();
+                        }
+                     }
+                  } else {
+                     this.c = true;
+                  }
+               }
+
+               if ($$4 != null) {
+                  try {
+                     $$4.close();
+                  } catch (IOException var90) {
+                     a.error("Failed to close Realms download client");
+                  }
+               }
+            }
+         });
+         this.i.setUncaughtExceptionHandler(new eoi(a));
+         this.i.start();
+      }
+   }
+
+   public void a() {
+      if (this.h != null) {
+         this.h.abort();
+      }
+
+      if (this.f != null) {
+         this.f.delete();
+      }
+
+      this.b = true;
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static String b(String $$0) {
+      $$0 = $$0.replaceAll("[\\./\"]", "_");
+
+      for (String $$1 : k) {
+         if ($$0.equalsIgnoreCase($$1)) {
+            $$0 = "_" + $$0 + "_";
+         }
+      }
+
+      return $$0;
+   }
+
+   void a(String $$0, @Nullable File $$1, ecy $$2) throws IOException {
+      Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
+      int $$4 = 1;
+
+      for (char $$5 : aa.ba) {
+         $$0 = $$0.replace($$5, '_');
+      }
+
+      if (StringUtils.isEmpty($$0)) {
+         $$0 = "Realm";
+      }
+
+      $$0 = b($$0);
+
+      try {
+         for (ecy.b $$6 : $$2.b()) {
+            String $$7 = $$6.a();
+            if ($$7.toLowerCase(Locale.ROOT).startsWith($$0.toLowerCase(Locale.ROOT))) {
+               Matcher $$8 = $$3.matcher($$7);
+               if ($$8.matches()) {
+                  int $$9 = Integer.parseInt($$8.group(1));
+                  if ($$9 > $$4) {
+                     $$4 = $$9;
+                  }
+               } else {
+                  $$4++;
+               }
+            }
+         }
+      } catch (Exception var43) {
+         a.error("Error getting level list", var43);
+         this.d = true;
+         return;
+      }
+
+      String $$13;
+      if ($$2.a($$0) && $$4 <= 1) {
+         $$13 = $$0;
+      } else {
+         $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
+         if (!$$2.a($$13)) {
+            boolean $$12 = false;
+
+            while (!$$12) {
+               $$4++;
+               $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
+               if ($$2.a($$13)) {
+                  $$12 = true;
+               }
             }
          }
       }
 
-      return $$1;
+      TarArchiveInputStream $$14 = null;
+      File $$15 = new File(ero.O().p.getAbsolutePath(), "saves");
+
+      try {
+         $$15.mkdir();
+         $$14 = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream($$1))));
+
+         for (TarArchiveEntry $$16 = $$14.getNextTarEntry(); $$16 != null; $$16 = $$14.getNextTarEntry()) {
+            File $$17 = new File($$15, $$16.getName().replace("world", $$13));
+            if ($$16.isDirectory()) {
+               $$17.mkdirs();
+            } else {
+               $$17.createNewFile();
+
+               try (FileOutputStream $$18 = new FileOutputStream($$17)) {
+                  IOUtils.copy($$14, $$18);
+               }
+            }
+         }
+      } catch (Exception var41) {
+         a.error("Error extracting world", var41);
+         this.d = true;
+      } finally {
+         if ($$14 != null) {
+            $$14.close();
+         }
+
+         if ($$1 != null) {
+            $$1.delete();
+         }
+
+         try (ecy.c $$28 = $$2.d($$13)) {
+            $$28.a($$13.trim());
+            Path $$29 = $$28.a(ecw.e);
+            a($$29.toFile());
+         } catch (IOException var39) {
+            a.error("Failed to rename unpacked realms level {}", $$13, var39);
+         } catch (ehu var40) {
+            a.warn("{}", var40.getMessage());
+         }
+
+         this.g = new File($$15, $$13 + File.separator + "resources.zip");
+      }
+   }
+
+   private static void a(File $$0) {
+      if ($$0.exists()) {
+         try {
+            rt $$1 = se.a($$0);
+            rt $$2 = $$1.p("Data");
+            $$2.r("Player");
+            se.a($$1, $$0);
+         } catch (Exception var3) {
+            a.info("Exception while removing player tag", var3);
+         }
+      }
+   }
+
+   static class a extends CountingOutputStream {
+      @Nullable
+      private ActionListener a;
+
+      public a(OutputStream $$0) {
+         super($$0);
+      }
+
+      public void a(ActionListener $$0) {
+         this.a = $$0;
+      }
+
+      protected void afterWrite(int $$0) throws IOException {
+         super.afterWrite($$0);
+         if (this.a != null) {
+            this.a.actionPerformed(new ActionEvent(this, 0, null));
+         }
+      }
+   }
+
+   class b implements ActionListener {
+      private final String b;
+      private final File c;
+      private final ecy d;
+      private final epa.a e;
+
+      b(String $$0, File $$1, ecy $$2, epa.a $$3) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+      }
+
+      @Override
+      public void actionPerformed(ActionEvent $$0) {
+         this.e.a = ((emu.a)$$0.getSource()).getByteCount();
+         if (this.e.a >= this.e.b && !emu.this.b && !emu.this.d) {
+            try {
+               emu.this.e = true;
+               emu.this.a(this.b, this.c, this.d);
+            } catch (IOException var3) {
+               emu.a.error("Error extracting archive", var3);
+               emu.this.d = true;
+            }
+         }
+      }
+   }
+
+   class c implements ActionListener {
+      private final File b;
+      private final epa.a c;
+      private final eoe d;
+
+      c(File $$0, epa.a $$1, eoe $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      @Override
+      public void actionPerformed(ActionEvent $$0) {
+         this.c.a = ((emu.a)$$0.getSource()).getByteCount();
+         if (this.c.a >= this.c.b && !emu.this.b) {
+            try {
+               String $$1 = Hashing.sha1().hashBytes(Files.toByteArray(this.b)).toString();
+               if ($$1.equals(this.d.c)) {
+                  FileUtils.copyFile(this.b, emu.this.g);
+                  emu.this.c = true;
+               } else {
+                  emu.a.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", this.d.c, $$1);
+                  FileUtils.deleteQuietly(this.b);
+                  emu.this.d = true;
+               }
+            } catch (IOException var3) {
+               emu.a.error("Error copying resourcepack file: {}", var3.getMessage());
+               emu.this.d = true;
+            }
+         }
+      }
    }
 }

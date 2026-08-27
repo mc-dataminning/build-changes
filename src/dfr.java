@@ -1,17 +1,8 @@
-public enum dfr implements asu {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String e;
-
-   private dfr(String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dfr {
 }

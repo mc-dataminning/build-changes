@@ -1,21 +1,8 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class ehn extends AbstractDoubleList {
-   private final int a;
-
-   ehn(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
-   }
-
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
-   }
-
-   public int size() {
-      return this.a + 1;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ehn {
 }

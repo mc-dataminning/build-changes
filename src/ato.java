@@ -1,67 +1,220 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import it.unimi.dsi.fastutil.objects.ObjectArrays;
+import java.util.AbstractSet;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import javax.annotation.Nullable;
 
-public class ato extends atp {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:recipes/brewing/speckled_melon", "minecraft:recipes/brewing/glistering_melon_slice")
-      .put("minecraft:recipes/building_blocks/black_stained_hardened_clay", "minecraft:recipes/building_blocks/black_terracotta")
-      .put("minecraft:recipes/building_blocks/blue_stained_hardened_clay", "minecraft:recipes/building_blocks/blue_terracotta")
-      .put("minecraft:recipes/building_blocks/brown_stained_hardened_clay", "minecraft:recipes/building_blocks/brown_terracotta")
-      .put("minecraft:recipes/building_blocks/cyan_stained_hardened_clay", "minecraft:recipes/building_blocks/cyan_terracotta")
-      .put("minecraft:recipes/building_blocks/gray_stained_hardened_clay", "minecraft:recipes/building_blocks/gray_terracotta")
-      .put("minecraft:recipes/building_blocks/green_stained_hardened_clay", "minecraft:recipes/building_blocks/green_terracotta")
-      .put("minecraft:recipes/building_blocks/light_blue_stained_hardened_clay", "minecraft:recipes/building_blocks/light_blue_terracotta")
-      .put("minecraft:recipes/building_blocks/light_gray_stained_hardened_clay", "minecraft:recipes/building_blocks/light_gray_terracotta")
-      .put("minecraft:recipes/building_blocks/lime_stained_hardened_clay", "minecraft:recipes/building_blocks/lime_terracotta")
-      .put("minecraft:recipes/building_blocks/magenta_stained_hardened_clay", "minecraft:recipes/building_blocks/magenta_terracotta")
-      .put("minecraft:recipes/building_blocks/orange_stained_hardened_clay", "minecraft:recipes/building_blocks/orange_terracotta")
-      .put("minecraft:recipes/building_blocks/pink_stained_hardened_clay", "minecraft:recipes/building_blocks/pink_terracotta")
-      .put("minecraft:recipes/building_blocks/purple_stained_hardened_clay", "minecraft:recipes/building_blocks/purple_terracotta")
-      .put("minecraft:recipes/building_blocks/red_stained_hardened_clay", "minecraft:recipes/building_blocks/red_terracotta")
-      .put("minecraft:recipes/building_blocks/white_stained_hardened_clay", "minecraft:recipes/building_blocks/white_terracotta")
-      .put("minecraft:recipes/building_blocks/yellow_stained_hardened_clay", "minecraft:recipes/building_blocks/yellow_terracotta")
-      .put("minecraft:recipes/building_blocks/acacia_wooden_slab", "minecraft:recipes/building_blocks/acacia_slab")
-      .put("minecraft:recipes/building_blocks/birch_wooden_slab", "minecraft:recipes/building_blocks/birch_slab")
-      .put("minecraft:recipes/building_blocks/dark_oak_wooden_slab", "minecraft:recipes/building_blocks/dark_oak_slab")
-      .put("minecraft:recipes/building_blocks/jungle_wooden_slab", "minecraft:recipes/building_blocks/jungle_slab")
-      .put("minecraft:recipes/building_blocks/oak_wooden_slab", "minecraft:recipes/building_blocks/oak_slab")
-      .put("minecraft:recipes/building_blocks/spruce_wooden_slab", "minecraft:recipes/building_blocks/spruce_slab")
-      .put("minecraft:recipes/building_blocks/brick_block", "minecraft:recipes/building_blocks/bricks")
-      .put("minecraft:recipes/building_blocks/chiseled_stonebrick", "minecraft:recipes/building_blocks/chiseled_stone_bricks")
-      .put("minecraft:recipes/building_blocks/end_bricks", "minecraft:recipes/building_blocks/end_stone_bricks")
-      .put("minecraft:recipes/building_blocks/lit_pumpkin", "minecraft:recipes/building_blocks/jack_o_lantern")
-      .put("minecraft:recipes/building_blocks/magma", "minecraft:recipes/building_blocks/magma_block")
-      .put("minecraft:recipes/building_blocks/melon_block", "minecraft:recipes/building_blocks/melon")
-      .put("minecraft:recipes/building_blocks/mossy_stonebrick", "minecraft:recipes/building_blocks/mossy_stone_bricks")
-      .put("minecraft:recipes/building_blocks/nether_brick", "minecraft:recipes/building_blocks/nether_bricks")
-      .put("minecraft:recipes/building_blocks/pillar_quartz_block", "minecraft:recipes/building_blocks/quartz_pillar")
-      .put("minecraft:recipes/building_blocks/red_nether_brick", "minecraft:recipes/building_blocks/red_nether_bricks")
-      .put("minecraft:recipes/building_blocks/snow", "minecraft:recipes/building_blocks/snow_block")
-      .put("minecraft:recipes/building_blocks/smooth_red_sandstone", "minecraft:recipes/building_blocks/cut_red_sandstone")
-      .put("minecraft:recipes/building_blocks/smooth_sandstone", "minecraft:recipes/building_blocks/cut_sandstone")
-      .put("minecraft:recipes/building_blocks/stonebrick", "minecraft:recipes/building_blocks/stone_bricks")
-      .put("minecraft:recipes/building_blocks/stone_stairs", "minecraft:recipes/building_blocks/cobblestone_stairs")
-      .put("minecraft:recipes/building_blocks/string_to_wool", "minecraft:recipes/building_blocks/white_wool_from_string")
-      .put("minecraft:recipes/decorations/fence", "minecraft:recipes/decorations/oak_fence")
-      .put("minecraft:recipes/decorations/purple_shulker_box", "minecraft:recipes/decorations/shulker_box")
-      .put("minecraft:recipes/decorations/slime", "minecraft:recipes/decorations/slime_block")
-      .put("minecraft:recipes/decorations/snow_layer", "minecraft:recipes/decorations/snow")
-      .put("minecraft:recipes/misc/bone_meal_from_block", "minecraft:recipes/misc/bone_meal_from_bone_block")
-      .put("minecraft:recipes/misc/bone_meal_from_bone", "minecraft:recipes/misc/bone_meal")
-      .put("minecraft:recipes/misc/gold_ingot_from_block", "minecraft:recipes/misc/gold_ingot_from_gold_block")
-      .put("minecraft:recipes/misc/iron_ingot_from_block", "minecraft:recipes/misc/iron_ingot_from_iron_block")
-      .put("minecraft:recipes/redstone/fence_gate", "minecraft:recipes/redstone/oak_fence_gate")
-      .put("minecraft:recipes/redstone/noteblock", "minecraft:recipes/redstone/note_block")
-      .put("minecraft:recipes/redstone/trapdoor", "minecraft:recipes/redstone/oak_trapdoor")
-      .put("minecraft:recipes/redstone/wooden_button", "minecraft:recipes/redstone/oak_button")
-      .put("minecraft:recipes/redstone/wooden_door", "minecraft:recipes/redstone/oak_door")
-      .put("minecraft:recipes/redstone/wooden_pressure_plate", "minecraft:recipes/redstone/oak_pressure_plate")
-      .put("minecraft:recipes/transportation/boat", "minecraft:recipes/transportation/oak_boat")
-      .put("minecraft:recipes/transportation/golden_rail", "minecraft:recipes/transportation/powered_rail")
-      .build();
+public class ato<T> extends AbstractSet<T> {
+   private static final int a = 10;
+   private final Comparator<T> b;
+   T[] c;
+   int d;
 
-   public ato(Schema $$0, boolean $$1) {
-      super($$0, $$1, "AdvancementsFix", $$0x -> a.getOrDefault($$0x, $$0x));
+   private ato(int $$0, Comparator<T> $$1) {
+      this.b = $$1;
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Initial capacity (" + $$0 + ") is negative");
+      } else {
+         this.c = (T[])a(new Object[$$0]);
+      }
+   }
+
+   public static <T extends Comparable<T>> ato<T> a() {
+      return a(10);
+   }
+
+   public static <T extends Comparable<T>> ato<T> a(int $$0) {
+      return new ato<>($$0, Comparator.naturalOrder());
+   }
+
+   public static <T> ato<T> a(Comparator<T> $$0) {
+      return a($$0, 10);
+   }
+
+   public static <T> ato<T> a(Comparator<T> $$0, int $$1) {
+      return new ato<>($$1, $$0);
+   }
+
+   private static <T> T[] a(Object[] $$0) {
+      return (T[])$$0;
+   }
+
+   private int c(T $$0) {
+      return Arrays.binarySearch(this.c, 0, this.d, $$0, this.b);
+   }
+
+   private static int b(int $$0) {
+      return -$$0 - 1;
+   }
+
+   @Override
+   public boolean add(T $$0) {
+      int $$1 = this.c($$0);
+      if ($$1 >= 0) {
+         return false;
+      } else {
+         int $$2 = b($$1);
+         this.a($$0, $$2);
+         return true;
+      }
+   }
+
+   private void c(int $$0) {
+      if ($$0 > this.c.length) {
+         if (this.c != ObjectArrays.DEFAULT_EMPTY_ARRAY) {
+            $$0 = (int)Math.max(Math.min((long)this.c.length + (long)(this.c.length >> 1), 2147483639L), (long)$$0);
+         } else if ($$0 < 10) {
+            $$0 = 10;
+         }
+
+         Object[] $$1 = new Object[$$0];
+         System.arraycopy(this.c, 0, $$1, 0, this.d);
+         this.c = (T[])a($$1);
+      }
+   }
+
+   private void a(T $$0, int $$1) {
+      this.c(this.d + 1);
+      if ($$1 != this.d) {
+         System.arraycopy(this.c, $$1, this.c, $$1 + 1, this.d - $$1);
+      }
+
+      this.c[$$1] = $$0;
+      this.d++;
+   }
+
+   void d(int $$0) {
+      this.d--;
+      if ($$0 != this.d) {
+         System.arraycopy(this.c, $$0 + 1, this.c, $$0, this.d - $$0);
+      }
+
+      this.c[this.d] = null;
+   }
+
+   private T e(int $$0) {
+      return this.c[$$0];
+   }
+
+   public T a(T $$0) {
+      int $$1 = this.c($$0);
+      if ($$1 >= 0) {
+         return this.e($$1);
+      } else {
+         this.a($$0, b($$1));
+         return $$0;
+      }
+   }
+
+   @Override
+   public boolean remove(Object $$0) {
+      int $$1 = this.c((T)$$0);
+      if ($$1 >= 0) {
+         this.d($$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Nullable
+   public T b(T $$0) {
+      int $$1 = this.c($$0);
+      return $$1 >= 0 ? this.e($$1) : null;
+   }
+
+   public T b() {
+      return this.e(0);
+   }
+
+   public T c() {
+      return this.e(this.d - 1);
+   }
+
+   @Override
+   public boolean contains(Object $$0) {
+      int $$1 = this.c((T)$$0);
+      return $$1 >= 0;
+   }
+
+   @Override
+   public Iterator<T> iterator() {
+      return new ato.a();
+   }
+
+   @Override
+   public int size() {
+      return this.d;
+   }
+
+   @Override
+   public Object[] toArray() {
+      return Arrays.copyOf(this.c, this.d, Object[].class);
+   }
+
+   @Override
+   public <U> U[] toArray(U[] $$0) {
+      if ($$0.length < this.d) {
+         return (U[])Arrays.copyOf(this.c, this.d, (Class<? extends T[]>)$$0.getClass());
+      } else {
+         System.arraycopy(this.c, 0, $$0, 0, this.d);
+         if ($$0.length > this.d) {
+            $$0[this.d] = null;
+         }
+
+         return $$0;
+      }
+   }
+
+   @Override
+   public void clear() {
+      Arrays.fill(this.c, 0, this.d, null);
+      this.d = 0;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ato<?> $$1 && this.b.equals($$1.b)) {
+            return this.d == $$1.d && Arrays.equals(this.c, $$1.c);
+         }
+
+         return super.equals($$0);
+      }
+   }
+
+   class a implements Iterator<T> {
+      private int b;
+      private int c = -1;
+
+      @Override
+      public boolean hasNext() {
+         return this.b < ato.this.d;
+      }
+
+      @Override
+      public T next() {
+         if (this.b >= ato.this.d) {
+            throw new NoSuchElementException();
+         } else {
+            this.c = this.b++;
+            return ato.this.c[this.c];
+         }
+      }
+
+      @Override
+      public void remove() {
+         if (this.c == -1) {
+            throw new IllegalStateException();
+         } else {
+            ato.this.d(this.c);
+            this.b--;
+            this.c = -1;
+         }
+      }
    }
 }

@@ -1,96 +1,163 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class ewq extends eye {
-   private static final tl a = tl.c("accessibility.onboarding.screen.narrator");
-   private static final int b = 4;
-   private static final int c = 16;
-   private final foc k = new foc(eyj.b);
-   private final etb l;
-   private final eqt m;
-   private final boolean n;
-   private boolean o;
-   private float p;
-   private final Runnable q;
-   @Nullable
-   private esv s;
+public class ewq extends ewo {
+   private final ewq.b c;
+   private final List<ewq.a> d = new ArrayList<>();
+   private final eww e = eww.i();
 
-   public ewq(eqt $$0, Runnable $$1) {
-      super(tl.c("accessibility.onboarding.screen.title"));
-      this.m = $$0;
-      this.q = $$1;
-      this.l = new etb(true);
-      this.n = eqp.O().aV().a();
+   public ewq(int $$0, int $$1, ewq.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
+   }
+
+   public ewq(int $$0, int $$1, int $$2, int $$3, ewq.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
    @Override
-   public void aH_() {
-      int $$0 = this.l();
-      evs $$1 = new evs(this.g, this.h - $$0);
-      $$1.c().d().a(4);
-      evy $$2 = $$1.a(evy.d());
-      $$2.c().b().a(2);
-      this.s = new esv(this.g - 16, this.e, this.i);
-      $$2.a(this.s, $$0x -> $$0x.e(16));
-      esi $$3 = this.m.ao().a(this.m, 0, 0, 150);
-      $$3.i = this.n;
-      $$2.a($$3);
-      if (this.n) {
-         this.c($$3);
-      }
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
 
-      $$2.a(eso.b(150, $$0x -> this.a(new ewr(this, this.f.m)), false));
-      $$2.a(eso.a(150, $$0x -> this.a(new exo(this, this.f.m, this.f.ae())), false));
-      $$1.a(esk.a(tk.j, $$0x -> this.az_()).a(), $$1.b().f().a(8));
-      $$1.a();
-      evs.a($$1, 0, $$0, this.g, this.h, 0.5F, 0.0F);
-      $$1.a(this::d);
-   }
-
-   private int l() {
-      return 90;
-   }
-
-   @Override
-   public void az_() {
-      this.a(this.q);
-   }
-
-   private void a(eye $$0) {
-      this.a(() -> this.f.a($$0));
-   }
-
-   private void a(Runnable $$0) {
-      this.m.ae = false;
-      this.m.ar();
-      Narrator.getNarrator().clear();
-      $$0.run();
-   }
-
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.D();
-      this.l.a($$0, this.g, 1.0F);
-      if (this.s != null) {
-         this.s.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public void b(erz $$0, int $$1, int $$2, float $$3) {
-      this.k.a(0.0F, 1.0F);
-      $$0.a(0, 0, this.g, this.h, -1877995504);
-   }
-
-   private void D() {
-      if (!this.o && this.n) {
-         if (this.p < 40.0F) {
-            this.p++;
-         } else if (this.f.aA()) {
-            Narrator.getNarrator().say(a.getString(), true);
-            this.o = true;
+         for (ewq.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
          }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<ewq.a> $$5 = this.d.iterator();
+         ewq.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               ewq.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (ewq.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
+      }
+   }
+
+   @Override
+   public void b(Consumer<ewv> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
+   }
+
+   public eww b() {
+      return this.e.g();
+   }
+
+   public eww c() {
+      return this.e;
+   }
+
+   public <T extends ewv> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends ewv> T a(T $$0, eww $$1) {
+      this.d.add(new ewq.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends ewv> T a(T $$0, Consumer<eww> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
+   }
+
+   static class a extends ewo.a {
+      protected a(ewv $$0, eww $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(ewv $$0) {
+         return switch (this) {
+            case a -> $$0.k();
+            case b -> $$0.i();
+         };
+      }
+
+      int a(ewq.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(ewv $$0) {
+         return switch (this) {
+            case a -> $$0.i();
+            case b -> $$0.k();
+         };
+      }
+
+      int b(ewq.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(ewq.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(ewq.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(ewv $$0) {
+         return switch (this) {
+            case a -> $$0.p();
+            case b -> $$0.r();
+         };
+      }
+
+      int d(ewv $$0) {
+         return switch (this) {
+            case a -> $$0.r();
+            case b -> $$0.p();
+         };
       }
    }
 }

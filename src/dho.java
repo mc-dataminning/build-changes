@@ -1,114 +1,57 @@
-import java.util.List;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class dho<T> implements dhq<T> {
-   private final hj<T> a;
-   private final T[] b;
-   private final dhr<T> c;
-   private final int d;
-   private int e;
+public record dho(String m, dgq n, dbl o, dbl p, aqc q, aqc r) {
+   private static final Map<String, dho> s = new Object2ObjectArrayMap();
+   public static final Codec<dho> a = asg.a(dho::b, s::get);
+   public static final dho b = a(new dho("oak", dgq.f));
+   public static final dho c = a(new dho("spruce", dgq.g));
+   public static final dho d = a(new dho("birch", dgq.h));
+   public static final dho e = a(new dho("acacia", dgq.i));
+   public static final dho f = a(new dho("cherry", dgq.j, dbl.aQ, dbl.aT, aqd.ef, aqd.eg));
+   public static final dho g = a(new dho("jungle", dgq.k));
+   public static final dho h = a(new dho("dark_oak", dgq.l));
+   public static final dho i = a(new dho("crimson", dgq.m, dbl.aP, dbl.aM, aqd.pp, aqd.pq));
+   public static final dho j = a(new dho("warped", dgq.n, dbl.aP, dbl.aM, aqd.pp, aqd.pq));
+   public static final dho k = a(new dho("mangrove", dgq.o));
+   public static final dho l = a(new dho("bamboo", dgq.p, dbl.aO, dbl.aN, aqd.bh, aqd.bi));
 
-   private dho(hj<T> $$0, int $$1, dhr<T> $$2, List<T> $$3) {
-      this.a = $$0;
-      this.b = (T[])(new Object[1 << $$1]);
-      this.d = $$1;
-      this.c = $$2;
-      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         this.b[$$4] = $$3.get($$4);
-      }
-
-      this.e = $$3.size();
+   public dho(String $$0, dgq $$1) {
+      this($$0, $$1, dbl.b, dbl.aL, aqd.hD, aqd.hE);
    }
 
-   private dho(hj<T> $$0, T[] $$1, dhr<T> $$2, int $$3, int $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
-
-   public static <A> dhq<A> a(int $$0, hj<A> $$1, dhr<A> $$2, List<A> $$3) {
-      return new dho<>($$1, $$0, $$2, $$3);
-   }
-
-   @Override
-   public int a(T $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if (this.b[$$1] == $$0) {
-            return $$1;
-         }
-      }
-
-      int $$2 = this.e;
-      if ($$2 < this.b.length) {
-         this.b[$$2] = $$0;
-         this.e++;
-         return $$2;
-      } else {
-         return this.c.onResize(this.d + 1, $$0);
-      }
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if ($$0.test(this.b[$$1])) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public T a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.e) {
-         return this.b[$$0];
-      } else {
-         throw new dhp($$0);
-      }
-   }
-
-   @Override
-   public void a(so $$0) {
-      this.e = $$0.n();
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         this.b[$$1] = this.a.b($$0.n());
-      }
-   }
-
-   @Override
-   public void b(so $$0) {
-      $$0.c(this.e);
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         $$0.c(this.a.a(this.b[$$1]));
-      }
-   }
-
-   @Override
-   public int a() {
-      int $$0 = tc.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += tc.a(this.a.a(this.b[$$1]));
-      }
-
+   private static dho a(dho $$0) {
+      s.put($$0.b(), $$0);
       return $$0;
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   public static Stream<dho> a() {
+      return s.values().stream();
    }
 
-   @Override
-   public dhq<T> c() {
-      return new dho<>(this.a, (T[])((Object[])this.b.clone()), this.c, this.d, this.e);
+   public String b() {
+      return this.m;
+   }
+
+   public dgq c() {
+      return this.n;
+   }
+
+   public dbl d() {
+      return this.o;
+   }
+
+   public dbl e() {
+      return this.p;
+   }
+
+   public aqc f() {
+      return this.q;
+   }
+
+   public aqc g() {
+      return this.r;
    }
 }

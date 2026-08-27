@@ -1,33 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record dvj(dvj.a b, bfs<crl.c> c) {
+public class dvj extends dvh {
    public static final Codec<dvj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dvj.a.c.fieldOf("bounding_box").forGetter(dvj::a), bfs.c(crl.c.a).fieldOf("spawns").forGetter(dvj::b)).apply($$0, dvj::new)
+      $$0 -> $$0.group(bhg.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bhg.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, dvj::new)
    );
+   private final bhg c;
+   private final bhg d;
 
-   public dvj.a a() {
-      return this.b;
+   public static dvj a(bhg $$0, bhg $$1) {
+      return new dvj($$0, $$1);
    }
 
-   public bfs<crl.c> b() {
-      return this.c;
+   public static dvj a(bhg $$0) {
+      return new dvj(bhd.a(0), $$0);
    }
 
-   public static enum a implements asu {
-      a("piece"),
-      b("full");
+   public static dvj b(bhg $$0) {
+      return new dvj($$0, bhd.a(0));
+   }
 
-      public static final Codec<dvj.a> c = asu.a(dvj.a::values);
-      private final String d;
+   private dvj(bhg $$0, bhg $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-      private a(String $$0) {
-         this.d = $$0;
-      }
+   @Override
+   public Stream<ht> a_(dvf $$0, ate $$1, ht $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new ht($$3, $$4, $$5));
+   }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public dvi<?> b() {
+      return dvi.n;
    }
 }

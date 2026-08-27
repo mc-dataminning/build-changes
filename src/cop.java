@@ -1,25 +1,30 @@
-public class cop extends cnu {
-   public cop(cnu.a $$0, bjb... $$1) {
-      super($$0, cnv.i, $$1);
+public class cop extends cot {
+   public cop(cot.a $$0, bjy... $$1) {
+      super($$0, cou.l, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1 + ($$0 - 1) * 8;
+      return 25;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 20;
+      return 50;
    }
 
    @Override
-   public int a() {
-      return 5;
+   public boolean b() {
+      return true;
    }
 
    @Override
-   public float a(int $$0, bjr $$1) {
-      return $$1 == bjr.e ? (float)$$0 * 2.5F : 0.0F;
+   public boolean c() {
+      return true;
+   }
+
+   @Override
+   public boolean a(ckj $$0) {
+      return !$$0.a(ckm.uy) && super.a($$0);
    }
 }

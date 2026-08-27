@@ -1,294 +1,548 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Lifecycle;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.AbstractIterator;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayDeque;
 import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.Queue;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.concurrent.Immutable;
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.Logger;
 
-public class ht {
-   private final List<ht.g<?>> a = new ArrayList<>();
+@Immutable
+public class ht extends iw {
+   public static final Codec<ht> a = Codec.INT_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new ht($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
+      .stable();
+   private static final Logger d = LogUtils.getLogger();
+   public static final ht b = new ht(0, 0, 0);
+   private static final int e = 1 + asy.f(asy.c(30000000));
+   private static final int h = e;
+   public static final int c = 64 - e - h;
+   private static final long i = (1L << e) - 1L;
+   private static final long j = (1L << c) - 1L;
+   private static final long k = (1L << h) - 1L;
+   private static final int l = 0;
+   private static final int m = c;
+   private static final int n = c + h;
 
-   static <T> hf<T> a(final hg.c<T> $$0) {
-      return new ht.c<T>($$0) {
-         @Override
-         public Optional<he.c<T>> a(aey<T> $$0x) {
-            return $$0.a($$0);
-         }
-      };
+   public ht(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public <T> ht a(aey<? extends hq<T>> $$0, Lifecycle $$1, ht.e<T> $$2) {
-      this.a.add(new ht.g<>($$0, $$1, $$2));
+   public ht(iw $$0) {
+      this($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public static long a(long $$0, hx $$1) {
+      return a($$0, $$1.j(), $$1.k(), $$1.l());
+   }
+
+   public static long a(long $$0, int $$1, int $$2, int $$3) {
+      return a(a($$0) + $$1, b($$0) + $$2, c($$0) + $$3);
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 << 64 - n - e >> 64 - e);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 << 64 - c >> 64 - c);
+   }
+
+   public static int c(long $$0) {
+      return (int)($$0 << 64 - m - h >> 64 - h);
+   }
+
+   public static ht d(long $$0) {
+      return new ht(a($$0), b($$0), c($$0));
+   }
+
+   public static ht a(double $$0, double $$1, double $$2) {
+      return new ht(asy.a($$0), asy.a($$1), asy.a($$2));
+   }
+
+   public static ht a(im $$0) {
+      return a($$0.a(), $$0.b(), $$0.c());
+   }
+
+   public long a() {
+      return a(this.u(), this.v(), this.w());
+   }
+
+   public static long a(int $$0, int $$1, int $$2) {
+      long $$3 = 0L;
+      $$3 |= ((long)$$0 & i) << n;
+      $$3 |= ((long)$$1 & j) << 0;
+      return $$3 | ((long)$$2 & k) << m;
+   }
+
+   public static long e(long $$0) {
+      return $$0 & -16L;
+   }
+
+   public ht b(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ht(this.u() + $$0, this.v() + $$1, this.w() + $$2);
+   }
+
+   public eif b() {
+      return eif.b(this);
+   }
+
+   public ht a(iw $$0) {
+      return this.b($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public ht b(iw $$0) {
+      return this.b(-$$0.u(), -$$0.v(), -$$0.w());
+   }
+
+   public ht a(int $$0) {
+      if ($$0 == 1) {
+         return this;
+      } else {
+         return $$0 == 0 ? b : new ht(this.u() * $$0, this.v() * $$0, this.w() * $$0);
+      }
+   }
+
+   public ht c() {
+      return this.a(hx.b);
+   }
+
+   public ht b(int $$0) {
+      return this.a(hx.b, $$0);
+   }
+
+   public ht d() {
+      return this.a(hx.a);
+   }
+
+   public ht c(int $$0) {
+      return this.a(hx.a, $$0);
+   }
+
+   public ht e() {
+      return this.a(hx.c);
+   }
+
+   public ht d(int $$0) {
+      return this.a(hx.c, $$0);
+   }
+
+   public ht f() {
+      return this.a(hx.d);
+   }
+
+   public ht e(int $$0) {
+      return this.a(hx.d, $$0);
+   }
+
+   public ht g() {
+      return this.a(hx.e);
+   }
+
+   public ht f(int $$0) {
+      return this.a(hx.e, $$0);
+   }
+
+   public ht h() {
+      return this.a(hx.f);
+   }
+
+   public ht g(int $$0) {
+      return this.a(hx.f, $$0);
+   }
+
+   public ht a(hx $$0) {
+      return new ht(this.u() + $$0.j(), this.v() + $$0.k(), this.w() + $$0.l());
+   }
+
+   public ht a(hx $$0, int $$1) {
+      return $$1 == 0 ? this : new ht(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
+   }
+
+   public ht a(hx.a $$0, int $$1) {
+      if ($$1 == 0) {
+         return this;
+      } else {
+         int $$2 = $$0 == hx.a.a ? $$1 : 0;
+         int $$3 = $$0 == hx.a.b ? $$1 : 0;
+         int $$4 = $$0 == hx.a.c ? $$1 : 0;
+         return new ht(this.u() + $$2, this.v() + $$3, this.w() + $$4);
+      }
+   }
+
+   public ht a(dal $$0) {
+      switch ($$0) {
+         case a:
+         default:
+            return this;
+         case b:
+            return new ht(-this.w(), this.v(), this.u());
+         case c:
+            return new ht(-this.u(), this.v(), -this.w());
+         case d:
+            return new ht(this.w(), this.v(), -this.u());
+      }
+   }
+
+   public ht c(iw $$0) {
+      return new ht(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
+   }
+
+   public ht h(int $$0) {
+      return new ht(this.u(), $$0, this.w());
+   }
+
+   public ht i() {
       return this;
    }
 
-   public <T> ht a(aey<? extends hq<T>> $$0, ht.e<T> $$1) {
-      return this.a($$0, Lifecycle.stable(), $$1);
+   public ht.a j() {
+      return new ht.a(this.u(), this.v(), this.w());
    }
 
-   private ht.a b(hr $$0) {
-      ht.a $$1 = ht.a.a($$0, this.a.stream().map(ht.g::a));
-      this.a.forEach($$1x -> $$1x.b($$1));
-      return $$1;
+   public static Iterable<ht> a(ate $$0, int $$1, ht $$2, int $$3) {
+      return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
-   public hg.b a(hr $$0) {
-      ht.a $$1 = this.b($$0);
-      Stream<hg.c<?>> $$2 = $$0.b().map($$0x -> $$0x.b().p());
-      Stream<hg.c<?>> $$3 = this.a.stream().map($$1x -> $$1x.a($$1).a());
-      hg.b $$4 = hg.b.a(Stream.concat($$2, $$3.peek($$1::a)));
-      $$1.b();
-      $$1.c();
-      return $$4;
+   @Deprecated
+   public static Stream<ht> a(ht $$0) {
+      return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
    }
 
-   public hg.b a(hr $$0, hg.b $$1) {
-      ht.a $$2 = this.b($$0);
-      Map<aey<? extends hq<?>>, ht.f<?>> $$3 = new HashMap<>();
-      $$2.d().forEach($$1x -> $$3.put($$1x.a, $$1x));
-      this.a.stream().map($$1x -> $$1x.a($$2)).forEach($$1x -> $$3.put($$1x.a, $$1x));
-      Stream<hg.c<?>> $$4 = $$0.b().map($$0x -> $$0x.b().p());
-      hg.b $$5 = hg.b.a(Stream.concat($$4, $$3.values().stream().map(ht.f::a).peek($$2::a)));
-      $$2.a($$1);
-      $$2.b();
-      $$2.c();
-      return $$5;
+   public static Iterable<ht> a(ate $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      int $$8 = $$5 - $$2 + 1;
+      int $$9 = $$6 - $$3 + 1;
+      int $$10 = $$7 - $$4 + 1;
+      return () -> new AbstractIterator<ht>() {
+            final ht.a a = new ht.a();
+            int b = $$1;
+
+            protected ht a() {
+               if (this.b <= 0) {
+                  return (ht)this.endOfData();
+               } else {
+                  ht $$0 = this.a.d($$2 + $$0.a($$8), $$3 + $$0.a($$9), $$4 + $$0.a($$10));
+                  this.b--;
+                  return $$0;
+               }
+            }
+         };
    }
 
-   static record a(ht.b a, ht.h b, Map<aez, hf<?>> c, Map<aey<?>, ht.d<?>> d, List<RuntimeException> e) {
+   public static Iterable<ht> a(ht $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$1 + $$2 + $$3;
+      int $$5 = $$0.u();
+      int $$6 = $$0.v();
+      int $$7 = $$0.w();
+      return () -> new AbstractIterator<ht>() {
+            private final ht.a h = new ht.a();
+            private int i;
+            private int j;
+            private int k;
+            private int l;
+            private int m;
+            private boolean n;
 
-      public static ht.a a(hr $$0, Stream<aey<? extends hq<?>>> $$1) {
-         ht.b $$2 = new ht.b();
-         List<RuntimeException> $$3 = new ArrayList<>();
-         ht.h $$4 = new ht.h($$2);
-         Builder<aez, hf<?>> $$5 = ImmutableMap.builder();
-         $$0.b().forEach($$1x -> $$5.put($$1x.a().a(), ht.a($$1x.b().p())));
-         $$1.forEach($$2x -> $$5.put($$2x.a(), $$4));
-         return new ht.a($$2, $$4, $$5.build(), new HashMap<>(), $$3);
+            protected ht a() {
+               if (this.n) {
+                  this.n = false;
+                  this.h.r($$7 - (this.h.w() - $$7));
+                  return this.h;
+               } else {
+                  ht $$0;
+                  for ($$0 = null; $$0 == null; this.m++) {
+                     if (this.m > this.k) {
+                        this.l++;
+                        if (this.l > this.j) {
+                           this.i++;
+                           if (this.i > $$4) {
+                              return (ht)this.endOfData();
+                           }
+
+                           this.j = Math.min($$1, this.i);
+                           this.l = -this.j;
+                        }
+
+                        this.k = Math.min($$2, this.i - Math.abs(this.l));
+                        this.m = -this.k;
+                     }
+
+                     int $$1 = this.l;
+                     int $$2 = this.m;
+                     int $$3 = this.i - Math.abs($$1) - Math.abs($$2);
+                     if ($$3 <= $$3) {
+                        this.n = $$3 != 0;
+                        $$0 = this.h.d($$5 + $$1, $$6 + $$2, $$7 + $$3);
+                     }
+                  }
+
+                  return $$0;
+               }
+            }
+         };
+   }
+
+   public static Optional<ht> a(ht $$0, int $$1, int $$2, Predicate<ht> $$3) {
+      for (ht $$4 : a($$0, $$1, $$2, $$1)) {
+         if ($$3.test($$4)) {
+            return Optional.of($$4);
+         }
       }
 
-      public <T> nr<T> a() {
-         return new nr<T>() {
-            @Override
-            public he.c<T> a(aey<T> $$0, T $$1, Lifecycle $$2) {
-               ht.d<?> $$3 = a.this.d.put($$0, new ht.d($$1, $$2));
-               if ($$3 != null) {
-                  a.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
+      return Optional.empty();
+   }
+
+   public static Stream<ht> b(ht $$0, int $$1, int $$2, int $$3) {
+      return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
+   }
+
+   public static Iterable<ht> a(ht $$0, ht $$1) {
+      return b(
+         Math.min($$0.u(), $$1.u()),
+         Math.min($$0.v(), $$1.v()),
+         Math.min($$0.w(), $$1.w()),
+         Math.max($$0.u(), $$1.u()),
+         Math.max($$0.v(), $$1.v()),
+         Math.max($$0.w(), $$1.w())
+      );
+   }
+
+   public static Stream<ht> b(ht $$0, ht $$1) {
+      return StreamSupport.stream(a($$0, $$1).spliterator(), false);
+   }
+
+   public static Stream<ht> a(dvs $$0) {
+      return a(
+         Math.min($$0.g(), $$0.j()),
+         Math.min($$0.h(), $$0.k()),
+         Math.min($$0.i(), $$0.l()),
+         Math.max($$0.g(), $$0.j()),
+         Math.max($$0.h(), $$0.k()),
+         Math.max($$0.i(), $$0.l())
+      );
+   }
+
+   public static Stream<ht> a(eia $$0) {
+      return a(asy.a($$0.a), asy.a($$0.b), asy.a($$0.c), asy.a($$0.d), asy.a($$0.e), asy.a($$0.f));
+   }
+
+   public static Stream<ht> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return StreamSupport.stream(b($$0, $$1, $$2, $$3, $$4, $$5).spliterator(), false);
+   }
+
+   public static Iterable<ht> b(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$3 - $$0 + 1;
+      int $$7 = $$4 - $$1 + 1;
+      int $$8 = $$5 - $$2 + 1;
+      int $$9 = $$6 * $$7 * $$8;
+      return () -> new AbstractIterator<ht>() {
+            private final ht.a g = new ht.a();
+            private int h;
+
+            protected ht a() {
+               if (this.h == $$9) {
+                  return (ht)this.endOfData();
+               } else {
+                  int $$0 = this.h % $$6;
+                  int $$1 = this.h / $$6;
+                  int $$2 = $$1 % $$7;
+                  int $$3 = $$1 / $$7;
+                  this.h++;
+                  return this.g.d($$0 + $$0, $$1 + $$2, $$2 + $$3);
+               }
+            }
+         };
+   }
+
+   public static Iterable<ht.a> a(ht $$0, int $$1, hx $$2, hx $$3) {
+      Validate.validState($$2.o() != $$3.o(), "The two directions cannot be on the same axis", new Object[0]);
+      return () -> new AbstractIterator<ht.a>() {
+            private final hx[] e = new hx[]{$$2, $$3, $$2.g(), $$3.g()};
+            private final ht.a f = $$0.j().c($$3);
+            private final int g = 4 * $$1;
+            private int h = -1;
+            private int i;
+            private int j;
+            private int k = this.f.u();
+            private int l = this.f.v();
+            private int m = this.f.w();
+
+            protected ht.a a() {
+               this.f.d(this.k, this.l, this.m).c(this.e[(this.h + 4) % 4]);
+               this.k = this.f.u();
+               this.l = this.f.v();
+               this.m = this.f.w();
+               if (this.j >= this.i) {
+                  if (this.h >= this.g) {
+                     return (ht.a)this.endOfData();
+                  }
+
+                  this.h++;
+                  this.j = 0;
+                  this.i = this.h / 2 + 1;
                }
 
-               return a.this.b.c($$0);
-            }
-
-            @Override
-            public <S> hf<S> a(aey<? extends hq<? extends S>> $$0) {
-               return (hf<S>)a.this.c.getOrDefault($$0.a(), a.this.b);
+               this.j++;
+               return this.f;
             }
          };
-      }
+   }
 
-      public void b() {
-         for (aey<Object> $$0 : this.b.a.keySet()) {
-            this.e.add(new IllegalStateException("Unreferenced key: " + $$0));
-         }
+   public static int a(ht $$0, int $$1, int $$2, BiConsumer<ht, Consumer<ht>> $$3, Predicate<ht> $$4) {
+      Queue<Pair<ht, Integer>> $$5 = new ArrayDeque<>();
+      LongSet $$6 = new LongOpenHashSet();
+      $$5.add(Pair.of($$0, 0));
+      int $$7 = 0;
 
-         this.d.forEach(($$0x, $$1) -> this.e.add(new IllegalStateException("Orpaned value " + $$1.a + " for key " + $$0x)));
-      }
-
-      public void c() {
-         if (!this.e.isEmpty()) {
-            IllegalStateException $$0 = new IllegalStateException("Errors during registry creation");
-
-            for (RuntimeException $$1 : this.e) {
-               $$0.addSuppressed($$1);
+      while (!$$5.isEmpty()) {
+         Pair<ht, Integer> $$8 = $$5.poll();
+         ht $$9 = (ht)$$8.getLeft();
+         int $$10 = (Integer)$$8.getRight();
+         long $$11 = $$9.a();
+         if ($$6.add($$11) && $$4.test($$9)) {
+            if (++$$7 >= $$2) {
+               return $$7;
             }
 
-            throw $$0;
+            if ($$10 < $$1) {
+               $$3.accept($$9, $$2x -> $$5.add(Pair.of($$2x, $$10 + 1)));
+            }
          }
       }
 
-      public void a(hh<?> $$0) {
-         this.a.b($$0);
-      }
-
-      public void a(hg.b $$0) {
-         Map<aez, Optional<? extends hg<Object>>> $$1 = new HashMap<>();
-         Iterator<Entry<aey<Object>, he.c<Object>>> $$2 = this.b.a.entrySet().iterator();
-
-         while ($$2.hasNext()) {
-            Entry<aey<Object>, he.c<Object>> $$3 = $$2.next();
-            aey<Object> $$4 = $$3.getKey();
-            he.c<Object> $$5 = $$3.getValue();
-            $$1.computeIfAbsent($$4.b(), $$1x -> $$0.a(aey.a($$1x))).flatMap($$1x -> $$1x.a($$4)).ifPresent($$2x -> {
-               $$5.b($$2x.a());
-               $$2.remove();
-            });
-         }
-      }
-
-      public Stream<ht.f<?>> d() {
-         return this.b.a.keySet().stream().map(aey::b).distinct().map($$0 -> new ht.f(aey.a($$0), Lifecycle.stable(), Map.of()));
-      }
-
-      public ht.b e() {
-         return this.a;
-      }
-
-      public ht.h f() {
-         return this.b;
-      }
-
-      public Map<aez, hf<?>> g() {
-         return this.c;
-      }
-
-      public Map<aey<?>, ht.d<?>> h() {
-         return this.d;
-      }
-
-      public List<RuntimeException> i() {
-         return this.e;
-      }
+      return $$7;
    }
 
-   static class b implements hh<Object> {
-      private final Set<hh<?>> a = Sets.newIdentityHashSet();
-
-      @Override
-      public boolean a(hh<Object> $$0) {
-         return this.a.contains($$0);
+   public static class a extends ht {
+      public a() {
+         this(0, 0, 0);
       }
 
-      public void b(hh<?> $$0) {
-         this.a.add($$0);
+      public a(int $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
       }
-   }
 
-   abstract static class c<T> implements hf<T> {
-      protected final hh<T> b;
-
-      protected c(hh<T> $$0) {
-         this.b = $$0;
+      public a(double $$0, double $$1, double $$2) {
+         this(asy.a($$0), asy.a($$1), asy.a($$2));
       }
 
       @Override
-      public Optional<hi.c<T>> a(aqk<T> $$0) {
-         return Optional.of(hi.a(this.b, $$0));
-      }
-   }
-
-   static record d<T>(T a, Lifecycle b) {
-   }
-
-   @FunctionalInterface
-   public interface e<T> {
-      void run(nr<T> var1);
-   }
-
-   static record f<T>(aey<? extends hq<? extends T>> a, Lifecycle b, Map<aey<T>, ht.i<T>> c) {
-
-      public hg.c<T> a() {
-         return new hg.c<T>() {
-            private final Map<aey<T>, he.c<T>> b = f.this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$0x -> {
-               ht.i<T> $$1 = (ht.i<T>)$$0x.getValue();
-               he.c<T> $$2 = $$1.b().orElseGet(() -> he.c.a(this, (aey<T>)$$0x.getKey()));
-               $$2.b($$1.a().a());
-               return $$2;
-            }));
-
-            @Override
-            public aey<? extends hq<? extends T>> f() {
-               return f.this.a;
-            }
-
-            @Override
-            public Lifecycle g() {
-               return f.this.b;
-            }
-
-            @Override
-            public Optional<he.c<T>> a(aey<T> $$0) {
-               return Optional.ofNullable(this.b.get($$0));
-            }
-
-            @Override
-            public Stream<he.c<T>> b() {
-               return this.b.values().stream();
-            }
-
-            @Override
-            public Optional<hi.c<T>> a(aqk<T> $$0) {
-               return Optional.empty();
-            }
-
-            @Override
-            public Stream<hi.c<T>> d() {
-               return Stream.empty();
-            }
-         };
-      }
-
-      public aey<? extends hq<? extends T>> b() {
-         return this.a;
-      }
-
-      public Lifecycle c() {
-         return this.b;
-      }
-
-      public Map<aey<T>, ht.i<T>> d() {
-         return this.c;
-      }
-   }
-
-   static record g<T>(aey<? extends hq<T>> a, Lifecycle b, ht.e<T> c) {
-      void b(ht.a $$0) {
-         this.c.run($$0.a());
-      }
-
-      public ht.f<T> a(ht.a $$0) {
-         Map<aey<T>, ht.i<T>> $$1 = new HashMap<>();
-         Iterator<Entry<aey<?>, ht.d<?>>> $$2 = $$0.d.entrySet().iterator();
-
-         while ($$2.hasNext()) {
-            Entry<aey<?>, ht.d<?>> $$3 = $$2.next();
-            aey<?> $$4 = $$3.getKey();
-            if ($$4.b(this.a)) {
-               ht.d<T> $$6 = (ht.d<T>)$$3.getValue();
-               he.c<T> $$7 = (he.c<T>)$$0.b.a.remove($$4);
-               $$1.put((aey<T>)$$4, new ht.i<>($$6, Optional.ofNullable($$7)));
-               $$2.remove();
-            }
-         }
-
-         return new ht.f<>(this.a, this.b, $$1);
-      }
-   }
-
-   static class h extends ht.c<Object> {
-      final Map<aey<Object>, he.c<Object>> a = new HashMap<>();
-
-      public h(hh<Object> $$0) {
-         super($$0);
+      public ht b(int $$0, int $$1, int $$2) {
+         return super.b($$0, $$1, $$2).i();
       }
 
       @Override
-      public Optional<he.c<Object>> a(aey<Object> $$0) {
-         return Optional.of(this.c($$0));
+      public ht a(int $$0) {
+         return super.a($$0).i();
       }
 
-      <T> he.c<T> c(aey<T> $$0) {
-         return (he.c<T>)this.a.computeIfAbsent($$0, $$0x -> he.c.a(this.b, $$0x));
+      @Override
+      public ht a(hx $$0, int $$1) {
+         return super.a($$0, $$1).i();
       }
-   }
 
-   static record i<T>(ht.d<T> a, Optional<he.c<T>> b) {
+      @Override
+      public ht a(hx.a $$0, int $$1) {
+         return super.a($$0, $$1).i();
+      }
+
+      @Override
+      public ht a(dal $$0) {
+         return super.a($$0).i();
+      }
+
+      public ht.a d(int $$0, int $$1, int $$2) {
+         this.p($$0);
+         this.q($$1);
+         this.r($$2);
+         return this;
+      }
+
+      public ht.a b(double $$0, double $$1, double $$2) {
+         return this.d(asy.a($$0), asy.a($$1), asy.a($$2));
+      }
+
+      public ht.a g(iw $$0) {
+         return this.d($$0.u(), $$0.v(), $$0.w());
+      }
+
+      public ht.a f(long $$0) {
+         return this.d(a($$0), b($$0), c($$0));
+      }
+
+      public ht.a a(hr $$0, int $$1, int $$2, int $$3) {
+         return this.d($$0.a($$1, $$2, $$3, hx.a.a), $$0.a($$1, $$2, $$3, hx.a.b), $$0.a($$1, $$2, $$3, hx.a.c));
+      }
+
+      public ht.a a(iw $$0, hx $$1) {
+         return this.d($$0.u() + $$1.j(), $$0.v() + $$1.k(), $$0.w() + $$1.l());
+      }
+
+      public ht.a a(iw $$0, int $$1, int $$2, int $$3) {
+         return this.d($$0.u() + $$1, $$0.v() + $$2, $$0.w() + $$3);
+      }
+
+      public ht.a a(iw $$0, iw $$1) {
+         return this.d($$0.u() + $$1.u(), $$0.v() + $$1.v(), $$0.w() + $$1.w());
+      }
+
+      public ht.a c(hx $$0) {
+         return this.c($$0, 1);
+      }
+
+      public ht.a c(hx $$0, int $$1) {
+         return this.d(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
+      }
+
+      public ht.a e(int $$0, int $$1, int $$2) {
+         return this.d(this.u() + $$0, this.v() + $$1, this.w() + $$2);
+      }
+
+      public ht.a h(iw $$0) {
+         return this.d(this.u() + $$0.u(), this.v() + $$0.v(), this.w() + $$0.w());
+      }
+
+      public ht.a a(hx.a $$0, int $$1, int $$2) {
+         switch ($$0) {
+            case a:
+               return this.d(asy.a(this.u(), $$1, $$2), this.v(), this.w());
+            case b:
+               return this.d(this.u(), asy.a(this.v(), $$1, $$2), this.w());
+            case c:
+               return this.d(this.u(), this.v(), asy.a(this.w(), $$1, $$2));
+            default:
+               throw new IllegalStateException("Unable to clamp axis " + $$0);
+         }
+      }
+
+      public ht.a p(int $$0) {
+         super.u($$0);
+         return this;
+      }
+
+      public ht.a q(int $$0) {
+         super.t($$0);
+         return this;
+      }
+
+      public ht.a r(int $$0) {
+         super.s($$0);
+         return this;
+      }
+
+      @Override
+      public ht i() {
+         return new ht(this);
+      }
    }
 }

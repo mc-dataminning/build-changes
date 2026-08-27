@@ -1,124 +1,98 @@
-import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public record ebn(ebn.a a, byte b, byte c, byte d, @Nullable tl e) {
-   public byte a() {
-      return this.a.a();
+public class ebn extends eby {
+   private final boolean l;
+   private float m;
+   private float n;
+
+   public ebn(boolean $$0) {
+      this.l = $$0;
    }
 
-   public boolean b() {
-      return this.a.d();
+   @Override
+   public void a(crm $$0, bkl $$1) {
+      super.a($$0, $$1);
+      $$1.a(ebp.j, 0.0F);
+      this.m = $$1.a(ebp.c);
+      $$1.a(ebp.c, 6.0F);
+      this.n = $$1.a(ebp.k);
+      $$1.a(ebp.k, 4.0F);
    }
 
-   public ebn.a c() {
-      return this.a;
+   @Override
+   public void b() {
+      this.b.a(ebp.c, this.m);
+      this.b.a(ebp.k, this.n);
+      super.b();
    }
 
-   public byte d() {
-      return this.b;
+   @Override
+   public ebr a() {
+      return !this.b.aX() ? super.a() : this.c(new ht(asy.a(this.b.cG().a), asy.a(this.b.cG().b + 0.5), asy.a(this.b.cG().c)));
    }
 
-   public byte e() {
-      return this.c;
+   @Override
+   public ebx a(double $$0, double $$1, double $$2) {
+      return this.a(this.b(asy.a($$0), asy.a($$1 + 0.5), asy.a($$2)));
    }
 
-   public byte f() {
-      return this.d;
+   @Override
+   public int a(ebr[] $$0, ebr $$1) {
+      int $$2 = super.a($$0, $$1);
+      ebp $$3 = this.a(this.b, $$1.a, $$1.b + 1, $$1.c);
+      ebp $$4 = this.a(this.b, $$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.b.a($$3) >= 0.0F && $$4 != ebp.w) {
+         $$5 = asy.d(Math.max(1.0F, this.b.dF()));
+      } else {
+         $$5 = 0;
+      }
+
+      double $$7 = this.d(new ht($$1.a, $$1.b, $$1.c));
+      ebr $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, hx.b, $$4);
+      ebr $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, hx.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
+      }
+
+      if (this.b($$9, $$1) && $$4 != ebp.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         ebr $$11 = $$0[$$10];
+         if ($$11.l == ebp.j && this.l && $$11.b < this.b.dL().z_() - 10) {
+            $$11.k++;
+         }
+      }
+
+      return $$2;
    }
 
-   @Nullable
-   public tl g() {
-      return this.e;
+   private boolean b(@Nullable ebr $$0, ebr $$1) {
+      return this.a($$0, $$1) && $$0.l == ebp.j;
    }
 
-   public static enum a implements asu {
-      a("player", false, true),
-      b("frame", true, true),
-      c("red_marker", false, true),
-      d("blue_marker", false, true),
-      e("target_x", true, false),
-      f("target_point", true, false),
-      g("player_off_map", false, true),
-      h("player_off_limits", false, true),
-      i("mansion", true, 5393476, false, true),
-      j("monument", true, 3830373, false, true),
-      k("banner_white", true, true),
-      l("banner_orange", true, true),
-      m("banner_magenta", true, true),
-      n("banner_light_blue", true, true),
-      o("banner_yellow", true, true),
-      p("banner_lime", true, true),
-      q("banner_pink", true, true),
-      r("banner_gray", true, true),
-      s("banner_light_gray", true, true),
-      t("banner_cyan", true, true),
-      u("banner_purple", true, true),
-      v("banner_blue", true, true),
-      w("banner_brown", true, true),
-      x("banner_green", true, true),
-      y("banner_red", true, true),
-      z("banner_black", true, true),
-      A("red_x", true, false),
-      B("village_desert", true, eak.w.ak, false, true),
-      C("village_plains", true, eak.w.ak, false, true),
-      D("village_savanna", true, eak.w.ak, false, true),
-      E("village_snowy", true, eak.w.ak, false, true),
-      F("village_taiga", true, eak.w.ak, false, true),
-      G("jungle_temple", true, eak.w.ak, false, true),
-      H("swamp_hut", true, eak.w.ak, false, true);
+   @Override
+   protected boolean c() {
+      return true;
+   }
 
-      public static final Codec<ebn.a> I = asu.a(ebn.a::values);
-      private final String J;
-      private final byte K;
-      private final boolean L;
-      private final int M;
-      private final boolean N;
-      private final boolean O;
+   @Override
+   public ebp a(cqf $$0, int $$1, int $$2, int $$3) {
+      ht.a $$4 = new ht.a();
+      ebp $$5 = b($$0, $$4.d($$1, $$2, $$3));
+      if ($$5 == ebp.j) {
+         for (hx $$6 : hx.values()) {
+            ebp $$7 = b($$0, $$4.d($$1, $$2, $$3).c($$6));
+            if ($$7 == ebp.a) {
+               return ebp.k;
+            }
+         }
 
-      private a(String $$0, boolean $$1, boolean $$2) {
-         this($$0, $$1, -1, $$2, false);
-      }
-
-      private a(String $$0, boolean $$1, int $$2, boolean $$3, boolean $$4) {
-         this.J = $$0;
-         this.O = $$3;
-         this.K = (byte)this.ordinal();
-         this.L = $$1;
-         this.M = $$2;
-         this.N = $$4;
-      }
-
-      public byte a() {
-         return this.K;
-      }
-
-      public boolean b() {
-         return this.N;
-      }
-
-      public boolean d() {
-         return this.L;
-      }
-
-      public boolean e() {
-         return this.M >= 0;
-      }
-
-      public int f() {
-         return this.M;
-      }
-
-      public static ebn.a a(byte $$0) {
-         return values()[asb.a($$0, 0, values().length - 1)];
-      }
-
-      public boolean g() {
-         return this.O;
-      }
-
-      @Override
-      public String c() {
-         return this.J;
+         return ebp.j;
+      } else {
+         return a($$0, $$4);
       }
    }
 }

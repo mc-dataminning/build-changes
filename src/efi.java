@@ -1,65 +1,129 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record efi(he<ctc> b, Optional<da> c) implements efj {
-   public static final Codec<efi> a = arj.a(
-      RecordCodecBuilder.create($$0 -> $$0.group(jb.f.r().fieldOf("block").forGetter(efi::c), arj.a(da.a, "properties").forGetter(efi::d)).apply($$0, efi::new)),
-      efi::a
+public class efi extends eeu {
+   public static final Codec<efi> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.BOOL.fieldOf("replace").orElse(false).forGetter($$0x -> $$0x.b),
+                  uk.a.listOf().fieldOf("lore").forGetter($$0x -> $$0x.c),
+                  asg.a(edi.b.e, "entity").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, efi::new)
    );
+   private final boolean b;
+   private final List<ui> c;
+   private final Optional<edi.b> d;
 
-   private static DataResult<efi> a(efi $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().n()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   public efi(List<egh> $$0, boolean $$1, List<ui> $$2, Optional<edi.b> $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = List.copyOf($$2);
+      this.d = $$3;
    }
 
    @Override
-   public efk b() {
-      return efl.j;
+   public eew b() {
+      return eex.u;
    }
 
    @Override
-   public Set<ees<?>> a() {
-      return Set.of(eev.g);
+   public Set<efq<?>> a() {
+      return this.d.<Set<efq<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
-   public boolean a(eck $$0) {
-      dfd $$1 = $$0.c(eev.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
-   }
+   @Override
+   public ckj a(ckj $$0, edi $$1) {
+      rz $$2 = this.a($$0, !this.c.isEmpty());
+      if ($$2 != null) {
+         if (this.b) {
+            $$2.clear();
+         }
 
-   public static efi.a a(ctc $$0) {
-      return new efi.a($$0);
-   }
-
-   public he<ctc> c() {
-      return this.b;
-   }
-
-   public Optional<da> d() {
-      return this.c;
-   }
-
-   public static class a implements efj.a {
-      private final he<ctc> a;
-      private Optional<da> b = Optional.empty();
-
-      public a(ctc $$0) {
-         this.a = $$0.r();
+         UnaryOperator<ui> $$3 = efj.a($$1, this.d.orElse(null));
+         this.c.stream().map($$3).map(ui.a::a).map(sl::a).forEach($$2::add);
       }
 
-      public efi.a a(da.a $$0) {
-         this.b = $$0.b();
+      return $$0;
+   }
+
+   @Nullable
+   private rz a(ckj $$0, boolean $$1) {
+      rt $$2;
+      if ($$0.u()) {
+         $$2 = $$0.v();
+      } else {
+         if (!$$1) {
+            return null;
+         }
+
+         $$2 = new rt();
+         $$0.c($$2);
+      }
+
+      rt $$5;
+      if ($$2.b("display", 10)) {
+         $$5 = $$2.p("display");
+      } else {
+         if (!$$1) {
+            return null;
+         }
+
+         $$5 = new rt();
+         $$2.a("display", $$5);
+      }
+
+      if ($$5.b("Lore", 9)) {
+         return $$5.c("Lore", 8);
+      } else if ($$1) {
+         rz $$8 = new rz();
+         $$5.a("Lore", $$8);
+         return $$8;
+      } else {
+         return null;
+      }
+   }
+
+   public static efi.a c() {
+      return new efi.a();
+   }
+
+   public static class a extends eeu.a<efi.a> {
+      private boolean a;
+      private Optional<edi.b> b = Optional.empty();
+      private final Builder<ui> c = ImmutableList.builder();
+
+      public efi.a a(boolean $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public efi.a a(edi.b $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public efi.a a(ui $$0) {
+         this.c.add($$0);
+         return this;
+      }
+
+      protected efi.a a() {
          return this;
       }
 
       @Override
-      public efj build() {
-         return new efi(this.a, this.b);
+      public eev b() {
+         return new efi(this.g(), this.a, this.c.build(), this.b);
       }
    }
 }

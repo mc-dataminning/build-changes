@@ -1,41 +1,81 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class edl extends edw {
-   public static final Codec<edl> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, edl::new));
-
-   private edl(List<efj> $$0) {
-      super($$0);
-   }
+public class edl implements aon, edm {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   public static final edk<edq> a = new edk<>(edn.c, edg.a);
+   private Map<edk<?>, ?> d = Map.of();
+   private Multimap<edn<?>, afw> e = ImmutableMultimap.of();
 
    @Override
-   public edy b() {
-      return edz.t;
+   public final CompletableFuture<Void> a(aon.a $$0, aot $$1, bes $$2, bes $$3, Executor $$4, Executor $$5) {
+      Map<edn<?>, Map<afw, ?>> $$6 = new HashMap<>();
+      CompletableFuture<?>[] $$7 = edn.b().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
+      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
    }
 
-   @Override
-   public cjl a(cjl $$0, eck $$1) {
-      Float $$2 = $$1.c(eev.j);
-      if ($$2 != null) {
-         ash $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.L();
-         int $$6 = 0;
+   private static <T> CompletableFuture<?> a(edn<T> $$0, aot $$1, Executor $$2, Map<edn<?>, Map<afw, ?>> $$3) {
+      Map<afw, T> $$4 = new HashMap<>();
+      $$3.put($$0, $$4);
+      return CompletableFuture.runAsync(() -> {
+         Map<afw, JsonElement> $$3x = new HashMap<>();
+         aox.a($$1, $$0.a(), c, $$3x);
+         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
+      }, $$2);
+   }
 
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.f($$6);
+   private void a(Map<edn<?>, Map<afw, ?>> $$0) {
+      Object $$1 = $$0.get(edn.c).remove(edg.a);
+      if ($$1 != null) {
+         b.warn("Datapack tried to redefine {} loot table, ignoring", edg.a);
       }
 
-      return $$0;
+      Builder<edk<?>, Object> $$2 = ImmutableMap.builder();
+      com.google.common.collect.ImmutableMultimap.Builder<edn<?>, afw> $$3 = ImmutableMultimap.builder();
+      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
+            $$2.put(new edk($$2x, $$3xx), $$4x);
+            $$3.put($$2x, $$3xx);
+         }));
+      $$2.put(a, edq.a);
+      final Map<edk<?>, ?> $$4 = $$2.build();
+      edr $$5 = new edr(efs.n, new edm() {
+         @Nullable
+         @Override
+         public <T> T getElement(edk<T> $$0) {
+            return (T)$$4.get($$0);
+         }
+      });
+      $$4.forEach(($$1x, $$2x) -> a($$5, $$1x, $$2x));
+      $$5.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+      this.d = $$4;
+      this.e = $$3.build();
    }
 
-   public static edw.a<?> c() {
-      return a(edl::new);
+   private static <T> void a(edr $$0, edk<T> $$1, Object $$2) {
+      $$1.a().a($$0, $$1, (T)$$2);
+   }
+
+   @Nullable
+   @Override
+   public <T> T getElement(edk<T> $$0) {
+      return (T)this.d.get($$0);
+   }
+
+   public Collection<afw> a(edn<?> $$0) {
+      return this.e.get($$0);
    }
 }

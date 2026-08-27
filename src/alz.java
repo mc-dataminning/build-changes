@@ -1,15 +1,11 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class alz implements alj {
-   public static final alj.a a = new alj.a("join_world");
+public interface alz {
+   void a(cqg var1);
 
-   @Override
-   public void a(Consumer<ve<?>> $$0) {
-      $$0.accept(new wr());
-   }
+   void a(cqg var1, @Nullable dic var2);
 
-   @Override
-   public alj.a a() {
-      return a;
-   }
+   void a();
+
+   void b();
 }

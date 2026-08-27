@@ -1,510 +1,301 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import java.util.Collection;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ebq extends ebl {
-   private static final Logger i = LogUtils.getLogger();
-   private static final int j = 128;
-   private static final int k = 64;
-   public static final int a = 4;
-   public static final int b = 256;
-   public final int c;
-   public final int d;
-   public final aey<cqb> e;
-   private final boolean l;
-   private final boolean m;
-   public final byte f;
-   public byte[] g = new byte[16384];
-   public final boolean h;
-   private final List<ebq.a> n = Lists.newArrayList();
-   private final Map<cca, ebq.a> o = Maps.newHashMap();
-   private final Map<String, ebm> p = Maps.newHashMap();
-   final Map<String, ebn> q = Maps.newLinkedHashMap();
-   private final Map<String, ebo> r = Maps.newHashMap();
-   private int s;
+public class ebq extends eby {
+   private final Long2ObjectMap<ebp> l = new Long2ObjectOpenHashMap();
+   private static final float m = 1.5F;
+   private static final int n = 10;
 
-   public static ebl.a<ebq> a() {
-      return new ebl.a<>(() -> {
-         throw new IllegalStateException("Should never create an empty map saved data");
-      }, ebq::b, atg.j);
-   }
-
-   private ebq(int $$0, int $$1, byte $$2, boolean $$3, boolean $$4, boolean $$5, aey<cqb> $$6) {
-      this.f = $$2;
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$6;
-      this.l = $$3;
-      this.m = $$4;
-      this.h = $$5;
-      this.c();
-   }
-
-   public static ebq a(double $$0, double $$1, byte $$2, boolean $$3, boolean $$4, aey<cqb> $$5) {
-      int $$6 = 128 * (1 << $$2);
-      int $$7 = asb.a(($$0 + 64.0) / (double)$$6);
-      int $$8 = asb.a(($$1 + 64.0) / (double)$$6);
-      int $$9 = $$7 * $$6 + $$6 / 2 - 64;
-      int $$10 = $$8 * $$6 + $$6 / 2 - 64;
-      return new ebq($$9, $$10, $$2, $$3, $$4, false, $$5);
-   }
-
-   public static ebq a(byte $$0, boolean $$1, aey<cqb> $$2) {
-      return new ebq(0, 0, $$0, false, false, $$1, $$2);
-   }
-
-   public static ebq b(qw $$0) {
-      aey<cqb> $$1 = (aey<cqb>)dim.a(new Dynamic(ri.a, $$0.c("dimension")))
-         .resultOrPartial(i::error)
-         .orElseThrow(() -> new IllegalArgumentException("Invalid map dimension: " + $$0.c("dimension")));
-      int $$2 = $$0.h("xCenter");
-      int $$3 = $$0.h("zCenter");
-      byte $$4 = (byte)asb.a($$0.f("scale"), 0, 4);
-      boolean $$5 = !$$0.b("trackingPosition", 1) || $$0.q("trackingPosition");
-      boolean $$6 = $$0.q("unlimitedTracking");
-      boolean $$7 = $$0.q("locked");
-      ebq $$8 = new ebq($$2, $$3, $$4, $$5, $$6, $$7, $$1);
-      byte[] $$9 = $$0.m("colors");
-      if ($$9.length == 16384) {
-         $$8.g = $$9;
-      }
-
-      rc $$10 = $$0.c("banners", 10);
-
-      for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
-         ebm $$12 = ebm.a($$10.a($$11));
-         $$8.p.put($$12.f(), $$12);
-         $$8.a($$12.c(), null, $$12.f(), (double)$$12.a().u(), (double)$$12.a().w(), 180.0, $$12.d());
-      }
-
-      rc $$13 = $$0.c("frames", 10);
-
-      for (int $$14 = 0; $$14 < $$13.size(); $$14++) {
-         ebo $$15 = ebo.a($$13.a($$14));
-         $$8.r.put($$15.e(), $$15);
-         $$8.a(ebn.a.b, null, "frame-" + $$15.d(), (double)$$15.b().u(), (double)$$15.b().w(), (double)$$15.c(), null);
-      }
-
-      return $$8;
+   @Override
+   public void a(crm $$0, bkl $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
+      $$1.C();
    }
 
    @Override
-   public qw a(qw $$0) {
-      aez.a.encodeStart(ri.a, this.e.a()).resultOrPartial(i::error).ifPresent($$1x -> $$0.a("dimension", $$1x));
-      $$0.a("xCenter", this.c);
-      $$0.a("zCenter", this.d);
-      $$0.a("scale", this.f);
-      $$0.a("colors", this.g);
-      $$0.a("trackingPosition", this.l);
-      $$0.a("unlimitedTracking", this.m);
-      $$0.a("locked", this.h);
-      rc $$1 = new rc();
-
-      for (ebm $$2 : this.p.values()) {
-         $$1.add($$2.e());
-      }
-
-      $$0.a("banners", $$1);
-      rc $$3 = new rc();
-
-      for (ebo $$4 : this.r.values()) {
-         $$3.add($$4.a());
-      }
-
-      $$0.a("frames", $$3);
-      return $$0;
+   public void b() {
+      this.b.E();
+      this.l.clear();
+      super.b();
    }
 
-   public ebq b() {
-      ebq $$0 = new ebq(this.c, this.d, this.f, this.l, this.m, true, this.e);
-      $$0.p.putAll(this.p);
-      $$0.q.putAll(this.q);
-      $$0.s = this.s;
-      System.arraycopy(this.g, 0, $$0.g, 0, this.g.length);
-      $$0.c();
-      return $$0;
-   }
+   @Override
+   public ebr a() {
+      int $$0;
+      if (this.f() && this.b.aX()) {
+         $$0 = this.b.dr();
+         ht.a $$1 = new ht.a(this.b.dq(), (double)$$0, this.b.dw());
 
-   public ebq a(int $$0) {
-      return a((double)this.c, (double)this.d, (byte)asb.a(this.f + $$0, 0, 4), this.l, this.m, this.e);
-   }
-
-   public void a(cca $$0, cjl $$1) {
-      if (!this.o.containsKey($$0)) {
-         ebq.a $$2 = new ebq.a($$0);
-         this.o.put($$0, $$2);
-         this.n.add($$2);
-      }
-
-      if (!$$0.fS().h($$1)) {
-         this.a($$0.ab().getString());
-      }
-
-      for (int $$3 = 0; $$3 < this.n.size(); $$3++) {
-         ebq.a $$4 = this.n.get($$3);
-         String $$5 = $$4.a.ab().getString();
-         if (!$$4.a.dG() && ($$4.a.fS().h($$1) || $$1.F())) {
-            if (!$$1.F() && $$4.a.dL().ac() == this.e && this.l) {
-               this.a(ebn.a.a, $$4.a.dL(), $$5, $$4.a.dq(), $$4.a.dw(), (double)$$4.a.dB(), null);
-            }
-         } else {
-            this.o.remove($$4.a);
-            this.n.remove($$4);
-            this.a($$5);
-         }
-      }
-
-      if ($$1.F() && this.l) {
-         bym $$6 = $$1.G();
-         gw $$7 = $$6.E();
-         ebo $$8 = this.r.get(ebo.a($$7));
-         if ($$8 != null && $$6.ah() != $$8.d() && this.r.containsKey($$8.e())) {
-            this.a("frame-" + $$8.d());
-         }
-
-         ebo $$9 = new ebo($$7, $$6.cD().e() * 90, $$6.ah());
-         this.a(ebn.a.b, $$0.dL(), "frame-" + $$6.ah(), (double)$$7.u(), (double)$$7.w(), (double)($$6.cD().e() * 90), null);
-         this.r.put($$9.e(), $$9);
-      }
-
-      qw $$10 = $$1.v();
-      if ($$10 != null && $$10.b("Decorations", 9)) {
-         rc $$11 = $$10.c("Decorations", 10);
-
-         for (int $$12 = 0; $$12 < $$11.size(); $$12++) {
-            qw $$13 = $$11.a($$12);
-            if (!this.q.containsKey($$13.l("id"))) {
-               this.a(ebn.a.a($$13.f("type")), $$0.dL(), $$13.l("id"), $$13.k("x"), $$13.k("z"), $$13.k("rot"), null);
-            }
-         }
-      }
-   }
-
-   private void a(String $$0) {
-      ebn $$1 = this.q.remove($$0);
-      if ($$1 != null && $$1.c().g()) {
-         this.s--;
-      }
-
-      this.h();
-   }
-
-   public static void a(cjl $$0, gw $$1, String $$2, ebn.a $$3) {
-      rc $$4;
-      if ($$0.u() && $$0.v().b("Decorations", 9)) {
-         $$4 = $$0.v().c("Decorations", 10);
-      } else {
-         $$4 = new rc();
-         $$0.a("Decorations", $$4);
-      }
-
-      qw $$6 = new qw();
-      $$6.a("type", $$3.a());
-      $$6.a("id", $$2);
-      $$6.a("x", (double)$$1.u());
-      $$6.a("z", (double)$$1.w());
-      $$6.a("rot", 180.0);
-      $$4.add($$6);
-      if ($$3.e()) {
-         qw $$7 = $$0.a("display");
-         $$7.a("MapColor", $$3.f());
-      }
-   }
-
-   private void a(ebn.a $$0, @Nullable cqc $$1, String $$2, double $$3, double $$4, double $$5, @Nullable tl $$6) {
-      int $$7 = 1 << this.f;
-      float $$8 = (float)($$3 - (double)this.c) / (float)$$7;
-      float $$9 = (float)($$4 - (double)this.d) / (float)$$7;
-      byte $$10 = (byte)((int)((double)($$8 * 2.0F) + 0.5));
-      byte $$11 = (byte)((int)((double)($$9 * 2.0F) + 0.5));
-      int $$12 = 63;
-      byte $$13;
-      if ($$8 >= -63.0F && $$9 >= -63.0F && $$8 <= 63.0F && $$9 <= 63.0F) {
-         $$5 += $$5 < 0.0 ? -8.0 : 8.0;
-         $$13 = (byte)((int)($$5 * 16.0 / 360.0));
-         if (this.e == cqb.i && $$1 != null) {
-            int $$14 = (int)($$1.z_().f() / 10L);
-            $$13 = (byte)($$14 * $$14 * 34187121 + $$14 * 121 >> 15 & 15);
+         for (dgb $$2 = this.a.a_($$1); $$2.a(cuc.G); $$2 = this.a.a_($$1)) {
+            $$1.b(this.b.dq(), (double)(++$$0), this.b.dw());
          }
       } else {
-         if ($$0 != ebn.a.a) {
-            this.a($$2);
-            return;
-         }
+         $$0 = asy.a(this.b.ds() + 0.5);
+      }
 
-         int $$15 = 320;
-         if (Math.abs($$8) < 320.0F && Math.abs($$9) < 320.0F) {
-            $$0 = ebn.a.g;
-         } else {
-            if (!this.m) {
-               this.a($$2);
-               return;
+      ht $$4 = ht.a(this.b.dq(), (double)$$0, this.b.dw());
+      if (!this.a($$4)) {
+         for (ht $$5 : this.a(this.b)) {
+            if (this.a($$5)) {
+               return super.c($$5);
             }
-
-            $$0 = ebn.a.h;
-         }
-
-         $$13 = 0;
-         if ($$8 <= -63.0F) {
-            $$10 = -128;
-         }
-
-         if ($$9 <= -63.0F) {
-            $$11 = -128;
-         }
-
-         if ($$8 >= 63.0F) {
-            $$10 = 127;
-         }
-
-         if ($$9 >= 63.0F) {
-            $$11 = 127;
          }
       }
 
-      ebn $$18 = new ebn($$0, $$10, $$11, $$13, $$6);
-      ebn $$19 = this.q.put($$2, $$18);
-      if (!$$18.equals($$19)) {
-         if ($$19 != null && $$19.c().g()) {
-            this.s--;
-         }
+      return super.c($$4);
+   }
 
-         if ($$0.g()) {
-            this.s++;
-         }
+   @Override
+   protected boolean a(ht $$0) {
+      ebp $$1 = this.a(this.b, $$0);
+      return this.b.a($$1) >= 0.0F;
+   }
 
-         this.h();
+   @Override
+   public ebx a(double $$0, double $$1, double $$2) {
+      return this.a(this.b(asy.a($$0), asy.a($$1), asy.a($$2)));
+   }
+
+   @Override
+   public int a(ebr[] $$0, ebr $$1) {
+      int $$2 = 0;
+      ebr $$3 = this.a($$1.a, $$1.b, $$1.c + 1);
+      if (this.c($$3)) {
+         $$0[$$2++] = $$3;
       }
+
+      ebr $$4 = this.a($$1.a - 1, $$1.b, $$1.c);
+      if (this.c($$4)) {
+         $$0[$$2++] = $$4;
+      }
+
+      ebr $$5 = this.a($$1.a + 1, $$1.b, $$1.c);
+      if (this.c($$5)) {
+         $$0[$$2++] = $$5;
+      }
+
+      ebr $$6 = this.a($$1.a, $$1.b, $$1.c - 1);
+      if (this.c($$6)) {
+         $$0[$$2++] = $$6;
+      }
+
+      ebr $$7 = this.a($$1.a, $$1.b + 1, $$1.c);
+      if (this.c($$7)) {
+         $$0[$$2++] = $$7;
+      }
+
+      ebr $$8 = this.a($$1.a, $$1.b - 1, $$1.c);
+      if (this.c($$8)) {
+         $$0[$$2++] = $$8;
+      }
+
+      ebr $$9 = this.a($$1.a, $$1.b + 1, $$1.c + 1);
+      if (this.c($$9) && this.b($$3) && this.b($$7)) {
+         $$0[$$2++] = $$9;
+      }
+
+      ebr $$10 = this.a($$1.a - 1, $$1.b + 1, $$1.c);
+      if (this.c($$10) && this.b($$4) && this.b($$7)) {
+         $$0[$$2++] = $$10;
+      }
+
+      ebr $$11 = this.a($$1.a + 1, $$1.b + 1, $$1.c);
+      if (this.c($$11) && this.b($$5) && this.b($$7)) {
+         $$0[$$2++] = $$11;
+      }
+
+      ebr $$12 = this.a($$1.a, $$1.b + 1, $$1.c - 1);
+      if (this.c($$12) && this.b($$6) && this.b($$7)) {
+         $$0[$$2++] = $$12;
+      }
+
+      ebr $$13 = this.a($$1.a, $$1.b - 1, $$1.c + 1);
+      if (this.c($$13) && this.b($$3) && this.b($$8)) {
+         $$0[$$2++] = $$13;
+      }
+
+      ebr $$14 = this.a($$1.a - 1, $$1.b - 1, $$1.c);
+      if (this.c($$14) && this.b($$4) && this.b($$8)) {
+         $$0[$$2++] = $$14;
+      }
+
+      ebr $$15 = this.a($$1.a + 1, $$1.b - 1, $$1.c);
+      if (this.c($$15) && this.b($$5) && this.b($$8)) {
+         $$0[$$2++] = $$15;
+      }
+
+      ebr $$16 = this.a($$1.a, $$1.b - 1, $$1.c - 1);
+      if (this.c($$16) && this.b($$6) && this.b($$8)) {
+         $$0[$$2++] = $$16;
+      }
+
+      ebr $$17 = this.a($$1.a + 1, $$1.b, $$1.c - 1);
+      if (this.c($$17) && this.b($$6) && this.b($$5)) {
+         $$0[$$2++] = $$17;
+      }
+
+      ebr $$18 = this.a($$1.a + 1, $$1.b, $$1.c + 1);
+      if (this.c($$18) && this.b($$3) && this.b($$5)) {
+         $$0[$$2++] = $$18;
+      }
+
+      ebr $$19 = this.a($$1.a - 1, $$1.b, $$1.c - 1);
+      if (this.c($$19) && this.b($$6) && this.b($$4)) {
+         $$0[$$2++] = $$19;
+      }
+
+      ebr $$20 = this.a($$1.a - 1, $$1.b, $$1.c + 1);
+      if (this.c($$20) && this.b($$3) && this.b($$4)) {
+         $$0[$$2++] = $$20;
+      }
+
+      ebr $$21 = this.a($$1.a + 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$21) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$7) && this.b($$12) && this.b($$11)) {
+         $$0[$$2++] = $$21;
+      }
+
+      ebr $$22 = this.a($$1.a + 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$22) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$7) && this.b($$9) && this.b($$11)) {
+         $$0[$$2++] = $$22;
+      }
+
+      ebr $$23 = this.a($$1.a - 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$23) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$7) && this.b($$12) && this.b($$10)) {
+         $$0[$$2++] = $$23;
+      }
+
+      ebr $$24 = this.a($$1.a - 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$24) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$7) && this.b($$9) && this.b($$10)) {
+         $$0[$$2++] = $$24;
+      }
+
+      ebr $$25 = this.a($$1.a + 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$25) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$8) && this.b($$16) && this.b($$15)) {
+         $$0[$$2++] = $$25;
+      }
+
+      ebr $$26 = this.a($$1.a + 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$26) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$8) && this.b($$13) && this.b($$15)) {
+         $$0[$$2++] = $$26;
+      }
+
+      ebr $$27 = this.a($$1.a - 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$27) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$8) && this.b($$16) && this.b($$14)) {
+         $$0[$$2++] = $$27;
+      }
+
+      ebr $$28 = this.a($$1.a - 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$28) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$8) && this.b($$13) && this.b($$14)) {
+         $$0[$$2++] = $$28;
+      }
+
+      return $$2;
+   }
+
+   private boolean b(@Nullable ebr $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
+   }
+
+   private boolean c(@Nullable ebr $$0) {
+      return $$0 != null && !$$0.i;
    }
 
    @Nullable
-   public ve<?> a(int $$0, cca $$1) {
-      ebq.a $$2 = this.o.get($$1);
-      return $$2 == null ? null : $$2.a($$0);
-   }
-
-   private void a(int $$0, int $$1) {
-      this.c();
-
-      for (ebq.a $$2 : this.n) {
-         $$2.a($$0, $$1);
-      }
-   }
-
-   private void h() {
-      this.c();
-      this.n.forEach(ebq.a::b);
-   }
-
-   public ebq.a a(cca $$0) {
-      ebq.a $$1 = this.o.get($$0);
-      if ($$1 == null) {
-         $$1 = new ebq.a($$0);
-         this.o.put($$0, $$1);
-         this.n.add($$1);
-      }
-
-      return $$1;
-   }
-
-   public boolean a(cqc $$0, gw $$1) {
-      double $$2 = (double)$$1.u() + 0.5;
-      double $$3 = (double)$$1.w() + 0.5;
-      int $$4 = 1 << this.f;
-      double $$5 = ($$2 - (double)this.c) / (double)$$4;
-      double $$6 = ($$3 - (double)this.d) / (double)$$4;
-      int $$7 = 63;
-      if ($$5 >= -63.0 && $$6 >= -63.0 && $$5 <= 63.0 && $$6 <= 63.0) {
-         ebm $$8 = ebm.a($$0, $$1);
-         if ($$8 == null) {
-            return false;
-         }
-
-         if (this.p.remove($$8.f(), $$8)) {
-            this.a($$8.f());
-            return true;
-         }
-
-         if (!this.b(256)) {
-            this.p.put($$8.f(), $$8);
-            this.a($$8.c(), $$0, $$8.f(), $$2, $$3, 180.0, $$8.d());
-            return true;
+   @Override
+   protected ebr a(int $$0, int $$1, int $$2) {
+      ebr $$3 = null;
+      ebp $$4 = this.c($$0, $$1, $$2);
+      float $$5 = this.b.a($$4);
+      if ($$5 >= 0.0F) {
+         $$3 = this.b($$0, $$1, $$2);
+         $$3.l = $$4;
+         $$3.k = Math.max($$3.k, $$5);
+         if ($$4 == ebp.c) {
+            $$3.k++;
          }
       }
 
-      return false;
+      return $$3;
    }
 
-   public void a(cph $$0, int $$1, int $$2) {
-      Iterator<ebm> $$3 = this.p.values().iterator();
-
-      while ($$3.hasNext()) {
-         ebm $$4 = $$3.next();
-         if ($$4.a().u() == $$1 && $$4.a().w() == $$2) {
-            ebm $$5 = ebm.a($$0, $$4.a());
-            if (!$$4.equals($$5)) {
-               $$3.remove();
-               this.a($$4.f());
-            }
-         }
-      }
+   private ebp c(int $$0, int $$1, int $$2) {
+      return (ebp)this.l.computeIfAbsent(ht.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2, this.b));
    }
 
-   public Collection<ebm> e() {
-      return this.p.values();
-   }
-
-   public void a(gw $$0, int $$1) {
-      this.a("frame-" + $$1);
-      this.r.remove(ebo.a($$0));
-   }
-
-   public boolean a(int $$0, int $$1, byte $$2) {
-      byte $$3 = this.g[$$0 + $$1 * 128];
-      if ($$3 != $$2) {
-         this.b($$0, $$1, $$2);
-         return true;
+   @Override
+   public ebp a(cqf $$0, int $$1, int $$2, int $$3, bkl $$4) {
+      EnumSet<ebp> $$5 = EnumSet.noneOf(ebp.class);
+      ebp $$6 = ebp.a;
+      ht $$7 = $$4.dl();
+      $$6 = super.a($$0, $$1, $$2, $$3, $$5, $$6, $$7);
+      if ($$5.contains(ebp.h)) {
+         return ebp.h;
       } else {
-         return false;
-      }
-   }
+         ebp $$8 = ebp.a;
 
-   public void b(int $$0, int $$1, byte $$2) {
-      this.g[$$0 + $$1 * 128] = $$2;
-      this.a($$0, $$1);
-   }
+         for (ebp $$9 : $$5) {
+            if ($$4.a($$9) < 0.0F) {
+               return $$9;
+            }
 
-   public boolean f() {
-      for (ebn $$0 : this.q.values()) {
-         if ($$0.c().b()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public void a(List<ebn> $$0) {
-      this.q.clear();
-      this.s = 0;
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         ebn $$2 = $$0.get($$1);
-         this.q.put("icon-" + $$1, $$2);
-         if ($$2.c().g()) {
-            this.s++;
-         }
-      }
-   }
-
-   public Iterable<ebn> g() {
-      return this.q.values();
-   }
-
-   public boolean b(int $$0) {
-      return this.s >= $$0;
-   }
-
-   public class a {
-      public final cca a;
-      private boolean d = true;
-      private int e;
-      private int f;
-      private int g = 127;
-      private int h = 127;
-      private boolean i = true;
-      private int j;
-      public int b;
-
-      a(cca $$1) {
-         this.a = $$1;
-      }
-
-      private ebq.b a() {
-         int $$0 = this.e;
-         int $$1 = this.f;
-         int $$2 = this.g + 1 - this.e;
-         int $$3 = this.h + 1 - this.f;
-         byte[] $$4 = new byte[$$2 * $$3];
-
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            for (int $$6 = 0; $$6 < $$3; $$6++) {
-               $$4[$$5 + $$6 * $$2] = ebq.this.g[$$0 + $$5 + ($$1 + $$6) * 128];
+            if ($$4.a($$9) >= $$4.a($$8)) {
+               $$8 = $$9;
             }
          }
 
-         return new ebq.b($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Nullable
-      ve<?> a(int $$0) {
-         ebq.b $$1;
-         if (this.d) {
-            this.d = false;
-            $$1 = this.a();
-         } else {
-            $$1 = null;
-         }
-
-         Collection<ebn> $$3;
-         if (this.i && this.j++ % 5 == 0) {
-            this.i = false;
-            $$3 = ebq.this.q.values();
-         } else {
-            $$3 = null;
-         }
-
-         return $$3 == null && $$1 == null ? null : new yn($$0, ebq.this.f, ebq.this.h, $$3, $$1);
-      }
-
-      void a(int $$0, int $$1) {
-         if (this.d) {
-            this.e = Math.min(this.e, $$0);
-            this.f = Math.min(this.f, $$1);
-            this.g = Math.max(this.g, $$0);
-            this.h = Math.max(this.h, $$1);
-         } else {
-            this.d = true;
-            this.e = $$0;
-            this.f = $$1;
-            this.g = $$0;
-            this.h = $$1;
-         }
-      }
-
-      private void b() {
-         this.i = true;
+         return $$6 == ebp.b && $$4.a($$8) == 0.0F ? ebp.b : $$8;
       }
    }
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-      public final int d;
-      public final byte[] e;
-
-      public b(int $$0, int $$1, int $$2, int $$3, byte[] $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
+   @Override
+   public ebp a(cqf $$0, int $$1, int $$2, int $$3) {
+      ht.a $$4 = new ht.a();
+      ebp $$5 = b($$0, $$4.d($$1, $$2, $$3));
+      if ($$5 == ebp.b && $$2 >= $$0.I_() + 1) {
+         ebp $$6 = b($$0, $$4.d($$1, $$2 - 1, $$3));
+         if ($$6 == ebp.o || $$6 == ebp.i) {
+            $$5 = ebp.o;
+         } else if ($$6 == ebp.q) {
+            $$5 = ebp.q;
+         } else if ($$6 == ebp.x) {
+            $$5 = ebp.x;
+         } else if ($$6 == ebp.h) {
+            if (!$$4.equals(this.b.dl())) {
+               $$5 = ebp.h;
+            }
+         } else {
+            $$5 = $$6 != ebp.c && $$6 != ebp.b && $$6 != ebp.j ? ebp.c : ebp.b;
+         }
       }
 
-      public void a(ebq $$0) {
-         for (int $$1 = 0; $$1 < this.c; $$1++) {
-            for (int $$2 = 0; $$2 < this.d; $$2++) {
-               $$0.b(this.a + $$1, this.b + $$2, this.e[$$1 + $$2 * this.c]);
-            }
-         }
+      if ($$5 == ebp.c || $$5 == ebp.b) {
+         $$5 = a($$0, $$4.d($$1, $$2, $$3), $$5);
+      }
+
+      return $$5;
+   }
+
+   private Iterable<ht> a(bkl $$0) {
+      float $$1 = 1.0F;
+      eia $$2 = $$0.cG();
+      boolean $$3 = $$2.a() < 1.0;
+      if (!$$3) {
+         return List.of(
+            ht.a($$2.a, (double)$$0.dr(), $$2.c),
+            ht.a($$2.a, (double)$$0.dr(), $$2.f),
+            ht.a($$2.d, (double)$$0.dr(), $$2.c),
+            ht.a($$2.d, (double)$$0.dr(), $$2.f)
+         );
+      } else {
+         double $$4 = Math.max(0.0, (1.5 - $$2.d()) / 2.0);
+         double $$5 = Math.max(0.0, (1.5 - $$2.b()) / 2.0);
+         double $$6 = Math.max(0.0, (1.5 - $$2.c()) / 2.0);
+         eia $$7 = $$2.c($$5, $$6, $$4);
+         return ht.a($$0.ef(), 10, asy.a($$7.a), asy.a($$7.b), asy.a($$7.c), asy.a($$7.d), asy.a($$7.e), asy.a($$7.f));
       }
    }
 }

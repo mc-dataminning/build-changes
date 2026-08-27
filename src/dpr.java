@@ -1,30 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dpr(dsd b, dlt c, bgj d, int e) implements dpu {
-   public static final Codec<dpr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dsd.a.fieldOf("state_provider").forGetter(dpr::a),
-               dlt.b.fieldOf("target").forGetter(dpr::b),
-               bgj.b(0, 8).fieldOf("radius").forGetter(dpr::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dpr::d)
-            )
-            .apply($$0, dpr::new)
-   );
+public class dpr extends doo<dra> {
+   private static final int a = 7;
 
-   public dsd a() {
-      return this.b;
+   dpr(Codec<dra> $$0) {
+      super($$0);
    }
 
-   public dlt b() {
-      return this.c;
+   @Override
+   public boolean a(doq<dra> $$0) {
+      crt $$1 = $$0.b();
+      ate $$2 = $$0.d();
+      dra $$3 = $$0.f();
+      ht $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      ht.a $$6 = new ht.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dgb $$8 = $$1.a_($$6);
+
+         for (dra.a $$9 : $$3.b) {
+            if (dpj.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public bgj c() {
-      return this.d;
+   private void a(ht.a $$0, ate $$1, ht $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
    }
 
-   public int d() {
-      return this.e;
+   private int a(ate $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

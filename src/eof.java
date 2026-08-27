@@ -1,66 +1,46 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eof extends gex {
-   static final tl b = tl.c("mco.warning");
-   static final tl c = tl.c("mco.info");
-   private final eof.a y;
-   private final tl z;
-   private final tl A;
-   protected final BooleanConsumer a;
-   private final boolean B;
+public class eof extends eod {
+   private static final Logger j = LogUtils.getLogger();
+   public String a = "";
+   public String b = "";
+   public String c = "";
+   public String d = "";
+   public String e = "";
+   @Nullable
+   public String f;
+   public String g = "";
+   public String h = "";
+   public eof.a i = eof.a.a;
 
-   public eof(BooleanConsumer $$0, eof.a $$1, tl $$2, tl $$3, boolean $$4) {
-      super(eqh.a);
-      this.a = $$0;
-      this.y = $$1;
-      this.z = $$2;
-      this.A = $$3;
-      this.B = $$4;
-   }
+   public static eof a(JsonObject $$0) {
+      eof $$1 = new eof();
 
-   @Override
-   public void aH_() {
-      if (this.B) {
-         this.d(esk.a(tk.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
-         this.d(esk.a(tk.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
-      } else {
-         this.d(esk.a(tk.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
+      try {
+         $$1.a = eqa.a("id", $$0, "");
+         $$1.b = eqa.a("name", $$0, "");
+         $$1.c = eqa.a("version", $$0, "");
+         $$1.d = eqa.a("author", $$0, "");
+         $$1.e = eqa.a("link", $$0, "");
+         $$1.f = eqa.a("image", $$0, null);
+         $$1.g = eqa.a("trailer", $$0, "");
+         $$1.h = eqa.a("recommendedPlayers", $$0, "");
+         $$1.i = eof.a.valueOf(eqa.a("type", $$0, eof.a.a.name()));
+      } catch (Exception var3) {
+         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
       }
-   }
 
-   @Override
-   public tl g() {
-      return tk.b(this.y.d, this.z, this.A);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.a.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.y.d, this.g / 2, h(2), this.y.c);
-      $$0.a(this.i, this.z, this.g / 2, h(4), -1);
-      $$0.a(this.i, this.A, this.g / 2, h(6), -1);
+      return $$1;
    }
 
    public static enum a {
-      a(eof.b, -65536),
-      b(eof.c, 8226750);
-
-      public final int c;
-      public final tl d;
-
-      private a(tl $$0, int $$1) {
-         this.d = $$0;
-         this.c = $$1;
-      }
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

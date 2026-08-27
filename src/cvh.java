@@ -1,88 +1,125 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cvh {
-   public static <S extends dcz> cvh.c<S> a(
-      ddb<S> $$0, Function<dfd, cvh.a> $$1, Function<dfd, ha> $$2, dfx $$3, dfd $$4, cqc $$5, gw $$6, BiPredicate<cqc, gw> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return cvh.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return cvh.b::b;
-      } else {
-         cvh.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == cvh.a.a;
-         boolean $$11 = $$9 == cvh.a.b;
-         if ($$10) {
-            return new cvh.c.b<>($$8);
-         } else {
-            gw $$12 = $$6.a($$2.apply($$4));
-            dfd $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               cvh.a $$14 = $$1.apply($$13);
-               if ($$14 != cvh.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return cvh.b::b;
-                  }
+public class cvh extends cxu implements cud {
+   public static final MapCodec<cvh> a = b(cvh::new);
+   public static final int b = 2;
+   public static final dhb c = dgr.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final eiy[] m = new eiy[]{
+      cua.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), cua.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), cua.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final eiy[] n = new eiy[]{
+      cua.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), cua.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), cua.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final eiy[] o = new eiy[]{
+      cua.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), cua.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), cua.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final eiy[] F = new eiy[]{
+      cua.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), cua.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), cua.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new cvh.c.a<>($$16, $$17);
-                  }
-               }
+   @Override
+   public MapCodec<cvh> a() {
+      return a;
+   }
+
+   public cvh(dga.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(aE, hx.c).a(c, Integer.valueOf(0)));
+   }
+
+   @Override
+   public boolean e_(dgb $$0) {
+      return $$0.c(c) < 2;
+   }
+
+   @Override
+   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if ($$1.z.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.a(c, Integer.valueOf($$4 + 1)), 2);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(dgb $$0, crc $$1, ht $$2) {
+      dgb $$3 = $$1.a_($$2.a($$0.c(aE)));
+      return $$3.a(aqs.z);
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      int $$4 = $$0.c(c);
+      switch ((hx)$$0.c(aE)) {
+         case d:
+            return F[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
+      }
+   }
+
+   @Nullable
+   @Override
+   public dgb a(cmr $$0) {
+      dgb $$1 = this.o();
+      crc $$2 = $$0.q();
+      ht $$3 = $$0.a();
+
+      for (hx $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.a(aE, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
-
-            return new cvh.c.b<>($$8);
-         }
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-   }
-
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
-   }
-
-   public interface c<S> {
-      <T> T apply(cvh.b<? super S, T> var1);
-
-      public static final class a<S> implements cvh.c<S> {
-         private final S a;
-         private final S b;
-
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-
-         @Override
-         public <T> T apply(cvh.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
          }
       }
 
-      public static final class b<S> implements cvh.c<S> {
-         private final S a;
+      return null;
+   }
 
-         public b(S $$0) {
-            this.a = $$0;
-         }
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? cuc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         @Override
-         public <T> T apply(cvh.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   @Override
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
+      return $$2.c(c) < 2;
+   }
+
+   @Override
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      $$0.a($$2, $$3.a(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(aE, c);
+   }
+
+   @Override
+   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
+      return false;
    }
 }

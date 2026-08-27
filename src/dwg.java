@@ -1,29 +1,44 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dwg extends dwi {
-   public static final Codec<dwg> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, dwg::new));
+public record dwg(List<dwg.a> c, dwx d) {
+   public static final Codec<dwg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dwg.a.a.listOf().fieldOf("structures").forGetter(dwg::a), dwx.b.fieldOf("placement").forGetter(dwg::b)).apply($$0, dwg::new)
+   );
+   public static final Codec<ib<dwg>> b = afs.a(jz.aC, a);
 
-   protected dwg(Either<aez, dyv> $$0, he<dyt> $$1, dwl.a $$2) {
-      super($$0, $$1, $$2);
+   public dwg(ib<dwa> $$0, dwx $$1) {
+      this(List.of(new dwg.a($$0, 1)), $$1);
    }
 
-   @Override
-   protected dyr a(czn $$0, duu $$1, boolean $$2) {
-      dyr $$3 = super.a($$0, $$1, $$2);
-      $$3.b(dxx.b);
-      $$3.a(dxx.d);
-      return $$3;
+   public static dwg.a a(ib<dwa> $$0, int $$1) {
+      return new dwg.a($$0, $$1);
    }
 
-   @Override
-   public dwk<?> a() {
-      return dwk.e;
+   public static dwg.a a(ib<dwa> $$0) {
+      return new dwg.a($$0, 1);
    }
 
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   public List<dwg.a> a() {
+      return this.c;
+   }
+
+   public dwx b() {
+      return this.d;
+   }
+
+   public static record a(ib<dwa> b, int c) {
+      public static final Codec<dwg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dwa.b.fieldOf("structure").forGetter(dwg.a::a), asg.j.fieldOf("weight").forGetter(dwg.a::b)).apply($$0, dwg.a::new)
+      );
+
+      public ib<dwa> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

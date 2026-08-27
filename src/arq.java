@@ -1,30 +1,28 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public final class arq {
-   private arq() {
+public record arq(int d, int e) {
+   public static final Codec<Integer> a = asg.a(0, 15);
+   public static final Codec<arq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a.fieldOf("block").forGetter(arq::b), a.fieldOf("sky").forGetter(arq::c)).apply($$0, arq::new)
+   );
+   public static arq c = new arq(15, 15);
+
+   public int a() {
+      return this.d << 4 | this.e << 20;
    }
 
-   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
-      if ($$1.contains($$4)) {
-         return false;
-      } else if ($$2.contains($$4)) {
-         return true;
-      } else {
-         $$2.add($$4);
+   public static arq a(int $$0) {
+      int $$1 = $$0 >> 4 & 65535;
+      int $$2 = $$0 >> 20 & 65535;
+      return new arq($$1, $$2);
+   }
 
-         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
-            if (a($$0, $$1, $$2, $$3, $$5)) {
-               return true;
-            }
-         }
+   public int b() {
+      return this.d;
+   }
 
-         $$2.remove($$4);
-         $$1.add($$4);
-         $$3.accept($$4);
-         return false;
-      }
+   public int c() {
+      return this.e;
    }
 }

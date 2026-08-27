@@ -1,65 +1,49 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
 
-public class cjh {
-   private final Map<cjg, cjh.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cjg $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class cjh extends cke {
+   public cjh(cke.a $$0) {
+      super($$0);
    }
 
-   public float a(cjg $$0, float $$1) {
-      cjh.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return asb.a($$4 / $$3, 0.0F, 1.0F);
+   @Override
+   public bib a(cmt $$0) {
+      cqz $$1 = $$0.q();
+      ht $$2 = $$0.a();
+      dgb $$3 = $$1.a_($$2);
+      if (!$$3.a(cuc.co) && !$$3.a(cuc.F)) {
+         return bib.e;
       } else {
-         return 0.0F;
-      }
-   }
+         ht $$4 = $$2.c();
+         if (!$$1.t($$4)) {
+            return bib.e;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bjt> $$8 = $$1.a_(null, new eia($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bib.e;
+            } else {
+               if ($$1 instanceof alq) {
+                  byj $$9 = new byj($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), dkl.t, $$4);
+                  djn $$10 = ((alq)$$1).B();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<cjg, cjh.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<cjg, cjh.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
+               $$0.n().h(1);
+               return bib.a($$1.B);
             }
          }
       }
    }
 
-   public void a(cjg $$0, int $$1) {
-      this.a.put($$0, new cjh.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(cjg $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(cjg $$0, int $$1) {
-   }
-
-   protected void c(cjg $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public boolean i(ckj $$0) {
+      return true;
    }
 }

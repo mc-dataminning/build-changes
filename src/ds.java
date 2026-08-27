@@ -1,34 +1,27 @@
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface ds {
    ds a = new ds() {
+      @Nullable
       @Override
-      public void a(tl $$0) {
-      }
-
-      @Override
-      public boolean j_() {
-         return false;
-      }
-
-      @Override
-      public boolean v_() {
-         return false;
-      }
-
-      @Override
-      public boolean T_() {
-         return false;
+      public uy a(String $$0) {
+         return null;
       }
    };
 
-   void a(tl var1);
+   @Nullable
+   uy a(String var1);
 
-   boolean j_();
+   public static record a(Map<String, uy> b) implements ds {
+      @Nullable
+      @Override
+      public uy a(String $$0) {
+         return this.b.get($$0);
+      }
 
-   boolean v_();
-
-   boolean T_();
-
-   default boolean k_() {
-      return false;
+      public Map<String, uy> a() {
+         return this.b;
+      }
    }
 }

@@ -1,38 +1,23 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class aos extends aon<GameProfile> {
-   public aos(GameProfile $$0) {
-      super($$0);
+public class aos {
+   private static final Codec<aos> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(atf.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, aos::new)
+   );
+   public static final anu<aos> a = anu.a("filter", b);
+   private final List<atf> c;
+
+   public aos(List<atf> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   public aos(JsonObject $$0) {
-      super(b($$0));
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
    }
 
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId() == null ? "" : this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-      }
-   }
-
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
-
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
-
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
-      }
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
    }
 }

@@ -1,49 +1,64 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public enum bhb implements asu {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
-
-   public static final asu.a<bhb> e = asu.a(bhb::values);
-   private static final IntFunction<bhb> f = aqu.a(bhb::a, values(), aqu.a.b);
+public class bhb extends bhg {
+   public static final Codec<bhb> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, bhb::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
+         Function.identity()
+      );
+   private final float b;
+   private final float f;
    private final int g;
-   private final String h;
+   private final int h;
 
-   private bhb(int $$0, String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public static bhb a(float $$0, float $$1, int $$2, int $$3) {
+      return new bhb($$0, $$1, $$2, $$3);
    }
 
+   private bhb(float $$0, float $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+   }
+
+   @Override
+   public int a(ate $$0) {
+      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   }
+
+   public static int a(ate $$0, float $$1, float $$2, float $$3, float $$4) {
+      return (int)asy.a(asy.c($$0, $$1, $$2), $$3, $$4);
+   }
+
+   @Override
    public int a() {
       return this.g;
    }
 
-   public tl b() {
-      return tl.c("options.difficulty." + this.h);
-   }
-
-   public tl d() {
-      return tl.c("options.difficulty." + this.h + ".info");
-   }
-
-   public static bhb a(int $$0) {
-      return f.apply($$0);
-   }
-
-   @Nullable
-   public static bhb a(String $$0) {
-      return e.a($$0);
-   }
-
-   public String e() {
+   @Override
+   public int b() {
       return this.h;
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public bhh<?> c() {
+      return bhh.f;
+   }
+
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
    }
 }

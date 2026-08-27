@@ -1,46 +1,69 @@
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
+import org.joml.Vector3f;
 
-public class jl implements ji {
-   private final jk.a d;
-   private final List<jm> e;
-   private final CompletableFuture<hg.b> f;
+public class jl extends jn {
+   public static final Vector3f a = eif.a(3790560).j();
+   public static final jl b = new jl(a, jm.a, 1.0F);
+   public static final Codec<jl> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               asg.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
+               asg.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
+               Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, jl::new)
+   );
+   public static final jq.a<jl> d = new jq.a<jl>() {
+      public jl a(jr<jl> $$0, StringReader $$1) throws CommandSyntaxException {
+         Vector3f $$2 = jn.a($$1);
+         $$1.expect(' ');
+         float $$3 = $$1.readFloat();
+         Vector3f $$4 = jn.a($$1);
+         return new jl($$2, $$4, $$3);
+      }
 
-   public jl(jk $$0, CompletableFuture<hg.b> $$1, List<jm> $$2) {
-      this.d = $$0.a(jk.b.a, "advancements");
-      this.e = $$2;
-      this.f = $$1;
+      public jl a(jr<jl> $$0, tl $$1) {
+         Vector3f $$2 = jn.b($$1);
+         float $$3 = $$1.readFloat();
+         Vector3f $$4 = jn.b($$1);
+         return new jl($$2, $$4, $$3);
+      }
+   };
+   private final Vector3f i;
+
+   public jl(Vector3f $$0, Vector3f $$1, float $$2) {
+      super($$0, $$2);
+      this.i = $$1;
+   }
+
+   public Vector3f c() {
+      return this.g;
+   }
+
+   public Vector3f d() {
+      return this.i;
    }
 
    @Override
-   public CompletableFuture<?> a(jg $$0) {
-      return this.f.thenCompose($$1 -> {
-         Set<aez> $$2 = new HashSet<>();
-         List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         Consumer<af> $$4 = $$3x -> {
-            if (!$$2.add($$3x.a())) {
-               throw new IllegalStateException("Duplicate advancement " + $$3x.a());
-            } else {
-               Path $$4x = this.d.a($$3x.a());
-               $$3.add(ji.a($$0, $$3x.b().a(), $$4x));
-            }
-         };
-
-         for (jm $$5 : this.e) {
-            $$5.a($$1, $$4);
-         }
-
-         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
-      });
+   public void a(tl $$0) {
+      super.a($$0);
+      $$0.a(this.i.x());
+      $$0.a(this.i.y());
+      $$0.a(this.i.z());
    }
 
    @Override
-   public final String a() {
-      return "Advancements";
+   public String a() {
+      return String.format(
+         Locale.ROOT, "%s %.2f %.2f %.2f %.2f %.2f %.2f %.2f", jy.k.b(this.b()), this.g.x(), this.g.y(), this.g.z(), this.h, this.i.x(), this.i.y(), this.i.z()
+      );
+   }
+
+   @Override
+   public jr<jl> b() {
+      return js.p;
    }
 }

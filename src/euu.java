@@ -1,84 +1,72 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class euu implements eus {
-   private static final aez g = new aez("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final euu.a h;
-   private final tl i;
+public class euu implements exd {
+   private static final int a = 170;
+   private final ui b;
    @Nullable
-   private final tl j;
-   private eus.a k = eus.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
+   private List<ask> c;
+   @Nullable
+   private final ui d;
+   private int e;
+   private long f;
+   private boolean g;
 
-   public euu(euu.a $$0, tl $$1, @Nullable tl $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   private euu(ui $$0, @Nullable ui $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public void a(int $$0) {
+      this.e = $$0;
+   }
+
+   public static euu a(ui $$0, @Nullable ui $$1) {
+      return new euu($$0, $$1);
+   }
+
+   public static euu a(ui $$0) {
+      return new euu($$0, $$0);
    }
 
    @Override
-   public eus.a a(erz $$0, eut $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
-      } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+   public void b(exc $$0) {
+      if (this.d != null) {
+         $$0.a(exb.c, this.d);
+      }
+   }
+
+   public List<ask> a(ero $$0) {
+      if (this.c == null) {
+         this.c = a($$0, this.b);
       }
 
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = asb.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
-         } else {
-            $$4 = -11206656;
+      return this.c;
+   }
+
+   public static List<ask> a(ero $$0, ui $$1) {
+      return $$0.h.c($$1, 170);
+   }
+
+   public void a(boolean $$0, boolean $$1, exm $$2) {
+      boolean $$3 = $$0 || $$1 && ero.O().aU().b();
+      if ($$3 != this.g) {
+         if ($$3) {
+            this.f = ac.b();
          }
 
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
+         this.g = $$3;
       }
 
-      return this.k;
-   }
-
-   public void c() {
-      this.k = eus.a.b;
-   }
-
-   public void a(float $$0) {
-      this.n = $$0;
-   }
-
-   public static enum a {
-      a(new aez("toast/movement_keys")),
-      b(new aez("toast/mouse")),
-      c(new aez("toast/tree")),
-      d(new aez("toast/recipe_book")),
-      e(new aez("toast/wooden_planks")),
-      f(new aez("toast/social_interactions")),
-      g(new aez("toast/right_click"));
-
-      private final aez h;
-
-      private a(aez $$0) {
-         this.h = $$0;
+      if ($$3 && ac.b() - this.f > (long)this.e) {
+         ezd $$4 = ero.O().y;
+         if ($$4 != null) {
+            $$4.a(this, this.b($$0, $$1, $$2), $$1);
+         }
       }
+   }
 
-      public void a(erz $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
-      }
+   protected fbv b(boolean $$0, boolean $$1, exm $$2) {
+      return (fbv)(!$$0 && $$1 && ero.O().aU().b() ? new fbr($$2) : new fbx($$2));
    }
 }

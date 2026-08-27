@@ -1,66 +1,30 @@
-public class flf extends fly {
-   flf(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+
+public class flf {
+   public static final flf a = new flf(fle.b, flg.createDnsSrvRedirectHandler(), flb.a());
+   private final fle b;
+   private final flg c;
+   private final flb d;
+
+   @VisibleForTesting
+   flf(fle $$0, flg $$1, flb $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public flu b() {
-      return flu.b;
-   }
+   public Optional<flc> a(fld $$0) {
+      Optional<flc> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fld> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1 * 0.5F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = asb.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
-   }
-
-   public static class a implements flt<iy> {
-      private final fml a;
-
-      public a(fml $$0) {
-         this.a = $$0;
-      }
-
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         flf $$8 = new flf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements flt<iy> {
-      private final fml a;
-
-      public b(fml $$0) {
-         this.a = $$0;
-      }
-
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         flf $$8 = new flf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.d(0.5F);
-         return $$8;
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

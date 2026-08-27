@@ -1,70 +1,15 @@
-public abstract class crg {
-   public static final aey<cqz> a = a("the_void");
-   public static final aey<cqz> b = a("plains");
-   public static final aey<cqz> c = a("sunflower_plains");
-   public static final aey<cqz> d = a("snowy_plains");
-   public static final aey<cqz> e = a("ice_spikes");
-   public static final aey<cqz> f = a("desert");
-   public static final aey<cqz> g = a("swamp");
-   public static final aey<cqz> h = a("mangrove_swamp");
-   public static final aey<cqz> i = a("forest");
-   public static final aey<cqz> j = a("flower_forest");
-   public static final aey<cqz> k = a("birch_forest");
-   public static final aey<cqz> l = a("dark_forest");
-   public static final aey<cqz> m = a("old_growth_birch_forest");
-   public static final aey<cqz> n = a("old_growth_pine_taiga");
-   public static final aey<cqz> o = a("old_growth_spruce_taiga");
-   public static final aey<cqz> p = a("taiga");
-   public static final aey<cqz> q = a("snowy_taiga");
-   public static final aey<cqz> r = a("savanna");
-   public static final aey<cqz> s = a("savanna_plateau");
-   public static final aey<cqz> t = a("windswept_hills");
-   public static final aey<cqz> u = a("windswept_gravelly_hills");
-   public static final aey<cqz> v = a("windswept_forest");
-   public static final aey<cqz> w = a("windswept_savanna");
-   public static final aey<cqz> x = a("jungle");
-   public static final aey<cqz> y = a("sparse_jungle");
-   public static final aey<cqz> z = a("bamboo_jungle");
-   public static final aey<cqz> A = a("badlands");
-   public static final aey<cqz> B = a("eroded_badlands");
-   public static final aey<cqz> C = a("wooded_badlands");
-   public static final aey<cqz> D = a("meadow");
-   public static final aey<cqz> E = a("cherry_grove");
-   public static final aey<cqz> F = a("grove");
-   public static final aey<cqz> G = a("snowy_slopes");
-   public static final aey<cqz> H = a("frozen_peaks");
-   public static final aey<cqz> I = a("jagged_peaks");
-   public static final aey<cqz> J = a("stony_peaks");
-   public static final aey<cqz> K = a("river");
-   public static final aey<cqz> L = a("frozen_river");
-   public static final aey<cqz> M = a("beach");
-   public static final aey<cqz> N = a("snowy_beach");
-   public static final aey<cqz> O = a("stony_shore");
-   public static final aey<cqz> P = a("warm_ocean");
-   public static final aey<cqz> Q = a("lukewarm_ocean");
-   public static final aey<cqz> R = a("deep_lukewarm_ocean");
-   public static final aey<cqz> S = a("ocean");
-   public static final aey<cqz> T = a("deep_ocean");
-   public static final aey<cqz> U = a("cold_ocean");
-   public static final aey<cqz> V = a("deep_cold_ocean");
-   public static final aey<cqz> W = a("frozen_ocean");
-   public static final aey<cqz> X = a("deep_frozen_ocean");
-   public static final aey<cqz> Y = a("mushroom_fields");
-   public static final aey<cqz> Z = a("dripstone_caves");
-   public static final aey<cqz> aa = a("lush_caves");
-   public static final aey<cqz> ab = a("deep_dark");
-   public static final aey<cqz> ac = a("nether_wastes");
-   public static final aey<cqz> ad = a("warped_forest");
-   public static final aey<cqz> ae = a("crimson_forest");
-   public static final aey<cqz> af = a("soul_sand_valley");
-   public static final aey<cqz> ag = a("basalt_deltas");
-   public static final aey<cqz> ah = a("the_end");
-   public static final aey<cqz> ai = a("end_highlands");
-   public static final aey<cqz> aj = a("end_midlands");
-   public static final aey<cqz> ak = a("small_end_islands");
-   public static final aey<cqz> al = a("end_barrens");
+public interface crg extends crc {
+   long ah();
 
-   private static aey<cqz> a(String $$0) {
-      return aey.a(jc.aq, new aez($$0));
+   default float an() {
+      return djk.i[this.D_().b(this.ah())];
+   }
+
+   default float f(float $$0) {
+      return this.D_().a(this.ah());
+   }
+
+   default int ao() {
+      return this.D_().b(this.ah());
    }
 }

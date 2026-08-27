@@ -3,82 +3,95 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
 
-public record efe(Map<String, ecj> b, eck.b c) implements efj {
+public class efe extends eeu {
    public static final Codec<efe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, ecj.a).fieldOf("scores").forGetter(efe::c), eck.b.e.fieldOf("entity").forGetter(efe::d))
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  asg.a(Codec.unboundedMap(jy.g.r(), ehd.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+               )
+            )
             .apply($$0, efe::new)
    );
+   private final Map<ib<cot>, ehc> b;
+   private final boolean c;
 
-   @Override
-   public efk b() {
-      return efl.i;
+   efe(List<egh> $$0, Map<ib<cot>, ehc> $$1, boolean $$2) {
+      super($$0);
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public Set<ees<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   public eew b() {
+      return eex.f;
    }
 
-   public boolean a(eck $$0) {
-      biw $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
+   @Override
+   public Set<efq<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public ckj a(ckj $$0, edi $$1) {
+      Object2IntMap<cot> $$2 = new Object2IntOpenHashMap();
+      this.b.forEach(($$2x, $$3) -> $$2.put((cot)$$2x.a(), $$3.a($$1)));
+      if ($$0.d() == ckm.qb) {
+         ckj $$3 = new ckj(ckm.tC);
+         $$2.forEach(($$1x, $$2x) -> cjf.a($$3, new cow($$1x, $$2x)));
+         return $$3;
       } else {
-         eig $$2 = $$1.dL().I();
-
-         for (Entry<String, ecj> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
+         Map<cot, Integer> $$4 = cov.a($$0);
+         if (this.c) {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
+         } else {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
          }
 
-         return true;
+         cov.a($$4, $$0);
+         return $$0;
       }
    }
 
-   protected boolean a(eck $$0, biw $$1, eig $$2, String $$3, ecj $$4) {
-      eid $$5 = $$2.b($$3);
-      if ($$5 == null) {
-         return false;
+   private static void a(Map<cot, Integer> $$0, cot $$1, int $$2) {
+      if ($$2 == 0) {
+         $$0.remove($$1);
       } else {
-         String $$6 = $$1.cx();
-         return !$$2.b($$6, $$5) ? false : $$4.b($$0, $$2.c($$6, $$5).b());
+         $$0.put($$1, $$2);
       }
    }
 
-   public static efe.a a(eck.b $$0) {
-      return new efe.a($$0);
-   }
+   public static class a extends eeu.a<efe.a> {
+      private final Builder<ib<cot>, ehc> a = ImmutableMap.builder();
+      private final boolean b;
 
-   public Map<String, ecj> c() {
-      return this.b;
-   }
+      public a() {
+         this(false);
+      }
 
-   public eck.b d() {
-      return this.c;
-   }
-
-   public static class a implements efj.a {
-      private final Builder<String, ecj> a = ImmutableMap.builder();
-      private final eck.b b;
-
-      public a(eck.b $$0) {
+      public a(boolean $$0) {
          this.b = $$0;
       }
 
-      public efe.a a(String $$0, ecj $$1) {
-         this.a.put($$0, $$1);
+      protected efe.a a() {
+         return this;
+      }
+
+      public efe.a a(cot $$0, ehc $$1) {
+         this.a.put($$0.j(), $$1);
          return this;
       }
 
       @Override
-      public efj build() {
-         return new efe(this.a.build(), this.b);
+      public eev b() {
+         return new efe(this.g(), this.a.build(), this.b);
       }
    }
 }

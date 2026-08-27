@@ -1,10 +1,22 @@
-public class aqe {
-   public static final aqk<byp> a = a("placeable");
+public enum aqe {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-   private aqe() {
+   private final String k;
+
+   private aqe(String $$0) {
+      this.k = $$0;
    }
 
-   private static aqk<byp> a(String $$0) {
-      return aqk.a(jc.Q, new aez($$0));
+   public String a() {
+      return this.k;
    }
 }

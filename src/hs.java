@@ -1,65 +1,51 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import java.util.Map;
+import java.util.function.Supplier;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.slf4j.Logger;
 
 public class hs {
-   private static <T> MapCodec<hs.a<T>> a(aey<? extends hq<T>> $$0, MapCodec<T> $$1) {
-      return RecordCodecBuilder.mapCodec(
-         $$2 -> $$2.group(aey.a($$0).fieldOf("name").forGetter(hs.a::a), Codec.INT.fieldOf("id").forGetter(hs.a::b), $$1.forGetter(hs.a::c))
-               .apply($$2, hs.a::new)
-      );
+   private static final Logger c = LogUtils.getLogger();
+   public static final Map<hx, j> a = ac.a(Maps.newEnumMap(hx.class), $$0 -> {
+      $$0.put(hx.d, j.a());
+      $$0.put(hx.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
+      $$0.put(hx.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
+      $$0.put(hx.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
+      $$0.put(hx.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
+      $$0.put(hx.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
+   });
+   public static final Map<hx, j> b = ac.a(Maps.newEnumMap(hx.class), $$0 -> {
+      for (hx $$1 : hx.values()) {
+         $$0.put($$1, a.get($$1).b());
+      }
+   });
+
+   public static j a(j $$0) {
+      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
+      $$1.mul($$0.c());
+      $$1.translate(-0.5F, -0.5F, -0.5F);
+      return new j($$1);
    }
 
-   public static <T> Codec<hq<T>> a(aey<? extends hq<T>> $$0, Lifecycle $$1, Codec<T> $$2) {
-      return a($$0, $$2.fieldOf("element")).codec().listOf().xmap($$2x -> {
-         hm<T> $$3 = new hm<>($$0, $$1);
-
-         for (hs.a<T> $$4 : $$2x) {
-            $$3.a($$4.b(), $$4.a(), $$4.c(), $$1);
-         }
-
-         return $$3;
-      }, $$0x -> {
-         Builder<hs.a<T>> $$1x = ImmutableList.builder();
-
-         for (T $$2x : $$0x) {
-            $$1x.add(new hs.a((aey<T>)$$0x.c($$2x).get(), $$0x.a($$2x), $$2x));
-         }
-
-         return $$1x.build();
-      });
+   public static j b(j $$0) {
+      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
+      $$1.mul($$0.c());
+      $$1.translate(0.5F, 0.5F, 0.5F);
+      return new j($$1);
    }
 
-   public static <E> Codec<hq<E>> b(aey<? extends hq<E>> $$0, Lifecycle $$1, Codec<E> $$2) {
-      Codec<Map<aey<E>, E>> $$3 = Codec.unboundedMap(aey.a($$0), $$2);
-      return $$3.xmap($$2x -> {
-         hz<E> $$3x = new hm<>($$0, $$1);
-         $$2x.forEach(($$2xx, $$3xx) -> $$3x.a($$2xx, (E)$$3xx, $$1));
-         return $$3x.l();
-      }, $$0x -> ImmutableMap.copyOf($$0x.g()));
-   }
-
-   public static <E> Codec<hi<E>> a(aey<? extends hq<E>> $$0, Codec<E> $$1) {
-      return a($$0, $$1, false);
-   }
-
-   public static <E> Codec<hi<E>> a(aey<? extends hq<E>> $$0, Codec<E> $$1, boolean $$2) {
-      return aet.a($$0, aev.a($$0, $$1), $$2);
-   }
-
-   public static <E> Codec<hi<E>> a(aey<? extends hq<E>> $$0) {
-      return a($$0, false);
-   }
-
-   public static <E> Codec<hi<E>> a(aey<? extends hq<E>> $$0, boolean $$1) {
-      return aet.a($$0, aew.a($$0), $$1);
-   }
-
-   static record a<T>(aey<T> a, int b, T c) {
+   public static j a(j $$0, hx $$1, Supplier<String> $$2) {
+      hx $$3 = hx.a($$0.c(), $$1);
+      j $$4 = $$0.b();
+      if ($$4 == null) {
+         c.warn($$2.get());
+         return new j(null, null, new Vector3f(0.0F, 0.0F, 0.0F), null);
+      } else {
+         j $$5 = b.get($$1).a($$4).a(a.get($$3));
+         return a($$5);
+      }
    }
 }

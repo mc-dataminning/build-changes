@@ -1,39 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ahp {
-   public static void a(CommandDispatcher<dt> $$0) {
-      LiteralCommandNode<dt> $$1 = $$0.register(
-         (LiteralArgumentBuilder)du.a("msg").then(du.a("targets", ee.d()).then(du.a("message", ei.a()).executes($$0x -> {
-            Collection<aku> $$1x = ee.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               ei.a($$0x, "message", $$2 -> a((dt)$$0x.getSource(), $$1x, $$2));
-            }
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.b("Source is not a mob"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.b("Path not found"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ui.b("Target not reached"));
 
-            return $$1x.size();
-         })))
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debugpath").requires($$0x -> $$0x.c(2)))
+            .then(dv.a("to", fm.a()).executes($$0x -> a((du)$$0x.getSource(), fm.a($$0x, "to"))))
       );
-      $$0.register((LiteralArgumentBuilder)du.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)du.a("w").redirect($$1));
    }
 
-   private static void a(dt $$0, Collection<aku> $$1, ub $$2) {
-      th.a $$3 = th.a(th.e, $$0);
-      ua $$4 = ua.a($$2);
-      boolean $$5 = false;
-
-      for (aku $$6 : $$1) {
-         th.a $$7 = th.a(th.f, $$0).c($$6.N_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.i();
-      }
-
-      if ($$5) {
-         $$0.a(aoj.f);
+   private static int a(du $$0, ht $$1) throws CommandSyntaxException {
+      if (!($$0.g() instanceof bkl $$3)) {
+         throw a.create();
+      } else {
+         bts $$4 = new btr($$3, $$0.f());
+         ebt $$5 = $$4.a($$1, 0);
+         abz.a($$0.f(), $$3, $$5, $$4.q());
+         if ($$5 == null) {
+            throw b.create();
+         } else if (!$$5.j()) {
+            throw c.create();
+         } else {
+            $$0.a(() -> ui.b("Made path"), true);
+            return 1;
+         }
       }
    }
 }

@@ -1,29 +1,46 @@
-public enum eix {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
-
+public final class eix extends eio {
+   private final eio d;
+   private final int e;
+   private final int f;
+   private final int g;
    private final int h;
+   private final int i;
+   private final int j;
 
-   private eix(int $$0) {
-      this.h = $$0;
+   protected eix(eio $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   public static eix a(int $$0) {
-      for (eix $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
-         }
-      }
-
-      return $$0 < a.h ? a : g;
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public int a() {
-      return this.h;
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
+   }
+
+   @Override
+   public int a(hx.a $$0) {
+      return this.a($$0, this.d.a($$0));
+   }
+
+   @Override
+   public int b(hx.a $$0) {
+      return this.a($$0, this.d.b($$0));
+   }
+
+   private int a(hx.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return asy.a($$1, $$2, $$3) - $$2;
    }
 }

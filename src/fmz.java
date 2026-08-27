@@ -1,85 +1,40 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class fmz extends fnq {
+   private final fnl a;
 
-public abstract class fmz extends cca {
-   @Nullable
-   private fjb cm;
-   protected ehh b;
-   public float c;
-   public float d;
-   public float e;
-   public final fis f;
-
-   public fmz(fis $$0, GameProfile $$1) {
-      super($$0, $$0.R(), $$0.S(), $$1);
-      this.b = ehh.b;
-      this.f = $$0;
+   fmz(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fnl $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public boolean M_() {
-      fjb $$0 = this.a();
-      return $$0 != null && $$0.e() == cpy.d;
+   public int a(float $$0) {
+      return 240;
    }
 
    @Override
-   public boolean f() {
-      fjb $$0 = this.a();
-      return $$0 != null && $$0.e() == cpy.b;
-   }
-
-   @Nullable
-   protected fjb a() {
-      if (this.cm == null) {
-         this.cm = eqp.O().J().a(this.cv());
-      }
-
-      return this.cm;
+   public fmu b() {
+      return fmu.c;
    }
 
    @Override
-   public void l() {
-      this.b = this.do();
-      super.l();
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 
-   public ehh C(float $$0) {
-      return this.b.a(this.do(), (double)$$0);
-   }
-
-   public gaa b() {
-      fjb $$0 = this.a();
-      return $$0 == null ? fzs.a(this.cv()) : $$0.g();
-   }
-
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.fT().b) {
-         $$0 *= 1.1F;
+   public static record a(fnl a) implements fmt<jt> {
+      public fmq a(jt $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fmz $$8 = new fmz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.c();
+         $$8.z = $$0.c();
+         $$8.a($$1.z.a(12) + 8);
+         return $$8;
       }
-
-      $$0 *= ((float)this.b(bks.m) / this.fT().b() + 1.0F) / 2.0F;
-      if (this.fT().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      cjl $$1 = this.fp();
-      if (this.fn()) {
-         if ($$1.a(cjo.nG)) {
-            int $$2 = this.fr();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (eqp.O().m.aw().a() && this.gq()) {
-            return 0.1F;
-         }
-      }
-
-      return asb.i(eqp.O().m.ag().c().floatValue(), 1.0F, $$0);
    }
 }

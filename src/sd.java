@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface sd {
+public class sd extends RuntimeException {
+   public sd(String $$0) {
+      super($$0);
+   }
 }

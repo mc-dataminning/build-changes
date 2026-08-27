@@ -1,32 +1,110 @@
-public class gck implements gbs {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final fnc e;
-   private final gdm f;
-   private int g = 0;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-   public gck(fnc $$0, gdm $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public class gck implements gcb {
+   private final List<Pair<Predicate<dgb>, gcb>> g;
+   protected final boolean a;
+   protected final boolean b;
+   protected final boolean c;
+   protected final gaa d;
+   protected final fqj e;
+   protected final fqh f;
+   private final Map<dgb, BitSet> h = new Reference2ObjectOpenHashMap();
+
+   public gck(List<Pair<Predicate<dgb>, gcb>> $$0) {
+      this.g = $$0;
+      gcb $$1 = (gcb)$$0.iterator().next().getRight();
+      this.a = $$1.a();
+      this.b = $$1.b();
+      this.c = $$1.c();
+      this.d = $$1.e();
+      this.e = $$1.f();
+      this.f = $$1.g();
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bc()) {
-         float $$0 = this.e.dL().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gci)(new gcl.a(this.e, apg.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gci)(new gcl.a(this.e, apg.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gci)(new gcl.a(this.e, apg.A)));
+   public List<fpx> a(@Nullable dgb $$0, @Nullable hx $$1, ate $$2) {
+      if ($$0 == null) {
+         return Collections.emptyList();
+      } else {
+         BitSet $$3 = this.h.get($$0);
+         if ($$3 == null) {
+            $$3 = new BitSet();
+
+            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
+               Pair<Predicate<dgb>, gcb> $$5 = this.g.get($$4);
+               if (((Predicate)$$5.getLeft()).test($$0)) {
+                  $$3.set($$4);
+               }
+            }
+
+            this.h.put($$0, $$3);
          }
+
+         List<fpx> $$6 = Lists.newArrayList();
+         long $$7 = $$2.g();
+
+         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
+            if ($$3.get($$8)) {
+               $$6.addAll(((gcb)this.g.get($$8).getRight()).a($$0, $$1, ate.a($$7)));
+            }
+         }
+
+         return $$6;
+      }
+   }
+
+   @Override
+   public boolean a() {
+      return this.a;
+   }
+
+   @Override
+   public boolean b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   @Override
+   public boolean d() {
+      return false;
+   }
+
+   @Override
+   public gaa e() {
+      return this.d;
+   }
+
+   @Override
+   public fqj f() {
+      return this.e;
+   }
+
+   @Override
+   public fqh g() {
+      return this.f;
+   }
+
+   public static class a {
+      private final List<Pair<Predicate<dgb>, gcb>> a = Lists.newArrayList();
+
+      public void a(Predicate<dgb> $$0, gcb $$1) {
+         this.a.add(Pair.of($$0, $$1));
+      }
+
+      public gcb a() {
+         return new gck(this.a);
       }
    }
 }

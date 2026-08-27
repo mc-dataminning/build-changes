@@ -1,82 +1,43 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cvp extends ctc {
-   public static final MapCodec<cvp> a = b(cvp::new);
-   public static final dfx b = cww.aE;
-   public static final dfu c = dft.h;
-   protected static final eia d = ctc.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final eia e = ctc.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final eia f = ehx.a(d, e);
-   private static dfi g;
+public class cvp extends cti {
+   public static final MapCodec<cvp> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvo.a.forGetter($$0x -> $$0x.c), t()).apply($$0, cvp::new));
+   private final cua c;
 
    @Override
    public MapCodec<cvp> a() {
-      return a;
+      return b;
    }
 
-   public cvp(dfc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ha.c).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public boolean g_(dfd $$0) {
-      return true;
+   protected cvp(cua $$0, dga.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return $$0.c(c) ? f : d;
+   public void b(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
+      this.a($$0, (cra)$$1, $$2);
    }
 
    @Override
-   public dfd a(clt $$0) {
-      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
-   }
-
-   @Override
-   public boolean d_(dfd $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfd $$0, cqb $$1, gw $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   public dfd a(dfd $$0, czn $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dfd a(dfd $$0, cxx $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static dfi b() {
-      if (g == null) {
-         g = dfj.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dfh.a(dfm.a))
-            .a('^', dfh.a(dfm.a(cte.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ha.d))))
-            .a('>', dfh.a(dfm.a(cte.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ha.e))))
-            .a('v', dfh.a(dfm.a(cte.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ha.c))))
-            .a('<', dfh.a(dfm.a(cte.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ha.f))))
-            .b();
+   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.o().a(d, Boolean.valueOf(false)), 2);
       }
-
-      return g;
    }
 
    @Override
-   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
-      return false;
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if ($$1 == hx.a && !$$0.a($$3, $$4)) {
+         return cuc.a.o();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, ebf.c, ebf.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

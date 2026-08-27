@@ -1,14 +1,14 @@
 import com.mojang.serialization.Codec;
 
-public interface dze<P extends dzd> {
-   dze<dzb> a = a("clear", dzb.a);
-   dze<dzc> b = a("passthrough", dzc.b);
-   dze<dza> c = a("append_static", dza.a);
-   dze<dyz> d = a("append_loot", dyz.a);
+public class dze extends dzq {
+   public static final Codec<dze> a = Codec.unit(() -> dze.b);
+   public static final dze b = new dze();
 
-   Codec<P> codec();
+   private dze() {
+   }
 
-   private static <P extends dzd> dze<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.q, $$0, () -> $$1);
+   @Override
+   protected dzs<?> a() {
+      return dzs.j;
    }
 }

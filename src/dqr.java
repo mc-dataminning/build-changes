@@ -1,23 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dqr(int b, int c, int d) implements dpu {
+public class dqr implements dqs {
    public static final Codec<dqr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arj.j.fieldOf("spread_width").forGetter(dqr::a), arj.j.fieldOf("spread_height").forGetter(dqr::b), arj.j.fieldOf("max_height").forGetter(dqr::c)
-            )
-            .apply($$0, dqr::new)
+      $$0 -> $$0.group(ht.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dqr::new)
    );
+   private final Optional<ht> b;
+   private final boolean c;
 
-   public int a() {
+   private dqr(Optional<ht> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public static dqr a(ht $$0, boolean $$1) {
+      return new dqr(Optional.of($$0), $$1);
+   }
+
+   public static dqr a() {
+      return new dqr(Optional.empty(), false);
+   }
+
+   public Optional<ht> b() {
       return this.b;
    }
 
-   public int b() {
+   public boolean c() {
       return this.c;
-   }
-
-   public int c() {
-      return this.d;
    }
 }

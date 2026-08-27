@@ -1,37 +1,14 @@
-public class bhf<T> {
-   private final bhe a;
-   private final T b;
+import com.mojang.serialization.Codec;
 
-   public bhf(bhe $$0, T $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public interface bhf<P extends bhe> {
+   bhf<bhc> a = a("constant", bhc.b);
+   bhf<bhl> b = a("uniform", bhl.a);
+   bhf<bha> c = a("clamped_normal", bha.a);
+   bhf<bhk> d = a("trapezoid", bhk.a);
 
-   public bhe a() {
-      return this.a;
-   }
+   Codec<P> codec();
 
-   public T b() {
-      return this.b;
-   }
-
-   public static <T> bhf<T> a(T $$0) {
-      return new bhf<>(bhe.a, $$0);
-   }
-
-   public static <T> bhf<T> b(T $$0) {
-      return new bhf<>(bhe.b, $$0);
-   }
-
-   public static <T> bhf<T> c(T $$0) {
-      return new bhf<>(bhe.d, $$0);
-   }
-
-   public static <T> bhf<T> d(T $$0) {
-      return new bhf<>(bhe.e, $$0);
-   }
-
-   public static <T> bhf<T> a(T $$0, boolean $$1) {
-      return $$1 ? a($$0) : b($$0);
+   static <P extends bhe> bhf<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.M, $$0, () -> $$1);
    }
 }

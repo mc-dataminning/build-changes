@@ -1,132 +1,134 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Supplier;
 
-public class qx extends rk {
-   private static final int c = 16;
-   public static final qx a = new qx(0.0);
-   public static final rs<qx> b = new rs.a<qx>() {
-      public qx a(DataInput $$0, rf $$1) throws IOException {
-         return qx.a(d($$0, $$1));
-      }
+public class qx {
+   final qt a;
+   private final List<qq> b = Lists.newArrayList();
+   private long c;
 
-      @Override
-      public rn.b a(DataInput $$0, rn $$1, rf $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static double d(DataInput $$0, rf $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readDouble();
-      }
-
-      @Override
-      public int c() {
-         return 8;
-      }
-
-      @Override
-      public String a() {
-         return "DOUBLE";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Double";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final double w;
-
-   private qx(double $$0) {
-      this.w = $$0;
+   qx(qt $$0) {
+      this.a = $$0;
+      this.c = $$0.p();
    }
 
-   public static qx a(double $$0) {
-      return $$0 == 0.0 ? a : new qx($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeDouble(this.w);
-   }
-
-   @Override
-   public int a() {
-      return 16;
-   }
-
-   @Override
-   public byte b() {
-      return 6;
-   }
-
-   @Override
-   public rs<qx> c() {
-      return b;
-   }
-
-   public qx e() {
+   public qx a(Runnable $$0) {
+      this.b.add(qq.a($$0));
       return this;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof qx && this.w == ((qx)$$0).w;
+   public qx a(long $$0, Runnable $$1) {
+      this.b.add(qq.a($$0, $$1));
+      return this;
    }
 
-   @Override
-   public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.w);
-      return (int)($$0 ^ $$0 >>> 32);
+   public qx a(int $$0) {
+      return this.a($$0, () -> {
+      });
    }
 
-   @Override
-   public void a(ru $$0) {
-      $$0.a(this);
+   public qx b(Runnable $$0) {
+      this.b.add(qq.a(() -> this.c($$0)));
+      return this;
    }
 
-   @Override
-   public long f() {
-      return (long)Math.floor(this.w);
+   public qx a(int $$0, Runnable $$1) {
+      this.b.add(qq.a(() -> {
+         if (this.a.p() < this.c + (long)$$0) {
+            throw new qm("Waiting");
+         } else {
+            this.c($$1);
+         }
+      }));
+      return this;
    }
 
-   @Override
-   public int g() {
-      return asb.a(this.w);
+   public qx b(int $$0, Runnable $$1) {
+      this.b.add(qq.a(() -> {
+         if (this.a.p() < this.c + (long)$$0) {
+            this.c($$1);
+            throw new qm("Waiting");
+         }
+      }));
+      return this;
    }
 
-   @Override
-   public short h() {
-      return (short)(asb.a(this.w) & 65535);
+   public void a() {
+      this.b.add(qq.a(this.a::m));
    }
 
-   @Override
-   public byte i() {
-      return (byte)(asb.a(this.w) & 0xFF);
+   public void a(Supplier<Exception> $$0) {
+      this.b.add(qq.a(() -> this.a.a($$0.get())));
    }
 
-   @Override
-   public double j() {
-      return this.w;
+   public qx.a b() {
+      qx.a $$0 = new qx.a();
+      this.b.add(qq.a(() -> $$0.a(this.a.p())));
+      return $$0;
    }
 
-   @Override
-   public float k() {
-      return (float)this.w;
+   public void a(long $$0) {
+      try {
+         this.c($$0);
+      } catch (qm var4) {
+      }
    }
 
-   @Override
-   public Number l() {
-      return this.w;
+   public void b(long $$0) {
+      try {
+         this.c($$0);
+      } catch (qm var4) {
+         this.a.a(var4);
+      }
    }
 
-   @Override
-   public rn.b a(rn $$0) {
-      return $$0.a(this.w);
+   private void c(Runnable $$0) {
+      try {
+         $$0.run();
+      } catch (qm var3) {
+         this.a.a(var3);
+      }
+   }
+
+   private void c(long $$0) {
+      Iterator<qq> $$1 = this.b.iterator();
+
+      while ($$1.hasNext()) {
+         qq $$2 = $$1.next();
+         $$2.b.run();
+         $$1.remove();
+         long $$3 = $$0 - this.c;
+         long $$4 = this.c;
+         this.c = $$0;
+         if ($$2.a != null && $$2.a != $$3) {
+            this.a.a(new qm("Succeeded in invalid tick: expected " + ($$4 + $$2.a) + ", but current tick is " + $$0));
+            break;
+         }
+      }
+   }
+
+   public class a {
+      private static final long b = -1L;
+      private long c = -1L;
+
+      void a(long $$0) {
+         if (this.c != -1L) {
+            throw new IllegalStateException("Condition already triggered at " + this.c);
+         } else {
+            this.c = $$0;
+         }
+      }
+
+      public void a() {
+         long $$0 = qx.this.a.p();
+         if (this.c != $$0) {
+            if (this.c == -1L) {
+               throw new qm("Condition not triggered (t=" + $$0 + ")");
+            } else {
+               throw new qm("Condition triggered at " + this.c + ", (t=" + $$0 + ")");
+            }
+         }
+      }
    }
 }

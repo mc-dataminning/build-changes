@@ -1,67 +1,69 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class gbe {
-   public static final Comparator<gbe> a = Comparator.<gbe, aez>comparing(gbe::a).thenComparing(gbe::b);
-   private final aez b;
-   private final aez c;
-   @Nullable
-   private foi d;
+public class gbe extends ro {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   public gbe(aez $$0, aez $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private gbe(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public aez a() {
-      return this.b;
-   }
+   public static gbe a(aot $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
 
-   public aez b() {
-      return this.c;
-   }
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
 
-   public fza c() {
-      return eqp.O().a(this.a()).apply(this.b());
-   }
-
-   public foi a(Function<aez, foi> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
+         for (String $$6 : $$0.a()) {
+            try {
+               afw $$7 = new afw($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
+         }
       }
 
+      return new gbe(ImmutableMap.copyOf($$3), $$2);
+   }
+
+   private static void a(String $$0, List<aor> $$1, Map<String, String> $$2) {
+      for (aor $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            ro.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
+   }
+
+   @Override
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
+   }
+
+   @Override
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
+   }
+
+   @Override
+   public boolean b() {
       return this.d;
    }
 
-   public eln a(foa $$0, Function<aez, foi> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public eln a(foa $$0, Function<aez, foi> $$1, boolean $$2) {
-      return this.c().a(fub.c($$0, this.a($$1), true, $$2));
-   }
-
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         gbe $$1 = (gbe)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   public ask a(un $$0) {
+      return gbf.a($$0, this.d);
    }
 }

@@ -1,18 +1,42 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class egn {
-   private static final Codec<egm> d = jb.L.q().dispatch(egm::a, egl::a);
-   public static final Codec<egm> a = arj.a(
-      (Supplier<Codec<egm>>)(() -> Codec.either(egj.b, d)
-            .xmap($$0 -> (egm)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof egj $$1 ? Either.left($$1) : Either.right($$0)))
+public record egn(float b, float c) implements egh {
+   public static final Codec<egn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(egn::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(egn::d)).apply($$0, egn::new)
    );
-   public static final egl b = a("fixed", egk.a);
-   public static final egl c = a("context", egj.a);
 
-   private static egl a(String $$0, Codec<? extends egm> $$1) {
-      return hq.a(jb.L, new aez($$0), new egl($$1));
+   @Override
+   public egi b() {
+      return egj.f;
+   }
+
+   @Override
+   public Set<efq<?>> a() {
+      return ImmutableSet.of(eft.d);
+   }
+
+   public boolean a(edi $$0) {
+      bjt $$1 = $$0.c(eft.d);
+      int $$2 = 0;
+      if ($$1 instanceof bkj) {
+         $$2 = cov.h((bkj)$$1);
+      }
+
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   }
+
+   public static egh.a a(float $$0, float $$1) {
+      return () -> new egn($$0, $$1);
+   }
+
+   public float c() {
+      return this.b;
+   }
+
+   public float d() {
+      return this.c;
    }
 }

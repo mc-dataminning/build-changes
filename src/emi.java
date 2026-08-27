@@ -1,28 +1,93 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.Set;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class emi extends enf {
-   public Set<String> a = Sets.newHashSet();
+public class emi extends emg {
+   private final eml f;
+   private final Matrix4f g;
+   private final Matrix3f h;
+   private final float i;
+   private float j;
+   private float k;
+   private float l;
+   private int m;
+   private int n;
+   private int o;
+   private float p;
+   private float q;
+   private float r;
 
-   public static emi a(String $$0) {
-      emi $$1 = new emi();
-      JsonParser $$2 = new JsonParser();
+   public emi(eml $$0, Matrix4f $$1, Matrix3f $$2, float $$3) {
+      this.f = $$0;
+      this.g = new Matrix4f($$1).invert();
+      this.h = new Matrix3f($$2).invert();
+      this.i = $$3;
+      this.a();
+   }
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
-            }
-         }
-      } catch (Exception var8) {
-      }
+   private void a() {
+      this.j = 0.0F;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.m = 0;
+      this.n = 10;
+      this.o = 15728880;
+      this.p = 0.0F;
+      this.q = 1.0F;
+      this.r = 0.0F;
+   }
 
-      return $$1;
+   @Override
+   public void e() {
+      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
+      hx $$1 = hx.a($$0.x(), $$0.y(), $$0.z());
+      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
+      $$2.rotateY((float) Math.PI);
+      $$2.rotateX((float) (-Math.PI / 2));
+      $$2.rotate($$1.b());
+      float $$3 = -$$2.x() * this.i;
+      float $$4 = -$$2.y() * this.i;
+      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
+      this.a();
+   }
+
+   @Override
+   public eml a(double $$0, double $$1, double $$2) {
+      this.j = (float)$$0;
+      this.k = (float)$$1;
+      this.l = (float)$$2;
+      return this;
+   }
+
+   @Override
+   public eml a(int $$0, int $$1, int $$2, int $$3) {
+      return this;
+   }
+
+   @Override
+   public eml a(float $$0, float $$1) {
+      return this;
+   }
+
+   @Override
+   public eml a(int $$0, int $$1) {
+      this.m = $$0;
+      this.n = $$1;
+      return this;
+   }
+
+   @Override
+   public eml b(int $$0, int $$1) {
+      this.o = $$0 | $$1 << 16;
+      return this;
+   }
+
+   @Override
+   public eml a(float $$0, float $$1, float $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      return this;
    }
 }

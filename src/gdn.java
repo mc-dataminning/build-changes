@@ -1,58 +1,37 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gdn implements gdo<gcf> {
-   private final List<gdo<gcf>> a = Lists.newArrayList();
-   @Nullable
-   private final tl b;
+public class gdn<T> extends gdo<T> {
+   private final List<T> c;
+   private final Function<T, Stream<String>> d;
+   private gdr<T> e = gdr.a();
 
-   public gdn(aez $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : tl.c($$1);
+   public gdn(Function<T, Stream<String>> $$0, Function<T, Stream<afw>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = $$2;
+      this.d = $$0;
    }
 
    @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (gdo<gcf> $$1 : this.a) {
-         $$0 += $$1.e();
-      }
-
-      return $$0;
-   }
-
-   public gcf a(ash $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
-
-         for (gdo<gcf> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
-         }
-
-         return gdm.a;
-      } else {
-         return gdm.a;
-      }
-   }
-
-   public void a(gdo<gcf> $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   public tl a() {
-      return this.b;
+   public void a() {
+      super.a();
+      this.e = gdr.a(this.c, this.d);
    }
 
    @Override
-   public void a(gdj $$0) {
-      for (gdo<gcf> $$1 : this.a) {
-         $$1.a($$0);
-      }
+   protected List<T> a(String $$0) {
+      return this.e.search($$0);
+   }
+
+   @Override
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.e.search($$1);
+      Iterator<T> $$5 = new gdq<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new gdp<T>($$2.iterator(), $$5, this.a));
    }
 }

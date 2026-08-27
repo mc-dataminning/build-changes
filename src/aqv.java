@@ -1,78 +1,26 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+public final class aqv {
+   public static final arh<bjx<?>> a = a("skeletons");
+   public static final arh<bjx<?>> b = a("zombies");
+   public static final arh<bjx<?>> c = a("raiders");
+   public static final arh<bjx<?>> d = a("undead");
+   public static final arh<bjx<?>> e = a("beehive_inhabitors");
+   public static final arh<bjx<?>> f = a("arrows");
+   public static final arh<bjx<?>> g = a("impact_projectiles");
+   public static final arh<bjx<?>> h = a("powder_snow_walkable_mobs");
+   public static final arh<bjx<?>> i = a("axolotl_always_hostiles");
+   public static final arh<bjx<?>> j = a("axolotl_hunt_targets");
+   public static final arh<bjx<?>> k = a("freeze_immune_entity_types");
+   public static final arh<bjx<?>> l = a("freeze_hurts_extra_types");
+   public static final arh<bjx<?>> m = a("can_breathe_under_water");
+   public static final arh<bjx<?>> n = a("frog_food");
+   public static final arh<bjx<?>> o = a("fall_damage_immune");
+   public static final arh<bjx<?>> p = a("dismounts_underwater");
+   public static final arh<bjx<?>> q = a("non_controlling_rider");
 
-public class aqv<T> extends AbstractCollection<T> {
-   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
-   private final Class<T> b;
-   private final List<T> c = Lists.newArrayList();
-
-   public aqv(Class<T> $$0) {
-      this.b = $$0;
-      this.a.put($$0, this.c);
+   private aqv() {
    }
 
-   @Override
-   public boolean add(T $$0) {
-      boolean $$1 = false;
-
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            $$1 |= $$2.getValue().add($$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean remove(Object $$0) {
-      boolean $$1 = false;
-
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            List<T> $$3 = $$2.getValue();
-            $$1 |= $$3.remove($$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean contains(Object $$0) {
-      return this.a($$0.getClass()).contains($$0);
-   }
-
-   public <S> Collection<S> a(Class<S> $$0) {
-      if (!this.b.isAssignableFrom($$0)) {
-         throw new IllegalArgumentException("Don't know how to search for " + $$0);
-      } else {
-         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(Collectors.toList()));
-         return (Collection<S>)Collections.unmodifiableCollection($$1);
-      }
-   }
-
-   @Override
-   public Iterator<T> iterator() {
-      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
-   }
-
-   public List<T> a() {
-      return ImmutableList.copyOf(this.c);
-   }
-
-   @Override
-   public int size() {
-      return this.c.size();
+   private static arh<bjx<?>> a(String $$0) {
+      return arh.a(jz.t, new afw($$0));
    }
 }

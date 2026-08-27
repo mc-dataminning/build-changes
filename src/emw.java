@@ -1,54 +1,73 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
 
 public class emw {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final String[] d;
-
-   private emw(String $$0, @Nullable String[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public tl a(tl $$0) {
-      return Objects.requireNonNullElse(this.a(), $$0);
-   }
-
-   @Nullable
-   public tl a() {
-      if (!gag.a(this.c)) {
-         return null;
-      } else {
-         return this.d == null ? tl.c(this.c) : tl.a(this.c, this.d);
+   public static List<eny> a(emw.a... $$0) {
+      for (emw.a $$1 : $$0) {
+         a($$1.j);
       }
+
+      List<eny> $$2 = Lists.newArrayList();
+
+      for (emw.a $$3 : $$0) {
+         $$2.add(new eny($$3.i, a($$3.j)));
+      }
+
+      $$2.sort(Comparator.comparingInt(eny::a));
+      return $$2;
    }
 
-   public static emw a(JsonObject $$0) {
-      String $$1 = epc.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
 
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
          }
-      } else {
-         $$5 = null;
       }
 
-      return new emw($$1, $$5);
+      return (int)((double)$$2 / 5.0);
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   private static long b() {
+      return ac.b();
+   }
+
+   public static List<eny> a() {
+      return a(emw.a.values());
+   }
+
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+
+      final String i;
+      final String j;
+
+      private a(String $$0, String $$1) {
+         this.i = $$0;
+         this.j = $$1;
+      }
    }
 }

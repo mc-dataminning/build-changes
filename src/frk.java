@@ -1,151 +1,111 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class frk implements frj.a {
-   private final eqp a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<frk.a> d = Lists.newArrayList();
-   private final List<frk.b> e = Lists.newArrayList();
+public class frk extends fro {
+   private static final String a = "plank";
+   private static final String b = "vChains";
+   private static final String c = "normalChains";
+   private static final String d = "chainL1";
+   private static final String e = "chainL2";
+   private static final String f = "chainR1";
+   private static final String g = "chainR2";
+   private static final String h = "board";
+   private static final float i = 1.0F;
+   private static final float j = 0.9F;
+   private static final eif k = new eif(0.0, -0.32F, 0.073F);
+   private final Map<dho, frk.a> l;
 
-   public frk(eqp $$0) {
-      this.a = $$0;
+   public frk(frb.a $$0) {
+      super($$0);
+      this.l = dho.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new frk.a($$0.a(fiv.b($$1)))));
    }
 
    @Override
-   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
-      cqb $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
-      } else {
-         ehh $$6 = new ehh($$2, 0.0, $$4);
-         this.d.removeIf(frk.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         eln $$7 = $$1.getBuffer(foi.x());
-
-         for (frk.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               fny.a($$0, $$7, ehx.a(new ehc($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
-         }
-
-         eln $$9 = $$1.getBuffer(foi.z());
-
-         for (frk.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> fny.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
-
-         for (frk.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               frj.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               frj.a($$0, $$1, gw.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (frk.a $$12 : this.d) {
-            ehh $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new ehc($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            frj.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
-         }
-      }
+   public float b() {
+      return 1.0F;
    }
 
-   private static void a(elj $$0, foa $$1, ehc $$2, float $$3, float $$4, float $$5, float $$6) {
-      eqa $$7 = eqp.O().j.m();
-      if ($$7.h()) {
-         ehh $$8 = $$7.b().e();
-         frj.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
-      }
+   @Override
+   public float c() {
+      return 0.9F;
    }
 
-   public void a(aey<djn> $$0, ehh $$1) {
-      this.d.add(new frk.a(ac.b(), $$0, $$1));
+   @Override
+   public void a(dff $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
+      dgb $$6 = $$0.q();
+      day $$7 = (day)$$6.b();
+      dho $$8 = day.a($$7);
+      frk.a $$9 = this.l.get($$8);
+      $$9.a($$6);
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public void a(djr $$0, int $$1) {
-      this.e.add(new frk.b($$0, $$1));
+   @Override
+   void a(emh $$0, float $$1, dgb $$2) {
+      $$0.a(0.5, 0.9375, 0.5);
+      $$0.a(a.d.rotationDegrees($$1));
+      $$0.a(0.0F, -0.3125F, 0.0F);
    }
 
-   static record a(long a, aey<djn> b, ehh c) {
-
-      public boolean a() {
-         return ac.b() - this.a > 3000L;
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public aey<djn> c() {
-         return this.b;
-      }
-
-      public ehh d() {
-         return this.c;
-      }
+   @Override
+   void a(emh $$0, int $$1, int $$2, fgt $$3, eml $$4) {
+      frk.a $$5 = (frk.a)$$3;
+      $$5.a.a($$0, $$4, $$1, $$2);
    }
 
-   static class b implements djp {
-      public final djr a;
-      public final int b;
+   @Override
+   gce a(dho $$0) {
+      return fpp.b($$0);
+   }
 
-      public b(djr $$0, int $$1) {
+   @Override
+   eif d() {
+      return k;
+   }
+
+   public static fjc e() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      $$1.a("board", fjb.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fiy.a);
+      $$1.a("plank", fjb.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fiy.a);
+      fjf $$2 = $$1.a("normalChains", fjb.c(), fiy.a);
+      $$2.a("chainL1", fjb.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fiy.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainL2", fjb.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fiy.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("chainR1", fjb.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fiy.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainR2", fjb.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fiy.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("vChains", fjb.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fiy.a);
+      return fjc.a($$0, 64, 32);
+   }
+
+   public static final class a extends fgt {
+      public final fiw a;
+      public final fiw b;
+      public final fiw c;
+      public final fiw d;
+
+      public a(fiw $$0) {
+         super(fpj::e);
          this.a = $$0;
-         this.b = $$1;
+         this.b = $$0.b("plank");
+         this.d = $$0.b("normalChains");
+         this.c = $$0.b("vChains");
       }
 
-      public boolean a(cqb $$0, ehh $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<ehh> a(cqb $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public djr a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
+      public void a(dgb $$0) {
+         boolean $$1 = !($$0.b() instanceof cuz);
+         this.b.k = $$1;
+         this.c.k = false;
+         this.d.k = true;
+         if (!$$1) {
+            boolean $$2 = $$0.c(dgr.a);
+            this.d.k = !$$2;
+            this.c.k = $$2;
+         }
       }
 
       @Override
-      public boolean a(akt $$0, djn $$1, djn.a $$2, ehh $$3) {
-         return false;
+      public void a(emh $$0, eml $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 }

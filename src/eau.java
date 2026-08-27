@@ -1,83 +1,65 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 
-public abstract class eau {
-   protected cqo a;
-   protected bjo b;
-   protected final Int2ObjectMap<eat> c = new Int2ObjectOpenHashMap();
-   protected int d;
-   protected int e;
-   protected int f;
-   protected boolean g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
+public class eau {
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
 
-   public void a(cqo $$0, bjo $$1) {
+   public eau(int $$0, final int $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.c.clear();
-      this.d = asb.d($$1.df() + 1.0F);
-      this.e = asb.d($$1.dg() + 1.0F);
-      this.f = asb.d($$1.df() + 1.0F);
+      this.b = new LongLinkedOpenHashSet[$$0];
+
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
+               }
+            }
+         };
+      }
+
+      this.c = $$0;
    }
 
-   public void b() {
-      this.a = null;
-      this.b = null;
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
+
+      return $$1;
    }
 
-   protected eat b(gw $$0) {
-      return this.b($$0.u(), $$0.v(), $$0.w());
+   public boolean b() {
+      return this.c >= this.a;
    }
 
-   protected eat b(int $$0, int $$1, int $$2) {
-      return (eat)this.c.computeIfAbsent(eat.b($$0, $$1, $$2), $$3 -> new eat($$0, $$1, $$2));
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
    }
 
-   public abstract eat a();
-
-   public abstract eaz a(double var1, double var3, double var5);
-
-   protected eaz a(eat $$0) {
-      return new eaz($$0);
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
    }
 
-   public abstract int a(eat[] var1, eat var2);
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
 
-   public abstract ear a(cph var1, int var2, int var3, int var4, bjo var5);
-
-   public abstract ear a(cph var1, int var2, int var3, int var4);
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-   }
-
-   public void b(boolean $$0) {
-      this.h = $$0;
-   }
-
-   public void c(boolean $$0) {
-      this.i = $$0;
-   }
-
-   public void d(boolean $$0) {
-      this.j = $$0;
-   }
-
-   public boolean d() {
-      return this.g;
-   }
-
-   public boolean e() {
-      return this.h;
-   }
-
-   public boolean f() {
-      return this.i;
-   }
-
-   public boolean g() {
-      return this.j;
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
+         }
+      }
    }
 }

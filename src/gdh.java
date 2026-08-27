@@ -1,62 +1,66 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import org.apache.commons.lang3.Validate;
 
-public class gdh {
-   private static final int a = 100;
-   private final ash b = ash.a();
-   private final eqp c;
-   @Nullable
-   private gci d;
-   private int e = 100;
+public class gdh implements JsonDeserializer<gdg> {
+   private static final bhe a = bhc.a(1.0F);
 
-   public gdh(eqp $$0) {
-      this.c = $$0;
+   public gdg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+      JsonObject $$3 = aso.m($$0, "entry");
+      boolean $$4 = aso.a($$3, "replace", false);
+      String $$5 = aso.a($$3, "subtitle", null);
+      List<gdf> $$6 = this.a($$3);
+      return new gdg($$6, $$4, $$5);
    }
 
-   public void a() {
-      apd $$0 = this.c.aj();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.ai().b(this.d);
-            this.e = asb.a(this.b, 0, $$0.b() / 2);
+   private List<gdf> a(JsonObject $$0) {
+      List<gdf> $$1 = Lists.newArrayList();
+      if ($$0.has("sounds")) {
+         JsonArray $$2 = aso.v($$0, "sounds");
+
+         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+            JsonElement $$4 = $$2.get($$3);
+            if (aso.a($$4)) {
+               String $$5 = aso.a($$4, "sound");
+               $$1.add(new gdf($$5, a, a, 1, gdf.a.a, false, false, 16));
+            } else {
+               $$1.add(this.b(aso.m($$4, "sound")));
+            }
          }
-
-         if (!this.c.ai().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, asb.a(this.b, $$0.b(), $$0.c()));
-         }
       }
 
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
+      return $$1;
    }
 
-   public void a(apd $$0) {
-      this.d = gcd.a($$0.a().a());
-      if (this.d.b() != gdm.a) {
-         this.c.ai().a(this.d);
-      }
-
-      this.e = Integer.MAX_VALUE;
+   private gdf b(JsonObject $$0) {
+      String $$1 = aso.i($$0, "name");
+      gdf.a $$2 = this.a($$0, gdf.a.a);
+      float $$3 = aso.a($$0, "volume", 1.0F);
+      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
+      float $$4 = aso.a($$0, "pitch", 1.0F);
+      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
+      int $$5 = aso.a($$0, "weight", 1);
+      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
+      boolean $$6 = aso.a($$0, "preload", false);
+      boolean $$7 = aso.a($$0, "stream", false);
+      int $$8 = aso.a($$0, "attenuation_distance", 16);
+      return new gdf($$1, bhc.a($$3), bhc.a($$4), $$5, $$2, $$7, $$6, $$8);
    }
 
-   public void b(apd $$0) {
-      if (this.c($$0)) {
-         this.b();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         this.c.ai().b(this.d);
-         this.d = null;
+   private gdf.a a(JsonObject $$0, gdf.a $$1) {
+      gdf.a $$2 = $$1;
+      if ($$0.has("type")) {
+         $$2 = gdf.a.a(aso.i($$0, "type"));
+         Validate.notNull($$2, "Invalid type", new Object[0]);
       }
 
-      this.e += 100;
-   }
-
-   public boolean c(apd $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
+      return $$2;
    }
 }

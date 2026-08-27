@@ -1,120 +1,140 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class eay extends eau {
-   private final boolean k;
-   private final Long2ObjectMap<ear> l = new Long2ObjectOpenHashMap();
-
-   public eay(boolean $$0) {
-      this.k = $$0;
+public class eay extends eas<eay.a> {
+   protected eay(dil $$0) {
+      super(cri.a, $$0, new eay.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
    @Override
-   public void a(cqo $$0, bjo $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.l.clear();
-   }
-
-   @Override
-   public eat a() {
-      return this.b(asb.a(this.b.cG().a), asb.a(this.b.cG().b + 0.5), asb.a(this.b.cG().c));
-   }
-
-   @Override
-   public eaz a(double $$0, double $$1, double $$2) {
-      return this.a(this.b(asb.a($$0), asb.a($$1), asb.a($$2)));
-   }
-
-   @Override
-   public int a(eat[] $$0, eat $$1) {
-      int $$2 = 0;
-      Map<ha, eat> $$3 = Maps.newEnumMap(ha.class);
-
-      for (ha $$4 : ha.values()) {
-         eat $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.b($$5)) {
-            $$0[$$2++] = $$5;
-         }
-      }
-
-      for (ha $$6 : ha.c.a) {
-         ha $$7 = $$6.h();
-         eat $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-         if (this.a($$8, $$3.get($$6), $$3.get($$7))) {
-            $$0[$$2++] = $$8;
-         }
-      }
-
-      return $$2;
-   }
-
-   protected boolean b(@Nullable eat $$0) {
-      return $$0 != null && !$$0.i;
-   }
-
-   protected boolean a(@Nullable eat $$0, @Nullable eat $$1, @Nullable eat $$2) {
-      return this.b($$0) && $$1 != null && $$1.k >= 0.0F && $$2 != null && $$2.k >= 0.0F;
-   }
-
-   @Nullable
-   protected eat a(int $$0, int $$1, int $$2) {
-      eat $$3 = null;
-      ear $$4 = this.c($$0, $$1, $$2);
-      if (this.k && $$4 == ear.u || $$4 == ear.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.b($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.b_(new gw($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   protected ear c(int $$0, int $$1, int $$2) {
-      return (ear)this.l.computeIfAbsent(gw.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
-   }
-
-   @Override
-   public ear a(cph $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
-   }
-
-   @Override
-   public ear a(cph $$0, int $$1, int $$2, int $$3, bjo $$4) {
-      gw.a $$5 = new gw.a();
-
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               eag $$9 = $$0.b_($$5.d($$6, $$7, $$8));
-               dfd $$10 = $$0.a_($$5.d($$6, $$7, $$8));
-               if ($$9.c() && $$10.a($$0, $$5.d(), eaw.b) && $$10.i()) {
-                  return ear.u;
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = iu.e($$0);
+      int $$3 = iu.c($$2);
+      eay.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(iu.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         did $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = ht.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
                }
 
-               if (!$$9.a(aqa.a)) {
-                  return ear.a;
-               }
+               $$2 = iu.a($$2, hx.b);
             }
          }
+
+         return $$6.a(iu.b(ht.a($$0)), iu.b(ht.b($$0)), iu.b(ht.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
+      }
+   }
+
+   @Override
+   protected void h(long $$0) {
+      int $$1 = iu.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
       }
 
-      dfd $$11 = $$0.a_($$5);
-      return $$11.a($$0, $$5, eaw.b) ? ear.j : ear.a;
+      long $$2 = iu.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
+   }
+
+   @Override
+   protected void i(long $$0) {
+      long $$1 = iu.f($$0);
+      int $$2 = iu.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = iu.a($$3, hx.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
+   }
+
+   @Override
+   protected did g(long $$0) {
+      did $$1 = (did)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(iu.f($$0));
+         if ($$2 != this.d.b && iu.c($$0) < $$2) {
+            long $$3 = iu.a($$0, hx.b);
+
+            did $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = iu.a($$3, hx.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new did(15) : new did();
+         }
+      }
+   }
+
+   private static did a(did $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new did($$2);
+      }
+   }
+
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
+   }
+
+   protected boolean l(long $$0) {
+      long $$1 = iu.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || iu.c($$0) >= $$2;
+   }
+
+   protected int m(long $$0) {
+      return this.d.c.get($$0);
+   }
+
+   protected int c() {
+      return this.d.b;
+   }
+
+   protected static final class a extends eap<eay.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<did> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
+      }
+
+      public eay.a a() {
+         return new eay.a(this.a.clone(), this.c.clone(), this.b);
+      }
    }
 }

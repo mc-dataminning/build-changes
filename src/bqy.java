@@ -1,49 +1,28 @@
 import java.util.EnumSet;
 
-public class bqy extends bqh {
-   private static final bty b = bty.b().a(6.0);
-   public static final int a = 400;
-   private final bvj c;
-   private cbn d;
-   private int e;
+public class bqy extends bre {
+   private final bkl a;
 
-   public bqy(bvj $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(bqh.a.a, bqh.a.b));
+   public bqy(bkl $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bre.a.c));
+      $$0.L().a(true);
    }
 
    @Override
    public boolean a() {
-      if (!this.c.dL().N()) {
-         return false;
-      } else if (this.c.ef().a(8000) != 0) {
-         return false;
-      } else {
-         this.d = this.c.dL().a(cbn.class, b, this.c, this.c.dq(), this.c.ds(), this.c.dw(), this.c.cG().c(6.0, 2.0, 6.0));
-         return this.d != null;
-      }
+      return this.a.aX() && this.a.b(aqx.a) > this.a.de() || this.a.bl();
    }
 
    @Override
-   public boolean b() {
-      return this.e > 0;
-   }
-
-   @Override
-   public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
-   }
-
-   @Override
-   public void d() {
-      this.c.w(false);
-      this.d = null;
+   public boolean R_() {
+      return true;
    }
 
    @Override
    public void e() {
-      this.c.G().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      if (this.a.ef().i() < 0.8F) {
+         this.a.K().a();
+      }
    }
 }

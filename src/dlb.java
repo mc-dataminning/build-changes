@@ -1,63 +1,108 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-public final class dlb {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public class dlb extends dhy {
+   public static final Codec<dlb> c = RecordCodecBuilder.create($$0 -> $$0.group(afu.d(cse.b)).apply($$0, $$0.stable(dlb::new)));
+   private static final int h = 2;
+   private static final List<dgb> i = StreamSupport.stream(jy.f.spliterator(), false).flatMap($$0 -> $$0.n().a().stream()).collect(Collectors.toList());
+   private static final int j = asy.f(asy.c((float)i.size()));
+   private static final int k = asy.f((float)i.size() / (float)j);
+   protected static final dgb d = cuc.a.o();
+   protected static final dgb e = cuc.hW.o();
+   public static final int f = 70;
+   public static final int g = 60;
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   public dlb(ib.c<crx> $$0) {
+      super(new csi($$0));
    }
 
-   public static dlb.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dlb.a($$1, $$2);
+   @Override
+   protected Codec<? extends dhy> a() {
+      return c;
    }
 
-   public static dlb.a c(long $$0) {
-      return b($$0).a();
+   @Override
+   public void a(alx $$0, crr $$1, dly $$2, dhx $$3) {
    }
 
-   public static dlb.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dlb.a($$2, $$3);
+   @Override
+   public void a(crt $$0, dhx $$1, crr $$2) {
+      ht.a $$3 = new ht.a();
+      cqg $$4 = $$1.f();
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
+
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            int $$9 = iu.a($$5, $$7);
+            int $$10 = iu.a($$6, $$8);
+            $$0.a($$3.d($$9, 60, $$10), e, 2);
+            dgb $$11 = a($$9, $$10);
+            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
+         }
+      }
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   @Override
+   public CompletableFuture<dhx> a(Executor $$0, dmm $$1, dly $$2, crr $$3, dhx $$4) {
+      return CompletableFuture.completedFuture($$4);
    }
 
-   public static record a(long a, long b) {
-      public dlb.a a(long $$0, long $$1) {
-         return new dlb.a(this.a ^ $$0, this.b ^ $$1);
+   @Override
+   public int a(int $$0, int $$1, dlk.a $$2, crb $$3, dly $$4) {
+      return 0;
+   }
+
+   @Override
+   public crl a(int $$0, int $$1, crb $$2, dly $$3) {
+      return new crl(0, new dgb[0]);
+   }
+
+   @Override
+   public void a(List<String> $$0, dly $$1, ht $$2) {
+   }
+
+   public static dgb a(int $$0, int $$1) {
+      dgb $$2 = d;
+      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
+         $$0 /= 2;
+         $$1 /= 2;
+         if ($$0 <= j && $$1 <= k) {
+            int $$3 = asy.a($$0 * j + $$1);
+            if ($$3 < i.size()) {
+               $$2 = i.get($$3);
+            }
+         }
       }
 
-      public dlb.a a(dlb.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
+      return $$2;
+   }
 
-      public dlb.a a() {
-         return new dlb.a(dlb.a(this.a), dlb.a(this.b));
-      }
+   @Override
+   public void a(alx $$0, long $$1, dly $$2, crz $$3, crr $$4, dhx $$5, dlg.a $$6) {
+   }
 
-      public long b() {
-         return this.a;
-      }
+   @Override
+   public void a(alx $$0) {
+   }
 
-      public long c() {
-         return this.b;
-      }
+   @Override
+   public int f() {
+      return 0;
+   }
+
+   @Override
+   public int d() {
+      return 384;
+   }
+
+   @Override
+   public int e() {
+      return 63;
    }
 }

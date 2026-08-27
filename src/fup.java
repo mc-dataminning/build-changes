@@ -1,31 +1,16 @@
-public class fup extends fuj<bvn, ffy> {
-   private static final aez a = new aez("textures/entity/parrot/parrot_red_blue.png");
-   private static final aez i = new aez("textures/entity/parrot/parrot_blue.png");
-   private static final aez j = new aez("textures/entity/parrot/parrot_green.png");
-   private static final aez k = new aez("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final aez l = new aez("textures/entity/parrot/parrot_grey.png");
+public class fup extends fwk<bkb> {
+   private static final afw a = new afw("textures/entity/squid/glow_squid.png");
 
-   public fup(ftd.a $$0) {
-      super($$0, new ffy($$0.a(fhw.aA)), 0.3F);
+   public fup(fud.a $$0, fhz<bkb> $$1) {
+      super($$0, $$1);
    }
 
-   public aez a(bvn $$0) {
-      return a($$0.gm());
+   public afw a(bkb $$0) {
+      return a;
    }
 
-   public static aez a(bvn.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
-   }
-
-   public float a(bvn $$0, float $$1) {
-      float $$2 = asb.i($$1, $$0.bZ, $$0.bW);
-      float $$3 = asb.i($$1, $$0.bY, $$0.bX);
-      return (asb.a($$2) + 1.0F) * $$3;
+   protected int a(bkb $$0, ht $$1) {
+      int $$2 = (int)asy.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

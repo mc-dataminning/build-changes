@@ -1,25 +1,61 @@
 import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
 
 public class ekh {
-   private static final MemoryAllocator a = MemoryUtil.getAllocator(false);
+   @Nullable
+   private ByteBuffer a;
+   private final AudioFormat b;
+   private boolean c;
+   private int d;
 
-   public static ByteBuffer a(int $$0) {
-      long $$1 = a.malloc((long)$$0);
-      if ($$1 == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
-      } else {
-         return MemoryUtil.memByteBuffer($$1, $$0);
-      }
+   public ekh(ByteBuffer $$0, AudioFormat $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static ByteBuffer a(ByteBuffer $$0, int $$1) {
-      long $$2 = a.realloc(MemoryUtil.memAddress0($$0), (long)$$1);
-      if ($$2 == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + $$0.capacity() + " bytes to " + $$1 + " bytes");
-      } else {
-         return MemoryUtil.memByteBuffer($$2, $$1);
+   OptionalInt a() {
+      if (!this.c) {
+         if (this.a == null) {
+            return OptionalInt.empty();
+         }
+
+         int $$0 = ekg.a(this.b);
+         int[] $$1 = new int[1];
+         AL10.alGenBuffers($$1);
+         if (ekg.a("Creating buffer")) {
+            return OptionalInt.empty();
+         }
+
+         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
+         if (ekg.a("Assigning buffer data")) {
+            return OptionalInt.empty();
+         }
+
+         this.d = $$1[0];
+         this.c = true;
+         this.a = null;
       }
+
+      return OptionalInt.of(this.d);
+   }
+
+   public void b() {
+      if (this.c) {
+         AL10.alDeleteBuffers(new int[]{this.d});
+         if (ekg.a("Deleting stream buffers")) {
+            return;
+         }
+      }
+
+      this.c = false;
+   }
+
+   public OptionalInt c() {
+      OptionalInt $$0 = this.a();
+      this.c = false;
+      return $$0;
    }
 }

@@ -1,116 +1,158 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Set;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
 public class aiw {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.tag.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.random.error.range_too_large"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.c("commands.random.error.range_too_small"));
 
-   public static void a(CommandDispatcher<dt> $$0) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("tag").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("random").then(a("value", false))).then(a("roll", true)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("targets", ee.b())
-                        .then(
-                           du.a("add")
-                              .then(
-                                 du.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                              )
-                        ))
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("reset").requires($$0x -> $$0x.c(2)))
                      .then(
-                        du.a("remove")
+                        ((LiteralArgumentBuilder)dv.a("*").executes($$0x -> a((du)$$0x.getSource())))
                            .then(
-                              du.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> dw.b(a(ee.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((dt)$$0x.getSource(), ee.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              ((RequiredArgumentBuilder)dv.a("seed", IntegerArgumentType.integer())
+                                    .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                                 .then(
+                                    ((RequiredArgumentBuilder)dv.a("includeWorldSeed", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   true
+                                                )
+                                          ))
+                                       .then(
+                                          dv.a("includeSequenceId", BoolArgumentType.bool())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      IntegerArgumentType.getInteger($$0x, "seed"),
+                                                      BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                      BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                   )
+                                             )
+                                       )
+                                 )
                            )
                      ))
-                  .then(du.a("list").executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"))))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("sequence", eu.a()).suggests(aiw::a).executes($$0x -> a((du)$$0x.getSource(), eu.e($$0x, "sequence"))))
+                        .then(
+                           ((RequiredArgumentBuilder)dv.a("seed", IntegerArgumentType.integer())
+                                 .executes($$0x -> a((du)$$0x.getSource(), eu.e($$0x, "sequence"), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                              .then(
+                                 ((RequiredArgumentBuilder)dv.a("includeWorldSeed", BoolArgumentType.bool())
+                                       .executes(
+                                          $$0x -> a(
+                                                (du)$$0x.getSource(),
+                                                eu.e($$0x, "sequence"),
+                                                IntegerArgumentType.getInteger($$0x, "seed"),
+                                                BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                true
+                                             )
+                                       ))
+                                    .then(
+                                       dv.a("includeSequenceId", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   eu.e($$0x, "sequence"),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static Collection<String> a(Collection<? extends biw> $$0) {
-      Set<String> $$1 = Sets.newHashSet();
+   private static LiteralArgumentBuilder<du> a(String $$0, boolean $$1) {
+      return (LiteralArgumentBuilder<du>)dv.a($$0)
+         .then(
+            ((RequiredArgumentBuilder)dv.a("range", er.a()).executes($$1x -> a((du)$$1x.getSource(), er.b.a($$1x, "range"), null, $$1)))
+               .then(
+                  ((RequiredArgumentBuilder)dv.a("sequence", eu.a()).suggests(aiw::a).requires($$0x -> $$0x.c(2)))
+                     .executes($$1x -> a((du)$$1x.getSource(), er.b.a($$1x, "range"), eu.e($$1x, "sequence"), $$1))
+               )
+         );
+   }
 
-      for (biw $$2 : $$0) {
-         $$1.addAll($$2.ai());
+   private static CompletableFuture<Suggestions> a(CommandContext<du> $$0, SuggestionsBuilder $$1) {
+      List<String> $$2 = Lists.newArrayList();
+      ((du)$$0.getSource()).f().H().a(($$1x, $$2x) -> $$2.add($$1x.toString()));
+      return dy.b($$2, $$1);
+   }
+
+   private static int a(du $$0, cl.d $$1, @Nullable afw $$2, boolean $$3) throws CommandSyntaxException {
+      ate $$4;
+      if ($$2 != null) {
+         $$4 = $$0.f().a($$2);
+      } else {
+         $$4 = $$0.f().E_();
       }
 
+      int $$6 = $$1.a().orElse(Integer.MIN_VALUE);
+      int $$7 = $$1.b().orElse(Integer.MAX_VALUE);
+      long $$8 = (long)$$7 - (long)$$6;
+      if ($$8 == 0L) {
+         throw b.create();
+      } else if ($$8 >= 2147483647L) {
+         throw a.create();
+      } else {
+         int $$9 = asy.b($$4, $$6, $$7);
+         if ($$3) {
+            $$0.m().ac().a(ui.a("commands.random.roll", $$0.c(), $$9, $$6, $$7), false);
+         } else {
+            $$0.a(() -> ui.a("commands.random.sample.success", $$9), false);
+         }
+
+         return $$9;
+      }
+   }
+
+   private static int a(du $$0, afw $$1) throws CommandSyntaxException {
+      $$0.f().H().b($$1);
+      $$0.a(() -> ui.a("commands.random.reset.success", ui.a($$1)), false);
+      return 1;
+   }
+
+   private static int a(du $$0, afw $$1, int $$2, boolean $$3, boolean $$4) throws CommandSyntaxException {
+      $$0.f().H().a($$1, $$2, $$3, $$4);
+      $$0.a(() -> ui.a("commands.random.reset.success", ui.a($$1)), false);
+      return 1;
+   }
+
+   private static int a(du $$0) {
+      int $$1 = $$0.f().H().a();
+      $$0.a(() -> ui.a("commands.random.reset.all.success", $$1), false);
       return $$1;
    }
 
-   private static int a(dt $$0, Collection<? extends biw> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (biw $$4 : $$1) {
-         if ($$4.a($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.tag.add.success.single", $$2, $$1.iterator().next().N_()), true);
-         } else {
-            $$0.a(() -> tl.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int b(dt $$0, Collection<? extends biw> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (biw $$4 : $$1) {
-         if ($$4.b($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().N_()), true);
-         } else {
-            $$0.a(() -> tl.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int a(dt $$0, Collection<? extends biw> $$1) {
-      Set<String> $$2 = Sets.newHashSet();
-
-      for (biw $$3 : $$1) {
-         $$2.addAll($$3.ai());
-      }
-
-      if ($$1.size() == 1) {
-         biw $$4 = $$1.iterator().next();
-         if ($$2.isEmpty()) {
-            $$0.a(() -> tl.a("commands.tag.list.single.empty", $$4.N_()), false);
-         } else {
-            $$0.a(() -> tl.a("commands.tag.list.single.success", $$4.N_(), $$2.size(), to.a($$2)), false);
-         }
-      } else if ($$2.isEmpty()) {
-         $$0.a(() -> tl.a("commands.tag.list.multiple.empty", $$1.size()), false);
-      } else {
-         $$0.a(() -> tl.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), to.a($$2)), false);
-      }
-
-      return $$2.size();
+   private static int a(du $$0, int $$1, boolean $$2, boolean $$3) {
+      bih $$4 = $$0.f().H();
+      $$4.a($$1, $$2, $$3);
+      int $$5 = $$4.a();
+      $$0.a(() -> ui.a("commands.random.reset.all.success", $$5), false);
+      return $$5;
    }
 }

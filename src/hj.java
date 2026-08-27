@@ -1,21 +1,55 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
-public interface hj<T> extends Iterable<T> {
-   int a = -1;
+public class hj {
+   private static final Map<afw, SuggestionProvider<dy>> e = Maps.newHashMap();
+   private static final afw f = new afw("ask_server");
+   public static final SuggestionProvider<dy> a = a(f, ($$0, $$1) -> ((dy)$$0.getSource()).a($$0));
+   public static final SuggestionProvider<du> b = a(new afw("all_recipes"), ($$0, $$1) -> dy.a(((dy)$$0.getSource()).t(), $$1));
+   public static final SuggestionProvider<du> c = a(new afw("available_sounds"), ($$0, $$1) -> dy.a(((dy)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<du> d = a(
+      new afw("summonable_entities"),
+      ($$0, $$1) -> dy.a(jy.h.s().filter($$1x -> $$1x.a(((dy)$$0.getSource()).w()) && $$1x.c()), $$1, bjx::a, $$0x -> ui.c(ac.a("entity", bjx.a($$0x))))
+   );
 
-   int a(T var1);
-
-   @Nullable
-   T a(int var1);
-
-   default T b(int $$0) {
-      T $$1 = this.a($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No value with id " + $$0);
+   public static <S extends dy> SuggestionProvider<S> a(afw $$0, SuggestionProvider<dy> $$1) {
+      if (e.containsKey($$0)) {
+         throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
       } else {
-         return $$1;
+         e.put($$0, $$1);
+         return new hj.a($$0, $$1);
       }
    }
 
-   int b();
+   public static SuggestionProvider<dy> a(afw $$0) {
+      return e.getOrDefault($$0, a);
+   }
+
+   public static afw a(SuggestionProvider<dy> $$0) {
+      return $$0 instanceof hj.a ? ((hj.a)$$0).b : f;
+   }
+
+   public static SuggestionProvider<dy> b(SuggestionProvider<dy> $$0) {
+      return $$0 instanceof hj.a ? $$0 : a;
+   }
+
+   protected static class a implements SuggestionProvider<dy> {
+      private final SuggestionProvider<dy> a;
+      final afw b;
+
+      public a(afw $$0, SuggestionProvider<dy> $$1) {
+         this.a = $$1;
+         this.b = $$0;
+      }
+
+      public CompletableFuture<Suggestions> getSuggestions(CommandContext<dy> $$0, SuggestionsBuilder $$1) throws CommandSyntaxException {
+         return this.a.getSuggestions($$0, $$1);
+      }
+   }
 }

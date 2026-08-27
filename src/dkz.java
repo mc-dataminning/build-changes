@@ -1,18 +1,55 @@
-import com.google.common.annotations.VisibleForTesting;
+public interface dkz extends ate {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public interface dkz {
-   default ash a(gw $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
+   int c(int var1);
+
+   @Override
+   default int f() {
+      return this.c(32);
    }
 
-   default ash a(aez $$0) {
-      return this.a($$0.toString());
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
+
+         return $$2;
+      }
    }
 
-   ash a(String var1);
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
+   }
 
-   ash a(int var1, int var2, int var3);
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
+   }
 
-   @VisibleForTesting
-   void a(StringBuilder var1);
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
+   }
 }

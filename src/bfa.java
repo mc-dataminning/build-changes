@@ -1,79 +1,58 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
 public class bfa {
-   public static final bfa a = new bfa();
-   private final WeakHashMap<bfc, Void> b = new WeakHashMap<>();
+   private static final Logger a = LogUtils.getLogger();
+   private final Runnable b;
 
-   private bfa() {
+   protected bfa(Runnable $$0) {
+      this.b = $$0;
    }
 
-   public void a(bfc $$0) {
-      this.b.put($$0, null);
-   }
+   public void a(@Nullable Path $$0) {
+      if ($$0 != null) {
+         this.b.run();
+         a(() -> "Dumped flight recorder profiling to " + $$0);
 
-   public List<bez> a() {
-      Map<String, List<bez>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bk().stream()).collect(Collectors.groupingBy(bez::d));
-      return a($$0);
-   }
-
-   private static List<bez> a(Map<String, List<bez>> $$0) {
-      return $$0.entrySet().stream().map($$0x -> {
-         String $$1 = (String)$$0x.getKey();
-         List<bez> $$2 = (List<bez>)$$0x.getValue();
-         return (bez)($$2.size() > 1 ? new bfa.a($$1, $$2) : $$2.get(0));
-      }).collect(Collectors.toList());
-   }
-
-   static class a extends bez {
-      private final List<bez> b;
-
-      a(String $$0, List<bez> $$1) {
-         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
-         this.b = $$1;
-      }
-
-      private static bez.c a(List<bez> $$0) {
-         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
-      }
-
-      private static void b(List<bez> $$0) {
-         for (bez $$1 : $$0) {
-            $$1.a();
-         }
-      }
-
-      private static double c(List<bez> $$0) {
-         double $$1 = 0.0;
-
-         for (bez $$2 : $$0) {
-            $$1 += $$2.c().getAsDouble();
+         bfh $$1;
+         try {
+            $$1 = bfg.a($$0);
+         } catch (Throwable var5) {
+            a(() -> "Failed to parse JFR recording", var5);
+            return;
          }
 
-         return $$1 / (double)$$0.size();
-      }
-
-      @Override
-      public boolean equals(@Nullable Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
-            return false;
-         } else if (!super.equals($$0)) {
-            return false;
-         } else {
-            bfa.a $$1 = (bfa.a)$$0;
-            return this.b.equals($$1.b);
+         try {
+            a($$1::b);
+            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
+            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
+            a(() -> "Dumped recording summary to " + $$4);
+         } catch (Throwable var4) {
+            a(() -> "Failed to output JFR report", var4);
          }
       }
+   }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.b);
+   private static void a(Supplier<String> $$0) {
+      if (LogUtils.isLoggerActive()) {
+         a.info($$0.get());
+      } else {
+         afy.a($$0.get());
+      }
+   }
+
+   private static void a(Supplier<String> $$0, Throwable $$1) {
+      if (LogUtils.isLoggerActive()) {
+         a.warn($$0.get(), $$1);
+      } else {
+         afy.a($$0.get());
+         $$1.printStackTrace(afy.a);
       }
    }
 }

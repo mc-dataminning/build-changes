@@ -1,45 +1,55 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.Set;
+import org.slf4j.Logger;
 
-public record efh(Optional<cj> b, gw c) implements efj {
-   private static final MapCodec<gw> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               arj.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(hy::u),
-               arj.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(hy::v),
-               arj.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(hy::w)
-            )
-            .apply($$0, gw::new)
-   );
+public class efh extends eeu {
+   private static final Logger b = LogUtils.getLogger();
    public static final Codec<efh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arj.a(cj.a, "predicate").forGetter(efh::c), d.forGetter(efh::d)).apply($$0, efh::new)
+      $$0 -> a($$0)
+            .and($$0.group(ehd.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, efh::new)
    );
+   private final ehc c;
+   private final boolean d;
+
+   private efh(List<egh> $$0, ehc $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+   }
 
    @Override
-   public efk b() {
-      return efl.o;
+   public eew b() {
+      return eex.j;
    }
 
-   public boolean a(eck $$0) {
-      ehh $$1 = $$0.c(eev.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   @Override
+   public Set<efq<?>> a() {
+      return this.c.a();
    }
 
-   public static efj.a a(cj.a $$0) {
-      return () -> new efh(Optional.of($$0.b()), gw.b);
+   @Override
+   public ckj a(ckj $$0, edi $$1) {
+      if ($$0.i()) {
+         int $$2 = $$0.l();
+         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - asy.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(asy.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
+      }
+
+      return $$0;
    }
 
-   public static efj.a a(cj.a $$0, gw $$1) {
-      return () -> new efh(Optional.of($$0.b()), $$1);
+   public static eeu.a<?> a(ehc $$0) {
+      return a($$1 -> new efh($$1, $$0, false));
    }
 
-   public Optional<cj> c() {
-      return this.b;
-   }
-
-   public gw d() {
-      return this.c;
+   public static eeu.a<?> a(ehc $$0, boolean $$1) {
+      return a($$2 -> new efh($$2, $$0, $$1));
    }
 }

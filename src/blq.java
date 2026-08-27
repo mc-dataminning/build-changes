@@ -1,73 +1,103 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class blq extends bld<bjv> {
-   public static final int c = 100;
-   public static final double d = 2.5;
-   public static final double e = 3.5;
-   private final Function<bjm, Float> f;
-   private final Function<bjm, Double> g;
+public class blq {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bjx<? extends bkj>, blo> b = ImmutableMap.builder()
+      .put(bjx.b, bwy.s().a())
+      .put(bjx.d, bkj.dP().a())
+      .put(bjx.f, bxb.gl().a())
+      .put(bjx.g, bvp.s().a())
+      .put(bjx.h, bvv.gq().a())
+      .put(bjx.i, bzv.s().a())
+      .put(bjx.m, bvx.gq().a())
+      .put(bjx.l, bxg.s().a())
+      .put(bjx.n, bzw.s().a())
+      .put(bjx.q, bvz.s().a())
+      .put(bjx.r, bvr.s().a())
+      .put(bjx.t, bwb.s().a())
+      .put(bjx.u, bzx.s().a())
+      .put(bjx.v, bwc.ge().a())
+      .put(bjx.w, bxs.s().a())
+      .put(bjx.y, cbe.gi().a())
+      .put(bjx.A, caa.s().a())
+      .put(bjx.E, cab.s().a())
+      .put(bjx.F, cac.s().a())
+      .put(bjx.C, byk.t().a())
+      .put(bjx.G, cae.t().a())
+      .put(bjx.N, bwe.s().a())
+      .put(bjx.O, bxj.ge().a())
+      .put(bjx.Q, caf.y().a())
+      .put(bjx.R, cag.s().a())
+      .put(bjx.T, bkb.ge().a())
+      .put(bjx.U, bxp.t().a())
+      .put(bjx.V, cah.ge().a())
+      .put(bjx.W, cbh.s().a())
+      .put(bjx.Y, bxt.gE().a())
+      .put(bjx.Z, cbe.gi().a())
+      .put(bjx.aa, caj.t().a())
+      .put(bjx.ac, bwg.s().a())
+      .put(bjx.aj, bxw.gp().a())
+      .put(bjx.al, cak.s().a())
+      .put(bjx.ao, bwb.s().a())
+      .put(bjx.ap, bxs.s().a())
+      .put(bjx.aq, bwi.s().a())
+      .put(bjx.as, bwj.gp().a())
+      .put(bjx.at, bwk.gk().a())
+      .put(bjx.au, cal.gk().a())
+      .put(bjx.av, bwl.s().a())
+      .put(bjx.aw, cbn.gl().a())
+      .put(bjx.ax, cbq.y().a())
+      .put(bjx.ay, cao.t().a())
+      .put(bjx.bt, ccx.fH().a())
+      .put(bjx.az, bwm.s().a())
+      .put(bjx.aB, bvr.s().a())
+      .put(bjx.aC, bwo.t().a())
+      .put(bjx.aD, caq.s().a())
+      .put(bjx.aE, bvr.s().a())
+      .put(bjx.aF, bwq.s().a())
+      .put(bjx.aG, car.s().a())
+      .put(bjx.aI, cas.s().a())
+      .put(bjx.aJ, bzu.s().a())
+      .put(bjx.aK, bxz.s().a())
+      .put(bjx.aL, cal.gk().a())
+      .put(bjx.aN, byg.s().a())
+      .put(bjx.aO, bws.s().a())
+      .put(bjx.aS, caw.t().a())
+      .put(bjx.aT, bwt.ge().a())
+      .put(bjx.aU, bzu.s().a())
+      .put(bjx.aV, cay.t().a())
+      .put(bjx.aW, bxm.gg().a())
+      .put(bjx.ba, bxw.gp().a())
+      .put(bjx.bc, bvr.s().a())
+      .put(bjx.bd, bwv.y().a())
+      .put(bjx.be, caz.s().a())
+      .put(bjx.bf, cck.gn().a())
+      .put(bjx.bg, cba.t().a())
+      .put(bjx.bi, ccb.s().a())
+      .put(bjx.bh, bkl.A().a())
+      .put(bjx.bj, cbb.t().a())
+      .put(bjx.bk, bze.t().a())
+      .put(bjx.bl, bzu.s().a())
+      .put(bjx.bn, bwx.gk().a())
+      .put(bjx.bo, cbd.s().a())
+      .put(bjx.bp, cbe.gi().a())
+      .put(bjx.bq, byd.s().a())
+      .put(bjx.br, cbe.gi().a())
+      .put(bjx.bs, cbg.go().a())
+      .build();
 
-   public blq(Function<bjm, Float> $$0) {
-      this($$0, $$0x -> 2.5);
+   public static blo a(bjx<? extends bkj> $$0) {
+      return b.get($$0);
    }
 
-   public blq(Function<bjm, Float> $$0, Function<bjm, Double> $$1) {
-      super(ac.a(() -> {
-         Builder<bsn<?>, bso> $$0x = ImmutableMap.builder();
-         $$0x.put(bsn.n, bso.c);
-         $$0x.put(bsn.m, bso.c);
-         $$0x.put(bsn.O, bso.b);
-         $$0x.put(bsn.Q, bso.c);
-         $$0x.put(bsn.N, bso.a);
-         $$0x.put(bsn.r, bso.b);
-         $$0x.put(bsn.Y, bso.b);
-         return $$0x.build();
-      }));
-      this.f = $$0;
-      this.g = $$1;
+   public static boolean b(bjx<?> $$0) {
+      return b.containsKey($$0);
    }
 
-   protected float a(bjv $$0) {
-      return this.f.apply($$0);
-   }
-
-   private Optional<cca> b(bjv $$0) {
-      return $$0.dN().c(bsn.N);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected boolean a(akt $$0, bjv $$1, long $$2) {
-      return this.b($$1).isPresent() && !$$1.dN().a(bsn.r) && !$$1.dN().a(bsn.Y);
-   }
-
-   protected void b(akt $$0, bjv $$1, long $$2) {
-      $$1.dN().a(bsn.Q, true);
-   }
-
-   protected void c(akt $$0, bjv $$1, long $$2) {
-      bkm<?> $$3 = $$1.dN();
-      $$3.a(bsn.O, 100);
-      $$3.a(bsn.Q, false);
-      $$3.b(bsn.m);
-      $$3.b(bsn.n);
-   }
-
-   protected void d(akt $$0, bjv $$1, long $$2) {
-      cca $$3 = this.b($$1).get();
-      bkm<?> $$4 = $$1.dN();
-      $$4.a(bsn.n, new blo($$3, true));
-      double $$5 = this.g.apply($$1);
-      if ($$1.f($$3) < asb.k($$5)) {
-         $$4.b(bsn.m);
-      } else {
-         $$4.a(bsn.m, new bsq(new blo($$3, false), this.a($$1), 2));
-      }
+   public static void a() {
+      jy.h.s().filter($$0 -> $$0.f() != bkm.h).filter($$0 -> !b((bjx<?>)$$0)).map(jy.h::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
    }
 }

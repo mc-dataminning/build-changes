@@ -1,84 +1,29 @@
-public abstract class dva extends dvg {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   protected dva(dvt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, ha $$7) {
-      super($$0, 0, dvg.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
+public class dva extends dvh {
+   public static final Codec<dva> a = RecordCodecBuilder.create($$0 -> $$0.group(dlk.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, dva::new));
+   private final dlk.a c;
+
+   private dva(dlk.a $$0) {
+      this.c = $$0;
    }
 
-   protected dva(dvt $$0, qw $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
+   public static dva a(dlk.a $$0) {
+      return new dva($$0);
    }
 
    @Override
-   protected void a(dvs $$0, qw $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
+   public Stream<ht> a_(dvf $$0, ate $$1, ht $$2) {
+      int $$3 = $$2.u();
+      int $$4 = $$2.w();
+      int $$5 = $$0.a(this.c, $$3, $$4);
+      return $$5 > $$0.c() ? Stream.of(new ht($$3, $$5, $$4)) : Stream.of();
    }
 
-   protected boolean a(cqc $$0, duu $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         gw.a $$5 = new gw.a();
-
-         for (int $$6 = this.f.i(); $$6 <= this.f.l(); $$6++) {
-            for (int $$7 = this.f.g(); $$7 <= this.f.j(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dkm.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.h() + $$2, 0);
-            return true;
-         }
-      }
-   }
-
-   protected boolean a(cqc $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.aj();
-         boolean $$3 = false;
-         gw.a $$4 = new gw.a();
-
-         for (int $$5 = this.f.i(); $$5 <= this.f.l(); $$5++) {
-            for (int $$6 = this.f.g(); $$6 <= this.f.j(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dkm.a.f, $$4).v());
-               $$3 = true;
-            }
-         }
-
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.h() + $$1, 0);
-            return true;
-         }
-      }
+   @Override
+   public dvi<?> b() {
+      return dvi.k;
    }
 }

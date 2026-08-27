@@ -1,115 +1,99 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class doh extends dnq<dqb> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bja<?>[] b = new bja[]{bja.aJ, bja.bp, bja.bp, bja.aS};
-   private static final dfd c = cte.nc.o();
+public class doh extends doo<dqz> {
+   private static final dgk a = dgk.a(cuc.I);
+   private final dgb b = cuc.I.o();
+   private final dgb c = cuc.jF.o();
+   private final dgb d = cuc.aV.o();
+   private final dgb an = cuc.G.o();
 
-   public doh(Codec<dqb> $$0) {
+   public doh(Codec<dqz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dns<dqb> $$0) {
-      Predicate<dfd> $$1 = dnq.a(apv.bH);
-      gw $$2 = $$0.e();
-      ash $$3 = $$0.d();
-      cqv $$4 = $$0.b();
-      int $$5 = 3;
-      int $$6 = $$3.a(2) + 2;
-      int $$7 = -$$6 - 1;
-      int $$8 = $$6 + 1;
-      int $$9 = -1;
-      int $$10 = 4;
-      int $$11 = $$3.a(2) + 2;
-      int $$12 = -$$11 - 1;
-      int $$13 = $$11 + 1;
-      int $$14 = 0;
+   public boolean a(doq<dqz> $$0) {
+      crt $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      $$2 = $$2.c();
 
-      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
-         for (int $$16 = -1; $$16 <= 4; $$16++) {
-            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
-               gw $$18 = $$2.b($$15, $$16, $$17);
-               boolean $$19 = $$4.a_($$18).e();
-               if ($$16 == -1 && !$$19) {
-                  return false;
-               }
-
-               if ($$16 == 4 && !$$19) {
-                  return false;
-               }
-
-               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.t($$18) && $$4.t($$18.c())) {
-                  $$14++;
-               }
-            }
-         }
+      while ($$1.t($$2) && $$2.v() > $$1.I_() + 2) {
+         $$2 = $$2.d();
       }
 
-      if ($$14 >= 1 && $$14 <= 5) {
-         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
-            for (int $$21 = 3; $$21 >= -1; $$21--) {
-               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
-                  gw $$23 = $$2.b($$20, $$21, $$22);
-                  dfd $$24 = $$4.a_($$23);
-                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
-                     if ($$23.v() >= $$4.H_() && !$$4.a_($$23.d()).e()) {
-                        $$4.a($$23, c, 2);
-                     } else if ($$24.e() && !$$24.a(cte.cv)) {
-                        if ($$21 == -1 && $$3.a(4) != 0) {
-                           this.a($$4, $$23, cte.cn.o(), $$1);
-                        } else {
-                           this.a($$4, $$23, cte.m.o(), $$1);
-                        }
-                     }
-                  } else if (!$$24.a(cte.cv) && !$$24.a(cte.ct)) {
-                     this.a($$4, $$23, c, $$1);
-                  }
-               }
-            }
-         }
-
-         for (int $$25 = 0; $$25 < 2; $$25++) {
-            for (int $$26 = 0; $$26 < 3; $$26++) {
-               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
-               int $$28 = $$2.v();
-               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
-               gw $$30 = new gw($$27, $$28, $$29);
-               if ($$4.t($$30)) {
-                  int $$31 = 0;
-
-                  for (ha $$32 : ha.c.a) {
-                     if ($$4.a_($$30.a($$32)).e()) {
-                        $$31++;
-                     }
-                  }
-
-                  if ($$31 == 1) {
-                     this.a($$4, $$30, dvg.a($$4, $$30, cte.cv.o()), $$1);
-                     dec.a($$4, $$3, $$30, eci.d);
-                     break;
-                  }
-               }
-            }
-         }
-
-         this.a($$4, $$2, cte.ct.o(), $$1);
-         if ($$4.c_($$2) instanceof del $$34) {
-            $$34.a(this.a($$3), $$3);
-         } else {
-            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
-         }
-
-         return true;
-      } else {
+      if (!a.a($$1.a_($$2))) {
          return false;
+      } else {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.t($$2.b($$3, -1, $$4)) && $$1.t($$2.b($$3, -2, $$4))) {
+                  return false;
+               }
+            }
+         }
+
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.an, 2);
+
+         for (hx $$8 : hx.c.a) {
+            $$1.a($$2.a($$8), this.an, 2);
+         }
+
+         ht $$9 = $$2.d();
+         $$1.a($$9, this.b, 2);
+
+         for (hx $$10 : hx.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<ht> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
+         ate $$18 = $$0.d();
+         b($$1, ac.a($$17, $$18).c(1));
+         b($$1, ac.a($$17, $$18).c(2));
+         return true;
       }
    }
 
-   private bja<?> a(ash $$0) {
-      return ac.a(b, $$0);
+   private static void b(crt $$0, ht $$1) {
+      $$0.a($$1, cuc.J.o(), 3);
+      $$0.a($$1, ddz.N).ifPresent($$1x -> $$1x.a(edg.aC, $$1.a()));
    }
 }

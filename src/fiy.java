@@ -1,41 +1,30 @@
 public class fiy {
-   private final fnc a;
-   private final fis b;
-   private final fny c;
-   private fiy.a d = fiy.a.a;
+   public static final fiy a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
+   public final float f;
+   public final float g;
 
-   public fiy(fnc $$0, fis $$1, fny $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private fiy(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            gw $$0 = this.a.dl();
-            boolean $$1 = this.b.d($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.M_() || !this.a.bv()) {
-               this.d = fiy.a.c;
-            }
-         case a:
-         case c:
-      }
+   public static fiy a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public boolean b() {
-      return this.d == fiy.a.c;
+   public static fiy b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   public void c() {
-      if (this.d == fiy.a.a) {
-         this.d = fiy.a.b;
-      }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public static fiy a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new fiy($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

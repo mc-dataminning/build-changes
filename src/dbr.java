@@ -1,30 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbr extends cwq {
-   public static final MapCodec<dbr> c = b(dbr::new);
-   public static final eia g = ctc.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
+public class dbr extends cxz implements ctr {
+   public static final MapCodec<dbr> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cix.q.fieldOf("color").forGetter(dbr::b), t()).apply($$0, dbr::new));
+   private final cix k;
 
    @Override
    public MapCodec<dbr> a() {
-      return c;
+      return j;
    }
 
-   public dbr(dfc.d $$0) {
-      super($$0, ha.b, g, false, 0.1);
+   public dbr(cix $$0, dga.d $$1) {
+      super($$1);
+      this.k = $$0;
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected int a(ash $$0) {
-      return cyg.a($$0);
-   }
-
-   @Override
-   protected ctc b() {
-      return cte.oC;
-   }
-
-   @Override
-   protected boolean g(dfd $$0) {
-      return cyg.a($$0);
+   public cix b() {
+      return this.k;
    }
 }

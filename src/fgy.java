@@ -1,54 +1,52 @@
-public class fgy<T extends biw> extends ffh<T> {
-   private static final String a = "upper_body";
-   private final fhx b;
-   private final fhx f;
-   private final fhx g;
-   private final fhx h;
-   private final fhx i;
+public class fgy<T extends can> extends fgg<T> {
+   private static final String a = "tail_base";
+   private static final String b = "tail_tip";
+   private final fiw f;
+   private final fiw g;
+   private final fiw h;
+   private final fiw i;
+   private final fiw j;
+   private final fiw k;
+   private final fiw l;
 
-   public fgy(fhx $$0) {
-      this.b = $$0;
-      this.g = $$0.b("head");
-      this.h = $$0.b("left_arm");
-      this.i = $$0.b("right_arm");
-      this.f = $$0.b("upper_body");
+   public fgy(fiw $$0) {
+      this.f = $$0;
+      fiw $$1 = $$0.b("body");
+      this.k = $$1.b("tail_base");
+      this.l = this.k.b("tail_tip");
+      this.g = $$1.b("left_wing_base");
+      this.h = this.g.b("left_wing_tip");
+      this.i = $$1.b("right_wing_base");
+      this.j = this.i.b("right_wing_tip");
    }
 
-   public static fid b() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      float $$2 = 4.0F;
-      fib $$3 = new fib(-0.5F);
-      $$1.a("head", fic.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fhz.a(0.0F, 4.0F, 0.0F));
-      fic $$4 = fic.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
-      $$1.a("left_arm", $$4, fhz.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
-      $$1.a("right_arm", $$4, fhz.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
-      $$1.a("upper_body", fic.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fhz.a(0.0F, 13.0F, 0.0F));
-      $$1.a("lower_body", fic.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fhz.a(0.0F, 24.0F, 0.0F));
-      return fid.a($$0, 64, 64);
+   public static fjc b() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      fjf $$2 = $$1.a("body", fjb.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), fiy.b(-0.1F, 0.0F, 0.0F));
+      fjf $$3 = $$2.a("tail_base", fjb.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), fiy.a(0.0F, -2.0F, 1.0F));
+      $$3.a("tail_tip", fjb.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), fiy.a(0.0F, 0.5F, 6.0F));
+      fjf $$4 = $$2.a("left_wing_base", fjb.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fiy.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
+      $$4.a("left_wing_tip", fjb.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fiy.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
+      fjf $$5 = $$2.a("right_wing_base", fjb.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fiy.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
+      $$5.a("right_wing_tip", fjb.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fiy.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
+      $$2.a("head", fjb.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), fiy.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
+      return fjc.a($$0, 64, 64);
    }
 
    @Override
+   public fiw a() {
+      return this.f;
+   }
+
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
-      float $$6 = asb.a(this.f.f);
-      float $$7 = asb.b(this.f.f);
-      this.h.f = this.f.f;
-      this.i.f = this.f.f + (float) Math.PI;
-      this.h.b = $$7 * 5.0F;
-      this.h.d = -$$6 * 5.0F;
-      this.i.b = -$$7 * 5.0F;
-      this.i.d = $$6 * 5.0F;
-   }
-
-   @Override
-   public fhx a() {
-      return this.b;
-   }
-
-   public fhx c() {
-      return this.g;
+      float $$6 = ((float)$$0.t() + $$3) * 7.448451F * (float) (Math.PI / 180.0);
+      float $$7 = 16.0F;
+      this.g.g = asy.b($$6) * 16.0F * (float) (Math.PI / 180.0);
+      this.h.g = asy.b($$6) * 16.0F * (float) (Math.PI / 180.0);
+      this.i.g = -this.g.g;
+      this.j.g = -this.h.g;
+      this.k.e = -(5.0F + asy.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      this.l.e = -(5.0F + asy.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
    }
 }

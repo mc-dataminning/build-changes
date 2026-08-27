@@ -1,30 +1,36 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum eqw implements asd {
-   a(0, "options.prioritizeChunkUpdates.none"),
-   b(1, "options.prioritizeChunkUpdates.byPlayer"),
-   c(2, "options.prioritizeChunkUpdates.nearby");
+public class eqw extends eqo {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ui c = ui.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   private static final IntFunction<eqw> d = aqu.a(eqw::a, values(), aqu.a.b);
-   private final int e;
-   private final String f;
-
-   private eqw(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eqw(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public void run() {
+      emx $$0 = emx.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (eok var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
    }
 
    @Override
-   public String b() {
-      return this.f;
-   }
-
-   public static eqw a(int $$0) {
-      return d.apply($$0);
+   public ui a() {
+      return c;
    }
 }

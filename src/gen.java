@@ -1,38 +1,58 @@
-public class gen implements geq {
-   private static final int a = 600;
-   private static final tl b = tl.c("tutorial.open_inventory.title");
-   private static final tl c = tl.a("tutorial.open_inventory.description", gep.a("inventory"));
-   private final gep d;
-   private euu e;
-   private int f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gen(gep $$0) {
-      this.d = $$0;
+public class gen implements geo<gdf> {
+   private final List<geo<gdf>> a = Lists.newArrayList();
+   @Nullable
+   private final ui b;
+
+   public gen(afw $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : ui.c($$1);
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(ger.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new euu(euu.a.d, b, c, false);
-            this.d.e().ay().a(this.e);
+   public int e() {
+      int $$0 = 0;
+
+      for (geo<gdf> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public gdf a(ate $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (geo<gdf> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
          }
+
+         return gem.a;
+      } else {
+         return gem.a;
       }
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public void a(geo<gdf> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public ui a() {
+      return this.b;
    }
 
    @Override
-   public void c() {
-      this.d.a(ger.e);
+   public void a(gej $$0) {
+      for (geo<gdf> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

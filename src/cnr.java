@@ -1,59 +1,18 @@
-public class cnr extends cnu {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   private static final String[] g = new String[]{"all", "undead", "arthropods"};
-   private static final int[] h = new int[]{1, 5, 5};
-   private static final int[] i = new int[]{11, 8, 8};
-   private static final int[] j = new int[]{20, 20, 20};
-   public final int d;
+public interface cnr<T extends cnn<?>> {
+   cnr<cnd> a = a("crafting");
+   cnr<coa> b = a("smelting");
+   cnr<cmy> c = a("blasting");
+   cnr<coe> d = a("smoking");
+   cnr<cna> e = a("campfire_cooking");
+   cnr<cof> f = a("stonecutting");
+   cnr<cob> g = a("smithing");
 
-   public cnr(cnu.a $$0, int $$1, bjb... $$2) {
-      super($$0, cnv.f, $$2);
-      this.d = $$1;
-   }
-
-   @Override
-   public int a(int $$0) {
-      return h[this.d] + ($$0 - 1) * i[this.d];
-   }
-
-   @Override
-   public int b(int $$0) {
-      return this.a($$0) + j[this.d];
-   }
-
-   @Override
-   public int a() {
-      return 5;
-   }
-
-   @Override
-   public float a(int $$0, bjr $$1) {
-      if (this.d == 0) {
-         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
-      } else if (this.d == 1 && $$1 == bjr.b) {
-         return (float)$$0 * 2.5F;
-      } else {
-         return this.d == 2 && $$1 == bjr.c ? (float)$$0 * 2.5F : 0.0F;
-      }
-   }
-
-   @Override
-   public boolean a(cnu $$0) {
-      return !($$0 instanceof cnr);
-   }
-
-   @Override
-   public boolean a(cjl $$0) {
-      return $$0.d() instanceof cha ? true : super.a($$0);
-   }
-
-   @Override
-   public void a(bjm $$0, biw $$1, int $$2) {
-      if ($$1 instanceof bjm $$3 && this.d == 2 && $$2 > 0 && $$3.eR() == bjr.c) {
-         int $$4 = 20 + $$0.ef().a(10 * $$2);
-         $$3.b(new bij(bil.b, $$4, 3));
-      }
+   static <T extends cnn<?>> cnr<T> a(final String $$0) {
+      return io.a(jy.t, new afw($$0), new cnr<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

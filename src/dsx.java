@@ -1,29 +1,40 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dsx extends dsy {
-   public static final Codec<dsx> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsx::new));
+public class dsx extends dsw {
+   public static final Codec<dsx> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dsx::new));
+   protected final List<dgb> h;
 
-   public dsx(int $$0, int $$1, int $$2) {
+   protected static <P extends dsx> P4<Mu<P>, Long, eah.a, Float, List<dgb>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dgb.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public dsx(long $$0, eah.a $$1, float $$2, List<dgb> $$3) {
       super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected dsz<?> a() {
-      return dsz.a;
+   protected dsu<?> a() {
+      return dsu.d;
    }
 
    @Override
-   public List<drg.a> a(cqh $$0, BiConsumer<gw, dfd> $$1, ash $$2, int $$3, gw $$4, dqq $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
+   public dgb a(ate $$0, ht $$1) {
+      return this.a(this.h, $$1, (double)this.e);
+   }
 
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
-      }
+   protected dgb a(List<dgb> $$0, ht $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
 
-      return ImmutableList.of(new drg.a($$4.b($$3), 0, false));
+   protected dgb a(List<dgb> $$0, double $$1) {
+      double $$2 = asy.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

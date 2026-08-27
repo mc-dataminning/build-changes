@@ -1,83 +1,132 @@
-public class bje extends bvw {
-   private static final aef<Integer> bX = aei.a(bje.class, aeh.b);
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public bje(bja<? extends bje> $$0, cqb $$1) {
-      super($$0, $$1);
+public class bje {
+   private final Map<blk, biz> a = Maps.newHashMap();
+   private final bjf b;
+   private final int c;
+   @Nullable
+   private String d;
+   private Supplier<bjg.a> e = () -> null;
+   private final ib.c<bje> f = jy.e.f(this);
+
+   protected bje(bjf $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected it s() {
-      return iv.aJ;
+   public Optional<bjg.a> b() {
+      return Optional.ofNullable(this.e.get());
    }
 
-   @Override
-   protected void a_() {
-      super.a_();
-      this.an.a(bX, 0);
+   public void a(bkj $$0, int $$1) {
    }
 
-   @Override
-   protected apf t() {
-      return apg.jC;
+   public void a(@Nullable bjt $$0, @Nullable bjt $$1, bkj $$2, int $$3, double $$4) {
+      this.a($$2, $$3);
    }
 
-   @Override
-   protected apf w() {
-      return apg.jz;
+   public boolean a(int $$0, int $$1) {
+      return false;
    }
 
-   @Override
-   protected apf d(bhu $$0) {
-      return apg.jB;
+   public void b(bkj $$0, int $$1) {
    }
 
-   @Override
-   protected apf l_() {
-      return apg.jA;
+   public boolean a() {
+      return false;
    }
 
-   @Override
-   public void b(qw $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.y());
-   }
-
-   @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      this.c($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void b_() {
-      super.b_();
-      int $$0 = this.y();
-      if ($$0 > 0) {
-         this.c($$0 - 1);
+   protected String c() {
+      if (this.d == null) {
+         this.d = ac.a("effect", jy.e.b(this));
       }
 
-      this.dL().a(iv.aK, this.d(0.6), this.dt(), this.g(0.6), 0.0, 0.0, 0.0);
+      return this.d;
    }
 
-   @Override
-   public boolean a(bhu $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.c(100);
+   public String d() {
+      return this.c();
+   }
+
+   public ui e() {
+      return ui.c(this.d());
+   }
+
+   public bjf f() {
+      return this.b;
+   }
+
+   public int g() {
+      return this.c;
+   }
+
+   public bje a(blk $$0, String $$1, double $$2, bln.a $$3) {
+      this.a.put($$0, new bje.a(UUID.fromString($$1), $$2, $$3));
+      return this;
+   }
+
+   public bje a(Supplier<bjg.a> $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public Map<blk, biz> h() {
+      return this.a;
+   }
+
+   public void a(blm $$0) {
+      for (Entry<blk, biz> $$1 : this.a.entrySet()) {
+         bll $$2 = $$0.a($$1.getKey());
+         if ($$2 != null) {
+            $$2.b($$1.getValue().a());
+         }
+      }
+   }
+
+   public void a(blm $$0, int $$1) {
+      for (Entry<blk, biz> $$2 : this.a.entrySet()) {
+         bll $$3 = $$0.a($$2.getKey());
+         if ($$3 != null) {
+            $$3.b($$2.getValue().a());
+            $$3.c($$2.getValue().a($$1));
+         }
+      }
+   }
+
+   public boolean i() {
+      return this.b == bjf.a;
+   }
+
+   @Deprecated
+   public ib.c<bje> j() {
+      return this.f;
+   }
+
+   class a implements biz {
+      private final UUID b;
+      private final double c;
+      private final bln.a d;
+
+      public a(UUID $$0, double $$1, bln.a $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      return $$2;
-   }
+      @Override
+      public UUID a() {
+         return this.b;
+      }
 
-   private void c(int $$0) {
-      this.an.b(bX, $$0);
-   }
-
-   public int y() {
-      return this.an.b(bX);
-   }
-
-   public static boolean a(bja<? extends bjm> $$0, cqq $$1, bjq $$2, gw $$3, ash $$4) {
-      return $$3.v() <= $$1.y_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(cte.G);
+      @Override
+      public bln a(int $$0) {
+         return new bln(this.b, bje.this.d() + " " + $$0, this.c * (double)($$0 + 1), this.d);
+      }
    }
 }

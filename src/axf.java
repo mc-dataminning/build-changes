@@ -1,41 +1,26 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.stream.Stream;
+import java.util.List;
 
-public class axf extends DataFix {
-   public axf(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class axf extends azc {
+   public axf(Schema $$0) {
+      super($$0, false, "EntityShulkerRotationFix", baa.x, "minecraft:shulker");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "Item Lore componentize",
-         $$0,
-         $$1x -> $$1x.updateTyped(
-               $$1,
-               $$0xx -> $$0xx.update(
-                     DSL.remainderFinder(),
-                     $$0xxx -> $$0xxx.update(
-                           "display",
-                           $$0xxxx -> $$0xxxx.update(
-                                 "Lore",
-                                 $$0xxxxx -> (Dynamic)DataFixUtils.orElse($$0xxxxx.asStreamOpt().map(axf::a).map($$0xxxxx::createList).result(), $$0xxxxx)
-                              )
-                        )
-                  )
-            )
-      );
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
+      if (!$$1.isEmpty()) {
+         $$1.set(0, $$1.get(0) - 180.0);
+         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
+      } else {
+         return $$0;
+      }
    }
 
-   private static <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map(atf::a);
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

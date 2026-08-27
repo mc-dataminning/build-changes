@@ -1,17 +1,33 @@
-public interface afp extends afo {
-   ajr a();
+import java.util.List;
+import java.util.Map;
 
-   String b();
+public class afp {
+   private final String a;
+   private final String b;
 
-   int d();
+   public afp(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   String f();
+   public static afp a(String $$0) {
+      return new afp($$0, ".json");
+   }
 
-   String[] J();
+   public afw a(afw $$0) {
+      return $$0.c(this.a + "/" + $$0.a() + this.b);
+   }
 
-   String q();
+   public afw b(afw $$0) {
+      String $$1 = $$0.a();
+      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
+   }
 
-   String s();
+   public Map<afw, aor> a(aot $$0) {
+      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   }
 
-   String a(String var1);
+   public Map<afw, List<aor>> b(aot $$0) {
+      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   }
 }

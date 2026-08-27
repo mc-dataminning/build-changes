@@ -1,34 +1,66 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bme extends bld<bjo> {
-   public static final int c = 100;
-   private final bgp d;
-   private final apf e;
+public class bme extends bma<cck> {
+   @Nullable
+   private cee c;
 
-   public bme(bgp $$0, apf $$1) {
-      super(ImmutableMap.of(bsn.n, bso.c, bsn.S, bso.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+   public bme(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
    }
 
-   protected boolean a(akt $$0, bjo $$1, long $$2) {
-      return !$$1.aA();
+   protected boolean a(alq $$0, cck $$1) {
+      ht $$2 = $$1.dl();
+      this.c = $$0.c($$2);
+      return this.c != null && this.c.e() && bni.a($$0, $$1, $$2);
    }
 
-   protected void b(akt $$0, bjo $$1, long $$2) {
-      $$1.p(true);
-      $$1.b(bjy.g);
+   protected boolean a(alq $$0, cck $$1, long $$2) {
+      return this.c != null && !this.c.d();
    }
 
-   protected void c(akt $$0, bjo $$1, long $$2) {
-      if ($$1.aA()) {
-         $$1.f($$1.do().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, aph.g, 2.0F, 1.0F);
+   protected void b(alq $$0, cck $$1, long $$2) {
+      this.c = null;
+      $$1.dN().a($$0.W(), $$0.V());
+   }
+
+   protected void c(alq $$0, cck $$1, long $$2) {
+      ate $$3 = $$1.ef();
+      if ($$3.a(100) == 0) {
+         $$1.gj();
       }
 
-      $$1.p(false);
-      $$1.b(bjy.a);
-      $$1.dN().b(bsn.S);
-      $$1.dN().a(bsn.R, this.d.a($$0.z));
+      if ($$3.a(200) == 0 && bni.a($$0, $$1, $$1.dl())) {
+         cix $$4 = ac.a(cix.values(), $$3);
+         int $$5 = $$3.a(3);
+         ckj $$6 = this.a($$4, $$5);
+         cdk $$7 = new cdk($$1.dL(), $$1, $$1.dq(), $$1.du(), $$1.dw(), $$6);
+         $$1.dL().b($$7);
+      }
+   }
+
+   private ckj a(cix $$0, int $$1) {
+      ckj $$2 = new ckj(ckm.tA, 1);
+      ckj $$3 = new ckj(ckm.tB);
+      rt $$4 = $$3.a("Explosion");
+      List<Integer> $$5 = Lists.newArrayList();
+      $$5.add($$0.f());
+      $$4.b("Colors", $$5);
+      $$4.a("Type", (byte)cjn.a.e.a());
+      rt $$6 = $$2.a("Fireworks");
+      rz $$7 = new rz();
+      rt $$8 = $$3.b("Explosion");
+      if ($$8 != null) {
+         $$7.add($$8);
+      }
+
+      $$6.a("Flight", (byte)$$1);
+      if (!$$7.isEmpty()) {
+         $$6.a("Explosions", $$7);
+      }
+
+      return $$2;
    }
 }

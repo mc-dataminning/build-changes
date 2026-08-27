@@ -1,186 +1,169 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-public class eyq {
-   private final eqp a;
-   private final eyu b;
-   private final eyr c;
-   private final int d;
-   private final ag e;
-   private final aq f;
-   private final cjl g;
-   private final tl h;
-   private final eys i;
-   private final Map<af, eys> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
+public class eyq extends eyy {
+   static final afw c = new afw("textures/gui/title/mojangstudios.png");
+   private static final int d = asi.b.a(255, 239, 50, 61);
+   private static final int e = asi.b.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> ero.O().m.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long a = 1000L;
+   public static final long b = 500L;
+   private final ero m;
+   private final aop n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
    private float q;
-   private boolean r;
+   private long r = -1L;
+   private long s = -1L;
 
-   public eyq(eqp $$0, eyu $$1, eyr $$2, int $$3, ag $$4, aq $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new eys(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
+   public eyq(ero $$0, aop $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
    }
 
-   public eyr a() {
-      return this.c;
+   public static void a(ero $$0) {
+      $$0.Y().a(c, new eyq.a());
    }
 
-   public int b() {
-      return this.d;
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
    }
 
-   public ag c() {
-      return this.e;
-   }
-
-   public tl d() {
-      return this.h;
-   }
-
-   public aq e() {
-      return this.f;
-   }
-
-   public void a(erz $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(erz $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(erz $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
+   @Override
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ac.b();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
       }
 
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      aez $$3 = Objects.requireNonNullElse(this.f.d(), fzb.a);
-      int $$4 = asb.a(this.k);
-      int $$5 = asb.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.y != null) {
+            this.m.y.a($$0, 0, 0, $$3);
+         }
 
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+         int $$9 = asy.f((1.0F - asy.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(fpj.D(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - asy.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.y != null && $$8 < 1.0F) {
+            this.m.y.a($$0, $$1, $$2, $$3);
+         }
+
+         int $$11 = asy.c(asy.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(fpj.D(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = asy.a($$8, 0.0F, 1.0F);
+      } else {
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384, ero.a);
+         $$10 = 1.0F;
+      }
+
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      RenderSystem.disableDepthTest();
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(770, 1);
+      $$0.a(1.0F, 1.0F, 1.0F, $$10);
+      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
+      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableDepthTest();
+      int $$24 = (int)((double)$$0.b() * 0.8325);
+      float $$25 = this.n.b();
+      this.q = asy.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - asy.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
+      }
+
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var23) {
+            this.o.accept(Optional.of(var23));
+         }
+
+         this.r = ac.b();
+         if (this.m.y != null) {
+            this.m.y.b(this.m, $$0.a(), $$0.b());
          }
       }
-
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.f();
    }
 
-   public void a(erz $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, asb.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = asb.a(this.k);
-      int $$7 = asb.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (eys $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
+   private void a(esy $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = asy.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = asi.b.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   static class a extends fzt {
+      public a() {
+         super(eyq.c);
+      }
+
+      @Override
+      protected fzt.a b(aot $$0) {
+         ank $$1 = ero.O().ab();
+         aol<InputStream> $$2 = $$1.a(ani.a, eyq.c);
+         if ($$2 == null) {
+            return new fzt.a(new FileNotFoundException(eyq.c.toString()));
+         } else {
+            try {
+               fzt.a var5;
+               try (InputStream $$3 = $$2.get()) {
+                  var5 = new fzt.a(new gbx(true, true), eli.a($$3));
+               }
+
+               return var5;
+            } catch (IOException var9) {
+               return new fzt.a(var9);
             }
          }
       }
-
-      $$0.c().b();
-      if ($$5) {
-         this.q = asb.a(this.q + 0.02F, 0.0F, 0.3F);
-      } else {
-         this.q = asb.a(this.q - 0.04F, 0.0F, 1.0F);
-      }
-   }
-
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
-   }
-
-   @Nullable
-   public static eyq a(eqp $$0, eyu $$1, int $$2, ag $$3) {
-      Optional<aq> $$4 = $$3.a().d();
-      if ($$4.isEmpty()) {
-         return null;
-      } else {
-         for (eyr $$5 : eyr.values()) {
-            if ($$2 < $$5.a()) {
-               return new eyq($$0, $$1, $$5, $$2, $$3, $$4.get());
-            }
-
-            $$2 -= $$5.a();
-         }
-
-         return null;
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = asb.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
-      }
-
-      if (this.p - this.n > 113) {
-         this.l = asb.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
-      }
-   }
-
-   public void a(ag $$0) {
-      Optional<aq> $$1 = $$0.a().d();
-      if (!$$1.isEmpty()) {
-         eys $$2 = new eys(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
-      }
-   }
-
-   private void a(eys $$0, af $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (eys $$6 : this.j.values()) {
-         $$6.b();
-      }
-   }
-
-   @Nullable
-   public eys a(af $$0) {
-      return this.j.get($$0);
-   }
-
-   public eyu f() {
-      return this.b;
    }
 }

@@ -1,160 +1,96 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cyb {
-   public static final cyb.e[] a = new cyb.e[]{cyb.e.a, cyb.e.b, cyb.e.c};
-   private final cyb.b b;
+public class cyb extends ctm {
+   public static final MapCodec<cyb> a = b(cyb::new);
+   public static final dgs b = dgr.n;
 
-   public cyb(cya $$0) {
-      this(new cyb.a($$0));
+   @Override
+   public MapCodec<cyb> a() {
+      return a;
    }
 
-   public cyb(cyb.b $$0) {
-      this.b = $$0;
+   protected cyb(dga.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
-   public boolean a(dfd $$0, cph $$1, gw $$2, ha $$3) {
-      return ha.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
+   @Override
+   public void a(cqz $$0, ht $$1, dgb $$2, @Nullable bkj $$3, ckj $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      rt $$5 = cic.a($$4);
+      if ($$5 != null && $$5.e("RecordItem")) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+      }
    }
 
-   public Optional<cyb.c> a(dfd $$0, cqc $$1, gw $$2, ash $$3) {
-      return ha.a($$3)
-         .stream()
-         .filter($$1x -> this.b.b($$0, $$1x))
-         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
-   }
-
-   public long a(dfd $$0, cqc $$1, gw $$2, boolean $$3) {
-      return ha.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
-   }
-
-   public Optional<cyb.c> a(dfd $$0, cqc $$1, gw $$2, ha $$3, ash $$4, boolean $$5) {
-      return ha.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
-   }
-
-   private long a(dfd $$0, cqc $$1, gw $$2, ha $$3, boolean $$4) {
-      return ha.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
-   }
-
-   @VisibleForTesting
-   public Optional<cyb.c> a(dfd $$0, cqc $$1, gw $$2, ha $$3, ha $$4, boolean $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
-   }
-
-   public Optional<cyb.c> a(dfd $$0, cph $$1, gw $$2, ha $$3, ha $$4, cyb.d $$5) {
-      if ($$4.o() == $$3.o()) {
-         return Optional.empty();
-      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
-         for (cyb.e $$6 : this.b.a()) {
-            cyb.c $$7 = $$6.a($$2, $$4, $$3);
-            if ($$5.test($$1, $$2, $$7)) {
-               return Optional.of($$7);
-            }
-         }
-
-         return Optional.empty();
+   @Override
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dex $$6) {
+         $$6.i();
+         return bib.a($$1.B);
       } else {
-         return Optional.empty();
+         return bib.d;
       }
    }
 
-   public Optional<cyb.c> a(cqc $$0, cyb.c $$1, boolean $$2) {
-      dfd $$3 = $$0.a_($$1.a());
-      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
-   }
-
-   public static class a implements cyb.b {
-      protected cya a;
-
-      public a(cya $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public dfd a(dfd $$0, cph $$1, gw $$2, ha $$3) {
-         return this.a.c($$0, $$1, $$2, $$3);
-      }
-
-      protected boolean a(cph $$0, gw $$1, gw $$2, ha $$3, dfd $$4) {
-         return $$4.i() || $$4.a(this.a) || $$4.a(cte.G) && $$4.u().b();
-      }
-
-      @Override
-      public boolean a(cph $$0, gw $$1, cyb.c $$2) {
-         dfd $$3 = $$0.a_($$2.a());
-         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
-      }
-   }
-
-   public interface b {
-      @Nullable
-      dfd a(dfd var1, cph var2, gw var3, ha var4);
-
-      boolean a(cph var1, gw var2, cyb.c var3);
-
-      default cyb.e[] a() {
-         return cyb.a;
-      }
-
-      default boolean a(dfd $$0, ha $$1) {
-         return cya.a($$0, $$1);
-      }
-
-      default boolean a(dfd $$0) {
-         return false;
-      }
-
-      default boolean b(dfd $$0, ha $$1) {
-         return this.a($$0) || this.a($$0, $$1);
-      }
-
-      default boolean a(cqc $$0, cyb.c $$1, dfd $$2, boolean $$3) {
-         dfd $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
-         if ($$4 != null) {
-            if ($$3) {
-               $$0.x($$1.a()).e($$1.a());
-            }
-
-            return $$0.a($$1.a(), $$4, 2);
-         } else {
-            return false;
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dex $$5) {
+            $$5.i();
          }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
-   public static record c(gw a, ha b) {
+   @Override
+   public ddx a(ht $$0, dgb $$1) {
+      return new dex($$0, $$1);
    }
 
-   @FunctionalInterface
-   public interface d {
-      boolean test(cph var1, gw var2, cyb.c var3);
+   @Override
+   public boolean f_(dgb $$0) {
+      return true;
    }
 
-   public static enum e {
-      a {
-         @Override
-         public cyb.c a(gw $$0, ha $$1, ha $$2) {
-            return new cyb.c($$0, $$1);
-         }
-      },
-      b {
-         @Override
-         public cyb.c a(gw $$0, ha $$1, ha $$2) {
-            return new cyb.c($$0.a($$1), $$2);
-         }
-      },
-      c {
-         @Override
-         public cyb.c a(gw $$0, ha $$1, ha $$2) {
-            return new cyb.c($$0.a($$1).a($$2), $$1.g());
-         }
-      };
+   @Override
+   public int a(dgb $$0, cqf $$1, ht $$2, hx $$3) {
+      if ($$1.c_($$2) instanceof dex $$4 && $$4.f()) {
+         return 15;
+      }
 
-      public abstract cyb.c a(gw var1, ha var2, ha var3);
+      return 0;
+   }
+
+   @Override
+   public boolean d_(dgb $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dgb $$0, cqz $$1, ht $$2) {
+      if ($$1.c_($$2) instanceof dex $$3 && $$3.v().d() instanceof clb $$4) {
+         return $$4.h();
+      }
+
+      return 0;
+   }
+
+   @Override
+   public dae b_(dgb $$0) {
+      return dae.c;
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends ddx> ddy<T> a(cqz $$0, dgb $$1, ddz<T> $$2) {
+      return $$1.c(b) ? a($$2, ddz.e, dex::a) : null;
    }
 }

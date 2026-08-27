@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface egv {
+public interface egv {
+   @Nullable
+   sn a(edi var1);
+
+   Set<efq<?>> b();
+
+   egu a();
 }

@@ -1,58 +1,92 @@
-import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
+import java.time.Duration;
+import java.util.List;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class epe {
-   private static final String a = "realms_persistence.json";
-   private static final emh b = new emh();
-   private static final Logger c = LogUtils.getLogger();
+public class epe extends gfx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gfy b = new gfy(Duration.ofSeconds(5L));
+   private final List<eqo> c;
+   private final ezd y;
+   private final ewx z = ewx.d();
+   private volatile ui A;
+   @Nullable
+   private ety B;
 
-   public epe.a a() {
-      return b();
-   }
+   public epe(ezd $$0, eqo... $$1) {
+      super(erg.a);
+      this.y = $$0;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
+      } else {
+         this.A = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (eqo $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
+               }
 
-   public void a(epe.a $$0) {
-      b($$0);
-   }
-
-   public static epe.a b() {
-      Path $$0 = c();
-
-      try {
-         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
-         epe.a $$2 = b.a($$1, epe.a.class);
-         if ($$2 != null) {
-            return $$2;
-         }
-      } catch (NoSuchFileException var3) {
-      } catch (Exception var4) {
-         c.warn("Failed to read Realms storage {}", $$0, var4);
-      }
-
-      return new epe.a();
-   }
-
-   public static void b(epe.a $$0) {
-      Path $$1 = c();
-
-      try {
-         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
+               $$1x.run();
+            }
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new eoi(a));
+         $$3.start();
       }
    }
 
-   private static Path c() {
-      return eqp.O().p.toPath().resolve("realms_persistence.json");
+   @Override
+   public void d() {
+      super.d();
+      if (this.B != null) {
+         b.a(this.f.aV(), this.B.l());
+      }
    }
 
-   public static class a implements emz {
-      @SerializedName("newsLink")
-      public String a;
-      @SerializedName("hasUnreadNews")
-      public boolean b;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.e();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void aM_() {
+      this.z.c().b();
+      this.B = new ety(this.i, this.A);
+      this.z.a(this.B, $$0 -> $$0.e(30));
+      this.z.a(etj.a(uh.e, $$0 -> this.e()).a());
+      this.z.a($$1 -> {
+         eth var10000 = this.d($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.z.a();
+      ewr.a(this.z, this.s());
+   }
+
+   protected void e() {
+      for (eqo $$0 : this.c) {
+         $$0.b();
+      }
+
+      this.f.a(this.y);
+   }
+
+   public void a(ui $$0) {
+      if (this.B != null) {
+         this.B.b($$0);
+      }
+
+      this.A = $$0;
    }
 }

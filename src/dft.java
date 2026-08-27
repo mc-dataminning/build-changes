@@ -1,129 +1,113 @@
-public class dft {
-   public static final dfu a = dfu.a("attached");
-   public static final dfu b = dfu.a("bottom");
-   public static final dfu c = dfu.a("conditional");
-   public static final dfu d = dfu.a("disarmed");
-   public static final dfu e = dfu.a("drag");
-   public static final dfu f = dfu.a("enabled");
-   public static final dfu g = dfu.a("extended");
-   public static final dfu h = dfu.a("eye");
-   public static final dfu i = dfu.a("falling");
-   public static final dfu j = dfu.a("hanging");
-   public static final dfu k = dfu.a("has_bottle_0");
-   public static final dfu l = dfu.a("has_bottle_1");
-   public static final dfu m = dfu.a("has_bottle_2");
-   public static final dfu n = dfu.a("has_record");
-   public static final dfu o = dfu.a("has_book");
-   public static final dfu p = dfu.a("inverted");
-   public static final dfu q = dfu.a("in_wall");
-   public static final dfu r = dfu.a("lit");
-   public static final dfu s = dfu.a("locked");
-   public static final dfu t = dfu.a("occupied");
-   public static final dfu u = dfu.a("open");
-   public static final dfu v = dfu.a("persistent");
-   public static final dfu w = dfu.a("powered");
-   public static final dfu x = dfu.a("short");
-   public static final dfu y = dfu.a("signal_fire");
-   public static final dfu z = dfu.a("snowy");
-   public static final dfu A = dfu.a("triggered");
-   public static final dfu B = dfu.a("unstable");
-   public static final dfu C = dfu.a("waterlogged");
-   public static final dfu D = dfu.a("berries");
-   public static final dfu E = dfu.a("bloom");
-   public static final dfu F = dfu.a("shrieking");
-   public static final dfu G = dfu.a("can_summon");
-   public static final dgb<ha.a> H = dgb.a("axis", ha.a.class, ha.a.a, ha.a.c);
-   public static final dgb<ha.a> I = dgb.a("axis", ha.a.class);
-   public static final dfu J = dfu.a("up");
-   public static final dfu K = dfu.a("down");
-   public static final dfu L = dfu.a("north");
-   public static final dfu M = dfu.a("east");
-   public static final dfu N = dfu.a("south");
-   public static final dfu O = dfu.a("west");
-   public static final dfx P = dfx.a("facing", ha.c, ha.f, ha.d, ha.e, ha.b, ha.a);
-   public static final dfx Q = dfx.a("facing", $$0 -> $$0 != ha.b);
-   public static final dfx R = dfx.a("facing", ha.c.a);
-   public static final dgd S = dgd.a("flower_amount", 1, 4);
-   public static final dgb<hc> T = dgb.a("orientation", hc.class);
-   public static final dgb<dfo> U = dgb.a("face", dfo.class);
-   public static final dgb<dfr> V = dgb.a("attachment", dfr.class);
-   public static final dgb<dgp> W = dgb.a("east", dgp.class);
-   public static final dgb<dgp> X = dgb.a("north", dgp.class);
-   public static final dgb<dgp> Y = dgb.a("south", dgp.class);
-   public static final dgb<dgp> Z = dgb.a("west", dgp.class);
-   public static final dgb<dgi> aa = dgb.a("east", dgi.class);
-   public static final dgb<dgi> ab = dgb.a("north", dgi.class);
-   public static final dgb<dgi> ac = dgb.a("south", dgi.class);
-   public static final dgb<dgi> ad = dgb.a("west", dgi.class);
-   public static final dgb<dfz> ae = dgb.a("half", dfz.class);
-   public static final dgb<dgc> af = dgb.a("half", dgc.class);
-   public static final dgb<dgh> ag = dgb.a("shape", dgh.class);
-   public static final dgb<dgh> ah = dgb.a("shape", dgh.class, $$0 -> $$0 != dgh.j && $$0 != dgh.i && $$0 != dgh.g && $$0 != dgh.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final dgd aq = dgd.a("age", 0, 1);
-   public static final dgd ar = dgd.a("age", 0, 2);
-   public static final dgd as = dgd.a("age", 0, 3);
-   public static final dgd at = dgd.a("age", 0, 4);
-   public static final dgd au = dgd.a("age", 0, 5);
-   public static final dgd av = dgd.a("age", 0, 7);
-   public static final dgd aw = dgd.a("age", 0, 15);
-   public static final dgd ax = dgd.a("age", 0, 25);
-   public static final dgd ay = dgd.a("bites", 0, 6);
-   public static final dgd az = dgd.a("candles", 1, 4);
-   public static final dgd aA = dgd.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final dgd aC = dgd.a("distance", 1, 7);
-   public static final dgd aD = dgd.a("eggs", 1, 4);
-   public static final dgd aE = dgd.a("hatch", 0, 2);
-   public static final dgd aF = dgd.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final dgd aK = dgd.a("level", 1, 3);
-   public static final dgd aL = dgd.a("level", 0, 8);
-   public static final dgd aM = dgd.a("level", 1, 8);
-   public static final dgd aN = dgd.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final dgd aP = dgd.a("level", 0, 15);
-   public static final dgd aQ = dgd.a("moisture", 0, 7);
-   public static final dgd aR = dgd.a("note", 0, 24);
-   public static final dgd aS = dgd.a("pickles", 1, 4);
-   public static final dgd aT = dgd.a("power", 0, 15);
-   public static final dgd aU = dgd.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final dgd aW = dgd.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final dgd aZ = dgd.a("charges", 0, 4);
-   public static final dgd ba = dgd.a("rotation", 0, dgj.a());
-   public static final dgb<dfq> bb = dgb.a("part", dfq.class);
-   public static final dgb<dfv> bc = dgb.a("type", dfv.class);
-   public static final dgb<dfw> bd = dgb.a("mode", dfw.class);
-   public static final dgb<dfy> be = dgb.a("hinge", dfy.class);
-   public static final dgb<dge> bf = dgb.a("instrument", dge.class);
-   public static final dgb<dgf> bg = dgb.a("type", dgf.class);
-   public static final dgb<dgl> bh = dgb.a("type", dgl.class);
-   public static final dgb<dgm> bi = dgb.a("shape", dgm.class);
-   public static final dgb<dgn> bj = dgb.a("mode", dgn.class);
-   public static final dgb<dfp> bk = dgb.a("leaves", dfp.class);
-   public static final dgb<dgo> bl = dgb.a("tilt", dgo.class);
-   public static final dfx bm = dfx.a("vertical_direction", ha.b, ha.a);
-   public static final dgb<dga> bn = dgb.a("thickness", dga.class);
-   public static final dgb<dgk> bo = dgb.a("sculk_sensor_phase", dgk.class);
-   public static final dfu bp = dfu.a("slot_0_occupied");
-   public static final dfu bq = dfu.a("slot_1_occupied");
-   public static final dfu br = dfu.a("slot_2_occupied");
-   public static final dfu bs = dfu.a("slot_3_occupied");
-   public static final dfu bt = dfu.a("slot_4_occupied");
-   public static final dfu bu = dfu.a("slot_5_occupied");
-   public static final dgd bv = dgd.a("dusted", 0, 3);
-   public static final dfu bw = dfu.a("cracked");
+import com.mojang.serialization.MapCodec;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class dft extends ctm {
+   public static final MapCodec<dft> a = b(dft::new);
+   public static final dgv b = dfv.a;
+   public static final dgz<dhd> c = dfv.c;
+
+   @Override
+   public MapCodec<dft> a() {
+      return a;
+   }
+
+   public dft(dga.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, hx.c).a(c, dhd.a));
+   }
+
+   @Nullable
+   @Override
+   public ddx a(ht $$0, dgb $$1) {
+      return null;
+   }
+
+   public static ddx a(ht $$0, dgb $$1, dgb $$2, hx $$3, boolean $$4, boolean $$5) {
+      return new dfx($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public <T extends ddx> ddy<T> a(cqz $$0, dgb $$1, ddz<T> $$2) {
+      return a($$2, ddz.k, dfx::a);
+   }
+
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         ddx $$5 = $$1.c_($$2);
+         if ($$5 instanceof dfx) {
+            ((dfx)$$5).j();
+         }
+      }
+   }
+
+   @Override
+   public void a(cra $$0, ht $$1, dgb $$2) {
+      ht $$3 = $$1.a($$2.c(b).g());
+      dgb $$4 = $$0.a_($$3);
+      if ($$4.b() instanceof dfu && $$4.c(dfu.c)) {
+         $$0.a($$3, false);
+      }
+   }
+
+   @Override
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      if (!$$1.B && $$1.c_($$2) == null) {
+         $$1.a($$2, false);
+         return bib.b;
+      } else {
+         return bib.d;
+      }
+   }
+
+   @Override
+   public List<ckj> a(dgb $$0, edo.a $$1) {
+      dfx $$2 = this.a($$1.a(), ht.a($$1.a(eft.f)));
+      return $$2 == null ? Collections.emptyList() : $$2.i().a($$1);
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return eiv.a();
+   }
+
+   @Override
+   public eiy c(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      dfx $$4 = this.a($$1, $$2);
+      return $$4 != null ? $$4.a($$1, $$2) : eiv.a();
+   }
+
+   @Nullable
+   private dfx a(cqf $$0, ht $$1) {
+      ddx $$2 = $$0.c_($$1);
+      return $$2 instanceof dfx ? (dfx)$$2 : null;
+   }
+
+   @Override
+   public ckj a(crc $$0, ht $$1, dgb $$2) {
+      return ckj.b;
+   }
+
+   @Override
+   public dgb a(dgb $$0, dal $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dgb a(dgb $$0, cyv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
+      return false;
+   }
 }

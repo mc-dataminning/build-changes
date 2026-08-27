@@ -1,58 +1,47 @@
-public interface dgs {
-   void a(dgu var1, double var2);
+import com.google.common.collect.ImmutableSet;
+import java.util.Collection;
+import java.util.Optional;
 
-   void a(dgu var1, double var2, double var4, long var6);
+public class dgs extends dhe<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
 
-   void a(dgu var1, double var2, double var4);
+   protected dgs(String $$0) {
+      super($$0, Boolean.class);
+   }
 
-   void a(dgu var1, int var2);
+   @Override
+   public Collection<Boolean> a() {
+      return this.a;
+   }
 
-   void b(dgu var1, int var2);
+   public static dgs a(String $$0) {
+      return new dgs($$0);
+   }
 
-   void b(dgu var1, double var2);
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
+   }
 
-   void c(dgu var1, double var2);
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
 
-   public static class a implements dgs {
-      private final dgu a;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dgs $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
 
-      public a(dgu $$0) {
-         this.a = $$0;
+         return false;
       }
+   }
 
-      @Override
-      public void a(dgu $$0, double $$1) {
-         this.a.a($$1);
-      }
-
-      @Override
-      public void a(dgu $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(dgu $$0, double $$1, double $$2) {
-         this.a.c($$1, $$2);
-      }
-
-      @Override
-      public void a(dgu $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(dgu $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(dgu $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(dgu $$0, double $$1) {
-         this.a.b($$1);
-      }
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 }

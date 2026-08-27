@@ -1,40 +1,70 @@
-import com.mojang.serialization.MapCodec;
+public abstract class cse {
+   public static final afv<crx> a = a("the_void");
+   public static final afv<crx> b = a("plains");
+   public static final afv<crx> c = a("sunflower_plains");
+   public static final afv<crx> d = a("snowy_plains");
+   public static final afv<crx> e = a("ice_spikes");
+   public static final afv<crx> f = a("desert");
+   public static final afv<crx> g = a("swamp");
+   public static final afv<crx> h = a("mangrove_swamp");
+   public static final afv<crx> i = a("forest");
+   public static final afv<crx> j = a("flower_forest");
+   public static final afv<crx> k = a("birch_forest");
+   public static final afv<crx> l = a("dark_forest");
+   public static final afv<crx> m = a("old_growth_birch_forest");
+   public static final afv<crx> n = a("old_growth_pine_taiga");
+   public static final afv<crx> o = a("old_growth_spruce_taiga");
+   public static final afv<crx> p = a("taiga");
+   public static final afv<crx> q = a("snowy_taiga");
+   public static final afv<crx> r = a("savanna");
+   public static final afv<crx> s = a("savanna_plateau");
+   public static final afv<crx> t = a("windswept_hills");
+   public static final afv<crx> u = a("windswept_gravelly_hills");
+   public static final afv<crx> v = a("windswept_forest");
+   public static final afv<crx> w = a("windswept_savanna");
+   public static final afv<crx> x = a("jungle");
+   public static final afv<crx> y = a("sparse_jungle");
+   public static final afv<crx> z = a("bamboo_jungle");
+   public static final afv<crx> A = a("badlands");
+   public static final afv<crx> B = a("eroded_badlands");
+   public static final afv<crx> C = a("wooded_badlands");
+   public static final afv<crx> D = a("meadow");
+   public static final afv<crx> E = a("cherry_grove");
+   public static final afv<crx> F = a("grove");
+   public static final afv<crx> G = a("snowy_slopes");
+   public static final afv<crx> H = a("frozen_peaks");
+   public static final afv<crx> I = a("jagged_peaks");
+   public static final afv<crx> J = a("stony_peaks");
+   public static final afv<crx> K = a("river");
+   public static final afv<crx> L = a("frozen_river");
+   public static final afv<crx> M = a("beach");
+   public static final afv<crx> N = a("snowy_beach");
+   public static final afv<crx> O = a("stony_shore");
+   public static final afv<crx> P = a("warm_ocean");
+   public static final afv<crx> Q = a("lukewarm_ocean");
+   public static final afv<crx> R = a("deep_lukewarm_ocean");
+   public static final afv<crx> S = a("ocean");
+   public static final afv<crx> T = a("deep_ocean");
+   public static final afv<crx> U = a("cold_ocean");
+   public static final afv<crx> V = a("deep_cold_ocean");
+   public static final afv<crx> W = a("frozen_ocean");
+   public static final afv<crx> X = a("deep_frozen_ocean");
+   public static final afv<crx> Y = a("mushroom_fields");
+   public static final afv<crx> Z = a("dripstone_caves");
+   public static final afv<crx> aa = a("lush_caves");
+   public static final afv<crx> ab = a("deep_dark");
+   public static final afv<crx> ac = a("nether_wastes");
+   public static final afv<crx> ad = a("warped_forest");
+   public static final afv<crx> ae = a("crimson_forest");
+   public static final afv<crx> af = a("soul_sand_valley");
+   public static final afv<crx> ag = a("basalt_deltas");
+   public static final afv<crx> ah = a("the_end");
+   public static final afv<crx> ai = a("end_highlands");
+   public static final afv<crx> aj = a("end_midlands");
+   public static final afv<crx> ak = a("small_end_islands");
+   public static final afv<crx> al = a("end_barrens");
 
-public class cse extends ctl implements ctf {
-   public static final MapCodec<cse> a = b(cse::new);
-   private static final eia b = ehx.a(ctc.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), ctc.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
-
-   @Override
-   public MapCodec<cse> a() {
-      return a;
-   }
-
-   protected cse(dfc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean d(dfd $$0, cph $$1, gw $$2) {
-      return $$0.a(cte.dR) || super.d($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(cqe $$0, gw $$1, dfd $$2) {
-      return $$0.b_($$1.c()).c();
-   }
-
-   @Override
-   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
-      return (double)$$0.z.i() < 0.45;
-   }
-
-   @Override
-   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
-      des.e.a($$0, $$0.k().g(), $$2, $$3, $$1);
+   private static afv<crx> a(String $$0) {
+      return afv.a(jz.aq, new afw($$0));
    }
 }

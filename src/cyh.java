@@ -1,57 +1,95 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cyh extends ctl {
-   public static final MapCodec<cyh> a = b(cyh::new);
-   public static final int b = 3;
-   public static final dgd c = dft.as;
-   private static final eia[] d = new eia[]{
-      ctc.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      ctc.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      ctc.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
-      ctc.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
-   };
+public class cyh extends css {
+   public static final MapCodec<cyh> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(crx.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), iy.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
+            .apply($$0, cyh::new)
+   );
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final dhb g = dgr.aK;
+   private static final int h = 6;
+   private static final double i = 3.0;
+   private final crx.c j;
 
    @Override
    public MapCodec<cyh> a() {
-      return a;
+      return d;
    }
 
-   protected cyh(dfc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
-   }
-
-   @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return d[$$0.c(c)];
+   public cyh(crx.c $$0, iy.a $$1, dga.d $$2) {
+      super($$2, $$1);
+      this.j = $$0;
+      this.k(this.E.b().a(g, Integer.valueOf(1)));
    }
 
    @Override
-   protected boolean d(dfd $$0, cph $$1, gw $$2) {
-      return $$0.a(cte.dW);
+   public boolean d(dgb $$0) {
+      return $$0.c(g) == 3;
    }
 
    @Override
-   public boolean e_(dfd $$0) {
-      return $$0.c(c) < 3;
+   protected boolean a(ebd $$0) {
+      return $$0 == ebf.c && this.j == crx.c.b;
    }
 
    @Override
-   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      int $$4 = $$0.c(c);
-      if ($$4 < 3 && $$3.a(10) == 0) {
-         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
-         $$1.a($$2, $$0, 2);
+   protected double b(dgb $$0) {
+      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   }
+
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, bjt $$3) {
+      if (!$$1.B && $$3.bM() && this.a($$0, $$2, $$3)) {
+         $$3.ay();
+         if ($$3.a($$1, $$2)) {
+            this.e($$0, $$1, $$2);
+         }
+      }
+   }
+
+   private void e(dgb $$0, cqz $$1, ht $$2) {
+      if (this.j == crx.c.c) {
+         d(cuc.fu.o().a(g, $$0.c(g)), $$1, $$2);
+      } else {
+         d($$0, $$1, $$2);
+      }
+   }
+
+   public static void d(dgb $$0, cqz $$1, ht $$2) {
+      int $$3 = $$0.c(g) - 1;
+      dgb $$4 = $$3 == 0 ? cuc.ft.o() : $$0.a(g, Integer.valueOf($$3));
+      $$1.b($$2, $$4);
+      $$1.a(dkl.c, $$2, dkl.a.a($$4));
+   }
+
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, crx.c $$3) {
+      if (cuv.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
+         dgb $$4 = $$0.a(g);
+         $$1.b($$2, $$4);
+         $$1.a(dkl.c, $$2, dkl.a.a($$4));
       }
    }
 
    @Override
-   public cjl a(cqe $$0, gw $$1, dfd $$2) {
-      return new cjl(cjo.ru);
+   public int a(dgb $$0, cqz $$1, ht $$2) {
+      return $$0.c(g);
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(c);
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(g);
+   }
+
+   @Override
+   protected void a(dgb $$0, cqz $$1, ht $$2, ebd $$3) {
+      if (!this.d($$0)) {
+         dgb $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
+         $$1.b($$2, $$4);
+         $$1.a(dkl.c, $$2, dkl.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      }
    }
 }

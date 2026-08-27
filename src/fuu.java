@@ -1,16 +1,12 @@
-public class fuu extends fuj<bvp, fge<bvp>> {
-   private static final aez a = new aez("textures/entity/bear/polarbear.png");
-
-   public fuu(ftd.a $$0) {
-      super($$0, new fge<>($$0.a(fhw.aU)), 0.9F);
+public abstract class fuu<T extends bkl, M extends fgk<T>> extends fvj<T, M> {
+   public fuu(fud.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
    }
 
-   public aez a(bvp $$0) {
-      return a;
-   }
-
-   protected void a(bvp $$0, elj $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
+   public fuu(fud.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
+      super($$0, $$1, $$2);
+      this.a(new fxq<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
+      this.a(new fxu<>(this, $$0.f()));
+      this.a(new fye<>(this, $$0.d()));
    }
 }

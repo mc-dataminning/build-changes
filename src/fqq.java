@@ -1,30 +1,19 @@
-public class fqq implements fqa<del> {
-   private final ftb a;
+import com.google.common.collect.Streams;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public fqq(fqb.a $$0) {
-      this.a = $$0.c();
+public class fqq implements fqn {
+   public static final String a = "OR";
+   private final Iterable<? extends fqn> d;
+
+   public fqq(Iterable<? extends fqn> $$0) {
+      this.d = $$0;
    }
 
-   public void a(del $$0, float $$1, elj $$2, foa $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.0F, 0.5F);
-      cpd $$6 = $$0.d();
-      biw $$7 = $$6.a($$0.k(), $$0.k().D_(), $$0.p());
-      if ($$7 != null) {
-         float $$8 = 0.53125F;
-         float $$9 = Math.max($$7.df(), $$7.dg());
-         if ((double)$$9 > 1.0) {
-            $$8 /= $$9;
-         }
-
-         $$2.a(0.0F, 0.4F, 0.0F);
-         $$2.a(a.d.rotationDegrees((float)asb.d((double)$$1, $$6.b(), $$6.a()) * 10.0F));
-         $$2.a(0.0F, -0.2F, 0.0F);
-         $$2.a(a.b.rotationDegrees(-30.0F));
-         $$2.b($$8, $$8, $$8);
-         this.a.a($$7, 0.0, 0.0, 0.0, 0.0F, $$1, $$2, $$3, $$4);
-      }
-
-      $$2.b();
+   @Override
+   public Predicate<dgb> getPredicate(dgc<cua, dgb> $$0) {
+      List<Predicate<dgb>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
+      return $$1x -> $$1.stream().anyMatch($$1xx -> $$1xx.test($$1x));
    }
 }

@@ -1,31 +1,43 @@
-public record zh(aba d, byte e) implements ve<wx> {
-   public static final byte a = 1;
-   public static final byte b = 2;
-   public static final byte c = 3;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public zh(so $$0) {
-      this(new aba($$0), $$0.readByte());
+public class zh implements wb<xu> {
+   private final int a;
+   private final int b;
+   private final zi c;
+
+   public zh(cqg $$0, eat $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = $$0.e;
+      this.b = $$0.f;
+      this.c = new zi($$0, $$1, $$2, $$3);
+   }
+
+   public zh(tl $$0) {
+      this.a = $$0.n();
+      this.b = $$0.n();
+      this.c = new zi($$0, this.a, this.b);
    }
 
    @Override
-   public void a(so $$0) {
-      this.d.a($$0);
-      $$0.k(this.e);
+   public void a(tl $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
+      this.c.a($$0);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.e & $$0) != 0;
+   public int a() {
+      return this.a;
    }
 
-   public aba a() {
-      return this.d;
+   public int d() {
+      return this.b;
    }
 
-   public byte d() {
-      return this.e;
+   public zi e() {
+      return this.c;
    }
 }

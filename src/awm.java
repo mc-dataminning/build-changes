@@ -1,13 +1,15 @@
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 
-public class awm extends azn {
+public class awm extends baj {
    public awm(Schema $$0, boolean $$1) {
-      super("EntityTippedArrowFix", $$0, $$1);
+      super("EntityElderGuardianSplitFix", $$0, $$1);
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals($$0, "TippedArrow") ? "Arrow" : $$0;
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      return Pair.of(Objects.equals($$0, "Guardian") && $$1.get("Elder").asBoolean(false) ? "ElderGuardian" : $$0, $$1);
    }
 }

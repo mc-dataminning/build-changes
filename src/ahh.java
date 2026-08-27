@@ -1,48 +1,66 @@
-import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Map;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.function.Predicate;
 
 public class ahh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.help.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ui.b("clear.failed.single", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ui.b("clear.failed.multiple", $$0));
 
-   public static void a(CommandDispatcher<dt> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dp $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("help").executes($$1 -> {
-               Map<CommandNode<dt>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (dt)$$1.getSource());
-
-               for (String $$3 : $$2.values()) {
-                  ((dt)$$1.getSource()).a(() -> tl.b("/" + $$3), false);
-               }
-
-               return $$2.size();
-            }))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("clear").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).i()), $$0xx -> true, -1)))
             .then(
-               du.a("command", StringArgumentType.greedyString())
-                  .executes(
-                     $$1 -> {
-                        ParseResults<dt> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (dt)$$1.getSource());
-                        if ($$2.getContext().getNodes().isEmpty()) {
-                           throw a.create();
-                        } else {
-                           Map<CommandNode<dt>, String> $$3 = $$0.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (dt)$$1.getSource()
-                           );
-
-                           for (String $$4 : $$3.values()) {
-                              ((dt)$$1.getSource()).a(() -> tl.b("/" + $$2.getReader().getString() + " " + $$4), false);
-                           }
-
-                           return $$3.size();
-                        }
-                     }
+               ((RequiredArgumentBuilder)dv.a("targets", eg.d()).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), $$0xx -> true, -1)))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("item", gb.a($$1)).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), gb.a($$0x, "item"), -1)))
+                        .then(
+                           dv.a("maxCount", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), gb.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
+                              )
+                        )
                   )
             )
       );
+   }
+
+   private static int a(du $$0, Collection<alr> $$1, Predicate<ckj> $$2, int $$3) throws CommandSyntaxException {
+      int $$4 = 0;
+
+      for (alr $$5 : $$1) {
+         $$4 += $$5.fS().a($$2, $$3, $$5.bR.q());
+         $$5.bS.d();
+         $$5.bR.a($$5.fS());
+      }
+
+      if ($$4 == 0) {
+         if ($$1.size() == 1) {
+            throw a.create($$1.iterator().next().ab());
+         } else {
+            throw b.create($$1.size());
+         }
+      } else {
+         int $$6 = $$4;
+         if ($$3 == 0) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> ui.a("commands.clear.test.single", $$6, $$1.iterator().next().O_()), true);
+            } else {
+               $$0.a(() -> ui.a("commands.clear.test.multiple", $$6, $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> ui.a("commands.clear.success.single", $$6, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> ui.a("commands.clear.success.multiple", $$6, $$1.size()), true);
+         }
+
+         return $$4;
+      }
    }
 }

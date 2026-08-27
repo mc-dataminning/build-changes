@@ -1,24 +1,52 @@
-import io.netty.buffer.ByteBuf;
-import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 
 public class all {
-   public static final int a = 250;
-   public static final String b = "MC|PingHost";
-   public static final int c = 254;
-   public static final int d = 1;
-   public static final int e = 255;
-   public static final int f = 127;
+   @Nullable
+   protected static ht a(alq $$0, int $$1, int $$2) {
+      boolean $$3 = $$0.D_().h();
+      dii $$4 = $$0.d(iu.a($$1), iu.a($$2));
+      int $$5 = $$3 ? $$0.k().g().a($$0) : $$4.a(dlk.a.e, $$1 & 15, $$2 & 15);
+      if ($$5 < $$0.I_()) {
+         return null;
+      } else {
+         int $$6 = $$4.a(dlk.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(dlk.a.d, $$1 & 15, $$2 & 15)) {
+            return null;
+         } else {
+            ht.a $$7 = new ht.a();
 
-   public static void a(ByteBuf $$0, String $$1) {
-      $$0.writeShort($$1.length());
-      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
+            for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
+               $$7.d($$1, $$8, $$2);
+               dgb $$9 = $$0.a_($$7);
+               if (!$$9.u().c()) {
+                  break;
+               }
+
+               if (cua.a($$9.k($$0, $$7), hx.b)) {
+                  return $$7.c().i();
+               }
+            }
+
+            return null;
+         }
+      }
    }
 
-   public static String a(ByteBuf $$0) {
-      int $$1 = $$0.readShort();
-      int $$2 = $$1 * 2;
-      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
-      $$0.skipBytes($$2);
-      return $$3;
+   @Nullable
+   public static ht a(alq $$0, cqg $$1) {
+      if (aa.a($$1)) {
+         return null;
+      } else {
+         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
+            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
+               ht $$4 = a($$0, $$2, $$3);
+               if ($$4 != null) {
+                  return $$4;
+               }
+            }
+         }
+
+         return null;
+      }
    }
 }

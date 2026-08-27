@@ -1,72 +1,55 @@
-import it.unimi.dsi.fastutil.Stack;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import com.google.common.collect.MapMaker;
+import com.mojang.serialization.Codec;
 import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.concurrent.ConcurrentMap;
 
-public class afv {
-   private static final int a = 2;
+public class afv<T> {
+   private static final ConcurrentMap<afv.a, afv<?>> a = new MapMaker().weakValues().makeMap();
+   private final afw b;
+   private final afw c;
 
-   private static afv.b a(ae $$0, boolean $$1) {
-      Optional<aq> $$2 = $$0.d();
-      if ($$2.isEmpty()) {
-         return afv.b.b;
-      } else if ($$1) {
-         return afv.b.a;
-      } else {
-         return $$2.get().j() ? afv.b.b : afv.b.c;
-      }
+   public static <T> Codec<afv<T>> a(afv<? extends io<T>> $$0) {
+      return afw.a.xmap($$1 -> a($$0, $$1), afv::a);
    }
 
-   private static boolean a(Stack<afv.b> $$0) {
-      for (int $$1 = 0; $$1 <= 2; $$1++) {
-         afv.b $$2 = (afv.b)$$0.peek($$1);
-         if ($$2 == afv.b.a) {
-            return true;
-         }
-
-         if ($$2 == afv.b.b) {
-            return false;
-         }
-      }
-
-      return false;
+   public static <T> afv<T> a(afv<? extends io<T>> $$0, afw $$1) {
+      return a($$0.c, $$1);
    }
 
-   private static boolean a(ag $$0, Stack<afv.b> $$1, Predicate<ag> $$2, afv.a $$3) {
-      boolean $$4 = $$2.test($$0);
-      afv.b $$5 = a($$0.a(), $$4);
-      boolean $$6 = $$4;
-      $$1.push($$5);
-
-      for (ag $$7 : $$0.e()) {
-         $$6 |= a($$7, $$1, $$2, $$3);
-      }
-
-      boolean $$8 = $$6 || a($$1);
-      $$1.pop();
-      $$3.accept($$0, $$8);
-      return $$6;
+   public static <T> afv<io<T>> a(afw $$0) {
+      return a(jy.a, $$0);
    }
 
-   public static void a(ag $$0, Predicate<ag> $$1, afv.a $$2) {
-      ag $$3 = $$0.d();
-      Stack<afv.b> $$4 = new ObjectArrayList();
-
-      for (int $$5 = 0; $$5 <= 2; $$5++) {
-         $$4.push(afv.b.c);
-      }
-
-      a($$3, $$4, $$1, $$2);
+   private static <T> afv<T> a(afw $$0, afw $$1) {
+      return (afv<T>)a.computeIfAbsent(new afv.a($$0, $$1), $$0x -> new afv($$0x.a, $$0x.b));
    }
 
-   @FunctionalInterface
-   public interface a {
-      void accept(ag var1, boolean var2);
+   private afv(afw $$0, afw $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   @Override
+   public String toString() {
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
+   }
+
+   public boolean b(afv<? extends io<?>> $$0) {
+      return this.b.equals($$0.a());
+   }
+
+   public <E> Optional<afv<E>> c(afv<? extends io<E>> $$0) {
+      return this.b($$0) ? Optional.of((afv<E>)this) : Optional.empty();
+   }
+
+   public afw a() {
+      return this.c;
+   }
+
+   public afw b() {
+      return this.b;
+   }
+
+   static record a(afw a, afw b) {
    }
 }

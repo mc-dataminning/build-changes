@@ -1,24 +1,39 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class drw<P extends drv> {
-   public static final drw<dse> a = a("simple_state_provider", dse.b);
-   public static final drw<dsf> b = a("weighted_state_provider", dsf.b);
-   public static final drw<dsa> c = a("noise_threshold_provider", dsa.b);
-   public static final drw<drz> d = a("noise_provider", drz.g);
-   public static final drw<drx> e = a("dual_noise_provider", drx.b);
-   public static final drw<dsc> f = a("rotated_block_provider", dsc.b);
-   public static final drw<dsb> g = a("randomized_int_state_provider", dsb.b);
-   private final Codec<P> h;
+public class drw extends drt {
+   public static final Codec<drw> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, drw::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   private static <P extends drv> drw<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.W, $$0, new drw<>($$1));
+   public drw(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
    }
 
-   private drw(Codec<P> $$0) {
-      this.h = $$0;
+   public drw(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public Codec<P> a() {
-      return this.h;
+   @Override
+   protected dru<?> b() {
+      return dru.a;
+   }
+
+   @Override
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

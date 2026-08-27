@@ -1,26 +1,24 @@
-public class exl extends eye {
-   public exl(tl $$0) {
-      super($$0);
+public record exl(int a, int b) {
+   public static exl a(exj $$0, int $$1, int $$2) {
+      return switch ($$0) {
+         case a -> new exl($$1, $$2);
+         case b -> new exl($$2, $$1);
+      };
    }
 
-   @Override
-   public boolean ay_() {
-      return false;
+   public exl a(exk $$0) {
+      return switch ($$0) {
+         case b -> new exl(this.a, this.b + 1);
+         case a -> new exl(this.a, this.b - 1);
+         case c -> new exl(this.a - 1, this.b);
+         case d -> new exl(this.a + 1, this.b);
+      };
    }
 
-   @Override
-   protected boolean aG_() {
-      return false;
-   }
-
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
-   }
-
-   @Override
-   public void b(erz $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public int a(exj $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+      };
    }
 }

@@ -1,78 +1,144 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import java.util.Optional;
 
-public class atq extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("generic.maxHealth", "generic.max_health")
-      .put("Max Health", "generic.max_health")
-      .put("zombie.spawnReinforcements", "zombie.spawn_reinforcements")
-      .put("Spawn Reinforcements Chance", "zombie.spawn_reinforcements")
-      .put("horse.jumpStrength", "horse.jump_strength")
-      .put("Jump Strength", "horse.jump_strength")
-      .put("generic.followRange", "generic.follow_range")
-      .put("Follow Range", "generic.follow_range")
-      .put("generic.knockbackResistance", "generic.knockback_resistance")
-      .put("Knockback Resistance", "generic.knockback_resistance")
-      .put("generic.movementSpeed", "generic.movement_speed")
-      .put("Movement Speed", "generic.movement_speed")
-      .put("generic.flyingSpeed", "generic.flying_speed")
-      .put("Flying Speed", "generic.flying_speed")
-      .put("generic.attackDamage", "generic.attack_damage")
-      .put("generic.attackKnockback", "generic.attack_knockback")
-      .put("generic.attackSpeed", "generic.attack_speed")
-      .put("generic.armorToughness", "generic.armor_toughness")
-      .build();
+public class atq {
+   private static final char a = '�';
+   private static final Optional<Object> b = Optional.of(atz.a);
 
-   public atq(Schema $$0) {
-      super($$0, false);
+   private static boolean a(vf $$0, asl $$1, int $$2, char $$3) {
+      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("Rename ItemStack Attributes", $$0, $$1x -> $$1x.updateTyped($$1, atq::a)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("Rename Entity Attributes", this.getInputSchema().getType(azd.x), atq::b),
-            this.fixTypeEverywhereTyped("Rename Player Attributes", this.getInputSchema().getType(azd.b), atq::b)
+   public static boolean a(String $$0, vf $$1, asl $$2) {
+      int $$3 = $$0.length();
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isHighSurrogate($$5)) {
+            if ($$4 + 1 >= $$3) {
+               if (!$$2.accept($$4, $$1, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$6 = $$0.charAt($$4 + 1);
+            if (Character.isLowSurrogate($$6)) {
+               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
+                  return false;
+               }
+
+               $$4++;
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
          }
-      );
+      }
+
+      return true;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map($$0x -> a.getOrDefault($$0x, $$0x)).map($$0::createString), $$0);
+   public static boolean b(String $$0, vf $$1, asl $$2) {
+      int $$3 = $$0.length();
+
+      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isLowSurrogate($$5)) {
+            if ($$4 - 1 < 0) {
+               if (!$$2.accept(0, $$1, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$6 = $$0.charAt($$4 - 1);
+            if (Character.isHighSurrogate($$6)) {
+               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
+                  return false;
+               }
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   private static Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "AttributeModifiers",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", atq::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
+   public static boolean c(String $$0, vf $$1, asl $$2) {
+      return a($$0, 0, $$1, $$2);
    }
 
-   private static Typed<?> b(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Attributes",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", atq::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
+   public static boolean a(String $$0, int $$1, vf $$2, asl $$3) {
+      return a($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public static boolean a(String $$0, int $$1, vf $$2, vf $$3, asl $$4) {
+      int $$5 = $$0.length();
+      vf $$6 = $$2;
+
+      for (int $$7 = $$1; $$7 < $$5; $$7++) {
+         char $$8 = $$0.charAt($$7);
+         if ($$8 == 167) {
+            if ($$7 + 1 >= $$5) {
+               break;
+            }
+
+            char $$9 = $$0.charAt($$7 + 1);
+            n $$10 = n.a($$9);
+            if ($$10 != null) {
+               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
+            }
+
+            $$7++;
+         } else if (Character.isHighSurrogate($$8)) {
+            if ($$7 + 1 >= $$5) {
+               if (!$$4.accept($$7, $$6, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$11 = $$0.charAt($$7 + 1);
+            if (Character.isLowSurrogate($$11)) {
+               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
+                  return false;
+               }
+
+               $$7++;
+            } else if (!$$4.accept($$7, $$6, 65533)) {
+               return false;
+            }
+         } else if (!a($$6, $$4, $$7, $$8)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean a(un $$0, vf $$1, asl $$2) {
+      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
+   }
+
+   public static String a(String $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, vf.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
+   }
+
+   public static String a(un $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, vf.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
    }
 }

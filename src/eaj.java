@@ -1,213 +1,74 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
-public abstract class eaj extends eae {
-   public static final float e = 0.44444445F;
+public class eaj {
+   private final eak[] a;
+   private final double b;
+   private final double c;
 
-   @Override
-   public eaf d() {
-      return eah.d;
+   public eaj(ate $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   @Override
-   public eaf e() {
-      return eah.e;
-   }
-
-   @Override
-   public cjg a() {
-      return cjo.pM;
-   }
-
-   @Override
-   public void a(cqb $$0, gw $$1, eag $$2, ash $$3) {
-      gw $$4 = $$1.c();
-      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(iv.T, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, apg.mp, aph.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), apg.mn, aph.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
-   }
-
-   @Override
-   public void b(cqb $$0, gw $$1, eag $$2, ash $$3) {
-      if ($$0.X().b(cpx.b)) {
-         int $$4 = $$3.a(3);
-         if ($$4 > 0) {
-            gw $$5 = $$1;
-
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-               if (!$$0.o($$5)) {
-                  return;
-               }
-
-               dfd $$7 = $$0.a_($$5);
-               if ($$7.i()) {
-                  if (this.a((cqe)$$0, $$5)) {
-                     $$0.b($$5, csp.a($$0, $$5));
-                     return;
-                  }
-               } else if ($$7.d()) {
-                  return;
-               }
-            }
+   private eaj(ate $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
          } else {
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               gw $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-               if (!$$0.o($$9)) {
-                  return;
-               }
-
-               if ($$0.t($$9.c()) && this.b($$0, $$9)) {
-                  $$0.b($$9.c(), csp.a($$0, $$9));
-               }
-            }
-         }
-      }
-   }
-
-   private boolean a(cqe $$0, gw $$1) {
-      for (ha $$2 : ha.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private boolean b(cqe $$0, gw $$1) {
-      return $$1.v() >= $$0.H_() && $$1.v() < $$0.aj() && !$$0.A($$1) ? false : $$0.a_($$1).j();
-   }
-
-   @Nullable
-   @Override
-   public it h() {
-      return iv.j;
-   }
-
-   @Override
-   protected void a(cqc $$0, gw $$1, dfd $$2) {
-      this.a($$0, $$1);
-   }
-
-   @Override
-   public int b(cqe $$0) {
-      return $$0.C_().i() ? 4 : 2;
-   }
-
-   @Override
-   public dfd b(eag $$0) {
-      return cte.H.o().a(cxq.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(eaf $$0) {
-      return $$0 == eah.e || $$0 == eah.d;
-   }
-
-   @Override
-   public int c(cqe $$0) {
-      return $$0.C_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(eag $$0, cph $$1, gw $$2, eaf $$3, ha $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(aqa.a);
-   }
-
-   @Override
-   public int a(cqe $$0) {
-      return $$0.C_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(cqb $$0, gw $$1, eag $$2, eag $$3) {
-      int $$4 = this.a((cqe)$$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((cph)$$0, $$1) > $$2.a((cph)$$0, $$1) && $$0.D_().a(4) != 0) {
-         $$4 *= 4;
-      }
-
-      return $$4;
-   }
-
-   private void a(cqc $$0, gw $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected boolean a(cqb $$0) {
-      return $$0.X().b(cpx.R);
-   }
-
-   @Override
-   protected void a(cqc $$0, gw $$1, dfd $$2, ha $$3, eag $$4) {
-      if ($$3 == ha.a) {
-         eag $$5 = $$0.b_($$1);
-         if (this.a(aqa.b) && $$5.a(aqa.a)) {
-            if ($$2.b() instanceof cxq) {
-               $$0.a($$1, cte.b.o(), 3);
+            eak $$5 = new eak($$0);
+            int $$6 = $$3;
+            this.a = new eak[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
             }
 
-            this.a($$0, $$1);
-            return;
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new eak($$0);
+               } else {
+                  $$0.b(262);
+               }
+            }
+
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               ate $$9 = new dmj(new dll($$8));
+
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new eak($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
          }
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   protected boolean i() {
-      return true;
-   }
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
 
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
+      for (eak $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
+         }
 
-   @Override
-   public Optional<apf> j() {
-      return Optional.of(apg.cE);
-   }
-
-   public static class a extends eaj {
-      @Override
-      protected void a(dfe.a<eaf, eag> $$0) {
-         super.a($$0);
-         $$0.a(b);
+         $$4 /= 2.0;
+         $$5 *= 2.0;
       }
 
-      @Override
-      public int d(eag $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(eag $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends eaj {
-      @Override
-      public int d(eag $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(eag $$0) {
-         return true;
-      }
+      return $$3;
    }
 }

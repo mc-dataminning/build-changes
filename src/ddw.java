@@ -1,15 +1,20 @@
-public interface ddw extends bgx {
-   eia c = ctc.a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
-   eia x_ = ctc.a(0.0, 16.0, 0.0, 16.0, 32.0, 16.0);
-   eia y_ = ehx.a(c, x_);
-
-   default eia au_() {
-      return y_;
+public class ddw extends ddm {
+   public ddw(ht $$0, dgb $$1) {
+      super(ddz.C, $$0, $$1, cnr.c);
    }
 
-   double M();
+   @Override
+   protected ui g() {
+      return ui.c("container.blast_furnace");
+   }
 
-   double N();
+   @Override
+   protected int a(ckj $$0) {
+      return super.a($$0) / 2;
+   }
 
-   double O();
+   @Override
+   protected cfp a(int $$0, ccw $$1) {
+      return new cft($$0, $$1, this, this.n);
+   }
 }

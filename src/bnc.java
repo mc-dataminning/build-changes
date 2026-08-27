@@ -1,56 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
-@Deprecated
-public class bnc {
-   public static ble<bjm> a(float $$0, bgp $$1) {
-      return a($$0, $$1, $$0x -> true);
+public class bnc<E extends bkl> extends bnd<E> {
+   private final arh<cua> m;
+   private final float n;
+   private final List<bnd.a> o = new ArrayList<>();
+   private boolean p;
+
+   public bnc(bhm $$0, int $$1, int $$2, float $$3, Function<E, aqc> $$4, arh<cua> $$5, float $$6, BiPredicate<E, ht> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   public static ble<bjm> a(bja<?> $$0, float $$1, bgp $$2) {
-      return a($$1, $$2, $$1x -> $$0.equals($$1x.ag()));
+   @Override
+   protected void a(alq $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.ef().i() < this.n;
    }
 
-   private static ble<bjm> a(float $$0, bgp $$1, Predicate<bjm> $$2) {
-      float $$3 = $$0 * $$0;
-      bnc.a $$4 = new bnc.a($$1);
-      return bop.a(
-         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$3x -> $$3x.group($$3x.c(bsn.n), $$3x.b(bsn.h))
-               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bjm> $$9 = $$3x.<bsp>b($$5).a($$2.and($$2xxxx -> $$2xxxx.f((biw)$$7) <= (double)$$3));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else if (!$$4.a($$6.z)) {
-                        return false;
-                     } else {
-                        $$4x.a(new blo($$9.get(), true));
-                        return true;
-                     }
-                  }))
-      );
-   }
+   @Override
+   protected Optional<bnd.a> a(alq $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         ht.a $$1 = new ht.a();
 
-   public static final class a {
-      private final bgp a;
-      private int b;
+         while (!this.h.isEmpty()) {
+            Optional<bnd.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               bnd.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), hx.a)).a(this.m)) {
+                  return $$2;
+               }
 
-      public a(bgp $$0) {
-         if ($$0.a() <= 1) {
-            throw new IllegalArgumentException();
-         } else {
-            this.a = $$0;
+               this.o.add($$3);
+            }
          }
-      }
 
-      public boolean a(ash $$0) {
-         if (this.b == 0) {
-            this.b = this.a.a($$0) - 1;
-            return false;
-         } else {
-            return --this.b == 0;
-         }
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
    }
 }

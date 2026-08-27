@@ -1,34 +1,44 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+public class gcy extends gcr {
+   public static final int n = 20;
+   private final foc o;
+   private int p;
 
-public class gcy extends aoj {
-   private qw a;
-
-   public gcy(gcz $$0, hl<afi> $$1, ecd $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public gcy(foc $$0) {
+      super(aqd.gR, aqe.h, gdi.t());
+      this.o = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.1F;
    }
 
    @Override
-   protected void b(aku $$0) {
-      if (this.b().a($$0.fR())) {
-         this.a = $$0.f(new qw());
+   public void q() {
+      this.p++;
+      if (!this.o.dG() && (this.p <= 20 || this.o.fw())) {
+         this.f = (double)((float)this.o.dq());
+         this.g = (double)((float)this.o.ds());
+         this.h = (double)((float)this.o.dw());
+         float $$0 = (float)this.o.do().g();
+         if ((double)$$0 >= 1.0E-7) {
+            this.d = asy.a($$0 / 4.0F, 0.0F, 1.0F);
+         } else {
+            this.d = 0.0F;
+         }
+
+         if (this.p < 20) {
+            this.d = 0.0F;
+         } else if (this.p < 40) {
+            this.d = this.d * ((float)(this.p - 20) / 20.0F);
+         }
+
+         float $$1 = 0.8F;
+         if (this.d > 0.8F) {
+            this.e = 1.0F + (this.d - 0.8F);
+         } else {
+            this.e = 1.0F;
+         }
+      } else {
+         this.n();
       }
-
-      super.b($$0);
-   }
-
-   @Override
-   public tl a(SocketAddress $$0, GameProfile $$1) {
-      return (tl)(this.b().a($$1) && this.a($$1.getName()) != null ? tl.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public gcz b() {
-      return (gcz)super.c();
-   }
-
-   @Override
-   public qw r() {
-      return this.a;
    }
 }

@@ -1,111 +1,164 @@
-import java.util.function.Consumer;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.List;
+import java.util.Set;
 
-public class evy implements evv {
-   private final evt a;
-   private final evy.a b;
-   private int c = 0;
+public class evy implements AutoCloseable {
+   private static final ate a = ate.a();
+   private static final float b = 32.0F;
+   private final gab c;
+   private final afw d;
+   private ewc e;
+   private ewc f;
+   private final List<ekk> g = Lists.newArrayList();
+   private final evw<ewc> h = new evw<>(ewc[]::new, ewc[][]::new);
+   private final evw<evy.a> i = new evw<>(evy.a[]::new, evy.a[][]::new);
+   private final Int2ObjectMap<IntList> j = new Int2ObjectOpenHashMap();
+   private final List<evz> k = Lists.newArrayList();
 
-   private evy(evy.a $$0) {
-      this(0, 0, $$0);
+   public evy(gab $$0, afw $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public evy(int $$0, int $$1, evy.a $$2) {
-      this.a = new evt($$0, $$1);
-      this.b = $$2;
-   }
+   public void a(List<ekk> $$0) {
+      this.b();
+      this.c();
+      this.h.a();
+      this.i.a();
+      this.j.clear();
+      this.e = ewe.b.bake(this::a);
+      this.f = ewe.a.bake(this::a);
+      IntSet $$1 = new IntOpenHashSet();
 
-   public evy a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
+      for (ekk $$2 : $$0) {
+         $$1.addAll($$2.a());
+      }
 
-   public evx b() {
-      return this.a.b();
-   }
-
-   public evx c() {
-      return this.a.c();
-   }
-
-   public <T extends evw> T a(T $$0, evx $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends evw> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends evw> T a(T $$0, Consumer<evx> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<evw> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int l() {
-      return this.a.l();
-   }
-
-   @Override
-   public int i() {
-      return this.a.i();
-   }
-
-   @Override
-   public void f(int $$0) {
-      this.a.f($$0);
-   }
-
-   @Override
-   public void g(int $$0) {
-      this.a.g($$0);
-   }
-
-   @Override
-   public int r() {
-      return this.a.r();
-   }
-
-   @Override
-   public int t() {
-      return this.a.t();
-   }
-
-   public static evy d() {
-      return new evy(evy.a.b);
-   }
-
-   public static evy e() {
-      return new evy(evy.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(evt $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
+      Set<ekk> $$3 = Sets.newHashSet();
+      $$1.forEach($$2x -> {
+         for (ekk $$3x : $$0) {
+            ekj $$4 = $$3x.a($$2x);
+            if ($$4 != null) {
+               $$3.add($$3x);
+               if ($$4 != ewe.b) {
+                  ((IntList)this.j.computeIfAbsent(asy.f($$4.a(false)), $$0xx -> new IntArrayList())).add($$2x);
+               }
                break;
-            case b:
-               $$0.b($$1);
+            }
+         }
+      });
+      $$0.stream().filter($$3::contains).forEach(this.g::add);
+   }
+
+   @Override
+   public void close() {
+      this.b();
+      this.c();
+   }
+
+   private void b() {
+      for (ekk $$0 : this.g) {
+         $$0.close();
+      }
+
+      this.g.clear();
+   }
+
+   private void c() {
+      for (evz $$0 : this.k) {
+         $$0.close();
+      }
+
+      this.k.clear();
+   }
+
+   private static boolean b(ekj $$0) {
+      float $$1 = $$0.a(false);
+      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
+         float $$2 = $$0.a(true);
+         return $$2 < 0.0F || $$2 > 32.0F;
+      } else {
+         return true;
+      }
+   }
+
+   private evy.a b(int $$0) {
+      ekj $$1 = null;
+
+      for (ekk $$2 : this.g) {
+         ekj $$3 = $$2.a($$0);
+         if ($$3 != null) {
+            if ($$1 == null) {
+               $$1 = $$3;
+            }
+
+            if (!b($$3)) {
+               return new evy.a($$1, $$3);
+            }
          }
       }
 
-      public <T extends evw> T a(evt $$0, T $$1, int $$2, evx $$3) {
-         return (T)(switch (this) {
-            case a -> $$0.a($$1, 0, $$2, $$3);
-            case b -> $$0.a($$1, $$2, 0, $$3);
-         });
+      return $$1 != null ? new evy.a($$1, ewe.b) : evy.a.c;
+   }
+
+   public ekj a(int $$0, boolean $$1) {
+      return this.i.a($$0, this::b).a($$1);
+   }
+
+   private ewc c(int $$0) {
+      for (ekk $$1 : this.g) {
+         ekj $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2.bake(this::a);
+         }
+      }
+
+      return this.e;
+   }
+
+   public ewc a(int $$0) {
+      return this.h.a($$0, this::c);
+   }
+
+   private ewc a(ekl $$0) {
+      for (evz $$1 : this.k) {
+         ewc $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      afw $$3 = this.d.e("/" + this.k.size());
+      boolean $$4 = $$0.c();
+      ewa $$5 = $$4 ? ewa.b($$3) : ewa.a($$3);
+      evz $$6 = new evz($$5, $$4);
+      this.k.add($$6);
+      this.c.a($$3, $$6);
+      ewc $$7 = $$6.a($$0);
+      return $$7 == null ? this.e : $$7;
+   }
+
+   public ewc a(ekj $$0) {
+      IntList $$1 = (IntList)this.j.get(asy.f($$0.a(false)));
+      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
+   }
+
+   public ewc a() {
+      return this.f;
+   }
+
+   static record a(ekj a, ekj b) {
+      static final evy.a c = new evy.a(ewe.b, ewe.b);
+
+      ekj a(boolean $$0) {
+         return $$0 ? this.b : this.a;
       }
    }
 }

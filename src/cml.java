@@ -1,115 +1,100 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import org.slf4j.Logger;
 
-public class cml extends cmh {
-   private static final cmm a = cmm.a(cjo.tf, cjo.oF, cjo.rt, cjo.tr, cjo.ts, cjo.tv, cjo.tt, cjo.tw, cjo.tu, cjo.tx);
-   private static final cmm b = cmm.a(cjo.nK);
-   private static final cmm c = cmm.a(cjo.qk);
-   private static final Map<cjg, cip.a> d = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cjo.tf, cip.a.b);
-      $$0.put(cjo.oF, cip.a.e);
-      $$0.put(cjo.rt, cip.a.c);
-      $$0.put(cjo.tr, cip.a.d);
-      $$0.put(cjo.ts, cip.a.d);
-      $$0.put(cjo.tv, cip.a.d);
-      $$0.put(cjo.tt, cip.a.d);
-      $$0.put(cjo.tw, cip.a.d);
-      $$0.put(cjo.tu, cip.a.d);
-      $$0.put(cjo.tx, cip.a.d);
-   });
-   private static final cmm e = cmm.a(cjo.oG);
+public class cml {
+   public static final Codec<cml> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cmm.b.fieldOf("material").forGetter(cml::b), cmo.b.fieldOf("pattern").forGetter(cml::a)).apply($$0, cml::new)
+   );
+   private static final Logger c = LogUtils.getLogger();
+   public static final String b = "Trim";
+   private static final ui d = ui.c(ac.a("item", new afw("smithing_template.upgrade"))).a(n.h);
+   private final ib<cmm> e;
+   private final ib<cmo> f;
+   private final Function<chu, afw> g;
+   private final Function<chu, afw> h;
 
-   public cml(cme $$0) {
-      super($$0);
+   public cml(ib<cmm> $$0, ib<cmo> $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = ac.b($$1x -> {
+         afw $$2 = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
+      });
+      this.h = ac.b($$1x -> {
+         afw $$2 = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
+      });
    }
 
-   public boolean a(cff $$0, cqb $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
-      boolean $$6 = false;
+   private String c(chu $$0) {
+      Map<chv, String> $$1 = this.e.a().d();
+      return $$0 instanceof chv && $$1.containsKey($$0) ? $$1.get($$0) : this.e.a().a();
+   }
 
-      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
-         cjl $$8 = $$0.a($$7);
-         if (!$$8.b()) {
-            if (a.a($$8)) {
-               if ($$4) {
-                  return false;
-               }
+   public boolean a(ib<cmo> $$0, ib<cmm> $$1) {
+      return $$0 == this.f && $$1 == this.e;
+   }
 
-               $$4 = true;
-            } else if (c.a($$8)) {
-               if ($$6) {
-                  return false;
-               }
+   public ib<cmo> a() {
+      return this.f;
+   }
 
-               $$6 = true;
-            } else if (b.a($$8)) {
-               if ($$5) {
-                  return false;
-               }
+   public ib<cmm> b() {
+      return this.e;
+   }
 
-               $$5 = true;
-            } else if (e.a($$8)) {
-               if ($$2) {
-                  return false;
-               }
+   public afw a(chu $$0) {
+      return this.g.apply($$0);
+   }
 
-               $$2 = true;
-            } else {
-               if (!($$8.d() instanceof cia)) {
-                  return false;
-               }
+   public afw b(chu $$0) {
+      return this.h.apply($$0);
+   }
 
-               $$3 = true;
-            }
-         }
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof cml $$1) ? false : $$1.f == this.f && $$1.e == this.e;
+   }
+
+   public static boolean a(ip $$0, ckj $$1, cml $$2) {
+      if ($$1.a(ara.aH)) {
+         $$1.w().a("Trim", (sn)a.encodeStart(afu.a(sf.a, $$0), $$2).result().orElseThrow());
+         return true;
+      } else {
+         return false;
       }
-
-      return $$2 && $$3;
    }
 
-   public cjl a(cff $$0, hr $$1) {
-      cjl $$2 = new cjl(cjo.tB);
-      qw $$3 = $$2.a("Explosion");
-      cip.a $$4 = cip.a.a;
-      List<Integer> $$5 = Lists.newArrayList();
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cjl $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if (a.a($$7)) {
-               $$4 = d.get($$7.d());
-            } else if (c.a($$7)) {
-               $$3.a("Flicker", true);
-            } else if (b.a($$7)) {
-               $$3.a("Trail", true);
-            } else if ($$7.d() instanceof cia) {
-               $$5.add(((cia)$$7.d()).d().f());
+   public static Optional<cml> a(ip $$0, ckj $$1, boolean $$2) {
+      if ($$1.a(ara.aH) && $$1.v() != null && $$1.v().e("Trim")) {
+         rt $$3 = $$1.b("Trim");
+         cml $$4 = (cml)a.parse(afu.a(sf.a, $$0), $$3).resultOrPartial($$1x -> {
+            if (!$$2) {
+               c.warn($$1x);
             }
-         }
+         }).orElse(null);
+         return Optional.ofNullable($$4);
+      } else {
+         return Optional.empty();
       }
-
-      $$3.b("Colors", $$5);
-      $$3.a("Type", (byte)$$4.a());
-      return $$2;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cjl a(hr $$0) {
-      return new cjl(cjo.tB);
-   }
-
-   @Override
-   public cms<?> an_() {
-      return cms.h;
+   public static void a(ckj $$0, ip $$1, List<ui> $$2) {
+      Optional<cml> $$3 = a($$1, $$0, true);
+      if ($$3.isPresent()) {
+         cml $$4 = $$3.get();
+         $$2.add(d);
+         $$2.add(uh.a().b($$4.a().a().a($$4.b())));
+         $$2.add(uh.a().b($$4.b().a().e()));
+      }
    }
 }

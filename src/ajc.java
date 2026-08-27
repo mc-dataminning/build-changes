@@ -1,125 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.function.Function;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class ajc {
-   public static void a(CommandDispatcher<dt> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.save.failed"));
+
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("title").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
-                                    "targets", ee.d()
-                                 )
-                                 .then(du.a("clear").executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets")))))
-                              .then(du.a("reset").executes($$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets")))))
-                           .then(
-                              du.a("title")
-                                 .then(
-                                    du.a("title", ea.a())
-                                       .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "title", aal::new))
-                                 )
-                           ))
-                        .then(
-                           du.a("subtitle")
-                              .then(
-                                 du.a("title", ea.a())
-                                    .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "subtitle", aaj::new))
-                              )
-                        ))
-                     .then(
-                        du.a("actionbar")
-                           .then(
-                              du.a("title", ea.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "actionbar", zm::new))
-                           )
-                     ))
-                  .then(
-                     du.a("times")
-                        .then(
-                           du.a("fadeIn", fd.a())
-                              .then(
-                                 du.a("stay", fd.a())
-                                    .then(
-                                       du.a("fadeOut", fd.a())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dt)$$0x.getSource(),
-                                                   ee.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("save-all").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((du)$$0x.getSource(), false)))
+            .then(dv.a("flush").executes($$0x -> a((du)$$0x.getSource(), true)))
       );
    }
 
-   private static int a(dt $$0, Collection<aku> $$1) {
-      xn $$2 = new xn(false);
-
-      for (aku $$3 : $$1) {
-         $$3.c.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.title.cleared.single", $$1.iterator().next().N_()), true);
+   private static int a(du $$0, boolean $$1) throws CommandSyntaxException {
+      $$0.a(() -> ui.c("commands.save.saving"), false);
+      MinecraftServer $$2 = $$0.m();
+      boolean $$3 = $$2.b(true, $$1, true);
+      if (!$$3) {
+         throw a.create();
       } else {
-         $$0.a(() -> tl.a("commands.title.cleared.multiple", $$1.size()), true);
+         $$0.a(() -> ui.c("commands.save.success"), true);
+         return 1;
       }
-
-      return $$1.size();
-   }
-
-   private static int b(dt $$0, Collection<aku> $$1) {
-      xn $$2 = new xn(true);
-
-      for (aku $$3 : $$1) {
-         $$3.c.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.title.reset.single", $$1.iterator().next().N_()), true);
-      } else {
-         $$0.a(() -> tl.a("commands.title.reset.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(dt $$0, Collection<aku> $$1, tl $$2, String $$3, Function<tl, ve<?>> $$4) throws CommandSyntaxException {
-      for (aku $$5 : $$1) {
-         $$5.c.b($$4.apply(to.a($$0, $$2, $$5, 0)));
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().N_()), true);
-      } else {
-         $$0.a(() -> tl.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(dt $$0, Collection<aku> $$1, int $$2, int $$3, int $$4) {
-      aam $$5 = new aam($$2, $$3, $$4);
-
-      for (aku $$6 : $$1) {
-         $$6.c.b($$5);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.title.times.single", $$1.iterator().next().N_()), true);
-      } else {
-         $$0.a(() -> tl.a("commands.title.times.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
    }
 }

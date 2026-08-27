@@ -1,52 +1,70 @@
-public class fex<T extends biw> extends ffh<T> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final fhx g;
-   private final fhx[] h;
+public class fex {
+   public static void a(fiw $$0, fiw $$1, fiw $$2, boolean $$3) {
+      fiw $$4 = $$3 ? $$0 : $$1;
+      fiw $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
+   }
 
-   public fex(fhx $$0) {
-      this.g = $$0;
-      this.h = new fhx[4];
+   public static void a(fiw $$0, fiw $$1, bkj $$2, boolean $$3) {
+      fiw $$4 = $$3 ? $$0 : $$1;
+      fiw $$5 = $$3 ? $$1 : $$0;
+      $$4.f = $$3 ? -0.8F : 0.8F;
+      $$4.e = -0.97079635F;
+      $$5.e = $$4.e;
+      float $$6 = (float)cir.k($$2.fp());
+      float $$7 = asy.a((float)$$2.fr(), 0.0F, $$6);
+      float $$8 = $$7 / $$6;
+      $$5.f = asy.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
+      $$5.e = asy.i($$8, $$5.e, (float) (-Math.PI / 2));
+   }
 
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.h[$$1] = $$0.b(a($$1));
+   public static <T extends bkl> void a(fiw $$0, fiw $$1, T $$2, float $$3, float $$4) {
+      float $$5 = asy.a($$3 * (float) Math.PI);
+      float $$6 = asy.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2.fm() == bkd.b) {
+         $$0.e = -1.8849558F + asy.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + asy.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + asy.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + asy.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
       }
+
+      a($$0, $$1, $$4);
    }
 
-   private static String a(int $$0) {
-      return "segment" + $$0;
+   public static void a(fiw $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (asy.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * asy.a($$1 * 0.067F) * 0.05F;
    }
 
-   public static fid b() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      float $$2 = -3.5F;
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            fic.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            fhz.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
-         }
-      }
-
-      return fid.a($$0, 64, 32);
+   public static void a(fiw $$0, fiw $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
    }
 
-   @Override
-   public fhx a() {
-      return this.g;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
-         this.h[$$6].f = asb.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
-         this.h[$$6].b = asb.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
-      }
+   public static void a(fiw $$0, fiw $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = asy.a($$3 * (float) Math.PI);
+      float $$6 = asy.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

@@ -1,31 +1,20 @@
-import javax.annotation.Nullable;
-
-public enum cpq implements cph {
-   a;
-
-   @Nullable
-   @Override
-   public dcz c_(gw $$0) {
-      return null;
+public class cpq extends cot {
+   protected cpq(cot.a $$0, bjy... $$1) {
+      super($$0, cou.g, $$1);
    }
 
    @Override
-   public dfd a_(gw $$0) {
-      return cte.a.o();
+   public int a(int $$0) {
+      return 15;
    }
 
    @Override
-   public eag b_(gw $$0) {
-      return eah.a.g();
+   public int b(int $$0) {
+      return super.a($$0) + 50;
    }
 
    @Override
-   public int H_() {
-      return 0;
-   }
-
-   @Override
-   public int I_() {
-      return 0;
+   public boolean a(cot $$0) {
+      return super.a($$0) && $$0 != cox.x;
    }
 }

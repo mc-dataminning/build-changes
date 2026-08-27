@@ -1,22 +1,22 @@
-public class cgi implements cfb {
-   private final int[] a;
+public class cgi extends chh {
+   private final cfq a;
 
-   public cgi(int $$0) {
-      this.a = new int[$$0];
+   public cgi(cfq $$0, bhu $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public int a(int $$0) {
-      return this.a[$$0];
+   public boolean a(ckj $$0) {
+      return this.a.d($$0) || c($$0);
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
+   public int a_(ckj $$0) {
+      return c($$0) ? 1 : super.a_($$0);
    }
 
-   @Override
-   public int a() {
-      return this.a.length;
+   public static boolean c(ckj $$0) {
+      return $$0.a(ckm.pK);
    }
 }

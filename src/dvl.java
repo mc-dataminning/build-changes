@@ -1,26 +1,11 @@
-import com.mojang.serialization.Codec;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public interface dvl<S extends dvc> {
-   dvl<dwo> a = a("buried_treasure", dwo.d);
-   dvl<dwq> b = a("desert_pyramid", dwq.d);
-   dvl<dws> c = a("end_city", dws.d);
-   dvl<dxb> d = a("fortress", dxb.e);
-   dvl<dwu> e = a("igloo", dwu.d);
-   dvl<dwv> f = a("jigsaw", dwv.e);
-   dvl<dwx> g = a("jungle_temple", dwx.d);
-   dvl<dwz> h = a("mineshaft", dwz.d);
-   dvl<dxd> i = a("nether_fossil", dxd.d);
-   dvl<dxf> j = a("ocean_monument", dxf.d);
-   dvl<dxh> k = a("ocean_ruin", dxh.d);
-   dvl<dxj> l = a("ruined_portal", dxj.d);
-   dvl<dxl> m = a("shipwreck", dxl.d);
-   dvl<dxn> n = a("stronghold", dxn.d);
-   dvl<dxp> o = a("swamp_hut", dxp.d);
-   dvl<dxr> p = a("woodland_mansion", dxr.d);
+public abstract class dvl extends dvh {
+   protected abstract int a(ate var1, ht var2);
 
-   Codec<S> codec();
-
-   private static <S extends dvc> dvl<S> a(String $$0, Codec<S> $$1) {
-      return hq.a(jb.U, $$0, () -> $$1);
+   @Override
+   public Stream<ht> a_(dvf $$0, ate $$1, ht $$2) {
+      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
    }
 }

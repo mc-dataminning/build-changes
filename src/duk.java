@@ -1,25 +1,50 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public interface duk<P extends duj> {
-   duk<dtv> a = a("block_predicate_filter", dtv.a);
-   duk<dum> b = a("rarity_filter", dum.a);
-   duk<duo> c = a("surface_relative_threshold_filter", duo.a);
-   duk<dup> d = a("surface_water_depth_filter", dup.a);
-   duk<dtu> e = a("biome", dtu.a);
-   duk<dtz> f = a("count", dtz.a);
-   duk<due> g = a("noise_based_count", due.a);
-   duk<duf> h = a("noise_threshold_count", duf.a);
-   duk<dty> i = a("count_on_every_layer", dty.a);
-   duk<dua> j = a("environment_scan", dua.a);
-   duk<duc> k = a("heightmap", duc.a);
-   duk<dub> l = a("height_range", dub.a);
-   duk<dud> m = a("in_square", dud.a);
-   duk<dul> n = a("random_offset", dul.a);
-   duk<dtw> o = a("carving_mask", dtw.a);
+public class duk extends duh {
+   public static final Codec<duk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dme.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dme.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, duk::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dme d;
+   private final dme e;
+   private final LongSet f = new LongOpenHashSet();
 
-   Codec<P> codec();
+   private duk(dme $$0, dme $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   private static <P extends duj> duk<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.V, $$0, () -> $$1);
+   public static duk a(dme $$0, dme $$1) {
+      return new duk($$0, $$1);
+   }
+
+   @Override
+   public int a(ate $$0, dmh $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
+         }
+
+         return $$2;
+      } else {
+         return asy.b($$0, $$2, $$3);
+      }
+   }
+
+   @Override
+   public dui<?> a() {
+      return dui.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

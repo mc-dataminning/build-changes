@@ -1,20 +1,16 @@
-public record wb(gw b, int c, String d, int e) implements vx {
-   public static final aez a = new aez("debug/game_test_add_marker");
+import javax.annotation.Nullable;
 
-   public wb(so $$0) {
-      this($$0.e(), $$0.readInt(), $$0.s(), $$0.readInt());
+public interface wb<T extends tr> {
+   void a(tl var1);
+
+   void a(T var1);
+
+   default boolean b() {
+      return false;
    }
 
-   @Override
-   public void a(so $$0) {
-      $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
-   }
-
-   @Override
-   public aez a() {
-      return a;
+   @Nullable
+   default tk c() {
+      return null;
    }
 }

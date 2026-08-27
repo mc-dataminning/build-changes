@@ -1,20 +1,20 @@
-public class adj implements ve<adf> {
+public class adj implements wb<aca> {
    private final int a;
 
    public adj(int $$0) {
       this.a = $$0;
    }
 
-   public adj(so $$0) {
+   public adj(tl $$0) {
       this.a = $$0.n();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(tl $$0) {
       $$0.c(this.a);
    }
 
-   public void a(adf $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 

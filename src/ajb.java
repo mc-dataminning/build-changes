@@ -1,54 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ajb {
-   public static void a(CommandDispatcher<dt> $$0) {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ui.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> ui.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> ui.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ui.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ui.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(ui.c("commands.ride.mount.failure.wrong_dimension"));
+
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("time").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("set")
-                                    .then(du.a("day").executes($$0x -> a((dt)$$0x.getSource(), 1000))))
-                                 .then(du.a("noon").executes($$0x -> a((dt)$$0x.getSource(), 6000))))
-                              .then(du.a("night").executes($$0x -> a((dt)$$0x.getSource(), 13000))))
-                           .then(du.a("midnight").executes($$0x -> a((dt)$$0x.getSource(), 18000))))
-                        .then(du.a("time", fd.a()).executes($$0x -> a((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
-                  ))
-               .then(du.a("add").then(du.a("time", fd.a()).executes($$0x -> b((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ride").requires($$0x -> $$0x.c(2)))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("query")
-                        .then(du.a("daytime").executes($$0x -> c((dt)$$0x.getSource(), a(((dt)$$0x.getSource()).e())))))
-                     .then(du.a("gametime").executes($$0x -> c((dt)$$0x.getSource(), (int)(((dt)$$0x.getSource()).e().V() % 2147483647L)))))
-                  .then(du.a("day").executes($$0x -> c((dt)$$0x.getSource(), (int)(((dt)$$0x.getSource()).e().W() / 24000L % 2147483647L))))
+               ((RequiredArgumentBuilder)dv.a("target", eg.a())
+                     .then(dv.a("mount").then(dv.a("vehicle", eg.a()).executes($$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"), eg.a($$0x, "vehicle"))))))
+                  .then(dv.a("dismount").executes($$0x -> a((du)$$0x.getSource(), eg.a($$0x, "target"))))
             )
       );
    }
 
-   private static int a(akt $$0) {
-      return (int)($$0.W() % 24000L);
-   }
-
-   private static int c(dt $$0, int $$1) {
-      $$0.a(() -> tl.a("commands.time.query", $$1), false);
-      return $$1;
-   }
-
-   public static int a(dt $$0, int $$1) {
-      for (akt $$2 : $$0.l().F()) {
-         $$2.b((long)$$1);
+   private static int a(du $$0, bjt $$1, bjt $$2) throws CommandSyntaxException {
+      bjt $$3 = $$1.cY();
+      if ($$3 != null) {
+         throw b.create($$1.O_(), $$3.O_());
+      } else if ($$2.ag() == bjx.bt) {
+         throw d.create();
+      } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dL() != $$2.dL()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.O_(), $$2.O_());
+      } else {
+         $$0.a(() -> ui.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
       }
-
-      $$0.a(() -> tl.a("commands.time.set", $$1), true);
-      return a($$0.e());
    }
 
-   public static int b(dt $$0, int $$1) {
-      for (akt $$2 : $$0.l().F()) {
-         $$2.b($$2.W() + (long)$$1);
+   private static int a(du $$0, bjt $$1) throws CommandSyntaxException {
+      bjt $$2 = $$1.cY();
+      if ($$2 == null) {
+         throw a.create($$1.O_());
+      } else {
+         $$1.aa();
+         $$0.a(() -> ui.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
       }
-
-      int $$3 = a($$0.e());
-      $$0.a(() -> tl.a("commands.time.set", $$3), true);
-      return $$3;
    }
 }

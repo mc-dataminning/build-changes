@@ -1,17 +1,24 @@
-public record wi(gw b) implements vx {
-   public static final aez a = new aez("debug/poi_removed");
+public class wi implements wb<we> {
+   private final int a;
 
-   public wi(so $$0) {
-      this($$0.e());
+   public wi(int $$0) {
+      this.a = $$0;
+   }
+
+   public wi(tl $$0) {
+      this.a = $$0.readInt();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.b);
+   public void a(tl $$0) {
+      $$0.p(this.a);
    }
 
-   @Override
-   public aez a() {
-      return a;
+   public void a(we $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

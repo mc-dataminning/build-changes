@@ -1,124 +1,70 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
+import java.util.List;
+import java.util.Optional;
 
-public class cxk extends ctc implements dab {
-   public static final MapCodec<cxk> b = b(cxk::new);
-   public static final int c = 7;
-   public static final dgd d = dft.aC;
-   public static final dfu e = dft.v;
-   public static final dfu f = dft.C;
-   private static final int a = 1;
+public class cxk extends dbp implements cud {
+   public static final MapCodec<cxk> a = b(cxk::new);
 
    @Override
-   public MapCodec<? extends cxk> a() {
-      return b;
+   public MapCodec<cxk> a() {
+      return a;
    }
 
-   public cxk(dfc.d $$0) {
+   public cxk(dga.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public eia b_(dfd $$0, cph $$1, gw $$2) {
-      return ehx.a();
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   public boolean e_(dfd $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
+      return true;
    }
 
    @Override
-   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      if (this.h($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      ht $$4 = $$2.c();
+      dgb $$5 = cuc.bt.o();
+      Optional<ib.c<dve>> $$6 = $$0.H_().d(jz.az).b(qf.n);
 
-   protected boolean h(dfd $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
-   }
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         ht $$8 = $$4;
 
-   @Override
-   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
-   }
-
-   @Override
-   public int g(dfd $$0, cph $$1, gw $$2) {
-      return 1;
-   }
-
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, eah.c, eah.c.a($$3));
-      }
-
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(d) != $$6) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
-   }
-
-   private static dfd a(dfd $$0, cqc $$1, gw $$2) {
-      int $$3 = 7;
-      gw.a $$4 = new gw.a();
-
-      for (ha $$5 : ha.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
-         }
-      }
-
-      return $$0.a(d, Integer.valueOf($$3));
-   }
-
-   private static int o(dfd $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(dfd $$0) {
-      if ($$0.a(apv.t)) {
-         return OptionalInt.of(0);
-      } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
-      }
-   }
-
-   @Override
-   public eag c_(dfd $$0) {
-      return $$0.c(f) ? eah.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      if ($$1.q($$2.c())) {
-         if ($$3.a(15) == 1) {
-            gw $$4 = $$2.d();
-            dfd $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, ha.b)) {
-               ase.a($$1, $$2, $$3, iv.m);
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
             }
          }
+
+         dgb $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((cud)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.i()) {
+            ib<dve> $$12;
+            if ($$1.a(8) == 0) {
+               List<dob<?, ?>> $$11 = $$0.s($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((drf)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
+         }
       }
-   }
-
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(d, e, f);
-   }
-
-   @Override
-   public dfd a(clt $$0) {
-      eag $$1 = $$0.q().b_($$0.a());
-      dfd $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == eah.c));
-      return a($$2, $$0.q(), $$0.a());
    }
 }

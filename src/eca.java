@@ -1,589 +1,162 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.SignStyle;
-import java.time.temporal.ChronoField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.Comparator;
 import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class eca {
-   static final Logger b = LogUtils.getLogger();
-   static final DateTimeFormatter c = new DateTimeFormatterBuilder()
-      .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
-      .appendLiteral('-')
-      .appendValue(ChronoField.MONTH_OF_YEAR, 2)
-      .appendLiteral('-')
-      .appendValue(ChronoField.DAY_OF_MONTH, 2)
-      .appendLiteral('_')
-      .appendValue(ChronoField.HOUR_OF_DAY, 2)
-      .appendLiteral('-')
-      .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
-      .appendLiteral('-')
-      .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
-      .toFormatter();
-   private static final ImmutableList<String> d = ImmutableList.of(
-      "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
-   );
-   private static final String e = "Data";
-   private static final PathMatcher f = $$0 -> false;
-   public static final String a = "allowed_symlinks.txt";
-   private static final int g = 104857600;
-   private final Path h;
-   private final Path i;
-   final DataFixer j;
-   private final egx k;
+   private static final int a = 3;
+   private static final int b = 128;
+   private static final int c = 16;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final alq n;
 
-   public eca(Path $$0, Path $$1, egx $$2, DataFixer $$3) {
-      this.j = $$3;
-
-      try {
-         v.c($$0);
-      } catch (IOException var6) {
-         throw new UncheckedIOException(var6);
-      }
-
-      this.h = $$0;
-      this.i = $$1;
-      this.k = $$2;
+   public eca(alq $$0) {
+      this.n = $$0;
    }
 
-   public static egx a(Path $$0) {
-      if (Files.exists($$0)) {
-         try {
-            egx var2;
-            try (BufferedReader $$1 = Files.newBufferedReader($$0)) {
-               var2 = new egx(egz.a($$1));
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to parse {}, disallowing all symbolic links", "allowed_symlinks.txt", var6);
-         }
-      }
-
-      return new egx(f);
-   }
-
-   public static eca b(Path $$0) {
-      egx $$1 = a($$0.resolve("allowed_symlinks.txt"));
-      return new eca($$0, $$0.resolve("../backups"), $$1, ath.a());
-   }
-
-   private static <T> DataResult<dli> a(Dynamic<T> $$0, DataFixer $$1, int $$2) {
-      Dynamic<T> $$3 = $$0.get("WorldGenSettings").orElseEmptyMap();
-      UnmodifiableIterator $$6 = d.iterator();
-
-      while ($$6.hasNext()) {
-         String $$4 = (String)$$6.next();
-         Optional<Dynamic<T>> $$5 = $$0.get($$4).result();
-         if ($$5.isPresent()) {
-            $$3 = $$3.set($$4, $$5.get());
-         }
-      }
-
-      Dynamic<T> $$6x = atg.r.a($$1, $$3, $$2);
-      return dli.a.parse($$6x);
-   }
-
-   private static cqu a(Dynamic<?> $$0) {
-      return cqu.b.parse($$0).resultOrPartial(b::error).orElse(cqu.c);
-   }
-
-   public String a() {
-      return "Anvil";
-   }
-
-   public eca.a b() throws ebz {
-      if (!Files.isDirectory(this.h)) {
-         throw new ebz(tl.c("selectWorld.load_folder_access"));
-      } else {
-         try {
-            eca.a var3;
-            try (Stream<Path> $$0 = Files.list(this.h)) {
-               List<eca.b> $$1 = $$0.filter($$0x -> Files.isDirectory($$0x))
-                  .map(eca.b::new)
-                  .filter($$0x -> Files.isRegularFile($$0x.b()) || Files.isRegularFile($$0x.c()))
-                  .toList();
-               var3 = new eca.a($$1);
-            }
-
-            return var3;
-         } catch (IOException var6) {
-            throw new ebz(tl.c("selectWorld.load_folder_access"));
-         }
-      }
-   }
-
-   public CompletableFuture<List<ecb>> a(eca.a $$0) {
-      List<CompletableFuture<ecb>> $$1 = new ArrayList<>($$0.a.size());
-
-      for (eca.b $$2 : $$0.a) {
-         $$1.add(CompletableFuture.supplyAsync(() -> {
-            boolean $$1x;
-            try {
-               $$1x = arh.b($$2.f());
-            } catch (Exception var13) {
-               b.warn("Failed to read {} lock", $$2.f(), var13);
-               return null;
-            }
-
-            try {
-               ecb $$4 = this.a($$2, this.a($$2, $$1x));
-               return $$4 != null ? $$4 : null;
-            } catch (OutOfMemoryError var12) {
-               arz.b();
-               System.gc();
-               String $$6 = "Ran out of memory trying to read summary of world folder \"" + $$2.a() + "\"";
-               b.error(LogUtils.FATAL_MARKER, $$6);
-               OutOfMemoryError $$7 = new OutOfMemoryError("Ran out of memory reading level data");
-               $$7.initCause(var12);
-               o $$8 = o.a($$7, $$6);
-               p $$9 = $$8.a("World details");
-               $$9.a("Folder Name", $$2.a());
-
-               try {
-                  long $$10 = Files.size($$2.b());
-                  $$9.a("level.dat size", $$10);
-               } catch (IOException var11) {
-                  $$9.a("level.dat size", (Throwable)var11);
-               }
-
-               throw new y($$8);
-            }
-         }, ac.f()));
-      }
-
-      return ac.d($$1).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).sorted().toList());
-   }
-
-   private int f() {
-      return 19133;
-   }
-
-   @Nullable
-   <T> T a(eca.b $$0, BiFunction<Path, DataFixer, T> $$1) {
-      if (!Files.exists($$0.f())) {
-         return null;
-      } else {
-         Path $$2 = $$0.b();
-         if (Files.exists($$2)) {
-            T $$3 = $$1.apply($$2, this.j);
-            if ($$3 != null) {
-               return $$3;
-            }
-         }
-
-         $$2 = $$0.c();
-         return Files.exists($$2) ? $$1.apply($$2, this.j) : null;
-      }
-   }
-
-   @Nullable
-   private static cqu a(Path $$0, DataFixer $$1) {
-      try {
-         if (c($$0) instanceof qw $$3) {
-            qw $$4 = $$3.p("Data");
-            int $$5 = rj.b($$4, -1);
-            Dynamic<?> $$6 = atg.a.a($$1, new Dynamic(ri.a, $$4), $$5);
-            return a($$6);
-         }
-      } catch (Exception var7) {
-         b.error("Exception reading {}", $$0, var7);
-      }
-
-      return null;
-   }
-
-   static BiFunction<Path, DataFixer, Pair<ecg, dlh.b>> a(DynamicOps<rq> $$0, cqu $$1, hq<din> $$2, Lifecycle $$3) {
-      return ($$4, $$5) -> {
-         qw $$6;
-         try {
-            $$6 = rh.a($$4.toFile());
-         } catch (IOException var17) {
-            throw new UncheckedIOException(var17);
-         }
-
-         qw $$9 = $$6.p("Data");
-         qw $$10 = $$9.b("Player", 10) ? $$9.p("Player") : null;
-         $$9.r("Player");
-         int $$11 = rj.b($$9, -1);
-         Dynamic<?> $$12 = atg.a.a($$5, new Dynamic($$0, $$9), $$11);
-         dli $$13 = (dli)a($$12, $$5, $$11).getOrThrow(false, ac.a("WorldGenSettings: ", b::error));
-         ecc $$14 = ecc.a($$12);
-         cqf $$15 = cqf.a($$12, $$1);
-         dlh.b $$16 = $$13.b().a($$2);
-         Lifecycle $$17 = $$16.a().add($$3);
-         ece $$18 = ece.a($$12, $$5, $$11, $$10, $$15, $$14, $$16.d(), $$13.a(), $$17);
-         return Pair.of($$18, $$16);
-      };
-   }
-
-   BiFunction<Path, DataFixer, ecb> a(eca.b $$0, boolean $$1) {
-      return ($$2, $$3) -> {
-         try {
-            if (Files.isSymbolicLink($$2)) {
-               List<egy> $$4 = this.k.a($$2);
-               if (!$$4.isEmpty()) {
-                  b.warn("{}", egw.a($$2, $$4));
-                  return new ecb.b($$0.a(), $$0.d());
-               }
-            }
-
-            if (c($$2) instanceof qw $$6) {
-               qw $$7 = $$6.p("Data");
-               int $$8 = rj.b($$7, -1);
-               Dynamic<?> $$9 = atg.a.a($$3, new Dynamic(ri.a, $$7), $$8);
-               ecc $$10 = ecc.a($$9);
-               int $$11 = $$10.a();
-               if ($$11 == 19132 || $$11 == 19133) {
-                  boolean $$12 = $$11 != this.f();
-                  Path $$13 = $$0.d();
-                  cqu $$14 = a($$9);
-                  cqf $$15 = cqf.a($$9, $$14);
-                  cei $$16 = b($$9);
-                  boolean $$17 = cek.a($$16);
-                  return new ecb($$15, $$10, $$0.a(), $$12, $$1, $$17, $$13);
-               }
-            } else {
-               b.warn("Invalid root tag in {}", $$2);
-            }
-
-            return null;
-         } catch (Exception var18) {
-            b.error("Exception reading {}", $$2, var18);
-            return null;
-         }
-      };
-   }
-
-   private static cei b(Dynamic<?> $$0) {
-      Set<aez> $$1 = $$0.get("enabled_features").asStream().flatMap($$0x -> $$0x.asString().result().map(aez::a).stream()).collect(Collectors.toSet());
-      return cek.d.a($$1, $$0x -> {
+   public Optional<l.a> a(ht $$0, boolean $$1, dhs $$2) {
+      bvi $$3 = this.n.w();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      Optional<bvj> $$5 = $$3.b($$0x -> $$0x.a(bvm.r), $$0, $$4, bvi.b.c)
+         .filter($$1x -> $$2.a($$1x.f()))
+         .sorted(Comparator.<bvj>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
+         .filter($$0x -> this.n.a_($$0x.f()).b(dgr.H))
+         .findFirst();
+      return $$5.map($$0x -> {
+         ht $$1x = $$0x.f();
+         this.n.k().a(alv.f, new cqg($$1x), 3, $$1x);
+         dgb $$2x = this.n.a_($$1x);
+         return l.a($$1x, $$2x.c(dgr.H), 21, hx.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
       });
    }
 
-   @Nullable
-   private static rq c(Path $$0) throws IOException {
-      sc $$1 = new sc(new rz("Data", qw.b, "Player"), new rz("Data", qw.b, "WorldGenSettings"));
-      rh.a($$0.toFile(), $$1, rf.a(104857600L));
-      return $$1.d();
-   }
+   public Optional<l.a> a(ht $$0, hx.a $$1) {
+      hx $$2 = hx.a(hx.b.a, $$1);
+      double $$3 = -1.0;
+      ht $$4 = null;
+      double $$5 = -1.0;
+      ht $$6 = null;
+      dhs $$7 = this.n.C_();
+      int $$8 = Math.min(this.n.aj(), this.n.I_() + this.n.j()) - 1;
+      ht.a $$9 = $$0.j();
 
-   public boolean a(String $$0) {
-      try {
-         Path $$1 = this.c($$0);
-         Files.createDirectory($$1);
-         Files.deleteIfExists($$1);
-         return true;
-      } catch (IOException var3) {
-         return false;
-      }
-   }
+      for (ht.a $$10 : ht.a($$0, 16, hx.f, hx.d)) {
+         int $$11 = Math.min($$8, this.n.a(dlk.a.e, $$10.u(), $$10.w()));
+         int $$12 = 1;
+         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
+            $$10.c($$2.g(), 1);
 
-   public boolean b(String $$0) {
-      try {
-         return Files.isDirectory(this.c($$0));
-      } catch (InvalidPathException var3) {
-         return false;
-      }
-   }
+            for (int $$13 = $$11; $$13 >= this.n.I_(); $$13--) {
+               $$10.q($$13);
+               if (this.a($$10)) {
+                  int $$14 = $$13;
 
-   public Path c(String $$0) {
-      return this.h.resolve($$0);
-   }
-
-   public Path c() {
-      return this.h;
-   }
-
-   public Path d() {
-      return this.i;
-   }
-
-   public eca.c d(String $$0) throws IOException, egw {
-      Path $$1 = this.c($$0);
-      List<egy> $$2 = this.k.a($$1, true);
-      if (!$$2.isEmpty()) {
-         throw new egw($$1, $$2);
-      } else {
-         return new eca.c($$0, $$1);
-      }
-   }
-
-   public eca.c e(String $$0) throws IOException {
-      Path $$1 = this.c($$0);
-      return new eca.c($$0, $$1);
-   }
-
-   public egx e() {
-      return this.k;
-   }
-
-   public static record a(List<eca.b> a) implements Iterable<eca.b> {
-
-      public boolean a() {
-         return this.a.isEmpty();
-      }
-
-      @Override
-      public Iterator<eca.b> iterator() {
-         return this.a.iterator();
-      }
-
-      public List<eca.b> b() {
-         return this.a;
-      }
-   }
-
-   public static record b(Path a) {
-      public String a() {
-         return this.a.getFileName().toString();
-      }
-
-      public Path b() {
-         return this.a(eby.e);
-      }
-
-      public Path c() {
-         return this.a(eby.f);
-      }
-
-      public Path a(LocalDateTime $$0) {
-         return this.a.resolve(eby.e.a() + "_corrupted_" + $$0.format(eca.c));
-      }
-
-      public Path d() {
-         return this.a(eby.g);
-      }
-
-      public Path e() {
-         return this.a(eby.h);
-      }
-
-      public Path a(eby $$0) {
-         return this.a.resolve($$0.a());
-      }
-
-      public Path f() {
-         return this.a;
-      }
-   }
-
-   public class c implements AutoCloseable {
-      final arh b;
-      final eca.b c;
-      private final String d;
-      private final Map<eby, Path> e = Maps.newHashMap();
-
-      c(String $$1, Path $$2) throws IOException {
-         this.d = $$1;
-         this.c = new eca.b($$2);
-         this.b = arh.a($$2);
-      }
-
-      public eca a() {
-         return eca.this;
-      }
-
-      public String b() {
-         return this.d;
-      }
-
-      public Path a(eby $$0) {
-         return this.e.computeIfAbsent($$0, this.c::a);
-      }
-
-      public Path a(aey<cqb> $$0) {
-         return dim.a($$0, this.c.f());
-      }
-
-      private void i() {
-         if (!this.b.a()) {
-            throw new IllegalStateException("Lock is no longer valid");
-         }
-      }
-
-      public ecd c() {
-         this.i();
-         return new ecd(this, eca.this.j);
-      }
-
-      @Nullable
-      public ecb d() {
-         this.i();
-         return eca.this.a(this.c, eca.this.a(this.c, false));
-      }
-
-      @Nullable
-      public Pair<ecg, dlh.b> a(DynamicOps<rq> $$0, cqu $$1, hq<din> $$2, Lifecycle $$3) {
-         this.i();
-         return eca.this.a(this.c, eca.a($$0, $$1, $$2, $$3));
-      }
-
-      @Nullable
-      public cqu e() {
-         this.i();
-         return eca.this.a(this.c, eca::a);
-      }
-
-      public void a(hr $$0, ecg $$1) {
-         this.a($$0, $$1, null);
-      }
-
-      public void a(hr $$0, ecg $$1, @Nullable qw $$2) {
-         File $$3 = this.c.f().toFile();
-         qw $$4 = $$1.a($$0, $$2);
-         qw $$5 = new qw();
-         $$5.a("Data", $$4);
-
-         try {
-            File $$6 = File.createTempFile("level", ".dat", $$3);
-            rh.a($$5, $$6);
-            File $$7 = this.c.c().toFile();
-            File $$8 = this.c.b().toFile();
-            ac.a($$8, $$6, $$7);
-         } catch (Exception var10) {
-            eca.b.error("Failed to save level {}", $$3, var10);
-         }
-      }
-
-      public Optional<Path> f() {
-         return !this.b.a() ? Optional.empty() : Optional.of(this.c.d());
-      }
-
-      public void g() throws IOException {
-         this.i();
-         final Path $$0 = this.c.e();
-         eca.b.info("Deleting level {}", this.d);
-
-         for (int $$1 = 1; $$1 <= 5; $$1++) {
-            eca.b.info("Attempt {}...", $$1);
-
-            try {
-               Files.walkFileTree(this.c.f(), new SimpleFileVisitor<Path>() {
-                  public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) throws IOException {
-                     if (!$$0.equals($$0)) {
-                        eca.b.debug("Deleting {}", $$0);
-                        Files.delete($$0);
-                     }
-
-                     return FileVisitResult.CONTINUE;
+                  while ($$13 > this.n.I_() && this.a($$10.c(hx.a))) {
+                     $$13--;
                   }
 
-                  public FileVisitResult a(Path $$0x, @Nullable IOException $$1) throws IOException {
-                     if ($$1 != null) {
-                        throw $$1;
-                     } else {
-                        if ($$0.equals(c.this.c.f())) {
-                           c.this.b.close();
-                           Files.deleteIfExists($$0);
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$10.q($$13);
+                        if (this.a($$10, $$9, $$2, 0)) {
+                           double $$16 = $$0.j($$10);
+                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$10.i();
+                           }
+
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$10.i();
+                           }
                         }
-
-                        Files.delete($$0);
-                        return FileVisitResult.CONTINUE;
                      }
                   }
-               });
-               break;
-            } catch (IOException var6) {
-               if ($$1 >= 5) {
-                  throw var6;
-               }
-
-               eca.b.warn("Failed to delete {}", this.c.f(), var6);
-
-               try {
-                  Thread.sleep(500L);
-               } catch (InterruptedException var5) {
                }
             }
          }
       }
 
-      public void a(String $$0) throws IOException {
-         this.i();
-         Path $$1 = this.c.b();
-         if (Files.exists($$1)) {
-            qw $$2 = rh.a($$1.toFile());
-            qw $$3 = $$2.p("Data");
-            $$3.a("LevelName", $$0);
-            rh.a($$2, $$1.toFile());
-         }
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
       }
 
-      public long h() throws IOException {
-         this.i();
-         String $$0 = LocalDateTime.now().format(eca.c) + "_" + this.d;
-         Path $$1 = eca.this.d();
-
-         try {
-            v.c($$1);
-         } catch (IOException var9) {
-            throw new RuntimeException(var9);
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.I_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
          }
 
-         Path $$3 = $$1.resolve(v.a($$1, $$0, ".zip"));
+         $$4 = new ht($$0.u(), asy.a($$0.v(), $$17, $$18), $$0.w()).i();
+         hx $$19 = $$2.h();
+         if (!$$7.a($$4)) {
+            return Optional.empty();
+         }
 
-         try (final ZipOutputStream $$4 = new ZipOutputStream(new BufferedOutputStream(Files.newOutputStream($$3)))) {
-            final Path $$5 = Paths.get(this.d);
-            Files.walkFileTree(this.c.f(), new SimpleFileVisitor<Path>() {
-               public FileVisitResult a(Path $$0, BasicFileAttributes $$1) throws IOException {
-                  if ($$0.endsWith("session.lock")) {
-                     return FileVisitResult.CONTINUE;
-                  } else {
-                     String $$2 = $$5.resolve(c.this.c.f().relativize($$0)).toString().replace('\\', '/');
-                     ZipEntry $$3 = new ZipEntry($$2);
-                     $$4.putNextEntry($$3);
-                     com.google.common.io.Files.asByteSource($$0.toFile()).copyTo($$4);
-                     $$4.closeEntry();
-                     return FileVisitResult.CONTINUE;
-                  }
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  dgb $$23 = $$22 < 0 ? cuc.co.o() : cuc.a.o();
+                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$9, $$23);
                }
-            });
+            }
          }
-
-         return Files.size($$3);
       }
 
-      @Override
-      public void close() throws IOException {
-         this.b.close();
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$9, cuc.co.o(), 3);
+            }
+         }
       }
+
+      dgb $$26 = cuc.ed.o().a(czc.b, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$9, $$26, 18);
+         }
+      }
+
+      return Optional.of(new l.a($$4.i(), 2, 3));
+   }
+
+   private boolean a(ht.a $$0) {
+      dgb $$1 = this.n.a_($$0);
+      return $$1.r() && $$1.u().c();
+   }
+
+   private boolean a(ht $$0, ht.a $$1, hx $$2, int $$3) {
+      hx $$4 = $$2.h();
+
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
+
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 }

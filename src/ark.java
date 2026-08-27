@@ -1,97 +1,69 @@
-import java.io.IOException;
-import java.io.InputStream;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class ark extends InputStream {
-   private static final int a = 8192;
-   private final InputStream b;
-   private final byte[] c;
-   private int d;
-   private int e;
-
-   public ark(InputStream $$0) {
-      this($$0, 8192);
+public class ark {
+   public static Map<afv<? extends io<?>>, ark.a> a(ij<agf> $$0) {
+      return is.b($$0)
+         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
+         .filter($$0x -> !((ark.a)$$0x.getSecond()).a())
+         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
    }
 
-   public ark(InputStream $$0, int $$1) {
-      this.b = $$0;
-      this.c = new byte[$$1];
-   }
+   private static <T> ark.a a(io<T> $$0) {
+      Map<afw, IntList> $$1 = new HashMap<>();
+      $$0.i().forEach($$2 -> {
+         ig<T> $$3 = (ig<T>)$$2.getSecond();
+         IntList $$4 = new IntArrayList($$3.b());
 
-   @Override
-   public int read() throws IOException {
-      if (this.e >= this.d) {
-         this.b();
-         if (this.e >= this.d) {
-            return -1;
-         }
-      }
-
-      return Byte.toUnsignedInt(this.c[this.e++]);
-   }
-
-   @Override
-   public int read(byte[] $$0, int $$1, int $$2) throws IOException {
-      int $$3 = this.a();
-      if ($$3 <= 0) {
-         if ($$2 >= this.c.length) {
-            return this.b.read($$0, $$1, $$2);
-         }
-
-         this.b();
-         $$3 = this.a();
-         if ($$3 <= 0) {
-            return -1;
-         }
-      }
-
-      if ($$2 > $$3) {
-         $$2 = $$3;
-      }
-
-      System.arraycopy(this.c, this.e, $$0, $$1, $$2);
-      this.e += $$2;
-      return $$2;
-   }
-
-   @Override
-   public long skip(long $$0) throws IOException {
-      if ($$0 <= 0L) {
-         return 0L;
-      } else {
-         long $$1 = (long)this.a();
-         if ($$1 <= 0L) {
-            return this.b.skip($$0);
-         } else {
-            if ($$0 > $$1) {
-               $$0 = $$1;
+         for (ib<T> $$5 : $$3) {
+            if ($$5.f() != ib.b.a) {
+               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
             }
 
-            this.e = (int)((long)this.e + $$0);
-            return $$0;
+            $$4.add($$0.a($$5.a()));
          }
+
+         $$1.put(((arh)$$2.getFirst()).b(), $$4);
+      });
+      return new ark.a($$1);
+   }
+
+   public static <T> void a(afv<? extends io<T>> $$0, io<T> $$1, ark.a $$2, ark.b<T> $$3) {
+      $$2.a.forEach(($$3x, $$4) -> {
+         arh<T> $$5 = arh.a($$0, $$3x);
+         List<ib<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
+         $$3.accept($$5, $$6);
+      });
+   }
+
+   public static final class a {
+      final Map<afw, IntList> a;
+
+      a(Map<afw, IntList> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(tl $$0) {
+         $$0.a(this.a, tl::a, tl::a);
+      }
+
+      public static ark.a b(tl $$0) {
+         return new ark.a($$0.a(tl::t, tl::a));
+      }
+
+      public boolean a() {
+         return this.a.isEmpty();
       }
    }
 
-   @Override
-   public int available() throws IOException {
-      return this.a() + this.b.available();
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-   }
-
-   private int a() {
-      return this.d - this.e;
-   }
-
-   private void b() throws IOException {
-      this.d = 0;
-      this.e = 0;
-      int $$0 = this.b.read(this.c, 0, this.c.length);
-      if ($$0 > 0) {
-         this.d = $$0;
-      }
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(arh<T> var1, List<ib<T>> var2);
    }
 }

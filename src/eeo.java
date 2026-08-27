@@ -1,96 +1,63 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
 
-public class eeo extends edw {
-   private static final Codec<List<eeo.b>> b = arj.a(eeo.b.a.listOf(), (Function<List<eeo.b>, DataResult<List<eeo.b>>>)($$0 -> {
-      Set<he<bih>> $$1 = new ObjectOpenHashSet();
-
-      for (eeo.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   }));
+public class eeo extends eeu {
    public static final Codec<eeo> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(arj.a(b, "effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, eeo::new)
+      $$0 -> a($$0)
+            .and($$0.group(ehd.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, eeo::new)
    );
-   private final List<eeo.b> c;
+   private final ehc b;
+   private final boolean c;
 
-   eeo(List<efj> $$0, List<eeo.b> $$1) {
+   eeo(List<egh> $$0, ehc $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public edy b() {
-      return edz.n;
+   public eew b() {
+      return eex.d;
    }
 
    @Override
-   public Set<ees<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   public Set<efq<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cjl a(cjl $$0, eck $$1) {
-      if ($$0.a(cjo.va) && !this.c.isEmpty()) {
-         eeo.b $$2 = ac.a(this.c, $$1.b());
-         bih $$3 = $$2.a().a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a()) {
-            $$4 *= 20;
-         }
+   public ckj a(ckj $$0, edi $$1) {
+      ate $$2 = $$1.b();
+      return cov.a($$2, $$0, this.b.a($$1), this.c);
+   }
 
-         ckv.b($$0, List.of(new dbc.a($$3, $$4)));
-         return $$0;
-      } else {
-         return $$0;
+   public static eeo.a a(ehc $$0) {
+      return new eeo.a($$0);
+   }
+
+   public static class a extends eeu.a<eeo.a> {
+      private final ehc a;
+      private boolean b;
+
+      public a(ehc $$0) {
+         this.a = $$0;
       }
-   }
-
-   public static eeo.a c() {
-      return new eeo.a();
-   }
-
-   public static class a extends edw.a<eeo.a> {
-      private final Builder<eeo.b> a = ImmutableList.builder();
 
       protected eeo.a a() {
          return this;
       }
 
-      public eeo.a a(bih $$0, ege $$1) {
-         this.a.add(new eeo.b($$0.j(), $$1));
+      public eeo.a e() {
+         this.b = true;
          return this;
       }
 
       @Override
-      public edx b() {
-         return new eeo(this.g(), this.a.build());
-      }
-   }
-
-   static record b(he<bih> b, ege c) {
-      public static final Codec<eeo.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jb.e.r().fieldOf("type").forGetter(eeo.b::a), egf.a.fieldOf("duration").forGetter(eeo.b::b)).apply($$0, eeo.b::new)
-      );
-
-      public he<bih> a() {
-         return this.b;
-      }
-
-      public ege b() {
-         return this.c;
+      public eev b() {
+         return new eeo(this.g(), this.a, this.b);
       }
    }
 }

@@ -1,140 +1,64 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class csr extends ctc implements dab {
-   protected static final eia a = ctc.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final eia b = ctc.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final dfu c = dft.C;
-   private final boolean d;
-
-   public static boolean a(cqb $$0, gw $$1) {
-      return g($$0.a_($$1));
-   }
-
-   public static boolean g(dfd $$0) {
-      return $$0.a(apv.N) && $$0.b() instanceof csr;
-   }
-
-   protected csr(boolean $$0, dfc.d $$1) {
-      super($$1);
-      this.d = $$0;
-   }
+public abstract class csr extends cua {
+   public static final int a = 3;
+   public static final dgs b = dgr.r;
 
    @Override
    protected abstract MapCodec<? extends csr> a();
 
-   public boolean b() {
-      return this.d;
+   protected csr(dga.d $$0) {
+      super($$0);
+   }
+
+   protected abstract Iterable<eif> b(dgb var1);
+
+   public static boolean c(dgb $$0) {
+      return $$0.b(b) && ($$0.a(aqs.ae) || $$0.a(aqs.bj)) && $$0.c(b);
    }
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      dgh $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
-      return $$4 != null && $$4.b() ? b : a;
-   }
-
-   @Override
-   public boolean a(dfd $$0, cqe $$1, gw $$2) {
-      return c($$1, $$2.d());
-   }
-
-   @Override
-   public void b(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
+   public void a(cqz $$0, dgb $$1, eib $$2, cdp $$3) {
+      if (!$$0.B && $$3.bM() && this.d($$1)) {
+         a($$0, $$1, $$2.a(), true);
       }
    }
 
-   protected dfd a(dfd $$0, cqb $$1, gw $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, $$2, $$3);
-      }
-
-      return $$0;
+   protected boolean d(dgb $$0) {
+      return !$$0.c(b);
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ctc $$3, gw $$4, boolean $$5) {
-      if (!$$1.B && $$1.a_($$2).a(this)) {
-         dgh $$6 = $$0.c(this.c());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
+   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
+      if ($$0.c(b)) {
+         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
+      }
+   }
+
+   private static void a(cqz $$0, eif $$1, ate $$2) {
+      float $$3 = $$2.i();
+      if ($$3 < 0.3F) {
+         $$0.a(js.Z, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
+         if ($$3 < 0.17F) {
+            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, aqd.dc, aqe.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
          }
       }
+
+      $$0.a(js.aD, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
    }
 
-   private static boolean a(gw $$0, cqb $$1, dgh $$2) {
-      if (!c($$1, $$0.d())) {
-         return true;
-      } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.h());
-            case d:
-               return !c($$1, $$0.g());
-            case e:
-               return !c($$1, $$0.e());
-            case f:
-               return !c($$1, $$0.f());
-            default:
-               return false;
-         }
-      }
-   }
-
-   protected void a(dfd $$0, cqb $$1, gw $$2, ctc $$3) {
-   }
-
-   protected dfd a(cqb $$0, gw $$1, dfd $$2, boolean $$3) {
-      if ($$0.B) {
-         return $$2;
-      } else {
-         dgh $$4 = $$2.c(this.c());
-         return new cza($$0, $$1, $$2).a($$0.B($$1), $$3, $$4).c();
-      }
-   }
-
-   @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      if (!$$4) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$0.c(this.c()).b()) {
-            $$1.a($$2.c(), this);
-         }
-
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.d(), this);
-         }
-      }
-   }
-
-   @Override
-   public dfd a(clt $$0) {
-      eag $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eah.c;
-      dfd $$3 = super.o();
-      ha $$4 = $$0.g();
-      boolean $$5 = $$4 == ha.f || $$4 == ha.e;
-      return $$3.a(this.c(), $$5 ? dgh.b : dgh.a).a(c, Boolean.valueOf($$2));
-   }
-
-   public abstract dgg<dgh> c();
-
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eah.c, eah.c.a($$3));
+   public static void a(@Nullable ccx $$0, dgb $$1, cra $$2, ht $$3) {
+      a($$2, $$1, $$3, false);
+      if ($$1.b() instanceof csr) {
+         ((csr)$$1.b()).b($$1).forEach($$2x -> $$2.a(js.Z, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$2.a(null, $$3, aqd.de, aqe.e, 1.0F, 1.0F);
+      $$2.a($$0, dkl.c, $$3);
    }
 
-   @Override
-   public eag c_(dfd $$0) {
-      return $$0.c(c) ? eah.c.a(false) : super.c_($$0);
+   private static void a(cra $$0, dgb $$1, ht $$2, boolean $$3) {
+      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
    }
 }

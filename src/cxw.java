@@ -1,49 +1,51 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cxw extends ctc implements dab {
-   public static final MapCodec<cxw> a = b(cxw::new);
-   public static final dfu b = dft.C;
+public class cxw extends cxp {
+   public static final MapCodec<cxw> e = b(cxw::new);
 
    @Override
-   public MapCodec<cxw> a() {
-      return a;
+   public MapCodec<? extends cxw> a() {
+      return e;
    }
 
-   protected cxw(dfc.d $$0) {
+   public cxw(dga.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   }
+
+   public static dgb b() {
+      return cuc.G.o();
    }
 
    @Override
-   public boolean a(dfd $$0, dfd $$1, ha $$2) {
-      return $$1.a(cte.ac) && $$2.o() == ha.a.b;
-   }
+   public void a(cqz $$0, ccx $$1, ht $$2, dgb $$3, @Nullable ddx $$4, ckj $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (cov.a(cox.v, $$5) == 0) {
+         if ($$0.D_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
 
-   @Nullable
-   @Override
-   public dfd a(clt $$0) {
-      eag $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eah.c;
-      return super.a($$0).a(b, Boolean.valueOf($$2));
-   }
-
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eah.c, eah.c.a($$3));
+         dgb $$6 = $$0.a_($$2.d());
+         if ($$6.d() || $$6.k()) {
+            $$0.b($$2, b());
+         }
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public eag c_(dfd $$0) {
-      return $$0.c(b) ? eah.c.a(false) : super.c_($$0);
+   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if ($$1.a(cri.b, $$2) > 11 - $$0.b($$1, $$2)) {
+         this.d($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b);
+   protected void d(dgb $$0, cqz $$1, ht $$2) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.a($$2, b().b(), $$2);
+      }
    }
 }

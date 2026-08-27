@@ -1,154 +1,228 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public class dfe<O, S extends dff<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dgg<?>> c;
-   private final ImmutableList<S> d;
-
-   protected dfe(Function<O, S> $$0, O $$1, dfe.b<O, S> $$2, Map<String, dgg<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, dgg<?>> $$6 = (Entry<String, dgg<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
-      }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dgg<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dgg<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dgg<?> $$11 = (dgg<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dgg<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         ImmutableMap<dgg<?>, Comparable<?>> $$6 = $$5x.stream().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-         S $$7xx = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$7xx);
-         $$9.add($$7xx);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
-   }
-
-   private static <S extends dff<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dgg<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dff)((dff)$$1x.getFirst()).a($$3, ((dgg.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<dgg<?>> d() {
-      return this.c.values();
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dgg::f).collect(Collectors.toList()))
-         .toString();
-   }
-
+public class dfe extends dfa implements bik {
+   public static final int c = 9;
+   public static final int f = 3;
+   public static final int g = 27;
+   public static final int j = 1;
+   public static final int k = 10;
+   public static final float l = 0.5F;
+   public static final float m = 270.0F;
+   public static final String n = "Items";
+   private static final int[] r = IntStream.range(0, 27).toArray();
+   private il<ckj> s = il.a(27, ckj.b);
+   private int t;
+   private dfe.a u = dfe.a.a;
+   private float v;
+   private float w;
    @Nullable
-   public dgg<?> a(String $$0) {
-      return (dgg<?>)this.c.get($$0);
+   private final cix x;
+
+   public dfe(@Nullable cix $$0, ht $$1, dgb $$2) {
+      super(ddz.x, $$1, $$2);
+      this.x = $$0;
    }
 
-   public static class a<O, S extends dff<O, S>> {
-      private final O a;
-      private final Map<String, dgg<?>> b = Maps.newHashMap();
+   public dfe(ht $$0, dgb $$1) {
+      super(ddz.x, $$0, $$1);
+      this.x = dax.a($$1.b());
+   }
 
-      public a(O $$0) {
-         this.a = $$0;
+   public static void a(cqz $$0, ht $$1, dgb $$2, dfe $$3) {
+      $$3.b($$0, $$1, $$2);
+   }
+
+   private void b(cqz $$0, ht $$1, dgb $$2) {
+      this.w = this.v;
+      switch (this.u) {
+         case a:
+            this.v = 0.0F;
+            break;
+         case b:
+            this.v += 0.1F;
+            if (this.w == 0.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.v >= 1.0F) {
+               this.u = dfe.a.c;
+               this.v = 1.0F;
+               d($$0, $$1, $$2);
+            }
+
+            this.c($$0, $$1, $$2);
+            break;
+         case d:
+            this.v -= 0.1F;
+            if (this.w == 1.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.v <= 0.0F) {
+               this.u = dfe.a.a;
+               this.v = 0.0F;
+               d($$0, $$1, $$2);
+            }
+            break;
+         case c:
+            this.v = 1.0F;
       }
+   }
 
-      public dfe.a<O, S> a(dgg<?>... $$0) {
-         for (dgg<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
-         }
+   public dfe.a i() {
+      return this.u;
+   }
 
-         return this;
-      }
+   public eia a(dgb $$0) {
+      return car.a($$0.c(dax.b), 0.5F * this.a(1.0F));
+   }
 
-      private <T extends Comparable<T>> void a(dgg<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dfe.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.a($$3);
-                  if (!dfe.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
-               }
-
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+   private void c(cqz $$0, ht $$1, dgb $$2) {
+      if ($$2.b() instanceof dax) {
+         hx $$3 = $$2.c(dax.b);
+         eia $$4 = car.a($$3, this.w, this.v).a($$1);
+         List<bjt> $$5 = $$0.a_(null, $$4);
+         if (!$$5.isEmpty()) {
+            for (bjt $$6 : $$5) {
+               if ($$6.r_() != ebj.d) {
+                  $$6.a(bkp.d, new eif(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
                }
             }
          }
       }
+   }
 
-      public dfe<O, S> a(Function<O, S> $$0, dfe.b<O, S> $$1) {
-         return new dfe<>($$0, this.a, $$1, this.b);
+   @Override
+   public int b() {
+      return this.s.size();
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.t = $$1;
+         if ($$1 == 0) {
+            this.u = dfe.a.d;
+         }
+
+         if ($$1 == 1) {
+            this.u = dfe.a.b;
+         }
+
+         return true;
+      } else {
+         return super.a_($$0, $$1);
       }
    }
 
-   public interface b<O, S> {
-      S create(O var1, ImmutableMap<dgg<?>, Comparable<?>> var2, MapCodec<S> var3);
+   private static void d(cqz $$0, ht $$1, dgb $$2) {
+      $$2.a($$0, $$1, 3);
+      $$0.a($$1, $$2.b());
+   }
+
+   @Override
+   public void d_(ccx $$0) {
+      if (!this.q && !$$0.N_()) {
+         if (this.t < 0) {
+            this.t = 0;
+         }
+
+         this.t++;
+         this.o.a(this.p, this.q().b(), 1, this.t);
+         if (this.t == 1) {
+            this.o.a($$0, dkl.k, this.p);
+            this.o.a(null, this.p, aqd.vc, aqe.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
+         }
+      }
+   }
+
+   @Override
+   public void c(ccx $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.t--;
+         this.o.a(this.p, this.q().b(), 1, this.t);
+         if (this.t <= 0) {
+            this.o.a($$0, dkl.j, this.p);
+            this.o.a(null, this.p, aqd.vb, aqe.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
+         }
+      }
+   }
+
+   @Override
+   protected ui g() {
+      return ui.c("container.shulkerBox");
+   }
+
+   @Override
+   public void a(rt $$0) {
+      super.a($$0);
+      this.f($$0);
+   }
+
+   @Override
+   protected void b(rt $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bhv.a($$0, this.s, false);
+      }
+   }
+
+   public void f(rt $$0) {
+      this.s = il.a(this.b(), ckj.b);
+      if (!this.d($$0) && $$0.b("Items", 9)) {
+         bhv.b($$0, this.s);
+      }
+   }
+
+   @Override
+   protected il<ckj> f() {
+      return this.s;
+   }
+
+   @Override
+   protected void a(il<ckj> $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public int[] a(hx $$0) {
+      return r;
+   }
+
+   @Override
+   public boolean a(int $$0, ckj $$1, @Nullable hx $$2) {
+      return !(cua.a($$1.d()) instanceof dax);
+   }
+
+   @Override
+   public boolean b(int $$0, ckj $$1, hx $$2) {
+      return true;
+   }
+
+   public float a(float $$0) {
+      return asy.i($$0, this.w, this.v);
+   }
+
+   @Nullable
+   public cix j() {
+      return this.x;
+   }
+
+   @Override
+   protected cfp a(int $$0, ccw $$1) {
+      return new che($$0, $$1, this);
+   }
+
+   public boolean v() {
+      return this.u == dfe.a.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

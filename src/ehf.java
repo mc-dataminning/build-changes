@@ -1,26 +1,42 @@
-public abstract class ehf {
-   protected final ehh a;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   protected ehf(ehh $$0) {
-      this.a = $$0;
+public record ehf(ehc b, ehc c) implements ehc {
+   public static final Codec<ehf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ehd.a.fieldOf("min").forGetter(ehf::c), ehd.a.fieldOf("max").forGetter(ehf::d)).apply($$0, ehf::new)
+   );
+
+   @Override
+   public ehb b() {
+      return ehd.c;
    }
 
-   public double a(biw $$0) {
-      double $$1 = this.a.c - $$0.dq();
-      double $$2 = this.a.d - $$0.ds();
-      double $$3 = this.a.e - $$0.dw();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public static ehf a(float $$0, float $$1) {
+      return new ehf(eha.a($$0), eha.a($$1));
    }
 
-   public abstract ehf.a c();
-
-   public ehh e() {
-      return this.a;
+   @Override
+   public int a(edi $$0) {
+      return asy.a($$0.b(), this.b.a($$0), this.c.a($$0));
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public float b(edi $$0) {
+      return asy.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<efq<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public ehc c() {
+      return this.b;
+   }
+
+   public ehc d() {
+      return this.c;
    }
 }

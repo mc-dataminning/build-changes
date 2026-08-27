@@ -1,81 +1,120 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.Collection;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PushbackInputStream;
+import java.util.Map;
 import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ecu extends ecw {
-   public static final Codec<ecu> a = a(ecu::new);
+public class ecu {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, ecj> b = Maps.newHashMap();
+   private final DataFixer c;
+   private final File d;
 
-   ecu(List<edd> $$0, List<efj> $$1) {
-      super($$0, $$1);
+   public ecu(File $$0, DataFixer $$1) {
+      this.c = $$1;
+      this.d = $$0;
    }
 
-   @Override
-   public ede a() {
-      return edb.g;
+   private File a(String $$0) {
+      return new File(this.d, $$0 + ".dat");
    }
 
-   @Override
-   protected ecv a(List<? extends ecv> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (ecv)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ecv $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
+   public <T extends ecj> T a(ecj.a<T> $$0, String $$1) {
+      T $$2 = this.b($$0, $$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         T $$3 = (T)$$0.a().get();
+         this.a($$1, $$3);
+         return $$3;
+      }
+   }
+
+   @Nullable
+   public <T extends ecj> T b(ecj.a $$0, String $$1) {
+      ecj $$2 = this.b.get($$1);
+      if ($$2 == null && !this.b.containsKey($$1)) {
+         $$2 = this.a($$0.b(), $$0.c(), $$1);
+         this.b.put($$1, $$2);
+      }
+
+      return (T)$$2;
+   }
+
+   @Nullable
+   private <T extends ecj> T a(Function<rt, T> $$0, aud $$1, String $$2) {
+      try {
+         File $$3 = this.a($$2);
+         if ($$3.exists()) {
+            rt $$4 = this.a($$2, $$1, aa.b().d().c());
+            return $$0.apply($$4.p("data"));
+         }
+      } catch (Exception var6) {
+         a.error("Error loading saved data: {}", $$2, var6);
+      }
+
+      return null;
+   }
+
+   public void a(String $$0, ecj $$1) {
+      this.b.put($$0, $$1);
+   }
+
+   public rt a(String $$0, aud $$1, int $$2) throws IOException {
+      File $$3 = this.a($$0);
+
+      rt var9;
+      try (
+         FileInputStream $$4 = new FileInputStream($$3);
+         PushbackInputStream $$5 = new PushbackInputStream($$4, 2);
+      ) {
+         rt $$6;
+         if (this.a($$5)) {
+            $$6 = se.a($$5);
+         } else {
+            try (DataInputStream $$7 = new DataInputStream($$5)) {
+               $$6 = se.a((DataInput)$$7);
             }
          }
 
-         return false;
-      };
-      };
-   }
-
-   @Override
-   public void a(ect $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.a("Unreachable entry!");
-         }
+         int $$10 = sg.b($$6, 1343);
+         var9 = $$1.a(this.c, $$6, $$10, $$2);
       }
+
+      return var9;
    }
 
-   public static ecu.a a(edd.a<?>... $$0) {
-      return new ecu.a($$0);
-   }
-
-   public static <E> ecu.a a(Collection<E> $$0, Function<E, edd.a<?>> $$1) {
-      return new ecu.a($$0.stream().map($$1::apply).toArray(edd.a[]::new));
-   }
-
-   public static class a extends edd.a<ecu.a> {
-      private final Builder<edd> a = ImmutableList.builder();
-
-      public a(edd.a<?>... $$0) {
-         for (edd.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
          }
       }
 
-      protected ecu.a a() {
-         return this;
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
       }
 
-      @Override
-      public ecu.a a(edd.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+      return $$2;
+   }
 
-      @Override
-      public edd b() {
-         return new ecu(this.a.build(), this.f());
-      }
+   public void a() {
+      this.b.forEach(($$0, $$1) -> {
+         if ($$1 != null) {
+            $$1.a(this.a($$0));
+         }
+      });
    }
 }

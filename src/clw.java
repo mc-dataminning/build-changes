@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface clw {
+   int a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface clw {
+   float b();
+
+   float c();
+
+   int d();
+
+   int e();
+
+   cnk f();
 }

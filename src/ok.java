@@ -1,32 +1,31 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class ok {
-   private static cqz a(cra.a $$0) {
-      crl.a $$1 = new crl.a();
-      nq.j($$1);
-      return new cqz.a().a(false).a(0.5F).b(0.5F).a(new crf.a().b(4159204).c(329011).a(10518688).d(0).a(cqx.b).a()).a($$1.a()).a($$0.a()).a();
-   }
+   public static final afv<dxj> a = ov.a("bastion/starts");
 
-   public static cqz a(hf<dug> $$0, hf<dmp<?>> $$1) {
-      cra.a $$2 = new cra.a($$0, $$1);
-      return a($$2);
-   }
-
-   public static cqz b(hf<dug> $$0, hf<dmp<?>> $$1) {
-      cra.a $$2 = new cra.a($$0, $$1).a(dki.b.e, pc.a);
-      return a($$2);
-   }
-
-   public static cqz c(hf<dug> $$0, hf<dmp<?>> $$1) {
-      cra.a $$2 = new cra.a($$0, $$1);
-      return a($$2);
-   }
-
-   public static cqz d(hf<dug> $$0, hf<dmp<?>> $$1) {
-      cra.a $$2 = new cra.a($$0, $$1).a(dki.b.e, pc.b).a(dki.b.j, pc.c);
-      return a($$2);
-   }
-
-   public static cqz e(hf<dug> $$0, hf<dmp<?>> $$1) {
-      cra.a $$2 = new cra.a($$0, $$1).a(dki.b.a, pc.d);
-      return a($$2);
+   public static void a(oo<dxj> $$0) {
+      ic<dzr> $$1 = $$0.a(jz.aB);
+      ib<dzr> $$2 = $$1.b(ow.w);
+      ic<dxj> $$3 = $$0.a(jz.aD);
+      ib<dxj> $$4 = $$3.b(ov.a);
+      $$0.a(
+         a,
+         new dxj(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dxh.b("bastion/units/air_base", $$2), 1),
+               Pair.of(dxh.b("bastion/hoglin_stable/air_base", $$2), 1),
+               Pair.of(dxh.b("bastion/treasure/big_air_full", $$2), 1),
+               Pair.of(dxh.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+            ),
+            dxj.a.b
+         )
+      );
+      oj.a($$0);
+      oi.a($$0);
+      om.a($$0);
+      oh.a($$0);
+      ol.a($$0);
    }
 }

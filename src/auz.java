@@ -1,29 +1,19 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
-public class auz extends DataFix {
+public class auz extends azc {
    public auz(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "BlockEntityKeepPacked", baa.s, "DUMMY");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(azd.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
-            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
-            String $$2x = $$1xx.get("Status").asString("empty");
-            if (Objects.equals($$2x, "postprocessed")) {
-               $$1xx = $$1xx.set("Status", $$1xx.createString("fullchunk"));
-            }
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("keepPacked", $$0.createBoolean(true));
+   }
 
-            return $$0xx.set(DSL.remainderFinder(), $$1xx);
-         }));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), auz::a);
    }
 }

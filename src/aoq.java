@@ -1,52 +1,70 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.Date;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class aoq extends aoe<GameProfile> {
-   public aoq(@Nullable GameProfile $$0) {
-      this($$0, null, null, null, null);
-   }
+public class aoq implements aot, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private aoj b;
+   private final List<aon> c = Lists.newArrayList();
+   private final ani d;
 
-   public aoq(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public aoq(JsonObject $$0) {
-      super(b($$0), $$0);
-   }
-
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-         super.a($$0);
-      }
+   public aoq(ani $$0) {
+      this.d = $$0;
+      this.b = new aom($$0, List.of());
    }
 
    @Override
-   public tl e() {
-      GameProfile $$0 = this.g();
-      return $$0 != null ? tl.b($$0.getName()) : tl.c("commands.banlist.entry.unknown");
+   public void close() {
+      this.b.close();
    }
 
-   @Nullable
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   public void a(aon $$0) {
+      this.c.add($$0);
+   }
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
+   public aop a(Executor $$0, Executor $$1, CompletableFuture<atz> $$2, List<anh> $$3) {
+      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(anh::a).collect(Collectors.joining(", "))));
+      this.b.close();
+      this.b = new aom(this.d, $$3);
+      return aoz.a(this.b, this.c, $$0, $$1, $$2, a.isDebugEnabled());
+   }
 
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
-      }
+   @Override
+   public Optional<aor> getResource(afw $$0) {
+      return this.b.getResource($$0);
+   }
+
+   @Override
+   public Set<String> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public List<aor> a(afw $$0) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   public Map<afw, aor> b(String $$0, Predicate<afw> $$1) {
+      return this.b.b($$0, $$1);
+   }
+
+   @Override
+   public Map<afw, List<aor>> c(String $$0, Predicate<afw> $$1) {
+      return this.b.c($$0, $$1);
+   }
+
+   @Override
+   public Stream<anh> b() {
+      return this.b.b();
    }
 }

@@ -1,17 +1,12 @@
-public abstract class gbr extends gbq implements gcj {
-   private boolean n;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   protected gbr(apf $$0, aph $$1, ash $$2) {
-      super($$0, $$1, $$2);
-   }
+public record gbr(gbs d) {
+   public static final gbr a = new gbr(gbs.b);
+   public static final Codec<gbr> b = RecordCodecBuilder.create($$0 -> $$0.group(asg.a(gbs.a, "scaling", gbs.b).forGetter(gbr::a)).apply($$0, gbr::new));
+   public static final anu<gbr> c = anu.a("gui", b);
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public gbs a() {
+      return this.d;
    }
 }

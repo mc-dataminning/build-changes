@@ -1,52 +1,83 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-public class dmi extends dmk {
-   public static final Codec<dmi> a = RecordCodecBuilder.create(
+public class dmi {
+   public static final MapCodec<dmi> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               dmk.d.forGetter($$0x -> $$0x), bgh.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dmi.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+               Codec.LONG.fieldOf("seed").stable().forGetter(dmi::b),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dmi::c),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dmi::d),
+               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
             )
-            .apply($$0, dmi::new)
+            .apply($$0, $$0.stable(dmi::new))
    );
-   public final bgh b;
-   public final dmi.a c;
+   public static final dmi b = new dmi((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
 
-   public dmi(float $$0, dtj $$1, bgh $$2, dlg $$3, dml $$4, hi<ctc> $$5, bgh $$6, dmi.a $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
+   public dmi(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   public dmi(dmk $$0, bgh $$1, dmi.a $$2) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   public static dmi a() {
+      return new dmi(f(), true, false);
    }
 
-   public static class a {
-      public static final Codec<dmi.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bgh.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
-                  bgh.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
-                  arj.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
-                  bgh.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
-                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dmi.a::new)
-      );
-      public final bgh b;
-      public final bgh c;
-      public final int d;
-      public final bgh e;
-      public final float f;
-      public final float g;
+   private dmi(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
 
-      public a(bgh $$0, bgh $$1, int $$2, bgh $$3, float $$4, float $$5) {
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-         this.b = $$0;
-         this.c = $$1;
+   public long b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f.isPresent();
+   }
+
+   public dmi a(boolean $$0) {
+      return new dmi(this.c, this.d, $$0, this.f);
+   }
+
+   public dmi b(boolean $$0) {
+      return new dmi(this.c, $$0, this.e, this.f);
+   }
+
+   public dmi a(OptionalLong $$0) {
+      return new dmi($$0.orElse(f()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
+      } else {
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
+         }
       }
+   }
+
+   public static long f() {
+      return ate.a().g();
    }
 }

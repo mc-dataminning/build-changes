@@ -1,89 +1,24 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+import org.joml.Matrix4f;
 
-public class fbt extends etq {
-   private static final etx c = new etx(new aez("recipe_book/tab"), new aez("recipe_book/tab_selected"));
-   private final eqy d;
-   private static final float e = 15.0F;
-   private float l;
+public class fbt implements fbu {
+   private final ask a;
 
-   public fbt(eqy $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
-   }
-
-   public void a(eqp $$0) {
-      eqc $$1 = $$0.s.m();
-      List<fbv> $$2 = $$1.a(this.d);
-      if ($$0.s.bS instanceof cgb) {
-         for (fbv $$3 : $$2) {
-            for (cmq<?> $$4 : $$3.a($$1.a((cgb<?>)$$0.s.bS))) {
-               if ($$1.d($$4)) {
-                  this.l = 15.0F;
-                  return;
-               }
-            }
-         }
-      }
+   public fbt(ask $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void b(erz $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.l > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.l / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.r() + 8), (float)(this.t() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.r() + 8)), (float)(-(this.t() + 12)), 0.0F);
-         }
-
-         eqp $$5 = eqp.O();
-         RenderSystem.disableDepthTest();
-         aez $$6 = this.a.a(true, this.b);
-         int $$7 = this.r();
-         if (this.b) {
-            $$7 -= 2;
-         }
-
-         $$0.a($$6, $$7, this.t(), this.f, this.g);
-         RenderSystem.enableDepthTest();
-         this.a($$0, $$5.aq());
-         if (this.l > 0.0F) {
-            $$0.c().b();
-            this.l -= $$3;
-         }
-      }
+   public int a(esw $$0) {
+      return $$0.a(this.a);
    }
 
-   private void a(erz $$0, fub $$1) {
-      List<cjl> $$2 = this.d.a();
-      int $$3 = this.b ? -2 : 0;
-      if ($$2.size() == 1) {
-         $$0.b($$2.get(0), this.r() + 9 + $$3, this.t() + 5);
-      } else if ($$2.size() == 2) {
-         $$0.b($$2.get(0), this.r() + 3 + $$3, this.t() + 5);
-         $$0.b($$2.get(1), this.r() + 14 + $$3, this.t() + 5);
-      }
+   @Override
+   public int a() {
+      return 10;
    }
 
-   public eqy b() {
-      return this.d;
-   }
-
-   public boolean a(eqc $$0) {
-      List<fbv> $$1 = $$0.a(this.d);
-      this.j = false;
-      if ($$1 != null) {
-         for (fbv $$2 : $$1) {
-            if ($$2.b() && $$2.d()) {
-               this.j = true;
-               break;
-            }
-         }
-      }
-
-      return this.j;
+   @Override
+   public void a(esw $$0, int $$1, int $$2, Matrix4f $$3, fpb.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, esw.a.a, 0, 15728880);
    }
 }

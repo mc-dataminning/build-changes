@@ -1,7 +1,34 @@
-@FunctionalInterface
-public interface duz {
-   duz a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
-   };
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   void afterPlace(cqv var1, cqt var2, dha var3, ash var4, duu var5, cpi var6, dvr var7);
+public class duz extends dvh {
+   public static final Codec<duz> a = RecordCodecBuilder.create($$0 -> $$0.group(duh.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, duz::new));
+   private final duh c;
+
+   private duz(duh $$0) {
+      this.c = $$0;
+   }
+
+   public static duz a(duh $$0) {
+      return new duz($$0);
+   }
+
+   public static duz a(dme $$0, dme $$1) {
+      return a(duk.a($$0, $$1));
+   }
+
+   public static duz b(dme $$0, dme $$1) {
+      return a(duj.a($$0, $$1));
+   }
+
+   @Override
+   public Stream<ht> a_(dvf $$0, ate $$1, ht $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   }
+
+   @Override
+   public dvi<?> b() {
+      return dvi.l;
+   }
 }

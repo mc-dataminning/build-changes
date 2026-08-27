@@ -1,59 +1,52 @@
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class asv {
-   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
-   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
-   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
-
-   public static String a(int $$0) {
-      int $$1 = $$0 / 20;
-      int $$2 = $$1 / 60;
-      $$1 %= 60;
-      int $$3 = $$2 / 60;
-      $$2 %= 60;
-      return $$3 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$3, $$2, $$1) : String.format(Locale.ROOT, "%02d:%02d", $$2, $$1);
-   }
-
-   public static String a(String $$0) {
-      return a.matcher($$0).replaceAll("");
-   }
-
-   public static boolean b(@Nullable String $$0) {
-      return StringUtils.isEmpty($$0);
-   }
-
-   public static String a(String $$0, int $$1, boolean $$2) {
-      if ($$0.length() <= $$1) {
-         return $$0;
+public class asv implements TypeAdapterFactory {
+   @Nullable
+   public <T> TypeAdapter<T> create(Gson $$0, TypeToken<T> $$1) {
+      Class<T> $$2 = $$1.getRawType();
+      if (!$$2.isEnum()) {
+         return null;
       } else {
-         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
-      }
-   }
+         final Map<String, T> $$3 = Maps.newHashMap();
 
-   public static int c(String $$0) {
-      if ($$0.isEmpty()) {
-         return 0;
-      } else {
-         Matcher $$1 = b.matcher($$0);
-         int $$2 = 1;
-
-         while ($$1.find()) {
-            $$2++;
+         for (T $$4 : $$2.getEnumConstants()) {
+            $$3.put(this.a($$4), $$4);
          }
 
-         return $$2;
+         return new TypeAdapter<T>() {
+            public void write(JsonWriter $$0, T $$1) throws IOException {
+               if ($$1 == null) {
+                  $$0.nullValue();
+               } else {
+                  $$0.value(asv.this.a($$1));
+               }
+            }
+
+            @Nullable
+            public T read(JsonReader $$0) throws IOException {
+               if ($$0.peek() == JsonToken.NULL) {
+                  $$0.nextNull();
+                  return null;
+               } else {
+                  return $$3.get($$0.nextString());
+               }
+            }
+         };
       }
    }
 
-   public static boolean d(String $$0) {
-      return c.matcher($$0).find();
-   }
-
-   public static String e(String $$0) {
-      return a($$0, 256, false);
+   String a(Object $$0) {
+      return $$0 instanceof Enum ? ((Enum)$$0).name().toLowerCase(Locale.ROOT) : $$0.toString().toLowerCase(Locale.ROOT);
    }
 }

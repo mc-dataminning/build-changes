@@ -1,16 +1,40 @@
-public interface adf extends sj {
-   @Override
-   default sn b() {
-      return sn.d;
+public class adf implements wb<aca> {
+   private final cha a;
+   private final boolean b;
+   private final boolean c;
+
+   public adf(cha $$0, boolean $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   void a(adi var1);
+   public adf(tl $$0) {
+      this.a = $$0.b(cha.class);
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
+   }
 
-   void a(adh var1);
+   @Override
+   public void a(tl $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
 
-   void a(adk var1);
+   public void a(aca $$0) {
+      $$0.a(this);
+   }
 
-   void a(adj var1);
+   public cha a() {
+      return this.a;
+   }
 
-   void a(adg var1);
+   public boolean d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
+   }
 }

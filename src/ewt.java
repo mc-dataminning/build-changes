@@ -1,57 +1,122 @@
-public class ewt extends eye {
-   private final eye c;
-   protected final ewt.a a;
-   private final tl k;
-   private final boolean l;
-   private etd m = etd.a;
-   protected int b;
-   private esm n;
+import java.util.function.Consumer;
 
-   public ewt(eye $$0, ewt.a $$1, tl $$2, tl $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.k = $$3;
-      this.l = $$4;
+public class ewt implements ewu {
+   public static final int a = 36;
+   private static final int b = 30;
+   private final ewr c = new ewr();
+   private final ewr d = new ewr();
+   private final ewr e = new ewr();
+   private final ezd f;
+   private int g;
+   private int h;
+
+   public ewt(ezd $$0) {
+      this($$0, 36);
+   }
+
+   public ewt(ezd $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public ewt(ezd $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   protected void aH_() {
-      super.aH_();
-      this.m = etd.a(this.i, this.k, this.g - 50);
-      int $$0 = (this.m.a() + 1) * 9;
-      this.d(esk.a(tl.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(esk.a(tl.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.d(esk.a(tk.e, $$0x -> this.f.a(this.c)).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.n = new esm(this.g / 2 - 155 + 80, 76 + $$0, 150, 20, tl.c("selectWorld.backupEraseCache"), false);
-      if (this.l) {
-         this.d(this.n);
-      }
+   public void f(int $$0) {
    }
 
    @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      this.m.a($$0, this.g / 2, 70);
+   public void g(int $$0) {
    }
 
    @Override
-   public boolean ay_() {
-      return false;
+   public int p() {
+      return 0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.c);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public int r() {
+      return 0;
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   @Override
+   public int k() {
+      return this.f.g;
+   }
+
+   @Override
+   public int i() {
+      return this.f.h;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   @Override
+   public void b(Consumer<ewv> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.g);
+      this.c.a($$0);
+      this.c.b(0, 0);
+      this.c.a();
+      this.d.b(this.f.g);
+      this.d.a($$1);
+      this.d.a();
+      this.d.g(this.f.h - $$1);
+      this.e.b(this.f.g);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.h - $$1 - this.e.i();
+      this.e.b(0, Math.min($$2, $$3));
+   }
+
+   public <T extends ewv> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends ewv> T a(T $$0, Consumer<eww> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public <T extends ewv> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends ewv> T b(T $$0, Consumer<eww> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends ewv> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends ewv> T c(T $$0, Consumer<eww> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

@@ -1,30 +1,78 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.Supplier;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class bfh {
-   private final Set<String> a = new ObjectOpenHashSet();
-
-   public Set<bez> a(Supplier<bdt> $$0) {
-      Set<bez> $$1 = $$0.get()
-         .e()
+public record bfh(
+   Instant a, Instant b, Duration c, @Nullable Duration d, List<bfr> e, List<bfm> f, bfo.a g, bfq.a h, bfp i, bfp j, bfn.a k, bfn.a l, List<bfl> m
+) {
+   public List<Pair<dic, bft<bfl>>> a() {
+      Map<dic, List<bfl>> $$0 = this.m.stream().collect(Collectors.groupingBy(bfl::d));
+      return $$0.entrySet()
          .stream()
-         .filter($$0x -> !this.a.contains($$0x.getLeft()))
-         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bey)$$1x.getRight()))
-         .collect(Collectors.toSet());
-
-      for (bez $$2 : $$1) {
-         this.a.add($$2.d());
-      }
-
-      return $$1;
+         .map($$0x -> Pair.of((dic)$$0x.getKey(), bft.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<dic, bft<bfl>>, Duration>comparing($$0x -> ((bft)$$0x.getSecond()).f()).reversed())
+         .toList();
    }
 
-   private static bez a(Supplier<bdt> $$0, String $$1, bey $$2) {
-      return bez.a($$1, $$2, () -> {
-         bdo.a $$2x = $$0.get().c($$1);
-         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)asz.b;
-      });
+   public String b() {
+      return new bfj().a(this);
+   }
+
+   public Instant c() {
+      return this.a;
+   }
+
+   public Instant d() {
+      return this.b;
+   }
+
+   public Duration e() {
+      return this.c;
+   }
+
+   @Nullable
+   public Duration f() {
+      return this.d;
+   }
+
+   public List<bfr> g() {
+      return this.e;
+   }
+
+   public List<bfm> h() {
+      return this.f;
+   }
+
+   public bfo.a i() {
+      return this.g;
+   }
+
+   public bfq.a j() {
+      return this.h;
+   }
+
+   public bfp k() {
+      return this.i;
+   }
+
+   public bfp l() {
+      return this.j;
+   }
+
+   public bfn.a m() {
+      return this.k;
+   }
+
+   public bfn.a n() {
+      return this.l;
+   }
+
+   public List<bfl> o() {
+      return this.m;
    }
 }

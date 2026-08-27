@@ -1,44 +1,31 @@
-public class fhm<T extends biw> extends fhj<T> {
-   private boolean b;
+public class fhm<T extends bwq> extends fhh<T> {
+   private float j;
 
-   public fhm(fhx $$0) {
-      super($$0);
+   public fhm(fiw $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fid c() {
-      fif $$0 = fhj.b();
-      fig $$1 = $$0.a();
-      fig $$2 = $$1.a("head", fic.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fhz.a);
-      fig $$3 = $$2.a("hat", fic.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), fhz.a(-5.0F, -10.03125F, -5.0F));
-      fig $$4 = $$3.a("hat2", fic.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), fhz.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
-      fig $$5 = $$4.a("hat3", fic.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), fhz.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
-      $$5.a(
-         "hat4", fic.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new fib(0.25F)), fhz.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
-      );
-      fig $$6 = $$2.a("nose");
-      $$6.a("mole", fic.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new fib(-0.25F)), fhz.a(0.0F, -2.0F, 0.0F));
-      return fid.a($$0, 64, 128);
+   public static fjc c() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      $$1.a("head", fjb.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fja(0.6F)), fiy.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fjb.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fja(1.75F)), fiy.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fjb $$2 = fjb.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fja(0.5F));
+      $$1.a("right_hind_leg", $$2, fiy.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, fiy.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, fiy.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, fiy.a(3.0F, 12.0F, -5.0F));
+      return fjc.a($$0, 64, 32);
    }
 
-   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.E($$3) * 9.0F;
+      this.j = $$0.F($$3);
+   }
+
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.a(0.0F, -2.0F, 0.0F);
-      float $$6 = 0.01F * (float)($$0.ah() % 10);
-      this.a.e = asb.a((float)$$0.ah * $$6) * 4.5F * (float) (Math.PI / 180.0);
-      this.a.f = 0.0F;
-      this.a.g = asb.b((float)$$0.ah * $$6) * 2.5F * (float) (Math.PI / 180.0);
-      if (this.b) {
-         this.a.a(0.0F, 1.0F, -1.5F);
-         this.a.e = -0.9F;
-      }
-   }
-
-   public fhx e() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.b = $$0;
+      this.a.e = this.j;
    }
 }

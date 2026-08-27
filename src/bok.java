@@ -1,40 +1,26 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bok extends bld<cbn> {
-   public bok() {
-      super(ImmutableMap.of());
-   }
+public class bok {
+   private static final float a = 0.3F;
 
-   protected boolean a(akt $$0, cbn $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
-
-   protected void b(akt $$0, cbn $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bkm<?> $$3 = $$1.dN();
-         if (!$$3.c(cdl.g)) {
-            $$3.b(bsn.t);
-            $$3.b(bsn.m);
-            $$3.b(bsn.n);
-            $$3.b(bsn.r);
-            $$3.b(bsn.q);
-         }
-
-         $$3.a(cdl.g);
-      }
-   }
-
-   protected void c(akt $$0, cbn $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bjm $$0) {
-      return $$0.dN().a(bsn.A);
-   }
-
-   public static boolean c(bjm $$0) {
-      return $$0.dN().a(bsn.x);
+   public static bnk<bkj> a() {
+      return bpm.a(
+         (Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$0 -> $$0.group($$0.a(btk.m), $$0.a(btk.n), $$0.b(btk.e), $$0.b(btk.h), $$0.c(btk.q))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     ia $$9 = $$0.b($$3);
+                     btm $$10 = $$0.b($$4);
+                     if ($$6.E_().a(100) == 0 && $$6.ac() == $$9.a() && $$9.b().a($$7.dj(), 4.0) && $$10.d($$0xxx -> bjx.bf.equals($$0xxx.ag()))) {
+                        $$10.a($$1xx -> bjx.bf.equals($$1xx.ag()) && $$1xx.f((bjt)$$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new bml($$3xx, true));
+                           $$1.a(new btn(new bml($$3xx, false), 0.3F, 1));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

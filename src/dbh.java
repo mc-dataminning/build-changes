@@ -1,91 +1,124 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dbh extends ctc {
+public class dbh extends cua {
    public static final MapCodec<dbh> a = b(dbh::new);
-   private static final dgd b = dft.aT;
-   private static final int c = 20;
-   private static final int d = 8;
+   public static final int b = 8;
+   public static final dhb c = dgr.aF;
+   protected static final eiy[] d = new eiy[]{
+      eiv.a(),
+      cua.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      cua.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      cua.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      cua.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cua.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      cua.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      cua.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      cua.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int e = 5;
 
    @Override
    public MapCodec<dbh> a() {
       return a;
    }
 
-   public dbh(dfc.d $$0) {
+   protected dbh(dga.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      this.k(this.E.b().a(c, Integer.valueOf(1)));
    }
 
    @Override
-   public void a(cqb $$0, dfd $$1, ehd $$2, ccs $$3) {
-      int $$4 = a((cqc)$$0, $$1, $$2, (biw)$$3);
-      if ($$3.v() instanceof aku $$6) {
-         $$6.a(apq.aE);
-         al.L.a($$6, $$3, $$2.e(), $$4);
-      }
-   }
-
-   private static int a(cqc $$0, dfd $$1, ehd $$2, biw $$3) {
-      int $$4 = a($$2, $$2.e());
-      int $$5 = $$3 instanceof ccg ? 20 : 8;
-      if (!$$0.L().a($$2.a(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.a(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(ehd $$0, ehh $$1) {
-      ha $$2 = $$0.b();
-      double $$3 = Math.abs(asb.e($$1.c) - 0.5);
-      double $$4 = Math.abs(asb.e($$1.d) - 0.5);
-      double $$5 = Math.abs(asb.e($$1.e) - 0.5);
-      ha.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == ha.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == ha.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, asb.c(15.0 * asb.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(cqc $$0, dfd $$1, int $$2, gw $$3, int $$4) {
-      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
-   }
-
-   @Override
-   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
+   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
+      switch ($$3) {
+         case a:
+            return $$0.c(c) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
       }
    }
 
    @Override
-   public int a(dfd $$0, cph $$1, gw $$2, ha $$3) {
-      return $$0.c(b);
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   public boolean f_(dfd $$0) {
+   public eiy c(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return d[$$0.c(c) - 1];
+   }
+
+   @Override
+   public eiy b_(dgb $$0, cqf $$1, ht $$2) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   public eiy b(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   public boolean g_(dgb $$0) {
       return true;
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(b);
+   public float b(dgb $$0, cqf $$1, ht $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
    }
 
    @Override
-   public void b(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      if (!$$1.w_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.L().a($$2, this)) {
-            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
-         }
+   public boolean a(dgb $$0, crc $$1, ht $$2) {
+      dgb $$3 = $$1.a_($$2.d());
+      if ($$3.a(aqs.cg)) {
+         return false;
+      } else {
+         return $$3.a(aqs.ch) ? true : cua.a($$3.k($$1, $$2.d()), hx.b) || $$3.a(this) && $$3.c(c) == 8;
       }
+   }
+
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      return !$$0.a($$3, $$4) ? cuc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if ($$1.a(cri.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   public boolean a(dgb $$0, cmr $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.k()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == hx.b : true;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dgb a(cmr $$0) {
+      dgb $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(c);
    }
 }

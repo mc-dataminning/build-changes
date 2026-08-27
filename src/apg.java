@@ -1,1516 +1,767 @@
-import com.google.common.collect.ImmutableList;
-import java.util.stream.IntStream;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import java.io.File;
+import java.net.SocketAddress;
+import java.nio.file.Path;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class apg {
-   public static final apf a = a("entity.allay.ambient_with_item");
-   public static final apf b = a("entity.allay.ambient_without_item");
-   public static final apf c = a("entity.allay.death");
-   public static final apf d = a("entity.allay.hurt");
-   public static final apf e = a("entity.allay.item_given");
-   public static final apf f = a("entity.allay.item_taken");
-   public static final apf g = a("entity.allay.item_thrown");
-   public static final he.c<apf> h = b("ambient.cave");
-   public static final he.c<apf> i = b("ambient.basalt_deltas.additions");
-   public static final he.c<apf> j = b("ambient.basalt_deltas.loop");
-   public static final he.c<apf> k = b("ambient.basalt_deltas.mood");
-   public static final he.c<apf> l = b("ambient.crimson_forest.additions");
-   public static final he.c<apf> m = b("ambient.crimson_forest.loop");
-   public static final he.c<apf> n = b("ambient.crimson_forest.mood");
-   public static final he.c<apf> o = b("ambient.nether_wastes.additions");
-   public static final he.c<apf> p = b("ambient.nether_wastes.loop");
-   public static final he.c<apf> q = b("ambient.nether_wastes.mood");
-   public static final he.c<apf> r = b("ambient.soul_sand_valley.additions");
-   public static final he.c<apf> s = b("ambient.soul_sand_valley.loop");
-   public static final he.c<apf> t = b("ambient.soul_sand_valley.mood");
-   public static final he.c<apf> u = b("ambient.warped_forest.additions");
-   public static final he.c<apf> v = b("ambient.warped_forest.loop");
-   public static final he.c<apf> w = b("ambient.warped_forest.mood");
-   public static final apf x = a("ambient.underwater.enter");
-   public static final apf y = a("ambient.underwater.exit");
-   public static final apf z = a("ambient.underwater.loop");
-   public static final apf A = a("ambient.underwater.loop.additions");
-   public static final apf B = a("ambient.underwater.loop.additions.rare");
-   public static final apf C = a("ambient.underwater.loop.additions.ultra_rare");
-   public static final apf D = a("block.amethyst_block.break");
-   public static final apf E = a("block.amethyst_block.chime");
-   public static final apf F = a("block.amethyst_block.fall");
-   public static final apf G = a("block.amethyst_block.hit");
-   public static final apf H = a("block.amethyst_block.place");
-   public static final apf I = a("block.amethyst_block.resonate");
-   public static final apf J = a("block.amethyst_block.step");
-   public static final apf K = a("block.amethyst_cluster.break");
-   public static final apf L = a("block.amethyst_cluster.fall");
-   public static final apf M = a("block.amethyst_cluster.hit");
-   public static final apf N = a("block.amethyst_cluster.place");
-   public static final apf O = a("block.amethyst_cluster.step");
-   public static final apf P = a("block.ancient_debris.break");
-   public static final apf Q = a("block.ancient_debris.step");
-   public static final apf R = a("block.ancient_debris.place");
-   public static final apf S = a("block.ancient_debris.hit");
-   public static final apf T = a("block.ancient_debris.fall");
-   public static final apf U = a("block.anvil.break");
-   public static final apf V = a("block.anvil.destroy");
-   public static final apf W = a("block.anvil.fall");
-   public static final apf X = a("block.anvil.hit");
-   public static final apf Y = a("block.anvil.land");
-   public static final apf Z = a("block.anvil.place");
-   public static final apf aa = a("block.anvil.step");
-   public static final apf ab = a("block.anvil.use");
-   public static final apf ac = a("item.armor.equip_chain");
-   public static final apf ad = a("item.armor.equip_diamond");
-   public static final apf ae = a("item.armor.equip_elytra");
-   public static final apf af = a("item.armor.equip_generic");
-   public static final apf ag = a("item.armor.equip_gold");
-   public static final apf ah = a("item.armor.equip_iron");
-   public static final apf ai = a("item.armor.equip_leather");
-   public static final apf aj = a("item.armor.equip_netherite");
-   public static final apf ak = a("item.armor.equip_turtle");
-   public static final apf al = a("entity.armor_stand.break");
-   public static final apf am = a("entity.armor_stand.fall");
-   public static final apf an = a("entity.armor_stand.hit");
-   public static final apf ao = a("entity.armor_stand.place");
-   public static final apf ap = a("entity.arrow.hit");
-   public static final apf aq = a("entity.arrow.hit_player");
-   public static final apf ar = a("entity.arrow.shoot");
-   public static final apf as = a("item.axe.strip");
-   public static final apf at = a("item.axe.scrape");
-   public static final apf au = a("item.axe.wax_off");
-   public static final apf av = a("entity.axolotl.attack");
-   public static final apf aw = a("entity.axolotl.death");
-   public static final apf ax = a("entity.axolotl.hurt");
-   public static final apf ay = a("entity.axolotl.idle_air");
-   public static final apf az = a("entity.axolotl.idle_water");
-   public static final apf aA = a("entity.axolotl.splash");
-   public static final apf aB = a("entity.axolotl.swim");
-   public static final apf aC = a("block.azalea.break");
-   public static final apf aD = a("block.azalea.fall");
-   public static final apf aE = a("block.azalea.hit");
-   public static final apf aF = a("block.azalea.place");
-   public static final apf aG = a("block.azalea.step");
-   public static final apf aH = a("block.azalea_leaves.break");
-   public static final apf aI = a("block.azalea_leaves.fall");
-   public static final apf aJ = a("block.azalea_leaves.hit");
-   public static final apf aK = a("block.azalea_leaves.place");
-   public static final apf aL = a("block.azalea_leaves.step");
-   public static final apf aM = a("block.bamboo.break");
-   public static final apf aN = a("block.bamboo.fall");
-   public static final apf aO = a("block.bamboo.hit");
-   public static final apf aP = a("block.bamboo.place");
-   public static final apf aQ = a("block.bamboo.step");
-   public static final apf aR = a("block.bamboo_sapling.break");
-   public static final apf aS = a("block.bamboo_sapling.hit");
-   public static final apf aT = a("block.bamboo_sapling.place");
-   public static final apf aU = a("block.bamboo_wood.break");
-   public static final apf aV = a("block.bamboo_wood.fall");
-   public static final apf aW = a("block.bamboo_wood.hit");
-   public static final apf aX = a("block.bamboo_wood.place");
-   public static final apf aY = a("block.bamboo_wood.step");
-   public static final apf aZ = a("block.bamboo_wood_door.close");
-   public static final apf ba = a("block.bamboo_wood_door.open");
-   public static final apf bb = a("block.bamboo_wood_trapdoor.close");
-   public static final apf bc = a("block.bamboo_wood_trapdoor.open");
-   public static final apf bd = a("block.bamboo_wood_button.click_off");
-   public static final apf be = a("block.bamboo_wood_button.click_on");
-   public static final apf bf = a("block.bamboo_wood_pressure_plate.click_off");
-   public static final apf bg = a("block.bamboo_wood_pressure_plate.click_on");
-   public static final apf bh = a("block.bamboo_wood_fence_gate.close");
-   public static final apf bi = a("block.bamboo_wood_fence_gate.open");
-   public static final apf bj = a("block.barrel.close");
-   public static final apf bk = a("block.barrel.open");
-   public static final apf bl = a("block.basalt.break");
-   public static final apf bm = a("block.basalt.step");
-   public static final apf bn = a("block.basalt.place");
-   public static final apf bo = a("block.basalt.hit");
-   public static final apf bp = a("block.basalt.fall");
-   public static final apf bq = a("entity.bat.ambient");
-   public static final apf br = a("entity.bat.death");
-   public static final apf bs = a("entity.bat.hurt");
-   public static final apf bt = a("entity.bat.loop");
-   public static final apf bu = a("entity.bat.takeoff");
-   public static final apf bv = a("block.beacon.activate");
-   public static final apf bw = a("block.beacon.ambient");
-   public static final apf bx = a("block.beacon.deactivate");
-   public static final apf by = a("block.beacon.power_select");
-   public static final apf bz = a("entity.bee.death");
-   public static final apf bA = a("entity.bee.hurt");
-   public static final apf bB = a("entity.bee.loop_aggressive");
-   public static final apf bC = a("entity.bee.loop");
-   public static final apf bD = a("entity.bee.sting");
-   public static final apf bE = a("entity.bee.pollinate");
-   public static final apf bF = a("block.beehive.drip");
-   public static final apf bG = a("block.beehive.enter");
-   public static final apf bH = a("block.beehive.exit");
-   public static final apf bI = a("block.beehive.shear");
-   public static final apf bJ = a("block.beehive.work");
-   public static final apf bK = a("block.bell.use");
-   public static final apf bL = a("block.bell.resonate");
-   public static final apf bM = a("block.big_dripleaf.break");
-   public static final apf bN = a("block.big_dripleaf.fall");
-   public static final apf bO = a("block.big_dripleaf.hit");
-   public static final apf bP = a("block.big_dripleaf.place");
-   public static final apf bQ = a("block.big_dripleaf.step");
-   public static final apf bR = a("entity.blaze.ambient");
-   public static final apf bS = a("entity.blaze.burn");
-   public static final apf bT = a("entity.blaze.death");
-   public static final apf bU = a("entity.blaze.hurt");
-   public static final apf bV = a("entity.blaze.shoot");
-   public static final apf bW = a("entity.boat.paddle_land");
-   public static final apf bX = a("entity.boat.paddle_water");
-   public static final apf bY = a("block.bone_block.break");
-   public static final apf bZ = a("block.bone_block.fall");
-   public static final apf ca = a("block.bone_block.hit");
-   public static final apf cb = a("block.bone_block.place");
-   public static final apf cc = a("block.bone_block.step");
-   public static final apf cd = a("item.bone_meal.use");
-   public static final apf ce = a("item.book.page_turn");
-   public static final apf cf = a("item.book.put");
-   public static final apf cg = a("block.blastfurnace.fire_crackle");
-   public static final apf ch = a("item.bottle.empty");
-   public static final apf ci = a("item.bottle.fill");
-   public static final apf cj = a("item.bottle.fill_dragonbreath");
-   public static final apf ck = a("block.brewing_stand.brew");
-   public static final apf cl = a("item.brush.brushing.generic");
-   public static final apf cm = a("item.brush.brushing.sand");
-   public static final apf cn = a("item.brush.brushing.gravel");
-   public static final apf co = a("item.brush.brushing.sand.complete");
-   public static final apf cp = a("item.brush.brushing.gravel.complete");
-   public static final apf cq = a("block.bubble_column.bubble_pop");
-   public static final apf cr = a("block.bubble_column.upwards_ambient");
-   public static final apf cs = a("block.bubble_column.upwards_inside");
-   public static final apf ct = a("block.bubble_column.whirlpool_ambient");
-   public static final apf cu = a("block.bubble_column.whirlpool_inside");
-   public static final apf cv = a("item.bucket.empty");
-   public static final apf cw = a("item.bucket.empty_axolotl");
-   public static final apf cx = a("item.bucket.empty_fish");
-   public static final apf cy = a("item.bucket.empty_lava");
-   public static final apf cz = a("item.bucket.empty_powder_snow");
-   public static final apf cA = a("item.bucket.empty_tadpole");
-   public static final apf cB = a("item.bucket.fill");
-   public static final apf cC = a("item.bucket.fill_axolotl");
-   public static final apf cD = a("item.bucket.fill_fish");
-   public static final apf cE = a("item.bucket.fill_lava");
-   public static final apf cF = a("item.bucket.fill_powder_snow");
-   public static final apf cG = a("item.bucket.fill_tadpole");
-   public static final apf cH = a("item.bundle.drop_contents");
-   public static final apf cI = a("item.bundle.insert");
-   public static final apf cJ = a("item.bundle.remove_one");
-   public static final apf cK = a("block.cake.add_candle");
-   public static final apf cL = a("block.calcite.break");
-   public static final apf cM = a("block.calcite.step");
-   public static final apf cN = a("block.calcite.place");
-   public static final apf cO = a("block.calcite.hit");
-   public static final apf cP = a("block.calcite.fall");
-   public static final apf cQ = a("entity.camel.ambient");
-   public static final apf cR = a("entity.camel.dash");
-   public static final apf cS = a("entity.camel.dash_ready");
-   public static final apf cT = a("entity.camel.death");
-   public static final apf cU = a("entity.camel.eat");
-   public static final apf cV = a("entity.camel.hurt");
-   public static final apf cW = a("entity.camel.saddle");
-   public static final apf cX = a("entity.camel.sit");
-   public static final apf cY = a("entity.camel.stand");
-   public static final apf cZ = a("entity.camel.step");
-   public static final apf da = a("entity.camel.step_sand");
-   public static final apf db = a("block.campfire.crackle");
-   public static final apf dc = a("block.candle.ambient");
-   public static final apf dd = a("block.candle.break");
-   public static final apf de = a("block.candle.extinguish");
-   public static final apf df = a("block.candle.fall");
-   public static final apf dg = a("block.candle.hit");
-   public static final apf dh = a("block.candle.place");
-   public static final apf di = a("block.candle.step");
-   public static final apf dj = a("entity.cat.ambient");
-   public static final apf dk = a("entity.cat.stray_ambient");
-   public static final apf dl = a("entity.cat.death");
-   public static final apf dm = a("entity.cat.eat");
-   public static final apf dn = a("entity.cat.hiss");
-   public static final apf do = a("entity.cat.beg_for_food");
-   public static final apf dp = a("entity.cat.hurt");
-   public static final apf dq = a("entity.cat.purr");
-   public static final apf dr = a("entity.cat.purreow");
-   public static final apf ds = a("block.cave_vines.break");
-   public static final apf dt = a("block.cave_vines.fall");
-   public static final apf du = a("block.cave_vines.hit");
-   public static final apf dv = a("block.cave_vines.place");
-   public static final apf dw = a("block.cave_vines.step");
-   public static final apf dx = a("block.cave_vines.pick_berries");
-   public static final apf dy = a("block.chain.break");
-   public static final apf dz = a("block.chain.fall");
-   public static final apf dA = a("block.chain.hit");
-   public static final apf dB = a("block.chain.place");
-   public static final apf dC = a("block.chain.step");
-   public static final apf dD = a("block.cherry_wood.break");
-   public static final apf dE = a("block.cherry_wood.fall");
-   public static final apf dF = a("block.cherry_wood.hit");
-   public static final apf dG = a("block.cherry_wood.place");
-   public static final apf dH = a("block.cherry_wood.step");
-   public static final apf dI = a("block.cherry_sapling.break");
-   public static final apf dJ = a("block.cherry_sapling.fall");
-   public static final apf dK = a("block.cherry_sapling.hit");
-   public static final apf dL = a("block.cherry_sapling.place");
-   public static final apf dM = a("block.cherry_sapling.step");
-   public static final apf dN = a("block.cherry_leaves.break");
-   public static final apf dO = a("block.cherry_leaves.fall");
-   public static final apf dP = a("block.cherry_leaves.hit");
-   public static final apf dQ = a("block.cherry_leaves.place");
-   public static final apf dR = a("block.cherry_leaves.step");
-   public static final apf dS = a("block.cherry_wood_hanging_sign.step");
-   public static final apf dT = a("block.cherry_wood_hanging_sign.break");
-   public static final apf dU = a("block.cherry_wood_hanging_sign.fall");
-   public static final apf dV = a("block.cherry_wood_hanging_sign.hit");
-   public static final apf dW = a("block.cherry_wood_hanging_sign.place");
-   public static final apf dX = a("block.cherry_wood_door.close");
-   public static final apf dY = a("block.cherry_wood_door.open");
-   public static final apf dZ = a("block.cherry_wood_trapdoor.close");
-   public static final apf ea = a("block.cherry_wood_trapdoor.open");
-   public static final apf eb = a("block.cherry_wood_button.click_off");
-   public static final apf ec = a("block.cherry_wood_button.click_on");
-   public static final apf ed = a("block.cherry_wood_pressure_plate.click_off");
-   public static final apf ee = a("block.cherry_wood_pressure_plate.click_on");
-   public static final apf ef = a("block.cherry_wood_fence_gate.close");
-   public static final apf eg = a("block.cherry_wood_fence_gate.open");
-   public static final apf eh = a("block.chest.close");
-   public static final apf ei = a("block.chest.locked");
-   public static final apf ej = a("block.chest.open");
-   public static final apf ek = a("entity.chicken.ambient");
-   public static final apf el = a("entity.chicken.death");
-   public static final apf em = a("entity.chicken.egg");
-   public static final apf en = a("entity.chicken.hurt");
-   public static final apf eo = a("entity.chicken.step");
-   public static final apf ep = a("block.chiseled_bookshelf.break");
-   public static final apf eq = a("block.chiseled_bookshelf.fall");
-   public static final apf er = a("block.chiseled_bookshelf.hit");
-   public static final apf es = a("block.chiseled_bookshelf.insert");
-   public static final apf et = a("block.chiseled_bookshelf.insert.enchanted");
-   public static final apf eu = a("block.chiseled_bookshelf.step");
-   public static final apf ev = a("block.chiseled_bookshelf.pickup");
-   public static final apf ew = a("block.chiseled_bookshelf.pickup.enchanted");
-   public static final apf ex = a("block.chiseled_bookshelf.place");
-   public static final apf ey = a("block.chorus_flower.death");
-   public static final apf ez = a("block.chorus_flower.grow");
-   public static final apf eA = a("item.chorus_fruit.teleport");
-   public static final apf eB = a("entity.cod.ambient");
-   public static final apf eC = a("entity.cod.death");
-   public static final apf eD = a("entity.cod.flop");
-   public static final apf eE = a("entity.cod.hurt");
-   public static final apf eF = a("block.comparator.click");
-   public static final apf eG = a("block.composter.empty");
-   public static final apf eH = a("block.composter.fill");
-   public static final apf eI = a("block.composter.fill_success");
-   public static final apf eJ = a("block.composter.ready");
-   public static final apf eK = a("block.conduit.activate");
-   public static final apf eL = a("block.conduit.ambient");
-   public static final apf eM = a("block.conduit.ambient.short");
-   public static final apf eN = a("block.conduit.attack.target");
-   public static final apf eO = a("block.conduit.deactivate");
-   public static final apf eP = a("block.copper.break");
-   public static final apf eQ = a("block.copper.step");
-   public static final apf eR = a("block.copper.place");
-   public static final apf eS = a("block.copper.hit");
-   public static final apf eT = a("block.copper.fall");
-   public static final apf eU = a("block.coral_block.break");
-   public static final apf eV = a("block.coral_block.fall");
-   public static final apf eW = a("block.coral_block.hit");
-   public static final apf eX = a("block.coral_block.place");
-   public static final apf eY = a("block.coral_block.step");
-   public static final apf eZ = a("entity.cow.ambient");
-   public static final apf fa = a("entity.cow.death");
-   public static final apf fb = a("entity.cow.hurt");
-   public static final apf fc = a("entity.cow.milk");
-   public static final apf fd = a("entity.cow.step");
-   public static final apf fe = a("entity.creeper.death");
-   public static final apf ff = a("entity.creeper.hurt");
-   public static final apf fg = a("entity.creeper.primed");
-   public static final apf fh = a("block.crop.break");
-   public static final apf fi = a("item.crop.plant");
-   public static final apf fj = a("item.crossbow.hit");
-   public static final apf fk = a("item.crossbow.loading_end");
-   public static final apf fl = a("item.crossbow.loading_middle");
-   public static final apf fm = a("item.crossbow.loading_start");
-   public static final apf fn = a("item.crossbow.quick_charge_1");
-   public static final apf fo = a("item.crossbow.quick_charge_2");
-   public static final apf fp = a("item.crossbow.quick_charge_3");
-   public static final apf fq = a("item.crossbow.shoot");
-   public static final apf fr = a("block.decorated_pot.break");
-   public static final apf fs = a("block.decorated_pot.fall");
-   public static final apf ft = a("block.decorated_pot.hit");
-   public static final apf fu = a("block.decorated_pot.step");
-   public static final apf fv = a("block.decorated_pot.place");
-   public static final apf fw = a("block.decorated_pot.shatter");
-   public static final apf fx = a("block.deepslate_bricks.break");
-   public static final apf fy = a("block.deepslate_bricks.fall");
-   public static final apf fz = a("block.deepslate_bricks.hit");
-   public static final apf fA = a("block.deepslate_bricks.place");
-   public static final apf fB = a("block.deepslate_bricks.step");
-   public static final apf fC = a("block.deepslate.break");
-   public static final apf fD = a("block.deepslate.fall");
-   public static final apf fE = a("block.deepslate.hit");
-   public static final apf fF = a("block.deepslate.place");
-   public static final apf fG = a("block.deepslate.step");
-   public static final apf fH = a("block.deepslate_tiles.break");
-   public static final apf fI = a("block.deepslate_tiles.fall");
-   public static final apf fJ = a("block.deepslate_tiles.hit");
-   public static final apf fK = a("block.deepslate_tiles.place");
-   public static final apf fL = a("block.deepslate_tiles.step");
-   public static final apf fM = a("block.dispenser.dispense");
-   public static final apf fN = a("block.dispenser.fail");
-   public static final apf fO = a("block.dispenser.launch");
-   public static final apf fP = a("entity.dolphin.ambient");
-   public static final apf fQ = a("entity.dolphin.ambient_water");
-   public static final apf fR = a("entity.dolphin.attack");
-   public static final apf fS = a("entity.dolphin.death");
-   public static final apf fT = a("entity.dolphin.eat");
-   public static final apf fU = a("entity.dolphin.hurt");
-   public static final apf fV = a("entity.dolphin.jump");
-   public static final apf fW = a("entity.dolphin.play");
-   public static final apf fX = a("entity.dolphin.splash");
-   public static final apf fY = a("entity.dolphin.swim");
-   public static final apf fZ = a("entity.donkey.ambient");
-   public static final apf ga = a("entity.donkey.angry");
-   public static final apf gb = a("entity.donkey.chest");
-   public static final apf gc = a("entity.donkey.death");
-   public static final apf gd = a("entity.donkey.eat");
-   public static final apf ge = a("entity.donkey.hurt");
-   public static final apf gf = a("block.dripstone_block.break");
-   public static final apf gg = a("block.dripstone_block.step");
-   public static final apf gh = a("block.dripstone_block.place");
-   public static final apf gi = a("block.dripstone_block.hit");
-   public static final apf gj = a("block.dripstone_block.fall");
-   public static final apf gk = a("block.pointed_dripstone.break");
-   public static final apf gl = a("block.pointed_dripstone.step");
-   public static final apf gm = a("block.pointed_dripstone.place");
-   public static final apf gn = a("block.pointed_dripstone.hit");
-   public static final apf go = a("block.pointed_dripstone.fall");
-   public static final apf gp = a("block.pointed_dripstone.land");
-   public static final apf gq = a("block.pointed_dripstone.drip_lava");
-   public static final apf gr = a("block.pointed_dripstone.drip_water");
-   public static final apf gs = a("block.pointed_dripstone.drip_lava_into_cauldron");
-   public static final apf gt = a("block.pointed_dripstone.drip_water_into_cauldron");
-   public static final apf gu = a("block.big_dripleaf.tilt_down");
-   public static final apf gv = a("block.big_dripleaf.tilt_up");
-   public static final apf gw = a("entity.drowned.ambient");
-   public static final apf gx = a("entity.drowned.ambient_water");
-   public static final apf gy = a("entity.drowned.death");
-   public static final apf gz = a("entity.drowned.death_water");
-   public static final apf gA = a("entity.drowned.hurt");
-   public static final apf gB = a("entity.drowned.hurt_water");
-   public static final apf gC = a("entity.drowned.shoot");
-   public static final apf gD = a("entity.drowned.step");
-   public static final apf gE = a("entity.drowned.swim");
-   public static final apf gF = a("item.dye.use");
-   public static final apf gG = a("entity.egg.throw");
-   public static final apf gH = a("entity.elder_guardian.ambient");
-   public static final apf gI = a("entity.elder_guardian.ambient_land");
-   public static final apf gJ = a("entity.elder_guardian.curse");
-   public static final apf gK = a("entity.elder_guardian.death");
-   public static final apf gL = a("entity.elder_guardian.death_land");
-   public static final apf gM = a("entity.elder_guardian.flop");
-   public static final apf gN = a("entity.elder_guardian.hurt");
-   public static final apf gO = a("entity.elder_guardian.hurt_land");
-   public static final apf gP = a("item.elytra.flying");
-   public static final apf gQ = a("block.enchantment_table.use");
-   public static final apf gR = a("block.ender_chest.close");
-   public static final apf gS = a("block.ender_chest.open");
-   public static final apf gT = a("entity.ender_dragon.ambient");
-   public static final apf gU = a("entity.ender_dragon.death");
-   public static final apf gV = a("entity.dragon_fireball.explode");
-   public static final apf gW = a("entity.ender_dragon.flap");
-   public static final apf gX = a("entity.ender_dragon.growl");
-   public static final apf gY = a("entity.ender_dragon.hurt");
-   public static final apf gZ = a("entity.ender_dragon.shoot");
-   public static final apf ha = a("entity.ender_eye.death");
-   public static final apf hb = a("entity.ender_eye.launch");
-   public static final apf hc = a("entity.enderman.ambient");
-   public static final apf hd = a("entity.enderman.death");
-   public static final apf he = a("entity.enderman.hurt");
-   public static final apf hf = a("entity.enderman.scream");
-   public static final apf hg = a("entity.enderman.stare");
-   public static final apf hh = a("entity.enderman.teleport");
-   public static final apf hi = a("entity.endermite.ambient");
-   public static final apf hj = a("entity.endermite.death");
-   public static final apf hk = a("entity.endermite.hurt");
-   public static final apf hl = a("entity.endermite.step");
-   public static final apf hm = a("entity.ender_pearl.throw");
-   public static final apf hn = a("block.end_gateway.spawn");
-   public static final apf ho = a("block.end_portal_frame.fill");
-   public static final apf hp = a("block.end_portal.spawn");
-   public static final apf hq = a("entity.evoker.ambient");
-   public static final apf hr = a("entity.evoker.cast_spell");
-   public static final apf hs = a("entity.evoker.celebrate");
-   public static final apf ht = a("entity.evoker.death");
-   public static final apf hu = a("entity.evoker_fangs.attack");
-   public static final apf hv = a("entity.evoker.hurt");
-   public static final apf hw = a("entity.evoker.prepare_attack");
-   public static final apf hx = a("entity.evoker.prepare_summon");
-   public static final apf hy = a("entity.evoker.prepare_wololo");
-   public static final apf hz = a("entity.experience_bottle.throw");
-   public static final apf hA = a("entity.experience_orb.pickup");
-   public static final apf hB = a("block.fence_gate.close");
-   public static final apf hC = a("block.fence_gate.open");
-   public static final apf hD = a("item.firecharge.use");
-   public static final apf hE = a("entity.firework_rocket.blast");
-   public static final apf hF = a("entity.firework_rocket.blast_far");
-   public static final apf hG = a("entity.firework_rocket.large_blast");
-   public static final apf hH = a("entity.firework_rocket.large_blast_far");
-   public static final apf hI = a("entity.firework_rocket.launch");
-   public static final apf hJ = a("entity.firework_rocket.shoot");
-   public static final apf hK = a("entity.firework_rocket.twinkle");
-   public static final apf hL = a("entity.firework_rocket.twinkle_far");
-   public static final apf hM = a("block.fire.ambient");
-   public static final apf hN = a("block.fire.extinguish");
-   public static final apf hO = a("entity.fish.swim");
-   public static final apf hP = a("entity.fishing_bobber.retrieve");
-   public static final apf hQ = a("entity.fishing_bobber.splash");
-   public static final apf hR = a("entity.fishing_bobber.throw");
-   public static final apf hS = a("item.flintandsteel.use");
-   public static final apf hT = a("block.flowering_azalea.break");
-   public static final apf hU = a("block.flowering_azalea.fall");
-   public static final apf hV = a("block.flowering_azalea.hit");
-   public static final apf hW = a("block.flowering_azalea.place");
-   public static final apf hX = a("block.flowering_azalea.step");
-   public static final apf hY = a("entity.fox.aggro");
-   public static final apf hZ = a("entity.fox.ambient");
-   public static final apf ia = a("entity.fox.bite");
-   public static final apf ib = a("entity.fox.death");
-   public static final apf ic = a("entity.fox.eat");
-   public static final apf id = a("entity.fox.hurt");
-   public static final apf ie = a("entity.fox.screech");
-   public static final apf if = a("entity.fox.sleep");
-   public static final apf ig = a("entity.fox.sniff");
-   public static final apf ih = a("entity.fox.spit");
-   public static final apf ii = a("entity.fox.teleport");
-   public static final apf ij = a("block.suspicious_sand.break");
-   public static final apf ik = a("block.suspicious_sand.step");
-   public static final apf il = a("block.suspicious_sand.place");
-   public static final apf im = a("block.suspicious_sand.hit");
-   public static final apf in = a("block.suspicious_sand.fall");
-   public static final apf io = a("block.suspicious_gravel.break");
-   public static final apf ip = a("block.suspicious_gravel.step");
-   public static final apf iq = a("block.suspicious_gravel.place");
-   public static final apf ir = a("block.suspicious_gravel.hit");
-   public static final apf is = a("block.suspicious_gravel.fall");
-   public static final apf it = a("block.froglight.break");
-   public static final apf iu = a("block.froglight.fall");
-   public static final apf iv = a("block.froglight.hit");
-   public static final apf iw = a("block.froglight.place");
-   public static final apf ix = a("block.froglight.step");
-   public static final apf iy = a("block.frogspawn.step");
-   public static final apf iz = a("block.frogspawn.break");
-   public static final apf iA = a("block.frogspawn.fall");
-   public static final apf iB = a("block.frogspawn.hatch");
-   public static final apf iC = a("block.frogspawn.hit");
-   public static final apf iD = a("block.frogspawn.place");
-   public static final apf iE = a("entity.frog.ambient");
-   public static final apf iF = a("entity.frog.death");
-   public static final apf iG = a("entity.frog.eat");
-   public static final apf iH = a("entity.frog.hurt");
-   public static final apf iI = a("entity.frog.lay_spawn");
-   public static final apf iJ = a("entity.frog.long_jump");
-   public static final apf iK = a("entity.frog.step");
-   public static final apf iL = a("entity.frog.tongue");
-   public static final apf iM = a("block.roots.break");
-   public static final apf iN = a("block.roots.step");
-   public static final apf iO = a("block.roots.place");
-   public static final apf iP = a("block.roots.hit");
-   public static final apf iQ = a("block.roots.fall");
-   public static final apf iR = a("block.furnace.fire_crackle");
-   public static final apf iS = a("entity.generic.big_fall");
-   public static final apf iT = a("entity.generic.burn");
-   public static final apf iU = a("entity.generic.death");
-   public static final apf iV = a("entity.generic.drink");
-   public static final apf iW = a("entity.generic.eat");
-   public static final apf iX = a("entity.generic.explode");
-   public static final apf iY = a("entity.generic.extinguish_fire");
-   public static final apf iZ = a("entity.generic.hurt");
-   public static final apf ja = a("entity.generic.small_fall");
-   public static final apf jb = a("entity.generic.splash");
-   public static final apf jc = a("entity.generic.swim");
-   public static final apf jd = a("entity.ghast.ambient");
-   public static final apf je = a("entity.ghast.death");
-   public static final apf jf = a("entity.ghast.hurt");
-   public static final apf jg = a("entity.ghast.scream");
-   public static final apf jh = a("entity.ghast.shoot");
-   public static final apf ji = a("entity.ghast.warn");
-   public static final apf jj = a("block.gilded_blackstone.break");
-   public static final apf jk = a("block.gilded_blackstone.fall");
-   public static final apf jl = a("block.gilded_blackstone.hit");
-   public static final apf jm = a("block.gilded_blackstone.place");
-   public static final apf jn = a("block.gilded_blackstone.step");
-   public static final apf jo = a("block.glass.break");
-   public static final apf jp = a("block.glass.fall");
-   public static final apf jq = a("block.glass.hit");
-   public static final apf jr = a("block.glass.place");
-   public static final apf js = a("block.glass.step");
-   public static final apf jt = a("item.glow_ink_sac.use");
-   public static final apf ju = a("entity.glow_item_frame.add_item");
-   public static final apf jv = a("entity.glow_item_frame.break");
-   public static final apf jw = a("entity.glow_item_frame.place");
-   public static final apf jx = a("entity.glow_item_frame.remove_item");
-   public static final apf jy = a("entity.glow_item_frame.rotate_item");
-   public static final apf jz = a("entity.glow_squid.ambient");
-   public static final apf jA = a("entity.glow_squid.death");
-   public static final apf jB = a("entity.glow_squid.hurt");
-   public static final apf jC = a("entity.glow_squid.squirt");
-   public static final apf jD = a("entity.goat.ambient");
-   public static final apf jE = a("entity.goat.death");
-   public static final apf jF = a("entity.goat.eat");
-   public static final apf jG = a("entity.goat.hurt");
-   public static final apf jH = a("entity.goat.long_jump");
-   public static final apf jI = a("entity.goat.milk");
-   public static final apf jJ = a("entity.goat.prepare_ram");
-   public static final apf jK = a("entity.goat.ram_impact");
-   public static final apf jL = a("entity.goat.horn_break");
-   public static final apf jM = a("item.goat_horn.play");
-   public static final apf jN = a("entity.goat.screaming.ambient");
-   public static final apf jO = a("entity.goat.screaming.death");
-   public static final apf jP = a("entity.goat.screaming.eat");
-   public static final apf jQ = a("entity.goat.screaming.hurt");
-   public static final apf jR = a("entity.goat.screaming.long_jump");
-   public static final apf jS = a("entity.goat.screaming.milk");
-   public static final apf jT = a("entity.goat.screaming.prepare_ram");
-   public static final apf jU = a("entity.goat.screaming.ram_impact");
-   public static final apf jV = a("entity.goat.screaming.horn_break");
-   public static final apf jW = a("entity.goat.step");
-   public static final apf jX = a("block.grass.break");
-   public static final apf jY = a("block.grass.fall");
-   public static final apf jZ = a("block.grass.hit");
-   public static final apf ka = a("block.grass.place");
-   public static final apf kb = a("block.grass.step");
-   public static final apf kc = a("block.gravel.break");
-   public static final apf kd = a("block.gravel.fall");
-   public static final apf ke = a("block.gravel.hit");
-   public static final apf kf = a("block.gravel.place");
-   public static final apf kg = a("block.gravel.step");
-   public static final apf kh = a("block.grindstone.use");
-   public static final apf ki = a("block.growing_plant.crop");
-   public static final apf kj = a("entity.guardian.ambient");
-   public static final apf kk = a("entity.guardian.ambient_land");
-   public static final apf kl = a("entity.guardian.attack");
-   public static final apf km = a("entity.guardian.death");
-   public static final apf kn = a("entity.guardian.death_land");
-   public static final apf ko = a("entity.guardian.flop");
-   public static final apf kp = a("entity.guardian.hurt");
-   public static final apf kq = a("entity.guardian.hurt_land");
-   public static final apf kr = a("block.hanging_roots.break");
-   public static final apf ks = a("block.hanging_roots.fall");
-   public static final apf kt = a("block.hanging_roots.hit");
-   public static final apf ku = a("block.hanging_roots.place");
-   public static final apf kv = a("block.hanging_roots.step");
-   public static final apf kw = a("block.hanging_sign.step");
-   public static final apf kx = a("block.hanging_sign.break");
-   public static final apf ky = a("block.hanging_sign.fall");
-   public static final apf kz = a("block.hanging_sign.hit");
-   public static final apf kA = a("block.hanging_sign.place");
-   public static final apf kB = a("block.nether_wood_hanging_sign.step");
-   public static final apf kC = a("block.nether_wood_hanging_sign.break");
-   public static final apf kD = a("block.nether_wood_hanging_sign.fall");
-   public static final apf kE = a("block.nether_wood_hanging_sign.hit");
-   public static final apf kF = a("block.nether_wood_hanging_sign.place");
-   public static final apf kG = a("block.bamboo_wood_hanging_sign.step");
-   public static final apf kH = a("block.bamboo_wood_hanging_sign.break");
-   public static final apf kI = a("block.bamboo_wood_hanging_sign.fall");
-   public static final apf kJ = a("block.bamboo_wood_hanging_sign.hit");
-   public static final apf kK = a("block.bamboo_wood_hanging_sign.place");
-   public static final apf kL = a("item.hoe.till");
-   public static final apf kM = a("entity.hoglin.ambient");
-   public static final apf kN = a("entity.hoglin.angry");
-   public static final apf kO = a("entity.hoglin.attack");
-   public static final apf kP = a("entity.hoglin.converted_to_zombified");
-   public static final apf kQ = a("entity.hoglin.death");
-   public static final apf kR = a("entity.hoglin.hurt");
-   public static final apf kS = a("entity.hoglin.retreat");
-   public static final apf kT = a("entity.hoglin.step");
-   public static final apf kU = a("block.honey_block.break");
-   public static final apf kV = a("block.honey_block.fall");
-   public static final apf kW = a("block.honey_block.hit");
-   public static final apf kX = a("block.honey_block.place");
-   public static final apf kY = a("block.honey_block.slide");
-   public static final apf kZ = a("block.honey_block.step");
-   public static final apf la = a("item.honeycomb.wax_on");
-   public static final apf lb = a("item.honey_bottle.drink");
-   public static final int lc = 8;
-   public static final ImmutableList<he.c<apf>> ld = a();
-   public static final apf le = a("entity.horse.ambient");
-   public static final apf lf = a("entity.horse.angry");
-   public static final apf lg = a("entity.horse.armor");
-   public static final apf lh = a("entity.horse.breathe");
-   public static final apf li = a("entity.horse.death");
-   public static final apf lj = a("entity.horse.eat");
-   public static final apf lk = a("entity.horse.gallop");
-   public static final apf ll = a("entity.horse.hurt");
-   public static final apf lm = a("entity.horse.jump");
-   public static final apf ln = a("entity.horse.land");
-   public static final apf lo = a("entity.horse.saddle");
-   public static final apf lp = a("entity.horse.step");
-   public static final apf lq = a("entity.horse.step_wood");
-   public static final apf lr = a("entity.hostile.big_fall");
-   public static final apf ls = a("entity.hostile.death");
-   public static final apf lt = a("entity.hostile.hurt");
-   public static final apf lu = a("entity.hostile.small_fall");
-   public static final apf lv = a("entity.hostile.splash");
-   public static final apf lw = a("entity.hostile.swim");
-   public static final apf lx = a("entity.husk.ambient");
-   public static final apf ly = a("entity.husk.converted_to_zombie");
-   public static final apf lz = a("entity.husk.death");
-   public static final apf lA = a("entity.husk.hurt");
-   public static final apf lB = a("entity.husk.step");
-   public static final apf lC = a("entity.illusioner.ambient");
-   public static final apf lD = a("entity.illusioner.cast_spell");
-   public static final apf lE = a("entity.illusioner.death");
-   public static final apf lF = a("entity.illusioner.hurt");
-   public static final apf lG = a("entity.illusioner.mirror_move");
-   public static final apf lH = a("entity.illusioner.prepare_blindness");
-   public static final apf lI = a("entity.illusioner.prepare_mirror");
-   public static final apf lJ = a("item.ink_sac.use");
-   public static final apf lK = a("block.iron_door.close");
-   public static final apf lL = a("block.iron_door.open");
-   public static final apf lM = a("entity.iron_golem.attack");
-   public static final apf lN = a("entity.iron_golem.damage");
-   public static final apf lO = a("entity.iron_golem.death");
-   public static final apf lP = a("entity.iron_golem.hurt");
-   public static final apf lQ = a("entity.iron_golem.repair");
-   public static final apf lR = a("entity.iron_golem.step");
-   public static final apf lS = a("block.iron_trapdoor.close");
-   public static final apf lT = a("block.iron_trapdoor.open");
-   public static final apf lU = a("entity.item_frame.add_item");
-   public static final apf lV = a("entity.item_frame.break");
-   public static final apf lW = a("entity.item_frame.place");
-   public static final apf lX = a("entity.item_frame.remove_item");
-   public static final apf lY = a("entity.item_frame.rotate_item");
-   public static final apf lZ = a("entity.item.break");
-   public static final apf ma = a("entity.item.pickup");
-   public static final apf mb = a("block.ladder.break");
-   public static final apf mc = a("block.ladder.fall");
-   public static final apf md = a("block.ladder.hit");
-   public static final apf me = a("block.ladder.place");
-   public static final apf mf = a("block.ladder.step");
-   public static final apf mg = a("block.lantern.break");
-   public static final apf mh = a("block.lantern.fall");
-   public static final apf mi = a("block.lantern.hit");
-   public static final apf mj = a("block.lantern.place");
-   public static final apf mk = a("block.lantern.step");
-   public static final apf ml = a("block.large_amethyst_bud.break");
-   public static final apf mm = a("block.large_amethyst_bud.place");
-   public static final apf mn = a("block.lava.ambient");
-   public static final apf mo = a("block.lava.extinguish");
-   public static final apf mp = a("block.lava.pop");
-   public static final apf mq = a("entity.leash_knot.break");
-   public static final apf mr = a("entity.leash_knot.place");
-   public static final apf ms = a("block.lever.click");
-   public static final apf mt = a("entity.lightning_bolt.impact");
-   public static final apf mu = a("entity.lightning_bolt.thunder");
-   public static final apf mv = a("entity.lingering_potion.throw");
-   public static final apf mw = a("entity.llama.ambient");
-   public static final apf mx = a("entity.llama.angry");
-   public static final apf my = a("entity.llama.chest");
-   public static final apf mz = a("entity.llama.death");
-   public static final apf mA = a("entity.llama.eat");
-   public static final apf mB = a("entity.llama.hurt");
-   public static final apf mC = a("entity.llama.spit");
-   public static final apf mD = a("entity.llama.step");
-   public static final apf mE = a("entity.llama.swag");
-   public static final apf mF = a("entity.magma_cube.death_small");
-   public static final apf mG = a("block.lodestone.break");
-   public static final apf mH = a("block.lodestone.step");
-   public static final apf mI = a("block.lodestone.place");
-   public static final apf mJ = a("block.lodestone.hit");
-   public static final apf mK = a("block.lodestone.fall");
-   public static final apf mL = a("item.lodestone_compass.lock");
-   public static final apf mM = a("entity.magma_cube.death");
-   public static final apf mN = a("entity.magma_cube.hurt");
-   public static final apf mO = a("entity.magma_cube.hurt_small");
-   public static final apf mP = a("entity.magma_cube.jump");
-   public static final apf mQ = a("entity.magma_cube.squish");
-   public static final apf mR = a("entity.magma_cube.squish_small");
-   public static final apf mS = a("block.mangrove_roots.break");
-   public static final apf mT = a("block.mangrove_roots.fall");
-   public static final apf mU = a("block.mangrove_roots.hit");
-   public static final apf mV = a("block.mangrove_roots.place");
-   public static final apf mW = a("block.mangrove_roots.step");
-   public static final apf mX = a("block.medium_amethyst_bud.break");
-   public static final apf mY = a("block.medium_amethyst_bud.place");
-   public static final apf mZ = a("block.metal.break");
-   public static final apf na = a("block.metal.fall");
-   public static final apf nb = a("block.metal.hit");
-   public static final apf nc = a("block.metal.place");
-   public static final apf nd = a("block.metal_pressure_plate.click_off");
-   public static final apf ne = a("block.metal_pressure_plate.click_on");
-   public static final apf nf = a("block.metal.step");
-   public static final apf ng = a("entity.minecart.inside.underwater");
-   public static final apf nh = a("entity.minecart.inside");
-   public static final apf ni = a("entity.minecart.riding");
-   public static final apf nj = a("entity.mooshroom.convert");
-   public static final apf nk = a("entity.mooshroom.eat");
-   public static final apf nl = a("entity.mooshroom.milk");
-   public static final apf nm = a("entity.mooshroom.suspicious_milk");
-   public static final apf nn = a("entity.mooshroom.shear");
-   public static final apf no = a("block.moss_carpet.break");
-   public static final apf np = a("block.moss_carpet.fall");
-   public static final apf nq = a("block.moss_carpet.hit");
-   public static final apf nr = a("block.moss_carpet.place");
-   public static final apf ns = a("block.moss_carpet.step");
-   public static final apf nt = a("block.pink_petals.break");
-   public static final apf nu = a("block.pink_petals.fall");
-   public static final apf nv = a("block.pink_petals.hit");
-   public static final apf nw = a("block.pink_petals.place");
-   public static final apf nx = a("block.pink_petals.step");
-   public static final apf ny = a("block.moss.break");
-   public static final apf nz = a("block.moss.fall");
-   public static final apf nA = a("block.moss.hit");
-   public static final apf nB = a("block.moss.place");
-   public static final apf nC = a("block.moss.step");
-   public static final apf nD = a("block.mud.break");
-   public static final apf nE = a("block.mud.fall");
-   public static final apf nF = a("block.mud.hit");
-   public static final apf nG = a("block.mud.place");
-   public static final apf nH = a("block.mud.step");
-   public static final apf nI = a("block.mud_bricks.break");
-   public static final apf nJ = a("block.mud_bricks.fall");
-   public static final apf nK = a("block.mud_bricks.hit");
-   public static final apf nL = a("block.mud_bricks.place");
-   public static final apf nM = a("block.mud_bricks.step");
-   public static final apf nN = a("block.muddy_mangrove_roots.break");
-   public static final apf nO = a("block.muddy_mangrove_roots.fall");
-   public static final apf nP = a("block.muddy_mangrove_roots.hit");
-   public static final apf nQ = a("block.muddy_mangrove_roots.place");
-   public static final apf nR = a("block.muddy_mangrove_roots.step");
-   public static final apf nS = a("entity.mule.ambient");
-   public static final apf nT = a("entity.mule.angry");
-   public static final apf nU = a("entity.mule.chest");
-   public static final apf nV = a("entity.mule.death");
-   public static final apf nW = a("entity.mule.eat");
-   public static final apf nX = a("entity.mule.hurt");
-   public static final he.c<apf> nY = b("music.creative");
-   public static final he.c<apf> nZ = b("music.credits");
-   public static final apf oa = a("music_disc.5");
-   public static final apf ob = a("music_disc.11");
-   public static final apf oc = a("music_disc.13");
-   public static final apf od = a("music_disc.blocks");
-   public static final apf oe = a("music_disc.cat");
-   public static final apf of = a("music_disc.chirp");
-   public static final apf og = a("music_disc.far");
-   public static final apf oh = a("music_disc.mall");
-   public static final apf oi = a("music_disc.mellohi");
-   public static final apf oj = a("music_disc.pigstep");
-   public static final apf ok = a("music_disc.stal");
-   public static final apf ol = a("music_disc.strad");
-   public static final apf om = a("music_disc.wait");
-   public static final apf on = a("music_disc.ward");
-   public static final apf oo = a("music_disc.otherside");
-   public static final apf op = a("music_disc.relic");
-   public static final he.c<apf> oq = b("music.dragon");
-   public static final he.c<apf> or = b("music.end");
-   public static final he.c<apf> os = b("music.game");
-   public static final he.c<apf> ot = b("music.menu");
-   public static final he.c<apf> ou = b("music.nether.basalt_deltas");
-   public static final he.c<apf> ov = b("music.nether.crimson_forest");
-   public static final he.c<apf> ow = b("music.overworld.deep_dark");
-   public static final he.c<apf> ox = b("music.overworld.dripstone_caves");
-   public static final he.c<apf> oy = b("music.overworld.grove");
-   public static final he.c<apf> oz = b("music.overworld.jagged_peaks");
-   public static final he.c<apf> oA = b("music.overworld.lush_caves");
-   public static final he.c<apf> oB = b("music.overworld.swamp");
-   public static final he.c<apf> oC = b("music.overworld.forest");
-   public static final he.c<apf> oD = b("music.overworld.old_growth_taiga");
-   public static final he.c<apf> oE = b("music.overworld.meadow");
-   public static final he.c<apf> oF = b("music.overworld.cherry_grove");
-   public static final he.c<apf> oG = b("music.nether.nether_wastes");
-   public static final he.c<apf> oH = b("music.overworld.frozen_peaks");
-   public static final he.c<apf> oI = b("music.overworld.snowy_slopes");
-   public static final he.c<apf> oJ = b("music.nether.soul_sand_valley");
-   public static final he.c<apf> oK = b("music.overworld.stony_peaks");
-   public static final he.c<apf> oL = b("music.nether.warped_forest");
-   public static final he.c<apf> oM = b("music.overworld.flower_forest");
-   public static final he.c<apf> oN = b("music.overworld.desert");
-   public static final he.c<apf> oO = b("music.overworld.badlands");
-   public static final he.c<apf> oP = b("music.overworld.jungle");
-   public static final he.c<apf> oQ = b("music.overworld.sparse_jungle");
-   public static final he.c<apf> oR = b("music.overworld.bamboo_jungle");
-   public static final he.c<apf> oS = b("music.under_water");
-   public static final apf oT = a("block.nether_bricks.break");
-   public static final apf oU = a("block.nether_bricks.step");
-   public static final apf oV = a("block.nether_bricks.place");
-   public static final apf oW = a("block.nether_bricks.hit");
-   public static final apf oX = a("block.nether_bricks.fall");
-   public static final apf oY = a("block.nether_wart.break");
-   public static final apf oZ = a("item.nether_wart.plant");
-   public static final apf pa = a("block.nether_wood.break");
-   public static final apf pb = a("block.nether_wood.fall");
-   public static final apf pc = a("block.nether_wood.hit");
-   public static final apf pd = a("block.nether_wood.place");
-   public static final apf pe = a("block.nether_wood.step");
-   public static final apf pf = a("block.nether_wood_door.close");
-   public static final apf pg = a("block.nether_wood_door.open");
-   public static final apf ph = a("block.nether_wood_trapdoor.close");
-   public static final apf pi = a("block.nether_wood_trapdoor.open");
-   public static final apf pj = a("block.nether_wood_button.click_off");
-   public static final apf pk = a("block.nether_wood_button.click_on");
-   public static final apf pl = a("block.nether_wood_pressure_plate.click_off");
-   public static final apf pm = a("block.nether_wood_pressure_plate.click_on");
-   public static final apf pn = a("block.nether_wood_fence_gate.close");
-   public static final apf po = a("block.nether_wood_fence_gate.open");
-   public static final apf pp = a("minecraft:intentionally_empty");
-   public static final apf pq = a("block.packed_mud.break");
-   public static final apf pr = a("block.packed_mud.fall");
-   public static final apf ps = a("block.packed_mud.hit");
-   public static final apf pt = a("block.packed_mud.place");
-   public static final apf pu = a("block.packed_mud.step");
-   public static final apf pv = a("block.stem.break");
-   public static final apf pw = a("block.stem.step");
-   public static final apf px = a("block.stem.place");
-   public static final apf py = a("block.stem.hit");
-   public static final apf pz = a("block.stem.fall");
-   public static final apf pA = a("block.nylium.break");
-   public static final apf pB = a("block.nylium.step");
-   public static final apf pC = a("block.nylium.place");
-   public static final apf pD = a("block.nylium.hit");
-   public static final apf pE = a("block.nylium.fall");
-   public static final apf pF = a("block.nether_sprouts.break");
-   public static final apf pG = a("block.nether_sprouts.step");
-   public static final apf pH = a("block.nether_sprouts.place");
-   public static final apf pI = a("block.nether_sprouts.hit");
-   public static final apf pJ = a("block.nether_sprouts.fall");
-   public static final apf pK = a("block.fungus.break");
-   public static final apf pL = a("block.fungus.step");
-   public static final apf pM = a("block.fungus.place");
-   public static final apf pN = a("block.fungus.hit");
-   public static final apf pO = a("block.fungus.fall");
-   public static final apf pP = a("block.weeping_vines.break");
-   public static final apf pQ = a("block.weeping_vines.step");
-   public static final apf pR = a("block.weeping_vines.place");
-   public static final apf pS = a("block.weeping_vines.hit");
-   public static final apf pT = a("block.weeping_vines.fall");
-   public static final apf pU = a("block.wart_block.break");
-   public static final apf pV = a("block.wart_block.step");
-   public static final apf pW = a("block.wart_block.place");
-   public static final apf pX = a("block.wart_block.hit");
-   public static final apf pY = a("block.wart_block.fall");
-   public static final apf pZ = a("block.netherite_block.break");
-   public static final apf qa = a("block.netherite_block.step");
-   public static final apf qb = a("block.netherite_block.place");
-   public static final apf qc = a("block.netherite_block.hit");
-   public static final apf qd = a("block.netherite_block.fall");
-   public static final apf qe = a("block.netherrack.break");
-   public static final apf qf = a("block.netherrack.step");
-   public static final apf qg = a("block.netherrack.place");
-   public static final apf qh = a("block.netherrack.hit");
-   public static final apf qi = a("block.netherrack.fall");
-   public static final he.c<apf> qj = b("block.note_block.basedrum");
-   public static final he.c<apf> qk = b("block.note_block.bass");
-   public static final he.c<apf> ql = b("block.note_block.bell");
-   public static final he.c<apf> qm = b("block.note_block.chime");
-   public static final he.c<apf> qn = b("block.note_block.flute");
-   public static final he.c<apf> qo = b("block.note_block.guitar");
-   public static final he.c<apf> qp = b("block.note_block.harp");
-   public static final he.c<apf> qq = b("block.note_block.hat");
-   public static final he.c<apf> qr = b("block.note_block.pling");
-   public static final he.c<apf> qs = b("block.note_block.snare");
-   public static final he.c<apf> qt = b("block.note_block.xylophone");
-   public static final he.c<apf> qu = b("block.note_block.iron_xylophone");
-   public static final he.c<apf> qv = b("block.note_block.cow_bell");
-   public static final he.c<apf> qw = b("block.note_block.didgeridoo");
-   public static final he.c<apf> qx = b("block.note_block.bit");
-   public static final he.c<apf> qy = b("block.note_block.banjo");
-   public static final he.c<apf> qz = b("block.note_block.imitate.zombie");
-   public static final he.c<apf> qA = b("block.note_block.imitate.skeleton");
-   public static final he.c<apf> qB = b("block.note_block.imitate.creeper");
-   public static final he.c<apf> qC = b("block.note_block.imitate.ender_dragon");
-   public static final he.c<apf> qD = b("block.note_block.imitate.wither_skeleton");
-   public static final he.c<apf> qE = b("block.note_block.imitate.piglin");
-   public static final apf qF = a("entity.ocelot.hurt");
-   public static final apf qG = a("entity.ocelot.ambient");
-   public static final apf qH = a("entity.ocelot.death");
-   public static final apf qI = a("entity.painting.break");
-   public static final apf qJ = a("entity.painting.place");
-   public static final apf qK = a("entity.panda.pre_sneeze");
-   public static final apf qL = a("entity.panda.sneeze");
-   public static final apf qM = a("entity.panda.ambient");
-   public static final apf qN = a("entity.panda.death");
-   public static final apf qO = a("entity.panda.eat");
-   public static final apf qP = a("entity.panda.step");
-   public static final apf qQ = a("entity.panda.cant_breed");
-   public static final apf qR = a("entity.panda.aggressive_ambient");
-   public static final apf qS = a("entity.panda.worried_ambient");
-   public static final apf qT = a("entity.panda.hurt");
-   public static final apf qU = a("entity.panda.bite");
-   public static final apf qV = a("entity.parrot.ambient");
-   public static final apf qW = a("entity.parrot.death");
-   public static final apf qX = a("entity.parrot.eat");
-   public static final apf qY = a("entity.parrot.fly");
-   public static final apf qZ = a("entity.parrot.hurt");
-   public static final apf ra = a("entity.parrot.imitate.blaze");
-   public static final apf rb = a("entity.parrot.imitate.creeper");
-   public static final apf rc = a("entity.parrot.imitate.drowned");
-   public static final apf rd = a("entity.parrot.imitate.elder_guardian");
-   public static final apf re = a("entity.parrot.imitate.ender_dragon");
-   public static final apf rf = a("entity.parrot.imitate.endermite");
-   public static final apf rg = a("entity.parrot.imitate.evoker");
-   public static final apf rh = a("entity.parrot.imitate.ghast");
-   public static final apf ri = a("entity.parrot.imitate.guardian");
-   public static final apf rj = a("entity.parrot.imitate.hoglin");
-   public static final apf rk = a("entity.parrot.imitate.husk");
-   public static final apf rl = a("entity.parrot.imitate.illusioner");
-   public static final apf rm = a("entity.parrot.imitate.magma_cube");
-   public static final apf rn = a("entity.parrot.imitate.phantom");
-   public static final apf ro = a("entity.parrot.imitate.piglin");
-   public static final apf rp = a("entity.parrot.imitate.piglin_brute");
-   public static final apf rq = a("entity.parrot.imitate.pillager");
-   public static final apf rr = a("entity.parrot.imitate.ravager");
-   public static final apf rs = a("entity.parrot.imitate.shulker");
-   public static final apf rt = a("entity.parrot.imitate.silverfish");
-   public static final apf ru = a("entity.parrot.imitate.skeleton");
-   public static final apf rv = a("entity.parrot.imitate.slime");
-   public static final apf rw = a("entity.parrot.imitate.spider");
-   public static final apf rx = a("entity.parrot.imitate.stray");
-   public static final apf ry = a("entity.parrot.imitate.vex");
-   public static final apf rz = a("entity.parrot.imitate.vindicator");
-   public static final apf rA = a("entity.parrot.imitate.warden");
-   public static final apf rB = a("entity.parrot.imitate.witch");
-   public static final apf rC = a("entity.parrot.imitate.wither");
-   public static final apf rD = a("entity.parrot.imitate.wither_skeleton");
-   public static final apf rE = a("entity.parrot.imitate.zoglin");
-   public static final apf rF = a("entity.parrot.imitate.zombie");
-   public static final apf rG = a("entity.parrot.imitate.zombie_villager");
-   public static final apf rH = a("entity.parrot.step");
-   public static final apf rI = a("entity.phantom.ambient");
-   public static final apf rJ = a("entity.phantom.bite");
-   public static final apf rK = a("entity.phantom.death");
-   public static final apf rL = a("entity.phantom.flap");
-   public static final apf rM = a("entity.phantom.hurt");
-   public static final apf rN = a("entity.phantom.swoop");
-   public static final apf rO = a("entity.pig.ambient");
-   public static final apf rP = a("entity.pig.death");
-   public static final apf rQ = a("entity.pig.hurt");
-   public static final apf rR = a("entity.pig.saddle");
-   public static final apf rS = a("entity.pig.step");
-   public static final apf rT = a("entity.piglin.admiring_item");
-   public static final apf rU = a("entity.piglin.ambient");
-   public static final apf rV = a("entity.piglin.angry");
-   public static final apf rW = a("entity.piglin.celebrate");
-   public static final apf rX = a("entity.piglin.death");
-   public static final apf rY = a("entity.piglin.jealous");
-   public static final apf rZ = a("entity.piglin.hurt");
-   public static final apf sa = a("entity.piglin.retreat");
-   public static final apf sb = a("entity.piglin.step");
-   public static final apf sc = a("entity.piglin.converted_to_zombified");
-   public static final apf sd = a("entity.piglin_brute.ambient");
-   public static final apf se = a("entity.piglin_brute.angry");
-   public static final apf sf = a("entity.piglin_brute.death");
-   public static final apf sg = a("entity.piglin_brute.hurt");
-   public static final apf sh = a("entity.piglin_brute.step");
-   public static final apf si = a("entity.piglin_brute.converted_to_zombified");
-   public static final apf sj = a("entity.pillager.ambient");
-   public static final apf sk = a("entity.pillager.celebrate");
-   public static final apf sl = a("entity.pillager.death");
-   public static final apf sm = a("entity.pillager.hurt");
-   public static final apf sn = a("block.piston.contract");
-   public static final apf so = a("block.piston.extend");
-   public static final apf sp = a("entity.player.attack.crit");
-   public static final apf sq = a("entity.player.attack.knockback");
-   public static final apf sr = a("entity.player.attack.nodamage");
-   public static final apf ss = a("entity.player.attack.strong");
-   public static final apf st = a("entity.player.attack.sweep");
-   public static final apf su = a("entity.player.attack.weak");
-   public static final apf sv = a("entity.player.big_fall");
-   public static final apf sw = a("entity.player.breath");
-   public static final apf sx = a("entity.player.burp");
-   public static final apf sy = a("entity.player.death");
-   public static final apf sz = a("entity.player.hurt");
-   public static final apf sA = a("entity.player.hurt_drown");
-   public static final apf sB = a("entity.player.hurt_freeze");
-   public static final apf sC = a("entity.player.hurt_on_fire");
-   public static final apf sD = a("entity.player.hurt_sweet_berry_bush");
-   public static final apf sE = a("entity.player.levelup");
-   public static final apf sF = a("entity.player.small_fall");
-   public static final apf sG = a("entity.player.splash");
-   public static final apf sH = a("entity.player.splash.high_speed");
-   public static final apf sI = a("entity.player.swim");
-   public static final apf sJ = a("entity.polar_bear.ambient");
-   public static final apf sK = a("entity.polar_bear.ambient_baby");
-   public static final apf sL = a("entity.polar_bear.death");
-   public static final apf sM = a("entity.polar_bear.hurt");
-   public static final apf sN = a("entity.polar_bear.step");
-   public static final apf sO = a("entity.polar_bear.warning");
-   public static final apf sP = a("block.polished_deepslate.break");
-   public static final apf sQ = a("block.polished_deepslate.fall");
-   public static final apf sR = a("block.polished_deepslate.hit");
-   public static final apf sS = a("block.polished_deepslate.place");
-   public static final apf sT = a("block.polished_deepslate.step");
-   public static final apf sU = a("block.portal.ambient");
-   public static final apf sV = a("block.portal.travel");
-   public static final apf sW = a("block.portal.trigger");
-   public static final apf sX = a("block.powder_snow.break");
-   public static final apf sY = a("block.powder_snow.fall");
-   public static final apf sZ = a("block.powder_snow.hit");
-   public static final apf ta = a("block.powder_snow.place");
-   public static final apf tb = a("block.powder_snow.step");
-   public static final apf tc = a("entity.puffer_fish.ambient");
-   public static final apf td = a("entity.puffer_fish.blow_out");
-   public static final apf te = a("entity.puffer_fish.blow_up");
-   public static final apf tf = a("entity.puffer_fish.death");
-   public static final apf tg = a("entity.puffer_fish.flop");
-   public static final apf th = a("entity.puffer_fish.hurt");
-   public static final apf ti = a("entity.puffer_fish.sting");
-   public static final apf tj = a("block.pumpkin.carve");
-   public static final apf tk = a("entity.rabbit.ambient");
-   public static final apf tl = a("entity.rabbit.attack");
-   public static final apf tm = a("entity.rabbit.death");
-   public static final apf tn = a("entity.rabbit.hurt");
-   public static final apf to = a("entity.rabbit.jump");
-   public static final he.c<apf> tp = b("event.raid.horn");
-   public static final apf tq = a("entity.ravager.ambient");
-   public static final apf tr = a("entity.ravager.attack");
-   public static final apf ts = a("entity.ravager.celebrate");
-   public static final apf tt = a("entity.ravager.death");
-   public static final apf tu = a("entity.ravager.hurt");
-   public static final apf tv = a("entity.ravager.step");
-   public static final apf tw = a("entity.ravager.stunned");
-   public static final apf tx = a("entity.ravager.roar");
-   public static final apf ty = a("block.nether_gold_ore.break");
-   public static final apf tz = a("block.nether_gold_ore.fall");
-   public static final apf tA = a("block.nether_gold_ore.hit");
-   public static final apf tB = a("block.nether_gold_ore.place");
-   public static final apf tC = a("block.nether_gold_ore.step");
-   public static final apf tD = a("block.nether_ore.break");
-   public static final apf tE = a("block.nether_ore.fall");
-   public static final apf tF = a("block.nether_ore.hit");
-   public static final apf tG = a("block.nether_ore.place");
-   public static final apf tH = a("block.nether_ore.step");
-   public static final apf tI = a("block.redstone_torch.burnout");
-   public static final apf tJ = a("block.respawn_anchor.ambient");
-   public static final apf tK = a("block.respawn_anchor.charge");
-   public static final he.c<apf> tL = b("block.respawn_anchor.deplete");
-   public static final apf tM = a("block.respawn_anchor.set_spawn");
-   public static final apf tN = a("block.rooted_dirt.break");
-   public static final apf tO = a("block.rooted_dirt.fall");
-   public static final apf tP = a("block.rooted_dirt.hit");
-   public static final apf tQ = a("block.rooted_dirt.place");
-   public static final apf tR = a("block.rooted_dirt.step");
-   public static final apf tS = a("entity.salmon.ambient");
-   public static final apf tT = a("entity.salmon.death");
-   public static final apf tU = a("entity.salmon.flop");
-   public static final apf tV = a("entity.salmon.hurt");
-   public static final apf tW = a("block.sand.break");
-   public static final apf tX = a("block.sand.fall");
-   public static final apf tY = a("block.sand.hit");
-   public static final apf tZ = a("block.sand.place");
-   public static final apf ua = a("block.sand.step");
-   public static final apf ub = a("block.scaffolding.break");
-   public static final apf uc = a("block.scaffolding.fall");
-   public static final apf ud = a("block.scaffolding.hit");
-   public static final apf ue = a("block.scaffolding.place");
-   public static final apf uf = a("block.scaffolding.step");
-   public static final apf ug = a("block.sculk.spread");
-   public static final apf uh = a("block.sculk.charge");
-   public static final apf ui = a("block.sculk.break");
-   public static final apf uj = a("block.sculk.fall");
-   public static final apf uk = a("block.sculk.hit");
-   public static final apf ul = a("block.sculk.place");
-   public static final apf um = a("block.sculk.step");
-   public static final apf un = a("block.sculk_catalyst.bloom");
-   public static final apf uo = a("block.sculk_catalyst.break");
-   public static final apf up = a("block.sculk_catalyst.fall");
-   public static final apf uq = a("block.sculk_catalyst.hit");
-   public static final apf ur = a("block.sculk_catalyst.place");
-   public static final apf us = a("block.sculk_catalyst.step");
-   public static final apf ut = a("block.sculk_sensor.clicking");
-   public static final apf uu = a("block.sculk_sensor.clicking_stop");
-   public static final apf uv = a("block.sculk_sensor.break");
-   public static final apf uw = a("block.sculk_sensor.fall");
-   public static final apf ux = a("block.sculk_sensor.hit");
-   public static final apf uy = a("block.sculk_sensor.place");
-   public static final apf uz = a("block.sculk_sensor.step");
-   public static final apf uA = a("block.sculk_shrieker.break");
-   public static final apf uB = a("block.sculk_shrieker.fall");
-   public static final apf uC = a("block.sculk_shrieker.hit");
-   public static final apf uD = a("block.sculk_shrieker.place");
-   public static final apf uE = a("block.sculk_shrieker.shriek");
-   public static final apf uF = a("block.sculk_shrieker.step");
-   public static final apf uG = a("block.sculk_vein.break");
-   public static final apf uH = a("block.sculk_vein.fall");
-   public static final apf uI = a("block.sculk_vein.hit");
-   public static final apf uJ = a("block.sculk_vein.place");
-   public static final apf uK = a("block.sculk_vein.step");
-   public static final apf uL = a("entity.sheep.ambient");
-   public static final apf uM = a("entity.sheep.death");
-   public static final apf uN = a("entity.sheep.hurt");
-   public static final apf uO = a("entity.sheep.shear");
-   public static final apf uP = a("entity.sheep.step");
-   public static final apf uQ = a("item.shield.block");
-   public static final apf uR = a("item.shield.break");
-   public static final apf uS = a("block.shroomlight.break");
-   public static final apf uT = a("block.shroomlight.step");
-   public static final apf uU = a("block.shroomlight.place");
-   public static final apf uV = a("block.shroomlight.hit");
-   public static final apf uW = a("block.shroomlight.fall");
-   public static final apf uX = a("item.shovel.flatten");
-   public static final apf uY = a("entity.shulker.ambient");
-   public static final apf uZ = a("block.shulker_box.close");
-   public static final apf va = a("block.shulker_box.open");
-   public static final apf vb = a("entity.shulker_bullet.hit");
-   public static final apf vc = a("entity.shulker_bullet.hurt");
-   public static final apf vd = a("entity.shulker.close");
-   public static final apf ve = a("entity.shulker.death");
-   public static final apf vf = a("entity.shulker.hurt");
-   public static final apf vg = a("entity.shulker.hurt_closed");
-   public static final apf vh = a("entity.shulker.open");
-   public static final apf vi = a("entity.shulker.shoot");
-   public static final apf vj = a("entity.shulker.teleport");
-   public static final apf vk = a("entity.silverfish.ambient");
-   public static final apf vl = a("entity.silverfish.death");
-   public static final apf vm = a("entity.silverfish.hurt");
-   public static final apf vn = a("entity.silverfish.step");
-   public static final apf vo = a("entity.skeleton.ambient");
-   public static final apf vp = a("entity.skeleton.converted_to_stray");
-   public static final apf vq = a("entity.skeleton.death");
-   public static final apf vr = a("entity.skeleton_horse.ambient");
-   public static final apf vs = a("entity.skeleton_horse.death");
-   public static final apf vt = a("entity.skeleton_horse.hurt");
-   public static final apf vu = a("entity.skeleton_horse.swim");
-   public static final apf vv = a("entity.skeleton_horse.ambient_water");
-   public static final apf vw = a("entity.skeleton_horse.gallop_water");
-   public static final apf vx = a("entity.skeleton_horse.jump_water");
-   public static final apf vy = a("entity.skeleton_horse.step_water");
-   public static final apf vz = a("entity.skeleton.hurt");
-   public static final apf vA = a("entity.skeleton.shoot");
-   public static final apf vB = a("entity.skeleton.step");
-   public static final apf vC = a("entity.slime.attack");
-   public static final apf vD = a("entity.slime.death");
-   public static final apf vE = a("entity.slime.hurt");
-   public static final apf vF = a("entity.slime.jump");
-   public static final apf vG = a("entity.slime.squish");
-   public static final apf vH = a("block.slime_block.break");
-   public static final apf vI = a("block.slime_block.fall");
-   public static final apf vJ = a("block.slime_block.hit");
-   public static final apf vK = a("block.slime_block.place");
-   public static final apf vL = a("block.slime_block.step");
-   public static final apf vM = a("block.small_amethyst_bud.break");
-   public static final apf vN = a("block.small_amethyst_bud.place");
-   public static final apf vO = a("block.small_dripleaf.break");
-   public static final apf vP = a("block.small_dripleaf.fall");
-   public static final apf vQ = a("block.small_dripleaf.hit");
-   public static final apf vR = a("block.small_dripleaf.place");
-   public static final apf vS = a("block.small_dripleaf.step");
-   public static final apf vT = a("block.soul_sand.break");
-   public static final apf vU = a("block.soul_sand.step");
-   public static final apf vV = a("block.soul_sand.place");
-   public static final apf vW = a("block.soul_sand.hit");
-   public static final apf vX = a("block.soul_sand.fall");
-   public static final apf vY = a("block.soul_soil.break");
-   public static final apf vZ = a("block.soul_soil.step");
-   public static final apf wa = a("block.soul_soil.place");
-   public static final apf wb = a("block.soul_soil.hit");
-   public static final apf wc = a("block.soul_soil.fall");
-   public static final apf wd = a("particle.soul_escape");
-   public static final apf we = a("block.spore_blossom.break");
-   public static final apf wf = a("block.spore_blossom.fall");
-   public static final apf wg = a("block.spore_blossom.hit");
-   public static final apf wh = a("block.spore_blossom.place");
-   public static final apf wi = a("block.spore_blossom.step");
-   public static final apf wj = a("entity.strider.ambient");
-   public static final apf wk = a("entity.strider.happy");
-   public static final apf wl = a("entity.strider.retreat");
-   public static final apf wm = a("entity.strider.death");
-   public static final apf wn = a("entity.strider.hurt");
-   public static final apf wo = a("entity.strider.step");
-   public static final apf wp = a("entity.strider.step_lava");
-   public static final apf wq = a("entity.strider.eat");
-   public static final apf wr = a("entity.strider.saddle");
-   public static final apf ws = a("entity.slime.death_small");
-   public static final apf wt = a("entity.slime.hurt_small");
-   public static final apf wu = a("entity.slime.jump_small");
-   public static final apf wv = a("entity.slime.squish_small");
-   public static final apf ww = a("block.smithing_table.use");
-   public static final apf wx = a("block.smoker.smoke");
-   public static final apf wy = a("entity.sniffer.step");
-   public static final apf wz = a("entity.sniffer.eat");
-   public static final apf wA = a("entity.sniffer.idle");
-   public static final apf wB = a("entity.sniffer.hurt");
-   public static final apf wC = a("entity.sniffer.death");
-   public static final apf wD = a("entity.sniffer.drop_seed");
-   public static final apf wE = a("entity.sniffer.scenting");
-   public static final apf wF = a("entity.sniffer.sniffing");
-   public static final apf wG = a("entity.sniffer.searching");
-   public static final apf wH = a("entity.sniffer.digging");
-   public static final apf wI = a("entity.sniffer.digging_stop");
-   public static final apf wJ = a("entity.sniffer.happy");
-   public static final apf wK = a("block.sniffer_egg.plop");
-   public static final apf wL = a("block.sniffer_egg.crack");
-   public static final apf wM = a("block.sniffer_egg.hatch");
-   public static final apf wN = a("entity.snowball.throw");
-   public static final apf wO = a("block.snow.break");
-   public static final apf wP = a("block.snow.fall");
-   public static final apf wQ = a("entity.snow_golem.ambient");
-   public static final apf wR = a("entity.snow_golem.death");
-   public static final apf wS = a("entity.snow_golem.hurt");
-   public static final apf wT = a("entity.snow_golem.shoot");
-   public static final apf wU = a("entity.snow_golem.shear");
-   public static final apf wV = a("block.snow.hit");
-   public static final apf wW = a("block.snow.place");
-   public static final apf wX = a("block.snow.step");
-   public static final apf wY = a("entity.spider.ambient");
-   public static final apf wZ = a("entity.spider.death");
-   public static final apf xa = a("entity.spider.hurt");
-   public static final apf xb = a("entity.spider.step");
-   public static final apf xc = a("entity.splash_potion.break");
-   public static final apf xd = a("entity.splash_potion.throw");
-   public static final apf xe = a("block.sponge.break");
-   public static final apf xf = a("block.sponge.fall");
-   public static final apf xg = a("block.sponge.hit");
-   public static final apf xh = a("block.sponge.place");
-   public static final apf xi = a("block.sponge.step");
-   public static final apf xj = a("block.sponge.absorb");
-   public static final apf xk = a("item.spyglass.use");
-   public static final apf xl = a("item.spyglass.stop_using");
-   public static final apf xm = a("entity.squid.ambient");
-   public static final apf xn = a("entity.squid.death");
-   public static final apf xo = a("entity.squid.hurt");
-   public static final apf xp = a("entity.squid.squirt");
-   public static final apf xq = a("block.stone.break");
-   public static final apf xr = a("block.stone_button.click_off");
-   public static final apf xs = a("block.stone_button.click_on");
-   public static final apf xt = a("block.stone.fall");
-   public static final apf xu = a("block.stone.hit");
-   public static final apf xv = a("block.stone.place");
-   public static final apf xw = a("block.stone_pressure_plate.click_off");
-   public static final apf xx = a("block.stone_pressure_plate.click_on");
-   public static final apf xy = a("block.stone.step");
-   public static final apf xz = a("entity.stray.ambient");
-   public static final apf xA = a("entity.stray.death");
-   public static final apf xB = a("entity.stray.hurt");
-   public static final apf xC = a("entity.stray.step");
-   public static final apf xD = a("block.sweet_berry_bush.break");
-   public static final apf xE = a("block.sweet_berry_bush.place");
-   public static final apf xF = a("block.sweet_berry_bush.pick_berries");
-   public static final apf xG = a("entity.tadpole.death");
-   public static final apf xH = a("entity.tadpole.flop");
-   public static final apf xI = a("entity.tadpole.grow_up");
-   public static final apf xJ = a("entity.tadpole.hurt");
-   public static final apf xK = a("enchant.thorns.hit");
-   public static final apf xL = a("entity.tnt.primed");
-   public static final apf xM = a("item.totem.use");
-   public static final apf xN = a("item.trident.hit");
-   public static final apf xO = a("item.trident.hit_ground");
-   public static final apf xP = a("item.trident.return");
-   public static final apf xQ = a("item.trident.riptide_1");
-   public static final apf xR = a("item.trident.riptide_2");
-   public static final apf xS = a("item.trident.riptide_3");
-   public static final apf xT = a("item.trident.throw");
-   public static final apf xU = a("item.trident.thunder");
-   public static final apf xV = a("block.tripwire.attach");
-   public static final apf xW = a("block.tripwire.click_off");
-   public static final apf xX = a("block.tripwire.click_on");
-   public static final apf xY = a("block.tripwire.detach");
-   public static final apf xZ = a("entity.tropical_fish.ambient");
-   public static final apf ya = a("entity.tropical_fish.death");
-   public static final apf yb = a("entity.tropical_fish.flop");
-   public static final apf yc = a("entity.tropical_fish.hurt");
-   public static final apf yd = a("block.tuff.break");
-   public static final apf ye = a("block.tuff.step");
-   public static final apf yf = a("block.tuff.place");
-   public static final apf yg = a("block.tuff.hit");
-   public static final apf yh = a("block.tuff.fall");
-   public static final apf yi = a("entity.turtle.ambient_land");
-   public static final apf yj = a("entity.turtle.death");
-   public static final apf yk = a("entity.turtle.death_baby");
-   public static final apf yl = a("entity.turtle.egg_break");
-   public static final apf ym = a("entity.turtle.egg_crack");
-   public static final apf yn = a("entity.turtle.egg_hatch");
-   public static final apf yo = a("entity.turtle.hurt");
-   public static final apf yp = a("entity.turtle.hurt_baby");
-   public static final apf yq = a("entity.turtle.lay_egg");
-   public static final apf yr = a("entity.turtle.shamble");
-   public static final apf ys = a("entity.turtle.shamble_baby");
-   public static final apf yt = a("entity.turtle.swim");
-   public static final he.c<apf> yu = b("ui.button.click");
-   public static final apf yv = a("ui.loom.select_pattern");
-   public static final apf yw = a("ui.loom.take_result");
-   public static final apf yx = a("ui.cartography_table.take_result");
-   public static final apf yy = a("ui.stonecutter.take_result");
-   public static final apf yz = a("ui.stonecutter.select_recipe");
-   public static final apf yA = a("ui.toast.challenge_complete");
-   public static final apf yB = a("ui.toast.in");
-   public static final apf yC = a("ui.toast.out");
-   public static final apf yD = a("entity.vex.ambient");
-   public static final apf yE = a("entity.vex.charge");
-   public static final apf yF = a("entity.vex.death");
-   public static final apf yG = a("entity.vex.hurt");
-   public static final apf yH = a("entity.villager.ambient");
-   public static final apf yI = a("entity.villager.celebrate");
-   public static final apf yJ = a("entity.villager.death");
-   public static final apf yK = a("entity.villager.hurt");
-   public static final apf yL = a("entity.villager.no");
-   public static final apf yM = a("entity.villager.trade");
-   public static final apf yN = a("entity.villager.yes");
-   public static final apf yO = a("entity.villager.work_armorer");
-   public static final apf yP = a("entity.villager.work_butcher");
-   public static final apf yQ = a("entity.villager.work_cartographer");
-   public static final apf yR = a("entity.villager.work_cleric");
-   public static final apf yS = a("entity.villager.work_farmer");
-   public static final apf yT = a("entity.villager.work_fisherman");
-   public static final apf yU = a("entity.villager.work_fletcher");
-   public static final apf yV = a("entity.villager.work_leatherworker");
-   public static final apf yW = a("entity.villager.work_librarian");
-   public static final apf yX = a("entity.villager.work_mason");
-   public static final apf yY = a("entity.villager.work_shepherd");
-   public static final apf yZ = a("entity.villager.work_toolsmith");
-   public static final apf za = a("entity.villager.work_weaponsmith");
-   public static final apf zb = a("entity.vindicator.ambient");
-   public static final apf zc = a("entity.vindicator.celebrate");
-   public static final apf zd = a("entity.vindicator.death");
-   public static final apf ze = a("entity.vindicator.hurt");
-   public static final apf zf = a("block.vine.break");
-   public static final apf zg = a("block.vine.fall");
-   public static final apf zh = a("block.vine.hit");
-   public static final apf zi = a("block.vine.place");
-   public static final apf zj = a("block.vine.step");
-   public static final apf zk = a("block.lily_pad.place");
-   public static final apf zl = a("entity.wandering_trader.ambient");
-   public static final apf zm = a("entity.wandering_trader.death");
-   public static final apf zn = a("entity.wandering_trader.disappeared");
-   public static final apf zo = a("entity.wandering_trader.drink_milk");
-   public static final apf zp = a("entity.wandering_trader.drink_potion");
-   public static final apf zq = a("entity.wandering_trader.hurt");
-   public static final apf zr = a("entity.wandering_trader.no");
-   public static final apf zs = a("entity.wandering_trader.reappeared");
-   public static final apf zt = a("entity.wandering_trader.trade");
-   public static final apf zu = a("entity.wandering_trader.yes");
-   public static final apf zv = a("entity.warden.agitated");
-   public static final apf zw = a("entity.warden.ambient");
-   public static final apf zx = a("entity.warden.angry");
-   public static final apf zy = a("entity.warden.attack_impact");
-   public static final apf zz = a("entity.warden.death");
-   public static final apf zA = a("entity.warden.dig");
-   public static final apf zB = a("entity.warden.emerge");
-   public static final apf zC = a("entity.warden.heartbeat");
-   public static final apf zD = a("entity.warden.hurt");
-   public static final apf zE = a("entity.warden.listening");
-   public static final apf zF = a("entity.warden.listening_angry");
-   public static final apf zG = a("entity.warden.nearby_close");
-   public static final apf zH = a("entity.warden.nearby_closer");
-   public static final apf zI = a("entity.warden.nearby_closest");
-   public static final apf zJ = a("entity.warden.roar");
-   public static final apf zK = a("entity.warden.sniff");
-   public static final apf zL = a("entity.warden.sonic_boom");
-   public static final apf zM = a("entity.warden.sonic_charge");
-   public static final apf zN = a("entity.warden.step");
-   public static final apf zO = a("entity.warden.tendril_clicks");
-   public static final apf zP = a("block.sign.waxed_interact_fail");
-   public static final apf zQ = a("block.water.ambient");
-   public static final apf zR = a("weather.rain");
-   public static final apf zS = a("weather.rain.above");
-   public static final apf zT = a("block.wet_grass.break");
-   public static final apf zU = a("block.wet_grass.fall");
-   public static final apf zV = a("block.wet_grass.hit");
-   public static final apf zW = a("block.wet_grass.place");
-   public static final apf zX = a("block.wet_grass.step");
-   public static final apf zY = a("block.wet_sponge.break");
-   public static final apf zZ = a("block.wet_sponge.fall");
-   public static final apf Aa = a("block.wet_sponge.hit");
-   public static final apf Ab = a("block.wet_sponge.place");
-   public static final apf Ac = a("block.wet_sponge.step");
-   public static final apf Ad = a("entity.witch.ambient");
-   public static final apf Ae = a("entity.witch.celebrate");
-   public static final apf Af = a("entity.witch.death");
-   public static final apf Ag = a("entity.witch.drink");
-   public static final apf Ah = a("entity.witch.hurt");
-   public static final apf Ai = a("entity.witch.throw");
-   public static final apf Aj = a("entity.wither.ambient");
-   public static final apf Ak = a("entity.wither.break_block");
-   public static final apf Al = a("entity.wither.death");
-   public static final apf Am = a("entity.wither.hurt");
-   public static final apf An = a("entity.wither.shoot");
-   public static final apf Ao = a("entity.wither_skeleton.ambient");
-   public static final apf Ap = a("entity.wither_skeleton.death");
-   public static final apf Aq = a("entity.wither_skeleton.hurt");
-   public static final apf Ar = a("entity.wither_skeleton.step");
-   public static final apf As = a("entity.wither.spawn");
-   public static final apf At = a("entity.wolf.ambient");
-   public static final apf Au = a("entity.wolf.death");
-   public static final apf Av = a("entity.wolf.growl");
-   public static final apf Aw = a("entity.wolf.howl");
-   public static final apf Ax = a("entity.wolf.hurt");
-   public static final apf Ay = a("entity.wolf.pant");
-   public static final apf Az = a("entity.wolf.shake");
-   public static final apf AA = a("entity.wolf.step");
-   public static final apf AB = a("entity.wolf.whine");
-   public static final apf AC = a("block.wooden_door.close");
-   public static final apf AD = a("block.wooden_door.open");
-   public static final apf AE = a("block.wooden_trapdoor.close");
-   public static final apf AF = a("block.wooden_trapdoor.open");
-   public static final apf AG = a("block.wooden_button.click_off");
-   public static final apf AH = a("block.wooden_button.click_on");
-   public static final apf AI = a("block.wooden_pressure_plate.click_off");
-   public static final apf AJ = a("block.wooden_pressure_plate.click_on");
-   public static final apf AK = a("block.wood.break");
-   public static final apf AL = a("block.wood.fall");
-   public static final apf AM = a("block.wood.hit");
-   public static final apf AN = a("block.wood.place");
-   public static final apf AO = a("block.wood.step");
-   public static final apf AP = a("block.wool.break");
-   public static final apf AQ = a("block.wool.fall");
-   public static final apf AR = a("block.wool.hit");
-   public static final apf AS = a("block.wool.place");
-   public static final apf AT = a("block.wool.step");
-   public static final apf AU = a("entity.zoglin.ambient");
-   public static final apf AV = a("entity.zoglin.angry");
-   public static final apf AW = a("entity.zoglin.attack");
-   public static final apf AX = a("entity.zoglin.death");
-   public static final apf AY = a("entity.zoglin.hurt");
-   public static final apf AZ = a("entity.zoglin.step");
-   public static final apf Ba = a("entity.zombie.ambient");
-   public static final apf Bb = a("entity.zombie.attack_wooden_door");
-   public static final apf Bc = a("entity.zombie.attack_iron_door");
-   public static final apf Bd = a("entity.zombie.break_wooden_door");
-   public static final apf Be = a("entity.zombie.converted_to_drowned");
-   public static final apf Bf = a("entity.zombie.death");
-   public static final apf Bg = a("entity.zombie.destroy_egg");
-   public static final apf Bh = a("entity.zombie_horse.ambient");
-   public static final apf Bi = a("entity.zombie_horse.death");
-   public static final apf Bj = a("entity.zombie_horse.hurt");
-   public static final apf Bk = a("entity.zombie.hurt");
-   public static final apf Bl = a("entity.zombie.infect");
-   public static final apf Bm = a("entity.zombified_piglin.ambient");
-   public static final apf Bn = a("entity.zombified_piglin.angry");
-   public static final apf Bo = a("entity.zombified_piglin.death");
-   public static final apf Bp = a("entity.zombified_piglin.hurt");
-   public static final apf Bq = a("entity.zombie.step");
-   public static final apf Br = a("entity.zombie_villager.ambient");
-   public static final apf Bs = a("entity.zombie_villager.converted");
-   public static final apf Bt = a("entity.zombie_villager.cure");
-   public static final apf Bu = a("entity.zombie_villager.death");
-   public static final apf Bv = a("entity.zombie_villager.hurt");
-   public static final apf Bw = a("entity.zombie_villager.step");
+public abstract class apg {
+   public static final File b = new File("banned-players.json");
+   public static final File c = new File("banned-ips.json");
+   public static final File d = new File("ops.json");
+   public static final File e = new File("whitelist.json");
+   public static final ui f = ui.c("chat.filtered_full");
+   public static final ui g = ui.c("multiplayer.disconnect.duplicate_login");
+   private static final Logger a = LogUtils.getLogger();
+   private static final int i = 600;
+   private static final SimpleDateFormat j = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+   private final MinecraftServer k;
+   private final List<alr> l = Lists.newArrayList();
+   private final Map<UUID, alr> m = Maps.newHashMap();
+   private final apm n = new apm(b);
+   private final apd o = new apd(c);
+   private final aph p = new aph(d);
+   private final apo q = new apo(e);
+   private final Map<UUID, aqj> r = Maps.newHashMap();
+   private final Map<UUID, age> s = Maps.newHashMap();
+   private final edb t;
+   private boolean u;
+   private final ij<agf> v;
+   protected final int h;
+   private int w;
+   private int x;
+   private boolean y;
+   private static final boolean z = false;
+   private int A;
 
-   private static he<apf> a(aez $$0, aez $$1, float $$2) {
-      return hq.b(jb.c, $$0, apf.a($$1, $$2));
+   public apg(MinecraftServer $$0, ij<agf> $$1, edb $$2, int $$3) {
+      this.k = $$0;
+      this.v = $$1;
+      this.h = $$3;
+      this.t = $$2;
    }
 
-   private static apf a(String $$0) {
-      return a(new aez($$0));
+   public void a(tj $$0, alr $$1, amf $$2) {
+      GameProfile $$3 = $$1.fR();
+      apc $$4 = this.k.ap();
+      String $$6;
+      if ($$4 != null) {
+         Optional<GameProfile> $$5 = $$4.a($$3.getId());
+         $$6 = $$5.<String>map(GameProfile::getName).orElse($$3.getName());
+         $$4.a($$3);
+      } else {
+         $$6 = $$3.getName();
+      }
+
+      rt $$8 = this.a($$1);
+      afv<cqz> $$9 = $$8 != null ? djk.a(new Dynamic(sf.a, $$8.c("Dimension"))).resultOrPartial(a::error).orElse(cqz.h) : cqz.h;
+      alq $$10 = this.k.a($$9);
+      alq $$11;
+      if ($$10 == null) {
+         a.warn("Unknown respawn dimension {}, defaulting to overworld", $$9);
+         $$11 = this.k.D();
+      } else {
+         $$11 = $$10;
+      }
+
+      $$1.c($$11);
+      String $$13 = $$0.a(this.k.be());
+      a.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ab().getString(), $$13, $$1.ah(), $$1.dq(), $$1.ds(), $$1.dw()});
+      ecv $$14 = $$11.A_();
+      $$1.c($$8);
+      amp $$15 = new amp(this.k, $$0, $$1, $$2);
+      cqv $$16 = $$11.X();
+      boolean $$17 = $$16.b(cqv.C);
+      boolean $$18 = $$16.b(cqv.p);
+      boolean $$19 = $$16.b(cqv.v);
+      $$15.b(new zj($$1.ah(), $$14.n(), this.k.E(), this.n(), this.w, this.x, $$18, !$$17, $$19, $$1.d($$11)));
+      $$15.b(new yg($$14.s(), $$14.t()));
+      $$15.b(new zs($$1.fT()));
+      $$15.b(new aaq($$1.fS().l));
+      $$15.b(new abw(this.k.aE().b()));
+      this.d($$1);
+      $$1.F().c();
+      $$1.G().a($$1);
+      this.a($$11.f(), $$1);
+      this.k.ar();
+      uw $$20;
+      if ($$1.fR().getName().equalsIgnoreCase($$6)) {
+         $$20 = ui.a("multiplayer.player.joined", $$1.O_());
+      } else {
+         $$20 = ui.a("multiplayer.player.joined.renamed", $$1.O_(), $$6);
+      }
+
+      this.a($$20.a(n.o), false);
+      $$15.a($$1.dq(), $$1.ds(), $$1.dw(), $$1.dB(), $$1.dD());
+      aex $$22 = this.k.aq();
+      if ($$22 != null) {
+         $$1.a($$22);
+      }
+
+      $$1.c.b(zy.a(this.l));
+      this.l.add($$1);
+      this.m.put($$1.cv(), $$1);
+      this.a(zy.a(List.of($$1)));
+      this.a($$1, $$11);
+      $$11.c($$1);
+      this.k.aJ().a($$1);
+
+      for (bjg $$23 : $$1.er()) {
+         $$15.b(new abv($$1.ah(), $$23));
+      }
+
+      if ($$8 != null && $$8.b("RootVehicle", 10)) {
+         rt $$24 = $$8.p("RootVehicle");
+         bjt $$25 = bjx.a($$24.p("Entity"), $$11, $$1x -> !$$11.c($$1x) ? null : $$1x);
+         if ($$25 != null) {
+            UUID $$26;
+            if ($$24.b("Attach")) {
+               $$26 = $$24.a("Attach");
+            } else {
+               $$26 = null;
+            }
+
+            if ($$25.cv().equals($$26)) {
+               $$1.a($$25, true);
+            } else {
+               for (bjt $$28 : $$25.cT()) {
+                  if ($$28.cv().equals($$26)) {
+                     $$1.a($$28, true);
+                     break;
+                  }
+               }
+            }
+
+            if (!$$1.bN()) {
+               a.warn("Couldn't reattach entity to player");
+               $$25.ak();
+
+               for (bjt $$29 : $$25.cT()) {
+                  $$29.ak();
+               }
+            }
+         }
+      }
+
+      $$1.h();
    }
 
-   private static apf a(aez $$0) {
-      return a($$0, $$0);
+   protected void a(agn $$0, alr $$1) {
+      Set<ejb> $$2 = Sets.newHashSet();
+
+      for (ejc $$3 : $$0.g()) {
+         $$1.c.b(abd.a($$3, true));
+      }
+
+      for (eja $$4 : eja.values()) {
+         ejb $$5 = $$0.a($$4);
+         if ($$5 != null && !$$2.contains($$5)) {
+            for (wb<?> $$7 : $$0.d($$5)) {
+               $$1.c.b($$7);
+            }
+
+            $$2.add($$5);
+         }
+      }
    }
 
-   private static he.c<apf> b(String $$0) {
-      return b(new aez($$0));
+   public void a(alq $$0) {
+      $$0.C_().a(new dhq() {
+         @Override
+         public void a(dhs $$0, double $$1) {
+            apg.this.a(new aam($$0));
+         }
+
+         @Override
+         public void a(dhs $$0, double $$1, double $$2, long $$3) {
+            apg.this.a(new aal($$0));
+         }
+
+         @Override
+         public void a(dhs $$0, double $$1, double $$2) {
+            apg.this.a(new aak($$0));
+         }
+
+         @Override
+         public void a(dhs $$0, int $$1) {
+            apg.this.a(new aan($$0));
+         }
+
+         @Override
+         public void b(dhs $$0, int $$1) {
+            apg.this.a(new aao($$0));
+         }
+
+         @Override
+         public void b(dhs $$0, double $$1) {
+         }
+
+         @Override
+         public void c(dhs $$0, double $$1) {
+         }
+      });
    }
 
-   private static he.c<apf> b(aez $$0) {
-      return b($$0, $$0);
+   @Nullable
+   public rt a(alr $$0) {
+      rt $$1 = this.k.aT().y();
+      rt $$2;
+      if (this.k.a($$0.fR()) && $$1 != null) {
+         $$2 = $$1;
+         $$0.g($$1);
+         a.debug("loading single player");
+      } else {
+         $$2 = this.t.b($$0);
+      }
+
+      return $$2;
    }
 
-   private static apf a(aez $$0, aez $$1) {
-      return hq.a(jb.c, $$0, apf.a($$1));
+   protected void b(alr $$0) {
+      this.t.a($$0);
+      aqj $$1 = this.r.get($$0.cv());
+      if ($$1 != null) {
+         $$1.a();
+      }
+
+      age $$2 = this.s.get($$0.cv());
+      if ($$2 != null) {
+         $$2.b();
+      }
    }
 
-   private static he.c<apf> b(aez $$0, aez $$1) {
-      return hq.b(jb.c, $$0, apf.a($$1));
+   public void c(alr $$0) {
+      alq $$1 = $$0.x();
+      $$0.a(aqn.j);
+      this.b($$0);
+      if ($$0.bN()) {
+         bjt $$2 = $$0.cV();
+         if ($$2.cU()) {
+            a.debug("Removing player mount");
+            $$0.aa();
+            $$2.cS().forEach($$0x -> $$0x.b(bjt.c.d));
+         }
+      }
+
+      $$0.ae();
+      $$1.a($$0, bjt.c.d);
+      $$0.O().a();
+      this.l.remove($$0);
+      this.k.aJ().b($$0);
+      UUID $$3 = $$0.cv();
+      alr $$4 = this.m.get($$3);
+      if ($$4 == $$0) {
+         this.m.remove($$3);
+         this.r.remove($$3);
+         this.s.remove($$3);
+      }
+
+      this.a(new zx(List.of($$0.cv())));
    }
 
-   private static ImmutableList<he.c<apf>> a() {
-      return IntStream.range(0, 8).mapToObj($$0 -> b("item.goat_horn.sound." + $$0)).collect(ImmutableList.toImmutableList());
+   @Nullable
+   public ui a(SocketAddress $$0, GameProfile $$1) {
+      if (this.n.a($$1)) {
+         apn $$2 = this.n.b($$1);
+         uw $$3 = ui.a("multiplayer.disconnect.banned.reason", $$2.d());
+         if ($$2.c() != null) {
+            $$3.b(ui.a("multiplayer.disconnect.banned.expiration", j.format($$2.c())));
+         }
+
+         return $$3;
+      } else if (!this.c($$1)) {
+         return ui.c("multiplayer.disconnect.not_whitelisted");
+      } else if (this.o.a($$0)) {
+         ape $$4 = this.o.b($$0);
+         uw $$5 = ui.a("multiplayer.disconnect.banned_ip.reason", $$4.d());
+         if ($$4.c() != null) {
+            $$5.b(ui.a("multiplayer.disconnect.banned_ip.expiration", j.format($$4.c())));
+         }
+
+         return $$5;
+      } else {
+         return this.l.size() >= this.h && !this.d($$1) ? ui.c("multiplayer.disconnect.server_full") : null;
+      }
+   }
+
+   public alr a(GameProfile $$0, alf $$1) {
+      return new alr(this.k, this.k.D(), $$0, $$1);
+   }
+
+   public boolean e(GameProfile $$0) {
+      UUID $$1 = $$0.getId();
+      Set<alr> $$2 = Sets.newIdentityHashSet();
+
+      for (alr $$3 : this.l) {
+         if ($$3.cv().equals($$1)) {
+            $$2.add($$3);
+         }
+      }
+
+      alr $$4 = this.m.get($$0.getId());
+      if ($$4 != null) {
+         $$2.add($$4);
+      }
+
+      for (alr $$5 : $$2) {
+         $$5.c.b(g);
+      }
+
+      return !$$2.isEmpty();
+   }
+
+   public alr a(alr $$0, boolean $$1) {
+      this.l.remove($$0);
+      $$0.x().a($$0, bjt.c.b);
+      ht $$2 = $$0.P();
+      float $$3 = $$0.Q();
+      boolean $$4 = $$0.S();
+      alq $$5 = this.k.a($$0.R());
+      Optional<eif> $$6;
+      if ($$5 != null && $$2 != null) {
+         $$6 = ccx.a($$5, $$2, $$3, $$4, $$1);
+      } else {
+         $$6 = Optional.empty();
+      }
+
+      alq $$8 = $$5 != null && $$6.isPresent() ? $$5 : this.k.D();
+      alr $$9 = new alr(this.k, $$8, $$0.fR(), $$0.z());
+      $$9.c = $$0.c;
+      $$9.a($$0, $$1);
+      $$9.e($$0.ah());
+      $$9.a($$0.fm());
+
+      for (String $$10 : $$0.ai()) {
+         $$9.a($$10);
+      }
+
+      boolean $$11 = false;
+      if ($$6.isPresent()) {
+         dgb $$12 = $$8.a_($$2);
+         boolean $$13 = $$12.a(cuc.pl);
+         eif $$14 = $$6.get();
+         float $$17;
+         if (!$$12.a(aqs.R) && !$$13) {
+            $$17 = $$3;
+         } else {
+            eif $$15 = eif.c($$2).d($$14).d();
+            $$17 = (float)asy.d(asy.d($$15.e, $$15.c) * 180.0F / (float)Math.PI - 90.0);
+         }
+
+         $$9.b($$14.c, $$14.d, $$14.e, $$17, 0.0F);
+         $$9.a($$8.ac(), $$2, $$3, $$4, false);
+         $$11 = !$$1 && $$13;
+      } else if ($$2 != null) {
+         $$9.c.b(new yz(yz.a, 0.0F));
+      }
+
+      while (!$$8.g($$9) && $$9.ds() < (double)$$8.aj()) {
+         $$9.e($$9.dq(), $$9.ds() + 1.0, $$9.dw());
+      }
+
+      byte $$18 = (byte)($$1 ? 1 : 0);
+      alq $$19 = $$9.x();
+      ecv $$20 = $$19.A_();
+      $$9.c.b(new aae($$9.d($$19), $$18));
+      $$9.c.a($$9.dq(), $$9.ds(), $$9.dw(), $$9.dB(), $$9.dD());
+      $$9.c.b(new aat($$8.R(), $$8.S()));
+      $$9.c.b(new yg($$20.s(), $$20.t()));
+      $$9.c.b(new aaz($$9.ch, $$9.cg, $$9.cf));
+      this.a($$9, $$8);
+      this.d($$9);
+      $$8.d($$9);
+      this.l.add($$9);
+      this.m.put($$9.cv(), $$9);
+      $$9.h();
+      $$9.c($$9.eu());
+      if ($$11) {
+         $$9.c.b(new abl(aqd.tN, aqe.e, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0F, 1.0F, $$8.E_().g()));
+      }
+
+      return $$9;
+   }
+
+   public void d(alr $$0) {
+      GameProfile $$1 = $$0.fR();
+      int $$2 = this.k.c($$1);
+      this.a($$0, $$2);
+   }
+
+   public void d() {
+      if (++this.A > 600) {
+         this.a(new zy(EnumSet.of(zy.a.e), this.l));
+         this.A = 0;
+      }
+   }
+
+   public void a(wb<?> $$0) {
+      for (alr $$1 : this.l) {
+         $$1.c.b($$0);
+      }
+   }
+
+   public void a(wb<?> $$0, afv<cqz> $$1) {
+      for (alr $$2 : this.l) {
+         if ($$2.dL().ac() == $$1) {
+            $$2.c.b($$0);
+         }
+      }
+   }
+
+   public void a(ccx $$0, ui $$1) {
+      ejg $$2 = $$0.cf();
+      if ($$2 != null) {
+         for (String $$4 : $$2.g()) {
+            alr $$5 = this.a($$4);
+            if ($$5 != null && $$5 != $$0) {
+               $$5.a($$1);
+            }
+         }
+      }
+   }
+
+   public void b(ccx $$0, ui $$1) {
+      ejg $$2 = $$0.cf();
+      if ($$2 == null) {
+         this.a($$1, false);
+      } else {
+         for (int $$3 = 0; $$3 < this.l.size(); $$3++) {
+            alr $$4 = this.l.get($$3);
+            if ($$4.cf() != $$2) {
+               $$4.a($$1);
+            }
+         }
+      }
+   }
+
+   public String[] e() {
+      String[] $$0 = new String[this.l.size()];
+
+      for (int $$1 = 0; $$1 < this.l.size(); $$1++) {
+         $$0[$$1] = this.l.get($$1).fR().getName();
+      }
+
+      return $$0;
+   }
+
+   public apm f() {
+      return this.n;
+   }
+
+   public apd g() {
+      return this.o;
+   }
+
+   public void a(GameProfile $$0) {
+      this.p.a(new api($$0, this.k.i(), this.p.a($$0)));
+      alr $$1 = this.a($$0.getId());
+      if ($$1 != null) {
+         this.d($$1);
+      }
+   }
+
+   public void b(GameProfile $$0) {
+      this.p.c($$0);
+      alr $$1 = this.a($$0.getId());
+      if ($$1 != null) {
+         this.d($$1);
+      }
+   }
+
+   private void a(alr $$0, int $$1) {
+      if ($$0.c != null) {
+         byte $$2;
+         if ($$1 <= 0) {
+            $$2 = 24;
+         } else if ($$1 >= 4) {
+            $$2 = 28;
+         } else {
+            $$2 = (byte)(24 + $$1);
+         }
+
+         $$0.c.b(new yw($$0, $$2));
+      }
+
+      this.k.aC().a($$0);
+   }
+
+   public boolean c(GameProfile $$0) {
+      return !this.u || this.p.d($$0) || this.q.d($$0);
+   }
+
+   public boolean f(GameProfile $$0) {
+      return this.p.d($$0) || this.k.a($$0) && this.k.aT().o() || this.y;
+   }
+
+   @Nullable
+   public alr a(String $$0) {
+      for (alr $$1 : this.l) {
+         if ($$1.fR().getName().equalsIgnoreCase($$0)) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(@Nullable ccx $$0, double $$1, double $$2, double $$3, double $$4, afv<cqz> $$5, wb<?> $$6) {
+      for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
+         alr $$8 = this.l.get($$7);
+         if ($$8 != $$0 && $$8.dL().ac() == $$5) {
+            double $$9 = $$1 - $$8.dq();
+            double $$10 = $$2 - $$8.ds();
+            double $$11 = $$3 - $$8.dw();
+            if ($$9 * $$9 + $$10 * $$10 + $$11 * $$11 < $$4 * $$4) {
+               $$8.c.b($$6);
+            }
+         }
+      }
+   }
+
+   public void h() {
+      for (int $$0 = 0; $$0 < this.l.size(); $$0++) {
+         this.b(this.l.get($$0));
+      }
+   }
+
+   public apo i() {
+      return this.q;
+   }
+
+   public String[] j() {
+      return this.q.a();
+   }
+
+   public aph k() {
+      return this.p;
+   }
+
+   public String[] l() {
+      return this.p.a();
+   }
+
+   public void a() {
+   }
+
+   public void a(alr $$0, alq $$1) {
+      dhs $$2 = this.k.D().C_();
+      $$0.c.b(new zc($$2));
+      $$0.c.b(new abh($$1.V(), $$1.W(), $$1.X().b(cqv.k)));
+      $$0.c.b(new aat($$1.R(), $$1.S()));
+      if ($$1.Z()) {
+         $$0.c.b(new yz(yz.b, 0.0F));
+         $$0.c.b(new yz(yz.h, $$1.d(1.0F)));
+         $$0.c.b(new yz(yz.i, $$1.b(1.0F)));
+      }
+
+      $$0.c.b(new yz(yz.n, 0.0F));
+   }
+
+   public void e(alr $$0) {
+      $$0.bR.b();
+      $$0.u();
+      $$0.c.b(new aaq($$0.fS().l));
+   }
+
+   public int m() {
+      return this.l.size();
+   }
+
+   public int n() {
+      return this.h;
+   }
+
+   public boolean o() {
+      return this.u;
+   }
+
+   public void a(boolean $$0) {
+      this.u = $$0;
+   }
+
+   public List<alr> b(String $$0) {
+      List<alr> $$1 = Lists.newArrayList();
+
+      for (alr $$2 : this.l) {
+         if ($$2.y().equals($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public int p() {
+      return this.w;
+   }
+
+   public int q() {
+      return this.x;
+   }
+
+   public MinecraftServer c() {
+      return this.k;
+   }
+
+   @Nullable
+   public rt r() {
+      return null;
+   }
+
+   public void b(boolean $$0) {
+      this.y = $$0;
+   }
+
+   public void s() {
+      for (int $$0 = 0; $$0 < this.l.size(); $$0++) {
+         this.l.get($$0).c.b(ui.c("multiplayer.disconnect.server_shutdown"));
+      }
+   }
+
+   public void a(ui $$0, boolean $$1) {
+      this.a($$0, $$1x -> $$0, $$1);
+   }
+
+   public void a(ui $$0, Function<alr, ui> $$1, boolean $$2) {
+      this.k.a($$0);
+
+      for (alr $$3 : this.l) {
+         ui $$4 = $$1.apply($$3);
+         if ($$4 != null) {
+            $$3.b($$4, $$2);
+         }
+      }
+   }
+
+   public void a(uy $$0, du $$1, ue.a $$2) {
+      this.a($$0, $$1::a, $$1.j(), $$2);
+   }
+
+   public void a(uy $$0, alr $$1, ue.a $$2) {
+      this.a($$0, $$1::b, $$1, $$2);
+   }
+
+   private void a(uy $$0, Predicate<alr> $$1, @Nullable alr $$2, ue.a $$3) {
+      boolean $$4 = this.a($$0);
+      this.k.a($$0.c(), $$3, $$4 ? null : "Not Secure");
+      ux $$5 = ux.a($$0);
+      boolean $$6 = false;
+
+      for (alr $$7 : this.l) {
+         boolean $$8 = $$1.test($$7);
+         $$7.a($$5, $$8, $$3);
+         $$6 |= $$8 && $$0.i();
+      }
+
+      if ($$6 && $$2 != null) {
+         $$2.a(f);
+      }
+   }
+
+   private boolean a(uy $$0) {
+      return $$0.h() && !$$0.a(Instant.now());
+   }
+
+   public aqj a(ccx $$0) {
+      UUID $$1 = $$0.cv();
+      aqj $$2 = this.r.get($$1);
+      if ($$2 == null) {
+         File $$3 = this.k.a(ecw.b).toFile();
+         File $$4 = new File($$3, $$1 + ".json");
+         if (!$$4.exists()) {
+            File $$5 = new File($$3, $$0.ab().getString() + ".json");
+            Path $$6 = $$5.toPath();
+            if (v.a($$6) && v.b($$6) && $$6.startsWith($$3.getPath()) && $$5.isFile()) {
+               $$5.renameTo($$4);
+            }
+         }
+
+         $$2 = new aqj(this.k, $$4);
+         this.r.put($$1, $$2);
+      }
+
+      return $$2;
+   }
+
+   public age f(alr $$0) {
+      UUID $$1 = $$0.cv();
+      age $$2 = this.s.get($$1);
+      if ($$2 == null) {
+         Path $$3 = this.k.a(ecw.a).resolve($$1 + ".json");
+         $$2 = new age(this.k.ay(), this, this.k.az(), $$3, $$0);
+         this.s.put($$1, $$2);
+      }
+
+      $$2.a($$0);
+      return $$2;
+   }
+
+   public void a(int $$0) {
+      this.w = $$0;
+      this.a(new aas($$0));
+
+      for (alq $$1 : this.k.F()) {
+         if ($$1 != null) {
+            $$1.k().a($$0);
+         }
+      }
+   }
+
+   public void b(int $$0) {
+      this.x = $$0;
+      this.a(new abf($$0));
+
+      for (alq $$1 : this.k.F()) {
+         if ($$1 != null) {
+            $$1.k().b($$0);
+         }
+      }
+   }
+
+   public List<alr> t() {
+      return this.l;
+   }
+
+   @Nullable
+   public alr a(UUID $$0) {
+      return this.m.get($$0);
+   }
+
+   public boolean d(GameProfile $$0) {
+      return false;
+   }
+
+   public void u() {
+      for (age $$0 : this.s.values()) {
+         $$0.a(this.k.az());
+      }
+
+      this.a(new wk(ark.a(this.v)));
+      abw $$1 = new abw(this.k.aE().b());
+
+      for (alr $$2 : this.l) {
+         $$2.c.b($$1);
+         $$2.G().a($$2);
+      }
+   }
+
+   public boolean v() {
+      return this.y;
    }
 }

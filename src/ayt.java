@@ -3,21 +3,22 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
 public class ayt extends DataFix {
    public ayt(Schema $$0) {
       super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsProgrammerArtFix",
-         this.getInputSchema().getType(azd.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("resourcePacks", this::a).update("incompatibleResourcePacks", this::a))
-      );
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.asString().result().map($$1 -> $$0.createString($$1.replace("\"programer_art\"", "\"programmer_art\""))).orElse($$0);
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(baa.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
+            if ($$1.result().isPresent()) {
+               return $$0x;
+            } else {
+               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
+               return $$0x.set("DragonFight", $$2);
+            }
+         }));
    }
 }

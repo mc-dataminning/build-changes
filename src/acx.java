@@ -1,40 +1,56 @@
-public class acx implements ve<abd> {
-   private final ehd a;
-   private final bhd b;
-   private final int c;
+public class acx implements wb<aca> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public acx(bhd $$0, ehd $$1, int $$2) {
-      this.b = $$0;
-      this.a = $$1;
-      this.c = $$2;
+   public acx(bjt $$0) {
+      this.a = $$0.dq();
+      this.b = $$0.ds();
+      this.c = $$0.dw();
+      this.d = $$0.dB();
+      this.e = $$0.dD();
    }
 
-   public acx(so $$0) {
-      this.b = $$0.b(bhd.class);
-      this.a = $$0.y();
-      this.c = $$0.n();
+   public acx(tl $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.b);
+   public void a(tl $$0) {
       $$0.a(this.a);
-      $$0.c(this.c);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(abd $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public bhd a() {
-      return this.b;
-   }
-
-   public ehd d() {
+   public double a() {
       return this.a;
    }
 
-   public int e() {
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
       return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

@@ -1,17 +1,8 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface anx extends anq {
-   @Override
-   default CompletableFuture<Void> a(anq.a $$0, anw $$1, bdv $$2, bdv $$3, Executor $$4, Executor $$5) {
-      return $$0.a(atc.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
-   }
-
-   void a(anw var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface anx {
 }

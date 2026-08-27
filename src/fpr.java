@@ -1,82 +1,108 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class fpr {
-   private final fpn a;
-   private final fpk b;
+   protected final foz a;
+   protected final cqz b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public fry.b[] f;
 
-   public fpr(fpn $$0, fpk $$1) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Missing condition for selector");
-      } else if ($$1 == null) {
-         throw new IllegalArgumentException("Missing variant for selector");
+   public fpr(fry $$0, cqz $$1, int $$2, foz $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
+   }
+
+   protected void a(fry $$0) {
+      if (!ero.O().bl()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
       } else {
-         this.a = $$0;
-         this.b = $$1;
+         int $$1 = this.d * this.c * this.e;
+         this.f = new fry.b[$$1];
+
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.I_() + $$3 * 16, $$4 * 16);
+               }
+            }
+         }
       }
    }
 
-   public fpk a() {
+   public void a() {
+      for (fry.b $$0 : this.f) {
+         $$0.e();
+      }
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.ak();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public crb c() {
       return this.b;
    }
 
-   public Predicate<dfd> a(dfe<ctc, dfd> $$0) {
-      return this.a.getPredicate($$0);
-   }
+   public void a(double $$0, double $$1) {
+      int $$2 = asy.c($$0);
+      int $$3 = asy.c($$1);
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0;
-   }
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
 
-   @Override
-   public int hashCode() {
-      return System.identityHashCode(this);
-   }
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
 
-   public static class a implements JsonDeserializer<fpr> {
-      public fpr a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new fpr(this.b($$3), (fpk)$$2.deserialize($$3.get("apply"), fpk.class));
-      }
-
-      private fpn b(JsonObject $$0) {
-         return $$0.has("when") ? a(arr.u($$0, "when")) : fpn.b;
-      }
-
-      @VisibleForTesting
-      static fpn a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<fpn> $$2 = Streams.stream(arr.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new fpq($$2);
-            } else if ($$0.has("AND")) {
-               List<fpn> $$3 = Streams.stream(arr.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new fpm($$3);
-            } else {
-               return a($$1.iterator().next());
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.I_() + $$12 * 16;
+               fry.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               ht $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
             }
-         } else {
-            return new fpm($$1.stream().map(fpr.a::a).collect(Collectors.toList()));
          }
       }
+   }
 
-      private static fpn a(Entry<String, JsonElement> $$0) {
-         return new fpo($$0.getKey(), $$0.getValue().getAsString());
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.al(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      fry.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
+
+   @Nullable
+   protected fry.b a(ht $$0) {
+      int $$1 = asy.a($$0.v() - this.b.I_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = asy.b(asy.a($$0.u(), 16), this.d);
+         int $$3 = asy.b(asy.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
       }
    }
 }

@@ -1,61 +1,61 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcj extends ctc {
+public class dcj extends cvt {
    public static final MapCodec<dcj> a = b(dcj::new);
+   public static final int b = 2;
+   public static final dhb c = dgr.aq;
+   private static final float g = 3.0F;
+   private static final eiy[] h = new eiy[]{cua.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), cua.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
+   private static final int i = 1;
 
    @Override
    public MapCodec<dcj> a() {
       return a;
    }
 
-   protected dcj(dfc.d $$0) {
+   public dcj(dga.d $$0) {
       super($$0);
    }
 
    @Override
-   public void b(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      if ($$1.C_().i()) {
-         $$1.a($$2, cte.aO.o(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, apg.hN, aph.e, 1.0F, (1.0F + $$1.D_().i() * 0.2F) * 0.7F);
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return h[this.g($$0)];
+   }
+
+   @Override
+   protected dhb b() {
+      return c;
+   }
+
+   @Override
+   public int c() {
+      return 2;
+   }
+
+   @Override
+   protected cqy d() {
+      return ckm.uo;
+   }
+
+   @Override
+   public dgb b(int $$0) {
+      return $$0 == 2 ? cuc.bS.o() : super.b($$0);
+   }
+
+   @Override
+   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      ha $$4 = ha.b($$3);
-      if ($$4 != ha.b) {
-         gw $$5 = $$2.a($$4);
-         dfd $$6 = $$1.a_($$5);
-         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == ha.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == ha.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == ha.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == ha.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
-
-            $$1.a(iv.m, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
+   protected int a(cqz $$0) {
+      return 1;
    }
 }

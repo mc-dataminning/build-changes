@@ -1,24 +1,25 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.JsonObject;
 
-public class mm implements ml.a {
-   private static final Logger a = LogUtils.getLogger();
-
-   @Override
-   public qw apply(String $$0, qw $$1) {
-      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
+public abstract class mm {
+   protected static cnc a(mp $$0) {
+      return switch ($$0) {
+         case a -> cnc.a;
+         case e, f -> cnc.c;
+         case c -> cnc.b;
+         default -> cnc.d;
+      };
    }
 
-   public static qw a(String $$0, qw $$1) {
-      dyv $$2 = new dyv();
-      int $$3 = rj.b($$1, 500);
-      int $$4 = 3678;
-      if ($$3 < 3678) {
-         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3678, $$0});
+   protected abstract static class a implements mn {
+      private final cnc a;
+
+      protected a(cnc $$0) {
+         this.a = $$0;
       }
 
-      qw $$5 = atg.f.a(ath.a(), $$1, $$3);
-      $$2.a(jb.f.p(), $$5);
-      return $$2.a(new qw());
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.addProperty("category", this.a.c());
+      }
    }
 }

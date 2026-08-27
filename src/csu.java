@@ -1,61 +1,95 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class csu extends cso implements cst {
-   public static final MapCodec<csu> a = b(csu::new);
+public abstract class csu extends ctm {
+   public static final dgv a = cxu.aE;
+   public static final dgs b = dgr.r;
 
-   @Override
-   public MapCodec<csu> a() {
-      return a;
-   }
-
-   public csu(dfc.d $$0) {
+   protected csu(dga.d $$0) {
       super($$0);
+      this.k(this.E.b().a(a, hx.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public chz b() {
-      return chz.a;
+   protected abstract MapCodec<? extends csu> a();
+
+   @Override
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      if ($$1.B) {
+         return bib.a;
+      } else {
+         this.a($$1, $$2, $$3);
+         return bib.b;
+      }
+   }
+
+   protected abstract void a(cqz var1, ht var2, ccx var3);
+
+   @Override
+   public dgb a(cmr $$0) {
+      return this.o().a(a, $$0.g().g());
    }
 
    @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new dcu($$0, $$1);
+   public void a(cqz $$0, ht $$1, dgb $$2, bkj $$3, ckj $$4) {
+      if ($$4.A()) {
+         ddx $$5 = $$0.c_($$1);
+         if ($$5 instanceof ddm) {
+            ((ddm)$$5).a($$4.y());
+         }
+      }
+   }
+
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         ddx $$5 = $$1.c_($$2);
+         if ($$5 instanceof ddm) {
+            if ($$1 instanceof alq) {
+               bhx.a($$1, $$2, (ddm)$$5);
+               ((ddm)$$5).a((alq)$$1, eif.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
+   }
+
+   @Override
+   public boolean d_(dgb $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dgb $$0, cqz $$1, ht $$2) {
+      return cfp.a($$1.c_($$2));
+   }
+
+   @Override
+   public dae b_(dgb $$0) {
+      return dae.c;
+   }
+
+   @Override
+   public dgb a(dgb $$0, dal $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dgb a(dgb $$0, cyv $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(a, b);
    }
 
    @Nullable
-   @Override
-   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
-      return a($$2, ddb.o, dcu::a);
-   }
-
-   @Override
-   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
-      if ($$1.B) {
-         return bhe.a;
-      } else {
-         dcz $$6 = $$1.c_($$2);
-         if ($$6 instanceof dcu) {
-            $$3.a((dcu)$$6);
-            $$3.a(apq.ab);
-         }
-
-         return bhe.b;
-      }
-   }
-
-   @Override
-   public czg b_(dfd $$0) {
-      return czg.c;
-   }
-
-   @Override
-   public void a(cqb $$0, gw $$1, dfd $$2, bjm $$3, cjl $$4) {
-      if ($$4.A()) {
-         dcz $$5 = $$0.c_($$1);
-         if ($$5 instanceof dcu) {
-            ((dcu)$$5).a($$4.y());
-         }
-      }
+   protected static <T extends ddx> ddy<T> a(cqz $$0, ddz<T> $$1, ddz<? extends ddm> $$2) {
+      return $$0.B ? null : a($$1, $$2, ddm::a);
    }
 }

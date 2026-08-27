@@ -1,42 +1,27 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import java.security.PrivateKey;
+import java.security.Signature;
+import org.slf4j.Logger;
 
-public abstract class atk extends DataFix {
-   private final String a;
+public interface atk {
+   Logger a = LogUtils.getLogger();
 
-   public atk(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   byte[] sign(ati var1);
+
+   default byte[] a(byte[] $$0) {
+      return this.sign($$1 -> $$1.update($$0));
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(azd.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(azd.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-      }
+   static atk a(PrivateKey $$0, String $$1) {
+      return $$2 -> {
+         try {
+            Signature $$3 = Signature.getInstance($$1);
+            $$3.initSign($$0);
+            $$2.update($$3::update);
+            return $$3.sign();
+         } catch (Exception var4) {
+            throw new IllegalStateException("Failed to sign message", var4);
+         }
+      };
    }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
-   }
-
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
-   }
-
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

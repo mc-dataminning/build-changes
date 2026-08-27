@@ -1,56 +1,50 @@
-public class yq implements ve<wx> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+public class yq implements wb<xu> {
+   public static final int a = -1;
+   public static final int b = -2;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final ckj f;
 
-   public yq(biw $$0) {
-      this.a = $$0.dq();
-      this.b = $$0.ds();
-      this.c = $$0.dw();
-      this.d = $$0.dB();
-      this.e = $$0.dD();
+   public yq(int $$0, int $$1, int $$2, ckj $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3.p();
    }
 
-   public yq(so $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   public yq(tl $$0) {
+      this.c = $$0.readByte();
+      this.d = $$0.n();
+      this.e = $$0.readShort();
+      this.f = $$0.r();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   public void a(tl $$0) {
+      $$0.k(this.c);
+      $$0.c(this.d);
+      $$0.l(this.e);
+      $$0.a(this.f);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public double e() {
+   public int a() {
       return this.c;
    }
 
-   public float f() {
-      return this.d;
+   public int d() {
+      return this.e;
    }
 
-   public float g() {
-      return this.e;
+   public ckj e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

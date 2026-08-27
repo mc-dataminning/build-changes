@@ -1,93 +1,65 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+public class cei {
+   public static final cei a = a("core");
+   public static final cei b = a("idle");
+   public static final cei c = a("work");
+   public static final cei d = a("play");
+   public static final cei e = a("rest");
+   public static final cei f = a("meet");
+   public static final cei g = a("panic");
+   public static final cei h = a("raid");
+   public static final cei i = a("pre_raid");
+   public static final cei j = a("hide");
+   public static final cei k = a("fight");
+   public static final cei l = a("celebrate");
+   public static final cei m = a("admire_item");
+   public static final cei n = a("avoid");
+   public static final cei o = a("ride");
+   public static final cei p = a("play_dead");
+   public static final cei q = a("long_jump");
+   public static final cei r = a("ram");
+   public static final cei s = a("tongue");
+   public static final cei t = a("swim");
+   public static final cei u = a("lay_spawn");
+   public static final cei v = a("sniff");
+   public static final cei w = a("investigate");
+   public static final cei x = a("roar");
+   public static final cei y = a("emerge");
+   public static final cei z = a("dig");
+   private final String A;
+   private final int B;
 
-public final class cei {
-   private static final cei b = new cei(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final cej c;
-   private final long d;
-
-   private cei(@Nullable cej $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   private cei(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   static cei a(cej $$0, Collection<ceg> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cei($$0, $$2);
-      }
+   public String a() {
+      return this.A;
    }
 
-   public static cei a() {
-      return b;
-   }
-
-   public static cei a(ceg $$0) {
-      return new cei($$0.a, $$0.b);
-   }
-
-   public static cei a(ceg $$0, ceg... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cei($$0.a, $$2);
-   }
-
-   private static long a(cej $$0, long $$1, Iterable<ceg> $$2) {
-      for (ceg $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(ceg $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean a(cei $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public cei b(cei $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cei(this.c, this.d | $$0.d);
-      }
+   private static cei a(String $$0) {
+      return io.a(jy.F, $$0, new cei($$0));
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cei $$1 = (cei)$$0;
+         return this.A.equals($$1.A);
       } else {
-         if ($$0 instanceof cei $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
-
          return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+      return this.B;
+   }
+
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

@@ -1,10 +1,77 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.BitSet;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class uq {
-   static Function<String, Supplier<tl>> a = $$0 -> () -> tl.b($$0);
+   private final us[] a;
+   private int b;
+   private int c;
+   @Nullable
+   private uu d;
 
-   public static void a(Function<String, Supplier<tl>> $$0) {
-      a = $$0;
+   public uq(int $$0) {
+      this.a = new us[$$0];
+   }
+
+   public boolean a(uu $$0, boolean $$1) {
+      if (Objects.equals($$0, this.d)) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.a($$1 ? new us($$0, true) : null);
+         return true;
+      }
+   }
+
+   private void a(@Nullable us $$0) {
+      int $$1 = this.b;
+      this.b = ($$1 + 1) % this.a.length;
+      this.c++;
+      this.a[$$1] = $$0;
+   }
+
+   public void a(uu $$0) {
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         us $$2 = this.a[$$1];
+         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
+            this.a[$$1] = null;
+            break;
+         }
+      }
+   }
+
+   public int a() {
+      int $$0 = this.c;
+      this.c = 0;
+      return $$0;
+   }
+
+   public uq.a b() {
+      int $$0 = this.a();
+      BitSet $$1 = new BitSet(this.a.length);
+      ObjectList<uu> $$2 = new ObjectArrayList(this.a.length);
+
+      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
+         int $$4 = (this.b + $$3) % this.a.length;
+         us $$5 = this.a[$$4];
+         if ($$5 != null) {
+            $$1.set($$3, true);
+            $$2.add($$5.b());
+            this.a[$$4] = $$5.a();
+         }
+      }
+
+      up $$6 = new up($$2);
+      up.b $$7 = new up.b($$0, $$1);
+      return new uq.a($$6, $$7);
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public static record a(up a, up.b b) {
    }
 }

@@ -1,48 +1,46 @@
-public abstract class fxl<T extends biw, M extends fey<T>> {
-   private final fuy<T, M> a;
-
-   public fxl(fuy<T, M> $$0) {
-      this.a = $$0;
+public class fxl extends fyl<fnz, fhc<fnz>> {
+   public fxl(fvy<fnz, fhc<fnz>> $$0) {
+      super($$0);
    }
 
-   protected static <T extends bjm> void a(
-      fey<T> $$0,
-      fey<T> $$1,
-      aez $$2,
-      elj $$3,
-      foa $$4,
-      int $$5,
-      T $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      if (!$$6.cd()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+   public void a(emh $$0, fpb $$1, int $$2, fnz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cd() && $$3.a(ccy.a)) {
+         gba $$10 = $$3.b();
+         if ($$10.c() != null) {
+            ckj $$11 = $$3.c(bjy.e);
+            if (!$$11.a(ckm.nh)) {
+               $$0.a();
+               $$0.a(0.0F, 0.0F, 0.125F);
+               double $$12 = asy.d((double)$$6, $$3.bY, $$3.cb) - asy.d((double)$$6, $$3.K, $$3.dq());
+               double $$13 = asy.d((double)$$6, $$3.bZ, $$3.cc) - asy.d((double)$$6, $$3.L, $$3.ds());
+               double $$14 = asy.d((double)$$6, $$3.ca, $$3.cd) - asy.d((double)$$6, $$3.M, $$3.dw());
+               float $$15 = asy.j($$6, $$3.aV, $$3.aU);
+               double $$16 = (double)asy.a($$15 * (float) (Math.PI / 180.0));
+               double $$17 = (double)(-asy.b($$15 * (float) (Math.PI / 180.0)));
+               float $$18 = (float)$$13 * 10.0F;
+               $$18 = asy.a($$18, -6.0F, 32.0F);
+               float $$19 = (float)($$12 * $$16 + $$14 * $$17) * 100.0F;
+               $$19 = asy.a($$19, 0.0F, 150.0F);
+               float $$20 = (float)($$12 * $$17 - $$14 * $$16) * 100.0F;
+               $$20 = asy.a($$20, -20.0F, 20.0F);
+               if ($$19 < 0.0F) {
+                  $$19 = 0.0F;
+               }
+
+               float $$21 = asy.i($$6, $$3.bV, $$3.bW);
+               $$18 += asy.a(asy.i($$6, $$3.X, $$3.Y) * 6.0F) * 32.0F * $$21;
+               if ($$3.bW()) {
+                  $$18 += 25.0F;
+               }
+
+               $$0.a(a.b.rotationDegrees(6.0F + $$19 / 2.0F + $$18));
+               $$0.a(a.f.rotationDegrees($$20 / 2.0F));
+               $$0.a(a.d.rotationDegrees(180.0F - $$20 / 2.0F));
+               eml $$22 = $$1.getBuffer(fpj.c($$10.c()));
+               this.c().b($$0, $$22, $$2, fzr.d);
+               $$0.b();
+            }
+         }
       }
    }
-
-   protected static <T extends bjm> void a(fey<T> $$0, aez $$1, elj $$2, foa $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
-      eln $$9 = $$3.getBuffer(foi.e($$1));
-      $$0.a($$2, $$9, $$4, fue.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
-   }
-
-   public M c() {
-      return this.a.a();
-   }
-
-   protected aez a(T $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(elj var1, foa var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

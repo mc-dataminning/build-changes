@@ -1,107 +1,58 @@
-import com.google.common.base.Stopwatch;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class ahn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.b("commands.locate.structure.not_found", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.b("commands.locate.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tl.b("commands.locate.biome.not_found", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tl.b("commands.locate.poi.not_found", $$0));
-   private static final int f = 100;
-   private static final int g = 6400;
-   private static final int h = 32;
-   private static final int i = 64;
-   private static final int j = 256;
-
-   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("locate").requires($$0x -> $$0x.c(2)))
-                  .then(du.a("structure").then(du.a("structure", eu.a(jc.aA)).executes($$0x -> a((dt)$$0x.getSource(), eu.a($$0x, "structure", jc.aA, c))))))
-               .then(du.a("biome").then(du.a("biome", et.a($$1, jc.aq)).executes($$0x -> a((dt)$$0x.getSource(), et.a($$0x, "biome", jc.aq))))))
-            .then(du.a("poi").then(du.a("poi", et.a($$1, jc.T)).executes($$0x -> b((dt)$$0x.getSource(), et.a($$0x, "poi", jc.T)))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(dv.a("config").then(dv.a("target", eg.c()).executes($$0x -> a((du)$$0x.getSource(), eg.e($$0x, "target"))))))
+            .then(
+               dv.a("unconfig")
+                  .then(
+                     dv.a("target", fg.a())
+                        .suggests(($$0x, $$1) -> dy.b(a(((du)$$0x.getSource()).m()), $$1))
+                        .executes($$0x -> a((du)$$0x.getSource(), fg.a($$0x, "target")))
+                  )
+            )
       );
    }
 
-   private static Optional<? extends hi.b<dvc>> a(eu.c<dvc> $$0, hq<dvc> $$1) {
-      return (Optional<? extends hi.b<dvc>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> hi.a($$0xx)), $$1::b);
-   }
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
 
-   private static int a(dt $$0, eu.c<dvc> $$1) throws CommandSyntaxException {
-      hq<dvc> $$2 = $$0.e().G_().d(jc.aA);
-      hi<dvc> $$3 = (hi<dvc>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
-      gw $$4 = gw.a($$0.d());
-      akt $$5 = $$0.e();
-      Stopwatch $$6 = Stopwatch.createStarted(ac.c);
-      Pair<gw, he<dvc>> $$7 = $$5.k().g().a($$5, $$3, $$4, 100, false);
-      $$6.stop();
-      if ($$7 == null) {
-         throw b.create($$1.b());
-      } else {
-         return a($$0, $$1, $$4, $$7, "commands.locate.structure.success", false, $$6.elapsed());
+      for (tj $$2 : $$0.ad().e()) {
+         if ($$2.m() instanceof amn $$3) {
+            $$1.add($$3.k().getId().toString());
+         }
       }
+
+      return $$1;
    }
 
-   private static int a(dt $$0, et.c<cqz> $$1) throws CommandSyntaxException {
-      gw $$2 = gw.a($$0.d());
-      Stopwatch $$3 = Stopwatch.createStarted(ac.c);
-      Pair<gw, he<cqz>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
-      $$3.stop();
-      if ($$4 == null) {
-         throw d.create($$1.b());
-      } else {
-         return a($$0, $$1, $$2, $$4, "commands.locate.biome.success", true, $$3.elapsed());
+   private static int a(du $$0, alr $$1) {
+      GameProfile $$2 = $$1.fR();
+      $$1.c.o();
+      $$0.a(() -> ui.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      return 1;
+   }
+
+   private static int a(du $$0, UUID $$1) {
+      for (tj $$2 : $$0.m().ad().e()) {
+         tr var5 = $$2.m();
+         if (var5 instanceof amn) {
+            amn $$3 = (amn)var5;
+            if ($$3.k().getId().equals($$1)) {
+               $$3.n();
+            }
+         }
       }
-   }
 
-   private static int b(dt $$0, et.c<buo> $$1) throws CommandSyntaxException {
-      gw $$2 = gw.a($$0.d());
-      akt $$3 = $$0.e();
-      Stopwatch $$4 = Stopwatch.createStarted(ac.c);
-      Optional<Pair<he<buo>, gw>> $$5 = $$3.w().e($$1, $$2, 256, bul.b.c);
-      $$4.stop();
-      if ($$5.isEmpty()) {
-         throw e.create($$1.b());
-      } else {
-         return a($$0, $$1, $$2, $$5.get().swap(), "commands.locate.poi.success", false, $$4.elapsed());
-      }
-   }
-
-   private static String a(Pair<gw, ? extends he<?>> $$0) {
-      return ((he)$$0.getSecond()).e().map($$0x -> $$0x.a().toString()).orElse("[unregistered]");
-   }
-
-   public static int a(dt $$0, et.c<?> $$1, gw $$2, Pair<gw, ? extends he<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$1x -> $$1.b(), $$2x -> $$1.b() + " (" + a($$3) + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
-   }
-
-   public static int a(dt $$0, eu.c<?> $$1, gw $$2, Pair<gw, ? extends he<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$0x -> $$0x.a().toString(), $$1x -> "#" + $$1x.b() + " (" + a($$3) + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
-   }
-
-   private static int a(dt $$0, gw $$1, Pair<gw, ? extends he<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
-      gw $$7 = (gw)$$2.getFirst();
-      int $$8 = $$4 ? asb.d(asb.c((float)$$1.j($$7))) : asb.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
-      String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
-      tl $$10 = to.a((tl)tl.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
-         .a($$2x -> $$2x.a(n.k).a(new tj(tj.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new tr(tr.a.a, tl.c("chat.coordinates.tooltip"))));
-      $$0.a(() -> tl.a($$3, $$5, $$10, $$8), false);
-      a.info("Locating element " + $$5 + " took " + $$6.toMillis() + " ms");
-      return $$8;
-   }
-
-   private static float a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 - $$0;
-      int $$5 = $$3 - $$1;
-      return asb.c((float)($$4 * $$4 + $$5 * $$5));
+      $$0.b(ui.b("Can't find player to unconfig"));
+      return 0;
    }
 }

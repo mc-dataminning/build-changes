@@ -1,74 +1,101 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class geb {
-   public static final geb a = new geb(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<gdx<geb.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   protected geb(Ticker $$0) {
-      this.c = $$0;
-   }
+   public static class a extends Thread {
+      private final geb.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   public synchronized void a(gdx<geb.a> $$0) {
-      this.a($$0, (Function<gdx<geb.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
+      public a(geb.b $$0) throws IOException {
+         super("LanServerDetector #" + geb.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(geb.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
+      }
 
-   public synchronized void a(gdx<geb.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<gdx<geb.a>, Stopwatch>)($$1x -> $$1));
-   }
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
 
-   private synchronized void a(gdx<geb.a> $$0, Function<gdx<geb.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
 
-   public synchronized void b(gdx<geb.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+            try {
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               geb.b.error("Couldn't ping server", var6);
+               break;
+            }
+
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            geb.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
          }
+
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
       }
    }
 
-   public void a(gdu $$0) {
-      $$0.send(gdv.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((gdx<geb.a>)$$1, new geb.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gdv.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(gdx.B, new geb.a((int)$$1)));
-            this.d.clear();
+   public static class b {
+      private final List<gea> a = Lists.newArrayList();
+      private boolean b;
+
+      @Nullable
+      public synchronized List<gea> a() {
+         if (this.b) {
+            List<gea> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
          }
-      });
-   }
+      }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = gec.a($$0);
+         String $$3 = gec.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
 
-   public static record a(int b) {
-      public static final Codec<geb.a> a = Codec.INT.xmap(geb.a::new, $$0 -> $$0.b);
+            for (gea $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
+            }
 
-      public int a() {
-         return this.b;
+            if (!$$4) {
+               this.a.add(new gea($$2, $$3));
+               this.b = true;
+            }
+         }
       }
    }
 }

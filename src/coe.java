@@ -1,20 +1,15 @@
-public class coe extends cnu {
-   public coe(cnu.a $$0, bjb... $$1) {
-      super($$0, cnv.j, $$1);
+public class coe extends cmv {
+   public coe(String $$0, cnb $$1, cnk $$2, ckj $$3, float $$4, int $$5) {
+      super(cnr.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return $$0 * 25;
+   public ckj g() {
+      return new ckj(cuc.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 50;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
+   public cnq<?> aq_() {
+      return cnq.r;
    }
 }

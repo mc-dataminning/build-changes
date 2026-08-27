@@ -1,44 +1,50 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dsv extends dsy {
-   public static final Codec<dsv> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsv::new));
+public class dsv extends dsx {
+   public static final Codec<dsv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               asq.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               eah.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               asg.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, dsv::new)
+   );
+   private final asq<Integer> i;
+   private final eah.a j;
+   private final float k;
+   private final eah l;
 
-   public dsv(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dsv(asq<Integer> $$0, eah.a $$1, float $$2, long $$3, eah.a $$4, float $$5, List<dgb> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = eah.b(new dmj(new dll($$3)), $$1);
    }
 
    @Override
-   protected dsz<?> a() {
-      return dsz.c;
+   protected dsu<?> a() {
+      return dsu.e;
    }
 
    @Override
-   public List<drg.a> a(cqh $$0, BiConsumer<gw, dfd> $$1, ash $$2, int $$3, gw $$4, dqq $$5) {
-      gw $$6 = $$4.d();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.h(), $$5);
-      a($$0, $$1, $$2, $$6.f(), $$5);
-      a($$0, $$1, $$2, $$6.f().h(), $$5);
-      gw.a $$7 = new gw.a();
+   public dgb a(ate $$0, ht $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)asy.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dgb> $$4 = Lists.newArrayListWithCapacity($$3);
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
 
-      return ImmutableList.of(new drg.a($$4.b($$3), 0, true));
+      return this.a($$4, $$1, (double)this.e);
    }
 
-   private void a(cqh $$0, BiConsumer<gw, dfd> $$1, ash $$2, gw.a $$3, dqq $$4, gw $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+   protected double a(ht $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

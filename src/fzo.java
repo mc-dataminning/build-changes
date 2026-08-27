@@ -1,123 +1,204 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 
-public class fzo implements fze {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<fzo> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aez.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               arj.a(fzo.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, fzo::new)
-   );
-   private final aez d;
-   private final List<fzo.a> e;
-   private final double f;
-   private final double g;
+public class fzo extends fzt {
+   private static final Logger f = LogUtils.getLogger();
+   private static final int g = 64;
+   private static final int h = 64;
+   private static final int i = 32;
+   @Nullable
+   private final File j;
+   private final String k;
+   private final boolean l;
+   @Nullable
+   private final Runnable m;
+   @Nullable
+   private CompletableFuture<?> n;
+   private boolean o;
 
-   public fzo(aez $$0, List<fzo.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public fzo(@Nullable File $$0, String $$1, afw $$2, boolean $$3, @Nullable Runnable $$4) {
+      super($$2);
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$3;
+      this.m = $$4;
+   }
+
+   private void a(eli $$0) {
+      if (this.m != null) {
+         this.m.run();
+      }
+
+      ero.O().execute(() -> {
+         this.o = true;
+         if (!RenderSystem.isOnRenderThread()) {
+            RenderSystem.recordRenderCall(() -> this.b($$0));
+         } else {
+            this.b($$0);
+         }
+      });
+   }
+
+   private void b(eli $$0) {
+      TextureUtil.prepareImage(this.a(), $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, true);
    }
 
    @Override
-   public void a(anw $$0, fze.a $$1) {
-      aez $$2 = a.a(this.d);
-      Optional<anu> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         fzk $$4 = new fzk($$2, $$3.get(), this.e.size());
+   public void a(aot $$0) throws IOException {
+      ero.O().execute(() -> {
+         if (!this.o) {
+            try {
+               super.a($$0);
+            } catch (IOException var3x) {
+               f.warn("Failed to load texture: {}", this.e, var3x);
+            }
 
-         for (fzo.a $$5 : this.e) {
-            $$1.a($$5.b, new fzo.b($$4, $$5, this.f, this.g));
+            this.o = true;
          }
+      });
+      if (this.n == null) {
+         eli $$2;
+         if (this.j != null && this.j.isFile()) {
+            f.debug("Loading http texture from local cache ({})", this.j);
+            FileInputStream $$1 = new FileInputStream(this.j);
+            $$2 = this.a($$1);
+         } else {
+            $$2 = null;
+         }
+
+         if ($$2 != null) {
+            this.a($$2);
+         } else {
+            this.n = CompletableFuture.runAsync(() -> {
+               HttpURLConnection $$0x = null;
+               f.debug("Downloading http texture from {} to {}", this.k, this.j);
+
+               try {
+                  $$0x = (HttpURLConnection)new URL(this.k).openConnection(ero.O().X());
+                  $$0x.setDoInput(true);
+                  $$0x.setDoOutput(false);
+                  $$0x.connect();
+                  if ($$0x.getResponseCode() / 100 == 2) {
+                     InputStream $$1x;
+                     if (this.j != null) {
+                        FileUtils.copyInputStreamToFile($$0x.getInputStream(), this.j);
+                        $$1x = new FileInputStream(this.j);
+                     } else {
+                        $$1x = $$0x.getInputStream();
+                     }
+
+                     ero.O().execute(() -> {
+                        eli $$1xx = this.a($$1x);
+                        if ($$1xx != null) {
+                           this.a($$1xx);
+                        }
+                     });
+                     return;
+                  }
+               } catch (Exception var6) {
+                  f.error("Couldn't download http texture", var6);
+                  return;
+               } finally {
+                  if ($$0x != null) {
+                     $$0x.disconnect();
+                  }
+               }
+            }, ac.f());
+         }
+      }
+   }
+
+   @Nullable
+   private eli a(InputStream $$0) {
+      eli $$1 = null;
+
+      try {
+         $$1 = eli.a($$0);
+         if (this.l) {
+            $$1 = this.c($$1);
+         }
+      } catch (Exception var4) {
+         f.warn("Error while loading the skin texture", var4);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   private eli c(eli $$0) {
+      int $$1 = $$0.b();
+      int $$2 = $$0.a();
+      if ($$2 == 64 && ($$1 == 32 || $$1 == 64)) {
+         boolean $$3 = $$1 == 32;
+         if ($$3) {
+            eli $$4 = new eli(64, 64, true);
+            $$4.a($$0);
+            $$0.close();
+            $$0 = $$4;
+            $$4.a(0, 32, 64, 32, 0);
+            $$4.a(4, 16, 16, 32, 4, 4, true, false);
+            $$4.a(8, 16, 16, 32, 4, 4, true, false);
+            $$4.a(0, 20, 24, 32, 4, 12, true, false);
+            $$4.a(4, 20, 16, 32, 4, 12, true, false);
+            $$4.a(8, 20, 8, 32, 4, 12, true, false);
+            $$4.a(12, 20, 16, 32, 4, 12, true, false);
+            $$4.a(44, 16, -8, 32, 4, 4, true, false);
+            $$4.a(48, 16, -8, 32, 4, 4, true, false);
+            $$4.a(40, 20, 0, 32, 4, 12, true, false);
+            $$4.a(44, 20, -8, 32, 4, 12, true, false);
+            $$4.a(48, 20, -16, 32, 4, 12, true, false);
+            $$4.a(52, 20, -8, 32, 4, 12, true, false);
+         }
+
+         b($$0, 0, 0, 32, 16);
+         if ($$3) {
+            a($$0, 32, 0, 64, 32);
+         }
+
+         b($$0, 0, 16, 64, 32);
+         b($$0, 16, 48, 48, 64);
+         return $$0;
       } else {
-         c.warn("Missing sprite: {}", $$2);
+         $$0.close();
+         f.warn("Discarding incorrectly sized ({}x{}) skin texture from {}", new Object[]{$$2, $$1, this.k});
+         return null;
       }
    }
 
-   @Override
-   public fzg a() {
-      return fzh.d;
-   }
-
-   static record a(aez b, double c, double d, double e, double f) {
-      public static final Codec<fzo.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  aez.a.fieldOf("sprite").forGetter(fzo.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(fzo.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(fzo.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(fzo.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(fzo.a::e)
-               )
-               .apply($$0, fzo.a::new)
-      );
-
-      public aez a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements fze.b {
-      private final fzk a;
-      private final fzo.a b;
-      private final double c;
-      private final double d;
-
-      b(fzk $$0, fzo.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public fyu a(fzd $$0) {
-         try {
-            ekk $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = asb.a(this.b.c * $$2);
-            int $$5 = asb.a(this.b.d * $$3);
-            int $$6 = asb.a(this.b.e * $$2);
-            int $$7 = asb.a(this.b.f * $$3);
-            ekk $$8 = new ekk(ekk.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new fyu(this.b.b, new gan($$6, $$7), $$8, any.a);
-         } catch (Exception var16) {
-            fzo.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
+   private static void a(eli $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            int $$7 = $$0.a($$5, $$6);
+            if (($$7 >> 24 & 0xFF) < 128) {
+               return;
+            }
          }
-
-         return fyq.a();
       }
 
-      @Override
-      public void a() {
-         this.a.b();
+      for (int $$8 = $$1; $$8 < $$3; $$8++) {
+         for (int $$9 = $$2; $$9 < $$4; $$9++) {
+            $$0.a($$8, $$9, $$0.a($$8, $$9) & 16777215);
+         }
+      }
+   }
+
+   private static void b(eli $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            $$0.a($$5, $$6, $$0.a($$5, $$6) | 0xFF000000);
+         }
       }
    }
 }

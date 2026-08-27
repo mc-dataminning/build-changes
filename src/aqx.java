@@ -1,7 +1,11 @@
-public class aqx {
-   public static final int a = -1;
-   public static final int b = -16777216;
-   public static final int c = -8355712;
-   public static final int d = -6250336;
-   public static final int e = -65536;
+public final class aqx {
+   public static final arh<ebd> a = a("water");
+   public static final arh<ebd> b = a("lava");
+
+   private aqx() {
+   }
+
+   private static arh<ebd> a(String $$0) {
+      return arh.a(jz.x, new afw($$0));
+   }
 }

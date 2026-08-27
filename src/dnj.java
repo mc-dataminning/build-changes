@@ -1,99 +1,61 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnj extends dnq<dqb> {
-   private static final dfm a = dfm.a(cte.I);
-   private final dfd b = cte.I.o();
-   private final dfd c = cte.jF.o();
-   private final dfd d = cte.aV.o();
-   private final dfd an = cte.G.o();
+public class dnj {
+   public static final dnj a = new dnj(false, cuc.gz.o(), cuc.pL.o(), cuc.ej.o(), cuc.aQ.o());
+   public static final Codec<dnj> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dnj::a),
+               dgb.b.optionalFieldOf("air_state", a.b()).forGetter(dnj::b),
+               dgb.b.optionalFieldOf("water_state", a.b()).forGetter(dnj::c),
+               dgb.b.optionalFieldOf("lava_state", a.b()).forGetter(dnj::d),
+               dgb.b.optionalFieldOf("barrier_state", a.b()).forGetter(dnj::e)
+            )
+            .apply($$0, dnj::new)
+   );
+   private final boolean c;
+   private final dgb d;
+   private final dgb e;
+   private final dgb f;
+   private final dgb g;
 
-   public dnj(Codec<dqb> $$0) {
-      super($$0);
+   public static dnj a(boolean $$0, dgb $$1, dgb $$2, dgb $$3, dgb $$4) {
+      return new dnj($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(dns<dqb> $$0) {
-      cqv $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      $$2 = $$2.c();
-
-      while ($$1.t($$2) && $$2.v() > $$1.H_() + 2) {
-         $$2 = $$2.d();
-      }
-
-      if (!a.a($$1.a_($$2))) {
-         return false;
-      } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.t($$2.b($$3, -1, $$4)) && $$1.t($$2.b($$3, -2, $$4))) {
-                  return false;
-               }
-            }
-         }
-
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.an, 2);
-
-         for (ha $$8 : ha.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
-         }
-
-         gw $$9 = $$2.d();
-         $$1.a($$9, this.b, 2);
-
-         for (ha $$10 : ha.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<gw> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
-         ash $$18 = $$0.d();
-         b($$1, ac.a($$17, $$18).c(1));
-         b($$1, ac.a($$17, $$18).c(2));
-         return true;
-      }
+   public static dnj a(dgb $$0, dgb $$1, dgb $$2, dgb $$3) {
+      return new dnj(false, $$0, $$1, $$2, $$3);
    }
 
-   private static void b(cqv $$0, gw $$1) {
-      $$0.a($$1, cte.J.o(), 3);
-      $$0.a($$1, ddb.N).ifPresent($$1x -> $$1x.a(eci.aC, $$1.a()));
+   public static dnj a(boolean $$0, dgb $$1) {
+      return new dnj($$0, $$1, a.c(), a.d(), a.e());
+   }
+
+   private dnj(boolean $$0, dgb $$1, dgb $$2, dgb $$3, dgb $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   public dgb b() {
+      return this.d;
+   }
+
+   public dgb c() {
+      return this.e;
+   }
+
+   public dgb d() {
+      return this.f;
+   }
+
+   public dgb e() {
+      return this.g;
    }
 }

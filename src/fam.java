@@ -1,47 +1,82 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fam extends fab {
+   private final deh m;
+   private etq<deh.a> n;
+   private etq<Boolean> o;
+   private etq<Boolean> p;
+   private deh.a q = deh.a.c;
+   private boolean s;
+   private boolean t;
 
-public class fam extends ezf {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private fqo.a l;
-
-   public fam(deh $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+   public fam(deh $$0) {
+      this.m = $$0;
    }
 
    @Override
-   protected void aH_() {
-      super.aH_();
-      this.l = fqo.a(this.f.aP(), this.a);
+   cqa l() {
+      return this.m.c();
    }
 
    @Override
-   protected void b(erz $$0, dfd $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dav;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
-      }
+   int C() {
+      return 135;
    }
 
    @Override
-   protected void a(erz $$0, dfd $$1) {
-      if (this.l != null) {
-         boolean $$2 = $$1.b() instanceof dav;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         gbe $$3 = foo.a(this.a);
-         eln $$4 = $$3.a($$0.d(), this.l::a);
-         this.l.b.k = $$2;
-         this.l.a.a($$0.c(), $$4, 15728880, fyr.d);
-      }
+   protected void aM_() {
+      super.aM_();
+      this.n = this.d(etq.<deh.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> ui.c("advMode.mode.sequence");
+            case b -> ui.c("advMode.mode.auto");
+            case c -> ui.c("advMode.mode.redstone");
+         };
+      }).a(deh.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, ui.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
+      this.o = this.d(
+         etq.a(ui.c("advMode.mode.conditional"), ui.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.s)
+            .a(this.g / 2 - 50, 165, 100, 20, ui.c("advMode.type"), ($$0, $$1) -> this.s = $$1)
+      );
+      this.p = this.d(
+         etq.a(ui.c("advMode.mode.autoexec.bat"), ui.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.t)
+            .a(this.g / 2 + 50 + 4, 165, 100, 20, ui.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
+      );
+      this.e(false);
+   }
+
+   private void e(boolean $$0) {
+      this.c.i = $$0;
+      this.l.i = $$0;
+      this.n.i = $$0;
+      this.o.i = $$0;
+      this.p.i = $$0;
+   }
+
+   public void E() {
+      cqa $$0 = this.m.c();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.o();
+      this.q = this.m.v();
+      this.s = this.m.w();
+      this.t = this.m.f();
+      this.l.a($$1);
+      this.n.a(this.q);
+      this.o.a(this.s);
+      this.p.a(this.t);
+      this.c($$1);
+      this.e(true);
    }
 
    @Override
-   protected Vector3f l() {
-      return k;
+   public void a(ero $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e(true);
+   }
+
+   @Override
+   protected void a(cqa $$0) {
+      this.f.J().b(new adm(ht.a($$0.g()), this.a.a(), this.q, $$0.o(), this.s, this.t));
    }
 }

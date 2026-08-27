@@ -1,28 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
 
-public class awz extends ayf {
-   public awz(Schema $$0, String $$1) {
-      super($$0, false, "Gossip for for " + $$1, azd.x, $$1);
+public class awz extends bak {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
+
+   public awz(Schema $$0, boolean $$1) {
+      super("EntityPufferfishRenameFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Gossips",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt()
-                        .result()
-                        .map($$0xxx -> $$0xxx.map($$0xxxx -> (Dynamic)atl.c($$0xxxx, "Target", "Target").orElse($$0xxxx)))
-                        .map($$0xx::createList),
-                     $$0xx
-                  )
-            )
-      );
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
    }
 }

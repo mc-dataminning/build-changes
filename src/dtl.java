@@ -1,62 +1,23 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class dtl extends dtj {
-   public static final Codec<dtl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dlg.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dlg.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dtl::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dlg d;
-   private final dlg e;
-   private final int f;
+public class dtl<P extends dtk> {
+   public static final dtl<dtm> a = a("trunk_vine", dtm.a);
+   public static final dtl<dtj> b = a("leave_vine", dtj.a);
+   public static final dtl<dti> c = a("cocoa", dti.a);
+   public static final dtl<dth> d = a("beehive", dth.a);
+   public static final dtl<dtf> e = a("alter_ground", dtf.a);
+   public static final dtl<dtg> f = a("attached_to_leaves", dtg.a);
+   private final Codec<P> g;
 
-   private dtl(dlg $$0, dlg $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private static <P extends dtk> dtl<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.aa, $$0, new dtl<>($$1));
    }
 
-   public static dtl a(dlg $$0, dlg $$1, int $$2) {
-      return new dtl($$0, $$1, $$2);
+   private dtl(Codec<P> $$0) {
+      this.g = $$0;
    }
 
-   public static dtl a(dlg $$0, dlg $$1) {
-      return a($$0, $$1, 0);
-   }
-
-   @Override
-   public int a(ash $$0, dlj $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return asb.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + asb.b($$0, 0, $$6) + asb.b($$0, 0, $$5);
-         }
-      }
-   }
-
-   @Override
-   public dtk<?> a() {
-      return dtk.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+   public Codec<P> a() {
+      return this.g;
    }
 }

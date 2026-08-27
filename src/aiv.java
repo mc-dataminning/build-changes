@@ -1,61 +1,154 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import javax.annotation.Nullable;
 
 public class aiv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.summon.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.summon.failed.uuid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.summon.invalidPosition"));
-
-   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("summon").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)du.a("entity", eq.a($$1, jc.t))
-                     .suggests(gm.d)
-                     .executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), ((dt)$$0x.getSource()).d(), new qw(), true)))
-                  .then(
-                     ((RequiredArgumentBuilder)du.a("pos", fr.a())
-                           .executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), fr.a($$0x, "pos"), new qw(), true)))
-                        .then(du.a("nbt", eb.a()).executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), fr.a($$0x, "pos"), eb.a($$0x, "nbt"), false)))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
+                                    "raid"
+                                 )
+                                 .requires($$0x -> $$0x.c(3)))
+                              .then(
+                                 dv.a("start")
+                                    .then(
+                                       dv.a("omenlvl", IntegerArgumentType.integer(0))
+                                          .executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
+                                    )
+                              ))
+                           .then(dv.a("stop").executes($$0x -> c((du)$$0x.getSource()))))
+                        .then(dv.a("check").executes($$0x -> d((du)$$0x.getSource()))))
+                     .then(dv.a("sound").then(dv.a("type", ec.a()).executes($$0x -> a((du)$$0x.getSource(), ec.a($$0x, "type"))))))
+                  .then(dv.a("spawnleader").executes($$0x -> b((du)$$0x.getSource()))))
+               .then(
+                  dv.a("setomen")
+                     .then(
+                        dv.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
+                     )
+               ))
+            .then(dv.a("glow").executes($$0x -> a((du)$$0x.getSource())))
       );
    }
 
-   public static biw a(dt $$0, he.c<bja<?>> $$1, ehh $$2, qw $$3, boolean $$4) throws CommandSyntaxException {
-      gw $$5 = gw.a($$2);
-      if (!cqb.k($$5)) {
-         throw c.create();
-      } else {
-         qw $$6 = $$3.h();
-         $$6.a("id", $$1.g().a().toString());
-         akt $$7 = $$0.e();
-         biw $$8 = bja.a($$6, $$7, $$1x -> {
-            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dB(), $$1x.dD());
-            return $$1x;
-         });
-         if ($$8 == null) {
-            throw a.create();
-         } else {
-            if ($$4 && $$8 instanceof bjo) {
-               ((bjo)$$8).a($$0.e(), $$0.e().d_($$8.dl()), bjq.n, null, null);
-            }
-
-            if (!$$7.e($$8)) {
-               throw b.create();
-            } else {
-               return $$8;
-            }
+   private static int a(du $$0) throws CommandSyntaxException {
+      cee $$1 = a($$0.i());
+      if ($$1 != null) {
+         for (cef $$3 : $$1.h()) {
+            $$3.b(new bjg(bji.x, 1000, 1));
          }
+      }
+
+      return 1;
+   }
+
+   private static int a(du $$0, int $$1) throws CommandSyntaxException {
+      cee $$2 = a($$0.i());
+      if ($$2 != null) {
+         int $$3 = $$2.l();
+         if ($$1 > $$3) {
+            $$0.b(ui.b("Sorry, the max bad omen level you can set is " + $$3));
+         } else {
+            int $$4 = $$2.m();
+            $$2.a($$1);
+            $$0.a(() -> ui.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
+         }
+      } else {
+         $$0.b(ui.b("No raid found here"));
+      }
+
+      return 1;
+   }
+
+   private static int b(du $$0) {
+      $$0.a(() -> ui.b("Spawned a raid captain"), false);
+      cef $$1 = bjx.ay.a((cqz)$$0.f());
+      if ($$1 == null) {
+         $$0.b(ui.b("Pillager failed to spawn"));
+         return 0;
+      } else {
+         $$1.w(true);
+         $$1.a(bjy.f, cee.s());
+         $$1.e($$0.e().c, $$0.e().d, $$0.e().e);
+         $$1.a($$0.f(), $$0.f().d_(ht.a($$0.e())), bkn.n, null, null);
+         $$0.f().a_($$1);
+         return 1;
       }
    }
 
-   private static int b(dt $$0, he.c<bja<?>> $$1, ehh $$2, qw $$3, boolean $$4) throws CommandSyntaxException {
-      biw $$5 = a($$0, $$1, $$2, $$3, $$4);
-      $$0.a(() -> tl.a("commands.summon.success", $$5.N_()), true);
+   private static int a(du $$0, @Nullable ui $$1) {
+      if ($$1 != null && $$1.getString().equals("local")) {
+         alq $$2 = $$0.f();
+         eif $$3 = $$0.e().b(5.0, 0.0, 0.0);
+         $$2.a(null, $$3.c, $$3.d, $$3.e, aqd.tr, aqe.g, 2.0F, 1.0F, $$2.z.g());
+      }
+
       return 1;
+   }
+
+   private static int b(du $$0, int $$1) throws CommandSyntaxException {
+      alr $$2 = $$0.i();
+      ht $$3 = $$2.dl();
+      if ($$2.x().d($$3)) {
+         $$0.b(ui.b("Raid already started close by"));
+         return -1;
+      } else {
+         ceg $$4 = $$2.x().x();
+         cee $$5 = $$4.a($$2);
+         if ($$5 != null) {
+            $$5.a($$1);
+            $$4.c();
+            $$0.a(() -> ui.b("Created a raid in your local village"), false);
+         } else {
+            $$0.b(ui.b("Failed to create a raid in your local village"));
+         }
+
+         return 1;
+      }
+   }
+
+   private static int c(du $$0) throws CommandSyntaxException {
+      alr $$1 = $$0.i();
+      ht $$2 = $$1.dl();
+      cee $$3 = $$1.x().c($$2);
+      if ($$3 != null) {
+         $$3.n();
+         $$0.a(() -> ui.b("Stopped raid"), false);
+         return 1;
+      } else {
+         $$0.b(ui.b("No raid here"));
+         return -1;
+      }
+   }
+
+   private static int d(du $$0) throws CommandSyntaxException {
+      cee $$1 = a($$0.i());
+      if ($$1 != null) {
+         StringBuilder $$2 = new StringBuilder();
+         $$2.append("Found a started raid! ");
+         $$0.a(() -> ui.b($$2.toString()), false);
+         StringBuilder $$3 = new StringBuilder();
+         $$3.append("Num groups spawned: ");
+         $$3.append($$1.k());
+         $$3.append(" Bad omen level: ");
+         $$3.append($$1.m());
+         $$3.append(" Num mobs: ");
+         $$3.append($$1.r());
+         $$3.append(" Raid health: ");
+         $$3.append($$1.q());
+         $$3.append(" / ");
+         $$3.append($$1.g());
+         $$0.a(() -> ui.b($$3.toString()), false);
+         return 1;
+      } else {
+         $$0.b(ui.b("Found no started raids"));
+         return 0;
+      }
+   }
+
+   @Nullable
+   private static cee a(alr $$0) {
+      return $$0.x().c($$0.dl());
    }
 }

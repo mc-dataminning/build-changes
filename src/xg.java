@@ -1,36 +1,18 @@
-public class xg implements ve<wx> {
-   private final gw a;
-   private final dfd b;
+public record xg(ht b, int c) implements wu {
+   public static final afw a = new afw("debug/poi_ticket_count");
 
-   public xg(gw $$0, dfd $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public xg(cph $$0, gw $$1) {
-      this($$1, $$0.a_($$1));
-   }
-
-   public xg(so $$0) {
-      this.a = $$0.e();
-      this.b = $$0.a(ctc.q);
+   public xg(tl $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
-      $$0.a(ctc.q, this.b);
+   public void a(tl $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
    }
 
-   public void a(wx $$0) {
-      $$0.a(this);
-   }
-
-   public dfd a() {
-      return this.b;
-   }
-
-   public gw d() {
-      return this.a;
+   @Override
+   public afw a() {
+      return a;
    }
 }

@@ -1,93 +1,58 @@
-import java.util.UUID;
+public class abb implements wb<xu> {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   private final String d;
+   private final ui e;
+   private final ejh.a f;
+   private final int g;
 
-public class abb {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
+   public abb(ejb $$0, int $$1) {
+      this.d = $$0.b();
+      this.e = $$0.d();
+      this.f = $$0.f();
+      this.g = $$1;
+   }
 
-   public static String a(biw $$0) {
-      if ($$0 instanceof cca) {
-         return $$0.ab().getString();
+   public abb(tl $$0) {
+      this.d = $$0.s();
+      this.g = $$0.readByte();
+      if (this.g != 0 && this.g != 2) {
+         this.e = uh.a;
+         this.f = ejh.a.a;
       } else {
-         tl $$1 = $$0.ad();
-         return $$1 != null ? $$1.getString() : a($$0.cv());
+         this.e = $$0.m();
+         this.f = $$0.b(ejh.a.class);
       }
    }
 
-   public static String a(UUID $$0) {
-      ash $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   @Override
+   public void a(tl $$0) {
+      $$0.a(this.d);
+      $$0.k(this.g);
+      if (this.g == 0 || this.g == 2) {
+         $$0.a(this.e);
+         $$0.a(this.f);
+      }
    }
 
-   private static String a(ash $$0, String[] $$1) {
-      return ac.a($$1, $$0);
+   public void a(xu $$0) {
+      $$0.a(this);
    }
 
-   private static ash b(UUID $$0) {
-      return ash.a((long)($$0.hashCode() >> 2));
+   public String a() {
+      return this.d;
+   }
+
+   public ui d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.g;
+   }
+
+   public ejh.a f() {
+      return this.f;
    }
 }

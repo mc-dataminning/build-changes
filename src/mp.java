@@ -1,139 +1,21 @@
-import java.util.concurrent.CompletableFuture;
+public enum mp {
+   a("building_blocks"),
+   b("decorations"),
+   c("redstone"),
+   d("transportation"),
+   e("tools"),
+   f("combat"),
+   g("food"),
+   h("brewing"),
+   i("misc");
 
-public class mp extends nc<cqz> {
-   public mp(jk $$0, CompletableFuture<hg.b> $$1) {
-      super($$0, jc.aq, $$1);
+   private final String j;
+
+   private mp(String $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   protected void a(hg.b $$0) {
-      this.b(apu.a).a(crg.X).a(crg.V).a(crg.T).a(crg.R);
-      this.b(apu.b).b(apu.a).a(crg.W).a(crg.S).a(crg.U).a(crg.Q).a(crg.P);
-      this.b(apu.c).a(crg.M).a(crg.N);
-      this.b(apu.d).a(crg.K).a(crg.L);
-      this.b(apu.e).a(crg.D).a(crg.H).a(crg.I).a(crg.J).a(crg.G).a(crg.E);
-      this.b(apu.f).a(crg.A).a(crg.B).a(crg.C);
-      this.b(apu.g).a(crg.t).a(crg.v).a(crg.u);
-      this.b(apu.h).a(crg.p).a(crg.q).a(crg.n).a(crg.o);
-      this.b(apu.i).a(crg.z).a(crg.x).a(crg.y);
-      this.b(apu.j).a(crg.i).a(crg.j).a(crg.k).a(crg.m).a(crg.l).a(crg.F);
-      this.b(apu.k).a(crg.r).a(crg.s).a(crg.w);
-      nc.b<cqz> $$1 = this.b(apu.m);
-      crn.a.a.a().forEach($$1::a);
-      nc.b<cqz> $$2 = this.b(apu.l);
-      crn.a.b.a().forEach($$2::a);
-      this.b(apu.n).a(crg.ah).a(crg.ai).a(crg.aj).a(crg.ak).a(crg.al);
-      this.b(apu.p).b(apu.c);
-      this.b(apu.q).a(crg.f);
-      this.b(apu.r).a(crg.q).a(crg.d).a(crg.G);
-      this.b(apu.s).a(crg.z).a(crg.x);
-      this.b(apu.t)
-         .b(apu.b)
-         .b(apu.d)
-         .b(apu.c)
-         .b(apu.e)
-         .b(apu.g)
-         .b(apu.h)
-         .b(apu.i)
-         .b(apu.j)
-         .a(crg.O)
-         .a(crg.Y)
-         .a(crg.e)
-         .a(crg.w)
-         .a(crg.f)
-         .a(crg.r)
-         .a(crg.d)
-         .a(crg.b)
-         .a(crg.c)
-         .a(crg.g)
-         .a(crg.h)
-         .a(crg.s)
-         .a(crg.Z)
-         .a(crg.aa);
-      this.b(apu.u).b(apu.f);
-      this.b(apu.X).a(crg.ab);
-      this.b(apu.v).b(apu.a);
-      this.b(apu.W).b(apu.b).b(apu.d);
-      this.b(apu.w).a(crg.W).a(crg.U).a(crg.S).a(crg.X).a(crg.V).a(crg.T);
-      this.b(apu.x).a(crg.Q).a(crg.P).a(crg.R);
-      this.b(apu.y).a(crg.f).a(crg.b).a(crg.r).a(crg.d).a(crg.p).b(apu.e).a(crg.F);
-      this.b(apu.z).a(crg.f);
-      this.b(apu.A).b(apu.i);
-      this.b(apu.B).b(apu.b);
-      this.b(apu.C).a(crg.g).a(crg.h);
-      this.b(apu.D).b(apu.f).b(apu.g).a(crg.s).a(crg.w).a(crg.O).b(apu.e);
-      this.b(apu.E).b(apu.c).b(apu.d).b(apu.h).b(apu.j).a(crg.Y).a(crg.e).a(crg.Z).a(crg.aa).a(crg.r).a(crg.d).a(crg.b).a(crg.c);
-      this.b(apu.F).b(apu.c);
-      this.b(apu.G).b(apu.b);
-      this.b(apu.I).a(crg.g);
-      this.b(apu.J).a(crg.f);
-      this.b(apu.K).a(crg.b).a(crg.D);
-      this.b(apu.L).a(crg.r);
-      this.b(apu.M).a(crg.d);
-      this.b(apu.N).a(crg.p);
-      this.b(apu.O).a(crg.p).a(crg.q).a(crg.n).a(crg.o).a(crg.m).a(crg.x);
-      this.b(apu.P).a(crg.l);
-      this.b(apu.o)
-         .a(crg.b)
-         .a(crg.c)
-         .a(crg.d)
-         .a(crg.e)
-         .a(crg.f)
-         .a(crg.i)
-         .a(crg.j)
-         .a(crg.k)
-         .a(crg.l)
-         .a(crg.m)
-         .a(crg.n)
-         .a(crg.o)
-         .a(crg.p)
-         .a(crg.q)
-         .a(crg.r)
-         .a(crg.s)
-         .a(crg.t)
-         .a(crg.u)
-         .a(crg.v)
-         .a(crg.w)
-         .a(crg.x)
-         .a(crg.y)
-         .a(crg.z)
-         .a(crg.A)
-         .a(crg.B)
-         .a(crg.C)
-         .a(crg.D)
-         .a(crg.F)
-         .a(crg.G)
-         .a(crg.H)
-         .a(crg.I)
-         .a(crg.J)
-         .a(crg.Y)
-         .a(crg.Z)
-         .a(crg.aa);
-      this.b(apu.H).b(apu.l);
-      this.b(apu.Q).b(apu.m);
-      this.b(apu.R).a(crg.af);
-      this.b(apu.S).a(crg.ae).a(crg.ac).a(crg.af).a(crg.ad);
-      this.b(apu.T).a(crg.ab);
-      this.b(apu.U).b(apu.m);
-      this.b(apu.V).a(crg.ai).a(crg.aj);
-      this.b(apu.ab).a(crg.P);
-      this.b(apu.Y).b(apu.b).b(apu.d);
-      this.b(apu.Z).a(crg.g).a(crg.h);
-      this.b(apu.aa).b(apu.b).b(apu.d).a(crg.g).a(crg.h);
-      this.b(apu.ae).a(crg.Y);
-      this.b(apu.af).a(crg.Y);
-      this.b(apu.ag).a(crg.a);
-      this.b(apu.ah).a(crg.d).a(crg.e).a(crg.H).a(crg.I).a(crg.G).a(crg.W).a(crg.X).a(crg.F).a(crg.ab).a(crg.L).a(crg.q).a(crg.N).b(apu.n);
-      this.b(apu.ai).a(crg.f).a(crg.P).b(apu.i).b(apu.k).b(apu.m).b(apu.f).a(crg.h);
-      this.b(apu.aj).a(crg.f);
-      this.b(apu.ak).a(crg.d).a(crg.e).a(crg.W).a(crg.q).a(crg.L).a(crg.N).a(crg.H).a(crg.I).a(crg.G).a(crg.F);
-      this.b(apu.al).b(apu.d);
-      this.b(apu.am).a(crg.aa);
-      this.b(apu.an).a(crg.W).a(crg.X);
-      this.b(apu.ao).b(apu.d);
-      this.b(apu.ap).a(crg.g).a(crg.h);
-      this.b(apu.aq).a(crg.d).a(crg.e).a(crg.W).a(crg.q).a(crg.L).a(crg.N).a(crg.H).a(crg.I).a(crg.G).a(crg.F);
-      this.b(apu.ac).a(crg.z).a(crg.Y).a(crg.h).a(crg.G).a(crg.H).a(crg.I).a(crg.g).a(crg.x);
-      this.b(apu.ad).a(crg.A).a(crg.ag).a(crg.ae).a(crg.f).a(crg.B).a(crg.ac).a(crg.r).a(crg.s).a(crg.af).a(crg.ad).a(crg.w).a(crg.C);
+   public String a() {
+      return this.j;
    }
 }

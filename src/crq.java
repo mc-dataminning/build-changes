@@ -1,59 +1,71 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class crq extends crd {
+public record crq(rt d, Optional<crq.a> e) {
+   public static final String a = "entity";
    public static final Codec<crq> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aex.d(crg.ah), aex.d(crg.ai), aex.d(crg.aj), aex.d(crg.ak), aex.d(crg.al)).apply($$0, $$0.stable(crq::new))
+      $$0 -> $$0.group(rt.a.fieldOf("entity").forGetter($$0x -> $$0x.d), crq.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
+            .apply($$0, crq::new)
    );
-   private final he<cqz> c;
-   private final he<cqz> d;
-   private final he<cqz> e;
-   private final he<cqz> f;
-   private final he<cqz> g;
+   public static final Codec<bgl<crq>> c = bgl.a(b);
 
-   public static crq a(hf<cqz> $$0) {
-      return new crq($$0.b(crg.ah), $$0.b(crg.ai), $$0.b(crg.aj), $$0.b(crg.ak), $$0.b(crg.al));
+   public crq() {
+      this(new rt(), Optional.empty());
    }
 
-   private crq(he<cqz> $$0, he<cqz> $$1, he<cqz> $$2, he<cqz> $$3, he<cqz> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   @Override
-   protected Stream<he<cqz>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
-   }
-
-   @Override
-   protected Codec<? extends crd> a() {
-      return b;
-   }
-
-   @Override
-   public he<cqz> getNoiseBiome(int $$0, int $$1, int $$2, cri.f $$3) {
-      int $$4 = hp.c($$0);
-      int $$5 = hp.c($$1);
-      int $$6 = hp.c($$2);
-      int $$7 = hw.a($$4);
-      int $$8 = hw.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (hw.a($$4) * 2 + 1) * 8;
-         int $$10 = (hw.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new dkf.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
+   public crq(rt d, Optional<crq.a> e) {
+      if (d.e("id")) {
+         afw $$2 = afw.a(d.l("id"));
+         if ($$2 != null) {
+            d.a("id", $$2.toString());
          } else {
-            return $$11 < -0.21875 ? this.f : this.g;
+            d.r("id");
          }
+      }
+
+      this.d = d;
+      this.e = e;
+   }
+
+   public rt a() {
+      return this.d;
+   }
+
+   public Optional<crq.a> b() {
+      return this.e;
+   }
+
+   public rt c() {
+      return this.d;
+   }
+
+   public Optional<crq.a> d() {
+      return this.e;
+   }
+
+   public static record a(asq<Integer> b, asq<Integer> c) {
+      private static final asq<Integer> d = new asq<>(0, 15);
+      public static final Codec<crq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, crq.a::new)
+      );
+
+      private static DataResult<asq<Integer>> a(asq<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<asq<Integer>> a(String $$0) {
+         return asg.a(asq.a.optionalFieldOf($$0, d), crq.a::a);
+      }
+
+      public asq<Integer> a() {
+         return this.b;
+      }
+
+      public asq<Integer> b() {
+         return this.c;
       }
    }
 }

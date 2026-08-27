@@ -1,51 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
 
-public enum eqy {
-   a(new cjl(cjo.qe)),
-   b(new cjl(cte.cj)),
-   c(new cjl(cjo.ll)),
-   d(new cjl(cjo.op), new cjl(cjo.oh)),
-   e(new cjl(cjo.pM), new cjl(cjo.nF)),
-   f(new cjl(cjo.qe)),
-   g(new cjl(cjo.pj)),
-   h(new cjl(cte.b)),
-   i(new cjl(cjo.pM), new cjl(cjo.nL)),
-   j(new cjl(cjo.qe)),
-   k(new cjl(cte.dI)),
-   l(new cjl(cjo.on), new cjl(cjo.pc)),
-   m(new cjl(cjo.qe)),
-   n(new cjl(cjo.pj)),
-   o(new cjl(cjo.fj)),
-   p(new cjl(cjo.pf)),
-   q(new cjl(cjo.pj)),
-   r(new cjl(cjo.hf));
+public enum eqy implements ata {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public static final List<eqy> s = ImmutableList.of(m, n);
-   public static final List<eqy> t = ImmutableList.of(j, k, l);
-   public static final List<eqy> u = ImmutableList.of(f, g, h, i);
-   public static final List<eqy> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<eqy, List<eqy>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<cjl> x;
+   private static final IntFunction<eqy> d = arr.a(eqy::a, values(), arr.a.b);
+   private final int e;
+   private final String f;
 
-   private eqy(cjl... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+   private eqy(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static List<eqy> a(cgc $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public List<cjl> a() {
-      return this.x;
+   @Override
+   public String b() {
+      return this.f;
+   }
+
+   public static eqy a(int $$0) {
+      return d.apply($$0);
    }
 }

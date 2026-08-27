@@ -1,71 +1,35 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class gam implements amw<gal> {
-   public gal b(JsonObject $$0) {
-      Builder<gak> $$1 = ImmutableList.builder();
-      int $$2 = arr.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
-      }
+public class gam implements gae {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<gam> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(afw.a.fieldOf("resource").forGetter($$0x -> $$0x.d), afw.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gam::new)
+   );
+   private final afw d;
+   private final Optional<afw> e;
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = arr.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               gak $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = arr.a($$0, "width", -1);
-      int $$9 = arr.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = arr.a($$0, "interpolate", false);
-      return new gal($$1.build(), $$8, $$9, $$2, $$10);
+   public gam(afw $$0, Optional<afw> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Nullable
-   private gak a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new gak(arr.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = arr.m($$1, "frames[" + $$0 + "]");
-         int $$3 = arr.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
-         }
-
-         int $$4 = arr.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new gak($$4, $$3);
+   @Override
+   public void a(aot $$0, gae.a $$1) {
+      afw $$2 = a.a(this.d);
+      Optional<aor> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
       } else {
-         return null;
+         c.warn("Missing sprite: {}", $$2);
       }
    }
 
    @Override
-   public String a() {
-      return "animation";
+   public gag a() {
+      return gah.a;
    }
 }

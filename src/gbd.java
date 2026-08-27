@@ -1,57 +1,42 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class gbd implements gbb {
-   private final fpj a;
-   private final fph b;
-   private final fza c;
-   private final boolean d;
+public abstract class gbd implements aon, AutoCloseable {
+   private final fzz a;
+   private final afw b;
+   private final Set<ant<?>> c;
 
-   public gbd(fpj $$0, fph $$1, fza $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public gbd(gab $$0, afw $$1, afw $$2) {
+      this($$0, $$1, $$2, fzv.a);
+   }
+
+   public gbd(gab $$0, afw $$1, afw $$2, Set<ant<?>> $$3) {
+      this.b = $$2;
+      this.a = new fzz($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
+   }
+
+   protected gaa a(afw $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public List<fox> a(@Nullable dfd $$0, @Nullable ha $$1, ash $$2) {
-      return Collections.emptyList();
+   public final CompletableFuture<Void> a(aon.a $$0, aot $$1, bes $$2, bes $$3, Executor $$4, Executor $$5) {
+      return fzv.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(fzv.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   }
+
+   private void a(fzv.a $$0, bes $$1) {
+      $$1.a();
+      $$1.a("upload");
+      this.a.a($$0);
+      $$1.c();
+      $$1.b();
    }
 
    @Override
-   public boolean a() {
-      return false;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d;
-   }
-
-   @Override
-   public boolean d() {
-      return true;
-   }
-
-   @Override
-   public fza e() {
-      return this.c;
-   }
-
-   @Override
-   public fpj f() {
-      return this.a;
-   }
-
-   @Override
-   public fph g() {
-      return this.b;
+   public void close() {
+      this.a.f();
    }
 }

@@ -10,9 +10,9 @@ public class ci extends cw<ci.a> {
       return new ci.a($$1, $$3, $$4);
    }
 
-   public void a(aku $$0, bjl $$1, List<biw> $$2) {
-      List<eck> $$3 = $$2.stream().map($$1x -> bq.b($$0, $$1x)).collect(Collectors.toList());
-      eck $$4 = bq.b($$0, $$1);
+   public void a(alr $$0, bki $$1, List<bjt> $$2) {
+      List<edi> $$3 = $$2.stream().map($$1x -> bq.b($$0, $$1x)).collect(Collectors.toList());
+      edi $$4 = bq.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
@@ -30,7 +30,7 @@ public class ci extends cw<ci.a> {
          return al.S.a(new ci.a(Optional.empty(), bq.a($$0), bq.a($$1)));
       }
 
-      public boolean a(eck $$0, List<eck> $$1) {
+      public boolean a(edi $$0, List<edi> $$1) {
          return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || !$$1.stream().noneMatch(this.b.get()::a);
       }
 

@@ -1,148 +1,65 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
 public class py {
-   private static final Collection<qn> a = Lists.newArrayList();
-   private static final Set<String> b = Sets.newHashSet();
-   private static final Map<String, Consumer<akt>> c = Maps.newHashMap();
-   private static final Map<String, Consumer<akt>> d = Maps.newHashMap();
-   private static final Collection<qn> e = Sets.newHashSet();
+   public static final afv<dve> a = qd.a("monster_room");
+   public static final afv<dve> b = qd.a("monster_room_deep");
+   public static final afv<dve> c = qd.a("fossil_upper");
+   public static final afv<dve> d = qd.a("fossil_lower");
+   public static final afv<dve> e = qd.a("dripstone_cluster");
+   public static final afv<dve> f = qd.a("large_dripstone");
+   public static final afv<dve> g = qd.a("pointed_dripstone");
+   public static final afv<dve> h = qd.a("underwater_magma");
+   public static final afv<dve> i = qd.a("glow_lichen");
+   public static final afv<dve> j = qd.a("rooted_azalea_tree");
+   public static final afv<dve> k = qd.a("cave_vines");
+   public static final afv<dve> l = qd.a("lush_caves_vegetation");
+   public static final afv<dve> m = qd.a("lush_caves_clay");
+   public static final afv<dve> n = qd.a("lush_caves_ceiling_vegetation");
+   public static final afv<dve> o = qd.a("spore_blossom");
+   public static final afv<dve> p = qd.a("classic_vines_cave_feature");
+   public static final afv<dve> q = qd.a("amethyst_geode");
+   public static final afv<dve> r = qd.a("sculk_patch_deep_dark");
+   public static final afv<dve> s = qd.a("sculk_patch_ancient_city");
+   public static final afv<dve> t = qd.a("sculk_vein");
 
-   public static void a(Class<?> $$0) {
-      Arrays.stream($$0.getDeclaredMethods()).forEach(py::a);
-   }
-
-   public static void a(Method $$0) {
-      String $$1 = $$0.getDeclaringClass().getSimpleName();
-      po $$2 = $$0.getAnnotation(po.class);
-      if ($$2 != null) {
-         a.add(c($$0));
-         b.add($$1);
-      }
-
-      pu $$3 = $$0.getAnnotation(pu.class);
-      if ($$3 != null) {
-         a.addAll(b($$0));
-         b.add($$1);
-      }
-
-      a($$0, pm.class, pm::a, c);
-      a($$0, pl.class, pl::a, d);
-   }
-
-   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<akt>> $$3) {
-      T $$4 = $$0.getAnnotation($$1);
-      if ($$4 != null) {
-         String $$5 = $$2.apply($$4);
-         Consumer<akt> $$6 = $$3.putIfAbsent($$5, (Consumer<akt>)d($$0));
-         if ($$6 != null) {
-            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
-         }
-      }
-   }
-
-   public static Collection<qn> a(String $$0) {
-      return a.stream().filter($$1 -> a($$1, $$0)).collect(Collectors.toList());
-   }
-
-   public static Collection<qn> a() {
-      return a;
-   }
-
-   public static Collection<String> b() {
-      return b;
-   }
-
-   public static boolean b(String $$0) {
-      return b.contains($$0);
-   }
-
-   @Nullable
-   public static Consumer<akt> c(String $$0) {
-      return c.get($$0);
-   }
-
-   @Nullable
-   public static Consumer<akt> d(String $$0) {
-      return d.get($$0);
-   }
-
-   public static Optional<qn> e(String $$0) {
-      return a().stream().filter($$1 -> $$1.a().equalsIgnoreCase($$0)).findFirst();
-   }
-
-   public static qn f(String $$0) {
-      Optional<qn> $$1 = e($$0);
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Can't find the test function for " + $$0);
-      } else {
-         return $$1.get();
-      }
-   }
-
-   private static Collection<qn> b(Method $$0) {
-      try {
-         Object $$1 = $$0.getDeclaringClass().newInstance();
-         return (Collection<qn>)$$0.invoke($$1);
-      } catch (ReflectiveOperationException var2) {
-         throw new RuntimeException(var2);
-      }
-   }
-
-   private static qn c(Method $$0) {
-      po $$1 = $$0.getAnnotation(po.class);
-      String $$2 = $$0.getDeclaringClass().getSimpleName();
-      String $$3 = $$2.toLowerCase();
-      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
-      String $$5 = $$1.e().isEmpty() ? $$4 : $$3 + "." + $$1.e();
-      String $$6 = $$1.b();
-      czn $$7 = qj.a($$1.c());
-      return new qn($$6, $$4, $$5, $$7, $$1.a(), $$1.f(), $$1.d(), $$1.h(), $$1.g(), (Consumer<pv>)d($$0));
-   }
-
-   private static Consumer<?> d(Method $$0) {
-      return $$1 -> {
-         try {
-            Object $$2 = $$0.getDeclaringClass().newInstance();
-            $$0.invoke($$2, $$1);
-         } catch (InvocationTargetException var3) {
-            if (var3.getCause() instanceof RuntimeException) {
-               throw (RuntimeException)var3.getCause();
-            } else {
-               throw new RuntimeException(var3.getCause());
-            }
-         } catch (ReflectiveOperationException var4) {
-            throw new RuntimeException(var4);
-         }
-      };
-   }
-
-   private static boolean a(qn $$0, String $$1) {
-      return $$0.a().toLowerCase().startsWith($$1.toLowerCase() + ".");
-   }
-
-   public static Collection<qn> c() {
-      return e;
-   }
-
-   public static void a(qn $$0) {
-      e.add($$0);
-   }
-
-   public static void d() {
-      e.clear();
+   public static void a(oo<dve> $$0) {
+      ic<dob<?, ?>> $$1 = $$0.a(jz.at);
+      ib<dob<?, ?>> $$2 = $$1.b(pm.a);
+      ib<dob<?, ?>> $$3 = $$1.b(pm.b);
+      ib<dob<?, ?>> $$4 = $$1.b(pm.c);
+      ib<dob<?, ?>> $$5 = $$1.b(pm.d);
+      ib<dob<?, ?>> $$6 = $$1.b(pm.e);
+      ib<dob<?, ?>> $$7 = $$1.b(pm.f);
+      ib<dob<?, ?>> $$8 = $$1.b(pm.g);
+      ib<dob<?, ?>> $$9 = $$1.b(pm.h);
+      ib<dob<?, ?>> $$10 = $$1.b(pm.i);
+      ib<dob<?, ?>> $$11 = $$1.b(pm.j);
+      ib<dob<?, ?>> $$12 = $$1.b(pm.m);
+      ib<dob<?, ?>> $$13 = $$1.b(pm.r);
+      ib<dob<?, ?>> $$14 = $$1.b(pm.s);
+      ib<dob<?, ?>> $$15 = $$1.b(pm.t);
+      ib<dob<?, ?>> $$16 = $$1.b(pu.c);
+      ib<dob<?, ?>> $$17 = $$1.b(pm.u);
+      ib<dob<?, ?>> $$18 = $$1.b(pm.v);
+      ib<dob<?, ?>> $$19 = $$1.b(pm.w);
+      ib<dob<?, ?>> $$20 = $$1.b(pm.x);
+      qd.a($$0, a, $$2, dux.a(10), dvb.a(), duz.a(dme.a(0), dme.b()), dus.a());
+      qd.a($$0, b, $$2, dux.a(4), dvb.a(), duz.a(dme.b(6), dme.a(-1)), dus.a());
+      qd.a($$0, c, $$3, dvk.a(64), dvb.a(), duz.a(dme.a(0), dme.b()), dus.a());
+      qd.a($$0, d, $$4, dvk.a(64), dvb.a(), duz.a(dme.a(), dme.a(-8)), dus.a());
+      qd.a($$0, e, $$5, dux.a(bhm.a(48, 96)), dvb.a(), qd.i, dus.a());
+      qd.a($$0, f, $$6, dux.a(bhm.a(10, 48)), dvb.a(), qd.i, dus.a());
+      qd.a($$0, g, $$7, dux.a(bhm.a(192, 256)), dvb.a(), qd.i, dux.a(bhm.a(1, 5)), dvj.a(bhb.a(0.0F, 3.0F, -10, 10), bhb.a(0.0F, 0.6F, -2, 2)), dus.a());
+      qd.a($$0, h, $$8, dux.a(bhm.a(44, 52)), dvb.a(), qd.i, dvm.a(dlk.a.c, Integer.MIN_VALUE, -2), dus.a());
+      qd.a($$0, i, $$9, dux.a(bhm.a(104, 157)), qd.i, dvb.a(), dvm.a(dlk.a.c, Integer.MIN_VALUE, -13), dus.a());
+      qd.a($$0, j, $$10, dux.a(bhm.a(1, 2)), dvb.a(), qd.i, duy.a(hx.b, dmr.c(), dmr.c, 12), dvj.a(bhd.a(-1)), dus.a());
+      qd.a($$0, k, $$11, dux.a(188), dvb.a(), qd.i, duy.a(hx.b, dmr.a(hx.a), dmr.c, 12), dvj.a(bhd.a(-1)), dus.a());
+      qd.a($$0, l, $$12, dux.a(125), dvb.a(), qd.i, duy.a(hx.a, dmr.c(), dmr.c, 12), dvj.a(bhd.a(1)), dus.a());
+      qd.a($$0, m, $$13, dux.a(62), dvb.a(), qd.i, duy.a(hx.a, dmr.c(), dmr.c, 12), dvj.a(bhd.a(1)), dus.a());
+      qd.a($$0, n, $$14, dux.a(125), dvb.a(), qd.i, duy.a(hx.b, dmr.c(), dmr.c, 12), dvj.a(bhd.a(-1)), dus.a());
+      qd.a($$0, o, $$15, dux.a(25), dvb.a(), qd.i, duy.a(hx.b, dmr.c(), dmr.c, 12), dvj.a(bhd.a(-1)), dus.a());
+      qd.a($$0, p, $$16, dux.a(256), dvb.a(), qd.i, dus.a());
+      qd.a($$0, q, $$17, dvk.a(24), dvb.a(), duz.a(dme.b(6), dme.a(30)), dus.a());
+      qd.a($$0, r, $$18, dux.a(bhd.a(256)), dvb.a(), qd.i, dus.a());
+      qd.a($$0, s, $$19);
+      qd.a($$0, t, $$20, dux.a(bhm.a(204, 250)), dvb.a(), qd.i, dus.a());
    }
 }

@@ -1,8 +1,13 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ayj extends DataFix {
@@ -10,21 +15,21 @@ public class ayj extends DataFix {
       super($$0, $$1);
    }
 
-   private static String a(String $$0) {
-      return $$0.equals("health") ? "hearts" : "integer";
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.D);
-      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-            Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
-            if ($$1.isEmpty()) {
-               String $$2 = $$0xx.get("CriteriaName").asString("");
-               String $$3 = a($$2);
-               return $$0xx.set("RenderType", $$0xx.createString($$3));
-            } else {
-               return $$0xx;
-            }
-         }));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(baa.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(baa.z.typeName(), bbi.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
+            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
+            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+         } else {
+            return $$2x;
+         }
+      });
    }
 }

@@ -1,46 +1,51 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dbc {
-   List<dbc.a> b();
+public class dbc extends cxp {
+   public static final MapCodec<dbc> a = b(dbc::new);
 
-   static List<dbc> c() {
-      return jb.i.s().map(dbc::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<dbc> a() {
+      return a;
    }
 
-   @Nullable
-   static dbc a(cqa $$0) {
-      if ($$0.k() instanceof che $$1) {
-         ctc var6 = $$1.e();
-         if (var6 instanceof dbc) {
-            return (dbc)var6;
-         }
-      }
-
-      cjg $$2 = $$0.k();
-      return $$2 instanceof dbc ? (dbc)$$2 : null;
+   public dbc(dga.d $$0) {
+      super($$0);
    }
 
-   public static record a(bih c, int d) {
-      public static final Codec<dbc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jb.e.q().fieldOf("id").forGetter(dbc.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(dbc.a::c)).apply($$0, dbc.a::new)
-      );
-      public static final Codec<List<dbc.a>> b = a.listOf();
+   @Override
+   public void a(cqz $$0, dgb $$1, ht $$2, bjt $$3, float $$4) {
+      if ($$3.bT()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      } else {
+         $$3.a($$4, 0.0F, $$0.ag().k());
+      }
+   }
 
-      public bij a() {
-         return new bij(this.c, this.d);
+   @Override
+   public void a(cqf $$0, bjt $$1) {
+      if ($$1.bT()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(bjt $$0) {
+      eif $$1 = $$0.do();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof bkj ? 1.0 : 0.8;
+         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
+      }
+   }
+
+   @Override
+   public void a(cqz $$0, ht $$1, dgb $$2, bjt $$3) {
+      double $$4 = Math.abs($$3.do().d);
+      if ($$4 < 0.1 && !$$3.bS()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.f($$3.do().d($$5, 1.0, $$5));
       }
 
-      public bih b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
+      super.a($$0, $$1, $$2, $$3);
    }
 }

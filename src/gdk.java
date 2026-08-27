@@ -1,59 +1,32 @@
-import java.util.concurrent.locks.LockSupport;
+public class gdk implements gcs {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final foc e;
+   private final gem f;
+   private int g = 0;
 
-public class gdk extends bfu<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
-
-   public gdk() {
-      super("Sound executor");
-   }
-
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
+   public gdk(foc $$0, gem $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   protected Runnable f(Runnable $$0) {
-      return $$0;
-   }
-
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
-
-   @Override
-   protected Thread au() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.c(() -> this.b);
-      }
-   }
-
-   @Override
-   protected void bq() {
-      LockSupport.park("waiting for tasks");
-   }
-
    public void a() {
-      this.b = true;
-      this.a.interrupt();
-
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
+      this.g--;
+      if (this.g <= 0 && this.e.bc()) {
+         float $$0 = this.e.dL().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((gdi)(new gdl.a(this.e, aqd.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((gdi)(new gdl.a(this.e, aqd.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((gdi)(new gdl.a(this.e, aqd.A)));
+         }
       }
-
-      this.bo();
-      this.b = false;
-      this.a = this.b();
    }
 }

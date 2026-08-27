@@ -1,145 +1,121 @@
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class eot extends gex {
-   static final Logger a = LogUtils.getLogger();
-   private static final tl b = tl.c("mco.configure.world.subscription.title");
-   private static final tl c = tl.c("mco.configure.world.subscription.start");
-   private static final tl y = tl.c("mco.configure.world.subscription.timeleft");
-   private static final tl z = tl.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final tl A = tl.c("mco.configure.world.subscription.expired");
-   private static final tl B = tl.c("mco.configure.world.subscription.less_than_a_day");
-   private static final tl C = tl.c("mco.configure.world.subscription.unknown");
-   private static final tl D = tl.c("mco.configure.world.subscription.recurring.info");
-   private final eye E;
-   final emq F;
-   final eye G;
-   private tl H = C;
-   private tl I = C;
-   @Nullable
-   private end.a J;
+public class eot extends gfx {
+   private static final ui a = ui.c("mco.backup.info.title");
+   private static final ui b = ui.c("mco.backup.unknown");
+   private final ezd c;
+   final end y;
+   final ewt z = new ewt(this);
+   private eot.a A;
 
-   public eot(eye $$0, emq $$1, eye $$2) {
-      super(eqh.a);
-      this.E = $$0;
-      this.F = $$1;
-      this.G = $$2;
+   public eot(ezd $$0, end $$1) {
+      super(a);
+      this.c = $$0;
+      this.y = $$1;
    }
 
    @Override
-   public void aH_() {
-      this.a(this.F.a);
-      this.d(esk.a(tl.c("mco.configure.world.subscription.extend"), $$0 -> {
-         String $$1 = aqy.a(this.F.b, this.f.V().b());
-         this.f.o.a($$1);
-         ac.i().a($$1);
-      }).a(this.g / 2 - 100, h(6), 200, 20).a());
-      if (this.F.j) {
-         this.d(esk.a(tl.c("mco.configure.world.delete.button"), $$0 -> {
-            tl $$1 = tl.c("mco.configure.world.delete.question.line1");
-            tl $$2 = tl.c("mco.configure.world.delete.question.line2");
-            this.f.a(new eof(this::c, eof.a.a, $$1, $$2, true));
-         }).a(this.g / 2 - 100, h(10), 200, 20).a());
+   public void aM_() {
+      this.z.a(new euq(a, this.i));
+      this.A = new eot.a(this.f);
+      this.d(this.A);
+      this.z.b(etj.a(uh.k, $$0 -> this.aC_()).a());
+      this.z.a();
+      this.z.a($$1 -> {
+         eth var10000 = this.d($$1);
+      });
+   }
+
+   @Override
+   protected void c() {
+      this.z.a();
+      this.A.a(this.g, this.h, this.z.c(), this.h - this.z.b());
+   }
+
+   @Override
+   public void aC_() {
+      this.f.a(this.c);
+   }
+
+   ui a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
       } else {
-         this.d(new esu(this.g / 2 - 100, h(8), 200, 46, D, this.i).a(-6250336));
+         return (ui)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : ui.b($$1));
       }
-
-      this.d(esk.a(tk.k, $$0 -> this.f.a(this.E)).a(this.g / 2 - 100, h(12), 200, 20).a());
    }
 
-   @Override
-   public tl g() {
-      return tk.b(b, c, this.I, y, this.H);
-   }
-
-   private void c(boolean $$0) {
-      if ($$0) {
-         (new Thread("Realms-delete-realm") {
-            @Override
-            public void run() {
-               try {
-                  elz $$0 = elz.a();
-                  $$0.i(eot.this.F.a);
-               } catch (enm var2) {
-                  eot.a.error("Couldn't delete world", var2);
-               }
-
-               eot.this.f.execute(() -> eot.this.f.a(eot.this.G));
-            }
-         }).start();
-      }
-
-      this.f.a(this);
-   }
-
-   private void a(long $$0) {
-      elz $$1 = elz.a();
-
+   private ui a(String $$0) {
       try {
-         end $$2 = $$1.h($$0);
-         this.H = this.a($$2.b);
-         this.I = b($$2.a);
-         this.J = $$2.c;
-      } catch (enm var5) {
-         a.error("Couldn't get subscription", var5);
-         this.f.a(new eod(var5, this.E));
+         return epq.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
       }
    }
 
-   private static tl b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return tl.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.E);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   private ui b(String $$0) {
+      try {
+         return epq.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
       }
    }
 
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.g / 2 - 100;
-      $$0.a(this.i, b, this.g / 2, 17, -1);
-      $$0.a(this.i, c, $$4, h(0), -6250336, false);
-      $$0.a(this.i, this.I, $$4, h(1), -1, false);
-      if (this.J == end.a.a) {
-         $$0.a(this.i, y, $$4, h(3), -6250336, false);
-      } else if (this.J == end.a.b) {
-         $$0.a(this.i, z, $$4, h(3), -6250336, false);
-      }
-
-      $$0.a(this.i, this.H, $$4, h(4), -1, false);
-   }
-
-   private tl a(int $$0) {
-      if ($$0 < 0 && this.F.j) {
-         return A;
-      } else if ($$0 <= 1) {
-         return B;
-      } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return tl.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return tl.a("mco.configure.world.subscription.remaining.months", $$1);
-         } else {
-            return $$4 ? tl.a("mco.configure.world.subscription.remaining.days", $$2) : tl.i();
+   class a extends euf<eot.b> {
+      public a(ero $$0) {
+         super($$0, eot.this.g, eot.this.h, eot.this.z.c(), eot.this.h - eot.this.z.b(), 36);
+         if (eot.this.y.e != null) {
+            eot.this.y.e.forEach(($$0x, $$1) -> this.b(eot.this.new b($$0x, $$1)));
          }
+      }
+   }
+
+   class b extends euf.a<eot.b> {
+      private static final ui b = ui.c("mco.backup.entry.templateName");
+      private static final ui c = ui.c("mco.backup.entry.gameDifficulty");
+      private static final ui d = ui.c("mco.backup.entry.name");
+      private static final ui e = ui.c("mco.backup.entry.gameServerVersion");
+      private static final ui f = ui.c("mco.backup.entry.uploaded");
+      private static final ui g = ui.c("mco.backup.entry.enabledPack");
+      private static final ui h = ui.c("mco.backup.entry.description");
+      private static final ui i = ui.c("mco.backup.entry.gameMode");
+      private static final ui j = ui.c("mco.backup.entry.seed");
+      private static final ui k = ui.c("mco.backup.entry.worldType");
+      private static final ui l = ui.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
+
+      public b(String $$0, String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+
+      @Override
+      public void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(eot.this.i, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(eot.this.i, eot.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
+
+      private ui a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_pack" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public ui a() {
+         return ui.a("narrator.select", this.m + " " + this.n);
       }
    }
 }

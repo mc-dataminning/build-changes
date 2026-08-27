@@ -1,371 +1,525 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.DynamicLike;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
 
-public class dhs<T> implements dhr<T>, dht<T> {
-   private static final int a = 0;
-   private final dhr<T> b = ($$0x, $$1x) -> 0;
-   private final hj<T> c;
-   private volatile dhs.c<T> d;
-   private final dhs.d e;
-   private final asx f = new asx("PalettedContainer");
+public class dhs {
+   public static final double c = 5.999997E7F;
+   public static final double d = 2.9999984E7;
+   private final List<dhq> a = Lists.newArrayList();
+   private double b = 0.2;
+   private double f = 5.0;
+   private int g = 15;
+   private int h = 5;
+   private double i;
+   private double j;
+   int k = 29999984;
+   private dhs.a l = new dhs.d(5.999997E7F);
+   public static final dhs.c e = new dhs.c(0.0, 0.0, 0.2, 5.0, 5, 15, 5.999997E7F, 0L, 0.0);
 
-   public void a() {
-      this.f.a();
+   public boolean a(ht $$0) {
+      return (double)($$0.u() + 1) > this.e() && (double)$$0.u() < this.g() && (double)($$0.w() + 1) > this.f() && (double)$$0.w() < this.h();
    }
 
-   public void b() {
-      this.f.b();
+   public boolean a(cqg $$0) {
+      return (double)$$0.f() > this.e() && (double)$$0.d() < this.g() && (double)$$0.g() > this.f() && (double)$$0.e() < this.h();
    }
 
-   public static <T> Codec<dhs<T>> a(hj<T> $$0, Codec<T> $$1, dhs.d $$2, T $$3) {
-      dht.b<T, dhs<T>> $$4 = dhs::a;
-      return a($$0, $$1, $$2, $$3, $$4);
+   public boolean a(double $$0, double $$1) {
+      return $$0 > this.e() && $$0 < this.g() && $$1 > this.f() && $$1 < this.h();
    }
 
-   public static <T> Codec<dht<T>> b(hj<T> $$0, Codec<T> $$1, dhs.d $$2, T $$3) {
-      dht.b<T, dht<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
-      return a($$0, $$1, $$2, $$3, $$4);
+   public boolean a(double $$0, double $$1, double $$2) {
+      return $$0 > this.e() - $$2 && $$0 < this.g() + $$2 && $$1 > this.f() - $$2 && $$1 < this.h() + $$2;
    }
 
-   private static <T, C extends dht<T>> Codec<C> a(hj<T> $$0, Codec<T> $$1, dhs.d $$2, T $$3, dht.b<T, C> $$4) {
-      return RecordCodecBuilder.create(
-            $$2x -> $$2x.group(
-                     $$1.mapResult(arj.a($$3)).listOf().fieldOf("palette").forGetter(dht.a::a), Codec.LONG_STREAM.optionalFieldOf("data").forGetter(dht.a::b)
-                  )
-                  .apply($$2x, dht.a::new)
-         )
-         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
+   public boolean a(eia $$0) {
+      return $$0.d > this.e() && $$0.a < this.g() && $$0.f > this.f() && $$0.c < this.h();
    }
 
-   public dhs(hj<T> $$0, dhs.d $$1, dhs.a<T> $$2, aqs $$3, List<T> $$4) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = new dhs.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
+   public ht b(double $$0, double $$1, double $$2) {
+      return ht.a(asy.a($$0, this.e(), this.g()), $$1, asy.a($$2, this.f(), this.h()));
    }
 
-   private dhs(hj<T> $$0, dhs.d $$1, dhs.c<T> $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$2;
+   public double a(bjt $$0) {
+      return this.b($$0.dq(), $$0.dw());
    }
 
-   public dhs(hj<T> $$0, T $$1, dhs.d $$2) {
-      this.e = $$2;
-      this.c = $$0;
-      this.d = this.a(null, 0);
-      this.d.c.a($$1);
+   public eiy c() {
+      return this.l.m();
    }
 
-   private dhs.c<T> a(@Nullable dhs.c<T> $$0, int $$1) {
-      dhs.a<T> $$2 = this.e.a(this.c, $$1);
-      return $$0 != null && $$2.equals($$0.c()) ? $$0 : $$2.a(this.c, this, this.e.a());
+   public double b(double $$0, double $$1) {
+      double $$2 = $$1 - this.f();
+      double $$3 = this.h() - $$1;
+      double $$4 = $$0 - this.e();
+      double $$5 = this.g() - $$0;
+      double $$6 = Math.min($$4, $$5);
+      $$6 = Math.min($$6, $$2);
+      return Math.min($$6, $$3);
    }
 
-   @Override
-   public int onResize(int $$0, T $$1) {
-      dhs.c<T> $$2 = this.d;
-      dhs.c<T> $$3 = this.a($$2, $$0);
-      $$3.a($$2.c, $$2.b);
-      this.d = $$3;
-      return $$3.c.a($$1);
+   public boolean a(bjt $$0, eia $$1) {
+      double $$2 = Math.max(asy.a($$1.b(), $$1.d()), 1.0);
+      return this.a($$0) < $$2 * 2.0 && this.a($$0.dq(), $$0.dw(), $$2);
    }
 
-   public T a(int $$0, int $$1, int $$2, T $$3) {
-      this.a();
-
-      Object var5;
-      try {
-         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
-      } finally {
-         this.b();
-      }
-
-      return (T)var5;
+   public dhr d() {
+      return this.l.i();
    }
 
-   public T b(int $$0, int $$1, int $$2, T $$3) {
-      return this.a(this.e.a($$0, $$1, $$2), $$3);
+   public double e() {
+      return this.l.a();
    }
 
-   private T a(int $$0, T $$1) {
-      int $$2 = this.d.c.a($$1);
-      int $$3 = this.d.b.a($$0, $$2);
-      return this.d.c.a($$3);
+   public double f() {
+      return this.l.c();
    }
 
-   public void c(int $$0, int $$1, int $$2, T $$3) {
-      this.a();
+   public double g() {
+      return this.l.b();
+   }
 
-      try {
-         this.b(this.e.a($$0, $$1, $$2), $$3);
-      } finally {
-         this.b();
+   public double h() {
+      return this.l.d();
+   }
+
+   public double a() {
+      return this.i;
+   }
+
+   public double b() {
+      return this.j;
+   }
+
+   public void c(double $$0, double $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l.k();
+
+      for (dhq $$2 : this.l()) {
+         $$2.a(this, $$0, $$1);
       }
    }
 
-   private void b(int $$0, T $$1) {
-      int $$2 = this.d.c.a($$1);
-      this.d.b.b($$0, $$2);
+   public double i() {
+      return this.l.e();
    }
 
-   @Override
-   public T a(int $$0, int $$1, int $$2) {
-      return this.a(this.e.a($$0, $$1, $$2));
+   public long j() {
+      return this.l.g();
    }
 
-   protected T a(int $$0) {
-      dhs.c<T> $$1 = this.d;
-      return $$1.c.a($$1.b.a($$0));
+   public double k() {
+      return this.l.h();
    }
 
-   @Override
-   public void a(Consumer<T> $$0) {
-      dhq<T> $$1 = this.d.e();
-      IntSet $$2 = new IntArraySet();
-      this.d.b.a($$2::add);
-      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
-   }
+   public void a(double $$0) {
+      this.l = new dhs.d($$0);
 
-   public void a(so $$0) {
-      this.a();
-
-      try {
-         int $$1 = $$0.readByte();
-         dhs.c<T> $$2 = this.a(this.d, $$1);
-         $$2.c.a($$0);
-         $$0.b($$2.b.a());
-         this.d = $$2;
-      } finally {
-         this.b();
+      for (dhq $$1 : this.l()) {
+         $$1.a(this, $$0);
       }
    }
 
-   @Override
-   public void b(so $$0) {
-      this.a();
+   public void a(double $$0, double $$1, long $$2) {
+      this.l = (dhs.a)($$0 == $$1 ? new dhs.d($$1) : new dhs.b($$0, $$1, $$2));
 
-      try {
-         this.d.a($$0);
-      } finally {
-         this.b();
+      for (dhq $$3 : this.l()) {
+         $$3.a(this, $$0, $$1, $$2);
       }
    }
 
-   private static <T> DataResult<dhs<T>> a(hj<T> $$0, dhs.d $$1, dht.a<T> $$2) {
-      List<T> $$3 = $$2.a();
-      int $$4 = $$1.a();
-      int $$5 = $$1.b($$0, $$3.size());
-      dhs.a<T> $$6 = $$1.a($$0, $$5);
-      aqs $$7;
-      if ($$5 == 0) {
-         $$7 = new ate($$4);
+   protected List<dhq> l() {
+      return Lists.newArrayList(this.a);
+   }
+
+   public void a(dhq $$0) {
+      this.a.add($$0);
+   }
+
+   public void b(dhq $$0) {
+      this.a.remove($$0);
+   }
+
+   public void a(int $$0) {
+      this.k = $$0;
+      this.l.j();
+   }
+
+   public int m() {
+      return this.k;
+   }
+
+   public double n() {
+      return this.f;
+   }
+
+   public void b(double $$0) {
+      this.f = $$0;
+
+      for (dhq $$1 : this.l()) {
+         $$1.c(this, $$0);
+      }
+   }
+
+   public double o() {
+      return this.b;
+   }
+
+   public void c(double $$0) {
+      this.b = $$0;
+
+      for (dhq $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public double p() {
+      return this.l.f();
+   }
+
+   public int q() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+
+      for (dhq $$1 : this.l()) {
+         $$1.a(this, $$0);
+      }
+   }
+
+   public int r() {
+      return this.h;
+   }
+
+   public void c(int $$0) {
+      this.h = $$0;
+
+      for (dhq $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public void s() {
+      this.l = this.l.l();
+   }
+
+   public dhs.c t() {
+      return new dhs.c(this);
+   }
+
+   public void a(dhs.c $$0) {
+      this.c($$0.a(), $$0.b());
+      this.c($$0.c());
+      this.b($$0.d());
+      this.c($$0.e());
+      this.b($$0.f());
+      if ($$0.h() > 0L) {
+         this.a($$0.g(), $$0.i(), $$0.h());
       } else {
-         Optional<LongStream> $$8 = $$2.b();
-         if ($$8.isEmpty()) {
-            return DataResult.error(() -> "Missing values for non-zero storage");
-         }
-
-         long[] $$9 = $$8.get().toArray();
-
-         try {
-            if ($$6.a() == dhs.d.f) {
-               dhq<T> $$10 = new dhi<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
-               aso $$11 = new aso($$5, $$4, $$9);
-               int[] $$12 = new int[$$4];
-               $$11.a($$12);
-               a($$12, $$2x -> $$0.a($$10.a($$2x)));
-               $$7 = new aso($$6.b(), $$4, $$12);
-            } else {
-               $$7 = new aso($$6.b(), $$4, $$9);
-            }
-         } catch (aso.a var13) {
-            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
-         }
-      }
-
-      return DataResult.success(new dhs<>($$0, $$1, $$6, $$7, $$3));
-   }
-
-   @Override
-   public dht.a<T> a(hj<T> $$0, dhs.d $$1) {
-      this.a();
-
-      dht.a var12;
-      try {
-         dhi<T> $$2 = new dhi<>($$0, this.d.b.c(), this.b);
-         int $$3 = $$1.a();
-         int[] $$4 = new int[$$3];
-         this.d.b.a($$4);
-         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
-         int $$5 = $$1.b($$0, $$2.b());
-         Optional<LongStream> $$7;
-         if ($$5 != 0) {
-            aso $$6 = new aso($$5, $$3, $$4);
-            $$7 = Optional.of(Arrays.stream($$6.a()));
-         } else {
-            $$7 = Optional.empty();
-         }
-
-         var12 = new dht.a<>($$2.d(), $$7);
-      } finally {
-         this.b();
-      }
-
-      return var12;
-   }
-
-   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
-      int $$2 = -1;
-      int $$3 = -1;
-
-      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
-         int $$5 = $$0[$$4];
-         if ($$5 != $$2) {
-            $$2 = $$5;
-            $$3 = $$1.applyAsInt($$5);
-         }
-
-         $$0[$$4] = $$3;
+         this.a($$0.g());
       }
    }
 
-   @Override
-   public int c() {
-      return this.d.a();
+   interface a {
+      double a();
+
+      double b();
+
+      double c();
+
+      double d();
+
+      double e();
+
+      double f();
+
+      long g();
+
+      double h();
+
+      dhr i();
+
+      void j();
+
+      void k();
+
+      dhs.a l();
+
+      eiy m();
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      return this.d.c.a($$0);
-   }
+   class b implements dhs.a {
+      private final double b;
+      private final double c;
+      private final long d;
+      private final long e;
+      private final double f;
 
-   public dhs<T> d() {
-      return new dhs<>(this.c, this.e, this.d.b());
-   }
+      b(double $$0, double $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.f = (double)$$2;
+         this.e = ac.b();
+         this.d = this.e + $$2;
+      }
 
-   @Override
-   public dhs<T> e() {
-      return new dhs<>(this.c, this.d.c.a(0), this.e);
-   }
+      @Override
+      public double a() {
+         return asy.a(dhs.this.a() - this.e() / 2.0, (double)(-dhs.this.k), (double)dhs.this.k);
+      }
 
-   @Override
-   public void a(dhs.b<T> $$0) {
-      if (this.d.c.b() == 1) {
-         $$0.accept(this.d.c.a(0), this.d.b.b());
-      } else {
-         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
-         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
-         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
+      @Override
+      public double c() {
+         return asy.a(dhs.this.b() - this.e() / 2.0, (double)(-dhs.this.k), (double)dhs.this.k);
+      }
+
+      @Override
+      public double b() {
+         return asy.a(dhs.this.a() + this.e() / 2.0, (double)(-dhs.this.k), (double)dhs.this.k);
+      }
+
+      @Override
+      public double d() {
+         return asy.a(dhs.this.b() + this.e() / 2.0, (double)(-dhs.this.k), (double)dhs.this.k);
+      }
+
+      @Override
+      public double e() {
+         double $$0 = (double)(ac.b() - this.e) / this.f;
+         return $$0 < 1.0 ? asy.d($$0, this.b, this.c) : this.c;
+      }
+
+      @Override
+      public double f() {
+         return Math.abs(this.b - this.c) / (double)(this.d - this.e);
+      }
+
+      @Override
+      public long g() {
+         return this.d - ac.b();
+      }
+
+      @Override
+      public double h() {
+         return this.c;
+      }
+
+      @Override
+      public dhr i() {
+         return this.c < this.b ? dhr.b : dhr.a;
+      }
+
+      @Override
+      public void k() {
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public dhs.a l() {
+         return (dhs.a)(this.g() <= 0L ? dhs.this.new d(this.c) : this);
+      }
+
+      @Override
+      public eiy m() {
+         return eiv.a(
+            eiv.c,
+            eiv.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            eij.e
+         );
       }
    }
 
-   static record a<T>(dhq.a a, int b) {
-      public dhs.c<T> a(hj<T> $$0, dhr<T> $$1, int $$2) {
-         aqs $$3 = (aqs)(this.b == 0 ? new ate($$2) : new aso(this.b, $$2));
-         dhq<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
-         return new dhs.c<>(this, $$3, $$4);
-      }
-   }
+   public static class c {
+      private final double a;
+      private final double b;
+      private final double c;
+      private final double d;
+      private final int e;
+      private final int f;
+      private final double g;
+      private final long h;
+      private final double i;
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(T var1, int var2);
-   }
-
-   static record c<T>(dhs.a<T> a, aqs b, dhq<T> c) {
-
-      public void a(dhq<T> $$0, aqs $$1) {
-         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
-            T $$3 = $$0.a($$1.a($$2));
-            this.b.b($$2, this.c.a($$3));
-         }
-      }
-
-      public int a() {
-         return 1 + this.c.a() + tc.a(this.b.a().length) + this.b.a().length * 8;
+      c(double $$0, double $$1, double $$2, double $$3, int $$4, int $$5, double $$6, long $$7, double $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
       }
 
-      public void a(so $$0) {
-         $$0.k(this.b.c());
-         this.c.b($$0);
-         $$0.a(this.b.a());
+      c(dhs $$0) {
+         this.a = $$0.a();
+         this.b = $$0.b();
+         this.c = $$0.o();
+         this.d = $$0.n();
+         this.e = $$0.r();
+         this.f = $$0.q();
+         this.g = $$0.i();
+         this.h = $$0.j();
+         this.i = $$0.k();
       }
 
-      public dhs.c<T> b() {
-         return new dhs.c<>(this.a, this.b.d(), this.c.c());
-      }
-
-      public dhs.a<T> c() {
+      public double a() {
          return this.a;
       }
 
-      public aqs d() {
+      public double b() {
          return this.b;
       }
 
-      public dhq<T> e() {
+      public double c() {
          return this.c;
+      }
+
+      public double d() {
+         return this.d;
+      }
+
+      public int e() {
+         return this.e;
+      }
+
+      public int f() {
+         return this.f;
+      }
+
+      public double g() {
+         return this.g;
+      }
+
+      public long h() {
+         return this.h;
+      }
+
+      public double i() {
+         return this.i;
+      }
+
+      public static dhs.c a(DynamicLike<?> $$0, dhs.c $$1) {
+         double $$2 = asy.a($$0.get("BorderCenterX").asDouble($$1.a), -2.9999984E7, 2.9999984E7);
+         double $$3 = asy.a($$0.get("BorderCenterZ").asDouble($$1.b), -2.9999984E7, 2.9999984E7);
+         double $$4 = $$0.get("BorderSize").asDouble($$1.g);
+         long $$5 = $$0.get("BorderSizeLerpTime").asLong($$1.h);
+         double $$6 = $$0.get("BorderSizeLerpTarget").asDouble($$1.i);
+         double $$7 = $$0.get("BorderSafeZone").asDouble($$1.d);
+         double $$8 = $$0.get("BorderDamagePerBlock").asDouble($$1.c);
+         int $$9 = $$0.get("BorderWarningBlocks").asInt($$1.e);
+         int $$10 = $$0.get("BorderWarningTime").asInt($$1.f);
+         return new dhs.c($$2, $$3, $$8, $$7, $$9, $$10, $$4, $$5, $$6);
+      }
+
+      public void a(rt $$0) {
+         $$0.a("BorderCenterX", this.a);
+         $$0.a("BorderCenterZ", this.b);
+         $$0.a("BorderSize", this.g);
+         $$0.a("BorderSizeLerpTime", this.h);
+         $$0.a("BorderSafeZone", this.d);
+         $$0.a("BorderDamagePerBlock", this.c);
+         $$0.a("BorderSizeLerpTarget", this.i);
+         $$0.a("BorderWarningBlocks", (double)this.e);
+         $$0.a("BorderWarningTime", (double)this.f);
       }
    }
 
-   public abstract static class d {
-      public static final dhq.a a = dhv::a;
-      public static final dhq.a b = dho::a;
-      public static final dhq.a c = dhi::a;
-      static final dhq.a f = dhh::a;
-      public static final dhs.d d = new dhs.d(4) {
-         @Override
-         public <A> dhs.a<A> a(hj<A> $$0, int $$1) {
-            return switch ($$1) {
-               case 0 -> new dhs.a(a, $$1);
-               case 1, 2, 3, 4 -> new dhs.a(b, 4);
-               case 5, 6, 7, 8 -> new dhs.a(c, $$1);
-               default -> new dhs.a(dhs.d.f, asb.e($$0.b()));
-            };
-         }
-      };
-      public static final dhs.d e = new dhs.d(2) {
-         @Override
-         public <A> dhs.a<A> a(hj<A> $$0, int $$1) {
-            return switch ($$1) {
-               case 0 -> new dhs.a(a, $$1);
-               case 1, 2, 3 -> new dhs.a(b, $$1);
-               default -> new dhs.a(dhs.d.f, asb.e($$0.b()));
-            };
-         }
-      };
-      private final int g;
+   class d implements dhs.a {
+      private final double b;
+      private double c;
+      private double d;
+      private double e;
+      private double f;
+      private eiy g;
 
-      d(int $$0) {
-         this.g = $$0;
+      public d(double $$0) {
+         this.b = $$0;
+         this.n();
       }
 
-      public int a() {
-         return 1 << this.g * 3;
+      @Override
+      public double a() {
+         return this.c;
       }
 
-      public int a(int $$0, int $$1, int $$2) {
-         return ($$1 << this.g | $$2) << this.g | $$0;
+      @Override
+      public double b() {
+         return this.e;
       }
 
-      public abstract <A> dhs.a<A> a(hj<A> var1, int var2);
+      @Override
+      public double c() {
+         return this.d;
+      }
 
-      <A> int b(hj<A> $$0, int $$1) {
-         int $$2 = asb.e($$1);
-         dhs.a<A> $$3 = this.a($$0, $$2);
-         return $$3.a() == f ? $$2 : $$3.b();
+      @Override
+      public double d() {
+         return this.f;
+      }
+
+      @Override
+      public double e() {
+         return this.b;
+      }
+
+      @Override
+      public dhr i() {
+         return dhr.c;
+      }
+
+      @Override
+      public double f() {
+         return 0.0;
+      }
+
+      @Override
+      public long g() {
+         return 0L;
+      }
+
+      @Override
+      public double h() {
+         return this.b;
+      }
+
+      private void n() {
+         this.c = asy.a(dhs.this.a() - this.b / 2.0, (double)(-dhs.this.k), (double)dhs.this.k);
+         this.d = asy.a(dhs.this.b() - this.b / 2.0, (double)(-dhs.this.k), (double)dhs.this.k);
+         this.e = asy.a(dhs.this.a() + this.b / 2.0, (double)(-dhs.this.k), (double)dhs.this.k);
+         this.f = asy.a(dhs.this.b() + this.b / 2.0, (double)(-dhs.this.k), (double)dhs.this.k);
+         this.g = eiv.a(
+            eiv.c,
+            eiv.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            eij.e
+         );
+      }
+
+      @Override
+      public void j() {
+         this.n();
+      }
+
+      @Override
+      public void k() {
+         this.n();
+      }
+
+      @Override
+      public dhs.a l() {
+         return this;
+      }
+
+      @Override
+      public eiy m() {
+         return this.g;
       }
    }
 }

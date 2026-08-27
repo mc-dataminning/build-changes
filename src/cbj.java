@@ -1,75 +1,41 @@
-import java.util.List;
+public interface cbj {
+   int l_ = 10;
 
-public class cbj implements cpo {
-   private static final int a = 1200;
-   private int b;
+   int ge();
 
-   @Override
-   public int a(akt $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.X().b(cpx.e)) {
-         this.b--;
-         if (this.b > 0) {
-            return 0;
-         } else {
-            this.b = 1200;
-            cca $$3 = $$0.i();
-            if ($$3 == null) {
-               return 0;
-            } else {
-               ash $$4 = $$0.z;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               gw $$7 = $$3.dl().b($$5, 0, $$6);
-               int $$8 = 10;
-               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  return 0;
-               } else {
-                  if (cqm.a(bkg.c.a, $$0, $$7, bja.m)) {
-                     if ($$0.a($$7, 2)) {
-                        return this.a($$0, $$7);
-                     }
-
-                     if ($$0.a().a($$7, aqg.m).b()) {
-                        return this.b($$0, $$7);
-                     }
-                  }
-
-                  return 0;
-               }
-            }
-         }
+   static boolean a(bkj $$0, bkj $$1) {
+      float $$2 = (float)$$0.b(blp.c);
+      float $$3;
+      if (!$$0.n_() && (int)$$2 > 0) {
+         $$3 = $$2 / 2.0F + (float)$$0.dL().z.a((int)$$2);
       } else {
-         return 0;
+         $$3 = $$2;
       }
-   }
 
-   private int a(akt $$0, gw $$1) {
-      int $$2 = 48;
-      if ($$0.w().a($$0x -> $$0x.a(bup.n), $$1, 48, bul.b.b) > 4L) {
-         List<bva> $$3 = $$0.a(bva.class, new ehc($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            return this.a($$1, $$0);
+      boolean $$5 = $$1.a($$0.dM().b($$0), $$3);
+      if ($$5) {
+         $$0.a($$0, $$1);
+         if (!$$0.n_()) {
+            b($$0, $$1);
          }
       }
 
-      return 0;
+      return $$5;
    }
 
-   private int b(akt $$0, gw $$1) {
-      int $$2 = 16;
-      List<bva> $$3 = $$0.a(bva.class, new ehc($$1).c(16.0, 8.0, 16.0));
-      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
-   }
-
-   private int a(gw $$0, akt $$1) {
-      bva $$2 = bja.m.a((cqb)$$1);
-      if ($$2 == null) {
-         return 0;
-      } else {
-         $$2.a($$1, $$1.d_($$0), bjq.a, null, null);
-         $$2.a($$0, 0.0F, 0.0F);
-         $$1.a_($$2);
-         return 1;
+   static void b(bkj $$0, bkj $$1) {
+      double $$2 = $$0.b(blp.d);
+      double $$3 = $$1.b(blp.i);
+      double $$4 = $$2 - $$3;
+      if (!($$4 <= 0.0)) {
+         double $$5 = $$1.dq() - $$0.dq();
+         double $$6 = $$1.dw() - $$0.dw();
+         float $$7 = (float)($$0.dL().z.a(21) - 10);
+         double $$8 = $$4 * (double)($$0.dL().z.i() * 0.5F + 0.2F);
+         eif $$9 = new eif($$5, 0.0, $$6).d().a($$8).b($$7);
+         double $$10 = $$4 * (double)$$0.dL().z.i() * 0.5;
+         $$1.j($$9.c, $$10, $$9.e);
+         $$1.T = true;
       }
    }
 }

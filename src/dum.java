@@ -1,24 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dum extends dui {
-   public static final Codec<dum> a = arj.j.fieldOf("chance").xmap(dum::new, $$0 -> $$0.c).codec();
-   private final int c;
+public class dum extends duh {
+   public static final Codec<dum> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bgl.b(duh.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dum::new)
+   );
+   private final bgl<duh> b;
 
-   private dum(int $$0) {
-      this.c = $$0;
-   }
-
-   public static dum a(int $$0) {
-      return new dum($$0);
-   }
-
-   @Override
-   protected boolean a(duh $$0, ash $$1, gw $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public dum(bgl<duh> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public duk<?> b() {
-      return duk.b;
+   public int a(ate $$0, dmh $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   }
+
+   @Override
+   public dui<?> a() {
+      return dui.f;
    }
 }

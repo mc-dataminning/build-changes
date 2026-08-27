@@ -1,41 +1,59 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class ea implements ArgumentType<tl> {
-   private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.b("argument.component.invalid", $$0));
+public record ea(List<ea.a> b) {
+   public static final ea a = new ea(List.of());
+   private static final int c = 8;
+   private static final int d = 16;
 
-   private ea() {
+   public ea(tl $$0) {
+      this($$0.a(tl.a(ArrayList::new, 8), ea.a::new));
    }
 
-   public static tl a(CommandContext<dt> $$0, String $$1) {
-      return (tl)$$0.getArgument($$1, tl.class);
-   }
-
-   public static ea a() {
-      return new ea();
-   }
-
-   public tl a(StringReader $$0) throws CommandSyntaxException {
-      try {
-         tl $$1 = tl.a.a($$0);
-         if ($$1 == null) {
-            throw a.createWithContext($$0, "empty");
-         } else {
-            return $$1;
+   @Nullable
+   public uu a(String $$0) {
+      for (ea.a $$1 : this.b) {
+         if ($$1.a.equals($$0)) {
+            return $$1.b;
          }
-      } catch (Exception var4) {
-         String $$3 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
-         throw a.createWithContext($$0, $$3);
+      }
+
+      return null;
+   }
+
+   public void a(tl $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   public static ea a(va<?> $$0, ea.b $$1) {
+      List<ea.a> $$2 = $$0.a().stream().map($$1x -> {
+         uu $$2x = $$1.sign($$1x.c());
+         return $$2x != null ? new ea.a($$1x.a(), $$2x) : null;
+      }).filter(Objects::nonNull).toList();
+      return new ea($$2);
+   }
+
+   public List<ea.a> a() {
+      return this.b;
+   }
+
+   public static record a(String a, uu b) {
+
+      public a(tl $$0) {
+         this($$0.d(16), uu.a($$0));
+      }
+
+      public void a(tl $$0) {
+         $$0.a(this.a, 16);
+         uu.a($$0, this.b);
       }
    }
 
-   public Collection<String> getExamples() {
-      return b;
+   @FunctionalInterface
+   public interface b {
+      @Nullable
+      uu sign(String var1);
    }
 }

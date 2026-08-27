@@ -1,108 +1,43 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public class drr extends drs {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final Codec<drr> c = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(drq.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, drr::new)
+public class drr implements dqs {
+   public static final Codec<drr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arh.b(jz.e).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               dst.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               dve.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               duv.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bhg.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bhg.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, drr::new)
    );
-   private final drq h;
+   public final arh<cua> b;
+   public final dst c;
+   public final ib<dve> d;
+   public final duv e;
+   public final bhg f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bhg j;
+   public final float k;
 
-   public drr(bgj $$0, drv $$1, Optional<drp> $$2, drq $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
-   }
-
-   @Override
-   public boolean a(cqh $$0, BiConsumer<gw, dfd> $$1, ash $$2, gw $$3, gw $$4, dqq $$5) {
-      List<gw> $$6 = Lists.newArrayList();
-      gw.a $$7 = $$3.j();
-
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
-         }
-
-         $$7.c(ha.b);
-      }
-
-      $$6.add($$4.d());
-
-      for (ha $$8 : ha.c.a) {
-         gw $$9 = $$4.a($$8);
-         List<gw> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (gw $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
-   }
-
-   private boolean a(cqh $$0, ash $$1, gw $$2, ha $$3, gw $$4, List<gw> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (gw $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected List<gw> a(gw $$0, ha $$1, ash $$2, gw $$3) {
-      gw $$4 = $$0.d();
-      gw $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
-      }
-   }
-
-   @Override
-   protected boolean a(cqh $$0, gw $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
-   }
-
-   @Override
-   protected void a(cqh $$0, BiConsumer<gw, dfd> $$1, ash $$2, gw $$3, dqq $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         dfd $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected drt<?> a() {
-      return drt.a;
+   public drr(arh<cua> $$0, dst $$1, ib<dve> $$2, duv $$3, bhg $$4, float $$5, int $$6, float $$7, bhg $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

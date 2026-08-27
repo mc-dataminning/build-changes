@@ -1,24 +1,20 @@
-public class fwj<T extends bjm, M extends fgd<T>> extends fxu<T, M> {
-   private final ftb a;
+public class fwj<T extends caw> extends fvj<T, fhy<T>> {
+   private static final afw a = new afw("textures/entity/spider/spider.png");
 
-   public fwj(ftd.a $$0, fue<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public fwj(fud.a $$0) {
+      this($$0, fiv.br);
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eN();
+   public fwj(fud.a $$0, fiu $$1) {
+      super($$0, new fhy<>($$0.a($$1)), 0.8F);
+      this.a(new fyr<>(this));
    }
 
-   @Override
-   protected void a(elj $$0, foa $$1, int $$2, biw $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = asb.c($$4 * $$4 + $$6 * $$6);
-      cci $$9 = new cci($$3.dL(), $$3.dq(), $$3.ds(), $$3.dw());
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.N = $$9.dB();
-      $$9.O = $$9.dD();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public afw a(T $$0) {
+      return a;
    }
 }

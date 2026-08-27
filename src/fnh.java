@@ -1,36 +1,56 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class fnh extends fmy {
+   private final fnl b;
+   protected boolean a;
 
-public class fnh implements bfb {
-   private final fny a;
-   private final Set<bez> b = new ObjectOpenHashSet();
-   private final bfh c = new bfh();
-
-   public fnh(LongSupplier $$0, fny $$1) {
-      this.a = $$1;
-      this.b.add(bfi.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(bfi.a());
-      this.b.add(bez.a("totalChunks", bey.f, this.a, fny::i));
-      this.b.add(bez.a("renderedChunks", bey.f, this.a, fny::k));
-      this.b.add(bez.a("lastViewDistance", bey.f, this.a, fny::j));
-      fqy $$0 = this.a.h();
-      this.b.add(bez.a("toUpload", bey.g, $$0, fqy::c));
-      this.b.add(bez.a("freeBufferCount", bey.g, $$0, fqy::d));
-      this.b.add(bez.a("toBatchCount", bey.g, $$0, fqy::b));
-      if (elc.a().isPresent()) {
-         this.b.add(bez.a("gpuUtilization", bey.i, eqp.O(), eqp::v));
-      }
+   fnh(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fnl $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
    @Override
-   public Set<bez> a(Supplier<bdt> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
+   }
+
+   @Override
+   public fmu b() {
+      return fmu.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements fmt<jv> {
+      private final fnl a;
+
+      public a(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fnh $$8 = new fnh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
+   }
+
+   public static class b implements fmt<jv> {
+      private final fnl a;
+
+      public b(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fnh $$8 = new fnh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
+      }
    }
 }

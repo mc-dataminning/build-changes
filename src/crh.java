@@ -1,34 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class crh extends crd {
-   public static final Codec<crh> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cqz.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
-            .apply($$0, crh::new)
-   );
-   private final hi<cqz> c;
-   private final int d;
-   private final int e;
+public interface crh {
+   boolean a(ht var1, dgb var2, int var3, int var4);
 
-   public crh(hi<cqz> $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1 + 2;
-      this.e = $$1;
+   default boolean a(ht $$0, dgb $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   @Override
-   protected Stream<he<cqz>> b() {
-      return this.c.a();
+   boolean a(ht var1, boolean var2);
+
+   default boolean b(ht $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   @Override
-   protected Codec<? extends crd> a() {
-      return b;
+   default boolean a(ht $$0, boolean $$1, @Nullable bjt $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   @Override
-   public he<cqz> getNoiseBiome(int $$0, int $$1, int $$2, cri.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   boolean a(ht var1, boolean var2, @Nullable bjt var3, int var4);
+
+   default boolean b(bjt $$0) {
+      return false;
    }
 }

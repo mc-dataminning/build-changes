@@ -1,239 +1,175 @@
-import com.mojang.datafixers.util.Pair;
-
-public class cfq extends cgb<cff> {
+public abstract class cfq extends cgz<bhu> {
    public static final int k = 0;
-   public static final int l = 0;
-   public static final int m = 1;
-   public static final int n = 5;
-   public static final int o = 5;
-   public static final int p = 9;
-   public static final int q = 9;
-   public static final int r = 36;
-   public static final int s = 36;
-   public static final int t = 45;
-   public static final int u = 45;
-   public static final aez v = new aez("textures/atlas/blocks.png");
-   public static final aez w = new aez("item/empty_armor_slot_helmet");
-   public static final aez x = new aez("item/empty_armor_slot_chestplate");
-   public static final aez y = new aez("item/empty_armor_slot_leggings");
-   public static final aez z = new aez("item/empty_armor_slot_boots");
-   public static final aez A = new aez("item/empty_armor_slot_shield");
-   static final aez[] C = new aez[]{z, y, x, w};
-   private static final bjb[] D = new bjb[]{bjb.f, bjb.e, bjb.d, bjb.c};
-   private final cff E = new cgo(this, 2, 2);
-   private final cge F = new cge();
-   public final boolean B;
-   private final cca G;
+   public static final int l = 1;
+   public static final int m = 2;
+   public static final int n = 3;
+   public static final int o = 4;
+   private static final int q = 3;
+   private static final int r = 30;
+   private static final int s = 30;
+   private static final int t = 39;
+   private final bhu u;
+   private final cfz v;
+   protected final cqz p;
+   private final cnr<? extends cmv> w;
+   private final cha x;
 
-   public cfq(cbz $$0, boolean $$1, final cca $$2) {
-      super(null, 0);
-      this.B = $$1;
-      this.G = $$2;
-      this.a(new cgf($$0.m, this.E, this.F, 0, 154, 28));
+   protected cfq(cgu<?> $$0, cnr<? extends cmv> $$1, cha $$2, int $$3, ccw $$4) {
+      this($$0, $$1, $$2, $$3, $$4, new bii(3), new chg(4));
+   }
 
-      for (int $$3 = 0; $$3 < 2; $$3++) {
-         for (int $$4 = 0; $$4 < 2; $$4++) {
-            this.a(new cgj(this.E, $$4 + $$3 * 2, 98 + $$4 * 18, 18 + $$3 * 18));
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         final bjb $$6 = D[$$5];
-         this.a(new cgj($$0, 39 - $$5, 8, 8 + $$5 * 18) {
-            @Override
-            public void a(cjl $$0, cjl $$1) {
-               cfq.a($$2, $$6, $$0, $$1);
-               super.a($$0, $$1);
-            }
-
-            @Override
-            public int a() {
-               return 1;
-            }
-
-            @Override
-            public boolean a(cjl $$0) {
-               return $$6 == bjo.h($$0);
-            }
-
-            @Override
-            public boolean a(cca $$0) {
-               cjl $$1 = this.e();
-               return !$$1.b() && !$$0.f() && cnw.d($$1) ? false : super.a($$0);
-            }
-
-            @Override
-            public Pair<aez, aez> b() {
-               return Pair.of(cfq.v, cfq.C[$$6.b()]);
-            }
-         });
-      }
+   protected cfq(cgu<?> $$0, cnr<? extends cmv> $$1, cha $$2, int $$3, ccw $$4, bhu $$5, cfz $$6) {
+      super($$0, $$3);
+      this.w = $$1;
+      this.x = $$2;
+      a($$5, 3);
+      a($$6, 4);
+      this.u = $$5;
+      this.v = $$6;
+      this.p = $$4.m.dL();
+      this.a(new chh($$5, 0, 56, 17));
+      this.a(new cgi(this, $$5, 1, 56, 53));
+      this.a(new cgk($$4.m, $$5, 2, 116, 35));
 
       for (int $$7 = 0; $$7 < 3; $$7++) {
          for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cgj($$0, $$8 + ($$7 + 1) * 9, 8 + $$8 * 18, 84 + $$7 * 18));
+            this.a(new chh($$4, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
          }
       }
 
       for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cgj($$0, $$9, 8 + $$9 * 18, 142));
+         this.a(new chh($$4, $$9, 8 + $$9 * 18, 142));
       }
 
-      this.a(new cgj($$0, 40, 77, 62) {
-         @Override
-         public void a(cjl $$0, cjl $$1) {
-            cfq.a($$2, bjb.b, $$0, $$1);
-            super.a($$0, $$1);
-         }
-
-         @Override
-         public Pair<aez, aez> b() {
-            return Pair.of(cfq.v, cfq.A);
-         }
-      });
-   }
-
-   static void a(cca $$0, bjb $$1, cjl $$2, cjl $$3) {
-      $$0.a($$1, $$3, $$2);
-   }
-
-   public static boolean f(int $$0) {
-      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
+      this.a($$6);
    }
 
    @Override
-   public void a(cce $$0) {
-      this.E.a($$0);
+   public void a(cdb $$0) {
+      if (this.u instanceof chk) {
+         ((chk)this.u).a($$0);
+      }
    }
 
    @Override
    public void l() {
-      this.F.a();
-      this.E.a();
+      this.b(0).e(ckj.b);
+      this.b(2).e(ckj.b);
    }
 
    @Override
-   public boolean a(cmq<? extends cmp<cff>> $$0) {
-      return $$0.b().a(this.E, this.G.dL());
+   public boolean a(cno<? extends cnn<bhu>> $$0) {
+      return $$0.b().a(this.u, this.p);
    }
 
    @Override
-   public void a(bgx $$0) {
-      cfg.a(this, this.G.dL(), this.G, this.E, this.F);
+   public int m() {
+      return 2;
    }
 
    @Override
-   public void b(cca $$0) {
-      super.b($$0);
-      this.F.a();
-      if (!$$0.dL().B) {
-         this.a($$0, this.E);
-      }
+   public int n() {
+      return 1;
    }
 
    @Override
-   public boolean a(cca $$0) {
-      return true;
+   public int o() {
+      return 1;
    }
 
    @Override
-   public cjl a(cca $$0, int $$1) {
-      cjl $$2 = cjl.b;
-      cgj $$3 = this.i.get($$1);
-      if ($$3.f()) {
-         cjl $$4 = $$3.e();
+   public int p() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(ccx $$0) {
+      return this.u.a($$0);
+   }
+
+   @Override
+   public ckj a(ccx $$0, int $$1) {
+      ckj $$2 = ckj.b;
+      chh $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         ckj $$4 = $$3.e();
          $$2 = $$4.p();
-         bjb $$5 = bjo.h($$2);
-         if ($$1 == 0) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cjl.b;
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return ckj.b;
             }
 
             $$3.b($$4, $$2);
-         } else if ($$1 >= 1 && $$1 < 5) {
-            if (!this.a($$4, 9, 45, false)) {
-               return cjl.b;
+         } else if ($$1 != 1 && $$1 != 0) {
+            if (this.c($$4)) {
+               if (!this.a($$4, 0, 1, false)) {
+                  return ckj.b;
+               }
+            } else if (this.d($$4)) {
+               if (!this.a($$4, 1, 2, false)) {
+                  return ckj.b;
+               }
+            } else if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return ckj.b;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return ckj.b;
             }
-         } else if ($$1 >= 5 && $$1 < 9) {
-            if (!this.a($$4, 9, 45, false)) {
-               return cjl.b;
-            }
-         } else if ($$5.a() == bjb.a.b && !this.i.get(8 - $$5.b()).f()) {
-            int $$6 = 8 - $$5.b();
-            if (!this.a($$4, $$6, $$6 + 1, false)) {
-               return cjl.b;
-            }
-         } else if ($$5 == bjb.b && !this.i.get(45).f()) {
-            if (!this.a($$4, 45, 46, false)) {
-               return cjl.b;
-            }
-         } else if ($$1 >= 9 && $$1 < 36) {
-            if (!this.a($$4, 36, 45, false)) {
-               return cjl.b;
-            }
-         } else if ($$1 >= 36 && $$1 < 45) {
-            if (!this.a($$4, 9, 36, false)) {
-               return cjl.b;
-            }
-         } else if (!this.a($$4, 9, 45, false)) {
-            return cjl.b;
+         } else if (!this.a($$4, 3, 39, false)) {
+            return ckj.b;
          }
 
          if ($$4.b()) {
-            $$3.a(cjl.b, $$2);
+            $$3.d(ckj.b);
          } else {
             $$3.d();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cjl.b;
+            return ckj.b;
          }
 
          $$3.a($$0, $$4);
-         if ($$1 == 0) {
-            $$0.a($$4, false);
-         }
       }
 
       return $$2;
    }
 
-   @Override
-   public boolean a(cjl $$0, cgj $$1) {
-      return $$1.d != this.F && super.a($$0, $$1);
+   protected boolean c(ckj $$0) {
+      return this.p.q().a(this.w, new bii($$0), this.p).isPresent();
+   }
+
+   protected boolean d(ckj $$0) {
+      return ddm.b($$0);
+   }
+
+   public float q() {
+      int $$0 = this.v.a(2);
+      int $$1 = this.v.a(3);
+      return $$1 != 0 && $$0 != 0 ? asy.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
+   }
+
+   public float r() {
+      int $$0 = this.v.a(1);
+      if ($$0 == 0) {
+         $$0 = 200;
+      }
+
+      return asy.a((float)this.v.a(0) / (float)$$0, 0.0F, 1.0F);
+   }
+
+   public boolean s() {
+      return this.v.a(0) > 0;
    }
 
    @Override
-   public int m() {
-      return 0;
-   }
-
-   @Override
-   public int n() {
-      return this.E.f();
-   }
-
-   @Override
-   public int o() {
-      return this.E.g();
-   }
-
-   @Override
-   public int p() {
-      return 5;
-   }
-
-   public cff q() {
-      return this.E;
-   }
-
-   @Override
-   public cgc t() {
-      return cgc.a;
+   public cha t() {
+      return this.x;
    }
 
    @Override
    public boolean e(int $$0) {
-      return $$0 != this.m();
+      return $$0 != 1;
    }
 }

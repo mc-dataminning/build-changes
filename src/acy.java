@@ -1,32 +1,32 @@
-public class acy implements ve<abd> {
-   private final bhd a;
-   private final int b;
+public class acy implements wb<aca> {
+   private final boolean a;
+   private final boolean b;
 
-   public acy(bhd $$0, int $$1) {
+   public acy(boolean $$0, boolean $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public acy(so $$0) {
-      this.a = $$0.b(bhd.class);
-      this.b = $$0.n();
+   public acy(tl $$0) {
+      this.a = $$0.readBoolean();
+      this.b = $$0.readBoolean();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(tl $$0) {
       $$0.a(this.a);
-      $$0.c(this.b);
+      $$0.a(this.b);
    }
 
-   public void a(abd $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public bhd a() {
+   public boolean a() {
       return this.a;
    }
 
-   public int d() {
+   public boolean d() {
       return this.b;
    }
 }

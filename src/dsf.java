@@ -1,29 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 
-public class dsf extends drv {
-   public static final Codec<dsf> b = bfo.b(dfd.b).comapFlatMap(dsf::a, $$0 -> $$0.c).fieldOf("entries").codec();
-   private final bfo<dfd> c;
+public class dsf<P extends dse> {
+   public static final dsf<drz> a = a("blob_foliage_placer", drz.a);
+   public static final dsf<dsk> b = a("spruce_foliage_placer", dsk.a);
+   public static final dsf<dsi> c = a("pine_foliage_placer", dsi.a);
+   public static final dsf<dry> d = a("acacia_foliage_placer", dry.a);
+   public static final dsf<dsa> e = a("bush_foliage_placer", dsa.c);
+   public static final dsf<dsd> f = a("fancy_foliage_placer", dsd.c);
+   public static final dsf<dsg> g = a("jungle_foliage_placer", dsg.a);
+   public static final dsf<dsh> h = a("mega_pine_foliage_placer", dsh.a);
+   public static final dsf<dsc> i = a("dark_oak_foliage_placer", dsc.a);
+   public static final dsf<dsj> j = a("random_spread_foliage_placer", dsj.a);
+   public static final dsf<dsb> k = a("cherry_foliage_placer", dsb.a);
+   private final Codec<P> l;
 
-   private static DataResult<dsf> a(bfo<dfd> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new dsf($$0));
+   private static <P extends dse> dsf<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.X, $$0, new dsf<>($$1));
    }
 
-   public dsf(bfo<dfd> $$0) {
-      this.c = $$0;
+   private dsf(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   public dsf(bfo.a<dfd> $$0) {
-      this($$0.a());
-   }
-
-   @Override
-   protected drw<?> a() {
-      return drw.b;
-   }
-
-   @Override
-   public dfd a(ash $$0, gw $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public Codec<P> a() {
+      return this.l;
    }
 }

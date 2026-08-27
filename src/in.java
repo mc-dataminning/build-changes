@@ -1,46 +1,29 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
+public final class in {
+   public static final int a = 2;
+   public static final int b = 4;
+   public static final int c = 3;
+   private static final int d = 2;
 
-public class in implements it {
-   public static final it.a<in> a = new it.a<in>() {
-      public in a(iu<in> $$0, StringReader $$1) throws CommandSyntaxException {
-         $$1.expect(' ');
-         return new in($$0, fi.a(jb.f.p(), $$1, false).a());
-      }
-
-      public in a(iu<in> $$0, so $$1) {
-         return new in($$0, $$1.a(ctc.q));
-      }
-   };
-   private final iu<in> b;
-   private final dfd c;
-
-   public static Codec<in> a(iu<in> $$0) {
-      return dfd.b.xmap($$1 -> new in($$0, $$1), $$0x -> $$0x.c);
+   private in() {
    }
 
-   public in(iu<in> $$0, dfd $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static int a(int $$0) {
+      return $$0 >> 2;
    }
 
-   @Override
-   public void a(so $$0) {
-      $$0.a(ctc.q, this.c);
+   public static int b(int $$0) {
+      return $$0 & 3;
    }
 
-   @Override
-   public String a() {
-      return jb.k.b(this.b()) + " " + fi.a(this.c);
+   public static int c(int $$0) {
+      return $$0 << 2;
    }
 
-   @Override
-   public iu<in> b() {
-      return this.b;
+   public static int d(int $$0) {
+      return $$0 << 2;
    }
 
-   public dfd c() {
-      return this.c;
+   public static int e(int $$0) {
+      return $$0 >> 2;
    }
 }

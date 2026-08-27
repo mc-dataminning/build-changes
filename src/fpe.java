@@ -1,261 +1,315 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.joml.Matrix3f;
 import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
 
-public class fpe {
-   public static final int a = 8;
-   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
-   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
-   public static final int b = 4;
-   private static final int f = 3;
-   public static final int c = 4;
+public class fpe implements AutoCloseable {
+   private static final String a = "minecraft:main";
+   private final ekt b;
+   private final aot c;
+   private final String d;
+   private final List<fpf> e = Lists.newArrayList();
+   private final Map<String, ekt> f = Maps.newHashMap();
+   private final List<ekt> g = Lists.newArrayList();
+   private Matrix4f h;
+   private int i;
+   private int j;
+   private float k;
+   private float l;
 
-   public fox a(Vector3f $$0, Vector3f $$1, foz $$2, fza $$3, ha $$4, gbj $$5, @Nullable fpa $$6, boolean $$7, aez $$8) {
-      fpb $$9 = $$2.e;
-      if ($$5.c()) {
-         $$9 = a($$2.e, $$4, $$5.b(), $$8);
+   public fpe(gab $$0, aot $$1, ekt $$2, afw $$3) throws IOException, JsonSyntaxException {
+      this.c = $$1;
+      this.b = $$2;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.i = $$2.e;
+      this.j = $$2.f;
+      this.d = $$3.toString();
+      this.b();
+      this.a($$0, $$3);
+   }
+
+   private void a(gab $$0, afw $$1) throws IOException, JsonSyntaxException {
+      aor $$2 = this.c.getResourceOrThrow($$1);
+
+      try {
+         try (Reader $$3 = $$2.e()) {
+            JsonObject $$4 = aso.a($$3);
+            if (aso.d($$4, "targets")) {
+               JsonArray $$5 = $$4.getAsJsonArray("targets");
+               int $$6 = 0;
+
+               for (JsonElement $$7 : $$5) {
+                  try {
+                     this.a($$7);
+                  } catch (Exception var14) {
+                     afz $$9 = afz.a(var14);
+                     $$9.a("targets[" + $$6 + "]");
+                     throw $$9;
+                  }
+
+                  $$6++;
+               }
+            }
+
+            if (aso.d($$4, "passes")) {
+               JsonArray $$10 = $$4.getAsJsonArray("passes");
+               int $$11 = 0;
+
+               for (JsonElement $$12 : $$10) {
+                  try {
+                     this.a($$0, $$12);
+                  } catch (Exception var13) {
+                     afz $$14 = afz.a(var13);
+                     $$14.a("passes[" + $$11 + "]");
+                     throw $$14;
+                  }
+
+                  $$11++;
+               }
+            }
+         }
+      } catch (Exception var16) {
+         afz $$16 = afz.a(var16);
+         $$16.b($$1.a() + " (" + $$2.b() + ")");
+         throw $$16;
       }
+   }
 
-      float[] $$10 = new float[$$9.a.length];
-      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
-      float $$11 = $$3.k();
-      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
-      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
-      $$9.a[0] = asb.i($$11, $$9.a[0], $$12);
-      $$9.a[2] = asb.i($$11, $$9.a[2], $$12);
-      $$9.a[1] = asb.i($$11, $$9.a[1], $$13);
-      $$9.a[3] = asb.i($$11, $$9.a[3], $$13);
-      int[] $$14 = this.a($$9, $$3, $$4, this.a($$0, $$1), $$5.b(), $$6, $$7);
-      ha $$15 = a($$14);
-      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
+   private void a(JsonElement $$0) throws afz {
+      if (aso.a($$0)) {
+         this.a($$0.getAsString(), this.i, this.j);
+      } else {
+         JsonObject $$1 = aso.m($$0, "target");
+         String $$2 = aso.i($$1, "name");
+         int $$3 = aso.a($$1, "width", this.i);
+         int $$4 = aso.a($$1, "height", this.j);
+         if (this.f.containsKey($$2)) {
+            throw new afz($$2 + " is already defined");
+         }
+
+         this.a($$2, $$3, $$4);
+      }
+   }
+
+   private void a(gab $$0, JsonElement $$1) throws IOException {
+      JsonObject $$2 = aso.m($$1, "pass");
+      String $$3 = aso.i($$2, "name");
+      String $$4 = aso.i($$2, "intarget");
+      String $$5 = aso.i($$2, "outtarget");
+      ekt $$6 = this.b($$4);
+      ekt $$7 = this.b($$5);
       if ($$6 == null) {
-         this.a($$14, $$15);
-      }
-
-      return new fox($$14, $$2.c, $$15, $$3, $$7);
-   }
-
-   public static fpb a(fpb $$0, ha $$1, j $$2, aez $$3) {
-      Matrix4f $$4 = gv.a($$2, $$1, () -> "Unable to resolve UVLock for model: " + $$3).c();
-      float $$5 = $$0.a($$0.c(0));
-      float $$6 = $$0.b($$0.c(0));
-      Vector4f $$7 = $$4.transform(new Vector4f($$5 / 16.0F, $$6 / 16.0F, 0.0F, 1.0F));
-      float $$8 = 16.0F * $$7.x();
-      float $$9 = 16.0F * $$7.y();
-      float $$10 = $$0.a($$0.c(2));
-      float $$11 = $$0.b($$0.c(2));
-      Vector4f $$12 = $$4.transform(new Vector4f($$10 / 16.0F, $$11 / 16.0F, 0.0F, 1.0F));
-      float $$13 = 16.0F * $$12.x();
-      float $$14 = 16.0F * $$12.y();
-      float $$15;
-      float $$16;
-      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
-         $$15 = $$8;
-         $$16 = $$13;
+         throw new afz("Input target '" + $$4 + "' does not exist");
+      } else if ($$7 == null) {
+         throw new afz("Output target '" + $$5 + "' does not exist");
       } else {
-         $$15 = $$13;
-         $$16 = $$8;
-      }
+         fpf $$8 = this.a($$3, $$6, $$7);
+         JsonArray $$9 = aso.a($$2, "auxtargets", null);
+         if ($$9 != null) {
+            int $$10 = 0;
 
-      float $$19;
-      float $$20;
-      if (Math.signum($$11 - $$6) == Math.signum($$14 - $$9)) {
-         $$19 = $$9;
-         $$20 = $$14;
+            for (JsonElement $$11 : $$9) {
+               try {
+                  JsonObject $$12 = aso.m($$11, "auxtarget");
+                  String $$13 = aso.i($$12, "name");
+                  String $$14 = aso.i($$12, "id");
+                  boolean $$15;
+                  String $$16;
+                  if ($$14.endsWith(":depth")) {
+                     $$15 = true;
+                     $$16 = $$14.substring(0, $$14.lastIndexOf(58));
+                  } else {
+                     $$15 = false;
+                     $$16 = $$14;
+                  }
+
+                  ekt $$19 = this.b($$16);
+                  if ($$19 == null) {
+                     if ($$15) {
+                        throw new afz("Render target '" + $$16 + "' can't be used as depth buffer");
+                     }
+
+                     afw $$20 = new afw("textures/effect/" + $$16 + ".png");
+                     this.c.getResource($$20).orElseThrow(() -> new afz("Render target or texture '" + $$16 + "' does not exist"));
+                     RenderSystem.setShaderTexture(0, $$20);
+                     $$0.a($$20);
+                     fzl $$21 = $$0.b($$20);
+                     int $$22 = aso.o($$12, "width");
+                     int $$23 = aso.o($$12, "height");
+                     boolean $$24 = aso.k($$12, "bilinear");
+                     if ($$24) {
+                        RenderSystem.texParameter(3553, 10241, 9729);
+                        RenderSystem.texParameter(3553, 10240, 9729);
+                     } else {
+                        RenderSystem.texParameter(3553, 10241, 9728);
+                        RenderSystem.texParameter(3553, 10240, 9728);
+                     }
+
+                     $$8.a($$13, $$21::a, $$22, $$23);
+                  } else if ($$15) {
+                     $$8.a($$13, $$19::g, $$19.c, $$19.d);
+                  } else {
+                     $$8.a($$13, $$19::f, $$19.c, $$19.d);
+                  }
+               } catch (Exception var26) {
+                  afz $$26 = afz.a(var26);
+                  $$26.a("auxtargets[" + $$10 + "]");
+                  throw $$26;
+               }
+
+               $$10++;
+            }
+         }
+
+         JsonArray $$27 = aso.a($$2, "uniforms", null);
+         if ($$27 != null) {
+            int $$28 = 0;
+
+            for (JsonElement $$29 : $$27) {
+               try {
+                  this.b($$29);
+               } catch (Exception var25) {
+                  afz $$31 = afz.a(var25);
+                  $$31.a("uniforms[" + $$28 + "]");
+                  throw $$31;
+               }
+
+               $$28++;
+            }
+         }
+      }
+   }
+
+   private void b(JsonElement $$0) throws afz {
+      JsonObject $$1 = aso.m($$0, "uniform");
+      String $$2 = aso.i($$1, "name");
+      ely $$3 = this.e.get(this.e.size() - 1).b().a($$2);
+      if ($$3 == null) {
+         throw new afz("Uniform '" + $$2 + "' does not exist");
       } else {
-         $$19 = $$14;
-         $$20 = $$9;
-      }
+         float[] $$4 = new float[4];
+         int $$5 = 0;
 
-      float $$23 = (float)Math.toRadians((double)$$0.b);
-      Matrix3f $$24 = new Matrix3f($$4);
-      Vector3f $$25 = $$24.transform(new Vector3f(asb.b($$23), asb.a($$23), 0.0F));
-      int $$26 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$25.y(), (double)$$25.x())) / 90.0)) * 90, 360);
-      return new fpb(new float[]{$$15, $$19, $$16, $$20}, $$26);
-   }
+         for (JsonElement $$7 : aso.v($$1, "values")) {
+            try {
+               $$4[$$5] = aso.e($$7, "value");
+            } catch (Exception var12) {
+               afz $$9 = afz.a(var12);
+               $$9.a("values[" + $$5 + "]");
+               throw $$9;
+            }
 
-   private int[] a(fpb $$0, fza $$1, ha $$2, float[] $$3, j $$4, @Nullable fpa $$5, boolean $$6) {
-      int[] $$7 = new int[32];
+            $$5++;
+         }
 
-      for (int $$8 = 0; $$8 < 4; $$8++) {
-         this.a($$7, $$8, $$2, $$0, $$3, $$1, $$4, $$5, $$6);
-      }
-
-      return $$7;
-   }
-
-   private float[] a(Vector3f $$0, Vector3f $$1) {
-      float[] $$2 = new float[ha.values().length];
-      $$2[fnr.a.f] = $$0.x() / 16.0F;
-      $$2[fnr.a.e] = $$0.y() / 16.0F;
-      $$2[fnr.a.d] = $$0.z() / 16.0F;
-      $$2[fnr.a.c] = $$1.x() / 16.0F;
-      $$2[fnr.a.b] = $$1.y() / 16.0F;
-      $$2[fnr.a.a] = $$1.z() / 16.0F;
-      return $$2;
-   }
-
-   private void a(int[] $$0, int $$1, ha $$2, fpb $$3, float[] $$4, fza $$5, j $$6, @Nullable fpa $$7, boolean $$8) {
-      fnr.b $$9 = fnr.a($$2).a($$1);
-      Vector3f $$10 = new Vector3f($$4[$$9.a], $$4[$$9.b], $$4[$$9.c]);
-      this.a($$10, $$7);
-      this.a($$10, $$6);
-      this.a($$0, $$1, $$10, $$5, $$3);
-   }
-
-   private void a(int[] $$0, int $$1, Vector3f $$2, fza $$3, fpb $$4) {
-      int $$5 = $$1 * 8;
-      $$0[$$5] = Float.floatToRawIntBits($$2.x());
-      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
-      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
-      $$0[$$5 + 3] = -1;
-      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
-      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
-   }
-
-   private void a(Vector3f $$0, @Nullable fpa $$1) {
-      if ($$1 != null) {
-         Vector3f $$2;
-         Vector3f $$3;
-         switch ($$1.b()) {
-            case a:
-               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
-               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
-               break;
-            case b:
-               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
-               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
-               break;
-            case c:
-               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
-               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
-               break;
+         switch ($$5) {
+            case 0:
             default:
-               throw new IllegalArgumentException("There are only 3 axes");
+               break;
+            case 1:
+               $$3.a($$4[0]);
+               break;
+            case 2:
+               $$3.a($$4[0], $$4[1]);
+               break;
+            case 3:
+               $$3.a($$4[0], $$4[1], $$4[2]);
+               break;
+            case 4:
+               $$3.a($$4[0], $$4[1], $$4[2], $$4[3]);
          }
-
-         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
-         if ($$1.d()) {
-            if (Math.abs($$1.c()) == 22.5F) {
-               $$3.mul(d);
-            } else {
-               $$3.mul(e);
-            }
-
-            $$3.add(1.0F, 1.0F, 1.0F);
-         } else {
-            $$3.set(1.0F, 1.0F, 1.0F);
-         }
-
-         this.a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
       }
    }
 
-   public void a(Vector3f $$0, j $$1) {
-      if ($$1 != j.a()) {
-         this.a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public ekt a(String $$0) {
+      return this.f.get($$0);
+   }
+
+   public void a(String $$0, int $$1, int $$2) {
+      ekt $$3 = new eku($$1, $$2, true, ero.a);
+      $$3.a(0.0F, 0.0F, 0.0F, 0.0F);
+      this.f.put($$0, $$3);
+      if ($$1 == this.i && $$2 == this.j) {
+         this.g.add($$3);
       }
    }
 
-   private void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
-      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
-      $$4.mul(new Vector4f($$3, 1.0F));
-      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
+   @Override
+   public void close() {
+      for (ekt $$0 : this.f.values()) {
+         $$0.a();
+      }
+
+      for (fpf $$1 : this.e) {
+         $$1.close();
+      }
+
+      this.e.clear();
    }
 
-   public static ha a(int[] $$0) {
-      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
-      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
-      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
-      Vector3f $$4 = new Vector3f($$1).sub($$2);
-      Vector3f $$5 = new Vector3f($$3).sub($$2);
-      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
-      if (!$$6.isFinite()) {
-         return ha.b;
+   public fpf a(String $$0, ekt $$1, ekt $$2) throws IOException {
+      fpf $$3 = new fpf(this.c, $$0, $$1, $$2);
+      this.e.add(this.e.size(), $$3);
+      return $$3;
+   }
+
+   private void b() {
+      this.h = new Matrix4f().setOrtho(0.0F, (float)this.b.c, 0.0F, (float)this.b.d, 0.1F, 1000.0F);
+   }
+
+   public void a(int $$0, int $$1) {
+      this.i = this.b.c;
+      this.j = this.b.d;
+      this.b();
+
+      for (fpf $$2 : this.e) {
+         $$2.a(this.h);
+      }
+
+      for (ekt $$3 : this.g) {
+         $$3.a($$0, $$1, ero.a);
+      }
+   }
+
+   public void a(float $$0) {
+      if ($$0 < this.l) {
+         this.k = this.k + (1.0F - this.l);
+         this.k += $$0;
       } else {
-         ha $$7 = null;
-         float $$8 = 0.0F;
+         this.k = this.k + ($$0 - this.l);
+      }
 
-         for (ha $$9 : ha.values()) {
-            hy $$10 = $$9.q();
-            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
-            float $$12 = $$6.dot($$11);
-            if ($$12 >= 0.0F && $$12 > $$8) {
-               $$8 = $$12;
-               $$7 = $$9;
-            }
-         }
+      this.l = $$0;
 
-         return $$7 == null ? ha.b : $$7;
+      while (this.k > 20.0F) {
+         this.k -= 20.0F;
+      }
+
+      for (fpf $$1 : this.e) {
+         $$1.a(this.k / 20.0F);
       }
    }
 
-   private void a(int[] $$0, ha $$1) {
-      int[] $$2 = new int[$$0.length];
-      System.arraycopy($$0, 0, $$2, 0, $$0.length);
-      float[] $$3 = new float[ha.values().length];
-      $$3[fnr.a.f] = 999.0F;
-      $$3[fnr.a.e] = 999.0F;
-      $$3[fnr.a.d] = 999.0F;
-      $$3[fnr.a.c] = -999.0F;
-      $$3[fnr.a.b] = -999.0F;
-      $$3[fnr.a.a] = -999.0F;
+   public final String a() {
+      return this.d;
+   }
 
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         int $$5 = 8 * $$4;
-         float $$6 = Float.intBitsToFloat($$2[$$5]);
-         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
-         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
-         if ($$6 < $$3[fnr.a.f]) {
-            $$3[fnr.a.f] = $$6;
-         }
-
-         if ($$7 < $$3[fnr.a.e]) {
-            $$3[fnr.a.e] = $$7;
-         }
-
-         if ($$8 < $$3[fnr.a.d]) {
-            $$3[fnr.a.d] = $$8;
-         }
-
-         if ($$6 > $$3[fnr.a.c]) {
-            $$3[fnr.a.c] = $$6;
-         }
-
-         if ($$7 > $$3[fnr.a.b]) {
-            $$3[fnr.a.b] = $$7;
-         }
-
-         if ($$8 > $$3[fnr.a.a]) {
-            $$3[fnr.a.a] = $$8;
-         }
-      }
-
-      fnr $$9 = fnr.a($$1);
-
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         int $$11 = 8 * $$10;
-         fnr.b $$12 = $$9.a($$10);
-         float $$13 = $$3[$$12.a];
-         float $$14 = $$3[$$12.b];
-         float $$15 = $$3[$$12.c];
-         $$0[$$11] = Float.floatToRawIntBits($$13);
-         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
-         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
-
-         for (int $$16 = 0; $$16 < 4; $$16++) {
-            int $$17 = 8 * $$16;
-            float $$18 = Float.intBitsToFloat($$2[$$17]);
-            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
-            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
-            if (asb.a($$13, $$18) && asb.a($$14, $$19) && asb.a($$15, $$20)) {
-               $$0[$$11 + 4] = $$2[$$17 + 4];
-               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
-            }
-         }
+   @Nullable
+   private ekt b(@Nullable String $$0) {
+      if ($$0 == null) {
+         return null;
+      } else {
+         return $$0.equals("minecraft:main") ? this.b : this.f.get($$0);
       }
    }
 }

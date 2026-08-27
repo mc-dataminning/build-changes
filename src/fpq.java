@@ -1,19 +1,61 @@
-import com.google.common.collect.Streams;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class fpq implements eml {
+   private final eml a;
+   private final gaa b;
 
-public class fpq implements fpn {
-   public static final String a = "OR";
-   private final Iterable<? extends fpn> d;
-
-   public fpq(Iterable<? extends fpn> $$0) {
-      this.d = $$0;
+   public fpq(eml $$0, gaa $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public Predicate<dfd> getPredicate(dfe<ctc, dfd> $$0) {
-      List<Predicate<dfd>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
-      return $$1x -> $$1.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+   public eml a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public eml a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public eml a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
+   }
+
+   @Override
+   public eml a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public eml b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public eml a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void k() {
+      this.a.k();
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

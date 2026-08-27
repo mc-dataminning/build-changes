@@ -1,101 +1,83 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.GameProfile;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
 public class fjb {
-   private final GameProfile a;
-   private final Supplier<gaa> b;
-   private cpy c = cpy.e;
+   private static final Set<hx> a = EnumSet.allOf(hx.class);
+   private final List<fiz> b = Lists.newArrayList();
+   private int c;
    private int d;
-   @Nullable
-   private tl e;
-   @Nullable
-   private uc f;
-   private uh g;
+   private boolean e;
 
-   public fjb(GameProfile $$0, boolean $$1) {
-      this.a = $$0;
-      this.g = b($$1);
-      Supplier<Supplier<gaa>> $$2 = Suppliers.memoize(() -> a($$0));
-      this.b = () -> $$2.get().get();
-   }
-
-   private static Supplier<gaa> a(GameProfile $$0) {
-      eqp $$1 = eqp.O();
-      gab $$2 = $$1.al();
-      CompletableFuture<gaa> $$3 = $$2.c($$0);
-      boolean $$4 = !$$1.b($$0.getId());
-      gaa $$5 = fzs.a($$0);
-      return () -> {
-         gaa $$3x = $$3.getNow($$5);
-         return $$4 && !$$3x.f() ? $$5 : $$3x;
-      };
-   }
-
-   public GameProfile a() {
-      return this.a;
-   }
-
-   @Nullable
-   public uc b() {
-      return this.f;
-   }
-
-   public uh c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.f != null;
-   }
-
-   protected void a(uc $$0) {
-      this.f = $$0;
-      this.g = $$0.a(ccd.b);
-   }
-
-   protected void a(boolean $$0) {
-      this.f = null;
-      this.g = b($$0);
-   }
-
-   private static uh b(boolean $$0) {
-      return $$0 ? uh.c : uh.b;
-   }
-
-   public cpy e() {
-      return this.c;
-   }
-
-   protected void a(cpy $$0) {
+   public fjb a(int $$0, int $$1) {
       this.c = $$0;
+      this.d = $$1;
+      return this;
    }
 
-   public int f() {
-      return this.d;
+   public fjb a() {
+      return this.a(true);
    }
 
-   protected void a(int $$0) {
-      this.d = $$0;
-   }
-
-   public gaa g() {
-      return this.b.get();
-   }
-
-   @Nullable
-   public eie h() {
-      return eqp.O().r.I().g(this.a().getName());
-   }
-
-   public void a(@Nullable tl $$0) {
+   public fjb a(boolean $$0) {
       this.e = $$0;
+      return this;
    }
 
-   @Nullable
-   public tl i() {
-      return this.e;
+   public fjb a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fja $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new fiz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fjb a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new fiz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fja.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fjb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new fiz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fja.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fjb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<hx> $$6) {
+      this.b.add(new fiz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fja.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
+   }
+
+   public fjb a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new fiz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fja.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fjb a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fja $$7) {
+      this.b.add(new fiz($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fjb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new fiz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fja.a, $$6, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fjb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fja $$6, float $$7, float $$8) {
+      this.b.add(new fiz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
+   }
+
+   public fjb a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fja $$6) {
+      this.b.add(new fiz(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public List<fiz> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static fjb c() {
+      return new fjb();
    }
 }

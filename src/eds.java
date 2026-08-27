@@ -1,40 +1,81 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Function;
 
-public class eds extends edw {
-   public static final Codec<eds> a = RecordCodecBuilder.create($$0 -> a($$0).and(eck.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, eds::new));
-   private final eck.b b;
+public class eds extends edu {
+   public static final Codec<eds> a = a(eds::new);
 
-   public eds(List<efj> $$0, eck.b $$1) {
-      super($$0);
-      this.b = $$1;
+   eds(List<eeb> $$0, List<egh> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public edy b() {
-      return edz.v;
+   public eec a() {
+      return edz.g;
    }
 
    @Override
-   public Set<ees<?>> a() {
-      return ImmutableSet.of(this.b.a());
+   protected edt a(List<? extends edt> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (edt)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (edt $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
    }
 
    @Override
-   public cjl a(cjl $$0, eck $$1) {
-      if ($$0.a(cjo.tt) && $$1.c(this.b.a()) instanceof cca $$2) {
-         GameProfile $$3 = $$2.fR();
-         $$0.w().a("SkullOwner", rj.a(new qw(), $$3));
+   public void a(edr $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.a("Unreachable entry!");
+         }
+      }
+   }
+
+   public static eds.a a(eeb.a<?>... $$0) {
+      return new eds.a($$0);
+   }
+
+   public static <E> eds.a a(Collection<E> $$0, Function<E, eeb.a<?>> $$1) {
+      return new eds.a($$0.stream().map($$1::apply).toArray(eeb.a[]::new));
+   }
+
+   public static class a extends eeb.a<eds.a> {
+      private final Builder<eeb> a = ImmutableList.builder();
+
+      public a(eeb.a<?>... $$0) {
+         for (eeb.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return $$0;
-   }
+      protected eds.a a() {
+         return this;
+      }
 
-   public static edw.a<?> a(eck.b $$0) {
-      return a($$1 -> new eds($$1, $$0));
+      @Override
+      public eds.a a(eeb.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eeb b() {
+         return new eds(this.a.build(), this.f());
+      }
    }
 }

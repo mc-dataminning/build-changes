@@ -1,452 +1,901 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class esl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 100;
-   private static final int c = -1;
-   private static final int d = 4;
-   private static final int e = 4;
-   private static final int f = 40;
-   private static final int g = 60;
-   private static final tl h = tl.c("chat.deleted_marker").a(n.h, n.u);
-   private final eqp i;
-   private final aqr<String> j = new aqr<>(100);
-   private final List<eqj> k = Lists.newArrayList();
-   private final List<eqj.a> l = Lists.newArrayList();
-   private int m;
-   private boolean n;
-   private final List<esl.a> o = new ArrayList<>();
-
-   public esl(eqp $$0) {
-      this.i = $$0;
-      this.j.addAll($$0.ba().a());
-   }
-
-   public void a() {
-      if (!this.o.isEmpty()) {
-         this.k();
-      }
-   }
-
-   public void a(erz $$0, int $$1, int $$2, int $$3) {
-      if (!this.j()) {
-         int $$4 = this.i();
-         int $$5 = this.l.size();
-         if ($$5 > 0) {
-            boolean $$6 = this.m();
-            float $$7 = (float)this.g();
-            int $$8 = asb.f((float)this.e() / $$7);
-            int $$9 = $$0.b();
-            $$0.c().a();
-            $$0.c().b($$7, $$7, 1.0F);
-            $$0.c().a(4.0F, 0.0F, 0.0F);
-            int $$10 = asb.d((float)($$9 - 40) / $$7);
-            int $$11 = this.d(this.c((double)$$2), this.d((double)$$3));
-            double $$12 = this.i.m.m().c() * 0.9F + 0.1F;
-            double $$13 = this.i.m.o().c();
-            double $$14 = this.i.m.n().c();
-            int $$15 = this.n();
-            int $$16 = (int)Math.round(-8.0 * ($$14 + 1.0) + 4.0 * $$14);
-            int $$17 = 0;
-
-            for (int $$18 = 0; $$18 + this.m < this.l.size() && $$18 < $$4; $$18++) {
-               int $$19 = $$18 + this.m;
-               eqj.a $$20 = this.l.get($$19);
-               if ($$20 != null) {
-                  int $$21 = $$1 - $$20.a();
-                  if ($$21 < 200 || $$6) {
-                     double $$22 = $$6 ? 1.0 : b($$21);
-                     int $$23 = (int)(255.0 * $$22 * $$12);
-                     int $$24 = (int)(255.0 * $$22 * $$13);
-                     $$17++;
-                     if ($$23 > 3) {
-                        int $$25 = 0;
-                        int $$26 = $$10 - $$18 * $$15;
-                        int $$27 = $$26 + $$16;
-                        $$0.c().a();
-                        $$0.c().a(0.0F, 0.0F, 50.0F);
-                        $$0.a(-4, $$26 - $$15, 0 + $$8 + 4 + 4, $$26, $$24 << 24);
-                        eqk $$28 = $$20.c();
-                        if ($$28 != null) {
-                           int $$29 = $$28.e() | $$23 << 24;
-                           $$0.a(-4, $$26 - $$15, -2, $$26, $$29);
-                           if ($$19 == $$11 && $$28.f() != null) {
-                              int $$30 = this.a($$20);
-                              int $$31 = $$27 + 9;
-                              this.a($$0, $$30, $$31, $$28.f());
-                           }
-                        }
-
-                        $$0.c().a(0.0F, 0.0F, 50.0F);
-                        $$0.b(this.i.h, $$20.b(), 0, $$27, 16777215 + ($$23 << 24));
-                        $$0.c().b();
-                     }
-                  }
-               }
-            }
-
-            long $$32 = this.i.aW().c();
-            if ($$32 > 0L) {
-               int $$33 = (int)(128.0 * $$12);
-               int $$34 = (int)(255.0 * $$13);
-               $$0.c().a();
-               $$0.c().a(0.0F, (float)$$10, 50.0F);
-               $$0.a(-2, 0, $$8 + 4, 9, $$34 << 24);
-               $$0.c().a(0.0F, 0.0F, 50.0F);
-               $$0.b(this.i.h, tl.a("chat.queue", $$32), 0, 1, 16777215 + ($$33 << 24));
-               $$0.c().b();
-            }
-
-            if ($$6) {
-               int $$35 = this.n();
-               int $$36 = $$5 * $$35;
-               int $$37 = $$17 * $$35;
-               int $$38 = this.m * $$37 / $$5 - $$10;
-               int $$39 = $$37 * $$37 / $$36;
-               if ($$36 != $$37) {
-                  int $$40 = $$38 > 0 ? 170 : 96;
-                  int $$41 = this.n ? 13382451 : 3355562;
-                  int $$42 = $$8 + 4;
-                  $$0.a($$42, -$$38, $$42 + 2, -$$38 - $$39, 100, $$41 + ($$40 << 24));
-                  $$0.a($$42 + 2, -$$38, $$42 + 1, -$$38 - $$39, 100, 13421772 + ($$40 << 24));
-               }
-            }
-
-            $$0.c().b();
-         }
-      }
-   }
-
-   private void a(erz $$0, int $$1, int $$2, eqk.a $$3) {
-      int $$4 = $$2 - $$3.d - 1;
-      $$3.a($$0, $$1, $$4);
-   }
-
-   private int a(eqj.a $$0) {
-      return this.i.h.a($$0.b()) + 4;
-   }
-
-   private boolean j() {
-      return this.i.m.l().c() == cby.c;
-   }
-
-   private static double b(int $$0) {
-      double $$1 = (double)$$0 / 200.0;
-      $$1 = 1.0 - $$1;
-      $$1 *= 10.0;
-      $$1 = asb.a($$1, 0.0, 1.0);
-      return $$1 * $$1;
-   }
-
-   public void a(boolean $$0) {
-      this.i.aW().d();
-      this.o.clear();
-      this.l.clear();
-      this.k.clear();
-      if ($$0) {
-         this.j.clear();
-         this.j.addAll(this.i.ba().a());
-      }
-   }
-
-   public void a(tl $$0) {
-      this.a($$0, null, this.i.U() ? eqk.b() : eqk.a());
-   }
-
-   public void a(tl $$0, @Nullable tx $$1, @Nullable eqk $$2) {
-      this.a($$0, $$2);
-      this.a($$0, $$1, this.i.l.e(), $$2, false);
-   }
-
-   private void a(tl $$0, @Nullable eqk $$1) {
-      String $$2 = $$0.getString().replaceAll("\r", "\\\\r").replaceAll("\n", "\\\\n");
-      String $$3 = x.a($$1, eqk::h);
-      if ($$3 != null) {
-         a.info("[{}] [CHAT] {}", $$3, $$2);
-      } else {
-         a.info("[CHAT] {}", $$2);
-      }
-   }
-
-   private void a(tl $$0, @Nullable tx $$1, int $$2, @Nullable eqk $$3, boolean $$4) {
-      int $$5 = asb.a((double)this.e() / this.g());
-      if ($$3 != null && $$3.f() != null) {
-         $$5 -= $$3.f().c + 4 + 2;
-      }
-
-      List<arn> $$6 = esp.a($$0, $$5, this.i.h);
-      boolean $$7 = this.m();
-
-      for (int $$8 = 0; $$8 < $$6.size(); $$8++) {
-         arn $$9 = $$6.get($$8);
-         if ($$7 && this.m > 0) {
-            this.n = true;
-            this.a(1);
-         }
-
-         boolean $$10 = $$8 == $$6.size() - 1;
-         this.l.add(0, new eqj.a($$2, $$9, $$3, $$10));
-      }
-
-      while (this.l.size() > 100) {
-         this.l.remove(this.l.size() - 1);
-      }
-
-      if (!$$4) {
-         this.k.add(0, new eqj($$2, $$0, $$1, $$3));
-
-         while (this.k.size() > 100) {
-            this.k.remove(this.k.size() - 1);
-         }
-      }
-   }
-
-   private void k() {
-      int $$0 = this.i.l.e();
-      this.o.removeIf($$1 -> $$0 >= $$1.b() ? this.b($$1.a()) == null : false);
-   }
-
-   public void a(tx $$0) {
-      esl.a $$1 = this.b($$0);
-      if ($$1 != null) {
-         this.o.add($$1);
-      }
-   }
-
-   @Nullable
-   private esl.a b(tx $$0) {
-      int $$1 = this.i.l.e();
-      ListIterator<eqj> $$2 = this.k.listIterator();
-
-      while ($$2.hasNext()) {
-         eqj $$3 = $$2.next();
-         if ($$0.equals($$3.c())) {
-            int $$4 = $$3.a() + 60;
-            if ($$1 >= $$4) {
-               $$2.set(this.a($$3));
-               this.l();
-               return null;
-            }
-
-            return new esl.a($$0, $$4);
-         }
-      }
-
-      return null;
-   }
-
-   private eqj a(eqj $$0) {
-      return new eqj($$0.a(), h, null, eqk.a());
-   }
-
-   public void b() {
-      this.d();
-      this.l();
-   }
-
-   private void l() {
-      this.l.clear();
-
-      for (int $$0 = this.k.size() - 1; $$0 >= 0; $$0--) {
-         eqj $$1 = this.k.get($$0);
-         this.a($$1.b(), $$1.c(), $$1.a(), $$1.d(), true);
-      }
-   }
-
-   public aqr<String> c() {
-      return this.j;
-   }
-
-   public void a(String $$0) {
-      if (!$$0.equals(this.j.peekLast())) {
-         if (this.j.size() >= 100) {
-            this.j.removeFirst();
-         }
-
-         this.j.addLast($$0);
-      }
-
-      if ($$0.startsWith("/")) {
-         this.i.ba().a($$0);
-      }
-   }
-
-   public void d() {
-      this.m = 0;
-      this.n = false;
-   }
-
-   public void a(int $$0) {
-      this.m += $$0;
-      int $$1 = this.l.size();
-      if (this.m > $$1 - this.i()) {
-         this.m = $$1 - this.i();
-      }
-
-      if (this.m <= 0) {
-         this.m = 0;
-         this.n = false;
-      }
-   }
-
-   public boolean a(double $$0, double $$1) {
-      if (this.m() && !this.i.m.Z && !this.j()) {
-         fjg $$2 = this.i.aW();
-         if ($$2.c() == 0L) {
-            return false;
-         } else {
-            double $$3 = $$0 - 2.0;
-            double $$4 = (double)this.i.aM().p() - $$1 - 40.0;
-            if ($$3 <= (double)asb.a((double)this.e() / this.g()) && $$4 < 0.0 && $$4 > (double)asb.a(-9.0 * this.g())) {
-               $$2.b();
-               return true;
-            } else {
-               return false;
-            }
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Nullable
-   public ui b(double $$0, double $$1) {
-      double $$2 = this.c($$0);
-      double $$3 = this.d($$1);
-      int $$4 = this.e($$2, $$3);
-      if ($$4 >= 0 && $$4 < this.l.size()) {
-         eqj.a $$5 = this.l.get($$4);
-         return this.i.h.b().a($$5.b(), asb.a($$2));
-      } else {
-         return null;
-      }
-   }
-
-   @Nullable
-   public eqk c(double $$0, double $$1) {
-      double $$2 = this.c($$0);
-      double $$3 = this.d($$1);
-      int $$4 = this.d($$2, $$3);
-      if ($$4 >= 0 && $$4 < this.l.size()) {
-         eqj.a $$5 = this.l.get($$4);
-         eqk $$6 = $$5.c();
-         if ($$6 != null && this.a($$2, $$5, $$6)) {
-            return $$6;
-         }
-      }
-
-      return null;
-   }
-
-   private boolean a(double $$0, eqj.a $$1, eqk $$2) {
-      if ($$0 < 0.0) {
-         return true;
-      } else {
-         eqk.a $$3 = $$2.f();
-         if ($$3 == null) {
-            return false;
-         } else {
-            int $$4 = this.a($$1);
-            int $$5 = $$4 + $$3.c;
-            return $$0 >= (double)$$4 && $$0 <= (double)$$5;
-         }
-      }
-   }
-
-   private double c(double $$0) {
-      return $$0 / this.g() - 4.0;
-   }
-
-   private double d(double $$0) {
-      double $$1 = (double)this.i.aM().p() - $$0 - 40.0;
-      return $$1 / (this.g() * (double)this.n());
-   }
-
-   private int d(double $$0, double $$1) {
-      int $$2 = this.e($$0, $$1);
-      if ($$2 == -1) {
-         return -1;
-      } else {
-         while ($$2 >= 0) {
-            if (this.l.get($$2).d()) {
-               return $$2;
-            }
-
-            $$2--;
-         }
-
-         return $$2;
-      }
-   }
-
-   private int e(double $$0, double $$1) {
-      if (this.m() && !this.i.m.Z && !this.j()) {
-         if (!($$0 < -4.0) && !($$0 > (double)asb.a((double)this.e() / this.g()))) {
-            int $$2 = Math.min(this.i(), this.l.size());
-            if ($$1 >= 0.0 && $$1 < (double)$$2) {
-               int $$3 = asb.a($$1 + (double)this.m);
-               if ($$3 >= 0 && $$3 < this.l.size()) {
-                  return $$3;
-               }
-            }
-
-            return -1;
-         } else {
-            return -1;
-         }
-      } else {
-         return -1;
-      }
-   }
-
-   private boolean m() {
-      return this.i.y instanceof eww;
-   }
-
-   public int e() {
-      return a(this.i.m.u().c());
-   }
-
-   public int f() {
-      return b(this.m() ? this.i.m.w().c() : this.i.m.v().c());
-   }
-
-   public double g() {
-      return this.i.m.t().c();
-   }
-
-   public static int a(double $$0) {
-      int $$1 = 320;
-      int $$2 = 40;
-      return asb.a($$0 * 280.0 + 40.0);
-   }
-
-   public static int b(double $$0) {
-      int $$1 = 180;
-      int $$2 = 20;
-      return asb.a($$0 * 160.0 + 20.0);
-   }
-
-   public static double h() {
-      int $$0 = 180;
-      int $$1 = 20;
-      return 70.0 / (double)(b(1.0) - 20);
-   }
-
-   public int i() {
-      return this.f() / this.n();
-   }
-
-   private int n() {
-      return (int)(9.0 * (this.i.m.n().c() + 1.0));
-   }
-
-   static record a(tx a, int b) {
-   }
+   public static final esf a = esf.a.a(6.68F)
+      .a(
+         "body",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.b(0.0F, 0.0F, -22.5F), ese.b.b),
+            new esg(1.2F, esh.b(0.0F, 0.0F, -7.5F), ese.b.b),
+            new esg(1.68F, esh.b(0.0F, 0.0F, 10.0F), ese.b.b),
+            new esg(1.8F, esh.b(0.0F, 0.0F, 10.0F), ese.b.b),
+            new esg(2.28F, esh.b(0.0F, 0.0F, 10.0F), ese.b.b),
+            new esg(2.88F, esh.b(0.0F, 0.0F, 10.0F), ese.b.b),
+            new esg(3.76F, esh.b(25.0F, 0.0F, -7.5F), ese.b.b),
+            new esg(3.92F, esh.b(35.0F, 0.0F, -7.5F), ese.b.b),
+            new esg(4.08F, esh.b(25.0F, 0.0F, -7.5F), ese.b.b),
+            new esg(4.44F, esh.b(47.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.56F, esh.b(47.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.68F, esh.b(47.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.0F, esh.b(70.0F, 0.0F, 2.5F), ese.b.b),
+            new esg(5.8F, esh.b(70.0F, 0.0F, 2.5F), ese.b.b),
+            new esg(6.64F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "body",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, -63.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.a(0.0F, -56.0F, 0.0F), ese.b.b),
+            new esg(1.2F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(1.68F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(1.8F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(3.16F, esh.a(0.0F, -27.0F, 0.0F), ese.b.b),
+            new esg(3.76F, esh.a(0.0F, -14.0F, 0.0F), ese.b.b),
+            new esg(3.92F, esh.a(0.0F, -11.0F, 0.0F), ese.b.b),
+            new esg(4.08F, esh.a(0.0F, -14.0F, 0.0F), ese.b.b),
+            new esg(4.44F, esh.a(0.0F, -6.0F, -3.0F), ese.b.b),
+            new esg(4.56F, esh.a(0.0F, -4.0F, -3.0F), ese.b.b),
+            new esg(4.68F, esh.a(0.0F, -6.0F, -3.0F), ese.b.b),
+            new esg(5.0F, esh.a(0.0F, -3.0F, -4.0F), ese.b.b),
+            new esg(5.8F, esh.a(0.0F, -3.0F, -4.0F), ese.b.b),
+            new esg(6.64F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "head",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.92F, esh.b(0.74F, 0.0F, -40.38F), ese.b.b),
+            new esg(1.16F, esh.b(-67.5F, 0.0F, -2.5F), ese.b.b),
+            new esg(1.24F, esh.b(-67.5F, 0.0F, -2.5F), ese.b.b),
+            new esg(1.32F, esh.b(-47.5F, 0.0F, -2.5F), ese.b.b),
+            new esg(1.4F, esh.b(-67.5F, 0.0F, -2.5F), ese.b.b),
+            new esg(1.68F, esh.b(-67.5F, 0.0F, 15.0F), ese.b.b),
+            new esg(1.76F, esh.b(-67.5F, 0.0F, -5.0F), ese.b.b),
+            new esg(1.84F, esh.b(-52.5F, 0.0F, -5.0F), ese.b.b),
+            new esg(1.92F, esh.b(-67.5F, 0.0F, -5.0F), ese.b.b),
+            new esg(2.64F, esh.b(-17.5F, 0.0F, -10.0F), ese.b.b),
+            new esg(3.76F, esh.b(70.0F, 0.0F, 12.5F), ese.b.b),
+            new esg(4.04F, esh.b(70.0F, 0.0F, 12.5F), ese.b.b),
+            new esg(4.12F, esh.b(80.0F, 0.0F, 12.5F), ese.b.b),
+            new esg(4.24F, esh.b(70.0F, 0.0F, 12.5F), ese.b.b),
+            new esg(5.0F, esh.b(77.5F, 0.0F, -2.5F), ese.b.b),
+            new esg(6.64F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "head",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.a(-8.0F, -11.0F, 0.0F), ese.b.b),
+            new esg(0.92F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.24F, esh.a(0.0F, 0.47F, -0.95F), ese.b.b),
+            new esg(1.32F, esh.a(0.0F, 0.47F, -0.95F), ese.b.b),
+            new esg(1.4F, esh.a(0.0F, 0.47F, -0.95F), ese.b.b),
+            new esg(1.68F, esh.a(0.0F, 1.0F, -2.0F), ese.b.b),
+            new esg(1.76F, esh.a(0.0F, 1.0F, -2.0F), ese.b.b),
+            new esg(1.84F, esh.a(0.0F, 1.0F, -2.0F), ese.b.b),
+            new esg(1.92F, esh.a(0.0F, 1.0F, -2.0F), ese.b.b),
+            new esg(2.64F, esh.a(0.0F, -2.0F, -2.0F), ese.b.b),
+            new esg(3.76F, esh.a(0.0F, -4.0F, 1.0F), ese.b.b),
+            new esg(4.04F, esh.a(0.0F, -1.0F, 1.0F), ese.b.b),
+            new esg(4.12F, esh.a(0.0F, -1.0F, 1.0F), ese.b.b),
+            new esg(4.24F, esh.a(0.0F, -1.0F, 1.0F), ese.b.b),
+            new esg(5.0F, esh.a(0.0F, -1.0F, 1.0F), ese.b.b),
+            new esg(6.64F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.36F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.56F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.8F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(6.64F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.36F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.56F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.8F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(6.64F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.36F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.56F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.8F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(6.64F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.36F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.56F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.8F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(6.64F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.2F, esh.b(-152.5F, 2.5F, 7.5F), ese.b.b),
+            new esg(1.68F, esh.b(-180.0F, 12.5F, -10.0F), ese.b.b),
+            new esg(1.8F, esh.b(-90.0F, 12.5F, -10.0F), ese.b.b),
+            new esg(2.28F, esh.b(-90.0F, 12.5F, -10.0F), ese.b.b),
+            new esg(2.88F, esh.b(-90.0F, 12.5F, -10.0F), ese.b.b),
+            new esg(3.08F, esh.b(-95.0F, 12.5F, -10.0F), ese.b.b),
+            new esg(3.24F, esh.b(-83.93F, 3.93F, 5.71F), ese.b.b),
+            new esg(3.36F, esh.b(-80.0F, 7.5F, 17.5F), ese.b.b),
+            new esg(3.76F, esh.b(-67.5F, 2.5F, 0.0F), ese.b.b),
+            new esg(4.08F, esh.b(-67.5F, 2.5F, 0.0F), ese.b.b),
+            new esg(4.44F, esh.b(-55.0F, 2.5F, 0.0F), ese.b.b),
+            new esg(4.56F, esh.b(-60.0F, 2.5F, 0.0F), ese.b.b),
+            new esg(4.68F, esh.b(-55.0F, 2.5F, 0.0F), ese.b.b),
+            new esg(5.0F, esh.b(-67.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.56F, esh.b(-50.45F, 0.0F, 2.69F), ese.b.b),
+            new esg(6.08F, esh.b(-62.72F, 0.0F, 4.3F), ese.b.b),
+            new esg(6.64F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.2F, esh.a(0.0F, -21.0F, 9.0F), ese.b.b),
+            new esg(1.68F, esh.a(2.0F, -2.0F, 0.0F), ese.b.b),
+            new esg(1.8F, esh.a(2.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.a(2.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.a(2.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.08F, esh.a(2.0F, -2.0F, 0.0F), ese.b.b),
+            new esg(3.24F, esh.a(2.0F, 2.71F, 3.86F), ese.b.b),
+            new esg(3.36F, esh.a(2.0F, 1.0F, 5.0F), ese.b.b),
+            new esg(3.76F, esh.a(2.0F, 3.0F, 3.0F), ese.b.b),
+            new esg(4.08F, esh.a(2.0F, 3.0F, 3.0F), ese.b.b),
+            new esg(4.44F, esh.a(2.67F, 4.0F, 0.0F), ese.b.b),
+            new esg(4.56F, esh.a(2.67F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.68F, esh.a(2.67F, 4.0F, 0.0F), ese.b.b),
+            new esg(5.0F, esh.a(0.67F, 3.0F, 4.0F), ese.b.b),
+            new esg(6.64F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.12F, esh.b(-167.5F, -17.5F, -7.5F), ese.b.b),
+            new esg(0.6F, esh.b(-167.5F, -17.5F, -7.5F), ese.b.b),
+            new esg(0.88F, esh.b(-175.0F, -17.5F, 15.0F), ese.b.b),
+            new esg(1.16F, esh.b(-190.0F, -17.5F, 5.0F), ese.b.b),
+            new esg(1.28F, esh.b(-90.0F, -5.0F, 5.0F), ese.b.b),
+            new esg(1.68F, esh.b(-90.0F, -17.5F, -12.5F), ese.b.b),
+            new esg(1.8F, esh.b(-90.0F, -17.5F, -12.5F), ese.b.b),
+            new esg(2.28F, esh.b(-90.0F, -17.5F, -12.5F), ese.b.b),
+            new esg(2.88F, esh.b(-90.0F, -17.5F, -12.5F), ese.b.b),
+            new esg(3.04F, esh.b(-81.29F, -10.64F, -14.21F), ese.b.b),
+            new esg(3.16F, esh.b(-83.5F, -5.5F, -15.5F), ese.b.b),
+            new esg(3.76F, esh.b(-62.5F, -7.5F, 5.0F), ese.b.b),
+            new esg(3.92F, esh.b(-58.75F, -3.75F, 5.0F), ese.b.b),
+            new esg(4.08F, esh.b(-55.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.44F, esh.b(-52.5F, 0.0F, 5.0F), ese.b.b),
+            new esg(4.56F, esh.b(-50.0F, 0.0F, 5.0F), ese.b.b),
+            new esg(4.68F, esh.b(-52.5F, 0.0F, 5.0F), ese.b.b),
+            new esg(5.0F, esh.b(-72.5F, -2.5F, 5.0F), ese.b.b),
+            new esg(5.56F, esh.b(-57.5F, -4.54F, 2.99F), ese.b.b),
+            new esg(6.08F, esh.b(-70.99F, -5.77F, 1.78F), ese.b.b),
+            new esg(6.64F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.12F, esh.a(0.0F, -8.0F, 0.0F), ese.b.b),
+            new esg(0.6F, esh.a(0.0F, -8.0F, 0.0F), ese.b.b),
+            new esg(0.88F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.2F, esh.a(-2.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.68F, esh.a(-4.0F, 3.0F, 0.0F), ese.b.b),
+            new esg(1.8F, esh.a(-4.0F, 3.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.a(-4.0F, 3.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.a(-4.0F, 3.0F, 0.0F), ese.b.b),
+            new esg(3.04F, esh.a(-3.23F, 5.7F, 4.97F), ese.b.b),
+            new esg(3.16F, esh.a(-1.49F, 2.22F, 5.25F), ese.b.b),
+            new esg(3.76F, esh.a(-1.14F, 1.71F, 1.86F), ese.b.b),
+            new esg(3.92F, esh.a(-1.14F, 1.21F, 3.86F), ese.b.b),
+            new esg(4.08F, esh.a(-1.14F, 2.71F, 4.86F), ese.b.b),
+            new esg(4.44F, esh.a(-1.0F, 1.0F, 3.0F), ese.b.b),
+            new esg(4.56F, esh.a(0.0F, 1.0F, 1.0F), ese.b.b),
+            new esg(4.68F, esh.a(0.0F, 1.0F, 3.0F), ese.b.b),
+            new esg(5.0F, esh.a(-2.0F, 0.0F, 4.0F), ese.b.b),
+            new esg(6.64F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.36F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.32F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.48F, esh.b(55.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.6F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.8F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(6.64F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, -63.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.a(0.0F, -56.0F, 0.0F), ese.b.b),
+            new esg(1.2F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(1.68F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(1.8F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(3.36F, esh.a(0.0F, -22.0F, 0.0F), ese.b.b),
+            new esg(3.76F, esh.a(0.0F, -12.28F, 2.48F), ese.b.b),
+            new esg(3.92F, esh.a(0.0F, -9.28F, 2.48F), ese.b.b),
+            new esg(4.08F, esh.a(0.0F, -12.28F, 2.48F), ese.b.b),
+            new esg(4.32F, esh.a(0.0F, -4.14F, 4.14F), ese.b.b),
+            new esg(4.48F, esh.a(0.0F, -0.57F, -8.43F), ese.b.b),
+            new esg(4.6F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.8F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(6.64F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.36F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.84F, esh.b(20.0F, 0.0F, -17.5F), ese.b.b),
+            new esg(4.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.68F, esh.b(20.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.84F, esh.b(10.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.8F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(6.64F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, -63.0F, 0.0F), ese.b.b),
+            new esg(0.52F, esh.a(0.0F, -56.0F, 0.0F), ese.b.b),
+            new esg(1.2F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(1.68F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(1.8F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.a(0.0F, -32.0F, 0.0F), ese.b.b),
+            new esg(3.36F, esh.a(0.0F, -22.0F, 0.0F), ese.b.b),
+            new esg(3.84F, esh.a(-4.0F, 2.0F, -7.0F), ese.b.b),
+            new esg(4.0F, esh.a(-4.0F, 0.0F, -5.0F), ese.b.b),
+            new esg(4.68F, esh.a(-4.0F, 0.0F, -9.0F), ese.b.b),
+            new esg(4.84F, esh.a(-2.0F, 2.0F, -3.5F), ese.b.b),
+            new esg(5.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(5.8F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(6.64F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .b();
+   public static final esf b = esf.a.a(5.0F)
+      .a(
+         "body",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.25F, esh.b(4.13441F, 0.94736F, 1.2694F), ese.b.b),
+            new esg(0.5F, esh.b(50.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.7083F, esh.b(54.45407F, -13.53935F, -18.14183F), ese.b.b),
+            new esg(1.0417F, esh.b(59.46442F, -10.8885F, 35.7954F), ese.b.b),
+            new esg(1.3333F, esh.b(82.28261F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.625F, esh.b(53.23606F, 10.04715F, -29.72932F), ese.b.b),
+            new esg(2.2083F, esh.b(-17.71739F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.5417F, esh.b(112.28261F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.6667F, esh.b(116.06889F, 5.11581F, -24.50117F), ese.b.b),
+            new esg(2.8333F, esh.b(121.56244F, -4.17248F, 19.57737F), ese.b.b),
+            new esg(3.0417F, esh.b(138.5689F, 5.11581F, -24.50117F), ese.b.b),
+            new esg(3.25F, esh.b(144.06244F, -4.17248F, 19.57737F), ese.b.b),
+            new esg(3.375F, esh.b(147.28261F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.625F, esh.b(147.28261F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.875F, esh.b(134.36221F, 8.81113F, -8.90172F), ese.b.b),
+            new esg(4.0417F, esh.b(132.05966F, -8.35927F, 9.70506F), ese.b.b),
+            new esg(4.25F, esh.b(134.36221F, 8.81113F, -8.90172F), ese.b.b),
+            new esg(4.5F, esh.b(147.5F, 0.0F, 0.0F), ese.b.a)
+         )
+      )
+      .a(
+         "body",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.5F, esh.a(0.0F, -16.48454F, -6.5784F), ese.b.b),
+            new esg(0.7083F, esh.a(0.0F, -16.48454F, -6.5784F), ese.b.b),
+            new esg(1.0417F, esh.a(0.0F, -16.97F, -7.11F), ese.b.b),
+            new esg(1.625F, esh.a(0.0F, -13.97F, -7.11F), ese.b.b),
+            new esg(2.2083F, esh.a(0.0F, -11.48454F, -0.5784F), ese.b.b),
+            new esg(2.5417F, esh.a(0.0F, -16.48454F, -6.5784F), ese.b.b),
+            new esg(2.6667F, esh.a(0.0F, -20.27F, -5.42F), ese.b.b),
+            new esg(3.375F, esh.a(0.0F, -21.48454F, -5.5784F), ese.b.b),
+            new esg(4.0417F, esh.a(0.0F, -22.48454F, -5.5784F), ese.b.b),
+            new esg(4.5F, esh.a(0.0F, -40.0F, -8.0F), ese.b.a)
+         )
+      )
+      .a(
+         "head",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.6667F, esh.b(12.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.2083F, esh.b(12.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.75F, esh.b(45.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.375F, esh.b(-22.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.5417F, esh.b(67.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.375F, esh.b(67.5F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a("head", new ese(ese.d.a, new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b), new esg(4.375F, esh.a(0.0F, 0.0F, 0.0F), ese.b.a)))
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.5F, esh.b(-101.8036F, -21.29587F, 30.61478F), ese.b.b),
+            new esg(0.7083F, esh.b(-101.8036F, -21.29587F, 30.61478F), ese.b.b),
+            new esg(1.0F, esh.b(48.7585F, -17.61941F, 9.9865F), ese.b.b),
+            new esg(1.1667F, esh.b(48.7585F, -17.61941F, 9.9865F), ese.b.b),
+            new esg(1.4583F, esh.b(-101.8036F, -21.29587F, 30.61478F), ese.b.b),
+            new esg(1.75F, esh.b(-89.04994F, -4.19657F, -1.47845F), ese.b.b),
+            new esg(2.2083F, esh.b(-158.30728F, 3.7152F, -1.52352F), ese.b.b),
+            new esg(2.5417F, esh.b(-89.04994F, -4.19657F, -1.47845F), ese.b.b),
+            new esg(4.375F, esh.b(-120.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.7083F, esh.a(2.22F, 0.0F, 0.86F), ese.b.b),
+            new esg(1.0F, esh.a(3.12F, 0.0F, 4.29F), ese.b.b),
+            new esg(2.2083F, esh.a(1.0F, 0.0F, 4.0F), ese.b.b),
+            new esg(4.375F, esh.a(0.0F, 0.0F, 4.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.2917F, esh.b(-63.89288F, -0.52011F, 2.09491F), ese.b.b),
+            new esg(0.5F, esh.b(-63.89288F, -0.52011F, 2.09491F), ese.b.b),
+            new esg(0.7083F, esh.b(-62.87857F, 15.15061F, 9.97445F), ese.b.b),
+            new esg(0.9167F, esh.b(-86.93642F, 17.45026F, 4.05284F), ese.b.b),
+            new esg(1.1667F, esh.b(-86.93642F, 17.45026F, 4.05284F), ese.b.b),
+            new esg(1.4583F, esh.b(-86.93642F, 17.45026F, 4.05284F), ese.b.b),
+            new esg(1.6667F, esh.b(63.0984F, 8.83573F, -8.71284F), ese.b.b),
+            new esg(1.8333F, esh.b(35.5984F, 8.83573F, -8.71284F), ese.b.b),
+            new esg(2.2083F, esh.b(-153.27473F, -0.02953F, 3.5235F), ese.b.b),
+            new esg(2.5417F, esh.b(-87.07754F, -0.02625F, 3.132F), ese.b.b),
+            new esg(4.375F, esh.b(-120.0F, 0.0F, 0.0F), ese.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.5F, esh.a(-0.28F, 5.0F, 10.0F), ese.b.b),
+            new esg(0.7083F, esh.a(-1.51F, 4.35F, 4.33F), ese.b.b),
+            new esg(0.9167F, esh.a(-0.6F, 3.61F, 4.63F), ese.b.b),
+            new esg(1.1667F, esh.a(-0.6F, 3.61F, 0.63F), ese.b.b),
+            new esg(1.6667F, esh.a(-2.85F, -0.1F, 3.33F), ese.b.b),
+            new esg(2.2083F, esh.a(-1.0F, 0.0F, 4.0F), ese.b.b),
+            new esg(4.375F, esh.a(0.0F, 0.0F, 4.0F), ese.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.5F, esh.b(113.27F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.7083F, esh.b(113.27F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.3333F, esh.b(113.27F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.5833F, esh.b(182.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.8333F, esh.b(120.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.0833F, esh.b(182.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.2917F, esh.b(120.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.5F, esh.b(90.0F, 0.0F, 0.0F), ese.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.5F, esh.a(0.0F, -13.98F, -2.37F), ese.b.b),
+            new esg(0.7083F, esh.a(0.0F, -13.98F, -2.37F), ese.b.b),
+            new esg(3.3333F, esh.a(0.0F, -13.98F, -2.37F), ese.b.b),
+            new esg(3.5833F, esh.a(0.0F, -7.0F, -3.0F), ese.b.b),
+            new esg(3.8333F, esh.a(0.0F, -9.0F, -3.0F), ese.b.b),
+            new esg(4.0833F, esh.a(0.0F, -16.71F, -3.69F), ese.b.b),
+            new esg(4.2917F, esh.a(0.0F, -28.0F, -5.0F), ese.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.5F, esh.b(114.98F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.7083F, esh.b(114.98F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.3333F, esh.b(114.98F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.5833F, esh.b(90.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.8333F, esh.b(172.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.0833F, esh.b(90.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.2917F, esh.b(197.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.5F, esh.b(90.0F, 0.0F, 0.0F), ese.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.5F, esh.a(0.0F, -14.01F, -2.35F), ese.b.b),
+            new esg(0.7083F, esh.a(0.0F, -14.01F, -2.35F), ese.b.b),
+            new esg(3.3333F, esh.a(0.0F, -14.01F, -2.35F), ese.b.b),
+            new esg(3.5833F, esh.a(0.0F, -5.0F, -4.0F), ese.b.b),
+            new esg(3.8333F, esh.a(0.0F, -7.0F, -4.0F), ese.b.b),
+            new esg(4.0833F, esh.a(0.0F, -15.5F, -3.76F), ese.b.b),
+            new esg(4.2917F, esh.a(0.0F, -28.0F, -5.0F), ese.b.a)
+         )
+      )
+      .b();
+   public static final esf c = esf.a.a(4.2F)
+      .a(
+         "body",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.24F, esh.b(-25.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.6F, esh.b(32.5F, 0.0F, -7.5F), ese.b.b),
+            new esg(1.84F, esh.b(38.33F, 0.0F, 2.99F), ese.b.b),
+            new esg(2.08F, esh.b(40.97F, 0.0F, -4.3F), ese.b.b),
+            new esg(2.36F, esh.b(44.41F, 0.0F, 6.29F), ese.b.b),
+            new esg(3.0F, esh.b(47.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(4.2F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "body",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.24F, esh.a(0.0F, -1.0F, 3.0F), ese.b.b),
+            new esg(1.6F, esh.a(0.0F, -3.0F, -6.0F), ese.b.b),
+            new esg(3.0F, esh.a(0.0F, -3.0F, -6.0F), ese.b.b),
+            new esg(4.2F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "head",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.24F, esh.b(-32.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.6F, esh.b(-32.5F, 0.0F, -27.5F), ese.b.b),
+            new esg(1.8F, esh.b(-32.5F, 0.0F, 26.0F), ese.b.b),
+            new esg(2.04F, esh.b(-32.5F, 0.0F, -27.5F), ese.b.b),
+            new esg(2.44F, esh.b(-32.5F, 0.0F, 26.0F), ese.b.b),
+            new esg(2.84F, esh.b(-5.0F, 0.0F, -12.5F), ese.b.b),
+            new esg(4.2F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "head",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.24F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.6F, esh.a(0.0F, -2.0F, -6.0F), ese.b.b),
+            new esg(2.2F, esh.a(0.0F, -2.0F, -6.0F), ese.b.b),
+            new esg(2.48F, esh.a(0.0F, -2.0F, -6.0F), ese.b.b),
+            new esg(4.2F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.24F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.76F, esh.b(0.0F, 0.0F, -10.85F), ese.b.b),
+            new esg(2.08F, esh.b(0.0F, 0.0F, 12.5F), ese.b.b),
+            new esg(2.4F, esh.b(0.0F, 0.0F, -10.85F), ese.b.b),
+            new esg(2.72F, esh.b(0.0F, 0.0F, 12.5F), ese.b.b),
+            new esg(3.0F, esh.b(0.0F, 0.0F, -10.85F), ese.b.b),
+            new esg(4.2F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.24F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.76F, esh.b(0.0F, 0.0F, -15.85F), ese.b.b),
+            new esg(2.08F, esh.b(0.0F, 0.0F, 12.5F), ese.b.b),
+            new esg(2.4F, esh.b(0.0F, 0.0F, -15.85F), ese.b.b),
+            new esg(2.72F, esh.b(0.0F, 0.0F, 12.5F), ese.b.b),
+            new esg(3.0F, esh.b(0.0F, 0.0F, -15.85F), ese.b.b),
+            new esg(4.2F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.72F, esh.b(-120.0F, 0.0F, -20.0F), ese.b.b),
+            new esg(1.24F, esh.b(-77.5F, 3.75F, 15.0F), ese.b.b),
+            new esg(1.48F, esh.b(67.5F, -32.5F, 20.0F), ese.b.b),
+            new esg(2.48F, esh.b(37.5F, -32.5F, 25.0F), ese.b.b),
+            new esg(2.88F, esh.b(27.6F, -17.1F, 32.5F), ese.b.b),
+            new esg(4.2F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.72F, esh.a(3.0F, -2.0F, 0.0F), ese.b.b),
+            new esg(1.48F, esh.a(4.0F, -2.0F, 0.0F), ese.b.b),
+            new esg(2.48F, esh.a(4.0F, -2.0F, 0.0F), ese.b.b),
+            new esg(4.2F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.72F, esh.b(-125.0F, 0.0F, 20.0F), ese.b.b),
+            new esg(1.24F, esh.b(-76.25F, -17.5F, -7.5F), ese.b.b),
+            new esg(1.48F, esh.b(62.5F, 42.5F, -12.5F), ese.b.b),
+            new esg(2.48F, esh.b(37.5F, 27.5F, -27.5F), ese.b.b),
+            new esg(2.88F, esh.b(25.0F, 18.4F, -30.0F), ese.b.b),
+            new esg(4.2F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.72F, esh.a(-3.0F, -2.0F, 0.0F), ese.b.b),
+            new esg(1.48F, esh.a(-4.0F, -2.0F, 0.0F), ese.b.b),
+            new esg(2.48F, esh.a(-4.0F, -2.0F, 0.0F), ese.b.b),
+            new esg(4.2F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .b();
+   public static final esf d = esf.a.a(4.16F)
+      .a(
+         "body",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.56F, esh.b(17.5F, 32.5F, 0.0F), ese.b.b),
+            new esg(0.96F, esh.b(0.0F, 32.5F, 0.0F), ese.b.b),
+            new esg(2.2F, esh.b(10.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.8F, esh.b(10.0F, -30.0F, 0.0F), ese.b.b),
+            new esg(3.32F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "head",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.68F, esh.b(0.0F, 40.0F, 0.0F), ese.b.b),
+            new esg(0.96F, esh.b(-22.5F, 40.0F, 0.0F), ese.b.b),
+            new esg(1.24F, esh.b(0.0F, 20.0F, 0.0F), ese.b.b),
+            new esg(1.52F, esh.b(-35.0F, 20.0F, 0.0F), ese.b.b),
+            new esg(1.76F, esh.b(0.0F, 20.0F, 0.0F), ese.b.b),
+            new esg(2.28F, esh.b(0.0F, -20.0F, 0.0F), ese.b.b),
+            new esg(2.88F, esh.b(0.0F, -20.0F, 0.0F), ese.b.b),
+            new esg(3.32F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.96F, esh.b(17.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.2F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.76F, esh.b(-15.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.32F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.96F, esh.b(-15.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.2F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.76F, esh.b(17.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.32F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .b();
+   public static final esf e = esf.a.a(0.33333F)
+      .a(
+         "body",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.0417F, esh.b(-22.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.2083F, esh.b(22.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.3333F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "body",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.0417F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.2083F, esh.a(0.0F, -1.0F, -2.0F), ese.b.b),
+            new esg(0.3333F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "head",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.0417F, esh.b(22.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.25F, esh.b(-30.17493F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.3333F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "head",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.0417F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.25F, esh.a(0.0F, -2.0F, -2.0F), ese.b.b),
+            new esg(0.3333F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.0417F, esh.b(-120.36119F, 40.78947F, -20.94102F), ese.b.b),
+            new esg(0.1667F, esh.b(-90.0F, -45.0F, 0.0F), ese.b.b),
+            new esg(0.3333F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.0417F, esh.a(4.0F, 0.0F, 5.0F), ese.b.b),
+            new esg(0.1667F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.3333F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.0417F, esh.b(-120.36119F, -40.78947F, 20.94102F), ese.b.b),
+            new esg(0.1667F, esh.b(-61.1632F, 42.85882F, 11.52421F), ese.b.b),
+            new esg(0.3333F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.0417F, esh.a(-4.0F, 0.0F, 5.0F), ese.b.b),
+            new esg(0.1667F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.3333F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .b();
+   public static final esf f = esf.a.a(3.0F)
+      .a(
+         "body",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.0833F, esh.b(47.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.625F, esh.b(55.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.9167F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.0F, esh.b(-32.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.4583F, esh.b(-32.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.7083F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.875F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "body",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.0833F, esh.a(0.0F, -3.0F, 0.0F), ese.b.b),
+            new esg(1.625F, esh.a(0.0F, -4.0F, -1.0F), ese.b.b),
+            new esg(1.9167F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.7083F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.875F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_ribcage",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.5417F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.7917F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.875F, esh.b(0.0F, 125.0F, 0.0F), ese.b.b),
+            new esg(2.5F, esh.b(0.0F, 125.0F, 0.0F), ese.b.b),
+            new esg(2.6667F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_ribcage",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.5417F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.7917F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.875F, esh.b(0.0F, -125.0F, 0.0F), ese.b.b),
+            new esg(2.5F, esh.b(0.0F, -125.0F, 0.0F), ese.b.b),
+            new esg(2.6667F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "head",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.0F, esh.b(67.5F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.75F, esh.b(80.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.9167F, esh.b(-45.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.5F, esh.b(-45.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.7083F, esh.b(-45.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.875F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "head",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.9167F, esh.a(0.0F, 0.0F, -3.0F), ese.b.b),
+            new esg(2.5F, esh.a(0.0F, 0.0F, -3.0F), ese.b.b),
+            new esg(2.7083F, esh.a(0.0F, 0.0F, -3.0F), ese.b.b),
+            new esg(2.875F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.875F, esh.b(-42.28659F, -32.69813F, -5.00825F), ese.b.b),
+            new esg(1.1667F, esh.b(-29.83757F, -35.39626F, -45.28089F), ese.b.b),
+            new esg(1.3333F, esh.b(-29.83757F, -35.39626F, -45.28089F), ese.b.b),
+            new esg(1.6667F, esh.b(-72.28659F, -32.69813F, -5.00825F), ese.b.b),
+            new esg(1.8333F, esh.b(35.26439F, -30.0F, 35.26439F), ese.b.b),
+            new esg(1.9167F, esh.b(73.75484F, -13.0931F, 19.20518F), ese.b.b),
+            new esg(2.5F, esh.b(73.75484F, -13.0931F, 19.20518F), ese.b.b),
+            new esg(2.75F, esh.b(58.20713F, -21.1064F, 28.7261F), ese.b.b),
+            new esg(3.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.8333F, esh.a(3.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.75F, esh.a(3.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.b,
+            new esg(0.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(0.875F, esh.b(-33.80694F, 32.31058F, 6.87997F), ese.b.b),
+            new esg(1.1667F, esh.b(-17.87827F, 34.62115F, 49.02433F), ese.b.b),
+            new esg(1.3333F, esh.b(-17.87827F, 34.62115F, 49.02433F), ese.b.b),
+            new esg(1.6667F, esh.b(-51.30694F, 32.31058F, 6.87997F), ese.b.b),
+            new esg(1.8333F, esh.b(35.26439F, 30.0F, -35.26439F), ese.b.b),
+            new esg(1.9167F, esh.b(73.75484F, 13.0931F, -19.20518F), ese.b.b),
+            new esg(2.5F, esh.b(73.75484F, 13.0931F, -19.20518F), ese.b.b),
+            new esg(2.75F, esh.b(58.20713F, 21.1064F, -28.7261F), ese.b.b),
+            new esg(3.0F, esh.b(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new ese(
+            ese.d.a,
+            new esg(0.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(1.8333F, esh.a(-3.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(2.75F, esh.a(-3.0F, 0.0F, 0.0F), ese.b.b),
+            new esg(3.0F, esh.a(0.0F, 0.0F, 0.0F), ese.b.b)
+         )
+      )
+      .b();
 }

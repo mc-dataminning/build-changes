@@ -1,45 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+public class ecw {
+   public static final ecw a = new ecw("advancements");
+   public static final ecw b = new ecw("stats");
+   public static final ecw c = new ecw("playerdata");
+   public static final ecw d = new ecw("players");
+   public static final ecw e = new ecw("level.dat");
+   public static final ecw f = new ecw("level.dat_old");
+   public static final ecw g = new ecw("icon.png");
+   public static final ecw h = new ecw("session.lock");
+   public static final ecw i = new ecw("generated");
+   public static final ecw j = new ecw("datapacks");
+   public static final ecw k = new ecw("resources.zip");
+   public static final ecw l = new ecw(".");
+   private final String m;
 
-public abstract class ecw extends edd {
-   protected final List<edd> d;
-   private final ecv a;
+   private ecw(String $$0) {
+      this.m = $$0;
+   }
 
-   protected ecw(List<edd> $$0, List<efj> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+   public String a() {
+      return this.m;
    }
 
    @Override
-   public void a(ect $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.a("Empty children list");
-      }
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.b(".entry[" + $$1 + "]"));
-      }
-   }
-
-   protected abstract ecv a(List<? extends ecv> var1);
-
-   @Override
-   public final boolean expand(eck $$0, Consumer<edc> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
-   }
-
-   public static <T extends ecw> Codec<T> a(ecw.a<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(arj.a(edb.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
-
-   @FunctionalInterface
-   public interface a<T extends ecw> {
-      T create(List<edd> var1, List<efj> var2);
+   public String toString() {
+      return "/" + this.m;
    }
 }

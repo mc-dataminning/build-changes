@@ -1,27 +1,39 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public class ayl extends axo {
-   public ayl(Schema $$0) {
-      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
+public abstract class ayl extends DataFix {
+   private final String a;
+   private final Predicate<String> b;
+
+   public ayl(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
-      if ($$1.isPresent()) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
-         Optional<String> $$3 = $$2.get("Name").asString().result();
-         if ($$3.isPresent()) {
-            String $$4 = $$3.get();
-            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
-            $$2 = $$2.set("Name", $$2.createString($$4));
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(baa.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(baa.z.typeName(), bbi.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            return $$3.isPresent() && this.b.test((String)$$3.get().getSecond())
+               ? $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
+               : $$2x;
          }
-
-         return $$0.set("display", $$2);
-      } else {
-         return $$0;
-      }
+      );
    }
+
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

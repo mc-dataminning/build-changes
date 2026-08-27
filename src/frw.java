@@ -1,41 +1,62 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class frw implements frj.a {
-   private static final int a = 60;
-   private final Set<hw> b = Sets.newHashSet();
+public class frw implements cqc {
+   private final int c;
+   private final int d;
+   protected final frv[][] a;
+   protected final cqz b;
 
-   frw() {
+   frw(cqz $$0, int $$1, int $$2, frv[][] $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.a = $$3;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   public void a(hw $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(hw $$0) {
-      this.b.remove($$0);
+   public dgb a_(ht $$0) {
+      int $$1 = iu.a($$0.u()) - this.c;
+      int $$2 = iu.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0);
    }
 
    @Override
-   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
-      gw $$5 = gw.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.q(), 60.0)) {
-            a($$0, $$1, $$3x);
-         }
-      });
+   public ebe b_(ht $$0) {
+      int $$1 = iu.a($$0.u()) - this.c;
+      int $$2 = iu.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0).u();
    }
 
-   private static void a(elj $$0, foa $$1, hw $$2) {
-      int $$3 = 1;
-      gw $$4 = $$2.q();
-      gw $$5 = $$4.b(-1, -1, -1);
-      gw $$6 = $$4.b(1, 1, 1);
-      frj.a($$0, $$1, $$5, $$6, 0.2F, 1.0F, 0.2F, 0.15F);
+   @Override
+   public float a(hx $$0, boolean $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public eat y_() {
+      return this.b.y_();
+   }
+
+   @Nullable
+   @Override
+   public ddx c_(ht $$0) {
+      int $$1 = iu.a($$0.u()) - this.c;
+      int $$2 = iu.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].a($$0);
+   }
+
+   @Override
+   public int a(ht $$0, cqk $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public int I_() {
+      return this.b.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.b.J_();
    }
 }

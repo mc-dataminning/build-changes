@@ -1,472 +1,249 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.Collections;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.ThreadPoolExecutor;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fbf extends etg<fbf.a> {
-   static final aez a = new aez("server_list/incompatible");
-   static final aez m = new aez("server_list/unreachable");
-   static final aez n = new aez("server_list/ping_1");
-   static final aez o = new aez("server_list/ping_2");
-   static final aez p = new aez("server_list/ping_3");
-   static final aez q = new aez("server_list/ping_4");
-   static final aez s = new aez("server_list/ping_5");
-   static final aez t = new aez("server_list/pinging_1");
-   static final aez u = new aez("server_list/pinging_2");
-   static final aez v = new aez("server_list/pinging_3");
-   static final aez w = new aez("server_list/pinging_4");
-   static final aez x = new aez("server_list/pinging_5");
-   static final aez y = new aez("server_list/join_highlighted");
-   static final aez z = new aez("server_list/join");
-   static final aez A = new aez("server_list/move_up_highlighted");
-   static final aez B = new aez("server_list/move_up");
-   static final aez C = new aez("server_list/move_down_highlighted");
-   static final aez D = new aez("server_list/move_down");
-   static final Logger E = LogUtils.getLogger();
-   static final ThreadPoolExecutor F = new ScheduledThreadPoolExecutor(
-      5, new ThreadFactoryBuilder().setNameFormat("Server Pinger #%d").setDaemon(true).setUncaughtExceptionHandler(new r(E)).build()
-   );
-   private static final aez G = new aez("textures/misc/unknown_server.png");
-   static final tl H = tl.c("lanServer.scanning");
-   static final tl I = tl.c("multiplayer.status.cannot_resolve").a($$0 -> $$0.a(-65536));
-   static final tl J = tl.c("multiplayer.status.cannot_connect").a($$0 -> $$0.a(-65536));
-   static final tl K = tl.c("multiplayer.status.incompatible");
-   static final tl L = tl.c("multiplayer.status.no_connection");
-   static final tl M = tl.c("multiplayer.status.pinging");
-   static final tl N = tl.c("multiplayer.status.online");
-   private final fbb O;
-   private final List<fbf.d> P = Lists.newArrayList();
-   private final fbf.a Q = new fbf.b();
-   private final List<fbf.c> R = Lists.newArrayList();
+public class fbf extends fac<cgs> {
+   private static final afw x = new afw("container/loom/banner_slot");
+   private static final afw y = new afw("container/loom/dye_slot");
+   private static final afw z = new afw("container/loom/pattern_slot");
+   private static final afw A = new afw("container/loom/scroller");
+   private static final afw B = new afw("container/loom/scroller_disabled");
+   private static final afw C = new afw("container/loom/pattern_selected");
+   private static final afw D = new afw("container/loom/pattern_highlighted");
+   private static final afw E = new afw("container/loom/pattern");
+   private static final afw F = new afw("container/loom/error");
+   private static final afw G = new afw("textures/gui/container/loom.png");
+   private static final int H = 4;
+   private static final int I = 4;
+   private static final int J = 12;
+   private static final int K = 15;
+   private static final int L = 14;
+   private static final int M = 56;
+   private static final int N = 60;
+   private static final int O = 13;
+   private fiw P;
+   @Nullable
+   private List<Pair<ib<ddo>, cix>> Q;
+   private ckj R = ckj.b;
+   private ckj S = ckj.b;
+   private ckj T = ckj.b;
+   private boolean U;
+   private boolean V;
+   private float W;
+   private boolean X;
+   private int Y;
 
-   public fbf(fbb $$0, eqp $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$1, $$2, $$3, $$4, $$5, $$6);
-      this.O = $$0;
-   }
-
-   private void e() {
-      this.j();
-      this.P.forEach($$1 -> this.b($$1));
-      this.b(this.Q);
-      this.R.forEach($$1 -> this.b($$1));
-   }
-
-   public void a(@Nullable fbf.a $$0) {
-      super.a($$0);
-      this.O.D();
+   public fbf(cgs $$0, ccw $$1, ui $$2) {
+      super($$0, $$1, $$2);
+      $$0.a(this::F);
+      this.m -= 2;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      fbf.a $$3 = this.f();
-      return $$3 != null && $$3.a($$0, $$1, $$2) || super.a($$0, $$1, $$2);
+   protected void aM_() {
+      super.aM_();
+      this.P = this.f.aP().a(fiv.f).b("flag");
    }
 
-   public void a(fje $$0) {
-      this.P.clear();
-
-      for (int $$1 = 0; $$1 < $$0.c(); $$1++) {
-         this.P.add(new fbf.d(this.O, $$0.a($$1)));
-      }
-
-      this.e();
+   @Override
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   public void a(List<gda> $$0) {
-      int $$1 = $$0.size() - this.R.size();
-      this.R.clear();
+   private int E() {
+      return asy.e(this.p.l().size(), 4);
+   }
 
-      for (gda $$2 : $$0) {
-         this.R.add(new fbf.c(this.O, $$2));
+   @Override
+   protected void a(esy $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(G, $$4, $$5, 0, 0, this.c, this.k);
+      chh $$6 = this.p.n();
+      chh $$7 = this.p.o();
+      chh $$8 = this.p.p();
+      chh $$9 = this.p.q();
+      if (!$$6.f()) {
+         $$0.a(x, $$4 + $$6.f, $$5 + $$6.g, 16, 16);
       }
 
-      this.e();
+      if (!$$7.f()) {
+         $$0.a(y, $$4 + $$7.f, $$5 + $$7.g, 16, 16);
+      }
 
-      for (int $$3 = this.R.size() - $$1; $$3 < this.R.size(); $$3++) {
-         fbf.c $$4 = this.R.get($$3);
-         int $$5 = $$3 - this.R.size() + this.i().size();
-         int $$6 = this.h($$5);
-         int $$7 = this.i($$5);
-         if ($$7 >= this.g && $$6 <= this.h) {
-            this.c.aV().b(tl.a("multiplayer.lan.server_found", $$4.d()));
+      if (!$$8.f()) {
+         $$0.a(z, $$4 + $$8.f, $$5 + $$8.g, 16, 16);
+      }
+
+      int $$10 = (int)(41.0F * this.W);
+      afw $$11 = this.U ? A : B;
+      $$0.a($$11, $$4 + 119, $$5 + 13 + $$10, 12, 15);
+      eld.a();
+      if (this.Q != null && !this.V) {
+         $$0.c().a();
+         $$0.c().a((float)($$4 + 139), (float)($$5 + 52), 0.0F);
+         $$0.c().b(24.0F, -24.0F, 1.0F);
+         $$0.c().a(0.5F, 0.5F, 0.5F);
+         float $$12 = 0.6666667F;
+         $$0.c().b(0.6666667F, -0.6666667F, -0.6666667F);
+         this.P.e = 0.0F;
+         this.P.c = -32.0F;
+         fqv.a($$0.c(), $$0.d(), 15728880, fzr.d, this.P, gcg.f, true, this.Q);
+         $$0.c().b();
+         $$0.e();
+      } else if (this.V) {
+         $$0.a(F, $$4 + $$9.f - 5, $$5 + $$9.g - 5, 26, 26);
+      }
+
+      if (this.U) {
+         int $$13 = $$4 + 60;
+         int $$14 = $$5 + 13;
+         List<ib<ddo>> $$15 = this.p.l();
+
+         label64:
+         for (int $$16 = 0; $$16 < 4; $$16++) {
+            for (int $$17 = 0; $$17 < 4; $$17++) {
+               int $$18 = $$16 + this.Y;
+               int $$19 = $$18 * 4 + $$17;
+               if ($$19 >= $$15.size()) {
+                  break label64;
+               }
+
+               int $$20 = $$13 + $$17 * 14;
+               int $$21 = $$14 + $$16 * 14;
+               boolean $$22 = $$2 >= $$20 && $$3 >= $$21 && $$2 < $$20 + 14 && $$3 < $$21 + 14;
+               afw $$23;
+               if ($$19 == this.p.m()) {
+                  $$23 = C;
+               } else if ($$22) {
+                  $$23 = D;
+               } else {
+                  $$23 = E;
+               }
+
+               $$0.a($$23, $$20, $$21, 14, 14);
+               this.a($$0, $$15.get($$19), $$20, $$21);
+            }
          }
+      }
+
+      eld.b();
+   }
+
+   private void a(esy $$0, ib<ddo> $$1, int $$2, int $$3) {
+      rt $$4 = new rt();
+      rz $$5 = new ddo.a().a(ddp.a, cix.h).a($$1, cix.a).a();
+      $$4.a("Patterns", $$5);
+      ckj $$6 = new ckj(ckm.uc);
+      cic.a($$6, ddz.t, $$4);
+      emh $$7 = new emh();
+      $$7.a();
+      $$7.a((float)$$2 + 0.5F, (float)($$3 + 16), 0.0F);
+      $$7.b(6.0F, -6.0F, 1.0F);
+      $$7.a(0.5F, 0.5F, 0.0F);
+      $$7.a(0.5F, 0.5F, 0.5F);
+      float $$8 = 0.6666667F;
+      $$7.b(0.6666667F, -0.6666667F, -0.6666667F);
+      this.P.e = 0.0F;
+      this.P.c = -32.0F;
+      List<Pair<ib<ddo>, cix>> $$9 = ddn.a(cix.h, ddn.a($$6));
+      fqv.a($$7, $$0.d(), 15728880, fzr.d, this.P, gcg.f, true, $$9);
+      $$7.b();
+      $$0.e();
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      this.X = false;
+      if (this.U) {
+         int $$3 = this.t + 60;
+         int $$4 = this.u + 13;
+
+         for (int $$5 = 0; $$5 < 4; $$5++) {
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               double $$7 = $$0 - (double)($$3 + $$6 * 14);
+               double $$8 = $$1 - (double)($$4 + $$5 * 14);
+               int $$9 = $$5 + this.Y;
+               int $$10 = $$9 * 4 + $$6;
+               if ($$7 >= 0.0 && $$8 >= 0.0 && $$7 < 14.0 && $$8 < 14.0 && this.p.b(this.f.s, $$10)) {
+                  ero.O().ai().a(gdd.a(aqd.yx, 1.0F));
+                  this.f.q.a(this.p.j, $$10);
+                  return true;
+               }
+            }
+         }
+
+         $$3 = this.t + 119;
+         $$4 = this.u + 9;
+         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 56)) {
+            this.X = true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      int $$5 = this.E() - 4;
+      if (this.X && this.U && $$5 > 0) {
+         int $$6 = this.u + 13;
+         int $$7 = $$6 + 56;
+         this.W = ((float)$$1 - (float)$$6 - 7.5F) / ((float)($$7 - $$6) - 15.0F);
+         this.W = asy.a(this.W, 0.0F, 1.0F);
+         this.Y = Math.max((int)((double)(this.W * (float)$$5) + 0.5), 0);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected int c() {
-      return super.c() + 30;
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      int $$4 = this.E() - 4;
+      if (this.U && $$4 > 0) {
+         float $$5 = (float)$$3 / (float)$$4;
+         this.W = asy.a(this.W - $$5, 0.0F, 1.0F);
+         this.Y = Math.max((int)(this.W * (float)$$4 + 0.5F), 0);
+      }
+
+      return true;
    }
 
    @Override
-   public int b() {
-      return super.b() + 85;
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      return $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
    }
 
-   public void d() {
-   }
-
-   public abstract static class a extends etg.a<fbf.a> implements AutoCloseable {
-      @Override
-      public void close() {
-      }
-   }
-
-   public static class b extends fbf.a {
-      private final eqp a = eqp.O();
-
-      @Override
-      public void a(erz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.a(this.a.h, fbf.H, this.a.y.g / 2 - this.a.h.a(fbf.H) / 2, $$10, 16777215, false);
-         String $$11 = exq.a(ac.b());
-         $$0.a(this.a.h, $$11, this.a.y.g / 2 - this.a.h.b($$11) / 2, $$10 + 9, -8355712, false);
+   private void F() {
+      ckj $$0 = this.p.q().e();
+      if ($$0.b()) {
+         this.Q = null;
+      } else {
+         this.Q = ddn.a(((chz)$$0.d()).b(), ddn.a($$0));
       }
 
-      @Override
-      public tl a() {
-         return fbf.H;
-      }
-   }
-
-   public static class c extends fbf.a {
-      private static final int c = 32;
-      private static final tl d = tl.c("lanServer.title");
-      private static final tl e = tl.c("selectServer.hiddenAddress");
-      private final fbb f;
-      protected final eqp a;
-      protected final gda b;
-      private long g;
-
-      protected c(fbb $$0, gda $$1) {
-         this.f = $$0;
-         this.b = $$1;
-         this.a = eqp.O();
+      ckj $$1 = this.p.n().e();
+      ckj $$2 = this.p.o().e();
+      ckj $$3 = this.p.p().e();
+      rt $$4 = cic.a($$1);
+      this.V = $$4 != null && $$4.b("Patterns", 9) && !$$1.b() && $$4.c("Patterns", 10).size() >= 6;
+      if (this.V) {
+         this.Q = null;
       }
 
-      @Override
-      public void a(erz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(this.a.h, d, $$3 + 32 + 3, $$2 + 1, 16777215, false);
-         $$0.a(this.a.h, this.b.a(), $$3 + 32 + 3, $$2 + 12, -8355712, false);
-         if (this.a.m.l) {
-            $$0.a(this.a.h, e, $$3 + 32 + 3, $$2 + 12 + 11, 3158064, false);
-         } else {
-            $$0.a(this.a.h, this.b.b(), $$3 + 32 + 3, $$2 + 12 + 11, 3158064, false);
-         }
+      if (!ckj.a($$1, this.R) || !ckj.a($$2, this.S) || !ckj.a($$3, this.T)) {
+         this.U = !$$1.b() && !$$2.b() && !this.V && !this.p.l().isEmpty();
       }
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         this.f.a(this);
-         if (ac.b() - this.g < 250L) {
-            this.f.l();
-         }
-
-         this.g = ac.b();
-         return false;
+      if (this.Y >= this.E()) {
+         this.Y = 0;
+         this.W = 0.0F;
       }
 
-      public gda b() {
-         return this.b;
-      }
-
-      @Override
-      public tl a() {
-         return tl.a("narrator.select", this.d());
-      }
-
-      public tl d() {
-         return tl.i().b(d).b(tk.u).f(this.b.a());
-      }
-   }
-
-   public class d extends fbf.a {
-      private static final int b = 32;
-      private static final int c = 32;
-      private static final int d = 32;
-      private final fbb e;
-      private final eqp f;
-      private final fjd g;
-      private final exk h;
-      @Nullable
-      private byte[] i;
-      private long j;
-
-      protected d(fbb $$1, fjd $$2) {
-         this.e = $$1;
-         this.g = $$2;
-         this.f = eqp.O();
-         this.h = exk.b(this.f.Y(), $$2.b);
-      }
-
-      @Override
-      public void a(erz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         if (!this.g.i) {
-            this.g.i = true;
-            this.g.f = -2L;
-            this.g.d = tk.a;
-            this.g.c = tk.a;
-            fbf.F.submit(() -> {
-               try {
-                  this.e.E().a(this.g, () -> this.f.execute(this::b));
-               } catch (UnknownHostException var2x) {
-                  this.g.f = -1L;
-                  this.g.d = fbf.I;
-               } catch (Exception var3x) {
-                  this.g.f = -1L;
-                  this.g.d = fbf.J;
-               }
-            });
-         }
-
-         boolean $$10 = !this.f();
-         $$0.a(this.f.h, this.g.a, $$3 + 32 + 3, $$2 + 1, 16777215, false);
-         List<arn> $$11 = this.f.h.c(this.g.d, $$4 - 32 - 2);
-
-         for (int $$12 = 0; $$12 < Math.min($$11.size(), 2); $$12++) {
-            $$0.a(this.f.h, $$11.get($$12), $$3 + 32 + 3, $$2 + 12 + 9 * $$12, -8355712, false);
-         }
-
-         tl $$13 = (tl)($$10 ? this.g.h.f().a(n.m) : this.g.c);
-         int $$14 = this.f.h.a($$13);
-         $$0.a(this.f.h, $$13, $$3 + $$4 - $$14 - 15 - 2, $$2 + 1, -8355712, false);
-         aez $$15;
-         List<tl> $$17;
-         tl $$16;
-         if ($$10) {
-            $$15 = fbf.a;
-            $$16 = fbf.K;
-            $$17 = this.g.j;
-         } else if (this.e()) {
-            if (this.g.f < 0L) {
-               $$15 = fbf.m;
-            } else if (this.g.f < 150L) {
-               $$15 = fbf.s;
-            } else if (this.g.f < 300L) {
-               $$15 = fbf.q;
-            } else if (this.g.f < 600L) {
-               $$15 = fbf.p;
-            } else if (this.g.f < 1000L) {
-               $$15 = fbf.o;
-            } else {
-               $$15 = fbf.n;
-            }
-
-            if (this.g.f < 0L) {
-               $$16 = fbf.L;
-               $$17 = Collections.emptyList();
-            } else {
-               $$16 = tl.a("multiplayer.status.ping", this.g.f);
-               $$17 = this.g.j;
-            }
-         } else {
-            int $$28 = (int)(ac.b() / 100L + (long)($$1 * 2) & 7L);
-            if ($$28 > 4) {
-               $$28 = 8 - $$28;
-            }
-            $$15 = switch ($$28) {
-               case 1 -> fbf.u;
-               case 2 -> fbf.v;
-               case 3 -> fbf.w;
-               case 4 -> fbf.x;
-               default -> fbf.t;
-            };
-            $$16 = fbf.M;
-            $$17 = Collections.emptyList();
-         }
-
-         $$0.a($$15, $$3 + $$4 - 15, $$2, 10, 8);
-         byte[] $$32 = this.g.c();
-         if (!Arrays.equals($$32, this.i)) {
-            if (this.a($$32)) {
-               this.i = $$32;
-            } else {
-               this.g.a(null);
-               this.b();
-            }
-         }
-
-         this.a($$0, $$3, $$2, this.h.b());
-         int $$33 = $$6 - $$3;
-         int $$34 = $$7 - $$2;
-         if ($$33 >= $$4 - 15 && $$33 <= $$4 - 5 && $$34 >= 0 && $$34 <= 8) {
-            this.e.c(Collections.singletonList($$16));
-         } else if ($$33 >= $$4 - $$14 - 15 - 2 && $$33 <= $$4 - 15 - 2 && $$34 >= 0 && $$34 <= 8) {
-            this.e.c($$17);
-         }
-
-         if (this.f.m.V().c() || $$8) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$35 = $$6 - $$3;
-            int $$36 = $$7 - $$2;
-            if (this.g()) {
-               if ($$35 < 32 && $$35 > 16) {
-                  $$0.a(fbf.y, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(fbf.z, $$3, $$2, 32, 32);
-               }
-            }
-
-            if ($$1 > 0) {
-               if ($$35 < 16 && $$36 < 16) {
-                  $$0.a(fbf.A, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(fbf.B, $$3, $$2, 32, 32);
-               }
-            }
-
-            if ($$1 < this.e.F().c() - 1) {
-               if ($$35 < 16 && $$36 > 16) {
-                  $$0.a(fbf.C, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(fbf.D, $$3, $$2, 32, 32);
-               }
-            }
-         }
-      }
-
-      private boolean e() {
-         return this.g.i && this.g.f != -2L;
-      }
-
-      private boolean f() {
-         return this.g.g == aa.b().e();
-      }
-
-      public void b() {
-         this.e.F().b();
-      }
-
-      protected void a(erz $$0, int $$1, int $$2, aez $$3) {
-         RenderSystem.enableBlend();
-         $$0.a($$3, $$1, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         RenderSystem.disableBlend();
-      }
-
-      private boolean g() {
-         return true;
-      }
-
-      private boolean a(@Nullable byte[] $$0) {
-         if ($$0 == null) {
-            this.h.a();
-         } else {
-            try {
-               this.h.a(ekk.a($$0));
-            } catch (Throwable var3) {
-               fbf.E.error("Invalid icon for server {} ({})", new Object[]{this.g.a, this.g.b, var3});
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (eye.q()) {
-            fbf $$3 = this.e.l;
-            int $$4 = $$3.i().indexOf(this);
-            if ($$4 == -1) {
-               return true;
-            }
-
-            if ($$0 == 264 && $$4 < this.e.F().c() - 1 || $$0 == 265 && $$4 > 0) {
-               this.a($$4, $$0 == 264 ? $$4 + 1 : $$4 - 1);
-               return true;
-            }
-         }
-
-         return super.a($$0, $$1, $$2);
-      }
-
-      private void a(int $$0, int $$1) {
-         this.e.F().a($$0, $$1);
-         this.e.l.a(this.e.F());
-         fbf.a $$2 = this.e.l.i().get($$1);
-         this.e.l.a($$2);
-         fbf.this.f($$2);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)fbf.this.o();
-         double $$4 = $$1 - (double)fbf.this.h(fbf.this.i().indexOf(this));
-         if ($$3 <= 32.0) {
-            if ($$3 < 32.0 && $$3 > 16.0 && this.g()) {
-               this.e.a(this);
-               this.e.l();
-               return true;
-            }
-
-            int $$5 = this.e.l.i().indexOf(this);
-            if ($$3 < 16.0 && $$4 < 16.0 && $$5 > 0) {
-               this.a($$5, $$5 - 1);
-               return true;
-            }
-
-            if ($$3 < 16.0 && $$4 > 16.0 && $$5 < this.e.F().c() - 1) {
-               this.a($$5, $$5 + 1);
-               return true;
-            }
-         }
-
-         this.e.a(this);
-         if (ac.b() - this.j < 250L) {
-            this.e.l();
-         }
-
-         this.j = ac.b();
-         return true;
-      }
-
-      public fjd d() {
-         return this.g;
-      }
-
-      @Override
-      public tl a() {
-         tz $$0 = tl.i();
-         $$0.b(tl.a("narrator.select", this.g.a));
-         $$0.b(tk.s);
-         if (!this.f()) {
-            $$0.b(fbf.K);
-            $$0.b(tk.s);
-            $$0.b(tl.a("multiplayer.status.version.narration", this.g.h));
-            $$0.b(tk.s);
-            $$0.b(tl.a("multiplayer.status.motd.narration", this.g.d));
-         } else if (this.g.f < 0L) {
-            $$0.b(fbf.L);
-         } else if (!this.e()) {
-            $$0.b(fbf.M);
-         } else {
-            $$0.b(fbf.N);
-            $$0.b(tk.s);
-            $$0.b(tl.a("multiplayer.status.ping.narration", this.g.f));
-            $$0.b(tk.s);
-            $$0.b(tl.a("multiplayer.status.motd.narration", this.g.d));
-            if (this.g.e != null) {
-               $$0.b(tk.s);
-               $$0.b(tl.a("multiplayer.status.player_count.narration", this.g.e.b(), this.g.e.a()));
-               $$0.b(tk.s);
-               $$0.b(to.a(this.g.j, tl.b(", ")));
-            }
-         }
-
-         return $$0;
-      }
-
-      @Override
-      public void close() {
-         this.h.close();
-      }
+      this.R = $$1.p();
+      this.S = $$2.p();
+      this.T = $$3.p();
    }
 }

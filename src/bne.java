@@ -1,23 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bne {
-   public static ble<bjm> a(bja<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return bop.a(
-         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$2x -> $$2x.group($$2x.a(bsn.n), $$2x.c(bsn.q), $$2x.b(bsn.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bjm> $$9 = $$2x.<bsp>b($$5).a($$3xx -> $$3xx.f((biw)$$7) <= (double)$$2 && $$0.equals($$3xx.ag()));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else {
-                        bjm $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new blo($$10, true));
-                        return true;
-                     }
-                  }))
-      );
+public class bne extends bma<cck> {
+   private final float c;
+
+   public bne(float $$0) {
+      super(ImmutableMap.of(btk.m, btl.c, btk.n, btl.c), Integer.MAX_VALUE);
+      this.c = $$0;
+   }
+
+   protected boolean a(alq $$0, cck $$1) {
+      ccx $$2 = $$1.ge();
+      return $$1.bv() && $$2 != null && !$$1.aX() && !$$1.T && $$1.f($$2) <= 16.0 && $$2.bS != null;
+   }
+
+   protected boolean a(alq $$0, cck $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(alq $$0, cck $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(alq $$0, cck $$1, long $$2) {
+      blj<?> $$3 = $$1.dN();
+      $$3.b(btk.m);
+      $$3.b(btk.n);
+   }
+
+   protected void d(alq $$0, cck $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cck $$0) {
+      blj<?> $$1 = $$0.dN();
+      $$1.a(btk.m, new btn(new bml($$0.ge(), false), this.c, 2));
+      $$1.a(btk.n, new bml($$0.ge(), true));
    }
 }

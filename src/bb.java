@@ -6,7 +6,7 @@ public class bb extends cw<bb.a> {
       return new bb.a($$1, cb.a($$0.get("item")));
    }
 
-   public void a(aku $$0, cjl $$1) {
+   public void a(alr $$0, ckj $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -22,7 +22,7 @@ public class bb extends cw<bb.a> {
          return al.z.a(new bb.a(Optional.empty(), Optional.empty()));
       }
 
-      public static am<bb.a> a(cqa $$0) {
+      public static am<bb.a> a(cqy $$0) {
          return a(cb.a.a().a($$0.k()));
       }
 
@@ -30,7 +30,7 @@ public class bb extends cw<bb.a> {
          return al.z.a(new bb.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cjl $$0) {
+      public boolean a(ckj $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

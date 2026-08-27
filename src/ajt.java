@@ -1,92 +1,116 @@
-import com.google.common.collect.Streams;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadInfo;
-import java.lang.management.ThreadMXBean;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import com.google.common.collect.Sets;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Set;
 
-public class ajt implements Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final long b = 10000L;
-   private static final int c = 1;
-   private final ajq d;
-   private final long e;
+public class ajt {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.c("commands.tag.remove.failed"));
 
-   public ajt(ajq $$0) {
-      this.d = $$0;
-      this.e = $$0.bj();
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tag").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("targets", eg.b())
+                        .then(
+                           dv.a("add")
+                              .then(
+                                 dv.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        dv.a("remove")
+                           .then(
+                              dv.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> dy.b(a(eg.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((du)$$0x.getSource(), eg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(dv.a("list").executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"))))
+            )
+      );
    }
 
-   @Override
-   public void run() {
-      while (this.d.v()) {
-         long $$0 = this.d.ax();
-         long $$1 = ac.b();
-         long $$2 = $$1 - $$0;
-         if ($$2 > this.e) {
-            a.error(
-               LogUtils.FATAL_MARKER,
-               "A single server tick took {} seconds (should be max {})",
-               String.format(Locale.ROOT, "%.2f", (float)$$2 / 1000.0F),
-               String.format(Locale.ROOT, "%.2f", 0.05F)
-            );
-            a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
-            ThreadMXBean $$3 = ManagementFactory.getThreadMXBean();
-            ThreadInfo[] $$4 = $$3.dumpAllThreads(true, true);
-            StringBuilder $$5 = new StringBuilder();
-            Error $$6 = new Error("Watchdog");
+   private static Collection<String> a(Collection<? extends bjt> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
 
-            for (ThreadInfo $$7 : $$4) {
-               if ($$7.getThreadId() == this.d.au().getId()) {
-                  $$6.setStackTrace($$7.getStackTrace());
-               }
+      for (bjt $$2 : $$0) {
+         $$1.addAll($$2.ai());
+      }
 
-               $$5.append($$7);
-               $$5.append("\n");
-            }
+      return $$1;
+   }
 
-            o $$8 = new o("Watching Server", $$6);
-            this.d.b($$8.g());
-            p $$9 = $$8.a("Thread Dump");
-            $$9.a("Threads", $$5);
-            p $$10 = $$8.a("Performance stats");
-            $$10.a("Random tick rate", () -> this.d.aT().q().a(cpx.n).toString());
-            $$10.a("Level stats", () -> Streams.stream(this.d.F()).map($$0x -> $$0x.ac() + ": " + $$0x.D()).collect(Collectors.joining(",\n")));
-            afb.a("Crash report:\n" + $$8.e());
-            File $$11 = new File(new File(this.d.z(), "crash-reports"), "crash-" + ac.e() + "-server.txt");
-            if ($$8.a($$11)) {
-               a.error("This crash report has been saved to: {}", $$11.getAbsolutePath());
-            } else {
-               a.error("We were unable to save this crash report to disk.");
-            }
+   private static int a(du $$0, Collection<? extends bjt> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-            this.a();
+      for (bjt $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> ui.a("commands.tag.add.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> ui.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
          }
 
-         try {
-            Thread.sleep($$0 + this.e - $$1);
-         } catch (InterruptedException var15) {
-         }
+         return $$3;
       }
    }
 
-   private void a() {
-      try {
-         Timer $$0 = new Timer();
-         $$0.schedule(new TimerTask() {
-            @Override
-            public void run() {
-               Runtime.getRuntime().halt(1);
-            }
-         }, 10000L);
-         System.exit(1);
-      } catch (Throwable var2) {
-         Runtime.getRuntime().halt(1);
+   private static int b(du $$0, Collection<? extends bjt> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bjt $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
       }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> ui.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> ui.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int a(du $$0, Collection<? extends bjt> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (bjt $$3 : $$1) {
+         $$2.addAll($$3.ai());
+      }
+
+      if ($$1.size() == 1) {
+         bjt $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> ui.a("commands.tag.list.single.empty", $$4.O_()), false);
+         } else {
+            $$0.a(() -> ui.a("commands.tag.list.single.success", $$4.O_(), $$2.size(), ul.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> ui.a("commands.tag.list.multiple.empty", $$1.size()), false);
+      } else {
+         $$0.a(() -> ui.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), ul.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 }

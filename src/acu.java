@@ -1,48 +1,40 @@
-public class acu implements ve<abd> {
-   private static final int a = 384;
-   private final gw b;
-   private final String[] c;
-   private final boolean d;
+public class acu implements wb<aca> {
+   private final ht a;
+   private final int b;
+   private final boolean c;
 
-   public acu(gw $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = new String[]{$$2, $$3, $$4, $$5};
+   public acu(ht $$0, int $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public acu(so $$0) {
-      this.b = $$0.e();
-      this.d = $$0.readBoolean();
-      this.c = new String[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.c[$$1] = $$0.d(384);
-      }
+   public acu(tl $$0) {
+      this.a = $$0.e();
+      this.b = $$0.n();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.b);
-      $$0.a(this.d);
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         $$0.a(this.c[$$1]);
-      }
+   public void a(tl $$0) {
+      $$0.a(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(abd $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public gw a() {
+   public ht a() {
+      return this.a;
+   }
+
+   public int d() {
       return this.b;
    }
 
-   public boolean d() {
-      return this.d;
-   }
-
-   public String[] e() {
+   public boolean e() {
       return this.c;
    }
 }

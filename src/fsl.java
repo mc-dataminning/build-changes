@@ -1,32 +1,61 @@
-public class fsl extends fuj<bva, fej<bva>> {
-   public fsl(ftd.a $$0) {
-      super($$0, new fej<>($$0.a(fhw.n)), 0.4F);
-      this.a(new fwn(this, $$0.f()));
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class fsl implements fsj.a {
+   private static final float a = 0.02F;
+   private final Map<ht, fsl.a> b = Maps.newHashMap();
+
+   public void a(ht $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new fsl.a($$1, $$2, ac.b() + (long)$$3));
    }
 
-   public aez a(bva $$0) {
-      return $$0.gk();
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   protected void a(bva $$0, elj $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b(0.8F, 0.8F, 0.8F);
+   @Override
+   public void a(emh $$0, fpb $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ac.b();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((fsl.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
    }
 
-   protected void a(bva $$0, elj $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = $$0.E($$4);
-      if ($$5 > 0.0F) {
-         $$1.a(0.4F * $$5, 0.15F * $$5, 0.1F * $$5);
-         $$1.a(a.f.rotationDegrees(asb.j($$5, 0.0F, 90.0F)));
-         gw $$6 = $$0.dl();
+   private void a(emh $$0, fpb $$1, ht $$2, fsl.a $$3) {
+      fsj.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         fsj.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+      }
+   }
 
-         for (cca $$8 : $$0.dL().a(cca.class, new ehc($$6).c(2.0, 2.0, 2.0))) {
-            if ($$8.fD()) {
-               $$1.a(0.15F * $$5, 0.0F, 0.0F);
-               break;
-            }
-         }
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
       }
    }
 }

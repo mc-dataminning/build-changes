@@ -1,54 +1,111 @@
-public class ewr extends eyg {
-   private static eqs<?>[] a(eqt $$0) {
-      return new eqs[]{
-         $$0.ao(),
-         $$0.S(),
-         $$0.q(),
-         $$0.E(),
-         $$0.o(),
-         $$0.U(),
-         $$0.m(),
-         $$0.n(),
-         $$0.x(),
-         $$0.y(),
-         $$0.Y(),
-         $$0.Z(),
-         $$0.af(),
-         $$0.ag(),
-         $$0.ah(),
-         $$0.ak(),
-         $$0.ai(),
-         $$0.aj(),
-         $$0.b(),
-         $$0.a(),
-         $$0.p(),
-         $$0.r()
-      };
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
+public class ewr extends ewo {
+   private final List<ewr.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final eww f = eww.i().a(0.5F, 0.5F);
+
+   public ewr() {
+      this(0, 0, 0, 0);
    }
 
-   public ewr(eye $$0, eqt $$1) {
-      super($$0, $$1, tl.c("options.accessibility.title"), a($$1));
+   public ewr(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public ewr(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
+   }
+
+   public ewr a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
+   }
+
+   public ewr a(int $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public ewr b(int $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public eww b() {
+      return this.f.g();
+   }
+
+   public eww c() {
+      return this.f;
    }
 
    @Override
-   protected void aH_() {
-      super.aH_();
-      esi $$0 = this.k.b(this.b.q());
-      if ($$0 != null && !this.f.aa().b().contains("high_contrast")) {
-         $$0.i = false;
-         $$0.a(etv.a(tl.c("options.accessibility.high_contrast.error.tooltip")));
+   public void a() {
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (ewr.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
       }
+
+      for (ewr.a $$3 : this.c) {
+         $$3.a(this.p(), $$0);
+         $$3.b(this.r(), $$1);
+      }
+
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public <T extends ewv> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends ewv> T a(T $$0, eww $$1) {
+      this.c.add(new ewr.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends ewv> T a(T $$0, Consumer<eww> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
    }
 
    @Override
-   protected void f() {
-      this.d(esk.a(tl.c("options.accessibility.link"), $$0 -> this.f.a(new ewx($$0x -> {
-            if ($$0x) {
-               ac.i().a("https://aka.ms/MinecraftJavaAccessibility");
-            }
+   public void b(Consumer<ewv> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
+   }
 
-            this.f.a(this);
-         }, "https://aka.ms/MinecraftJavaAccessibility", true))).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
-      this.d(esk.a(tk.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
+   public static void a(ewv $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   }
+
+   public static void a(ewv $$0, exm $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   }
+
+   public static void a(ewv $$0, exm $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   }
+
+   public static void a(ewv $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.k(), $$0::f, $$5);
+      a($$2, $$4, $$0.i(), $$0::g, $$6);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)asy.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
+
+   static class a extends ewo.a {
+      protected a(ewv $$0, eww $$1) {
+         super($$0, $$1);
+      }
    }
 }

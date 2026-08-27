@@ -1,23 +1,21 @@
-public enum dgn implements asu {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+public enum dgn implements atr {
+   a("none"),
+   b("small"),
+   c("large");
 
-   private final String e;
-   private final tl f;
+   private final String d;
 
    private dgn(String $$0) {
-      this.e = $$0;
-      this.f = tl.c("structure_block.mode_info." + $$0);
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public tl a() {
-      return this.f;
+      return this.d;
    }
 }

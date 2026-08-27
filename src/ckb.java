@@ -1,31 +1,23 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ckb extends cjg {
-   public static final Predicate<cjl> c = $$0 -> $$0.a(aqd.at);
-   public static final Predicate<cjl> d = c.or($$0 -> $$0.a(cjo.tA));
+public record ckb(ib<aqc> b, int c, float d) {
+   public static final Codec<ckb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aqc.b.fieldOf("sound_event").forGetter(ckb::a), asg.j.fieldOf("use_duration").forGetter(ckb::b), asg.k.fieldOf("range").forGetter(ckb::c)
+            )
+            .apply($$0, ckb::new)
+   );
 
-   public ckb(cjg.a $$0) {
-      super($$0);
+   public ib<aqc> a() {
+      return this.b;
    }
 
-   public Predicate<cjl> e() {
-      return this.b();
+   public int b() {
+      return this.c;
    }
 
-   public abstract Predicate<cjl> b();
-
-   public static cjl a(bjm $$0, Predicate<cjl> $$1) {
-      if ($$1.test($$0.b(bhd.b))) {
-         return $$0.b(bhd.b);
-      } else {
-         return $$1.test($$0.b(bhd.a)) ? $$0.b(bhd.a) : cjl.b;
-      }
+   public float c() {
+      return this.d;
    }
-
-   @Override
-   public int c() {
-      return 1;
-   }
-
-   public abstract int d();
 }

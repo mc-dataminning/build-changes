@@ -1,113 +1,45 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+public class akz {
+   private static final int b = 33;
+   private static final int c = 32;
+   private static final int d = 31;
+   public static final int a = 33 + dic.b();
 
-public class akz extends akg {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<asr<akx<?>>> d = new Long2ObjectOpenHashMap();
-
-   public akz() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   public static dic a(int $$0) {
+      return $$0 < 33 ? dic.n : dic.a($$0 - 33);
    }
 
-   private asr<akx<?>> g(long $$0) {
-      return (asr<akx<?>>)this.d.computeIfAbsent($$0, $$0x -> asr.a(4));
+   public static int a(dic $$0) {
+      return 33 + dic.a($$0);
    }
 
-   private int a(asr<akx<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, akx<?> $$1) {
-      asr<akx<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, akx<?> $$1) {
-      asr<akx<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(aky<T> $$0, cpi $$1, int $$2, T $$3) {
-      this.a($$1.a(), new akx<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(aky<T> $$0, cpi $$1, int $$2, T $$3) {
-      akx<T> $$4 = new akx<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<akx<cpi>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<asr<akx<?>>> $$2 = (Entry<asr<akx<?>>>)var3.next();
-
-         for (akx<?> $$3 : (asr)$$2.getValue()) {
-            if ($$3.a() == aky.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
-            }
-         }
-      }
-
-      for (Pair<akx<cpi>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         akx<cpi> $$6 = (akx<cpi>)$$4.getFirst();
-         this.b($$5, $$6);
-         cpi $$7 = new cpi($$5);
-         aky<cpi> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
-   }
-
-   @Override
-   protected int b(long $$0) {
-      asr<akx<?>> $$1 = (asr<akx<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
-   }
-
-   public int a(cpi $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
+   public static alj b(int $$0) {
+      if ($$0 <= 31) {
+         return alj.d;
+      } else if ($$0 <= 32) {
+         return alj.c;
       } else {
-         this.b.put($$0, (byte)$$1);
+         return $$0 <= 33 ? alj.b : alj.a;
       }
    }
 
-   public void a() {
-      this.b(Integer.MAX_VALUE);
+   public static int a(alj $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
    }
 
-   public String d(long $$0) {
-      asr<akx<?>> $$1 = (asr<akx<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   public static boolean c(int $$0) {
+      return $$0 <= 31;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 <= 32;
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 <= a;
    }
 }

@@ -1,116 +1,71 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class cmw implements cmf {
-   final String a;
-   final cme b;
-   final cjl c;
-   final hn<cmm> d;
-
-   public cmw(String $$0, cme $$1, cjl $$2, hn<cmm> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public class cmw extends cnf {
+   public cmw(cnc $$0) {
+      super($$0);
    }
 
-   @Override
-   public cms<?> an_() {
-      return cms.b;
-   }
-
-   @Override
-   public String c() {
-      return this.a;
-   }
-
-   @Override
-   public cme d() {
-      return this.b;
-   }
-
-   @Override
-   public cjl a(hr $$0) {
-      return this.c;
-   }
-
-   @Override
-   public hn<cmm> a() {
-      return this.d;
-   }
-
-   public boolean a(cff $$0, cqb $$1) {
-      cce $$2 = new cce();
-      int $$3 = 0;
+   public boolean a(cgd $$0, cqz $$1) {
+      ckj $$2 = ckj.b;
+      List<ckj> $$3 = Lists.newArrayList();
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cjl $$5 = $$0.a($$4);
+         ckj $$5 = $$0.a($$4);
          if (!$$5.b()) {
-            $$3++;
-            $$2.a($$5, 1);
+            if ($$5.d() instanceof cjb) {
+               if (!$$2.b()) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            } else {
+               if (!($$5.d() instanceof ciy)) {
+                  return false;
+               }
+
+               $$3.add($$5);
+            }
          }
       }
 
-      return $$3 == this.d.size() && $$2.a(this, null);
+      return !$$2.b() && !$$3.isEmpty();
    }
 
-   public cjl a(cff $$0, hr $$1) {
-      return this.c.p();
+   public ckj a(cgd $$0, ip $$1) {
+      List<ciy> $$2 = Lists.newArrayList();
+      ckj $$3 = ckj.b;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ckj $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            cke $$6 = $$5.d();
+            if ($$6 instanceof cjb) {
+               if (!$$3.b()) {
+                  return ckj.b;
+               }
+
+               $$3 = $$5.p();
+            } else {
+               if (!($$6 instanceof ciy)) {
+                  return ckj.b;
+               }
+
+               $$2.add((ciy)$$6);
+            }
+         }
+      }
+
+      return !$$3.b() && !$$2.isEmpty() ? cjb.a($$3, $$2) : ckj.b;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= this.d.size();
+      return $$0 * $$1 >= 2;
    }
 
-   public static class a implements cms<cmw> {
-      private static final Codec<cmw> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  arj.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.a),
-                  cme.e.fieldOf("category").orElse(cme.d).forGetter($$0x -> $$0x.b),
-                  cmg.a.fieldOf("result").forGetter($$0x -> $$0x.c),
-                  cmm.c.listOf().fieldOf("ingredients").flatXmap($$0x -> {
-                     cmm[] $$1 = $$0x.stream().filter($$0xx -> !$$0xx.c()).toArray(cmm[]::new);
-                     if ($$1.length == 0) {
-                        return DataResult.error(() -> "No ingredients for shapeless recipe");
-                     } else {
-                        return $$1.length > 9 ? DataResult.error(() -> "Too many ingredients for shapeless recipe") : DataResult.success(hn.a(cmm.a, $$1));
-                     }
-                  }, DataResult::success).forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, cmw::new)
-      );
-
-      @Override
-      public Codec<cmw> a() {
-         return x;
-      }
-
-      public cmw b(so $$0) {
-         String $$1 = $$0.s();
-         cme $$2 = $$0.b(cme.class);
-         int $$3 = $$0.n();
-         hn<cmm> $$4 = hn.a($$3, cmm.a);
-
-         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-            $$4.set($$5, cmm.b($$0));
-         }
-
-         cjl $$6 = $$0.r();
-         return new cmw($$1, $$2, $$6, $$4);
-      }
-
-      public void a(so $$0, cmw $$1) {
-         $$0.a($$1.a);
-         $$0.a($$1.b);
-         $$0.c($$1.d.size());
-
-         for (cmm $$2 : $$1.d) {
-            $$2.a($$0);
-         }
-
-         $$0.a($$1.c);
-      }
+   @Override
+   public cnq<?> aq_() {
+      return cnq.c;
    }
 }

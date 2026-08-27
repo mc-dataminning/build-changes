@@ -1,49 +1,92 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class egt<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final egt<MinecraftServer> a = new egt<MinecraftServer>().a(new egq.a()).a(new egr.a());
-   private final Map<aez, egs.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, egs.a<C, ?>> d = Maps.newHashMap();
+public class egt implements egv {
+   private static final String d = "block_entity";
+   private static final egt.a e = new egt.a() {
+      @Override
+      public sn a(edi $$0) {
+         ddx $$1 = $$0.c(eft.h);
+         return $$1 != null ? $$1.m() : null;
+      }
 
-   public egt<C> a(egs.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
+      @Override
+      public String a() {
+         return "block_entity";
+      }
+
+      @Override
+      public Set<efq<?>> b() {
+         return ImmutableSet.of(eft.h);
+      }
+   };
+   public static final egt a = new egt(e);
+   private static final Codec<egt.a> f = Codec.STRING.xmap($$0 -> {
+      if ($$0.equals("block_entity")) {
+         return e;
+      } else {
+         edi.b $$1 = edi.b.a($$0);
+         return b($$1);
+      }
+   }, egt.a::a);
+   public static final Codec<egt> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, egt::new));
+   public static final Codec<egt> c = f.xmap(egt::new, $$0 -> $$0.g);
+   private final egt.a g;
+
+   private static egt.a b(final edi.b $$0) {
+      return new egt.a() {
+         @Nullable
+         @Override
+         public sn a(edi $$0x) {
+            bjt $$1 = $$0.c($$0.a());
+            return $$1 != null ? cn.b($$1) : null;
+         }
+
+         @Override
+         public String a() {
+            return $$0.name();
+         }
+
+         @Override
+         public Set<efq<?>> b() {
+            return ImmutableSet.of($$0.a());
+         }
+      };
    }
 
-   private <T extends egs<C>> egs.a<C, T> a(Class<?> $$0) {
-      return (egs.a<C, T>)this.d.get($$0);
+   private egt(egt.a $$0) {
+      this.g = $$0;
    }
 
-   public <T extends egs<C>> qw a(T $$0) {
-      egs.a<C, T> $$1 = this.a($$0.getClass());
-      qw $$2 = new qw();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
+   @Override
+   public egu a() {
+      return egw.c;
    }
 
    @Nullable
-   public egs<C> a(qw $$0) {
-      aez $$1 = aez.a($$0.l("Type"));
-      egs.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
-      }
+   @Override
+   public sn a(edi $$0) {
+      return this.g.a($$0);
+   }
+
+   @Override
+   public Set<efq<?>> b() {
+      return this.g.b();
+   }
+
+   public static egv a(edi.b $$0) {
+      return new egt(b($$0));
+   }
+
+   interface a {
+      @Nullable
+      sn a(edi var1);
+
+      String a();
+
+      Set<efq<?>> b();
    }
 }

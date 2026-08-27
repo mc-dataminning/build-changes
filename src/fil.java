@@ -1,138 +1,44 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.PublicKey;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fil<T extends bjt> extends fii<T> {
+   private boolean b;
 
-public class fil implements fjc {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Duration c = Duration.ofHours(1L);
-   private static final Path d = Path.of("profilekeys");
-   private final UserApiService e;
-   private final Path f;
-   private CompletableFuture<Optional<ccc>> g;
-   private Instant h = Instant.EPOCH;
+   public fil(fiw $$0) {
+      super($$0);
+   }
 
-   public fil(UserApiService $$0, UUID $$1, Path $$2) {
-      this.e = $$0;
-      this.f = $$2.resolve(d).resolve($$1 + ".json");
-      this.g = CompletableFuture.<Optional<ccc>>supplyAsync(() -> this.c().filter($$0x -> !$$0x.c().b().a()), ac.f()).thenCompose(this::a);
+   public static fjc c() {
+      fje $$0 = fii.b();
+      fjf $$1 = $$0.a();
+      fjf $$2 = $$1.a("head", fjb.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fiy.a);
+      fjf $$3 = $$2.a("hat", fjb.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), fiy.a(-5.0F, -10.03125F, -5.0F));
+      fjf $$4 = $$3.a("hat2", fjb.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), fiy.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
+      fjf $$5 = $$4.a("hat3", fjb.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), fiy.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
+      $$5.a(
+         "hat4", fjb.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new fja(0.25F)), fiy.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
+      );
+      fjf $$6 = $$2.a("nose");
+      $$6.a("mole", fjb.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new fja(-0.25F)), fiy.a(0.0F, -2.0F, 0.0F));
+      return fjc.a($$0, 64, 128);
    }
 
    @Override
-   public CompletableFuture<Optional<ccc>> a() {
-      this.h = Instant.now().plus(c);
-      this.g = this.g.thenCompose(this::a);
-      return this.g;
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(ccc::a).orElse(true) : false;
-   }
-
-   private CompletableFuture<Optional<ccc>> a(Optional<ccc> $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$0.isPresent() && !$$0.get().a()) {
-            if (!aa.aT) {
-               this.a(null);
-            }
-
-            return $$0;
-         } else {
-            try {
-               ccc $$1 = this.a(this.e);
-               this.a($$1);
-               return Optional.of($$1);
-            } catch (arb | MinecraftClientException | IOException var3) {
-               b.error("Failed to retrieve profile key pair", var3);
-               this.a(null);
-               return $$0;
-            }
-         }
-      }, ac.f());
-   }
-
-   private Optional<ccc> c() {
-      if (Files.notExists(this.f)) {
-         return Optional.empty();
-      } else {
-         try {
-            Optional var2;
-            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
-               var2 = ccc.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to read profile key pair file {}", this.f, var6);
-            return Optional.empty();
-         }
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.a(0.0F, -2.0F, 0.0F);
+      float $$6 = 0.01F * (float)($$0.ah() % 10);
+      this.a.e = asy.a((float)$$0.ah * $$6) * 4.5F * (float) (Math.PI / 180.0);
+      this.a.f = 0.0F;
+      this.a.g = asy.b((float)$$0.ah * $$6) * 2.5F * (float) (Math.PI / 180.0);
+      if (this.b) {
+         this.a.a(0.0F, 1.0F, -1.5F);
+         this.a.e = -0.9F;
       }
    }
 
-   private void a(@Nullable ccc $$0) {
-      try {
-         Files.deleteIfExists(this.f);
-      } catch (IOException var3) {
-         b.error("Failed to delete profile key pair file {}", this.f, var3);
-      }
-
-      if ($$0 != null) {
-         if (aa.aT) {
-            ccc.a.encodeStart(JsonOps.INSTANCE, $$0).result().ifPresent($$0x -> {
-               try {
-                  Files.createDirectories(this.f.getParent());
-                  Files.writeString(this.f, $$0x.toString());
-               } catch (Exception var3x) {
-                  b.error("Failed to write profile key pair file {}", this.f, var3x);
-               }
-            });
-         }
-      }
+   public fiw e() {
+      return this.a;
    }
 
-   private ccc a(UserApiService $$0) throws arb, IOException {
-      KeyPairResponse $$1 = $$0.getKeyPair();
-      if ($$1 != null) {
-         ccd.a $$2 = a($$1);
-         return new ccc(ara.a($$1.keyPair().privateKey()), new ccd($$2), Instant.parse($$1.refreshedAfter()));
-      } else {
-         throw new IOException("Could not retrieve profile key pair");
-      }
-   }
-
-   private static ccd.a a(KeyPairResponse $$0) throws arb {
-      KeyPair $$1 = $$0.keyPair();
-      if (!Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
-         try {
-            Instant $$2 = Instant.parse($$0.expiresAt());
-            PublicKey $$3 = ara.b($$1.publicKey());
-            ByteBuffer $$4 = $$0.publicKeySignature();
-            return new ccd.a($$2, $$3, $$4.array());
-         } catch (IllegalArgumentException | DateTimeException var5) {
-            throw new arb(var5);
-         }
-      } else {
-         throw new arb(new MissingException());
-      }
+   public void b(boolean $$0) {
+      this.b = $$0;
    }
 }

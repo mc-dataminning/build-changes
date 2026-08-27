@@ -1,122 +1,85 @@
-import java.util.EnumSet;
+public class bqu extends bri {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final bwc b;
+   private final int c;
+   private boolean d;
 
-public abstract class bqu extends bqh {
-   private static final int g = 1200;
-   private static final int h = 1200;
-   private static final int i = 200;
-   protected final bjv a;
-   public final double b;
-   protected int c;
-   protected int d;
-   private int j;
-   protected gw e = gw.b;
-   private boolean k;
-   private final int l;
-   private final int m;
-   protected int f;
-
-   public bqu(bjv $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, 1);
-   }
-
-   public bqu(bjv $$0, double $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.l = $$2;
-      this.f = 0;
-      this.m = $$3;
-      this.a(EnumSet.of(bqh.a.a, bqh.a.c));
+   public bqu(bwc $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
    }
 
    @Override
    public boolean a() {
-      if (this.c > 0) {
-         this.c--;
+      if (this.b.ef().a(this.c) != 0) {
          return false;
       } else {
-         this.c = this.a(this.a);
-         return this.n();
+         hx $$0 = this.b.cE();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         ht $$3 = this.b.dl();
+
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   protected int a(bjv $$0) {
-      return b(200 + $$0.ef().a(200));
+   private boolean a(ht $$0, int $$1, int $$2, int $$3) {
+      ht $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dL().b_($$4).a(aqx.a) && !this.b.dL().a_($$4).d();
+   }
+
+   private boolean b(ht $$0, int $$1, int $$2, int $$3) {
+      return this.b.dL().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dL().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
    }
 
    @Override
    public boolean b() {
-      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dL(), this.e);
-   }
-
-   @Override
-   public void c() {
-      this.h();
-      this.d = 0;
-      this.j = this.a.ef().a(this.a.ef().a(1200) + 1200) + 1200;
-   }
-
-   protected void h() {
-      this.a.L().a((double)((float)this.e.u()) + 0.5, (double)(this.e.v() + 1), (double)((float)this.e.w()) + 0.5, this.b);
-   }
-
-   public double i() {
-      return 1.0;
-   }
-
-   protected gw k() {
-      return this.e.c();
+      double $$0 = this.b.do().d;
+      return (!($$0 * $$0 < 0.03F) || this.b.dD() == 0.0F || !(Math.abs(this.b.dD()) < 10.0F) || !this.b.aX()) && !this.b.aA();
    }
 
    @Override
    public boolean Q_() {
-      return true;
+      return false;
+   }
+
+   @Override
+   public void c() {
+      hx $$0 = this.b.cE();
+      this.b.f(this.b.do().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.L().n();
+   }
+
+   @Override
+   public void d() {
+      this.b.s(0.0F);
    }
 
    @Override
    public void e() {
-      gw $$0 = this.k();
-      if (!$$0.a(this.a.dj(), this.i())) {
-         this.k = false;
-         this.d++;
-         if (this.l()) {
-            this.a.L().a((double)((float)$$0.u()) + 0.5, (double)$$0.v(), (double)((float)$$0.w()) + 0.5, this.b);
-         }
-      } else {
-         this.k = true;
-         this.d--;
-      }
-   }
-
-   public boolean l() {
-      return this.d % 40 == 0;
-   }
-
-   protected boolean m() {
-      return this.k;
-   }
-
-   protected boolean n() {
-      int $$0 = this.l;
-      int $$1 = this.m;
-      gw $$2 = this.a.dl();
-      gw.a $$3 = new gw.a();
-
-      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
-               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
-                  $$3.a($$2, $$6, $$4 - 1, $$7);
-                  if (this.a.a($$3) && this.a(this.a.dL(), $$3)) {
-                     this.e = $$3;
-                     return true;
-                  }
-               }
-            }
-         }
+      boolean $$0 = this.d;
+      if (!$$0) {
+         ebe $$1 = this.b.dL().b_(this.b.dl());
+         this.d = $$1.a(aqx.a);
       }
 
-      return false;
-   }
+      if (this.d && !$$0) {
+         this.b.a(aqd.fX, 1.0F, 1.0F);
+      }
 
-   protected abstract boolean a(cqe var1, gw var2);
+      eif $$2 = this.b.do();
+      if ($$2.d * $$2.d < 0.03F && this.b.dD() != 0.0F) {
+         this.b.s(asy.j(0.2F, this.b.dD(), 0.0F));
+      } else if ($$2.f() > 1.0E-5F) {
+         double $$3 = $$2.h();
+         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
+         this.b.s((float)$$4);
+      }
+   }
 }

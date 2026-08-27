@@ -1,71 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class bmu {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
-
-   public static bmn<bjv> a(float $$0) {
-      return a($$0, true);
+   public static bmb<bkj> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   public static bmn<bjv> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> buf.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.ba());
-   }
-
-   public static ble<bjv> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> buf.a($$2x, $$1, $$2), $$0x -> true);
-   }
-
-   public static ble<bjv> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
-   }
-
-   public static ble<bjv> c(float $$0) {
-      return a($$0, bmu::a, biw::ba);
-   }
-
-   private static bmn<bjv> a(float $$0, Function<bjv, ehh> $$1, Predicate<bjv> $$2) {
-      return bop.a((Function<bop.b<bjv>, ? extends App<bop.c<bjv>, bos<bjv>>>)($$3 -> $$3.group($$3.c(bsn.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
-               } else {
-                  Optional<ehh> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new bsq($$1xxxx, $$0, 0)));
+   public static <E extends bkj> bmb<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return bpm.a((Function<bpm.b<E>, ? extends App<bpm.c<E>, bpp<E>>>)($$4 -> {
+         bpm<E, ? extends bpn<? extends K1, btn>> $$5 = $$2 ? $$4.a(btk.m) : $$4.c(btk.m);
+         return $$4.group($$4.a(btk.n), $$5, $$4.b(btk.K), $$4.a(btk.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               bzq $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dL().C_().a($$11.dl())) {
+                  btn $$12 = new btn(new bml($$11, false), $$1, 0);
+                  $$4x.a(new bml($$11, true));
+                  $$5x.a($$12);
                   return true;
+               } else {
+                  return false;
                }
-            })));
-   }
-
-   @Nullable
-   private static ehh a(bjv $$0) {
-      ehh $$1 = null;
-      ehh $$2 = null;
-
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = blf.a($$0, $$3[0], $$3[1]);
-         } else {
-            $$2 = $$0.dj().e($$0.dj().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
-         }
-
-         if ($$2 == null || $$0.dL().b_(gw.a($$2)).c()) {
-            return $$1;
-         }
-
-         $$1 = $$2;
-      }
-
-      return $$2;
-   }
-
-   @Nullable
-   private static ehh a(bjv $$0, int $$1, int $$2) {
-      ehh $$3 = $$0.f(0.0F);
-      return bua.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
+            });
+      }));
    }
 }

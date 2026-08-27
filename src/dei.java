@@ -1,127 +1,27 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class dei extends ddx {
+   private int a;
 
-public class dei {
-   private static final Codec<tl[]> c = tn.b
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 4).map($$0x -> new tl[]{(tl)$$0x.get(0), (tl)$$0x.get(1), (tl)$$0x.get(2), (tl)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dei> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.optionalFieldOf("filtered_messages").forGetter(dei::d),
-               chz.q.fieldOf("color").orElse(chz.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dei::a)
-   );
-   public static final int b = 4;
-   private final tl[] d;
-   private final tl[] e;
-   private final chz f;
-   private final boolean g;
-   @Nullable
-   private arn[] h;
-   private boolean i;
-
-   public dei() {
-      this(c(), c(), chz.p, false);
+   public dei(ht $$0, dgb $$1) {
+      super(ddz.s, $$0, $$1);
    }
 
-   public dei(tl[] $$0, tl[] $$1, chz $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   @Override
+   protected void b(rt $$0) {
+      super.b($$0);
+      $$0.a("OutputSignal", this.a);
    }
 
-   private static tl[] c() {
-      return new tl[]{tk.a, tk.a, tk.a, tk.a};
+   @Override
+   public void a(rt $$0) {
+      super.a($$0);
+      this.a = $$0.h("OutputSignal");
    }
 
-   private static dei a(tl[] $$0, Optional<tl[]> $$1, chz $$2, boolean $$3) {
-      return new dei($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   public int c() {
+      return this.a;
    }
 
-   public boolean a() {
-      return this.g;
-   }
-
-   public dei a(boolean $$0) {
-      return $$0 == this.g ? this : new dei(this.d, this.e, this.f, $$0);
-   }
-
-   public chz b() {
-      return this.f;
-   }
-
-   public dei a(chz $$0) {
-      return $$0 == this.b() ? this : new dei(this.d, this.e, $$0, this.g);
-   }
-
-   public tl a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public dei a(int $$0, tl $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dei a(int $$0, tl $$1, tl $$2) {
-      tl[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      tl[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dei($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(cca $$0) {
-      return Arrays.stream(this.b($$0.W())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public tl[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public arn[] a(boolean $$0, Function<tl, arn> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new arn[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
-      }
-
-      return this.h;
-   }
-
-   private Optional<tl[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public boolean b(cca $$0) {
-      for (tl $$1 : this.b($$0.W())) {
-         ui $$2 = $$1.a();
-         tj $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == tj.a.c) {
-            return true;
-         }
-      }
-
-      return false;
+   public void a(int $$0) {
+      this.a = $$0;
    }
 }

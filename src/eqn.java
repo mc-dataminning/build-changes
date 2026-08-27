@@ -1,166 +1,113 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URL;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeoutException;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class eqn implements Comparable<eqn> {
-   private static final Map<String, eqn> h = Maps.newHashMap();
-   private static final Map<eke.a, eqn> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final eke.a m;
-   private final String n;
-   private eke.a o;
-   private boolean p;
-   private int q;
+public class eqn extends eqo {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ui c = ui.c("mco.connect.connecting");
+   private final eno d;
+   private final ezd e;
 
-   public static void a(eke.a $$0) {
-      eqn $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public eqn(ezd $$0, eno $$1) {
+      this.e = $$0;
+      this.d = $$1;
    }
 
-   public static void a(eke.a $$0, boolean $$1) {
-      eqn $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
+   @Override
+   public void run() {
+      enp $$0;
+      try {
+         $$0 = this.f();
+      } catch (CancellationException var4) {
+         b.info("User aborted connecting to realms");
+         return;
+      } catch (eok var5) {
+         switch (var5.a.a()) {
+            case 6002:
+               a(new eps(this.e, this.d));
+               return;
+            case 6006:
+               boolean $$3 = ero.O().b(this.d.g);
+               a(
+                  (ezd)($$3
+                     ? new eov(this.e, this.d.a, this.d.m == eno.d.b)
+                     : new epb(ui.c("mco.brokenworld.nonowner.title"), ui.c("mco.brokenworld.nonowner.error"), this.e))
+               );
+               return;
+            default:
+               this.a(var5);
+               b.error("Couldn't connect to world", var5);
+               return;
+         }
+      } catch (TimeoutException var6) {
+         this.a(ui.c("mco.errorMessage.connectionFailure"));
+         return;
+      } catch (Exception var7) {
+         b.error("Couldn't connect to world", var7);
+         this.a(var7);
+         return;
       }
+
+      boolean $$7 = $$0.b != null && $$0.c != null;
+      ezd $$8 = (ezd)($$7 ? this.a($$0, this::a) : this.a($$0));
+      a($$8);
    }
 
-   public static void a() {
-      for (eqn $$0 : h.values()) {
-         if ($$0.o.a() == eke.b.a && $$0.o.b() != eke.bv.b()) {
-            $$0.a(eke.a(eqp.O().aM().i(), $$0.o.b()));
+   @Override
+   public ui a() {
+      return c;
+   }
+
+   private enp f() throws eok, TimeoutException, CancellationException {
+      emx $$0 = emx.a();
+
+      for (int $$1 = 0; $$1 < 40; $$1++) {
+         if (this.d()) {
+            throw new CancellationException();
+         }
+
+         try {
+            return $$0.c(this.d.a);
+         } catch (eol var4) {
+            a((long)var4.c);
          }
       }
+
+      throw new TimeoutException();
    }
 
-   public static void b() {
-      for (eqn $$0 : h.values()) {
-         $$0.n();
-      }
+   public epe a(enp $$0) {
+      return new epf(this.e, new eqk(this.e, this.d, $$0));
    }
 
-   public static void c() {
-      for (eqn $$0 : h.values()) {
-         if ($$0 instanceof erd $$1) {
-            $$1.n();
+   private epd a(enp $$0, Function<enp, ezd> $$1) {
+      BooleanConsumer $$2 = $$2x -> {
+         if (!$$2x) {
+            a(this.e);
+         } else {
+            this.b($$0).thenRun(() -> a($$1.apply($$0))).exceptionally($$1xx -> {
+               ero.O().ac().a();
+               b.error("Failed to download resource pack from {}", $$0, $$1xx);
+               a(new epb(ui.c("mco.download.resourcePack.fail"), this.e));
+               return null;
+            });
          }
+      };
+      return new epd($$2, epd.a.b, ui.c("mco.configure.world.resourcepack.question.line1"), ui.c("mco.configure.world.resourcepack.question.line2"), true);
+   }
+
+   private CompletableFuture<?> b(enp $$0) {
+      try {
+         return ero.O().ac().a(new URL($$0.b), $$0.c, false);
+      } catch (Exception var4) {
+         CompletableFuture<Void> $$2 = new CompletableFuture<>();
+         $$2.completeExceptionally(var4);
+         return $$2;
       }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (eqn $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public eqn(String $$0, int $$1, String $$2) {
-      this($$0, eke.b.a, $$1, $$2);
-   }
-
-   public eqn(String $$0, eke.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
-      } else {
-         this.q--;
-         return true;
-      }
-   }
-
-   private void n() {
-      this.q = 0;
-      this.a(false);
-   }
-
-   public String h() {
-      return this.l;
-   }
-
-   public eke.a i() {
-      return this.m;
-   }
-
-   public void b(eke.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(eqn $$0) {
-      return this.n.equals($$0.n) ? gag.a(this.l).compareTo(gag.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<tl> a(String $$0) {
-      eqn $$1 = h.get($$0);
-      return $$1 == null ? () -> tl.c($$0) : $$1::k;
-   }
-
-   public boolean b(eqn $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(eke.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == eke.bv.b() ? this.o.a() == eke.b.b && this.o.b() == $$1 : this.o.a() == eke.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == eke.b.c && this.o.b() == $$0;
-   }
-
-   public tl k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
    }
 }

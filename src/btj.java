@@ -1,24 +1,59 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public class btj extends btr<bjo> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
+public class btj<T> {
+   private final T a;
+   private long b;
 
-   @Override
-   public Set<bsn<?>> a() {
-      return ImmutableSet.of(bsn.K);
+   public btj(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected void a(akt $$0, bjo $$1) {
-      bkm<?> $$2 = $$1.dN();
-      List<byt> $$3 = $$0.a(byt.class, $$1.cG().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      Optional<byt> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.q())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(bsn.K, $$4);
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
+   }
+
+   public static <T> btj<T> a(T $$0) {
+      return new btj<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> btj<T> a(T $$0, long $$1) {
+      return new btj<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
+   @Override
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @aua
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<btj<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new btj<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

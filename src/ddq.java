@@ -1,79 +1,108 @@
-public class ddq extends dec {
-   public static final int c = 9;
-   private hn<cjl> f = hn.a(9, cjl.b);
+public class ddq extends dfa {
+   private il<ckj> c = il.a(27, ckj.b);
+   private final dek f = new dek() {
+      @Override
+      protected void a(cqz $$0, ht $$1, dgb $$2) {
+         ddq.this.a($$2, aqd.bk);
+         ddq.this.a($$2, true);
+      }
 
-   protected ddq(ddb<?> $$0, gw $$1, dfd $$2) {
-      super($$0, $$1, $$2);
+      @Override
+      protected void b(cqz $$0, ht $$1, dgb $$2) {
+         ddq.this.a($$2, aqd.bj);
+         ddq.this.a($$2, false);
+      }
+
+      @Override
+      protected void a(cqz $$0, ht $$1, dgb $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      protected boolean a(ccx $$0) {
+         if ($$0.bS instanceof cfw) {
+            bhu $$1 = ((cfw)$$0.bS).l();
+            return $$1 == ddq.this;
+         } else {
+            return false;
+         }
+      }
+   };
+
+   public ddq(ht $$0, dgb $$1) {
+      super(ddz.A, $$0, $$1);
    }
 
-   public ddq(gw $$0, dfd $$1) {
-      this(ddb.f, $$0, $$1);
+   @Override
+   protected void b(rt $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bhv.a($$0, this.c);
+      }
+   }
+
+   @Override
+   public void a(rt $$0) {
+      super.a($$0);
+      this.c = il.a(this.b(), ckj.b);
+      if (!this.d($$0)) {
+         bhv.b($$0, this.c);
+      }
    }
 
    @Override
    public int b() {
-      return 9;
-   }
-
-   public int a(ash $$0) {
-      this.e(null);
-      int $$1 = -1;
-      int $$2 = 1;
-
-      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
-         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1;
-   }
-
-   public int a(cjl $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         if (this.f.get($$1).b()) {
-            this.a($$1, $$0);
-            return $$1;
-         }
-      }
-
-      return -1;
+      return 27;
    }
 
    @Override
-   protected tl g() {
-      return tl.c("container.dispenser");
+   protected il<ckj> f() {
+      return this.c;
    }
 
    @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      this.f = hn.a(this.b(), cjl.b);
-      if (!this.d($$0)) {
-         bgy.b($$0, this.f);
+   protected void a(il<ckj> $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   protected ui g() {
+      return ui.c("container.barrel");
+   }
+
+   @Override
+   protected cfp a(int $$0, ccw $$1) {
+      return cfw.a($$0, $$1, this);
+   }
+
+   @Override
+   public void d_(ccx $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.f.a($$0, this.k(), this.p(), this.q());
       }
    }
 
    @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      if (!this.e($$0)) {
-         bgy.a($$0, this.f);
+   public void c(ccx $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.f.b($$0, this.k(), this.p(), this.q());
       }
    }
 
-   @Override
-   protected hn<cjl> f() {
-      return this.f;
+   public void i() {
+      if (!this.q) {
+         this.f.c(this.k(), this.p(), this.q());
+      }
    }
 
-   @Override
-   protected void a(hn<cjl> $$0) {
-      this.f = $$0;
+   void a(dgb $$0, boolean $$1) {
+      this.o.a(this.p(), $$0.a(ctg.c, Boolean.valueOf($$1)), 3);
    }
 
-   @Override
-   protected cer a(int $$0, cbz $$1) {
-      return new cfi($$0, $$1, this);
+   void a(dgb $$0, aqc $$1) {
+      iw $$2 = $$0.c(ctg.b).q();
+      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
+      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
+      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
+      this.o.a(null, $$3, $$4, $$5, $$1, aqe.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
    }
 }

@@ -1,80 +1,117 @@
-import com.google.gson.JsonObject;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import com.google.common.base.Functions;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class aoe<T> extends aon<T> {
-   public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   public static final String b = "forever";
-   protected final Date c;
-   protected final String d;
-   @Nullable
-   protected final Date e;
-   protected final String f;
+public class aoe {
+   private final Set<aog> a;
+   private Map<String, aob> b = ImmutableMap.of();
+   private List<aob> c = ImmutableList.of();
 
-   public aoe(@Nullable T $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0);
-      this.c = $$1 == null ? new Date() : $$1;
-      this.d = $$2 == null ? "(Unknown)" : $$2;
-      this.e = $$3;
-      this.f = $$4 == null ? "Banned by an operator." : $$4;
+   public aoe(aog... $$0) {
+      this.a = ImmutableSet.copyOf($$0);
    }
 
-   protected aoe(@Nullable T $$0, JsonObject $$1) {
-      super($$0);
-
-      Date $$2;
-      try {
-         $$2 = $$1.has("created") ? a.parse($$1.get("created").getAsString()) : new Date();
-      } catch (ParseException var7) {
-         $$2 = new Date();
-      }
-
-      this.c = $$2;
-      this.d = $$1.has("source") ? $$1.get("source").getAsString() : "(Unknown)";
-
-      Date $$5;
-      try {
-         $$5 = $$1.has("expires") ? a.parse($$1.get("expires").getAsString()) : null;
-      } catch (ParseException var6) {
-         $$5 = null;
-      }
-
-      this.e = $$5;
-      this.f = $$1.has("reason") ? $$1.get("reason").getAsString() : "Banned by an operator.";
+   public void a() {
+      List<String> $$0 = this.c.stream().map(aob::f).collect(ImmutableList.toImmutableList());
+      this.b = this.h();
+      this.c = this.b($$0);
    }
 
-   public Date a() {
+   private Map<String, aob> h() {
+      Map<String, aob> $$0 = Maps.newTreeMap();
+
+      for (aog $$1 : this.a) {
+         $$1.a($$1x -> $$0.put($$1x.f(), $$1x));
+      }
+
+      return ImmutableMap.copyOf($$0);
+   }
+
+   public void a(Collection<String> $$0) {
+      this.c = this.b($$0);
+   }
+
+   public boolean a(String $$0) {
+      aob $$1 = this.b.get($$0);
+      if ($$1 != null && !this.c.contains($$1)) {
+         List<aob> $$2 = Lists.newArrayList(this.c);
+         $$2.add($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(String $$0) {
+      aob $$1 = this.b.get($$0);
+      if ($$1 != null && this.c.contains($$1)) {
+         List<aob> $$2 = Lists.newArrayList(this.c);
+         $$2.remove($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private List<aob> b(Collection<String> $$0) {
+      List<aob> $$1 = this.c($$0).collect(Collectors.toList());
+
+      for (aob $$2 : this.b.values()) {
+         if ($$2.g() && !$$1.contains($$2)) {
+            $$2.i().a($$1, $$2, Functions.identity(), false);
+         }
+      }
+
+      return ImmutableList.copyOf($$1);
+   }
+
+   private Stream<aob> c(Collection<String> $$0) {
+      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
+   }
+
+   public Collection<String> b() {
+      return this.b.keySet();
+   }
+
+   public Collection<aob> c() {
+      return this.b.values();
+   }
+
+   public Collection<String> d() {
+      return this.c.stream().map(aob::f).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public cfg e() {
+      return this.f().stream().map(aob::d).reduce(cfg::b).orElse(cfg.a());
+   }
+
+   public Collection<aob> f() {
       return this.c;
    }
 
-   public String b() {
-      return this.d;
-   }
-
    @Nullable
-   public Date c() {
-      return this.e;
+   public aob c(String $$0) {
+      return this.b.get($$0);
    }
 
-   public String d() {
-      return this.f;
+   public boolean d(String $$0) {
+      return this.b.containsKey($$0);
    }
 
-   public abstract tl e();
-
-   @Override
-   boolean f() {
-      return this.e == null ? false : this.e.before(new Date());
-   }
-
-   @Override
-   protected void a(JsonObject $$0) {
-      $$0.addProperty("created", a.format(this.c));
-      $$0.addProperty("source", this.d);
-      $$0.addProperty("expires", this.e == null ? "forever" : a.format(this.e));
-      $$0.addProperty("reason", this.f);
+   public List<anh> g() {
+      return this.c.stream().map(aob::e).collect(ImmutableList.toImmutableList());
    }
 }

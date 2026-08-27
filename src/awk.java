@@ -1,33 +1,23 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.Map;
 
-public class awk extends DataFix {
+public class awk extends bak {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:salmon_mob", "minecraft:salmon")
+      .put("minecraft:cod_mob", "minecraft:cod")
+      .build();
+   public static final Map<String, String> b = ImmutableMap.builder()
+      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
+      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
+      .build();
+
    public awk(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super("EntityCodSalmonFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityStringUuidFix",
-         this.getInputSchema().getType(azd.x),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> {
-                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
-                  if ($$1.isPresent()) {
-                     UUID $$2 = UUID.fromString($$1.get());
-                     return $$0x.remove("UUID")
-                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
-                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
-                  } else {
-                     return $$0x;
-                  }
-               }
-            )
-      );
+   @Override
+   protected String a(String $$0) {
+      return a.getOrDefault($$0, $$0);
    }
 }

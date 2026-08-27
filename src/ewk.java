@@ -1,29 +1,17 @@
-public enum ewk {
-   a,
-   b;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public ewk a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+public record ewk(afw c) implements ewi {
+   public static final MapCodec<ewk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(afw.a.fieldOf("id").forGetter(ewk::c)).apply($$0, ewk::new));
+
+   @Override
+   public ewj a() {
+      return ewj.e;
    }
 
-   public ewl b() {
-      return switch (this) {
-         case a -> ewl.d;
-         case b -> ewl.b;
-      };
-   }
-
-   public ewl c() {
-      return switch (this) {
-         case a -> ewl.c;
-         case b -> ewl.a;
-      };
-   }
-
-   public ewl a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+   @Override
+   public Either<ewi.a, ewi.b> b() {
+      return Either.right(new ewi.b(this.c));
    }
 }

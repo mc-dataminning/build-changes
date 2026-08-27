@@ -1,211 +1,250 @@
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public class dea extends dcz implements bgv, bhh {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final bgx e = new bgx() {
-      @Override
-      public int b() {
-         return 1;
-      }
-
-      @Override
-      public boolean af_() {
-         return dea.this.g.b();
-      }
-
-      @Override
-      public cjl a(int $$0) {
-         return $$0 == 0 ? dea.this.g : cjl.b;
-      }
-
-      @Override
-      public cjl a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            cjl $$2 = dea.this.g.a($$1);
-            if (dea.this.g.b()) {
-               dea.this.j();
-            }
-
-            return $$2;
-         } else {
-            return cjl.b;
-         }
-      }
-
-      @Override
-      public cjl b(int $$0) {
-         if ($$0 == 0) {
-            cjl $$1 = dea.this.g;
-            dea.this.g = cjl.b;
-            dea.this.j();
-            return $$1;
-         } else {
-            return cjl.b;
-         }
-      }
-
-      @Override
-      public void a(int $$0, cjl $$1) {
-      }
-
-      @Override
-      public int ag_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         dea.this.e();
-      }
-
-      @Override
-      public boolean a(cca $$0) {
-         return bgx.a(dea.this, $$0) && dea.this.f();
-      }
-
-      @Override
-      public boolean b(int $$0, cjl $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
-      }
-   };
-   private final cfb f = new cfb() {
+public class dea extends ddr implements bik {
+   private static final int h = 3;
+   private static final int i = 4;
+   private static final int[] j = new int[]{3};
+   private static final int[] k = new int[]{0, 1, 2, 3};
+   private static final int[] l = new int[]{0, 1, 2, 4};
+   public static final int c = 20;
+   public static final int d = 0;
+   public static final int e = 1;
+   public static final int f = 2;
+   private il<ckj> m = il.a(5, ckj.b);
+   int n;
+   private boolean[] r;
+   private cke s;
+   int t;
+   protected final cfz g = new cfz() {
       @Override
       public int a(int $$0) {
-         return $$0 == 0 ? dea.this.h : 0;
+         switch ($$0) {
+            case 0:
+               return dea.this.n;
+            case 1:
+               return dea.this.t;
+            default:
+               return 0;
+         }
       }
 
       @Override
       public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            dea.this.a($$1);
+         switch ($$0) {
+            case 0:
+               dea.this.n = $$1;
+               break;
+            case 1:
+               dea.this.t = $$1;
          }
       }
 
       @Override
       public int a() {
-         return 1;
+         return 2;
       }
    };
-   cjl g = cjl.b;
-   int h;
-   private int i;
 
-   public dea(gw $$0, dfd $$1) {
-      super(ddb.D, $$0, $$1);
+   public dea(ht $$0, dgb $$1) {
+      super(ddz.l, $$0, $$1);
    }
 
-   public cjl c() {
-      return this.g;
+   @Override
+   protected ui g() {
+      return ui.c("container.brewing");
    }
 
-   public boolean f() {
-      return this.g.a(cjo.tg) || this.g.a(cjo.th);
+   @Override
+   public int b() {
+      return this.m.size();
    }
 
-   public void a(cjl $$0) {
-      this.a($$0, null);
+   @Override
+   public boolean ai_() {
+      for (ckj $$0 : this.m) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   void j() {
-      this.h = 0;
-      this.i = 0;
-      cxl.a(null, this.k(), this.p(), this.q(), false);
-   }
+   public static void a(cqz $$0, ht $$1, dgb $$2, dea $$3) {
+      ckj $$4 = $$3.m.get(4);
+      if ($$3.t <= 0 && $$4.a(ckm.rz)) {
+         $$3.t = 20;
+         $$4.h(1);
+         a($$0, $$1, $$2);
+      }
 
-   public void a(cjl $$0, @Nullable cca $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = clh.k(this.g);
-      this.e();
-   }
+      boolean $$5 = a($$3.m);
+      boolean $$6 = $$3.n > 0;
+      ckj $$7 = $$3.m.get(3);
+      if ($$6) {
+         $$3.n--;
+         boolean $$8 = $$3.n == 0;
+         if ($$8 && $$5) {
+            a($$0, $$1, $$3.m);
+            a($$0, $$1, $$2);
+         } else if (!$$5 || !$$7.a($$3.s)) {
+            $$3.n = 0;
+            a($$0, $$1, $$2);
+         }
+      } else if ($$5 && $$3.t > 0) {
+         $$3.t--;
+         $$3.n = 400;
+         $$3.s = $$7.d();
+         a($$0, $$1, $$2);
+      }
 
-   void a(int $$0) {
-      int $$1 = asb.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         cxl.a(this.k(), this.p(), this.q());
+      boolean[] $$9 = $$3.f();
+      if (!Arrays.equals($$9, $$3.r)) {
+         $$3.r = $$9;
+         dgb $$10 = $$2;
+         if (!($$2.b() instanceof cue)) {
+            return;
+         }
+
+         for (int $$11 = 0; $$11 < cue.b.length; $$11++) {
+            $$10 = $$10.a(cue.b[$$11], Boolean.valueOf($$9[$$11]));
+         }
+
+         $$0.a($$1, $$10, 2);
       }
    }
 
-   public int g() {
-      return this.h;
-   }
+   private boolean[] f() {
+      boolean[] $$0 = new boolean[3];
 
-   public int i() {
-      float $$0 = this.i > 1 ? (float)this.g() / ((float)this.i - 1.0F) : 1.0F;
-      return asb.d($$0 * 14.0F) + (this.f() ? 1 : 0);
-   }
-
-   private cjl b(cjl $$0, @Nullable cca $$1) {
-      if (this.o instanceof akt && $$0.a(cjo.th)) {
-         clh.a($$0, this.a($$1), $$1);
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         if (!this.m.get($$1).b()) {
+            $$0[$$1] = true;
+         }
       }
 
       return $$0;
    }
 
-   private dt a(@Nullable cca $$0) {
-      String $$1;
-      tl $$2;
-      if ($$0 == null) {
-         $$1 = "Lectern";
-         $$2 = tl.b("Lectern");
+   private static boolean a(il<ckj> $$0) {
+      ckj $$1 = $$0.get(3);
+      if ($$1.b()) {
+         return false;
+      } else if (!cmh.a($$1)) {
+         return false;
       } else {
-         $$1 = $$0.ab().getString();
-         $$2 = $$0.N_();
+         for (int $$2 = 0; $$2 < 3; $$2++) {
+            ckj $$3 = $$0.get($$2);
+            if (!$$3.b() && cmh.a($$3, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private static void a(cqz $$0, ht $$1, il<ckj> $$2) {
+      ckj $$3 = $$2.get(3);
+
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         $$2.set($$4, cmh.d($$3, $$2.get($$4)));
       }
 
-      ehh $$5 = ehh.b(this.p);
-      return new dt(ds.a, $$5, ehg.a, (akt)this.o, 2, $$1, $$2, this.o.n(), $$0);
+      $$3.h(1);
+      if ($$3.d().t()) {
+         ckj $$5 = new ckj($$3.d().s());
+         if ($$3.b()) {
+            $$3 = $$5;
+         } else {
+            bhx.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$5);
+         }
+      }
+
+      $$2.set(3, $$3);
+      $$0.c(1035, $$1, 0);
    }
 
    @Override
-   public boolean t() {
-      return true;
-   }
-
-   @Override
-   public void a(qw $$0) {
+   public void a(rt $$0) {
       super.a($$0);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(cjl.a($$0.p("Book")), null);
-      } else {
-         this.g = cjl.b;
-      }
-
-      this.i = clh.k(this.g);
-      this.h = asb.a($$0.h("Page"), 0, this.i - 1);
+      this.m = il.a(this.b(), ckj.b);
+      bhv.b($$0, this.m);
+      this.n = $$0.g("BrewTime");
+      this.t = $$0.f("Fuel");
    }
 
    @Override
-   protected void b(qw $$0) {
+   protected void b(rt $$0) {
       super.b($$0);
-      if (!this.c().b()) {
-         $$0.a("Book", this.c().b(new qw()));
-         $$0.a("Page", this.h);
+      $$0.a("BrewTime", (short)this.n);
+      bhv.a($$0, this.m);
+      $$0.a("Fuel", (byte)this.t);
+   }
+
+   @Override
+   public ckj a(int $$0) {
+      return $$0 >= 0 && $$0 < this.m.size() ? this.m.get($$0) : ckj.b;
+   }
+
+   @Override
+   public ckj a(int $$0, int $$1) {
+      return bhv.a(this.m, $$0, $$1);
+   }
+
+   @Override
+   public ckj b(int $$0) {
+      return bhv.a(this.m, $$0);
+   }
+
+   @Override
+   public void a(int $$0, ckj $$1) {
+      if ($$0 >= 0 && $$0 < this.m.size()) {
+         this.m.set($$0, $$1);
       }
+   }
+
+   @Override
+   public boolean a(ccx $$0) {
+      return bhu.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, ckj $$1) {
+      if ($$0 == 3) {
+         return cmh.a($$1);
+      } else {
+         return $$0 == 4 ? $$1.a(ckm.rz) : ($$1.a(ckm.rv) || $$1.a(ckm.uu) || $$1.a(ckm.ux) || $$1.a(ckm.rw)) && this.a($$0).b();
+      }
+   }
+
+   @Override
+   public int[] a(hx $$0) {
+      if ($$0 == hx.b) {
+         return j;
+      } else {
+         return $$0 == hx.a ? k : l;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, ckj $$1, @Nullable hx $$2) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public boolean b(int $$0, ckj $$1, hx $$2) {
+      return $$0 == 3 ? $$1.a(ckm.rw) : true;
    }
 
    @Override
    public void a() {
-      this.a(cjl.b);
+      this.m.clear();
    }
 
    @Override
-   public cer createMenu(int $$0, cbz $$1, cca $$2) {
-      return new cft($$0, this.e, this.f);
-   }
-
-   @Override
-   public tl N_() {
-      return tl.c("container.lectern");
+   protected cfp a(int $$0, ccw $$1) {
+      return new cfu($$0, $$1, this, this.g);
    }
 }

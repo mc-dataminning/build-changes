@@ -1,84 +1,78 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.Collection;
 
 public class ahu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.perf.alreadyRunning"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ui.b("commands.enchant.failed.entity", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ui.b("commands.enchant.failed.itemless", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ui.b("commands.enchant.failed.incompatible", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> ui.b("commands.enchant.failed.level", $$0, $$1));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ui.c("commands.enchant.failed"));
 
-   public static void a(CommandDispatcher<dt> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dp $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(du.a("start").executes($$0x -> a((dt)$$0x.getSource()))))
-            .then(du.a("stop").executes($$0x -> b((dt)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("enchant").requires($$0x -> $$0x.c(2)))
+            .then(
+               dv.a("targets", eg.b())
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("enchantment", es.a($$1, jz.s))
+                           .executes($$0x -> a((du)$$0x.getSource(), eg.b($$0x, "targets"), es.g($$0x, "enchantment"), 1)))
+                        .then(
+                           dv.a("level", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a(
+                                       (du)$$0x.getSource(), eg.b($$0x, "targets"), es.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(dt $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aN()) {
-         throw c.create();
+   private static int a(du $$0, Collection<? extends bjt> $$1, ib<cot> $$2, int $$3) throws CommandSyntaxException {
+      cot $$4 = $$2.a();
+      if ($$3 > $$4.a()) {
+         throw d.create($$3, $$4.a());
       } else {
-         Consumer<bdu> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> tl.c("commands.perf.started"), false);
-         return 0;
-      }
-   }
+         int $$5 = 0;
 
-   private static int b(dt $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aN()) {
-         throw b.create();
-      } else {
-         $$1.aP();
-         return 0;
-      }
-   }
+         for (bjt $$6 : $$1) {
+            if ($$6 instanceof bkj) {
+               bkj $$7 = (bkj)$$6;
+               ckj $$8 = $$7.eS();
+               if (!$$8.b()) {
+                  if ($$4.a($$8) && cov.a(cov.a($$8).keySet(), $$4)) {
+                     $$8.a($$4, $$3);
+                     $$5++;
+                  } else if ($$1.size() == 1) {
+                     throw c.create($$8.d().m($$8).getString());
+                  }
+               } else if ($$1.size() == 1) {
+                  throw b.create($$7.ab().getString());
+               }
+            } else if ($$1.size() == 1) {
+               throw a.create($$6.ab().getString());
+            }
+         }
 
-   private static void a(dt $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aT().g(), aa.b().b());
+         if ($$5 == 0) {
+            throw e.create();
+         } else {
+            if ($$1.size() == 1) {
+               $$0.a(() -> ui.a("commands.enchant.success.single", $$4.d($$3), $$1.iterator().next().O_()), true);
+            } else {
+               $$0.a(() -> ui.a("commands.enchant.success.multiple", $$4.d($$3), $$1.size()), true);
+            }
 
-      String $$4;
-      try {
-         $$4 = v.a(bfk.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(tl.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (arm $$7 = new arm(bfk.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> tl.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(dt $$0, bdu $$1) {
-      if ($$1 != bdq.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)asz.a;
-         $$0.a(() -> tl.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+            return $$5;
+         }
       }
    }
 }

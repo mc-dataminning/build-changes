@@ -1,188 +1,136 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
-import java.util.function.Supplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class edo extends edw {
-   public static final Codec<edo> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(efy.a.fieldOf("source").forGetter($$0x -> $$0x.b), edo.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
-            .apply($$0, edo::new)
-   );
-   private final efx b;
-   private final List<edo.b> c;
+public class edo {
+   private final alq a;
+   private final Map<efq<?>, Object> b;
+   private final Map<afw, edo.b> c;
+   private final float d;
 
-   edo(List<efj> $$0, efx $$1, List<edo.b> $$2) {
-      super($$0);
+   public edo(alq $$0, Map<efq<?>, Object> $$1, Map<afw, edo.b> $$2, float $$3) {
+      this.a = $$0;
       this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public edy b() {
-      return edz.w;
+   public alq a() {
+      return this.a;
    }
 
-   @Override
-   public Set<ees<?>> a() {
-      return this.b.b();
+   public boolean a(efq<?> $$0) {
+      return this.b.containsKey($$0);
    }
 
-   @Override
-   public cjl a(cjl $$0, eck $$1) {
-      rq $$2 = this.b.a($$1);
-      if ($$2 != null) {
-         this.c.forEach($$2x -> $$2x.a($$0::w, $$2));
+   public <T> T b(efq<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
       }
-
-      return $$0;
    }
 
-   public static edo.a a(efx $$0) {
-      return new edo.a($$0);
+   @Nullable
+   public <T> T c(efq<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   public static edo.a a(eck.b $$0) {
-      return new edo.a(efv.a($$0));
+   @Nullable
+   public <T> T d(efq<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   public static class a extends edw.a<edo.a> {
-      private final efx a;
-      private final List<edo.b> b = Lists.newArrayList();
+   public void a(afw $$0, Consumer<ckj> $$1) {
+      edo.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
+   }
 
-      a(efx $$0) {
+   public float b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final alq a;
+      private final Map<efq<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<afw, edo.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(alq $$0) {
          this.a = $$0;
       }
 
-      public edo.a a(String $$0, String $$1, edo.c $$2) {
-         try {
-            this.b.add(new edo.b(edo.d.a($$0), edo.d.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
-         }
+      public alq a() {
+         return this.a;
       }
 
-      public edo.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, edo.c.a);
-      }
-
-      protected edo.a a() {
+      public <T> edo.a a(efq<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
          return this;
       }
 
-      @Override
-      public edx b() {
-         return new edo(this.g(), this.a, this.b);
+      public <T> edo.a b(efq<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         return this;
       }
-   }
 
-   static record b(edo.d b, edo.d c, edo.c d) {
-      public static final Codec<edo.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  edo.d.a.fieldOf("source").forGetter(edo.b::a), edo.d.a.fieldOf("target").forGetter(edo.b::b), edo.c.d.fieldOf("op").forGetter(edo.b::c)
-               )
-               .apply($$0, edo.b::new)
-      );
+      public <T> T a(efq<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
+         }
+      }
 
-      public void a(Supplier<rq> $$0, rq $$1) {
-         try {
-            List<rq> $$2 = this.b.b().a($$1);
+      @Nullable
+      public <T> T b(efq<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public edo.a a(afw $$0, edo.b $$1) {
+         edo.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public edo.a a(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public edo a(efr $$0) {
+         Set<efq<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<efq<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
             if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c.b(), $$2);
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new edo(this.a, this.b, this.c, this.d);
             }
-         } catch (CommandSyntaxException var4) {
          }
-      }
-
-      public edo.d a() {
-         return this.b;
-      }
-
-      public edo.d b() {
-         return this.c;
-      }
-
-      public edo.c c() {
-         return this.d;
       }
    }
 
-   public static enum c implements asu {
-      a("replace") {
-         @Override
-         public void a(rq $$0, ej.g $$1, List<rq> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (rq)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(rq $$0, ej.g $$1, List<rq> $$2) throws CommandSyntaxException {
-            List<rq> $$3 = $$1.a($$0, rc::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof rc) {
-                  $$2.forEach($$1xx -> ((rc)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(rq $$0, ej.g $$1, List<rq> $$2) throws CommandSyntaxException {
-            List<rq> $$3 = $$1.a($$0, qw::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof qw) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof qw) {
-                        ((qw)$$1x).a((qw)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<edo.c> d = asu.a(edo.c::values);
-      private final String e;
-
-      public abstract void a(rq var1, ej.g var2, List<rq> var3) throws CommandSyntaxException;
-
-      c(String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-   }
-
-   static record d(String b, ej.g c) {
-      public static final Codec<edo.d> a = Codec.STRING.comapFlatMap($$0 -> {
-         try {
-            return DataResult.success(a($$0));
-         } catch (CommandSyntaxException var2) {
-            return DataResult.error(() -> "Failed to parse path " + $$0 + ": " + var2.getMessage());
-         }
-      }, edo.d::a);
-
-      public static edo.d a(String $$0) throws CommandSyntaxException {
-         ej.g $$1 = new ej().a(new StringReader($$0));
-         return new edo.d($$0, $$1);
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public ej.g b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<ckj> var1);
    }
 }

@@ -1,28 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class aih {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.save.alreadyOn"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.kick.owner.failed"));
 
-   public static void a(CommandDispatcher<dt> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
-         dt $$1 = (dt)$$0x.getSource();
-         boolean $$2 = false;
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("kick").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("targets", eg.d())
+                     .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ui.c("multiplayer.disconnect.kicked"))))
+                  .then(dv.a("reason", ek.a()).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ek.a($$0x, "reason"))))
+            )
+      );
+   }
 
-         for (akt $$3 : $$1.l().F()) {
-            if ($$3 != null && $$3.e) {
-               $$3.e = false;
-               $$2 = true;
-            }
+   private static int a(du $$0, Collection<alr> $$1, ui $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (alr $$4 : $$1) {
+         if (!$$0.m().a($$4.fR())) {
+            $$4.c.b($$2);
+            $$0.a(() -> ui.a("commands.kick.success", $$4.O_(), $$2), true);
+            $$3++;
          }
+      }
 
-         if (!$$2) {
-            throw a.create();
-         } else {
-            $$1.a(() -> tl.c("commands.save.enabled"), true);
-            return 1;
-         }
-      }));
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         return $$3;
+      }
    }
 }

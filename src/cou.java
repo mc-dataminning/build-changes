@@ -1,25 +1,104 @@
-public class cou extends cnu {
-   public cou(cnu.a $$0, bjb... $$1) {
-      super($$0, cnv.b, $$1);
-   }
+public enum cou {
+   a {
+      @Override
+      public boolean a(cke $$0) {
+         return $$0 instanceof cht;
+      }
+   },
+   b {
+      @Override
+      public boolean a(cke $$0) {
+         if ($$0 instanceof cht $$1 && $$1.g() == bjy.c) {
+            return true;
+         }
 
-   @Override
-   public int a(int $$0) {
-      return $$0 * 10;
-   }
+         return false;
+      }
+   },
+   c {
+      @Override
+      public boolean a(cke $$0) {
+         if ($$0 instanceof cht $$1 && $$1.g() == bjy.d) {
+            return true;
+         }
 
-   @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
+         return false;
+      }
+   },
+   d {
+      @Override
+      public boolean a(cke $$0) {
+         if ($$0 instanceof cht $$1 && $$1.g() == bjy.e) {
+            return true;
+         }
 
-   @Override
-   public int a() {
-      return 3;
-   }
+         return false;
+      }
+   },
+   e {
+      @Override
+      public boolean a(cke $$0) {
+         if ($$0 instanceof cht $$1 && $$1.g() == bjy.f) {
+            return true;
+         }
 
-   @Override
-   public boolean a(cnu $$0) {
-      return super.a($$0) && $$0 != cny.j;
-   }
+         return false;
+      }
+   },
+   f {
+      @Override
+      public boolean a(cke $$0) {
+         return $$0 instanceof clu;
+      }
+   },
+   g {
+      @Override
+      public boolean a(cke $$0) {
+         return $$0 instanceof cit;
+      }
+   },
+   h {
+      @Override
+      public boolean a(cke $$0) {
+         return $$0 instanceof cjp;
+      }
+   },
+   i {
+      @Override
+      public boolean a(cke $$0) {
+         return $$0 instanceof cmb;
+      }
+   },
+   j {
+      @Override
+      public boolean a(cke $$0) {
+         return $$0.o();
+      }
+   },
+   k {
+      @Override
+      public boolean a(cke $$0) {
+         return $$0 instanceof cih;
+      }
+   },
+   l {
+      @Override
+      public boolean a(cke $$0) {
+         return $$0 instanceof cjk || cua.a($$0) instanceof cjk;
+      }
+   },
+   m {
+      @Override
+      public boolean a(cke $$0) {
+         return $$0 instanceof cir;
+      }
+   },
+   n {
+      @Override
+      public boolean a(cke $$0) {
+         return $$0 instanceof cmd || cua.a($$0) instanceof cmd || j.a($$0);
+      }
+   };
+
+   public abstract boolean a(cke var1);
 }

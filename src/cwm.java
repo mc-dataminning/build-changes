@@ -1,70 +1,56 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
 
-public class cwm extends dar implements ctf {
+public class cwm extends ctm {
    public static final MapCodec<cwm> a = b(cwm::new);
+   protected static final eiy b = cua.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
 
    @Override
    public MapCodec<cwm> a() {
       return a;
    }
 
-   public cwm(dfc.d $$0) {
+   protected cwm(dga.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(cqe $$0, gw $$1, dfd $$2) {
-      return $$0.a_($$1.c()).i();
+   public ddx a(ht $$0, dgb $$1) {
+      return new dfm($$0, $$1);
    }
 
    @Override
-   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
-      return true;
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return b;
    }
 
    @Override
-   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
-      gw $$4 = $$2.c();
-      dfd $$5 = cte.bt.o();
-      Optional<he.c<dug>> $$6 = $$0.G_().d(jc.az).b(pi.n);
-
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         gw $$8 = $$4;
-
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
-               continue label49;
-            }
+   public void a(dgb $$0, cqz $$1, ht $$2, bjt $$3) {
+      if ($$1 instanceof alq && $$3.cs() && eiv.c(eiv.a($$3.cG().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), eij.i)) {
+         afv<cqz> $$4 = $$1.ac() == cqz.j ? cqz.h : cqz.j;
+         alq $$5 = ((alq)$$1).n().a($$4);
+         if ($$5 == null) {
+            return;
          }
 
-         dfd $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((ctf)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
-
-         if ($$10.i()) {
-            he<dug> $$12;
-            if ($$1.a(8) == 0) {
-               List<dnd<?, ?>> $$11 = $$0.s($$8).a().d().a();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
-
-               $$12 = ((dqh)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$12 = $$6.get();
-            }
-
-            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
-         }
+         $$3.b($$5);
       }
+   }
+
+   @Override
+   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
+      double $$4 = (double)$$2.u() + $$3.j();
+      double $$5 = (double)$$2.v() + 0.8;
+      double $$6 = (double)$$2.w() + $$3.j();
+      $$1.a(js.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public ckj a(crc $$0, ht $$1, dgb $$2) {
+      return ckj.b;
+   }
+
+   @Override
+   public boolean a(dgb $$0, ebd $$1) {
+      return false;
    }
 }

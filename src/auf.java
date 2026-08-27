@@ -1,93 +1,62 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.lang.reflect.Type;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Validate;
 
-public class auf extends ayf {
-   public static final Gson a = new GsonBuilder().registerTypeAdapter(tl.class, new JsonDeserializer<tl>() {
-      public tz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         if ($$0.isJsonPrimitive()) {
-            return tl.b($$0.getAsString());
-         } else if ($$0.isJsonArray()) {
-            JsonArray $$3 = $$0.getAsJsonArray();
-            tz $$4 = null;
+public class auf {
+   private static final int a = 6;
+   private final long[] b;
+   private final int c;
+   private final long d;
+   private final int e;
 
-            for (JsonElement $$5 : $$3) {
-               tz $$6 = this.a($$5, $$5.getClass(), $$2);
-               if ($$4 == null) {
-                  $$4 = $$6;
-               } else {
-                  $$4.b($$6);
-               }
-            }
-
-            return $$4;
-         } else {
-            throw new JsonParseException("Don't know how to turn " + $$0 + " into a Component");
-         }
-      }
-   }).create();
-
-   public auf(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", azd.s, "Sign");
+   public auf(int $$0, int $$1) {
+      this($$0, $$1, new long[asy.d($$1 * $$0, 64) / 64]);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      String $$2 = $$0.get($$1).asString("");
-      tl $$3 = null;
-      if (!"null".equals($$2) && !StringUtils.isEmpty($$2)) {
-         if ($$2.charAt(0) == '"' && $$2.charAt($$2.length() - 1) == '"' || $$2.charAt(0) == '{' && $$2.charAt($$2.length() - 1) == '}') {
-            try {
-               $$3 = arr.b(a, $$2, tl.class, true);
-               if ($$3 == null) {
-                  $$3 = tk.a;
-               }
-            } catch (Exception var8) {
-            }
+   public auf(int $$0, int $$1, long[] $$2) {
+      Validate.inclusiveBetween(1L, 32L, (long)$$0);
+      this.e = $$1;
+      this.c = $$0;
+      this.b = $$2;
+      this.d = (1L << $$0) - 1L;
+      int $$3 = asy.d($$1 * $$0, 64) / 64;
+      if ($$2.length != $$3) {
+         throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
+      }
+   }
 
-            if ($$3 == null) {
-               try {
-                  $$3 = tl.a.a($$2);
-               } catch (Exception var7) {
-               }
-            }
+   public void a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, this.d, (long)$$1);
+      int $$2 = $$0 * this.c;
+      int $$3 = $$2 >> 6;
+      int $$4 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$5 = $$2 ^ $$3 << 6;
+      this.b[$$3] = this.b[$$3] & ~(this.d << $$5) | ((long)$$1 & this.d) << $$5;
+      if ($$3 != $$4) {
+         int $$6 = 64 - $$5;
+         int $$7 = this.c - $$6;
+         this.b[$$4] = this.b[$$4] >>> $$7 << $$7 | ((long)$$1 & this.d) >> $$6;
+      }
+   }
 
-            if ($$3 == null) {
-               try {
-                  $$3 = tl.a.b($$2);
-               } catch (Exception var6) {
-               }
-            }
-
-            if ($$3 == null) {
-               $$3 = tl.b($$2);
-            }
-         } else {
-            $$3 = tl.b($$2);
-         }
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      int $$1 = $$0 * this.c;
+      int $$2 = $$1 >> 6;
+      int $$3 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$4 = $$1 ^ $$2 << 6;
+      if ($$2 == $$3) {
+         return (int)(this.b[$$2] >>> $$4 & this.d);
       } else {
-         $$3 = tk.a;
+         int $$5 = 64 - $$4;
+         return (int)((this.b[$$2] >>> $$4 | this.b[$$3] << $$5) & this.d);
       }
-
-      return $$0.set($$1, $$0.createString(tl.a.a($$3)));
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         $$0x = this.a($$0x, "Text1");
-         $$0x = this.a($$0x, "Text2");
-         $$0x = this.a($$0x, "Text3");
-         return this.a($$0x, "Text4");
-      });
+   public long[] a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
    }
 }

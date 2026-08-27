@@ -1,43 +1,101 @@
-import java.util.Locale;
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
-public enum elv {
-   a,
-   b,
-   c,
-   d;
+public class elv {
+   private static final int a = 32768;
+   private final elv.a b;
+   private final String c;
+   private int d;
 
-   private static final int e = 1024;
+   protected elv(elv.a $$0, int $$1, String $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = $$2;
+   }
 
-   public static elv a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
+   public void a(elx $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager.glAttachShader($$0.a(), this.c());
+   }
+
+   public void a() {
+      if (this.d != -1) {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.d);
+         this.d = -1;
+         this.b.c().remove(this.c);
+      }
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public static elv a(elv.a $$0, String $$1, InputStream $$2, String $$3, elo $$4) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$5 = b($$0, $$1, $$2, $$3, $$4);
+      elv $$6 = new elv($$0, $$5, $$1);
+      $$0.c().put($$1, $$6);
+      return $$6;
+   }
+
+   protected static int b(elv.a $$0, String $$1, InputStream $$2, String $$3, elo $$4) throws IOException {
+      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
+      if ($$5 == null) {
+         throw new IOException("Could not load program " + $$0.a());
       } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
+         int $$6 = GlStateManager.glCreateShader($$0.d());
+         GlStateManager.glShaderSource($$6, $$4.a($$5));
+         GlStateManager.glCompileShader($$6);
+         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
+            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
+            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
+         } else {
+            return $$6;
          }
       }
    }
 
-   public static double a(long $$0, elv $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   protected int c() {
+      return this.d;
    }
 
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
+
+      private final String c;
+      private final String d;
+      private final int e;
+      private final Map<String, elv> f = Maps.newHashMap();
+
+      private a(String $$0, String $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
-   }
 
-   public static String b(long $$0, elv $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+      public String a() {
+         return this.c;
+      }
+
+      public String b() {
+         return this.d;
+      }
+
+      int d() {
+         return this.e;
+      }
+
+      public Map<String, elv> c() {
+         return this.f;
+      }
    }
 }

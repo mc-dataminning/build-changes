@@ -1,62 +1,69 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dsb extends drv {
-   public static final Codec<dsb> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               drv.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bgj.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+public class dsb extends dse {
+   public static final Codec<dsb> a = RecordCodecBuilder.create(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bhg.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
+               )
             )
             .apply($$0, dsb::new)
    );
-   private final drv c;
-   private final String d;
-   @Nullable
-   private dgd e;
-   private final bgj f;
+   private final bhg b;
+   private final float c;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   public dsb(drv $$0, dgd $$1, bgj $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
-   }
-
-   public dsb(drv $$0, String $$1, bgj $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public dsb(bhg $$0, bhg $$1, bhg $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
    @Override
-   protected drw<?> a() {
-      return drw.g;
+   protected dsf<?> a() {
+      return dsf.k;
    }
 
    @Override
-   public dfd a(ash $$0, gw $$1) {
-      dfd $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
+   protected void a(crf $$0, dse.b $$1, ate $$2, dro $$3, int $$4, dse.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      ht $$10 = $$5.a().b($$8);
+      int $$11 = $$7 + $$5.b() - 1;
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
+
+      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
+         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
       }
 
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
    }
 
-   private static dgd a(dfd $$0, String $$1) {
-      Collection<dgg<?>> $$2 = $$0.B();
-      Optional<dgd> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dgd).map($$0x -> (dgd)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
+   @Override
+   public int a(ate $$0, int $$1, dro $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ate $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
+         return true;
+      } else {
+         boolean $$6 = $$1 == $$4 && $$3 == $$4;
+         boolean $$7 = $$4 > 2;
+         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
+      }
    }
 }

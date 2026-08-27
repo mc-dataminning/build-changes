@@ -1,45 +1,41 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+public class frs extends frt<dfl> {
+   private static final afw c = new afw("textures/entity/end_gateway_beam.png");
 
-public class frs implements frj.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final eqp c;
-   private Collection<gw> d = Lists.newArrayList();
-
-   public frs(eqp $$0) {
-      this.c = $$0;
+   public frs(frb.a $$0) {
+      super($$0);
    }
 
-   public void a(Collection<gw> $$0) {
-      this.d = $$0;
+   public void a(dfl $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
+      if ($$0.c() || $$0.d()) {
+         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.c() ? (double)$$0.k().aj() : 50.0;
+         $$6 = asy.a($$6 * (float) Math.PI);
+         int $$8 = asy.a((double)$$6 * $$7);
+         float[] $$9 = $$0.c() ? cix.c.d() : cix.k.d();
+         long $$10 = $$0.k().V();
+         fqw.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
-      gw $$5 = this.b().c();
-
-      for (gw $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
-         }
-      }
+   protected float b() {
+      return 1.0F;
    }
 
-   private static void a(elj $$0, foa $$1, gw $$2) {
-      frj.a($$0, $$1, $$2.b(-1, -1, -1), $$2.b(1, 1, 1), 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
+   @Override
+   protected float c() {
+      return 0.0F;
    }
 
-   private static void a(elj $$0, foa $$1, String $$2, gw $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      frj.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   @Override
+   protected fpj d() {
+      return fpj.w();
    }
 
-   private eqa b() {
-      return this.c.j.m();
+   @Override
+   public int aP_() {
+      return 256;
    }
 }

@@ -1,161 +1,41 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 
-public class abw implements ve<abd> {
-   private final int a;
-   private final abw.a b;
-   private final boolean c;
-   static final abw.a d = new abw.a() {
-      @Override
-      public abw.b a() {
-         return abw.b.b;
-      }
+public class abw implements wb<xu> {
+   private final List<cno<?>> a;
 
-      @Override
-      public void a(abw.c $$0) {
-         $$0.a();
-      }
-
-      @Override
-      public void a(so $$0) {
-      }
-   };
-
-   private abw(int $$0, boolean $$1, abw.a $$2) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
+   public abw(Collection<cno<?>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   public static abw a(biw $$0, boolean $$1) {
-      return new abw($$0.ah(), $$1, d);
-   }
-
-   public static abw a(biw $$0, boolean $$1, bhd $$2) {
-      return new abw($$0.ah(), $$1, new abw.d($$2));
-   }
-
-   public static abw a(biw $$0, boolean $$1, bhd $$2, ehh $$3) {
-      return new abw($$0.ah(), $$1, new abw.e($$2, $$3));
-   }
-
-   public abw(so $$0) {
-      this.a = $$0.n();
-      abw.b $$1 = $$0.b(abw.b.class);
-      this.b = $$1.d.apply($$0);
-      this.c = $$0.readBoolean();
+   public abw(tl $$0) {
+      this.a = $$0.a(abw::b);
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b.a());
-      this.b.a($$0);
-      $$0.a(this.c);
+   public void a(tl $$0) {
+      $$0.a(this.a, abw::a);
    }
 
-   public void a(abd $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public biw a(akt $$0) {
-      return $$0.b(this.a);
+   public List<cno<?>> a() {
+      return this.a;
    }
 
-   public boolean a() {
-      return this.c;
+   private static cno<?> b(tl $$0) {
+      afw $$1 = $$0.t();
+      afw $$2 = $$0.t();
+      cnn<?> $$3 = jy.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
+      return new cno<>($$2, $$3);
    }
 
-   public void a(abw.c $$0) {
-      this.b.a($$0);
-   }
-
-   interface a {
-      abw.b a();
-
-      void a(abw.c var1);
-
-      void a(so var1);
-   }
-
-   static enum b {
-      a(abw.d::new),
-      b($$0 -> abw.d),
-      c(abw.e::new);
-
-      final Function<so, abw.a> d;
-
-      private b(Function<so, abw.a> $$0) {
-         this.d = $$0;
-      }
-   }
-
-   public interface c {
-      void a(bhd var1);
-
-      void a(bhd var1, ehh var2);
-
-      void a();
-   }
-
-   static class d implements abw.a {
-      private final bhd a;
-
-      d(bhd $$0) {
-         this.a = $$0;
-      }
-
-      private d(so $$0) {
-         this.a = $$0.b(bhd.class);
-      }
-
-      @Override
-      public abw.b a() {
-         return abw.b.a;
-      }
-
-      @Override
-      public void a(abw.c $$0) {
-         $$0.a(this.a);
-      }
-
-      @Override
-      public void a(so $$0) {
-         $$0.a(this.a);
-      }
-   }
-
-   static class e implements abw.a {
-      private final bhd a;
-      private final ehh b;
-
-      e(bhd $$0, ehh $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private e(so $$0) {
-         this.b = new ehh((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bhd.class);
-      }
-
-      @Override
-      public abw.b a() {
-         return abw.b.c;
-      }
-
-      @Override
-      public void a(abw.c $$0) {
-         $$0.a(this.a, this.b);
-      }
-
-      @Override
-      public void a(so $$0) {
-         $$0.a((float)this.b.c);
-         $$0.a((float)this.b.d);
-         $$0.a((float)this.b.e);
-         $$0.a(this.a);
-      }
+   public static <T extends cnn<?>> void a(tl $$0, cno<?> $$1) {
+      $$0.a(jy.u.b($$1.b().aq_()));
+      $$0.a($$1.a());
+      ((cnq<cnn<?>>)$$1.b().aq_()).a($$0, $$1.b());
    }
 }

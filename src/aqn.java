@@ -1,69 +1,98 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 public class aqn {
-   public static Map<aey<? extends hq<?>>, aqn.a> a(hl<afi> $$0) {
-      return hu.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((aqn.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+   public static final aqm<cua> a = a("mined", jy.f);
+   public static final aqm<cke> b = a("crafted", jy.i);
+   public static final aqm<cke> c = a("used", jy.i);
+   public static final aqm<cke> d = a("broken", jy.i);
+   public static final aqm<cke> e = a("picked_up", jy.i);
+   public static final aqm<cke> f = a("dropped", jy.i);
+   public static final aqm<bjx<?>> g = a("killed", jy.h);
+   public static final aqm<bjx<?>> h = a("killed_by", jy.h);
+   public static final aqm<afw> i = a("custom", jy.n);
+   public static final afw j = a("leave_game", aql.b);
+   public static final afw k = a("play_time", aql.e);
+   public static final afw l = a("total_world_time", aql.e);
+   public static final afw m = a("time_since_death", aql.e);
+   public static final afw n = a("time_since_rest", aql.e);
+   public static final afw o = a("sneak_time", aql.e);
+   public static final afw p = a("walk_one_cm", aql.d);
+   public static final afw q = a("crouch_one_cm", aql.d);
+   public static final afw r = a("sprint_one_cm", aql.d);
+   public static final afw s = a("walk_on_water_one_cm", aql.d);
+   public static final afw t = a("fall_one_cm", aql.d);
+   public static final afw u = a("climb_one_cm", aql.d);
+   public static final afw v = a("fly_one_cm", aql.d);
+   public static final afw w = a("walk_under_water_one_cm", aql.d);
+   public static final afw x = a("minecart_one_cm", aql.d);
+   public static final afw y = a("boat_one_cm", aql.d);
+   public static final afw z = a("pig_one_cm", aql.d);
+   public static final afw A = a("horse_one_cm", aql.d);
+   public static final afw B = a("aviate_one_cm", aql.d);
+   public static final afw C = a("swim_one_cm", aql.d);
+   public static final afw D = a("strider_one_cm", aql.d);
+   public static final afw E = a("jump", aql.b);
+   public static final afw F = a("drop", aql.b);
+   public static final afw G = a("damage_dealt", aql.c);
+   public static final afw H = a("damage_dealt_absorbed", aql.c);
+   public static final afw I = a("damage_dealt_resisted", aql.c);
+   public static final afw J = a("damage_taken", aql.c);
+   public static final afw K = a("damage_blocked_by_shield", aql.c);
+   public static final afw L = a("damage_absorbed", aql.c);
+   public static final afw M = a("damage_resisted", aql.c);
+   public static final afw N = a("deaths", aql.b);
+   public static final afw O = a("mob_kills", aql.b);
+   public static final afw P = a("animals_bred", aql.b);
+   public static final afw Q = a("player_kills", aql.b);
+   public static final afw R = a("fish_caught", aql.b);
+   public static final afw S = a("talked_to_villager", aql.b);
+   public static final afw T = a("traded_with_villager", aql.b);
+   public static final afw U = a("eat_cake_slice", aql.b);
+   public static final afw V = a("fill_cauldron", aql.b);
+   public static final afw W = a("use_cauldron", aql.b);
+   public static final afw X = a("clean_armor", aql.b);
+   public static final afw Y = a("clean_banner", aql.b);
+   public static final afw Z = a("clean_shulker_box", aql.b);
+   public static final afw aa = a("interact_with_brewingstand", aql.b);
+   public static final afw ab = a("interact_with_beacon", aql.b);
+   public static final afw ac = a("inspect_dropper", aql.b);
+   public static final afw ad = a("inspect_hopper", aql.b);
+   public static final afw ae = a("inspect_dispenser", aql.b);
+   public static final afw af = a("play_noteblock", aql.b);
+   public static final afw ag = a("tune_noteblock", aql.b);
+   public static final afw ah = a("pot_flower", aql.b);
+   public static final afw ai = a("trigger_trapped_chest", aql.b);
+   public static final afw aj = a("open_enderchest", aql.b);
+   public static final afw ak = a("enchant_item", aql.b);
+   public static final afw al = a("play_record", aql.b);
+   public static final afw am = a("interact_with_furnace", aql.b);
+   public static final afw an = a("interact_with_crafting_table", aql.b);
+   public static final afw ao = a("open_chest", aql.b);
+   public static final afw ap = a("sleep_in_bed", aql.b);
+   public static final afw aq = a("open_shulker_box", aql.b);
+   public static final afw ar = a("open_barrel", aql.b);
+   public static final afw as = a("interact_with_blast_furnace", aql.b);
+   public static final afw at = a("interact_with_smoker", aql.b);
+   public static final afw au = a("interact_with_lectern", aql.b);
+   public static final afw av = a("interact_with_campfire", aql.b);
+   public static final afw aw = a("interact_with_cartography_table", aql.b);
+   public static final afw ax = a("interact_with_loom", aql.b);
+   public static final afw ay = a("interact_with_stonecutter", aql.b);
+   public static final afw az = a("bell_ring", aql.b);
+   public static final afw aA = a("raid_trigger", aql.b);
+   public static final afw aB = a("raid_win", aql.b);
+   public static final afw aC = a("interact_with_anvil", aql.b);
+   public static final afw aD = a("interact_with_grindstone", aql.b);
+   public static final afw aE = a("target_hit", aql.b);
+   public static final afw aF = a("interact_with_smithing_table", aql.b);
+
+   private static afw a(String $$0, aql $$1) {
+      afw $$2 = new afw($$0);
+      io.a(jy.n, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   private static <T> aqn.a a(hq<T> $$0) {
-      Map<aez, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         hi<T> $$3 = (hi<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
-
-         for (he<T> $$5 : $$3) {
-            if ($$5.f() != he.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((aqk)$$2.getFirst()).b(), $$4);
-      });
-      return new aqn.a($$1);
-   }
-
-   public static <T> void a(aey<? extends hq<T>> $$0, hq<T> $$1, aqn.a $$2, aqn.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         aqk<T> $$5 = aqk.a($$0, $$3x);
-         List<he<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
-   }
-
-   public static final class a {
-      final Map<aez, IntList> a;
-
-      a(Map<aez, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(so $$0) {
-         $$0.a(this.a, so::a, so::a);
-      }
-
-      public static aqn.a b(so $$0) {
-         return new aqn.a($$0.a(so::t, so::a));
-      }
-
-      public boolean a() {
-         return this.a.isEmpty();
-      }
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(aqk<T> var1, List<he<T>> var2);
+   private static <T> aqm<T> a(String $$0, io<T> $$1) {
+      ui $$2 = ui.c("stat_type.minecraft." + $$0);
+      return io.a(jy.y, $$0, new aqm<>($$1, $$2));
    }
 }

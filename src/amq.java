@@ -1,65 +1,54 @@
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-class amq extends FileStore {
-   private final String a;
+public class amq implements aea {
+   private static final ui a = ui.c("disconnect.ignoring_status_request");
+   private final MinecraftServer b;
+   private final tj c;
 
-   public amq(String $$0) {
-      this.a = $$0;
+   public amq(MinecraftServer $$0, tj $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public String name() {
-      return this.a;
+   public void a(adz $$0) {
+      switch ($$0.f()) {
+         case b:
+            this.c.a(ady.b);
+            if ($$0.a() != aa.b().e()) {
+               ui $$1;
+               if ($$0.a() < 754) {
+                  $$1 = ui.a("multiplayer.disconnect.outdated_client", aa.b().c());
+               } else {
+                  $$1 = ui.a("multiplayer.disconnect.incompatible", aa.b().c());
+               }
+
+               this.c.a(new aeh($$1));
+               this.c.a($$1);
+            } else {
+               this.c.a(new amr(this.b, this.c));
+            }
+            break;
+         case a:
+            aex $$3 = this.b.aq();
+            if (this.b.ai() && $$3 != null) {
+               this.c.a(ady.a);
+               this.c.a(new amt($$3, this.c));
+            } else {
+               this.c.a(a);
+            }
+            break;
+         default:
+            throw new UnsupportedOperationException("Invalid intention " + $$0.f());
+      }
    }
 
    @Override
-   public String type() {
-      return "index";
+   public void a(ui $$0) {
    }
 
    @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public long getTotalSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
-      return $$0 == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(String $$0) {
-      return "basic".equals($$0);
-   }
-
-   @Nullable
-   @Override
-   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
-      return null;
-   }
-
-   @Override
-   public Object getAttribute(String $$0) throws IOException {
-      throw new UnsupportedOperationException();
+   public boolean c() {
+      return this.c.k();
    }
 }

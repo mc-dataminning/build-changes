@@ -1,20 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public class dor extends dnq<dqi> {
-   public dor(Codec<dqi> $$0) {
+public class dor extends doo<dqw> {
+   public dor(Codec<dqw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dns<dqi> $$0) {
-      cqv $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      dqi $$3 = $$0.f();
+   public boolean a(doq<dqw> $$0) {
+      ht $$1 = $$0.e();
+      dqw $$2 = $$0.f();
+      crt $$3 = $$0.b();
+      ht.a $$4 = new ht.a();
 
-      for (dqc.a $$4 : $$3.b) {
-         if ($$4.b.a($$1.a_($$2), $$0.d())) {
-            $$1.a($$2, $$4.c, 2);
-            break;
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.I_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).i()) {
+               $$3.a($$4, $$2.c, 2);
+            }
          }
       }
 

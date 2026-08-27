@@ -1,43 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class dph extends dnq<dqb> {
-   private static final gw a = new gw(8, 3, 8);
-   private static final cpi b = new cpi(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public dph(Codec<dqb> $$0) {
+public class dph extends doo<dqy> {
+   public dph(Codec<dqy> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(dns<dqb> $$0) {
-      cqv $$1 = $$0.b();
-      cpi $$2 = new cpi($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
+   public boolean a(doq<dqy> $$0) {
+      crt $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      dgb $$3 = $$1.a_($$2.d());
+      dqy $$4 = $$0.f();
+      ate $$5 = $$0.d();
+      if (!$$3.a(aqs.aK)) {
+         return false;
       } else {
-         gw $$3 = a.h($$0.e().v() + a.v());
-         gw.a $$4 = new gw.a();
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.aj()) {
+            int $$7 = 0;
 
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, cte.m.o(), 2);
-                  } else {
-                     $$1.a($$4, cte.b.o(), 2);
-                  }
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               ht $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dgb $$10 = $$4.b.a($$5, $$9);
+               if ($$1.t($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
                }
             }
-         }
 
-         return true;
+            return $$7 > 0;
+         } else {
+            return false;
+         }
       }
    }
 }

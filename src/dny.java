@@ -1,46 +1,58 @@
 import com.mojang.serialization.Codec;
 
-public class dny extends dmt {
-   public dny(Codec<dpw> $$0) {
+public class dny extends doo<dqz> {
+   public dny(Codec<dqz> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(cqc $$0, ash $$1, gw $$2, int $$3, gw.a $$4, dpw $$5) {
-      int $$6 = $$5.d;
+   public boolean a(doq<dqz> $$0) {
+      ht $$1 = $$0.e();
+      crt $$2 = $$0.b();
+      ate $$3 = $$0.d();
+      if ($$1.v() > $$2.z_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(cuc.G) && !$$2.a_($$1.d()).a(cuc.G)) {
+         return false;
+      } else {
+         boolean $$4 = false;
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dfd $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(cwx.e) && $$19.b(cwx.c) && $$19.b(cwx.b) && $$19.b(cwx.d)) {
-                     $$19 = $$19.a(cwx.e, Boolean.valueOf($$15))
-                        .a(cwx.c, Boolean.valueOf($$16))
-                        .a(cwx.b, Boolean.valueOf($$17))
-                        .a(cwx.d, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
-               }
+         for (hx $$5 : hx.values()) {
+            if ($$5 != hx.a && $$2.a_($$1.a($$5)).a(cuc.iC)) {
+               $$4 = true;
+               break;
             }
          }
-      }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, cuc.mW.o(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  ht $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dgb $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(cuc.G) || $$10.a(cuc.iC) || $$10.a(cuc.dO)) {
+                     for (hx $$11 : hx.values()) {
+                        dgb $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(cuc.mW)) {
+                           $$2.a($$9, cuc.mW.o(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

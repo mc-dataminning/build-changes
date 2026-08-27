@@ -1,86 +1,58 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.Streams;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class avc extends DataFix {
-   private static final int a = 16;
+public class avc extends azc {
+   public static final String a = "_filtered_correct";
+   private static final String b = "black";
 
-   public avc(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "ChunkToProtoChunkFix", this.getInputSchema().getType(azd.c), this.getOutputSchema().getType(azd.c), $$0 -> $$0.update("Level", avc::a)
-      );
+   public avc(Schema $$0, String $$1, String $$2) {
+      super($$0, false, $$1, baa.s, $$2);
    }
 
    private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("TerrainPopulated").asBoolean(false);
-      boolean $$2 = $$0.get("LightPopulated").asNumber().result().isEmpty() || $$0.get("LightPopulated").asBoolean(false);
-      String $$3;
-      if ($$1) {
-         if ($$2) {
-            $$3 = "mobs_spawned";
-         } else {
-            $$3 = "decorated";
-         }
-      } else {
-         $$3 = "carved";
-      }
-
-      return c(b($$0)).set("Status", $$0.createString($$3)).set("hasLegacyStructureData", $$0.createBoolean(true));
+      return $$0.set("front_text", b($$0)).set("back_text", c($$0)).set("is_waxed", $$0.createBoolean(false));
    }
 
    private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.update("Biomes", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asByteBufferOpt().result().map($$1x -> {
-            int[] $$2 = new int[256];
+      Dynamic<T> $$1 = auc.a($$0.getOps());
+      List<Dynamic<T>> $$2 = a($$0, "Text").map($$1x -> $$1x.orElse($$1)).toList();
+      Dynamic<T> $$3 = $$0.emptyMap()
+         .set("messages", $$0.createList($$2.stream()))
+         .set("color", $$0.get("Color").result().orElse($$0.createString("black")))
+         .set("has_glowing_text", $$0.get("GlowingText").result().orElse($$0.createBoolean(false)))
+         .set("_filtered_correct", $$0.createBoolean(true));
+      List<Optional<Dynamic<T>>> $$4 = a($$0, "FilteredText").toList();
+      if ($$4.stream().anyMatch(Optional::isPresent)) {
+         $$3 = $$3.set("filtered_messages", $$0.createList(Streams.mapWithIndex($$4.stream(), ($$1x, $$2x) -> {
+            Dynamic<T> $$3x = $$2.get((int)$$2x);
+            return $$1x.orElse($$3x);
+         })));
+      }
 
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               if ($$3 < $$1x.capacity()) {
-                  $$2[$$3] = $$1x.get($$3) & 255;
-               }
-            }
+      return $$3;
+   }
 
-            return $$0.createIntList(Arrays.stream($$2));
-         }), $$1));
+   private static <T> Stream<Optional<Dynamic<T>>> a(Dynamic<T> $$0, String $$1) {
+      return Stream.of($$0.get($$1 + "1").result(), $$0.get($$1 + "2").result(), $$0.get($$1 + "3").result(), $$0.get($$1 + "4").result());
    }
 
    private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse(
-         $$0.get("TileTicks")
-            .asStreamOpt()
-            .result()
-            .map(
-               $$1 -> {
-                  List<ShortList> $$2 = IntStream.range(0, 16).mapToObj($$0xx -> new ShortArrayList()).collect(Collectors.toList());
-                  $$1.forEach($$1x -> {
-                     int $$2x = $$1x.get("x").asInt(0);
-                     int $$3 = $$1x.get("y").asInt(0);
-                     int $$4 = $$1x.get("z").asInt(0);
-                     short $$5 = a($$2x, $$3, $$4);
-                     $$2.get($$3 >> 4).add($$5);
-                  });
-                  return $$0.remove("TileTicks")
-                     .set(
-                        "ToBeTicked",
-                        $$0.createList($$2.stream().map($$1x -> $$0.createList($$1x.intStream().mapToObj($$1xx -> $$0.createShort((short)$$1xx)))))
-                     );
-               }
-            ),
-         $$0
-      );
+      return $$0.emptyMap().set("messages", d($$0)).set("color", $$0.createString("black")).set("has_glowing_text", $$0.createBoolean(false));
    }
 
-   private static short a(int $$0, int $$1, int $$2) {
-      return (short)($$0 & 15 | ($$1 & 15) << 4 | ($$2 & 15) << 8);
+   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
+      Dynamic<T> $$1 = auc.a($$0.getOps());
+      return $$0.createList(Stream.of($$1, $$1, $$1, $$1));
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), avc::a);
    }
 }

@@ -1,3 +1,4 @@
+import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -7,38 +8,72 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.BiFunction;
+import javax.annotation.Nullable;
 
-public class ef implements ArgumentType<cpy> {
-   private static final Collection<String> a = Stream.of(cpy.a, cpy.b).map(cpy::b).collect(Collectors.toList());
-   private static final cpy[] b = cpy.values();
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.b("argument.gamemode.invalid", $$0));
+public class ef implements ArgumentType<ef.a> {
+   private static final Collection<String> a = Arrays.asList("eyes", "feet");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ui.b("argument.anchor.invalid", $$0));
 
-   public cpy a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      cpy $$2 = cpy.a($$1, null);
-      if ($$2 == null) {
-         throw c.createWithContext($$0, $$1);
-      } else {
-         return $$2;
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof dw ? dw.b(Arrays.stream(b).map(cpy::b), $$1) : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   public static ef.a a(CommandContext<du> $$0, String $$1) {
+      return (ef.a)$$0.getArgument($$1, ef.a.class);
    }
 
    public static ef a() {
       return new ef();
    }
 
-   public static cpy a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
-      return (cpy)$$0.getArgument($$1, cpy.class);
+   public ef.a a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = $$0.readUnquotedString();
+      ef.a $$3 = ef.a.a($$2);
+      if ($$3 == null) {
+         $$0.setCursor($$1);
+         throw b.createWithContext($$0, $$2);
+      } else {
+         return $$3;
+      }
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return dy.b(ef.a.c.keySet(), $$1);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   public static enum a {
+      a("feet", ($$0, $$1) -> $$0),
+      b("eyes", ($$0, $$1) -> new eif($$0.c, $$0.d + (double)$$1.cH(), $$0.e));
+
+      static final Map<String, ef.a> c = ac.a(Maps.newHashMap(), $$0 -> {
+         for (ef.a $$1 : values()) {
+            $$0.put($$1.d, $$1);
+         }
+      });
+      private final String d;
+      private final BiFunction<eif, bjt, eif> e;
+
+      private a(String $$0, BiFunction<eif, bjt, eif> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      @Nullable
+      public static ef.a a(String $$0) {
+         return c.get($$0);
+      }
+
+      public eif a(bjt $$0) {
+         return this.e.apply($$0.dj(), $$0);
+      }
+
+      public eif a(du $$0) {
+         bjt $$1 = $$0.g();
+         return $$1 == null ? $$0.e() : this.e.apply($$0.e(), $$1);
+      }
    }
 }

@@ -1,7 +1,23 @@
-import java.util.function.BiConsumer;
+public enum dhm implements atr {
+   a("none", true),
+   b("unstable", false),
+   c("partial", true),
+   d("full", true);
 
-public interface dhm extends cph {
-   void a(BiConsumer<gw, dfd> var1);
+   private final String e;
+   private final boolean f;
 
-   dzq B();
+   private dhm(String $$0, boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
+   }
+
+   public boolean a() {
+      return this.f;
+   }
 }

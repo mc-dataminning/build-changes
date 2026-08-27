@@ -1,40 +1,36 @@
-public class yd implements ve<wx> {
-   private final int a;
-   private final int b;
-   private final int c;
+public class yd implements wb<xu> {
+   private final ht a;
+   private final dgb b;
 
-   public yd(int $$0, int $$1, int $$2) {
+   public yd(ht $$0, dgb $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public yd(so $$0) {
-      this.a = $$0.readUnsignedByte();
-      this.b = $$0.n();
-      this.c = $$0.readInt();
+   public yd(cqf $$0, ht $$1) {
+      this($$1, $$0.a_($$1));
+   }
+
+   public yd(tl $$0) {
+      this.a = $$0.e();
+      this.b = $$0.a(cua.q);
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.k(this.a);
-      $$0.c(this.b);
-      $$0.p(this.c);
+   public void a(tl $$0) {
+      $$0.a(this.a);
+      $$0.a(cua.q, this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public int d() {
+   public dgb a() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   public ht d() {
+      return this.a;
    }
 }

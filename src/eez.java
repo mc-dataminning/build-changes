@@ -1,47 +1,40 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.function.BiFunction;
 
-public record eez(he<cnu> b, List<Float> c) implements efj {
+public class eez implements eev {
    public static final Codec<eez> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jb.g.r().fieldOf("enchantment").forGetter(eez::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eez::d)).apply($$0, eez::new)
+      $$0 -> $$0.group(eex.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eez::new)
    );
+   public static final Codec<eez> b = eex.b.listOf().xmap(eez::new, $$0 -> $$0.c);
+   private final List<eev> c;
+   private final BiFunction<ckj, edi, ckj> d;
 
-   @Override
-   public efk b() {
-      return efl.l;
+   private eez(List<eev> $$0) {
+      this.c = $$0;
+      this.d = eex.a($$0);
+   }
+
+   public static eez a(List<eev> $$0) {
+      return new eez(List.copyOf($$0));
+   }
+
+   public ckj a(ckj $$0, edi $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public Set<ees<?>> a() {
-      return ImmutableSet.of(eev.i);
-   }
+   public void a(edr $$0) {
+      eev.super.a($$0);
 
-   public boolean a(eck $$0) {
-      cjl $$1 = $$0.c(eev.i);
-      int $$2 = $$1 != null ? cnw.a(this.b.a(), $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
-   }
-
-   public static efj.a a(cnu $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.b(".function[" + $$1 + "]"));
       }
-
-      return () -> new eez($$0.j(), $$2);
    }
 
-   public he<cnu> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+   @Override
+   public eew b() {
+      return eex.C;
    }
 }

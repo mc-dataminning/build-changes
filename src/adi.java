@@ -1,42 +1,55 @@
-import java.security.PublicKey;
+import javax.annotation.Nullable;
 
-public class adi implements ve<adf> {
-   private final String a;
-   private final byte[] b;
-   private final byte[] c;
+public class adi implements wb<aca> {
+   private final adi.a a;
+   @Nullable
+   private final afw b;
 
-   public adi(String $$0, byte[] $$1, byte[] $$2) {
+   public adi(adi.a $$0, @Nullable afw $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public adi(so $$0) {
-      this.a = $$0.d(20);
-      this.b = $$0.b();
-      this.c = $$0.b();
+   public static adi a(af $$0) {
+      return new adi(adi.a.a, $$0.a());
+   }
+
+   public static adi a() {
+      return new adi(adi.a.b, null);
+   }
+
+   public adi(tl $$0) {
+      this.a = $$0.b(adi.a.class);
+      if (this.a == adi.a.a) {
+         this.b = $$0.t();
+      } else {
+         this.b = null;
+      }
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(tl $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+      if (this.a == adi.a.a) {
+         $$0.a(this.b);
+      }
    }
 
-   public void a(adf $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public adi.a d() {
       return this.a;
    }
 
-   public PublicKey d() throws arb {
-      return ara.a(this.b);
+   @Nullable
+   public afw e() {
+      return this.b;
    }
 
-   public byte[] e() {
-      return this.c;
+   public static enum a {
+      a,
+      b;
    }
 }

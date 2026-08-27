@@ -1,30 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public class eda extends edf {
-   public static final Codec<eda> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jb.i.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eda::new)
-   );
-   private final he<cjg> j;
+public class eda {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final ecs d;
+   private final boolean e;
 
-   private eda(he<cjg> $$0, int $$1, int $$2, List<efj> $$3, List<edx> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   private eda(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new ecs($$3, $$4);
+      this.e = $$5;
    }
 
-   @Override
-   public ede a() {
-      return edb.c;
+   public static eda a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new eda(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(aa.b().c()),
+            $$3.get("Id").asInt(aa.b().d().c()),
+            $$3.get("Series").asString(ecs.a),
+            $$3.get("Snapshot").asBoolean(!aa.b().g())
+         )
+         : new eda($$1, $$2, "", 0, ecs.a, false);
    }
 
-   @Override
-   public void a(Consumer<cjl> $$0, eck $$1) {
-      $$0.accept(new cjl(this.j));
+   public int a() {
+      return this.a;
    }
 
-   public static edf.a<?> a(cqa $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eda($$0.k().j(), $$1, $$2, $$3, $$4));
+   public long b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.c;
+   }
+
+   public ecs d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
    }
 }

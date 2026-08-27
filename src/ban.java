@@ -1,41 +1,59 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.types.templates.Hook.HookFunction;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import java.util.Map;
-import java.util.function.Supplier;
 
-public class ban extends Schema {
-   public ban(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class ban extends DataFix {
+   private final String a;
+   private final Map<String, String> b;
+
+   public ban(Schema $$0, String $$1, Map<String, String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         true,
-         azd.t,
-         () -> DSL.hook(
-               DSL.optionalFields(
-                  "id",
-                  azd.z.in($$0),
-                  "tag",
-                  DSL.optionalFields(
-                     "EntityTag",
-                     azd.w.in($$0),
-                     "BlockEntityTag",
-                     azd.s.in($$0),
-                     "CanDestroy",
-                     DSL.list(azd.y.in($$0)),
-                     "CanPlaceOn",
-                     DSL.list(azd.y.in($$0)),
-                     "Items",
-                     DSL.list(azd.t.in($$0))
-                  )
-               ),
-               bdf.a,
-               HookFunction.IDENTITY
-            )
+   protected TypeRewriteRule makeRule() {
+      return TypeRewriteRule.seq(this.b(), this.a());
+   }
+
+   private TypeRewriteRule a() {
+      Type<?> $$0 = this.getOutputSchema().getType(baa.D);
+      Type<?> $$1 = this.getInputSchema().getType(baa.D);
+      OpticFinder<?> $$2 = $$1.findField("CriteriaType");
+      TaggedChoiceType<?> $$3 = (TaggedChoiceType<?>)$$2.type()
+         .findChoiceType("type", -1)
+         .orElseThrow(() -> new IllegalStateException("Can't find choice type for criteria"));
+      Type<?> $$4 = (Type<?>)$$3.types().get("minecraft:custom");
+      if ($$4 == null) {
+         throw new IllegalStateException("Failed to find custom criterion type variant");
+      } else {
+         OpticFinder<?> $$5 = DSL.namedChoice("minecraft:custom", $$4);
+         OpticFinder<String> $$6 = DSL.fieldFinder("id", bbi.a());
+         return this.fixTypeEverywhereTyped(
+            this.a,
+            $$1,
+            $$0,
+            $$3x -> $$3x.updateTyped($$2, $$2xx -> $$2xx.updateTyped($$5, $$1xxx -> $$1xxx.update($$6, $$0xxxx -> this.b.getOrDefault($$0xxxx, $$0xxxx))))
+         );
+      }
+   }
+
+   private TypeRewriteRule b() {
+      Type<?> $$0 = this.getOutputSchema().getType(baa.g);
+      Type<?> $$1 = this.getInputSchema().getType(baa.g);
+      OpticFinder<?> $$2 = $$1.findField("stats");
+      OpticFinder<?> $$3 = $$2.type().findField("minecraft:custom");
+      OpticFinder<String> $$4 = bbi.a().finder();
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         $$1,
+         $$0,
+         $$3x -> $$3x.updateTyped($$2, $$2xx -> $$2xx.updateTyped($$3, $$1xxx -> $$1xxx.update($$4, $$0xxxx -> this.b.getOrDefault($$0xxxx, $$0xxxx))))
       );
    }
 }

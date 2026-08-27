@@ -1,27 +1,32 @@
-public class ftl extends fuj<bvh, ffa<bvh>> {
-   private static final aez a = new aez("textures/entity/fox/fox.png");
-   private static final aez i = new aez("textures/entity/fox/fox_sleep.png");
-   private static final aez j = new aez("textures/entity/fox/snow_fox.png");
-   private static final aez k = new aez("textures/entity/fox/snow_fox_sleep.png");
-
-   public ftl(ftd.a $$0) {
-      super($$0, new ffa<>($$0.a(fhw.X)), 0.4F);
-      this.a(new fwy(this, $$0.d()));
+public class ftl extends fvj<bvx, ffi<bvx>> {
+   public ftl(fud.a $$0) {
+      super($$0, new ffi<>($$0.a(fiv.n)), 0.4F);
+      this.a(new fxn(this, $$0.f()));
    }
 
-   protected void a(bvh $$0, elj $$1, float $$2, float $$3, float $$4) {
+   public afw a(bvx $$0) {
+      return $$0.gk();
+   }
+
+   protected void a(bvx $$0, emh $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b(0.8F, 0.8F, 0.8F);
+   }
+
+   protected void a(bvx $$0, emh $$1, float $$2, float $$3, float $$4) {
       super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$0.gk() || $$0.ge()) {
-         float $$5 = -asb.i($$4, $$0.O, $$0.dD());
-         $$1.a(a.b.rotationDegrees($$5));
-      }
-   }
+      float $$5 = $$0.E($$4);
+      if ($$5 > 0.0F) {
+         $$1.a(0.4F * $$5, 0.15F * $$5, 0.1F * $$5);
+         $$1.a(a.f.rotationDegrees(asy.j($$5, 0.0F, 90.0F)));
+         ht $$6 = $$0.dl();
 
-   public aez a(bvh $$0) {
-      if ($$0.t() == bvh.v.a) {
-         return $$0.fD() ? i : a;
-      } else {
-         return $$0.fD() ? k : j;
+         for (ccx $$8 : $$0.dL().a(ccx.class, new eia($$6).c(2.0, 2.0, 2.0))) {
+            if ($$8.fD()) {
+               $$1.a(0.15F * $$5, 0.0F, 0.0F);
+               break;
+            }
+         }
       }
    }
 }

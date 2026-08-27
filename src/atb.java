@@ -1,25 +1,60 @@
-public class atb<A, B> {
-   private A a;
-   private B b;
+import java.util.function.Supplier;
 
-   public atb(A $$0, B $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class atb {
+   public static void a(cqz $$0, ht $$1, jq $$2, bhg $$3) {
+      for (hx $$4 : hx.values()) {
+         a($$0, $$1, $$2, $$3, $$4, () -> a($$0.z), 0.55);
+      }
    }
 
-   public A a() {
-      return this.a;
+   public static void a(cqz $$0, ht $$1, jq $$2, bhg $$3, hx $$4, Supplier<eif> $$5, double $$6) {
+      int $$7 = $$3.a($$0.z);
+
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         a($$0, $$1, $$4, $$2, $$5.get(), $$6);
+      }
    }
 
-   public void a(A $$0) {
-      this.a = $$0;
+   private static eif a(ate $$0) {
+      return new eif(asy.a($$0, -0.5, 0.5), asy.a($$0, -0.5, 0.5), asy.a($$0, -0.5, 0.5));
    }
 
-   public B b() {
-      return this.b;
+   public static void a(hx.a $$0, cqz $$1, ht $$2, double $$3, jq $$4, bhm $$5) {
+      eif $$6 = eif.b($$2);
+      boolean $$7 = $$0 == hx.a.a;
+      boolean $$8 = $$0 == hx.a.b;
+      boolean $$9 = $$0 == hx.a.c;
+      int $$10 = $$5.a($$1.z);
+
+      for (int $$11 = 0; $$11 < $$10; $$11++) {
+         double $$12 = $$6.c + asy.a($$1.z, -1.0, 1.0) * ($$7 ? 0.5 : $$3);
+         double $$13 = $$6.d + asy.a($$1.z, -1.0, 1.0) * ($$8 ? 0.5 : $$3);
+         double $$14 = $$6.e + asy.a($$1.z, -1.0, 1.0) * ($$9 ? 0.5 : $$3);
+         double $$15 = $$7 ? asy.a($$1.z, -1.0, 1.0) : 0.0;
+         double $$16 = $$8 ? asy.a($$1.z, -1.0, 1.0) : 0.0;
+         double $$17 = $$9 ? asy.a($$1.z, -1.0, 1.0) : 0.0;
+         $$1.a($$4, $$12, $$13, $$14, $$15, $$16, $$17);
+      }
    }
 
-   public void b(B $$0) {
-      this.b = $$0;
+   public static void a(cqz $$0, ht $$1, hx $$2, jq $$3, eif $$4, double $$5) {
+      eif $$6 = eif.b($$1);
+      int $$7 = $$2.j();
+      int $$8 = $$2.k();
+      int $$9 = $$2.l();
+      double $$10 = $$6.c + ($$7 == 0 ? asy.a($$0.z, -0.5, 0.5) : (double)$$7 * $$5);
+      double $$11 = $$6.d + ($$8 == 0 ? asy.a($$0.z, -0.5, 0.5) : (double)$$8 * $$5);
+      double $$12 = $$6.e + ($$9 == 0 ? asy.a($$0.z, -0.5, 0.5) : (double)$$9 * $$5);
+      double $$13 = $$7 == 0 ? $$4.a() : 0.0;
+      double $$14 = $$8 == 0 ? $$4.b() : 0.0;
+      double $$15 = $$9 == 0 ? $$4.c() : 0.0;
+      $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
+   }
+
+   public static void a(cqz $$0, ht $$1, ate $$2, jq $$3) {
+      double $$4 = (double)$$1.u() + $$2.j();
+      double $$5 = (double)$$1.v() - 0.05;
+      double $$6 = (double)$$1.w() + $$2.j();
+      $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

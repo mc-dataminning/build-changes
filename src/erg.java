@@ -1,34 +1,104 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import org.apache.commons.compress.utils.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.text2speech.Narrator;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import org.slf4j.Logger;
 
-public record erg(float a, boolean b, Map<String, List<erf>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<erf>> b = Maps.newHashMap();
-      private boolean c;
+public class erg {
+   public static final ui a = uh.a;
+   private static final Logger b = LogUtils.getLogger();
+   private final ero c;
+   private final Narrator d = Narrator.getNarrator();
 
-      public static erg.a a(float $$0) {
-         return new erg.a($$0);
+   public erg(ero $$0) {
+      this.c = $$0;
+   }
+
+   public void a(ui $$0) {
+      if (this.d().c()) {
+         String $$1 = $$0.getString();
+         this.b($$1);
+         this.d.say($$1, false);
       }
+   }
 
-      private a(float $$0) {
-         this.a = $$0;
+   public void b(ui $$0) {
+      String $$1 = $$0.getString();
+      if (this.d().d() && !$$1.isEmpty()) {
+         this.b($$1);
+         this.d.say($$1, false);
       }
+   }
 
-      public erg.a a() {
-         this.c = true;
-         return this;
+   public void c(ui $$0) {
+      this.a($$0.getString());
+   }
+
+   public void a(String $$0) {
+      if (this.d().d() && !$$0.isEmpty()) {
+         this.b($$0);
+         if (this.d.active()) {
+            this.d.clear();
+            this.d.say($$0, true);
+         }
       }
+   }
 
-      public erg.a a(String $$0, erf $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
+   private erq d() {
+      return this.c.m.ao().c();
+   }
+
+   private void b(String $$0) {
+      if (aa.aT) {
+         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
       }
+   }
 
-      public erg b() {
-         return new erg(this.a, this.c, this.b);
+   public void a(erq $$0) {
+      this.b();
+      this.d.say(ui.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
+      evs $$1 = ero.O().ay();
+      if (this.d.active()) {
+         if ($$0 == erq.a) {
+            evq.b($$1, evq.a.b, ui.c("narrator.toast.disabled"), null);
+         } else {
+            evq.b($$1, evq.a.b, ui.c("narrator.toast.enabled"), $$0.b());
+         }
+      } else {
+         evq.b($$1, evq.a.b, ui.c("narrator.toast.disabled"), ui.c("options.narrator.notavailable"));
+      }
+   }
+
+   public boolean a() {
+      return this.d.active();
+   }
+
+   public void b() {
+      if (this.d() != erq.a && this.d.active()) {
+         this.d.clear();
+      }
+   }
+
+   public void c() {
+      this.d.destroy();
+   }
+
+   public void a(boolean $$0) {
+      if ($$0
+         && !this.a()
+         && !TinyFileDialogs.tinyfd_messageBox(
+            "Minecraft",
+            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
+            "yesno",
+            "error",
+            true
+         )) {
+         throw new erg.a("Narrator library is not active");
+      }
+   }
+
+   public static class a extends fer {
+      public a(String $$0) {
+         super($$0);
       }
    }
 }

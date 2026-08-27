@@ -1,83 +1,34 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
+public interface aqu {
+   arh<bit> a = a("damages_helmet");
+   arh<bit> b = a("bypasses_armor");
+   arh<bit> c = a("bypasses_shield");
+   arh<bit> d = a("bypasses_invulnerability");
+   arh<bit> e = a("bypasses_cooldown");
+   arh<bit> f = a("bypasses_effects");
+   arh<bit> g = a("bypasses_resistance");
+   arh<bit> h = a("bypasses_enchantments");
+   arh<bit> i = a("is_fire");
+   arh<bit> j = a("is_projectile");
+   arh<bit> k = a("witch_resistant_to");
+   arh<bit> l = a("is_explosion");
+   arh<bit> m = a("is_fall");
+   arh<bit> n = a("is_drowning");
+   arh<bit> o = a("is_freezing");
+   arh<bit> p = a("is_lightning");
+   arh<bit> q = a("no_anger");
+   arh<bit> r = a("no_impact");
+   arh<bit> s = a("always_most_significant_fall");
+   arh<bit> t = a("wither_immune_to");
+   arh<bit> u = a("ignites_armor_stands");
+   arh<bit> v = a("burns_armor_stands");
+   arh<bit> w = a("avoids_guardian_thorns");
+   arh<bit> x = a("always_triggers_silverfish");
+   arh<bit> y = a("always_hurts_ender_dragons");
+   arh<bit> z = a("no_knockback");
+   arh<bit> A = a("always_kills_armor_stands");
+   arh<bit> B = a("can_break_armor_stand");
 
-public class aqu {
-   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
-      if ($$1.length == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
-
-         for (T $$3 : $$1) {
-            int $$4 = $$0.applyAsInt($$3);
-            T $$5 = (T)$$2.put($$4, $$3);
-            if ($$5 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
-            }
-         }
-
-         return $$2;
-      }
-   }
-
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
-      IntFunction<T> $$3 = a($$0, $$1);
-      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
-   }
-
-   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
-      int $$2 = $$1.length;
-      if ($$2 == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         T[] $$3 = (T[])$$1.clone();
-         Arrays.fill($$3, null);
-
-         for (T $$4 : $$1) {
-            int $$5 = $$0.applyAsInt($$4);
-            if ($$5 < 0 || $$5 >= $$2) {
-               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
-            }
-
-            T $$6 = $$3[$$5];
-            if ($$6 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
-            }
-
-            $$3[$$5] = $$4;
-         }
-
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            if ($$3[$$7] == null) {
-               throw new IllegalArgumentException("Missing value at index: " + $$7);
-            }
-         }
-
-         return $$3;
-      }
-   }
-
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, aqu.a $$2) {
-      T[] $$3 = b($$0, $$1);
-      int $$4 = $$3.length;
-
-      return switch ($$2) {
-         case a -> {
-            T $$5 = $$3[0];
-            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
-         }
-         case b -> $$2x -> $$3[asb.b($$2x, $$4)];
-         case c -> $$2x -> $$3[asb.a($$2x, 0, $$4 - 1)];
-      };
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   private static arh<bit> a(String $$0) {
+      return arh.a(jz.q, new afw($$0));
    }
 }

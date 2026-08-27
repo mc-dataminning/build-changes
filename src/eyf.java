@@ -1,91 +1,75 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class eyf extends eye {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final tl c = tl.c("selectWorld.allowCommands");
-   private static final tl k = tl.c("selectWorld.gameMode");
-   private static final tl l = tl.c("lanServer.otherPlayers");
-   private static final tl m = tl.c("lanServer.port");
-   private static final tl n = tl.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final tl o = tl.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int p = 16733525;
-   private final eye q;
-   private cpy s = cpy.a;
-   private boolean t;
-   private int u = ars.a();
-   @Nullable
-   private est v;
+public class eyf extends ezd {
+   private static final ui a = ui.c("addServer.enterIp");
+   private etj b;
+   private final fkc c;
+   private ets k;
+   private final BooleanConsumer l;
+   private final ezd m;
 
-   public eyf(eye $$0) {
-      super(tl.c("lanServer.title"));
-      this.q = $$0;
+   public eyf(ezd $$0, BooleanConsumer $$1, fkc $$2) {
+      super(ui.c("selectServer.direct"));
+      this.m = $$0;
+      this.c = $$2;
+      this.l = $$1;
    }
 
    @Override
-   protected void aH_() {
-      gcz $$0 = this.f.T();
-      this.s = $$0.t_();
-      this.t = $$0.aT().o();
-      this.d(esr.a(cpy::e).a(cpy.a, cpy.d, cpy.b, cpy.c).a(this.s).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.s = $$1x));
-      this.d(esr.b(this.t).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.t = $$1x));
-      esk $$1 = esk.a(tl.c("lanServer.start"), $$1x -> {
-         this.f.a(null);
-         tl $$2;
-         if ($$0.a(this.s, this.t, this.u)) {
-            $$2 = ahx.a(this.u);
-         } else {
-            $$2 = tl.c("commands.publish.failed");
-         }
-
-         this.f.l.d().a($$2);
-         this.f.d();
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
-      this.v = new est(this.i, this.g / 2 - 75, 160, 150, 20, tl.c("lanServer.port"));
-      this.v.b($$1x -> {
-         tl $$2 = this.a($$1x);
-         this.v.c(tl.b(this.u + "").a(n.i));
-         if ($$2 == null) {
-            this.v.m(14737632);
-            this.v.a(null);
-            $$1.i = true;
-         } else {
-            this.v.m(16733525);
-            this.v.a(etv.a($$2));
-            $$1.i = false;
-         }
-      });
-      this.v.c(tl.b(this.u + "").a(n.i));
-      this.d(this.v);
-      this.d($$1);
-      this.d(esk.a(tk.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
-   }
-
-   @Nullable
-   private tl a(String $$0) {
-      if ($$0.isBlank()) {
-         this.u = ars.a();
-         return null;
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.i || this.t() != this.k || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
       } else {
-         try {
-            this.u = Integer.parseInt($$0);
-            if (this.u < 1024 || this.u > 65535) {
-               return o;
-            } else {
-               return !ars.a(this.u) ? n : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.u = ars.a();
-            return o;
-         }
+         this.l();
+         return true;
       }
    }
 
    @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
+   protected void aM_() {
+      this.k = new ets(this.i, this.g / 2 - 100, 116, 200, 20, ui.c("addServer.enterIp"));
+      this.k.l(128);
+      this.k.a(this.f.m.aa);
+      this.k.b($$0 -> this.C());
+      this.e(this.k);
+      this.b = this.d(etj.a(ui.c("selectServer.select"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 12, 200, 20).a());
+      this.d(etj.a(uh.e, $$0 -> this.l.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
+      this.c(this.k);
+      this.C();
+   }
+
+   @Override
+   public void a(ero $$0, int $$1, int $$2) {
+      String $$3 = this.k.a();
+      this.b($$0, $$1, $$2);
+      this.k.a($$3);
+   }
+
+   private void l() {
+      this.c.b = this.k.a();
+      this.l.accept(true);
+   }
+
+   @Override
+   public void aC_() {
+      this.f.a(this.m);
+   }
+
+   @Override
+   public void aD_() {
+      this.f.m.aa = this.k.a();
+      this.f.m.ar();
+   }
+
+   private void C() {
+      this.b.i = fld.b(this.k.a());
+   }
+
+   @Override
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      $$0.a(this.i, l, this.g / 2, 82, 16777215);
-      $$0.a(this.i, m, this.g / 2, 142, 16777215);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      $$0.b(this.i, a, this.g / 2 - 100 + 1, 100, 10526880);
+      this.k.a($$0, $$1, $$2, $$3);
    }
 }

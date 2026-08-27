@@ -1,162 +1,119 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 
-public class elo {
-   private final ImmutableList<elp> a;
-   private final ImmutableMap<String, elp> b;
-   private final IntList c = new IntArrayList();
-   private final int d;
-   @Nullable
-   private elm e;
+public abstract class elo {
+   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
+   private static final String b = "//[^\\v]*";
+   private static final Pattern c = Pattern.compile(
+      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
+   );
+   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
+   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
 
-   public elo(ImmutableMap<String, elp> $$0) {
-      this.b = $$0;
-      this.a = $$0.values().asList();
-      int $$1 = 0;
-      UnmodifiableIterator var3 = $$0.values().iterator();
+   public List<String> a(String $$0) {
+      elo.a $$1 = new elo.a();
+      List<String> $$2 = this.a($$0, $$1, "");
+      $$2.set(0, this.a($$2.get(0), $$1.a));
+      return $$2;
+   }
 
-      while (var3.hasNext()) {
-         elp $$2 = (elp)var3.next();
-         this.c.add($$1);
-         $$1 += $$2.e();
+   private List<String> a(String $$0, elo.a $$1, String $$2) {
+      int $$3 = $$1.b;
+      int $$4 = 0;
+      String $$5 = "";
+      List<String> $$6 = Lists.newArrayList();
+      Matcher $$7 = c.matcher($$0);
+
+      while ($$7.find()) {
+         if (!a($$0, $$7, $$4)) {
+            String $$8 = $$7.group(2);
+            boolean $$9 = $$8 != null;
+            if (!$$9) {
+               $$8 = $$7.group(3);
+            }
+
+            if ($$8 != null) {
+               String $$10 = $$0.substring($$4, $$7.start(1));
+               String $$11 = $$2 + $$8;
+               String $$12 = this.a($$9, $$11);
+               if (!Strings.isNullOrEmpty($$12)) {
+                  if (!ats.d($$12)) {
+                     $$12 = $$12 + System.lineSeparator();
+                  }
+
+                  $$1.b++;
+                  int $$13 = $$1.b;
+                  List<String> $$14 = this.a($$12, $$1, $$9 ? v.a($$11) : "");
+                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
+                  if (!ac.b($$10)) {
+                     $$6.add($$10);
+                  }
+
+                  $$6.addAll($$14);
+               } else {
+                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
+                  $$6.add($$5 + $$10 + $$15);
+               }
+
+               int $$16 = ats.c($$0.substring(0, $$7.end(1)));
+               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
+               $$4 = $$7.end(1);
+            }
+         }
       }
 
-      this.d = $$1;
+      String $$17 = $$0.substring($$4);
+      if (!ac.b($$17)) {
+         $$6.add($$5 + $$17);
+      }
+
+      return $$6;
    }
 
-   @Override
-   public String toString() {
-      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
-   }
-
-   public int a() {
-      return this.b() / 4;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ImmutableList<elp> c() {
-      return this.a;
-   }
-
-   public ImmutableList<String> d() {
-      return this.b.keySet().asList();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         elo $$1 = (elo)$$0;
-         return this.d != $$1.d ? false : this.b.equals($$1.b);
+   private String a(String $$0, elo.a $$1) {
+      Matcher $$2 = d.matcher($$0);
+      if ($$2.find() && a($$0, $$2)) {
+         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
+         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
       } else {
+         return $$0;
+      }
+   }
+
+   private String a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
+   }
+
+   private static boolean a(String $$0, Matcher $$1) {
+      return !a($$0, $$1, 0);
+   }
+
+   private static boolean a(String $$0, Matcher $$1, int $$2) {
+      int $$3 = $$1.start() - $$2;
+      if ($$3 == 0) {
          return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::h);
       } else {
-         this.h();
+         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
+         if (!$$4.find()) {
+            return true;
+         } else {
+            int $$5 = $$4.end(1);
+            return $$5 == $$1.start();
+         }
       }
    }
 
-   private void h() {
-      int $$0 = this.b();
-      List<elp> $$1 = this.c();
+   @Nullable
+   public abstract String a(boolean var1, String var2);
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
-      }
-   }
-
-   public void f() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::i);
-      } else {
-         this.i();
-      }
-   }
-
-   private void i() {
-      ImmutableList<elp> $$0 = this.c();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         elp $$2 = (elp)$$0.get($$1);
-         $$2.a($$1);
-      }
-   }
-
-   public elm g() {
-      elm $$0 = this.e;
-      if ($$0 == null) {
-         this.e = $$0 = new elm(elm.a.b);
-      }
-
-      return $$0;
-   }
-
-   public static enum a {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      public static elo.a a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
-   }
-
-   public static enum b {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
-
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private b(int $$0, int $$1, int $$2, boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
-      }
-
-      public int a(int $$0) {
-         return switch (this) {
-            case b, c, d, e, f, g -> $$0;
-            case a, h -> $$0 / 4 * 6;
-            default -> 0;
-         };
-      }
+   static final class a {
+      int a;
+      int b;
    }
 }

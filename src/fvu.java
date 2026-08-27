@@ -1,19 +1,16 @@
-public class fvu extends fuj<bvy, fhg<bvy>> {
-   private static final aez a = new aez("textures/entity/turtle/big_sea_turtle.png");
+public class fvu extends fvj<bwm, fhd<bwm>> {
+   private static final afw a = new afw("textures/entity/bear/polarbear.png");
 
-   public fvu(ftd.a $$0) {
-      super($$0, new fhg<>($$0.a(fhw.bH)), 0.7F);
+   public fvu(fud.a $$0) {
+      super($$0, new fhd<>($$0.a(fiv.aU)), 0.9F);
    }
 
-   public void a(bvy $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
-      if ($$0.m_()) {
-         this.d *= 0.5F;
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aez a(bvy $$0) {
+   public afw a(bwm $$0) {
       return a;
+   }
+
+   protected void a(bwm $$0, emh $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

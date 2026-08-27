@@ -1,54 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dki {
-   public static enum a implements asu {
-      a("air"),
-      b("liquid");
+public class dki<T extends dkn> {
+   private final T a;
+   @Nullable
+   private iu b;
 
-      public static final Codec<dki.a> c = asu.a(dki.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public dki(T $$0) {
+      this.a = $$0;
    }
 
-   public static enum b implements asu {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
+   public void a(alq $$0) {
+      this.c($$0);
+   }
 
-      public static final Codec<dki.b> l = asu.a(dki.b::values);
-      private final String m;
+   public T a() {
+      return this.a;
+   }
 
-      private b(String $$0) {
-         this.m = $$0;
-      }
+   public void b(alq $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   }
 
-      public String a() {
-         return this.m;
-      }
+   public void c(alq $$0) {
+      this.a.a().a($$0).map(iu::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
+   }
 
-      @Override
-      public String c() {
-         return this.m;
+   private static void a(crc $$0, @Nullable iu $$1, Consumer<dko> $$2) {
+      if ($$1 != null) {
+         dhx $$3 = $$0.a($$1.a(), $$1.c(), dic.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
       }
    }
 }

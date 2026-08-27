@@ -1,42 +1,50 @@
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.Const.PrimitiveType;
-import com.mojang.serialization.DataResult;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.PrimitiveCodec;
+import java.util.List;
 
-public class bal extends Schema {
-   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
-      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
-         return $$0.getStringValue($$1).map(bal::a);
-      }
-
-      public <T> T a(DynamicOps<T> $$0, String $$1) {
-         return (T)$$0.createString($$1);
-      }
-
-      @Override
-      public String toString() {
-         return "NamespacedString";
-      }
-   };
-   private static final Type<String> b = new PrimitiveType(a);
-
-   public bal(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bal extends DataFix {
+   public bal(Schema $$0) {
+      super($$0, true);
    }
 
-   public static String a(String $$0) {
-      aez $$1 = aez.a($$0);
-      return $$1 != null ? $$1.toString() : $$0;
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(baa.B);
+      Type<?> $$1 = this.getOutputSchema().getType(baa.B);
+      OpticFinder<?> $$2 = $$0.findField("SpawnData");
+      Type<?> $$3 = $$1.findField("SpawnData").type();
+      OpticFinder<?> $$4 = $$0.findField("SpawnPotentials");
+      Type<?> $$5 = $$1.findField("SpawnPotentials").type();
+      return this.fixTypeEverywhereTyped(
+         "Fix mob spawner data structure",
+         $$0,
+         $$1,
+         $$4x -> $$4x.updateTyped($$2, $$3, $$1xx -> this.a($$3, $$1xx)).updateTyped($$4, $$5, $$1xx -> this.b($$5, $$1xx))
+      );
    }
 
-   public static Type<String> a() {
-      return b;
+   private <T> Typed<T> a(Type<T> $$0, Typed<?> $$1) {
+      DynamicOps<?> $$2 = $$1.getOps();
+      return new Typed($$0, $$2, Pair.of($$1.getValue(), new Dynamic($$2)));
    }
 
-   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
-      return super.getChoiceType($$0, a($$1));
+   private <T> Typed<T> b(Type<T> $$0, Typed<?> $$1) {
+      DynamicOps<?> $$2 = $$1.getOps();
+      List<?> $$3 = (List<?>)$$1.getValue();
+      List<?> $$4 = $$3.stream().map($$1x -> {
+         Pair<Object, Dynamic<?>> $$2x = (Pair<Object, Dynamic<?>>)$$1x;
+         int $$3x = ((Dynamic)$$2x.getSecond()).get("Weight").asNumber().result().orElse(1).intValue();
+         Dynamic<?> $$4x = new Dynamic($$2);
+         $$4x = $$4x.set("weight", $$4x.createInt($$3x));
+         Dynamic<?> $$5 = ((Dynamic)$$2x.getSecond()).remove("Weight").remove("Entity");
+         return Pair.of(Pair.of($$2x.getFirst(), $$5), $$4x);
+      }).toList();
+      return new Typed($$0, $$2, $$4);
    }
 }

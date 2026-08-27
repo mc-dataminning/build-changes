@@ -1,153 +1,124 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class eur implements eus {
-   private static final aez a = new aez("toast/system");
-   private static final int d = 200;
-   private static final int e = 12;
-   private static final int f = 10;
-   private final eur.a g;
-   private tl h;
-   private List<arn> i;
-   private long j;
-   private boolean k;
-   private final int l;
+public class eur implements gel {
+   private static final long a = 3000L;
+   private final ero b;
+   private final List<eur.a> c = Lists.newArrayList();
+   private boolean d;
 
-   public eur(eur.a $$0, tl $$1, @Nullable tl $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(eqp.O().h.a($$1), $$2 == null ? 0 : eqp.O().h.a($$2))));
+   public eur(ero $$0) {
+      this.b = $$0;
    }
 
-   public static eur a(eqp $$0, eur.a $$1, tl $$2, tl $$3) {
-      erx $$4 = $$0.h;
-      List<arn> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new eur($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private eur(eur.a $$0, tl $$1, List<arn> $$2, int $$3) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.l = $$3;
-   }
-
-   private static ImmutableList<arn> a(@Nullable tl $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
-   }
-
-   @Override
-   public int a() {
-      return this.l;
-   }
-
-   @Override
-   public int b() {
-      return 20 + Math.max(this.i.size(), 1) * 12;
-   }
-
-   @Override
-   public eus.a a(erz $$0, eut $$1, long $$2) {
-      if (this.k) {
-         this.j = $$2;
-         this.k = false;
+   public void a(esy $$0) {
+      if (!this.d && this.b.m.S().c()) {
+         this.b.ai().a(this);
+         this.d = true;
+      } else if (this.d && !this.b.m.S().c()) {
+         this.b.ai().b(this);
+         this.d = false;
       }
 
-      int $$3 = this.a();
-      if ($$3 == 160 && this.i.size() <= 1) {
-         $$0.a(a, 0, 0, $$3, this.b());
-      } else {
-         int $$4 = this.b();
-         int $$5 = 28;
-         int $$6 = Math.min(4, $$4 - 28);
-         this.a($$0, $$3, 0, 0, 28);
+      if (this.d && !this.c.isEmpty()) {
+         eif $$1 = new eif(this.b.s.dq(), this.b.s.du(), this.b.s.dw());
+         eif $$2 = new eif(0.0, 0.0, -1.0).a(-this.b.s.dD() * (float) (Math.PI / 180.0)).b(-this.b.s.dB() * (float) (Math.PI / 180.0));
+         eif $$3 = new eif(0.0, 1.0, 0.0).a(-this.b.s.dD() * (float) (Math.PI / 180.0)).b(-this.b.s.dB() * (float) (Math.PI / 180.0));
+         eif $$4 = $$2.c($$3);
+         int $$5 = 0;
+         int $$6 = 0;
+         double $$7 = this.b.m.y().c();
+         Iterator<eur.a> $$8 = this.c.iterator();
 
-         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
-            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
+         while ($$8.hasNext()) {
+            eur.a $$9 = $$8.next();
+            if ((double)$$9.b() + 3000.0 * $$7 <= (double)ac.b()) {
+               $$8.remove();
+            } else {
+               $$6 = Math.max($$6, this.b.h.a($$9.a()));
+            }
          }
 
-         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
-      }
+         $$6 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
 
-      if (this.i == null) {
-         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
-      } else {
-         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
+         for (eur.a $$10 : this.c) {
+            int $$11 = 255;
+            ui $$12 = $$10.a();
+            eif $$13 = $$10.c().d($$1).d();
+            double $$14 = -$$4.b($$13);
+            double $$15 = -$$2.b($$13);
+            boolean $$16 = $$15 > 0.5;
+            int $$17 = $$6 / 2;
+            int $$18 = 9;
+            int $$19 = $$18 / 2;
+            float $$20 = 1.0F;
+            int $$21 = this.b.h.a($$12);
+            int $$22 = asy.d(asy.b(255.0F, 75.0F, (float)(ac.b() - $$10.b()) / (float)(3000.0 * $$7)));
+            int $$23 = $$22 << 16 | $$22 << 8 | $$22;
+            $$0.c().a();
+            $$0.c().a((float)$$0.a() - (float)$$17 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$5 * ($$18 + 1)) * 1.0F, 0.0F);
+            $$0.c().b(1.0F, 1.0F, 1.0F);
+            $$0.a(-$$17 - 1, -$$19 - 1, $$17 + 1, $$19 + 1, this.b.m.b(0.8F));
+            int $$24 = $$23 + -16777216;
+            if (!$$16) {
+               if ($$14 > 0.0) {
+                  $$0.b(this.b.h, ">", $$17 - this.b.h.b(">"), -$$19, $$24);
+               } else if ($$14 < 0.0) {
+                  $$0.b(this.b.h, "<", -$$17, -$$19, $$24);
+               }
+            }
 
-         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
-            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
+            $$0.b(this.b.h, $$12, -$$21 / 2, -$$19, $$24);
+            $$0.c().b();
+            $$5++;
          }
       }
-
-      return (double)($$2 - this.j) < (double)this.g.i * $$1.c() ? eus.a.a : eus.a.b;
    }
 
-   private void a(erz $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$2 == 0 ? 20 : 5;
-      int $$6 = Math.min(60, $$1 - $$5);
-      aez $$7 = a;
-      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
+   @Override
+   public void a(gdi $$0, gen $$1) {
+      if ($$1.a() != null) {
+         ui $$2 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (eur.a $$3 : this.c) {
+               if ($$3.a().equals($$2)) {
+                  $$3.a(new eif($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
 
-      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
-         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
-      }
-
-      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
-   }
-
-   public void a(tl $$0, @Nullable tl $$1) {
-      this.h = $$0;
-      this.i = a($$1);
-      this.k = true;
-   }
-
-   public eur.a c() {
-      return this.g;
-   }
-
-   public static void a(eut $$0, eur.a $$1, tl $$2, @Nullable tl $$3) {
-      $$0.a(new eur($$1, $$2, $$3));
-   }
-
-   public static void b(eut $$0, eur.a $$1, tl $$2, @Nullable tl $$3) {
-      eur $$4 = $$0.a(eur.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
-      } else {
-         $$4.a($$2, $$3);
+         this.c.add(new eur.a($$2, new eif($$0.h(), $$0.i(), $$0.j())));
       }
    }
 
-   public static void a(eqp $$0, String $$1) {
-      a($$0.ay(), eur.a.e, tl.c("selectWorld.access_failure"), tl.b($$1));
-   }
+   public static class a {
+      private final ui a;
+      private long b;
+      private eif c;
 
-   public static void b(eqp $$0, String $$1) {
-      a($$0.ay(), eur.a.e, tl.c("selectWorld.delete_failure"), tl.b($$1));
-   }
-
-   public static void c(eqp $$0, String $$1) {
-      a($$0.ay(), eur.a.f, tl.c("pack.copyFailure"), tl.b($$1));
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h(10000L);
-
-      final long i;
-
-      private a(long $$0) {
-         this.i = $$0;
+      public a(ui $$0, eif $$1) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = ac.b();
       }
 
-      private a() {
-         this(5000L);
+      public ui a() {
+         return this.a;
+      }
+
+      public long b() {
+         return this.b;
+      }
+
+      public eif c() {
+         return this.c;
+      }
+
+      public void a(eif $$0) {
+         this.c = $$0;
+         this.b = ac.b();
       }
    }
 }

@@ -1,89 +1,92 @@
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class uf {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private ug b;
+public record uf(String b, List<uf.a> c, vf d) {
+   public static final Codec<uf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(uf::a),
+               uf.a.d.listOf().fieldOf("parameters").forGetter(uf::b),
+               vf.b.b.optionalFieldOf("style", vf.a).forGetter(uf::c)
+            )
+            .apply($$0, uf::new)
+   );
 
-   public uf(UUID $$0, UUID $$1) {
-      this.b = ug.a($$0, $$1);
+   public static uf a(String $$0) {
+      return new uf($$0, List.of(uf.a.a, uf.a.c), vf.a);
    }
 
-   public uf.c a(asn $$0) {
-      return $$1 -> {
-         ug $$2 = this.a();
-         return $$2 == null ? null : new tx($$0.sign($$2x -> ub.a($$2x, $$2, $$1)));
-      };
+   public static uf b(String $$0) {
+      vf $$1 = vf.a.a(n.h).b(true);
+      return new uf($$0, List.of(uf.a.a, uf.a.c), $$1);
    }
 
-   public uf.b a(ccd $$0) {
-      asm $$1 = $$0.a();
-      return ($$2, $$3) -> {
-         ug $$4 = this.a();
-         if ($$4 == null) {
-            throw new uf.a(tl.c("chat.disabled.chain_broken"), false);
-         } else if ($$0.b().a()) {
-            throw new uf.a(tl.c("chat.disabled.expiredProfileKey"), false);
-         } else {
-            ub $$5 = new ub($$4, $$2, $$3, null, tp.c);
-            if (!$$5.a($$1)) {
-               throw new uf.a(tl.c("multiplayer.disconnect.unsigned_chat"), true);
-            } else {
-               if ($$5.a(Instant.now())) {
-                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
-               }
-
-               return $$5;
-            }
-         }
-      };
+   public static uf c(String $$0) {
+      vf $$1 = vf.a.a(n.h).b(true);
+      return new uf($$0, List.of(uf.a.b, uf.a.c), $$1);
    }
 
-   @Nullable
-   private ug a() {
-      ug $$0 = this.b;
-      if ($$0 != null) {
-         this.b = $$0.a();
+   public static uf d(String $$0) {
+      return new uf($$0, List.of(uf.a.b, uf.a.a, uf.a.c), vf.a);
+   }
+
+   public ui a(ui $$0, ue.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return ui.a(this.b, $$2).c(this.d);
+   }
+
+   private ui[] b(ui $$0, ue.a $$1) {
+      ui[] $$2 = new ui[this.c.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         uf.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
 
-      return $$0;
+      return $$2;
    }
 
-   public static class a extends ul {
-      private final boolean a;
-
-      public a(tl $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public boolean a() {
-         return this.a;
-      }
+   public String a() {
+      return this.b;
    }
 
-   @FunctionalInterface
-   public interface b {
-      uf.b a = ($$0, $$1) -> {
-         throw new uf.a(tl.c("chat.disabled.missingProfileKey"), false);
-      };
-
-      static uf.b unsigned(UUID $$0) {
-         return ($$1, $$2) -> ub.a($$0, $$2.a());
-      }
-
-      ub unpack(@Nullable tx var1, ue var2) throws uf.a;
+   public List<uf.a> b() {
+      return this.c;
    }
 
-   @FunctionalInterface
-   public interface c {
-      uf.c a = $$0 -> null;
+   public vf c() {
+      return this.d;
+   }
 
-      @Nullable
-      tx pack(ue var1);
+   public static enum a implements atr {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c()),
+      c("content", ($$0, $$1) -> $$0);
+
+      public static final Codec<uf.a> d = atr.a(uf.a::values);
+      private final String e;
+      private final uf.a.a f;
+
+      private a(String $$0, uf.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public ui a(ui $$0, ue.a $$1) {
+         ui $$2 = this.f.select($$0, $$1);
+         return Objects.requireNonNullElse($$2, uh.a);
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+
+      public interface a {
+         @Nullable
+         ui select(ui var1, ue.a var2);
+      }
    }
 }

@@ -1,86 +1,50 @@
-import com.google.common.collect.Lists;
-import java.util.BitSet;
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class yl {
-   private final BitSet a;
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final List<byte[]> e;
-   private final List<byte[]> f;
+public class yl implements wb<xu> {
+   private final int a;
+   private final Suggestions b;
 
-   public yl(cpi $$0, dzv $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.a = new BitSet();
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = Lists.newArrayList();
-      this.f = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, cqk.a, $$4, this.a, this.c, this.e);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, cqk.b, $$4, this.b, this.d, this.f);
-         }
-      }
+   public yl(int $$0, Suggestions $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public yl(so $$0, int $$1, int $$2) {
-      this.a = $$0.z();
-      this.b = $$0.z();
-      this.c = $$0.z();
-      this.d = $$0.z();
-      this.e = $$0.a((so.a<byte[]>)($$0x -> $$0x.a(2048)));
-      this.f = $$0.a((so.a<byte[]>)($$0x -> $$0x.a(2048)));
+   public yl(tl $$0) {
+      this.a = $$0.n();
+      int $$1 = $$0.n();
+      int $$2 = $$0.n();
+      StringRange $$3 = StringRange.between($$1, $$1 + $$2);
+      List<Suggestion> $$4 = $$0.a((tl.a<Suggestion>)($$1x -> {
+         String $$2x = $$1x.s();
+         ui $$3x = $$1x.c(tl::m);
+         return new Suggestion($$3, $$2x, $$3x);
+      }));
+      this.b = new Suggestions($$3, $$4);
    }
 
-   public void a(so $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, so::a);
-      $$0.a(this.f, so::a);
+   @Override
+   public void a(tl $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b.getRange().getStart());
+      $$0.c(this.b.getRange().getLength());
+      $$0.a(this.b.getList(), ($$0x, $$1) -> {
+         $$0x.a($$1.getText());
+         $$0x.a($$1.getTooltip(), ($$0xx, $$1x) -> $$0xx.a(ul.a($$1x)));
+      });
    }
 
-   private void a(cpi $$0, dzv $$1, cqk $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dhf $$7 = $$1.a($$2).a(hw.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   public void a(xu $$0) {
+      $$0.a(this);
    }
 
-   public BitSet a() {
+   public int a() {
       return this.a;
    }
 
-   public BitSet b() {
-      return this.c;
-   }
-
-   public List<byte[]> c() {
-      return this.e;
-   }
-
-   public BitSet d() {
+   public Suggestions d() {
       return this.b;
-   }
-
-   public BitSet e() {
-      return this.d;
-   }
-
-   public List<byte[]> f() {
-      return this.f;
    }
 }

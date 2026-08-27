@@ -1,33 +1,30 @@
-public class bud {
-   public static boolean a(bjo $$0) {
-      return $$0.L() instanceof bsu;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+
+public class bud extends buo<bkj> {
+   @Override
+   public Set<btk<?>> a() {
+      return ImmutableSet.of(btk.x, btk.y);
    }
 
-   public static boolean a(bjv $$0, int $$1) {
-      return $$0.fQ() && $$0.fN().a($$0.dj(), (double)($$0.fO() + (float)$$1) + 1.0);
-   }
+   @Override
+   protected void a(alq $$0, bkj $$1) {
+      blj<?> $$2 = $$1.dN();
+      bir $$3 = $$1.ew();
+      if ($$3 != null) {
+         $$2.a(btk.x, $$1.ew());
+         bjt $$4 = $$3.d();
+         if ($$4 instanceof bkj) {
+            $$2.a(btk.y, (bkj)$$4);
+         }
+      } else {
+         $$2.b(btk.x);
+      }
 
-   public static boolean a(gw $$0, bjv $$1) {
-      return $$0.v() < $$1.dL().H_() || $$0.v() > $$1.dL().aj();
-   }
-
-   public static boolean a(boolean $$0, bjv $$1, gw $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(bsv $$0, gw $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bjv $$0, gw $$1) {
-      return $$0.dL().b_($$1).a(aqa.a);
-   }
-
-   public static boolean b(bjv $$0, gw $$1) {
-      return $$0.a(eba.a($$0.dL(), $$1.j())) != 0.0F;
-   }
-
-   public static boolean c(bjv $$0, gw $$1) {
-      return $$0.dL().a_($$1).e();
+      $$2.c(btk.y).ifPresent($$2x -> {
+         if (!$$2x.bv() || $$2x.dL() != $$0) {
+            $$2.b(btk.y);
+         }
+      });
    }
 }

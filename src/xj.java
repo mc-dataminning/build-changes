@@ -1,32 +1,21 @@
-public class xj implements ve<wx> {
-   private final bhb a;
-   private final boolean b;
+import java.util.HashSet;
+import java.util.Set;
 
-   public xj(bhb $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public record xj(Set<iu> b, Set<iu> c) implements wu {
+   public static final afw a = new afw("debug/village_sections");
 
-   public xj(so $$0) {
-      this.a = bhb.a($$0.readUnsignedByte());
-      this.b = $$0.readBoolean();
+   public xj(tl $$0) {
+      this($$0.a(HashSet::new, tl::g), $$0.a(HashSet::new, tl::g));
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.k(this.a.a());
-      $$0.a(this.b);
+   public void a(tl $$0) {
+      $$0.a(this.b, tl::a);
+      $$0.a(this.c, tl::a);
    }
 
-   public void a(wx $$0) {
-      $$0.a(this);
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   public bhb d() {
-      return this.a;
+   @Override
+   public afw a() {
+      return a;
    }
 }

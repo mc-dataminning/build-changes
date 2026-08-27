@@ -1,31 +1,43 @@
-import javax.annotation.Nullable;
+public class eow extends gfx {
+   private static final ui a = ui.c("mco.client.incompatible.title");
+   private static final ui[] b = new ui[]{
+      ui.c("mco.client.incompatible.msg.line1"), ui.c("mco.client.incompatible.msg.line2"), ui.c("mco.client.incompatible.msg.line3")
+   };
+   private static final ui[] c = new ui[]{ui.c("mco.client.incompatible.msg.line1"), ui.c("mco.client.incompatible.msg.line2")};
+   private final ezd y;
 
-public class eow {
-   public final int a;
-   @Nullable
-   public final String b;
-
-   eow(int $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public eow(ezd $$0) {
+      super(a);
+      this.y = $$0;
    }
 
-   public static class a {
-      private int a = -1;
-      private String b;
+   @Override
+   public void aM_() {
+      this.d(etj.a(uh.k, $$0 -> this.f.a(this.y)).a(this.g / 2 - 100, h(12), 200, 20).a());
+   }
 
-      public eow.a a(int $$0) {
-         this.a = $$0;
-         return this;
+   @Override
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, h(3), -65536);
+      ui[] $$4 = this.C();
+
+      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+         $$0.a(this.i, $$4[$$5], this.g / 2, h(5) + $$5 * 12, -1);
       }
+   }
 
-      public eow.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
-      }
+   private ui[] C() {
+      return aa.b().g() ? c : b;
+   }
 
-      public eow a() {
-         return new eow(this.a, this.b);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.f.a(this.y);
+         return true;
       }
    }
 }

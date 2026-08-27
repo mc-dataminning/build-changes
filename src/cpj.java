@@ -1,25 +1,24 @@
-import java.util.function.Predicate;
-
-public class cpj {
-   private final ehh a;
-   private final ehh b;
-   private final Predicate<dfd> c;
-
-   public cpj(ehh $$0, ehh $$1, Predicate<dfd> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class cpj extends cot {
+   public cpj(cot.a $$0, bjy... $$1) {
+      super($$0, cou.f, $$1);
    }
 
-   public ehh a() {
-      return this.b;
+   @Override
+   public int a(int $$0) {
+      return 5 + ($$0 - 1) * 9;
    }
 
-   public ehh b() {
-      return this.a;
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 15;
    }
 
-   public Predicate<dfd> c() {
-      return this.c;
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   public static float e(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 }

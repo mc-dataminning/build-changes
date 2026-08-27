@@ -1,33 +1,29 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcc extends ctc implements dcb {
-   public static final MapCodec<dcc> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dcb.a.e.fieldOf("weathering_state").forGetter(cud::c), t()).apply($$0, dcc::new)
-   );
-   private final dcb.a e;
+public class dcc extends cwg implements cud {
+   public static final MapCodec<dcc> c = b(dcc::new);
 
    @Override
    public MapCodec<dcc> a() {
-      return d;
+      return c;
    }
 
-   public dcc(dcb.a $$0, dfc.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public dcc(dga.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean e_(dfd $$0) {
-      return dcb.c($$0.b()).isPresent();
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
+      return true;
    }
 
-   public dcb.a g() {
-      return this.e;
+   @Override
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      a($$0, $$2, new ckj(this));
    }
 }

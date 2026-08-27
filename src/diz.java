@@ -1,121 +1,94 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Codec;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class diz<T extends diu> {
-   private final Class<T> a;
-   private final Long2ObjectFunction<djh> b;
-   private final Long2ObjectMap<diy<T>> c = new Long2ObjectOpenHashMap();
-   private final LongSortedSet d = new LongAVLTreeSet();
+public class diz implements AutoCloseable {
+   public static final int d = 1493;
+   private final djb a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile dvv b;
 
-   public diz(Class<T> $$0, Long2ObjectFunction<djh> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public diz(Path $$0, DataFixer $$1, boolean $$2) {
+      this.e = $$1;
+      this.a = new djb($$0, $$2, "chunk");
    }
 
-   public void a(ehc $$0, aqq<diy<T>> $$1) {
-      int $$2 = 2;
-      int $$3 = hw.a($$0.a - 2.0);
-      int $$4 = hw.a($$0.b - 4.0);
-      int $$5 = hw.a($$0.c - 2.0);
-      int $$6 = hw.a($$0.d + 2.0);
-      int $$7 = hw.a($$0.e + 0.0);
-      int $$8 = hw.a($$0.f + 2.0);
+   public boolean b(cqg $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
-         long $$10 = hw.b($$9, 0, 0);
-         long $$11 = hw.b($$9, -1, -1);
-         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+   public rt a(afv<cqz> $$0, Supplier<ecu> $$1, rt $$2, Optional<afv<Codec<? extends dhy>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 < 1493) {
+         $$2 = aud.c.a(this.e, $$2, $$4, 1493);
+         if ($$2.p("Level").q("hasLegacyStructureData")) {
+            dvv $$5 = this.a($$0, $$1);
+            $$2 = $$5.a($$2);
+         }
+      }
 
-         while ($$12.hasNext()) {
-            long $$13 = $$12.nextLong();
-            int $$14 = hw.c($$13);
-            int $$15 = hw.d($$13);
-            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
-               diy<T> $$16 = (diy<T>)this.c.get($$13);
-               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
-                  return;
-               }
+      a($$2, $$0, $$3);
+      $$2 = aud.c.a(this.e, $$2, Math.max(1493, $$4));
+      if ($$4 < aa.b().d().c()) {
+         sg.g($$2);
+      }
+
+      $$2.r("__context");
+      return $$2;
+   }
+
+   private dvv a(afv<cqz> $$0, Supplier<ecu> $$1) {
+      dvv $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = dvv.a($$0, $$1.get());
             }
          }
       }
+
+      return $$2;
    }
 
-   public LongStream a(long $$0) {
-      int $$1 = cpi.a($$0);
-      int $$2 = cpi.b($$0);
-      LongSortedSet $$3 = this.a($$1, $$2);
-      if ($$3.isEmpty()) {
-         return LongStream.empty();
-      } else {
-         OfLong $$4 = $$3.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+   public static void a(rt $$0, afv<cqz> $$1, Optional<afv<Codec<? extends dhy>>> $$2) {
+      rt $$3 = new rt();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   public static int a(rt $$0) {
+      return sg.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<rt>> e(cqg $$0) {
+      return this.a.a($$0);
+   }
+
+   public void a(cqg $$0, rt $$1) {
+      this.a.a($$0, $$1);
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
    }
 
-   private LongSortedSet a(int $$0, int $$1) {
-      long $$2 = hw.b($$0, 0, $$1);
-      long $$3 = hw.b($$0, -1, $$1);
-      return this.d.subSet($$2, $$3 + 1L);
+   public void o() {
+      this.a.a(true).join();
    }
 
-   public Stream<diy<T>> b(long $$0) {
-      return this.a($$0).<diy<T>>mapToObj(this.c::get).filter(Objects::nonNull);
+   @Override
+   public void close() throws IOException {
+      this.a.close();
    }
 
-   private static long f(long $$0) {
-      return cpi.c(hw.b($$0), hw.d($$0));
-   }
-
-   public diy<T> c(long $$0) {
-      return (diy<T>)this.c.computeIfAbsent($$0, this::g);
-   }
-
-   @Nullable
-   public diy<T> d(long $$0) {
-      return (diy<T>)this.c.get($$0);
-   }
-
-   private diy<T> g(long $$0) {
-      long $$1 = f($$0);
-      djh $$2 = (djh)this.b.get($$1);
-      this.d.add($$0);
-      return new diy<>(this.a, $$2);
-   }
-
-   public LongSet a() {
-      LongSet $$0 = new LongOpenHashSet();
-      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
-      return $$0;
-   }
-
-   public void b(ehc $$0, aqq<T> $$1) {
-      this.a($$0, $$2 -> $$2.a($$0, $$1));
-   }
-
-   public <U extends T> void a(djb<T, U> $$0, ehc $$1, aqq<U> $$2) {
-      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
-   }
-
-   public void e(long $$0) {
-      this.c.remove($$0);
-      this.d.remove($$0);
-   }
-
-   @atd
-   public int b() {
-      return this.d.size();
+   public dix p() {
+      return this.a;
    }
 }

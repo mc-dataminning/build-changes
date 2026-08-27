@@ -1,30 +1,52 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum equ implements asd {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
+public class equ extends eqo {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ui c = ui.c("mco.minigame.world.starting.screen.title");
+   private final long d;
+   private final eof e;
+   private final eox f;
 
-   private static final IntFunction<equ> d = aqu.a(equ::a, values(), aqu.a.b);
-   private final int e;
-   private final String f;
-
-   private equ(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public equ(long $$0, eof $$1, eox $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public String b() {
-      return this.f;
+   public void run() {
+      emx $$0 = emx.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
+            }
+         } catch (eol var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't start mini game!");
+            this.a(var5);
+         }
+      }
    }
 
    @Override
-   public int a() {
-      return this.e;
-   }
-
-   public static equ a(int $$0) {
-      return d.apply($$0);
+   public ui a() {
+      return c;
    }
 }

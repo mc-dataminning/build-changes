@@ -1,5 +1,10 @@
-public class arb extends Exception {
-   public arb(Throwable $$0) {
-      super($$0);
+public class arb {
+   public static final arh<bzm> a = a("placeable");
+
+   private arb() {
+   }
+
+   private static arh<bzm> a(String $$0) {
+      return arh.a(jz.Q, new afw($$0));
    }
 }

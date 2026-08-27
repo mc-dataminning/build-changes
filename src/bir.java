@@ -1,183 +1,120 @@
 import javax.annotation.Nullable;
 
-public abstract class bir extends bjv {
-   private static final aef<Boolean> bT = aei.a(bir.class, aeh.k);
-   public static final int b = -24000;
-   private static final int bU = 40;
-   protected int c;
-   protected int d;
-   protected int e;
-
-   protected bir(bja<? extends bir> $$0, cqb $$1) {
-      super($$0, $$1);
-   }
+public class bir {
+   private final ib<bit> a;
+   @Nullable
+   private final bjt b;
+   @Nullable
+   private final bjt c;
+   @Nullable
+   private final eif d;
 
    @Override
-   public bkf a(cqq $$0, bhc $$1, bjq $$2, @Nullable bkf $$3, @Nullable qw $$4) {
-      if ($$3 == null) {
-         $$3 = new bir.a(true);
-      }
+   public String toString() {
+      return "DamageSource (" + this.j().a() + ")";
+   }
 
-      bir.a $$5 = (bir.a)$$3;
-      if ($$5.c() && $$5.a() > 0 && $$0.D_().i() <= $$5.d()) {
-         this.c_(-24000);
-      }
+   public float a() {
+      return this.j().c();
+   }
 
-      $$5.b();
-      return super.a($$0, $$1, $$2, $$3, $$4);
+   public boolean b() {
+      return this.b != this.c;
+   }
+
+   private bir(ib<bit> $$0, @Nullable bjt $$1, @Nullable bjt $$2, @Nullable eif $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   public bir(ib<bit> $$0, @Nullable bjt $$1, @Nullable bjt $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public bir(ib<bit> $$0, eif $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bir(ib<bit> $$0, @Nullable bjt $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bir(ib<bit> $$0) {
+      this($$0, null, null, null);
    }
 
    @Nullable
-   public abstract bir a(akt var1, bir var2);
-
-   @Override
-   protected void a_() {
-      super.a_();
-      this.an.a(bT, false);
+   public bjt c() {
+      return this.c;
    }
 
-   public boolean V_() {
+   @Nullable
+   public bjt d() {
+      return this.b;
+   }
+
+   public ui a(bkj $$0) {
+      String $$1 = "death.attack." + this.j().a();
+      if (this.b == null && this.c == null) {
+         bkj $$5 = $$0.eK();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? ui.a($$6, $$0.O_(), $$5.O_()) : ui.a($$1, $$0.O_());
+      } else {
+         ui $$2 = this.b == null ? this.c.O_() : this.b.O_();
+         ckj $$4 = this.b instanceof bkj $$3 ? $$3.eS() : ckj.b;
+         return !$$4.b() && $$4.A() ? ui.a($$1 + ".item", $$0.O_(), $$2, $$4.J()) : ui.a($$1, $$0.O_(), $$2);
+      }
+   }
+
+   public String e() {
+      return this.j().a();
+   }
+
+   public boolean f() {
+      return switch (this.j().b()) {
+         case a -> false;
+         case b -> this.b instanceof bkj && !(this.b instanceof ccx);
+         case c -> true;
+      };
+   }
+
+   public boolean g() {
+      if (this.d() instanceof ccx $$0 && $$0.fT().d) {
+         return true;
+      }
+
       return false;
    }
 
-   public int h() {
-      if (this.dL().B) {
-         return this.an.b(bT) ? -1 : 1;
+   @Nullable
+   public eif h() {
+      if (this.d != null) {
+         return this.d;
       } else {
-         return this.c;
+         return this.c != null ? this.c.dj() : null;
       }
    }
 
-   public void a(int $$0, boolean $$1) {
-      int $$2 = this.h();
-      $$2 += $$0 * 20;
-      if ($$2 > 0) {
-         $$2 = 0;
-      }
-
-      int $$4 = $$2 - $$2;
-      this.c_($$2);
-      if ($$1) {
-         this.d += $$4;
-         if (this.e == 0) {
-            this.e = 40;
-         }
-      }
-
-      if (this.h() == 0) {
-         this.c_(this.d);
-      }
+   @Nullable
+   public eif i() {
+      return this.d;
    }
 
-   public void b_(int $$0) {
-      this.a($$0, false);
+   public boolean a(arh<bit> $$0) {
+      return this.a.a($$0);
    }
 
-   public void c_(int $$0) {
-      int $$1 = this.h();
-      this.c = $$0;
-      if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
-         this.an.b(bT, $$0 < 0);
-         this.m();
-      }
+   public boolean a(afv<bit> $$0) {
+      return this.a.a($$0);
    }
 
-   @Override
-   public void b(qw $$0) {
-      super.b($$0);
-      $$0.a("Age", this.h());
-      $$0.a("ForcedAge", this.d);
+   public bit j() {
+      return this.a.a();
    }
 
-   @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      this.c_($$0.h("Age"));
-      this.d = $$0.h("ForcedAge");
-   }
-
-   @Override
-   public void a(aef<?> $$0) {
-      if (bT.equals($$0)) {
-         this.i_();
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public void b_() {
-      super.b_();
-      if (this.dL().B) {
-         if (this.e > 0) {
-            if (this.e % 4 == 0) {
-               this.dL().a(iv.K, this.d(1.0), this.dt() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-            }
-
-            this.e--;
-         }
-      } else if (this.bv()) {
-         int $$0 = this.h();
-         if ($$0 < 0) {
-            this.c_(++$$0);
-         } else if ($$0 > 0) {
-            this.c_(--$$0);
-         }
-      }
-   }
-
-   protected void m() {
-      if (!this.m_() && this.bN() && this.cY() instanceof cdt $$0 && !$$0.a((biw)this)) {
-         this.aa();
-      }
-   }
-
-   @Override
-   public boolean m_() {
-      return this.h() < 0;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.c_($$0 ? -24000 : 0);
-   }
-
-   public static int d_(int $$0) {
-      return (int)((float)($$0 / 20) * 0.1F);
-   }
-
-   public static class a implements bkf {
-      private int a;
-      private final boolean b;
-      private final float c;
-
-      private a(boolean $$0, float $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public a(boolean $$0) {
-         this($$0, 0.05F);
-      }
-
-      public a(float $$0) {
-         this(true, $$0);
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public void b() {
-         this.a++;
-      }
-
-      public boolean c() {
-         return this.b;
-      }
-
-      public float d() {
-         return this.c;
-      }
+   public ib<bit> k() {
+      return this.a;
    }
 }

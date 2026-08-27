@@ -1,13 +1,26 @@
-public abstract class fwx<T extends biw, M extends fey<T>> extends fxl<T, M> {
-   public fwx(fuy<T, M> $$0) {
-      super($$0);
+public class fwx extends fvj<cck, fii<cck>> {
+   private static final afw a = new afw("textures/entity/villager/villager.png");
+
+   public fwx(fud.a $$0) {
+      super($$0, new fii<>($$0.a(fiv.bJ)), 0.5F);
+      this.a(new fxq<>(this, $$0.f(), $$0.d()));
+      this.a(new fyw<>(this, $$0.e(), "villager"));
+      this.a(new fxp<>(this, $$0.d()));
    }
 
-   @Override
-   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      eln $$10 = $$1.getBuffer(this.a());
-      this.c().a($$0, $$10, 15728640, fyr.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public afw a(cck $$0) {
+      return a;
    }
 
-   public abstract foi a();
+   protected void a(cck $$0, emh $$1, float $$2) {
+      float $$3 = 0.9375F;
+      if ($$0.n_()) {
+         $$3 *= 0.5F;
+         this.d = 0.25F;
+      } else {
+         this.d = 0.5F;
+      }
+
+      $$1.b($$3, $$3, $$3);
+   }
 }

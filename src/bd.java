@@ -8,9 +8,9 @@ public class bd extends cw<bd.a> {
       return new bd.a($$1, $$3, $$4);
    }
 
-   public void a(aku $$0, cah $$1, cbn $$2) {
-      eck $$3 = bq.b($$0, $$1);
-      eck $$4 = bq.b($$0, $$2);
+   public void a(alr $$0, cbe $$1, cck $$2) {
+      edi $$3 = bq.b($$0, $$1);
+      edi $$4 = bq.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
@@ -28,7 +28,7 @@ public class bd extends cw<bd.a> {
          return al.r.a(new bd.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(eck $$0, eck $$1) {
+      public boolean a(edi $$0, edi $$1) {
          return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || this.b.get().a($$1);
       }
 

@@ -1,29 +1,27 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bae extends DataFix {
-   public bae(Schema $$0) {
-      super($$0, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.I);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {
-               $$0xx.write().map($$0xxx -> $$0xxx.getMapValues().map($$0xxxx -> {
-                     $$0xxxx.forEach(($$0xxxxx, $$1xx) -> {
-                        if ($$1xx.get("type").asString().result().isEmpty()) {
-                           throw new IllegalStateException("Unable load old custom worlds.");
-                        }
-                     });
-                     return $$0xxxx;
-                  }));
-               return $$0xx;
-            })
-      );
-   }
+public class bae {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:blue_coral", "minecraft:tube_coral_block")
+      .put("minecraft:pink_coral", "minecraft:brain_coral_block")
+      .put("minecraft:purple_coral", "minecraft:bubble_coral_block")
+      .put("minecraft:red_coral", "minecraft:fire_coral_block")
+      .put("minecraft:yellow_coral", "minecraft:horn_coral_block")
+      .put("minecraft:blue_coral_plant", "minecraft:tube_coral")
+      .put("minecraft:pink_coral_plant", "minecraft:brain_coral")
+      .put("minecraft:purple_coral_plant", "minecraft:bubble_coral")
+      .put("minecraft:red_coral_plant", "minecraft:fire_coral")
+      .put("minecraft:yellow_coral_plant", "minecraft:horn_coral")
+      .put("minecraft:blue_coral_fan", "minecraft:tube_coral_fan")
+      .put("minecraft:pink_coral_fan", "minecraft:brain_coral_fan")
+      .put("minecraft:purple_coral_fan", "minecraft:bubble_coral_fan")
+      .put("minecraft:red_coral_fan", "minecraft:fire_coral_fan")
+      .put("minecraft:yellow_coral_fan", "minecraft:horn_coral_fan")
+      .put("minecraft:blue_dead_coral", "minecraft:dead_tube_coral")
+      .put("minecraft:pink_dead_coral", "minecraft:dead_brain_coral")
+      .put("minecraft:purple_dead_coral", "minecraft:dead_bubble_coral")
+      .put("minecraft:red_dead_coral", "minecraft:dead_fire_coral")
+      .put("minecraft:yellow_dead_coral", "minecraft:dead_horn_coral")
+      .build();
 }

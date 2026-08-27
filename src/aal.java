@@ -1,24 +1,40 @@
-public class aal implements ve<wx> {
-   private final tl a;
+public class aal implements wb<xu> {
+   private final double a;
+   private final double b;
+   private final long c;
 
-   public aal(tl $$0) {
-      this.a = $$0;
+   public aal(dhs $$0) {
+      this.a = $$0.i();
+      this.b = $$0.k();
+      this.c = $$0.j();
    }
 
-   public aal(so $$0) {
-      this.a = $$0.m();
+   public aal(tl $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.o();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(tl $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public tl a() {
+   public double a() {
       return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public long e() {
+      return this.c;
    }
 }

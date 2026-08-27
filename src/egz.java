@@ -1,103 +1,53 @@
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import org.slf4j.Logger;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class egz implements PathMatcher {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "#";
-   private final List<egz.a> c;
-   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
+public record egz(ehc b, ehc c) implements ehc {
+   public static final Codec<egz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ehd.a.fieldOf("n").forGetter(egz::c), ehd.a.fieldOf("p").forGetter(egz::d)).apply($$0, egz::new)
+   );
 
-   public egz(List<egz.a> $$0) {
-      this.c = $$0;
-   }
-
-   public PathMatcher a(FileSystem $$0) {
-      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
-         List<PathMatcher> $$2;
-         try {
-            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
-         } catch (Exception var5) {
-            a.error("Failed to compile file pattern list", var5);
-            return $$0xx -> false;
-         }
-         return switch ($$2.size()) {
-            case 0 -> $$0xx -> false;
-            case 1 -> (PathMatcher)$$2.get(0);
-            default -> $$1x -> {
-            for (PathMatcher $$2 : $$2) {
-               if ($$2.matches($$1x)) {
-                  return true;
-               }
-            }
-
-            return false;
-         };
-         };
-      });
+   @Override
+   public ehb b() {
+      return ehd.d;
    }
 
    @Override
-   public boolean matches(Path $$0) {
-      return this.a($$0.getFileSystem()).matches($$0);
-   }
+   public int a(edi $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      ate $$3 = $$0.b();
+      int $$4 = 0;
 
-   public static egz a(BufferedReader $$0) {
-      return new egz($$0.lines().flatMap($$0x -> egz.a.a($$0x).stream()).toList());
-   }
-
-   public static record a(egz.b a, String b) {
-      public PathMatcher a(FileSystem $$0) {
-         return this.a().compile($$0, this.b);
-      }
-
-      static Optional<egz.a> a(String $$0) {
-         if ($$0.isBlank() || $$0.startsWith("#")) {
-            return Optional.empty();
-         } else if (!$$0.startsWith("[")) {
-            return Optional.of(new egz.a(egz.b.b, $$0));
-         } else {
-            int $$1 = $$0.indexOf(93, 1);
-            if ($$1 == -1) {
-               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
-            } else {
-               String $$2 = $$0.substring(1, $$1);
-               String $$3 = $$0.substring($$1 + 1);
-
-               return switch ($$2) {
-                  case "glob", "regex" -> Optional.of(new egz.a(egz.b.a, $$2 + ":" + $$3));
-                  case "prefix" -> Optional.of(new egz.a(egz.b.b, $$3));
-                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
-               };
-            }
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
          }
       }
 
-      static egz.a b(String $$0) {
-         return new egz.a(egz.b.a, "glob:" + $$0);
-      }
-
-      static egz.a c(String $$0) {
-         return new egz.a(egz.b.a, "regex:" + $$0);
-      }
-
-      static egz.a d(String $$0) {
-         return new egz.a(egz.b.b, $$0);
-      }
+      return $$4;
    }
 
-   @FunctionalInterface
-   public interface b {
-      egz.b a = FileSystem::getPathMatcher;
-      egz.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
+   @Override
+   public float b(edi $$0) {
+      return (float)this.a($$0);
+   }
 
-      PathMatcher compile(FileSystem var1, String var2);
+   public static egz a(int $$0, float $$1) {
+      return new egz(eha.a((float)$$0), eha.a($$1));
+   }
+
+   @Override
+   public Set<efq<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public ehc c() {
+      return this.b;
+   }
+
+   public ehc d() {
+      return this.c;
    }
 }

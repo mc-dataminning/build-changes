@@ -1,24 +1,8 @@
-public record cmq<T extends cmp<?>>(aez a, T b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cmq<?> $$1 && this.a.equals($$1.a)) {
-            return true;
-         }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.a.toString();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cmq {
 }

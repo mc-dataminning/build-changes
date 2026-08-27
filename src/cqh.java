@@ -1,12 +1,25 @@
-import java.util.Optional;
 import java.util.function.Predicate;
 
-public interface cqh {
-   boolean a(gw var1, Predicate<dfd> var2);
+public class cqh {
+   private final eif a;
+   private final eif b;
+   private final Predicate<dgb> c;
 
-   boolean b(gw var1, Predicate<eag> var2);
+   public cqh(eif $$0, eif $$1, Predicate<dgb> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   <T extends dcz> Optional<T> a(gw var1, ddb<T> var2);
+   public eif a() {
+      return this.b;
+   }
 
-   gw a(dkm.a var1, gw var2);
+   public eif b() {
+      return this.a;
+   }
+
+   public Predicate<dgb> c() {
+      return this.c;
+   }
 }

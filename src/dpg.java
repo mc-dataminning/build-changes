@@ -1,26 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dpg extends dnq<dqb> {
-   public dpg(Codec<dqb> $$0) {
+public class dpg extends doo<dqx> {
+   public dpg(Codec<dqx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dns<dqb> $$0) {
-      cqv $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      $$0.f();
-      if (!$$1.t($$2)) {
+   public boolean a(doq<dqx> $$0) {
+      crt $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      ate $$3 = $$0.d();
+      dqx $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         for (ha $$3 : ha.values()) {
-            if ($$3 != ha.a && dbt.a($$1, $$2.a($$3), $$3)) {
-               $$1.a($$2, cte.ff.o().a(dbt.a($$3), Boolean.valueOf(true)), 2);
-               return true;
-            }
-         }
+         List<hx> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            ht.a $$6 = $$2.j();
 
-         return false;
+            for (hx $$7 : $$5) {
+               $$6.g($$2);
+               List<hx> $$8 = $$4.a($$3, $$7.g());
+
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dgb $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
+            }
+
+            return false;
+         }
       }
+   }
+
+   public static boolean a(crt $$0, ht $$1, dgb $$2, dqx $$3, ate $$4, List<hx> $$5) {
+      ht.a $$6 = $$1.j();
+
+      for (hx $$7 : $$5) {
+         dgb $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dgb $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.x($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean c(dgb $$0) {
+      return $$0.i() || $$0.a(cuc.G);
    }
 }

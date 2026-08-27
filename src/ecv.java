@@ -1,20 +1,34 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.Locale;
 
-@FunctionalInterface
-interface ecv {
-   ecv b = ($$0, $$1) -> false;
-   ecv c = ($$0, $$1) -> true;
+public interface ecv {
+   int a();
 
-   boolean expand(eck var1, Consumer<edc> var2);
+   int b();
 
-   default ecv and(ecv $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
-   }
+   int c();
 
-   default ecv or(ecv $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   float d();
+
+   long e();
+
+   long f();
+
+   boolean i();
+
+   boolean k();
+
+   void b(boolean var1);
+
+   boolean n();
+
+   cqv q();
+
+   bhy s();
+
+   boolean t();
+
+   default void a(p $$0, crb $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a(), this.b(), this.c()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.e(), this.f()));
    }
 }

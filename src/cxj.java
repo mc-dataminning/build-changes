@@ -1,95 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.ToIntFunction;
 
-public class cxj extends cru {
-   public static final MapCodec<cxj> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cqz.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), ia.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
-            .apply($$0, cxj::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dgd g = dft.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final cqz.c j;
+public class cxj extends cyy implements cud, daz {
+   public static final MapCodec<cxj> a = b(cxj::new);
+   private static final dgs c = dgr.C;
+   private final cyz d = new cyz(this);
 
    @Override
    public MapCodec<cxj> a() {
-      return d;
+      return a;
    }
 
-   public cxj(cqz.c $$0, ia.a $$1, dfc.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
+   public cxj(dga.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
    }
 
-   @Override
-   public boolean d(dfd $$0) {
-      return $$0.c(g) == 3;
-   }
-
-   @Override
-   protected boolean a(eaf $$0) {
-      return $$0 == eah.c && this.j == cqz.c.b;
+   public static ToIntFunction<dgb> b(int $$0) {
+      return $$1 -> cyy.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected double b(dfd $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   protected void a(dgc.a<cua, dgb> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, biw $$3) {
-      if (!$$1.B && $$3.bM() && this.a($$0, $$2, $$3)) {
-         $$3.ay();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
-         }
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, ebf.c, ebf.c.a($$3));
       }
-   }
 
-   private void e(dfd $$0, cqb $$1, gw $$2) {
-      if (this.j == cqz.c.c) {
-         d(cte.fu.o().a(g, $$0.c(g)), $$1, $$2);
-      } else {
-         d($$0, $$1, $$2);
-      }
-   }
-
-   public static void d(dfd $$0, cqb $$1, gw $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dfd $$4 = $$3 == 0 ? cte.ft.o() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(djn.c, $$2, djn.a.a($$4));
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, cqz.c $$3) {
-      if (ctx.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dfd $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(djn.c, $$2, djn.a.a($$4));
-      }
+   public boolean a(dgb $$0, cmr $$1) {
+      return !$$1.n().a(ckm.fA) || super.a($$0, $$1);
    }
 
    @Override
-   public int a(dfd $$0, cqb $$1, gw $$2) {
-      return $$0.c(g);
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
+      return hx.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(g);
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
+      return true;
    }
 
    @Override
-   protected void a(dfd $$0, cqb $$1, gw $$2, eaf $$3) {
-      if (!this.d($$0)) {
-         dfd $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(djn.c, $$2, djn.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
+   }
+
+   @Override
+   public ebe c_(dgb $$0) {
+      return $$0.c(c) ? ebf.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean c(dgb $$0, cqf $$1, ht $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public cyz c() {
+      return this.d;
    }
 }

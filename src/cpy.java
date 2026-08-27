@@ -1,103 +1,96 @@
-import java.util.function.IntFunction;
+import java.util.ArrayList;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum cpy implements asu {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
-
-   public static final cpy e = a;
-   public static final asu.a<cpy> f = asu.a(cpy::values);
-   private static final IntFunction<cpy> g = aqu.a(cpy::a, values(), aqu.a.a);
-   private static final int h = -1;
-   private final int i;
-   private final String j;
-   private final tl k;
-   private final tl l;
-
-   private cpy(int $$0, String $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = tl.c("selectWorld.gameMode." + $$1);
-      this.l = tl.c("gameMode." + $$1);
+public class cpy extends ArrayList<cpx> {
+   public cpy() {
    }
 
-   public int a() {
-      return this.i;
+   private cpy(int $$0) {
+      super($$0);
    }
 
-   public String b() {
-      return this.j;
+   public cpy(rt $$0) {
+      rz $$1 = $$0.c("Recipes", 10);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.add(new cpx($$1.a($$2)));
+      }
    }
 
-   @Override
-   public String c() {
-      return this.j;
-   }
-
-   public tl d() {
-      return this.l;
-   }
-
-   public tl e() {
-      return this.k;
-   }
-
-   public void a(cbx $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
+   @Nullable
+   public cpx a(ckj $$0, ckj $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         cpx $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
       } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            cpx $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   public void a(tl $$0) {
+      $$0.a(this, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+         $$0x.a($$1.d());
+         $$0x.a($$1.c());
+         $$0x.a($$1.p());
+         $$0x.p($$1.g());
+         $$0x.p($$1.i());
+         $$0x.p($$1.o());
+         $$0x.p($$1.m());
+         $$0x.a($$1.n());
+         $$0x.p($$1.k());
+      });
+   }
+
+   public static cpy b(tl $$0) {
+      return $$0.a(cpy::new, $$0x -> {
+         ckj $$1 = $$0x.r();
+         ckj $$2 = $$0x.r();
+         ckj $$3 = $$0x.r();
+         boolean $$4 = $$0x.readBoolean();
+         int $$5 = $$0x.readInt();
+         int $$6 = $$0x.readInt();
+         int $$7 = $$0x.readInt();
+         int $$8 = $$0x.readInt();
+         float $$9 = $$0x.readFloat();
+         int $$10 = $$0x.readInt();
+         cpx $$11 = new cpx($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
+         if ($$4) {
+            $$11.q();
+         }
+
+         $$11.b($$8);
+         return $$11;
+      });
+   }
+
+   public rt a() {
+      rt $$0 = new rt();
+      rz $$1 = new rz();
+
+      for (int $$2 = 0; $$2 < this.size(); $$2++) {
+         cpx $$3 = this.get($$2);
+         $$1.add($$3.t());
       }
 
-      $$0.e = !this.f();
+      $$0.a("Recipes", $$1);
+      return $$0;
    }
 
-   public boolean f() {
-      return this == c || this == d;
-   }
+   public cpy b() {
+      cpy $$0 = new cpy(this.size());
 
-   public boolean g() {
-      return this == b;
-   }
+      for (cpx $$1 : this) {
+         $$0.add($$1.u());
+      }
 
-   public boolean h() {
-      return this == a || this == c;
-   }
-
-   public static cpy a(int $$0) {
-      return g.apply($$0);
-   }
-
-   public static cpy a(String $$0) {
-      return a($$0, a);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cpy a(String $$0, @Nullable cpy $$1) {
-      cpy $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   public static int a(@Nullable cpy $$0) {
-      return $$0 != null ? $$0.i : -1;
-   }
-
-   @Nullable
-   public static cpy b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
+      return $$0;
    }
 }

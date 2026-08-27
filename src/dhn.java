@@ -1,11 +1,21 @@
-import javax.annotation.Nullable;
+public enum dhn implements atr {
+   a("none"),
+   b("low"),
+   c("tall");
 
-public interface dhn {
-   @Nullable
-   dhm c(int var1, int var2);
+   private final String d;
 
-   default void a(cqk $$0, hw $$1) {
+   private dhn(String $$0) {
+      this.d = $$0;
    }
 
-   cph q();
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

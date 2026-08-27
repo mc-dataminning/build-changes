@@ -1,44 +1,40 @@
-import javax.annotation.Nullable;
-
-public interface cim extends clf {
-   bjb g();
-
-   default apf ao_() {
-      return apg.af;
+public class cim extends cke {
+   public cim(cke.a $$0) {
+      super($$0);
    }
 
-   default bhf<cjl> a(cjg $$0, cqb $$1, cca $$2, bhd $$3) {
-      cjl $$4 = $$2.b($$3);
-      bjb $$5 = bjo.h($$4);
-      cjl $$6 = $$2.c($$5);
-      if ((!cnw.d($$6) || $$2.f()) && !cjl.a($$4, $$6)) {
-         if (!$$1.w_()) {
-            $$2.b(apq.c.b($$0));
-         }
+   @Override
+   public ckj a(ckj $$0, cqz $$1, bkj $$2) {
+      ckj $$3 = super.a($$0, $$1, $$2);
+      if (!$$1.B) {
+         double $$4 = $$2.dq();
+         double $$5 = $$2.ds();
+         double $$6 = $$2.dw();
 
-         cjl $$7 = $$6.b() ? $$4 : $$6.c();
-         cjl $$8 = $$4.c();
-         $$2.a($$5, $$8);
-         return bhf.a($$7, $$1.w_());
-      } else {
-         return bhf.d($$4);
-      }
-   }
+         for (int $$7 = 0; $$7 < 16; $$7++) {
+            double $$8 = $$2.dq() + ($$2.ef().j() - 0.5) * 16.0;
+            double $$9 = asy.a($$2.ds() + (double)($$2.ef().a(16) - 8), (double)$$1.I_(), (double)($$1.I_() + ((alq)$$1).j() - 1));
+            double $$10 = $$2.dw() + ($$2.ef().j() - 0.5) * 16.0;
+            if ($$2.bN()) {
+               $$2.aa();
+            }
 
-   @Nullable
-   static cim c_(cjl $$0) {
-      cjg $$3 = $$0.d();
-      if ($$3 instanceof cim) {
-         return (cim)$$3;
-      } else {
-         if ($$0.d() instanceof che $$2) {
-            ctc var6 = $$2.e();
-            if (var6 instanceof cim) {
-               return (cim)var6;
+            eif $$11 = $$2.dj();
+            if ($$2.b($$8, $$9, $$10, true)) {
+               $$1.a(dkl.R, $$11, dkl.a.a($$2));
+               aqc $$12 = $$2 instanceof bwe ? aqd.ik : aqd.eA;
+               $$1.a(null, $$4, $$5, $$6, $$12, aqe.h, 1.0F, 1.0F);
+               $$2.a($$12, 1.0F, 1.0F);
+               $$2.n();
+               break;
             }
          }
 
-         return null;
+         if ($$2 instanceof ccx) {
+            ((ccx)$$2).gn().a(this, 20);
+         }
       }
+
+      return $$3;
    }
 }

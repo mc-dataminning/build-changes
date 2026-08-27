@@ -1,32 +1,37 @@
-public class zw implements ve<wx> {
-   private final gw a;
-   private final float b;
+public class zw implements wb<xu> {
+   private final int a;
+   private final ui b;
 
-   public zw(gw $$0, float $$1) {
+   public zw(int $$0, ui $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public zw(so $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readFloat();
+   public zw(tl $$0) {
+      this.a = $$0.n();
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
+   public void a(tl $$0) {
+      $$0.c(this.a);
       $$0.a(this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public gw a() {
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   public int a() {
       return this.a;
    }
 
-   public float d() {
+   public ui d() {
       return this.b;
    }
 }

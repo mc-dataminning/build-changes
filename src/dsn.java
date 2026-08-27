@@ -1,23 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsn<P extends dsm> {
-   public static final dsn<dso> a = a("trunk_vine", dso.a);
-   public static final dsn<dsl> b = a("leave_vine", dsl.a);
-   public static final dsn<dsk> c = a("cocoa", dsk.a);
-   public static final dsn<dsj> d = a("beehive", dsj.a);
-   public static final dsn<dsh> e = a("alter_ground", dsh.a);
-   public static final dsn<dsi> f = a("attached_to_leaves", dsi.a);
-   private final Codec<P> g;
+public record dsn(dst b, float c) {
+   public static final Codec<dsn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dst.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dsn::new)
+   );
 
-   private static <P extends dsm> dsn<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.aa, $$0, new dsn<>($$1));
+   public dst a() {
+      return this.b;
    }
 
-   private dsn(Codec<P> $$0) {
-      this.g = $$0;
-   }
-
-   public Codec<P> a() {
-      return this.g;
+   public float b() {
+      return this.c;
    }
 }

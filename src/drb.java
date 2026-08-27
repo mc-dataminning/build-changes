@@ -1,42 +1,25 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class drb extends drg {
-   public static final Codec<drb> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, drb::new));
-   protected final int b;
+public class drb implements dqs {
+   public static final Codec<drb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, drb::new)
+   );
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   protected static <P extends drb> P3<Mu<P>, bgj, bgj, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public drb(bgj $$0, bgj $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected drh<?> a() {
-      return drh.a;
-   }
-
-   @Override
-   protected void a(cqh $$0, drg.b $$1, ash $$2, dqq $$3, int $$4, drg.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(ash $$0, int $$1, dqq $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(ash $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public drb(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

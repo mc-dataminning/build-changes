@@ -1,84 +1,46 @@
 import org.joml.Matrix4f;
 
-public class frt implements frj.a {
-   private final eqp a;
+public class frt<T extends dfm> implements fra<T> {
+   public static final afw a = new afw("textures/environment/end_sky.png");
+   public static final afw b = new afw("textures/entity/end_portal.png");
 
-   public frt(eqp $$0) {
-      this.a = $$0;
+   public frt(frb.a $$0) {
    }
 
-   @Override
-   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      cph $$6 = this.a.s.dL();
-      gw $$7 = gw.a($$2, $$3, $$4);
+   public void a(T $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   }
 
-      for (gw $$8 : gw.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dfd $$9 = $$6.a_($$8);
-         if (!$$9.a(cte.a)) {
-            eia $$10 = $$9.j($$6, $$8);
+   private void a(T $$0, Matrix4f $$1, eml $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, hx.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, hx.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, hx.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, hx.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, hx.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, hx.b);
+   }
 
-            for (ehc $$11 : $$10.e()) {
-               ehc $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               float $$19 = 1.0F;
-               float $$20 = 0.0F;
-               float $$21 = 0.0F;
-               float $$22 = 0.5F;
-               if ($$9.d($$6, $$8, ha.e)) {
-                  eln $$23 = $$1.getBuffer(foi.z());
-                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ha.d)) {
-                  eln $$24 = $$1.getBuffer(foi.z());
-                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ha.f)) {
-                  eln $$25 = $$1.getBuffer(foi.z());
-                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ha.c)) {
-                  eln $$26 = $$1.getBuffer(foi.z());
-                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ha.a)) {
-                  eln $$27 = $$1.getBuffer(foi.z());
-                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ha.b)) {
-                  eln $$28 = $$1.getBuffer(foi.z());
-                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-            }
-         }
+   private void a(T $$0, Matrix4f $$1, eml $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, hx $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7).e();
+         $$2.a($$1, $$4, $$5, $$8).e();
+         $$2.a($$1, $$4, $$6, $$9).e();
+         $$2.a($$1, $$3, $$6, $$10).e();
       }
+   }
+
+   protected float b() {
+      return 0.75F;
+   }
+
+   protected float c() {
+      return 0.375F;
+   }
+
+   protected fpj d() {
+      return fpj.v();
    }
 }

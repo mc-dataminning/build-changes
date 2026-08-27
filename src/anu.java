@@ -1,55 +1,28 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
 
-public class anu {
-   private final amk a;
-   private final ano<InputStream> b;
-   private final ano<any> c;
-   @Nullable
-   private any d;
+public interface anu<T> extends ant<T> {
+   JsonObject a(T var1);
 
-   public anu(amk $$0, ano<InputStream> $$1, ano<any> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   static <T> anu<T> a(final String $$0, final Codec<T> $$1) {
+      return new anu<T>() {
+         @Override
+         public String a() {
+            return $$0;
+         }
 
-   public anu(amk $$0, ano<InputStream> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = any.b;
-      this.d = any.a;
-   }
+         @Override
+         public T a(JsonObject $$0x) {
+            return ac.a($$1.parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
+         }
 
-   public amk a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.a.a();
-   }
-
-   public boolean c() {
-      return this.a.b();
-   }
-
-   public InputStream d() throws IOException {
-      return this.b.get();
-   }
-
-   public BufferedReader e() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
-   }
-
-   public any f() throws IOException {
-      if (this.d == null) {
-         this.d = this.c.get();
-      }
-
-      return this.d;
+         @Override
+         public JsonObject a(T $$0x) {
+            return ac.<JsonElement, IllegalArgumentException>a($$1.encodeStart(JsonOps.INSTANCE, $$0), IllegalArgumentException::new).getAsJsonObject();
+         }
+      };
    }
 }

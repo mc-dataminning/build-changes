@@ -1,77 +1,50 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class clt extends clv {
-   private final gw b;
-   protected boolean a = true;
+public class clt extends cke {
+   public static final String a = "effects";
+   public static final int b = 160;
 
-   public clt(cca $$0, bhd $$1, cjl $$2, ehd $$3) {
-      this($$0.dL(), $$0, $$1, $$2, $$3);
+   public clt(cke.a $$0) {
+      super($$0);
    }
 
-   public clt(clv $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   public static void a(ckj $$0, List<dca.a> $$1) {
+      rt $$2 = $$0.w();
+      dca.a.b.encodeStart(sf.a, $$1).result().ifPresent($$1x -> $$2.a("effects", $$1x));
    }
 
-   protected clt(cqb $$0, @Nullable cca $$1, bhd $$2, cjl $$3, ehd $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
+   public static void b(ckj $$0, List<dca.a> $$1) {
+      rt $$2 = $$0.w();
+      List<dca.a> $$3 = new ArrayList<>();
+      a($$0, $$3::add);
+      $$3.addAll($$1);
+      dca.a.b.encodeStart(sf.a, $$3).result().ifPresent($$1x -> $$2.a("effects", $$1x));
    }
 
-   public static clt a(clt $$0, gw $$1, ha $$2) {
-      return new clt(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new ehd(
-            new ehh((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   private static void a(ckj $$0, Consumer<dca.a> $$1) {
+      rt $$2 = $$0.v();
+      if ($$2 != null && $$2.b("effects", 9)) {
+         dca.a.b.parse(sf.a, $$2.c("effects", 10)).result().ifPresent($$1x -> $$1x.forEach($$1));
+      }
    }
 
    @Override
-   public gw a() {
-      return this.a ? super.a() : this.b;
-   }
-
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public ha d() {
-      return ha.a(this.o())[0];
-   }
-
-   public ha e() {
-      return ha.a(this.o(), ha.a.b);
-   }
-
-   public ha[] f() {
-      ha[] $$0 = ha.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         ha $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
-
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
+   public void a(ckj $$0, @Nullable cqz $$1, List<ui> $$2, cma $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.b()) {
+         List<bjg> $$4 = new ArrayList<>();
+         a($$0, $$1x -> $$4.add($$1x.a()));
+         cmi.a($$4, $$2, 1.0F);
       }
+   }
+
+   @Override
+   public ckj a(ckj $$0, cqz $$1, bkj $$2) {
+      ckj $$3 = super.a($$0, $$1, $$2);
+      a($$3, $$1x -> $$2.b($$1x.a()));
+      return $$2 instanceof ccx && ((ccx)$$2).fT().d ? $$3 : new ckj(ckm.oC);
    }
 }

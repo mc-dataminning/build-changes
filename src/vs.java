@@ -1,24 +1,28 @@
-public class vs implements ve<vo> {
-   private final int a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   public vs(int $$0) {
-      this.a = $$0;
-   }
+public record vs(afw d) implements vk {
+   public static final MapCodec<vs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(afw.a.fieldOf("storage").forGetter(vs::b)).apply($$0, vs::new));
+   public static final vk.a<vs> b = new vk.a<>(a, "storage");
 
-   public vs(so $$0) {
-      this.a = $$0.readInt();
+   @Override
+   public Stream<rt> a(du $$0) {
+      rt $$1 = $$0.m().aG().a(this.d);
+      return Stream.of($$1);
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.p(this.a);
+   public vk.a<?> a() {
+      return b;
    }
 
-   public void a(vo $$0) {
-      $$0.a(this);
+   @Override
+   public String toString() {
+      return "storage=" + this.d;
    }
 
-   public int a() {
-      return this.a;
+   public afw b() {
+      return this.d;
    }
 }

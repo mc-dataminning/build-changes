@@ -1,20 +1,15 @@
-public class coa extends cnu {
-   protected coa(cnu.a $$0, cnv $$1, bjb... $$2) {
-      super($$0, $$1, $$2);
+public class coa extends cmv {
+   public coa(String $$0, cnb $$1, cnk $$2, ckj $$3, float $$4, int $$5) {
+      super(cnr.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+   public ckj g() {
+      return new ckj(cuc.cD);
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
+   public cnq<?> aq_() {
+      return cnq.p;
    }
 }

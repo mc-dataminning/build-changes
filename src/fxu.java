@@ -1,34 +1,36 @@
-public abstract class fxu<T extends bjm, M extends fgd<T>> extends fxl<T, M> {
-   public fxu(fue<T, M> $$0) {
+public class fxu<T extends bkj, M extends ffx<T>> extends fyl<T, M> {
+   private static final afw a = new afw("textures/entity/elytra.png");
+   private final ffu<T> b;
+
+   public fxu(fvy<T, M> $$0, fis $$1) {
       super($$0);
+      this.b = new ffu<>($$1.a(fiv.Q));
    }
 
-   protected abstract int a(T var1);
-
-   protected abstract void a(elj var1, foa var2, int var3, biw var4, float var5, float var6, float var7, float var8);
-
-   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      ash $$11 = ash.a((long)$$3.ah());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
-            $$0.a();
-            fhx $$13 = this.c().a($$11);
-            fhx.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = asb.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = asb.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = asb.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
-            $$0.b();
+   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ckj $$10 = $$3.c(bjy.e);
+      if ($$10.a(ckm.nh)) {
+         afw $$13;
+         if ($$3 instanceof fnz $$11) {
+            gba $$12 = $$11.b();
+            if ($$12.d() != null) {
+               $$13 = $$12.d();
+            } else if ($$12.c() != null && $$11.a(ccy.a)) {
+               $$13 = $$12.c();
+            } else {
+               $$13 = a;
+            }
+         } else {
+            $$13 = a;
          }
+
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         eml $$17 = fvb.a($$1, fpj.a($$13), false, $$10.B());
+         this.b.a($$0, $$17, $$2, fzr.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.b();
       }
    }
 }

@@ -1,83 +1,42 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class eee extends edw {
+public class eee extends eed {
    public static final Codec<eee> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(jb.l.r().fieldOf("type").forGetter($$0x -> $$0x.b), edb.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eee::new)
+      $$0 -> $$0.group(afw.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eee::new)
    );
-   private final he<ddb<?>> b;
-   private final List<edd> c;
+   private final afw j;
 
-   eee(List<efj> $$0, he<ddb<?>> $$1, List<edd> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+   private eee(afw $$0, int $$1, int $$2, List<egh> $$3, List<eev> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public edy b() {
-      return edz.p;
+   public eec a() {
+      return edz.d;
    }
 
    @Override
-   public cjl a(cjl $$0, eck $$1) {
-      if ($$0.b()) {
-         return $$0;
+   public void a(Consumer<ckj> $$0, edi $$1) {
+      edq $$2 = $$1.a().getLootTable(this.j);
+      $$2.a($$1, $$0);
+   }
+
+   @Override
+   public void a(edr $$0) {
+      edk<edq> $$1 = new edk<>(edn.c, this.j);
+      if ($$0.a($$1)) {
+         $$0.a("Table " + this.j + " is recursively called");
       } else {
-         hn<cjl> $$2 = hn.a();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ecs.a($$1.d(), $$2::add), $$1)));
-         qw $$3 = new qw();
-         bgy.a($$3, $$2);
-         qw $$4 = che.a($$0);
-         if ($$4 == null) {
-            $$4 = $$3;
-         } else {
-            $$4.a($$3);
-         }
-
-         che.a($$0, this.b.a(), $$4);
-         return $$0;
+         super.a($$0);
+         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.j + "}", $$1)), () -> $$0.a("Unknown loot table called " + this.j));
       }
    }
 
-   @Override
-   public void a(ect $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".entry[" + $$1 + "]"));
-      }
-   }
-
-   public static eee.a a(ddb<?> $$0) {
-      return new eee.a($$0);
-   }
-
-   public static class a extends edw.a<eee.a> {
-      private final Builder<edd> a = ImmutableList.builder();
-      private final ddb<?> b;
-
-      public a(ddb<?> $$0) {
-         this.b = $$0;
-      }
-
-      protected eee.a a() {
-         return this;
-      }
-
-      public eee.a a(edd.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public edx b() {
-         return new eee(this.g(), this.b.a(), this.a.build());
-      }
+   public static eed.a<?> a(afw $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eee($$0, $$1, $$2, $$3, $$4));
    }
 }

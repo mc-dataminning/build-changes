@@ -1,84 +1,106 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
 
-public class cxo extends ctc implements dab {
-   public static final MapCodec<cxo> a = b(cxo::new);
-   public static final int b = 15;
-   public static final dgd c = dft.aP;
-   public static final dfu d = dft.C;
-   public static final ToIntFunction<dfd> e = $$0 -> $$0.c(c);
+public abstract class cxo extends cxm implements cud {
+   public static final dhb e = dgr.ax;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<cxo> a() {
-      return a;
-   }
-
-   public cxo(dfc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
+   protected cxo(dga.d $$0, hx $$1, eiy $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.k(this.E.b().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(c, d);
+   protected abstract MapCodec<? extends cxo> a();
+
+   @Override
+   public dgb a(cra $$0) {
+      return this.o().a(e, Integer.valueOf($$0.E_().a(25)));
    }
 
    @Override
-   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
-      if (!$$1.B && $$3.gp()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return bhe.a;
+   public boolean e_(dgb $$0) {
+      return $$0.c(e) < 25;
+   }
+
+   @Override
+   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         ht $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
+      }
+   }
+
+   protected dgb a(dgb $$0, ate $$1) {
+      return $$0.a(e);
+   }
+
+   public dgb n(dgb $$0) {
+      return $$0.a(e, Integer.valueOf(25));
+   }
+
+   public boolean o(dgb $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected dgb a(dgb $$0, dgb $$1) {
+      return $$1;
+   }
+
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, ebf.c, ebf.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         return bhe.b;
+         return this.a($$0, this.b().o());
       }
    }
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return $$3.a(cjo.hg) ? ehx.b() : ehx.a();
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(e);
    }
 
    @Override
-   public boolean c(dfd $$0, cph $$1, gw $$2) {
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
       return true;
    }
 
    @Override
-   public czg b_(dfd $$0) {
-      return czg.a;
-   }
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      ht $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
 
-   @Override
-   public float b(dfd $$0, cph $$1, gw $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eah.c, eah.c.a($$3));
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
+
+   protected abstract int a(ate var1);
+
+   protected abstract boolean g(dgb var1);
 
    @Override
-   public eag c_(dfd $$0) {
-      return $$0.c(d) ? eah.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public cjl a(cqe $$0, gw $$1, dfd $$2) {
-      return a(super.a($$0, $$1, $$2), $$2.c(c));
-   }
-
-   public static cjl a(cjl $$0, int $$1) {
-      if ($$1 != 15) {
-         qw $$2 = new qw();
-         $$2.a(c.f(), String.valueOf($$1));
-         $$0.a("BlockStateTag", $$2);
-      }
-
-      return $$0;
+   protected cxo c() {
+      return this;
    }
 }

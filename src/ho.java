@@ -1,7 +1,49 @@
-public interface ho {
-   double a();
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
-   double b();
+public class ho implements hf<StringArgumentType, ho.a> {
+   public void a(ho.a $$0, tl $$1) {
+      $$1.a((Enum<?>)$$0.b);
+   }
 
-   double c();
+   public ho.a a(tl $$0) {
+      StringType $$1 = $$0.b(StringType.class);
+      return new ho.a($$1);
+   }
+
+   public void a(ho.a $$0, JsonObject $$1) {
+      $$1.addProperty("type", switch ($$0.b) {
+         case SINGLE_WORD -> "word";
+         case QUOTABLE_PHRASE -> "phrase";
+         case GREEDY_PHRASE -> "greedy";
+         default -> throw new IncompatibleClassChangeError();
+      });
+   }
+
+   public ho.a a(StringArgumentType $$0) {
+      return new ho.a($$0.getType());
+   }
+
+   public final class a implements hf.a<StringArgumentType> {
+      final StringType b;
+
+      public a(StringType $$1) {
+         this.b = $$1;
+      }
+
+      public StringArgumentType a(dp $$0) {
+         return switch (this.b) {
+            case SINGLE_WORD -> StringArgumentType.word();
+            case QUOTABLE_PHRASE -> StringArgumentType.string();
+            case GREEDY_PHRASE -> StringArgumentType.greedyString();
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
+
+      @Override
+      public hf<StringArgumentType, ?> a() {
+         return ho.this;
+      }
+   }
 }

@@ -1,59 +1,35 @@
-public class cmo extends cmv {
-   public cmo(cme $$0) {
-      super(
-         "",
-         $$0,
-         3,
-         3,
-         hn.a(cmm.a, cmm.a(cjo.qa), cmm.a(cjo.qa), cmm.a(cjo.qa), cmm.a(cjo.qa), cmm.a(cjo.rf), cmm.a(cjo.qa), cmm.a(cjo.qa), cmm.a(cjo.qa), cmm.a(cjo.qa)),
-         new cjl(cjo.tp)
-      );
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record cmo(afw c, ib<cke> d, ui e, boolean f) {
+   public static final Codec<cmo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               afw.a.fieldOf("asset_id").forGetter(cmo::a),
+               aft.a(jz.E).fieldOf("template_item").forGetter(cmo::b),
+               uk.a.fieldOf("description").forGetter(cmo::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cmo::d)
+            )
+            .apply($$0, cmo::new)
+   );
+   public static final Codec<ib<cmo>> b = afs.a(jz.aF, a);
+
+   public ui a(ib<cmm> $$0) {
+      return this.e.f().c($$0.a().e().a());
    }
 
-   @Override
-   public boolean a(cff $$0, cqb $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         cjl $$2 = a($$0);
-         if ($$2.b()) {
-            return false;
-         } else {
-            ebq $$3 = cjs.a($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.f() ? false : $$3.f < 4;
-            }
-         }
-      }
+   public afw a() {
+      return this.c;
    }
 
-   @Override
-   public cjl a(cff $$0, hr $$1) {
-      cjl $$2 = a($$0).c(1);
-      $$2.w().a("map_scale_direction", 1);
-      return $$2;
+   public ib<cke> b() {
+      return this.d;
    }
 
-   private static cjl a(cff $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         cjl $$2 = $$0.a($$1);
-         if ($$2.a(cjo.rf)) {
-            return $$2;
-         }
-      }
-
-      return cjl.b;
+   public ui c() {
+      return this.e;
    }
 
-   @Override
-   public boolean am_() {
-      return true;
-   }
-
-   @Override
-   public cms<?> an_() {
-      return cms.f;
+   public boolean d() {
+      return this.f;
    }
 }

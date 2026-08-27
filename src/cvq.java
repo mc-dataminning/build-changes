@@ -1,39 +1,50 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cvq extends czj {
-   public static final MapCodec<cvq> b = b(cvq::new);
+public class cvq extends ctk {
+   public static final MapCodec<cvq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvo.a.forGetter($$0x -> $$0x.e), t()).apply($$0, cvq::new));
+   private final cua e;
+   protected static final float b = 6.0F;
+   protected static final eiy c = cua.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
    @Override
    public MapCodec<cvq> a() {
-      return b;
+      return a;
    }
 
-   protected cvq(dfc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, ha.b));
-   }
-
-   @Override
-   public dfd a(clt $$0) {
-      ha $$1 = $$0.k();
-      dfd $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.o().a(a, $$1.g()) : this.o().a(a, $$1);
+   protected cvq(cua $$0, dga.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      ha $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(iv.u, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+   public void b(dgb $$0, cqz $$1, ht $$2, dgb $$3, boolean $$4) {
+      this.a($$0, (cra)$$1, $$2);
+   }
+
+   @Override
+   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.e.o().a(d, Boolean.valueOf(false)), 2);
       }
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(a);
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if ($$1 == hx.a && !$$0.a($$3, $$4)) {
+         return cuc.a.o();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, ebf.c, ebf.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return c;
    }
 }

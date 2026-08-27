@@ -1,228 +1,120 @@
-import java.util.List;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class deg extends dec implements bhn {
-   public static final int c = 9;
-   public static final int f = 3;
-   public static final int g = 27;
-   public static final int j = 1;
-   public static final int k = 10;
-   public static final float l = 0.5F;
-   public static final float m = 270.0F;
-   public static final String n = "Items";
-   private static final int[] r = IntStream.range(0, 27).toArray();
-   private hn<cjl> s = hn.a(27, cjl.b);
-   private int t;
-   private deg.a u = deg.a.a;
-   private float v;
-   private float w;
-   @Nullable
-   private final chz x;
+public class deg extends ddx implements bhu {
+   public static final int c = 6;
+   private static final Logger d = LogUtils.getLogger();
+   private final il<ckj> e = il.a(6, ckj.b);
+   private int f = -1;
 
-   public deg(@Nullable chz $$0, gw $$1, dfd $$2) {
-      super(ddb.x, $$1, $$2);
-      this.x = $$0;
+   public deg(ht $$0, dgb $$1) {
+      super(ddz.M, $$0, $$1);
    }
 
-   public deg(gw $$0, dfd $$1) {
-      super(ddb.x, $$0, $$1);
-      this.x = czz.a($$1.b());
-   }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.f = $$0;
+         dgb $$1 = this.q();
 
-   public static void a(cqb $$0, gw $$1, dfd $$2, deg $$3) {
-      $$3.b($$0, $$1, $$2);
-   }
-
-   private void b(cqb $$0, gw $$1, dfd $$2) {
-      this.w = this.v;
-      switch (this.u) {
-         case a:
-            this.v = 0.0F;
-            break;
-         case b:
-            this.v += 0.1F;
-            if (this.w == 0.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.v >= 1.0F) {
-               this.u = deg.a.c;
-               this.v = 1.0F;
-               d($$0, $$1, $$2);
-            }
-
-            this.c($$0, $$1, $$2);
-            break;
-         case d:
-            this.v -= 0.1F;
-            if (this.w == 1.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.v <= 0.0F) {
-               this.u = deg.a.a;
-               this.v = 0.0F;
-               d($$0, $$1, $$2);
-            }
-            break;
-         case c:
-            this.v = 1.0F;
-      }
-   }
-
-   public deg.a i() {
-      return this.u;
-   }
-
-   public ehc a(dfd $$0) {
-      return bzu.a($$0.c(czz.b), 0.5F * this.a(1.0F));
-   }
-
-   private void c(cqb $$0, gw $$1, dfd $$2) {
-      if ($$2.b() instanceof czz) {
-         ha $$3 = $$2.c(czz.b);
-         ehc $$4 = bzu.a($$3, this.w, this.v).a($$1);
-         List<biw> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (biw $$6 : $$5) {
-               if ($$6.q_() != eal.d) {
-                  $$6.a(bjs.d, new ehh(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
+         for (int $$2 = 0; $$2 < cve.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).b();
+            dgs $$4 = cve.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
          }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(dkl.c, this.p, dkl.a.a($$1));
+      } else {
+         d.error("Expected slot 0-5, got {}", $$0);
       }
+   }
+
+   @Override
+   public void a(rt $$0) {
+      this.e.clear();
+      bhv.b($$0, this.e);
+      this.f = $$0.h("last_interacted_slot");
+   }
+
+   @Override
+   protected void b(rt $$0) {
+      bhv.a($$0, this.e, true);
+      $$0.a("last_interacted_slot", this.f);
+   }
+
+   public int f() {
+      return (int)this.e.stream().filter(Predicate.not(ckj::b)).count();
+   }
+
+   @Override
+   public void a() {
+      this.e.clear();
    }
 
    @Override
    public int b() {
-      return this.s.size();
+      return 6;
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.t = $$1;
-         if ($$1 == 0) {
-            this.u = deg.a.d;
-         }
+   public boolean ai_() {
+      return this.e.stream().allMatch(ckj::b);
+   }
 
-         if ($$1 == 1) {
-            this.u = deg.a.b;
-         }
+   @Override
+   public ckj a(int $$0) {
+      return this.e.get($$0);
+   }
 
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   @Override
+   public ckj a(int $$0, int $$1) {
+      ckj $$2 = Objects.requireNonNullElse(this.e.get($$0), ckj.b);
+      this.e.set($$0, ckj.b);
+      if (!$$2.b()) {
+         this.c($$0);
       }
-   }
 
-   private static void d(cqb $$0, gw $$1, dfd $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
+      return $$2;
    }
 
    @Override
-   public void d_(cca $$0) {
-      if (!this.q && !$$0.M_()) {
-         if (this.t < 0) {
-            this.t = 0;
-         }
-
-         this.t++;
-         this.o.a(this.p, this.q().b(), 1, this.t);
-         if (this.t == 1) {
-            this.o.a($$0, djn.k, this.p);
-            this.o.a(null, this.p, apg.va, aph.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
-      }
+   public ckj b(int $$0) {
+      return this.a($$0, 1);
    }
 
    @Override
-   public void c(cca $$0) {
-      if (!this.q && !$$0.M_()) {
-         this.t--;
-         this.o.a(this.p, this.q().b(), 1, this.t);
-         if (this.t <= 0) {
-            this.o.a($$0, djn.j, this.p);
-            this.o.a(null, this.p, apg.uZ, aph.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
+   public void a(int $$0, ckj $$1) {
+      if ($$1.a(ara.av)) {
+         this.e.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.b()) {
+         this.a($$0, 1);
       }
    }
 
    @Override
-   protected tl g() {
-      return tl.c("container.shulkerBox");
+   public boolean a(bhu $$0, int $$1, ckj $$2) {
+      return $$0.a_($$2x -> $$2x.b() ? true : ckj.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.aj_()));
    }
 
    @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      this.f($$0);
+   public int aj_() {
+      return 1;
    }
 
    @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      if (!this.e($$0)) {
-         bgy.a($$0, this.s, false);
-      }
-   }
-
-   public void f(qw $$0) {
-      this.s = hn.a(this.b(), cjl.b);
-      if (!this.d($$0) && $$0.b("Items", 9)) {
-         bgy.b($$0, this.s);
-      }
+   public boolean a(ccx $$0) {
+      return bhu.a(this, $$0);
    }
 
    @Override
-   protected hn<cjl> f() {
-      return this.s;
+   public boolean b(int $$0, ckj $$1) {
+      return $$1.a(ara.av) && this.a($$0).b();
    }
 
-   @Override
-   protected void a(hn<cjl> $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public int[] a(ha $$0) {
-      return r;
-   }
-
-   @Override
-   public boolean a(int $$0, cjl $$1, @Nullable ha $$2) {
-      return !(ctc.a($$1.d()) instanceof czz);
-   }
-
-   @Override
-   public boolean b(int $$0, cjl $$1, ha $$2) {
-      return true;
-   }
-
-   public float a(float $$0) {
-      return asb.i($$0, this.w, this.v);
-   }
-
-   @Nullable
-   public chz j() {
-      return this.x;
-   }
-
-   @Override
-   protected cer a(int $$0, cbz $$1) {
-      return new cgg($$0, $$1, this);
-   }
-
-   public boolean v() {
-      return this.u == deg.a.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public int g() {
+      return this.f;
    }
 }

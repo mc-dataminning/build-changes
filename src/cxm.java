@@ -1,68 +1,56 @@
-public class cxm {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1500;
-   public static final int P = 1501;
-   public static final int Q = 1502;
-   public static final int R = 1503;
-   public static final int S = 1504;
-   public static final int T = 1505;
-   public static final int U = 2000;
-   public static final int V = 2001;
-   public static final int W = 2002;
-   public static final int X = 2003;
-   public static final int Y = 2004;
-   public static final int Z = 2005;
-   public static final int aa = 2006;
-   public static final int ab = 2007;
-   public static final int ac = 2008;
-   public static final int ad = 2009;
-   public static final int ae = 3000;
-   public static final int af = 3001;
-   public static final int ag = 3002;
-   public static final int ah = 3003;
-   public static final int ai = 3004;
-   public static final int aj = 3005;
-   public static final int ak = 3006;
-   public static final int al = 3007;
-   public static final int am = 3008;
-   public static final int an = 3009;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public abstract class cxm extends cua {
+   protected final hx a;
+   protected final boolean b;
+   protected final eiy d;
+
+   protected cxm(dga.d $$0, hx $$1, eiy $$2, boolean $$3) {
+      super($$0);
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
+   }
+
+   @Override
+   protected abstract MapCodec<? extends cxm> a();
+
+   @Nullable
+   @Override
+   public dgb a(cmr $$0) {
+      dgb $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
+   }
+
+   public dgb a(cra $$0) {
+      return this.o();
+   }
+
+   @Override
+   public boolean a(dgb $$0, crc $$1, ht $$2) {
+      ht $$3 = $$2.a(this.a.g());
+      dgb $$4 = $$1.a_($$3);
+      return !this.h($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
+   }
+
+   @Override
+   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   protected boolean h(dgb $$0) {
+      return true;
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return this.d;
+   }
+
+   protected abstract cxo c();
+
+   protected abstract cua b();
 }

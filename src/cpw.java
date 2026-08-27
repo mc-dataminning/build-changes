@@ -1,34 +1,41 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class cpw extends ebl {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public interface cpw {
+   void f(@Nullable ccx var1);
 
-   public static ebl.a<cpw> a() {
-      return new ebl.a<>(cpw::new, cpw::b, atg.i);
+   @Nullable
+   ccx ge();
+
+   cpy gg();
+
+   void a(cpy var1);
+
+   void a(cpx var1);
+
+   void l(ckj var1);
+
+   int t();
+
+   void t(int var1);
+
+   boolean gh();
+
+   aqc gi();
+
+   default boolean gq() {
+      return false;
    }
 
-   private cpw(LongSet $$0) {
-      this.c = $$0;
+   default void a(ccx $$0, ui $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new bij(($$0x, $$1x, $$2x) -> new cgw($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         cpy $$4 = this.gg();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.gh(), this.gq());
+         }
+      }
    }
 
-   public cpw() {
-      this(new LongOpenHashSet());
-   }
-
-   public static cpw b(qw $$0) {
-      return new cpw(new LongOpenHashSet($$0.o("Forced")));
-   }
-
-   @Override
-   public qw a(qw $$0) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
-   }
-
-   public LongSet b() {
-      return this.c;
-   }
+   boolean gm();
 }

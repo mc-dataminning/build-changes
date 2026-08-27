@@ -1,11 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record amh(cei b) {
-   private static final Codec<amh> c = RecordCodecBuilder.create($$0 -> $$0.group(cek.e.fieldOf("enabled").forGetter(amh::a)).apply($$0, amh::new));
-   public static final amx<amh> a = amx.a("features", c);
+public record amh(String b, um c) {
+   public static final amh a = a("");
 
-   public cei a() {
+   public static amh a(String $$0) {
+      return new amh($$0, um.c);
+   }
+
+   public static amh b(String $$0) {
+      return new amh($$0, um.b);
+   }
+
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
+   }
+
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
+   }
+
+   public boolean c() {
+      return !this.c.a();
+   }
+
+   public String d() {
       return this.b;
+   }
+
+   public um e() {
+      return this.c;
    }
 }

@@ -1,23 +1,54 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dpo implements dpu {
-   public static final Codec<dpo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bgj.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bgj.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dpo::new)
-   );
-   private final bgj b;
-   private final bgj c;
-
-   public dpo(bgj $$0, bgj $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dpo extends doo<drh> {
+   public dpo(Codec<drh> $$0) {
+      super($$0);
    }
 
-   public bgj a() {
-      return this.b;
+   @Override
+   public boolean a(doq<drh> $$0) {
+      drh $$1 = $$0.f();
+      crt $$2 = $$0.b();
+      ate $$3 = $$0.d();
+      cua $$4 = $$1.b.b();
+      ht $$5 = a($$2, $$0.e().j().a(hx.a.b, $$2.I_() + 1, $$2.aj() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (ht $$11 : ht.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dgb $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
+         }
+
+         return $$10;
+      }
    }
 
-   public bgj b() {
-      return this.c;
+   @Nullable
+   private static ht a(cra $$0, ht.a $$1, cua $$2) {
+      while ($$1.v() > $$0.I_() + 1) {
+         dgb $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(hx.a);
+      }
+
+      return null;
    }
 }

@@ -1,134 +1,138 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class cgv extends cjg implements cim {
-   private static final EnumMap<cgv.a, UUID> e = ac.a(new EnumMap<>(cgv.a.class), $$0 -> {
-      $$0.put(cgv.a.d, UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"));
-      $$0.put(cgv.a.c, UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"));
-      $$0.put(cgv.a.b, UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"));
-      $$0.put(cgv.a.a, UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"));
-   });
-   public static final ih a = new ig() {
-      @Override
-      protected cjl a(id $$0, cjl $$1) {
-         return cgv.a($$0, $$1) ? $$1 : super.a($$0, $$1);
+public class cgv implements bhu {
+   private final cpw c;
+   private final il<ckj> d = il.a(3, ckj.b);
+   @Nullable
+   private cpx e;
+   private int f;
+   private int g;
+
+   public cgv(cpw $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.d.size();
+   }
+
+   @Override
+   public boolean ai_() {
+      for (ckj $$0 : this.d) {
+         if (!$$0.b()) {
+            return false;
+         }
       }
-   };
-   protected final cgv.a b;
-   private final int f;
-   private final float g;
-   protected final float c;
-   protected final cgw d;
-   private final Multimap<bkn, bkq> h;
 
-   public static boolean a(id $$0, cjl $$1) {
-      gw $$2 = $$0.c().a($$0.d().c(cvf.b));
-      List<bjm> $$3 = $$0.b().a(bjm.class, new ehc($$2), biz.f.and(new biz.a($$1)));
-      if ($$3.isEmpty()) {
-         return false;
+      return true;
+   }
+
+   @Override
+   public ckj a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public ckj a(int $$0, int $$1) {
+      ckj $$2 = this.d.get($$0);
+      if ($$0 == 2 && !$$2.b()) {
+         return bhv.a(this.d, $$0, $$2.L());
       } else {
-         bjm $$4 = $$3.get(0);
-         bjb $$5 = bjo.h($$1);
-         cjl $$6 = $$1.a(1);
-         $$4.a($$5, $$6);
-         if ($$4 instanceof bjo) {
-            ((bjo)$$4).a($$5, 2.0F);
-            ((bjo)$$4).fJ();
+         ckj $$3 = bhv.a(this.d, $$0, $$1);
+         if (!$$3.b() && this.d($$0)) {
+            this.f();
          }
 
-         return true;
+         return $$3;
       }
    }
 
-   public cgv(cgw $$0, cgv.a $$1, cjg.a $$2) {
-      super($$2.b($$0.a($$1)));
-      this.d = $$0;
-      this.b = $$1;
-      this.f = $$0.b($$1);
-      this.g = $$0.f();
-      this.c = $$0.g();
-      cvf.a(this, a);
-      Builder<bkn, bkq> $$3 = ImmutableMultimap.builder();
-      UUID $$4 = e.get($$1);
-      $$3.put(bks.a, new bkq($$4, "Armor modifier", (double)this.f, bkq.a.a));
-      $$3.put(bks.b, new bkq($$4, "Armor toughness", (double)this.g, bkq.a.a));
-      if ($$0 == cgx.g) {
-         $$3.put(bks.i, new bkq($$4, "Armor knockback resistance", (double)this.c, bkq.a.a));
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public ckj b(int $$0) {
+      return bhv.a(this.d, $$0);
+   }
+
+   @Override
+   public void a(int $$0, ckj $$1) {
+      this.d.set($$0, $$1);
+      if (!$$1.b() && $$1.L() > this.aj_()) {
+         $$1.f(this.aj_());
       }
 
-      this.h = $$3.build();
-   }
-
-   public cgv.a b() {
-      return this.b;
-   }
-
-   @Override
-   public int c() {
-      return this.d.a();
-   }
-
-   public cgw d() {
-      return this.d;
+      if (this.d($$0)) {
+         this.f();
+      }
    }
 
    @Override
-   public boolean a(cjl $$0, cjl $$1) {
-      return this.d.d().a($$1) || super.a($$0, $$1);
+   public boolean a(ccx $$0) {
+      return this.c.ge() == $$0;
    }
 
    @Override
-   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
-      return this.a(this, $$0, $$1, $$2);
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.e = null;
+      ckj $$0;
+      ckj $$1;
+      if (this.d.get(0).b()) {
+         $$0 = this.d.get(1);
+         $$1 = ckj.b;
+      } else {
+         $$0 = this.d.get(0);
+         $$1 = this.d.get(1);
+      }
+
+      if ($$0.b()) {
+         this.a(2, ckj.b);
+         this.g = 0;
+      } else {
+         cpy $$4 = this.c.gg();
+         if (!$$4.isEmpty()) {
+            cpx $$5 = $$4.a($$0, $$1, this.f);
+            if ($$5 == null || $$5.p()) {
+               this.e = $$5;
+               $$5 = $$4.a($$1, $$0, this.f);
+            }
+
+            if ($$5 != null && !$$5.p()) {
+               this.e = $$5;
+               this.a(2, $$5.f());
+               this.g = $$5.o();
+            } else {
+               this.a(2, ckj.b);
+               this.g = 0;
+            }
+         }
+
+         this.c.l(this.a(2));
+      }
+   }
+
+   @Nullable
+   public cpx g() {
+      return this.e;
+   }
+
+   public void c(int $$0) {
+      this.f = $$0;
+      this.f();
    }
 
    @Override
-   public Multimap<bkn, bkq> a(bjb $$0) {
-      return $$0 == this.b.a() ? this.h : super.a($$0);
+   public void a() {
+      this.d.clear();
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
+   public int h() {
       return this.g;
-   }
-
-   @Override
-   public bjb g() {
-      return this.b.a();
-   }
-
-   @Override
-   public apf ao_() {
-      return this.d().b();
-   }
-
-   public static enum a {
-      a(bjb.f, "helmet"),
-      b(bjb.e, "chestplate"),
-      c(bjb.d, "leggings"),
-      d(bjb.c, "boots");
-
-      private final bjb e;
-      private final String f;
-
-      private a(bjb $$0, String $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public bjb a() {
-         return this.e;
-      }
-
-      public String b() {
-         return this.f;
-      }
    }
 }

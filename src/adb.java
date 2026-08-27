@@ -1,29 +1,31 @@
-public enum adb {
-   a,
-   b;
+public class adb implements wb<aca> {
+   private static final int a = 2;
+   private final boolean b;
 
-   private static final int c = 1;
-   private static final int d = 2;
-
-   public static adb a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public adb(ccu $$0) {
+      this.b = $$0.b;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-      };
+   public adb(tl $$0) {
+      byte $$1 = $$0.readByte();
+      this.b = ($$1 & 2) != 0;
    }
 
-   public sn b() {
-      return switch (this) {
-         case a -> sn.c;
-         case b -> sn.d;
-      };
+   @Override
+   public void a(tl $$0) {
+      byte $$1 = 0;
+      if (this.b) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
+   }
+
+   public void a(aca $$0) {
+      $$0.a(this);
+   }
+
+   public boolean a() {
+      return this.b;
    }
 }

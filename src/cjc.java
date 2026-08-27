@@ -1,15 +1,24 @@
-public class cjc extends cjg implements ckk {
-   public cjc(cjg.a $$0) {
+public class cjc extends cke {
+   public cjc(cke.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(cqb $$0, deh $$1, boolean $$2, cca $$3) {
-      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
-         $$0.a(null, $$1.p(), apg.lJ, aph.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
+   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
+      ckj $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), aqd.gI, aqe.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cdx $$4 = new cdx($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
+
+      $$1.b(aqn.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
+      }
+
+      return bic.a($$3, $$0.x_());
    }
 }

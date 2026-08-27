@@ -1,229 +1,356 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.joml.Vector2i;
+import java.util.function.Consumer;
 
-public interface eue extends euf {
-   List<? extends euf> i();
+public class eue {
+   public static final int a = Integer.MAX_VALUE;
+   private static final int b = 2;
+   private final esw c;
+   private final List<eue.a> d = Lists.newArrayList();
+   private String e;
+   private int f;
+   private int g;
+   private boolean h;
+   private int i = Integer.MAX_VALUE;
+   private final int j;
+   private Consumer<String> k = $$0x -> {
+   };
+   private Runnable l = () -> {
+   };
 
-   default Optional<euf> d(double $$0, double $$1) {
-      for (euf $$2 : this.i()) {
-         if ($$2.a_($$0, $$1)) {
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
+   public eue(esw $$0, int $$1) {
+      this.c = $$0;
+      this.j = $$1;
+      this.a("");
    }
 
-   @Override
-   default boolean a(double $$0, double $$1, int $$2) {
-      for (euf $$3 : this.i()) {
-         if ($$3.a($$0, $$1, $$2)) {
-            this.a($$3);
-            if ($$2 == 0) {
-               this.b(true);
-            }
-
-            return true;
-         }
-      }
-
-      return false;
+   public int a() {
+      return this.i;
    }
 
-   @Override
-   default boolean b(double $$0, double $$1, int $$2) {
-      this.b(false);
-      return this.d($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
-   }
-
-   @Override
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return this.t() != null && this.aB_() && $$2 == 0 ? this.t().a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   boolean aB_();
-
-   void b(boolean var1);
-
-   @Override
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.d($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
-   }
-
-   @Override
-   default boolean a(int $$0, int $$1, int $$2) {
-      return this.t() != null && this.t().a($$0, $$1, $$2);
-   }
-
-   @Override
-   default boolean b(int $$0, int $$1, int $$2) {
-      return this.t() != null && this.t().b($$0, $$1, $$2);
-   }
-
-   @Override
-   default boolean a(char $$0, int $$1) {
-      return this.t() != null && this.t().a($$0, $$1);
-   }
-
-   @Nullable
-   euf t();
-
-   void a(@Nullable euf var1);
-
-   @Override
-   default void b_(boolean $$0) {
-   }
-
-   @Override
-   default boolean aC_() {
-      return this.t() != null;
-   }
-
-   @Nullable
-   @Override
-   default erw aF_() {
-      euf $$0 = this.t();
-      return $$0 != null ? erw.a(this, $$0.aF_()) : null;
-   }
-
-   default void b(@Nullable euf $$0) {
-      this.a($$0);
-   }
-
-   @Nullable
-   @Override
-   default erw a(ewj $$0) {
-      euf $$1 = this.t();
-      if ($$1 != null) {
-         erw $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return erw.a(this, $$2);
-         }
-      }
-
-      if ($$0 instanceof ewj.c $$3) {
-         return this.a($$3);
+   public void a(int $$0) {
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Character limit cannot be negative");
       } else {
-         return $$0 instanceof ewj.a $$4 ? this.a($$4) : null;
+         this.i = $$0;
       }
    }
 
-   @Nullable
-   private erw a(ewj.c $$0) {
-      boolean $$1 = $$0.b();
-      euf $$2 = this.t();
-      List<? extends euf> $$3 = new ArrayList<>(this.i());
-      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.u()));
-      int $$4 = $$3.indexOf($$2);
-      int $$5;
-      if ($$2 != null && $$4 >= 0) {
-         $$5 = $$4 + ($$1 ? 1 : 0);
-      } else if ($$1) {
-         $$5 = 0;
-      } else {
-         $$5 = $$3.size();
+   public boolean b() {
+      return this.i != Integer.MAX_VALUE;
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.k = $$0;
+   }
+
+   public void a(Runnable $$0) {
+      this.l = $$0;
+   }
+
+   public void a(String $$0) {
+      this.e = this.c($$0);
+      this.f = this.e.length();
+      this.g = this.f;
+      this.n();
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public void b(String $$0) {
+      if (!$$0.isEmpty() || this.i()) {
+         String $$1 = this.d(aa.a($$0, true));
+         eue.a $$2 = this.e();
+         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
+         this.f = $$2.a + $$1.length();
+         this.g = this.f;
+         this.n();
+      }
+   }
+
+   public void b(int $$0) {
+      if (!this.i()) {
+         this.g = asy.a(this.f + $$0, 0, this.e.length());
       }
 
-      ListIterator<? extends euf> $$8 = $$3.listIterator($$5);
-      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
-      Supplier<? extends euf> $$10 = $$1 ? $$8::next : $$8::previous;
+      this.b("");
+   }
 
-      while ($$9.getAsBoolean()) {
-         euf $$11 = $$10.get();
-         erw $$12 = $$11.a($$0);
-         if ($$12 != null) {
-            return erw.a(this, $$12);
+   public int d() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public eue.a e() {
+      return new eue.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
+   }
+
+   public int f() {
+      return this.d.size();
+   }
+
+   public int g() {
+      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
+         eue.a $$1 = this.d.get($$0);
+         if (this.f >= $$1.a && this.f <= $$1.b) {
+            return $$0;
          }
       }
 
-      return null;
+      return -1;
    }
 
-   @Nullable
-   private erw a(ewj.a $$0) {
-      euf $$1 = this.t();
-      if ($$1 == null) {
-         ewl $$2 = $$0.b();
-         ewn $$3 = this.s().c($$2.b());
-         return erw.a(this, this.a($$3, $$2, null, $$0));
-      } else {
-         ewn $$4 = $$1.s();
-         return erw.a(this, this.a($$4, $$0.b(), $$1, $$0));
+   public eue.a c(int $$0) {
+      return this.d.get(asy.a($$0, 0, this.d.size() - 1));
+   }
+
+   public void a(euv $$0, int $$1) {
+      switch ($$0) {
+         case a:
+            this.f = $$1;
+            break;
+         case b:
+            this.f += $$1;
+            break;
+         case c:
+            this.f = this.e.length() + $$1;
+      }
+
+      this.f = asy.a(this.f, 0, this.e.length());
+      this.l.run();
+      if (!this.h) {
+         this.g = this.f;
       }
    }
 
-   @Nullable
-   private erw a(ewn $$0, ewl $$1, @Nullable euf $$2, ewj $$3) {
-      ewk $$4 = $$1.a();
-      ewk $$5 = $$4.a();
-      ewl $$6 = $$5.b();
-      int $$7 = $$0.b($$1.b());
-      List<euf> $$8 = new ArrayList<>();
+   public void d(int $$0) {
+      if ($$0 != 0) {
+         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
+         eue.a $$2 = this.f($$0);
+         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
+         this.a(euv.a, $$2.a + $$3);
+      }
+   }
 
-      for (euf $$9 : this.i()) {
-         if ($$9 != $$2) {
-            ewn $$10 = $$9.s();
-            if ($$10.a($$0, $$5)) {
-               int $$11 = $$10.b($$1.b());
-               if ($$1.a($$11, $$7)) {
-                  $$8.add($$9);
-               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
-                  $$8.add($$9);
+   public void a(double $$0, double $$1) {
+      int $$2 = asy.a($$0);
+      int $$3 = asy.a($$1 / 9.0);
+      eue.a $$4 = this.d.get(asy.a($$3, 0, this.d.size() - 1));
+      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
+      this.a(euv.a, $$4.a + $$5);
+   }
+
+   public boolean e(int $$0) {
+      this.h = ezd.q();
+      if (ezd.g($$0)) {
+         this.f = this.e.length();
+         this.g = 0;
+         return true;
+      } else if (ezd.f($$0)) {
+         ero.O().o.a(this.j());
+         return true;
+      } else if (ezd.e($$0)) {
+         this.b(ero.O().o.a());
+         return true;
+      } else if (ezd.d($$0)) {
+         ero.O().o.a(this.j());
+         this.b("");
+         return true;
+      } else {
+         switch ($$0) {
+            case 257:
+            case 335:
+               this.b("\n");
+               return true;
+            case 259:
+               if (ezd.p()) {
+                  eue.a $$3 = this.k();
+                  this.b($$3.a - this.f);
+               } else {
+                  this.b(-1);
                }
-            }
+
+               return true;
+            case 261:
+               if (ezd.p()) {
+                  eue.a $$4 = this.l();
+                  this.b($$4.a - this.f);
+               } else {
+                  this.b(1);
+               }
+
+               return true;
+            case 262:
+               if (ezd.p()) {
+                  eue.a $$2 = this.l();
+                  this.a(euv.a, $$2.a);
+               } else {
+                  this.a(euv.b, 1);
+               }
+
+               return true;
+            case 263:
+               if (ezd.p()) {
+                  eue.a $$1 = this.k();
+                  this.a(euv.a, $$1.a);
+               } else {
+                  this.a(euv.b, -1);
+               }
+
+               return true;
+            case 264:
+               if (!ezd.p()) {
+                  this.d(1);
+               }
+
+               return true;
+            case 265:
+               if (!ezd.p()) {
+                  this.d(-1);
+               }
+
+               return true;
+            case 266:
+               this.a(euv.a, 0);
+               return true;
+            case 267:
+               this.a(euv.c, 0);
+               return true;
+            case 268:
+               if (ezd.p()) {
+                  this.a(euv.a, 0);
+               } else {
+                  this.a(euv.a, this.m().a);
+               }
+
+               return true;
+            case 269:
+               if (ezd.p()) {
+                  this.a(euv.c, 0);
+               } else {
+                  this.a(euv.a, this.m().b);
+               }
+
+               return true;
+            default:
+               return false;
          }
       }
-
-      Comparator<euf> $$12 = Comparator.comparing($$1x -> $$1x.s().b($$1.b()), $$1.d());
-      Comparator<euf> $$13 = Comparator.comparing($$1x -> $$1x.s().b($$6.b()), $$6.d());
-      $$8.sort($$12.thenComparing($$13));
-
-      for (euf $$14 : $$8) {
-         erw $$15 = $$14.a($$3);
-         if ($$15 != null) {
-            return $$15;
-         }
-      }
-
-      return this.b($$0, $$1, $$2, $$3);
    }
 
-   @Nullable
-   private erw b(ewn $$0, ewl $$1, @Nullable euf $$2, ewj $$3) {
-      ewk $$4 = $$1.a();
-      ewk $$5 = $$4.a();
-      List<Pair<euf, Long>> $$6 = new ArrayList<>();
-      ewm $$7 = ewm.a($$4, $$0.b($$1), $$0.b($$5));
+   public Iterable<eue.a> h() {
+      return this.d;
+   }
 
-      for (euf $$8 : this.i()) {
-         if ($$8 != $$2) {
-            ewn $$9 = $$8.s();
-            ewm $$10 = ewm.a($$4, $$9.b($$1.b()), $$9.b($$5));
-            if ($$1.a($$10.a($$4), $$7.a($$4))) {
-               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
-               $$6.add(Pair.of($$8, $$11));
-            }
+   public boolean i() {
+      return this.g != this.f;
+   }
+
+   @VisibleForTesting
+   public String j() {
+      eue.a $$0 = this.e();
+      return this.e.substring($$0.a, $$0.b);
+   }
+
+   private eue.a m() {
+      return this.f(0);
+   }
+
+   private eue.a f(int $$0) {
+      int $$1 = this.g();
+      if ($$1 < 0) {
+         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
+      } else {
+         return this.d.get(asy.a($$1 + $$0, 0, this.d.size() - 1));
+      }
+   }
+
+   @VisibleForTesting
+   public eue.a k() {
+      if (this.e.isEmpty()) {
+         return eue.a.c;
+      } else {
+         int $$0 = asy.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
          }
+
+         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         return new eue.a($$0, this.g($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public eue.a l() {
+      if (this.e.isEmpty()) {
+         return eue.a.c;
+      } else {
+         int $$0 = asy.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         return new eue.a($$0, this.g($$0));
+      }
+   }
+
+   private int g(int $$0) {
+      int $$1 = $$0;
+
+      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
+         $$1++;
       }
 
-      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
+      return $$1;
+   }
 
-      for (Pair<euf, Long> $$12 : $$6) {
-         erw $$13 = ((euf)$$12.getFirst()).a($$3);
-         if ($$13 != null) {
-            return $$13;
+   private void n() {
+      this.o();
+      this.k.accept(this.e);
+      this.l.run();
+   }
+
+   private void o() {
+      this.d.clear();
+      if (this.e.isEmpty()) {
+         this.d.add(eue.a.c);
+      } else {
+         this.c.b().a(this.e, this.j, vf.a, false, ($$0, $$1, $$2) -> this.d.add(new eue.a($$1, $$2)));
+         if (this.e.charAt(this.e.length() - 1) == '\n') {
+            this.d.add(new eue.a(this.e.length(), this.e.length()));
          }
       }
+   }
 
-      return null;
+   private String c(String $$0) {
+      return this.b() ? ats.a($$0, this.i, false) : $$0;
+   }
+
+   private String d(String $$0) {
+      if (this.b()) {
+         int $$1 = this.i - this.e.length();
+         return ats.a($$0, $$1, false);
+      } else {
+         return $$0;
+      }
+   }
+
+   protected static record a(int a, int b) {
+      static final eue.a c = new eue.a(0, 0);
    }
 }

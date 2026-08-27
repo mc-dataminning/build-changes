@@ -1,138 +1,186 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class bwn {
-   private static final float a = 2.0F;
-   private static final float b = 1.0F;
-   private static final float c = 1.0F;
-   private static final float d = 1.0F;
-   private static final float e = 0.75F;
-   private static final bgp f = bgp.a(100, 140);
-   private static final int g = 2;
-   private static final int h = 4;
-   private static final float i = 1.5F;
-   private static final float j = 1.25F;
+public class bwn extends bvr {
+   private static final afc<Integer> e = aff.a(bwn.class, afe.b);
+   int bT;
+   int bU;
+   private static final Predicate<bkj> bV = $$0 -> $$0 instanceof ccx && ((ccx)$$0).f() ? false : $$0.ag() == bjx.f || $$0.eR() != bko.e;
+   static final buv bW = buv.b().e().d().a(bV);
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
 
-   protected static void a(bwm $$0, ash $$1) {
-      $$0.dN().a(bsn.R, f.a($$1));
+   public bwn(bjx<? extends bwn> $$0, cqz $$1) {
+      super($$0, $$1);
+      this.j_();
    }
 
-   protected static bkm<?> a(bkm<bwm> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      g($$0);
-      f($$0);
-      $$0.a(ImmutableSet.of(cdl.a));
-      $$0.b(cdl.b);
-      $$0.f();
-      return $$0;
+   @Override
+   protected void b_() {
+      super.b_();
+      this.an.a(e, 0);
    }
 
-   private static void b(bkm<bwm> $$0) {
-      $$0.a(cdl.a, 0, ImmutableList.of(new bky(2.0F), new bmi(45, 90), new bmm(), new blj(bsn.O), new blj(bsn.R)));
+   public int gg() {
+      return this.an.b(e);
    }
 
-   private static void c(bkm<bwm> $$0) {
-      $$0.a(
-         cdl.b,
-         ImmutableList.of(
-            Pair.of(0, bnc.a(bja.bt, 6.0F, bgp.a(30, 60))),
-            Pair.of(0, new bkx(bja.O, 1.0F)),
-            Pair.of(1, new blq($$0x -> 1.25F)),
-            Pair.of(2, bno.a(bwn::b, $$0x -> $$0x.dN().c(bsn.B))),
-            Pair.of(3, bnz.a(6, 1.0F)),
-            Pair.of(
-               4,
-               new bmz(
-                  ImmutableMap.of(bsn.m, bso.b),
-                  ImmutableList.of(Pair.of(bmu.a(1.0F), 1), Pair.of(bnj.a(1.0F, 3), 1), Pair.of(new blk(), 3), Pair.of(bop.a(biw::aA), 2))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(bsn.S, bso.b), Pair.of(bsn.W, bso.b))
-      );
+   public void c(int $$0) {
+      this.an.b(e, $$0);
    }
 
-   private static void d(bkm<bwm> $$0) {
-      $$0.a(
-         cdl.t,
-         ImmutableList.of(
-            Pair.of(0, bnc.a(bja.bt, 6.0F, bgp.a(30, 60))),
-            Pair.of(1, new blq($$0x -> 1.25F)),
-            Pair.of(2, bno.a(bwn::b, $$0x -> $$0x.dN().c(bsn.B))),
-            Pair.of(3, bnz.a(8, 1.5F)),
-            Pair.of(
-               5,
-               new blr(
-                  ImmutableMap.of(bsn.m, bso.b),
-                  ImmutableSet.of(),
-                  blr.a.a,
-                  blr.b.b,
-                  ImmutableList.of(Pair.of(bmu.c(0.75F), 1), Pair.of(bmu.a(1.0F, true), 1), Pair.of(bnj.a(1.0F, 3), 1), Pair.of(bop.a(biw::ba), 5))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(bsn.S, bso.b), Pair.of(bsn.W, bso.a))
-      );
+   @Override
+   public void a(afc<?> $$0) {
+      if (e.equals($$0)) {
+         this.j_();
+      }
+
+      super.a($$0);
    }
 
-   private static void e(bkm<bwm> $$0) {
-      $$0.a(
-         cdl.u,
-         ImmutableList.of(
-            Pair.of(0, bnc.a(bja.bt, 6.0F, bgp.a(30, 60))),
-            Pair.of(1, bno.a(bwn::b, $$0x -> $$0x.dN().c(bsn.B))),
-            Pair.of(2, boa.a(8, 1.0F)),
-            Pair.of(3, boc.a(cte.sm)),
-            Pair.of(4, new bmz(ImmutableList.of(Pair.of(bmu.a(1.0F), 2), Pair.of(bnj.a(1.0F, 3), 1), Pair.of(new blk(), 2), Pair.of(bop.a(biw::aA), 1))))
-         ),
-         ImmutableSet.of(Pair.of(bsn.S, bso.b), Pair.of(bsn.X, bso.a))
-      );
+   @Override
+   public void b(rt $$0) {
+      super.b($$0);
+      $$0.a("PuffState", this.gg());
    }
 
-   private static void f(bkm<bwm> $$0) {
-      $$0.a(
-         cdl.q,
-         ImmutableList.of(Pair.of(0, new bme(f, apg.iK)), Pair.of(1, new bmf<>(f, 2, 4, 1.5F, $$0x -> apg.iJ, apv.bK, 0.5F, bwn::a))),
-         ImmutableSet.of(Pair.of(bsn.N, bso.b), Pair.of(bsn.r, bso.b), Pair.of(bsn.R, bso.b), Pair.of(bsn.W, bso.b))
-      );
+   @Override
+   public void a(rt $$0) {
+      super.a($$0);
+      this.c(Math.min($$0.h("PuffState"), 2));
    }
 
-   private static void g(bkm<bwm> $$0) {
-      $$0.a(cdl.s, 0, ImmutableList.of(bnr.a(), new bwo(apg.iL, apg.iG)), bsn.o);
+   @Override
+   public ckj b() {
+      return new ckj(ckm.pR);
    }
 
-   private static <E extends bjo> boolean a(E $$0, gw $$1) {
-      cqb $$2 = $$0.dL();
-      gw $$3 = $$1.d();
-      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.c()).c()) {
-         dfd $$4 = $$2.a_($$1);
-         dfd $$5 = $$2.a_($$3);
-         if (!$$4.a(apv.bK) && !$$5.a(apv.bK)) {
-            ear $$6 = eba.a($$2, $$1.j());
-            ear $$7 = eba.a($$2, $$3.j());
-            return $$6 != ear.e && (!$$4.i() || $$7 != ear.e) ? bmg.a($$0, $$1) : true;
-         } else {
-            return true;
+   @Override
+   protected void z() {
+      super.z();
+      this.bO.a(1, new bwn.a(this));
+   }
+
+   @Override
+   public void l() {
+      if (!this.dL().B && this.bv() && this.cX()) {
+         if (this.bT > 0) {
+            if (this.gg() == 0) {
+               this.a(aqd.tg, this.eV(), this.eW());
+               this.c(1);
+            } else if (this.bT > 40 && this.gg() == 1) {
+               this.a(aqd.tg, this.eV(), this.eW());
+               this.c(2);
+            }
+
+            this.bT++;
+         } else if (this.gg() != 0) {
+            if (this.bU > 60 && this.gg() == 2) {
+               this.a(aqd.tf, this.eV(), this.eW());
+               this.c(1);
+            } else if (this.bU > 100 && this.gg() == 1) {
+               this.a(aqd.tf, this.eV(), this.eW());
+               this.c(0);
+            }
+
+            this.bU++;
          }
-      } else {
-         return false;
+      }
+
+      super.l();
+   }
+
+   @Override
+   public void c_() {
+      super.c_();
+      if (this.bv() && this.gg() > 0) {
+         for (bkl $$1 : this.dL().a(bkl.class, this.cG().g(0.3), $$0 -> bW.a(this, $$0))) {
+            if ($$1.bv()) {
+               this.a($$1);
+            }
+         }
       }
    }
 
-   private static boolean b(bwm $$0) {
-      return !blf.a($$0);
+   private void a(bkl $$0) {
+      int $$1 = this.gg();
+      if ($$0.a(this.dM().b((bkj)this), (float)(1 + $$1))) {
+         $$0.b(new bjg(bji.s, 60 * $$1, 0), this);
+         this.a(aqd.tk, 1.0F, 1.0F);
+      }
    }
 
-   public static void a(bwm $$0) {
-      $$0.dN().a(ImmutableList.of(cdl.s, cdl.u, cdl.q, cdl.t, cdl.b));
+   @Override
+   public void b_(ccx $$0) {
+      int $$1 = this.gg();
+      if ($$0 instanceof alr && $$1 > 0 && $$0.a(this.dM().b((bkj)this), (float)(1 + $$1))) {
+         if (!this.aS()) {
+            ((alr)$$0).c.b(new yz(yz.j, 0.0F));
+         }
+
+         $$0.b(new bjg(bji.s, 60 * $$1, 0), this);
+      }
    }
 
-   public static cmm a() {
-      return bwm.bT;
+   @Override
+   protected aqc w() {
+      return aqd.te;
+   }
+
+   @Override
+   protected aqc m_() {
+      return aqd.th;
+   }
+
+   @Override
+   protected aqc d(bir $$0) {
+      return aqd.tj;
+   }
+
+   @Override
+   protected aqc gf() {
+      return aqd.ti;
+   }
+
+   @Override
+   public bju a(bkv $$0) {
+      return super.a($$0).a(s(this.gg()));
+   }
+
+   private static float s(int $$0) {
+      switch ($$0) {
+         case 0:
+            return 0.5F;
+         case 1:
+            return 0.7F;
+         default:
+            return 1.0F;
+      }
+   }
+
+   static class a extends bre {
+      private final bwn a;
+
+      public a(bwn $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public boolean a() {
+         List<bkj> $$0 = this.a.dL().a(bkj.class, this.a.cG().g(2.0), $$0x -> bwn.bW.a(this.a, $$0x));
+         return !$$0.isEmpty();
+      }
+
+      @Override
+      public void c() {
+         this.a.bT = 1;
+         this.a.bU = 0;
+      }
+
+      @Override
+      public void d() {
+         this.a.bT = 0;
+      }
    }
 }

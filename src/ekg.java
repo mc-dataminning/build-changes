@@ -1,51 +1,91 @@
-import ca.weblite.objc.Client;
-import ca.weblite.objc.NSObject;
-import com.sun.jna.Pointer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFWNativeCocoa;
+import com.mojang.logging.LogUtils;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioFormat.Encoding;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC10;
+import org.slf4j.Logger;
 
 public class ekg {
-   private static final int a = 8;
-   private static final int b = 16384;
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(long $$0) {
-      c($$0).filter(ekg::a).ifPresent(ekg::c);
-   }
-
-   public static void b(long $$0) {
-      c($$0).ifPresent($$0x -> {
-         long $$1 = b($$0x);
-         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
-      });
-   }
-
-   private static Optional<NSObject> c(long $$0) {
-      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
-      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
-   }
-
-   private static boolean a(NSObject $$0) {
-      return (b($$0) & 16384L) != 0L;
-   }
-
-   private static long b(NSObject $$0) {
-      return (Long)$$0.sendRaw("styleMask", new Object[0]);
-   }
-
-   private static void c(NSObject $$0) {
-      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
-   }
-
-   public static void a(ano<InputStream> $$0) throws IOException {
-      try (InputStream $$1 = $$0.get()) {
-         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
-         Client $$3 = Client.getInstance();
-         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
-         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
-         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
+   private static String a(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid name parameter.";
+         case 40962:
+            return "Invalid enumerated parameter value.";
+         case 40963:
+            return "Invalid parameter parameter value.";
+         case 40964:
+            return "Invalid operation.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
       }
+   }
+
+   static boolean a(String $$0) {
+      int $$1 = AL10.alGetError();
+      if ($$1 != 0) {
+         a.error("{}: {}", $$0, a($$1));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static String b(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid device.";
+         case 40962:
+            return "Invalid context.";
+         case 40963:
+            return "Illegal enum.";
+         case 40964:
+            return "Invalid value.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
+      }
+   }
+
+   static boolean a(long $$0, String $$1) {
+      int $$2 = ALC10.alcGetError($$0);
+      if ($$2 != 0) {
+         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   static int a(AudioFormat $$0) {
+      Encoding $$1 = $$0.getEncoding();
+      int $$2 = $$0.getChannels();
+      int $$3 = $$0.getSampleSizeInBits();
+      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
+         if ($$2 == 1) {
+            if ($$3 == 8) {
+               return 4352;
+            }
+
+            if ($$3 == 16) {
+               return 4353;
+            }
+         } else if ($$2 == 2) {
+            if ($$3 == 8) {
+               return 4354;
+            }
+
+            if ($$3 == 16) {
+               return 4355;
+            }
+         }
+      }
+
+      throw new IllegalArgumentException("Invalid audio format: " + $$0);
    }
 }

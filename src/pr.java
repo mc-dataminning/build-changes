@@ -1,44 +1,82 @@
-import java.util.Collection;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.List;
 
 public class pr {
-   public static final String a = "defaultBatch";
-   private final String b;
-   private final Collection<qn> c;
-   @Nullable
-   private final Consumer<akt> d;
-   @Nullable
-   private final Consumer<akt> e;
+   public static final afv<dob<?, ?>> a = po.a("ore_magma");
+   public static final afv<dob<?, ?>> b = po.a("ore_soul_sand");
+   public static final afv<dob<?, ?>> c = po.a("ore_nether_gold");
+   public static final afv<dob<?, ?>> d = po.a("ore_quartz");
+   public static final afv<dob<?, ?>> e = po.a("ore_gravel_nether");
+   public static final afv<dob<?, ?>> f = po.a("ore_blackstone");
+   public static final afv<dob<?, ?>> g = po.a("ore_dirt");
+   public static final afv<dob<?, ?>> h = po.a("ore_gravel");
+   public static final afv<dob<?, ?>> i = po.a("ore_granite");
+   public static final afv<dob<?, ?>> j = po.a("ore_diorite");
+   public static final afv<dob<?, ?>> k = po.a("ore_andesite");
+   public static final afv<dob<?, ?>> l = po.a("ore_tuff");
+   public static final afv<dob<?, ?>> m = po.a("ore_coal");
+   public static final afv<dob<?, ?>> n = po.a("ore_coal_buried");
+   public static final afv<dob<?, ?>> o = po.a("ore_iron");
+   public static final afv<dob<?, ?>> p = po.a("ore_iron_small");
+   public static final afv<dob<?, ?>> q = po.a("ore_gold");
+   public static final afv<dob<?, ?>> r = po.a("ore_gold_buried");
+   public static final afv<dob<?, ?>> s = po.a("ore_redstone");
+   public static final afv<dob<?, ?>> t = po.a("ore_diamond_small");
+   public static final afv<dob<?, ?>> u = po.a("ore_diamond_medium");
+   public static final afv<dob<?, ?>> v = po.a("ore_diamond_large");
+   public static final afv<dob<?, ?>> w = po.a("ore_diamond_buried");
+   public static final afv<dob<?, ?>> x = po.a("ore_lapis");
+   public static final afv<dob<?, ?>> y = po.a("ore_lapis_buried");
+   public static final afv<dob<?, ?>> z = po.a("ore_infested");
+   public static final afv<dob<?, ?>> A = po.a("ore_emerald");
+   public static final afv<dob<?, ?>> B = po.a("ore_ancient_debris_large");
+   public static final afv<dob<?, ?>> C = po.a("ore_ancient_debris_small");
+   public static final afv<dob<?, ?>> D = po.a("ore_copper_small");
+   public static final afv<dob<?, ?>> E = po.a("ore_copper_large");
+   public static final afv<dob<?, ?>> F = po.a("ore_clay");
 
-   public pr(String $$0, Collection<qn> $$1, @Nullable Consumer<akt> $$2, @Nullable Consumer<akt> $$3) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("A GameTestBatch must include at least one TestFunction!");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public Collection<qn> b() {
-      return this.c;
-   }
-
-   public void a(akt $$0) {
-      if (this.d != null) {
-         this.d.accept($$0);
-      }
-   }
-
-   public void b(akt $$0) {
-      if (this.e != null) {
-         this.e.accept($$0);
-      }
+   public static void a(oo<dob<?, ?>> $$0) {
+      dzn $$1 = new dzv(aqs.bd);
+      dzn $$2 = new dzv(aqs.be);
+      dzn $$3 = new dzv(aqs.bf);
+      dzn $$4 = new dyw(cuc.dV);
+      dzn $$5 = new dzv(aqs.bg);
+      List<dra.a> $$6 = List.of(dra.a($$2, cuc.P.o()), dra.a($$3, cuc.Q.o()));
+      List<dra.a> $$7 = List.of(dra.a($$2, cuc.N.o()), dra.a($$3, cuc.O.o()));
+      List<dra.a> $$8 = List.of(dra.a($$2, cuc.cx.o()), dra.a($$3, cuc.cy.o()));
+      List<dra.a> $$9 = List.of(dra.a($$2, cuc.aR.o()), dra.a($$3, cuc.aS.o()));
+      List<dra.a> $$10 = List.of(dra.a($$2, cuc.qN.o()), dra.a($$3, cuc.qO.o()));
+      List<dra.a> $$11 = List.of(dra.a($$2, cuc.R.o()), dra.a($$3, cuc.S.o()));
+      po.a($$0, a, doo.I, new dra($$4, cuc.kJ.o(), 33));
+      po.a($$0, b, doo.I, new dra($$4, cuc.dW.o(), 12));
+      po.a($$0, c, doo.I, new dra($$4, cuc.T.o(), 10));
+      po.a($$0, d, doo.I, new dra($$4, cuc.hb.o(), 14));
+      po.a($$0, e, doo.I, new dra($$4, cuc.L.o(), 33));
+      po.a($$0, f, doo.I, new dra($$4, cuc.pr.o(), 33));
+      po.a($$0, g, doo.I, new dra($$1, cuc.j.o(), 33));
+      po.a($$0, h, doo.I, new dra($$1, cuc.L.o(), 33));
+      po.a($$0, i, doo.I, new dra($$1, cuc.c.o(), 64));
+      po.a($$0, j, doo.I, new dra($$1, cuc.e.o(), 64));
+      po.a($$0, k, doo.I, new dra($$1, cuc.g.o(), 64));
+      po.a($$0, l, doo.I, new dra($$1, cuc.qz.o(), 64));
+      po.a($$0, m, doo.I, new dra($$11, 17));
+      po.a($$0, n, doo.I, new dra($$11, 17, 0.5F));
+      po.a($$0, o, doo.I, new dra($$6, 9));
+      po.a($$0, p, doo.I, new dra($$6, 4));
+      po.a($$0, q, doo.I, new dra($$7, 9));
+      po.a($$0, r, doo.I, new dra($$7, 9, 0.5F));
+      po.a($$0, s, doo.I, new dra(List.of(dra.a($$2, cuc.dI.o()), dra.a($$3, cuc.dJ.o())), 8));
+      po.a($$0, t, doo.I, new dra($$8, 4, 0.5F));
+      po.a($$0, v, doo.I, new dra($$8, 12, 0.7F));
+      po.a($$0, w, doo.I, new dra($$8, 8, 1.0F));
+      po.a($$0, u, doo.I, new dra($$8, 8, 0.5F));
+      po.a($$0, x, doo.I, new dra($$9, 7));
+      po.a($$0, y, doo.I, new dra($$9, 7, 1.0F));
+      po.a($$0, z, doo.I, new dra(List.of(dra.a($$2, cuc.eN.o()), dra.a($$3, cuc.sc.o())), 9));
+      po.a($$0, A, doo.I, new dra(List.of(dra.a($$2, cuc.fE.o()), dra.a($$3, cuc.fF.o())), 3));
+      po.a($$0, B, doo.ae, new dra($$5, cuc.pj.o(), 3, 1.0F));
+      po.a($$0, C, doo.ae, new dra($$5, cuc.pj.o(), 2, 1.0F));
+      po.a($$0, D, doo.I, new dra($$10, 10));
+      po.a($$0, E, doo.I, new dra($$10, 20));
+      po.a($$0, F, doo.I, new dra($$1, cuc.dR.o(), 33));
    }
 }

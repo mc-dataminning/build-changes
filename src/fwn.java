@@ -1,16 +1,11 @@
-public class fwn extends fxl<bva, fej<bva>> {
-   private static final aez a = new aez("textures/entity/cat/cat_collar.png");
-   private final fej<bva> b;
+public class fwn extends fvj<bxm, fib<bxm>> {
+   private static final afw a = new afw("textures/entity/tadpole/tadpole.png");
 
-   public fwn(fuy<bva, fej<bva>> $$0, fht $$1) {
-      super($$0);
-      this.b = new fej<>($$1.a(fhw.o));
+   public fwn(fud.a $$0) {
+      super($$0, new fib<>($$0.a(fiv.bz)), 0.14F);
    }
 
-   public void a(elj $$0, foa $$1, int $$2, bva $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s()) {
-         float[] $$10 = $$3.go().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
-      }
+   public afw a(bxm $$0) {
+      return a;
    }
 }

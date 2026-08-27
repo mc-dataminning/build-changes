@@ -1,27 +1,28 @@
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class eng extends enf {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class eng extends eod {
+   public Set<String> a = Sets.newHashSet();
 
    public static eng a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      eng $$3 = new eng();
+      eng $$1 = new eng();
+      JsonParser $$2 = new JsonParser();
 
       try {
-         $$3.a = epc.a("downloadLink", $$2, "");
-         $$3.b = epc.a("resourcePackUrl", $$2, "");
-         $$3.c = epc.a("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         JsonElement $$5 = $$4.get("ops");
+         if ($$5.isJsonArray()) {
+            for (JsonElement $$6 : $$5.getAsJsonArray()) {
+               $$1.a.add($$6.getAsString());
+            }
+         }
+      } catch (Exception var8) {
       }
 
-      return $$3;
+      return $$1;
    }
 }

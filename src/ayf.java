@@ -1,32 +1,37 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
 public abstract class ayf extends DataFix {
    private final String a;
-   private final String b;
-   private final TypeReference c;
 
-   public ayf(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.c = $$3;
-      this.b = $$4;
+   public ayf(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<?> $$0 = DSL.namedChoice(this.b, this.getInputSchema().getChoiceType(this.c, this.b));
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(this.c),
-         this.getOutputSchema().getType(this.c),
-         $$1 -> $$1.updateTyped($$0, this.getOutputSchema().getChoiceType(this.c, this.b), this::a)
-      );
+      Type<Pair<String, String>> $$0 = DSL.named(baa.z.typeName(), bbi.a());
+      if (!Objects.equals(this.getInputSchema().getType(baa.z), $$0)) {
+         throw new IllegalStateException("item name type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
    }
 
-   protected abstract Typed<?> a(Typed<?> var1);
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new ayf($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
+   }
 }

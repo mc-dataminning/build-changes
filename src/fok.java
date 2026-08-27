@@ -1,140 +1,125 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import org.slf4j.Logger;
 
 public class fok {
-   private static final aez a = new aez("textures/misc/underwater.png");
-
-   public static void a(eqp $$0, elj $$1) {
-      cca $$2 = $$0.s;
-      if (!$$2.af) {
-         dfd $$3 = a($$2);
-         if ($$3 != null) {
-            a($$0.an().a().a($$3), $$1);
-         }
+   private static final fok a = new fok("") {
+      @Override
+      public void a(ero $$0) {
       }
 
-      if (!$$0.s.M_()) {
-         if ($$0.s.a(aqa.a)) {
-            b($$0, $$1);
-         }
-
-         if ($$0.s.bM()) {
-            c($$0, $$1);
-         }
+      @Override
+      public void a(fok.c $$0, String $$1, String $$2) {
       }
-   }
-
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
    @Nullable
-   private static dfd a(cca $$0) {
-      gw.a $$1 = new gw.a();
+   private fok.b e;
 
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         double $$3 = $$0.dq() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.df() * 0.8F);
-         double $$4 = $$0.du() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F);
-         double $$5 = $$0.dw() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.df() * 0.8F);
-         $$1.b($$3, $$4, $$5);
-         dfd $$6 = $$0.dL().a_($$1);
-         if ($$6.l() != czg.a && $$6.p($$0.dL(), $$1)) {
-            return $$6;
-         }
+   fok(String $$0) {
+      this.d = ero.O().p.toPath().resolve($$0);
+   }
+
+   public static fok a(@Nullable String $$0) {
+      return $$0 == null ? a : new fok($$0);
+   }
+
+   public void a(fok.c $$0, String $$1, String $$2) {
+      this.e = new fok.b($$0, $$1, $$2);
+   }
+
+   public void a(ero $$0) {
+      if ($$0.q != null && this.e != null) {
+         ac.g().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            fok.a $$2 = new fok.a(this.e, Instant.now(), $$0.q.l());
+            Codec.list(fok.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
+      } else {
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+      }
+   }
+
+   static record a(fok.b b, Instant c, cqw d) {
+      public static final Codec<fok.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fok.b.a.forGetter(fok.a::a), asg.m.fieldOf("lastPlayedTime").forGetter(fok.a::b), cqw.f.fieldOf("gamemode").forGetter(fok.a::c))
+               .apply($$0, fok.a::new)
+      );
+
+      public fok.b a() {
+         return this.b;
       }
 
-      return null;
-   }
-
-   private static void a(fza $$0, elj $$1) {
-      RenderSystem.setShaderTexture(0, $$0.i());
-      RenderSystem.setShader(fnt::r);
-      ele $$2 = ell.a().c();
-      float $$3 = 0.1F;
-      float $$4 = -1.0F;
-      float $$5 = 1.0F;
-      float $$6 = -1.0F;
-      float $$7 = 1.0F;
-      float $$8 = -0.5F;
-      float $$9 = $$0.c();
-      float $$10 = $$0.d();
-      float $$11 = $$0.g();
-      float $$12 = $$0.h();
-      Matrix4f $$13 = $$1.c().a();
-      $$2.a(elo.b.h, elh.r);
-      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
-      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
-      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
-      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
-      elf.a($$2.d());
-   }
-
-   private static void b(eqp $$0, elj $$1) {
-      RenderSystem.setShader(fnt::s);
-      RenderSystem.setShaderTexture(0, a);
-      ele $$2 = ell.a().c();
-      gw $$3 = gw.a($$0.s.dq(), $$0.s.du(), $$0.s.dw());
-      float $$4 = fnz.a($$0.s.dL().C_(), $$0.s.dL().z($$3));
-      RenderSystem.enableBlend();
-      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
-      float $$5 = 4.0F;
-      float $$6 = -1.0F;
-      float $$7 = 1.0F;
-      float $$8 = -1.0F;
-      float $$9 = 1.0F;
-      float $$10 = -0.5F;
-      float $$11 = -$$0.s.dB() / 64.0F;
-      float $$12 = $$0.s.dD() / 64.0F;
-      Matrix4f $$13 = $$1.c().a();
-      $$2.a(elo.b.h, elh.q);
-      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
-      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
-      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
-      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
-      elf.a($$2.d());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
-   }
-
-   private static void c(eqp $$0, elj $$1) {
-      ele $$2 = ell.a().c();
-      RenderSystem.setShader(fnt::r);
-      RenderSystem.depthFunc(519);
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      fza $$3 = gbg.b.c();
-      RenderSystem.setShaderTexture(0, $$3.i());
-      float $$4 = $$3.c();
-      float $$5 = $$3.d();
-      float $$6 = ($$4 + $$5) / 2.0F;
-      float $$7 = $$3.g();
-      float $$8 = $$3.h();
-      float $$9 = ($$7 + $$8) / 2.0F;
-      float $$10 = $$3.k();
-      float $$11 = asb.i($$10, $$4, $$6);
-      float $$12 = asb.i($$10, $$5, $$6);
-      float $$13 = asb.i($$10, $$7, $$9);
-      float $$14 = asb.i($$10, $$8, $$9);
-      float $$15 = 1.0F;
-
-      for (int $$16 = 0; $$16 < 2; $$16++) {
-         $$1.a();
-         float $$17 = -0.5F;
-         float $$18 = 0.5F;
-         float $$19 = -0.5F;
-         float $$20 = 0.5F;
-         float $$21 = -0.5F;
-         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
-         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
-         Matrix4f $$22 = $$1.c().a();
-         $$2.a(elo.b.h, elh.r);
-         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
-         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
-         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
-         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
-         elf.a($$2.d());
-         $$1.b();
+      public Instant b() {
+         return this.c;
       }
 
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-      RenderSystem.depthFunc(515);
+      public cqw c() {
+         return this.d;
+      }
+   }
+
+   static record b(fok.c b, String c, String d) {
+      public static final MapCodec<fok.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  fok.c.d.fieldOf("type").forGetter(fok.b::a), asg.o.fieldOf("id").forGetter(fok.b::b), Codec.STRING.fieldOf("name").forGetter(fok.b::c)
+               )
+               .apply($$0, fok.b::new)
+      );
+
+      public fok.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements atr {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<fok.c> d = atr.a(fok.c::values);
+      private final String e;
+
+      private c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

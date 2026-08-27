@@ -1,24 +1,23 @@
-class bib extends bih {
-   protected bib(bii $$0, int $$1) {
-      super($$0, $$1);
+public enum bib {
+   a,
+   b,
+   c,
+   d,
+   e;
+
+   public boolean a() {
+      return this == a || this == b || this == c;
    }
 
-   @Override
-   public void a(bjm $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0.fk() <= 0.0F && !$$0.dL().B) {
-         $$0.d(this);
-      }
+   public boolean b() {
+      return this == a;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public boolean c() {
+      return this == a || this == b;
    }
 
-   @Override
-   public void b(bjm $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.y(Math.max($$0.fk(), (float)(4 * (1 + $$1))));
+   public static bib a(boolean $$0) {
+      return $$0 ? a : b;
    }
 }

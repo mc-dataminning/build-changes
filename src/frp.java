@@ -1,151 +1,74 @@
-import java.time.Duration;
-import java.time.Instant;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.authlib.GameProfile;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
 
-public class frp implements frj.a {
-   private static final Duration a = Duration.ofMillis(500L);
-   private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final eqp e;
-   private final cqk f;
-   private Instant g = Instant.now();
-   @Nullable
-   private frp.a h;
+public class frp implements fra<dfh> {
+   private final Map<dba.a, fhu> a;
+   private static final Map<dba.a, afw> b = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dba.b.c, new afw("textures/entity/skeleton/skeleton.png"));
+      $$0.put(dba.b.d, new afw("textures/entity/skeleton/wither_skeleton.png"));
+      $$0.put(dba.b.f, new afw("textures/entity/zombie/zombie.png"));
+      $$0.put(dba.b.g, new afw("textures/entity/creeper/creeper.png"));
+      $$0.put(dba.b.i, new afw("textures/entity/enderdragon/dragon.png"));
+      $$0.put(dba.b.h, new afw("textures/entity/piglin/piglin.png"));
+      $$0.put(dba.b.e, gas.a());
+   });
 
-   public frp(eqp $$0, cqk $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static Map<dba.a, fhu> a(fis $$0) {
+      Builder<dba.a, fhu> $$1 = ImmutableMap.builder();
+      $$1.put(dba.b.c, new fht($$0.a(fiv.bl)));
+      $$1.put(dba.b.d, new fht($$0.a(fiv.bT)));
+      $$1.put(dba.b.e, new fht($$0.a(fiv.aN)));
+      $$1.put(dba.b.f, new fht($$0.a(fiv.bY)));
+      $$1.put(dba.b.g, new fht($$0.a(fiv.D)));
+      $$1.put(dba.b.i, new fiq($$0.a(fiv.K)));
+      $$1.put(dba.b.h, new fha($$0.a(fiv.aH)));
+      return $$1.build();
    }
 
-   @Override
-   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new frp.a(this.e.r.x_(), hw.a(this.e.s.dl()), 10, this.f);
+   public frp(frb.a $$0) {
+      this.a = a($$0.e());
+   }
+
+   public void a(dfh $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
+      float $$6 = $$0.a($$1);
+      dgb $$7 = $$0.q();
+      boolean $$8 = $$7.b() instanceof dcw;
+      hx $$9 = $$8 ? $$7.c(dcw.d) : null;
+      int $$10 = $$8 ? dhh.a($$9.g()) : $$7.c(dba.e);
+      float $$11 = dhh.b($$10);
+      dba.a $$12 = ((csw)$$7.b()).b();
+      fhu $$13 = this.a.get($$12);
+      fpj $$14 = a($$12, $$0.d());
+      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   }
+
+   public static void a(@Nullable hx $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5, fhu $$6, fpj $$7) {
+      $$3.a();
+      if ($$0 == null) {
+         $$3.a(0.5F, 0.0F, 0.5F);
+      } else {
+         float $$8 = 0.25F;
+         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
       }
 
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      eln $$6 = $$1.getBuffer(foi.B());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      eml $$9 = $$4.getBuffer($$7);
+      $$6.a($$2, $$1, 0.0F);
+      $$6.a($$3, $$9, $$5, fzr.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
    }
 
-   private static void a(elj $$0, ehq $$1, hw $$2, eln $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
-      });
-   }
-
-   private static void a(elj $$0, ehq $$1, hw $$2, foa $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         eln $$19 = $$3.getBuffer(foi.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
-   }
-
-   private static void a(elj $$0, eln $$1, ha $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)hw.c($$6) - $$3);
-      float $$11 = (float)((double)hw.c($$7) - $$4);
-      float $$12 = (float)((double)hw.c($$8) - $$5);
-      float $$13 = $$10 + 16.0F;
-      float $$14 = $$11 + 16.0F;
-      float $$15 = $$12 + 16.0F;
-      float $$16 = $$9.x();
-      float $$17 = $$9.y();
-      float $$18 = $$9.z();
-      float $$19 = $$9.w();
-      Matrix4f $$20 = $$0.c().a();
-      switch ($$2) {
-         case a:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            break;
-         case b:
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case c:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case d:
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            break;
-         case e:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case f:
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-      }
-   }
-
-   private static void a(elj $$0, eln $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)hw.c($$5) - $$2);
-      float $$13 = (float)((double)hw.c($$6) - $$3);
-      float $$14 = (float)((double)hw.c($$7) - $$4);
-      float $$15 = (float)((double)hw.c($$8) - $$2);
-      float $$16 = (float)((double)hw.c($$9) - $$3);
-      float $$17 = (float)((double)hw.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-   }
-
-   static final class a {
-      final ehq a;
-      final ehq b;
-      final hw c;
-
-      a(dzv $$0, hw $$1, int $$2, cqk $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new ehk($$4, $$4, $$4);
-         this.b = new ehk($$4, $$4, $$4);
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  hw $$8 = hw.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  dzu.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == dzu.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == dzu.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
-               }
-            }
-         }
-
-         this.c = hw.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+   public static fpj a(dba.a $$0, @Nullable GameProfile $$1) {
+      afw $$2 = b.get($$0);
+      if ($$0 == dba.b.e && $$1 != null) {
+         gbb $$3 = ero.O().al();
+         return fpj.i($$3.b($$1).a());
+      } else {
+         return fpj.f($$2);
       }
    }
 }

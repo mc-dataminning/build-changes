@@ -1,19 +1,18 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
 
-public class azf extends ayf {
+public class azf extends DataFix {
    public azf(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Remove Golem Gossip Fix", azd.x, "minecraft:villager");
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), azf::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(baa.D);
+      return this.fixTypeEverywhereTyped(
+         "ObjectiveDisplayNameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("DisplayName", auc::a))
+      );
    }
 }

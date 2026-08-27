@@ -1,36 +1,102 @@
-import javax.annotation.Nullable;
+public class zg implements wb<xu> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final int h;
+   private final boolean i;
+   private final jq j;
 
-public class zg implements ve<wx> {
-   private final int a;
-   private final bih b;
-
-   public zg(int $$0, bih $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public <T extends jq> zg(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      this.j = $$0;
+      this.i = $$1;
+      this.a = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = $$6;
+      this.f = $$7;
+      this.g = $$8;
+      this.h = $$9;
    }
 
-   public zg(so $$0) {
-      this.a = $$0.n();
-      this.b = $$0.a(jb.e);
+   public zg(tl $$0) {
+      jr<?> $$1 = $$0.a(jy.k);
+      this.i = $$0.readBoolean();
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readInt();
+      this.j = this.a($$0, (jr<jq>)$$1);
+   }
+
+   private <T extends jq> T a(tl $$0, jr<T> $$1) {
+      return $$1.d().b($$1, $$0);
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.a(jb.e, this.b);
+   public void a(tl $$0) {
+      $$0.a(jy.k, this.j.b());
+      $$0.a(this.i);
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.p(this.h);
+      this.j.a($$0);
    }
 
-   public void a(wx $$0) {
-      $$0.a(this);
+   public boolean a() {
+      return this.i;
    }
 
-   @Nullable
-   public biw a(cqb $$0) {
-      return $$0.a(this.a);
+   public double d() {
+      return this.a;
    }
 
-   @Nullable
-   public bih a() {
+   public double e() {
       return this.b;
+   }
+
+   public double f() {
+      return this.c;
+   }
+
+   public float g() {
+      return this.d;
+   }
+
+   public float h() {
+      return this.e;
+   }
+
+   public float i() {
+      return this.f;
+   }
+
+   public float j() {
+      return this.g;
+   }
+
+   public int k() {
+      return this.h;
+   }
+
+   public jq l() {
+      return this.j;
+   }
+
+   public void a(xu $$0) {
+      $$0.a(this);
    }
 }

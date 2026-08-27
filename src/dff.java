@@ -1,170 +1,248 @@
-import com.google.common.collect.ArrayTable;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Table;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class dff<O, S> {
-   public static final String c = "Name";
-   public static final String d = "Properties";
-   private static final Function<Entry<dgg<?>, Comparable<?>>, String> a = new Function<Entry<dgg<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dgg<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            dgg<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
-         }
-      }
+public class dff extends ddx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 90;
+   private static final int c = 10;
+   @Nullable
+   private UUID d;
+   private dfg e = this.g();
+   private dfg f = this.g();
+   private boolean g;
 
-      private <T extends Comparable<T>> String a(dgg<T> $$0, Comparable<?> $$1) {
-         return $$0.a((T)$$1);
-      }
-   };
-   protected final O e;
-   private final ImmutableMap<dgg<?>, Comparable<?>> b;
-   private Table<dgg<?>, Comparable<?>, S> g;
-   protected final MapCodec<S> f;
-
-   protected dff(O $$0, ImmutableMap<dgg<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.e = $$0;
-      this.b = $$1;
-      this.f = $$2;
+   public dff(ht $$0, dgb $$1) {
+      this(ddz.h, $$0, $$1);
    }
 
-   public <T extends Comparable<T>> S a(dgg<T> $$0) {
-      return this.a($$0, a($$0.a(), this.c($$0)));
+   public dff(ddz $$0, ht $$1, dgb $$2) {
+      super($$0, $$1, $$2);
    }
 
-   protected static <T> T a(Collection<T> $$0, T $$1) {
-      Iterator<T> $$2 = $$0.iterator();
+   protected dfg g() {
+      return new dfg();
+   }
 
-      while ($$2.hasNext()) {
-         if ($$2.next().equals($$1)) {
-            if ($$2.hasNext()) {
-               return $$2.next();
-            }
-
-            return $$0.iterator().next();
-         }
+   public boolean a(ccx $$0) {
+      if (this.q().b() instanceof day $$1) {
+         eif $$2 = $$1.h(this.q());
+         double $$3 = $$0.dq() - ((double)this.p().u() + $$2.c);
+         double $$4 = $$0.dw() - ((double)this.p().w() + $$2.e);
+         float $$5 = $$1.g(this.q());
+         float $$6 = (float)(asy.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
+         return asy.d($$5, $$6) <= 90.0F;
+      } else {
+         return false;
       }
+   }
 
-      return $$2.next();
+   public dfg a(boolean $$0) {
+      return $$0 ? this.e : this.f;
+   }
+
+   public dfg i() {
+      return this.e;
+   }
+
+   public dfg j() {
+      return this.f;
+   }
+
+   public int c() {
+      return 10;
+   }
+
+   public int d() {
+      return 90;
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.e);
-      if (!this.C().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.C().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
+   protected void b(rt $$0) {
+      super.b($$0);
+      dfg.a.encodeStart(sf.a, this.e).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("front_text", $$1));
+      dfg.a.encodeStart(sf.a, this.f).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("back_text", $$1));
+      $$0.a("is_waxed", this.g);
+   }
+
+   @Override
+   public void a(rt $$0) {
+      super.a($$0);
+      if ($$0.e("front_text")) {
+         dfg.a.parse(sf.a, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
       }
 
-      return $$0.toString();
+      if ($$0.e("back_text")) {
+         dfg.a.parse(sf.a, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
+      }
+
+      this.g = $$0.q("is_waxed");
    }
 
-   public Collection<dgg<?>> B() {
-      return Collections.unmodifiableCollection(this.b.keySet());
+   private dfg a(dfg $$0) {
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         ui $$2 = this.a($$0.a($$1, false));
+         ui $$3 = this.a($$0.a($$1, true));
+         $$0 = $$0.a($$1, $$2, $$3);
+      }
+
+      return $$0;
    }
 
-   public <T extends Comparable<T>> boolean b(dgg<T> $$0) {
-      return this.b.containsKey($$0);
+   private ui a(ui $$0) {
+      if (this.o instanceof alq $$1) {
+         try {
+            return ul.a(a(null, $$1, this.p), $$0, null, 0);
+         } catch (CommandSyntaxException var4) {
+         }
+      }
+
+      return $$0;
    }
 
-   public <T extends Comparable<T>> T c(dgg<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.e);
+   public void a(ccx $$0, boolean $$1, List<amh> $$2) {
+      if (!this.x() && $$0.cv().equals(this.w()) && this.o != null) {
+         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
+         this.a(null);
+         this.o.a(this.p(), this.q(), this.q(), 3);
       } else {
-         return $$0.g().cast($$1);
+         a.warn("Player {} just tried to change non-editable sign", $$0.ab().getString());
       }
    }
 
-   public <T extends Comparable<T>> Optional<T> d(dgg<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      return $$1 == null ? Optional.empty() : Optional.of($$0.g().cast($$1));
+   public boolean a(UnaryOperator<dfg> $$0, boolean $$1) {
+      dfg $$2 = this.a($$1);
+      return this.a($$0.apply($$2), $$1);
    }
 
-   public <T extends Comparable<T>, V extends T> S a(dgg<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.e);
-      } else if ($$2.equals($$1)) {
-         return (S)this;
-      } else {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
+   private dfg a(ccx $$0, List<amh> $$1, dfg $$2) {
+      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+         amh $$4 = $$1.get($$3);
+         vf $$5 = $$2.a($$3, $$0.W()).a();
+         if ($$0.W()) {
+            $$2 = $$2.a($$3, ui.b($$4.b()).b($$5));
          } else {
-            return $$3;
+            $$2 = $$2.a($$3, ui.b($$4.d()).b($$5), ui.b($$4.b()).b($$5));
          }
       }
-   }
 
-   public <T extends Comparable<T>, V extends T> S b(dgg<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 != null && !$$2.equals($$1)) {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
-         }
-      } else {
-         return (S)this;
-      }
-   }
-
-   public void a(Map<Map<dgg<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Table<dgg<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
-         UnmodifiableIterator var3 = this.b.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<dgg<?>, Comparable<?>> $$2 = (Entry<dgg<?>, Comparable<?>>)var3.next();
-            dgg<?> $$3 = $$2.getKey();
-
-            for (Comparable<?> $$4 : $$3.a()) {
-               if (!$$4.equals($$2.getValue())) {
-                  $$1.put($$3, $$4, $$0.get(this.c($$3, $$4)));
-               }
-            }
-         }
-
-         this.g = (Table<dgg<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
-      }
-   }
-
-   private Map<dgg<?>, Comparable<?>> c(dgg<?> $$0, Comparable<?> $$1) {
-      Map<dgg<?>, Comparable<?>> $$2 = Maps.newHashMap(this.b);
-      $$2.put($$0, $$1);
       return $$2;
    }
 
-   public ImmutableMap<dgg<?>, Comparable<?>> C() {
-      return this.b;
+   public boolean a(dfg $$0, boolean $$1) {
+      return $$1 ? this.c($$0) : this.b($$0);
    }
 
-   protected static <O, S extends dff<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.e, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.C().isEmpty() ? Codec.unit($$2) : $$2.f.codec().optionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of).codec();
-      });
+   private boolean b(dfg $$0) {
+      if ($$0 != this.f) {
+         this.f = $$0;
+         this.y();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean c(dfg $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.y();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(boolean $$0, ccx $$1) {
+      return this.x() && this.a($$0).b($$1);
+   }
+
+   public boolean a(ccx $$0, cqz $$1, ht $$2, boolean $$3) {
+      boolean $$4 = false;
+
+      for (ui $$5 : this.a($$3).b($$0.W())) {
+         vf $$6 = $$5.a();
+         ug $$7 = $$6.h();
+         if ($$7 != null && $$7.a() == ug.a.c) {
+            $$0.cK().aC().a(a($$0, $$1, $$2), $$7.b());
+            $$4 = true;
+         }
+      }
+
+      return $$4;
+   }
+
+   private static du a(@Nullable ccx $$0, cqz $$1, ht $$2) {
+      String $$3 = $$0 == null ? "Sign" : $$0.ab().getString();
+      ui $$4 = (ui)($$0 == null ? ui.b("Sign") : $$0.O_());
+      return new du(dt.a, eif.b($$2), eie.a, (alq)$$1, 2, $$3, $$4, $$1.n(), $$0);
+   }
+
+   public yb v() {
+      return yb.a(this);
+   }
+
+   @Override
+   public rt av_() {
+      return this.o();
+   }
+
+   @Override
+   public boolean t() {
+      return true;
+   }
+
+   public void a(@Nullable UUID $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public UUID w() {
+      return this.d;
+   }
+
+   private void y() {
+      this.e();
+      this.o.a(this.p(), this.q(), this.q(), 3);
+   }
+
+   public boolean x() {
+      return this.g;
+   }
+
+   public boolean b(boolean $$0) {
+      if (this.g != $$0) {
+         this.g = $$0;
+         this.y();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(UUID $$0) {
+      ccx $$1 = this.o.b($$0);
+      return $$1 == null || $$1.i((double)this.p().u(), (double)this.p().v(), (double)this.p().w()) > 64.0;
+   }
+
+   public static void a(cqz $$0, ht $$1, dgb $$2, dff $$3) {
+      UUID $$4 = $$3.w();
+      if ($$4 != null) {
+         $$3.a($$3, $$0, $$4);
+      }
+   }
+
+   private void a(dff $$0, cqz $$1, UUID $$2) {
+      if ($$0.b($$2)) {
+         $$0.a(null);
+      }
+   }
+
+   public aqc f() {
+      return aqd.zS;
    }
 }

@@ -1,23 +1,22 @@
-public class esz extends esi {
-   private final erx a;
+import java.util.Set;
 
-   public esz(erx $$0, tl $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+public class esz extends gbd {
+   private static final Set<ant<?>> a = Set.of(gbl.a, gbr.c);
+
+   public esz(gab $$0) {
+      super($$0, new afw("textures/atlas/gui.png"), new afw("gui"), a);
    }
 
    @Override
-   protected void b(erz $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.r() + this.l() / 2;
-      int $$5 = this.t() + this.i() / 2;
-      tl $$6 = this.m();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = exq.a(ac.b());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   public gaa a(afw $$0) {
+      return super.a($$0);
    }
 
-   @Override
-   protected void a(ewd $$0) {
-      $$0.a(ewc.a, this.m());
+   public gbs a(gaa $$0) {
+      return this.b($$0).a();
+   }
+
+   private gbr b(gaa $$0) {
+      return $$0.e().f().a(gbr.c).orElse(gbr.a);
    }
 }

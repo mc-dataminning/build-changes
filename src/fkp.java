@@ -1,40 +1,65 @@
-public class fkp extends fmq {
-   fkp(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+
+public class fkp extends fkq {
+   private final String f;
+
+   fkp(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
+   }
+
+   public String a() {
+      return this.f;
+   }
+
+   public fkp c() {
+      fkp $$0 = new fkp(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      return $$0;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(gw.a(this.g, this.h, this.i)).a(aqa.a)) {
-         this.k();
-      }
+   public ezd a(ezd $$0, fku $$1) {
+      return new fde($$0, $$1, this);
    }
 
-   @Override
-   public flu b() {
-      return flu.b;
-   }
-
-   public static class a implements flt<iy> {
-      private final fml a;
-
-      public a(fml $$0) {
-         this.a = $$0;
+   public static class a extends fkq.a<fkp> {
+      public a(fkp $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fkp $$8 = new fkp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new fkp(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
+
+      @Nullable
+      @Override
+      public fkq.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fkq.b.d : null;
+      }
+
+      @Override
+      public Either<fkq.c, fkq.b> a(fku $$0) {
+         fkq.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new fkq.c(this.a.a, fkt.c, $$3));
+         }
       }
    }
 }

@@ -1,48 +1,69 @@
-public class cdx extends cdr {
-   public cdx(bja<?> $$0, cqb $$1) {
+public class cdx extends cdv {
+   public cdx(bjx<? extends cdx> $$0, cqz $$1) {
       super($$0, $$1);
    }
 
-   public cdx(cqb $$0, double $$1, double $$2, double $$3) {
-      super(bja.an, $$0, $$1, $$2, $$3);
+   public cdx(cqz $$0, bkj $$1) {
+      super(bjx.z, $$1, $$0);
+   }
+
+   public cdx(cqz $$0, double $$1, double $$2, double $$3) {
+      super(bjx.z, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public bhe a(cca $$0, bhd $$1) {
-      if ($$0.fI()) {
-         return bhe.d;
-      } else if (this.bO()) {
-         return bhe.d;
-      } else if (!this.dL().B) {
-         return $$0.n(this) ? bhe.b : bhe.d;
-      } else {
-         return bhe.a;
-      }
-   }
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
 
-   @Override
-   protected cjg q() {
-      return cjo.na;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3) {
-         if (this.bO()) {
-            this.bA();
-         }
-
-         if (this.x() == 0) {
-            this.d(-this.y());
-            this.c(10);
-            this.a(50.0F);
-            this.bo();
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dL()
+               .a(
+                  new jo(js.O, this.q()),
+                  this.dq(),
+                  this.ds(),
+                  this.dw(),
+                  ((double)this.ag.i() - 0.5) * 0.08,
+                  ((double)this.ag.i() - 0.5) * 0.08,
+                  ((double)this.ag.i() - 0.5) * 0.08
+               );
          }
       }
    }
 
    @Override
-   public cdr.a z() {
-      return cdr.a.a;
+   protected void a(eic $$0) {
+      super.a($$0);
+      $$0.a().a(this.dM().b(this, this.v()), 0.0F);
+   }
+
+   @Override
+   protected void a(eid $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         if (this.ag.a(8) == 0) {
+            int $$1 = 1;
+            if (this.ag.a(32) == 0) {
+               $$1 = 4;
+            }
+
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               bvz $$3 = bjx.q.a(this.dL());
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.dq(), this.ds(), this.dw(), this.dB(), 0.0F);
+                  this.dL().b($$3);
+               }
+            }
+         }
+
+         this.dL().a(this, (byte)3);
+         this.ak();
+      }
+   }
+
+   @Override
+   protected cke s() {
+      return ckm.qd;
    }
 }

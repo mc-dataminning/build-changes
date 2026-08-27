@@ -1,109 +1,99 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.datafixers.util.Pair;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
-public class fnn implements anx {
-   private static final deg[] a = Arrays.stream(chz.values())
-      .sorted(Comparator.comparingInt(chz::a))
-      .map($$0 -> new deg($$0, gw.b, cte.kP.o()))
-      .toArray(deg[]::new);
-   private static final deg b = new deg(gw.b, cte.kP.o());
-   private final ddg c = new ddg(gw.b, cte.cv.o());
-   private final ddg d = new deq(gw.b, cte.gV.o());
-   private final ddt e = new ddt(gw.b, cte.fG.o());
-   private final dcp f = new dcp(gw.b, cte.iJ.o());
-   private final dcv g = new dcv(gw.b, cte.bn.o());
-   private final ddl h = new ddl(gw.b, cte.mX.o());
-   private final ddo i = new ddo(gw.b, cte.so.o());
-   private fgp j;
-   private fhd k;
-   private Map<dac.a, fgv> l;
-   private final fpz m;
-   private final fht n;
+public class fnn extends fnq {
+   fnn(fjr $$0, fnl $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
+   }
 
-   public fnn(fpz $$0, fht $$1) {
-      this.m = $$0;
-      this.n = $$1;
+   fnn(fjr $$0, fnl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
    @Override
-   public void a(anw $$0) {
-      this.j = new fgp(this.n.a(fhw.bd));
-      this.k = new fhd(this.n.a(fhw.bC));
-      this.l = fqp.a(this.n);
+   public fmu b() {
+      return fmu.b;
    }
 
-   public void a(cjl $$0, cji $$1, elj $$2, foa $$3, int $$4, int $$5) {
-      cjg $$6 = $$0.d();
-      if ($$6 instanceof che) {
-         ctc $$7 = ((che)$$6).e();
-         if ($$7 instanceof cry $$8) {
-            qw $$9 = $$0.v();
-            GameProfile $$10 = $$9 != null ? dej.d($$9) : null;
-            fgv $$11 = this.l.get($$8.b());
-            foi $$12 = fqp.a($$8.b(), $$10);
-            fqp.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$11, $$12);
-         } else {
-            dfd $$13 = $$7.o();
-            dcz $$14;
-            if ($$7 instanceof crs) {
-               this.f.a($$0, ((crs)$$7).b());
-               $$14 = this.f;
-            } else if ($$7 instanceof csv) {
-               this.g.a(((csv)$$7).b());
-               $$14 = this.g;
-            } else if ($$13.a(cte.mX)) {
-               $$14 = this.h;
-            } else if ($$13.a(cte.cv)) {
-               $$14 = this.c;
-            } else if ($$13.a(cte.fG)) {
-               $$14 = this.e;
-            } else if ($$13.a(cte.gV)) {
-               $$14 = this.d;
-            } else if ($$13.a(cte.so)) {
-               this.i.a($$0);
-               $$14 = this.i;
-            } else {
-               if (!($$7 instanceof czz)) {
-                  return;
-               }
+   public static class a implements fmt<jv> {
+      private final fnl a;
 
-               chz $$21 = czz.b($$6);
-               if ($$21 == null) {
-                  $$14 = b;
-               } else {
-                  $$14 = a[$$21.a()];
-               }
+      public a(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ate $$8 = $$1.z;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         fnn $$12 = new fnn($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
+      }
+   }
+
+   public static class b implements fmt<jv> {
+      private final fnl a;
+
+      public b(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fnn $$8 = new fnn($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<jp> o() {
+               return Optional.of(jp.a);
             }
+         };
+         $$8.t = asy.b($$1.z, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
+         return $$8;
+      }
+   }
 
-            this.m.a($$14, $$2, $$3, $$4, $$5);
-         }
-      } else {
-         if ($$0.a(cjo.uy)) {
-            boolean $$25 = che.a($$0) != null;
-            $$2.a();
-            $$2.b(1.0F, -1.0F, -1.0F);
-            gbe $$26 = $$25 ? gbg.g : gbg.h;
-            eln $$27 = $$26.c().a(fub.c($$3, this.j.a($$26.a()), true, $$0.B()));
-            this.j.c().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-            if ($$25) {
-               List<Pair<he<dcq>, chz>> $$28 = dcp.a(cki.d($$0), dcp.a($$0));
-               fpv.a($$2, $$3, $$4, $$5, this.j.b(), $$26, false, $$28, $$0.B());
-            } else {
-               this.j.b().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-            }
+   public static class c implements fmt<jv> {
+      private final fnl a;
 
-            $$2.b();
-         } else if ($$0.a(cjo.uV)) {
-            $$2.a();
-            $$2.b(1.0F, -1.0F, -1.0F);
-            eln $$29 = fub.c($$3, this.k.a(fhd.a), false, $$0.B());
-            this.k.a($$2, $$29, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-            $$2.b();
-         }
+      public c(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fnn $$8 = new fnn($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
+      }
+   }
+
+   public static class d implements fmt<jv> {
+      private final fnl a;
+
+      public d(fnl $$0) {
+         this.a = $$0;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
+         fnn $$9 = new fnn($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
       }
    }
 }

@@ -1,9 +1,10 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
 public class aus extends DataFix {
    public aus(Schema $$0) {
@@ -11,11 +12,14 @@ public class aus extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(azd.c);
-      OpticFinder<?> $$1 = $$0.findField("sections");
-      return this.fixTypeEverywhereTyped("ChunkDeleteLightFix for " + this.getOutputSchema().getVersionKey(), $$0, $$1x -> {
-         $$1x = $$1x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("isLightOn"));
-         return $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight")));
-      });
+      Type<?> $$0 = this.getOutputSchema().getType(baa.c);
+      return this.fixTypeEverywhereTyped(
+         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
+      );
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      return $$2 ? $$0 : $$0.remove("blending_data");
    }
 }

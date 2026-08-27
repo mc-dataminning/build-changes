@@ -1,24 +1,15 @@
-public class zv implements ve<wx> {
-   private final int a;
-
-   public zv(int $$0) {
-      this.a = $$0;
+public class zv implements wb<xu> {
+   public zv() {
    }
 
-   public zv(so $$0) {
-      this.a = $$0.n();
+   public zv(tl $$0) {
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
+   public void a(tl $$0) {
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
    }
 }

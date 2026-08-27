@@ -1,76 +1,137 @@
-public class ccr extends ccs {
-   public ccr(bja<? extends ccr> $$0, cqb $$1) {
-      super($$0, $$1);
-   }
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public ccr(cqb $$0, bwz $$1) {
-      this(bja.ak, $$0);
-      this.b($$1);
-      this.e(
-         $$1.dq() - (double)($$1.df() + 1.0F) * 0.5 * (double)asb.a($$1.aU * (float) (Math.PI / 180.0)),
-         $$1.du() - 0.1F,
-         $$1.dw() + (double)($$1.df() + 1.0F) * 0.5 * (double)asb.b($$1.aU * (float) (Math.PI / 180.0))
-      );
+public class ccr implements cqm {
+   private static final int b = 1200;
+   public static final int a = 24000;
+   private static final int c = 25;
+   private static final int d = 75;
+   private static final int e = 25;
+   private static final int f = 10;
+   private static final int g = 10;
+   private final ate h = ate.a();
+   private final edd i;
+   private int j;
+   private int k;
+   private int l;
+
+   public ccr(edd $$0) {
+      this.i = $$0;
+      this.j = 1200;
+      this.k = $$0.v();
+      this.l = $$0.w();
+      if (this.k == 0 && this.l == 0) {
+         this.k = 24000;
+         $$0.g(this.k);
+         this.l = 25;
+         $$0.h(this.l);
+      }
    }
 
    @Override
-   public void l() {
-      super.l();
-      ehh $$0 = this.do();
-      ehf $$1 = cct.a(this, this::a);
-      this.a($$1);
-      double $$2 = this.dq() + $$0.c;
-      double $$3 = this.ds() + $$0.d;
-      double $$4 = this.dw() + $$0.e;
-      this.H();
-      float $$5 = 0.99F;
-      float $$6 = 0.06F;
-      if (this.dL().a(this.cG()).noneMatch(dfc.a::i)) {
-         this.ak();
-      } else if (this.ba()) {
-         this.ak();
+   public int a(alq $$0, boolean $$1, boolean $$2) {
+      if (!$$0.X().b(cqv.I)) {
+         return 0;
+      } else if (--this.j > 0) {
+         return 0;
       } else {
-         this.f($$0.a(0.99F));
-         if (!this.aT()) {
-            this.f(this.do().b(0.0, -0.06F, 0.0));
+         this.j = 1200;
+         this.k -= 1200;
+         this.i.g(this.k);
+         if (this.k > 0) {
+            return 0;
+         } else {
+            this.k = 24000;
+            if (!$$0.X().b(cqv.e)) {
+               return 0;
+            } else {
+               int $$3 = this.l;
+               this.l = asy.a(this.l + 25, 25, 75);
+               this.i.h(this.l);
+               if (this.h.a(100) > $$3) {
+                  return 0;
+               } else if (this.a($$0)) {
+                  this.l = 25;
+                  return 1;
+               } else {
+                  return 0;
+               }
+            }
+         }
+      }
+   }
+
+   private boolean a(alq $$0) {
+      ccx $$1 = $$0.i();
+      if ($$1 == null) {
+         return true;
+      } else if (this.h.a(10) != 0) {
+         return false;
+      } else {
+         ht $$2 = $$1.dl();
+         int $$3 = 48;
+         bvi $$4 = $$0.w();
+         Optional<ht> $$5 = $$4.d($$0x -> $$0x.a(bvm.o), $$0x -> true, $$2, 48, bvi.b.c);
+         ht $$6 = $$5.orElse($$2);
+         ht $$7 = this.a($$0, $$6, 48);
+         if ($$7 != null && this.a($$0, $$7)) {
+            if ($$0.s($$7).a(aqr.ag)) {
+               return false;
+            }
+
+            ccq $$8 = bjx.bh.a($$0, $$7, bkn.h);
+            if ($$8 != null) {
+               for (int $$9 = 0; $$9 < 2; $$9++) {
+                  this.a($$0, $$8, 4);
+               }
+
+               this.i.a($$8.cv());
+               $$8.u(48000);
+               $$8.i($$6);
+               $$8.a($$6, 16);
+               return true;
+            }
          }
 
-         this.e($$2, $$3, $$4);
+         return false;
       }
    }
 
-   @Override
-   protected void a(ehe $$0) {
-      super.a($$0);
-      if (this.v() instanceof bjm $$1) {
-         $$0.a().a(this.dM().a(this, $$1), 1.0F);
+   private void a(alq $$0, ccq $$1, int $$2) {
+      ht $$3 = this.a($$0, $$1.dl(), $$2);
+      if ($$3 != null) {
+         byb $$4 = bjx.ba.a($$0, $$3, bkn.h);
+         if ($$4 != null) {
+            $$4.b($$1, true);
+         }
       }
    }
 
-   @Override
-   protected void a(ehd $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         this.ak();
-      }
-   }
+   @Nullable
+   private ht a(crc $$0, ht $$1, int $$2) {
+      ht $$3 = null;
 
-   @Override
-   protected void a_() {
-   }
-
-   @Override
-   public void a(wy $$0) {
-      super.a($$0);
-      double $$1 = $$0.i();
-      double $$2 = $$0.j();
-      double $$3 = $$0.k();
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dL().a(iv.ab, this.dq(), this.ds(), this.dw(), $$1 * $$5, $$2, $$3 * $$5);
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         int $$5 = $$1.u() + this.h.a($$2 * 2) - $$2;
+         int $$6 = $$1.w() + this.h.a($$2 * 2) - $$2;
+         int $$7 = $$0.a(dlk.a.b, $$5, $$6);
+         ht $$8 = new ht($$5, $$7, $$6);
+         if (crk.a(bld.c.a, $$0, $$8, bjx.bh)) {
+            $$3 = $$8;
+            break;
+         }
       }
 
-      this.o($$1, $$2, $$3);
+      return $$3;
+   }
+
+   private boolean a(cqf $$0, ht $$1) {
+      for (ht $$2 : ht.a($$1, $$1.b(1, 2, 1))) {
+         if (!$$0.a_($$2).k($$0, $$2).c()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

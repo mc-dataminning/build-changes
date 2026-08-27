@@ -1,72 +1,56 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class eog extends gex {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gey b = new gey(Duration.ofSeconds(5L));
-   private epp c;
-   private final eye y;
-   private volatile tl z = tk.a;
-   private final evy A = evy.d();
-   @Nullable
-   private esz B;
+public class eog extends eod {
+   private static final Logger e = LogUtils.getLogger();
+   public List<eof> a;
+   public int b;
+   public int c;
+   public int d;
 
-   public eog(eye $$0, epp $$1) {
-      super(eqh.a);
-      this.y = $$0;
-      this.c = $$1;
-      this.a($$1.a());
-      Thread $$2 = new Thread($$1, "Realms-long-running-task");
-      $$2.setUncaughtExceptionHandler(new enk(a));
-      $$2.start();
+   public eog() {
    }
 
-   @Override
-   public void c() {
-      super.c();
-      b.a(this.f.aV(), this.B.m());
+   public eog(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.e();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
    }
 
-   @Override
-   public void aH_() {
-      this.A.c().b();
-      this.B = new esz(this.i, this.z);
-      this.A.a(this.B, $$0 -> $$0.e(30));
-      this.A.a(esk.a(tk.e, $$0 -> this.e()).a());
-      this.A.a($$1 -> {
-         esi var10000 = this.d($$1);
-      });
-      this.b();
-   }
+   public static eog a(String $$0) {
+      eog $$1 = new eog();
+      $$1.a = Lists.newArrayList();
 
-   @Override
-   protected void b() {
-      this.A.a();
-      evs.a(this.A, this.s());
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
 
-   protected void e() {
-      this.c.b();
-      this.f.a(this.y);
-   }
+            while ($$4.hasNext()) {
+               $$1.a.add(eof.a($$4.next().getAsJsonObject()));
+            }
+         }
 
-   public void a(tl $$0) {
-      if (this.B != null) {
-         this.B.b($$0);
+         $$1.b = eqa.a("page", $$3, 0);
+         $$1.c = eqa.a("size", $$3, 0);
+         $$1.d = eqa.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
       }
 
-      this.z = $$0;
+      return $$1;
    }
 }

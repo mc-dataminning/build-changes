@@ -1,15 +1,15 @@
-import io.netty.util.Attribute;
+import java.util.List;
 
-public interface sw {
-   static void a(Attribute<sn.a<?>> $$0, ve<?> $$1) {
-      sn $$2 = $$1.c();
-      if ($$2 != null) {
-         sn.a<?> $$3 = (sn.a<?>)$$0.get();
-         sn $$4 = $$3.a();
-         if ($$2 != $$4) {
-            sn.a<?> $$5 = $$2.b($$3.b());
-            $$0.set($$5);
-         }
-      }
+public record sw(List<String> a, sp<?> b, String c) {
+   public sw(sp<?> $$0, String $$1) {
+      this(List.of(), $$0, $$1);
+   }
+
+   public sw(String $$0, sp<?> $$1, String $$2) {
+      this(List.of($$0), $$1, $$2);
+   }
+
+   public sw(String $$0, String $$1, sp<?> $$2, String $$3) {
+      this(List.of($$0, $$1), $$2, $$3);
    }
 }

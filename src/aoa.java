@@ -1,46 +1,94 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class aoa extends aob<Map<aez, JsonElement>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Gson b;
-   private final String c;
+public class aoa implements aog {
+   static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final ani c;
+   private final aof d;
+   private final ehv e;
 
-   public aoa(Gson $$0, String $$1) {
+   public aoa(Path $$0, ani $$1, aof $$2, ehv $$3) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   protected Map<aez, JsonElement> a(anw $$0, bdv $$1) {
-      Map<aez, JsonElement> $$2 = new HashMap<>();
-      a($$0, this.c, this.b, $$2);
-      return $$2;
+   private static String a(Path $$0) {
+      return $$0.getFileName().toString();
    }
 
-   public static void a(anw $$0, String $$1, Gson $$2, Map<aez, JsonElement> $$3) {
-      aes $$4 = aes.a($$1);
-
-      for (Entry<aez, anu> $$5 : $$4.a($$0).entrySet()) {
-         aez $$6 = $$5.getKey();
-         aez $$7 = $$4.b($$6);
-
-         try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = arr.a($$2, $$8, JsonElement.class);
-            JsonElement $$10 = $$3.put($$7, $$9);
-            if ($$10 != null) {
-               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
+   @Override
+   public void a(Consumer<aob> $$0) {
+      try {
+         v.c(this.b);
+         a(this.b, this.e, false, ($$1, $$2) -> {
+            String $$3 = a($$1);
+            aob $$4 = aob.a("file/" + $$3, ui.b($$3), false, $$2, this.c, aob.b.a, this.d);
+            if ($$4 != null) {
+               $$0.accept($$4);
             }
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.b, var3);
+      }
+   }
+
+   public static void a(Path $$0, ehv $$1, boolean $$2, BiConsumer<Path, aob.c> $$3) throws IOException {
+      aoa.a $$4 = new aoa.a($$1, $$2);
+
+      try (DirectoryStream<Path> $$5 = Files.newDirectoryStream($$0)) {
+         for (Path $$6 : $$5) {
+            try {
+               List<ehw> $$7 = new ArrayList<>();
+               aob.c $$8 = $$4.a($$6, $$7);
+               if (!$$7.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", ehu.a($$6, $$7));
+               } else if ($$8 != null) {
+                  $$3.accept($$6, $$8);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$6);
+               }
+            } catch (IOException var11) {
+               a.warn("Failed to read properties of '{}', ignoring", $$6, var11);
+            }
          }
+      }
+   }
+
+   static class a extends aod<aob.c> {
+      private final boolean a;
+
+      protected a(ehv $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      @Nullable
+      protected aob.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof anq)) {
+            aoa.a.info("Can't open pack archive at {}", $$0);
+            return null;
+         } else {
+            return new anf.a($$0, this.a);
+         }
+      }
+
+      protected aob.c b(Path $$0) {
+         return new anj.a($$0, this.a);
       }
    }
 }

@@ -1,78 +1,59 @@
-public class eor extends gex {
-   private static final int a = 212;
-   private static final tl b = tl.c("mco.configure.world.name");
-   private static final tl c = tl.c("mco.configure.world.description");
-   private final enz y;
-   private final emq z;
-   private esk A;
-   private est B;
-   private est C;
+import java.util.List;
 
-   public eor(enz $$0, emq $$1) {
-      super(tl.c("mco.configure.world.settings.title"));
-      this.y = $$0;
-      this.z = $$1;
+public abstract class eor {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
+
+   public eor(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void c() {
-      this.A.i = !ac.b(this.C.a());
+   public void a(esy $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
    }
 
-   @Override
-   public void aH_() {
-      int $$0 = this.g / 2 - 106;
-      this.A = this.d(esk.a(tl.c("mco.configure.world.buttons.done"), $$0x -> this.f()).a($$0 - 2, h(12), 106, 20).a());
-      this.d(esk.a(tk.e, $$0x -> this.f.a(this.y)).a(this.g / 2 + 2, h(12), 106, 20).a());
-      String $$1 = this.z.e == emq.b.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      esk $$2 = esk.a(tl.c($$1), $$0x -> {
-         if (this.z.e == emq.b.b) {
-            tl $$1x = tl.c("mco.configure.world.close.question.line1");
-            tl $$2x = tl.c("mco.configure.world.close.question.line2");
-            this.f.a(new eof($$0xx -> {
-               if ($$0xx) {
-                  this.y.a(this);
-               } else {
-                  this.f.a(this);
-               }
-            }, eof.a.b, $$1x, $$2x, true));
-         } else {
-            this.y.a(false, this);
+   protected abstract void a(esy var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
+   }
+
+   public int b() {
+      return this.d + this.b;
+   }
+
+   public abstract void a(int var1);
+
+   public static void a(esy $$0, List<eor> $$1, gfw<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (eor $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
          }
-      }).a(this.g / 2 - 53, h(0), 106, 20).a();
-      this.d($$2);
-      this.C = new est(this.f.h, $$0, h(4), 212, 20, null, tl.c("mco.configure.world.name"));
-      this.C.l(32);
-      this.C.a(this.z.b());
-      this.e(this.C);
-      this.b(this.C);
-      this.B = new est(this.f.h, $$0, h(8), 212, 20, null, tl.c("mco.configure.world.description"));
-      this.B.l(32);
-      this.B.a(this.z.a());
-      this.e(this.B);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.y);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
       }
    }
 
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      $$0.a(this.i, b, this.g / 2 - 106, h(3), -6250336, false);
-      $$0.a(this.i, c, this.g / 2 - 106, h(7), -6250336, false);
-      this.C.a($$0, $$1, $$2, $$3);
-      this.B.a($$0, $$1, $$2, $$3);
-   }
+   public static void a(gfw<?> $$0, euf.a<?> $$1, List<eor> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.i().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.a($$6);
+         int $$7 = $$0.o();
+         int $$8 = $$0.h($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-   public void f() {
-      this.y.a(this.C.a(), this.B.a());
+         for (eor $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
+      }
    }
 }

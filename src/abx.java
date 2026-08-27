@@ -1,40 +1,22 @@
-public class abx implements ve<abd> {
-   private final gw a;
-   private final int b;
-   private final boolean c;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public abx(gw $$0, int $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public record abx(afv<djk> a, afv<cqz> b, long c, cqw d, @Nullable cqw e, boolean f, boolean g, Optional<ia> h, int i) {
+   public abx(tl $$0) {
+      this(
+         $$0.a(jz.av), $$0.a(jz.aI), $$0.readLong(), cqw.a($$0.readByte()), cqw.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(tl::h), $$0.n()
+      );
    }
 
-   public abx(so $$0) {
-      this.a = $$0.e();
-      this.b = $$0.n();
-      this.c = $$0.readBoolean();
-   }
-
-   @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(abd $$0) {
-      $$0.a(this);
-   }
-
-   public gw a() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
+   public void a(tl $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(cqw.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, tl::a);
+      $$0.c(this.i);
    }
 }

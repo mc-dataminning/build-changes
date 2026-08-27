@@ -1,65 +1,158 @@
-public class eru {
-   private static final int a = -1;
-   private final hk<ert> b = new hk<>(32);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public static eru a(erq $$0) {
-      eru $$1 = new eru();
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : ((cid)$$0x.d()).e_($$0x), cjo.oK, cjo.oL, cjo.oM, cjo.oN, cjo.tP);
-      $$1.a(($$0x, $$1x) -> cpz.a(0.5, 1.0), cte.iH, cte.iI);
-      $$1.a(($$0x, $$1x) -> {
-         if ($$1x != 1) {
-            return -1;
-         } else {
-            qw $$2x = $$0x.b("Explosion");
-            int[] $$3 = $$2x != null && $$2x.b("Colors", 11) ? $$2x.n("Colors") : null;
-            if ($$3 != null && $$3.length != 0) {
-               if ($$3.length == 1) {
-                  return $$3[0];
-               } else {
-                  int $$4 = 0;
-                  int $$5 = 0;
-                  int $$6 = 0;
+public class eru extends aoy<Map<String, List<eru.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<eru.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(eru.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(eru.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(eru.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(eru.a::d)
+                  )
+                  .apply($$0, eru.a::new)
+         )
+         .listOf()
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final afw c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private eru.b f;
 
-                  for (int $$7 : $$3) {
-                     $$4 += ($$7 & 0xFF0000) >> 16;
-                     $$5 += ($$7 & 0xFF00) >> 8;
-                     $$6 += ($$7 & 0xFF) >> 0;
-                  }
+   public eru(afw $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-                  $$4 /= $$3.length;
-                  $$5 /= $$3.length;
-                  $$6 /= $$3.length;
-                  return $$4 << 16 | $$5 << 8 | $$6;
-               }
-            } else {
-               return 9079434;
-            }
+   protected Map<String, List<eru.a>> a(aot $$0, bes $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
          }
-      }, cjo.tB);
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : clk.c($$0x), cjo.rv, cjo.uu, cjo.ux);
 
-      for (ckq $$2 : ckq.h()) {
-         $$1.a(($$1x, $$2x) -> $$2.a($$2x), $$2);
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
+      }
+   }
+
+   protected void a(Map<String, List<eru.a>> $$0, aot $$1, bes $$2) {
+      List<eru.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
+      } else {
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
+
+         if (this.f == null) {
+            this.f = new eru.b($$3, $$4, $$5);
+         } else {
+            this.f = this.f.a($$3, $$5);
+         }
+
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
+      }
+   }
+
+   @Override
+   public void close() {
+      this.a();
+   }
+
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
+      }
+   }
+
+   private long a(List<eru.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
+
+   private long a(List<eru.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
+
+   public static record a(long a, long b, String c, String d) {
+
+      public a(long a, long b, String c, String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
+   }
+
+   static class b extends TimerTask {
+      private final ero a = ero.O();
+      private final List<eru.a> b;
+      private final long c;
+      private final AtomicLong d;
+
+      public b(List<eru.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
       }
 
-      $$1.a(($$1x, $$2x) -> {
-         dfd $$3 = ((che)$$1x.d()).e().o();
-         return $$0.a($$3, null, null, $$2x);
-      }, cte.i, cte.bt, cte.bu, cte.ff, cte.aE, cte.aF, cte.aG, cte.aH, cte.aI, cte.aK, cte.fm);
-      $$1.a(($$0x, $$1x) -> cpv.d(), cte.aL);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? clk.c($$0x) : -1, cjo.uw);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? -1 : cjs.o($$0x), cjo.rf);
-      return $$1;
-   }
+      public eru.b a(List<eru.a> $$0, long $$1) {
+         this.cancel();
+         return new eru.b($$0, this.d.get(), $$1);
+      }
 
-   public int a(cjl $$0, int $$1) {
-      ert $$2 = this.b.a(jb.i.a($$0.d()));
-      return $$2 == null ? -1 : $$2.getColor($$0, $$1);
-   }
+      @Override
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
 
-   public void a(ert $$0, cqa... $$1) {
-      for (cqa $$2 : $$1) {
-         this.b.a($$0, cjg.a($$2.k()));
+         for (eru.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> evq.a(ero.O().ay(), evq.a.g, ui.a($$2.c, $$3), ui.a($$2.d, $$3)));
+                  return;
+               }
+            }
+         }
       }
    }
 }

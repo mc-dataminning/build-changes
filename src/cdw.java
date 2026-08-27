@@ -1,89 +1,82 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
-
-public class cdw {
-   public static int[][] a(ha $$0) {
-      ha $$1 = $$0.h();
-      ha $$2 = $$1.g();
-      ha $$3 = $$0.g();
-      return new int[][]{
-         {$$1.j(), $$1.l()},
-         {$$2.j(), $$2.l()},
-         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
-         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
-         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
-         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
-         {$$3.j(), $$3.l()},
-         {$$0.j(), $$0.l()}
-      };
+public abstract class cdw extends cdp {
+   protected cdw(bjx<? extends cdw> $$0, cqz $$1) {
+      super($$0, $$1);
    }
 
-   public static boolean a(double $$0) {
-      return !Double.isInfinite($$0) && $$0 < 1.0;
+   protected cdw(bjx<? extends cdw> $$0, double $$1, double $$2, double $$3, cqz $$4) {
+      this($$0, $$4);
+      this.e($$1, $$2, $$3);
    }
 
-   public static boolean a(cpl $$0, bjm $$1, ehc $$2) {
-      for (eia $$4 : $$0.e($$1, $$2)) {
-         if (!$$4.c()) {
-            return false;
+   protected cdw(bjx<? extends cdw> $$0, bkj $$1, cqz $$2) {
+      this($$0, $$1.dq(), $$1.du() - 0.1F, $$1.dw(), $$2);
+      this.b((bjt)$$1);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cG().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
+      }
+
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      eid $$0 = cdq.a(this, this::a);
+      boolean $$1 = false;
+      if ($$0.c() == eid.a.b) {
+         ht $$2 = ((eib)$$0).a();
+         dgb $$3 = this.dL().a_($$2);
+         if ($$3.a(cuc.ed)) {
+            this.f($$2);
+            $$1 = true;
+         } else if ($$3.a(cuc.kF)) {
+            ddx $$4 = this.dL().c_($$2);
+            if ($$4 instanceof dfl && dfl.a(this)) {
+               dfl.a(this.dL(), $$2, $$3, this, (dfl)$$4);
+            }
+
+            $$1 = true;
          }
       }
 
-      return $$0.B_().a($$2);
-   }
-
-   public static boolean a(cpl $$0, ehh $$1, bjm $$2, bjy $$3) {
-      return a($$0, $$2, $$2.e($$3).c($$1));
-   }
-
-   public static eia a(cph $$0, gw $$1) {
-      dfd $$2 = $$0.a_($$1);
-      return !$$2.a(apv.aO) && (!($$2.b() instanceof dbm) || !$$2.c(dbm.b)) ? $$2.k($$0, $$1) : ehx.a();
-   }
-
-   public static double a(gw $$0, int $$1, Function<gw, eia> $$2) {
-      gw.a $$3 = $$0.j();
-      int $$4 = 0;
-
-      while ($$4 < $$1) {
-         eia $$5 = $$2.apply($$3);
-         if (!$$5.c()) {
-            return (double)($$0.v() + $$4) + $$5.b(ha.a.b);
-         }
-
-         $$4++;
-         $$3.c(ha.b);
+      if ($$0.c() != eid.a.a && !$$1) {
+         this.a($$0);
       }
 
-      return Double.POSITIVE_INFINITY;
-   }
+      this.aO();
+      eif $$5 = this.do();
+      double $$6 = this.dq() + $$5.c;
+      double $$7 = this.ds() + $$5.d;
+      double $$8 = this.dw() + $$5.e;
+      this.H();
+      float $$11;
+      if (this.aX()) {
+         for (int $$9 = 0; $$9 < 4; $$9++) {
+            float $$10 = 0.25F;
+            this.dL().a(js.e, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
+         }
 
-   @Nullable
-   public static ehh a(bja<?> $$0, cpl $$1, gw $$2, boolean $$3) {
-      if ($$3 && $$0.a($$1.a_($$2))) {
-         return null;
+         $$11 = 0.8F;
       } else {
-         double $$4 = $$1.a(a((cph)$$1, $$2), () -> a((cph)$$1, $$2.d()));
-         if (!a($$4)) {
-            return null;
-         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
-            return null;
-         } else {
-            ehh $$5 = ehh.a($$2, $$4);
-            ehc $$6 = $$0.n().a($$5);
-
-            for (eia $$8 : $$1.e(null, $$6)) {
-               if (!$$8.c()) {
-                  return null;
-               }
-            }
-
-            if ($$0 != bja.bt || !$$1.a_($$2).a(apv.ci) && !$$1.a_($$2.c()).a(apv.ci)) {
-               return !$$1.B_().a($$6) ? null : $$5;
-            } else {
-               return null;
-            }
-         }
+         $$11 = 0.99F;
       }
+
+      this.f($$5.a((double)$$11));
+      if (!this.aT()) {
+         eif $$13 = this.do();
+         this.o($$13.c, $$13.d - (double)this.w(), $$13.e);
+      }
+
+      this.e($$6, $$7, $$8);
+   }
+
+   protected float w() {
+      return 0.03F;
    }
 }

@@ -1,136 +1,67 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import javax.annotation.Nullable;
+public class fnp extends fnq {
+   private final ht a;
+   private final float b;
+   private final float F;
 
-public abstract class fnp {
-   private static final Object2ObjectMap<aez, fnp> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      fnp.c $$1 = new fnp.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dik.e, $$1);
-      $$0.put(dik.f, new fnp.b());
-      $$0.put(dik.g, new fnp.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final fnp.d e;
-   private final boolean f;
-   private final boolean g;
-
-   public fnp(float $$0, boolean $$1, fnp.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public fnp(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dgb $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, ht.a($$1, $$2, $$3));
    }
 
-   public static fnp a(dim $$0) {
-      return (fnp)a.get($$0.r());
+   public fnp(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dgb $$7, ht $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(ero.O().an().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(cuc.i)) {
+         int $$9 = ero.O().aw().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
+      }
+
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
-   @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = asb.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - asb.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
-      } else {
-         return null;
-      }
+   @Override
+   public fmu b() {
+      return fmu.a;
    }
 
-   public float a() {
-      return this.c;
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
    }
 
-   public boolean b() {
-      return this.d;
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
    }
 
-   public abstract ehh a(ehh var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public fnp.d c() {
-      return this.e;
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
    }
 
-   public boolean d() {
-      return this.f;
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
    }
 
-   public boolean e() {
-      return this.g;
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.A(this.a) ? foz.a(this.c, this.a) : $$1;
    }
 
-   public static class a extends fnp {
-      public a() {
-         super(Float.NaN, false, fnp.d.c, true, false);
+   public static class a implements fmt<jk> {
+      public fmq a(jk $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dgb $$8 = $$0.c();
+         return !$$8.i() && !$$8.a(cuc.bQ) && $$8.z() ? new fnp($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
       }
-
-      @Override
-      public ehh a(ehh $$0, float $$1) {
-         return $$0.a(0.15F);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends fnp {
-      public b() {
-         super(Float.NaN, true, fnp.d.a, false, true);
-      }
-
-      @Override
-      public ehh a(ehh $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends fnp {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, fnp.d.b, false, false);
-      }
-
-      @Override
-      public ehh a(ehh $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

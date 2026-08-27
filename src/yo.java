@@ -1,40 +1,39 @@
-public class yo implements ve<wx> {
-   private final int a;
-   private final cpa b;
-   private final int c;
-   private final int d;
-   private final boolean e;
-   private final boolean f;
+import java.util.List;
 
-   public yo(int $$0, cpa $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+public class yo implements wb<xu> {
+   private final int a;
+   private final int b;
+   private final List<ckj> c;
+   private final ckj d;
+
+   public yo(int $$0, int $$1, il<ckj> $$2, ckj $$3) {
       this.a = $$0;
-      this.b = $$1.b();
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+      this.b = $$1;
+      this.c = il.a($$2.size(), ckj.b);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.c.set($$4, $$2.get($$4).p());
+      }
+
+      this.d = $$3.p();
    }
 
-   public yo(so $$0) {
-      this.a = $$0.n();
-      this.b = cpa.b($$0);
-      this.c = $$0.n();
-      this.d = $$0.n();
-      this.e = $$0.readBoolean();
-      this.f = $$0.readBoolean();
+   public yo(tl $$0) {
+      this.a = $$0.readUnsignedByte();
+      this.b = $$0.n();
+      this.c = $$0.a(il::a, tl::r);
+      this.d = $$0.r();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
-      this.b.a($$0);
-      $$0.c(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   public void a(tl $$0) {
+      $$0.k(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c, tl::a);
+      $$0.a(this.d);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
@@ -42,23 +41,15 @@ public class yo implements ve<wx> {
       return this.a;
    }
 
-   public cpa d() {
-      return this.b;
-   }
-
-   public int e() {
+   public List<ckj> d() {
       return this.c;
    }
 
-   public int f() {
+   public ckj e() {
       return this.d;
    }
 
-   public boolean g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.f;
+   public int f() {
+      return this.b;
    }
 }

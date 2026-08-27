@@ -1,93 +1,130 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class elk extends eli {
-   private final eln f;
-   private final Matrix4f g;
-   private final Matrix3f h;
-   private final float i;
-   private float j;
-   private float k;
-   private float l;
-   private int m;
-   private int n;
-   private int o;
-   private float p;
-   private float q;
-   private float r;
+public final class elk {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
 
-   public elk(eln $$0, Matrix4f $$1, Matrix3f $$2, float $$3) {
-      this.f = $$0;
-      this.g = new Matrix4f($$1).invert();
-      this.h = new Matrix3f($$2).invert();
-      this.i = $$3;
-      this.a();
+   public elk(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   private void a() {
-      this.j = 0.0F;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.m = 0;
-      this.n = 10;
-      this.o = 15728880;
-      this.p = 0.0F;
-      this.q = 1.0F;
-      this.r = 0.0F;
+   public elk(Buffer $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
    }
 
-   @Override
-   public void e() {
-      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
-      ha $$1 = ha.a($$0.x(), $$0.y(), $$0.z());
-      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
-      $$2.rotateY((float) Math.PI);
-      $$2.rotateX((float) (-Math.PI / 2));
-      $$2.rotate($$1.b());
-      float $$3 = -$$2.x() * this.i;
-      float $$4 = -$$2.y() * this.i;
-      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
-      this.a();
+   public elk(GLFWVidMode $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
    }
 
-   @Override
-   public eln a(double $$0, double $$1, double $$2) {
-      this.j = (float)$$0;
-      this.k = (float)$$1;
-      this.l = (float)$$2;
-      return this;
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public eln a(int $$0, int $$1, int $$2, int $$3) {
-      return this;
+   public int b() {
+      return this.b;
    }
 
-   @Override
-   public eln a(float $$0, float $$1) {
-      return this;
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.e;
+   }
+
+   public int f() {
+      return this.f;
    }
 
    @Override
-   public eln a(int $$0, int $$1) {
-      this.m = $$0;
-      this.n = $$1;
-      return this;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         elk $$1 = (elk)$$0;
+         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public eln b(int $$0, int $$1) {
-      this.o = $$0 | $$1 << 16;
-      return this;
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
    }
 
    @Override
-   public eln a(float $$0, float $$1, float $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      return this;
+   public String toString() {
+      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
+   }
+
+   public static Optional<elk> a(@Nullable String $$0) {
+      if ($$0 == null) {
+         return Optional.empty();
+      } else {
+         try {
+            Matcher $$1 = g.matcher($$0);
+            if ($$1.matches()) {
+               int $$2 = Integer.parseInt($$1.group(1));
+               int $$3 = Integer.parseInt($$1.group(2));
+               String $$4 = $$1.group(3);
+               int $$5;
+               if ($$4 == null) {
+                  $$5 = 60;
+               } else {
+                  $$5 = Integer.parseInt($$4);
+               }
+
+               String $$7 = $$1.group(4);
+               int $$8;
+               if ($$7 == null) {
+                  $$8 = 24;
+               } else {
+                  $$8 = Integer.parseInt($$7);
+               }
+
+               int $$10 = $$8 / 3;
+               return Optional.of(new elk($$2, $$3, $$10, $$10, $$10, $$5));
+            }
+         } catch (Exception var9) {
+         }
+
+         return Optional.empty();
+      }
+   }
+
+   public String g() {
+      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 }

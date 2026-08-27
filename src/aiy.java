@@ -1,48 +1,47 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class aiy {
-   private static final ui a = ui.a.a(new tr(tr.a.a, tl.c("chat.type.team.hover"))).a(new tj(tj.a.d, "/teammsg "));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.teammsg.failed.noteam"));
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<dt> $$0) {
-      LiteralCommandNode<dt> $$1 = $$0.register((LiteralArgumentBuilder)du.a("teammsg").then(du.a("message", ei.a()).executes($$0x -> {
-         dt $$1x = (dt)$$0x.getSource();
-         biw $$2 = $$1x.g();
-         eie $$3 = (eie)$$2.cf();
-         if ($$3 == null) {
-            throw b.create();
-         } else {
-            List<aku> $$4 = $$1x.l().ac().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cf() == $$3).toList();
-            if (!$$4.isEmpty()) {
-               ei.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
-            }
-
-            return $$4.size();
-         }
-      })));
-      $$0.register((LiteralArgumentBuilder)du.a("tm").redirect($$1));
+   public static void a(Collection<String> $$0, du $$1) {
+      $$1.m().a($$0).exceptionally($$1x -> {
+         a.warn("Failed to execute reload", $$1x);
+         $$1.b(ui.c("commands.reload.failure"));
+         return null;
+      });
    }
 
-   private static void a(dt $$0, biw $$1, eie $$2, List<aku> $$3, ub $$4) {
-      tl $$5 = $$2.d().c(a);
-      th.a $$6 = th.a(th.g, $$0).c($$5);
-      th.a $$7 = th.a(th.h, $$0).c($$5);
-      ua $$8 = ua.a($$4);
-      boolean $$9 = false;
+   private static Collection<String> a(aoe $$0, ede $$1, Collection<String> $$2) {
+      $$0.a();
+      Collection<String> $$3 = Lists.newArrayList($$2);
+      Collection<String> $$4 = $$1.F().a().b();
 
-      for (aku $$10 : $$3) {
-         th.a $$11 = $$10 == $$1 ? $$7 : $$6;
-         boolean $$12 = $$0.a($$10);
-         $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.i();
+      for (String $$5 : $$0.b()) {
+         if (!$$4.contains($$5) && !$$3.contains($$5)) {
+            $$3.add($$5);
+         }
       }
 
-      if ($$9) {
-         $$0.a(aoj.f);
-      }
+      return $$3;
+   }
+
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         du $$1 = (du)$$0x.getSource();
+         MinecraftServer $$2 = $$1.m();
+         aoe $$3 = $$2.aB();
+         ede $$4 = $$2.aT();
+         Collection<String> $$5 = $$3.d();
+         Collection<String> $$6 = a($$3, $$4, $$5);
+         $$1.a(() -> ui.c("commands.reload.success"), true);
+         a($$6, $$1);
+         return 0;
+      }));
    }
 }

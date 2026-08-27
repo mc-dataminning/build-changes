@@ -1,25 +1,53 @@
-public class fmk extends fmw {
-   fmk(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.04F;
-      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
-         this.j = $$4;
-         this.k = 0.1;
-         this.l = $$6;
-      }
+public class fmk extends fmq {
+   private static final int a = 3;
+   private final fph b;
+   private final bjt D;
+   private final bjt E;
+   private int F;
+   private final fub G;
+
+   public fmk(fub $$0, fph $$1, fjr $$2, bjt $$3, bjt $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.do());
    }
 
-   public static class a implements flt<iy> {
-      private final fml a;
+   private fmk(fub $$0, fph $$1, fjr $$2, bjt $$3, bjt $$4, eif $$5) {
+      super($$2, $$3.dq(), $$3.ds(), $$3.dw(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+   }
 
-      public a(fml $$0) {
-         this.a = $$0;
-      }
+   private bjt a(bjt $$0) {
+      return (bjt)(!($$0 instanceof bzq) ? $$0 : ((bzq)$$0).C());
+   }
 
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmk $$8 = new fmk($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   @Override
+   public fmu b() {
+      return fmu.e;
+   }
+
+   @Override
+   public void a(eml $$0, eqz $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = asy.d((double)$$2, this.E.ac, this.E.dq());
+      double $$5 = asy.d((double)$$2, this.E.ad, (this.E.ds() + this.E.du()) / 2.0);
+      double $$6 = asy.d((double)$$2, this.E.ae, this.E.dw());
+      double $$7 = asy.d((double)$$3, this.D.dq(), $$4);
+      double $$8 = asy.d((double)$$3, this.D.ds(), $$5);
+      double $$9 = asy.d((double)$$3, this.D.dw(), $$6);
+      fpb.a $$10 = this.b.b();
+      eif $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dB(), $$2, new emh(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
+   }
+
+   @Override
+   public void a() {
+      this.F++;
+      if (this.F == 3) {
+         this.k();
       }
    }
 }

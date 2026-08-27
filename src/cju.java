@@ -1,89 +1,86 @@
-public class cju extends cjg {
-   private static final ih a = new ig() {
-      private final ig c = new ig();
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-      @Override
-      public cjl a(id $$0, cjl $$1) {
-         ha $$2 = $$0.d().c(cvf.b);
-         cqb $$3 = $$0.b();
-         ehh $$4 = $$0.a();
-         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
-         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
-         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
-         gw $$8 = $$0.c().a($$2);
-         dfd $$9 = $$3.a_($$8);
-         dgh $$10 = $$9.b() instanceof csr ? $$9.c(((csr)$$9.b()).c()) : dgh.a;
-         double $$11;
-         if ($$9.a(apv.N)) {
-            if ($$10.b()) {
-               $$11 = 0.6;
-            } else {
-               $$11 = 0.1;
-            }
-         } else {
-            if (!$$9.i() || !$$3.a_($$8.d()).a(apv.N)) {
-               return this.c.dispense($$0, $$1);
-            }
+public class cju extends cke {
+   private static final ui a = ui.c("painting.random").a(n.h);
+   private final bjx<? extends bzi> b;
 
-            dfd $$13 = $$3.a_($$8.d());
-            dgh $$14 = $$13.b() instanceof csr ? $$13.c(((csr)$$13.b()).c()) : dgh.a;
-            if ($$2 != ha.a && $$14.b()) {
-               $$11 = -0.4;
-            } else {
-               $$11 = -0.9;
-            }
-         }
-
-         cdr $$18 = cdr.a($$3, $$5, $$6 + $$11, $$7, ((cju)$$1.d()).b);
-         if ($$1.A()) {
-            $$18.b($$1.y());
-         }
-
-         $$3.b($$18);
-         $$1.h(1);
-         return $$1;
-      }
-
-      @Override
-      protected void a(id $$0) {
-         $$0.b().c(1000, $$0.c(), 0);
-      }
-   };
-   final cdr.a b;
-
-   public cju(cdr.a $$0, cjg.a $$1) {
+   public cju(bjx<? extends bzi> $$0, cke.a $$1) {
       super($$1);
       this.b = $$0;
-      cvf.a(this, a);
    }
 
    @Override
-   public bhe a(clv $$0) {
-      cqb $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      dfd $$3 = $$1.a_($$2);
-      if (!$$3.a(apv.N)) {
-         return bhe.e;
+   public bib a(cmt $$0) {
+      ht $$1 = $$0.a();
+      hx $$2 = $$0.k();
+      ht $$3 = $$1.a($$2);
+      ccx $$4 = $$0.o();
+      ckj $$5 = $$0.n();
+      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
+         return bib.e;
       } else {
-         cjl $$4 = $$0.n();
-         if (!$$1.B) {
-            dgh $$5 = $$3.b() instanceof csr ? $$3.c(((csr)$$3.b()).c()) : dgh.a;
-            double $$6 = 0.0;
-            if ($$5.b()) {
-               $$6 = 0.5;
+         cqz $$6 = $$0.q();
+         bzi $$8;
+         if (this.b == bjx.ar) {
+            Optional<bzl> $$7 = bzl.a($$6, $$3, $$2);
+            if ($$7.isEmpty()) {
+               return bib.b;
             }
 
-            cdr $$7 = cdr.a($$1, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5, this.b);
-            if ($$4.A()) {
-               $$7.b($$4.y());
+            $$8 = $$7.get();
+         } else if (this.b == bjx.af) {
+            $$8 = new bzj($$6, $$3, $$2);
+         } else {
+            if (this.b != bjx.S) {
+               return bib.a($$6.B);
             }
 
-            $$1.b($$7);
-            $$1.a(djn.t, $$2, djn.a.a($$0.o(), $$1.a_($$2.d())));
+            $$8 = new bzh($$6, $$3, $$2);
          }
 
-         $$4.h(1);
-         return bhe.a($$1.B);
+         rt $$12 = $$5.v();
+         if ($$12 != null) {
+            bjx.a($$6, $$4, $$8, $$12);
+         }
+
+         if ($$8.z()) {
+            if (!$$6.B) {
+               $$8.C();
+               $$6.a($$4, dkl.t, $$8.dj());
+               $$6.b($$8);
+            }
+
+            $$5.h(1);
+            return bib.a($$6.B);
+         } else {
+            return bib.b;
+         }
+      }
+   }
+
+   protected boolean a(ccx $$0, hx $$1, ckj $$2, ht $$3) {
+      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   }
+
+   @Override
+   public void a(ckj $$0, @Nullable cqz $$1, List<ui> $$2, cma $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.b == bjx.ar) {
+         rt $$4 = $$0.v();
+         if ($$4 != null && $$4.b("EntityTag", 10)) {
+            rt $$5 = $$4.p("EntityTag");
+            bzl.c($$5).ifPresentOrElse($$1x -> {
+               $$1x.e().ifPresent($$1xx -> {
+                  $$2.add(ui.c($$1xx.a().b("painting", "title")).a(n.o));
+                  $$2.add(ui.c($$1xx.a().b("painting", "author")).a(n.h));
+               });
+               $$2.add(ui.a("painting.dimensions", asy.e(((bzm)$$1x.a()).a(), 16), asy.e(((bzm)$$1x.a()).b(), 16)));
+            }, () -> $$2.add(a));
+         } else if ($$3.b()) {
+            $$2.add(a);
+         }
       }
    }
 }

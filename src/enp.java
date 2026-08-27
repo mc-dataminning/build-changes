@@ -1,21 +1,27 @@
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class enp {
-   public final eoy a = new eoy(ac.g(), TimeUnit.MILLISECONDS, ac.b);
-   public final eoy.e<List<emp>> b;
-   public final eoy.e<List<emq>> c;
-   public final eoy.e<Integer> d;
-   public final eoy.e<Boolean> e;
-   public final eoy.e<emo> f;
-   public final enq g = new enq(new epe());
+public class enp extends eod {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public enp(elz $$0) {
-      this.c = this.a.a("server list", () -> $$0.b().a, Duration.ofSeconds(60L), eoz.a);
-      this.d = this.a.a("pending invite count", $$0::g, Duration.ofSeconds(10L), eoz.a(360));
-      this.e = this.a.a("trial availablity", $$0::k, Duration.ofSeconds(60L), eoz.a(60));
-      this.f = this.a.a("unread news", $$0::j, Duration.ofMinutes(5L), eoz.a);
-      this.b = this.a.a("notifications", $$0::c, Duration.ofMinutes(5L), eoz.a);
+   public static enp a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      enp $$2 = new enp();
+
+      try {
+         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
+         $$2.a = eqa.a("address", $$3, null);
+         $$2.b = eqa.a("resourcePackUrl", $$3, null);
+         $$2.c = eqa.a("resourcePackHash", $$3, null);
+      } catch (Exception var4) {
+         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
+      }
+
+      return $$2;
    }
 }

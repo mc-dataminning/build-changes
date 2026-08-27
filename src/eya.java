@@ -1,127 +1,188 @@
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class eya extends eye {
-   private static final aez a = new aez("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int k = 4;
-   private static final int l = 204;
-   private static final int m = 98;
-   private static final tl n = tl.c("menu.returnToGame");
-   private static final tl o = tl.c("gui.advancements");
-   private static final tl p = tl.c("gui.stats");
-   private static final tl q = tl.c("menu.sendFeedback");
-   private static final tl s = tl.c("menu.reportBugs");
-   private static final tl t = tl.c("menu.options");
-   private static final tl u = tl.c("menu.shareToLan");
-   private static final tl v = tl.c("menu.playerReporting");
-   private static final tl w = tl.c("menu.returnToMenu");
-   private static final tl x = tl.c("menu.savingLevel");
-   private static final tl y = tl.c("menu.game");
-   private static final tl z = tl.c("menu.paused");
-   private final boolean A;
-   @Nullable
-   private esk B;
+public class eya extends ezd {
+   static final afw b = new afw("container/slot");
+   private static final int c = 18;
+   private static final int k = 20;
+   private static final int l = 1;
+   private static final int m = 1;
+   private static final int n = 2;
+   private static final int o = 2;
+   protected final fds a;
+   private final Consumer<dud> p;
+   dud q;
+   private ui s;
+   private ui t;
+   private eya.a u;
+   private etj v;
 
-   public eya(boolean $$0) {
-      super($$0 ? y : z);
-      this.A = $$0;
+   public eya(fds $$0, Consumer<dud> $$1, dud $$2) {
+      super(ui.c("createWorld.customize.flat.title"));
+      this.a = $$0;
+      this.p = $$1;
+      this.q = $$2;
    }
 
-   public boolean l() {
-      return this.A;
+   public dud k() {
+      return this.q;
    }
 
-   @Override
-   protected void aH_() {
-      if (this.A) {
-         this.D();
-      }
-
-      this.d(new etr(0, this.A ? 40 : 10, this.g, 9, this.e, this.i));
-   }
-
-   private void D() {
-      evt $$0 = new evt();
-      $$0.c().a(4, 4, 4, 0);
-      evt.b $$1 = $$0.d(2);
-      $$1.a(esk.a(n, $$0x -> {
-         this.f.a(null);
-         this.f.n.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(o, () -> new eyu(this.f.s.cn.r())));
-      $$1.a(this.a(p, () -> new eyn(this, this.f.s.j())));
-      $$1.a(this.a(q, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
-      $$1.a(this.a(s, "https://aka.ms/snapshotbugs?ref=game")).i = !aa.b().d().a();
-      $$1.a(this.a(t, () -> new exw(this, this.f.m)));
-      if (this.f.S() && !this.f.T().p()) {
-         $$1.a(this.a(u, () -> new eyf(this)));
-      } else {
-         $$1.a(this.a(v, fcn::new));
-      }
-
-      tl $$2 = this.f.R() ? w : tk.p;
-      this.B = $$1.a(esk.a($$2, $$0x -> {
-         $$0x.i = false;
-         this.f.aX().a(this.f, this, this::E, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      evs.a($$0, 0, 0, this.g, this.h, 0.5F, 0.25F);
-      $$0.a(this::d);
-   }
-
-   private void E() {
-      boolean $$0 = this.f.R();
-      fjd $$1 = this.f.Q();
-      this.f.r.U();
-      if ($$0) {
-         this.f.b(new exl(x));
-      } else {
-         this.f.z();
-      }
-
-      eyj $$2 = new eyj();
-      if ($$0) {
-         this.f.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.f.a(new elu($$2));
-      } else {
-         this.f.a(new fbb($$2));
-      }
+   public void a(dud $$0) {
+      this.q = $$0;
    }
 
    @Override
-   public void c() {
-      super.c();
+   protected void aM_() {
+      this.s = ui.c("createWorld.customize.flat.tile");
+      this.t = ui.c("createWorld.customize.flat.height");
+      this.u = new eya.a();
+      this.e(this.u);
+      this.v = this.d(etj.a(ui.c("createWorld.customize.flat.removeLayer"), $$0 -> {
+         if (this.C()) {
+            List<dua> $$1 = this.q.e();
+            int $$2 = this.u.i().indexOf(this.u.f());
+            int $$3 = $$1.size() - $$2 - 1;
+            $$1.remove($$3);
+            this.u.a($$1.isEmpty() ? null : this.u.i().get(Math.min($$2, $$1.size() - 1)));
+            this.q.g();
+            this.u.e();
+            this.l();
+         }
+      }).a(this.g / 2 - 155, this.h - 52, 150, 20).a());
+      this.d(etj.a(ui.c("createWorld.customize.presets"), $$0 -> {
+         this.f.a(new eza(this));
+         this.q.g();
+         this.l();
+      }).a(this.g / 2 + 5, this.h - 52, 150, 20).a());
+      this.d(etj.a(uh.d, $$0 -> {
+         this.p.accept(this.q);
+         this.f.a(this.a);
+         this.q.g();
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
+      this.d(etj.a(uh.e, $$0 -> {
+         this.f.a(this.a);
+         this.q.g();
+      }).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.q.g();
+      this.l();
+   }
+
+   void l() {
+      this.v.i = this.C();
+   }
+
+   private boolean C() {
+      return this.u.f() != null;
    }
 
    @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
+   public void aC_() {
+      this.f.a(this.a);
+   }
+
+   @Override
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.A && this.f != null && this.f.aX().c() && this.B != null) {
-         $$0.a(a, this.B.r() + this.B.l() - 17, this.B.t() + 3, 15, 15);
+      this.u.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      int $$4 = this.g / 2 - 92 - 16;
+      $$0.b(this.i, this.s, $$4, 32, 16777215);
+      $$0.b(this.i, this.t, $$4 + 2 + 213 - this.i.a(this.t), 32, 16777215);
+   }
+
+   class a extends euf<eya.a.a> {
+      private static final afw m = new afw("textures/gui/container/stats_icons.png");
+
+      public a() {
+         super(eya.this.f, eya.this.g, eya.this.h, 43, eya.this.h - 60, 24);
+
+         for (int $$0 = 0; $$0 < eya.this.q.e().size(); $$0++) {
+            this.b(new eya.a.a());
+         }
       }
-   }
 
-   @Override
-   public void b(erz $$0, int $$1, int $$2, float $$3) {
-      if (this.A) {
-         super.b($$0, $$1, $$2, $$3);
+      public void a(@Nullable eya.a.a $$0) {
+         super.a($$0);
+         eya.this.l();
       }
-   }
 
-   private esk a(tl $$0, Supplier<eye> $$1) {
-      return esk.a($$0, $$1x -> this.f.a($$1.get())).a(98).a();
-   }
+      @Override
+      protected int c() {
+         return this.e - 70;
+      }
 
-   private esk a(tl $$0, String $$1) {
-      return this.a($$0, () -> new ewx($$1x -> {
-            if ($$1x) {
-               ac.i().a($$1);
+      public void e() {
+         int $$0 = this.i().indexOf(this.f());
+         this.j();
+
+         for (int $$1 = 0; $$1 < eya.this.q.e().size(); $$1++) {
+            this.b(new eya.a.a());
+         }
+
+         List<eya.a.a> $$2 = this.i();
+         if ($$0 >= 0 && $$0 < $$2.size()) {
+            this.a($$2.get($$0));
+         }
+      }
+
+      class a extends euf.a<eya.a.a> {
+         @Override
+         public void a(esy $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            dua $$10 = eya.this.q.e().get(eya.this.q.e().size() - $$1 - 1);
+            dgb $$11 = $$10.b();
+            ckj $$12 = this.a($$11);
+            this.a($$0, $$3, $$2, $$12);
+            $$0.a(eya.this.i, $$12.y(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
+            ui $$13;
+            if ($$1 == 0) {
+               $$13 = ui.a("createWorld.customize.flat.layer.top", $$10.a());
+            } else if ($$1 == eya.this.q.e().size() - 1) {
+               $$13 = ui.a("createWorld.customize.flat.layer.bottom", $$10.a());
+            } else {
+               $$13 = ui.a("createWorld.customize.flat.layer", $$10.a());
             }
 
-            this.f.a(this);
-         }, $$1, true));
+            $$0.a(eya.this.i, $$13, $$3 + 2 + 213 - eya.this.i.a($$13), $$2 + 3, 16777215, false);
+         }
+
+         private ckj a(dgb $$0) {
+            cke $$1 = $$0.b().k();
+            if ($$1 == ckm.a) {
+               if ($$0.a(cuc.G)) {
+                  $$1 = ckm.pL;
+               } else if ($$0.a(cuc.H)) {
+                  $$1 = ckm.pM;
+               }
+            }
+
+            return new ckj($$1);
+         }
+
+         @Override
+         public ui a() {
+            dua $$0 = eya.this.q.e().get(eya.this.q.e().size() - a.this.i().indexOf(this) - 1);
+            ckj $$1 = this.a($$0.b());
+            return (ui)(!$$1.b() ? ui.a("narrator.select", $$1.y()) : uh.a);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
+
+         private void a(esy $$0, int $$1, int $$2, ckj $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            if (!$$3.b()) {
+               $$0.b($$3, $$1 + 2, $$2 + 2);
+            }
+         }
+
+         private void a(esy $$0, int $$1, int $$2) {
+            $$0.a(eya.b, $$1, $$2, 0, 18, 18);
+         }
+      }
    }
 }

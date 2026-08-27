@@ -1,70 +1,111 @@
-public abstract class oj {
-   public static void a(nr<cqz> $$0) {
-      hf<dug> $$1 = $$0.a(jc.az);
-      hf<dmp<?>> $$2 = $$0.a(jc.as);
-      $$0.a(crg.a, om.j($$1, $$2));
-      $$0.a(crg.b, om.a($$1, $$2, false, false, false));
-      $$0.a(crg.c, om.a($$1, $$2, true, false, false));
-      $$0.a(crg.d, om.a($$1, $$2, false, true, false));
-      $$0.a(crg.e, om.a($$1, $$2, false, true, true));
-      $$0.a(crg.f, om.d($$1, $$2));
-      $$0.a(crg.g, om.h($$1, $$2));
-      $$0.a(crg.h, om.i($$1, $$2));
-      $$0.a(crg.i, om.b($$1, $$2, false, false, false));
-      $$0.a(crg.j, om.b($$1, $$2, false, false, true));
-      $$0.a(crg.k, om.b($$1, $$2, true, false, false));
-      $$0.a(crg.l, om.g($$1, $$2));
-      $$0.a(crg.m, om.b($$1, $$2, true, true, false));
-      $$0.a(crg.n, om.a($$1, $$2, false));
-      $$0.a(crg.o, om.a($$1, $$2, true));
-      $$0.a(crg.p, om.h($$1, $$2, false));
-      $$0.a(crg.q, om.h($$1, $$2, true));
-      $$0.a(crg.r, om.a($$1, $$2, false, false));
-      $$0.a(crg.s, om.a($$1, $$2, false, true));
-      $$0.a(crg.t, om.b($$1, $$2, false));
-      $$0.a(crg.u, om.b($$1, $$2, false));
-      $$0.a(crg.v, om.b($$1, $$2, true));
-      $$0.a(crg.w, om.a($$1, $$2, true, false));
-      $$0.a(crg.x, om.b($$1, $$2));
-      $$0.a(crg.y, om.a($$1, $$2));
-      $$0.a(crg.z, om.c($$1, $$2));
-      $$0.a(crg.A, om.c($$1, $$2, false));
-      $$0.a(crg.B, om.c($$1, $$2, false));
-      $$0.a(crg.C, om.c($$1, $$2, true));
-      $$0.a(crg.D, om.j($$1, $$2, false));
-      $$0.a(crg.E, om.j($$1, $$2, true));
-      $$0.a(crg.F, om.o($$1, $$2));
-      $$0.a(crg.G, om.n($$1, $$2));
-      $$0.a(crg.H, om.k($$1, $$2));
-      $$0.a(crg.I, om.l($$1, $$2));
-      $$0.a(crg.J, om.m($$1, $$2));
-      $$0.a(crg.K, om.i($$1, $$2, false));
-      $$0.a(crg.L, om.i($$1, $$2, true));
-      $$0.a(crg.M, om.b($$1, $$2, false, false));
-      $$0.a(crg.N, om.b($$1, $$2, true, false));
-      $$0.a(crg.O, om.b($$1, $$2, false, true));
-      $$0.a(crg.P, om.f($$1, $$2));
-      $$0.a(crg.Q, om.f($$1, $$2, false));
-      $$0.a(crg.R, om.f($$1, $$2, true));
-      $$0.a(crg.S, om.e($$1, $$2, false));
-      $$0.a(crg.T, om.e($$1, $$2, true));
-      $$0.a(crg.U, om.d($$1, $$2, false));
-      $$0.a(crg.V, om.d($$1, $$2, true));
-      $$0.a(crg.W, om.g($$1, $$2, false));
-      $$0.a(crg.X, om.g($$1, $$2, true));
-      $$0.a(crg.Y, om.e($$1, $$2));
-      $$0.a(crg.Z, om.q($$1, $$2));
-      $$0.a(crg.aa, om.p($$1, $$2));
-      $$0.a(crg.ab, om.r($$1, $$2));
-      $$0.a(crg.ac, ol.a($$1, $$2));
-      $$0.a(crg.ad, ol.e($$1, $$2));
-      $$0.a(crg.ae, ol.d($$1, $$2));
-      $$0.a(crg.af, ol.b($$1, $$2));
-      $$0.a(crg.ag, ol.c($$1, $$2));
-      $$0.a(crg.ah, ok.b($$1, $$2));
-      $$0.a(crg.ai, ok.d($$1, $$2));
-      $$0.a(crg.aj, ok.c($$1, $$2));
-      $$0.a(crg.ak, ok.e($$1, $$2));
-      $$0.a(crg.al, ok.a($$1, $$2));
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
+public class oj {
+   public static void a(oo<dxj> $$0) {
+      ic<dzr> $$1 = $$0.a(jz.aB);
+      ib<dzr> $$2 = $$1.b(ow.t);
+      ic<dxj> $$3 = $$0.a(jz.aD);
+      ib<dxj> $$4 = $$3.b(ov.a);
+      ov.a(
+         $$0,
+         "bastion/units/center_pieces",
+         new dxj(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dxh.b("bastion/units/center_pieces/center_0", $$2), 1),
+               Pair.of(dxh.b("bastion/units/center_pieces/center_1", $$2), 1),
+               Pair.of(dxh.b("bastion/units/center_pieces/center_2", $$2), 1)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "bastion/units/pathways",
+         new dxj(
+            $$4,
+            ImmutableList.of(Pair.of(dxh.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(dxh.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "bastion/units/walls/wall_bases",
+         new dxj(
+            $$4,
+            ImmutableList.of(Pair.of(dxh.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(dxh.b("bastion/units/walls/connected_wall", $$2), 1)),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "bastion/units/stages/stage_0",
+         new dxj(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dxh.b("bastion/units/stages/stage_0_0", $$2), 1),
+               Pair.of(dxh.b("bastion/units/stages/stage_0_1", $$2), 1),
+               Pair.of(dxh.b("bastion/units/stages/stage_0_2", $$2), 1),
+               Pair.of(dxh.b("bastion/units/stages/stage_0_3", $$2), 1)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "bastion/units/stages/stage_1",
+         new dxj(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dxh.b("bastion/units/stages/stage_1_0", $$2), 1),
+               Pair.of(dxh.b("bastion/units/stages/stage_1_1", $$2), 1),
+               Pair.of(dxh.b("bastion/units/stages/stage_1_2", $$2), 1),
+               Pair.of(dxh.b("bastion/units/stages/stage_1_3", $$2), 1)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a($$0, "bastion/units/stages/rot/stage_1", new dxj($$4, ImmutableList.of(Pair.of(dxh.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), dxj.a.b));
+      ov.a(
+         $$0,
+         "bastion/units/stages/stage_2",
+         new dxj(
+            $$4, ImmutableList.of(Pair.of(dxh.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(dxh.b("bastion/units/stages/stage_2_1", $$2), 1)), dxj.a.b
+         )
+      );
+      ov.a(
+         $$0,
+         "bastion/units/stages/stage_3",
+         new dxj(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dxh.b("bastion/units/stages/stage_3_0", $$2), 1),
+               Pair.of(dxh.b("bastion/units/stages/stage_3_1", $$2), 1),
+               Pair.of(dxh.b("bastion/units/stages/stage_3_2", $$2), 1),
+               Pair.of(dxh.b("bastion/units/stages/stage_3_3", $$2), 1)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a($$0, "bastion/units/fillers/stage_0", new dxj($$4, ImmutableList.of(Pair.of(dxh.b("bastion/units/fillers/stage_0", $$2), 1)), dxj.a.b));
+      ov.a($$0, "bastion/units/edges", new dxj($$4, ImmutableList.of(Pair.of(dxh.b("bastion/units/edges/edge_0", $$2), 1)), dxj.a.b));
+      ov.a($$0, "bastion/units/wall_units", new dxj($$4, ImmutableList.of(Pair.of(dxh.b("bastion/units/wall_units/unit_0", $$2), 1)), dxj.a.b));
+      ov.a($$0, "bastion/units/edge_wall_units", new dxj($$4, ImmutableList.of(Pair.of(dxh.b("bastion/units/wall_units/edge_0_large", $$2), 1)), dxj.a.b));
+      ov.a(
+         $$0,
+         "bastion/units/ramparts",
+         new dxj(
+            $$4,
+            ImmutableList.of(
+               Pair.of(dxh.b("bastion/units/ramparts/ramparts_0", $$2), 1),
+               Pair.of(dxh.b("bastion/units/ramparts/ramparts_1", $$2), 1),
+               Pair.of(dxh.b("bastion/units/ramparts/ramparts_2", $$2), 1)
+            ),
+            dxj.a.b
+         )
+      );
+      ov.a($$0, "bastion/units/large_ramparts", new dxj($$4, ImmutableList.of(Pair.of(dxh.b("bastion/units/ramparts/ramparts_0", $$2), 1)), dxj.a.b));
+      ov.a($$0, "bastion/units/rampart_plates", new dxj($$4, ImmutableList.of(Pair.of(dxh.b("bastion/units/rampart_plates/plate_0", $$2), 1)), dxj.a.b));
    }
 }

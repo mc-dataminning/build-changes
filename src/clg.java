@@ -1,46 +1,55 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class clg extends cjg {
-   public clg(cjg.a $$0) {
+public class clg extends cke implements cjk {
+   public static final int a = 5;
+   public static final float b = 3.0F;
+   public static final String c = "Base";
+
+   public clg(cke.a $$0) {
       super($$0);
+      cwd.a(this, cht.a);
    }
 
    @Override
-   public bhe a(clv $$0) {
-      cqb $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      dfd $$3 = $$1.a_($$2);
-      if ($$3.a(cte.oa)) {
-         return cxl.a($$0.o(), $$1, $$2, $$3, $$0.n()) ? bhe.a($$1.B) : bhe.d;
-      } else {
-         return bhe.d;
-      }
+   public String j(ckj $$0) {
+      return cic.a($$0) != null ? this.a() + "." + d($$0).b() : super.j($$0);
    }
 
    @Override
-   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
-      cjl $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(apq.c.b(this));
-      return bhf.a($$3, $$0.w_());
+   public void a(ckj $$0, @Nullable cqz $$1, List<ui> $$2, cma $$3) {
+      chz.a($$0, $$2);
    }
 
-   public static boolean a(@Nullable qw $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$0.b("pages", 9)) {
-         return false;
-      } else {
-         rc $$1 = $$0.c("pages", 8);
+   @Override
+   public cmc c(ckj $$0) {
+      return cmc.d;
+   }
 
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            String $$3 = $$1.j($$2);
-            if ($$3.length() > 32767) {
-               return false;
-            }
-         }
+   @Override
+   public int b(ckj $$0) {
+      return 72000;
+   }
 
-         return true;
-      }
+   @Override
+   public bic<ckj> a(cqz $$0, ccx $$1, bia $$2) {
+      ckj $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bic.b($$3);
+   }
+
+   @Override
+   public boolean a(ckj $$0, ckj $$1) {
+      return $$1.a(ara.b) || super.a($$0, $$1);
+   }
+
+   public static cix d(ckj $$0) {
+      rt $$1 = cic.a($$0);
+      return $$1 != null ? cix.a($$1.h("Base")) : cix.a;
+   }
+
+   @Override
+   public bjy g() {
+      return bjy.b;
    }
 }

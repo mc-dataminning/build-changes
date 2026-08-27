@@ -1,41 +1,40 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
+public class aaz implements wb<xu> {
+   private final float a;
+   private final int b;
+   private final int c;
 
-public class aaz implements ve<wx> {
-   private final List<cmq<?>> a;
-
-   public aaz(Collection<cmq<?>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   public aaz(float $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public aaz(so $$0) {
-      this.a = $$0.a(aaz::b);
+   public aaz(tl $$0) {
+      this.a = $$0.readFloat();
+      this.c = $$0.n();
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a, aaz::a);
+   public void a(tl $$0) {
+      $$0.a(this.a);
+      $$0.c(this.c);
+      $$0.c(this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public List<cmq<?>> a() {
+   public float a() {
       return this.a;
    }
 
-   private static cmq<?> b(so $$0) {
-      aez $$1 = $$0.t();
-      aez $$2 = $$0.t();
-      cmp<?> $$3 = jb.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
-      return new cmq<>($$2, $$3);
+   public int d() {
+      return this.b;
    }
 
-   public static <T extends cmp<?>> void a(so $$0, cmq<?> $$1) {
-      $$0.a(jb.u.b($$1.b().an_()));
-      $$0.a($$1.a());
-      ((cms<cmp<?>>)$$1.b().an_()).a($$0, $$1.b());
+   public int e() {
+      return this.c;
    }
 }

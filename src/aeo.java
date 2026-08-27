@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface aeo {
+   afw a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aeo {
+   void a(tl var1);
 }

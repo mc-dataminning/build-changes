@@ -1,37 +1,69 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.BitSet;
+import javax.annotation.Nullable;
 
-public class die {
-   private final BitSet a = new BitSet();
+public class die extends dii {
+   private final ib<crx> n;
 
-   public void a(int $$0, int $$1) {
-      this.a.set($$0, $$0 + $$1);
+   public die(cqz $$0, cqg $$1, ib<crx> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
-   public void b(int $$0, int $$1) {
-      this.a.clear($$0, $$0 + $$1);
+   @Override
+   public dgb a_(ht $$0) {
+      return cuc.nb.o();
    }
 
-   public int a(int $$0) {
-      int $$1 = 0;
-
-      while (true) {
-         int $$2 = this.a.nextClearBit($$1);
-         int $$3 = this.a.nextSetBit($$2);
-         if ($$3 == -1 || $$3 - $$2 >= $$0) {
-            this.a($$2, $$0);
-            return $$2;
-         }
-
-         $$1 = $$3;
-      }
+   @Nullable
+   @Override
+   public dgb a(ht $$0, dgb $$1, boolean $$2) {
+      return null;
    }
 
-   @VisibleForTesting
-   public IntSet a() {
-      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
+   @Override
+   public ebe b_(ht $$0) {
+      return ebf.a.g();
+   }
+
+   @Override
+   public int h(ht $$0) {
+      return 0;
+   }
+
+   @Nullable
+   @Override
+   public ddx a(ht $$0, dii.b $$1) {
+      return null;
+   }
+
+   @Override
+   public void b(ddx $$0) {
+   }
+
+   @Override
+   public void a(ddx $$0) {
+   }
+
+   @Override
+   public void d(ht $$0) {
+   }
+
+   @Override
+   public boolean C() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public alj D() {
+      return alj.b;
+   }
+
+   @Override
+   public ib<crx> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

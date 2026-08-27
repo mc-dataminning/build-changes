@@ -1,143 +1,154 @@
 import javax.annotation.Nullable;
 
-public class eat {
-   public final int a;
-   public final int b;
-   public final int c;
-   private final int m;
-   public int d = -1;
-   public float e;
-   public float f;
-   public float g;
+public class eat implements eaw {
+   public static final int b = 1;
+   protected final crb c;
    @Nullable
-   public eat h;
-   public boolean i;
-   public float j;
-   public float k;
-   public ear l = ear.a;
+   private final eav<?, ?> a;
+   @Nullable
+   private final eav<?, ?> d;
 
-   public eat(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.m = b($$0, $$1, $$2);
-   }
-
-   public eat a(int $$0, int $$1, int $$2) {
-      eat $$3 = new eat($$0, $$1, $$2);
-      $$3.d = this.d;
-      $$3.e = this.e;
-      $$3.f = this.f;
-      $$3.g = this.g;
-      $$3.h = this.h;
-      $$3.i = this.i;
-      $$3.j = this.j;
-      $$3.k = this.k;
-      $$3.l = this.l;
-      return $$3;
-   }
-
-   public static int b(int $$0, int $$1, int $$2) {
-      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
-   }
-
-   public float a(eat $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return asb.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float b(eat $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.c - this.c);
-      return asb.c($$1 * $$1 + $$2 * $$2);
-   }
-
-   public float a(gw $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return asb.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float c(eat $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float b(gw $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float d(eat $$0) {
-      float $$1 = (float)Math.abs($$0.a - this.a);
-      float $$2 = (float)Math.abs($$0.b - this.b);
-      float $$3 = (float)Math.abs($$0.c - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public float c(gw $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.a);
-      float $$2 = (float)Math.abs($$0.v() - this.b);
-      float $$3 = (float)Math.abs($$0.w() - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public gw a() {
-      return new gw(this.a, this.b, this.c);
-   }
-
-   public ehh b() {
-      return new ehh((double)this.a, (double)this.b, (double)this.c);
+   public eat(dil $$0, boolean $$1, boolean $$2) {
+      this.c = $$0.q();
+      this.a = $$1 ? new eam($$0) : null;
+      this.d = $$2 ? new eax($$0) : null;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof eat $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   public void a(ht $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0);
+      }
    }
 
    @Override
-   public int hashCode() {
-      return this.m;
-   }
-
-   public boolean c() {
-      return this.d >= 0;
+   public boolean K_() {
+      return this.d != null && this.d.K_() ? true : this.a != null && this.a.K_();
    }
 
    @Override
-   public String toString() {
-      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.d != null) {
+         $$0 += this.d.a();
+      }
+
+      return $$0;
    }
 
-   public void a(so $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      $$0.a(this.g);
+   @Override
+   public void a(iu $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
    }
 
-   public static eat b(so $$0) {
-      eat $$1 = new eat($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   @Override
+   public void a(cqg $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
    }
 
-   protected static void a(so $$0, eat $$1) {
-      $$1.j = $$0.readFloat();
-      $$1.k = $$0.readFloat();
-      $$1.i = $$0.readBoolean();
-      $$1.l = $$0.b(ear.class);
-      $$1.g = $$0.readFloat();
+   @Override
+   public void b(cqg $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public ear a(cri $$0) {
+      if ($$0 == cri.b) {
+         return (ear)(this.a == null ? ear.a.a : this.a);
+      } else {
+         return (ear)(this.d == null ? ear.a.a : this.d);
+      }
+   }
+
+   public String a(cri $$0, iu $$1) {
+      if ($$0 == cri.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
+         }
+      } else if (this.d != null) {
+         return this.d.b($$1.s());
+      }
+
+      return "n/a";
+   }
+
+   public eas.b b(cri $$0, iu $$1) {
+      if ($$0 == cri.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.d != null) {
+         return this.d.c($$1.s());
+      }
+
+      return eas.b.a;
+   }
+
+   public void a(cri $$0, iu $$1, @Nullable did $$2) {
+      if ($$0 == cri.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.d != null) {
+         this.d.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(cqg $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0, $$1);
+      }
+   }
+
+   public int a(ht $$0, int $$1) {
+      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(iu $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
+   }
+
+   public int c() {
+      return this.c.ak() + 2;
+   }
+
+   public int d() {
+      return this.c.al() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

@@ -1,22 +1,68 @@
-import com.mojang.serialization.Codec;
+public final class dlu {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public interface dlu<P extends dlt> {
-   dlu<dlz> a = a("matching_blocks", dlz.a);
-   dlu<dly> b = a("matching_block_tag", dly.e);
-   dlu<dma> c = a("matching_fluids", dma.a);
-   dlu<dlw> d = a("has_sturdy_face", dlw.a);
-   dlu<dmd> e = a("solid", dmd.a);
-   dlu<dmc> f = a("replaceable", dmc.a);
-   dlu<dmg> g = a("would_survive", dmg.a);
-   dlu<dlx> h = a("inside_world_bounds", dlx.a);
-   dlu<dls> i = a("any_of", dls.a);
-   dlu<dlr> j = a("all_of", dlr.a);
-   dlu<dmb> k = a("not", dmb.a);
-   dlu<dmf> l = a("true", dmf.e);
+   private dlu() {
+   }
 
-   Codec<P> codec();
+   protected static dlo.c a(dld $$0, dld $$1, dld $$2, dlx $$3) {
+      dgb $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         dlu.a $$8 = $$6 > 0.0 ? dlu.a.a : dlu.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = asy.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               ate $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = asy.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
+         }
+      };
+   }
 
-   private static <P extends dlt> dlu<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.P, $$0, () -> $$1);
+   protected static enum a {
+      a(cuc.qN.o(), cuc.sf.o(), cuc.c.o(), 0, 50),
+      b(cuc.Q.o(), cuc.se.o(), cuc.qz.o(), -60, -8);
+
+      final dgb e;
+      final dgb f;
+      final dgb g;
+      protected final int c;
+      protected final int d;
+
+      private a(dgb $$0, dgb $$1, dgb $$2, int $$3, int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
+      }
    }
 }

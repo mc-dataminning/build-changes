@@ -1,97 +1,60 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class eeg extends edw {
+public class eeg extends eed {
    public static final Codec<eeg> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  arj.a(Codec.unboundedMap(jb.g.r(), egf.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
+      $$0 -> $$0.group(arh.a(jz.E).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
             .apply($$0, eeg::new)
    );
-   private final Map<he<cnu>, ege> b;
-   private final boolean c;
+   private final arh<cke> j;
+   private final boolean k;
 
-   eeg(List<efj> $$0, Map<he<cnu>, ege> $$1, boolean $$2) {
-      super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+   private eeg(arh<cke> $$0, boolean $$1, int $$2, int $$3, List<egh> $$4, List<eev> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public edy b() {
+   public eec a() {
       return edz.f;
    }
 
    @Override
-   public Set<ees<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   public void a(Consumer<ckj> $$0, edi $$1) {
+      jy.i.c(this.j).forEach($$1x -> $$0.accept(new ckj($$1x)));
+   }
+
+   private boolean a(edi $$0, Consumer<eea> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final ib<cke> $$2 : jy.i.c(this.j)) {
+            $$1.accept(new eed.c() {
+               @Override
+               public void a(Consumer<ckj> $$0, edi $$1) {
+                  $$0.accept(new ckj($$2));
+               }
+            });
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public cjl a(cjl $$0, eck $$1) {
-      Object2IntMap<cnu> $$2 = new Object2IntOpenHashMap();
-      this.b.forEach(($$2x, $$3) -> $$2.put((cnu)$$2x.a(), $$3.a($$1)));
-      if ($$0.d() == cjo.qb) {
-         cjl $$3 = new cjl(cjo.tC);
-         $$2.forEach(($$1x, $$2x) -> cih.a($$3, new cnx($$1x, $$2x)));
-         return $$3;
-      } else {
-         Map<cnu, Integer> $$4 = cnw.a($$0);
-         if (this.c) {
-            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
-         } else {
-            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
-         }
-
-         cnw.a($$4, $$0);
-         return $$0;
-      }
+   public boolean expand(edi $$0, Consumer<eea> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   private static void a(Map<cnu, Integer> $$0, cnu $$1, int $$2) {
-      if ($$2 == 0) {
-         $$0.remove($$1);
-      } else {
-         $$0.put($$1, $$2);
-      }
+   public static eed.a<?> a(arh<cke> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eeg($$0, false, $$1, $$2, $$3, $$4));
    }
 
-   public static class a extends edw.a<eeg.a> {
-      private final Builder<he<cnu>, ege> a = ImmutableMap.builder();
-      private final boolean b;
-
-      public a() {
-         this(false);
-      }
-
-      public a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected eeg.a a() {
-         return this;
-      }
-
-      public eeg.a a(cnu $$0, ege $$1) {
-         this.a.put($$0.j(), $$1);
-         return this;
-      }
-
-      @Override
-      public edx b() {
-         return new eeg(this.g(), this.a.build(), this.b);
-      }
+   public static eed.a<?> b(arh<cke> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eeg($$0, true, $$1, $$2, $$3, $$4));
    }
 }

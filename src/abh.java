@@ -1,32 +1,40 @@
-public class abh implements ve<abd> {
-   private final int a;
-   private final gw b;
+public class abh implements wb<xu> {
+   private final long a;
+   private final long b;
 
-   public abh(int $$0, gw $$1) {
+   public abh(long $$0, long $$1, boolean $$2) {
       this.a = $$0;
-      this.b = $$1;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.b = $$3;
    }
 
-   public abh(so $$0) {
-      this.a = $$0.n();
-      this.b = $$0.e();
+   public abh(tl $$0) {
+      this.a = $$0.readLong();
+      this.b = $$0.readLong();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public void a(tl $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
    }
 
-   public void a(abd $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public long a() {
       return this.a;
    }
 
-   public gw d() {
+   public long d() {
       return this.b;
    }
 }

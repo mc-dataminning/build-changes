@@ -1,61 +1,23 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class frl implements fra<dey> {
+   private final ffg a;
 
-public class frl implements frj.a {
-   private static final float a = 0.02F;
-   private final Map<gw, frl.a> b = Maps.newHashMap();
-
-   public void a(gw $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new frl.a($$1, $$2, ac.b() + (long)$$3));
+   public frl(frb.a $$0) {
+      this.a = new ffg($$0.a(fiv.m));
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
-      long $$5 = ac.b();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((frl.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
-   }
-
-   private void a(elj $$0, foa $$1, gw $$2, frl.a $$3) {
-      frj.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         frj.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
-      }
-   }
-
-   static class a {
-      public int a;
-      public String b;
-      public long c;
-
-      public a(int $$0, String $$1, long $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
-      }
-
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
-      }
-
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
-      }
-
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+   public void a(dey $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
+      dgb $$6 = $$0.q();
+      if ($$6.c(cyj.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(cyj.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         eml $$8 = frj.a.a($$3, fpj::c);
+         this.a.b($$2, $$8, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$2.b();
       }
    }
 }

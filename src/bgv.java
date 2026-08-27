@@ -1,11 +1,27 @@
-import javax.annotation.Nullable;
+public abstract class bgv<R extends Runnable> extends bgr<R> {
+   private int b;
 
-public interface bgv {
-   void a();
+   public bgv(String $$0) {
+      super($$0);
+   }
 
-   static void a_(@Nullable Object $$0) {
-      if ($$0 instanceof bgv) {
-         ((bgv)$$0).a();
+   @Override
+   public boolean at() {
+      return this.br() || super.at();
+   }
+
+   protected boolean br() {
+      return this.b != 0;
+   }
+
+   @Override
+   public void d(R $$0) {
+      this.b++;
+
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
       }
    }
 }

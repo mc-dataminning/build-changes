@@ -1,135 +1,189 @@
-import com.google.common.base.Preconditions;
-
 public class eak {
-   private static final eak[] am = new eak[64];
-   public static final eak a = new eak(0, 0);
-   public static final eak b = new eak(1, 8368696);
-   public static final eak c = new eak(2, 16247203);
-   public static final eak d = new eak(3, 13092807);
-   public static final eak e = new eak(4, 16711680);
-   public static final eak f = new eak(5, 10526975);
-   public static final eak g = new eak(6, 10987431);
-   public static final eak h = new eak(7, 31744);
-   public static final eak i = new eak(8, 16777215);
-   public static final eak j = new eak(9, 10791096);
-   public static final eak k = new eak(10, 9923917);
-   public static final eak l = new eak(11, 7368816);
-   public static final eak m = new eak(12, 4210943);
-   public static final eak n = new eak(13, 9402184);
-   public static final eak o = new eak(14, 16776437);
-   public static final eak p = new eak(15, 14188339);
-   public static final eak q = new eak(16, 11685080);
-   public static final eak r = new eak(17, 6724056);
-   public static final eak s = new eak(18, 15066419);
-   public static final eak t = new eak(19, 8375321);
-   public static final eak u = new eak(20, 15892389);
-   public static final eak v = new eak(21, 5000268);
-   public static final eak w = new eak(22, 10066329);
-   public static final eak x = new eak(23, 5013401);
-   public static final eak y = new eak(24, 8339378);
-   public static final eak z = new eak(25, 3361970);
-   public static final eak A = new eak(26, 6704179);
-   public static final eak B = new eak(27, 6717235);
-   public static final eak C = new eak(28, 10040115);
-   public static final eak D = new eak(29, 1644825);
-   public static final eak E = new eak(30, 16445005);
-   public static final eak F = new eak(31, 6085589);
-   public static final eak G = new eak(32, 4882687);
-   public static final eak H = new eak(33, 55610);
-   public static final eak I = new eak(34, 8476209);
-   public static final eak J = new eak(35, 7340544);
-   public static final eak K = new eak(36, 13742497);
-   public static final eak L = new eak(37, 10441252);
-   public static final eak M = new eak(38, 9787244);
-   public static final eak N = new eak(39, 7367818);
-   public static final eak O = new eak(40, 12223780);
-   public static final eak P = new eak(41, 6780213);
-   public static final eak Q = new eak(42, 10505550);
-   public static final eak R = new eak(43, 3746083);
-   public static final eak S = new eak(44, 8874850);
-   public static final eak T = new eak(45, 5725276);
-   public static final eak U = new eak(46, 8014168);
-   public static final eak V = new eak(47, 4996700);
-   public static final eak W = new eak(48, 4993571);
-   public static final eak X = new eak(49, 5001770);
-   public static final eak Y = new eak(50, 9321518);
-   public static final eak Z = new eak(51, 2430480);
-   public static final eak aa = new eak(52, 12398641);
-   public static final eak ab = new eak(53, 9715553);
-   public static final eak ac = new eak(54, 6035741);
-   public static final eak ad = new eak(55, 1474182);
-   public static final eak ae = new eak(56, 3837580);
-   public static final eak af = new eak(57, 5647422);
-   public static final eak ag = new eak(58, 1356933);
-   public static final eak ah = new eak(59, 6579300);
-   public static final eak ai = new eak(60, 14200723);
-   public static final eak aj = new eak(61, 8365974);
-   public final int ak;
-   public final int al;
+   protected static final int[][] a = new int[][]{
+      {1, 1, 0},
+      {-1, 1, 0},
+      {1, -1, 0},
+      {-1, -1, 0},
+      {1, 0, 1},
+      {-1, 0, 1},
+      {1, 0, -1},
+      {-1, 0, -1},
+      {0, 1, 1},
+      {0, -1, 1},
+      {0, 1, -1},
+      {0, -1, -1},
+      {1, 1, 0},
+      {0, -1, 1},
+      {-1, 1, 0},
+      {0, -1, -1}
+   };
+   private static final double e = Math.sqrt(3.0);
+   private static final double f = 0.5 * (e - 1.0);
+   private static final double g = (3.0 - e) / 6.0;
+   private final int[] h = new int[512];
+   public final double b;
+   public final double c;
+   public final double d;
 
-   private eak(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
+   public eak(ate $$0) {
+      this.b = $$0.j() * 256.0;
+      this.c = $$0.j() * 256.0;
+      this.d = $$0.j() * 256.0;
+      int $$1 = 0;
+
+      while ($$1 < 256) {
+         this.h[$$1] = $$1++;
+      }
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         int $$3 = $$0.a(256 - $$2);
+         int $$4 = this.h[$$2];
+         this.h[$$2] = this.h[$$3 + $$2];
+         this.h[$$3 + $$2] = $$4;
+      }
+   }
+
+   private int a(int $$0) {
+      return this.h[$$0 & 0xFF];
+   }
+
+   protected static double a(int[] $$0, double $$1, double $$2, double $$3) {
+      return (double)$$0[0] * $$1 + (double)$$0[1] * $$2 + (double)$$0[2] * $$3;
+   }
+
+   private double a(int $$0, double $$1, double $$2, double $$3, double $$4) {
+      double $$5 = $$4 - $$1 * $$1 - $$2 * $$2 - $$3 * $$3;
+      double $$6;
+      if ($$5 < 0.0) {
+         $$6 = 0.0;
       } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
+         $$5 *= $$5;
+         $$6 = $$5 * $$5 * a(a[$$0], $$1, $$2, $$3);
       }
+
+      return $$6;
    }
 
-   public int a(eak.a $$0) {
-      if (this == a) {
-         return 0;
+   public double a(double $$0, double $$1) {
+      double $$2 = ($$0 + $$1) * f;
+      int $$3 = asy.a($$0 + $$2);
+      int $$4 = asy.a($$1 + $$2);
+      double $$5 = (double)($$3 + $$4) * g;
+      double $$6 = (double)$$3 - $$5;
+      double $$7 = (double)$$4 - $$5;
+      double $$8 = $$0 - $$6;
+      double $$9 = $$1 - $$7;
+      int $$10;
+      int $$11;
+      if ($$8 > $$9) {
+         $$10 = 1;
+         $$11 = 0;
       } else {
-         int $$1 = $$0.f;
-         int $$2 = (this.ak >> 16 & 0xFF) * $$1 / 255;
-         int $$3 = (this.ak >> 8 & 0xFF) * $$1 / 255;
-         int $$4 = (this.ak & 0xFF) * $$1 / 255;
-         return 0xFF000000 | $$4 << 16 | $$3 << 8 | $$2;
-      }
-   }
-
-   public static eak a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
-   }
-
-   private static eak c(int $$0) {
-      eak $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
-   }
-
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(eak.a.b($$1 & 3));
-   }
-
-   public byte b(eak.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
-   }
-
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
-
-      private static final eak.a[] g = new eak.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
-
-      private a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+         $$10 = 0;
+         $$11 = 1;
       }
 
-      public static eak.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
+      double $$14 = $$8 - (double)$$10 + g;
+      double $$15 = $$9 - (double)$$11 + g;
+      double $$16 = $$8 - 1.0 + 2.0 * g;
+      double $$17 = $$9 - 1.0 + 2.0 * g;
+      int $$18 = $$3 & 0xFF;
+      int $$19 = $$4 & 0xFF;
+      int $$20 = this.a($$18 + this.a($$19)) % 12;
+      int $$21 = this.a($$18 + $$10 + this.a($$19 + $$11)) % 12;
+      int $$22 = this.a($$18 + 1 + this.a($$19 + 1)) % 12;
+      double $$23 = this.a($$20, $$8, $$9, 0.0, 0.5);
+      double $$24 = this.a($$21, $$14, $$15, 0.0, 0.5);
+      double $$25 = this.a($$22, $$16, $$17, 0.0, 0.5);
+      return 70.0 * ($$23 + $$24 + $$25);
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = 0.3333333333333333;
+      double $$4 = ($$0 + $$1 + $$2) * 0.3333333333333333;
+      int $$5 = asy.a($$0 + $$4);
+      int $$6 = asy.a($$1 + $$4);
+      int $$7 = asy.a($$2 + $$4);
+      double $$8 = 0.16666666666666666;
+      double $$9 = (double)($$5 + $$6 + $$7) * 0.16666666666666666;
+      double $$10 = (double)$$5 - $$9;
+      double $$11 = (double)$$6 - $$9;
+      double $$12 = (double)$$7 - $$9;
+      double $$13 = $$0 - $$10;
+      double $$14 = $$1 - $$11;
+      double $$15 = $$2 - $$12;
+      int $$16;
+      int $$17;
+      int $$18;
+      int $$19;
+      int $$20;
+      int $$21;
+      if ($$13 >= $$14) {
+         if ($$14 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 1;
+            $$21 = 0;
+         } else if ($$13 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
+         } else {
+            $$16 = 0;
+            $$17 = 0;
+            $$18 = 1;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
+         }
+      } else if ($$14 < $$15) {
+         $$16 = 0;
+         $$17 = 0;
+         $$18 = 1;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
+      } else if ($$13 < $$15) {
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
+      } else {
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 1;
+         $$20 = 1;
+         $$21 = 0;
       }
 
-      static eak.a b(int $$0) {
-         return g[$$0];
-      }
+      double $$52 = $$13 - (double)$$16 + 0.16666666666666666;
+      double $$53 = $$14 - (double)$$17 + 0.16666666666666666;
+      double $$54 = $$15 - (double)$$18 + 0.16666666666666666;
+      double $$55 = $$13 - (double)$$19 + 0.3333333333333333;
+      double $$56 = $$14 - (double)$$20 + 0.3333333333333333;
+      double $$57 = $$15 - (double)$$21 + 0.3333333333333333;
+      double $$58 = $$13 - 1.0 + 0.5;
+      double $$59 = $$14 - 1.0 + 0.5;
+      double $$60 = $$15 - 1.0 + 0.5;
+      int $$61 = $$5 & 0xFF;
+      int $$62 = $$6 & 0xFF;
+      int $$63 = $$7 & 0xFF;
+      int $$64 = this.a($$61 + this.a($$62 + this.a($$63))) % 12;
+      int $$65 = this.a($$61 + $$16 + this.a($$62 + $$17 + this.a($$63 + $$18))) % 12;
+      int $$66 = this.a($$61 + $$19 + this.a($$62 + $$20 + this.a($$63 + $$21))) % 12;
+      int $$67 = this.a($$61 + 1 + this.a($$62 + 1 + this.a($$63 + 1))) % 12;
+      double $$68 = this.a($$64, $$13, $$14, $$15, 0.6);
+      double $$69 = this.a($$65, $$52, $$53, $$54, 0.6);
+      double $$70 = this.a($$66, $$55, $$56, $$57, 0.6);
+      double $$71 = this.a($$67, $$58, $$59, $$60, 0.6);
+      return 32.0 * ($$68 + $$69 + $$70 + $$71);
    }
 }

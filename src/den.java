@@ -1,281 +1,110 @@
-import com.mojang.logging.LogUtils;
-import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class den extends deo {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 200;
-   private static final int c = 40;
-   private static final int d = 2400;
-   private static final int e = 1;
-   private static final int f = 10;
-   private long g;
-   private int h;
-   @Nullable
-   private gw i;
-   private boolean j;
+public class den {
+   private static final String b = "decorated_pot_base";
+   public static final afv<String> a = a("decorated_pot_base");
+   private static final String c = "decorated_pot_side";
+   private static final String d = "angler_pottery_pattern";
+   private static final String e = "archer_pottery_pattern";
+   private static final String f = "arms_up_pottery_pattern";
+   private static final String g = "blade_pottery_pattern";
+   private static final String h = "brewer_pottery_pattern";
+   private static final String i = "burn_pottery_pattern";
+   private static final String j = "danger_pottery_pattern";
+   private static final String k = "explorer_pottery_pattern";
+   private static final String l = "friend_pottery_pattern";
+   private static final String m = "heart_pottery_pattern";
+   private static final String n = "heartbreak_pottery_pattern";
+   private static final String o = "howl_pottery_pattern";
+   private static final String p = "miner_pottery_pattern";
+   private static final String q = "mourner_pottery_pattern";
+   private static final String r = "plenty_pottery_pattern";
+   private static final String s = "prize_pottery_pattern";
+   private static final String t = "sheaf_pottery_pattern";
+   private static final String u = "shelter_pottery_pattern";
+   private static final String v = "skull_pottery_pattern";
+   private static final String w = "snort_pottery_pattern";
+   private static final afv<String> x = a("decorated_pot_side");
+   private static final afv<String> y = a("angler_pottery_pattern");
+   private static final afv<String> z = a("archer_pottery_pattern");
+   private static final afv<String> A = a("arms_up_pottery_pattern");
+   private static final afv<String> B = a("blade_pottery_pattern");
+   private static final afv<String> C = a("brewer_pottery_pattern");
+   private static final afv<String> D = a("burn_pottery_pattern");
+   private static final afv<String> E = a("danger_pottery_pattern");
+   private static final afv<String> F = a("explorer_pottery_pattern");
+   private static final afv<String> G = a("friend_pottery_pattern");
+   private static final afv<String> H = a("heart_pottery_pattern");
+   private static final afv<String> I = a("heartbreak_pottery_pattern");
+   private static final afv<String> J = a("howl_pottery_pattern");
+   private static final afv<String> K = a("miner_pottery_pattern");
+   private static final afv<String> L = a("mourner_pottery_pattern");
+   private static final afv<String> M = a("plenty_pottery_pattern");
+   private static final afv<String> N = a("prize_pottery_pattern");
+   private static final afv<String> O = a("sheaf_pottery_pattern");
+   private static final afv<String> P = a("shelter_pottery_pattern");
+   private static final afv<String> Q = a("skull_pottery_pattern");
+   private static final afv<String> R = a("snort_pottery_pattern");
+   private static final Map<cke, afv<String>> S = Map.ofEntries(
+      Map.entry(ckm.pX, x),
+      Map.entry(ckm.wN, y),
+      Map.entry(ckm.wO, z),
+      Map.entry(ckm.wP, A),
+      Map.entry(ckm.wQ, B),
+      Map.entry(ckm.wR, C),
+      Map.entry(ckm.wS, D),
+      Map.entry(ckm.wT, E),
+      Map.entry(ckm.wU, F),
+      Map.entry(ckm.wV, G),
+      Map.entry(ckm.wW, H),
+      Map.entry(ckm.wX, I),
+      Map.entry(ckm.wY, J),
+      Map.entry(ckm.wZ, K),
+      Map.entry(ckm.xa, L),
+      Map.entry(ckm.xb, M),
+      Map.entry(ckm.xc, N),
+      Map.entry(ckm.xd, O),
+      Map.entry(ckm.xe, P),
+      Map.entry(ckm.xf, Q),
+      Map.entry(ckm.xg, R)
+   );
 
-   public den(gw $$0, dfd $$1) {
-      super(ddb.v, $$0, $$1);
+   private static afv<String> a(String $$0) {
+      return afv.a(jz.ap, new afw($$0));
    }
 
-   @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      $$0.a("Age", this.g);
-      if (this.i != null) {
-         $$0.a("ExitPortal", rj.a(this.i));
-      }
-
-      if (this.j) {
-         $$0.a("ExactTeleport", true);
-      }
-   }
-
-   @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      this.g = $$0.i("Age");
-      if ($$0.b("ExitPortal", 10)) {
-         gw $$1 = rj.b($$0.p("ExitPortal"));
-         if (cqb.k($$1)) {
-            this.i = $$1;
-         }
-      }
-
-      this.j = $$0.q("ExactTeleport");
-   }
-
-   public static void a(cqb $$0, gw $$1, dfd $$2, den $$3) {
-      $$3.g++;
-      if ($$3.d()) {
-         $$3.h--;
-      }
-   }
-
-   public static void b(cqb $$0, gw $$1, dfd $$2, den $$3) {
-      boolean $$4 = $$3.c();
-      boolean $$5 = $$3.d();
-      $$3.g++;
-      if ($$5) {
-         $$3.h--;
-      } else {
-         List<biw> $$6 = $$0.a(biw.class, new ehc($$1), den::a);
-         if (!$$6.isEmpty()) {
-            a($$0, $$1, $$2, $$6.get($$0.z.a($$6.size())), $$3);
-         }
-
-         if ($$3.g % 2400L == 0L) {
-            c($$0, $$1, $$2, $$3);
-         }
-      }
-
-      if ($$4 != $$3.c() || $$5 != $$3.d()) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static boolean a(biw $$0) {
-      return biz.f.test($$0) && !$$0.cV().au();
-   }
-
-   public boolean c() {
-      return this.g < 200L;
-   }
-
-   public boolean d() {
-      return this.h > 0;
-   }
-
-   public float a(float $$0) {
-      return asb.a(((float)this.g + $$0) / 200.0F, 0.0F, 1.0F);
-   }
-
-   public float b(float $$0) {
-      return 1.0F - asb.a(((float)this.h - $$0) / 40.0F, 0.0F, 1.0F);
-   }
-
-   public xe f() {
-      return xe.a(this);
-   }
-
-   @Override
-   public qw as_() {
-      return this.o();
-   }
-
-   private static void c(cqb $$0, gw $$1, dfd $$2, den $$3) {
-      if (!$$0.B) {
-         $$3.h = 40;
-         $$0.a($$1, $$2.b(), 1, 0);
-         a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.h = 40;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static void a(cqb $$0, gw $$1, dfd $$2, biw $$3, den $$4) {
-      if ($$0 instanceof akt && !$$4.d()) {
-         akt $$5 = (akt)$$0;
-         $$4.h = 100;
-         if ($$4.i == null && $$0.ac() == cqb.j) {
-            gw $$6 = a($$5, $$1);
-            $$6 = $$6.b(10);
-            a.debug("Creating portal at {}", $$6);
-            a($$5, $$6, dpt.a($$1, false));
-            $$4.i = $$6;
-         }
-
-         if ($$4.i != null) {
-            gw $$7 = $$4.j ? $$4.i : a($$0, $$4.i);
-            biw $$9;
-            if ($$3 instanceof cdb) {
-               biw $$8 = ((cdb)$$3).v();
-               if ($$8 instanceof aku) {
-                  al.d.a((aku)$$8, $$2);
-               }
-
-               if ($$8 != null) {
-                  $$9 = $$8;
-                  $$3.ak();
-               } else {
-                  $$9 = $$3;
-               }
-            } else {
-               $$9 = $$3.cV();
-            }
-
-            $$9.as();
-            $$9.n((double)$$7.u() + 0.5, (double)$$7.v(), (double)$$7.w() + 0.5);
-         }
-
-         c($$0, $$1, $$2, $$4);
-      }
-   }
-
-   private static gw a(cqb $$0, gw $$1) {
-      gw $$2 = a($$0, $$1.b(0, 2, 0), 5, false);
-      a.debug("Best exit position for portal at {} is {}", $$1, $$2);
-      return $$2.c();
-   }
-
-   private static gw a(akt $$0, gw $$1) {
-      ehh $$2 = b($$0, $$1);
-      dhk $$3 = a((cqb)$$0, $$2);
-      gw $$4 = a($$3);
-      if ($$4 == null) {
-         gw $$5 = gw.a($$2.c + 0.5, 75.0, $$2.e + 0.5);
-         a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
-         $$0.G_().c(jc.at).flatMap($$0x -> $$0x.b(oq.e)).ifPresent($$2x -> ((dnd)$$2x.a()).a($$0, $$0.k().g(), ash.a($$5.a()), $$5));
-         $$4 = $$5;
-      } else {
-         a.debug("Found suitable block to teleport to: {}", $$4);
-      }
-
-      return a($$0, $$4, 16, true);
-   }
-
-   private static ehh b(akt $$0, gw $$1) {
-      ehh $$2 = new ehh((double)$$1.u(), 0.0, (double)$$1.w()).d();
-      int $$3 = 1024;
-      ehh $$4 = $$2.a(1024.0);
-
-      for (int $$5 = 16; !a($$0, $$4) && $$5-- > 0; $$4 = $$4.e($$2.a(-16.0))) {
-         a.debug("Skipping backwards past nonempty chunk at {}", $$4);
-      }
-
-      for (int var6 = 16; a($$0, $$4) && var6-- > 0; $$4 = $$4.e($$2.a(16.0))) {
-         a.debug("Skipping forward past empty chunk at {}", $$4);
-      }
-
-      a.debug("Found chunk at {}", $$4);
-      return $$4;
-   }
-
-   private static boolean a(akt $$0, ehh $$1) {
-      return a((cqb)$$0, $$1).a() == -1;
-   }
-
-   private static gw a(cph $$0, gw $$1, int $$2, boolean $$3) {
-      gw $$4 = null;
-
-      for (int $$5 = -$$2; $$5 <= $$2; $$5++) {
-         for (int $$6 = -$$2; $$6 <= $$2; $$6++) {
-            if ($$5 != 0 || $$6 != 0 || $$3) {
-               for (int $$7 = $$0.aj() - 1; $$7 > ($$4 == null ? $$0.H_() : $$4.v()); $$7--) {
-                  gw $$8 = new gw($$1.u() + $$5, $$7, $$1.w() + $$6);
-                  dfd $$9 = $$0.a_($$8);
-                  if ($$9.r($$0, $$8) && ($$3 || !$$9.a(cte.F))) {
-                     $$4 = $$8;
-                     break;
-                  }
-               }
-            }
-         }
-      }
-
-      return $$4 == null ? $$1 : $$4;
-   }
-
-   private static dhk a(cqb $$0, ehh $$1) {
-      return $$0.d(asb.a($$1.c / 16.0), asb.a($$1.e / 16.0));
+   public static afw a(afv<String> $$0) {
+      return $$0.a().d("entity/decorated_pot/");
    }
 
    @Nullable
-   private static gw a(dhk $$0) {
-      cpi $$1 = $$0.f();
-      gw $$2 = new gw($$1.d(), 30, $$1.e());
-      int $$3 = $$0.b() + 16 - 1;
-      gw $$4 = new gw($$1.f(), $$3, $$1.g());
-      gw $$5 = null;
-      double $$6 = 0.0;
-
-      for (gw $$7 : gw.a($$2, $$4)) {
-         dfd $$8 = $$0.a_($$7);
-         gw $$9 = $$7.c();
-         gw $$10 = $$7.b(2);
-         if ($$8.a(cte.fz) && !$$0.a_($$9).r($$0, $$9) && !$$0.a_($$10).r($$0, $$10)) {
-            double $$11 = $$7.c(0.0, 0.0, 0.0);
-            if ($$5 == null || $$11 < $$6) {
-               $$5 = $$7;
-               $$6 = $$11;
-            }
-         }
-      }
-
-      return $$5;
+   public static afv<String> a(cke $$0) {
+      return S.get($$0);
    }
 
-   private static void a(akt $$0, gw $$1, dpt $$2) {
-      dnq.L.a($$2, $$0, $$0.k().g(), ash.a(), $$1);
-   }
-
-   @Override
-   public boolean a(ha $$0) {
-      return ctc.a(this.q(), this.o, this.p(), $$0, this.p().a($$0));
-   }
-
-   public int g() {
-      int $$0 = 0;
-
-      for (ha $$1 : ha.values()) {
-         $$0 += this.a($$1) ? 1 : 0;
-      }
-
-      return $$0;
-   }
-
-   public void a(gw $$0, boolean $$1) {
-      this.j = $$1;
-      this.i = $$0;
+   public static String a(io<String> $$0) {
+      io.a($$0, x, "decorated_pot_side");
+      io.a($$0, y, "angler_pottery_pattern");
+      io.a($$0, z, "archer_pottery_pattern");
+      io.a($$0, A, "arms_up_pottery_pattern");
+      io.a($$0, B, "blade_pottery_pattern");
+      io.a($$0, C, "brewer_pottery_pattern");
+      io.a($$0, D, "burn_pottery_pattern");
+      io.a($$0, E, "danger_pottery_pattern");
+      io.a($$0, F, "explorer_pottery_pattern");
+      io.a($$0, G, "friend_pottery_pattern");
+      io.a($$0, H, "heart_pottery_pattern");
+      io.a($$0, I, "heartbreak_pottery_pattern");
+      io.a($$0, J, "howl_pottery_pattern");
+      io.a($$0, K, "miner_pottery_pattern");
+      io.a($$0, L, "mourner_pottery_pattern");
+      io.a($$0, M, "plenty_pottery_pattern");
+      io.a($$0, N, "prize_pottery_pattern");
+      io.a($$0, O, "sheaf_pottery_pattern");
+      io.a($$0, P, "shelter_pottery_pattern");
+      io.a($$0, Q, "skull_pottery_pattern");
+      io.a($$0, R, "snort_pottery_pattern");
+      return io.a($$0, a, "decorated_pot_base");
    }
 }

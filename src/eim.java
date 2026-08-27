@@ -1,45 +1,18 @@
-public class eim {
-   private static final eiw<Object> a = new eiw<Object>() {
-      @Override
-      public void a(eit<Object> $$0) {
-      }
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-      @Override
-      public boolean a(gw $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final eip<Object> b = new eip<Object>() {
-      @Override
-      public void a(eit<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(gw $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(gw $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> eiw<T> a() {
-      return (eiw<T>)a;
+public final class eim extends eiy {
+   protected eim(eio $$0) {
+      super($$0);
    }
 
-   public static <T> eip<T> b() {
-      return (eip<T>)b;
+   @Override
+   protected DoubleList a(hx.a $$0) {
+      return new eil(this.a.c($$0));
+   }
+
+   @Override
+   protected int a(hx.a $$0, double $$1) {
+      int $$2 = this.a.c($$0);
+      return asy.a(asy.a($$1 * (double)$$2, -1.0, (double)$$2));
    }
 }

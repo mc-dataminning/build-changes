@@ -1,69 +1,13 @@
-public abstract class akg extends dzs {
-   protected akg(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-   @Override
-   protected boolean a(long $$0) {
-      return $$0 == cpi.a;
-   }
+public interface akg {
+   void a(rt var1) throws CommandSyntaxException;
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         cpi $$3 = new cpi($$0);
-         int $$4 = $$3.e;
-         int $$5 = $$3.f;
+   rt a() throws CommandSyntaxException;
 
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = cpi.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
-               }
-            }
-         }
-      }
-   }
+   ui b();
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      cpi $$4 = new cpi($$0);
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
+   ui a(sn var1);
 
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = cpi.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = cpi.a;
-            }
-
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
-
-               if ($$3 == 0) {
-                  return $$3;
-               }
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == cpi.a ? this.b($$1) : $$2 + 1;
-   }
-
-   protected abstract int b(long var1);
-
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(cpi.a, $$0, $$1, $$2);
-   }
+   ui a(el.g var1, double var2, int var4);
 }

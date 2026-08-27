@@ -1,19 +1,20 @@
-public interface cpe extends cph {
-   float a(ha var1, boolean var2);
-
-   dzv x_();
-
-   int a(gw var1, cpm var2);
-
-   default int a(cqk $$0, gw $$1) {
-      return this.x_().a($$0).b($$1);
+public class cpe extends cot {
+   public cpe(cot.a $$0, bjy... $$1) {
+      super($$0, cou.m, $$1);
    }
 
-   default int b(gw $$0, int $$1) {
-      return this.x_().a($$0, $$1);
+   @Override
+   public int a(int $$0) {
+      return 20;
    }
 
-   default boolean g(gw $$0) {
-      return this.a(cqk.a, $$0) >= this.M();
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
+
+   @Override
+   public boolean a(cot $$0) {
+      return super.a($$0) && $$0 != cox.K;
    }
 }

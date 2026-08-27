@@ -1,64 +1,39 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+public class frn implements fra<dfe> {
+   private final fhq<?> a;
 
-public class frn implements frj.a {
-   private final eqp a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
-
-   public frn(eqp $$0) {
-      this.a = $$0;
+   public frn(frb.a $$0) {
+      this.a = new fhq($$0.a(fiv.be));
    }
 
-   @Override
-   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
-      cqc $$5 = this.a.r;
-      eln $$6 = $$1.getBuffer(foi.z());
-      gw $$7 = gw.a($$2, 0.0, $$4);
-
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dgz $$10 = $$5.x($$7.b($$8 * 16, 0, $$9 * 16));
-
-            for (Entry<dkm.a, dkm> $$11 : $$10.e()) {
-               dkm.a $$12 = $$11.getKey();
-               cpi $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = hw.a($$13.e, $$15);
-                     int $$18 = hw.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     fny.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
+   public void a(dfe $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
+      hx $$6 = hx.b;
+      if ($$0.l()) {
+         dgb $$7 = $$0.k().a_($$0.p());
+         if ($$7.b() instanceof dax) {
+            $$6 = $$7.c(dax.b);
          }
       }
-   }
 
-   private Vector3f a(dkm.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+      cix $$8 = $$0.j();
+      gce $$9;
+      if ($$8 == null) {
+         $$9 = fpp.i;
+      } else {
+         $$9 = fpp.j.get($$8.a());
+      }
+
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fiw $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      eml $$13 = $$9.a($$3, fpj::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

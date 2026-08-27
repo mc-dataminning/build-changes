@@ -1,12 +1,31 @@
-public interface wq extends vh {
-   @Override
-   default sn b() {
-      return sn.e;
+public class wq implements wb<wl> {
+   private final wq.a a;
+
+   public wq(wq.a $$0) {
+      this.a = $$0;
    }
 
-   void a(wr var1);
+   public wq(tl $$0) {
+      this.a = $$0.b(wq.a.class);
+   }
 
-   void a(ws var1);
+   @Override
+   public void a(tl $$0) {
+      $$0.a(this.a);
+   }
 
-   void a(wt var1);
+   public void a(wl $$0) {
+      $$0.a(this);
+   }
+
+   public wq.a a() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
+   }
 }

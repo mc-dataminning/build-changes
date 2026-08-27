@@ -1,171 +1,68 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class bhk extends ebl {
-   private static final Logger a = LogUtils.getLogger();
-   private final long b;
-   private int c;
-   private boolean d = true;
-   private boolean e = true;
-   private final Map<aez, bhj> f = new Object2ObjectOpenHashMap();
+public class bhk extends bhe {
+   public static final Codec<bhk> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, bhk::new)
+      )
+      .comapFlatMap(
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
+            } else {
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
+            }
+         },
+         Function.identity()
+      );
+   private final float b;
+   private final float d;
+   private final float e;
 
-   public static ebl.a<bhk> a(long $$0) {
-      return new ebl.a<>(() -> new bhk($$0), $$1 -> a($$0, $$1), atg.m);
+   public static bhk a(float $$0, float $$1, float $$2) {
+      return new bhk($$0, $$1, $$2);
    }
 
-   public bhk(long $$0) {
+   private bhk(float $$0, float $$1, float $$2) {
       this.b = $$0;
-   }
-
-   public ash a(aez $$0) {
-      ash $$1 = this.f.computeIfAbsent($$0, this::c).a();
-      return new bhk.a($$1);
-   }
-
-   private bhj c(aez $$0) {
-      return this.b($$0, this.c, this.d, this.e);
-   }
-
-   private bhj b(aez $$0, int $$1, boolean $$2, boolean $$3) {
-      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
-      return new bhj($$4, $$3 ? Optional.of($$0) : Optional.empty());
-   }
-
-   public void a(BiConsumer<aez, bhj> $$0) {
-      this.f.forEach($$0);
-   }
-
-   public void a(int $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
       this.d = $$1;
       this.e = $$2;
    }
 
    @Override
-   public qw a(qw $$0) {
-      $$0.a("salt", this.c);
-      $$0.a("include_world_seed", this.d);
-      $$0.a("include_sequence_id", this.e);
-      qw $$1 = new qw();
-      this.f.forEach(($$1x, $$2) -> $$1.a($$1x.toString(), (rq)bhj.a.encodeStart(ri.a, $$2).result().orElseThrow()));
-      $$0.a("sequences", $$1);
-      return $$0;
+   public float a(ate $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
    }
 
-   private static boolean a(qw $$0, String $$1, boolean $$2) {
-      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
+   @Override
+   public float a() {
+      return this.b;
    }
 
-   public static bhk a(long $$0, qw $$1) {
-      bhk $$2 = new bhk($$0);
-      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
-      qw $$3 = $$1.p("sequences");
-
-      for (String $$5 : $$3.e()) {
-         try {
-            bhj $$6 = (bhj)((Pair)bhj.a.decode(ri.a, $$3.c($$5)).result().get()).getFirst();
-            $$2.f.put(new aez($$5), $$6);
-         } catch (Exception var9) {
-            a.error("Failed to load random sequence {}", $$5, var9);
-         }
-      }
-
-      return $$2;
+   @Override
+   public float b() {
+      return this.d;
    }
 
-   public int a() {
-      int $$0 = this.f.size();
-      this.f.clear();
-      return $$0;
+   @Override
+   public bhf<?> c() {
+      return bhf.d;
    }
 
-   public void b(aez $$0) {
-      this.f.put($$0, this.c($$0));
-   }
-
-   public void a(aez $$0, int $$1, boolean $$2, boolean $$3) {
-      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
-   }
-
-   class a implements ash {
-      private final ash c;
-
-      a(ash $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public ash d() {
-         bhk.this.c();
-         return this.c.d();
-      }
-
-      @Override
-      public dkz e() {
-         bhk.this.c();
-         return this.c.e();
-      }
-
-      @Override
-      public void b(long $$0) {
-         bhk.this.c();
-         this.c.b($$0);
-      }
-
-      @Override
-      public int f() {
-         bhk.this.c();
-         return this.c.f();
-      }
-
-      @Override
-      public int a(int $$0) {
-         bhk.this.c();
-         return this.c.a($$0);
-      }
-
-      @Override
-      public long g() {
-         bhk.this.c();
-         return this.c.g();
-      }
-
-      @Override
-      public boolean h() {
-         bhk.this.c();
-         return this.c.h();
-      }
-
-      @Override
-      public float i() {
-         bhk.this.c();
-         return this.c.i();
-      }
-
-      @Override
-      public double j() {
-         bhk.this.c();
-         return this.c.j();
-      }
-
-      @Override
-      public double k() {
-         bhk.this.c();
-         return this.c.k();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return $$0 instanceof bhk.a $$1 ? this.c.equals($$1.c) : false;
-         }
-      }
+   @Override
+   public String toString() {
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
    }
 }

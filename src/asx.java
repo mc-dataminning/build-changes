@@ -1,81 +1,49 @@
-import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-public class asx {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final Semaphore c = new Semaphore(1);
-   private final Lock d = new ReentrantLock();
-   @Nullable
-   private volatile Thread e;
-   @Nullable
-   private volatile y f;
-
-   public asx(String $$0) {
-      this.b = $$0;
-   }
-
-   public void a() {
-      boolean $$0 = false;
-
-      try {
-         this.d.lock();
-         if (!this.c.tryAcquire()) {
-            this.e = Thread.currentThread();
-            $$0 = true;
-            this.d.unlock();
-
-            try {
-               this.c.acquire();
-            } catch (InterruptedException var6) {
-               Thread.currentThread().interrupt();
-            }
-
-            throw this.f;
-         }
-      } finally {
-         if (!$$0) {
-            this.d.unlock();
-         }
+public record asx(asx.a a, String b) {
+   public static asx a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new asx(asx.a.c, $$2 + " brand changed to '" + $$4 + "'");
+      } else {
+         return $$3.getSigners() == null
+            ? new asx(asx.a.b, $$2 + " jar signature invalidated")
+            : new asx(asx.a.a, $$2 + " jar signature and brand is untouched");
       }
    }
 
-   public void b() {
-      try {
-         this.d.lock();
-         Thread $$0 = this.e;
-         if ($$0 != null) {
-            y $$1 = a(this.b, $$0);
-            this.f = $$1;
-            this.c.release();
-            throw $$1;
-         }
+   public boolean a() {
+      return this.a.e;
+   }
 
-         this.c.release();
-      } finally {
-         this.d.unlock();
+   public asx a(asx $$0) {
+      return new asx((asx.a)ObjectUtils.max(new asx.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
+   }
+
+   public String b() {
+      return this.a.d + " " + this.b;
+   }
+
+   public asx.a c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
+
+      final String d;
+      final boolean e;
+
+      private a(String $$0, boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
-   }
-
-   public static y a(String $$0, @Nullable Thread $$1) {
-      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(asx::a).collect(Collectors.joining("\n"));
-      String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
-      $$5.a("Thread dumps", $$2);
-      a.error("Thread dumps: \n" + $$2);
-      return new y($$4);
-   }
-
-   private static String a(Thread $$0) {
-      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
    }
 }

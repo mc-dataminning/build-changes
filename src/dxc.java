@@ -1,53 +1,102 @@
-public class dxc {
-   private static final aez[] a = new aez[]{
-      new aez("nether_fossils/fossil_1"),
-      new aez("nether_fossils/fossil_2"),
-      new aez("nether_fossils/fossil_3"),
-      new aez("nether_fossils/fossil_4"),
-      new aez("nether_fossils/fossil_5"),
-      new aez("nether_fossils/fossil_6"),
-      new aez("nether_fossils/fossil_7"),
-      new aez("nether_fossils/fossil_8"),
-      new aez("nether_fossils/fossil_9"),
-      new aez("nether_fossils/fossil_10"),
-      new aez("nether_fossils/fossil_11"),
-      new aez("nether_fossils/fossil_12"),
-      new aez("nether_fossils/fossil_13"),
-      new aez("nether_fossils/fossil_14")
-   };
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 
-   public static void a(dyw $$0, dvh $$1, ash $$2, gw $$3) {
-      czn $$4 = czn.a($$2);
-      $$1.a(new dxc.a($$0, ac.a(a, $$2), $$3, $$4));
+public class dxc {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final dxj.a e;
+
+   public dxc(int $$0, int $$1, int $$2, int $$3, dxj.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static class a extends dvm {
-      public a(dyw $$0, aez $$1, gw $$2, czn $$3) {
-         super(dvt.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-      }
+   public int a() {
+      return this.a;
+   }
 
-      public a(dyw $$0, qw $$1) {
-         super(dvt.ac, $$1, $$0, $$1x -> a(czn.valueOf($$1.l("Rot"))));
-      }
+   public int b() {
+      return this.b;
+   }
 
-      private static dyr a(czn $$0) {
-         return new dyr().a($$0).a(cxx.a).a(dxx.d);
-      }
+   public int c() {
+      return this.c;
+   }
 
-      @Override
-      protected void a(dvs $$0, qw $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
+   public int d() {
+      return this.d;
+   }
 
-      @Override
-      protected void a(String $$0, gw $$1, cqq $$2, ash $$3, duu $$4) {
-      }
+   public dxj.a e() {
+      return this.e;
+   }
 
-      @Override
-      public void a(cqv $$0, cqt $$1, dha $$2, ash $$3, duu $$4, cpi $$5, gw $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      Builder<T, T> $$1 = ImmutableMap.builder();
+      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
+         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
+         .put($$0.createString("source_z"), $$0.createInt(this.c))
+         .put($$0.createString("delta_y"), $$0.createInt(this.d))
+         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
+      return new Dynamic($$0, $$0.createMap($$1.build()));
+   }
+
+   public static <T> dxc a(Dynamic<T> $$0) {
+      return new dxc(
+         $$0.get("source_x").asInt(0),
+         $$0.get("source_ground_y").asInt(0),
+         $$0.get("source_z").asInt(0),
+         $$0.get("delta_y").asInt(0),
+         dxj.a.a($$0.get("dest_proj").asString(""))
+      );
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         dxc $$1 = (dxc)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.d != $$1.d ? false : this.e == $$1.e;
+         }
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a;
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + this.e.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "JigsawJunction{sourceX="
+         + this.a
+         + ", sourceGroundY="
+         + this.b
+         + ", sourceZ="
+         + this.c
+         + ", deltaY="
+         + this.d
+         + ", destProjection="
+         + this.e
+         + "}";
    }
 }

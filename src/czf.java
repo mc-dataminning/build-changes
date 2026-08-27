@@ -1,83 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class czf extends cze {
-   public static final MapCodec<czf> h = b(czf::new);
-   public static final dfx i = cww.aE;
-   public static final dfu j = cze.d;
+public class czf extends cuj {
+   public static final MapCodec<czf> a = b(czf::new);
+   public static final int b = 3;
+   public static final dhb c = dgr.as;
+   private static final eiy[] d = new eiy[]{
+      cua.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      cua.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cua.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      cua.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
    @Override
    public MapCodec<czf> a() {
-      return h;
+      return a;
    }
 
-   protected czf(dfc.d $$0) {
+   protected czf(dga.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, ha.c).a(j, Boolean.valueOf(true)));
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public String h() {
-      return this.k().a();
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return dbz.h($$0);
+   protected boolean d(dgb $$0, cqf $$1, ht $$2) {
+      return $$0.a(cuc.dW);
    }
 
    @Override
-   public boolean a(dfd $$0, cqe $$1, gw $$2) {
-      return cte.cq.a($$0, $$1, $$2);
+   public boolean e_(dgb $$0) {
+      return $$0.c(c) < 3;
    }
 
    @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      return cte.cq.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dfd a(clt $$0) {
-      dfd $$1 = cte.cq.a($$0);
-      return $$1 == null ? null : this.o().a(i, $$1.c(i));
-   }
-
-   @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      if ($$0.c(j)) {
-         ha $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(ip.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   public void b(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
    }
 
    @Override
-   protected boolean a(cqb $$0, gw $$1, dfd $$2) {
-      ha $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   public ckj a(crc $$0, ht $$1, dgb $$2) {
+      return new ckj(ckm.ru);
    }
 
    @Override
-   public int a(dfd $$0, cph $$1, gw $$2, ha $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
-   }
-
-   @Override
-   public dfd a(dfd $$0, czn $$1) {
-      return cte.cq.a($$0, $$1);
-   }
-
-   @Override
-   public dfd a(dfd $$0, cxx $$1) {
-      return cte.cq.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(i, j);
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(c);
    }
 }

@@ -1,27 +1,31 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-public class eoa extends gex {
-   protected BooleanConsumer a;
-   private final tl b;
-   private final tl c;
+public class eoa extends eod {
+   public long a;
+   public List<enz> b = Lists.newArrayList();
 
-   public eoa(BooleanConsumer $$0, tl $$1, tl $$2) {
-      super(eqh.a);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   public static eoa a(String $$0) {
+      eoa $$1 = new eoa();
+      JsonParser $$2 = new JsonParser();
 
-   @Override
-   public void aH_() {
-      this.d(esk.a(tk.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(9), 100, 20).a());
-      this.d(esk.a(tk.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(9), 100, 20).a());
-   }
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = eqa.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               enz $$8 = enz.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
+      }
 
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.b, this.g / 2, h(3), -1);
-      $$0.a(this.i, this.c, this.g / 2, h(5), -1);
+      return $$1;
    }
 }

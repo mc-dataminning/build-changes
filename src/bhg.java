@@ -1,26 +1,40 @@
-import javax.annotation.concurrent.Immutable;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-@Immutable
-public class bhg {
-   public static final bhg a = new bhg("");
-   public static final String b = "Lock";
-   private final String c;
+public abstract class bhg {
+   private static final Codec<Either<Integer, bhg>> a = Codec.either(Codec.INT, jy.N.q().dispatch(bhg::c, bhh::codec));
+   public static final Codec<bhg> c = a.xmap(
+      $$0 -> (bhg)$$0.map(bhd::a, $$0x -> $$0x), $$0 -> $$0.c() == bhh.a ? Either.left(((bhd)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<bhg> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<bhg> e = b(1, Integer.MAX_VALUE);
 
-   public bhg(String $$0) {
-      this.c = $$0;
+   public static Codec<bhg> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   public boolean a(cjl $$0) {
-      return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
+   public static <T extends bhg> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return asg.a(
+         $$2,
+         (Function<T, DataResult<T>>)($$2x -> {
+            if ($$2x.a() < $$0) {
+               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b() > $$1
+                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
+      );
    }
 
-   public void a(qw $$0) {
-      if (!this.c.isEmpty()) {
-         $$0.a("Lock", this.c);
-      }
-   }
+   public abstract int a(ate var1);
 
-   public static bhg b(qw $$0) {
-      return $$0.b("Lock", 8) ? new bhg($$0.l("Lock")) : a;
-   }
+   public abstract int a();
+
+   public abstract int b();
+
+   public abstract bhh<?> c();
 }

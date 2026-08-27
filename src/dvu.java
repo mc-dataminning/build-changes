@@ -1,70 +1,39 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public interface dvu {
+   afv<dwa> a = a("pillager_outpost");
+   afv<dwa> b = a("mineshaft");
+   afv<dwa> c = a("mineshaft_mesa");
+   afv<dwa> d = a("mansion");
+   afv<dwa> e = a("jungle_pyramid");
+   afv<dwa> f = a("desert_pyramid");
+   afv<dwa> g = a("igloo");
+   afv<dwa> h = a("shipwreck");
+   afv<dwa> i = a("shipwreck_beached");
+   afv<dwa> j = a("swamp_hut");
+   afv<dwa> k = a("stronghold");
+   afv<dwa> l = a("monument");
+   afv<dwa> m = a("ocean_ruin_cold");
+   afv<dwa> n = a("ocean_ruin_warm");
+   afv<dwa> o = a("fortress");
+   afv<dwa> p = a("nether_fossil");
+   afv<dwa> q = a("end_city");
+   afv<dwa> r = a("buried_treasure");
+   afv<dwa> s = a("bastion_remnant");
+   afv<dwa> t = a("village_plains");
+   afv<dwa> u = a("village_desert");
+   afv<dwa> v = a("village_savanna");
+   afv<dwa> w = a("village_snowy");
+   afv<dwa> x = a("village_taiga");
+   afv<dwa> y = a("ruined_portal");
+   afv<dwa> z = a("ruined_portal_desert");
+   afv<dwa> A = a("ruined_portal_jungle");
+   afv<dwa> B = a("ruined_portal_swamp");
+   afv<dwa> C = a("ruined_portal_mountain");
+   afv<dwa> D = a("ruined_portal_ocean");
+   afv<dwa> E = a("ruined_portal_nether");
+   afv<dwa> F = a("ancient_city");
+   afv<dwa> G = a("trail_ruins");
 
-public class dvu implements dvh {
-   private final List<dvg> a = Lists.newArrayList();
-
-   @Override
-   public void a(dvg $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   @Override
-   public dvg a(duu $$0) {
-      return dvg.a(this.a, $$0);
-   }
-
-   @Deprecated
-   public void a(int $$0) {
-      for (dvg $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, ash $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      duu $$5 = this.d();
-      int $$6 = $$5.d() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.k();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(ash $$0, int $$1, int $$2) {
-      duu $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.d();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.h();
-      this.a($$7);
-   }
-
-   public dvr a() {
-      return new dvr(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public duu d() {
-      return dvg.a(this.a.stream());
+   private static afv<dwa> a(String $$0) {
+      return afv.a(jz.aA, new afw($$0));
    }
 }

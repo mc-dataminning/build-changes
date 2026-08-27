@@ -1,34 +1,36 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dti extends dtj {
-   public static final dti a = new dti(dlg.a(0));
-   public static final Codec<dti> b = arj.e(dlg.a, dlg.a.fieldOf("value").codec()).xmap(dti::new, dti::b);
-   private final dlg d;
+public class dti extends dtk {
+   public static final Codec<dti> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dti::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   public static dti a(dlg $$0) {
-      return new dti($$0);
-   }
-
-   private dti(dlg $$0) {
-      this.d = $$0;
-   }
-
-   public dlg b() {
-      return this.d;
+   public dti(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public int a(ash $$0, dlj $$1) {
-      return this.d.a($$1);
+   protected dtl<?> a() {
+      return dtl.c;
    }
 
    @Override
-   public dtk<?> a() {
-      return dtk.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
+   public void a(dtk.a $$0) {
+      ate $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<ht> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (hx $$3x : hx.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  hx $$4 = $$3x.g();
+                  ht $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, cuc.fC.o().a(cvh.c, Integer.valueOf($$1.a(3))).a(cvh.aE, $$3x));
+                  }
+               }
+            }
+         });
+      }
    }
 }

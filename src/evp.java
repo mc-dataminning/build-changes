@@ -1,83 +1,54 @@
-public abstract class evp implements evv {
-   private int c;
-   private int d;
-   protected int a;
-   protected int b;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public evp(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
+public class evp implements evr {
+   private static final afw a = new afw("toast/recipe");
+   private static final long d = 5000L;
+   private static final ui e = ui.c("recipe.toast.title");
+   private static final ui f = ui.c("recipe.toast.description");
+   private final List<cno<?>> g = Lists.newArrayList();
+   private long h;
+   private boolean i;
+
+   public evp(cno<?> $$0) {
+      this.g.add($$0);
    }
 
    @Override
-   public void f(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.r() + ($$0 - this.r());
-         $$1.f($$2);
-      });
-      this.c = $$0;
-   }
-
-   @Override
-   public void g(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.t() + ($$0 - this.t());
-         $$1.g($$2);
-      });
-      this.d = $$0;
-   }
-
-   @Override
-   public int r() {
-      return this.c;
-   }
-
-   @Override
-   public int t() {
-      return this.d;
-   }
-
-   @Override
-   public int l() {
-      return this.a;
-   }
-
-   @Override
-   public int i() {
-      return this.b;
-   }
-
-   protected abstract static class a {
-      public final evw a;
-      public final evx.a b;
-
-      protected a(evw $$0, evx $$1) {
-         this.a = $$0;
-         this.b = $$1.h();
+   public evr.a a(esy $$0, evs $$1, long $$2) {
+      if (this.i) {
+         this.h = $$2;
+         this.i = false;
       }
 
-      public int a() {
-         return this.a.i() + this.b.b + this.b.d;
+      if (this.g.isEmpty()) {
+         return evr.a.b;
+      } else {
+         $$0.a(a, 0, 0, this.a(), this.b());
+         $$0.a($$1.b().h, e, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, f, 30, 18, -16777216, false);
+         cno<?> $$3 = this.g.get((int)((double)$$2 / Math.max(1.0, 5000.0 * $$1.c() / (double)this.g.size()) % (double)this.g.size()));
+         ckj $$4 = $$3.b().g();
+         $$0.c().a();
+         $$0.c().b(0.6F, 0.6F, 1.0F);
+         $$0.b($$4, 3, 3);
+         $$0.c().b();
+         $$0.b($$3.b().a($$1.b().r.H_()), 8, 8);
+         return (double)($$2 - this.h) >= 5000.0 * $$1.c() ? evr.a.b : evr.a.a;
       }
+   }
 
-      public int b() {
-         return this.a.l() + this.b.a + this.b.c;
-      }
+   private void a(cno<?> $$0) {
+      this.g.add($$0);
+      this.i = true;
+   }
 
-      public void a(int $$0, int $$1) {
-         float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.l() - this.b.c);
-         int $$4 = (int)asb.i(this.b.e, $$2, $$3);
-         this.a.f($$4 + $$0);
-      }
-
-      public void b(int $$0, int $$1) {
-         float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.i() - this.b.d);
-         int $$4 = Math.round(asb.i(this.b.f, $$2, $$3));
-         this.a.g($$4 + $$0);
+   public static void a(evs $$0, cno<?> $$1) {
+      evp $$2 = $$0.a(evp.class, b);
+      if ($$2 == null) {
+         $$0.a(new evp($$1));
+      } else {
+         $$2.a($$1);
       }
    }
 }

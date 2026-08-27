@@ -1,36 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsk extends dsm {
-   public static final Codec<dsk> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dsk::new, $$0 -> $$0.b).codec();
-   private final float b;
+public class dsk extends dse {
+   public static final Codec<dsk> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bhg.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, dsk::new)
+   );
+   private final bhg b;
 
-   public dsk(float $$0) {
-      this.b = $$0;
+   public dsk(bhg $$0, bhg $$1, bhg $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected dsn<?> a() {
-      return dsn.c;
+   protected dsf<?> a() {
+      return dsf.b;
    }
 
    @Override
-   public void a(dsm.a $$0) {
-      ash $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<gw> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (ha $$3x : ha.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  ha $$4 = $$3x.g();
-                  gw $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, cte.fC.o().a(cuj.c, Integer.valueOf($$1.a(3))).a(cuj.aE, $$3x));
-                  }
-               }
-            }
-         });
+   protected void a(crf $$0, dse.b $$1, ate $$2, dro $$3, int $$4, dse.a $$5, int $$6, int $$7, int $$8) {
+      ht $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
       }
+   }
+
+   @Override
+   public int a(ate $$0, int $$1, dro $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(ate $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

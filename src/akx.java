@@ -1,60 +1,60 @@
-import java.util.Objects;
+public class akx implements Comparable<akx> {
+   private final int a;
+   private final ht b;
+   private int c;
+   private int d;
 
-public final class akx<T> implements Comparable<akx<?>> {
-   private final aky<T> a;
-   private final int b;
-   private final T c;
-   private long d;
-
-   protected akx(aky<T> $$0, int $$1, T $$2) {
+   public akx(int $$0, ht $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public int a(akx<?> $$0) {
-      int $$1 = Integer.compare(this.b, $$0.b);
-      if ($$1 != 0) {
-         return $$1;
-      } else {
-         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
-         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
+   public int a() {
+      return this.a;
+   }
+
+   public ht b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      if ($$0 > 10) {
+         $$0 = 10;
       }
+
+      this.c = $$0;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public void b(int $$0) {
+      this.d = $$0;
+   }
+
+   public int d() {
+      return this.d;
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         akx $$1 = (akx)$$0;
+         return this.a == $$1.a;
       } else {
-         return !($$0 instanceof akx<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
+      return Integer.hashCode(this.a);
    }
 
-   @Override
-   public String toString() {
-      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
-   }
-
-   public aky<T> a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   protected void a(long $$0) {
-      this.d = $$0;
-   }
-
-   protected boolean b(long $$0) {
-      long $$1 = this.a.b();
-      return $$1 != 0L && $$0 - this.d > $$1;
+   public int a(akx $$0) {
+      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

@@ -1,59 +1,47 @@
-public class fkm extends fmq {
-   private final fml a;
+import javax.annotation.Nullable;
 
-   protected fkm(
-      fis $$0,
-      double $$1,
-      double $$2,
-      double $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      float $$10,
-      fml $$11,
-      float $$12,
-      int $$13,
-      float $$14,
-      boolean $$15
-   ) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.u = $$14;
-      this.C = true;
-      this.a = $$11;
-      this.j *= (double)$$4;
-      this.k *= (double)$$5;
-      this.l *= (double)$$6;
-      this.j += $$7;
-      this.k += $$8;
-      this.l += $$9;
-      float $$16 = $$0.z.i() * $$12;
-      this.v = $$16;
-      this.w = $$16;
-      this.x = $$16;
-      this.D *= 0.75F * $$10;
-      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
-      this.t = Math.max(this.t, 1);
-      this.b($$11);
-      this.n = $$15;
+public enum fkm {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
+
+   private final ui n;
+
+   private fkm(String $$0) {
+      this.n = ui.c("gui.banned.reason." + $$0);
    }
 
-   @Override
-   public flu b() {
-      return flu.b;
+   public ui a() {
+      return this.n;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * asb.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   @Nullable
+   public static fkm a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

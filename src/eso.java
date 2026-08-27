@@ -1,9 +1,5 @@
-public class eso {
-   public static etp a(int $$0, esk.c $$1, boolean $$2) {
-      return etp.a(tl.c("options.language"), $$1, $$2).a($$0).a(new aez("icon/language"), 15, 15).a();
-   }
+import javax.annotation.Nullable;
 
-   public static etp b(int $$0, esk.c $$1, boolean $$2) {
-      return etp.a(tl.c("options.accessibility"), $$1, $$2).a($$0).a(new aez("icon/accessibility"), 15, 15).a();
-   }
+public interface eso {
+   int getColor(dgb var1, @Nullable cqc var2, @Nullable ht var3, int var4);
 }

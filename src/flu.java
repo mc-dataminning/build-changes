@@ -1,117 +1,83 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class flu extends fnq {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final fnl M;
 
-public interface flu {
-   flu a = new flu() {
-      @Override
-      public void a(ele $$0, fzb $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, fyz.e);
-         $$0.a(elo.b.h, elh.l);
-      }
+   flu(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fnl $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.96F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = asy.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = asy.a(this.r, 0.0F, 0.0F);
+      this.x = asy.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
+      this.b($$7);
+   }
 
-      @Override
-      public void a(ell $$0) {
-         $$0.b();
-      }
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   flu b = new flu() {
-      @Override
-      public void a(ele $$0, fzb $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(fnt::u);
-         RenderSystem.setShaderTexture(0, fyz.f);
-         $$0.a(elo.b.h, elh.l);
-      }
+         if (this.L) {
+            this.k += 0.002;
+         }
 
-      @Override
-      public void a(ell $$0) {
-         $$0.b();
-      }
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
       }
-   };
-   flu c = new flu() {
-      @Override
-      public void a(ele $$0, fzb $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, fyz.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$0.a(elo.b.h, elh.l);
-      }
+   }
 
-      @Override
-      public void a(ell $$0) {
-         $$0.b();
-      }
+   @Override
+   public fmu b() {
+      return fmu.b;
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   flu d = new flu() {
-      @Override
-      public void a(ele $$0, fzb $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, fyz.f);
-         $$0.a(elo.b.h, elh.l);
-      }
+   @Override
+   public float b(float $$0) {
+      return this.D * asy.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      @Override
-      public void a(ell $$0) {
-         $$0.b();
-      }
+   public static class a implements fmt<jv> {
+      private final fnl a;
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   flu e = new flu() {
-      @Override
-      public void a(ele $$0, fzb $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
+      public a(fnl $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public void a(ell $$0) {
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new flu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   flu f = new flu() {
-      @Override
-      public void a(ele $$0, fzb $$1) {
-      }
-
-      @Override
-      public void a(ell $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   void a(ele var1, fzb var2);
-
-   void a(ell var1);
+   }
 }

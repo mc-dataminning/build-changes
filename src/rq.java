@@ -1,52 +1,176 @@
+import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public interface rq {
-   int d = 8;
-   int e = 12;
-   int f = 4;
-   int g = 28;
-   byte h = 0;
-   byte i = 1;
-   byte j = 2;
-   byte k = 3;
-   byte l = 4;
-   byte m = 5;
-   byte n = 6;
-   byte o = 7;
-   byte p = 8;
-   byte q = 9;
-   byte r = 10;
-   byte s = 11;
-   byte t = 12;
-   byte u = 99;
-   int v = 512;
+public class rq extends rs<rr> {
+   private static final int b = 24;
+   public static final sp<rq> a = new sp.b<rq>() {
+      public rq a(DataInput $$0, sc $$1) throws IOException {
+         return new rq(d($$0, $$1));
+      }
 
-   void a(DataOutput var1) throws IOException;
+      @Override
+      public sk.b a(DataInput $$0, sk $$1, sc $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
 
-   @Override
-   String toString();
+      private static byte[] d(DataInput $$0, sc $$1) throws IOException {
+         $$1.b(24L);
+         int $$2 = $$0.readInt();
+         $$1.a(1L, (long)$$2);
+         byte[] $$3 = new byte[$$2];
+         $$0.readFully($$3);
+         return $$3;
+      }
 
-   byte b();
+      @Override
+      public void b(DataInput $$0, sc $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 1);
+      }
 
-   rs<?> c();
+      @Override
+      public String a() {
+         return "BYTE[]";
+      }
 
-   rq d();
+      @Override
+      public String b() {
+         return "TAG_Byte_Array";
+      }
+   };
+   private byte[] c;
 
-   int a();
-
-   default String r_() {
-      return new rp().a(this);
+   public rq(byte[] $$0) {
+      this.c = $$0;
    }
 
-   void a(ru var1);
+   public rq(List<Byte> $$0) {
+      this(a($$0));
+   }
 
-   rn.b a(rn var1);
+   private static byte[] a(List<Byte> $$0) {
+      byte[] $$1 = new byte[$$0.size()];
 
-   default void b(rn $$0) {
-      rn.b $$1 = $$0.b(this.c());
-      if ($$1 == rn.b.a) {
-         this.a($$0);
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         Byte $$3 = $$0.get($$2);
+         $$1[$$2] = $$3 == null ? 0 : $$3;
       }
+
+      return $$1;
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeInt(this.c.length);
+      $$0.write(this.c);
+   }
+
+   @Override
+   public int a() {
+      return 24 + 1 * this.c.length;
+   }
+
+   @Override
+   public byte b() {
+      return 7;
+   }
+
+   @Override
+   public sp<rq> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.s_();
+   }
+
+   @Override
+   public sn d() {
+      byte[] $$0 = new byte[this.c.length];
+      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+      return new rq($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof rq && Arrays.equals(this.c, ((rq)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public void a(sr $$0) {
+      $$0.a(this);
+   }
+
+   public byte[] e() {
+      return this.c;
+   }
+
+   @Override
+   public int size() {
+      return this.c.length;
+   }
+
+   public rr a(int $$0) {
+      return rr.a(this.c[$$0]);
+   }
+
+   public rr a(int $$0, rr $$1) {
+      byte $$2 = this.c[$$0];
+      this.c[$$0] = $$1.i();
+      return rr.a($$2);
+   }
+
+   public void b(int $$0, rr $$1) {
+      this.c = ArrayUtils.add(this.c, $$0, $$1.i());
+   }
+
+   @Override
+   public boolean a(int $$0, sn $$1) {
+      if ($$1 instanceof sh) {
+         this.c[$$0] = ((sh)$$1).i();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, sn $$1) {
+      if ($$1 instanceof sh) {
+         this.c = ArrayUtils.add(this.c, $$0, ((sh)$$1).i());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public rr b(int $$0) {
+      byte $$1 = this.c[$$0];
+      this.c = ArrayUtils.remove(this.c, $$0);
+      return rr.a($$1);
+   }
+
+   @Override
+   public byte f() {
+      return 1;
+   }
+
+   @Override
+   public void clear() {
+      this.c = new byte[0];
+   }
+
+   @Override
+   public sk.b a(sk $$0) {
+      return $$0.a(this.c);
    }
 }

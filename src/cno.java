@@ -1,20 +1,24 @@
-public class cno extends cnu {
-   public cno(cnu.a $$0, bjb... $$1) {
-      super($$0, cnv.k, $$1);
+public record cno<T extends cnn<?>>(afw a, T b) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cno<?> $$1 && this.a.equals($$1.a)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
    @Override
-   public int a(int $$0) {
-      return 12 + ($$0 - 1) * 20;
+   public int hashCode() {
+      return this.a.hashCode();
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 25;
-   }
-
-   @Override
-   public int a() {
-      return 2;
+   public String toString() {
+      return this.a.toString();
    }
 }

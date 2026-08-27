@@ -1,23 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public record cqu(cpp d, cei e) {
-   public static final String a = "enabled_features";
-   public static final Codec<cqu> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cpp.b.optionalFieldOf("DataPacks", cpp.a).forGetter(cqu::a), cek.e.optionalFieldOf("enabled_features", cek.g).forGetter(cqu::b))
-            .apply($$0, cqu::new)
-   );
-   public static final cqu c = new cqu(cpp.a, cek.g);
+public class cqu extends ecj {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
 
-   public cqu a(cei $$0) {
-      return new cqu(this.d, this.e.b($$0));
+   public static ecj.a<cqu> a() {
+      return new ecj.a<>(cqu::new, cqu::b, aud.i);
    }
 
-   public cpp a() {
-      return this.d;
+   private cqu(LongSet $$0) {
+      this.c = $$0;
    }
 
-   public cei b() {
-      return this.e;
+   public cqu() {
+      this(new LongOpenHashSet());
+   }
+
+   public static cqu b(rt $$0) {
+      return new cqu(new LongOpenHashSet($$0.o("Forced")));
+   }
+
+   @Override
+   public rt a(rt $$0) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

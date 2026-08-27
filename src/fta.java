@@ -1,15 +1,13 @@
-public class fta extends fuj<bzf, fex<bzf>> {
-   private static final aez a = new aez("textures/entity/endermite.png");
+public abstract class fta<T extends bxt, M extends fgi<T>> extends fvj<T, M> {
+   private final float a;
 
-   public fta(ftd.a $$0) {
-      super($$0, new fex<>($$0.a(fhw.S)), 0.3F);
+   public fta(fud.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   protected float a(bzf $$0) {
-      return 180.0F;
-   }
-
-   public aez b(bzf $$0) {
-      return a;
+   protected void a(T $$0, emh $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

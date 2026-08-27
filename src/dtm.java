@@ -1,50 +1,45 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
 
-public class dtm extends dtj {
-   public static final Codec<dtm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dlg.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dlg.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, dtm::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dlg d;
-   private final dlg e;
-   private final LongSet f = new LongOpenHashSet();
+public class dtm extends dtk {
+   public static final Codec<dtm> a = Codec.unit(() -> dtm.b);
+   public static final dtm b = new dtm();
 
-   private dtm(dlg $$0, dlg $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static dtm a(dlg $$0, dlg $$1) {
-      return new dtm($$0, $$1);
+   @Override
+   protected dtl<?> a() {
+      return dtl.a;
    }
 
    @Override
-   public int a(ash $$0, dlj $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
+   public void a(dtk.a $$0) {
+      ate $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            ht $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dcr.d);
+            }
          }
 
-         return $$2;
-      } else {
-         return asb.b($$0, $$2, $$3);
-      }
-   }
+         if ($$1.a(3) > 0) {
+            ht $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dcr.f);
+            }
+         }
 
-   @Override
-   public dtk<?> a() {
-      return dtk.b;
-   }
+         if ($$1.a(3) > 0) {
+            ht $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dcr.e);
+            }
+         }
 
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+         if ($$1.a(3) > 0) {
+            ht $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dcr.c);
+            }
+         }
+      });
    }
 }

@@ -1,19 +1,26 @@
-import java.util.List;
+import java.util.Map;
 
-public record wk(List<gw> b) implements vx {
-   public static final aez a = new aez("debug/raids");
+public class wk implements wb<we> {
+   private final Map<afv<? extends io<?>>, ark.a> a;
 
-   public wk(so $$0) {
-      this($$0.a(so::e));
+   public wk(Map<afv<? extends io<?>>, ark.a> $$0) {
+      this.a = $$0;
+   }
+
+   public wk(tl $$0) {
+      this.a = $$0.a(tl::u, ark.a::b);
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.b, so::a);
+   public void a(tl $$0) {
+      $$0.a(this.a, tl::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   @Override
-   public aez a() {
-      return a;
+   public void a(we $$0) {
+      $$0.a(this);
+   }
+
+   public Map<afv<? extends io<?>>, ark.a> a() {
+      return this.a;
    }
 }

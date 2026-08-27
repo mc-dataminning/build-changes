@@ -1,75 +1,49 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsh extends dsm {
-   public static final Codec<dsh> a = drv.a.fieldOf("provider").xmap(dsh::new, $$0 -> $$0.b).codec();
-   private final drv b;
+public class dsh extends dse {
+   public static final Codec<dsh> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bhg.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, dsh::new)
+   );
+   private final bhg b;
 
-   public dsh(drv $$0) {
-      this.b = $$0;
+   public dsh(bhg $$0, bhg $$1, bhg $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected dsn<?> a() {
-      return dsn.e;
+   protected dsf<?> a() {
+      return dsf.h;
    }
 
    @Override
-   public void a(dsm.a $$0) {
-      List<gw> $$1 = Lists.newArrayList();
-      List<gw> $$2 = $$0.e();
-      List<gw> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
+   protected void a(crf $$0, dse.b $$1, ate $$2, dro $$3, int $$4, dse.a $$5, int $$6, int $$7, int $$8) {
+      ht $$9 = $$5.a();
+      int $$10 = 0;
 
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.g().e());
-            this.a($$0, $$1x.g(2).e());
-            this.a($$0, $$1x.g().e(2));
-            this.a($$0, $$1x.g(2).e(2));
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + asy.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
+         }
 
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
+         this.a($$0, $$1, $$2, $$3, new ht($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
       }
    }
 
-   private void a(dsm.a $$0, gw $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
+   @Override
+   public int a(ate $$0, int $$1, dro $$2) {
+      return this.b.a($$0);
    }
 
-   private void b(dsm.a $$0, gw $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         gw $$3 = $$1.b($$2);
-         if (dnq.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   @Override
+   protected boolean a(ate $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

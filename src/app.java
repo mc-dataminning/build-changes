@@ -1,39 +1,38 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class app<T> implements Iterable<apn<T>> {
-   private final hq<T> a;
-   private final Map<T, apn<T>> b = new IdentityHashMap<>();
-   private final tl c;
-
-   public app(hq<T> $$0, tl $$1) {
-      this.a = $$0;
-      this.c = $$1;
+public class app extends apk<GameProfile> {
+   public app(GameProfile $$0) {
+      super($$0);
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public apn<T> a(T $$0, apo $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new apn<>(this, (T)$$1x, $$1));
-   }
-
-   public hq<T> a() {
-      return this.a;
+   public app(JsonObject $$0) {
+      super(b($$0));
    }
 
    @Override
-   public Iterator<apn<T>> iterator() {
-      return this.b.values().iterator();
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId() == null ? "" : this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+      }
    }
 
-   public apn<T> b(T $$0) {
-      return this.a($$0, apo.b);
-   }
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
 
-   public tl b() {
-      return this.c;
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
+
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

@@ -1,27 +1,45 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
-import java.util.function.Function;
-
-public class cax {
-   public static bmn<caq> a() {
-      return bop.a(
-         (Function<bop.b<caq>, ? extends App<bop.c<caq>, bos<caq>>>)($$0 -> $$0.group($$0.b(bsn.aj), $$0.c(bsn.aa), $$0.c(bsn.ag), $$0.a(bsn.an))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     if (!$$4x.m_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cax::a)).isPresent()) {
-                        cak $$6 = $$0.b($$1);
-                        car.c($$4x, $$6);
-                        car.c((cap)$$4x);
-                        car.b($$4x, $$6);
-                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(car::c));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class cax extends bzu {
+   public cax(bjx<? extends cax> $$0, cqz $$1) {
+      super($$0, $$1);
    }
 
-   private static boolean a(cap $$0) {
-      return $$0.dN().a(bsn.ag);
+   public static boolean a(bjx<cax> $$0, cro $$1, bkn $$2, ht $$3, ate $$4) {
+      ht $$5 = $$3;
+
+      do {
+         $$5 = $$5.c();
+      } while ($$1.a_($$5).a(cuc.qC));
+
+      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == bkn.c || $$1.g($$5.d()));
+   }
+
+   @Override
+   protected aqc w() {
+      return aqd.xB;
+   }
+
+   @Override
+   protected aqc d(bir $$0) {
+      return aqd.xD;
+   }
+
+   @Override
+   protected aqc m_() {
+      return aqd.xC;
+   }
+
+   @Override
+   aqc t() {
+      return aqd.xE;
+   }
+
+   @Override
+   protected cdd b(ckj $$0, float $$1) {
+      cdd $$2 = super.b($$0, $$1);
+      if ($$2 instanceof cdf) {
+         ((cdf)$$2).a(new bjg(bji.b, 600));
+      }
+
+      return $$2;
    }
 }

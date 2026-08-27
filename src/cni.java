@@ -1,60 +1,68 @@
-public class cni extends cmh {
-   public cni(cme $$0) {
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class cni extends cnf {
+   private static final cnk a = cnk.a(ckm.tB);
+
+   public cni(cnc $$0) {
       super($$0);
    }
 
-   public boolean a(cff $$0, cqb $$1) {
+   public boolean a(cgd $$0, cqz $$1) {
       boolean $$2 = false;
       boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
 
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cjl $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if ($$7.a(cte.cf.k()) && !$$4) {
-               $$4 = true;
-            } else if ($$7.a(cte.cg.k()) && !$$3) {
-               $$3 = true;
-            } else if ($$7.a(aqd.O) && !$$2) {
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ckj $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.d() instanceof ciy) {
                $$2 = true;
             } else {
-               if (!$$7.a(cjo.oC) || $$5) {
+               if (!a.a($$5)) {
                   return false;
                }
 
-               $$5 = true;
+               if ($$3) {
+                  return false;
+               }
+
+               $$3 = true;
             }
          }
       }
 
-      return $$2 && $$4 && $$3 && $$5;
+      return $$3 && $$2;
    }
 
-   public cjl a(cff $$0, hr $$1) {
-      cjl $$2 = new cjl(cjo.va, 1);
+   public ckj a(cgd $$0, ip $$1) {
+      List<Integer> $$2 = Lists.newArrayList();
+      ckj $$3 = null;
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cjl $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            dbc $$5 = dbc.a($$4.d());
-            if ($$5 != null) {
-               ckv.a($$2, $$5.b());
-               break;
-            }
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ckj $$5 = $$0.a($$4);
+         cke $$6 = $$5.d();
+         if ($$6 instanceof ciy) {
+            $$2.add(((ciy)$$6).d().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
          }
       }
 
-      return $$2;
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a("Explosion").b("FadeColors", $$2);
+         return $$3;
+      } else {
+         return ckj.b;
+      }
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cms<?> an_() {
-      return cms.n;
+   public cnq<?> aq_() {
+      return cnq.i;
    }
 }

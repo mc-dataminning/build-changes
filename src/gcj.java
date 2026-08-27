@@ -1,5 +1,9 @@
-public interface gcj extends gci {
-   boolean m();
+public interface gcj {
+   default j b() {
+      return j.a();
+   }
 
-   void q();
+   default boolean c() {
+      return false;
+   }
 }

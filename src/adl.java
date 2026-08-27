@@ -1,14 +1,24 @@
-public interface adl extends abe {
-   @Override
-   default sn b() {
-      return sn.d;
+public class adl implements wb<aca> {
+   private final int a;
+
+   public adl(int $$0) {
+      this.a = $$0;
    }
 
-   void a(adn var1);
+   public adl(tl $$0) {
+      this.a = $$0.readShort();
+   }
 
-   void a(ado var1);
+   @Override
+   public void a(tl $$0) {
+      $$0.l(this.a);
+   }
 
-   void a(adm var1);
+   public void a(aca $$0) {
+      $$0.a(this);
+   }
 
-   void a(adp var1);
+   public int a() {
+      return this.a;
+   }
 }

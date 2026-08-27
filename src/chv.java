@@ -1,62 +1,120 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
+import com.mojang.serialization.Codec;
+import java.util.EnumMap;
+import java.util.function.Supplier;
 
-public class chv extends ckz implements clf {
-   private final aqk<ctc> a;
-   protected final float b;
-   private final float c;
-   private final Multimap<bkn, bkq> d;
+public enum chv implements atr, chu {
+   a("leather", 5, ac.a(new EnumMap<>(cht.a.class), $$0 -> {
+      $$0.put(cht.a.d, 1);
+      $$0.put(cht.a.c, 2);
+      $$0.put(cht.a.b, 3);
+      $$0.put(cht.a.a, 1);
+   }), 15, aqd.ai, 0.0F, 0.0F, () -> cnk.a(ckm.pP)),
+   b("chainmail", 15, ac.a(new EnumMap<>(cht.a.class), $$0 -> {
+      $$0.put(cht.a.d, 1);
+      $$0.put(cht.a.c, 4);
+      $$0.put(cht.a.b, 5);
+      $$0.put(cht.a.a, 2);
+   }), 12, aqd.ac, 0.0F, 0.0F, () -> cnk.a(ckm.nQ)),
+   c("iron", 15, ac.a(new EnumMap<>(cht.a.class), $$0 -> {
+      $$0.put(cht.a.d, 2);
+      $$0.put(cht.a.c, 5);
+      $$0.put(cht.a.b, 6);
+      $$0.put(cht.a.a, 2);
+   }), 9, aqd.ah, 0.0F, 0.0F, () -> cnk.a(ckm.nQ)),
+   d("gold", 7, ac.a(new EnumMap<>(cht.a.class), $$0 -> {
+      $$0.put(cht.a.d, 1);
+      $$0.put(cht.a.c, 3);
+      $$0.put(cht.a.b, 5);
+      $$0.put(cht.a.a, 2);
+   }), 25, aqd.ag, 0.0F, 0.0F, () -> cnk.a(ckm.nU)),
+   e("diamond", 33, ac.a(new EnumMap<>(cht.a.class), $$0 -> {
+      $$0.put(cht.a.d, 3);
+      $$0.put(cht.a.c, 6);
+      $$0.put(cht.a.b, 8);
+      $$0.put(cht.a.a, 3);
+   }), 10, aqd.ad, 2.0F, 0.0F, () -> cnk.a(ckm.nK)),
+   f("turtle", 25, ac.a(new EnumMap<>(cht.a.class), $$0 -> {
+      $$0.put(cht.a.d, 2);
+      $$0.put(cht.a.c, 5);
+      $$0.put(cht.a.b, 6);
+      $$0.put(cht.a.a, 2);
+   }), 9, aqd.ak, 0.0F, 0.0F, () -> cnk.a(ckm.nD)),
+   g("netherite", 37, ac.a(new EnumMap<>(cht.a.class), $$0 -> {
+      $$0.put(cht.a.d, 3);
+      $$0.put(cht.a.c, 6);
+      $$0.put(cht.a.b, 8);
+      $$0.put(cht.a.a, 3);
+   }), 15, aqd.aj, 3.0F, 0.1F, () -> cnk.a(ckm.nV));
 
-   protected chv(float $$0, float $$1, cky $$2, aqk<ctc> $$3, cjg.a $$4) {
-      super($$2, $$4);
-      this.a = $$3;
-      this.b = $$2.b();
-      this.c = $$0 + $$2.c();
-      Builder<bkn, bkq> $$5 = ImmutableMultimap.builder();
-      $$5.put(bks.c, new bkq(m, "Tool modifier", (double)this.c, bkq.a.a));
-      $$5.put(bks.e, new bkq(n, "Tool modifier", (double)$$1, bkq.a.a));
-      this.d = $$5.build();
+   public static final Codec<chv> h = atr.a(chv::values);
+   private static final EnumMap<cht.a, Integer> i = ac.a(new EnumMap<>(cht.a.class), $$0 -> {
+      $$0.put(cht.a.d, 13);
+      $$0.put(cht.a.c, 15);
+      $$0.put(cht.a.b, 16);
+      $$0.put(cht.a.a, 11);
+   });
+   private final String j;
+   private final int k;
+   private final EnumMap<cht.a, Integer> l;
+   private final int m;
+   private final aqc n;
+   private final float o;
+   private final float p;
+   private final ast<cnk> q;
+
+   private chv(String $$0, int $$1, EnumMap<cht.a, Integer> $$2, int $$3, aqc $$4, float $$5, float $$6, Supplier<cnk> $$7) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.n = $$4;
+      this.o = $$5;
+      this.p = $$6;
+      this.q = new ast<>($$7);
    }
 
    @Override
-   public float a(cjl $$0, dfd $$1) {
-      return $$1.a(this.a) ? this.b : 1.0F;
+   public int a(cht.a $$0) {
+      return i.get($$0) * this.k;
    }
 
    @Override
-   public boolean a(cjl $$0, bjm $$1, bjm $$2) {
-      $$0.a(2, $$2, $$0x -> $$0x.d(bjb.a));
-      return true;
+   public int b(cht.a $$0) {
+      return this.l.get($$0);
    }
 
    @Override
-   public boolean a(cjl $$0, cqb $$1, dfd $$2, gw $$3, bjm $$4) {
-      if (!$$1.B && $$2.h($$1, $$3) != 0.0F) {
-         $$0.a(1, $$4, $$0x -> $$0x.d(bjb.a));
-      }
-
-      return true;
+   public int a() {
+      return this.m;
    }
 
    @Override
-   public Multimap<bkn, bkq> a(bjb $$0) {
-      return $$0 == bjb.a ? this.d : super.a($$0);
-   }
-
-   public float d() {
-      return this.c;
+   public aqc b() {
+      return this.n;
    }
 
    @Override
-   public boolean a_(dfd $$0) {
-      int $$1 = this.i().d();
-      if ($$1 < 3 && $$0.a(apv.bE)) {
-         return false;
-      } else if ($$1 < 2 && $$0.a(apv.bF)) {
-         return false;
-      } else {
-         return $$1 < 1 && $$0.a(apv.bG) ? false : $$0.a(this.a);
-      }
+   public cnk d() {
+      return this.q.a();
+   }
+
+   @Override
+   public String e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.o;
+   }
+
+   @Override
+   public float g() {
+      return this.p;
+   }
+
+   @Override
+   public String c() {
+      return this.j;
    }
 }

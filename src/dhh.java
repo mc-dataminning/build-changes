@@ -1,58 +1,37 @@
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.Optional;
 
-public class dhh<T> implements dhq<T> {
-   private final hj<T> a;
+public class dhh {
+   private static final ath a = new ath(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   public dhh(hj<T> $$0) {
-      this.a = $$0;
+   public static int a() {
+      return b;
    }
 
-   public static <A> dhq<A> a(int $$0, hj<A> $$1, dhr<A> $$2, List<A> $$3) {
-      return new dhh<>($$1);
+   public static int a(hx $$0) {
+      return a.a($$0);
    }
 
-   @Override
-   public int a(T $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 == -1 ? 0 : $$1;
+   public static int a(float $$0) {
+      return a.b($$0);
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      return true;
+   public static Optional<hx> a(int $$0) {
+      hx $$1 = switch ($$0) {
+         case 0 -> hx.c;
+         case 4 -> hx.f;
+         case 8 -> hx.d;
+         case 12 -> hx.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
    }
 
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.a.a($$0);
-      if ($$1 == null) {
-         throw new dhp($$0);
-      } else {
-         return $$1;
-      }
-   }
-
-   @Override
-   public void a(so $$0) {
-   }
-
-   @Override
-   public void b(so $$0) {
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return this.a.b();
-   }
-
-   @Override
-   public dhq<T> c() {
-      return this;
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

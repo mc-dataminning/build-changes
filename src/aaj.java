@@ -1,24 +1,24 @@
-public class aaj implements ve<wx> {
-   private final tl a;
+public class aaj implements wb<xu> {
+   private final ui a;
 
-   public aaj(tl $$0) {
+   public aaj(ui $$0) {
       this.a = $$0;
    }
 
-   public aaj(so $$0) {
+   public aaj(tl $$0) {
       this.a = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(tl $$0) {
       $$0.a(this.a);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public tl a() {
+   public ui a() {
       return this.a;
    }
 }

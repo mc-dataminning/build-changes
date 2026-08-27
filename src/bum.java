@@ -1,89 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Set;
 
-public class bum {
-   private final gw a;
-   private final he<buo> b;
-   private int c;
-   private final Runnable d;
+public class bum extends buo<cck> {
+   private static final int a = 40;
 
-   public static Codec<bum> a(Runnable $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  gw.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
-                  aew.a(jc.T).fieldOf("type").forGetter($$0xx -> $$0xx.b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
-                  RecordCodecBuilder.point($$0)
-               )
-               .apply($$1, bum::new)
-      );
+   public bum() {
+      super(40);
    }
 
-   private bum(gw $$0, he<buo> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.i();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+   protected void a(alq $$0, cck $$1) {
+      afv<cqz> $$2 = $$0.ac();
+      ht $$3 = $$1.dl();
+      List<ia> $$4 = Lists.newArrayList();
+      int $$5 = 4;
 
-   public bum(gw $$0, he<buo> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
-   }
-
-   @Deprecated
-   @atd
-   public int a() {
-      return this.c;
-   }
-
-   protected boolean b() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               ht $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gp().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(ia.a($$2, $$9));
+               }
+            }
+         }
       }
-   }
 
-   protected boolean c() {
-      if (this.c >= this.b.a().b()) {
-         return false;
+      blj<?> $$10 = $$1.dN();
+      if (!$$4.isEmpty()) {
+         $$10.a(btk.f, $$4);
       } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
-   }
-
-   public boolean d() {
-      return this.c > 0;
-   }
-
-   public boolean e() {
-      return this.c != this.b.a().b();
-   }
-
-   public gw f() {
-      return this.a;
-   }
-
-   public he<buo> g() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((bum)$$0).a) : false;
+         $$10.b(btk.f);
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public Set<btk<?>> a() {
+      return ImmutableSet.of(btk.f);
    }
 }

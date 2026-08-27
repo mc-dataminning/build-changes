@@ -1,41 +1,39 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public class fzs {
-   private static final gaa[] a = new gaa[]{
-      a("textures/entity/player/slim/alex.png", gaa.a.a),
-      a("textures/entity/player/slim/ari.png", gaa.a.a),
-      a("textures/entity/player/slim/efe.png", gaa.a.a),
-      a("textures/entity/player/slim/kai.png", gaa.a.a),
-      a("textures/entity/player/slim/makena.png", gaa.a.a),
-      a("textures/entity/player/slim/noor.png", gaa.a.a),
-      a("textures/entity/player/slim/steve.png", gaa.a.a),
-      a("textures/entity/player/slim/sunny.png", gaa.a.a),
-      a("textures/entity/player/slim/zuri.png", gaa.a.a),
-      a("textures/entity/player/wide/alex.png", gaa.a.b),
-      a("textures/entity/player/wide/ari.png", gaa.a.b),
-      a("textures/entity/player/wide/efe.png", gaa.a.b),
-      a("textures/entity/player/wide/kai.png", gaa.a.b),
-      a("textures/entity/player/wide/makena.png", gaa.a.b),
-      a("textures/entity/player/wide/noor.png", gaa.a.b),
-      a("textures/entity/player/wide/steve.png", gaa.a.b),
-      a("textures/entity/player/wide/sunny.png", gaa.a.b),
-      a("textures/entity/player/wide/zuri.png", gaa.a.b)
-   };
+public class fzs extends fzt {
+   @Nullable
+   private CompletableFuture<fzt.a> f;
 
-   public static aez a() {
-      return a[6].a();
+   public fzs(aot $$0, afw $$1, Executor $$2) {
+      super($$1);
+      this.f = CompletableFuture.supplyAsync(() -> fzt.a.a($$0, $$1), $$2);
    }
 
-   public static gaa a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Override
+   protected fzt.a b(aot $$0) {
+      if (this.f != null) {
+         fzt.a $$1 = this.f.join();
+         this.f = null;
+         return $$1;
+      } else {
+         return fzt.a.a($$0, this.e);
+      }
    }
 
-   public static gaa a(GameProfile $$0) {
-      return a($$0.getId());
+   public CompletableFuture<Void> d() {
+      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
    }
 
-   private static gaa a(String $$0, gaa.a $$1) {
-      return new gaa(new aez($$0), null, null, null, $$1, true);
+   @Override
+   public void a(gab $$0, aot $$1, afw $$2, Executor $$3) {
+      this.f = CompletableFuture.supplyAsync(() -> fzt.a.a($$1, this.e), ac.f());
+      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
+   }
+
+   private static Executor a(Executor $$0) {
+      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

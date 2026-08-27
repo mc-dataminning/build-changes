@@ -1,34 +1,21 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bpw extends bqh {
-   private final bjo a;
-   private final cqb b;
-
-   public bpw(bjo $$0, cqb $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bqh.a.c));
-   }
-
-   @Override
-   public boolean a() {
-      boolean $$0 = this.a.aB || this.a.aA;
-      if ($$0 && this.a.ag().a(apy.h)) {
-         gw $$1 = this.a.dl().c();
-         dfd $$2 = this.b.a_($$1);
-         return $$2.a(cte.qC) || $$2.k(this.b, $$1) == ehx.a();
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.a.K().a();
+public class bpw {
+   public static <E extends ccb> bmb<E> a(Function<E, Optional<? extends bkj>> $$0) {
+      return bpm.a(
+         (Function<bpm.b<E>, ? extends App<bpm.c<E>, bpp<E>>>)($$1 -> $$1.group($$1.c(btk.ax), $$1.c(btk.o), $$1.a(btk.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends bkj> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::a).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

@@ -1,51 +1,29 @@
-public enum fnr {
-   a(new fnr.b(fnr.a.f, fnr.a.e, fnr.a.a), new fnr.b(fnr.a.f, fnr.a.e, fnr.a.d), new fnr.b(fnr.a.c, fnr.a.e, fnr.a.d), new fnr.b(fnr.a.c, fnr.a.e, fnr.a.a)),
-   b(new fnr.b(fnr.a.f, fnr.a.b, fnr.a.d), new fnr.b(fnr.a.f, fnr.a.b, fnr.a.a), new fnr.b(fnr.a.c, fnr.a.b, fnr.a.a), new fnr.b(fnr.a.c, fnr.a.b, fnr.a.d)),
-   c(new fnr.b(fnr.a.c, fnr.a.b, fnr.a.d), new fnr.b(fnr.a.c, fnr.a.e, fnr.a.d), new fnr.b(fnr.a.f, fnr.a.e, fnr.a.d), new fnr.b(fnr.a.f, fnr.a.b, fnr.a.d)),
-   d(new fnr.b(fnr.a.f, fnr.a.b, fnr.a.a), new fnr.b(fnr.a.f, fnr.a.e, fnr.a.a), new fnr.b(fnr.a.c, fnr.a.e, fnr.a.a), new fnr.b(fnr.a.c, fnr.a.b, fnr.a.a)),
-   e(new fnr.b(fnr.a.f, fnr.a.b, fnr.a.d), new fnr.b(fnr.a.f, fnr.a.e, fnr.a.d), new fnr.b(fnr.a.f, fnr.a.e, fnr.a.a), new fnr.b(fnr.a.f, fnr.a.b, fnr.a.a)),
-   f(new fnr.b(fnr.a.c, fnr.a.b, fnr.a.a), new fnr.b(fnr.a.c, fnr.a.e, fnr.a.a), new fnr.b(fnr.a.c, fnr.a.e, fnr.a.d), new fnr.b(fnr.a.c, fnr.a.b, fnr.a.d));
-
-   private static final fnr[] g = ac.a(new fnr[6], $$0 -> {
-      $$0[fnr.a.e] = a;
-      $$0[fnr.a.b] = b;
-      $$0[fnr.a.d] = c;
-      $$0[fnr.a.a] = d;
-      $$0[fnr.a.f] = e;
-      $$0[fnr.a.c] = f;
-   });
-   private final fnr.b[] h;
-
-   public static fnr a(ha $$0) {
-      return g[$$0.d()];
+public class fnr extends fnc {
+   fnr(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fnl $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      } else {
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      }
    }
 
-   private fnr(fnr.b... $$0) {
-      this.h = $$0;
-   }
+   public static class a implements fmt<jv> {
+      private final fnl a;
 
-   public fnr.b a(int $$0) {
-      return this.h[$$0];
-   }
-
-   public static final class a {
-      public static final int a = ha.d.d();
-      public static final int b = ha.b.d();
-      public static final int c = ha.f.d();
-      public static final int d = ha.c.d();
-      public static final int e = ha.a.d();
-      public static final int f = ha.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
+      public a(fnl $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fnr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

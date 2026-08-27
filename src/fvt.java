@@ -1,41 +1,12 @@
-public class fvt extends fuj<bvx, feq<bvx>> {
-   private final feq<bvx> a = this.a();
-   private final feq<bvx> i;
-   private static final aez j = new aez("textures/entity/fish/tropical_a.png");
-   private static final aez k = new aez("textures/entity/fish/tropical_b.png");
+public class fvt extends fuw<cao> {
+   private static final afw a = new afw("textures/entity/illager/pillager.png");
 
-   public fvt(ftd.a $$0) {
-      super($$0, new fhe<>($$0.a(fhw.bF)), 0.15F);
-      this.i = new fhf<>($$0.a(fhw.bD));
-      this.a(new fxv(this, $$0.f()));
+   public fvt(fud.a $$0) {
+      super($$0, new fgl<>($$0.a(fiv.aL)), 0.5F);
+      this.a(new fye<>(this, $$0.d()));
    }
 
-   public aez a(bvx $$0) {
-      return switch ($$0.gp().a()) {
-         case a -> j;
-         case b -> k;
-      };
-   }
-
-   public void a(bvx $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
-      feq<bvx> $$6 = switch ($$0.gp().a()) {
-         case a -> this.a;
-         case b -> this.i;
-      };
-      this.f = $$6;
-      float[] $$7 = $$0.gn().d();
-      $$6.a($$7[0], $$7[1], $$7[2]);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$6.a(1.0F, 1.0F, 1.0F);
-   }
-
-   protected void a(bvx $$0, elj $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = 4.3F * asb.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$5));
-      if (!$$0.aX()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   public afw a(cao $$0) {
+      return a;
    }
 }

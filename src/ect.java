@@ -1,70 +1,210 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Multimap;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class ect {
-   private final Multimap<String, String> a;
-   private final Supplier<String> b;
-   private final eet c;
-   private final eco d;
-   private final Set<ecm<?>> e;
-   @Nullable
-   private String f;
+public class ect implements edd {
+   private final ede a;
+   private final edd b;
 
-   public ect(eet $$0, eco $$1) {
-      this(HashMultimap.create(), () -> "", $$0, $$1, ImmutableSet.of());
-   }
-
-   public ect(Multimap<String, String> $$0, Supplier<String> $$1, eet $$2, eco $$3, Set<ecm<?>> $$4) {
+   public ect(ede $$0, edd $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
    }
 
-   private String c() {
-      if (this.f == null) {
-         this.f = this.b.get();
-      }
-
-      return this.f;
+   @Override
+   public int a() {
+      return this.b.a();
    }
 
-   public void a(String $$0) {
-      this.a.put(this.c(), $$0);
+   @Override
+   public int b() {
+      return this.b.b();
    }
 
-   public ect b(String $$0) {
-      return new ect(this.a, () -> this.c() + $$0, this.c, this.d, this.e);
+   @Override
+   public int c() {
+      return this.b.c();
    }
 
-   public ect a(String $$0, ecm<?> $$1) {
-      ImmutableSet<ecm<?>> $$2 = ImmutableSet.builder().addAll(this.e).add($$1).build();
-      return new ect(this.a, () -> this.c() + $$0, this.c, this.d, $$2);
+   @Override
+   public float d() {
+      return this.b.d();
    }
 
-   public boolean a(ecm<?> $$0) {
-      return this.e.contains($$0);
+   @Override
+   public long e() {
+      return this.b.e();
    }
 
-   public Multimap<String, String> a() {
-      return ImmutableMultimap.copyOf(this.a);
+   @Override
+   public long f() {
+      return this.b.f();
    }
 
-   public void a(ecl $$0) {
-      this.c.a(this, $$0);
+   @Override
+   public String g() {
+      return this.a.g();
    }
 
-   public eco b() {
-      return this.d;
+   @Override
+   public int h() {
+      return this.b.h();
    }
 
-   public ect a(eet $$0) {
-      return new ect(this.a, this.b, $$0, this.d, this.e);
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public boolean k() {
+      return this.b.k();
+   }
+
+   @Override
+   public int l() {
+      return this.b.l();
+   }
+
+   @Override
+   public cqw m() {
+      return this.a.m();
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public void a(float $$0) {
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(ht $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void f(int $$0) {
+   }
+
+   @Override
+   public void a(cqw $$0) {
+   }
+
+   @Override
+   public boolean n() {
+      return this.a.n();
+   }
+
+   @Override
+   public boolean o() {
+      return this.a.o();
+   }
+
+   @Override
+   public boolean p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public cqv q() {
+      return this.a.q();
+   }
+
+   @Override
+   public dhs.c r() {
+      return this.b.r();
+   }
+
+   @Override
+   public void a(dhs.c $$0) {
+   }
+
+   @Override
+   public bhy s() {
+      return this.a.s();
+   }
+
+   @Override
+   public boolean t() {
+      return this.a.t();
+   }
+
+   @Override
+   public ehs<MinecraftServer> u() {
+      return this.b.u();
+   }
+
+   @Override
+   public int v() {
+      return 0;
+   }
+
+   @Override
+   public void g(int $$0) {
+   }
+
+   @Override
+   public int w() {
+      return 0;
+   }
+
+   @Override
+   public void h(int $$0) {
+   }
+
+   @Override
+   public UUID x() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, crb $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

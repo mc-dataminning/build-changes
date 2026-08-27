@@ -1,18 +1,15 @@
-public record vz(aey<djn> b, ehh c) implements vx {
-   public static final aez a = new aez("debug/game_event");
+public abstract class vz<T extends tr> implements wb<T> {
+   private final Iterable<wb<T>> a;
 
-   public vz(so $$0) {
-      this($$0.a(jc.A), $$0.k());
+   protected vz(Iterable<wb<T>> $$0) {
+      this.a = $$0;
+   }
+
+   public final Iterable<wb<T>> a() {
+      return this.a;
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.b(this.b);
-      $$0.a(this.c);
-   }
-
-   @Override
-   public aez a() {
-      return a;
+   public final void a(tl $$0) {
    }
 }

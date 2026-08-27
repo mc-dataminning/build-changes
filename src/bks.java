@@ -1,20 +1,73 @@
-public class bks {
-   public static final bkn a = a("generic.armor", new bku("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
-   public static final bkn b = a("generic.armor_toughness", new bku("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final bkn c = a("generic.attack_damage", new bku("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
-   public static final bkn d = a("generic.attack_knockback", new bku("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
-   public static final bkn e = a("generic.attack_speed", new bku("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final bkn f = a("generic.flying_speed", new bku("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
-   public static final bkn g = a("generic.follow_range", new bku("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
-   public static final bkn h = a("horse.jump_strength", new bku("attribute.name.horse.jump_strength", 0.7, 0.0, 2.0).a(true));
-   public static final bkn i = a("generic.knockback_resistance", new bku("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final bkn j = a("generic.luck", new bku("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final bkn k = a("generic.max_absorption", new bku("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0)).a(true);
-   public static final bkn l = a("generic.max_health", new bku("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final bkn m = a("generic.movement_speed", new bku("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
-   public static final bkn n = a("zombie.spawn_reinforcements", new bku("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
+public abstract class bks extends bkl {
+   protected static final float bS = 0.0F;
 
-   private static bkn a(String $$0, bkn $$1) {
-      return hq.a(jb.v, $$0, $$1);
+   protected bks(bjx<? extends bks> $$0, cqz $$1) {
+      super($$0, $$1);
+   }
+
+   public float h(ht $$0) {
+      return this.a($$0, this.dL());
+   }
+
+   public float a(ht $$0, crc $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public boolean a(cra $$0, bkn $$1) {
+      return this.a(this.dl(), $$0) >= 0.0F;
+   }
+
+   public boolean ga() {
+      return !this.L().l();
+   }
+
+   public boolean gb() {
+      return this.bz.a(btk.Y) ? this.bz.c(btk.Y).isPresent() : this.bO.c().anyMatch($$0 -> $$0.k() instanceof brx);
+   }
+
+   @Override
+   protected void fR() {
+      super.fR();
+      bjt $$0 = this.fT();
+      if ($$0 != null && $$0.dL() == this.dL()) {
+         this.a($$0.dl(), 5);
+         float $$1 = this.e($$0);
+         if (this instanceof ble && ((ble)this).y()) {
+            if ($$1 > 10.0F) {
+               this.a(true, true);
+            }
+
+            return;
+         }
+
+         this.D($$1);
+         if ($$1 > 10.0F) {
+            this.a(true, true);
+            this.bO.a(bre.a.a);
+         } else if ($$1 > 6.0F) {
+            double $$2 = ($$0.dq() - this.dq()) / (double)$$1;
+            double $$3 = ($$0.ds() - this.ds()) / (double)$$1;
+            double $$4 = ($$0.dw() - this.dw()) / (double)$$1;
+            this.f(this.do().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
+            this.cm();
+         } else if (this.gc() && !this.gb()) {
+            this.bO.b(bre.a.a);
+            float $$5 = 2.0F;
+            eif $$6 = new eif($$0.dq() - this.dq(), $$0.ds() - this.ds(), $$0.dw() - this.dw()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
+            this.L().a(this.dq() + $$6.c, this.ds() + $$6.d, this.dw() + $$6.e, this.gd());
+         }
+      }
+   }
+
+   protected boolean gc() {
+      return true;
+   }
+
+   protected double gd() {
+      return 1.0;
+   }
+
+   protected void D(float $$0) {
    }
 }

@@ -1,9 +1,12 @@
-public class fwh extends fsb<cah, fhp<cah>> {
-   public fwh(ftd.a $$0) {
-      this($$0, fhw.bX, fhw.ca, fhw.cb);
+public class fwh extends fvj<bws, fhx<bws>> {
+   private static final afw a = new afw("textures/entity/snow_golem.png");
+
+   public fwh(fud.a $$0) {
+      super($$0, new fhx<>($$0.a(fiv.bp)), 0.5F);
+      this.a(new fyq(this, $$0.c(), $$0.b()));
    }
 
-   public fwh(ftd.a $$0, fhv $$1, fhv $$2, fhv $$3) {
-      super($$0, new fhp<>($$0.a($$1)), new fhp<>($$0.a($$2)), new fhp<>($$0.a($$3)));
+   public afw a(bws $$0) {
+      return a;
    }
 }

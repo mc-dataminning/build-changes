@@ -1,54 +1,31 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dci extends csq {
-   public static final MapCodec<dci> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dfs.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t())
-            .apply($$0, dci::new)
-   );
-   public static final dgd f = dft.aT;
-   private final int g;
+public class dci extends ctq {
+   protected static final MapCodec<jv> c = jy.k
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof jv $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<dci> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, dci::new));
+   protected final jv e;
 
    @Override
-   public MapCodec<dci> a() {
-      return e;
+   public MapCodec<? extends dci> a() {
+      return d;
    }
 
-   protected dci(int $$0, dfs $$1, dfc.d $$2) {
-      super($$2, $$1);
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
-      this.g = $$0;
-   }
-
-   @Override
-   protected int b(cqb $$0, gw $$1) {
-      int $$2 = Math.min(a($$0, c.a($$1), biw.class), this.g);
-      if ($$2 > 0) {
-         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
-         return asb.f($$3 * 15.0F);
-      } else {
-         return 0;
-      }
+   protected dci(jv $$0, dga.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected int g(dfd $$0) {
-      return $$0.c(f);
-   }
-
-   @Override
-   protected dfd a(dfd $$0, int $$1) {
-      return $$0.a(f, Integer.valueOf($$1));
-   }
-
-   @Override
-   protected int b() {
-      return 10;
-   }
-
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(f);
+   public void a(dgb $$0, cqz $$1, ht $$2, ate $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(js.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

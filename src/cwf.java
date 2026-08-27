@@ -1,87 +1,88 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class cwf extends cwy {
-   public static final MapCodec<cwf> a = b(cwf::new);
-   public static final int b = 3;
-   public static final dgd c = dft.as;
-   private static final int f = 4;
-   private static final int g = 2;
-
-   @Override
-   public MapCodec<cwf> a() {
-      return a;
-   }
-
-   public cwf(dfc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
-   }
-
-   @Override
-   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      this.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.z($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
-         gw.a $$4 = new gw.a();
-
-         for (ha $$5 : ha.values()) {
-            $$4.a($$2, $$5);
-            dfd $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, asb.a($$3, 20, 40));
-            }
-         }
+public class cwf {
+   public static <S extends ddx> cwf.c<S> a(
+      ddz<S> $$0, Function<dgb, cwf.a> $$1, Function<dgb, hx> $$2, dgv $$3, dgb $$4, cra $$5, ht $$6, BiPredicate<cra, ht> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return cwf.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return cwf.b::b;
       } else {
-         $$1.a($$2, this, asb.a($$3, 20, 40));
-      }
-   }
+         cwf.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == cwf.a.a;
+         boolean $$11 = $$9 == cwf.a.b;
+         if ($$10) {
+            return new cwf.c.b<>($$8);
+         } else {
+            ht $$12 = $$6.a($$2.apply($$4));
+            dgb $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               cwf.a $$14 = $$1.apply($$13);
+               if ($$14 != cwf.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return cwf.b::b;
+                  }
 
-   private boolean e(dfd $$0, cqb $$1, gw $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.d($$0, $$1, $$2);
-         return true;
-      }
-   }
-
-   @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ctc $$3, gw $$4, boolean $$5) {
-      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(cph $$0, gw $$1, int $$2) {
-      int $$3 = 0;
-      gw.a $$4 = new gw.a();
-
-      for (ha $$5 : ha.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new cwf.c.a<>($$16, $$17);
+                  }
+               }
             }
+
+            return new cwf.c.b<>($$8);
          }
       }
-
-      return true;
    }
 
-   @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(c);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   public cjl a(cqe $$0, gw $$1, dfd $$2) {
-      return cjl.b;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
+   }
+
+   public interface c<S> {
+      <T> T apply(cwf.b<? super S, T> var1);
+
+      public static final class a<S> implements cwf.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(cwf.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
+
+      public static final class b<S> implements cwf.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(cwf.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

@@ -1,31 +1,24 @@
-import com.mojang.authlib.GameProfile;
+public class adh implements wb<aca> {
+   private final String a;
 
-public class adh implements ve<adf> {
-   private final GameProfile a;
-
-   public adh(GameProfile $$0) {
+   public adh(String $$0) {
       this.a = $$0;
    }
 
-   public adh(so $$0) {
-      this.a = $$0.A();
+   public adh(tl $$0) {
+      this.a = $$0.s();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(tl $$0) {
       $$0.a(this.a);
    }
 
-   public void a(adf $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public GameProfile a() {
+   public String a() {
       return this.a;
-   }
-
-   @Override
-   public sn c() {
-      return sn.e;
    }
 }

@@ -1,112 +1,80 @@
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class daw extends ctl implements ctf {
-   public static final MapCodec<daw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aey.a(jc.e).fieldOf("fruit").forGetter($$0x -> $$0x.f),
-               aey.a(jc.e).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
-               aey.a(jc.E).fieldOf("seed").forGetter($$0x -> $$0x.h),
-               t()
-            )
-            .apply($$0, daw::new)
-   );
-   public static final int b = 7;
-   public static final dgd c = dft.av;
-   protected static final float d = 1.0F;
-   protected static final eia[] e = new eia[]{
-      ctc.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      ctc.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      ctc.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      ctc.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      ctc.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      ctc.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      ctc.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      ctc.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final aey<ctc> f;
-   private final aey<ctc> g;
-   private final aey<cjg> h;
+public class daw extends cuj implements cud, cyp {
+   public static final MapCodec<daw> a = b(daw::new);
+   protected static final float b = 6.0F;
+   protected static final eiy c = cua.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
    @Override
    public MapCodec<daw> a() {
       return a;
    }
 
-   protected daw(aey<ctc> $$0, aey<ctc> $$1, aey<cjg> $$2, dfc.d $$3) {
-      super($$3);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected daw(dga.d $$0) {
+      super($$0);
    }
 
    @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return e[$$0.c(c)];
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return c;
    }
 
    @Override
-   protected boolean d(dfd $$0, cph $$1, gw $$2) {
-      return $$0.a(cte.cC);
+   protected boolean d(dgb $$0, cqf $$1, ht $$2) {
+      return $$0.d($$1, $$2, hx.b) && !$$0.a(cuc.kJ);
+   }
+
+   @Nullable
+   @Override
+   public dgb a(cmr $$0) {
+      ebe $$1 = $$0.q().b_($$0.a());
+      return $$1.a(aqx.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = cuv.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(c);
-            if ($$5 < 7) {
-               $$0 = $$0.a(c, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
-            } else {
-               ha $$6 = ha.c.a.a($$3);
-               gw $$7 = $$2.a($$6);
-               dfd $$8 = $$1.a_($$7.d());
-               if ($$1.a_($$7).i() && ($$8.a(cte.cC) || $$8.a(apv.af))) {
-                  hq<ctc> $$9 = $$1.G_().d(jc.e);
-                  Optional<ctc> $$10 = $$9.d(this.f);
-                  Optional<ctc> $$11 = $$9.d(this.g);
-                  if ($$10.isPresent() && $$11.isPresent()) {
-                     $$1.b($$7, $$10.get().o());
-                     $$1.b($$2, $$11.get().o().a(cww.aE, $$6));
-                  }
-               }
-            }
-         }
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      dgb $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!$$6.i()) {
+         $$3.a($$4, ebf.c, ebf.c.a($$3));
       }
+
+      return $$6;
    }
 
    @Override
-   public cjl a(cqe $$0, gw $$1, dfd $$2) {
-      return new cjl((cqa)DataFixUtils.orElse($$0.G_().d(jc.E).d(this.h), this));
-   }
-
-   @Override
-   public boolean b(cqe $$0, gw $$1, dfd $$2) {
-      return $$2.c(c) != 7;
-   }
-
-   @Override
-   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
+   public boolean b(crc $$0, ht $$1, dgb $$2) {
       return true;
    }
 
    @Override
-   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
-      int $$4 = Math.min(7, $$3.c(c) + asb.a($$0.z, 2, 5));
-      dfd $$5 = $$3.a(c, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.z);
+   public boolean a(cqz $$0, ate $$1, ht $$2, dgb $$3) {
+      return true;
+   }
+
+   @Override
+   public ebe c_(dgb $$0) {
+      return ebf.c.a(false);
+   }
+
+   @Override
+   public void a(alq $$0, ate $$1, ht $$2, dgb $$3) {
+      dgb $$4 = cuc.bx.o();
+      dgb $$5 = $$4.a(dce.d, dgx.a);
+      ht $$6 = $$2.c();
+      if ($$0.a_($$6).a(cuc.G)) {
+         $$0.a($$2, $$4, 2);
+         $$0.a($$6, $$5, 2);
       }
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(c);
+   public boolean a(@Nullable ccx $$0, cqf $$1, ht $$2, dgb $$3, ebd $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cra $$0, ht $$1, dgb $$2, ebe $$3) {
+      return false;
    }
 }

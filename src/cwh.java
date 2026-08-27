@@ -1,57 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class cwh extends crw {
-   public static final MapCodec<cwh> c = b(cwh::new);
+public class cwh extends cwu {
+   public static final MapCodec<cwh> a = b(cwh::new);
+   protected static final eiy b = cua.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<cwh> a() {
-      return c;
+      return a;
    }
 
-   protected cwh(dfc.d $$0) {
+   public cwh(dga.d $$0) {
       super($$0);
    }
 
    @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new ddu($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
-      return a($$0, $$2, ddb.a);
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
+      return b;
    }
 
    @Override
-   protected void a(cqb $$0, gw $$1, cca $$2) {
-      dcz $$3 = $$0.c_($$1);
-      if ($$3 instanceof ddu) {
-         $$2.a((bhh)$$3);
-         $$2.a(apq.am);
-      }
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      this.d($$0, $$1, $$2);
+      return bib.a($$1.B);
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, apg.iR, aph.e, 1.0F, 1.0F, false);
+   public void a(dgb $$0, cqz $$1, ht $$2, ccx $$3) {
+      this.d($$0, $$1, $$2);
+   }
+
+   private void d(dgb $$0, cqz $$1, ht $$2) {
+      dhs $$3 = $$1.C_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         ht $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = asy.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = asy.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = asy.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(js.X, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
+
+            return;
          }
-
-         ha $$7 = $$0.c(a);
-         ha.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == ha.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == ha.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(iv.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(iv.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   protected int b() {
+      return 5;
+   }
+
+   @Override
+   public boolean a(dgb $$0, cqf $$1, ht $$2, ebu $$3) {
+      return false;
    }
 }

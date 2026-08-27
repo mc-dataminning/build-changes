@@ -1,101 +1,40 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.blaze3d.platform.GLX;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodHandles.Lookup;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import javax.annotation.Nullable;
+import org.lwjgl.system.Pointer;
 
 public class ekx {
-   private static final int a = 32768;
-   private final ekx.a b;
-   private final String c;
-   private int d;
-
-   protected ekx(ekx.a $$0, int $$1, String $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = $$2;
-   }
-
-   public void a(ekz $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager.glAttachShader($$0.a(), this.c());
-   }
-
-   public void a() {
-      if (this.d != -1) {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.d);
-         this.d = -1;
-         this.b.c().remove(this.c);
+   @Nullable
+   private static final MethodHandle a = GLX.make(() -> {
+      try {
+         Lookup $$0 = MethodHandles.lookup();
+         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
+         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
+         $$2.setAccessible(true);
+         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
+         $$3.setAccessible(true);
+         Object $$4 = $$3.get(null);
+         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
+      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
+         throw new RuntimeException(var5);
       }
-   }
+   });
 
-   public String b() {
-      return this.c;
-   }
-
-   public static ekx a(ekx.a $$0, String $$1, InputStream $$2, String $$3, ekq $$4) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$5 = b($$0, $$1, $$2, $$3, $$4);
-      ekx $$6 = new ekx($$0, $$5, $$1);
-      $$0.c().put($$1, $$6);
-      return $$6;
-   }
-
-   protected static int b(ekx.a $$0, String $$1, InputStream $$2, String $$3, ekq $$4) throws IOException {
-      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
-      if ($$5 == null) {
-         throw new IOException("Could not load program " + $$0.a());
-      } else {
-         int $$6 = GlStateManager.glCreateShader($$0.d());
-         GlStateManager.glShaderSource($$6, $$4.a($$5));
-         GlStateManager.glCompileShader($$6);
-         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
-            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
-            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
-         } else {
-            return $$6;
+   public static void a(long $$0) {
+      if (a != null) {
+         try {
+            a.invoke((long)$$0);
+         } catch (Throwable var3) {
+            throw new RuntimeException(var3);
          }
       }
    }
 
-   protected int c() {
-      return this.d;
-   }
-
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
-
-      private final String c;
-      private final String d;
-      private final int e;
-      private final Map<String, ekx> f = Maps.newHashMap();
-
-      private a(String $$0, String $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      public String a() {
-         return this.c;
-      }
-
-      public String b() {
-         return this.d;
-      }
-
-      int d() {
-         return this.e;
-      }
-
-      public Map<String, ekx> c() {
-         return this.f;
-      }
+   public static void a(Pointer $$0) {
+      a($$0.address());
    }
 }

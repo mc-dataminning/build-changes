@@ -1,37 +1,25 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Locale;
+public class atn {
+   private double a;
+   private double b;
+   private double c;
 
-public class atn extends DataFix {
-   private final String a;
-   private final TypeReference b;
-
-   public atn(Schema $$0, String $$1, TypeReference $$2) {
-      super($$0, true);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
-      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
-      return this.a(this.a, $$0, $$1);
-   }
-
-   protected final <K> TypeRewriteRule a(String $$0, TaggedChoiceType<K> $$1, TaggedChoiceType<?> $$2) {
-      if ($$1.getKeyType() != $$2.getKeyType()) {
-         throw new IllegalStateException("Could not inject: key type is not the same");
-      } else {
-         return this.fixTypeEverywhere($$0, $$1, $$2, $$1x -> $$1xx -> {
-               if (!$$2.hasType($$1xx.getFirst())) {
-                  throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown type %s in %s ", $$1xx.getFirst(), this.b));
-               } else {
-                  return $$1xx;
-               }
-            });
+   public double a(double $$0, double $$1) {
+      this.a += $$0;
+      double $$2 = this.a - this.b;
+      double $$3 = asy.d(0.5, this.c, $$2);
+      double $$4 = Math.signum($$2);
+      if ($$4 * $$2 > $$4 * this.c) {
+         $$2 = $$3;
       }
+
+      this.c = $$3;
+      this.b += $$2 * $$1;
+      return $$2 * $$1;
+   }
+
+   public void a() {
+      this.a = 0.0;
+      this.b = 0.0;
+      this.c = 0.0;
    }
 }

@@ -1,64 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-public class ze implements ve<wx> {
-   private final ze.a a;
-   private final List<aez> b;
-   private final List<aez> c;
-   private final apk d;
+public class ze implements wb<xu> {
+   private final int a;
+   private final int b;
+   private final zd c;
+   private final zi d;
 
-   public ze(ze.a $$0, Collection<aez> $$1, Collection<aez> $$2, apk $$3) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = ImmutableList.copyOf($$2);
-      this.d = $$3;
+   public ze(dii $$0, eat $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      cqg $$4 = $$0.f();
+      this.a = $$4.e;
+      this.b = $$4.f;
+      this.c = new zd($$0);
+      this.d = new zi($$4, $$1, $$2, $$3);
    }
 
-   public ze(so $$0) {
-      this.a = $$0.b(ze.a.class);
-      this.d = apk.a($$0);
-      this.b = $$0.a(so::t);
-      if (this.a == ze.a.a) {
-         this.c = $$0.a(so::t);
-      } else {
-         this.c = ImmutableList.of();
-      }
+   public ze(tl $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = new zd($$0, this.a, this.b);
+      this.d = new zi($$0, this.a, this.b);
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
-      this.d.b($$0);
-      $$0.a(this.b, so::a);
-      if (this.a == ze.a.a) {
-         $$0.a(this.c, so::a);
-      }
+   public void a(tl $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      this.c.a($$0);
+      this.d.a($$0);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public List<aez> a() {
-      return this.b;
-   }
-
-   public List<aez> d() {
-      return this.c;
-   }
-
-   public apk e() {
-      return this.d;
-   }
-
-   public ze.a f() {
+   public int a() {
       return this.a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int d() {
+      return this.b;
+   }
+
+   public zd e() {
+      return this.c;
+   }
+
+   public zi f() {
+      return this.d;
    }
 }

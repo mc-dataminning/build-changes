@@ -1,125 +1,48 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
 
-public class tz implements tl {
-   private final tm c;
-   private final List<tl> d;
-   private ui e;
-   private arn f = arn.a;
-   @Nullable
-   private qr g;
+public class tz {
+   private static final int a = 5;
+   private static final int b = 127;
+   private static final int c = 128;
+   private static final int d = 7;
 
-   tz(tm $$0, List<tl> $$1, ui $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static tz a(tm $$0) {
-      return new tz($$0, Lists.newArrayList(), ui.a);
-   }
-
-   @Override
-   public tm b() {
-      return this.c;
-   }
-
-   @Override
-   public List<tl> c() {
-      return this.d;
-   }
-
-   public tz b(ui $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public ui a() {
-      return this.e;
-   }
-
-   public tz f(String $$0) {
-      return this.b(tl.b($$0));
-   }
-
-   public tz b(tl $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public tz a(UnaryOperator<ui> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public tz c(ui $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public tz a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public tz a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   @Override
-   public arn g() {
-      qr $$0 = qr.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
+   public static int a(int $$0) {
+      for (int $$1 = 1; $$1 < 5; $$1++) {
+         if (($$0 & -1 << $$1 * 7) == 0) {
+            return $$1;
+         }
       }
 
-      return this.f;
+      return 5;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof tz $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
-      }
+   public static boolean a(byte $$0) {
+      return ($$0 & 128) == 128;
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
+   public static int a(ByteBuf $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+
+      byte $$3;
+      do {
+         $$3 = $$0.readByte();
+         $$1 |= ($$3 & 127) << $$2++ * 7;
+         if ($$2 > 5) {
+            throw new RuntimeException("VarInt too big");
+         }
+      } while (a($$3));
+
+      return $$1;
    }
 
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
-
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
-
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
-
-         $$0.append(']');
+   public static ByteBuf a(ByteBuf $$0, int $$1) {
+      while (($$1 & -128) != 0) {
+         $$0.writeByte($$1 & 127 | 128);
+         $$1 >>>= 7;
       }
 
-      return $$0.toString();
+      $$0.writeByte($$1);
+      return $$0;
    }
 }

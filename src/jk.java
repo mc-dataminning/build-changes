@@ -1,51 +1,46 @@
-import java.nio.file.Path;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 
-public class jk {
-   private final Path a;
-
-   public jk(Path $$0) {
-      this.a = $$0;
-   }
-
-   public Path a() {
-      return this.a;
-   }
-
-   public Path a(jk.b $$0) {
-      return this.a().resolve($$0.d);
-   }
-
-   public jk.a a(jk.b $$0, String $$1) {
-      return new jk.a(this, $$0, $$1);
-   }
-
-   public static class a {
-      private final Path a;
-      private final String b;
-
-      a(jk $$0, jk.b $$1, String $$2) {
-         this.a = $$0.a($$1);
-         this.b = $$2;
+public class jk implements jq {
+   public static final jq.a<jk> a = new jq.a<jk>() {
+      public jk a(jr<jk> $$0, StringReader $$1) throws CommandSyntaxException {
+         $$1.expect(' ');
+         return new jk($$0, fk.a(jy.f.p(), $$1, false).a());
       }
 
-      public Path a(aez $$0, String $$1) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
+      public jk a(jr<jk> $$0, tl $$1) {
+         return new jk($$0, $$1.a(cua.q));
       }
+   };
+   private final jr<jk> b;
+   private final dgb c;
 
-      public Path a(aez $$0) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
-      }
+   public static Codec<jk> a(jr<jk> $$0) {
+      return dgb.b.xmap($$1 -> new jk($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public static enum b {
-      a("data"),
-      b("assets"),
-      c("reports");
+   public jk(jr<jk> $$0, dgb $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-      final String d;
+   @Override
+   public void a(tl $$0) {
+      $$0.a(cua.q, this.c);
+   }
 
-      private b(String $$0) {
-         this.d = $$0;
-      }
+   @Override
+   public String a() {
+      return jy.k.b(this.b()) + " " + fk.a(this.c);
+   }
+
+   @Override
+   public jr<jk> b() {
+      return this.b;
+   }
+
+   public dgb c() {
+      return this.c;
    }
 }

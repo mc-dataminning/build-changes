@@ -1,48 +1,59 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
 
-public class bfo<E> extends bfs<bfq.b<E>> {
-   public static <E> Codec<bfo<E>> a(Codec<E> $$0) {
-      return bfq.b.a($$0).listOf().xmap(bfo::new, bfs::e);
+public record bfo(Instant a, long b, bfo.b c) {
+   public static bfo a(RecordedEvent $$0) {
+      return new bfo($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? bfo.b.a : bfo.b.b);
    }
 
-   public static <E> Codec<bfo<E>> b(Codec<E> $$0) {
-      return arj.a(bfq.b.a($$0).listOf()).xmap(bfo::new, bfs::e);
+   public static bfo.a a(Duration $$0, List<bfo> $$1, Duration $$2, int $$3) {
+      return new bfo.a($$0, $$2, $$3, a($$1));
    }
 
-   bfo(List<? extends bfq.b<E>> $$0) {
-      super($$0);
-   }
+   private static double a(List<bfo> $$0) {
+      long $$1 = 0L;
+      Map<bfo.b, List<bfo>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
+      List<bfo> $$3 = $$2.get(bfo.b.a);
+      List<bfo> $$4 = $$2.get(bfo.b.b);
 
-   public static <E> bfo.a<E> a() {
-      return new bfo.a<>();
-   }
-
-   public static <E> bfo<E> b() {
-      return new bfo<>(List.of());
-   }
-
-   public static <E> bfo<E> a(E $$0) {
-      return new bfo<>(List.of(bfq.a($$0, 1)));
-   }
-
-   public Optional<E> a(ash $$0) {
-      return this.b($$0).map(bfq.b::b);
-   }
-
-   public static class a<E> {
-      private final Builder<bfq.b<E>> a = ImmutableList.builder();
-
-      public bfo.a<E> a(E $$0, int $$1) {
-         this.a.add(bfq.a($$0, $$1));
-         return this;
+      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
+         bfo $$6 = $$3.get($$5);
+         bfo $$7 = $$4.get($$5 - 1);
+         $$1 += $$6.b - $$7.b;
       }
 
-      public bfo<E> a() {
-         return new bfo<>(this.a.build());
+      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
+      return (double)$$1 / (double)$$8.getSeconds();
+   }
+
+   public static record a(Duration a, Duration b, int c, double d) {
+      public float a() {
+         return (float)this.b.toMillis() / (float)this.a.toMillis();
       }
+
+      public Duration b() {
+         return this.a;
+      }
+
+      public Duration c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public double e() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a,
+      b;
    }
 }

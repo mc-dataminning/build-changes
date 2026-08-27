@@ -1,24 +1,43 @@
-public class zp implements ve<wx> {
-   private final double a;
+import javax.annotation.Nullable;
 
-   public zp(dgu $$0) {
-      this.a = $$0.k();
+public class zp implements wb<xu> {
+   private final int a;
+   private final cgu<?> b;
+   private final ui c;
+
+   public zp(int $$0, cgu<?> $$1, ui $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public zp(so $$0) {
-      this.a = $$0.readDouble();
+   public zp(tl $$0) {
+      this.a = $$0.n();
+      this.b = $$0.a(jy.s);
+      this.c = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
+   public void a(tl $$0) {
+      $$0.c(this.a);
+      $$0.a(jy.s, this.b);
+      $$0.a(this.c);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public int a() {
       return this.a;
+   }
+
+   @Nullable
+   public cgu<?> d() {
+      return this.b;
+   }
+
+   public ui e() {
+      return this.c;
    }
 }

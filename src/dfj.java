@@ -1,96 +1,72 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import javax.annotation.Nullable;
 
-public class dfj {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<dfh>> c = Maps.newHashMap();
-   private int d;
-   private int e;
-
-   private dfj() {
-      this.c.put(' ', $$0 -> true);
-   }
-
-   public dfj a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
-         }
-
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
-
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
-            }
-
-            this.b.add($$0);
-            return this;
-         }
-      } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
-      }
-   }
-
-   public static dfj a() {
-      return new dfj();
-   }
-
-   public dfj a(char $$0, Predicate<dfh> $$1) {
-      this.c.put($$0, $$1);
-      return this;
-   }
-
-   public dfi b() {
-      return new dfi(this.c());
-   }
-
-   private Predicate<dfh>[][][] c() {
-      this.d();
-      Predicate<dfh>[][][] $$0 = (Predicate<dfh>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
-            }
-         }
+public class dfj extends ddx {
+   private final cqb a = new cqb() {
+      @Override
+      public void a(cqz $$0, ht $$1, int $$2) {
+         $$0.a($$1, cuc.ct, $$2, 0);
       }
 
+      @Override
+      public void a(@Nullable cqz $$0, ht $$1, crq $$2) {
+         super.a($$0, $$1, $$2);
+         if ($$0 != null) {
+            dgb $$3 = $$0.a_($$1);
+            $$0.a($$1, $$3, $$3, 4);
+         }
+      }
+   };
+
+   public dfj(ht $$0, dgb $$1) {
+      super(ddz.j, $$0, $$1);
+   }
+
+   @Override
+   public void a(rt $$0) {
+      super.a($$0);
+      this.a.a(this.o, this.p, $$0);
+   }
+
+   @Override
+   protected void b(rt $$0) {
+      super.b($$0);
+      this.a.a($$0);
+   }
+
+   public static void a(cqz $$0, ht $$1, dgb $$2, dfj $$3) {
+      $$3.a.a($$0, $$1);
+   }
+
+   public static void b(cqz $$0, ht $$1, dgb $$2, dfj $$3) {
+      $$3.a.a((alq)$$0, $$1);
+   }
+
+   public yb c() {
+      return yb.a(this);
+   }
+
+   @Override
+   public rt av_() {
+      rt $$0 = this.o();
+      $$0.r("SpawnPotentials");
       return $$0;
    }
 
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      return this.a.a(this.o, $$0) ? true : super.a_($$0, $$1);
+   }
 
-      for (Entry<Character, Predicate<dfh>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
-      }
+   @Override
+   public boolean t() {
+      return true;
+   }
 
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
-      }
+   public void a(bjx<?> $$0, ate $$1) {
+      this.a.a($$0, this.o, $$1, this.p);
+   }
+
+   public cqb d() {
+      return this.a;
    }
 }

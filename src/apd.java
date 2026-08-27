@@ -1,41 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
+import java.io.File;
+import java.net.SocketAddress;
+import javax.annotation.Nullable;
 
-public class apd {
-   public static final Codec<apd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               apf.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, apd::new)
-   );
-   private final he<apf> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
-
-   public apd(he<apf> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class apd extends apl<String, ape> {
+   public apd(File $$0) {
+      super($$0);
    }
 
-   public he<apf> a() {
-      return this.b;
+   @Override
+   protected apk<String> a(JsonObject $$0) {
+      return new ape($$0);
    }
 
-   public int b() {
-      return this.c;
+   public boolean a(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.d($$1);
    }
 
-   public int c() {
-      return this.d;
+   public boolean a(String $$0) {
+      return this.d($$0);
    }
 
-   public boolean d() {
-      return this.e;
+   @Nullable
+   public ape b(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.b($$1);
+   }
+
+   private String c(SocketAddress $$0) {
+      String $$1 = $$0.toString();
+      if ($$1.contains("/")) {
+         $$1 = $$1.substring($$1.indexOf(47) + 1);
+      }
+
+      if ($$1.contains(":")) {
+         $$1 = $$1.substring(0, $$1.indexOf(58));
+      }
+
+      return $$1;
    }
 }

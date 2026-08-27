@@ -1,57 +1,69 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public enum cxx implements asu {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class cxx extends cua {
+   public static final MapCodec<cxx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jy.f.q().fieldOf("host").forGetter(cxx::b), t()).apply($$0, cxx::new));
+   private final cua b;
+   private static final Map<cua, cua> c = Maps.newIdentityHashMap();
+   private static final Map<dgb, dgb> d = Maps.newIdentityHashMap();
+   private static final Map<dgb, dgb> e = Maps.newIdentityHashMap();
 
-   public static final Codec<cxx> d = asu.a(cxx::values);
-   private final String e;
-   private final tl f;
-   private final h g;
-
-   private cxx(String $$0, h $$1) {
-      this.e = $$0;
-      this.f = tl.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<? extends cxx> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case c:
-            return ($$1 - $$3) % $$1;
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         default:
-            return $$0;
+   public cxx(cua $$0, dga.d $$1) {
+      super($$1.e($$0.w() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
+   }
+
+   public cua b() {
+      return this.b;
+   }
+
+   public static boolean h(dgb $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(alq $$0, ht $$1) {
+      cas $$2 = bjx.aI.a((cqz)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.Q();
       }
-   }
-
-   public czn a(ha $$0) {
-      ha.a $$1 = $$0.o();
-      return (this != b || $$1 != ha.a.c) && (this != c || $$1 != ha.a.a) ? czn.a : czn.c;
-   }
-
-   public ha b(ha $$0) {
-      if (this == c && $$0.o() == ha.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == ha.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public tl b() {
-      return this.f;
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public void a(dgb $$0, alq $$1, ht $$2, ckj $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.X().b(cqv.g) && cov.a(cox.v, $$3) == 0) {
+         this.a($$1, $$2);
+      }
+   }
+
+   public static dgb n(dgb $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).o());
+   }
+
+   public dgb o(dgb $$0) {
+      return a(e, $$0, () -> this.b().o());
+   }
+
+   private static dgb a(Map<dgb, dgb> $$0, dgb $$1, Supplier<dgb> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dgb $$2x = $$2.get();
+
+         for (dhe $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+         }
+
+         return $$2x;
+      });
    }
 }

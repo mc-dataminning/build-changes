@@ -1,16 +1,21 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 
-public class bap extends Schema {
-   public bap(int $$0, Schema $$1) {
+public class bap extends DataFix {
+   public bap(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, azd.B, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", azd.w.in($$0))), "SpawnData", azd.w.in($$0)));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(baa.C);
+      return this.fixTypeEverywhereTyped("Structure Reference Fix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bap::a));
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("references", $$0x -> $$0x.createInt($$0x.asNumber().map(Number::intValue).result().filter($$0xx -> $$0xx > 0).orElse(1)));
    }
 }

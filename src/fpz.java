@@ -1,95 +1,49 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import javax.annotation.Nullable;
 
-public class fpz implements anx {
-   private Map<ddb<?>, fqa<?>> d = ImmutableMap.of();
-   private final erx e;
-   private final fht f;
-   public cqb a;
-   public eqa b;
-   public ehf c;
-   private final Supplier<fou> g;
-   private final Supplier<fub> h;
-   private final Supplier<ftb> i;
+public class fpz {
+   public static final int a = -1;
+   public final hx b;
+   public final int c;
+   public final String d;
+   public final fqb e;
 
-   public fpz(erx $$0, fht $$1, Supplier<fou> $$2, Supplier<fub> $$3, Supplier<ftb> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public fpz(@Nullable hx $$0, int $$1, String $$2, fqb $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   @Nullable
-   public <E extends dcz> fqa<E> a(E $$0) {
-      return (fqa<E>)this.d.get($$0.u());
-   }
+   protected static class a implements JsonDeserializer<fpz> {
+      private static final int a = -1;
 
-   public void a(cqb $$0, eqa $$1, ehf $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
+      public fpz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         hx $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         fqb $$7 = (fqb)$$2.deserialize($$3, fqb.class);
+         return new fpz($$4, $$5, $$6, $$7);
       }
 
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public <E extends dcz> void a(E $$0, float $$1, elj $$2, foa $$3) {
-      fqa<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.l() && $$0.u().a($$0.q())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
-         }
-      }
-   }
-
-   private static <T extends dcz> void a(fqa<T> $$0, T $$1, float $$2, elj $$3, foa $$4) {
-      cqb $$5 = $$1.k();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = fny.a($$5, $$1.p());
-      } else {
-         $$6 = 15728880;
+      protected int a(JsonObject $$0) {
+         return aso.a($$0, "tintindex", -1);
       }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6, fyr.d);
-   }
-
-   public <E extends dcz> boolean a(E $$0, elj $$1, foa $$2, int $$3, int $$4) {
-      fqa<E> $$5 = this.a($$0);
-      if ($$5 == null) {
-         return true;
-      } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
+      private String b(JsonObject $$0) {
+         return aso.i($$0, "texture");
       }
-   }
 
-   private static void a(dcz $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new y($$3);
+      @Nullable
+      private hx c(JsonObject $$0) {
+         String $$1 = aso.a($$0, "cullface", "");
+         return hx.a($$1);
       }
-   }
-
-   public void a(@Nullable cqb $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(anw $$0) {
-      fqb.a $$1 = new fqb.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = fqc.a($$1);
    }
 }

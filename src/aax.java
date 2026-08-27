@@ -1,46 +1,40 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
-
-public class aax implements ve<wx> {
+public class aax implements wb<xu> {
    private final int a;
-   private final List<aax.a> b;
+   private final int b;
+   private final int c;
+   private final int d;
 
-   public aax(int $$0, Collection<bko> $$1) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-
-      for (bko $$2 : $$1) {
-         this.b.add(new aax.a($$2.a(), $$2.b(), $$2.c()));
-      }
+   public aax(bjt $$0) {
+      this($$0.ah(), $$0.do());
    }
 
-   public aax(so $$0) {
+   public aax(int $$0, eif $$1) {
+      this.a = $$0;
+      double $$2 = 3.9;
+      double $$3 = asy.a($$1.c, -3.9, 3.9);
+      double $$4 = asy.a($$1.d, -3.9, 3.9);
+      double $$5 = asy.a($$1.e, -3.9, 3.9);
+      this.b = (int)($$3 * 8000.0);
+      this.c = (int)($$4 * 8000.0);
+      this.d = (int)($$5 * 8000.0);
+   }
+
+   public aax(tl $$0) {
       this.a = $$0.n();
-      this.b = $$0.a((so.a<aax.a>)($$0x -> {
-         aez $$1 = $$0x.t();
-         bkn $$2 = jb.v.a($$1);
-         double $$3 = $$0x.readDouble();
-         List<bkq> $$4 = $$0x.a((so.a<bkq>)($$0xx -> new bkq($$0xx.p(), "Unknown synced attribute modifier", $$0xx.readDouble(), bkq.a.a($$0xx.readByte()))));
-         return new aax.a($$2, $$3, $$4);
-      }));
+      this.b = $$0.readShort();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(tl $$0) {
       $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> {
-         $$0x.a(jb.v.b($$1.a()));
-         $$0x.a($$1.b());
-         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.a());
-            $$0xx.a($$1x.c());
-            $$0xx.k($$1x.b().a());
-         });
-      });
+      $$0.l(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
@@ -48,31 +42,15 @@ public class aax implements ve<wx> {
       return this.a;
    }
 
-   public List<aax.a> d() {
+   public int d() {
       return this.b;
    }
 
-   public static class a {
-      private final bkn a;
-      private final double b;
-      private final Collection<bkq> c;
+   public int e() {
+      return this.c;
+   }
 
-      public a(bkn $$0, double $$1, Collection<bkq> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public bkn a() {
-         return this.a;
-      }
-
-      public double b() {
-         return this.b;
-      }
-
-      public Collection<bkq> c() {
-         return this.c;
-      }
+   public int f() {
+      return this.d;
    }
 }

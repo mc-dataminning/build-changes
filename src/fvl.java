@@ -1,13 +1,10 @@
-public class fvl extends fve {
-   private static final aez a = new aez("textures/entity/skeleton/stray.png");
-
-   public fvl(ftd.a $$0) {
-      super($$0, fhw.bt, fhw.bu, fhw.bv);
-      this.a(new fxt<>(this, $$0.f()));
+public class fvl<T extends bjt> extends fuc<T> {
+   public fvl(fud.a $$0) {
+      super($$0);
    }
 
    @Override
-   public aez a(byx $$0) {
-      return a;
+   public afw a(T $$0) {
+      return fzz.e;
    }
 }

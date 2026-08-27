@@ -1,77 +1,182 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class rx extends ry {
-   private int a;
-   private final Set<rs<?>> b;
-   private final Deque<sa> c = new ArrayDeque<>();
-
-   public rx(rz... $$0) {
-      this.a = $$0.length;
-      Builder<rs<?>> $$1 = ImmutableSet.builder();
-      sa $$2 = sa.a();
-
-      for (rz $$3 : $$0) {
-         $$2.a($$3);
-         $$1.add($$3.b());
+public class rx extends rs<ry> {
+   private static final int b = 24;
+   public static final sp<rx> a = new sp.b<rx>() {
+      public rx a(DataInput $$0, sc $$1) throws IOException {
+         return new rx(d($$0, $$1));
       }
 
-      this.c.push($$2);
-      $$1.add(qw.b);
-      this.b = $$1.build();
-   }
-
-   @Override
-   public rn.b b(rs<?> $$0) {
-      return $$0 != qw.b ? rn.b.c : super.b($$0);
-   }
-
-   @Override
-   public rn.a a(rs<?> $$0) {
-      sa $$1 = this.c.element();
-      if (this.e() > $$1.b()) {
-         return super.a($$0);
-      } else if (this.a <= 0) {
-         return rn.a.d;
-      } else {
-         return !this.b.contains($$0) ? rn.a.b : super.a($$0);
+      @Override
+      public sk.b a(DataInput $$0, sk $$1, sc $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
       }
-   }
 
-   @Override
-   public rn.a a(rs<?> $$0, String $$1) {
-      sa $$2 = this.c.element();
-      if (this.e() > $$2.b()) {
-         return super.a($$0, $$1);
-      } else if ($$2.c().remove($$1, $$0)) {
-         this.a--;
-         return super.a($$0, $$1);
-      } else {
-         if ($$0 == qw.b) {
-            sa $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.c.push($$3);
-               return super.a($$0, $$1);
-            }
+      private static int[] d(DataInput $$0, sc $$1) throws IOException {
+         $$1.b(24L);
+         int $$2 = $$0.readInt();
+         $$1.a(4L, (long)$$2);
+         int[] $$3 = new int[$$2];
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3[$$4] = $$0.readInt();
          }
 
-         return rn.a.b;
+         return $$3;
+      }
+
+      @Override
+      public void b(DataInput $$0, sc $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 4);
+      }
+
+      @Override
+      public String a() {
+         return "INT[]";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Int_Array";
+      }
+   };
+   private int[] c;
+
+   public rx(int[] $$0) {
+      this.c = $$0;
+   }
+
+   public rx(List<Integer> $$0) {
+      this(a($$0));
+   }
+
+   private static int[] a(List<Integer> $$0) {
+      int[] $$1 = new int[$$0.size()];
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         Integer $$3 = $$0.get($$2);
+         $$1[$$2] = $$3 == null ? 0 : $$3;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeInt(this.c.length);
+
+      for (int $$1 : this.c) {
+         $$0.writeInt($$1);
       }
    }
 
    @Override
-   public rn.b b() {
-      if (this.e() == this.c.element().b()) {
-         this.c.pop();
-      }
-
-      return super.b();
+   public int a() {
+      return 24 + 4 * this.c.length;
    }
 
-   public int c() {
-      return this.a;
+   @Override
+   public byte b() {
+      return 11;
+   }
+
+   @Override
+   public sp<rx> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.s_();
+   }
+
+   public rx e() {
+      int[] $$0 = new int[this.c.length];
+      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+      return new rx($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof rx && Arrays.equals(this.c, ((rx)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   public int[] g() {
+      return this.c;
+   }
+
+   @Override
+   public void a(sr $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public int size() {
+      return this.c.length;
+   }
+
+   public ry a(int $$0) {
+      return ry.a(this.c[$$0]);
+   }
+
+   public ry a(int $$0, ry $$1) {
+      int $$2 = this.c[$$0];
+      this.c[$$0] = $$1.g();
+      return ry.a($$2);
+   }
+
+   public void b(int $$0, ry $$1) {
+      this.c = ArrayUtils.add(this.c, $$0, $$1.g());
+   }
+
+   @Override
+   public boolean a(int $$0, sn $$1) {
+      if ($$1 instanceof sh) {
+         this.c[$$0] = ((sh)$$1).g();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, sn $$1) {
+      if ($$1 instanceof sh) {
+         this.c = ArrayUtils.add(this.c, $$0, ((sh)$$1).g());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public ry b(int $$0) {
+      int $$1 = this.c[$$0];
+      this.c = ArrayUtils.remove(this.c, $$0);
+      return ry.a($$1);
+   }
+
+   @Override
+   public byte f() {
+      return 3;
+   }
+
+   @Override
+   public void clear() {
+      this.c = new int[0];
+   }
+
+   @Override
+   public sk.b a(sk $$0) {
+      return $$0.a(this.c);
    }
 }

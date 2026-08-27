@@ -1,71 +1,27 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public interface ckd {
+   int a = 256;
+   int b = 140;
+   afv<ckb> c = a("ponder_goat_horn");
+   afv<ckb> d = a("sing_goat_horn");
+   afv<ckb> e = a("seek_goat_horn");
+   afv<ckb> f = a("feel_goat_horn");
+   afv<ckb> g = a("admire_goat_horn");
+   afv<ckb> h = a("call_goat_horn");
+   afv<ckb> i = a("yearn_goat_horn");
+   afv<ckb> j = a("dream_goat_horn");
 
-public class ckd extends cjg {
-   private static final Map<apf, ckd> a = Maps.newHashMap();
-   private final int b;
-   private final apf c;
-   private final int d;
-
-   protected ckd(int $$0, apf $$1, cjg.a $$2, int $$3) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3 * 20;
-      a.put(this.c, this);
+   private static afv<ckb> a(String $$0) {
+      return afv.a(jz.C, new afw($$0));
    }
 
-   @Override
-   public bhe a(clv $$0) {
-      cqb $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      dfd $$3 = $$1.a_($$2);
-      if ($$3.a(cte.dT) && !$$3.c(cxd.b)) {
-         cjl $$4 = $$0.n();
-         if (!$$1.B) {
-            cca $$5 = $$0.o();
-            if ($$1.c_($$2) instanceof ddz $$6) {
-               $$6.a($$4.p());
-               $$1.a(djn.c, $$2, djn.a.a($$5, $$3));
-            }
-
-            $$4.h(1);
-            if ($$5 != null) {
-               $$5.a(apq.al);
-            }
-         }
-
-         return bhe.a($$1.B);
-      } else {
-         return bhe.d;
-      }
-   }
-
-   public int h() {
-      return this.b;
-   }
-
-   @Override
-   public void a(cjl $$0, @Nullable cqb $$1, List<tl> $$2, clc $$3) {
-      $$2.add(this.i().a(n.h));
-   }
-
-   public tz i() {
-      return tl.c(this.a() + ".desc");
-   }
-
-   @Nullable
-   public static ckd a(apf $$0) {
-      return a.get($$0);
-   }
-
-   public apf x() {
-      return this.c;
-   }
-
-   public int y() {
-      return this.d;
+   static ckb a(io<ckb> $$0) {
+      io.a($$0, c, new ckb((ib<aqc>)aqd.lf.get(0), 140, 256.0F));
+      io.a($$0, d, new ckb((ib<aqc>)aqd.lf.get(1), 140, 256.0F));
+      io.a($$0, e, new ckb((ib<aqc>)aqd.lf.get(2), 140, 256.0F));
+      io.a($$0, f, new ckb((ib<aqc>)aqd.lf.get(3), 140, 256.0F));
+      io.a($$0, g, new ckb((ib<aqc>)aqd.lf.get(4), 140, 256.0F));
+      io.a($$0, h, new ckb((ib<aqc>)aqd.lf.get(5), 140, 256.0F));
+      io.a($$0, i, new ckb((ib<aqc>)aqd.lf.get(6), 140, 256.0F));
+      return io.a($$0, j, new ckb((ib<aqc>)aqd.lf.get(7), 140, 256.0F));
    }
 }

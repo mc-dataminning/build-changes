@@ -3,84 +3,75 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.datafixers.util.Either;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
 
-public class et<T> implements ArgumentType<et.c<T>> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.b("argument.resource_tag.not_found", $$0, $$1));
-   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> tl.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
-   );
-   private final hg<T> d;
-   final aey<? extends hq<T>> e;
+public class et<T> implements ArgumentType<afv<T>> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ui.b("commands.place.feature.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ui.b("commands.place.structure.invalid", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> ui.b("commands.place.jigsaw.invalid", $$0));
+   final afv<? extends io<T>> e;
 
-   public et(dn $$0, aey<? extends hq<T>> $$1) {
-      this.e = $$1;
-      this.d = $$0.a($$1);
+   public et(afv<? extends io<T>> $$0) {
+      this.e = $$0;
    }
 
-   public static <T> et<T> a(dn $$0, aey<? extends hq<T>> $$1) {
-      return new et<>($$0, $$1);
+   public static <T> et<T> a(afv<? extends io<T>> $$0) {
+      return new et<>($$0);
    }
 
-   public static <T> et.c<T> a(CommandContext<dt> $$0, String $$1, aey<hq<T>> $$2) throws CommandSyntaxException {
-      et.c<?> $$3 = (et.c<?>)$$0.getArgument($$1, et.c.class);
-      Optional<et.c<T>> $$4 = $$3.a($$2);
-      return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            aey<?> $$2x = $$1xx.g();
-            return eq.b.create($$2x.a(), $$2x.b(), $$2.a());
-         }, $$1xx -> {
-            aqk<?> $$2x = $$1xx.f();
-            return c.create($$2x.b(), $$2x.a(), $$2.a());
-         }));
+   private static <T> afv<T> a(CommandContext<du> $$0, String $$1, afv<io<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      afv<?> $$4 = (afv<?>)$$0.getArgument($$1, afv.class);
+      Optional<afv<T>> $$5 = $$4.c($$2);
+      return $$5.orElseThrow(() -> $$3.create($$4));
    }
 
-   public et.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '#') {
-         int $$1 = $$0.getCursor();
+   private static <T> io<T> a(CommandContext<du> $$0, afv<? extends io<T>> $$1) {
+      return ((du)$$0.getSource()).m().aU().d($$1);
+   }
 
-         try {
-            $$0.skip();
-            aez $$2 = aez.a($$0);
-            aqk<T> $$3 = aqk.a(this.e, $$2);
-            hi.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.create($$2, this.e.a()));
-            return new et.d<>($$4);
-         } catch (CommandSyntaxException var6) {
-            $$0.setCursor($$1);
-            throw var6;
-         }
-      } else {
-         aez $$6 = aez.a($$0);
-         aey<T> $$7 = aey.a(this.e, $$6);
-         he.c<T> $$8 = this.d.a($$7).orElseThrow(() -> eq.a.create($$6, this.e.a()));
-         return new et.b<>($$8);
-      }
+   private static <T> ib.c<T> b(CommandContext<du> $$0, String $$1, afv<io<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      afv<T> $$4 = a($$0, $$1, $$2, $$3);
+      return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
+   }
+
+   public static ib.c<dob<?, ?>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, jz.at, b);
+   }
+
+   public static ib.c<dwa> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, jz.aA, c);
+   }
+
+   public static ib.c<dxj> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, jz.aD, d);
+   }
+
+   public afv<T> a(StringReader $$0) throws CommandSyntaxException {
+      afw $$1 = afw.a($$0);
+      return afv.a(this.e, $$1);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      dw.a(this.d.e().map(aqk::b), $$1, "#");
-      return dw.a(this.d.c().map(aey::a), $$1);
+      return $$0.getSource() instanceof dy $$2 ? $$2.a(this.e, dy.a.b, $$1, $$0) : $$1.buildFuture();
    }
 
    public Collection<String> getExamples() {
       return a;
    }
 
-   public static class a<T> implements gi<et<T>, et.a<T>.a> {
-      public void a(et.a<T>.a $$0, so $$1) {
+   public static class a<T> implements hf<et<T>, et.a<T>.a> {
+      public void a(et.a<T>.a $$0, tl $$1) {
          $$1.b($$0.b);
       }
 
-      public et.a<T>.a a(so $$0) {
+      public et.a<T>.a a(tl $$0) {
          return new et.a.a($$0.u());
       }
 
@@ -92,79 +83,21 @@ public class et<T> implements ArgumentType<et.c<T>> {
          return new et.a.a($$0.e);
       }
 
-      public final class a implements gi.a<et<T>> {
-         final aey<? extends hq<T>> b;
+      public final class a implements hf.a<et<T>> {
+         final afv<? extends io<T>> b;
 
-         a(aey<? extends hq<T>> $$1) {
+         a(afv<? extends io<T>> $$1) {
             this.b = $$1;
          }
 
-         public et<T> a(dn $$0) {
-            return new et<>($$0, this.b);
+         public et<T> a(dp $$0) {
+            return new et<>(this.b);
          }
 
          @Override
-         public gi<et<T>, ?> a() {
+         public hf<et<T>, ?> a() {
             return a.this;
          }
-      }
-   }
-
-   static record b<T>(he.c<T> a) implements et.c<T> {
-      @Override
-      public Either<he.c<T>, hi.c<T>> a() {
-         return Either.left(this.a);
-      }
-
-      @Override
-      public <E> Optional<et.c<E>> a(aey<? extends hq<E>> $$0) {
-         return this.a.g().b($$0) ? Optional.of((et.c<E>)this) : Optional.empty();
-      }
-
-      public boolean a(he<T> $$0) {
-         return $$0.equals(this.a);
-      }
-
-      @Override
-      public String b() {
-         return this.a.g().a().toString();
-      }
-
-      public he.c<T> c() {
-         return this.a;
-      }
-   }
-
-   public interface c<T> extends Predicate<he<T>> {
-      Either<he.c<T>, hi.c<T>> a();
-
-      <E> Optional<et.c<E>> a(aey<? extends hq<E>> var1);
-
-      String b();
-   }
-
-   static record d<T>(hi.c<T> a) implements et.c<T> {
-      @Override
-      public Either<he.c<T>, hi.c<T>> a() {
-         return Either.right(this.a);
-      }
-
-      @Override
-      public <E> Optional<et.c<E>> a(aey<? extends hq<E>> $$0) {
-         return this.a.f().c($$0) ? Optional.of((et.c<E>)this) : Optional.empty();
-      }
-
-      public boolean a(he<T> $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public String b() {
-         return "#" + this.a.f().b();
-      }
-
-      public hi.c<T> c() {
-         return this.a;
       }
    }
 }

@@ -1,9 +1,10 @@
-public interface dep {
-   void a();
+public class dep extends deo {
+   public dep(ht $$0, dgb $$1) {
+      super(ddz.g, $$0, $$1);
+   }
 
-   boolean b();
-
-   gw c();
-
-   String d();
+   @Override
+   protected ui g() {
+      return ui.c("container.dropper");
+   }
 }

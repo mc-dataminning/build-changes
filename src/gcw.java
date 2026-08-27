@@ -1,216 +1,123 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.Arrays;
-import it.unimi.dsi.fastutil.Swapper;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntComparator;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class gcw<T> {
-   private static final boolean b = Boolean.parseBoolean(System.getProperty("SuffixArray.printComparisons", "false"));
-   private static final boolean c = Boolean.parseBoolean(System.getProperty("SuffixArray.printArray", "false"));
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = -1;
-   private static final int f = -2;
-   protected final List<T> a = Lists.newArrayList();
-   private final IntList g = new IntArrayList();
-   private final IntList h = new IntArrayList();
-   private IntList i = new IntArrayList();
-   private IntList j = new IntArrayList();
-   private int k;
+public class gcw implements gcs {
+   private static final int a = 40;
+   private static final float b = 0.001F;
+   private final foc c;
+   private final gem d;
+   private final crz e;
+   private final ate f;
+   private final Object2ObjectArrayMap<crx, gcw.a> g = new Object2ObjectArrayMap();
+   private Optional<crv> h = Optional.empty();
+   private Optional<cru> i = Optional.empty();
+   private float j;
+   @Nullable
+   private crx k;
 
-   public void a(T $$0, String $$1) {
-      this.k = Math.max(this.k, $$1.length());
-      int $$2 = this.a.size();
-      this.a.add($$0);
-      this.h.add(this.g.size());
-
-      for (int $$3 = 0; $$3 < $$1.length(); $$3++) {
-         this.i.add($$2);
-         this.j.add($$3);
-         this.g.add($$1.charAt($$3));
-      }
-
-      this.i.add($$2);
-      this.j.add($$1.length());
-      this.g.add(-1);
+   public gcw(foc $$0, gem $$1, crz $$2) {
+      this.f = $$0.dL().E_();
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
+   public float b() {
+      return this.j;
+   }
+
+   @Override
    public void a() {
-      int $$0 = this.g.size();
-      int[] $$1 = new int[$$0];
-      int[] $$2 = new int[$$0];
-      int[] $$3 = new int[$$0];
-      int[] $$4 = new int[$$0];
-      IntComparator $$5 = ($$2x, $$3x) -> $$2[$$2x] == $$2[$$3x] ? Integer.compare($$3[$$2x], $$3[$$3x]) : Integer.compare($$2[$$2x], $$2[$$3x]);
-      Swapper $$6 = ($$3x, $$4x) -> {
-         if ($$3x != $$4x) {
-            int $$5x = $$2[$$3x];
-            $$2[$$3x] = $$2[$$4x];
-            $$2[$$4x] = $$5x;
-            $$5x = $$3[$$3x];
-            $$3[$$3x] = $$3[$$4x];
-            $$3[$$4x] = $$5x;
-            $$5x = $$4[$$3x];
-            $$4[$$3x] = $$4[$$4x];
-            $$4[$$4x] = $$5x;
-         }
-      };
+      this.g.values().removeIf(gcr::m);
+      crx $$0 = this.e.a(this.c.dq(), this.c.ds(), this.c.dw()).a();
+      if ($$0 != this.k) {
+         this.k = $$0;
+         this.h = $$0.m();
+         this.i = $$0.n();
+         this.g.values().forEach(gcw.a::o);
+         $$0.l().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
+               if ($$2 == null) {
+                  $$2 = new gcw.a((aqc)$$1.a());
+                  this.d.a((gdi)$$2);
+               }
 
-      for (int $$7 = 0; $$7 < $$0; $$7++) {
-         $$1[$$7] = this.g.getInt($$7);
+               $$2.p();
+               return $$2;
+            }));
       }
 
-      int $$8 = 1;
-
-      for (int $$9 = Math.min($$0, this.k); $$8 * 2 < $$9; $$8 *= 2) {
-         for (int $$10 = 0; $$10 < $$0; $$4[$$10] = $$10++) {
-            $$2[$$10] = $$1[$$10];
-            $$3[$$10] = $$10 + $$8 < $$0 ? $$1[$$10 + $$8] : -2;
+      this.i.ifPresent($$0x -> {
+         if (this.f.j() < $$0x.b()) {
+            this.d.a(gdd.b($$0x.a().a()));
          }
+      });
+      this.h
+         .ifPresent(
+            $$0x -> {
+               cqz $$1 = this.c.dL();
+               int $$2 = $$0x.c() * 2 + 1;
+               ht $$3 = ht.a(
+                  this.c.dq() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.du() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dw() + (double)this.f.a($$2) - (double)$$0x.c()
+               );
+               int $$4 = $$1.a(cri.a, $$3);
+               if ($$4 > 0) {
+                  this.j = this.j - (float)$$4 / (float)$$1.M() * 0.001F;
+               } else {
+                  this.j = this.j - (float)($$1.a(cri.b, $$3) - 1) / (float)$$0x.b();
+               }
 
-         Arrays.quickSort(0, $$0, $$5, $$6);
-
-         for (int $$11 = 0; $$11 < $$0; $$11++) {
-            if ($$11 > 0 && $$2[$$11] == $$2[$$11 - 1] && $$3[$$11] == $$3[$$11 - 1]) {
-               $$1[$$4[$$11]] = $$1[$$4[$$11 - 1]];
-            } else {
-               $$1[$$4[$$11]] = $$11;
+               if (this.j >= 1.0F) {
+                  double $$5 = (double)$$3.u() + 0.5;
+                  double $$6 = (double)$$3.v() + 0.5;
+                  double $$7 = (double)$$3.w() + 0.5;
+                  double $$8 = $$5 - this.c.dq();
+                  double $$9 = $$6 - this.c.du();
+                  double $$10 = $$7 - this.c.dw();
+                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
+                  double $$12 = $$11 + $$0x.d();
+                  gdd $$13 = gdd.a($$0x.a().a(), this.f, this.c.dq() + $$8 / $$11 * $$12, this.c.du() + $$9 / $$11 * $$12, this.c.dw() + $$10 / $$11 * $$12);
+                  this.d.a($$13);
+                  this.j = 0.0F;
+               } else {
+                  this.j = Math.max(this.j, 0.0F);
+               }
             }
-         }
-      }
-
-      IntList $$12 = this.i;
-      IntList $$13 = this.j;
-      this.i = new IntArrayList($$12.size());
-      this.j = new IntArrayList($$13.size());
-
-      for (int $$14 = 0; $$14 < $$0; $$14++) {
-         int $$15 = $$4[$$14];
-         this.i.add($$12.getInt($$15));
-         this.j.add($$13.getInt($$15));
-      }
-
-      if (c) {
-         this.b();
-      }
+         );
    }
 
-   private void b() {
-      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
-         d.debug("{} {}", $$0, this.a($$0));
+   public static class a extends gcr {
+      private int n;
+      private int o;
+
+      public a(aqc $$0) {
+         super($$0, aqe.i, gdi.t());
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
       }
 
-      d.debug("");
-   }
-
-   private String a(int $$0) {
-      int $$1 = this.j.getInt($$0);
-      int $$2 = this.h.getInt(this.i.getInt($$0));
-      StringBuilder $$3 = new StringBuilder();
-
-      for (int $$4 = 0; $$2 + $$4 < this.g.size(); $$4++) {
-         if ($$4 == $$1) {
-            $$3.append('^');
+      @Override
+      public void q() {
+         if (this.o < 0) {
+            this.n();
          }
 
-         int $$5 = this.g.getInt($$2 + $$4);
-         if ($$5 == -1) {
-            break;
-         }
-
-         $$3.append((char)$$5);
+         this.o = this.o + this.n;
+         this.d = asy.a((float)this.o / 40.0F, 0.0F, 1.0F);
       }
 
-      return $$3.toString();
-   }
-
-   private int a(String $$0, int $$1) {
-      int $$2 = this.h.getInt(this.i.getInt($$1));
-      int $$3 = this.j.getInt($$1);
-
-      for (int $$4 = 0; $$4 < $$0.length(); $$4++) {
-         int $$5 = this.g.getInt($$2 + $$3 + $$4);
-         if ($$5 == -1) {
-            return 1;
-         }
-
-         char $$6 = $$0.charAt($$4);
-         char $$7 = (char)$$5;
-         if ($$6 < $$7) {
-            return -1;
-         }
-
-         if ($$6 > $$7) {
-            return 1;
-         }
+      public void o() {
+         this.o = Math.min(this.o, 40);
+         this.n = -1;
       }
 
-      return 0;
-   }
-
-   public List<T> a(String $$0) {
-      int $$1 = this.i.size();
-      int $$2 = 0;
-      int $$3 = $$1;
-
-      while ($$2 < $$3) {
-         int $$4 = $$2 + ($$3 - $$2) / 2;
-         int $$5 = this.a($$0, $$4);
-         if (b) {
-            d.debug("comparing lower \"{}\" with {} \"{}\": {}", new Object[]{$$0, $$4, this.a($$4), $$5});
-         }
-
-         if ($$5 > 0) {
-            $$2 = $$4 + 1;
-         } else {
-            $$3 = $$4;
-         }
-      }
-
-      if ($$2 >= 0 && $$2 < $$1) {
-         int $$6 = $$2;
-         $$3 = $$1;
-
-         while ($$2 < $$3) {
-            int $$7 = $$2 + ($$3 - $$2) / 2;
-            int $$8 = this.a($$0, $$7);
-            if (b) {
-               d.debug("comparing upper \"{}\" with {} \"{}\": {}", new Object[]{$$0, $$7, this.a($$7), $$8});
-            }
-
-            if ($$8 >= 0) {
-               $$2 = $$7 + 1;
-            } else {
-               $$3 = $$7;
-            }
-         }
-
-         int $$9 = $$2;
-         IntSet $$10 = new IntOpenHashSet();
-
-         for (int $$11 = $$6; $$11 < $$9; $$11++) {
-            $$10.add(this.i.getInt($$11));
-         }
-
-         int[] $$12 = $$10.toIntArray();
-         java.util.Arrays.sort($$12);
-         Set<T> $$13 = Sets.newLinkedHashSet();
-
-         for (int $$14 : $$12) {
-            $$13.add(this.a.get($$14));
-         }
-
-         return Lists.newArrayList($$13);
-      } else {
-         return Collections.emptyList();
+      public void p() {
+         this.o = Math.max(0, this.o);
+         this.n = 1;
       }
    }
 }

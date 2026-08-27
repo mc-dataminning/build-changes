@@ -1,120 +1,92 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
 
 public class ajg {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("commands.whitelist.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.schedule.same_tick"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ui.b("commands.schedule.cleared.failure", $$0));
+   private static final SuggestionProvider<du> c = ($$0, $$1) -> dy.b(((du)$$0.getSource()).m().aT().K().u().a(), $$1);
 
-   public static void a(CommandDispatcher<dt> $$0) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a(
-                                 "whitelist"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(du.a("on").executes($$0x -> b((dt)$$0x.getSource()))))
-                        .then(du.a("off").executes($$0x -> c((dt)$$0x.getSource()))))
-                     .then(du.a("list").executes($$0x -> d((dt)$$0x.getSource()))))
-                  .then(du.a("add").then(du.a("targets", eg.a()).suggests(($$0x, $$1) -> {
-                     aoj $$2 = ((dt)$$0x.getSource()).l().ac();
-                     return dw.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fR())).map($$0xx -> $$0xx.fR().getName()), $$1);
-                  }).executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("schedule").requires($$0x -> $$0x.c(2)))
                .then(
-                  du.a("remove")
+                  dv.a("function")
                      .then(
-                        du.a("targets", eg.a())
-                           .suggests(($$0x, $$1) -> dw.a(((dt)$$0x.getSource()).l().ac().j(), $$1))
-                           .executes($$0x -> b((dt)$$0x.getSource(), eg.a($$0x, "targets")))
+                        dv.a("function", fx.a())
+                           .suggests(aia.a)
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("time", ff.a())
+                                       .executes($$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
+                                    .then(
+                                       dv.a("append")
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("replace")
+                                       .executes($$0x -> a((du)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
+                                 )
+                           )
                      )
                ))
-            .then(du.a("reload").executes($$0x -> a((dt)$$0x.getSource())))
+            .then(
+               dv.a("clear")
+                  .then(
+                     dv.a("function", StringArgumentType.greedyString())
+                        .suggests(c)
+                        .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                  )
+            )
       );
    }
 
-   private static int a(dt $$0) {
-      $$0.l().ac().a();
-      $$0.a(() -> tl.c("commands.whitelist.reloaded"), true);
-      $$0.l().a($$0);
-      return 1;
-   }
-
-   private static int a(dt $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aor $$2 = $$0.l().ac().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            aos $$5 = new aos($$4);
-            $$2.a($$5);
-            $$0.a(() -> tl.a("commands.whitelist.add.success", tl.b($$4.getName())), true);
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw c.create();
-      } else {
-         return $$3;
-      }
-   }
-
-   private static int b(dt $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aor $$2 = $$0.l().ac().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            aos $$5 = new aos($$4);
-            $$2.b($$5);
-            $$0.a(() -> tl.a("commands.whitelist.remove.success", tl.b($$4.getName())), true);
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw d.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
-   }
-
-   private static int b(dt $$0) throws CommandSyntaxException {
-      aoj $$1 = $$0.l().ac();
-      if ($$1.o()) {
+   private static int a(du $$0, Pair<afw, Either<gx<du>, Collection<gx<du>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
+      if ($$2 == 0) {
          throw a.create();
       } else {
-         $$1.a(true);
-         $$0.a(() -> tl.c("commands.whitelist.enabled"), true);
-         $$0.l().a($$0);
-         return 1;
+         long $$4 = $$0.f().V() + (long)$$2;
+         afw $$5 = (afw)$$1.getFirst();
+         ehs<MinecraftServer> $$6 = $$0.m().aT().K().u();
+         ((Either)$$1.getSecond()).ifLeft($$6x -> {
+            String $$7 = $$5.toString();
+            if ($$3) {
+               $$6.a($$7);
+            }
+
+            $$6.a($$7, $$4, new eho($$5));
+            $$0.a(() -> ui.a("commands.schedule.created.function", ui.a($$5), $$2, $$4), true);
+         }).ifRight($$6x -> {
+            String $$7 = "#" + $$5;
+            if ($$3) {
+               $$6.a($$7);
+            }
+
+            $$6.a($$7, $$4, new ehp($$5));
+            $$0.a(() -> ui.a("commands.schedule.created.tag", ui.a($$5), $$2, $$4), true);
+         });
+         return Math.floorMod($$4, Integer.MAX_VALUE);
       }
    }
 
-   private static int c(dt $$0) throws CommandSyntaxException {
-      aoj $$1 = $$0.l().ac();
-      if (!$$1.o()) {
-         throw b.create();
+   private static int a(du $$0, String $$1) throws CommandSyntaxException {
+      int $$2 = $$0.m().aT().K().u().a($$1);
+      if ($$2 == 0) {
+         throw b.create($$1);
       } else {
-         $$1.a(false);
-         $$0.a(() -> tl.c("commands.whitelist.disabled"), true);
-         return 1;
+         $$0.a(() -> ui.a("commands.schedule.cleared.success", $$2, $$1), true);
+         return $$2;
       }
-   }
-
-   private static int d(dt $$0) {
-      String[] $$1 = $$0.l().ac().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> tl.c("commands.whitelist.none"), false);
-      } else {
-         $$0.a(() -> tl.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
-      }
-
-      return $$1.length;
    }
 }

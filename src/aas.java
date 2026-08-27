@@ -1,32 +1,24 @@
-public class aas implements ve<wx> {
-   private final tl a;
-   private final tl b;
+public class aas implements wb<xu> {
+   private final int a;
 
-   public aas(tl $$0, tl $$1) {
+   public aas(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public aas(so $$0) {
-      this.a = $$0.m();
-      this.b = $$0.m();
+   public aas(tl $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(tl $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public tl a() {
+   public int a() {
       return this.a;
-   }
-
-   public tl d() {
-      return this.b;
    }
 }

@@ -1,58 +1,39 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import java.util.Collections;
 
-public class ajl implements ajj {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.data.entity.invalid"));
-   public static final Function<String, ajk.c> a = $$0 -> new ajk.c() {
-         @Override
-         public ajj a(CommandContext<dt> $$0x) throws CommandSyntaxException {
-            return new ajl(ee.a($$0, $$0));
-         }
-
-         @Override
-         public ArgumentBuilder<dt, ?> a(ArgumentBuilder<dt, ?> $$0x, Function<ArgumentBuilder<dt, ?>, ArgumentBuilder<dt, ?>> $$1) {
-            return $$0.then(du.a("entity").then($$1.apply(du.a($$0, ee.a()))));
-         }
-      };
-   private final biw c;
-
-   public ajl(biw $$0) {
-      this.c = $$0;
+public class ajl {
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).i()), ht.a(((du)$$0x.getSource()).e()), 0.0F)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("targets", eg.d())
+                     .executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), ht.a(((du)$$0x.getSource()).e()), 0.0F)))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("pos", fm.a()).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), fm.c($$0x, "pos"), 0.0F)))
+                        .then(dv.a("angle", dz.a()).executes($$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), fm.c($$0x, "pos"), dz.a($$0x, "angle"))))
+                  )
+            )
+      );
    }
 
-   @Override
-   public void a(qw $$0) throws CommandSyntaxException {
-      if (this.c instanceof cca) {
-         throw b.create();
-      } else {
-         UUID $$1 = this.c.cv();
-         this.c.g($$0);
-         this.c.a_($$1);
+   private static int a(du $$0, Collection<alr> $$1, ht $$2, float $$3) {
+      afv<cqz> $$4 = $$0.f().ac();
+
+      for (alr $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
-   }
 
-   @Override
-   public qw a() {
-      return cn.b(this.c);
-   }
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> ui.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> ui.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+      }
 
-   @Override
-   public tl b() {
-      return tl.a("commands.data.entity.modified", this.c.N_());
-   }
-
-   @Override
-   public tl a(rq $$0) {
-      return tl.a("commands.data.entity.query", this.c.N_(), rj.c($$0));
-   }
-
-   @Override
-   public tl a(ej.g $$0, double $$1, int $$2) {
-      return tl.a("commands.data.entity.get", $$0.a(), this.c.N_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      return $$1.size();
    }
 }

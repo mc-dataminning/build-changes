@@ -1,60 +1,65 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class ckf extends che {
-   public ckf(ctc $$0, cjg.a $$1) {
-      super($$0, $$1);
+public class ckf {
+   private final Map<cke, ckf.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(cke $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   @Nullable
-   @Override
-   public clt b(clt $$0) {
-      gw $$1 = $$0.a();
-      cqb $$2 = $$0.q();
-      dfd $$3 = $$2.a_($$1);
-      ctc $$4 = this.e();
-      if (!$$3.a($$4)) {
-         return czp.a($$2, $$1) == 7 ? null : $$0;
+   public float a(cke $$0, float $$1) {
+      ckf.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return asy.a($$4 / $$3, 0.0F, 1.0F);
       } else {
-         ha $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == ha.b ? $$0.g() : ha.b;
-         }
-
-         int $$7 = 0;
-         gw.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.j($$8)) {
-               cca $$9 = $$0.o();
-               int $$10 = $$2.aj();
-               if ($$9 instanceof aku && $$8.v() >= $$10) {
-                  ((aku)$$9).b(tl.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.e())) {
-               if ($$3.a($$0)) {
-                  return clt.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
+         return 0.0F;
       }
    }
 
-   @Override
-   protected boolean d() {
-      return false;
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<cke, ckf.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<cke, ckf.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
+            }
+         }
+      }
+   }
+
+   public void a(cke $$0, int $$1) {
+      this.a.put($$0, new ckf.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void b(cke $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(cke $$0, int $$1) {
+   }
+
+   protected void c(cke $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

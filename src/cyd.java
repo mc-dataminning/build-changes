@@ -1,22 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cyd extends dar {
-   public static final MapCodec<cyd> a = b(cyd::new);
+public class cyd extends cxn implements cyp {
+   public static final MapCodec<cyd> c = b(cyd::new);
 
    @Override
    public MapCodec<cyd> a() {
-      return a;
+      return c;
    }
 
-   public cyd(dfc.d $$0) {
-      super($$0);
+   protected cyd(dga.d $$0) {
+      super($$0, hx.b, eiv.b(), true);
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(iv.U, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
+   protected cxo c() {
+      return (cxo)cuc.mc;
+   }
+
+   @Override
+   public ebe c_(dgb $$0) {
+      return ebf.c.a(false);
+   }
+
+   @Override
+   protected boolean h(dgb $$0) {
+      return this.c().h($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable ccx $$0, cqf $$1, ht $$2, dgb $$3, ebd $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cra $$0, ht $$1, dgb $$2, ebe $$3) {
+      return false;
    }
 }

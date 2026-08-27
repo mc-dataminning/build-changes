@@ -1,131 +1,53 @@
-public abstract class ezc extends eye {
-   private static final tl m = tl.c("advMode.setCommand");
-   private static final tl n = tl.c("advMode.command");
-   private static final tl o = tl.c("advMode.previousOutput");
-   protected est a;
-   protected est b;
-   protected esk c;
-   protected esk k;
-   protected esr<Boolean> l;
-   esn p;
+import java.util.function.BooleanSupplier;
 
-   public ezc() {
-      super(eqh.a);
+public class ezc extends ezd {
+   private static final ui a = ui.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private final long c;
+   private final BooleanSupplier k;
+
+   public ezc(BooleanSupplier $$0) {
+      super(erg.a);
+      this.k = $$0;
+      this.c = System.currentTimeMillis();
    }
 
    @Override
-   public void c() {
-      if (!this.l().j()) {
-         this.az_();
-      }
-   }
-
-   abstract cpc l();
-
-   abstract int D();
-
-   @Override
-   protected void aH_() {
-      this.c = this.d(esk.a(tk.d, $$0x -> this.E()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
-      this.k = this.d(esk.a(tk.e, $$0x -> this.az_()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
-      boolean $$0 = this.l().o();
-      this.l = this.d(esr.a(tl.b("O"), tl.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.D(), 20, 20, tl.c("advMode.trackOutput"), ($$0x, $$1) -> {
-         cpc $$2 = this.l();
-         $$2.a($$1);
-         this.c($$1);
-      }));
-      this.a = new est(this.i, this.g / 2 - 150, 50, 300, 20, tl.c("advMode.command")) {
-         @Override
-         protected tz aE_() {
-            return super.aE_().b(ezc.this.p.e());
-         }
-      };
-      this.a.l(32500);
-      this.a.b(this::a);
-      this.e(this.a);
-      this.b = new est(this.i, this.g / 2 - 150, this.D(), 276, 20, tl.c("advMode.previousOutput"));
-      this.b.l(32500);
-      this.b.e(false);
-      this.b.a("-");
-      this.e(this.b);
-      this.c(this.a);
-      this.p = new esn(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.p.a(true);
-      this.p.d();
-      this.c($$0);
+   public boolean aB_() {
+      return false;
    }
 
    @Override
-   protected tl A() {
-      return this.p.a() ? this.p.b() : super.A();
+   protected boolean aL_() {
+      return false;
    }
 
    @Override
-   public void a(eqp $$0, int $$1, int $$2) {
-      String $$3 = this.a.a();
-      this.b($$0, $$1, $$2);
-      this.a.a($$3);
-      this.p.d();
-   }
-
-   @Override
-   protected void c(boolean $$0) {
-      this.b.a($$0 ? this.l().l().getString() : "-");
-   }
-
-   protected void E() {
-      cpc $$0 = this.l();
-      this.a($$0);
-      if (!$$0.o()) {
-         $$0.c(null);
-      }
-
-      this.f.a(null);
-   }
-
-   protected abstract void a(cpc var1);
-
-   private void a(String $$0) {
-      this.p.d();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.p.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
-      } else {
-         this.E();
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.p.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.p.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, m, this.g / 2, 20, 16777215);
-      $$0.b(this.i, n, this.g / 2 - 150 + 1, 40, 10526880);
-      this.a.a($$0, $$1, $$2, $$3);
-      int $$4 = 75;
-      if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.D() - 135;
-         $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
-         this.b.a($$0, $$1, $$2, $$3);
-      }
+      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
+   }
 
-      this.p.a($$0, $$1, $$2);
+   @Override
+   public void b(esy $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public void d() {
+      if (this.k.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
+         this.aC_();
+      }
+   }
+
+   @Override
+   public void aC_() {
+      this.f.aV().c(ui.c("narrator.ready_to_play"));
+      super.aC_();
+   }
+
+   @Override
+   public boolean j() {
+      return false;
    }
 }

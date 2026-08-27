@@ -1,21 +1,38 @@
-public class fna {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
+public class fna extends fnq {
+   private final fnl a;
 
-   public void a(boolean $$0, float $$1) {
+   fna(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fnl $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
-   public ehg a() {
-      return new ehg(this.a, this.b);
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
-   public boolean b() {
-      return this.b > 1.0E-5F;
+   @Override
+   public fmu b() {
+      return fmu.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(fnl a) implements fmt<jv> {
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fna $$8 = new fna($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.z.a(4) + 6);
+         return $$8;
+      }
    }
 }

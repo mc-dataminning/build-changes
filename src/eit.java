@@ -1,69 +1,53 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public record eit<T>(T d, gw e, long f, eix g, long h) {
-   public static final Comparator<eit<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-      }
-   };
-   public static final Comparator<eit<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<eit<?>> c = new Strategy<eit<?>>() {
-      public int a(eit<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
-      }
+public class eit extends AbstractDoubleList implements eir {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-      public boolean a(@Nullable eit<?> $$0, @Nullable eit<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+   protected eit(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
+   }
+
+   @Override
+   public boolean a(eir.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   }
+
+   private boolean b(eir.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
          }
       }
-   };
 
-   public eit(T $$0, gw $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, eix.d, $$3);
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public eit(T d, gw e, long f, eix g, long h) {
-      e = e.i();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
    }
 
-   public static <T> eit<T> a(T $$0, gw $$1) {
-      return new eit<>($$0, $$1, 0L, eix.d, 0L);
-   }
-
-   public T a() {
-      return this.d;
-   }
-
-   public gw b() {
-      return this.e;
-   }
-
-   public long c() {
-      return this.f;
-   }
-
-   public eix d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

@@ -1,41 +1,39 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import java.io.File;
+import javax.annotation.Nullable;
 
-public class ago {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.deop.failed"));
+public record ago(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, apc d) {
+   private static final String e = "usercache.json";
 
-   public static void a(CommandDispatcher<dt> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("deop").requires($$0x -> $$0x.c(3)))
-            .then(
-               du.a("targets", eg.a())
-                  .suggests(($$0x, $$1) -> dw.a(((dt)$$0x.getSource()).l().ac().l(), $$1))
-                  .executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets")))
-            )
-      );
+   public static ago a(YggdrasilAuthenticationService $$0, File $$1) {
+      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
+      GameProfileRepository $$3 = $$0.createProfileRepository();
+      apc $$4 = new apc($$3, new File($$1, "usercache.json"));
+      return new ago($$2, $$0.getServicesKeySet(), $$3, $$4);
    }
 
-   private static int a(dt $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aoj $$2 = $$0.l().ac();
-      int $$3 = 0;
+   @Nullable
+   public atj a() {
+      return atj.a(this.b, ServicesKeyType.PROFILE_KEY);
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.f($$4)) {
-            $$2.b($$4);
-            $$3++;
-            $$0.a(() -> tl.a("commands.deop.success", $$1.iterator().next().getName()), true);
-         }
-      }
+   public MinecraftSessionService b() {
+      return this.a;
+   }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
+   public ServicesKeySet c() {
+      return this.b;
+   }
+
+   public GameProfileRepository d() {
+      return this.c;
+   }
+
+   public apc e() {
+      return this.d;
    }
 }

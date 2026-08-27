@@ -1,112 +1,141 @@
-import com.mojang.authlib.GameProfile;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.function.DoubleConsumer;
+import javax.annotation.Nullable;
 
-public class fdo implements fdj, fdk {
-   private static final aez a = new aez("spectator/teleport_to_team");
-   private static final tl b = tl.c("spectatorMenu.team_teleport");
-   private static final tl c = tl.c("spectatorMenu.team_teleport.prompt");
-   private final List<fdk> d;
+public class fdo extends etd {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final ui d = ui.c("telemetry_info.property_title").a(n.t);
+   private final esw e;
+   private fdo.a l;
+   @Nullable
+   private DoubleConsumer m;
 
-   public fdo() {
-      eqp $$0 = eqp.O();
-      this.d = a($$0, $$0.r.I());
+   public fdo(int $$0, int $$1, int $$2, int $$3, esw $$4) {
+      super($$0, $$1, $$2, $$3, ui.i());
+      this.e = $$4;
+      this.l = this.c(ero.O().A());
    }
 
-   private static List<fdk> a(eqp $$0, eig $$1) {
-      return $$1.g().stream().flatMap($$1x -> fdo.a.a($$0, $$1x).stream()).toList();
+   public void b(boolean $$0) {
+      this.l = this.c($$0);
+      this.a(this.c());
+   }
+
+   private fdo.a c(boolean $$0) {
+      fdo.b $$1 = new fdo.b(this.v());
+      List<gev> $$2 = new ArrayList<>(gev.g());
+      $$2.sort(Comparator.comparing(gev::d));
+      if (!$$0) {
+         $$2.removeIf(gev::d);
+      }
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         gev $$4 = $$2.get($$3);
+         this.a($$1, $$4);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.m = $$0;
    }
 
    @Override
-   public List<fdk> a() {
-      return this.d;
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.m != null) {
+         this.m.accept(this.c());
+      }
    }
 
    @Override
-   public tl b() {
-      return c;
+   protected int g() {
+      return this.l.a().i();
    }
 
    @Override
-   public void a(fdi $$0) {
-      $$0.a(this);
+   protected double h() {
+      return 9.0;
    }
 
    @Override
-   public tl aI_() {
-      return b;
+   protected void c(esy $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.r() + this.a();
+      int $$5 = this.p() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.l.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
    }
 
    @Override
-   public void a(erz $$0, float $$1, int $$2) {
-      $$0.a(a, 0, 0, 16, 16);
+   protected void a(exc $$0) {
+      $$0.a(exb.a, this.l.b());
    }
 
-   @Override
-   public boolean aJ_() {
-      return !this.d.isEmpty();
+   private void a(fdo.b $$0, gev $$1) {
+      String $$2 = $$1.d() ? "telemetry.event.optional" : "telemetry.event.required";
+      $$0.b(this.e, ui.a($$2, $$1.e()));
+      $$0.b(this.e, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.e, d, 2);
+      this.a($$1, $$0);
    }
 
-   static class a implements fdk {
-      private final eie a;
-      private final Supplier<gaa> b;
-      private final List<fjb> c;
+   private void a(gev $$0, fdo.b $$1) {
+      for (gex<?> $$2 : $$0.b()) {
+         $$1.a(this.e, $$2.a());
+      }
+   }
 
-      private a(eie $$0, List<fjb> $$1, Supplier<gaa> $$2) {
+   private int v() {
+      return this.f - this.b();
+   }
+
+   static record a(ewu a, ui b) {
+   }
+
+   static class b {
+      private final int a;
+      private final ewx b;
+      private final uw c = ui.i();
+
+      public b(int $$0) {
          this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
+         this.b = ewx.d();
+         this.b.c().a();
+         this.b.a(ewy.a($$0));
       }
 
-      public static Optional<fdk> a(eqp $$0, eie $$1) {
-         List<fjb> $$2 = new ArrayList<>();
-
-         for (String $$3 : $$1.g()) {
-            fjb $$4 = $$0.J().a($$3);
-            if ($$4 != null && $$4.e() != cpy.d) {
-               $$2.add($$4);
-            }
-         }
-
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            GameProfile $$5 = $$2.get(ash.a().a($$2.size())).a();
-            Supplier<gaa> $$6 = $$0.al().a($$5);
-            return Optional.of(new fdo.a($$1, $$2, $$6));
-         }
+      public void a(esw $$0, ui $$1) {
+         this.a($$0, $$1, 0);
       }
 
-      @Override
-      public void a(fdi $$0) {
-         $$0.a(new fdn(this.c));
+      public void a(esw $$0, ui $$1, int $$2) {
+         this.b.a(new eud($$1, $$0).j(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
       }
 
-      @Override
-      public tl aI_() {
-         return this.a.c();
+      public void b(esw $$0, ui $$1) {
+         this.b.a(new eud($$1, $$0).j(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
       }
 
-      @Override
-      public void a(erz $$0, float $$1, int $$2) {
-         Integer $$3 = this.a.n().f();
-         if ($$3 != null) {
-            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
-            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
-            float $$6 = (float)($$3 & 0xFF) / 255.0F;
-            $$0.a(1, 1, 15, 15, asb.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
-         }
-
-         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
-         etj.a($$0, this.b.get(), 2, 2, 12);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      public void a(int $$0) {
+         this.b.a(ewy.b($$0));
       }
 
-      @Override
-      public boolean aJ_() {
-         return true;
+      public fdo.a a() {
+         this.b.a();
+         return new fdo.a(this.b, this.c);
       }
    }
 }

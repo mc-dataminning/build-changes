@@ -1,131 +1,72 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ur implements tm {
-   private static final Logger d = LogUtils.getLogger();
-   public static final MapCodec<ur> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("nbt").forGetter(ur::b),
-               Codec.BOOL.optionalFieldOf("interpret", false).forGetter(ur::c),
-               tn.a.optionalFieldOf("separator").forGetter(ur::d),
-               un.c.forGetter(ur::e)
-            )
-            .apply($$0, ur::new)
-   );
-   public static final tm.a<ur> b = new tm.a<>(a, "nbt");
-   private final boolean e;
-   private final Optional<tl> f;
-   private final String g;
-   private final un h;
+public class ur {
+   private final int a;
+   private final ObjectList<us> b = new ObjectArrayList();
    @Nullable
-   protected final ej.g c;
+   private uu c;
 
-   public ur(String $$0, boolean $$1, Optional<tl> $$2, un $$3) {
-      this($$0, a($$0), $$1, $$2, $$3);
-   }
+   public ur(int $$0) {
+      this.a = $$0;
 
-   private ur(String $$0, @Nullable ej.g $$1, boolean $$2, Optional<tl> $$3, un $$4) {
-      this.g = $$0;
-      this.c = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.h = $$4;
-   }
-
-   @Nullable
-   private static ej.g a(String $$0) {
-      try {
-         return new ej().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
       }
    }
 
-   public String b() {
-      return this.g;
+   public void a(uu $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new us($$0, true));
+         this.c = $$0;
+      }
    }
 
-   public boolean c() {
-      return this.e;
+   public int a() {
+      return this.b.size();
    }
 
-   public Optional<tl> d() {
-      return this.f;
-   }
-
-   public un e() {
-      return this.h;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
          return true;
       } else {
-         if ($$0 instanceof ur $$1 && this.h.equals($$1.h) && this.f.equals($$1.f) && this.e == $$1.e && this.g.equals($$1.g)) {
-            return true;
-         }
-
          return false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.e ? 1 : 0;
-      $$0 = 31 * $$0 + this.f.hashCode();
-      $$0 = 31 * $$0 + this.g.hashCode();
-      return 31 * $$0 + this.h.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "nbt{" + this.h + ", interpreting=" + this.e + ", separator=" + this.f + "}";
-   }
-
-   @Override
-   public tz a(@Nullable dt $$0, @Nullable biw $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.c != null) {
-         Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
-            try {
-               return this.c.a($$0x).stream();
-            } catch (CommandSyntaxException var3x) {
-               return Stream.empty();
-            }
-         }).map(rq::r_);
-         if (this.e) {
-            tl $$4 = (tl)DataFixUtils.orElse(to.a($$0, this.f, $$1, $$2), to.c);
-            return $$3.flatMap($$3x -> {
-               try {
-                  tz $$4x = tl.a.a($$3x);
-                  return Stream.of(to.a($$0, $$4x, $$1, $$2));
-               } catch (Exception var5x) {
-                  d.warn("Failed to parse component: {}", $$3x, var5x);
-                  return Stream.of();
-               }
-            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(tl::i);
-         } else {
-            return to.a($$0, this.f, $$1, $$2)
-               .map($$1x -> $$3.map(tl::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(tl::i))
-               .orElseGet(() -> tl.b($$3.collect(Collectors.joining(", "))));
-         }
+   public Optional<up> a(up.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
       } else {
-         return tl.i();
-      }
-   }
+         ObjectList<uu> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               us $$4 = (us)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
 
-   @Override
-   public tm.a<?> a() {
-      return b;
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, null);
+               }
+            }
+
+            return Optional.of(new up($$1));
+         }
+      }
    }
 }

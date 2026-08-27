@@ -1,148 +1,129 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class amm extends ame {
-   private static final Logger c = LogUtils.getLogger();
-   private static final Joiner d = Joiner.on("/");
-   private final Path e;
+public abstract class amm implements wl {
+   private static final Logger d = LogUtils.getLogger();
+   public static final int a = 15000;
+   private static final ui e = ui.c("disconnect.timeout");
+   protected final MinecraftServer b;
+   protected final tj c;
+   private long f;
+   private boolean g;
+   private long h;
+   private int i;
+   private volatile boolean j = false;
 
-   public amm(String $$0, Path $$1, boolean $$2) {
-      super($$0, $$2);
-      this.e = $$1;
-   }
-
-   @Nullable
-   @Override
-   public ano<InputStream> a(String... $$0) {
-      v.a($$0);
-      Path $$1 = v.a(this.e, List.of($$0));
-      return Files.exists($$1) ? ano.create($$1) : null;
-   }
-
-   public static boolean a(Path $$0) {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public ano<InputStream> a(aml $$0, aez $$1) {
-      Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
-      return a($$1, $$2);
-   }
-
-   public static ano<InputStream> a(aez $$0, Path $$1) {
-      return (ano<InputStream>)v.c($$0.a()).get().map($$1x -> {
-         Path $$2 = v.a($$1, $$1x);
-         return b($$2);
-      }, $$1x -> {
-         c.error("Invalid path {}: {}", $$0, $$1x.message());
-         return null;
-      });
-   }
-
-   @Nullable
-   private static ano<InputStream> b(Path $$0) {
-      return Files.exists($$0) && a($$0) ? ano.create($$0) : null;
+   public amm(MinecraftServer $$0, tj $$1, amf $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.f = ac.b();
+      this.i = $$2.b();
    }
 
    @Override
-   public void a(aml $$0, String $$1, String $$2, amk.a $$3) {
-      v.c($$2).get().ifLeft($$3x -> {
-         Path $$4 = this.e.resolve($$0.a()).resolve($$1);
-         a($$1, $$4, $$3x, $$3);
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
-   }
-
-   public static void a(String $$0, Path $$1, List<String> $$2, amk.a $$3) {
-      Path $$4 = v.a($$1, $$2);
-
-      try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-         $$5.forEach($$3x -> {
-            String $$4x = d.join($$1.relativize($$3x));
-            aez $$5x = aez.a($$0, $$4x);
-            if ($$5x == null) {
-               ac.a(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
-            } else {
-               $$3.accept($$5x, ano.create($$3x));
-            }
-         });
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$4, var11);
+   public void a(ui $$0) {
+      if (this.i()) {
+         d.info("Stopping singleplayer server as player logged out");
+         this.b.a(false);
       }
    }
 
    @Override
-   public Set<String> a(aml $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-      Path $$2 = this.e.resolve($$0.a());
-
-      try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
-         for (Path $$4 : $$3) {
-            String $$5 = $$4.getFileName().toString();
-            if (aez.h($$5)) {
-               $$1.add($$5);
-            } else {
-               c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);
-            }
-         }
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$2, var11);
+   public void a(wo $$0) {
+      if (this.g && $$0.a() == this.h) {
+         int $$1 = (int)(ac.b() - this.f);
+         this.i = (this.i * 3 + $$1) / 4;
+         this.g = false;
+      } else if (!this.i()) {
+         this.b(e);
       }
-
-      return $$1;
    }
 
    @Override
-   public void close() {
+   public void a(wp $$0) {
    }
 
-   public static class a implements ane.c {
-      private final Path a;
-      private final boolean b;
+   @Override
+   public void a(wn $$0) {
+   }
 
-      public a(Path $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void a(wq $$0) {
+      wd.a($$0, this, this.b);
+      if ($$0.a() == wq.a.b && this.b.T()) {
+         d.info("Disconnecting {} due to resource pack rejection", this.j().getName());
+         this.b(ui.c("multiplayer.requiredTexturePrompt.disconnect"));
       }
+   }
 
-      @Override
-      public amk a(String $$0) {
-         return new amm($$0, this.a, this.b);
-      }
-
-      @Override
-      public amk a(String $$0, ane.a $$1) {
-         amk $$2 = this.a($$0);
-         List<String> $$3 = $$1.d();
-         if ($$3.isEmpty()) {
-            return $$2;
+   protected void f() {
+      this.b.aM().a("keepAlive");
+      long $$0 = ac.b();
+      if ($$0 - this.f >= 15000L) {
+         if (this.g) {
+            this.b(e);
          } else {
-            List<amk> $$4 = new ArrayList<>($$3.size());
-
-            for (String $$5 : $$3) {
-               Path $$6 = this.a.resolve($$5);
-               $$4.add(new amm($$0, $$6, this.b));
-            }
-
-            return new amg($$2, $$4);
+            this.g = true;
+            this.f = $$0;
+            this.h = $$0;
+            this.b(new wh(this.h));
          }
       }
+
+      this.b.aM().c();
+   }
+
+   public void g() {
+      this.j = true;
+   }
+
+   public void h() {
+      this.j = false;
+      this.c.c();
+   }
+
+   public void b(wb<?> $$0) {
+      this.a($$0, null);
+   }
+
+   public void a(wb<?> $$0, @Nullable ts $$1) {
+      boolean $$2 = !this.j || !this.b.bl();
+
+      try {
+         this.c.a($$0, $$1, $$2);
+      } catch (Throwable var7) {
+         o $$4 = o.a(var7, "Sending packet");
+         p $$5 = $$4.a("Packet being sent");
+         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
+         throw new y($$4);
+      }
+   }
+
+   public void b(ui $$0) {
+      this.c.a(new wg($$0), ts.a(() -> this.c.a($$0)));
+      this.c.o();
+      this.b.h(this.c::p);
+   }
+
+   protected boolean i() {
+      return this.b.a(this.j());
+   }
+
+   protected abstract GameProfile j();
+
+   @aua
+   public GameProfile k() {
+      return this.j();
+   }
+
+   public int l() {
+      return this.i;
+   }
+
+   protected amf a(alf $$0) {
+      return new amf(this.j(), this.i, $$0);
    }
 }

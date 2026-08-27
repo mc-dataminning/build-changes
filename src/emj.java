@@ -1,30 +1,29 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class emj extends enf {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
+public class emj {
+   private static final int a = 8388608;
+   private static final int b = 2097152;
+   private final emc c;
+   private static final emj d = new emj();
 
-   public static emj a(JsonObject $$0) {
-      emj $$1 = new emj();
+   public static emj a() {
+      RenderSystem.assertOnGameThreadOrInit();
+      return d;
+   }
 
-      try {
-         $$1.a = epc.a("invitationId", $$0, "");
-         $$1.b = epc.a("worldName", $$0, "");
-         $$1.c = epc.a("worldOwnerName", $$0, "");
-         $$1.d = epc.a("worldOwnerUuid", $$0, ac.d);
-         $$1.e = epc.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
-      }
+   public emj(int $$0) {
+      this.c = new emc($$0);
+   }
 
-      return $$1;
+   public emj() {
+      this(2097152);
+   }
+
+   public void b() {
+      emd.a(this.c.d());
+   }
+
+   public emc c() {
+      return this.c;
    }
 }

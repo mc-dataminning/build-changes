@@ -1,42 +1,41 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Set;
-
-public class btp extends btr<cbn> {
-   private static final int a = 40;
-
-   public btp() {
-      super(40);
-   }
-
-   protected void a(akt $$0, cbn $$1) {
-      aey<cqb> $$2 = $$0.ac();
-      gw $$3 = $$1.dl();
-      List<hd> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               gw $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gp().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(hd.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bkm<?> $$10 = $$1.dN();
-      if (!$$4.isEmpty()) {
-         $$10.a(bsn.f, $$4);
-      } else {
-         $$10.b(bsn.f);
-      }
+public class btp extends bts {
+   public btp(bkl $$0, cqz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<bsn<?>> a() {
-      return ImmutableSet.of(bsn.f);
+   protected ebv a(int $$0) {
+      this.o = new ebn(false);
+      this.o.a(true);
+      return new ebv(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return true;
+   }
+
+   @Override
+   protected eif b() {
+      return new eif(this.a.dq(), this.a.e(0.5), this.a.dw());
+   }
+
+   @Override
+   protected double a(eif $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(eif $$0, eif $$1) {
+      return this.a.bb() ? a(this.a, $$0, $$1, false) : false;
+   }
+
+   @Override
+   public boolean a(ht $$0) {
+      return !this.b.a_($$0.d()).i();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

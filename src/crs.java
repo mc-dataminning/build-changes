@@ -1,43 +1,23 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class crs extends cso {
-   private final chz a;
+public record crs(cqn d, cfg e) {
+   public static final String a = "enabled_features";
+   public static final Codec<crs> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cqn.b.optionalFieldOf("DataPacks", cqn.a).forGetter(crs::a), cfi.e.optionalFieldOf("enabled_features", cfi.g).forGetter(crs::b))
+            .apply($$0, crs::new)
+   );
+   public static final crs c = new crs(cqn.a, cfi.g);
 
-   protected crs(chz $$0, dfc.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public crs a(cfg $$0) {
+      return new crs(this.d, this.e.b($$0));
    }
 
-   @Override
-   protected abstract MapCodec<? extends crs> a();
-
-   @Override
-   public boolean a(dfd $$0) {
-      return true;
+   public cqn a() {
+      return this.d;
    }
 
-   @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new dcp($$0, $$1, this.a);
-   }
-
-   @Override
-   public void a(cqb $$0, gw $$1, dfd $$2, @Nullable bjm $$3, cjl $$4) {
-      if ($$0.B) {
-         $$0.a($$1, ddb.t).ifPresent($$1x -> $$1x.b($$4));
-      } else if ($$4.A()) {
-         $$0.a($$1, ddb.t).ifPresent($$1x -> $$1x.a($$4.y()));
-      }
-   }
-
-   @Override
-   public cjl a(cqe $$0, gw $$1, dfd $$2) {
-      dcz $$3 = $$0.c_($$1);
-      return $$3 instanceof dcp ? ((dcp)$$3).f() : super.a($$0, $$1, $$2);
-   }
-
-   public chz b() {
-      return this.a;
+   public cfg b() {
+      return this.e;
    }
 }

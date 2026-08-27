@@ -1,43 +1,22 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class etv extends etj {
+   protected final euw a;
 
-public class etv implements ewe {
-   private static final int a = 170;
-   private final tl b;
-   @Nullable
-   private List<arn> c;
-   @Nullable
-   private final tl d;
-
-   private etv(tl $$0, @Nullable tl $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public etv(int $$0, int $$1, int $$2, int $$3, euw $$4, etj.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, uh.a);
    }
 
-   public static etv a(tl $$0, @Nullable tl $$1) {
-      return new etv($$0, $$1);
+   public etv(int $$0, int $$1, int $$2, int $$3, euw $$4, etj.c $$5, ui $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, o);
+      this.a = $$4;
    }
 
-   public static etv a(tl $$0) {
-      return new etv($$0, $$0);
+   public etv(int $$0, int $$1, euw $$2, etj.c $$3, ui $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void b(ewd $$0) {
-      if (this.d != null) {
-         $$0.a(ewc.c, this.d);
-      }
-   }
-
-   public List<arn> a(eqp $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
-      }
-
-      return this.c;
-   }
-
-   public static List<arn> a(eqp $$0, tl $$1) {
-      return $$0.h.c($$1, 170);
+   public void b(esy $$0, int $$1, int $$2, float $$3) {
+      afw $$4 = this.a.a(this.aJ_(), this.n());
+      $$0.a($$4, this.p(), this.r(), this.f, this.g);
    }
 }

@@ -1,22 +1,37 @@
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class aip {
-   public static void a(CommandDispatcher<dt> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.pardonip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ui.c("commands.pardonip.failed"));
+
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("setworldspawn").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((dt)$$0x.getSource(), gw.a(((dt)$$0x.getSource()).d()), 0.0F)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("pardon-ip").requires($$0x -> $$0x.c(3)))
             .then(
-               ((RequiredArgumentBuilder)du.a("pos", fk.a()).executes($$0x -> a((dt)$$0x.getSource(), fk.c($$0x, "pos"), 0.0F)))
-                  .then(du.a("angle", dx.a()).executes($$0x -> a((dt)$$0x.getSource(), fk.c($$0x, "pos"), dx.a($$0x, "angle"))))
+               dv.a("target", StringArgumentType.word())
+                  .suggests(($$0x, $$1) -> dy.a(((du)$$0x.getSource()).m().ac().g().a(), $$1))
+                  .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
             )
       );
    }
 
-   private static int a(dt $$0, gw $$1, float $$2) {
-      $$0.e().a($$1, $$2);
-      $$0.a(() -> tl.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
-      return 1;
+   private static int a(du $$0, String $$1) throws CommandSyntaxException {
+      if (!InetAddresses.isInetAddress($$1)) {
+         throw a.create();
+      } else {
+         apd $$2 = $$0.m().ac().g();
+         if (!$$2.a($$1)) {
+            throw b.create();
+         } else {
+            $$2.c($$1);
+            $$0.a(() -> ui.a("commands.pardonip.success", $$1), true);
+            return 1;
+         }
+      }
    }
 }

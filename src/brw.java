@@ -1,32 +1,32 @@
-public class brw extends bqr {
-   private final cah b;
-   private int c;
+public class brw extends bqv {
+   private final boolean a;
+   private int b;
 
-   public brw(cah $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+   public brw(bkl $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a && this.b > 0 && super.b();
    }
 
    @Override
    public void c() {
-      super.c();
-      this.c = 0;
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
    public void d() {
-      super.d();
-      this.b.v(false);
+      this.a(false);
    }
 
    @Override
    public void e() {
+      this.b--;
       super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
    }
 }

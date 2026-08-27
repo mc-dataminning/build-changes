@@ -1,43 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dqo implements dpu {
+public class dqo implements dqs {
    public static final Codec<dqo> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
-               dpa.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
-               gw.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+               dgb.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dgb.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bhg.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bhg.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dqo::new)
    );
-   private final boolean b;
-   private final List<dpa.a> c;
-   @Nullable
-   private final gw d;
+   private final dgb b;
+   private final dgb c;
+   private final bhg d;
+   private final bhg e;
 
-   public dqo(boolean $$0, List<dpa.a> $$1, @Nullable gw $$2) {
-      this($$0, $$1, Optional.ofNullable($$2));
-   }
-
-   private dqo(boolean $$0, List<dpa.a> $$1, Optional<gw> $$2) {
+   public dqo(dgb $$0, dgb $$1, bhg $$2, bhg $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.orElse(null);
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public boolean a() {
+   public dgb a() {
       return this.b;
    }
 
-   public List<dpa.a> b() {
+   public dgb b() {
       return this.c;
    }
 
-   @Nullable
-   public gw c() {
+   public bhg c() {
       return this.d;
+   }
+
+   public bhg d() {
+      return this.e;
    }
 }

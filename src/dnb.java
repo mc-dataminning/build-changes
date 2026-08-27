@@ -1,48 +1,21 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnb extends dnq<dqb> {
-   public dnb(Codec<dqb> $$0) {
+@Deprecated
+public class dnb extends dnc {
+   public static final Codec<dnb> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dnb::new));
+
+   public dnb(iw $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dns<dqb> $$0) {
-      ash $$1 = $$0.d();
-      cqv $$2 = $$0.b();
-      cpi $$3 = new cpi($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      gw.a $$6 = new gw.a();
-      IntListIterator var8 = $$4.iterator();
+   protected boolean a(dgb $$0) {
+      return $$0.e();
+   }
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            gw $$9 = $$2.a(dkm.a.f, $$6);
-            if ($$2.t($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, cte.cv.o(), 2);
-               dec.a($$2, $$1, $$9, eci.b);
-               dfd $$10 = cte.cp.o();
-
-               for (ha $$11 : ha.c.a) {
-                  gw $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Override
+   public dms<?> a() {
+      return dms.e;
    }
 }

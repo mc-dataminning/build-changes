@@ -1,49 +1,49 @@
 import com.mojang.serialization.Codec;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsj extends dsm {
-   public static final Codec<dsj> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dsj::new, $$0 -> $$0.d).codec();
-   private static final ha b = ha.d;
-   private static final ha[] c = ha.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ha[]::new);
-   private final float d;
+public class dsj extends dse {
+   public static final Codec<dsj> a = RecordCodecBuilder.create(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bhg.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, dsj::new)
+   );
+   private final bhg b;
+   private final int c;
 
-   public dsj(float $$0) {
-      this.d = $$0;
+   public dsj(bhg $$0, bhg $$1, bhg $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
    @Override
-   protected dsn<?> a() {
-      return dsn.d;
+   protected dsf<?> a() {
+      return dsf.j;
    }
 
    @Override
-   public void a(dsm.a $$0) {
-      ash $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<gw> $$2 = $$0.d();
-         List<gw> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<gw> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<gw> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), cte.pe.o().a(csw.b, b));
-               $$0.a().a($$6.get(), ddb.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
+   protected void a(crf $$0, dse.b $$1, ate $$2, dro $$3, int $$4, dse.a $$5, int $$6, int $$7, int $$8) {
+      ht $$9 = $$5.a();
+      ht.a $$10 = $$9.j();
 
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     qw $$4x = new qw();
-                     $$4x.a("id", jb.h.b(bja.h).toString());
-                     $$1x.a($$4x, $$1.a(599), false);
-                  }
-               });
-            }
-         }
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
       }
+   }
+
+   @Override
+   public int a(ate $$0, int $$1, dro $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ate $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

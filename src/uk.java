@@ -1,89 +1,86 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public final class uk {
-   private static final String b = "#";
-   public static final Codec<uk> a = Codec.STRING.comapFlatMap(uk::a, uk::b);
-   private static final Map<n, uk> c = Stream.of(n.values())
-      .filter(n::e)
-      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new uk($$0.f(), $$0.g())));
-   private static final Map<String, uk> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
-   private final int e;
-   @Nullable
-   private final String f;
+public class uk {
+   public static final Codec<ui> a = asg.a(uk::a);
+   public static final Codec<ui> b = asg.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
 
-   private uk(int $$0, String $$1) {
-      this.e = $$0 & 16777215;
-      this.f = $$1;
-   }
+   private static uw a(List<ui> $$0) {
+      uw $$1 = $$0.get(0).f();
 
-   private uk(int $$0) {
-      this.e = $$0 & 16777215;
-      this.f = null;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public String b() {
-      return this.f != null ? this.f : this.c();
-   }
-
-   private String c() {
-      return String.format(Locale.ROOT, "#%06X", this.e);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         uk $$1 = (uk)$$0;
-         return this.e == $$1.e;
-      } else {
-         return false;
+      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
+         $$1.b($$0.get($$2));
       }
+
+      return $$1;
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.e, this.f);
+   public static <T extends atr, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2) {
+      MapCodec<E> $$3 = new uk.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
+      Codec<T> $$4 = atr.b((Supplier<T[]>)(() -> $$0));
+      MapCodec<E> $$5 = $$4.dispatchMap($$2, $$1x -> $$1.apply((T)$$1x).codec());
+      MapCodec<E> $$6 = Codec.mapEither($$5, $$3).xmap($$0x -> $$0x.map($$0xx -> $$0xx, $$0xx -> $$0xx), Either::right);
+      return asg.a($$6, $$5);
    }
 
-   @Override
-   public String toString() {
-      return this.b();
+   private static Codec<ui> a(Codec<ui> $$0) {
+      uj.a<?>[] $$1 = new uj.a[]{vp.b, vt.c, vm.b, vq.c, vr.b, vo.b};
+      MapCodec<uj> $$2 = a($$1, uj.a::a, uj::a);
+      Codec<ui> $$3 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group($$2.forGetter(ui::b), asg.a(asg.a($$0.listOf()), "extra", List.of()).forGetter(ui::c), vf.b.a.forGetter(ui::a))
+               .apply($$2x, uw::new)
+      );
+      return Codec.either(Codec.either(Codec.STRING, asg.a($$0.listOf())), $$3)
+         .xmap($$0x -> (ui)$$0x.map($$0xx -> (ui)$$0xx.map(ui::b, uk::a), $$0xx -> $$0xx), $$0x -> {
+            String $$1x = $$0x.d();
+            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
+         });
    }
 
-   @Nullable
-   public static uk a(n $$0) {
-      return c.get($$0);
-   }
+   static class a<T> extends MapCodec<T> {
+      private final List<MapCodec<? extends T>> a;
+      private final Function<T, MapEncoder<? extends T>> b;
 
-   public static uk a(int $$0) {
-      return new uk($$0);
-   }
+      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public static DataResult<uk> a(String $$0) {
-      if ($$0.startsWith("#")) {
-         try {
-            int $$1 = Integer.parseInt($$0.substring(1), 16);
-            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Invalid color value: " + $$0);
+      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
+         for (MapDecoder<? extends T> $$2 : this.a) {
+            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
+            if ($$3.result().isPresent()) {
+               return (DataResult<T>)$$3;
+            }
          }
-      } else {
-         uk $$3 = d.get($$0);
-         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
+
+         return DataResult.error(() -> "No matching codec found");
+      }
+
+      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
+         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
+         return $$3.encode($$0, $$1, $$2);
+      }
+
+      public <S> Stream<S> keys(DynamicOps<S> $$0) {
+         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
+      }
+
+      public String toString() {
+         return "FuzzyCodec[" + this.a + "]";
       }
    }
 }

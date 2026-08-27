@@ -1,20 +1,51 @@
-public class cnn extends cnu {
-   public cnn(cnu.a $$0, bjb... $$1) {
-      super($$0, cnv.k, $$1);
+public interface cnn<C extends bhu> {
+   boolean a(C var1, cqz var2);
+
+   ckj a(C var1, ip var2);
+
+   boolean a(int var1, int var2);
+
+   ckj a(ip var1);
+
+   default il<ckj> a(C $$0) {
+      il<ckj> $$1 = il.a($$0.b(), ckj.b);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cke $$3 = $$0.a($$2).d();
+         if ($$3.t()) {
+            $$1.set($$2, new ckj($$3.s()));
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public int a(int $$0) {
-      return 20;
+   default il<cnk> a() {
+      return il.a();
    }
 
-   @Override
-   public int b(int $$0) {
-      return 50;
+   default boolean ap_() {
+      return false;
    }
 
-   @Override
-   public boolean a(cnu $$0) {
-      return $$0 instanceof coe ? false : super.a($$0);
+   default boolean h() {
+      return true;
+   }
+
+   default String c() {
+      return "";
+   }
+
+   default ckj g() {
+      return new ckj(cuc.cA);
+   }
+
+   cnq<?> aq_();
+
+   cnr<?> e();
+
+   default boolean i() {
+      il<cnk> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

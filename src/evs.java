@@ -1,111 +1,151 @@
+import com.google.common.collect.Queues;
 import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
 import java.util.List;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class evs extends evp {
-   private final List<evs.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final evx f = evx.i().a(0.5F, 0.5F);
+public class evs {
+   private static final int a = 5;
+   private static final int b = -1;
+   final ero c;
+   private final List<evs.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<evr> f = Queues.newArrayDeque();
 
-   public evs() {
-      this(0, 0, 0, 0);
+   public evs(ero $$0) {
+      this.c = $$0;
    }
 
-   public evs(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+   public void a(esy $$0) {
+      if (!this.c.m.Z) {
+         int $$1 = $$0.a();
+         this.d.removeIf($$2 -> {
+            if ($$2 != null && $$2.a($$1, $$0)) {
+               this.e.clear($$2.d, $$2.d + $$2.e);
+               return true;
+            } else {
+               return false;
+            }
+         });
+         if (!this.f.isEmpty() && this.d() > 0) {
+            this.f.removeIf($$0x -> {
+               int $$1x = $$0x.e();
+               int $$2 = this.a($$1x);
+               if ($$2 != -1) {
+                  this.d.add(new evs.a<>($$0x, $$2, $$1x));
+                  this.e.set($$2, $$2 + $$1x);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+         }
+      }
    }
 
-   public evs(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
+   private int a(int $$0) {
+      if (this.d() >= $$0) {
+         int $$1 = 0;
+
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
+            }
+         }
+      }
+
+      return -1;
    }
 
-   public evs a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
+   private int d() {
+      return 5 - this.e.cardinality();
    }
 
-   public evs a(int $$0) {
-      this.e = $$0;
-      return this;
+   @Nullable
+   public <T extends evr> T a(Class<? extends T> $$0, Object $$1) {
+      for (evs.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().d().equals($$1)) {
+            return (T)$$2.a();
+         }
+      }
+
+      for (evr $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.d().equals($$1)) {
+            return (T)$$3;
+         }
+      }
+
+      return null;
    }
 
-   public evs b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public evx b() {
-      return this.f.g();
-   }
-
-   public evx c() {
-      return this.f;
-   }
-
-   @Override
    public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
+   }
 
-      for (evs.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
+   public void a(evr $$0) {
+      this.f.add($$0);
+   }
+
+   public ero b() {
+      return this.c;
+   }
+
+   public double c() {
+      return this.c.m.y().c();
+   }
+
+   class a<T extends evr> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      private evr.a h = evr.a.a;
+
+      a(T $$0, int $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
 
-      for (evs.a $$3 : this.c) {
-         $$3.a(this.r(), $$0);
-         $$3.b(this.t(), $$1);
+      public T a() {
+         return this.c;
       }
 
-      this.a = $$0;
-      this.b = $$1;
-   }
+      private float a(long $$0) {
+         float $$1 = asy.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         return this.h == evr.a.b ? 1.0F - $$1 : $$1;
+      }
 
-   public <T extends evw> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
+      public boolean a(int $$0, esy $$1) {
+         long $$2 = ac.b();
+         if (this.f == -1L) {
+            this.f = $$2;
+            this.h.a(evs.this.c.ai());
+         }
 
-   public <T extends evw> T a(T $$0, evx $$1) {
-      this.c.add(new evs.a($$0, $$1));
-      return $$0;
-   }
+         if (this.h == evr.a.a && $$2 - this.f <= 600L) {
+            this.g = $$2;
+         }
 
-   public <T extends evw> T a(T $$0, Consumer<evx> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
+         $$1.c().a();
+         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
+         evr.a $$3 = this.c.a($$1, evs.this, $$2 - this.g);
+         $$1.c().b();
+         if ($$3 != this.h) {
+            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
+            this.h = $$3;
+            this.h.a(evs.this.c.ai());
+         }
 
-   @Override
-   public void b(Consumer<evw> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public static void a(evw $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
-   }
-
-   public static void a(evw $$0, ewn $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
-   }
-
-   public static void a(evw $$0, ewn $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
-   }
-
-   public static void a(evw $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.l(), $$0::f, $$5);
-      a($$2, $$4, $$0.i(), $$0::g, $$6);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)asb.i($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
-   }
-
-   static class a extends evp.a {
-      protected a(evw $$0, evx $$1) {
-         super($$0, $$1);
+         return this.h == evr.a.b && $$2 - this.f > 600L;
       }
    }
 }

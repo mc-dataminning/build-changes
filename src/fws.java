@@ -1,25 +1,34 @@
-public class fws extends fxl<bvf, fet<bvf>> {
-   private final fnw a;
+public class fws extends fuc<bzr> {
+   private final fpu a;
 
-   public fws(fuy<bvf, fet<bvf>> $$0, fnw $$1) {
+   public fws(fud.a $$0) {
       super($$0);
-      this.a = $$1;
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public void a(elj $$0, foa $$1, int $$2, bvf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == bjg.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = asb.e($$3.dD()) / 60.0F;
-      if ($$3.dD() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
+   public void a(bzr $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.5F, 0.0F);
+      int $$6 = $$0.s();
+      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+         $$7 = asy.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
 
-      cjl $$14 = $$10 ? $$3.eS() : $$3.eT();
-      this.a.a($$3, $$14, cji.h, false, $$0, $$1, $$2);
-      $$0.b();
+      $$3.a(a.d.rotationDegrees(-90.0F));
+      $$3.a(-0.5F, -0.5F, 0.5F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      fwr.a(this.a, cuc.ck.o(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public afw a(bzr $$0) {
+      return fzz.e;
    }
 }

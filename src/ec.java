@@ -3,41 +3,39 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class ec implements ArgumentType<aez> {
-   private static final Collection<String> a = Stream.of(cqb.h, cqb.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.b("argument.dimension.invalid", $$0));
+public class ec implements ArgumentType<ui> {
+   private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ui.b("argument.component.invalid", $$0));
 
-   public aez a(StringReader $$0) throws CommandSyntaxException {
-      return aez.a($$0);
+   private ec() {
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof dw ? dw.a(((dw)$$0.getSource()).u().stream().map(aey::a), $$1) : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   public static ui a(CommandContext<du> $$0, String $$1) {
+      return (ui)$$0.getArgument($$1, ui.class);
    }
 
    public static ec a() {
       return new ec();
    }
 
-   public static akt a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
-      aez $$2 = (aez)$$0.getArgument($$1, aez.class);
-      aey<cqb> $$3 = aey.a(jc.aI, $$2);
-      akt $$4 = ((dt)$$0.getSource()).l().a($$3);
-      if ($$4 == null) {
-         throw b.create($$2);
-      } else {
-         return $$4;
+   public ui a(StringReader $$0) throws CommandSyntaxException {
+      try {
+         ui $$1 = ui.a.a($$0);
+         if ($$1 == null) {
+            throw a.createWithContext($$0, "empty");
+         } else {
+            return $$1;
+         }
+      } catch (Exception var4) {
+         String $$3 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
+         throw a.createWithContext($$0, $$3);
       }
+   }
+
+   public Collection<String> getExamples() {
+      return b;
    }
 }

@@ -1,55 +1,81 @@
-public class cdy extends cds {
-   public cdy(bja<? extends cdy> $$0, cqb $$1) {
+import javax.annotation.Nullable;
+
+public class cdy extends cdv {
+   public cdy(bjx<? extends cdy> $$0, cqz $$1) {
       super($$0, $$1);
    }
 
-   public cdy(cqb $$0, double $$1, double $$2, double $$3) {
-      super(bja.p, $$1, $$2, $$3, $$0);
+   public cdy(cqz $$0, bkj $$1) {
+      super(bjx.D, $$1, $$0);
    }
 
    @Override
-   protected cjg q() {
-      return cjo.nb;
+   protected cke s() {
+      return ckm.rq;
    }
 
    @Override
-   public int b() {
-      return 27;
+   protected void a(eic $$0) {
+      super.a($$0);
+      $$0.a().a(this.dM().b(this, this.v()), 0.0F);
    }
 
    @Override
-   public cdr.a z() {
-      return cdr.a.b;
-   }
+   protected void a(eid $$0) {
+      super.a($$0);
 
-   @Override
-   public dfd B() {
-      return cte.cv.o().a(cuf.c, ha.c);
-   }
-
-   @Override
-   public int E() {
-      return 8;
-   }
-
-   @Override
-   public cer a(int $$0, cbz $$1) {
-      return cey.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c(cca $$0) {
-      this.dL().a(djn.j, this.dj(), djn.a.a($$0));
-   }
-
-   @Override
-   public bhe a(cca $$0, bhd $$1) {
-      bhe $$2 = this.c_($$0);
-      if ($$2.a()) {
-         this.a(djn.k, $$0);
-         car.a($$0, true);
+      for (int $$1 = 0; $$1 < 32; $$1++) {
+         this.dL().a(js.X, this.dq(), this.ds() + this.ag.j() * 2.0, this.dw(), this.ag.k(), 0.0, this.ag.k());
       }
 
-      return $$2;
+      if (!this.dL().B && !this.dG()) {
+         bjt $$2 = this.v();
+         if ($$2 instanceof alr $$3) {
+            if ($$3.c.c() && $$3.dL() == this.dL() && !$$3.fD()) {
+               if (this.ag.i() < 0.05F && this.dL().X().b(cqv.e)) {
+                  cac $$4 = bjx.F.a(this.dL());
+                  if ($$4 != null) {
+                     $$4.b($$2.dq(), $$2.ds(), $$2.dw(), $$2.dB(), $$2.dD());
+                     this.dL().b($$4);
+                  }
+               }
+
+               if ($$2.bN()) {
+                  $$3.a(this.dq(), this.ds(), this.dw());
+               } else {
+                  $$2.b(this.dq(), this.ds(), this.dw());
+               }
+
+               $$2.n();
+               $$2.a(this.dM().k(), 5.0F);
+            }
+         } else if ($$2 != null) {
+            $$2.b(this.dq(), this.ds(), this.dw());
+            $$2.n();
+         }
+
+         this.ak();
+      }
+   }
+
+   @Override
+   public void l() {
+      bjt $$0 = this.v();
+      if ($$0 instanceof alr && !$$0.bv() && this.dL().X().b(cqv.V)) {
+         this.ak();
+      } else {
+         super.l();
+      }
+   }
+
+   @Nullable
+   @Override
+   public bjt b(alq $$0) {
+      bjt $$1 = this.v();
+      if ($$1 != null && $$1.dL().ac() != $$0.ac()) {
+         this.b(null);
+      }
+
+      return super.b($$0);
    }
 }

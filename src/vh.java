@@ -1,13 +1,89 @@
-public interface vh extends sj {
-   void a(vk var1);
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   void a(vl var1);
+public final class vh {
+   private static final String b = "#";
+   public static final Codec<vh> a = Codec.STRING.comapFlatMap(vh::a, vh::b);
+   private static final Map<n, vh> c = Stream.of(n.values())
+      .filter(n::e)
+      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new vh($$0.f(), $$0.g())));
+   private static final Map<String, vh> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
+   private final int e;
+   @Nullable
+   private final String f;
 
-   void a(vi var1);
+   private vh(int $$0, String $$1) {
+      this.e = $$0 & 16777215;
+      this.f = $$1;
+   }
 
-   void a(vj var1);
+   private vh(int $$0) {
+      this.e = $$0 & 16777215;
+      this.f = null;
+   }
 
-   void a(vm var1);
+   public int a() {
+      return this.e;
+   }
 
-   void a(vn var1);
+   public String b() {
+      return this.f != null ? this.f : this.c();
+   }
+
+   private String c() {
+      return String.format(Locale.ROOT, "#%06X", this.e);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         vh $$1 = (vh)$$0;
+         return this.e == $$1.e;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.e, this.f);
+   }
+
+   @Override
+   public String toString() {
+      return this.b();
+   }
+
+   @Nullable
+   public static vh a(n $$0) {
+      return c.get($$0);
+   }
+
+   public static vh a(int $$0) {
+      return new vh($$0);
+   }
+
+   public static DataResult<vh> a(String $$0) {
+      if ($$0.startsWith("#")) {
+         try {
+            int $$1 = Integer.parseInt($$0.substring(1), 16);
+            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Invalid color value: " + $$0);
+         }
+      } else {
+         vh $$3 = d.get($$0);
+         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
+      }
+   }
 }

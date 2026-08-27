@@ -1,52 +1,66 @@
-public class hv {
-   protected final float a;
-   protected final float b;
-   protected final float c;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-   public hv(float $$0, float $$1, float $$2) {
-      this.a = !Float.isInfinite($$0) && !Float.isNaN($$0) ? $$0 % 360.0F : 0.0F;
-      this.b = !Float.isInfinite($$1) && !Float.isNaN($$1) ? $$1 % 360.0F : 0.0F;
-      this.c = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
-   }
+public class hv<T> extends ik<T> implements hw<T> {
+   private final afw b;
+   private ib.c<T> c;
 
-   public hv(rc $$0) {
-      this($$0.i(0), $$0.i(1), $$0.i(2));
-   }
-
-   public rc a() {
-      rc $$0 = new rc();
-      $$0.add(qz.a(this.a));
-      $$0.add(qz.a(this.b));
-      $$0.add(qz.a(this.c));
-      return $$0;
+   public hv(String $$0, afv<? extends io<T>> $$1, Lifecycle $$2, boolean $$3) {
+      super($$1, $$2, $$3);
+      this.b = new afw($$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof hv $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   public ib.c<T> a(int $$0, afv<T> $$1, T $$2, Lifecycle $$3) {
+      ib.c<T> $$4 = super.a($$0, $$1, $$2, $$3);
+      if (this.b.equals($$1.a())) {
+         this.c = $$4;
+      }
+
+      return $$4;
    }
 
-   public float b() {
-      return this.a;
+   @Override
+   public int a(@Nullable T $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == -1 ? super.a(this.c.a()) : $$1;
    }
 
-   public float c() {
+   @Nonnull
+   @Override
+   public afw b(T $$0) {
+      afw $$1 = super.b($$0);
+      return $$1 == null ? this.b : $$1;
+   }
+
+   @Nonnull
+   @Override
+   public T a(@Nullable afw $$0) {
+      T $$1 = super.a($$0);
+      return $$1 == null ? this.c.a() : $$1;
+   }
+
+   @Override
+   public Optional<T> b(@Nullable afw $$0) {
+      return Optional.ofNullable(super.a($$0));
+   }
+
+   @Nonnull
+   @Override
+   public T a(int $$0) {
+      T $$1 = super.a($$0);
+      return $$1 == null ? this.c.a() : $$1;
+   }
+
+   @Override
+   public Optional<ib.c<T>> a(ate $$0) {
+      return super.a($$0).or(() -> Optional.of(this.c));
+   }
+
+   @Override
+   public afw a() {
       return this.b;
-   }
-
-   public float d() {
-      return this.c;
-   }
-
-   public float e() {
-      return asb.g(this.a);
-   }
-
-   public float f() {
-      return asb.g(this.b);
-   }
-
-   public float g() {
-      return asb.g(this.c);
    }
 }

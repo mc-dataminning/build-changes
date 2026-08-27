@@ -1,183 +1,197 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollServerSocketChannel;
+import io.netty.channel.local.LocalAddress;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.ServerSocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.util.HashedWheelTimer;
+import io.netty.util.Timeout;
+import io.netty.util.Timer;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.FileSystemAlreadyExistsException;
-import java.nio.file.FileSystemNotFoundException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.net.InetAddress;
+import java.net.SocketAddress;
 import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
 public class amo {
-   private static final Logger b = LogUtils.getLogger();
-   public static Consumer<amo> a = $$0 -> {
-   };
-   private static final Map<aml, Path> c = ac.a(() -> {
-      synchronized (amn.class) {
-         Builder<aml, Path> $$0 = ImmutableMap.builder();
+   private static final Logger d = LogUtils.getLogger();
+   public static final Supplier<NioEventLoopGroup> a = Suppliers.memoize(
+      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Server IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<EpollEventLoopGroup> b = Suppliers.memoize(
+      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Server IO #%d").setDaemon(true).build())
+   );
+   final MinecraftServer e;
+   public volatile boolean c;
+   private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
+   final List<tj> g = Collections.synchronizedList(Lists.newArrayList());
 
-         for (aml $$1 : aml.values()) {
-            String $$2 = "/" + $$1.a() + "/.mcassetsroot";
-            URL $$3 = amn.class.getResource($$2);
-            if ($$3 == null) {
-               b.error("File {} does not exist in classpath", $$2);
-            } else {
+   public amo(MinecraftServer $$0) {
+      this.e = $$0;
+      this.c = true;
+   }
+
+   public void a(@Nullable InetAddress $$0, int $$1) throws IOException {
+      synchronized (this.f) {
+         Class<? extends ServerSocketChannel> $$2;
+         EventLoopGroup $$3;
+         if (Epoll.isAvailable() && this.e.n()) {
+            $$2 = EpollServerSocketChannel.class;
+            $$3 = (EventLoopGroup)b.get();
+            d.info("Using epoll channel type");
+         } else {
+            $$2 = NioServerSocketChannel.class;
+            $$3 = (EventLoopGroup)a.get();
+            d.info("Using default channel type");
+         }
+
+         this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               tj.a($$0);
+
                try {
-                  URI $$4 = $$3.toURI();
-                  String $$5 = $$4.getScheme();
-                  if (!"jar".equals($$5) && !"file".equals($$5)) {
-                     b.warn("Assets URL '{}' uses unexpected schema", $$4);
-                  }
+                  $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+               } catch (ChannelException var5) {
+               }
 
-                  Path $$6 = a($$4);
-                  $$0.put($$1, $$6.getParent());
-               } catch (Exception var12) {
-                  b.error("Couldn't resolve path to vanilla assets", var12);
+               ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30)).addLast("legacy_query", new amj(amo.this.d()));
+               tj.a($$1, wc.a, null);
+               int $$2 = amo.this.e.m();
+               tj $$3 = (tj)($$2 > 0 ? new tu($$2) : new tj(wc.a));
+               amo.this.g.add($$3);
+               $$3.a($$1);
+               $$3.b(new amq(amo.this.e, $$3));
+            }
+         }).group($$3).localAddress($$0, $$1)).bind().syncUninterruptibly());
+      }
+   }
+
+   public SocketAddress a() {
+      ChannelFuture $$0;
+      synchronized (this.f) {
+         $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               tj.a($$0);
+               tj $$1 = new tj(wc.a);
+               $$1.b(new amk(amo.this.e, $$1));
+               amo.this.g.add($$1);
+               ChannelPipeline $$2 = $$0.pipeline();
+               tj.a($$2, wc.a);
+               $$1.a($$2);
+            }
+         }).group((EventLoopGroup)a.get()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
+         this.f.add($$0);
+      }
+
+      return $$0.channel().localAddress();
+   }
+
+   public void b() {
+      this.c = false;
+
+      for (ChannelFuture $$0 : this.f) {
+         try {
+            $$0.channel().close().sync();
+         } catch (InterruptedException var4) {
+            d.error("Interrupted whilst closing channel");
+         }
+      }
+   }
+
+   public void c() {
+      synchronized (this.g) {
+         Iterator<tj> $$0 = this.g.iterator();
+
+         while ($$0.hasNext()) {
+            tj $$1 = $$0.next();
+            if (!$$1.l()) {
+               if ($$1.k()) {
+                  try {
+                     $$1.d();
+                  } catch (Exception var7) {
+                     if ($$1.g()) {
+                        throw new y(o.a(var7, "Ticking memory connection"));
+                     }
+
+                     d.warn("Failed to handle packet for {}", $$1.a(this.e.be()), var7);
+                     ui $$3 = ui.b("Internal server error");
+                     $$1.a(new wg($$3), ts.a(() -> $$1.a($$3)));
+                     $$1.o();
+                  }
+               } else {
+                  $$0.remove();
+                  $$1.p();
                }
             }
          }
-
-         return $$0.build();
-      }
-   });
-   private final Set<Path> d = new LinkedHashSet<>();
-   private final Map<aml, Set<Path>> e = new EnumMap<>(aml.class);
-   private amf f = amf.a();
-   private final Set<String> g = new HashSet<>();
-
-   private static Path a(URI $$0) throws IOException {
-      try {
-         return Paths.get($$0);
-      } catch (FileSystemNotFoundException var3) {
-      } catch (Throwable var4) {
-         b.warn("Unable to get path for: {}", $$0, var4);
-      }
-
-      try {
-         FileSystems.newFileSystem($$0, Collections.emptyMap());
-      } catch (FileSystemAlreadyExistsException var2) {
-      }
-
-      return Paths.get($$0);
-   }
-
-   private boolean b(Path $$0) {
-      if (!Files.exists($$0)) {
-         return false;
-      } else if (!Files.isDirectory($$0)) {
-         throw new IllegalArgumentException("Path " + $$0.toAbsolutePath() + " is not directory");
-      } else {
-         return true;
       }
    }
 
-   private void c(Path $$0) {
-      if (this.b($$0)) {
-         this.d.add($$0);
-      }
+   public MinecraftServer d() {
+      return this.e;
    }
 
-   private void b(aml $$0, Path $$1) {
-      if (this.b($$1)) {
-         this.e.computeIfAbsent($$0, $$0x -> new LinkedHashSet<>()).add($$1);
-      }
+   public List<tj> e() {
+      return this.g;
    }
 
-   public amo a() {
-      c.forEach(($$0, $$1) -> {
-         this.c($$1.getParent());
-         this.b($$0, $$1);
-      });
-      return this;
-   }
+   static class a extends ChannelInboundHandlerAdapter {
+      private static final Timer a = new HashedWheelTimer();
+      private final int b;
+      private final int c;
+      private final List<amo.a.a> d = Lists.newArrayList();
 
-   public amo a(aml $$0, Class<?> $$1) {
-      Enumeration<URL> $$2 = null;
-
-      try {
-         $$2 = $$1.getClassLoader().getResources($$0.a() + "/");
-      } catch (IOException var8) {
+      public a(int $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
       }
 
-      while ($$2 != null && $$2.hasMoreElements()) {
-         URL $$3 = $$2.nextElement();
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         this.a($$0, $$1);
+      }
 
-         try {
-            URI $$4 = $$3.toURI();
-            if ("file".equals($$4.getScheme())) {
-               Path $$5 = Paths.get($$4);
-               this.c($$5.getParent());
-               this.b($$0, $$5);
-            }
-         } catch (Exception var7) {
-            b.error("Failed to extract path from {}", $$3, var7);
+      private void a(ChannelHandlerContext $$0, Object $$1) {
+         int $$2 = this.b + (int)(Math.random() * (double)this.c);
+         this.d.add(new amo.a.a($$0, $$1));
+         a.newTimeout(this::a, (long)$$2, TimeUnit.MILLISECONDS);
+      }
+
+      private void a(Timeout $$0) {
+         amo.a.a $$1 = this.d.remove(0);
+         $$1.a.fireChannelRead($$1.b);
+      }
+
+      static class a {
+         public final ChannelHandlerContext a;
+         public final Object b;
+
+         public a(ChannelHandlerContext $$0, Object $$1) {
+            this.a = $$0;
+            this.b = $$1;
          }
       }
-
-      return this;
-   }
-
-   public amo b() {
-      a.accept(this);
-      return this;
-   }
-
-   public amo a(Path $$0) {
-      this.c($$0);
-
-      for (aml $$1 : aml.values()) {
-         this.b($$1, $$0.resolve($$1.a()));
-      }
-
-      return this;
-   }
-
-   public amo a(aml $$0, Path $$1) {
-      this.c($$1);
-      this.b($$0, $$1);
-      return this;
-   }
-
-   public amo a(amf $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public amo a(String... $$0) {
-      this.g.addAll(Arrays.asList($$0));
-      return this;
-   }
-
-   public amn c() {
-      Map<aml, List<Path>> $$0 = new EnumMap<>(aml.class);
-
-      for (aml $$1 : aml.values()) {
-         List<Path> $$2 = a(this.e.getOrDefault($$1, Set.of()));
-         $$0.put($$1, $$2);
-      }
-
-      return new amn(this.f, Set.copyOf(this.g), a(this.d), $$0);
-   }
-
-   private static List<Path> a(Collection<Path> $$0) {
-      List<Path> $$1 = new ArrayList<>($$0);
-      Collections.reverse($$1);
-      return List.copyOf($$1);
    }
 }

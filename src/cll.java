@@ -1,54 +1,107 @@
-public class cll {
-   public static aey<cli> a = aey.a(jc.W, new aez("empty"));
-   public static final cli b = a(a, new cli());
-   public static final cli c = a("water", new cli());
-   public static final cli d = a("mundane", new cli());
-   public static final cli e = a("thick", new cli());
-   public static final cli f = a("awkward", new cli());
-   public static final cli g = a("night_vision", new cli(new bij(bil.p, 3600)));
-   public static final cli h = a("long_night_vision", new cli("night_vision", new bij(bil.p, 9600)));
-   public static final cli i = a("invisibility", new cli(new bij(bil.n, 3600)));
-   public static final cli j = a("long_invisibility", new cli("invisibility", new bij(bil.n, 9600)));
-   public static final cli k = a("leaping", new cli(new bij(bil.h, 3600)));
-   public static final cli l = a("long_leaping", new cli("leaping", new bij(bil.h, 9600)));
-   public static final cli m = a("strong_leaping", new cli("leaping", new bij(bil.h, 1800, 1)));
-   public static final cli n = a("fire_resistance", new cli(new bij(bil.l, 3600)));
-   public static final cli o = a("long_fire_resistance", new cli("fire_resistance", new bij(bil.l, 9600)));
-   public static final cli p = a("swiftness", new cli(new bij(bil.a, 3600)));
-   public static final cli q = a("long_swiftness", new cli("swiftness", new bij(bil.a, 9600)));
-   public static final cli r = a("strong_swiftness", new cli("swiftness", new bij(bil.a, 1800, 1)));
-   public static final cli s = a("slowness", new cli(new bij(bil.b, 1800)));
-   public static final cli t = a("long_slowness", new cli("slowness", new bij(bil.b, 4800)));
-   public static final cli u = a("strong_slowness", new cli("slowness", new bij(bil.b, 400, 3)));
-   public static final cli v = a("turtle_master", new cli("turtle_master", new bij(bil.b, 400, 3), new bij(bil.k, 400, 2)));
-   public static final cli w = a("long_turtle_master", new cli("turtle_master", new bij(bil.b, 800, 3), new bij(bil.k, 800, 2)));
-   public static final cli x = a("strong_turtle_master", new cli("turtle_master", new bij(bil.b, 400, 5), new bij(bil.k, 400, 3)));
-   public static final cli y = a("water_breathing", new cli(new bij(bil.m, 3600)));
-   public static final cli z = a("long_water_breathing", new cli("water_breathing", new bij(bil.m, 9600)));
-   public static final cli A = a("healing", new cli(new bij(bil.f, 1)));
-   public static final cli B = a("strong_healing", new cli("healing", new bij(bil.f, 1, 1)));
-   public static final cli C = a("harming", new cli(new bij(bil.g, 1)));
-   public static final cli D = a("strong_harming", new cli("harming", new bij(bil.g, 1, 1)));
-   public static final cli E = a("poison", new cli(new bij(bil.s, 900)));
-   public static final cli F = a("long_poison", new cli("poison", new bij(bil.s, 1800)));
-   public static final cli G = a("strong_poison", new cli("poison", new bij(bil.s, 432, 1)));
-   public static final cli H = a("regeneration", new cli(new bij(bil.j, 900)));
-   public static final cli I = a("long_regeneration", new cli("regeneration", new bij(bil.j, 1800)));
-   public static final cli J = a("strong_regeneration", new cli("regeneration", new bij(bil.j, 450, 1)));
-   public static final cli K = a("strength", new cli(new bij(bil.e, 3600)));
-   public static final cli L = a("long_strength", new cli("strength", new bij(bil.e, 9600)));
-   public static final cli M = a("strong_strength", new cli("strength", new bij(bil.e, 1800, 1)));
-   public static final cli N = a("weakness", new cli(new bij(bil.r, 1800)));
-   public static final cli O = a("long_weakness", new cli("weakness", new bij(bil.r, 4800)));
-   public static final cli P = a("luck", new cli("luck", new bij(bil.z, 6000)));
-   public static final cli Q = a("slow_falling", new cli(new bij(bil.B, 1800)));
-   public static final cli R = a("long_slow_falling", new cli("slow_falling", new bij(bil.B, 4800)));
+import java.util.List;
+import javax.annotation.Nullable;
 
-   private static cli a(String $$0, cli $$1) {
-      return hq.a(jb.j, $$0, $$1);
+public class cll extends cke {
+   private static final n a = n.h;
+   private static final n b = n.j;
+   private static final ui c = ui.c(ac.a("item", new afw("smithing_template.ingredients"))).a(a);
+   private static final ui d = ui.c(ac.a("item", new afw("smithing_template.applies_to"))).a(a);
+   private static final ui e = ui.c(ac.a("upgrade", new afw("netherite_upgrade"))).a(a);
+   private static final ui f = ui.c(ac.a("item", new afw("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final ui g = ui.c(ac.a("item", new afw("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final ui h = ui.c(ac.a("item", new afw("smithing_template.armor_trim.base_slot_description")));
+   private static final ui i = ui.c(ac.a("item", new afw("smithing_template.armor_trim.additions_slot_description")));
+   private static final ui j = ui.c(ac.a("item", new afw("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final ui k = ui.c(ac.a("item", new afw("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final ui r = ui.c(ac.a("item", new afw("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final ui s = ui.c(ac.a("item", new afw("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final afw t = new afw("item/empty_armor_slot_helmet");
+   private static final afw u = new afw("item/empty_armor_slot_chestplate");
+   private static final afw v = new afw("item/empty_armor_slot_leggings");
+   private static final afw w = new afw("item/empty_armor_slot_boots");
+   private static final afw x = new afw("item/empty_slot_hoe");
+   private static final afw y = new afw("item/empty_slot_axe");
+   private static final afw z = new afw("item/empty_slot_sword");
+   private static final afw A = new afw("item/empty_slot_shovel");
+   private static final afw B = new afw("item/empty_slot_pickaxe");
+   private static final afw C = new afw("item/empty_slot_ingot");
+   private static final afw D = new afw("item/empty_slot_redstone_dust");
+   private static final afw E = new afw("item/empty_slot_quartz");
+   private static final afw F = new afw("item/empty_slot_emerald");
+   private static final afw G = new afw("item/empty_slot_diamond");
+   private static final afw H = new afw("item/empty_slot_lapis_lazuli");
+   private static final afw I = new afw("item/empty_slot_amethyst_shard");
+   private final ui J;
+   private final ui K;
+   private final ui L;
+   private final ui M;
+   private final ui N;
+   private final List<afw> O;
+   private final List<afw> P;
+
+   public cll(ui $$0, ui $$1, ui $$2, ui $$3, ui $$4, List<afw> $$5, List<afw> $$6) {
+      super(new cke.a());
+      this.J = $$0;
+      this.K = $$1;
+      this.L = $$2;
+      this.M = $$3;
+      this.N = $$4;
+      this.O = $$5;
+      this.P = $$6;
    }
 
-   private static cli a(aey<cli> $$0, cli $$1) {
-      return hq.a(jb.j, $$0, $$1);
+   public static cll a(afv<cmo> $$0) {
+      return a($$0.a());
+   }
+
+   public static cll a(afw $$0) {
+      return new cll(f, g, ui.c(ac.a("trim_pattern", $$0)).a(a), h, i, A(), B());
+   }
+
+   public static cll h() {
+      return new cll(j, k, e, r, s, C(), D());
+   }
+
+   private static List<afw> A() {
+      return List.of(t, u, v, w);
+   }
+
+   private static List<afw> B() {
+      return List.of(C, D, H, E, G, F, I);
+   }
+
+   private static List<afw> C() {
+      return List.of(t, z, u, B, v, y, w, x, A);
+   }
+
+   private static List<afw> D() {
+      return List.of(C);
+   }
+
+   @Override
+   public void a(ckj $$0, @Nullable cqz $$1, List<ui> $$2, cma $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$2.add(this.L);
+      $$2.add(uh.a);
+      $$2.add(d);
+      $$2.add(uh.a().b(this.J));
+      $$2.add(c);
+      $$2.add(uh.a().b(this.K));
+   }
+
+   public ui i() {
+      return this.M;
+   }
+
+   public ui x() {
+      return this.N;
+   }
+
+   public List<afw> y() {
+      return this.O;
+   }
+
+   public List<afw> z() {
+      return this.P;
    }
 }

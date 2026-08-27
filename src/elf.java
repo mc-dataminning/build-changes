@@ -1,66 +1,25 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.system.MemoryUtil.MemoryAllocator;
 
 public class elf {
-   @Nullable
-   private static elm a;
+   private static final MemoryAllocator a = MemoryUtil.getAllocator(false);
 
-   public static void a() {
-      if (a != null) {
-         b();
-         elm.b();
-      }
-   }
-
-   public static void b() {
-      a = null;
-   }
-
-   public static void a(ele.b $$0) {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> c($$0));
+   public static ByteBuffer a(int $$0) {
+      long $$1 = a.malloc((long)$$0);
+      if ($$1 == 0L) {
+         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
       } else {
-         c($$0);
+         return MemoryUtil.memByteBuffer($$1, $$0);
       }
    }
 
-   private static void c(ele.b $$0) {
-      elm $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      }
-   }
-
-   public static void b(ele.b $$0) {
-      elm $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.c();
-      }
-   }
-
-   @Nullable
-   private static elm d(ele.b $$0) {
-      RenderSystem.assertOnRenderThread();
-      if ($$0.d()) {
-         $$0.e();
-         return null;
+   public static ByteBuffer a(ByteBuffer $$0, int $$1) {
+      long $$2 = a.realloc(MemoryUtil.memAddress0($$0), (long)$$1);
+      if ($$2 == 0L) {
+         throw new OutOfMemoryError("Failed to resize buffer from " + $$0.capacity() + " bytes to " + $$1 + " bytes");
       } else {
-         elm $$1 = a($$0.c().g());
-         $$1.a($$0);
-         return $$1;
-      }
-   }
-
-   private static elm a(elo $$0) {
-      elm $$1 = $$0.g();
-      a($$1);
-      return $$1;
-   }
-
-   private static void a(elm $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
+         return MemoryUtil.memByteBuffer($$2, $$1);
       }
    }
 }

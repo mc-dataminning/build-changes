@@ -1,100 +1,43 @@
-import com.google.common.base.Charsets;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
+import com.google.common.collect.Interner;
+import com.google.common.collect.Interners;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
 
-public class arh implements AutoCloseable {
-   public static final String a = "session.lock";
-   private final FileChannel b;
-   private final FileLock c;
-   private static final ByteBuffer d;
+public record arh<T>(afv<? extends io<T>> a, afw b) {
+   private static final Interner<arh<?>> c = Interners.newWeakInterner();
 
-   public static arh a(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-      v.c($$0);
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-
-      try {
-         $$2.write(d.duplicate());
-         $$2.force(true);
-         FileLock $$3 = $$2.tryLock();
-         if ($$3 == null) {
-            throw arh.a.a($$1);
-         } else {
-            return new arh($$2, $$3);
-         }
-      } catch (IOException var6) {
-         try {
-            $$2.close();
-         } catch (IOException var5) {
-            var6.addSuppressed(var5);
-         }
-
-         throw var6;
-      }
+   @Deprecated
+   public arh(afv<? extends io<T>> a, afw b) {
+      this.a = a;
+      this.b = b;
    }
 
-   private arh(FileChannel $$0, FileLock $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static <T> Codec<arh<T>> a(afv<? extends io<T>> $$0) {
+      return afw.a.xmap($$1 -> a($$0, $$1), arh::b);
+   }
+
+   public static <T> Codec<arh<T>> b(afv<? extends io<T>> $$0) {
+      return Codec.STRING
+         .comapFlatMap(
+            $$1 -> $$1.startsWith("#") ? afw.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
+         );
+   }
+
+   public static <T> arh<T> a(afv<? extends io<T>> $$0, afw $$1) {
+      return (arh<T>)c.intern(new arh<>($$0, $$1));
+   }
+
+   public boolean c(afv<? extends io<?>> $$0) {
+      return this.a == $$0;
+   }
+
+   public <E> Optional<arh<E>> d(afv<? extends io<E>> $$0) {
+      return this.c($$0) ? Optional.of((arh<E>)this) : Optional.empty();
    }
 
    @Override
-   public void close() throws IOException {
-      try {
-         if (this.c.isValid()) {
-            this.c.release();
-         }
-      } finally {
-         if (this.b.isOpen()) {
-            this.b.close();
-         }
-      }
-   }
-
-   public boolean a() {
-      return this.c.isValid();
-   }
-
-   public static boolean b(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-
-      try {
-         boolean var4;
-         try (
-            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
-            FileLock $$3 = $$2.tryLock();
-         ) {
-            var4 = $$3 == null;
-         }
-
-         return var4;
-      } catch (AccessDeniedException var10) {
-         return true;
-      } catch (NoSuchFileException var11) {
-         return false;
-      }
-   }
-
-   static {
-      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
-      d = ByteBuffer.allocateDirect($$0.length);
-      d.put($$0);
-      d.flip();
-   }
-
-   public static class a extends IOException {
-      private a(Path $$0, String $$1) {
-         super($$0.toAbsolutePath() + ": " + $$1);
-      }
-
-      public static arh.a a(Path $$0) {
-         return new arh.a($$0, "already locked (possibly by other Minecraft instance?)");
-      }
+   public String toString() {
+      return "TagKey[" + this.a.a() + " / " + this.b + "]";
    }
 }

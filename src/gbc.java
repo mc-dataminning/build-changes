@@ -1,63 +1,56 @@
-import java.util.Arrays;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+import javax.annotation.Nullable;
 
-public enum gbc implements gbj {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public class gbc extends aoy<List<String>> {
+   private static final afw a = new afw("texts/splashes.txt");
+   private static final ate b = ate.a();
+   private final List<String> c = Lists.newArrayList();
+   private final esd d;
 
-   private static final int q = 360;
-   private static final Map<Integer, gbc> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gbc)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+   public gbc(esd $$0) {
+      this.d = $$0;
    }
 
-   private gbc(int $$0, int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      h $$3 = h.a;
+   protected List<String> a(aot $$0, bes $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = ero.O().Z().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+         }
 
-      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
-         $$3 = $$3.a(h.u);
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
       }
+   }
 
-      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
-         $$3 = $$3.a(h.s);
+   protected void a(List<String> $$0, aot $$1, bes $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
+   }
+
+   @Nullable
+   public eun a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return eun.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return eun.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return eun.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new eun(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new eun(this.c.get(b.a(this.c.size())));
       }
-
-      this.s = new j(null, $$2, null, null);
-      this.t = $$3;
-   }
-
-   @Override
-   public j b() {
-      return this.s;
-   }
-
-   public static gbc a(int $$0, int $$1) {
-      return r.get(b(asb.b($$0, 360), asb.b($$1, 360)));
-   }
-
-   public h a() {
-      return this.t;
    }
 }

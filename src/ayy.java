@@ -1,19 +1,37 @@
-import com.mojang.datafixers.DataFixUtils;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public class ayy extends atk {
-   private final Function<String, String> a;
-
-   public ayy(Schema $$0, String $$1, Function<String, String> $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+public class ayy extends azc {
+   public ayy(Schema $$0, String $$1) {
+      super($$0, false, "Memory expiry data fix (" + $$1 + ")", baa.x, $$1);
    }
 
    @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Brain", this::b);
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("memories", this::c);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.updateMapValues(this::a);
+   }
+
+   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
+      return $$0.mapSecond(this::d);
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
    }
 }

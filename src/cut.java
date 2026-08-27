@@ -1,43 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class cut extends csn {
-   public static final MapCodec<cut> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cuq.a.forGetter($$0x -> $$0x.f), t()).apply($$0, cut::new));
-   private final ctc f;
+public class cut extends cua {
+   public static final MapCodec<cut> a = b(cut::new);
+   private static final ui b = ui.c("container.cartography_table");
 
    @Override
    public MapCodec<cut> a() {
-      return e;
+      return a;
    }
 
-   protected cut(ctc $$0, dfc.d $$1) {
-      super($$1);
-      this.f = $$0;
-   }
-
-   @Override
-   public void b(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      this.a($$0, (cqc)$$1, $$2);
+   protected cut(dga.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.f.o().a(d, Boolean.valueOf(false)).a(c, $$0.c(c)), 2);
-      }
-   }
-
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
-         return cte.a.o();
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      if ($$1.B) {
+         return bib.a;
       } else {
-         if ($$0.c(d)) {
-            $$3.a($$4, eah.c, eah.c.a($$3));
-         }
-
-         this.a($$0, $$3, $$4);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(aqn.aw);
+         return bib.b;
       }
+   }
+
+   @Nullable
+   @Override
+   public bie b(dgb $$0, cqz $$1, ht $$2) {
+      return new bij(($$2x, $$3, $$4) -> new cfv($$2x, $$3, cga.a($$1, $$2)), b);
    }
 }

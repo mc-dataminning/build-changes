@@ -1,29 +1,31 @@
 import com.mojang.serialization.MapCodec;
 
-public class dbe extends cvi implements ctf {
-   public static final MapCodec<dbe> c = b(dbe::new);
+public class dbe extends cvs {
+   public static final MapCodec<dbe> b = b(dbe::new);
+   private static final ui c = ui.c("container.upgrade");
 
    @Override
    public MapCodec<dbe> a() {
-      return c;
+      return b;
    }
 
-   public dbe(dfc.d $$0) {
+   protected dbe(dga.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(cqe $$0, gw $$1, dfd $$2) {
-      return true;
+   public bie b(dgb $$0, cqz $$1, ht $$2) {
+      return new bij(($$2x, $$3, $$4) -> new chi($$2x, $$3, cga.a($$1, $$2)), c);
    }
 
    @Override
-   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
-      a($$0, $$2, new cjl(this));
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      if ($$1.B) {
+         return bib.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(aqn.aF);
+         return bib.b;
+      }
    }
 }

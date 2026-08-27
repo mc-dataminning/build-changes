@@ -1,25 +1,17 @@
-public class fxi<T extends cca> extends fxl<T, fgd<T>> {
-   private final ffy a;
+public class fxi extends fuu<cbf, fip<cbf>> {
+   private static final afw a = new afw("textures/entity/zombie_villager/zombie_villager.png");
 
-   public fxi(fuy<T, fgd<T>> $$0, fht $$1) {
-      super($$0);
-      this.a = new ffy($$1.a(fhw.aA));
+   public fxi(fud.a $$0) {
+      super($$0, new fip<>($$0.a(fiv.cc)), 0.5F);
+      this.a(new fyb<>(this, new fip($$0.a(fiv.cd)), new fip($$0.a(fiv.ce)), $$0.g()));
+      this.a(new fyw<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   public afw a(cbf $$0) {
+      return a;
    }
 
-   private void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      qw $$9 = $$8 ? $$3.gj() : $$3.gk();
-      bja.a($$9.l("id")).filter($$0x -> $$0x == bja.at).ifPresent($$10 -> {
-         $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bW() ? -1.3F : -1.5F, 0.0F);
-         bvn.b $$11 = bvn.b.a($$9.h("Variant"));
-         eln $$12 = $$1.getBuffer(this.a.a(fup.a($$11)));
-         this.a.a($$0, $$12, $$2, fyr.d, $$4, $$5, $$6, $$7, $$3.ah);
-         $$0.b();
-      });
+   protected boolean b(cbf $$0) {
+      return super.a($$0) || $$0.go();
    }
 }

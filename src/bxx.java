@@ -1,26 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public interface bxx {
-   boolean a();
+public enum bxx {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
 
-   void b();
+   private static final IntFunction<bxx> f = arr.a(bxx::a, values(), arr.a.b);
+   private final int g;
 
-   void c();
+   private bxx(int $$0) {
+      this.g = $$0;
+   }
 
-   void a(bxm var1, gw var2, bhu var3, @Nullable cca var4);
+   public int a() {
+      return this.g;
+   }
 
-   void d();
-
-   void e();
-
-   float f();
-
-   float h();
-
-   byd<? extends bxx> i();
-
-   @Nullable
-   ehh g();
-
-   float a(bhu var1, float var2);
+   public static bxx a(int $$0) {
+      return f.apply($$0);
+   }
 }

@@ -1,77 +1,48 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import java.util.EnumSet;
+import java.util.Set;
 
-public class bkx extends bld<bux> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bja<? extends bux> f;
-   private final float g;
-   private long h;
+public enum bkx {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
 
-   public bkx(bja<? extends bux> $$0, float $$1) {
-      super(ImmutableMap.of(bsn.h, bso.a, bsn.r, bso.b, bsn.m, bso.c, bsn.n, bso.c, bsn.Y, bso.b), 110);
-      this.f = $$0;
-      this.g = $$1;
+   public static final Set<bkx> f = Set.of(values());
+   public static final Set<bkx> g = Set.of(e, d);
+   private final int h;
+
+   private bkx(int $$0) {
+      this.h = $$0;
    }
 
-   protected boolean a(akt $$0, bux $$1) {
-      return $$1.gi() && this.c($$1).isPresent();
+   private int a() {
+      return 1 << this.h;
    }
 
-   protected void a(akt $$0, bux $$1, long $$2) {
-      bux $$3 = this.c($$1).get();
-      $$1.dN().a(bsn.r, $$3);
-      $$3.dN().a(bsn.r, $$1);
-      blf.a($$1, $$3, this.g);
-      int $$4 = 60 + $$1.ef().a(50);
-      this.h = $$2 + (long)$$4;
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
    }
 
-   protected boolean b(akt $$0, bux $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
-      } else {
-         bux $$3 = this.a($$1);
-         return $$3.bv() && $$1.a($$3) && blf.a($$1.dN(), $$3) && $$2 <= this.h && !$$1.gb() && !$$3.gb();
-      }
-   }
+   public static Set<bkx> a(int $$0) {
+      Set<bkx> $$1 = EnumSet.noneOf(bkx.class);
 
-   protected void c(akt $$0, bux $$1, long $$2) {
-      bux $$3 = this.a($$1);
-      blf.a($$1, $$3, this.g);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.h) {
-            $$1.a($$0, $$3);
-            $$1.dN().b(bsn.r);
-            $$3.dN().b(bsn.r);
+      for (bkx $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
          }
       }
+
+      return $$1;
    }
 
-   protected void d(akt $$0, bux $$1, long $$2) {
-      $$1.dN().b(bsn.r);
-      $$1.dN().b(bsn.m);
-      $$1.dN().b(bsn.n);
-      this.h = 0L;
-   }
+   public static int a(Set<bkx> $$0) {
+      int $$1 = 0;
 
-   private bux a(bux $$0) {
-      return (bux)$$0.dN().c(bsn.r).get();
-   }
+      for (bkx $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
 
-   private boolean b(bux $$0) {
-      bkm<?> $$1 = $$0.dN();
-      return $$1.a(bsn.r) && $$1.c(bsn.r).get().ag() == this.f;
-   }
-
-   private Optional<? extends bux> c(bux $$0) {
-      return $$0.dN().c(bsn.h).get().a($$1 -> {
-         if ($$1.ag() == this.f && $$1 instanceof bux $$2 && $$0.a($$2) && !$$2.gb()) {
-            return true;
-         }
-
-         return false;
-      }).map(bux.class::cast);
+      return $$1;
    }
 }

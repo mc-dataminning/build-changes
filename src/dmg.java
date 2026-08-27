@@ -1,25 +1,26 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmg implements dlt {
+public record dmg(dmi b, dmf c) {
    public static final Codec<dmg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hy.v(16).optionalFieldOf("offset", hy.g).forGetter($$0x -> $$0x.e), dfd.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dmg::new)
+      $$0 -> $$0.group(dmi.a.forGetter(dmg::a), dmf.a.forGetter(dmg::b)).apply($$0, $$0.stable(dmg::new))
    );
-   private final hy e;
-   private final dfd f;
 
-   protected dmg(hy $$0, dfd $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dmi $$1, dmf $$2) {
+      return a.encodeStart($$0, new dmg($$1, $$2));
    }
 
-   public boolean a(cqv $$0, gw $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dmi $$1, ip $$2) {
+      return a($$0, $$1, new dmf($$2.d(jz.aJ)));
    }
 
-   @Override
-   public dlu<?> a() {
-      return dlu.g;
+   public dmi a() {
+      return this.b;
+   }
+
+   public dmf b() {
+      return this.c;
    }
 }

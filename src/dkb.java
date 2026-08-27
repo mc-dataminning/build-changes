@@ -1,55 +1,19 @@
-public interface dkb extends ash {
-   float b = 5.9604645E-8F;
-   double c = 1.110223E-16F;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   int c(int var1);
+public interface dkb<T extends djs> {
+   @Nullable
+   T a(int var1);
 
-   @Override
-   default int f() {
-      return this.c(32);
-   }
+   @Nullable
+   T a(UUID var1);
 
-   @Override
-   default int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else if (($$0 & $$0 - 1) == 0) {
-         return (int)((long)$$0 * (long)this.c(31) >> 31);
-      } else {
-         int $$1;
-         int $$2;
-         do {
-            $$1 = this.c(31);
-            $$2 = $$1 % $$0;
-         } while ($$1 - $$2 + ($$0 - 1) < 0);
+   Iterable<T> a();
 
-         return $$2;
-      }
-   }
+   <U extends T> void a(djz<T, U> var1, arn<U> var2);
 
-   @Override
-   default long g() {
-      int $$0 = this.c(32);
-      int $$1 = this.c(32);
-      long $$2 = (long)$$0 << 32;
-      return $$2 + (long)$$1;
-   }
+   void a(eia var1, Consumer<T> var2);
 
-   @Override
-   default boolean h() {
-      return this.c(1) != 0;
-   }
-
-   @Override
-   default float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   default double j() {
-      int $$0 = this.c(26);
-      int $$1 = this.c(27);
-      long $$2 = ((long)$$0 << 27) + (long)$$1;
-      return (double)$$2 * 1.110223E-16F;
-   }
+   <U extends T> void a(djz<T, U> var1, eia var2, arn<U> var3);
 }

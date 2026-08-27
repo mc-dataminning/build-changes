@@ -1,29 +1,83 @@
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public abstract class fdv<E extends biw> extends ffh<E> {
-   private final float a;
-   private final float b;
+public class fdv extends ezd {
+   private static final int a = 310;
+   private final ewt b = new ewt(this);
+   private final ezd c;
+   private final aoe k;
+   private final Consumer<aoe> l;
+   private final Object2BooleanMap<aob> m = new Object2BooleanLinkedOpenHashMap();
 
-   public fdv(float $$0, float $$1) {
-      this($$0, $$1, foi::e);
-   }
+   public fdv(ezd $$0, aoe $$1, Consumer<aoe> $$2) {
+      super(ui.c("experiments_screen.title"));
+      this.c = $$0;
+      this.k = $$1;
+      this.l = $$2;
 
-   public fdv(float $$0, float $$1, Function<aez, foi> $$2) {
-      super($$2);
-      this.b = $$1;
-      this.a = $$0;
+      for (aob $$3 : $$1.c()) {
+         if ($$3.j() == aof.d) {
+            this.m.put($$3, $$1.f().contains($$3));
+         }
+      }
    }
 
    @Override
-   public void a(elj $$0, eln $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(this.a, this.a, this.a);
-         $$0.a(0.0F, this.b / 16.0F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   protected void aM_() {
+      this.b.a(new euq(ui.c("selectWorld.experiments"), this.i));
+      ewx $$0 = this.b.c(ewx.d());
+      $$0.a(new eud(ui.c("selectWorld.experiments.info").a(n.m), this.i).j(310), $$0x -> $$0x.e(15));
+      fdz.a $$1 = fdz.a(310).a(2, true).b(4);
+      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
+      $$1.a($$0::a);
+      ews.b $$2 = this.b.b(new ews().a(10)).d(2);
+      $$2.a(etj.a(uh.d, $$0x -> this.l()).a());
+      $$2.a(etj.a(uh.e, $$0x -> this.aC_()).a());
+      this.b.a($$1x -> {
+         eth var10000 = this.d($$1x);
+      });
+      this.c();
+   }
+
+   private static ui a(aob $$0) {
+      String $$1 = "dataPack." + $$0.f() + ".name";
+      return (ui)(gbg.a($$1) ? ui.c($$1) : $$0.a());
+   }
+
+   @Override
+   public void aC_() {
+      this.f.a(this.c);
+   }
+
+   private void l() {
+      List<aob> $$0 = new ArrayList<>(this.k.f());
+      List<aob> $$1 = new ArrayList<>();
+      this.m.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
+         }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.k.a($$0.stream().map(aob::f).toList());
+      this.l.accept(this.k);
+   }
+
+   @Override
+   protected void c() {
+      this.b.a();
+   }
+
+   @Override
+   public void b(esy $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
+      int $$4 = 32;
+      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

@@ -1,44 +1,69 @@
-public class ffc<T extends biw> extends ffh<T> {
-   private final fhx a;
-   private final fhx[] b = new fhx[9];
+public class ffc extends fgg<bvp> {
+   private final fiw a;
+   private final fiw b;
+   private final fiw f;
+   private final fiw g;
+   private final fiw h;
+   private final fiw i;
+   private final fiw j;
 
-   public ffc(fhx $$0) {
+   public ffc(fiw $$0) {
       this.a = $$0;
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+      this.b = $$0.b("head");
+      this.f = $$0.b("body");
+      this.g = this.f.b("right_wing");
+      this.i = this.g.b("right_wing_tip");
+      this.h = this.f.b("left_wing");
+      this.j = this.h.b("left_wing_tip");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
-
-   public static fid b() {
-      fif $$0 = new fif();
-      fig $$1 = $$0.a();
-      $$1.a("body", fic.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fhz.a(0.0F, 17.6F, 0.0F));
-      ash $$2 = ash.a(1660L);
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), fic.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fhz.a($$4, 24.6F, $$5));
-      }
-
-      return fid.a($$0, 64, 32);
+   public static fjc b() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      fjf $$2 = $$1.a("head", fjb.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fiy.a);
+      $$2.a("right_ear", fjb.c().a(24, 0).a(-4.0F, -6.0F, -2.0F, 3.0F, 4.0F, 1.0F), fiy.a);
+      $$2.a("left_ear", fjb.c().a(24, 0).a().a(1.0F, -6.0F, -2.0F, 3.0F, 4.0F, 1.0F), fiy.a);
+      fjf $$3 = $$1.a("body", fjb.c().a(0, 16).a(-3.0F, 4.0F, -3.0F, 6.0F, 12.0F, 6.0F).a(0, 34).a(-5.0F, 16.0F, 0.0F, 10.0F, 6.0F, 1.0F), fiy.a);
+      fjf $$4 = $$3.a("right_wing", fjb.c().a(42, 0).a(-12.0F, 1.0F, 1.5F, 10.0F, 16.0F, 1.0F), fiy.a);
+      $$4.a("right_wing_tip", fjb.c().a(24, 16).a(-8.0F, 1.0F, 0.0F, 8.0F, 12.0F, 1.0F), fiy.a(-12.0F, 1.0F, 1.5F));
+      fjf $$5 = $$3.a("left_wing", fjb.c().a(42, 0).a().a(2.0F, 1.0F, 1.5F, 10.0F, 16.0F, 1.0F), fiy.a);
+      $$5.a("left_wing_tip", fjb.c().a(24, 16).a().a(0.0F, 1.0F, 0.0F, 8.0F, 12.0F, 1.0F), fiy.a(12.0F, 1.0F, 1.5F));
+      return fjc.a($$0, 64, 64);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
-         this.b[$$6].e = 0.2F * asb.a($$3 * 0.3F + (float)$$6) + 0.4F;
-      }
-   }
-
-   @Override
-   public fhx a() {
+   public fiw a() {
       return this.a;
+   }
+
+   public void a(bvp $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      if ($$0.t()) {
+         this.b.e = $$5 * (float) (Math.PI / 180.0);
+         this.b.f = (float) Math.PI - $$4 * (float) (Math.PI / 180.0);
+         this.b.g = (float) Math.PI;
+         this.b.a(0.0F, -2.0F, 0.0F);
+         this.g.a(-3.0F, 0.0F, 3.0F);
+         this.h.a(3.0F, 0.0F, 3.0F);
+         this.f.e = (float) Math.PI;
+         this.g.e = (float) (-Math.PI / 20);
+         this.g.f = (float) (-Math.PI * 2.0 / 5.0);
+         this.i.f = -1.7278761F;
+         this.h.e = this.g.e;
+         this.h.f = -this.g.f;
+         this.j.f = -this.i.f;
+      } else {
+         this.b.e = $$5 * (float) (Math.PI / 180.0);
+         this.b.f = $$4 * (float) (Math.PI / 180.0);
+         this.b.g = 0.0F;
+         this.b.a(0.0F, 0.0F, 0.0F);
+         this.g.a(0.0F, 0.0F, 0.0F);
+         this.h.a(0.0F, 0.0F, 0.0F);
+         this.f.e = (float) (Math.PI / 4) + asy.b($$3 * 0.1F) * 0.15F;
+         this.f.f = 0.0F;
+         this.g.f = asy.b($$3 * 74.48451F * (float) (Math.PI / 180.0)) * (float) Math.PI * 0.25F;
+         this.h.f = -this.g.f;
+         this.i.f = this.g.f * 0.5F;
+         this.j.f = -this.g.f * 0.5F;
+      }
    }
 }

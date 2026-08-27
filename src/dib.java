@@ -1,94 +1,46 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Codec;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class dib implements AutoCloseable {
-   public static final int d = 1493;
-   private final did a;
-   protected final DataFixer e;
+public abstract class dib implements dil, AutoCloseable {
    @Nullable
-   private volatile dux b;
-
-   public dib(Path $$0, DataFixer $$1, boolean $$2) {
-      this.e = $$1;
-      this.a = new did($$0, $$2, "chunk");
+   public dii a(int $$0, int $$1, boolean $$2) {
+      return (dii)this.a($$0, $$1, dic.n, $$2);
    }
 
-   public boolean b(cpi $$0, int $$1) {
-      return this.a.a($$0, $$1);
+   @Nullable
+   public dii a(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
    }
 
-   public qw a(aey<cqb> $$0, Supplier<ebw> $$1, qw $$2, Optional<aey<Codec<? extends dha>>> $$3) {
-      int $$4 = a($$2);
-      if ($$4 < 1493) {
-         $$2 = atg.c.a(this.e, $$2, $$4, 1493);
-         if ($$2.p("Level").q("hasLegacyStructureData")) {
-            dux $$5 = this.a($$0, $$1);
-            $$2 = $$5.a($$2);
-         }
-      }
-
-      a($$2, $$0, $$3);
-      $$2 = atg.c.a(this.e, $$2, Math.max(1493, $$4));
-      if ($$4 < aa.b().d().c()) {
-         rj.g($$2);
-      }
-
-      $$2.r("__context");
-      return $$2;
+   @Nullable
+   @Override
+   public dik c(int $$0, int $$1) {
+      return this.a($$0, $$1, dic.c, false);
    }
 
-   private dux a(aey<cqb> $$0, Supplier<ebw> $$1) {
-      dux $$2 = this.b;
-      if ($$2 == null) {
-         synchronized (this) {
-            $$2 = this.b;
-            if ($$2 == null) {
-               this.b = $$2 = dux.a($$0, $$1.get());
-            }
-         }
-      }
-
-      return $$2;
+   public boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, dic.n, false) != null;
    }
 
-   public static void a(qw $$0, aey<cqb> $$1, Optional<aey<Codec<? extends dha>>> $$2) {
-      qw $$3 = new qw();
-      $$3.a("dimension", $$1.a().toString());
-      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
-      $$0.a("__context", $$3);
-   }
+   @Nullable
+   public abstract dhx a(int var1, int var2, dic var3, boolean var4);
 
-   public static int a(qw $$0) {
-      return rj.b($$0, -1);
-   }
+   public abstract void a(BooleanSupplier var1, boolean var2);
 
-   public CompletableFuture<Optional<qw>> e(cpi $$0) {
-      return this.a.a($$0);
-   }
+   public abstract String e();
 
-   public void a(cpi $$0, qw $$1) {
-      this.a.a($$0, $$1);
-      if (this.b != null) {
-         this.b.a($$0.a());
-      }
-   }
-
-   public void o() {
-      this.a.a(true).join();
-   }
+   public abstract int j();
 
    @Override
    public void close() throws IOException {
-      this.a.close();
    }
 
-   public dhz p() {
-      return this.a;
+   public abstract eat p();
+
+   public void a(boolean $$0, boolean $$1) {
+   }
+
+   public void a(cqg $$0, boolean $$1) {
    }
 }

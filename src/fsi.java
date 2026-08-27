@@ -1,15 +1,29 @@
-public class fsi extends fuj<byy, fef<byy>> {
-   private static final aez a = new aez("textures/entity/blaze.png");
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-   public fsi(ftd.a $$0) {
-      super($$0, new fef<>($$0.a(fhw.l)), 0.5F);
+public class fsi implements fsj.a {
+   private final ero a;
+   private double b = Double.MIN_VALUE;
+   private List<eiy> c = Collections.emptyList();
+
+   public fsi(ero $$0) {
+      this.a = $$0;
    }
 
-   protected int a(byy $$0, gw $$1) {
-      return 15;
-   }
+   @Override
+   public void a(emh $$0, fpb $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bjt $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dL().d($$6, $$6.cG().g(6.0)));
+      }
 
-   public aez a(byy $$0) {
-      return a;
+      eml $$7 = $$1.getBuffer(fpj.x());
+
+      for (eiy $$8 : this.c) {
+         foz.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

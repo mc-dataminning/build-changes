@@ -1,77 +1,255 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class fci extends fcb<fjw.a> {
-   private static final int s = 120;
-   private static final int t = 85;
-   private static final int u = 178;
-   private static final tl v = tl.c("gui.abuseReport.skin.title");
-   private final evy w = evy.d().a(8);
-   private etc x;
-   private esk y;
-   private esk z;
+public class fci {
+   private final aoe a;
+   final List<aob> b;
+   final List<aob> c;
+   final Function<aob, afw> d;
+   final Runnable e;
+   private final Consumer<aoe> f;
 
-   private fci(eye $$0, fjv $$1, fjw.a $$2) {
-      super(v, $$0, $$1, $$2);
+   public fci(Runnable $$0, Function<aob, afw> $$1, aoe $$2, Consumer<aoe> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public fci(eye $$0, fjv $$1, UUID $$2, Supplier<gaa> $$3) {
-      this($$0, $$1, new fjw.a($$2, $$3, $$1.a().b()));
+   public Stream<fci.a> a() {
+      return this.c.stream().map($$0 -> new fci.d($$0));
    }
 
-   public fci(eye $$0, fjv $$1, fjw $$2) {
-      this($$0, $$1, new fjw.a($$2, $$1.a().b()));
+   public Stream<fci.a> b() {
+      return this.b.stream().map($$0 -> new fci.c($$0));
    }
 
-   @Override
-   protected void aH_() {
-      this.w.c().b();
-      this.w.a(new etr(this.e, this.i));
-      evy $$0 = this.w.a(evy.e().a(8));
-      $$0.c().e();
-      $$0.a(new etk(85, 120, this.f.aP(), this.q.e().a()));
-      evy $$1 = $$0.a(evy.d().a(8));
-      this.z = esk.a(c, $$0x -> this.f.a(new fch(this, this.q.h(), $$0xx -> {
-            this.q.a($$0xx);
-            this.D();
-         }))).a(178).a();
-      $$1.a(evq.a(this.i, this.z, b));
-      this.x = this.a(178, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.D();
-      });
-      $$1.a(evq.a(this.i, this.x, k, $$0x -> $$0x.e(12)));
-      evy $$2 = this.w.a(evy.e().a(8));
-      $$2.a(esk.a(tk.k, $$0x -> this.az_()).a(120).a());
-      this.y = $$2.a(esk.a(a, $$0x -> this.l()).a(120).a());
-      this.w.a($$1x -> {
-         esi var10000 = this.d($$1x);
-      });
-      this.b();
-      this.D();
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(aob::f).collect(ImmutableList.toImmutableList()));
    }
 
-   @Override
-   protected void b() {
-      this.w.a();
-      evs.a(this.w, this.s());
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
    }
 
-   private void D() {
-      fjt $$0 = this.q.h();
-      if ($$0 != null) {
-         this.z.b($$0.b());
-      } else {
-         this.z.b(c);
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      afw a();
+
+      aoc b();
+
+      String c();
+
+      ui d();
+
+      ui e();
+
+      aof f();
+
+      default ui g() {
+         return this.f().a(this.e());
       }
 
-      fjr.b $$1 = this.q.c();
-      this.y.i = $$1 == null;
-      this.y.a(x.a($$1, fjr.b::a));
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.x.b($$0, $$1, $$2);
+   abstract class b implements fci.a {
+      private final aob b;
+
+      public b(aob $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<aob> s();
+
+      protected abstract List<aob> t();
+
+      @Override
+      public afw a() {
+         return fci.this.d.apply(this.b);
+      }
+
+      @Override
+      public aoc b() {
+         return this.b.c();
+      }
+
+      @Override
+      public String c() {
+         return this.b.f();
+      }
+
+      @Override
+      public ui d() {
+         return this.b.a();
+      }
+
+      @Override
+      public ui e() {
+         return this.b.b();
+      }
+
+      @Override
+      public aof f() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.h();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.g();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.i().a(this.t(), this.b, Function.identity(), true);
+         fci.this.e.run();
+         fci.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.f().equals("high_contrast")) {
+            err<Boolean> $$0 = ero.O().m.q();
+            $$0.a(!$$0.c());
+         }
+      }
+
+      protected void a(int $$0) {
+         List<aob> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fci.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<aob> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).h();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<aob> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).h();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
+      }
+   }
+
+   class c extends fci.b {
+      public c(aob $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<aob> s() {
+         return fci.this.b;
+      }
+
+      @Override
+      protected List<aob> t() {
+         return fci.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends fci.b {
+      public d(aob $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<aob> s() {
+         return fci.this.c;
+      }
+
+      @Override
+      protected List<aob> t() {
+         return fci.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
+      }
    }
 }

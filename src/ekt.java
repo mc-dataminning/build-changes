@@ -1,140 +1,264 @@
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class ekt {
-   @Nullable
-   private static ekt a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final int f;
-   private final boolean g;
-   private final boolean h;
+public abstract class ekt {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int l = 2;
+   private static final int m = 3;
+   public int c;
+   public int d;
+   public int e;
+   public int f;
+   public final boolean g;
+   public int h;
+   protected int i;
+   protected int j;
+   private final float[] n = ac.a(() -> new float[]{1.0F, 1.0F, 1.0F, 0.0F});
+   public int k;
 
-   private ekt(boolean $$0, boolean $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+   public ekt(boolean $$0) {
       this.g = $$0;
-      this.b = $$2;
-      this.d = $$3;
-      this.c = $$4;
-      this.e = $$5;
-      this.h = $$1;
-      this.f = $$6;
+      this.h = -1;
+      this.i = -1;
+      this.j = -1;
    }
 
-   public ekt() {
-      this(false, true, 1, 0, 1, 0, 32774);
+   public void a(int $$0, int $$1, boolean $$2) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.d($$0, $$1, $$2));
+      } else {
+         this.d($$0, $$1, $$2);
+      }
    }
 
-   public ekt(int $$0, int $$1, int $$2) {
-      this(false, false, $$0, $$1, $$0, $$1, $$2);
-   }
+   private void d(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._enableDepthTest();
+      if (this.h >= 0) {
+         this.a();
+      }
 
-   public ekt(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      this(true, false, $$0, $$1, $$2, $$3, $$4);
+      this.b($$0, $$1, $$2);
+      GlStateManager._glBindFramebuffer(36160, 0);
    }
 
    public void a() {
-      if (!this.equals(a)) {
-         if (a == null || this.h != a.b()) {
-            a = this;
-            if (this.h) {
-               RenderSystem.disableBlend();
-               return;
-            }
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.d();
+      this.e();
+      if (this.j > -1) {
+         TextureUtil.releaseTextureId(this.j);
+         this.j = -1;
+      }
 
-            RenderSystem.enableBlend();
-         }
+      if (this.i > -1) {
+         TextureUtil.releaseTextureId(this.i);
+         this.i = -1;
+      }
 
-         RenderSystem.blendEquation(this.f);
+      if (this.h > -1) {
+         GlStateManager._glBindFramebuffer(36160, 0);
+         GlStateManager._glDeleteFramebuffers(this.h);
+         this.h = -1;
+      }
+   }
+
+   public void a(ekt $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36008, $$0.h);
+      GlStateManager._glBindFramebuffer(36009, this.h);
+      GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.c, this.d, 256, 9728);
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   public void b(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$3 = RenderSystem.maxSupportedTextureSize();
+      if ($$0 > 0 && $$0 <= $$3 && $$1 > 0 && $$1 <= $$3) {
+         this.e = $$0;
+         this.f = $$1;
+         this.c = $$0;
+         this.d = $$1;
+         this.h = GlStateManager.glGenFramebuffers();
+         this.i = TextureUtil.generateTextureId();
          if (this.g) {
-            RenderSystem.blendFuncSeparate(this.b, this.d, this.c, this.e);
+            this.j = TextureUtil.generateTextureId();
+            GlStateManager._bindTexture(this.j);
+            GlStateManager._texParameter(3553, 10241, 9728);
+            GlStateManager._texParameter(3553, 10240, 9728);
+            GlStateManager._texParameter(3553, 34892, 0);
+            GlStateManager._texParameter(3553, 10242, 33071);
+            GlStateManager._texParameter(3553, 10243, 33071);
+            GlStateManager._texImage2D(3553, 0, 6402, this.c, this.d, 0, 6402, 5126, null);
+         }
+
+         this.a(9728);
+         GlStateManager._bindTexture(this.i);
+         GlStateManager._texParameter(3553, 10242, 33071);
+         GlStateManager._texParameter(3553, 10243, 33071);
+         GlStateManager._texImage2D(3553, 0, 32856, this.c, this.d, 0, 6408, 5121, null);
+         GlStateManager._glBindFramebuffer(36160, this.h);
+         GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+         if (this.g) {
+            GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+         }
+
+         this.b();
+         this.b($$2);
+         this.d();
+      } else {
+         throw new IllegalArgumentException("Window " + $$0 + "x" + $$1 + " size out of bounds (max. size: " + $$3 + ")");
+      }
+   }
+
+   public void a(int $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.k = $$0;
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texParameter(3553, 10241, $$0);
+      GlStateManager._texParameter(3553, 10240, $$0);
+      GlStateManager._bindTexture(0);
+   }
+
+   public void b() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$0 = GlStateManager.glCheckFramebufferStatus(36160);
+      if ($$0 != 36053) {
+         if ($$0 == 36054) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT");
+         } else if ($$0 == 36055) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
+         } else if ($$0 == 36059) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER");
+         } else if ($$0 == 36060) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER");
+         } else if ($$0 == 36061) {
+            throw new RuntimeException("GL_FRAMEBUFFER_UNSUPPORTED");
+         } else if ($$0 == 1285) {
+            throw new RuntimeException("GL_OUT_OF_MEMORY");
          } else {
-            RenderSystem.blendFunc(this.b, this.d);
+            throw new RuntimeException("glCheckFramebufferStatus returned unknown status:" + $$0);
          }
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof ekt $$1)) {
-         return false;
-      } else if (this.f != $$1.f) {
-         return false;
-      } else if (this.e != $$1.e) {
-         return false;
-      } else if (this.d != $$1.d) {
-         return false;
-      } else if (this.h != $$1.h) {
-         return false;
-      } else if (this.g != $$1.g) {
-         return false;
+   public void c() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._bindTexture(this.i);
+   }
+
+   public void d() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._bindTexture(0);
+   }
+
+   public void a(boolean $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.c($$0));
       } else {
-         return this.c != $$1.c ? false : this.b == $$1.b;
+         this.c($$0);
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b;
-      $$0 = 31 * $$0 + this.c;
-      $$0 = 31 * $$0 + this.d;
-      $$0 = 31 * $$0 + this.e;
-      $$0 = 31 * $$0 + this.f;
-      $$0 = 31 * $$0 + (this.g ? 1 : 0);
-      return 31 * $$0 + (this.h ? 1 : 0);
-   }
-
-   public boolean b() {
-      return this.h;
-   }
-
-   public static int a(String $$0) {
-      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
-      if ("add".equals($$1)) {
-         return 32774;
-      } else if ("subtract".equals($$1)) {
-         return 32778;
-      } else if ("reversesubtract".equals($$1)) {
-         return 32779;
-      } else if ("reverse_subtract".equals($$1)) {
-         return 32779;
-      } else if ("min".equals($$1)) {
-         return 32775;
-      } else {
-         return "max".equals($$1) ? 32776 : 32774;
+   private void c(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      if ($$0) {
+         GlStateManager._viewport(0, 0, this.e, this.f);
       }
    }
 
-   public static int b(String $$0) {
-      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
-      $$1 = $$1.replaceAll("_", "");
-      $$1 = $$1.replaceAll("one", "1");
-      $$1 = $$1.replaceAll("zero", "0");
-      $$1 = $$1.replaceAll("minus", "-");
-      if ("0".equals($$1)) {
-         return 0;
-      } else if ("1".equals($$1)) {
-         return 1;
-      } else if ("srccolor".equals($$1)) {
-         return 768;
-      } else if ("1-srccolor".equals($$1)) {
-         return 769;
-      } else if ("dstcolor".equals($$1)) {
-         return 774;
-      } else if ("1-dstcolor".equals($$1)) {
-         return 775;
-      } else if ("srcalpha".equals($$1)) {
-         return 770;
-      } else if ("1-srcalpha".equals($$1)) {
-         return 771;
-      } else if ("dstalpha".equals($$1)) {
-         return 772;
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._glBindFramebuffer(36160, 0));
       } else {
-         return "1-dstalpha".equals($$1) ? 773 : -1;
+         GlStateManager._glBindFramebuffer(36160, 0);
       }
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      this.n[0] = $$0;
+      this.n[1] = $$1;
+      this.n[2] = $$2;
+      this.n[3] = $$3;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.c($$0, $$1, true);
+   }
+
+   public void c(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (!RenderSystem.isInInitPhase()) {
+         RenderSystem.recordRenderCall(() -> this.e($$0, $$1, $$2));
+      } else {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   private void e(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._colorMask(true, true, true, false);
+      GlStateManager._disableDepthTest();
+      GlStateManager._depthMask(false);
+      GlStateManager._viewport(0, 0, $$0, $$1);
+      if ($$2) {
+         GlStateManager._disableBlend();
+      }
+
+      ero $$3 = ero.O();
+      fpo $$4 = $$3.j.e;
+      $$4.a("DiffuseSampler", this.i);
+      Matrix4f $$5 = new Matrix4f().setOrtho(0.0F, (float)$$0, (float)$$1, 0.0F, 1000.0F, 3000.0F);
+      RenderSystem.setProjectionMatrix($$5, emp.b);
+      if ($$4.b != null) {
+         $$4.b.a(new Matrix4f().translation(0.0F, 0.0F, -2000.0F));
+      }
+
+      if ($$4.c != null) {
+         $$4.c.a($$5);
+      }
+
+      $$4.g();
+      float $$6 = (float)$$0;
+      float $$7 = (float)$$1;
+      float $$8 = (float)this.e / (float)this.c;
+      float $$9 = (float)this.f / (float)this.d;
+      emj $$10 = RenderSystem.renderThreadTesselator();
+      emc $$11 = $$10.c();
+      $$11.a(emm.b.h, emf.s);
+      $$11.a(0.0, (double)$$7, 0.0).a(0.0F, 0.0F).a(255, 255, 255, 255).e();
+      $$11.a((double)$$6, (double)$$7, 0.0).a($$8, 0.0F).a(255, 255, 255, 255).e();
+      $$11.a((double)$$6, 0.0, 0.0).a($$8, $$9).a(255, 255, 255, 255).e();
+      $$11.a(0.0, 0.0, 0.0).a(0.0F, $$9).a(255, 255, 255, 255).e();
+      emd.b($$11.d());
+      $$4.f();
+      GlStateManager._depthMask(true);
+      GlStateManager._colorMask(true, true, true, true);
+   }
+
+   public void b(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a(true);
+      GlStateManager._clearColor(this.n[0], this.n[1], this.n[2], this.n[3]);
+      int $$1 = 16384;
+      if (this.g) {
+         GlStateManager._clearDepth(1.0);
+         $$1 |= 256;
+      }
+
+      GlStateManager._clear($$1, $$0);
+      this.e();
+   }
+
+   public int f() {
+      return this.i;
+   }
+
+   public int g() {
+      return this.j;
    }
 }

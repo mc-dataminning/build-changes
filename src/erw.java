@@ -1,54 +1,46 @@
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface erw {
-   static erw a(euf $$0) {
-      return new erw.a($$0);
-   }
-
+public class erw {
+   private static final Logger a = LogUtils.getLogger();
+   private final ero b;
    @Nullable
-   static erw a(eue $$0, @Nullable erw $$1) {
-      return $$1 == null ? null : new erw.b($$0, $$1);
+   private CompletableFuture<Boolean> c;
+   private boolean d;
+
+   public erw(ero $$0) {
+      this.b = $$0;
    }
 
-   static erw a(euf $$0, eue... $$1) {
-      erw $$2 = a($$0);
-
-      for (eue $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
-   }
-
-   euf a();
-
-   void a(boolean var1);
-
-   public static record a(euf a) implements erw {
-      @Override
-      public void a(boolean $$0) {
-         this.a.b_($$0);
+   public void a(ezd $$0) {
+      if (!this.b.af() && !this.b.m.w && !this.d && this.a()) {
+         this.b.a(new fcb($$0));
+         this.d = true;
       }
    }
 
-   public static record b(eue a, erw b) implements erw {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
-         }
-
-         this.b.a($$0);
+   private Boolean a() {
+      if (this.c == null) {
+         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
       }
 
-      public eue b() {
-         return this.a;
+      try {
+         return this.c.getNow(false);
+      } catch (CompletionException var2) {
+         a.warn("Failed to retrieve realms subscriptions", var2);
+         this.d = true;
+         return false;
       }
+   }
 
-      public erw c() {
-         return this.b;
+   private boolean b() {
+      try {
+         return emx.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
+      } catch (eok var2) {
+         return false;
       }
    }
 }

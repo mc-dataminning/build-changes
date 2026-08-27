@@ -1,8 +1,8 @@
-public interface aeb extends abe, abf {
-   @Override
-   default sn b() {
-      return sn.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(aed var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aeb {
 }

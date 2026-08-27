@@ -1,3 +1,26 @@
+import java.util.function.Function;
+
 public interface ekj {
-   eki createMonitor(long var1);
+   float getAdvance();
+
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   }
+
+   default float a() {
+      return 1.0F;
+   }
+
+   default float b() {
+      return 1.0F;
+   }
+
+   ewc bake(Function<ekl, ewc> var1);
+
+   public interface a extends ekj {
+      @Override
+      default ewc bake(Function<ekl, ewc> $$0) {
+         return ewd.a;
+      }
+   }
 }

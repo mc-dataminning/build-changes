@@ -1,64 +1,69 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.UnboundedMapCodec;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
-
 public class hu {
-   private static final Map<aey<? extends hq<?>>, hu.a<?>> b = ac.a(() -> {
-      Builder<aey<? extends hq<?>>, hu.a<?>> $$0 = ImmutableMap.builder();
-      a($$0, jc.aq, cqz.b);
-      a($$0, jc.ar, th.a);
-      a($$0, jc.aF, clq.a);
-      a($$0, jc.aE, clo.a);
-      a($$0, jc.av, dim.h);
-      a($$0, jc.q, bhw.a);
-      return $$0.build();
-   });
-   public static final Codec<hr> a = a();
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   public static final int d = 3;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
+   private final int k;
+   private int l;
+   private int m;
+   private int n;
+   private int o;
 
-   private static <E> void a(Builder<aey<? extends hq<?>>, hu.a<?>> $$0, aey<? extends hq<E>> $$1, Codec<E> $$2) {
-      $$0.put($$1, new hu.a<>($$1, $$2));
+   public hu(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3 - $$0 + 1;
+      this.i = $$4 - $$1 + 1;
+      this.j = $$5 - $$2 + 1;
+      this.k = this.h * this.i * this.j;
    }
 
-   private static Stream<hr.d<?>> a(hr $$0) {
-      return $$0.b().filter($$0x -> b.containsKey($$0x.a()));
+   public boolean a() {
+      if (this.l == this.k) {
+         return false;
+      } else {
+         this.m = this.l % this.h;
+         int $$0 = this.l / this.h;
+         this.n = $$0 % this.i;
+         this.o = $$0 / this.i;
+         this.l++;
+         return true;
+      }
    }
 
-   private static <E> DataResult<? extends Codec<E>> a(aey<? extends hq<E>> $$0) {
-      return Optional.ofNullable(b.get($$0))
-         .map($$0x -> $$0x.b())
-         .<DataResult<? extends Codec<E>>>map(DataResult::success)
-         .orElseGet(() -> DataResult.error(() -> "Unknown or not serializable registry: " + $$0));
+   public int b() {
+      return this.e + this.m;
    }
 
-   private static <E> Codec<hr> a() {
-      Codec<aey<? extends hq<E>>> $$0 = aez.a.xmap(aey::a, aey::a);
-      Codec<hq<E>> $$1 = $$0.partialDispatch(
-         "type", $$0x -> DataResult.success($$0x.c()), $$0x -> a($$0x).map($$1x -> hs.a($$0x, Lifecycle.experimental(), $$1x))
-      );
-      UnboundedMapCodec<? extends aey<? extends hq<?>>, ? extends hq<?>> $$2 = Codec.unboundedMap($$0, $$1);
-      return a($$2);
+   public int c() {
+      return this.f + this.n;
    }
 
-   private static <K extends aey<? extends hq<?>>, V extends hq<?>> Codec<hr> a(UnboundedMapCodec<K, V> $$0) {
-      return $$0.xmap(hr.c::new, $$0x -> a($$0x).collect(ImmutableMap.toImmutableMap($$0xx -> $$0xx.a(), $$0xx -> $$0xx.b())));
+   public int d() {
+      return this.g + this.o;
    }
 
-   public static Stream<hr.d<?>> a(hl<afi> $$0) {
-      return a($$0.c(afi.b));
-   }
+   public int e() {
+      int $$0 = 0;
+      if (this.m == 0 || this.m == this.h - 1) {
+         $$0++;
+      }
 
-   public static Stream<hr.d<?>> b(hl<afi> $$0) {
-      Stream<hr.d<?>> $$1 = $$0.a(afi.a).b();
-      Stream<hr.d<?>> $$2 = a($$0);
-      return Stream.concat($$2, $$1);
-   }
+      if (this.n == 0 || this.n == this.i - 1) {
+         $$0++;
+      }
 
-   static record a<E>(aey<? extends hq<E>> a, Codec<E> b) {
+      if (this.o == 0 || this.o == this.j - 1) {
+         $$0++;
+      }
+
+      return $$0;
    }
 }

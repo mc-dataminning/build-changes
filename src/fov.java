@@ -1,320 +1,168 @@
-public class fov {
-   private static final float a = 0.8888889F;
-   private final fza[] b = new fza[2];
-   private final fza[] c = new fza[2];
-   private fza d;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   protected void a() {
-      this.b[0] = eqp.O().aC().b().b(cte.H.o()).e();
-      this.b[1] = gbg.c.c();
-      this.c[0] = eqp.O().aC().b().b(cte.G.o()).e();
-      this.c[1] = gbg.d.c();
-      this.d = gbg.e.c();
+public class fov extends aoy<fov.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final afw b = new afw("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
+
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   private static boolean a(eag $$0, eag $$1) {
-      return $$1.a().a($$0.a());
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   private static boolean a(cph $$0, ha $$1, float $$2, gw $$3, dfd $$4) {
-      if ($$4.p()) {
-         eia $$5 = ehx.a(0.0, 0.0, 0.0, 1.0, (double)$$2, 1.0);
-         eia $$6 = $$4.c($$0, $$3);
-         return ehx.a($$5, $$6, $$1);
-      } else {
-         return false;
+   public void d() {
+      this.d = true;
+   }
+
+   public void e() {
+      this.e = true;
+   }
+
+   public void f() {
+      this.e = true;
+      this.f = true;
+   }
+
+   public boolean g() {
+      return this.d && !this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected fov.a a(aot $$0, bes $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      $$1.a();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         $$1.a("compile_regex");
+         a($$5.getAsJsonArray("renderer"), $$2);
+         a($$5.getAsJsonArray("version"), $$3);
+         a($$5.getAsJsonArray("vendor"), $$4);
+         $$1.c();
       }
+
+      $$1.b();
+      return new fov.a($$2, $$3, $$4);
    }
 
-   private static boolean a(cph $$0, gw $$1, ha $$2, float $$3, dfd $$4) {
-      return a($$0, $$2, $$3, $$1.a($$2), $$4);
+   protected void a(fov.a $$0, aot $$1, bes $$2) {
+      this.c = $$0.a();
    }
 
-   private static boolean a(cph $$0, gw $$1, dfd $$2, ha $$3) {
-      return a($$0, $$3.g(), 1.0F, $$1, $$2);
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
    }
 
-   public static boolean a(cpe $$0, gw $$1, eag $$2, dfd $$3, ha $$4, eag $$5) {
-      return !a($$0, $$1, $$3, $$4) && !a($$2, $$5);
+   @Nullable
+   private static JsonObject c(aot $$0, bes $$1) {
+      $$1.a("parse_json");
+      JsonObject $$2 = null;
+
+      try (Reader $$3 = $$0.openAsReader(b)) {
+         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
+      } catch (JsonSyntaxException | IOException var8) {
+         a.warn("Failed to load GPU warnlist");
+      }
+
+      $$1.c();
+      return $$2;
    }
 
-   public void a(cpe $$0, gw $$1, eln $$2, dfd $$3, eag $$4) {
-      boolean $$5 = $$4.a(aqa.b);
-      fza[] $$6 = $$5 ? this.b : this.c;
-      int $$7 = $$5 ? 16777215 : fnm.c($$0, $$1);
-      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-      float $$10 = (float)($$7 & 0xFF) / 255.0F;
-      dfd $$11 = $$0.a_($$1.a(ha.a));
-      eag $$12 = $$11.u();
-      dfd $$13 = $$0.a_($$1.a(ha.b));
-      eag $$14 = $$13.u();
-      dfd $$15 = $$0.a_($$1.a(ha.c));
-      eag $$16 = $$15.u();
-      dfd $$17 = $$0.a_($$1.a(ha.d));
-      eag $$18 = $$17.u();
-      dfd $$19 = $$0.a_($$1.a(ha.e));
-      eag $$20 = $$19.u();
-      dfd $$21 = $$0.a_($$1.a(ha.f));
-      eag $$22 = $$21.u();
-      boolean $$23 = !a($$4, $$14);
-      boolean $$24 = a($$0, $$1, $$4, $$3, ha.a, $$12) && !a($$0, $$1, ha.a, 0.8888889F, $$11);
-      boolean $$25 = a($$0, $$1, $$4, $$3, ha.c, $$16);
-      boolean $$26 = a($$0, $$1, $$4, $$3, ha.d, $$18);
-      boolean $$27 = a($$0, $$1, $$4, $$3, ha.e, $$20);
-      boolean $$28 = a($$0, $$1, $$4, $$3, ha.f, $$22);
-      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
-         float $$29 = $$0.a(ha.a, true);
-         float $$30 = $$0.a(ha.b, true);
-         float $$31 = $$0.a(ha.c, true);
-         float $$32 = $$0.a(ha.e, true);
-         eaf $$33 = $$4.a();
-         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
-         float $$35;
-         float $$36;
-         float $$37;
-         float $$38;
-         if ($$34 >= 1.0F) {
-            $$35 = 1.0F;
-            $$36 = 1.0F;
-            $$37 = 1.0F;
-            $$38 = 1.0F;
-         } else {
-            float $$39 = this.a($$0, $$33, $$1.e(), $$15, $$16);
-            float $$40 = this.a($$0, $$33, $$1.f(), $$17, $$18);
-            float $$41 = this.a($$0, $$33, $$1.h(), $$21, $$22);
-            float $$42 = this.a($$0, $$33, $$1.g(), $$19, $$20);
-            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(ha.c).a(ha.f));
-            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(ha.c).a(ha.e));
-            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(ha.d).a(ha.f));
-            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(ha.d).a(ha.e));
-         }
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
 
-         double $$47 = (double)($$1.u() & 15);
-         double $$48 = (double)($$1.v() & 15);
-         double $$49 = (double)($$1.w() & 15);
-         float $$50 = 0.001F;
-         float $$51 = $$24 ? 0.001F : 0.0F;
-         if ($$23 && !a($$0, $$1, ha.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
-            $$36 -= 0.001F;
-            $$38 -= 0.001F;
-            $$37 -= 0.001F;
-            $$35 -= 0.001F;
-            ehh $$52 = $$4.c($$0, $$1);
-            float $$54;
-            float $$56;
-            float $$58;
-            float $$60;
-            float $$55;
-            float $$57;
-            float $$59;
-            float $$61;
-            if ($$52.c == 0.0 && $$52.e == 0.0) {
-               fza $$53 = $$6[0];
-               $$54 = $$53.a(0.0F);
-               $$55 = $$53.c(0.0F);
-               $$56 = $$54;
-               $$57 = $$53.c(1.0F);
-               $$58 = $$53.a(1.0F);
-               $$59 = $$57;
-               $$60 = $$58;
-               $$61 = $$55;
-            } else {
-               fza $$62 = $$6[1];
-               float $$63 = (float)asb.d($$52.e, $$52.c) - (float) (Math.PI / 2);
-               float $$64 = asb.a($$63) * 0.25F;
-               float $$65 = asb.b($$63) * 0.25F;
-               float $$66 = 0.5F;
-               $$54 = $$62.a(0.5F + (-$$65 - $$64));
-               $$55 = $$62.c(0.5F + -$$65 + $$64);
-               $$56 = $$62.a(0.5F + -$$65 + $$64);
-               $$57 = $$62.c(0.5F + $$65 + $$64);
-               $$58 = $$62.a(0.5F + $$65 + $$64);
-               $$59 = $$62.c(0.5F + ($$65 - $$64));
-               $$60 = $$62.a(0.5F + ($$65 - $$64));
-               $$61 = $$62.c(0.5F + (-$$65 - $$64));
-            }
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
-            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
-            float $$77 = $$6[0].k();
-            $$54 = asb.i($$77, $$54, $$75);
-            $$56 = asb.i($$77, $$56, $$75);
-            $$58 = asb.i($$77, $$58, $$75);
-            $$60 = asb.i($$77, $$60, $$75);
-            $$55 = asb.i($$77, $$55, $$76);
-            $$57 = asb.i($$77, $$57, $$76);
-            $$59 = asb.i($$77, $$59, $$76);
-            $$61 = asb.i($$77, $$61, $$76);
-            int $$78 = this.a($$0, $$1);
-            float $$79 = $$30 * $$8;
-            float $$80 = $$30 * $$9;
-            float $$81 = $$30 * $$10;
-            this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
-            this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
-            if ($$4.b($$0, $$1.c())) {
-               this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
-               this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
-               this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
-               this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
             }
          }
 
-         if ($$24) {
-            float $$82 = $$6[0].c();
-            float $$83 = $$6[0].d();
-            float $$84 = $$6[0].g();
-            float $$85 = $$6[0].h();
-            int $$86 = this.a($$0, $$1.d());
-            float $$87 = $$29 * $$8;
-            float $$88 = $$29 * $$9;
-            float $$89 = $$29 * $$10;
-            this.a($$2, $$47, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$82, $$85, $$86);
-            this.a($$2, $$47, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$83, $$85, $$86);
+         return String.join(", ", $$2);
+      }
+
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, ela.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
          }
 
-         int $$90 = this.a($$0, $$1);
-
-         for (ha $$91 : ha.c.a) {
-            float $$92;
-            float $$93;
-            double $$94;
-            double $$96;
-            double $$95;
-            double $$97;
-            boolean $$98;
-            switch ($$91) {
-               case c:
-                  $$92 = $$36;
-                  $$93 = $$35;
-                  $$94 = $$47;
-                  $$95 = $$47 + 1.0;
-                  $$96 = $$49 + 0.001F;
-                  $$97 = $$49 + 0.001F;
-                  $$98 = $$25;
-                  break;
-               case d:
-                  $$92 = $$37;
-                  $$93 = $$38;
-                  $$94 = $$47 + 1.0;
-                  $$95 = $$47;
-                  $$96 = $$49 + 1.0 - 0.001F;
-                  $$97 = $$49 + 1.0 - 0.001F;
-                  $$98 = $$26;
-                  break;
-               case e:
-                  $$92 = $$38;
-                  $$93 = $$36;
-                  $$94 = $$47 + 0.001F;
-                  $$95 = $$47 + 0.001F;
-                  $$96 = $$49 + 1.0;
-                  $$97 = $$49;
-                  $$98 = $$27;
-                  break;
-               default:
-                  $$92 = $$35;
-                  $$93 = $$37;
-                  $$94 = $$47 + 1.0 - 0.001F;
-                  $$95 = $$47 + 1.0 - 0.001F;
-                  $$96 = $$49;
-                  $$97 = $$49 + 1.0;
-                  $$98 = $$28;
-            }
-
-            if ($$98 && !a($$0, $$1, $$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
-               gw $$120 = $$1.a($$91);
-               fza $$121 = $$6[1];
-               if (!$$5) {
-                  ctc $$122 = $$0.a_($$120).b();
-                  if ($$122 instanceof cwr || $$122 instanceof cxk) {
-                     $$121 = this.d;
-                  }
-               }
-
-               float $$123 = $$121.a(0.0F);
-               float $$124 = $$121.a(0.5F);
-               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
-               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
-               float $$127 = $$121.c(0.5F);
-               float $$128 = $$91.o() == ha.a.c ? $$31 : $$32;
-               float $$129 = $$30 * $$128 * $$8;
-               float $$130 = $$30 * $$128 * $$9;
-               float $$131 = $$30 * $$128 * $$10;
-               this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
-               this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-               this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-               this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-               if ($$121 != this.d) {
-                  this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-                  this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-                  this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-                  this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
-               }
-            }
-         }
-      }
-   }
-
-   private float a(cpe $$0, eaf $$1, float $$2, float $$3, float $$4, gw $$5) {
-      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
-         float[] $$6 = new float[2];
-         if ($$4 > 0.0F || $$3 > 0.0F) {
-            float $$7 = this.a($$0, $$1, $$5);
-            if ($$7 >= 1.0F) {
-               return 1.0F;
-            }
-
-            this.a($$6, $$7);
+         String $$2 = a(this.b, ela.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
          }
 
-         this.a($$6, $$2);
-         this.a($$6, $$4);
-         this.a($$6, $$3);
-         return $$6[0] / $$6[1];
-      } else {
-         return 1.0F;
+         String $$3 = a(this.c, ela.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
       }
-   }
-
-   private void a(float[] $$0, float $$1) {
-      if ($$1 >= 0.8F) {
-         $$0[0] += $$1 * 10.0F;
-         $$0[1] += 10.0F;
-      } else if ($$1 >= 0.0F) {
-         $$0[0] += $$1;
-         $$0[1]++;
-      }
-   }
-
-   private float a(cpe $$0, eaf $$1, gw $$2) {
-      dfd $$3 = $$0.a_($$2);
-      return this.a($$0, $$1, $$2, $$3, $$3.u());
-   }
-
-   private float a(cpe $$0, eaf $$1, gw $$2, dfd $$3, eag $$4) {
-      if ($$1.a($$4.a())) {
-         dfd $$5 = $$0.a_($$2.c());
-         return $$1.a($$5.u().a()) ? 1.0F : $$4.d();
-      } else {
-         return !$$3.e() ? 0.0F : -1.0F;
-      }
-   }
-
-   private void a(eln $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).b($$9).a(0.0F, 1.0F, 0.0F).e();
-   }
-
-   private int a(cpe $$0, gw $$1) {
-      int $$2 = fny.a($$0, $$1);
-      int $$3 = fny.a($$0, $$1.c());
-      int $$4 = $$2 & 0xFF;
-      int $$5 = $$3 & 0xFF;
-      int $$6 = $$2 >> 16 & 0xFF;
-      int $$7 = $$3 >> 16 & 0xFF;
-      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
    }
 }

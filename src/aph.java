@@ -1,22 +1,29 @@
-public enum aph {
-   a("master"),
-   b("music"),
-   c("record"),
-   d("weather"),
-   e("block"),
-   f("hostile"),
-   g("neutral"),
-   h("player"),
-   i("ambient"),
-   j("voice");
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-   private final String k;
-
-   private aph(String $$0) {
-      this.k = $$0;
+public class aph extends apl<GameProfile, api> {
+   public aph(File $$0) {
+      super($$0);
    }
 
-   public String a() {
-      return this.k;
+   @Override
+   protected apk<GameProfile> a(JsonObject $$0) {
+      return new api($$0);
+   }
+
+   @Override
+   public String[] a() {
+      return this.d().stream().map(apk::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   }
+
+   public boolean a(GameProfile $$0) {
+      api $$1 = this.b($$0);
+      return $$1 != null ? $$1.b() : false;
+   }
+
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

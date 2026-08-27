@@ -1,35 +1,46 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dca extends ctl {
-   public static final MapCodec<dca> a = b(dca::new);
-   protected static final eia b = ctc.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+public interface dca {
+   List<dca.a> b();
 
-   @Override
-   public MapCodec<dca> a() {
-      return a;
+   static List<dca> c() {
+      return jy.i.s().map(dca::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   protected dca(dfc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, biw $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof akt && $$3 instanceof cdt) {
-         $$1.a(new gw($$2), true, $$3);
+   @Nullable
+   static dca a(cqy $$0) {
+      if ($$0.k() instanceof cic $$1) {
+         cua var6 = $$1.e();
+         if (var6 instanceof dca) {
+            return (dca)var6;
+         }
       }
+
+      cke $$2 = $$0.k();
+      return $$2 instanceof dca ? (dca)$$2 : null;
    }
 
-   @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
-      return b;
-   }
+   public static record a(bje c, int d) {
+      public static final Codec<dca.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(jy.e.q().fieldOf("id").forGetter(dca.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(dca.a::c)).apply($$0, dca.a::new)
+      );
+      public static final Codec<List<dca.a>> b = a.listOf();
 
-   @Override
-   protected boolean d(dfd $$0, cph $$1, gw $$2) {
-      eag $$3 = $$1.b_($$2);
-      eag $$4 = $$1.b_($$2.c());
-      return ($$3.a() == eah.c || $$0.b() instanceof cwy) && $$4.a() == eah.a;
+      public bjg a() {
+         return new bjg(this.c, this.d);
+      }
+
+      public bje b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

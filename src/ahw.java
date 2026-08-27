@@ -1,118 +1,147 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+import java.util.function.ToIntFunction;
 
 public class ahw {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.playsound.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.experience.set.points.invalid"));
 
-   public static void a(CommandDispatcher<dt> $$0) {
-      RequiredArgumentBuilder<dt, aez> $$1 = du.a("sound", es.a()).suggests(gm.c);
-
-      for (aph $$2 : aph.values()) {
-         $$1.then(a($$2));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
-   }
-
-   private static LiteralArgumentBuilder<dt> a(aph $$0) {
-      return (LiteralArgumentBuilder<dt>)du.a($$0.a())
-         .then(
-            ((RequiredArgumentBuilder)du.a("targets", ee.d())
-                  .executes($$1 -> a((dt)$$1.getSource(), ee.f($$1, "targets"), es.e($$1, "sound"), $$0, ((dt)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
-               .then(
-                  ((RequiredArgumentBuilder)du.a("pos", fr.a())
-                        .executes($$1 -> a((dt)$$1.getSource(), ee.f($$1, "targets"), es.e($$1, "sound"), $$0, fr.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
-                     .then(
-                        ((RequiredArgumentBuilder)du.a("volume", FloatArgumentType.floatArg(0.0F))
-                              .executes(
-                                 $$1 -> a(
-                                       (dt)$$1.getSource(),
-                                       ee.f($$1, "targets"),
-                                       es.e($$1, "sound"),
-                                       $$0,
-                                       fr.a($$1, "pos"),
-                                       (Float)$$1.getArgument("volume", Float.class),
-                                       1.0F,
-                                       0.0F
+   public static void a(CommandDispatcher<du> $$0) {
+      LiteralCommandNode<du> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("experience").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     dv.a("add")
+                        .then(
+                           dv.a("targets", eg.d())
+                              .then(
+                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("amount", IntegerArgumentType.integer())
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ahw.a.a)
+                                          ))
+                                       .then(
+                                          dv.a("points")
+                                             .executes(
+                                                $$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ahw.a.a)
+                                             )
+                                       ))
+                                    .then(
+                                       dv.a("levels")
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), eg.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ahw.a.b)
+                                          )
                                     )
-                              ))
+                              )
+                        )
+                  ))
+               .then(
+                  dv.a("set")
+                     .then(
+                        dv.a("targets", eg.d())
                            .then(
-                              ((RequiredArgumentBuilder)du.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
-                                    .executes(
-                                       $$1 -> a(
-                                             (dt)$$1.getSource(),
-                                             ee.f($$1, "targets"),
-                                             es.e($$1, "sound"),
-                                             $$0,
-                                             fr.a($$1, "pos"),
-                                             (Float)$$1.getArgument("volume", Float.class),
-                                             (Float)$$1.getArgument("pitch", Float.class),
-                                             0.0F
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("amount", IntegerArgumentType.integer(0))
+                                       .executes(
+                                          $$0x -> b((du)$$0x.getSource(), eg.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ahw.a.a)
+                                       ))
+                                    .then(
+                                       dv.a("points")
+                                          .executes(
+                                             $$0x -> b((du)$$0x.getSource(), eg.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ahw.a.a)
                                           )
                                     ))
                                  .then(
-                                    du.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                    dv.a("levels")
                                        .executes(
-                                          $$1 -> a(
-                                                (dt)$$1.getSource(),
-                                                ee.f($$1, "targets"),
-                                                es.e($$1, "sound"),
-                                                $$0,
-                                                fr.a($$1, "pos"),
-                                                (Float)$$1.getArgument("volume", Float.class),
-                                                (Float)$$1.getArgument("pitch", Float.class),
-                                                (Float)$$1.getArgument("minVolume", Float.class)
-                                             )
+                                          $$0x -> b((du)$$0x.getSource(), eg.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), ahw.a.b)
                                        )
                                  )
                            )
                      )
-               )
-         );
+               ))
+            .then(
+               dv.a("query")
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("targets", eg.c())
+                           .then(dv.a("points").executes($$0x -> a((du)$$0x.getSource(), eg.e($$0x, "targets"), ahw.a.a))))
+                        .then(dv.a("levels").executes($$0x -> a((du)$$0x.getSource(), eg.e($$0x, "targets"), ahw.a.b)))
+                  )
+            )
+      );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(dt $$0, Collection<aku> $$1, aez $$2, aph $$3, ehh $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
-      he<apf> $$8 = he.a(apf.a($$2));
-      double $$9 = (double)asb.k($$8.a().a($$5));
-      int $$10 = 0;
-      long $$11 = $$0.e().D_().g();
+   private static int a(du $$0, alr $$1, ahw.a $$2) {
+      int $$3 = $$2.f.applyAsInt($$1);
+      $$0.a(() -> ui.a("commands.experience.query." + $$2.e, $$1.O_(), $$3), false);
+      return $$3;
+   }
 
-      for (aku $$12 : $$1) {
-         double $$13 = $$4.c - $$12.dq();
-         double $$14 = $$4.d - $$12.ds();
-         double $$15 = $$4.e - $$12.dw();
-         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         ehh $$17 = $$4;
-         float $$18 = $$5;
-         if ($$16 > $$9) {
-            if ($$7 <= 0.0F) {
-               continue;
-            }
-
-            double $$19 = Math.sqrt($$16);
-            $$17 = new ehh($$12.dq() + $$13 / $$19 * 2.0, $$12.ds() + $$14 / $$19 * 2.0, $$12.dw() + $$15 / $$19 * 2.0);
-            $$18 = $$7;
-         }
-
-         $$12.c.b(new aao($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
-         $$10++;
+   private static int a(du $$0, Collection<? extends alr> $$1, int $$2, ahw.a $$3) {
+      for (alr $$4 : $$1) {
+         $$3.c.accept($$4, $$2);
       }
 
-      if ($$10 == 0) {
+      if ($$1.size() == 1) {
+         $$0.a(() -> ui.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> ui.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int b(du $$0, Collection<? extends alr> $$1, int $$2, ahw.a $$3) throws CommandSyntaxException {
+      int $$4 = 0;
+
+      for (alr $$5 : $$1) {
+         if ($$3.d.test($$5, $$2)) {
+            $$4++;
+         }
+      }
+
+      if ($$4 == 0) {
          throw a.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.playsound.success.single", tl.a($$2), $$1.iterator().next().N_()), true);
+            $$0.a(() -> ui.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().O_()), true);
          } else {
-            $$0.a(() -> tl.a("commands.playsound.success.multiple", tl.a($$2), $$1.size()), true);
+            $$0.a(() -> ui.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
          }
 
-         return $$10;
+         return $$1.size();
+      }
+   }
+
+   static enum a {
+      a("points", ccx::d, ($$0, $$1) -> {
+         if ($$1 >= $$0.gb()) {
+            return false;
+         } else {
+            $$0.a($$1);
+            return true;
+         }
+      }, $$0 -> asy.d($$0.ch * (float)$$0.gb())),
+      b("levels", alr::c, ($$0, $$1) -> {
+         $$0.b($$1);
+         return true;
+      }, $$0 -> $$0.cf);
+
+      public final BiConsumer<alr, Integer> c;
+      public final BiPredicate<alr, Integer> d;
+      public final String e;
+      final ToIntFunction<alr> f;
+
+      private a(String $$0, BiConsumer<alr, Integer> $$1, BiPredicate<alr, Integer> $$2, ToIntFunction<alr> $$3) {
+         this.c = $$1;
+         this.e = $$0;
+         this.d = $$2;
+         this.f = $$3;
       }
    }
 }

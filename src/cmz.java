@@ -1,50 +1,91 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cmz extends cnf {
+   public cmz(cnc $$0) {
+      super($$0);
+   }
 
-public class cmz<T extends clx> implements cms<T> {
-   private final cmz.a<T> x;
-   private final Codec<T> y;
+   public boolean a(cgd $$0, cqz $$1) {
+      int $$2 = 0;
+      ckj $$3 = ckj.b;
 
-   public cmz(cmz.a<T> $$0, int $$1) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  arj.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                  cmd.d.fieldOf("category").orElse(cmd.c).forGetter($$0xx -> $$0xx.b),
-                  cmm.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
-                  jb.i.q().xmap(cjl::new, cjl::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
-                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
-                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
-               )
-               .apply($$2, $$0::create)
-      );
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ckj $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(ckm.th)) {
+               if (!$$3.b()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(ckm.tg)) {
+                  return false;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.b() && $$3.u() && $$2 > 0;
+   }
+
+   public ckj a(cgd $$0, ip $$1) {
+      int $$2 = 0;
+      ckj $$3 = ckj.b;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         ckj $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(ckm.th)) {
+               if (!$$3.b()) {
+                  return ckj.b;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(ckm.tg)) {
+                  return ckj.b;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      if (!$$3.b() && $$3.u() && $$2 >= 1 && cmf.d($$3) < 2) {
+         ckj $$6 = new ckj(ckm.th, $$2);
+         rt $$7 = $$3.v().h();
+         $$7.a("generation", cmf.d($$3) + 1);
+         $$6.c($$7);
+         return $$6;
+      } else {
+         return ckj.b;
+      }
+   }
+
+   public il<ckj> a(cgd $$0) {
+      il<ckj> $$1 = il.a($$0.b(), ckj.b);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         ckj $$3 = $$0.a($$2);
+         if ($$3.d().t()) {
+            $$1.set($$2, new ckj($$3.d().s()));
+         } else if ($$3.d() instanceof cmf) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
+      }
+
+      return $$1;
    }
 
    @Override
-   public Codec<T> a() {
-      return this.y;
+   public cnq<?> aq_() {
+      return cnq.d;
    }
 
-   public T b(so $$0) {
-      String $$1 = $$0.s();
-      cmd $$2 = $$0.b(cmd.class);
-      cmm $$3 = cmm.b($$0);
-      cjl $$4 = $$0.r();
-      float $$5 = $$0.readFloat();
-      int $$6 = $$0.n();
-      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public void a(so $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.f());
-      $$1.d.a($$0);
-      $$0.a($$1.e);
-      $$0.a($$1.f);
-      $$0.c($$1.g);
-   }
-
-   interface a<T extends clx> {
-      T create(String var1, cmd var2, cmm var3, cjl var4, float var5, int var6);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 }

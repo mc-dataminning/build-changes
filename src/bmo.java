@@ -1,85 +1,113 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
 import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class bmo {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
+public class bmo<E extends bkj> implements bmb<E> {
+   private final Map<btk<?>, btl> a;
+   private final Set<btk<?>> b;
+   private final bmo.a c;
+   private final bmo.b d;
+   private final boi<bmb<? super E>> e = new boi<>();
+   private bma.a f = bma.a.a;
 
-   public static ble<bjv> a() {
-      return bop.a(
-         (Function<bop.b<bjv>, ? extends App<bop.c<bjv>, bos<bjv>>>)($$0 -> $$0.group($$0.b(bsn.i), $$0.c(bsn.m), $$0.a(bsn.n), $$0.a(bsn.q))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.D_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<bjm> $$8 = $$0.b($$1);
-                        Optional<bjm> $$9 = $$8.stream().filter($$1xx -> a((bjm)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<bjm> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              ehh $$11 = buf.a($$6, 20, 8);
-                              if ($$11 != null && $$5.b(gw.a($$11))) {
-                                 $$2.a(new bsq($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
-
-                           return true;
-                        }
-                     }
-                  }))
-      );
+   public bmo(Map<btk<?>, btl> $$0, Set<btk<?>> $$1, bmo.a $$2, bmo.b $$3, List<Pair<? extends bmb<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((bmb<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   private static void a(boq<?, bjm> $$0, boq<?, bmq> $$1, boq<?, bsq> $$2, bjm $$3) {
-      $$0.a($$3);
-      $$1.a(new blo($$3, true));
-      $$2.a(new bsq(new blo($$3, false), 0.6F, 1));
+   @Override
+   public bma.a a() {
+      return this.f;
    }
 
-   private static Optional<bjm> a(List<bjm> $$0) {
-      Map<bjm, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
+   private boolean a(E $$0) {
+      for (Entry<btk<?>, btl> $$1 : this.a.entrySet()) {
+         btk<?> $$2 = $$1.getKey();
+         btl $$3 = $$1.getValue();
+         if (!$$0.dN().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   private static Map<bjm, Integer> b(List<bjm> $$0) {
-      Map<bjm, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bmo::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
+   @Override
+   public final boolean e(alq $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = bma.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   private static bjm a(bjm $$0) {
-      return $$0.dN().c(bsn.q).get();
+   @Override
+   public final void f(alq $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == bma.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == bma.a.b)) {
+         this.g($$0, $$1, $$2);
+      }
    }
 
-   private static boolean b(bjm $$0) {
-      return $$0.dN().c(bsn.q).isPresent();
+   @Override
+   public final void g(alq $$0, E $$1, long $$2) {
+      this.f = bma.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == bma.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.dN()::b);
    }
 
-   private static boolean a(bjm $$0, bjm $$1) {
-      return $$1.dN().c(bsn.q).filter($$1x -> $$1x == $$0).isPresent();
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   @Override
+   public String toString() {
+      Set<? extends bmb<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bma.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
+   }
+
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(boi::a);
+
+      private final Consumer<boi<?>> c;
+
+      private a(Consumer<boi<?>> $$0) {
+         this.c = $$0;
+      }
+
+      public void a(boi<?> $$0) {
+         this.c.accept($$0);
+      }
+   }
+
+   public static enum b {
+      a {
+         @Override
+         public <E extends bkj> void a(Stream<bmb<? super E>> $$0, alq $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bma.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+         }
+      },
+      b {
+         @Override
+         public <E extends bkj> void a(Stream<bmb<? super E>> $$0, alq $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bma.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
+
+      public abstract <E extends bkj> void a(Stream<bmb<? super E>> var1, alq var2, E var3, long var4);
    }
 }

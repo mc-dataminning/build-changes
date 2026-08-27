@@ -1,117 +1,113 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public abstract class eam extends eae {
-   @Override
-   public eaf d() {
-      return eah.b;
+public final class eam extends eav<ean.a, ean> {
+   private final ht.a g = new ht.a();
+
+   public eam(dil $$0) {
+      this($$0, new ean($$0));
+   }
+
+   @VisibleForTesting
+   public eam(dil $$0, ean $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eaf e() {
-      return eah.c;
-   }
-
-   @Override
-   public cjg a() {
-      return cjo.pL;
-   }
-
-   @Override
-   public void a(cqb $$0, gw $$1, eag $$2, ash $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, apg.zQ, aph.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+   protected void a(long $$0) {
+      long $$1 = iu.e($$0);
+      if (this.f.b($$1)) {
+         dgb $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, eav.a.a($$4));
+         } else {
+            this.b($$0, c);
          }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(iv.af, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+
+         if ($$3 > 0) {
+            this.c($$0, eav.a.a($$3, a($$2)));
+         }
       }
    }
 
-   @Nullable
    @Override
-   public it h() {
-      return iv.m;
-   }
+   protected void a(long $$0, long $$1, int $$2) {
+      dgb $$3 = null;
 
-   @Override
-   protected boolean a(cqb $$0) {
-      return $$0.X().b(cpx.Q);
-   }
+      for (hx $$4 : d) {
+         if (eav.a.a($$1, $$4)) {
+            long $$5 = ht.a($$0, $$4);
+            if (this.f.b(iu.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dgb $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.a($$8, this.g);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = eav.a.b($$1) ? cuc.a.o() : this.c(this.g.f($$0));
+                     }
 
-   @Override
-   protected void a(cqc $$0, gw $$1, dfd $$2) {
-      dcz $$3 = $$2.t() ? $$0.c_($$1) : null;
-      ctc.a($$2, $$0, $$1, $$3);
-   }
-
-   @Override
-   public int b(cqe $$0) {
-      return 4;
-   }
-
-   @Override
-   public dfd b(eag $$0) {
-      return cte.G.o().a(cxq.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(eaf $$0) {
-      return $$0 == eah.c || $$0 == eah.b;
-   }
-
-   @Override
-   public int c(cqe $$0) {
-      return 1;
-   }
-
-   @Override
-   public int a(cqe $$0) {
-      return 5;
-   }
-
-   @Override
-   public boolean a(eag $$0, cph $$1, gw $$2, eaf $$3, ha $$4) {
-      return $$4 == ha.a && !$$3.a(aqa.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<apf> j() {
-      return Optional.of(apg.cB);
-   }
-
-   public static class a extends eam {
-      @Override
-      protected void a(dfe.a<eaf, eag> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(eag $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(eag $$0) {
-         return false;
+                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, eav.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
    }
 
-   public static class b extends eam {
-      @Override
-      public int d(eag $$0) {
-         return 8;
-      }
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = eav.a.a($$1);
 
-      @Override
-      public boolean c(eag $$0) {
-         return true;
+      for (hx $$3 : d) {
+         if (eav.a.a($$1, $$3)) {
+            long $$4 = ht.a($$0, $$3);
+            if (this.f.b(iu.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dgb $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, eav.a.a($$5, $$3.g()));
+                     }
+
+                     if ($$7 > 0) {
+                        this.c($$4, eav.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, eav.a.b($$5, false, $$3.g()));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private int a(long $$0, dgb $$1) {
+      int $$2 = $$1.h();
+      return $$2 > 0 && this.f.j(iu.e($$0)) ? $$2 : 0;
+   }
+
+   @Override
+   public void b(cqg $$0) {
+      this.a($$0, true);
+      dik $$1 = this.e.c($$0.e, $$0.f);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.h();
+            this.c($$0x.a(), eav.a.a($$2, a($$1x)));
+         });
       }
    }
 }

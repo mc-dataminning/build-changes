@@ -1,18 +1,7 @@
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface gz<T> extends hq<T> {
-   @Nonnull
-   @Override
-   aez b(T var1);
+public interface gz<T> {
+   afw a();
 
-   @Nonnull
-   @Override
-   T a(@Nullable aez var1);
-
-   @Nonnull
-   @Override
-   T a(int var1);
-
-   aez a();
+   List<gq<T>> b();
 }

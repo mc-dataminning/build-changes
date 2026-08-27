@@ -1,76 +1,53 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+public class fqx implements fra<ddt> {
+   private final fiw a;
+   private final fiw b;
 
-public class fqx {
-   private final Long2ObjectMap<fqx.a> a = new Long2ObjectOpenHashMap();
+   public fqx(frb.a $$0) {
+      this.a = $$0.a(fiv.i);
+      this.b = $$0.a(fiv.h);
+   }
 
-   @Nullable
-   public fqw a(cqb $$0, gw $$1, gw $$2, int $$3) {
-      int $$4 = hw.a($$1.u() - $$3);
-      int $$5 = hw.a($$1.w() - $$3);
-      int $$6 = hw.a($$2.u() + $$3);
-      int $$7 = hw.a($$2.w() + $$3);
-      fqx.a[][] $$8 = new fqx.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
+   public static fjc b() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      $$1.a("main", fjb.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fiy.a);
+      $$1.a("left_leg", fjb.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fiy.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fjb.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fiy.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fjc.a($$0, 64, 64);
+   }
 
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (fqx.a)this.a.computeIfAbsent(cpi.c($$9, $$10), $$1x -> new fqx.a($$0.d(cpi.a($$1x), cpi.b($$1x))));
-         }
-      }
+   public static fjc c() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      $$1.a("main", fjb.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fiy.a);
+      $$1.a("left_leg", fjb.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fiy.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fjb.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fiy.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fjc.a($$0, 64, 64);
+   }
 
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
+   public void a(ddt $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
+      gce $$6 = fpp.p[$$0.d().a()];
+      cqz $$7 = $$0.k();
+      if ($$7 != null) {
+         dgb $$8 = $$0.q();
+         cwf.c<? extends ddt> $$9 = cwf.a(ddz.y, ctt::h, ctt::g, cvd.c, $$8, $$7, $$0.p(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new frd<>()).get($$4);
+         this.a($$2, $$3, $$8.c(ctt.b) == dgo.a ? this.a : this.b, $$8.c(ctt.aE), $$6, $$10, $$5, false);
       } else {
-         fqv[][] $$11 = new fqv[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
-            }
-         }
-
-         return new fqw($$0, $$4, $$5, $$11);
+         this.a($$2, $$3, this.a, hx.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, hx.d, $$6, $$4, $$5, true);
       }
    }
 
-   private static boolean a(gw $$0, gw $$1, int $$2, int $$3, fqx.a[][] $$4) {
-      int $$5 = hw.a($$0.u());
-      int $$6 = hw.a($$0.w());
-      int $$7 = hw.a($$1.u());
-      int $$8 = hw.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            dhk $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   static final class a {
-      private final dhk a;
-      @Nullable
-      private fqv b;
-
-      a(dhk $$0) {
-         this.a = $$0;
-      }
-
-      public dhk a() {
-         return this.a;
-      }
-
-      public fqv b() {
-         if (this.b == null) {
-            this.b = new fqv(this.a);
-         }
-
-         return this.b;
-      }
+   private void a(emh $$0, fpb $$1, fiw $$2, hx $$3, gce $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      eml $$8 = $$4.a($$1, fpj::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

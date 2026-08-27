@@ -1,62 +1,60 @@
-public class clu extends clt {
-   private final ha b;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-   public clu(cqb $$0, gw $$1, ha $$2, cjl $$3, ha $$4) {
-      super($$0, null, bhd.a, $$3, new ehd(ehh.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public class clu extends clx implements cmd {
+   private final float a;
+   private final Multimap<blk, bln> b;
+
+   public clu(clw $$0, int $$1, float $$2, cke.a $$3) {
+      super($$0, $$3);
+      this.a = (float)$$1 + $$0.c();
+      Builder<blk, bln> $$4 = ImmutableMultimap.builder();
+      $$4.put(blp.c, new bln(m, "Weapon modifier", (double)this.a, bln.a.a));
+      $$4.put(blp.e, new bln(n, "Weapon modifier", (double)$$2, bln.a.a));
+      this.b = $$4.build();
+   }
+
+   public float h() {
+      return this.a;
    }
 
    @Override
-   public gw a() {
-      return this.j().a();
+   public boolean a(dgb $$0, cqz $$1, ht $$2, ccx $$3) {
+      return !$$3.f();
    }
 
    @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public ha d() {
-      return ha.a;
-   }
-
-   @Override
-   public ha[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new ha[]{ha.a, ha.c, ha.f, ha.d, ha.e, ha.b};
-         case b:
-            return new ha[]{ha.a, ha.b, ha.c, ha.f, ha.d, ha.e};
-         case c:
-            return new ha[]{ha.a, ha.c, ha.f, ha.e, ha.b, ha.d};
-         case d:
-            return new ha[]{ha.a, ha.d, ha.f, ha.e, ha.b, ha.c};
-         case e:
-            return new ha[]{ha.a, ha.e, ha.d, ha.b, ha.c, ha.f};
-         case f:
-            return new ha[]{ha.a, ha.f, ha.d, ha.b, ha.c, ha.e};
+   public float a(ckj $$0, dgb $$1) {
+      if ($$1.a(cuc.bs)) {
+         return 15.0F;
+      } else {
+         return $$1.a(aqs.bD) ? 1.5F : 1.0F;
       }
    }
 
    @Override
-   public ha g() {
-      return this.b.o() == ha.a.b ? ha.c : this.b;
+   public boolean a(ckj $$0, bkj $$1, bkj $$2) {
+      $$0.a(1, $$2, $$0x -> $$0x.d(bjy.a));
+      return true;
    }
 
    @Override
-   public boolean h() {
-      return false;
+   public boolean a(ckj $$0, cqz $$1, dgb $$2, ht $$3, bkj $$4) {
+      if ($$2.h($$1, $$3) != 0.0F) {
+         $$0.a(2, $$4, $$0x -> $$0x.d(bjy.a));
+      }
+
+      return true;
    }
 
    @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public boolean a_(dgb $$0) {
+      return $$0.a(cuc.bs);
+   }
+
+   @Override
+   public Multimap<blk, bln> a(bjy $$0) {
+      return $$0 == bjy.a ? this.b : super.a($$0);
    }
 }

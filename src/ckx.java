@@ -1,23 +1,35 @@
-public class ckx extends cka {
-   public ckx(cjg.a $$0) {
-      super($$0);
+public class ckx extends cls {
+   public static final String c = "SkullOwner";
+
+   public ckx(cua $$0, cua $$1, cke.a $$2) {
+      super($$0, $$1, $$2, hx.a);
    }
 
    @Override
-   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
-      cjl $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         cdd $$4 = new cdd($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dD(), $$1.dB(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
+   public ui m(ckj $$0) {
+      if ($$0.a(ckm.tt) && $$0.u()) {
+         String $$1 = null;
+         rt $$2 = $$0.v();
+         if ($$2.b("SkullOwner", 8)) {
+            $$1 = $$2.l("SkullOwner");
+         } else if ($$2.b("SkullOwner", 10)) {
+            rt $$3 = $$2.p("SkullOwner");
+            if ($$3.b("Name", 8)) {
+               $$1 = $$3.l("Name");
+            }
+         }
+
+         if ($$1 != null) {
+            return ui.a(this.a() + ".named", $$1);
+         }
       }
 
-      $$1.b(apq.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
-      }
+      return super.m($$0);
+   }
 
-      return bhf.a($$3, $$0.w_());
+   @Override
+   public void b(rt $$0) {
+      super.b($$0);
+      dfh.e($$0);
    }
 }

@@ -1,24 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class cyv extends ctc {
-   public static final MapCodec<cyv> a = b(cyv::new);
+public enum cyv implements atr {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<cyv> a() {
-      return a;
+   public static final Codec<cyv> d = atr.a(cyv::values);
+   private final String e;
+   private final ui f;
+   private final h g;
+
+   private cyv(String $$0, h $$1) {
+      this.e = $$0;
+      this.f = ui.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public cyv(dfc.d $$0) {
-      super($$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case c:
+            return ($$1 - $$3) % $$1;
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public dal a(hx $$0) {
+      hx.a $$1 = $$0.o();
+      return (this != b || $$1 != hx.a.c) && (this != c || $$1 != hx.a.a) ? dal.a : dal.c;
+   }
+
+   public hx b(hx $$0) {
+      if (this == c && $$0.o() == hx.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == hx.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public ui b() {
+      return this.f;
    }
 
    @Override
-   public boolean f_(dfd $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfd $$0, cph $$1, gw $$2, ha $$3) {
-      return 15;
+   public String c() {
+      return this.e;
    }
 }

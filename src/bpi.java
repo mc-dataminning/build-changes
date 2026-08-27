@@ -1,17 +1,15 @@
-public class bpi implements bpg {
-   private final bjo b;
-   protected boolean a;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public bpi(bjo $$0) {
-      this.b = $$0;
-   }
-
-   public void a() {
-      this.a = true;
-   }
-
-   public void b() {
-      this.b.r(this.a);
-      this.a = false;
+public class bpi {
+   public static bmb<bkj> a() {
+      return bpm.a((Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$0 -> $$0.a((bpp<bkj>)(($$0x, $$1, $$2) -> {
+            if (!$$1.dN().c(cei.e) && $$1.fD()) {
+               $$1.fE();
+               return true;
+            } else {
+               return false;
+            }
+         }))));
    }
 }

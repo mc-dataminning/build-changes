@@ -1,120 +1,217 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class fjo extends fjr {
-   final IntSet f = new IntOpenHashSet();
+public abstract class fjo implements we {
+   private static final ui g = ui.c("disconnect.lost");
+   private static final Logger h = LogUtils.getLogger();
+   protected final ero a;
+   protected final tj b;
+   @Nullable
+   protected final fkc c;
+   @Nullable
+   protected String d;
+   protected final gez e;
+   @Nullable
+   protected final ezd f;
+   private final List<fjo.a> i = new ArrayList<>();
 
-   fjo(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.f.contains($$0)) {
-         this.f.remove($$0);
-      } else if (this.f.size() < $$1.maxReportedMessageCount()) {
-         this.f.add($$0);
-      }
-   }
-
-   public fjo a() {
-      fjo $$0 = new fjo(this.a, this.b, this.c);
-      $$0.f.addAll(this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
+   protected fjo(ero $$0, tj $$1, fjv $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2.f();
+      this.d = $$2.e();
+      this.e = $$2.b();
+      this.f = $$2.g();
    }
 
    @Override
-   public eye a(eye $$0, fjv $$1) {
-      return new fcc($$0, $$1, this);
+   public void a(wh $$0) {
+      this.a(new wo($$0.a()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
    }
 
-   public static class a extends fjr.a<fjo> {
-      public a(fjo $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   @Override
+   public void a(wi $$0) {
+      wd.a($$0, this, this.a);
+      this.b(new wp($$0.a()));
+   }
 
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new fjo(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
-
-      public IntSet a() {
-         return this.a.f;
-      }
-
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.f.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.h() != null;
-      }
-
-      @Nullable
-      @Override
-      public fjr.b c() {
-         if (this.a.f.isEmpty()) {
-            return fjr.b.b;
-         } else if (this.a.f.size() > this.b.maxReportedMessageCount()) {
-            return fjr.b.c;
-         } else if (this.a.e == null) {
-            return fjr.b.a;
+   @Override
+   public void a(wf $$0) {
+      wu $$1 = $$0.a();
+      if (!($$1 instanceof wv)) {
+         wd.a($$0, this, this.a);
+         if ($$1 instanceof wt $$2) {
+            this.d = $$2.b();
+            this.e.a($$2.b());
          } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fjr.b.d : null;
+            this.a($$1);
          }
       }
+   }
 
-      @Override
-      public Either<fjr.c, fjr.b> a(fjv $$0) {
-         fjr.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
+   protected abstract void a(wu var1);
+
+   protected abstract ip.b f();
+
+   @Override
+   public void a(wj $$0) {
+      URL $$1 = a($$0.a());
+      if ($$1 == null) {
+         this.a(wq.a.c);
+      } else {
+         String $$2 = $$0.d();
+         boolean $$3 = $$0.e();
+         if (this.c != null && this.c.b() == fkc.a.a) {
+            this.a(wq.a.d);
+            this.a(this.a.ac().a($$1, $$2, true));
+         } else if (this.c != null && this.c.b() != fkc.a.c && (!$$3 || this.c.b() != fkc.a.b)) {
+            this.a(wq.a.b);
+            if ($$3) {
+               this.b.a(ui.c("multiplayer.requiredTexturePrompt.disconnect"));
+            }
          } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new fjr.c(this.a.a, fju.a, $$5));
+            this.a.execute(() -> this.a($$1, $$2, $$3, $$0.f()));
          }
       }
+   }
 
-      private ReportEvidence b(fjv $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         fjp $$2 = new fjp(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.f, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
+   private void a(URL $$0, String $$1, boolean $$2, @Nullable ui $$3) {
+      ezd $$4 = this.a.y;
+      this.a
+         .a(
+            new exx(
+               $$4x -> {
+                  this.a.a($$4);
+                  if ($$4x) {
+                     if (this.c != null) {
+                        this.c.a(fkc.a.a);
+                     }
 
-      private ReportChatMessage a(fjk.a $$0, boolean $$1) {
-         ug $$2 = $$0.g().j();
-         ue $$3 = $$0.g().l();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(tx::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().k(), tx::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
+                     this.a(wq.a.d);
+                     this.a(this.a.ac().a($$0, $$1, true));
+                  } else {
+                     this.a(wq.a.b);
+                     if ($$2) {
+                        this.b.a(ui.c("multiplayer.requiredTexturePrompt.disconnect"));
+                     } else if (this.c != null) {
+                        this.c.a(fkc.a.b);
+                     }
+                  }
 
-      public fjo.a d() {
-         return new fjo.a(this.a.a(), this.b);
+                  if (this.c != null) {
+                     fkd.b(this.c);
+                  }
+               },
+               $$2 ? ui.c("multiplayer.requiredTexturePrompt.line1") : ui.c("multiplayer.texturePrompt.line1"),
+               a($$2 ? ui.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : ui.c("multiplayer.texturePrompt.line2"), $$3),
+               $$2 ? uh.i : uh.f,
+               (ui)($$2 ? ui.c("menu.disconnect") : uh.g)
+            )
+         );
+   }
+
+   private static ui a(ui $$0, @Nullable ui $$1) {
+      return (ui)($$1 == null ? $$0 : ui.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
+   }
+
+   @Nullable
+   private static URL a(String $$0) {
+      try {
+         URL $$1 = new URL($$0);
+         String $$2 = $$1.getProtocol();
+         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
+      } catch (MalformedURLException var3) {
+         return null;
       }
+   }
+
+   private void a(CompletableFuture<?> $$0) {
+      $$0.thenRun(() -> this.a(wq.a.a)).exceptionally($$0x -> {
+         this.a(wq.a.c);
+         return null;
+      });
+   }
+
+   @Override
+   public void a(wk $$0) {
+      wd.a($$0, this, this.a);
+      $$0.a().forEach(this::a);
+   }
+
+   private <T> void a(afv<? extends io<? extends T>> $$0, ark.a $$1) {
+      if (!$$1.a()) {
+         io<T> $$2 = this.f().c($$0).orElseThrow(() -> new IllegalStateException("Unknown registry " + $$0));
+         Map<arh<T>, List<ib<T>>> $$4 = new HashMap<>();
+         ark.a($$0, $$2, $$1, $$4::put);
+         $$2.a($$4);
+      }
+   }
+
+   private void a(wq.a $$0) {
+      this.b.a(new wq($$0));
+   }
+
+   @Override
+   public void a(wg $$0) {
+      this.b.a($$0.a());
+   }
+
+   protected void g() {
+      Iterator<fjo.a> $$0 = this.i.iterator();
+
+      while ($$0.hasNext()) {
+         fjo.a $$1 = $$0.next();
+         if ($$1.b().getAsBoolean()) {
+            this.b($$1.a);
+            $$0.remove();
+         } else if ($$1.c() <= ac.b()) {
+            $$0.remove();
+         }
+      }
+   }
+
+   public void b(wb<?> $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   public void a(ui $$0) {
+      this.e.c();
+      this.a.b(this.b($$0));
+      h.warn("Client disconnected with reason: {}", $$0.getString());
+   }
+
+   protected ezd b(ui $$0) {
+      ezd $$1 = Objects.requireNonNullElseGet(this.f, () -> new fca(new ezi()));
+      return (ezd)(this.c != null && this.c.e() ? new gft($$1, g, $$0) : new eyg($$1, g, $$0));
+   }
+
+   @Nullable
+   public String h() {
+      return this.d;
+   }
+
+   private void a(wb<? extends tv> $$0, BooleanSupplier $$1, Duration $$2) {
+      if ($$1.getAsBoolean()) {
+         this.b($$0);
+      } else {
+         this.i.add(new fjo.a($$0, $$1, ac.b() + $$2.toMillis()));
+      }
+   }
+
+   static record a(wb<? extends tv> a, BooleanSupplier b, long c) {
    }
 }

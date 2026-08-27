@@ -1,10 +1,16 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public abstract class dui extends duj {
-   @Override
-   public final Stream<gw> a_(duh $$0, ash $$1, gw $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public interface dui<P extends duh> {
+   dui<dug> a = a("constant", dug.b);
+   dui<duk> b = a("uniform", duk.a);
+   dui<duf> c = a("biased_to_bottom", duf.a);
+   dui<dul> d = a("very_biased_to_bottom", dul.a);
+   dui<duj> e = a("trapezoid", duj.a);
+   dui<dum> f = a("weighted_list", dum.a);
+
+   Codec<P> codec();
+
+   private static <P extends duh> dui<P> a(String $$0, Codec<P> $$1) {
+      return io.a(jy.O, $$0, () -> $$1);
    }
-
-   protected abstract boolean a(duh var1, ash var2, gw var3);
 }

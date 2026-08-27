@@ -1,28 +1,46 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
 public class apr {
-   protected final Object2IntMap<apn<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+   private final ByteArrayOutputStream a;
+   private final DataOutputStream b;
 
-   public apr() {
-      this.a.defaultReturnValue(0);
+   public apr(int $$0) {
+      this.a = new ByteArrayOutputStream($$0);
+      this.b = new DataOutputStream(this.a);
    }
 
-   public void b(cca $$0, apn<?> $$1, int $$2) {
-      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
-      this.a($$0, $$1, $$3);
+   public void a(byte[] $$0) throws IOException {
+      this.b.write($$0, 0, $$0.length);
    }
 
-   public void a(cca $$0, apn<?> $$1, int $$2) {
-      this.a.put($$1, $$2);
+   public void a(String $$0) throws IOException {
+      this.b.writeBytes($$0);
+      this.b.write(0);
    }
 
-   public <T> int a(app<T> $$0, T $$1) {
-      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   public void a(int $$0) throws IOException {
+      this.b.write($$0);
    }
 
-   public int a(apn<?> $$0) {
-      return this.a.getInt($$0);
+   public void a(short $$0) throws IOException {
+      this.b.writeShort(Short.reverseBytes($$0));
+   }
+
+   public void b(int $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes($$0));
+   }
+
+   public void a(float $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
+   }
+
+   public byte[] a() {
+      return this.a.toByteArray();
+   }
+
+   public void b() {
+      this.a.reset();
    }
 }

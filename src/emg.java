@@ -1,33 +1,21 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+public abstract class emg implements eml {
+   protected boolean a;
+   protected int b = 255;
+   protected int c = 255;
+   protected int d = 255;
+   protected int e = 255;
 
-public class emg extends enf {
-   private static final Logger b = LogUtils.getLogger();
-   public List<emf> a;
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.a = true;
+   }
 
-   public static emg a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      emg $$2 = new emg();
-      $$2.a = Lists.newArrayList();
-
-      try {
-         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
-         if ($$3.isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$2.a.add(emf.a($$4.next()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse BackupList: {}", var5.getMessage());
-      }
-
-      return $$2;
+   @Override
+   public void k() {
+      this.a = false;
    }
 }

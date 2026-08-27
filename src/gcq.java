@@ -1,36 +1,107 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public abstract class gcq implements gdi {
+   protected gdf a;
+   protected final aqe b;
+   protected final afw c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected gdi.a k = gdi.a.b;
+   protected boolean l;
+   protected ate m;
 
-public class gcq<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public gcq(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   protected gcq(aqc $$0, aqe $$1, ate $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   protected T computeNext() {
-      boolean $$0 = !this.a.hasNext();
-      boolean $$1 = !this.b.hasNext();
-      if ($$0 && $$1) {
-         return (T)this.endOfData();
-      } else if ($$0) {
-         return (T)this.b.next();
-      } else if ($$1) {
-         return (T)this.a.next();
+   protected gcq(afw $$0, aqe $$1, ate $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
+   }
+
+   @Override
+   public afw a() {
+      return this.c;
+   }
+
+   @Override
+   public gen a(gem $$0) {
+      if (this.c.equals(gem.b)) {
+         this.a = gem.d;
+         return gem.c;
       } else {
-         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$2 == 0) {
-            this.b.next();
+         gen $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = gem.a;
+         } else {
+            this.a = $$1.a(this.m);
          }
 
-         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
+         return $$1;
       }
+   }
+
+   @Override
+   public gdf b() {
+      return this.a;
+   }
+
+   @Override
+   public aqe c() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public gdi.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

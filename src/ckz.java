@@ -1,22 +1,31 @@
-public class ckz extends cjg {
-   private final cky a;
+import java.util.function.Predicate;
 
-   public ckz(cky $$0, cjg.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
+public abstract class ckz extends cke {
+   public static final Predicate<ckj> c = $$0 -> $$0.a(ara.at);
+   public static final Predicate<ckj> d = c.or($$0 -> $$0.a(ckm.tA));
+
+   public ckz(cke.a $$0) {
+      super($$0);
    }
 
-   public cky i() {
-      return this.a;
+   public Predicate<ckj> e() {
+      return this.b();
+   }
+
+   public abstract Predicate<ckj> b();
+
+   public static ckj a(bkj $$0, Predicate<ckj> $$1) {
+      if ($$1.test($$0.b(bia.b))) {
+         return $$0.b(bia.b);
+      } else {
+         return $$1.test($$0.b(bia.a)) ? $$0.b(bia.a) : ckj.b;
+      }
    }
 
    @Override
    public int c() {
-      return this.a.e();
+      return 1;
    }
 
-   @Override
-   public boolean a(cjl $$0, cjl $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
-   }
+   public abstract int d();
 }

@@ -1,28 +1,41 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class ahl {
-   public static void a(CommandDispatcher<dt> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ui.c("commands.deop.failed"));
+
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((dt)$$0x.getSource(), ImmutableList.of(((dt)$$0x.getSource()).g()))))
-            .then(du.a("targets", ee.b()).executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("deop").requires($$0x -> $$0x.c(3)))
+            .then(
+               dv.a("targets", ei.a())
+                  .suggests(($$0x, $$1) -> dy.a(((du)$$0x.getSource()).m().ac().l(), $$1))
+                  .executes($$0x -> a((du)$$0x.getSource(), ei.a($$0x, "targets")))
+            )
       );
    }
 
-   private static int a(dt $$0, Collection<? extends biw> $$1) {
-      for (biw $$2 : $$1) {
-         $$2.aj();
+   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      apg $$2 = $$0.m().ac();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.f($$4)) {
+            $$2.b($$4);
+            $$3++;
+            $$0.a(() -> ui.a("commands.deop.success", $$1.iterator().next().getName()), true);
+         }
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> tl.a("commands.kill.success.single", $$1.iterator().next().N_()), true);
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         $$0.a(() -> tl.a("commands.kill.success.multiple", $$1.size()), true);
+         $$0.m().a($$0);
+         return $$3;
       }
-
-      return $$1.size();
    }
 }

@@ -1,46 +1,91 @@
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import io.netty.util.AttributeKey;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.io.DataInput;
+import java.io.IOException;
 
-public class sp extends MessageToMessageDecoder<ve<?>> {
-   @Nullable
-   private vd.a a;
-   @Nullable
-   private vd b;
-   private final AttributeKey<? extends vd.b> c;
+public interface sp<T extends sn> {
+   T c(DataInput var1, sc var2) throws IOException;
 
-   public sp(AttributeKey<? extends vd.b> $$0) {
-      this.c = $$0;
+   sk.b a(DataInput var1, sk var2, sc var3) throws IOException;
+
+   default void b(DataInput $$0, sk $$1, sc $$2) throws IOException {
+      switch ($$1.b(this)) {
+         case a:
+            this.a($$0, $$1, $$2);
+         case c:
+         default:
+            break;
+         case b:
+            this.b($$0, $$2);
+      }
    }
 
-   protected void a(ChannelHandlerContext $$0, ve<?> $$1, List<Object> $$2) throws Exception {
-      vd.b $$3 = (vd.b)$$0.channel().attr(this.c).get();
-      if ($$3 == null) {
-         throw new DecoderException("Bundler not configured: " + $$1);
-      } else {
-         vd $$4 = $$3.c();
-         if (this.a != null) {
-            if (this.b != $$4) {
-               throw new DecoderException("Bundler handler changed during bundling");
-            }
+   void a(DataInput var1, int var2, sc var3) throws IOException;
 
-            ve<?> $$5 = this.a.a($$1);
-            if ($$5 != null) {
-               this.b = null;
-               this.a = null;
-               $$2.add($$5);
-            }
-         } else {
-            vd.a $$6 = $$4.a($$1);
-            if ($$6 != null) {
-               this.a = $$6;
-               this.b = $$4;
-            } else {
-               $$2.add($$1);
-            }
+   void b(DataInput var1, sc var2) throws IOException;
+
+   default boolean d() {
+      return false;
+   }
+
+   String a();
+
+   String b();
+
+   static sp<rv> a(final int $$0) {
+      return new sp<rv>() {
+         private IOException c() {
+            return new IOException("Invalid tag id: " + $$0);
+         }
+
+         public rv a(DataInput $$0x, sc $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public sk.b a(DataInput $$0x, sk $$1, sc $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void a(DataInput $$0x, int $$1, sc $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void b(DataInput $$0x, sc $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public String a() {
+            return "INVALID[" + $$0 + "]";
+         }
+
+         @Override
+         public String b() {
+            return "UNKNOWN_" + $$0;
+         }
+      };
+   }
+
+   public interface a<T extends sn> extends sp<T> {
+      @Override
+      default void b(DataInput $$0, sc $$1) throws IOException {
+         $$0.skipBytes(this.c());
+      }
+
+      @Override
+      default void a(DataInput $$0, int $$1, sc $$2) throws IOException {
+         $$0.skipBytes(this.c() * $$1);
+      }
+
+      int c();
+   }
+
+   public interface b<T extends sn> extends sp<T> {
+      @Override
+      default void a(DataInput $$0, int $$1, sc $$2) throws IOException {
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            this.b($$0, $$2);
          }
       }
    }

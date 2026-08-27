@@ -1,49 +1,78 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
-public class abu implements ve<abd> {
-   public static final int a = 4;
-   private static final int b = 128;
-   private static final int c = 8192;
-   private static final int d = 200;
-   private final int e;
-   private final List<String> f;
-   private final Optional<String> g;
+public class abu implements wb<xu> {
+   private final int a;
+   private final List<abu.a> b;
 
-   public abu(int $$0, List<String> $$1, Optional<String> $$2) {
-      this.e = $$0;
-      this.f = ImmutableList.copyOf($$1);
-      this.g = $$2;
+   public abu(int $$0, Collection<bll> $$1) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+
+      for (bll $$2 : $$1) {
+         this.b.add(new abu.a($$2.a(), $$2.b(), $$2.c()));
+      }
    }
 
-   public abu(so $$0) {
-      this.e = $$0.n();
-      this.f = $$0.a(so.a(Lists::newArrayListWithCapacity, 200), $$0x -> $$0x.d(8192));
-      this.g = $$0.b((so.a<String>)($$0x -> $$0x.d(128)));
+   public abu(tl $$0) {
+      this.a = $$0.n();
+      this.b = $$0.a((tl.a<abu.a>)($$0x -> {
+         afw $$1 = $$0x.t();
+         blk $$2 = jy.v.a($$1);
+         double $$3 = $$0x.readDouble();
+         List<bln> $$4 = $$0x.a((tl.a<bln>)($$0xx -> new bln($$0xx.p(), "Unknown synced attribute modifier", $$0xx.readDouble(), bln.a.a($$0xx.readByte()))));
+         return new abu.a($$2, $$3, $$4);
+      }));
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.e);
-      $$0.a(this.f, ($$0x, $$1) -> $$0x.a($$1, 8192));
-      $$0.a(this.g, ($$0x, $$1) -> $$0x.a($$1, 128));
+   public void a(tl $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> {
+         $$0x.a(jy.v.b($$1.a()));
+         $$0x.a($$1.b());
+         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
+            $$0xx.a($$1x.a());
+            $$0xx.a($$1x.c());
+            $$0xx.k($$1x.b().a());
+         });
+      });
    }
 
-   public void a(abd $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public List<String> a() {
-      return this.f;
+   public int a() {
+      return this.a;
    }
 
-   public Optional<String> d() {
-      return this.g;
+   public List<abu.a> d() {
+      return this.b;
    }
 
-   public int e() {
-      return this.e;
+   public static class a {
+      private final blk a;
+      private final double b;
+      private final Collection<bln> c;
+
+      public a(blk $$0, double $$1, Collection<bln> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public blk a() {
+         return this.a;
+      }
+
+      public double b() {
+         return this.b;
+      }
+
+      public Collection<bln> c() {
+         return this.c;
+      }
    }
 }

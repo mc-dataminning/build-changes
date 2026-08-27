@@ -1,46 +1,59 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
-public record bhz(String i) {
-   public static final bhz a = new bhz("generic");
-   public static final bhz b = new bhz("ladder");
-   public static final bhz c = new bhz("vines");
-   public static final bhz d = new bhz("weeping_vines");
-   public static final bhz e = new bhz("twisting_vines");
-   public static final bhz f = new bhz("scaffolding");
-   public static final bhz g = new bhz("other_climbable");
-   public static final bhz h = new bhz("water");
+@Immutable
+public class bhz {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final bhy d;
+   private final float e;
 
-   public static bhz a(dfd $$0) {
-      if ($$0.a(cte.cO) || $$0.a(apv.P)) {
-         return b;
-      } else if ($$0.a(cte.ff)) {
-         return c;
-      } else if ($$0.a(cte.oz) || $$0.a(cte.oA)) {
-         return d;
-      } else if ($$0.a(cte.oB) || $$0.a(cte.oC)) {
-         return e;
+   public bhz(bhy $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
+   }
+
+   public bhy a() {
+      return this.d;
+   }
+
+   public float b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.e >= (float)bhy.d.ordinal();
+   }
+
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
       } else {
-         return $$0.a(cte.nS) ? f : g;
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
       }
    }
 
-   @Nullable
-   public static bhz a(bjm $$0) {
-      Optional<gw> $$1 = $$0.eG();
-      if ($$1.isPresent()) {
-         dfd $$2 = $$0.dL().a_($$1.get());
-         return a($$2);
+   private float a(bhy $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == bhy.a) {
+         return 0.0F;
       } else {
-         return $$0.aX() ? h : null;
+         boolean $$4 = $$0 == bhy.d;
+         float $$5 = 0.75F;
+         float $$6 = asy.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += asy.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += asy.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == bhy.b) {
+            $$7 *= 0.5F;
+         }
+
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
       }
-   }
-
-   public String a() {
-      return "death.fell.accident." + this.i;
-   }
-
-   public String b() {
-      return this.i;
    }
 }

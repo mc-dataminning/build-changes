@@ -1,69 +1,124 @@
-public class byq {
-   public static final aey<byp> a = a("kebab");
-   public static final aey<byp> b = a("aztec");
-   public static final aey<byp> c = a("alban");
-   public static final aey<byp> d = a("aztec2");
-   public static final aey<byp> e = a("bomb");
-   public static final aey<byp> f = a("plant");
-   public static final aey<byp> g = a("wasteland");
-   public static final aey<byp> h = a("pool");
-   public static final aey<byp> i = a("courbet");
-   public static final aey<byp> j = a("sea");
-   public static final aey<byp> k = a("sunset");
-   public static final aey<byp> l = a("creebet");
-   public static final aey<byp> m = a("wanderer");
-   public static final aey<byp> n = a("graham");
-   public static final aey<byp> o = a("match");
-   public static final aey<byp> p = a("bust");
-   public static final aey<byp> q = a("stage");
-   public static final aey<byp> r = a("void");
-   public static final aey<byp> s = a("skull_and_roses");
-   public static final aey<byp> t = a("wither");
-   public static final aey<byp> u = a("fighters");
-   public static final aey<byp> v = a("pointer");
-   public static final aey<byp> w = a("pigscene");
-   public static final aey<byp> x = a("burning_skull");
-   public static final aey<byp> y = a("skeleton");
-   public static final aey<byp> z = a("donkey_kong");
-   public static final aey<byp> A = a("earth");
-   public static final aey<byp> B = a("wind");
-   public static final aey<byp> C = a("water");
-   public static final aey<byp> D = a("fire");
+import javax.annotation.Nullable;
 
-   public static byp a(hq<byp> $$0) {
-      hq.a($$0, a, new byp(16, 16));
-      hq.a($$0, b, new byp(16, 16));
-      hq.a($$0, c, new byp(16, 16));
-      hq.a($$0, d, new byp(16, 16));
-      hq.a($$0, e, new byp(16, 16));
-      hq.a($$0, f, new byp(16, 16));
-      hq.a($$0, g, new byp(16, 16));
-      hq.a($$0, h, new byp(32, 16));
-      hq.a($$0, i, new byp(32, 16));
-      hq.a($$0, j, new byp(32, 16));
-      hq.a($$0, k, new byp(32, 16));
-      hq.a($$0, l, new byp(32, 16));
-      hq.a($$0, m, new byp(16, 32));
-      hq.a($$0, n, new byp(16, 32));
-      hq.a($$0, o, new byp(32, 32));
-      hq.a($$0, p, new byp(32, 32));
-      hq.a($$0, q, new byp(32, 32));
-      hq.a($$0, r, new byp(32, 32));
-      hq.a($$0, s, new byp(32, 32));
-      hq.a($$0, t, new byp(32, 32));
-      hq.a($$0, u, new byp(64, 32));
-      hq.a($$0, v, new byp(64, 64));
-      hq.a($$0, w, new byp(64, 64));
-      hq.a($$0, x, new byp(64, 64));
-      hq.a($$0, y, new byp(64, 48));
-      hq.a($$0, A, new byp(32, 32));
-      hq.a($$0, B, new byp(32, 32));
-      hq.a($$0, C, new byp(32, 32));
-      hq.a($$0, D, new byp(32, 32));
-      return hq.a($$0, z, new byp(64, 48));
+public class byq extends bym {
+   private static final buv b = buv.a().d();
+   @Nullable
+   private ebt c;
+   @Nullable
+   private eif d;
+   private boolean e;
+
+   public byq(byk $$0) {
+      super($$0);
    }
 
-   private static aey<byp> a(String $$0) {
-      return aey.a(jc.Q, new aez($$0));
+   @Override
+   public bza<byq> i() {
+      return bza.a;
+   }
+
+   @Override
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dq(), this.a.ds(), this.a.dw());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+         this.j();
+      }
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+      this.d = null;
+   }
+
+   @Nullable
+   @Override
+   public eif g() {
+      return this.d;
+   }
+
+   private void j() {
+      if (this.c != null && this.c.c()) {
+         ht $$0 = this.a.dL().a(dlk.a.f, new ht(don.a(this.a.s())));
+         int $$1 = this.a.gc() == null ? 0 : this.a.gc().e();
+         if (this.a.ef().a($$1 + 3) == 0) {
+            this.a.gb().a(bza.c);
+            return;
+         }
+
+         ccx $$2 = this.a.dL().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+         double $$3;
+         if ($$2 != null) {
+            $$3 = $$0.b($$2.dj()) / 512.0;
+         } else {
+            $$3 = 64.0;
+         }
+
+         if ($$2 != null && (this.a.ef().a((int)($$3 + 2.0)) == 0 || this.a.ef().a($$1 + 2) == 0)) {
+            this.a($$2);
+            return;
+         }
+      }
+
+      if (this.c == null || this.c.c()) {
+         int $$5 = this.a.y();
+         int $$6 = $$5;
+         if (this.a.ef().a(8) == 0) {
+            this.e = !this.e;
+            $$6 = $$5 + 6;
+         }
+
+         if (this.e) {
+            $$6++;
+         } else {
+            $$6--;
+         }
+
+         if (this.a.gc() != null && this.a.gc().e() >= 0) {
+            $$6 %= 12;
+            if ($$6 < 0) {
+               $$6 += 12;
+            }
+         } else {
+            $$6 -= 12;
+            $$6 &= 7;
+            $$6 += 12;
+         }
+
+         this.c = this.a.a($$5, $$6, null);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+   }
+
+   private void a(ccx $$0) {
+      this.a.gb().a(bza.b);
+      this.a.gb().b(bza.b).a($$0);
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         iw $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new eif($$1, $$3, $$2);
+      }
+   }
+
+   @Override
+   public void a(byj $$0, ht $$1, bir $$2, @Nullable ccx $$3) {
+      if ($$3 != null && this.a.c($$3)) {
+         this.a($$3);
+      }
    }
 }

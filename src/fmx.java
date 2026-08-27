@@ -1,26 +1,42 @@
-public class fmx extends fkm {
-   private static final int a = 12235202;
-
-   protected fmx(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fml $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
+public class fmx extends fmw {
+   fmx(fjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D *= 1.5F;
+      this.t = (int)(Math.random() * 2.0) + 60;
    }
 
-   public static class a implements flt<iy> {
-      private final fml a;
+   @Override
+   public float b(float $$0) {
+      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
+      return this.D * $$1;
+   }
 
-      public a(fml $$0) {
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         this.g = this.g + this.j * (double)$$0;
+         this.h = this.h + this.k * (double)$$0;
+         this.i = this.i + this.l * (double)$$0;
+      }
+   }
+
+   public static class a implements fmt<jv> {
+      private final fnl a;
+
+      public a(fnl $$0) {
          this.a = $$0;
       }
 
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ash $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new fmx($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fmx $$8 = new fmx($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

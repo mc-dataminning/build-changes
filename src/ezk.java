@@ -1,333 +1,176 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.Collections;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class ezk extends eye {
-   public static final int a = 16;
-   public static final int b = 36;
-   public static final int c = 30;
-   public static final ezk.a k = new ezk.a() {
-      @Override
-      public int a() {
-         return 0;
+public class ezk extends eyw {
+   private static final ui c = ui.c("options.graphics.fabulous").a(n.u);
+   private static final ui k = ui.a("options.graphics.warning.message", c, c);
+   private static final ui l = ui.c("options.graphics.warning.title").a(n.m);
+   private static final ui m = ui.c("options.graphics.warning.accept");
+   private static final ui n = ui.c("options.graphics.warning.cancel");
+   private eug o;
+   private final fov p;
+   private final int q;
+
+   private static err<?>[] a(ers $$0) {
+      return new err[]{
+         $$0.i(),
+         $$0.d(),
+         $$0.k(),
+         $$0.e(),
+         $$0.j(),
+         $$0.g(),
+         $$0.K(),
+         $$0.X(),
+         $$0.am(),
+         $$0.A(),
+         $$0.al(),
+         $$0.h(),
+         $$0.W(),
+         $$0.an(),
+         $$0.z(),
+         $$0.L(),
+         $$0.af(),
+         $$0.f(),
+         $$0.ag(),
+         $$0.ab(),
+         $$0.ai(),
+         $$0.aj()
+      };
+   }
+
+   public ezk(ezd $$0, ers $$1) {
+      super($$0, $$1, ui.c("options.videoTitle"));
+      this.p = $$0.f.ah();
+      this.p.i();
+      if ($$1.i().c() == erh.c) {
+         this.p.e();
       }
 
-      @Override
-      public tq a(int $$0) {
-         return tq.b;
-      }
-   };
-   public static final aez l = new aez("textures/gui/book.png");
-   protected static final int m = 114;
-   protected static final int n = 128;
-   protected static final int o = 192;
-   protected static final int p = 192;
-   private ezk.a q;
-   private int s;
-   private List<arn> t = Collections.emptyList();
-   private int u = -1;
-   private tl v = tk.a;
-   private fak w;
-   private fak x;
-   private final boolean y;
-
-   public ezk(ezk.a $$0) {
-      this($$0, true);
+      this.q = $$1.z().c();
    }
 
-   public ezk() {
-      this(k, false);
-   }
-
-   private ezk(ezk.a $$0, boolean $$1) {
-      super(eqh.a);
-      this.q = $$0;
-      this.y = $$1;
-   }
-
-   public void a(ezk.a $$0) {
-      this.q = $$0;
-      this.s = asb.a(this.s, 0, $$0.a());
-      this.I();
-      this.u = -1;
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = asb.a($$0, 0, this.q.a() - 1);
-      if ($$1 != this.s) {
-         this.s = $$1;
-         this.I();
-         this.u = -1;
-         return true;
+   @Override
+   protected void aM_() {
+      this.o = new eug(this.f, this.g, this.h, 32, this.h - 32, 25);
+      int $$0 = -1;
+      ell $$1 = this.f.aM();
+      elg $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
       } else {
-         return false;
-      }
-   }
-
-   protected boolean b(int $$0) {
-      return this.a($$0);
-   }
-
-   @Override
-   protected void aH_() {
-      this.l();
-      this.D();
-   }
-
-   protected void l() {
-      this.d(esk.a(tk.d, $$0 -> this.az_()).a(this.g / 2 - 100, 196, 200, 20).a());
-   }
-
-   @Override
-   protected void D() {
-      int $$0 = (this.g - 192) / 2;
-      int $$1 = 2;
-      this.w = this.d(new fak($$0 + 116, 159, true, $$0x -> this.G(), this.y));
-      this.x = this.d(new fak($$0 + 43, 159, false, $$0x -> this.F(), this.y));
-      this.I();
-   }
-
-   private int E() {
-      return this.q.a();
-   }
-
-   protected void F() {
-      if (this.s > 0) {
-         this.s--;
+         Optional<elk> $$4 = $$1.f();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
       }
 
-      this.I();
-   }
-
-   protected void G() {
-      if (this.s < this.E() - 1) {
-         this.s++;
-      }
-
-      this.I();
-   }
-
-   private void I() {
-      this.w.j = this.s < this.E() - 1;
-      this.x.j = this.s > 0;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         switch ($$0) {
-            case 266:
-               this.x.c();
-               return true;
-            case 267:
-               this.w.c();
-               return true;
-            default:
-               return false;
+      err<Integer> $$6 = new err<>("options.fullscreen.resolution", err.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return ui.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return ers.a($$1x, ui.c("options.fullscreen.current"));
+         } else {
+            elk $$3x = $$2.a($$2x);
+            return ers.a($$1x, ui.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
          }
-      }
+      }, new err.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
+         }
+      });
+      this.o.a($$6);
+      this.o.a(this.b.B());
+      this.o.a(a(this.b));
+      this.e(this.o);
+      this.d(etj.a(uh.d, $$1x -> {
+         this.f.m.ar();
+         $$1.g();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
    @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.g - 192) / 2;
-      int $$5 = 2;
-      if (this.u != this.s) {
-         tq $$6 = this.q.b(this.s);
-         this.t = this.i.c($$6, 114);
-         this.v = tl.a("book.pageIndicator", this.s + 1, Math.max(this.E(), 1));
+   public void aD_() {
+      if (this.b.z().c() != this.q) {
+         this.f.b(this.b.z().c());
+         this.f.P();
       }
 
-      this.u = this.s;
-      int $$7 = this.i.a(this.v);
-      $$0.a(this.i, this.v, $$4 - $$7 + 192 - 44, 18, 0, false);
-      int $$8 = Math.min(128 / 9, this.t.size());
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         arn $$10 = this.t.get($$9);
-         $$0.a(this.i, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
-      }
-
-      ui $$11 = this.a((double)$$1, (double)$$2);
-      if ($$11 != null) {
-         $$0.a(this.i, $$11, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void b(erz $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(l, (this.g - 192) / 2, 2, 0, 0, 192, 192);
+      super.aD_();
    }
 
    @Override
    public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         ui $$3 = this.a($$0, $$1);
-         if ($$3 != null && this.a($$3)) {
-            return true;
+      int $$3 = this.b.am().c();
+      if (super.a($$0, $$1, $$2)) {
+         if (this.b.am().c() != $$3) {
+            this.f.a();
          }
-      }
 
-      return super.a($$0, $$1, $$2);
+         if (this.p.g()) {
+            List<ui> $$4 = Lists.newArrayList(new ui[]{k, uh.r});
+            String $$5 = this.p.j();
+            if ($$5 != null) {
+               $$4.add(uh.r);
+               $$4.add(ui.a("options.graphics.warning.renderer", $$5).a(n.h));
+            }
+
+            String $$6 = this.p.l();
+            if ($$6 != null) {
+               $$4.add(uh.r);
+               $$4.add(ui.a("options.graphics.warning.vendor", $$6).a(n.h));
+            }
+
+            String $$7 = this.p.k();
+            if ($$7 != null) {
+               $$4.add(uh.r);
+               $$4.add(ui.a("options.graphics.warning.version", $$7).a(n.h));
+            }
+
+            this.f.a(new ezj(l, $$4, ImmutableList.of(new ezj.a(m, $$0x -> {
+               this.b.i().a(erh.c);
+               ero.O().f.f();
+               this.p.e();
+               this.f.a(this);
+            }), new ezj.a(n, $$0x -> {
+               this.p.f();
+               this.f.a(this);
+            }))));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean a(ui $$0) {
-      tj $$1 = $$0.h();
-      if ($$1 == null) {
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (ezd.p()) {
+         err<Integer> $$4 = this.b.am();
+         int $$5 = $$4.c() + (int)Math.signum($$3);
+         if ($$5 != 0) {
+            $$4.a($$5);
+            if ($$4.c() == $$5) {
+               this.f.a();
+               return true;
+            }
+         }
+
          return false;
-      } else if ($$1.a() == tj.a.e) {
-         String $$2 = $$1.b();
-
-         try {
-            int $$3 = Integer.parseInt($$2) - 1;
-            return this.b($$3);
-         } catch (Exception var5) {
-            return false;
-         }
       } else {
-         boolean $$4 = super.a($$0);
-         if ($$4 && $$1.a() == tj.a.c) {
-            this.H();
-         }
-
-         return $$4;
+         return super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   protected void H() {
-      this.f.a(null);
+   @Override
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, this.o, $$1, $$2, $$3);
    }
 
-   @Nullable
-   public ui a(double $$0, double $$1) {
-      if (this.t.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = asb.a($$0 - (double)((this.g - 192) / 2) - 36.0);
-         int $$3 = asb.a($$1 - 2.0 - 30.0);
-         if ($$2 >= 0 && $$3 >= 0) {
-            int $$4 = Math.min(128 / 9, this.t.size());
-            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
-               int $$5 = $$3 / 9;
-               if ($$5 >= 0 && $$5 < this.t.size()) {
-                  arn $$6 = this.t.get($$5);
-                  return this.f.h.b().a($$6, $$2);
-               } else {
-                  return null;
-               }
-            } else {
-               return null;
-            }
-         } else {
-            return null;
-         }
-      }
-   }
-
-   static List<String> a(qw $$0) {
-      Builder<String> $$1 = ImmutableList.builder();
-      a($$0, $$1::add);
-      return $$1.build();
-   }
-
-   public static void a(qw $$0, Consumer<String> $$1) {
-      rc $$2 = $$0.c("pages", 8).e();
-      IntFunction<String> $$4;
-      if (eqp.O().aQ() && $$0.b("filtered_pages", 10)) {
-         qw $$3 = $$0.p("filtered_pages");
-         $$4 = $$2x -> {
-            String $$3x = String.valueOf($$2x);
-            return $$3.e($$3x) ? $$3.l($$3x) : $$2.j($$2x);
-         };
-      } else {
-         $$4 = $$2::j;
-      }
-
-      for (int $$6 = 0; $$6 < $$2.size(); $$6++) {
-         $$1.accept($$4.apply($$6));
-      }
-   }
-
-   public interface a {
-      int a();
-
-      tq a(int var1);
-
-      default tq b(int $$0) {
-         return $$0 >= 0 && $$0 < this.a() ? this.a($$0) : tq.b;
-      }
-
-      static ezk.a a(cjl $$0) {
-         if ($$0.a(cjo.th)) {
-            return new ezk.c($$0);
-         } else {
-            return (ezk.a)($$0.a(cjo.tg) ? new ezk.b($$0) : ezk.k);
-         }
-      }
-   }
-
-   public static class b implements ezk.a {
-      private final List<String> a;
-
-      public b(cjl $$0) {
-         this.a = b($$0);
-      }
-
-      private static List<String> b(cjl $$0) {
-         qw $$1 = $$0.v();
-         return (List<String>)($$1 != null ? ezk.a($$1) : ImmutableList.of());
-      }
-
-      @Override
-      public int a() {
-         return this.a.size();
-      }
-
-      @Override
-      public tq a(int $$0) {
-         return tq.e(this.a.get($$0));
-      }
-   }
-
-   public static class c implements ezk.a {
-      private final List<String> a;
-
-      public c(cjl $$0) {
-         this.a = b($$0);
-      }
-
-      private static List<String> b(cjl $$0) {
-         qw $$1 = $$0.v();
-         return (List<String>)($$1 != null && clh.a($$1) ? ezk.a($$1) : ImmutableList.of(tl.a.a(tl.c("book.invalid.tag").a(n.e))));
-      }
-
-      @Override
-      public int a() {
-         return this.a.size();
-      }
-
-      @Override
-      public tq a(int $$0) {
-         String $$1 = this.a.get($$0);
-
-         try {
-            tq $$2 = tl.a.a($$1);
-            if ($$2 != null) {
-               return $$2;
-            }
-         } catch (Exception var4) {
-         }
-
-         return tq.e($$1);
-      }
+   @Override
+   public void b(esy $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

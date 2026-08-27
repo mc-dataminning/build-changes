@@ -1,120 +1,128 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dwi extends dwj {
-   private static final Codec<Either<aez, dyv>> a = Codec.of(dwi::a, aez.a.map(Either::left));
-   public static final Codec<dwi> b = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, dwi::new));
-   protected final Either<aez, dyv> c;
-   protected final he<dyt> d;
+public final class dwi {
+   public static final String a = "INVALID";
+   public static final dwi b = new dwi(null, new cqg(0, 0), 0, new dwp(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final dwa d;
+   private final dwp e;
+   private final cqg f;
+   private int g;
+   @Nullable
+   private volatile dvs h;
 
-   private static <T> DataResult<T> a(Either<aez, dyv> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<aez> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : aez.a.encode($$3.get(), $$1, $$2);
+   public dwi(dwa $$0, cqg $$1, int $$2, dwp $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   protected static <E extends dwi> RecordCodecBuilder<E, he<dyt>> b() {
-      return dyu.d.fieldOf("processors").forGetter($$0 -> $$0.d);
-   }
+   @Nullable
+   public static dwi a(dwq $$0, rt $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         io<dwa> $$4 = $$0.b().d(jz.aA);
+         dwa $$5 = $$4.a(new afw($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
+         } else {
+            cqg $$6 = new cqg($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            rz $$8 = $$1.c("Children", 10);
 
-   protected static <E extends dwi> RecordCodecBuilder<E, Either<aez, dyv>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
-   }
+            try {
+               dwp $$9 = dwp.a($$8, $$0);
+               if ($$5 instanceof dyd) {
+                  $$9 = dyd.a($$6, $$2, $$9);
+               }
 
-   protected dwi(Either<aez, dyv> $$0, he<dyt> $$1, dwl.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public hy a(dyw $$0, czn $$1) {
-      dyv $$2 = this.a($$0);
-      return $$2.a($$1);
-   }
-
-   private dyv a(dyw $$0) {
-      return (dyv)this.c.map($$0::a, Function.identity());
-   }
-
-   public List<dyv.c> a(dyw $$0, gw $$1, czn $$2, boolean $$3) {
-      dyv $$4 = this.a($$0);
-      List<dyv.c> $$5 = $$4.a($$1, new dyr().a($$2), cte.pa, $$3);
-      List<dyv.c> $$6 = Lists.newArrayList();
-
-      for (dyv.c $$7 : $$5) {
-         qw $$8 = $$7.c();
-         if ($$8 != null) {
-            dgn $$9 = dgn.valueOf($$8.l("mode"));
-            if ($$9 == dgn.d) {
-               $$6.add($$7);
+               return new dwi($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
             }
          }
       }
-
-      return $$6;
    }
 
-   @Override
-   public List<dyv.c> a(dyw $$0, gw $$1, czn $$2, ash $$3) {
-      dyv $$4 = this.a($$0);
-      ObjectArrayList<dyv.c> $$5 = $$4.a($$1, new dyr().a($$2), cte.pb, true);
-      ac.b($$5, $$3);
-      return $$5;
+   public dvs a() {
+      dvs $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
+
+      return $$0;
    }
 
-   @Override
-   public duu a(dyw $$0, gw $$1, czn $$2) {
-      dyv $$3 = this.a($$0);
-      return $$3.b(new dyr().a($$2), $$1);
-   }
+   public void a(crt $$0, crr $$1, dhy $$2, ate $$3, dvs $$4, cqg $$5) {
+      List<dwe> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         dvs $$7 = $$6.get(0).f;
+         ht $$8 = $$7.f();
+         ht $$9 = new ht($$8.u(), $$7.h(), $$8.w());
 
-   @Override
-   public boolean a(dyw $$0, cqv $$1, cqt $$2, dha $$3, gw $$4, gw $$5, czn $$6, duu $$7, ash $$8, boolean $$9) {
-      dyv $$10 = this.a($$0);
-      dyr $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
-      } else {
-         for (dyv.c $$13 : dyv.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
+         for (dwe $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
          }
 
-         return true;
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
       }
    }
 
-   protected dyr a(czn $$0, duu $$1, boolean $$2) {
-      dyr $$3 = new dyr();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(dxx.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(dyd.b);
+   public rt a(dwq $$0, cqg $$1) {
+      rt $$2 = new rt();
+      if (this.b()) {
+         $$2.a("id", $$0.b().d(jz.aA).b(this.d).toString());
+         $$2.a("ChunkX", $$1.e);
+         $$2.a("ChunkZ", $$1.f);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
       }
-
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
    }
 
-   @Override
-   public dwk<?> a() {
-      return dwk.a;
+   public boolean b() {
+      return !this.e.a();
    }
 
-   @Override
-   public String toString() {
-      return "Single[" + this.c + "]";
+   public cqg c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public dwa h() {
+      return this.d;
+   }
+
+   public List<dwe> i() {
+      return this.e.c();
    }
 }

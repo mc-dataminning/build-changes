@@ -1,69 +1,64 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eef extends edw {
-   public static final Codec<eef> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aez.a.fieldOf("name").forGetter($$0x -> $$0x.b),
-                  arj.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
-                  jb.l.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, eef::new)
-   );
-   private final aez b;
-   private final long c;
-   private final he<ddb<?>> d;
+public class eef extends edu {
+   public static final Codec<eef> a = a(eef::new);
 
-   private eef(List<efj> $$0, aez $$1, long $$2, he<ddb<?>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   eef(List<eeb> $$0, List<egh> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public edy b() {
-      return edz.s;
+   public eec a() {
+      return edz.h;
    }
 
    @Override
-   public cjl a(cjl $$0, eck $$1) {
-      if ($$0.b()) {
-         return $$0;
-      } else {
-         qw $$2 = che.a($$0);
-         if ($$2 == null) {
-            $$2 = new qw();
+   protected edt a(List<? extends edt> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (edt)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (edt $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
          }
 
-         $$2.a("LootTable", this.b.toString());
-         if (this.c != 0L) {
-            $$2.a("LootTableSeed", this.c);
+         return true;
+      };
+      };
+   }
+
+   public static eef.a a(eeb.a<?>... $$0) {
+      return new eef.a($$0);
+   }
+
+   public static class a extends eeb.a<eef.a> {
+      private final Builder<eeb> a = ImmutableList.builder();
+
+      public a(eeb.a<?>... $$0) {
+         for (eeb.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
          }
-
-         che.a($$0, this.d.a(), $$2);
-         return $$0;
       }
-   }
 
-   @Override
-   public void a(ect $$0) {
-      super.a($$0);
-      ecm<ecs> $$1 = new ecm<>(ecp.c, this.b);
-      if ($$0.b().getElementOptional($$1).isEmpty()) {
-         $$0.a("Missing loot table used for container: " + this.b);
+      protected eef.a a() {
+         return this;
       }
-   }
 
-   public static edw.a<?> a(ddb<?> $$0, aez $$1) {
-      return a($$2 -> new eef($$2, $$1, 0L, $$0.a()));
-   }
+      @Override
+      public eef.a c(eeb.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static edw.a<?> a(ddb<?> $$0, aez $$1, long $$2) {
-      return a($$3 -> new eef($$3, $$1, $$2, $$0.a()));
+      @Override
+      public eeb b() {
+         return new eef(this.a.build(), this.f());
+      }
    }
 }

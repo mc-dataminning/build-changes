@@ -1,31 +1,13 @@
-public record we(we.a b) implements vx {
-   public static final aez a = new aez("debug/hive");
+public interface we extends tg {
+   void a(wh var1);
 
-   public we(so $$0) {
-      this(new we.a($$0));
-   }
+   void a(wi var1);
 
-   @Override
-   public void a(so $$0) {
-      this.b.a($$0);
-   }
+   void a(wf var1);
 
-   @Override
-   public aez a() {
-      return a;
-   }
+   void a(wg var1);
 
-   public static record a(gw a, String b, int c, int d, boolean e) {
-      public a(so $$0) {
-         this($$0.e(), $$0.s(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
-      }
+   void a(wj var1);
 
-      public void a(so $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
-      }
-   }
+   void a(wk var1);
 }

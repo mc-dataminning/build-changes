@@ -1,86 +1,68 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public class bqj extends bqh {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-public class bqj extends bre {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
-
-   public bqj(bjv $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public bqj(bkl $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
-   @Nullable
    @Override
-   protected ehh h() {
-      float $$0 = this.b.dL().z.i();
-      if (this.b.dL().z.i() < 0.3F) {
-         return this.k();
-      } else {
-         ehh $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
+   public void a() {
+      if (this.r && this.d.aX()) {
+         this.d.f(this.d.do().b(0.0, 0.005, 0.0));
+      }
+
+      if (this.k == bqh.a.b && !this.d.L().l()) {
+         double $$0 = this.e - this.d.dq();
+         double $$1 = this.f - this.d.ds();
+         double $$2 = this.g - this.d.dw();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.A(0.0F);
          } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
+            float $$4 = (float)(asy.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.r(this.a(this.d.dB(), $$4, (float)this.o));
+            this.d.aU = this.d.dB();
+            this.d.aW = this.d.dB();
+            float $$5 = (float)(this.h * this.d.b(blp.m));
+            if (this.d.aX()) {
+               this.d.w($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(asy.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = asy.a(asy.g($$7), (float)(-this.n), (float)this.n);
+                  this.d.s(this.a(this.d.dD(), $$7, 5.0F));
+               }
+
+               float $$8 = asy.b(this.d.dD() * (float) (Math.PI / 180.0));
+               float $$9 = asy.a(this.d.dD() * (float) (Math.PI / 180.0));
+               this.d.bm = $$8 * $$5;
+               this.d.bl = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(asy.g(this.d.dB() - $$4));
+               float $$11 = a($$10);
+               this.d.w($$5 * this.q * $$11);
             }
          }
-
-         return $$1 == null ? this.k() : $$1;
-      }
-   }
-
-   @Nullable
-   private ehh k() {
-      return buf.a(this.b, 10, 7);
-   }
-
-   @Nullable
-   private ehh l() {
-      akt $$0 = (akt)this.b.dL();
-      List<cbn> $$1 = $$0.a(bja.bf, this.b.cG().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
       } else {
-         cbn $$2 = $$1.get(this.b.dL().z.a($$1.size()));
-         ehh $$3 = $$2.dj();
-         return buf.a(this.b, 10, 7, $$3);
+         this.d.w(0.0F);
+         this.d.C(0.0F);
+         this.d.B(0.0F);
+         this.d.A(0.0F);
       }
    }
 
-   @Nullable
-   private ehh m() {
-      hw $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         gw $$1 = this.a($$0);
-         return $$1 == null ? null : buf.a(this.b, 10, 7, ehh.c($$1));
-      }
-   }
-
-   @Nullable
-   private hw n() {
-      akt $$0 = (akt)this.b.dL();
-      List<hw> $$1 = hw.a(hw.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private gw a(hw $$0) {
-      akt $$1 = (akt)this.b.dL();
-      bul $$2 = $$1.w();
-      List<gw> $$3 = $$2.c($$0x -> true, $$0.q(), 8, bul.b.b).map(bum::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(cbn $$0) {
-      return $$0.a(this.b.dL().V());
+   private static float a(float $$0) {
+      return 1.0F - asy.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

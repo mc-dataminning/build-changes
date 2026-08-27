@@ -1,80 +1,73 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public class dnr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<akt, dnr.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<akt, dnr.b>() {
-         public dnr.b a(akt $$0) {
-            return new dnr.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+public abstract class dnr extends doo<dqu> {
+   public dnr(Codec<dqu> $$0) {
+      super($$0);
+   }
+
+   protected void a(cra $$0, ate $$1, ht $$2, dqu $$3, int $$4, ht.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(hx.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
          }
-      });
-
-   public static void a(akt $$0) {
-      try {
-         ((dnr.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
       }
    }
 
-   public static void a(akt $$0, dnd<?, ?> $$1, Optional<dug> $$2) {
-      try {
-         ((dnr.b)b.get($$0)).a().computeInt(new dnr.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
+   protected int a(ate $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
       }
+
+      return $$1;
    }
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
+   protected boolean a(cra $$0, ht $$1, int $$2, ht.a $$3, dqu $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.aj()) {
+         dgb $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(aqs.aZ)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
 
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ac().a().toString();
-               boolean $$3 = $$0.n().v();
-               hq<dug> $$4 = $$0.G_().d(jc.az);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::c).<aez>map(aey::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dgb $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(aqs.O)) {
+                        return false;
+                     }
+                  }
+               }
             }
-         );
+
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
-   static record a(dnd<?, ?> a, Optional<dug> b) {
+   @Override
+   public boolean a(doq<dqu> $$0) {
+      crt $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      ate $$3 = $$0.d();
+      dqu $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      ht.a $$6 = new ht.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
    }
 
-   static record b(Object2IntMap<dnr.a> a, MutableInt b) {
-   }
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(cra var1, ate var2, ht var3, int var4, ht.a var5, dqu var6);
 }

@@ -1,66 +1,60 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
-import javax.annotation.Nonnull;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class gy<T> extends hm<T> implements gz<T> {
-   private final aez b;
-   private he.c<T> c;
+class gy<T extends dw<T>> {
+   @Nullable
+   private List<gq<T>> a = new ArrayList<>();
+   @Nullable
+   private List<ha.a<T>> b;
+   private final List<String> c = new ArrayList<>();
 
-   public gy(String $$0, aey<? extends hq<T>> $$1, Lifecycle $$2, boolean $$3) {
-      super($$1, $$2, $$3);
-      this.b = new aez($$0);
+   public void a(gq<T> $$0) {
+      if (this.b != null) {
+         this.b.add(new ha.c<>($$0));
+      } else {
+         this.a.add($$0);
+      }
    }
 
-   @Override
-   public he.c<T> a(int $$0, aey<T> $$1, T $$2, Lifecycle $$3) {
-      he.c<T> $$4 = super.a($$0, $$1, $$2, $$3);
-      if (this.b.equals($$1.a())) {
-         this.c = $$4;
+   private int a(String $$0) {
+      int $$1 = this.c.indexOf($$0);
+      if ($$1 == -1) {
+         $$1 = this.c.size();
+         this.c.add($$0);
       }
 
-      return $$4;
+      return $$1;
    }
 
-   @Override
-   public int a(@Nullable T $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == -1 ? super.a(this.c.a()) : $$1;
+   private IntList a(List<String> $$0) {
+      IntArrayList $$1 = new IntArrayList($$0.size());
+
+      for (String $$2 : $$0) {
+         $$1.add(this.a($$2));
+      }
+
+      return $$1;
    }
 
-   @Nonnull
-   @Override
-   public aez b(T $$0) {
-      aez $$1 = super.b($$0);
-      return $$1 == null ? this.b : $$1;
+   public void a(String $$0, int $$1) {
+      hc $$2 = hc.a($$0, $$1);
+      if (this.a != null) {
+         this.b = new ArrayList<>(this.a.size() + 1);
+
+         for (gq<T> $$3 : this.a) {
+            this.b.add(new ha.c<>($$3));
+         }
+
+         this.a = null;
+      }
+
+      this.b.add(new ha.b<>($$2, this.a($$2.b())));
    }
 
-   @Nonnull
-   @Override
-   public T a(@Nullable aez $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
-
-   @Override
-   public Optional<T> b(@Nullable aez $$0) {
-      return Optional.ofNullable(super.a($$0));
-   }
-
-   @Nonnull
-   @Override
-   public T a(int $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
-
-   @Override
-   public Optional<he.c<T>> a(ash $$0) {
-      return super.a($$0).or(() -> Optional.of(this.c));
-   }
-
-   @Override
-   public aez a() {
-      return this.b;
+   public gx<T> a(afw $$0) {
+      return (gx<T>)(this.b != null ? new ha<>($$0, this.b, this.c) : new hb<>($$0, this.a));
    }
 }

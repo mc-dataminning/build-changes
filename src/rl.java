@@ -1,145 +1,45 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public class rl extends rk {
-   private static final int b = 10;
-   public static final rs<rl> a = new rs.a<rl>() {
-      public rl a(DataInput $$0, rf $$1) throws IOException {
-         return rl.a(d($$0, $$1));
+public class rl implements ArgumentType<rk> {
+   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+
+   public rk a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      Optional<rk> $$2 = qv.e($$1);
+      if ($$2.isPresent()) {
+         return $$2.get();
+      } else {
+         Message $$3 = ui.b("No such test: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
       }
-
-      @Override
-      public rn.b a(DataInput $$0, rn $$1, rf $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static short d(DataInput $$0, rf $$1) throws IOException {
-         $$1.b(10L);
-         return $$0.readShort();
-      }
-
-      @Override
-      public int c() {
-         return 2;
-      }
-
-      @Override
-      public String a() {
-         return "SHORT";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Short";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final short c;
-
-   rl(short $$0) {
-      this.c = $$0;
    }
 
-   public static rl a(short $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? rl.a.a[$$0 - -128] : new rl($$0);
+   public static rl a() {
+      return new rl();
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeShort(this.c);
+   public static rk a(CommandContext<du> $$0, String $$1) {
+      return (rk)$$0.getArgument($$1, rk.class);
    }
 
-   @Override
-   public int a() {
-      return 10;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      Stream<String> $$2 = qv.a().stream().map(rk::a);
+      return dy.b($$2, $$1);
    }
 
-   @Override
-   public byte b() {
-      return 2;
-   }
-
-   @Override
-   public rs<rl> c() {
+   public Collection<String> getExamples() {
       return a;
-   }
-
-   public rl e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof rl && this.c == ((rl)$$0).c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c;
-   }
-
-   @Override
-   public void a(ru $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.c;
-   }
-
-   @Override
-   public int g() {
-      return this.c;
-   }
-
-   @Override
-   public short h() {
-      return this.c;
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(this.c & 255);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.c;
-   }
-
-   @Override
-   public Number l() {
-      return this.c;
-   }
-
-   @Override
-   public rn.b a(rn $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final rl[] a = new rl[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new rl((short)(-128 + $$0));
-         }
-      }
    }
 }

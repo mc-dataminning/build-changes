@@ -1,24 +1,29 @@
-public class ady implements ve<si> {
-   private final long a;
+public enum ady {
+   a,
+   b;
 
-   public ady(long $$0) {
-      this.a = $$0;
+   private static final int c = 1;
+   private static final int d = 2;
+
+   public static ady a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   public ady(so $$0) {
-      this.a = $$0.readLong();
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+      };
    }
 
-   @Override
-   public void a(so $$0) {
-      $$0.b(this.a);
-   }
-
-   public void a(si $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
+   public tk b() {
+      return switch (this) {
+         case a -> tk.c;
+         case b -> tk.d;
+      };
    }
 }

@@ -1,181 +1,58 @@
-public final class apv {
-   public static final aqk<ctc> a = a("wool");
-   public static final aqk<ctc> b = a("planks");
-   public static final aqk<ctc> c = a("stone_bricks");
-   public static final aqk<ctc> d = a("wooden_buttons");
-   public static final aqk<ctc> e = a("stone_buttons");
-   public static final aqk<ctc> f = a("buttons");
-   public static final aqk<ctc> g = a("wool_carpets");
-   public static final aqk<ctc> h = a("wooden_doors");
-   public static final aqk<ctc> i = a("wooden_stairs");
-   public static final aqk<ctc> j = a("wooden_slabs");
-   public static final aqk<ctc> k = a("wooden_fences");
-   public static final aqk<ctc> l = a("pressure_plates");
-   public static final aqk<ctc> m = a("wooden_pressure_plates");
-   public static final aqk<ctc> n = a("stone_pressure_plates");
-   public static final aqk<ctc> o = a("wooden_trapdoors");
-   public static final aqk<ctc> p = a("doors");
-   public static final aqk<ctc> q = a("saplings");
-   public static final aqk<ctc> r = a("logs_that_burn");
-   public static final aqk<ctc> s = a("overworld_natural_logs");
-   public static final aqk<ctc> t = a("logs");
-   public static final aqk<ctc> u = a("dark_oak_logs");
-   public static final aqk<ctc> v = a("oak_logs");
-   public static final aqk<ctc> w = a("birch_logs");
-   public static final aqk<ctc> x = a("acacia_logs");
-   public static final aqk<ctc> y = a("cherry_logs");
-   public static final aqk<ctc> z = a("jungle_logs");
-   public static final aqk<ctc> A = a("spruce_logs");
-   public static final aqk<ctc> B = a("mangrove_logs");
-   public static final aqk<ctc> C = a("crimson_stems");
-   public static final aqk<ctc> D = a("warped_stems");
-   public static final aqk<ctc> E = a("bamboo_blocks");
-   public static final aqk<ctc> F = a("wart_blocks");
-   public static final aqk<ctc> G = a("banners");
-   public static final aqk<ctc> H = a("sand");
-   public static final aqk<ctc> I = a("smelts_to_glass");
-   public static final aqk<ctc> J = a("stairs");
-   public static final aqk<ctc> K = a("slabs");
-   public static final aqk<ctc> L = a("walls");
-   public static final aqk<ctc> M = a("anvil");
-   public static final aqk<ctc> N = a("rails");
-   public static final aqk<ctc> O = a("leaves");
-   public static final aqk<ctc> P = a("trapdoors");
-   public static final aqk<ctc> Q = a("small_flowers");
-   public static final aqk<ctc> R = a("beds");
-   public static final aqk<ctc> S = a("fences");
-   public static final aqk<ctc> T = a("tall_flowers");
-   public static final aqk<ctc> U = a("flowers");
-   public static final aqk<ctc> V = a("piglin_repellents");
-   public static final aqk<ctc> W = a("gold_ores");
-   public static final aqk<ctc> X = a("iron_ores");
-   public static final aqk<ctc> Y = a("diamond_ores");
-   public static final aqk<ctc> Z = a("redstone_ores");
-   public static final aqk<ctc> aa = a("lapis_ores");
-   public static final aqk<ctc> ab = a("coal_ores");
-   public static final aqk<ctc> ac = a("emerald_ores");
-   public static final aqk<ctc> ad = a("copper_ores");
-   public static final aqk<ctc> ae = a("candles");
-   public static final aqk<ctc> af = a("dirt");
-   public static final aqk<ctc> ag = a("terracotta");
-   public static final aqk<ctc> ah = a("concrete_powder");
-   public static final aqk<ctc> ai = a("completes_find_tree_tutorial");
-   public static final aqk<ctc> aj = a("flower_pots");
-   public static final aqk<ctc> ak = a("enderman_holdable");
-   public static final aqk<ctc> al = a("ice");
-   public static final aqk<ctc> am = a("valid_spawn");
-   public static final aqk<ctc> an = a("impermeable");
-   public static final aqk<ctc> ao = a("underwater_bonemeals");
-   public static final aqk<ctc> ap = a("coral_blocks");
-   public static final aqk<ctc> aq = a("wall_corals");
-   public static final aqk<ctc> ar = a("coral_plants");
-   public static final aqk<ctc> as = a("corals");
-   public static final aqk<ctc> at = a("bamboo_plantable_on");
-   public static final aqk<ctc> au = a("standing_signs");
-   public static final aqk<ctc> av = a("wall_signs");
-   public static final aqk<ctc> aw = a("signs");
-   public static final aqk<ctc> ax = a("ceiling_hanging_signs");
-   public static final aqk<ctc> ay = a("wall_hanging_signs");
-   public static final aqk<ctc> az = a("all_hanging_signs");
-   public static final aqk<ctc> aA = a("all_signs");
-   public static final aqk<ctc> aB = a("dragon_immune");
-   public static final aqk<ctc> aC = a("dragon_transparent");
-   public static final aqk<ctc> aD = a("wither_immune");
-   public static final aqk<ctc> aE = a("wither_summon_base_blocks");
-   public static final aqk<ctc> aF = a("beehives");
-   public static final aqk<ctc> aG = a("crops");
-   public static final aqk<ctc> aH = a("bee_growables");
-   public static final aqk<ctc> aI = a("portals");
-   public static final aqk<ctc> aJ = a("fire");
-   public static final aqk<ctc> aK = a("nylium");
-   public static final aqk<ctc> aL = a("beacon_base_blocks");
-   public static final aqk<ctc> aM = a("soul_speed_blocks");
-   public static final aqk<ctc> aN = a("wall_post_override");
-   public static final aqk<ctc> aO = a("climbable");
-   public static final aqk<ctc> aP = a("fall_damage_resetting");
-   public static final aqk<ctc> aQ = a("shulker_boxes");
-   public static final aqk<ctc> aR = a("hoglin_repellents");
-   public static final aqk<ctc> aS = a("soul_fire_base_blocks");
-   public static final aqk<ctc> aT = a("strider_warm_blocks");
-   public static final aqk<ctc> aU = a("campfires");
-   public static final aqk<ctc> aV = a("guarded_by_piglins");
-   public static final aqk<ctc> aW = a("prevent_mob_spawning_inside");
-   public static final aqk<ctc> aX = a("fence_gates");
-   public static final aqk<ctc> aY = a("unstable_bottom_center");
-   public static final aqk<ctc> aZ = a("mushroom_grow_block");
-   public static final aqk<ctc> ba = a("infiniburn_overworld");
-   public static final aqk<ctc> bb = a("infiniburn_nether");
-   public static final aqk<ctc> bc = a("infiniburn_end");
-   public static final aqk<ctc> bd = a("base_stone_overworld");
-   public static final aqk<ctc> be = a("stone_ore_replaceables");
-   public static final aqk<ctc> bf = a("deepslate_ore_replaceables");
-   public static final aqk<ctc> bg = a("base_stone_nether");
-   public static final aqk<ctc> bh = a("overworld_carver_replaceables");
-   public static final aqk<ctc> bi = a("nether_carver_replaceables");
-   public static final aqk<ctc> bj = a("candle_cakes");
-   public static final aqk<ctc> bk = a("cauldrons");
-   public static final aqk<ctc> bl = a("crystal_sound_blocks");
-   public static final aqk<ctc> bm = a("inside_step_sound_blocks");
-   public static final aqk<ctc> bn = a("combination_step_sound_blocks");
-   public static final aqk<ctc> bo = a("camel_sand_step_sound_blocks");
-   public static final aqk<ctc> bp = a("occludes_vibration_signals");
-   public static final aqk<ctc> bq = a("dampens_vibrations");
-   public static final aqk<ctc> br = a("dripstone_replaceable_blocks");
-   public static final aqk<ctc> bs = a("cave_vines");
-   public static final aqk<ctc> bt = a("moss_replaceable");
-   public static final aqk<ctc> bu = a("lush_ground_replaceable");
-   public static final aqk<ctc> bv = a("azalea_root_replaceable");
-   public static final aqk<ctc> bw = a("small_dripleaf_placeable");
-   public static final aqk<ctc> bx = a("big_dripleaf_placeable");
-   public static final aqk<ctc> by = a("snow");
-   public static final aqk<ctc> bz = a("mineable/axe");
-   public static final aqk<ctc> bA = a("mineable/hoe");
-   public static final aqk<ctc> bB = a("mineable/pickaxe");
-   public static final aqk<ctc> bC = a("mineable/shovel");
-   public static final aqk<ctc> bD = a("sword_efficient");
-   public static final aqk<ctc> bE = a("needs_diamond_tool");
-   public static final aqk<ctc> bF = a("needs_iron_tool");
-   public static final aqk<ctc> bG = a("needs_stone_tool");
-   public static final aqk<ctc> bH = a("features_cannot_replace");
-   public static final aqk<ctc> bI = a("lava_pool_stone_cannot_replace");
-   public static final aqk<ctc> bJ = a("geode_invalid_blocks");
-   public static final aqk<ctc> bK = a("frog_prefer_jump_to");
-   public static final aqk<ctc> bL = a("sculk_replaceable");
-   public static final aqk<ctc> bM = a("sculk_replaceable_world_gen");
-   public static final aqk<ctc> bN = a("ancient_city_replaceable");
-   public static final aqk<ctc> bO = a("vibration_resonators");
-   public static final aqk<ctc> bP = a("animals_spawnable_on");
-   public static final aqk<ctc> bQ = a("axolotls_spawnable_on");
-   public static final aqk<ctc> bR = a("goats_spawnable_on");
-   public static final aqk<ctc> bS = a("mooshrooms_spawnable_on");
-   public static final aqk<ctc> bT = a("parrots_spawnable_on");
-   public static final aqk<ctc> bU = a("polar_bears_spawnable_on_alternate");
-   public static final aqk<ctc> bV = a("rabbits_spawnable_on");
-   public static final aqk<ctc> bW = a("foxes_spawnable_on");
-   public static final aqk<ctc> bX = a("wolves_spawnable_on");
-   public static final aqk<ctc> bY = a("frogs_spawnable_on");
-   public static final aqk<ctc> bZ = a("azalea_grows_on");
-   public static final aqk<ctc> ca = a("convertable_to_mud");
-   public static final aqk<ctc> cb = a("mangrove_logs_can_grow_through");
-   public static final aqk<ctc> cc = a("mangrove_roots_can_grow_through");
-   public static final aqk<ctc> cd = a("dead_bush_may_place_on");
-   public static final aqk<ctc> ce = a("snaps_goat_horn");
-   public static final aqk<ctc> cf = a("replaceable_by_trees");
-   public static final aqk<ctc> cg = a("snow_layer_cannot_survive_on");
-   public static final aqk<ctc> ch = a("snow_layer_can_survive_on");
-   public static final aqk<ctc> ci = a("invalid_spawn_inside");
-   public static final aqk<ctc> cj = a("sniffer_diggable_block");
-   public static final aqk<ctc> ck = a("sniffer_egg_hatch_boost");
-   public static final aqk<ctc> cl = a("trail_ruins_replaceable");
-   public static final aqk<ctc> cm = a("replaceable");
-   public static final aqk<ctc> cn = a("enchantment_power_provider");
-   public static final aqk<ctc> co = a("enchantment_power_transmitter");
-   public static final aqk<ctc> cp = a("maintains_farmland");
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private apv() {
+public abstract class apv implements Runnable {
+   private static final Logger d = LogUtils.getLogger();
+   private static final AtomicInteger e = new AtomicInteger(0);
+   private static final int f = 5;
+   protected volatile boolean a;
+   protected final String b;
+   @Nullable
+   protected Thread c;
+
+   protected apv(String $$0) {
+      this.b = $$0;
    }
 
-   private static aqk<ctc> a(String $$0) {
-      return aqk.a(jc.e, new aez($$0));
+   public synchronized boolean a() {
+      if (this.a) {
+         return true;
+      } else {
+         this.a = true;
+         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
+         this.c.setUncaughtExceptionHandler(new s(d));
+         this.c.start();
+         d.info("Thread {} started", this.b);
+         return true;
+      }
+   }
+
+   public synchronized void b() {
+      this.a = false;
+      if (null != this.c) {
+         int $$0 = 0;
+
+         while (this.c.isAlive()) {
+            try {
+               this.c.join(1000L);
+               if (++$$0 >= 5) {
+                  d.warn("Waited {} seconds attempting force stop!", $$0);
+               } else if (this.c.isAlive()) {
+                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
+                  this.c.interrupt();
+               }
+            } catch (InterruptedException var3) {
+            }
+         }
+
+         d.info("Thread {} stopped", this.b);
+         this.c = null;
+      }
+   }
+
+   public boolean c() {
+      return this.a;
    }
 }

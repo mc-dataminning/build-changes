@@ -1,43 +1,64 @@
-public class bsx extends bsv {
-   private boolean p;
+import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public bsx(bjo $$0, cqb $$1) {
-      super($$0, $$1);
+public class bsx<T extends bkj> extends bte {
+   private static final int i = 10;
+   protected final Class<T> a;
+   protected final int b;
+   @Nullable
+   protected bkj c;
+   protected buv d;
+
+   public bsx(bkl $$0, Class<T> $$1, boolean $$2) {
+      this($$0, $$1, 10, $$2, false, null);
+   }
+
+   public bsx(bkl $$0, Class<T> $$1, boolean $$2, Predicate<bkj> $$3) {
+      this($$0, $$1, 10, $$2, false, $$3);
+   }
+
+   public bsx(bkl $$0, Class<T> $$1, boolean $$2, boolean $$3) {
+      this($$0, $$1, 10, $$2, $$3, null);
+   }
+
+   public bsx(bkl $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bkj> $$5) {
+      super($$0, $$3, $$4);
+      this.a = $$1;
+      this.b = b($$2);
+      this.a(EnumSet.of(bre.a.d));
+      this.d = buv.a().a(this.l()).a($$5);
    }
 
    @Override
-   protected eax a(int $$0) {
-      this.p = this.a.ag() == bja.v;
-      this.o = new eay(this.p);
-      return new eax(this.o, $$0);
+   public boolean a() {
+      if (this.b > 0 && this.e.ef().a(this.b) != 0) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
+   }
+
+   protected eia a(double $$0) {
+      return this.e.cG().c($$0, 4.0, $$0);
+   }
+
+   protected void h() {
+      if (this.a != ccx.class && this.a != alr.class) {
+         this.c = this.e.dL().a(this.e.dL().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.dq(), this.e.du(), this.e.dw());
+      } else {
+         this.c = this.e.dL().a(this.d, this.e, this.e.dq(), this.e.du(), this.e.dw());
+      }
    }
 
    @Override
-   protected boolean a() {
-      return this.p || this.a.bb();
+   public void c() {
+      this.e.h(this.c);
+      super.c();
    }
 
-   @Override
-   protected ehh b() {
-      return new ehh(this.a.dq(), this.a.e(0.5), this.a.dw());
-   }
-
-   @Override
-   protected double a(ehh $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(ehh $$0, ehh $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(gw $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public void a(@Nullable bkj $$0) {
+      this.c = $$0;
    }
 }

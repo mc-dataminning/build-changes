@@ -1,52 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.base.MoreObjects;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordedThread;
 
-public interface bfq {
-   bfp a();
+public record bfq(Instant a, String b, long c) {
+   private static final String d = "unknown";
 
-   static <T> bfq.b<T> a(T $$0, int $$1) {
-      return new bfq.b<>($$0, bfp.a($$1));
+   public static bfq a(RecordedEvent $$0) {
+      RecordedThread $$1 = $$0.getThread("thread");
+      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
+      return new bfq($$0.getStartTime(), $$2, $$0.getLong("allocated"));
    }
 
-   public static class a implements bfq {
-      private final bfp a;
-
-      public a(int $$0) {
-         this.a = bfp.a($$0);
-      }
-
-      public a(bfp $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bfp a() {
-         return this.a;
-      }
+   public static bfq.a a(List<bfq> $$0) {
+      Map<String, Double> $$1 = new TreeMap<>();
+      Map<String, List<bfq>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
+      $$2.forEach(($$1x, $$2x) -> {
+         if ($$2x.size() >= 2) {
+            bfq $$3 = (bfq)$$2x.get(0);
+            bfq $$4 = (bfq)$$2x.get($$2x.size() - 1);
+            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
+            long $$6 = $$4.c - $$3.c;
+            $$1.put($$1x, (double)$$6 / (double)$$5);
+         }
+      });
+      return new bfq.a($$1);
    }
 
-   public static class b<T> implements bfq {
-      private final T a;
-      private final bfp b;
-
-      b(T $$0, bfp $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public T b() {
-         return this.a;
-      }
-
-      @Override
-      public bfp a() {
-         return this.b;
-      }
-
-      public static <E> Codec<bfq.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bfq.b::b), bfp.a.fieldOf("weight").forGetter(bfq.b::a)).apply($$1, bfq.b::new)
-         );
-      }
+   public static record a(Map<String, Double> a) {
    }
 }

@@ -1,90 +1,85 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleLists;
 
-public record eis<T>(T b, gw c, int d, eix e) {
-   private static final String f = "i";
-   private static final String g = "x";
-   private static final String h = "y";
-   private static final String i = "z";
-   private static final String j = "t";
-   private static final String k = "p";
-   public static final Strategy<eis<?>> a = new Strategy<eis<?>>() {
-      public int a(eis<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
-      }
+public class eis implements eir {
+   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
+   private final double[] b;
+   private final int[] c;
+   private final int[] d;
+   private final int e;
 
-      public boolean a(@Nullable eis<?> $$0, @Nullable eis<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
+   public eis(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
+      double $$4 = Double.NaN;
+      int $$5 = $$0.size();
+      int $$6 = $$1.size();
+      int $$7 = $$5 + $$6;
+      this.b = new double[$$7];
+      this.c = new int[$$7];
+      this.d = new int[$$7];
+      boolean $$8 = !$$2;
+      boolean $$9 = !$$3;
+      int $$10 = 0;
+      int $$11 = 0;
+      int $$12 = 0;
+
+      while (true) {
+         boolean $$13 = $$11 >= $$5;
+         boolean $$14 = $$12 >= $$6;
+         if ($$13 && $$14) {
+            this.e = Math.max(1, $$10);
+            return;
+         }
+
+         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
+         if ($$15) {
+            $$11++;
+            if ($$8 && ($$12 == 0 || $$14)) {
+               continue;
+            }
          } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+            $$12++;
+            if ($$9 && ($$11 == 0 || $$13)) {
+               continue;
+            }
+         }
+
+         int $$16 = $$11 - 1;
+         int $$17 = $$12 - 1;
+         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
+         if (!($$4 >= $$18 - 1.0E-7)) {
+            this.c[$$10] = $$16;
+            this.d[$$10] = $$17;
+            this.b[$$10] = $$18;
+            $$10++;
+            $$4 = $$18;
+         } else {
+            this.c[$$10 - 1] = $$16;
+            this.d[$$10 - 1] = $$17;
          }
       }
-   };
+   }
 
-   public static <T> void a(rc $$0, Function<String, Optional<T>> $$1, cpi $$2, Consumer<eis<T>> $$3) {
-      long $$4 = $$2.a();
+   @Override
+   public boolean a(eir.a $$0) {
+      int $$1 = this.e - 1;
 
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         qw $$6 = $$0.a($$5);
-         a($$6, $$1).ifPresent($$2x -> {
-            if (cpi.a($$2x.b()) == $$4) {
-               $$3.accept($$2x);
-            }
-         });
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
+            return false;
+         }
       }
+
+      return true;
    }
 
-   public static <T> Optional<eis<T>> a(qw $$0, Function<String, Optional<T>> $$1) {
-      return $$1.apply($$0.l("i")).map($$1x -> {
-         gw $$2 = new gw($$0.h("x"), $$0.h("y"), $$0.h("z"));
-         return new eis<>((T)$$1x, $$2, $$0.h("t"), eix.a($$0.h("p")));
-      });
-   }
-
-   private static qw a(String $$0, gw $$1, int $$2, eix $$3) {
-      qw $$4 = new qw();
-      $$4.a("i", $$0);
-      $$4.a("x", $$1.u());
-      $$4.a("y", $$1.v());
-      $$4.a("z", $$1.w());
-      $$4.a("t", $$2);
-      $$4.a("p", $$3.a());
-      return $$4;
-   }
-
-   public static <T> qw a(eit<T> $$0, Function<T, String> $$1, long $$2) {
-      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
-   }
-
-   public qw a(Function<T, String> $$0) {
-      return a($$0.apply(this.b), this.c, this.d, this.e);
-   }
-
-   public eit<T> a(long $$0, long $$1) {
-      return new eit<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
-   }
-
-   public static <T> eis<T> a(T $$0, gw $$1) {
-      return new eis<>($$0, $$1, 0, eix.d);
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public gw b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public eix d() {
+   @Override
+   public int size() {
       return this.e;
+   }
+
+   @Override
+   public DoubleList a() {
+      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
    }
 }

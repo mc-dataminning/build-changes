@@ -1,18 +1,18 @@
-class bif extends bih {
-   protected bif(bii $$0, int $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public interface bif {
+   ui ab();
+
+   default boolean ac() {
+      return this.ad() != null;
    }
 
-   @Override
-   public void a(bjm $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof cca $$2) {
-         $$2.A(0.005F * (float)($$1 + 1));
-      }
+   default ui O_() {
+      return this.ab();
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   @Nullable
+   default ui ad() {
+      return null;
    }
 }

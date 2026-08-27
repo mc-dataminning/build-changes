@@ -1,74 +1,67 @@
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
 
-public class jw implements ji {
-   private final jk d;
-
-   public jw(jk $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public CompletableFuture<?> a(jg $$0) {
-      JsonObject $$1 = new JsonObject();
-
-      for (ctc $$2 : jb.f) {
-         aez $$3 = jb.f.b($$2);
-         JsonObject $$4 = new JsonObject();
-         dfe<ctc, dfd> $$5 = $$2.n();
-         if (!$$5.d().isEmpty()) {
-            JsonObject $$6 = new JsonObject();
-
-            for (dgg<?> $$7 : $$5.d()) {
-               JsonArray $$8 = new JsonArray();
-
-               for (Comparable<?> $$9 : $$7.a()) {
-                  $$8.add(ac.a($$7, $$9));
-               }
-
-               $$6.add($$7.f(), $$8);
-            }
-
-            $$4.add("properties", $$6);
-         }
-
-         JsonArray $$10 = new JsonArray();
-         UnmodifiableIterator var17 = $$5.a().iterator();
-
-         while (var17.hasNext()) {
-            dfd $$11 = (dfd)var17.next();
-            JsonObject $$12 = new JsonObject();
-            JsonObject $$13 = new JsonObject();
-
-            for (dgg<?> $$14 : $$5.d()) {
-               $$13.addProperty($$14.f(), ac.a($$14, $$11.c($$14)));
-            }
-
-            if ($$13.size() > 0) {
-               $$12.add("properties", $$13);
-            }
-
-            $$12.addProperty("id", ctc.i($$11));
-            if ($$11 == $$2.o()) {
-               $$12.addProperty("default", true);
-            }
-
-            $$10.add($$12);
-         }
-
-         $$4.add("states", $$10);
-         $$1.add($$3.toString(), $$4);
+public class jw implements jq {
+   public static final Codec<jw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dkp.b.fieldOf("destination").forGetter($$0x -> $$0x.c), Codec.INT.fieldOf("arrival_in_ticks").forGetter($$0x -> $$0x.d))
+            .apply($$0, jw::new)
+   );
+   public static final jq.a<jw> b = new jq.a<jw>() {
+      public jw a(jr<jw> $$0, StringReader $$1) throws CommandSyntaxException {
+         $$1.expect(' ');
+         float $$2 = (float)$$1.readDouble();
+         $$1.expect(' ');
+         float $$3 = (float)$$1.readDouble();
+         $$1.expect(' ');
+         float $$4 = (float)$$1.readDouble();
+         $$1.expect(' ');
+         int $$5 = $$1.readInt();
+         ht $$6 = ht.a((double)$$2, (double)$$3, (double)$$4);
+         return new jw(new dkh($$6), $$5);
       }
 
-      Path $$15 = this.d.a(jk.b.c).resolve("blocks.json");
-      return ji.a($$0, $$1, $$15);
+      public jw a(jr<jw> $$0, tl $$1) {
+         dkp $$2 = dkq.c($$1);
+         int $$3 = $$1.n();
+         return new jw($$2, $$3);
+      }
+   };
+   private final dkp c;
+   private final int d;
+
+   public jw(dkp $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public final String a() {
-      return "Block List";
+   public void a(tl $$0) {
+      dkq.a(this.c, $$0);
+      $$0.c(this.d);
+   }
+
+   @Override
+   public String a() {
+      eif $$0 = this.c.a(null).get();
+      double $$1 = $$0.a();
+      double $$2 = $$0.b();
+      double $$3 = $$0.c();
+      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %d", jy.k.b(this.b()), $$1, $$2, $$3, this.d);
+   }
+
+   @Override
+   public jr<jw> b() {
+      return js.P;
+   }
+
+   public dkp c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
    }
 }

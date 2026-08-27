@@ -1,625 +1,499 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public final class rj {
-   private static final Comparator<rc> b = Comparator.<rc>comparingInt($$0 -> $$0.e(1)).thenComparingInt($$0 -> $$0.e(0)).thenComparingInt($$0 -> $$0.e(2));
-   private static final Comparator<rc> c = Comparator.<rc>comparingDouble($$0 -> $$0.h(1))
-      .thenComparingDouble($$0 -> $$0.h(0))
-      .thenComparingDouble($$0 -> $$0.h(2));
-   public static final String a = "data";
-   private static final char d = '{';
-   private static final char e = '}';
-   private static final String f = ",";
-   private static final char g = ':';
-   private static final Splitter h = Splitter.on(",");
-   private static final Splitter i = Splitter.on(':').limit(2);
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 2;
-   private static final int l = -1;
+public class rj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 200;
+   private static final int c = 1024;
+   private static final int d = 15;
+   private static final int e = 200;
+   private static final int f = 3;
+   private static final int g = 10000;
+   private static final int h = 5;
+   private static final int i = 5;
+   private static final int j = 5;
 
-   private rj() {
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
+                                                "test"
+                                             )
+                                             .then(
+                                                ((LiteralArgumentBuilder)dv.a("runthis").executes($$0x -> a((du)$$0x.getSource(), false)))
+                                                   .then(dv.a("untilFailed").executes($$0x -> a((du)$$0x.getSource(), true)))
+                                             ))
+                                          .then(dv.a("runthese").executes($$0x -> b((du)$$0x.getSource(), false))))
+                                       .then(
+                                          ((LiteralArgumentBuilder)dv.a("runfailed").executes($$0x -> a((du)$$0x.getSource(), false, 0, 8)))
+                                             .then(
+                                                ((RequiredArgumentBuilder)dv.a("onlyRequiredTests", BoolArgumentType.bool())
+                                                      .executes($$0x -> a((du)$$0x.getSource(), BoolArgumentType.getBool($$0x, "onlyRequiredTests"), 0, 8)))
+                                                   .then(
+                                                      ((RequiredArgumentBuilder)dv.a("rotationSteps", IntegerArgumentType.integer())
+                                                            .executes(
+                                                               $$0x -> a(
+                                                                     (du)$$0x.getSource(),
+                                                                     BoolArgumentType.getBool($$0x, "onlyRequiredTests"),
+                                                                     IntegerArgumentType.getInteger($$0x, "rotationSteps"),
+                                                                     8
+                                                                  )
+                                                            ))
+                                                         .then(
+                                                            dv.a("testsPerRow", IntegerArgumentType.integer())
+                                                               .executes(
+                                                                  $$0x -> a(
+                                                                        (du)$$0x.getSource(),
+                                                                        BoolArgumentType.getBool($$0x, "onlyRequiredTests"),
+                                                                        IntegerArgumentType.getInteger($$0x, "rotationSteps"),
+                                                                        IntegerArgumentType.getInteger($$0x, "testsPerRow")
+                                                                     )
+                                                               )
+                                                         )
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       dv.a("run")
+                                          .then(
+                                             ((RequiredArgumentBuilder)dv.a("testName", rl.a())
+                                                   .executes($$0x -> a((du)$$0x.getSource(), rl.a($$0x, "testName"), 0)))
+                                                .then(
+                                                   dv.a("rotationSteps", IntegerArgumentType.integer())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               rl.a($$0x, "testName"),
+                                                               IntegerArgumentType.getInteger($$0x, "rotationSteps")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("runall").executes($$0x -> a((du)$$0x.getSource(), 0, 8)))
+                                          .then(
+                                             ((RequiredArgumentBuilder)dv.a("testClassName", ri.a())
+                                                   .executes($$0x -> a((du)$$0x.getSource(), ri.a($$0x, "testClassName"), 0, 8)))
+                                                .then(
+                                                   ((RequiredArgumentBuilder)dv.a("rotationSteps", IntegerArgumentType.integer())
+                                                         .executes(
+                                                            $$0x -> a(
+                                                                  (du)$$0x.getSource(),
+                                                                  ri.a($$0x, "testClassName"),
+                                                                  IntegerArgumentType.getInteger($$0x, "rotationSteps"),
+                                                                  8
+                                                               )
+                                                         ))
+                                                      .then(
+                                                         dv.a("testsPerRow", IntegerArgumentType.integer())
+                                                            .executes(
+                                                               $$0x -> a(
+                                                                     (du)$$0x.getSource(),
+                                                                     ri.a($$0x, "testClassName"),
+                                                                     IntegerArgumentType.getInteger($$0x, "rotationSteps"),
+                                                                     IntegerArgumentType.getInteger($$0x, "testsPerRow")
+                                                                  )
+                                                            )
+                                                      )
+                                                )
+                                          ))
+                                       .then(
+                                          ((RequiredArgumentBuilder)dv.a("rotationSteps", IntegerArgumentType.integer())
+                                                .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "rotationSteps"), 8)))
+                                             .then(
+                                                dv.a("testsPerRow", IntegerArgumentType.integer())
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (du)$$0x.getSource(),
+                                                            IntegerArgumentType.getInteger($$0x, "rotationSteps"),
+                                                            IntegerArgumentType.getInteger($$0x, "testsPerRow")
+                                                         )
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 dv.a("export")
+                                    .then(
+                                       dv.a("testName", StringArgumentType.word())
+                                          .executes($$0x -> c((du)$$0x.getSource(), StringArgumentType.getString($$0x, "testName")))
+                                    )
+                              ))
+                           .then(dv.a("exportthis").executes($$0x -> a((du)$$0x.getSource()))))
+                        .then(dv.a("exportthese").executes($$0x -> b((du)$$0x.getSource()))))
+                     .then(
+                        dv.a("import")
+                           .then(
+                              dv.a("testName", StringArgumentType.word())
+                                 .executes($$0x -> d((du)$$0x.getSource(), StringArgumentType.getString($$0x, "testName")))
+                           )
+                     ))
+                  .then(
+                     ((LiteralArgumentBuilder)dv.a("pos").executes($$0x -> a((du)$$0x.getSource(), "pos")))
+                        .then(dv.a("var", StringArgumentType.word()).executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "var"))))
+                  ))
+               .then(
+                  dv.a("create")
+                     .then(
+                        ((RequiredArgumentBuilder)dv.a("testName", StringArgumentType.word())
+                              .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "testName"), 5, 5, 5)))
+                           .then(
+                              ((RequiredArgumentBuilder)dv.a("width", IntegerArgumentType.integer())
+                                    .executes(
+                                       $$0x -> a(
+                                             (du)$$0x.getSource(),
+                                             StringArgumentType.getString($$0x, "testName"),
+                                             IntegerArgumentType.getInteger($$0x, "width"),
+                                             IntegerArgumentType.getInteger($$0x, "width"),
+                                             IntegerArgumentType.getInteger($$0x, "width")
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("height", IntegerArgumentType.integer())
+                                       .then(
+                                          dv.a("depth", IntegerArgumentType.integer())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      StringArgumentType.getString($$0x, "testName"),
+                                                      IntegerArgumentType.getInteger($$0x, "width"),
+                                                      IntegerArgumentType.getInteger($$0x, "height"),
+                                                      IntegerArgumentType.getInteger($$0x, "depth")
+                                                   )
+                                             )
+                                       )
+                                 )
+                           )
+                     )
+               ))
+            .then(
+               ((LiteralArgumentBuilder)dv.a("clearall").executes($$0x -> a((du)$$0x.getSource(), 200)))
+                  .then(dv.a("radius", IntegerArgumentType.integer()).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "radius"))))
+            )
+      );
    }
 
-   @Nullable
-   public static GameProfile a(qw $$0) {
-      UUID $$1 = $$0.b("Id") ? $$0.a("Id") : ac.d;
-      String $$2 = $$0.l("Name");
+   private static int a(du $$0, String $$1, int $$2, int $$3, int $$4) {
+      if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
+         alq $$5 = $$0.f();
+         ht $$6 = ht.a($$0.e());
+         ht $$7 = new ht($$6.u(), $$0.f().a(dlk.a.b, $$6).v(), $$6.w() + 3);
+         rg.a($$1.toLowerCase(), $$7, new iw($$2, $$3, $$4), dal.a, $$5);
+
+         for (int $$8 = 0; $$8 < $$2; $$8++) {
+            for (int $$9 = 0; $$9 < $$4; $$9++) {
+               ht $$10 = new ht($$7.u() + $$8, $$7.v() + 1, $$7.w() + $$9);
+               cua $$11 = cuc.h;
+               fh $$12 = new fh($$11.o(), Collections.emptySet(), null);
+               $$12.a($$5, $$10, 2);
+            }
+         }
+
+         rg.a($$7, new ht(1, 0, -1), dal.a, $$5);
+         return 0;
+      } else {
+         throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
+      }
+   }
+
+   private static int a(du $$0, String $$1) throws CommandSyntaxException {
+      eib $$2 = (eib)$$0.i().a(10.0, 1.0F, false);
+      ht $$3 = $$2.a();
+      alq $$4 = $$0.f();
+      Optional<ht> $$5 = rg.a($$3, 15, $$4);
+      if ($$5.isEmpty()) {
+         $$5 = rg.a($$3, 200, $$4);
+      }
+
+      if ($$5.isEmpty()) {
+         $$0.b(ui.b("Can't find a structure block that contains the targeted pos " + $$3));
+         return 0;
+      } else {
+         dfk $$6 = (dfk)$$4.c_($$5.get());
+         ht $$7 = $$3.b($$5.get());
+         String $$8 = $$7.u() + ", " + $$7.v() + ", " + $$7.w();
+         String $$9 = $$6.f();
+         ui $$10 = ui.b($$8)
+            .b(
+               vf.a
+                  .a(true)
+                  .a(n.k)
+                  .a(new uo(uo.a.a, ui.b("Click to copy to clipboard")))
+                  .a(new ug(ug.a.f, "final BlockPos " + $$1 + " = new BlockPos(" + $$8 + ");"))
+            );
+         $$0.a(() -> ui.b("Position relative to " + $$9 + ": ").b($$10), false);
+         abz.a($$4, new ht($$3), $$8, -2147418368, 10000);
+         return 1;
+      }
+   }
+
+   private static int a(du $$0, boolean $$1) {
+      ht $$2 = ht.a($$0.e());
+      alq $$3 = $$0.f();
+      ht $$4 = rg.b($$2, 15, $$3);
+      if ($$4 == null) {
+         a($$3, "Couldn't find any structure block within 15 radius", n.m);
+         return 0;
+      } else {
+         qw.a($$3);
+         a($$3, $$4, null, $$1);
+         return 1;
+      }
+   }
+
+   private static int b(du $$0, boolean $$1) {
+      ht $$2 = ht.a($$0.e());
+      alq $$3 = $$0.f();
+      Collection<ht> $$4 = rg.c($$2, 200, $$3);
+      if ($$4.isEmpty()) {
+         a($$3, "Couldn't find any structure blocks within 200 block radius", n.m);
+         return 1;
+      } else {
+         qw.a($$3);
+         b($$0, "Running " + $$4.size() + " tests...");
+         re $$5 = new re();
+         $$4.forEach($$3x -> a($$3, $$3x, $$5, $$1));
+         return 1;
+      }
+   }
+
+   private static void a(alq $$0, ht $$1, @Nullable re $$2, boolean $$3) {
+      dfk $$4 = (dfk)$$0.c_($$1);
+      String $$5 = $$4.f();
+      rk $$6 = qv.f($$5);
+      qt $$7 = new qt($$6, $$4.w(), $$0);
+      $$7.a($$3);
+      if ($$2 != null) {
+         $$2.a($$7);
+         $$7.a(new rj.a($$0, $$2));
+      }
+
+      a($$6, $$0);
+      eia $$8 = rg.a($$4);
+      ht $$9 = ht.a($$8.a, $$8.b, $$8.c);
+      qw.a($$7, $$9, qz.a);
+   }
+
+   static void a(alq $$0, re $$1) {
+      if ($$1.i()) {
+         a($$0, "GameTest done! " + $$1.h() + " tests were run", n.p);
+         if ($$1.d()) {
+            a($$0, $$1.a() + " required tests failed :(", n.m);
+         } else {
+            a($$0, "All required tests passed :)", n.k);
+         }
+
+         if ($$1.e()) {
+            a($$0, $$1.b() + " optional tests failed", n.h);
+         }
+      }
+   }
+
+   private static int a(du $$0, int $$1) {
+      alq $$2 = $$0.f();
+      qw.a($$2);
+      ht $$3 = ht.a($$0.e().c, (double)$$0.f().a(dlk.a.b, ht.a($$0.e())).v(), $$0.e().e);
+      qw.a($$2, $$3, qz.a, asy.a($$1, 0, 1024));
+      return 1;
+   }
+
+   private static int a(du $$0, rk $$1, int $$2) {
+      alq $$3 = $$0.f();
+      ht $$4 = ht.a($$0.e());
+      int $$5 = $$0.f().a(dlk.a.b, $$4).v();
+      ht $$6 = new ht($$4.u(), $$5, $$4.w() + 3);
+      qw.a($$3);
+      a($$1, $$3);
+      dal $$7 = rg.a($$2);
+      qt $$8 = new qt($$1, $$7, $$3);
+      qw.a($$8, $$6, qz.a);
+      return 1;
+   }
+
+   private static void a(rk $$0, alq $$1) {
+      Consumer<alq> $$2 = qv.c($$0.e());
+      if ($$2 != null) {
+         $$2.accept($$1);
+      }
+   }
+
+   private static int a(du $$0, int $$1, int $$2) {
+      qw.a($$0.f());
+      Collection<rk> $$3 = qv.a();
+      b($$0, "Running all " + $$3.size() + " tests...");
+      qv.d();
+      a($$0, $$3, $$1, $$2);
+      return 1;
+   }
+
+   private static int a(du $$0, String $$1, int $$2, int $$3) {
+      Collection<rk> $$4 = qv.a($$1);
+      qw.a($$0.f());
+      b($$0, "Running " + $$4.size() + " tests from " + $$1 + "...");
+      qv.d();
+      a($$0, $$4, $$2, $$3);
+      return 1;
+   }
+
+   private static int a(du $$0, boolean $$1, int $$2, int $$3) {
+      Collection<rk> $$4;
+      if ($$1) {
+         $$4 = qv.c().stream().filter(rk::d).collect(Collectors.toList());
+      } else {
+         $$4 = qv.c();
+      }
+
+      if ($$4.isEmpty()) {
+         b($$0, "No failed tests to rerun");
+         return 0;
+      } else {
+         qw.a($$0.f());
+         b($$0, "Rerunning " + $$4.size() + " failed tests (" + ($$1 ? "only required tests" : "including optional tests") + ")");
+         a($$0, $$4, $$2, $$3);
+         return 1;
+      }
+   }
+
+   private static void a(du $$0, Collection<rk> $$1, int $$2, int $$3) {
+      ht $$4 = ht.a($$0.e());
+      ht $$5 = new ht($$4.u(), $$0.f().a(dlk.a.b, $$4).v(), $$4.w() + 3);
+      alq $$6 = $$0.f();
+      dal $$7 = rg.a($$2);
+      Collection<qt> $$8 = qw.b($$1, $$5, $$7, $$6, qz.a, $$3);
+      re $$9 = new re($$8);
+      $$9.a(new rj.a($$6, $$9));
+      $$9.a($$0x -> qv.a($$0x.v()));
+   }
+
+   private static void b(du $$0, String $$1) {
+      $$0.a(() -> ui.b($$1), false);
+   }
+
+   private static int a(du $$0) {
+      ht $$1 = ht.a($$0.e());
+      alq $$2 = $$0.f();
+      ht $$3 = rg.b($$1, 15, $$2);
+      if ($$3 == null) {
+         a($$2, "Couldn't find any structure block within 15 radius", n.m);
+         return 0;
+      } else {
+         dfk $$4 = (dfk)$$2.c_($$3);
+         String $$5 = $$4.f();
+         return c($$0, $$5);
+      }
+   }
+
+   private static int b(du $$0) {
+      ht $$1 = ht.a($$0.e());
+      alq $$2 = $$0.f();
+      Collection<ht> $$3 = rg.c($$1, 200, $$2);
+      if ($$3.isEmpty()) {
+         a($$2, "Couldn't find any structure blocks within 200 block radius", n.m);
+         return 1;
+      } else {
+         boolean $$4 = true;
+
+         for (ht $$5 : $$3) {
+            dfk $$6 = (dfk)$$2.c_($$5);
+            String $$7 = $$6.f();
+            if (c($$0, $$7) != 0) {
+               $$4 = false;
+            }
+         }
+
+         return $$4 ? 0 : 1;
+      }
+   }
+
+   private static int c(du $$0, String $$1) {
+      Path $$2 = Paths.get(rg.b);
+      afw $$3 = new afw("minecraft", $$1);
+      Path $$4 = $$0.f().p().a($$3, ".nbt");
+      Path $$5 = ng.a(kd.a, $$4, $$1, $$2);
+      if ($$5 == null) {
+         b($$0, "Failed to export " + $$4);
+         return 1;
+      } else {
+         try {
+            Files.createDirectories($$5.getParent());
+         } catch (IOException var7) {
+            b($$0, "Could not create folder " + $$5.getParent());
+            a.error("Could not create export folder", var7);
+            return 1;
+         }
+
+         b($$0, "Exported " + $$1 + " to " + $$5.toAbsolutePath());
+         return 0;
+      }
+   }
+
+   private static int d(du $$0, String $$1) {
+      Path $$2 = Paths.get(rg.b, $$1 + ".snbt");
+      afw $$3 = new afw("minecraft", $$1);
+      Path $$4 = $$0.f().p().a($$3, ".nbt");
 
       try {
-         GameProfile $$3 = new GameProfile($$1, $$2);
-         if ($$0.b("Properties", 10)) {
-            qw $$4 = $$0.p("Properties");
+         BufferedReader $$5 = Files.newBufferedReader($$2);
+         String $$6 = IOUtils.toString($$5);
+         Files.createDirectories($$4.getParent());
 
-            for (String $$5 : $$4.e()) {
-               rc $$6 = $$4.c($$5, 10);
-
-               for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
-                  qw $$8 = $$6.a($$7);
-                  String $$9 = $$8.l("Value");
-                  if ($$8.b("Signature", 8)) {
-                     $$3.getProperties().put($$5, new Property($$5, $$9, $$8.l("Signature")));
-                  } else {
-                     $$3.getProperties().put($$5, new Property($$5, $$9));
-                  }
-               }
-            }
+         try (OutputStream $$7 = Files.newOutputStream($$4)) {
+            se.a(sg.a($$6), $$7);
          }
 
-         return $$3;
-      } catch (Throwable var11) {
-         return null;
+         b($$0, "Imported to " + $$4.toAbsolutePath());
+         return 0;
+      } catch (CommandSyntaxException | IOException var12) {
+         a.error("Failed to load structure {}", $$1, var12);
+         return 1;
       }
    }
 
-   public static qw a(qw $$0, GameProfile $$1) {
-      if (!$$1.getName().isEmpty()) {
-         $$0.a("Name", $$1.getName());
+   private static void a(alq $$0, String $$1, n $$2) {
+      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(ui.b($$2 + $$1)));
+   }
+
+   static class a implements qu {
+      private final alq a;
+      private final re b;
+
+      public a(alq $$0, re $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      if (!$$1.getId().equals(ac.d)) {
-         $$0.a("Id", $$1.getId());
+      @Override
+      public void a(qt $$0) {
       }
 
-      if (!$$1.getProperties().isEmpty()) {
-         qw $$2 = new qw();
-
-         for (String $$3 : $$1.getProperties().keySet()) {
-            rc $$4 = new rc();
-
-            for (Property $$5 : $$1.getProperties().get($$3)) {
-               qw $$6 = new qw();
-               $$6.a("Value", $$5.value());
-               String $$7 = $$5.signature();
-               if ($$7 != null) {
-                  $$6.a("Signature", $$7);
-               }
-
-               $$4.add($$6);
-            }
-
-            $$2.a($$3, $$4);
-         }
-
-         $$0.a("Properties", $$2);
+      @Override
+      public void b(qt $$0) {
+         rj.a(this.a, this.b);
       }
 
-      return $$0;
-   }
-
-   @VisibleForTesting
-   public static boolean a(@Nullable rq $$0, @Nullable rq $$1, boolean $$2) {
-      if ($$0 == $$1) {
-         return true;
-      } else if ($$0 == null) {
-         return true;
-      } else if ($$1 == null) {
-         return false;
-      } else if (!$$0.getClass().equals($$1.getClass())) {
-         return false;
-      } else if ($$0 instanceof qw $$3) {
-         qw $$4 = (qw)$$1;
-
-         for (String $$5 : $$3.e()) {
-            rq $$6 = $$3.c($$5);
-            if (!a($$6, $$4.c($$5), $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         if ($$0 instanceof rc $$7 && $$2) {
-            rc $$8 = (rc)$$1;
-            if ($$7.isEmpty()) {
-               return $$8.isEmpty();
-            }
-
-            for (rq $$9 : $$7) {
-               boolean $$10 = false;
-
-               for (rq $$11 : $$8) {
-                  if (a($$9, $$11, $$2)) {
-                     $$10 = true;
-                     break;
-                  }
-               }
-
-               if (!$$10) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-
-         return $$0.equals($$1);
+      @Override
+      public void c(qt $$0) {
+         rj.a(this.a, this.b);
       }
-   }
-
-   public static ra a(UUID $$0) {
-      return new ra(hx.a($$0));
-   }
-
-   public static UUID a(rq $$0) {
-      if ($$0.c() != ra.a) {
-         throw new IllegalArgumentException("Expected UUID-Tag to be of type " + ra.a.a() + ", but found " + $$0.c().a() + ".");
-      } else {
-         int[] $$1 = ((ra)$$0).g();
-         if ($$1.length != 4) {
-            throw new IllegalArgumentException("Expected UUID-Array to be of length 4, but found " + $$1.length + ".");
-         } else {
-            return hx.a($$1);
-         }
-      }
-   }
-
-   public static gw b(qw $$0) {
-      return new gw($$0.h("X"), $$0.h("Y"), $$0.h("Z"));
-   }
-
-   public static qw a(gw $$0) {
-      qw $$1 = new qw();
-      $$1.a("X", $$0.u());
-      $$1.a("Y", $$0.v());
-      $$1.a("Z", $$0.w());
-      return $$1;
-   }
-
-   public static dfd a(hf<ctc> $$0, qw $$1) {
-      if (!$$1.b("Name", 8)) {
-         return cte.a.o();
-      } else {
-         aez $$2 = new aez($$1.l("Name"));
-         Optional<? extends he<ctc>> $$3 = $$0.a(aey.a(jc.e, $$2));
-         if ($$3.isEmpty()) {
-            return cte.a.o();
-         } else {
-            ctc $$4 = $$3.get().a();
-            dfd $$5 = $$4.o();
-            if ($$1.b("Properties", 10)) {
-               qw $$6 = $$1.p("Properties");
-               dfe<ctc, dfd> $$7 = $$4.n();
-
-               for (String $$8 : $$6.e()) {
-                  dgg<?> $$9 = $$7.a($$8);
-                  if ($$9 != null) {
-                     $$5 = a($$5, $$9, $$8, $$6, $$1);
-                  }
-               }
-            }
-
-            return $$5;
-         }
-      }
-   }
-
-   private static <S extends dff<?, S>, T extends Comparable<T>> S a(S $$0, dgg<T> $$1, String $$2, qw $$3, qw $$4) {
-      Optional<T> $$5 = $$1.b($$3.l($$2));
-      if ($$5.isPresent()) {
-         return $$0.a($$1, $$5.get());
-      } else {
-         j.warn("Unable to read property: {} with value: {} for blockstate: {}", new Object[]{$$2, $$3.l($$2), $$4});
-         return $$0;
-      }
-   }
-
-   public static qw a(dfd $$0) {
-      qw $$1 = new qw();
-      $$1.a("Name", jb.f.b($$0.b()).toString());
-      ImmutableMap<dgg<?>, Comparable<?>> $$2 = $$0.C();
-      if (!$$2.isEmpty()) {
-         qw $$3 = new qw();
-         UnmodifiableIterator var4 = $$2.entrySet().iterator();
-
-         while (var4.hasNext()) {
-            Entry<dgg<?>, Comparable<?>> $$4 = (Entry<dgg<?>, Comparable<?>>)var4.next();
-            dgg<?> $$5 = $$4.getKey();
-            $$3.a($$5.f(), a($$5, $$4.getValue()));
-         }
-
-         $$1.a("Properties", $$3);
-      }
-
-      return $$1;
-   }
-
-   public static qw a(eag $$0) {
-      qw $$1 = new qw();
-      $$1.a("Name", jb.d.b($$0.a()).toString());
-      ImmutableMap<dgg<?>, Comparable<?>> $$2 = $$0.C();
-      if (!$$2.isEmpty()) {
-         qw $$3 = new qw();
-         UnmodifiableIterator var4 = $$2.entrySet().iterator();
-
-         while (var4.hasNext()) {
-            Entry<dgg<?>, Comparable<?>> $$4 = (Entry<dgg<?>, Comparable<?>>)var4.next();
-            dgg<?> $$5 = $$4.getKey();
-            $$3.a($$5.f(), a($$5, $$4.getValue()));
-         }
-
-         $$1.a("Properties", $$3);
-      }
-
-      return $$1;
-   }
-
-   private static <T extends Comparable<T>> String a(dgg<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
-   }
-
-   public static String b(rq $$0) {
-      return a($$0, false);
-   }
-
-   public static String a(rq $$0, boolean $$1) {
-      return a(new StringBuilder(), $$0, 0, $$1).toString();
-   }
-
-   public static StringBuilder a(StringBuilder $$0, rq $$1, int $$2, boolean $$3) {
-      switch ($$1.b()) {
-         case 0:
-            break;
-         case 1:
-         case 2:
-         case 3:
-         case 4:
-         case 5:
-         case 6:
-         case 8:
-            $$0.append($$1);
-            break;
-         case 7:
-            qt $$4 = (qt)$$1;
-            byte[] $$5 = $$4.e();
-            int $$6 = $$5.length;
-            a($$2, $$0).append("byte[").append($$6).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$7 = 0; $$7 < $$5.length; $$7++) {
-                  if ($$7 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$7 % 16 == 0 && $$7 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$7 < $$5.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$7 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%02X", $$5[$$7] & 255));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            break;
-         case 9:
-            rc $$8 = (rc)$$1;
-            int $$9 = $$8.size();
-            int $$10 = $$8.f();
-            String $$11 = $$10 == 0 ? "undefined" : rt.a($$10).b();
-            a($$2, $$0).append("list<").append($$11).append(">[").append($$9).append("] [");
-            if ($$9 != 0) {
-               $$0.append('\n');
-            }
-
-            for (int $$12 = 0; $$12 < $$9; $$12++) {
-               if ($$12 != 0) {
-                  $$0.append(",\n");
-               }
-
-               a($$2 + 1, $$0);
-               a($$0, $$8.k($$12), $$2 + 1, $$3);
-            }
-
-            if ($$9 != 0) {
-               $$0.append('\n');
-            }
-
-            a($$2, $$0).append(']');
-            break;
-         case 10:
-            qw $$19 = (qw)$$1;
-            List<String> $$20 = Lists.newArrayList($$19.e());
-            Collections.sort($$20);
-            a($$2, $$0).append('{');
-            if ($$0.length() - $$0.lastIndexOf("\n") > 2 * ($$2 + 1)) {
-               $$0.append('\n');
-               a($$2 + 1, $$0);
-            }
-
-            int $$21 = $$20.stream().mapToInt(String::length).max().orElse(0);
-            String $$22 = Strings.repeat(" ", $$21);
-
-            for (int $$23 = 0; $$23 < $$20.size(); $$23++) {
-               if ($$23 != 0) {
-                  $$0.append(",\n");
-               }
-
-               String $$24 = $$20.get($$23);
-               a($$2 + 1, $$0).append('"').append($$24).append('"').append($$22, 0, $$22.length() - $$24.length()).append(": ");
-               a($$0, $$19.c($$24), $$2 + 1, $$3);
-            }
-
-            if (!$$20.isEmpty()) {
-               $$0.append('\n');
-            }
-
-            a($$2, $$0).append('}');
-            break;
-         case 11:
-            ra $$13 = (ra)$$1;
-            int[] $$14 = $$13.g();
-            int $$15 = 0;
-
-            for (int $$16 : $$14) {
-               $$15 = Math.max($$15, String.format(Locale.ROOT, "%X", $$16).length());
-            }
-
-            int $$17 = $$14.length;
-            a($$2, $$0).append("int[").append($$17).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$18 = 0; $$18 < $$14.length; $$18++) {
-                  if ($$18 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$18 % 16 == 0 && $$18 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$18 < $$14.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$18 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%0" + $$15 + "X", $$14[$$18]));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            break;
-         case 12:
-            rd $$25 = (rd)$$1;
-            long[] $$26 = $$25.g();
-            long $$27 = 0L;
-
-            for (long $$28 : $$26) {
-               $$27 = Math.max($$27, (long)String.format(Locale.ROOT, "%X", $$28).length());
-            }
-
-            long $$29 = (long)$$26.length;
-            a($$2, $$0).append("long[").append($$29).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$30 = 0; $$30 < $$26.length; $$30++) {
-                  if ($$30 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$30 % 16 == 0 && $$30 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$30 < $$26.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$30 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%0" + $$27 + "X", $$26[$$30]));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            break;
-         default:
-            $$0.append("<UNKNOWN :(>");
-      }
-
-      return $$0;
-   }
-
-   private static StringBuilder a(int $$0, StringBuilder $$1) {
-      int $$2 = $$1.lastIndexOf("\n") + 1;
-      int $$3 = $$1.length() - $$2;
-
-      for (int $$4 = 0; $$4 < 2 * $$0 - $$3; $$4++) {
-         $$1.append(' ');
-      }
-
-      return $$1;
-   }
-
-   public static tl c(rq $$0) {
-      return new rv("", 0).a($$0);
-   }
-
-   public static String c(qw $$0) {
-      return new rm().a((rq)d($$0));
-   }
-
-   public static qw a(String $$0) throws CommandSyntaxException {
-      return e(rr.a($$0));
-   }
-
-   @VisibleForTesting
-   static qw d(qw $$0) {
-      boolean $$1 = $$0.b("palettes", 9);
-      rc $$2;
-      if ($$1) {
-         $$2 = $$0.c("palettes", 9).b(0);
-      } else {
-         $$2 = $$0.c("palette", 10);
-      }
-
-      rc $$4 = $$2.stream().map(qw.class::cast).map(rj::f).map(ro::a).collect(Collectors.toCollection(rc::new));
-      $$0.a("palette", $$4);
-      if ($$1) {
-         rc $$5 = new rc();
-         rc $$6 = $$0.c("palettes", 9);
-         $$6.stream().map(rc.class::cast).forEach($$2x -> {
-            qw $$3x = new qw();
-
-            for (int $$4x = 0; $$4x < $$2x.size(); $$4x++) {
-               $$3x.a($$4.j($$4x), f($$2x.a($$4x)));
-            }
-
-            $$5.add($$3x);
-         });
-         $$0.a("palettes", $$5);
-      }
-
-      if ($$0.b("entities", 9)) {
-         rc $$7 = $$0.c("entities", 10);
-         rc $$8 = $$7.stream().map(qw.class::cast).sorted(Comparator.comparing($$0x -> $$0x.c("pos", 6), c)).collect(Collectors.toCollection(rc::new));
-         $$0.a("entities", $$8);
-      }
-
-      rc $$9 = $$0.c("blocks", 10)
-         .stream()
-         .map(qw.class::cast)
-         .sorted(Comparator.comparing($$0x -> $$0x.c("pos", 3), b))
-         .peek($$1x -> $$1x.a("state", $$4.j($$1x.h("state"))))
-         .collect(Collectors.toCollection(rc::new));
-      $$0.a("data", $$9);
-      $$0.r("blocks");
-      return $$0;
-   }
-
-   @VisibleForTesting
-   static qw e(qw $$0) {
-      rc $$1 = $$0.c("palette", 8);
-      Map<String, rq> $$2 = $$1.stream().map(ro.class::cast).map(ro::r_).collect(ImmutableMap.toImmutableMap(Function.identity(), rj::b));
-      if ($$0.b("palettes", 9)) {
-         $$0.a(
-            "palettes",
-            $$0.c("palettes", 10)
-               .stream()
-               .map(qw.class::cast)
-               .map($$1x -> $$2.keySet().stream().map($$1x::l).map(rj::b).collect(Collectors.toCollection(rc::new)))
-               .collect(Collectors.toCollection(rc::new))
-         );
-         $$0.r("palette");
-      } else {
-         $$0.a("palette", $$2.values().stream().collect(Collectors.toCollection(rc::new)));
-      }
-
-      if ($$0.b("data", 9)) {
-         Object2IntMap<String> $$3 = new Object2IntOpenHashMap();
-         $$3.defaultReturnValue(-1);
-
-         for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-            $$3.put($$1.j($$4), $$4);
-         }
-
-         rc $$5 = $$0.c("data", 10);
-
-         for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-            qw $$7 = $$5.a($$6);
-            String $$8 = $$7.l("state");
-            int $$9 = $$3.getInt($$8);
-            if ($$9 == -1) {
-               throw new IllegalStateException("Entry " + $$8 + " missing from palette");
-            }
-
-            $$7.a("state", $$9);
-         }
-
-         $$0.a("blocks", $$5);
-         $$0.r("data");
-      }
-
-      return $$0;
-   }
-
-   @VisibleForTesting
-   static String f(qw $$0) {
-      StringBuilder $$1 = new StringBuilder($$0.l("Name"));
-      if ($$0.b("Properties", 10)) {
-         qw $$2 = $$0.p("Properties");
-         String $$3 = $$2.e().stream().sorted().map($$1x -> $$1x + ":" + $$2.c($$1x).r_()).collect(Collectors.joining(","));
-         $$1.append('{').append($$3).append('}');
-      }
-
-      return $$1.toString();
-   }
-
-   @VisibleForTesting
-   static qw b(String $$0) {
-      qw $$1 = new qw();
-      int $$2 = $$0.indexOf(123);
-      String $$3;
-      if ($$2 >= 0) {
-         $$3 = $$0.substring(0, $$2);
-         qw $$4 = new qw();
-         if ($$2 + 2 <= $$0.length()) {
-            String $$5 = $$0.substring($$2 + 1, $$0.indexOf(125, $$2));
-            h.split($$5).forEach($$2x -> {
-               List<String> $$3x = i.splitToList($$2x);
-               if ($$3x.size() == 2) {
-                  $$4.a($$3x.get(0), $$3x.get(1));
-               } else {
-                  j.error("Something went wrong parsing: '{}' -- incorrect gamedata!", $$0);
-               }
-            });
-            $$1.a("Properties", $$4);
-         }
-      } else {
-         $$3 = $$0;
-      }
-
-      $$1.a("Name", $$3);
-      return $$1;
-   }
-
-   public static qw g(qw $$0) {
-      int $$1 = aa.b().d().c();
-      return a($$0, $$1);
-   }
-
-   public static qw a(qw $$0, int $$1) {
-      $$0.a("DataVersion", $$1);
-      return $$0;
-   }
-
-   public static int b(qw $$0, int $$1) {
-      return $$0.b("DataVersion", 99) ? $$0.h("DataVersion") : $$1;
    }
 }

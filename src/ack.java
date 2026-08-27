@@ -1,24 +1,14 @@
-public class ack implements ve<abd> {
-   private final String a;
-
-   public ack(String $$0) {
-      this.a = $$0;
-   }
-
-   public ack(so $$0) {
-      this.a = $$0.s();
+public record ack(float a) implements wb<aca> {
+   public ack(tl $$0) {
+      this($$0.readFloat());
    }
 
    @Override
-   public void a(so $$0) {
+   public void a(tl $$0) {
       $$0.a(this.a);
    }
 
-   public void a(abd $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
-   }
-
-   public String a() {
-      return this.a;
    }
 }

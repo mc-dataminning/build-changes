@@ -1,22 +1,8 @@
-public interface cnd extends cmp<bgx> {
+public interface cnd extends cnn<cgd> {
    @Override
-   default cmt<?> e() {
-      return cmt.g;
+   default cnr<?> e() {
+      return cnr.a;
    }
 
-   @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
-   }
-
-   @Override
-   default cjl g() {
-      return new cjl(cte.ob);
-   }
-
-   boolean a(cjl var1);
-
-   boolean b(cjl var1);
-
-   boolean c(cjl var1);
+   cnc d();
 }

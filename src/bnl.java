@@ -1,98 +1,85 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.kinds.App;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-public class bnl<U> implements Iterable<U> {
-   protected final List<bnl.a<U>> a;
-   private final ash b = ash.a();
+public class bnl {
+   private static final int a = 20;
+   private static final int b = 8;
+   private static final float c = 0.6F;
+   private static final float d = 0.6F;
+   private static final int e = 5;
+   private static final int f = 10;
 
-   public bnl() {
-      this.a = Lists.newArrayList();
+   public static bmb<bks> a() {
+      return bpm.a(
+         (Function<bpm.b<bks>, ? extends App<bpm.c<bks>, bpp<bks>>>)($$0 -> $$0.group($$0.b(btk.i), $$0.c(btk.m), $$0.a(btk.n), $$0.a(btk.q))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$5.E_().a(10) != 0) {
+                        return false;
+                     } else {
+                        List<bkj> $$8 = $$0.b($$1);
+                        Optional<bkj> $$9 = $$8.stream().filter($$1xx -> a((bkj)$$6, $$1xx)).findAny();
+                        if (!$$9.isPresent()) {
+                           Optional<bkj> $$12 = a($$8);
+                           if ($$12.isPresent()) {
+                              a($$4, $$3, $$2, $$12.get());
+                              return true;
+                           } else {
+                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
+                              return true;
+                           }
+                        } else {
+                           for (int $$10 = 0; $$10 < 10; $$10++) {
+                              eif $$11 = bvc.a($$6, 20, 8);
+                              if ($$11 != null && $$5.b(ht.a($$11))) {
+                                 $$2.a(new btn($$11, 0.6F, 0));
+                                 break;
+                              }
+                           }
+
+                           return true;
+                        }
+                     }
+                  }))
+      );
    }
 
-   private bnl(List<bnl.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   private static void a(bpn<?, bkj> $$0, bpn<?, bnn> $$1, bpn<?, btn> $$2, bkj $$3) {
+      $$0.a($$3);
+      $$1.a(new bml($$3, true));
+      $$2.a(new btn(new bml($$3, false), 0.6F, 1));
    }
 
-   public static <U> Codec<bnl<U>> a(Codec<U> $$0) {
-      return bnl.a.a($$0).listOf().xmap(bnl::new, $$0x -> $$0x.a);
+   private static Optional<bkj> a(List<bkj> $$0) {
+      Map<bkj, Integer> $$1 = b($$0);
+      return $$1.entrySet()
+         .stream()
+         .sorted(Comparator.comparingInt(Entry::getValue))
+         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
+         .map(Entry::getKey)
+         .findFirst();
    }
 
-   public bnl<U> a(U $$0, int $$1) {
-      this.a.add(new bnl.a<>($$0, $$1));
-      return this;
+   private static Map<bkj, Integer> b(List<bkj> $$0) {
+      Map<bkj, Integer> $$1 = Maps.newHashMap();
+      $$0.stream().filter(bnl::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
+      return $$1;
    }
 
-   public bnl<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(bnl.a::c));
-      return this;
+   private static bkj a(bkj $$0) {
+      return $$0.dN().c(btk.q).get();
    }
 
-   public Stream<U> b() {
-      return this.a.stream().map(bnl.a::a);
+   private static boolean b(bkj $$0) {
+      return $$0.dN().c(btk.q).isPresent();
    }
 
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), bnl.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
-      }
-
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<bnl.a<E>> a(final Codec<E> $$0) {
-         return new Codec<bnl.a<E>>() {
-            public <T> DataResult<Pair<bnl.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bnl.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
-            }
-
-            public <T> DataResult<T> a(bnl.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
-      }
+   private static boolean a(bkj $$0, bkj $$1) {
+      return $$1.dN().c(btk.q).filter($$1x -> $$1x == $$0).isPresent();
    }
 }

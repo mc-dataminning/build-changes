@@ -1,40 +1,62 @@
-public class ckt extends cjg {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public ckt(cjg.a $$0) {
-      super($$0);
+public class ckt extends cik {
+   private final bjx<?> a;
+   private final aqc b;
+
+   public ckt(bjx<?> $$0, ebd $$1, aqc $$2, cke.a $$3) {
+      super($$1, $$3);
+      this.a = $$0;
+      this.b = $$2;
    }
 
    @Override
-   public int b(cjl $$0) {
-      return 1200;
+   public void a(@Nullable ccx $$0, cqz $$1, ckj $$2, ht $$3) {
+      if ($$1 instanceof alq) {
+         this.a((alq)$$1, $$2, $$3);
+         $$1.a($$0, dkl.t, $$3);
+      }
    }
 
    @Override
-   public cle c(cjl $$0) {
-      return cle.h;
+   protected void a(@Nullable ccx $$0, cra $$1, ht $$2) {
+      $$1.a($$0, $$2, this.b, aqe.g, 1.0F, 1.0F);
+   }
+
+   private void a(alq $$0, ckj $$1, ht $$2) {
+      if (this.a.a($$0, $$1, null, $$2, bkn.l, true, false) instanceof bvw $$4) {
+         $$4.c($$1.w());
+         $$4.w(true);
+      }
    }
 
    @Override
-   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
-      $$1.a(apg.xk, 1.0F, 1.0F);
-      $$1.b(apq.c.b(this));
-      return cjn.a($$0, $$1, $$2);
-   }
+   public void a(ckj $$0, @Nullable cqz $$1, List<ui> $$2, cma $$3) {
+      if (this.a == bjx.bc) {
+         rt $$4 = $$0.v();
+         if ($$4 != null && $$4.b("BucketVariantTag", 3)) {
+            int $$5 = $$4.h("BucketVariantTag");
+            n[] $$6 = new n[]{n.u, n.h};
+            String $$7 = "color.minecraft." + bwu.s($$5);
+            String $$8 = "color.minecraft." + bwu.t($$5);
 
-   @Override
-   public cjl a(cjl $$0, cqb $$1, bjm $$2) {
-      this.a($$2);
-      return $$0;
-   }
+            for (int $$9 = 0; $$9 < bwu.c.size(); $$9++) {
+               if ($$5 == bwu.c.get($$9).a()) {
+                  $$2.add(ui.c(bwu.c($$9)).a($$6));
+                  return;
+               }
+            }
 
-   @Override
-   public void a(cjl $$0, cqb $$1, bjm $$2, int $$3) {
-      this.a($$2);
-   }
+            $$2.add(bwu.u($$5).d().e().a($$6));
+            uw $$10 = ui.c($$7);
+            if (!$$7.equals($$8)) {
+               $$10.f(", ").b(ui.c($$8));
+            }
 
-   private void a(bjm $$0) {
-      $$0.a(apg.xl, 1.0F, 1.0F);
+            $$10.a($$6);
+            $$2.add($$10);
+         }
+      }
    }
 }

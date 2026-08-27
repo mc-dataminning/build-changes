@@ -1,28 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqp implements dpu {
+public record dqp(dtb b, dmr c, bhg d, int e) implements dqs {
    public static final Codec<dqp> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eag.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               hs.a(jc.e).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+               dtb.a.fieldOf("state_provider").forGetter(dqp::a),
+               dmr.b.fieldOf("target").forGetter(dqp::b),
+               bhg.b(0, 8).fieldOf("radius").forGetter(dqp::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dqp::d)
             )
             .apply($$0, dqp::new)
    );
-   public final eag b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final hi<ctc> f;
 
-   public dqp(eag $$0, boolean $$1, int $$2, int $$3, hi<ctc> $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public dtb a() {
+      return this.b;
+   }
+
+   public dmr b() {
+      return this.c;
+   }
+
+   public bhg c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

@@ -1,57 +1,50 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.Set;
 
 public class aye extends DataFix {
-   public aye(Schema $$0, boolean $$1) {
+   private final Set<String> a;
+
+   public aye(Schema $$0, boolean $$1, Set<String> $$2) {
       super($$0, $$1);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      if (!"MobSpawner".equals($$0.get("id").asString(""))) {
-         return $$0;
-      } else {
-         Optional<String> $$1 = $$0.get("EntityId").asString().result();
-         if ($$1.isPresent()) {
-            Dynamic<?> $$2 = (Dynamic<?>)DataFixUtils.orElse($$0.get("SpawnData").result(), $$0.emptyMap());
-            $$2 = $$2.set("id", $$2.createString($$1.get().isEmpty() ? "Pig" : $$1.get()));
-            $$0 = $$0.set("SpawnData", $$2);
-            $$0 = $$0.remove("EntityId");
-         }
-
-         Optional<? extends Stream<? extends Dynamic<?>>> $$3 = $$0.get("SpawnPotentials").asStreamOpt().result();
-         if ($$3.isPresent()) {
-            $$0 = $$0.set("SpawnPotentials", $$0.createList($$3.get().map($$0x -> {
-               Optional<String> $$1x = $$0x.get("Type").asString().result();
-               if ($$1x.isPresent()) {
-                  Dynamic<?> $$2 = ((Dynamic)DataFixUtils.orElse($$0x.get("Properties").result(), $$0x.emptyMap())).set("id", $$0x.createString($$1x.get()));
-                  return $$0x.set("Entity", $$2).remove("Type").remove("Properties");
-               } else {
-                  return $$0x;
-               }
-            })));
-         }
-
-         return $$0;
-      }
+      this.a = $$2;
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(azd.B);
-      return this.fixTypeEverywhereTyped("MobSpawnerEntityIdentifiersFix", this.getInputSchema().getType(azd.B), $$0, $$1 -> {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-         $$2 = $$2.set("id", $$2.createString("MobSpawner"));
-         DataResult<? extends Pair<? extends Typed<?>, ?>> $$3 = $$0.readTyped(this.a($$2));
-         return $$3.result().isEmpty() ? $$1 : (Typed)((Pair)$$3.result().get()).getFirst();
+      Type<?> $$0 = this.getInputSchema().getType(baa.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(baa.z.typeName(), bbi.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
+      return this.fixTypeEverywhereTyped("ItemRemoveBlockEntityTagFix", $$0, $$3x -> {
+         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
+         if ($$4.isPresent() && this.a.contains($$4.get().getSecond())) {
+            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
+            if ($$5.isPresent()) {
+               Typed<?> $$6 = (Typed<?>)$$5.get();
+               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
+               if ($$7.isPresent()) {
+                  Optional<? extends Dynamic<?>> $$8 = $$6.write().result();
+                  Dynamic<?> $$9 = (Dynamic<?>)($$8.isPresent() ? $$8.get() : (Dynamic)$$6.get(DSL.remainderFinder()));
+                  Dynamic<?> $$10 = $$9.remove("BlockEntityTag");
+                  Optional<? extends Pair<? extends Typed<?>, ?>> $$11 = $$2.type().readTyped($$10).result();
+                  if ($$11.isEmpty()) {
+                     return $$3x;
+                  }
+
+                  return $$3x.set($$2, (Typed)$$11.get().getFirst());
+               }
+            }
+         }
+
+         return $$3x;
       });
    }
 }

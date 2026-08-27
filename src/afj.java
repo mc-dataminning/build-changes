@@ -1,71 +1,53 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.Iterator;
 
-public class afj {
-   private static final Logger a = LogUtils.getLogger();
-   private static final CompletableFuture<atc> b = CompletableFuture.completedFuture(atc.a);
-   private final dn.a c;
-   private final du d;
-   private final cmr e = new cmr();
-   private final aqm f;
-   private final ecn g = new ecn();
-   private final afl h = new afl(this.g);
-   private final afm i;
+public interface afj<T> {
+   default void a(int $$0, int $$1, int $$2, cno<?> $$3, Iterator<T> $$4, int $$5) {
+      int $$6 = $$0;
+      int $$7 = $$1;
+      if ($$3.b() instanceof cnt $$9) {
+         $$6 = $$9.j();
+         $$7 = $$9.k();
+      }
 
-   public afj(hr.b $$0, cei $$1, du.a $$2, int $$3) {
-      this.f = new aqm($$0);
-      this.c = dn.a((hr)$$0, $$1);
-      this.d = new du($$2, this.c);
-      this.c.a(dn.b.a);
-      this.i = new afm($$3, this.d.a());
+      int $$10 = 0;
+
+      for (int $$11 = 0; $$11 < $$1; $$11++) {
+         if ($$10 == $$2) {
+            $$10++;
+         }
+
+         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
+         int $$13 = asy.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         if ($$12 && $$13 > $$11) {
+            $$10 += $$0;
+            $$11++;
+         }
+
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            if (!$$4.hasNext()) {
+               return;
+            }
+
+            $$12 = (float)$$6 < (float)$$0 / 2.0F;
+            $$13 = asy.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            int $$15 = $$6;
+            boolean $$16 = $$14 < $$6;
+            if ($$12) {
+               $$15 = $$13 + $$6;
+               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
+            }
+
+            if ($$16) {
+               this.a($$4, $$10, $$5, $$11, $$14);
+            } else if ($$15 == $$14) {
+               $$10 += $$0 - $$14;
+               break;
+            }
+
+            $$10++;
+         }
+      }
    }
 
-   public afm a() {
-      return this.i;
-   }
-
-   public ecn b() {
-      return this.g;
-   }
-
-   public cmr c() {
-      return this.e;
-   }
-
-   public du d() {
-      return this.d;
-   }
-
-   public afl e() {
-      return this.h;
-   }
-
-   public List<anq> f() {
-      return List.of(this.f, this.g, this.e, this.i, this.h);
-   }
-
-   public static CompletableFuture<afj> a(anw $$0, hr.b $$1, cei $$2, du.a $$3, int $$4, Executor $$5, Executor $$6) {
-      afj $$7 = new afj($$1, $$2, $$3, $$4);
-      return aoc.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(dn.b.b)).thenApply($$1x -> $$7);
-   }
-
-   public void a(hr $$0) {
-      this.f.a().forEach($$1 -> a($$0, (aqm.a<?>)$$1));
-      cte.a();
-   }
-
-   private static <T> void a(hr $$0, aqm.a<T> $$1) {
-      aey<? extends hq<T>> $$2 = $$1.a();
-      Map<aqk<T>, List<he<T>>> $$3 = $$1.b()
-         .entrySet()
-         .stream()
-         .collect(Collectors.toUnmodifiableMap($$1x -> aqk.a($$2, (aez)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends he<T>>)$$0x.getValue())));
-      $$0.d($$2).a($$3);
-   }
+   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
 }

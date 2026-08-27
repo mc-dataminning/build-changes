@@ -1,79 +1,61 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class bra extends bqh {
-   public static final int a = 1;
-   protected final bjv b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class bra extends bre {
+   private static final int a = 200;
+   private final bvt b;
+   private int c;
+   private int d;
 
-   public bra(bjv $$0, double $$1) {
+   public bra(bvt $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bqh.a.a));
+      this.d = this.a($$0);
+   }
+
+   protected int a(bvt $$0) {
+      return b(200 + $$0.ef().a(200) % 20);
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
+      if (this.b.gk()) {
          return false;
-      } else {
-         if (this.b.bM()) {
-            gw $$0 = this.a(this.b.dL(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.b.eg() != null || this.b.dA() || this.b.bM();
-   }
-
-   protected boolean i() {
-      ehh $$0 = buc.a(this.b, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
+      } else if (this.b.gh()) {
          return true;
+      } else if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         this.d = this.a(this.b);
+         Predicate<bvt> $$0 = $$0x -> $$0x.gj() || !$$0x.gh();
+         List<? extends bvt> $$1 = this.b.dL().a((Class<? extends bvt>)this.b.getClass(), this.b.cG().c(8.0, 8.0, 8.0), $$0);
+         bvt $$2 = (bvt)DataFixUtils.orElse($$1.stream().filter(bvt::gj).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gh()));
+         return this.b.gh();
       }
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   @Override
-   public void c() {
-      this.b.L().a(this.d, this.e, this.f, this.c);
-      this.g = true;
-   }
-
-   @Override
-   public void d() {
-      this.g = false;
    }
 
    @Override
    public boolean b() {
-      return !this.b.L().l();
+      return this.b.gh() && this.b.gl();
    }
 
-   @Nullable
-   protected gw a(cph $$0, biw $$1, int $$2) {
-      gw $$3 = $$1.dl();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : gw.a($$1.dl(), $$2, 1, $$1x -> $$0.b_($$1x).a(aqa.a)).orElse(null);
+   @Override
+   public void c() {
+      this.c = 0;
+   }
+
+   @Override
+   public void d() {
+      this.b.gi();
+   }
+
+   @Override
+   public void e() {
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gm();
+      }
    }
 }

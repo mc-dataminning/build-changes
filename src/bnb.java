@@ -1,34 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class bnb {
-   public static ble<bjm> a(bjp $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ag().f()), $$1);
+public class bnb extends bma<bkl> {
+   public static final int c = 100;
+   private final bhm d;
+   private final aqc e;
+
+   public bnb(bhm $$0, aqc $$1) {
+      super(ImmutableMap.of(btk.n, btl.c, btk.S, btl.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static bmn<bjm> a(bja<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ag()), $$1);
+   protected boolean a(alq $$0, bkl $$1, long $$2) {
+      return !$$1.aA();
    }
 
-   public static bmn<bjm> a(float $$0) {
-      return a($$0x -> true, $$0);
+   protected void b(alq $$0, bkl $$1, long $$2) {
+      $$1.p(true);
+      $$1.b(bkv.g);
    }
 
-   public static bmn<bjm> a(Predicate<bjm> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return bop.a(
-         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$2x -> $$2x.group($$2x.c(bsn.n), $$2x.b(bsn.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bjm> $$8 = $$2x.<bsp>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((biw)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new blo($$8.get(), true));
-                        return true;
-                     }
-                  }))
-      );
+   protected void c(alq $$0, bkl $$1, long $$2) {
+      if ($$1.aA()) {
+         $$1.f($$1.do().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, aqe.g, 2.0F, 1.0F);
+      }
+
+      $$1.p(false);
+      $$1.b(bkv.a);
+      $$1.dN().b(btk.S);
+      $$1.dN().a(btk.R, this.d.a($$0.z));
    }
 }

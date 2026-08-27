@@ -1,42 +1,34 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class bab extends ayf {
-   public bab(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Villager trade fix", azd.x, "minecraft:villager");
+public class bab extends DataFix {
+   private final String a;
+   private final UnaryOperator<String> b;
+
+   public bab(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<?> $$1 = $$0.getType().findField("Offers");
-      OpticFinder<?> $$2 = $$1.type().findField("Recipes");
-      if (!($$2.type() instanceof ListType<?> $$4)) {
-         throw new IllegalStateException("Recipes are expected to be a list.");
-      } else {
-         Type<?> $$5 = $$4.getElement();
-         OpticFinder<?> $$6 = DSL.typeFinder($$5);
-         OpticFinder<?> $$7 = $$5.findField("buy");
-         OpticFinder<?> $$8 = $$5.findField("buyB");
-         OpticFinder<?> $$9 = $$5.findField("sell");
-         OpticFinder<Pair<String, String>> $$10 = DSL.fieldFinder("id", DSL.named(azd.z.typeName(), bal.a()));
-         Function<Typed<?>, Typed<?>> $$11 = $$1x -> this.a($$10, $$1x);
-         return $$0.updateTyped(
-            $$1,
-            $$6x -> $$6x.updateTyped(
-                  $$2, $$5xx -> $$5xx.updateTyped($$6, $$4xxx -> $$4xxx.updateTyped($$7, $$11).updateTyped($$8, $$11).updateTyped($$9, $$11))
-               )
-         );
-      }
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         this.getInputSchema().getType(baa.c),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
+            )
+      );
    }
 
-   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
-      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bbi::a).map(this.b).map($$0::createString);
+      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
    }
 }

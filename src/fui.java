@@ -1,87 +1,28 @@
-public class fui<T extends cdr> extends ftc<T> {
-   private static final aez f = new aez("textures/entity/minecart.png");
-   protected final fey<T> a;
-   private final fou g;
+public class fui extends fuc<bzp> {
+   private final fpu a;
 
-   public fui(ftd.a $$0, fhv $$1) {
+   public fui(fud.a $$0) {
       super($$0);
-      this.d = 0.7F;
-      this.a = new fft<>($$0.a($$1));
-      this.g = $$0.c();
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public void a(T $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$3.a();
-      long $$6 = (long)$$0.ah() * 493286711L;
-      $$6 = $$6 * $$6 * 4392167121L + $$6 * 98761L;
-      float $$7 = (((float)($$6 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float $$8 = (((float)($$6 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float $$9 = (((float)($$6 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      $$3.a($$7, $$8, $$9);
-      double $$10 = asb.d((double)$$2, $$0.ac, $$0.dq());
-      double $$11 = asb.d((double)$$2, $$0.ad, $$0.ds());
-      double $$12 = asb.d((double)$$2, $$0.ae, $$0.dw());
-      double $$13 = 0.3F;
-      ehh $$14 = $$0.q($$10, $$11, $$12);
-      float $$15 = asb.i($$2, $$0.O, $$0.dD());
-      if ($$14 != null) {
-         ehh $$16 = $$0.a($$10, $$11, $$12, 0.3F);
-         ehh $$17 = $$0.a($$10, $$11, $$12, -0.3F);
-         if ($$16 == null) {
-            $$16 = $$14;
-         }
-
-         if ($$17 == null) {
-            $$17 = $$14;
-         }
-
-         $$3.a($$14.c - $$10, ($$16.d + $$17.d) / 2.0 - $$11, $$14.e - $$12);
-         ehh $$18 = $$17.b(-$$16.c, -$$16.d, -$$16.e);
-         if ($$18.f() != 0.0) {
-            $$18 = $$18.d();
-            $$1 = (float)(Math.atan2($$18.e, $$18.c) * 180.0 / Math.PI);
-            $$15 = (float)(Math.atan($$18.d) * 73.0);
+   public void a(bzp $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
+      dgb $$6 = $$0.t();
+      if ($$6.l() == dae.c) {
+         cqz $$7 = $$0.dL();
+         if ($$6 != $$7.a_($$0.dl()) && $$6.l() != dae.a) {
+            $$3.a();
+            ht $$8 = ht.a($$0.dq(), $$0.cG().e, $$0.dw());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fow.b($$6)), false, ate.a(), $$6.a($$0.q()), fzr.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
          }
       }
-
-      $$3.a(0.0F, 0.375F, 0.0F);
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      $$3.a(a.f.rotationDegrees(-$$15));
-      float $$19 = (float)$$0.x() - $$2;
-      float $$20 = $$0.w() - $$2;
-      if ($$20 < 0.0F) {
-         $$20 = 0.0F;
-      }
-
-      if ($$19 > 0.0F) {
-         $$3.a(a.b.rotationDegrees(asb.a($$19) * $$19 * $$20 / 10.0F * (float)$$0.y()));
-      }
-
-      int $$21 = $$0.C();
-      dfd $$22 = $$0.A();
-      if ($$22.l() != czg.a) {
-         $$3.a();
-         float $$23 = 0.75F;
-         $$3.b(0.75F, 0.75F, 0.75F);
-         $$3.a(-0.5F, (float)($$21 - 8) / 16.0F, 0.5F);
-         $$3.a(a.d.rotationDegrees(90.0F));
-         this.a($$0, $$2, $$22, $$3, $$4, $$5);
-         $$3.b();
-      }
-
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.a.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      eln $$24 = $$4.getBuffer(this.a.a(this.a($$0)));
-      this.a.a($$3, $$24, $$5, fyr.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
    }
 
-   public aez a(T $$0) {
-      return f;
-   }
-
-   protected void a(T $$0, float $$1, dfd $$2, elj $$3, foa $$4, int $$5) {
-      this.g.a($$2, $$3, $$4, $$5, fyr.d);
+   public afw a(bzp $$0) {
+      return fzz.e;
    }
 }

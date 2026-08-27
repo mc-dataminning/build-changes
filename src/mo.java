@@ -1,54 +1,31 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class mo extends nc<dcq> {
-   public mo(jk $$0, CompletableFuture<hg.b> $$1) {
-      super($$0, jc.c, $$1);
+public interface mo {
+   afw a = new afw("recipes/root");
+
+   mo a(String var1, am<?> var2);
+
+   mo a(@Nullable String var1);
+
+   cke a();
+
+   void a(mq var1, afw var2);
+
+   default void a(mq $$0) {
+      this.a($$0, a(this.a()));
    }
 
-   @Override
-   protected void a(hg.b $$0) {
-      this.b(apt.a)
-         .a(
-            dcr.b,
-            dcr.c,
-            dcr.d,
-            dcr.e,
-            dcr.f,
-            dcr.g,
-            dcr.h,
-            dcr.i,
-            dcr.j,
-            dcr.k,
-            dcr.l,
-            dcr.m,
-            dcr.n,
-            dcr.o,
-            dcr.p,
-            dcr.q,
-            dcr.r,
-            dcr.s,
-            dcr.t,
-            dcr.u,
-            dcr.v,
-            dcr.w,
-            dcr.x,
-            dcr.y,
-            dcr.z,
-            dcr.A,
-            dcr.B,
-            dcr.C,
-            dcr.D,
-            dcr.E,
-            dcr.F,
-            dcr.G,
-            dcr.H,
-            dcr.I
-         );
-      this.b(apt.b).a(dcr.M);
-      this.b(apt.c).a(dcr.K);
-      this.b(apt.d).a(dcr.L);
-      this.b(apt.e).a(dcr.N);
-      this.b(apt.f).a(dcr.J);
-      this.b(apt.g).a(dcr.O);
+   default void a(mq $$0, String $$1) {
+      afw $$2 = a(this.a());
+      afw $$3 = new afw($$1);
+      if ($$3.equals($$2)) {
+         throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
+      } else {
+         this.a($$0, $$3);
+      }
+   }
+
+   static afw a(cqy $$0) {
+      return jy.i.b($$0.k());
    }
 }

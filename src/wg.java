@@ -1,19 +1,24 @@
-public record wg(int b, eav c, float d) implements vx {
-   public static final aez a = new aez("debug/path");
+public class wg implements wb<we> {
+   private final ui a;
 
-   public wg(so $$0) {
-      this($$0.readInt(), eav.b($$0), $$0.readFloat());
+   public wg(ui $$0) {
+      this.a = $$0;
+   }
+
+   public wg(tl $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.p(this.b);
-      this.c.a($$0);
-      $$0.a(this.d);
+   public void a(tl $$0) {
+      $$0.a(this.a);
    }
 
-   @Override
-   public aez a() {
-      return a;
+   public void a(we $$0) {
+      $$0.a(this);
+   }
+
+   public ui a() {
+      return this.a;
    }
 }

@@ -1,45 +1,67 @@
-public class fkr extends fmq {
-   private final fml a;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   fkr(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fml $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+public record fkr(String a, @Nullable fkr.a b) {
+   public static fkr a() {
+      return a(null);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
+   public static fkr a(String $$0) {
+      return a(new fkr.a.b($$0));
+   }
+
+   public static fkr a(eno $$0) {
+      return a(new fkr.a.a($$0));
+   }
+
+   public static fkr a(@Nullable fkr.a $$0) {
+      return new fkr(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fkr.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fkr.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("23w41a");
+      if (ero.e().a()) {
+         $$0.append(" (modded)");
       }
+
+      return $$0.toString();
    }
 
-   @Override
-   public flu b() {
-      return flu.b;
+   public String e() {
+      return this.a;
    }
 
-   public static class a implements flt<iy> {
-      private final fml a;
+   @Nullable
+   public fkr.a f() {
+      return this.b;
+   }
 
-      public a(fml $$0) {
-         this.a = $$0;
+   public interface a {
+      public static record a(long a, int b) implements fkr.a {
+         public a(eno $$0) {
+            this($$0.a, $$0.n);
+         }
       }
 
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fkr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public static record b(String a) implements fkr.a {
       }
    }
 }

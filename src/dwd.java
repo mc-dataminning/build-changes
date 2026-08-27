@@ -1,59 +1,54 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class dwd extends dwj {
-   public static final Codec<dwd> a = RecordCodecBuilder.create($$0 -> $$0.group(dug.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, dwd::new));
-   private final he<dug> b;
-   private final qw c;
+public class dwd extends ecj {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   protected dwd(he<dug> $$0, dwl.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   public static ecj.a<dwd> a() {
+      return new ecj.a<>(dwd::new, dwd::b, aud.o);
    }
 
-   private qw b() {
-      qw $$0 = new qw();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", ddy.a.a.c());
+   private dwd(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public dwd() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static dwd b(rt $$0) {
+      return new dwd(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public rt a(rt $$0) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
       return $$0;
    }
 
-   @Override
-   public hy a(dyw $$0, czn $$1) {
-      return hy.g;
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
    }
 
-   @Override
-   public List<dyv.c> a(dyw $$0, gw $$1, czn $$2, ash $$3) {
-      List<dyv.c> $$4 = Lists.newArrayList();
-      $$4.add(new dyv.c($$1, cte.pb.o().a(cxc.b, hc.a(ha.a, ha.d)), this.c));
-      return $$4;
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
    }
 
-   @Override
-   public duu a(dyw $$0, gw $$1, czn $$2) {
-      hy $$3 = this.a($$0, $$2);
-      return new duu($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
    }
 
-   @Override
-   public boolean a(dyw $$0, cqv $$1, cqt $$2, dha $$3, gw $$4, gw $$5, czn $$6, duu $$7, ash $$8, boolean $$9) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
+   public void d(long $$0) {
+      this.d.remove($$0);
    }
 
-   @Override
-   public dwk<?> a() {
-      return dwk.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public LongSet b() {
+      return this.c;
    }
 }

@@ -1,30 +1,44 @@
-public class bxy extends bxq {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public bxy(bxn $$0) {
-      super($$0);
+public class bxy extends bxs {
+   public bxy(bjx<? extends bxy> $$0, cqz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void b() {
-      this.a.dL().a(this.a.dq(), this.a.ds(), this.a.dw(), apg.gX, this.a.da(), 2.5F, 0.8F + this.a.ef().i() * 0.3F, false);
+   protected aqc w() {
+      return aqd.nU;
    }
 
    @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gb().a(byd.f);
-      }
+   protected aqc gD() {
+      return aqd.nV;
    }
 
    @Override
-   public void d() {
-      this.c = 0;
+   protected aqc m_() {
+      return aqd.nX;
+   }
+
+   @Nullable
+   @Override
+   protected aqc gl() {
+      return aqd.nY;
    }
 
    @Override
-   public byd<bxy> i() {
-      return byd.h;
+   protected aqc d(bir $$0) {
+      return aqd.nZ;
+   }
+
+   @Override
+   protected void ge() {
+      this.a(aqd.nW, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public bjo a(alq $$0, bjo $$1) {
+      return bjx.ap.a((cqz)$$0);
    }
 }

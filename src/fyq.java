@@ -1,50 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import javax.annotation.Nullable;
+public class fyq extends fyl<bws, fhx<bws>> {
+   private final fpu a;
+   private final fvb b;
 
-public final class fyq {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final aez d = new aez("missingno");
-   private static final any e = new any.a().a(gal.a, new gal(ImmutableList.of(new gak(0, -1)), 16, 16, 1, false)).a();
-   @Nullable
-   private static fyn f;
+   public fyq(fvy<bws, fhx<bws>> $$0, fpu $$1, fvb $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+   }
 
-   private static ekk a(int $$0, int $$1) {
-      ekk $$2 = new ekk($$0, $$1, false);
-      int $$3 = -16777216;
-      int $$4 = -524040;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         for (int $$6 = 0; $$6 < $$0; $$6++) {
-            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
-               $$2.a($$6, $$5, -524040);
+   public void a(emh $$0, fpb $$1, int $$2, bws $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.t()) {
+         boolean $$10 = ero.O().b($$3) && $$3.cd();
+         if (!$$3.cd() || $$10) {
+            $$0.a();
+            this.c().c().a($$0);
+            float $$11 = 0.625F;
+            $$0.a(0.0F, -0.34375F, 0.0F);
+            $$0.a(a.d.rotationDegrees(180.0F));
+            $$0.b(0.625F, -0.625F, -0.625F);
+            ckj $$12 = new ckj(cuc.ee);
+            if ($$10) {
+               dgb $$13 = cuc.ee.o();
+               gcb $$14 = this.a.a($$13);
+               int $$15 = fve.c($$3, 0.0F);
+               $$0.a(-0.5F, -0.5F, -0.5F);
+               this.a.b().a($$0.c(), $$1.getBuffer(fpj.q(fzz.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
             } else {
-               $$2.a($$6, $$5, -16777216);
+               this.b.a($$3, $$12, ckg.f, false, $$0, $$1, $$3.dL(), $$2, fve.c($$3, 0.0F), $$3.ah());
             }
+
+            $$0.b();
          }
       }
-
-      return $$2;
-   }
-
-   public static fyu a() {
-      ekk $$0 = a(16, 16);
-      return new fyu(d, new gan(16, 16), $$0, e);
-   }
-
-   public static aez b() {
-      return d;
-   }
-
-   public static fyn c() {
-      if (f == null) {
-         ekk $$0 = a(16, 16);
-         $$0.i();
-         f = new fyn($$0);
-         eqp.O().Y().a(d, f);
-      }
-
-      return f;
    }
 }

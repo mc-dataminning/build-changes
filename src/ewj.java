@@ -1,32 +1,28 @@
-public interface ewj {
-   ewl a();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   public static record a(ewl a) implements ewj {
-      @Override
-      public ewl a() {
-         return this.a.a() == ewk.b ? this.a : ewl.b;
-      }
+public enum ewj implements atr {
+   a("bitmap", ewh.a.a),
+   b("ttf", ewl.a),
+   c("space", ekm.a.a),
+   d("unihex", ewm.b.a),
+   e("reference", ewk.a);
 
-      public ewl b() {
-         return this.a;
-      }
+   public static final Codec<ewj> f = atr.a(ewj::values);
+   private final String g;
+   private final MapCodec<? extends ewi> h;
+
+   private ewj(String $$0, MapCodec<? extends ewi> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static class b implements ewj {
-      @Override
-      public ewl a() {
-         return ewl.b;
-      }
+   @Override
+   public String c() {
+      return this.g;
    }
 
-   public static record c(boolean a) implements ewj {
-      @Override
-      public ewl a() {
-         return this.a ? ewl.b : ewl.a;
-      }
-
-      public boolean b() {
-         return this.a;
-      }
+   public MapCodec<? extends ewi> a() {
+      return this.h;
    }
 }

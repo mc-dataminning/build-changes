@@ -1,98 +1,52 @@
-public class dxo extends dva {
-   private boolean h;
-   private boolean i;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-   public dxo(ash $$0, int $$1, int $$2) {
-      super(dvt.K, $$1, 64, $$2, 7, 7, 9, a($$0));
-   }
+public class dxo extends dvz {
+   public static final Codec<dxo> d = a(dxo::new);
 
-   public dxo(qw $$0) {
-      super(dvt.K, $$0);
-      this.h = $$0.q("Witch");
-      this.i = $$0.q("Cat");
-   }
-
-   @Override
-   protected void a(dvs $$0, qw $$1) {
-      super.a($$0, $$1);
-      $$1.a("Witch", this.h);
-      $$1.a("Cat", this.i);
+   public dxo(dwa.c $$0) {
+      super(dxn::new, 21, 21, $$0);
    }
 
    @Override
-   public void a(cqv $$0, cqt $$1, dha $$2, ash $$3, duu $$4, cpi $$5, gw $$6) {
-      if (this.a($$0, $$4, 0)) {
-         this.a($$0, $$4, 1, 1, 1, 5, 1, 7, cte.o.o(), cte.o.o(), false);
-         this.a($$0, $$4, 1, 4, 2, 5, 4, 7, cte.o.o(), cte.o.o(), false);
-         this.a($$0, $$4, 2, 1, 0, 4, 1, 0, cte.o.o(), cte.o.o(), false);
-         this.a($$0, $$4, 2, 2, 2, 3, 3, 2, cte.o.o(), cte.o.o(), false);
-         this.a($$0, $$4, 1, 2, 3, 1, 3, 6, cte.o.o(), cte.o.o(), false);
-         this.a($$0, $$4, 5, 2, 3, 5, 3, 6, cte.o.o(), cte.o.o(), false);
-         this.a($$0, $$4, 2, 2, 7, 4, 3, 7, cte.o.o(), cte.o.o(), false);
-         this.a($$0, $$4, 1, 0, 2, 1, 3, 2, cte.U.o(), cte.U.o(), false);
-         this.a($$0, $$4, 5, 0, 2, 5, 3, 2, cte.U.o(), cte.U.o(), false);
-         this.a($$0, $$4, 1, 0, 7, 1, 3, 7, cte.U.o(), cte.U.o(), false);
-         this.a($$0, $$4, 5, 0, 7, 5, 3, 7, cte.U.o(), cte.U.o(), false);
-         this.a($$0, cte.dU.o(), 2, 3, 2, $$4);
-         this.a($$0, cte.dU.o(), 3, 3, 7, $$4);
-         this.a($$0, cte.a.o(), 1, 3, 4, $$4);
-         this.a($$0, cte.a.o(), 5, 3, 4, $$4);
-         this.a($$0, cte.a.o(), 5, 3, 5, $$4);
-         this.a($$0, cte.gp.o(), 1, 3, 5, $$4);
-         this.a($$0, cte.cA.o(), 3, 2, 6, $$4);
-         this.a($$0, cte.ft.o(), 4, 2, 6, $$4);
-         this.a($$0, cte.dU.o(), 1, 2, 1, $$4);
-         this.a($$0, cte.dU.o(), 5, 2, 1, $$4);
-         dfd $$7 = cte.fK.o().a(dau.b, ha.c);
-         dfd $$8 = cte.fK.o().a(dau.b, ha.f);
-         dfd $$9 = cte.fK.o().a(dau.b, ha.e);
-         dfd $$10 = cte.fK.o().a(dau.b, ha.d);
-         this.a($$0, $$4, 0, 4, 1, 6, 4, 1, $$7, $$7, false);
-         this.a($$0, $$4, 0, 4, 2, 0, 4, 7, $$8, $$8, false);
-         this.a($$0, $$4, 6, 4, 2, 6, 4, 7, $$9, $$9, false);
-         this.a($$0, $$4, 0, 4, 8, 6, 4, 8, $$10, $$10, false);
-         this.a($$0, $$7.a(dau.d, dgm.e), 0, 4, 1, $$4);
-         this.a($$0, $$7.a(dau.d, dgm.d), 6, 4, 1, $$4);
-         this.a($$0, $$10.a(dau.d, dgm.d), 0, 4, 8, $$4);
-         this.a($$0, $$10.a(dau.d, dgm.e), 6, 4, 8, $$4);
+   public void a(crt $$0, crr $$1, dhy $$2, ate $$3, dvs $$4, cqg $$5, dwp $$6) {
+      Set<ht> $$7 = ato.a(iw::i);
 
-         for (int $$11 = 2; $$11 <= 7; $$11 += 5) {
-            for (int $$12 = 1; $$12 <= 5; $$12 += 4) {
-               this.b($$0, cte.U.o(), $$12, -1, $$11, $$4);
-            }
+      for (dwe $$8 : $$6.c()) {
+         if ($$8 instanceof dxn $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
          }
+      }
 
-         if (!this.h) {
-            gw $$13 = this.b(2, 2, 5);
-            if ($$4.b($$13)) {
-               this.h = true;
-               cae $$14 = bja.bj.a((cqb)$$0.C());
-               if ($$14 != null) {
-                  $$14.fJ();
-                  $$14.b((double)$$13.u() + 0.5, (double)$$13.v(), (double)$$13.w() + 0.5, 0.0F, 0.0F);
-                  $$14.a($$0, $$0.d_($$13), bjq.d, null, null);
-                  $$0.a_($$14);
-               }
-            }
+      ObjectArrayList<ht> $$10 = new ObjectArrayList($$7.stream().toList());
+      ate $$11 = ate.a($$0.A()).e().a($$6.b().f());
+      ac.b($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         ht $$13 = (ht)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, cuc.I.o(), 2);
          }
-
-         this.a($$0, $$4);
       }
    }
 
-   private void a(cqq $$0, duu $$1) {
-      if (!this.i) {
-         gw $$2 = this.b(2, 2, 5);
-         if ($$1.b($$2)) {
-            this.i = true;
-            bva $$3 = bja.m.a((cqb)$$0.C());
-            if ($$3 != null) {
-               $$3.fJ();
-               $$3.b((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 0.0F, 0.0F);
-               $$3.a($$0, $$0.d_($$2), bjq.d, null, null);
-               $$0.a_($$3);
-            }
-         }
+   private static void a(dvs $$0, crt $$1, ht $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, cuc.J.o(), 2);
+         $$1.a($$2, ddz.N).ifPresent($$1x -> $$1x.a(edg.aD, $$2.a()));
       }
+   }
+
+   @Override
+   public dwj<?> e() {
+      return dwj.b;
    }
 }

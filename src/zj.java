@@ -1,61 +1,73 @@
-import it.unimi.dsi.fastutil.shorts.ShortIterator;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-import java.util.function.BiConsumer;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class zj implements ve<wx> {
-   private static final int a = 12;
-   private final hw b;
-   private final short[] c;
-   private final dfd[] d;
-
-   public zj(hw $$0, ShortSet $$1, dhl $$2) {
-      this.b = $$0;
-      int $$3 = $$1.size();
-      this.c = new short[$$3];
-      this.d = new dfd[$$3];
-      int $$4 = 0;
-
-      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
-         short $$5 = (Short)var6.next();
-         this.c[$$4] = $$5;
-         this.d[$$4] = $$2.a(hw.a($$5), hw.b($$5), hw.c($$5));
-      }
-   }
-
-   public zj(so $$0) {
-      this.b = hw.a($$0.readLong());
-      int $$1 = $$0.n();
-      this.c = new short[$$1];
-      this.d = new dfd[$$1];
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         long $$3 = $$0.o();
-         this.c[$$2] = (short)((int)($$3 & 4095L));
-         this.d[$$2] = ctc.q.a((int)($$3 >>> 12));
-      }
+public record zj(int a, boolean b, Set<afv<cqz>> c, int d, int e, int f, boolean g, boolean h, boolean i, abx j) implements wb<xu> {
+   public zj(tl $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(jz.aI)),
+         $$0.n(),
+         $$0.n(),
+         $$0.n(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new abx($$0)
+      );
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.b(this.b.s());
-      $$0.c(this.c.length);
-
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         $$0.a((long)ctc.i(this.d[$$1]) << 12 | (long)this.c[$$1]);
-      }
+   public void a(tl $$0) {
+      $$0.p(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c, tl::b);
+      $$0.c(this.d);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      this.j.a($$0);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public void a(BiConsumer<gw, dfd> $$0) {
-      gw.a $$1 = new gw.a();
+   public boolean d() {
+      return this.b;
+   }
 
-      for (int $$2 = 0; $$2 < this.c.length; $$2++) {
-         short $$3 = this.c[$$2];
-         $$1.d(this.b.d($$3), this.b.e($$3), this.b.f($$3));
-         $$0.accept($$1, this.d[$$2]);
-      }
+   public Set<afv<cqz>> e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public abx l() {
+      return this.j;
    }
 }

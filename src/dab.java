@@ -1,42 +1,49 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface dab extends ctj, cxr {
+public class dab extends cua {
+   public static final MapCodec<dab> a = b(dab::new);
+   public static final dgs b = dac.d;
+
    @Override
-   default boolean a(@Nullable cca $$0, cph $$1, gw $$2, dfd $$3, eaf $$4) {
-      return $$4 == eah.c;
+   public MapCodec<dab> a() {
+      return a;
+   }
+
+   public dab(dga.d $$0) {
+      super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dgb a(cmr $$0) {
+      return this.o().a(b, Boolean.valueOf($$0.q().B($$0.a())));
    }
 
    @Override
-   default boolean a(cqc $$0, gw $$1, dfd $$2, eag $$3) {
-      if (!$$2.c(dft.C) && $$3.a() == eah.c) {
-         if (!$$0.w_()) {
-            $$0.a($$1, $$2.a(dft.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+   public void a(dgb $$0, cqz $$1, ht $$2, cua $$3, ht $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.B($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
          }
-
-         return true;
-      } else {
-         return false;
       }
    }
 
    @Override
-   default cjl a(@Nullable cca $$0, cqc $$1, gw $$2, dfd $$3) {
-      if ($$3.c(dft.C)) {
-         $$1.a($$2, $$3.a(dft.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new cjl(cjo.pL);
-      } else {
-         return cjl.b;
+   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if ($$0.c(b) && !$$1.B($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
       }
    }
 
    @Override
-   default Optional<apf> aq_() {
-      return eah.c.j();
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(b);
    }
 }

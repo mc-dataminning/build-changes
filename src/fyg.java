@@ -1,100 +1,52 @@
-import javax.annotation.Nullable;
+public class fyg<T extends bwh> extends fyl<T, ffq<T>> {
+   private final fpu a;
 
-public class fyg implements fyf {
-   public static final int a = 0;
-   private final fyg.b c = new fyg.b();
-   private final fyg.b d = new fyg.b();
-   public final fyg.a b;
-
-   public fyg(fyg.a $$0) {
-      this.b = $$0;
+   public fyg(fvy<T, ffq<T>> $$0, fpu $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public float unclampedCall(cjl $$0, @Nullable fis $$1, @Nullable bjm $$2, int $$3) {
-      biw $$4 = (biw)($$2 != null ? $$2 : $$0.H());
-      if ($$4 == null) {
-         return 0.0F;
-      } else {
-         $$1 = this.a($$4, $$1);
-         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
-      }
-   }
-
-   private float a(cjl $$0, fis $$1, int $$2, biw $$3) {
-      hd $$4 = this.b.getPos($$1, $$0, $$3);
-      long $$5 = $$1.V();
-      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
-   }
-
-   private float a(int $$0, long $$1) {
-      if (this.d.a($$1)) {
-         this.d.a($$1, Math.random());
-      }
-
-      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
-      return asb.b((float)$$2, 1.0F);
-   }
-
-   private float a(biw $$0, long $$1, gw $$2) {
-      double $$3 = this.a($$0, $$2);
-      double $$4 = this.a($$0);
-      if ($$0 instanceof cca $$5 && $$5.g()) {
-         if (this.c.a($$1)) {
-            this.c.a($$1, 0.5 - ($$4 - 0.25));
+   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.n_()) {
+         ero $$10 = ero.O();
+         boolean $$11 = $$10.b($$3) && $$3.cd();
+         if (!$$3.cd() || $$11) {
+            dgb $$12 = $$3.t().a();
+            int $$13 = fve.c($$3, 0.0F);
+            gcb $$14 = this.a.a($$12);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            this.c().d().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
          }
-
-         double $$6 = $$3 + this.c.a;
-         return asb.b((float)$$6, 1.0F);
       }
-
-      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
-      return asb.b((float)$$7, 1.0F);
    }
 
-   @Nullable
-   private fis a(biw $$0, @Nullable fis $$1) {
-      return $$1 == null && $$0.dL() instanceof fis ? (fis)$$0.dL() : $$1;
-   }
-
-   private boolean a(biw $$0, @Nullable hd $$1) {
-      return $$1 != null && $$1.a() == $$0.dL().ac() && !($$1.b().b($$0.dj()) < 1.0E-5F);
-   }
-
-   private double a(biw $$0, gw $$1) {
-      ehh $$2 = ehh.b($$1);
-      return Math.atan2($$2.c() - $$0.dw(), $$2.a() - $$0.dq()) / (float) (Math.PI * 2);
-   }
-
-   private double a(biw $$0) {
-      return asb.c((double)($$0.dC() / 360.0F), 1.0);
-   }
-
-   private int a(int $$0) {
-      return $$0 * 1327217883;
-   }
-
-   public interface a {
-      @Nullable
-      hd getPos(fis var1, cjl var2, biw var3);
-   }
-
-   static class b {
-      double a;
-      private double b;
-      private long c;
-
-      boolean a(long $$0) {
-         return this.c != $$0;
-      }
-
-      void a(long $$0, double $$1) {
-         this.c = $$0;
-         double $$2 = $$1 - this.a;
-         $$2 = asb.c($$2 + 0.5, 1.0) - 0.5;
-         this.b += $$2 * 0.1;
-         this.b *= 0.8;
-         this.a = asb.c(this.a + this.b, 1.0);
+   private void a(emh $$0, fpb $$1, int $$2, boolean $$3, dgb $$4, int $$5, gcb $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(fpj.q(fzz.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
       }
    }
 }

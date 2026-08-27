@@ -1,24 +1,40 @@
-public class fwo extends fww<bza, fes<bza>> {
-   private static final aez a = new aez("textures/entity/creeper/creeper_armor.png");
-   private final fes<bza> b;
+public class fwo<T extends bjt & cdm> extends fuc<T> {
+   private static final float a = 12.25F;
+   private final fvb f;
+   private final float g;
+   private final boolean h;
 
-   public fwo(fuy<bza, fes<bza>> $$0, fht $$1) {
+   public fwo(fud.a $$0, float $$1, boolean $$2) {
       super($$0);
-      this.b = new fes<>($$1.a(fhw.C));
+      this.f = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   public fwo(fud.a $$0) {
+      this($$0, 1.0F, false);
    }
 
    @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
+   protected int a(T $$0, ht $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
    @Override
-   protected aez a() {
-      return a;
+   public void a(T $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
+      if ($$0.ah >= 2 || !(this.c.b.g().f($$0) < 12.25)) {
+         $$3.a();
+         $$3.b(this.g, this.g, this.g);
+         $$3.a(this.c.b());
+         $$3.a(a.d.rotationDegrees(180.0F));
+         this.f.a($$0.q(), ckg.h, $$5, fzr.d, $$3, $$4, $$0.dL(), $$0.ah());
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   protected fey<bza> b() {
-      return this.b;
+   public afw a(bjt $$0) {
+      return fzz.e;
    }
 }

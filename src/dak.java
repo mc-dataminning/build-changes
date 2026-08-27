@@ -1,36 +1,48 @@
 import com.mojang.serialization.MapCodec;
 
-public class dak extends ctc {
-   public static final MapCodec<dak> b = b(dak::new);
-   public static final dfu c = dft.z;
+public class dak extends cua {
+   public static final MapCodec<dak> h = b(dak::new);
+   public static final dgz<hx.a> i = dgr.I;
 
    @Override
-   protected MapCodec<? extends dak> a() {
-      return b;
+   public MapCodec<? extends dak> a() {
+      return h;
    }
 
-   protected dak(dfc.d $$0) {
+   public dak(dga.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+      this.k(this.o().a(i, hx.a.b));
    }
 
    @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      return $$1 == ha.b ? $$0.a(c, Boolean.valueOf(h($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dgb a(dgb $$0, dal $$1) {
+      return b($$0, $$1);
+   }
+
+   public static dgb b(dgb $$0, dal $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((hx.a)$$0.c(i)) {
+               case a:
+                  return $$0.a(i, hx.a.c);
+               case c:
+                  return $$0.a(i, hx.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
    }
 
    @Override
-   public dfd a(clt $$0) {
-      dfd $$1 = $$0.q().a_($$0.a().c());
-      return this.o().a(c, Boolean.valueOf(h($$1)));
-   }
-
-   private static boolean h(dfd $$0) {
-      return $$0.a(apv.by);
+   protected void a(dgc.a<cua, dgb> $$0) {
+      $$0.a(i);
    }
 
    @Override
-   protected void a(dfe.a<ctc, dfd> $$0) {
-      $$0.a(c);
+   public dgb a(cmr $$0) {
+      return this.o().a(i, $$0.k().o());
    }
 }

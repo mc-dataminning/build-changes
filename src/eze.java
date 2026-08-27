@@ -1,107 +1,91 @@
-public abstract class eze<T extends ces> extends ezd<T> implements fbx {
-   public final fbn x;
-   private boolean y;
-   private final aez z;
-   private final aez A;
-   private final aez B;
+import javax.annotation.Nullable;
 
-   public eze(T $$0, fbn $$1, cbz $$2, tl $$3, aez $$4, aez $$5, aez $$6) {
-      super($$0, $$2, $$3);
-      this.x = $$1;
-      this.z = $$4;
-      this.A = $$5;
-      this.B = $$6;
+public class eze extends ezd {
+   private static final int a = 1024;
+   private static final int b = 65535;
+   private static final ui c = ui.c("selectWorld.allowCommands");
+   private static final ui k = ui.c("selectWorld.gameMode");
+   private static final ui l = ui.c("lanServer.otherPlayers");
+   private static final ui m = ui.c("lanServer.port");
+   private static final ui n = ui.a("lanServer.port.unavailable.new", 1024, 65535);
+   private static final ui o = ui.a("lanServer.port.invalid.new", 1024, 65535);
+   private static final int p = 16733525;
+   private final ezd q;
+   private cqw s = cqw.a;
+   private boolean t;
+   private int u = asp.a();
+   @Nullable
+   private ets v;
+
+   public eze(ezd $$0) {
+      super(ui.c("lanServer.title"));
+      this.q = $$0;
    }
 
    @Override
-   public void aH_() {
-      super.aH_();
-      this.y = this.g < 379;
-      this.x.a(this.g, this.h, this.f, this.y, this.p);
-      this.t = this.x.a(this.g, this.c);
-      this.d(new esw(this.t + 20, this.h / 2 - 49, 20, 18, fbr.a, $$0 -> {
-         this.x.f();
-         this.t = this.x.a(this.g, this.c);
-         $$0.b(this.t + 20, this.h / 2 - 49);
-      }));
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   protected void aM_() {
+      gdz $$0 = this.f.T();
+      this.s = $$0.u_();
+      this.t = $$0.aT().o();
+      this.d(etq.a(cqw::e).a(cqw.a, cqw.d, cqw.b, cqw.c).a(this.s).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.s = $$1x));
+      this.d(etq.b(this.t).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.t = $$1x));
+      etj $$1 = etj.a(ui.c("lanServer.start"), $$1x -> {
+         this.f.a(null);
+         ui $$2;
+         if ($$0.a(this.s, this.t, this.u)) {
+            $$2 = aiu.a(this.u);
+         } else {
+            $$2 = ui.c("commands.publish.failed");
+         }
+
+         this.f.l.d().a($$2);
+         this.f.d();
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
+      this.v = new ets(this.i, this.g / 2 - 75, 160, 150, 20, ui.c("lanServer.port"));
+      this.v.b($$1x -> {
+         ui $$2 = this.a($$1x);
+         this.v.c(ui.b(this.u + "").a(n.i));
+         if ($$2 == null) {
+            this.v.m(14737632);
+            this.v.a(null);
+            $$1.i = true;
+         } else {
+            this.v.m(16733525);
+            this.v.a(euu.a($$2));
+            $$1.i = false;
+         }
+      });
+      this.v.c(ui.b(this.u + "").a(n.i));
+      this.d(this.v);
+      this.d($$1);
+      this.d(etj.a(uh.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
    }
 
-   @Override
-   public void D() {
-      super.D();
-      this.x.h();
-   }
-
-   @Override
-   public void a(erz $$0, int $$1, int $$2, float $$3) {
-      if (this.x.g() && this.y) {
-         this.b($$0, $$1, $$2, $$3);
-         this.x.a($$0, $$1, $$2, $$3);
+   @Nullable
+   private ui a(String $$0) {
+      if ($$0.isBlank()) {
+         this.u = asp.a();
+         return null;
       } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.x.a($$0, $$1, $$2, $$3);
-         this.x.a($$0, this.t, this.u, true, $$3);
-      }
-
-      this.a($$0, $$1, $$2);
-      this.x.a($$0, this.t, this.u, $$1, $$2);
-   }
-
-   @Override
-   protected void a(erz $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.t;
-      int $$5 = this.u;
-      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
-      if (this.p.s()) {
-         int $$6 = 14;
-         int $$7 = asb.f(this.p.r() * 13.0F) + 1;
-         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
-      }
-
-      int $$8 = 24;
-      int $$9 = asb.f(this.p.q() * 24.0F);
-      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.x.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         return this.y && this.x.g() ? true : super.a($$0, $$1, $$2);
+         try {
+            this.u = Integer.parseInt($$0);
+            if (this.u < 1024 || this.u > 65535) {
+               return o;
+            } else {
+               return !asp.a(this.u) ? n : null;
+            }
+         } catch (NumberFormatException var3) {
+            this.u = asp.a();
+            return o;
+         }
       }
    }
 
    @Override
-   protected void a(cgj $$0, int $$1, int $$2, cfa $$3) {
+   public void a(esy $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.x.a($$0);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.x.a($$0, $$1, $$2) ? false : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public void F() {
-      this.x.i();
-   }
-
-   @Override
-   public fbr G() {
-      return this.x;
+      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
+      $$0.a(this.i, l, this.g / 2, 82, 16777215);
+      $$0.a(this.i, m, this.g / 2, 142, 16777215);
    }
 }

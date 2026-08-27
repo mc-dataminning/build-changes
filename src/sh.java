@@ -1,16 +1,23 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import javax.crypto.Cipher;
-
-public class sh extends MessageToByteEncoder<ByteBuf> {
-   private final sf a;
-
-   public sh(Cipher $$0) {
-      this.a = new sf($$0);
+public abstract class sh implements sn {
+   protected sh() {
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
-      this.a.a($$1, $$2);
+   public abstract long f();
+
+   public abstract int g();
+
+   public abstract short h();
+
+   public abstract byte i();
+
+   public abstract double j();
+
+   public abstract float k();
+
+   public abstract Number l();
+
+   @Override
+   public String toString() {
+      return this.s_();
    }
 }

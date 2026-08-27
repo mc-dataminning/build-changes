@@ -1,88 +1,92 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-public class fpb {
-   public float[] a;
-   public final int b;
-
-   public fpb(@Nullable float[] $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface fpb {
+   static fpb.a a(emc $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
+   static fpb.a a(Map<fpj, emc> $$0, emc $$1) {
+      return new fpb.a($$1, $$0);
    }
 
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
-   }
+   eml getBuffer(fpj var1);
 
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
+   public static class a implements fpb {
+      protected final emc a;
+      protected final Map<fpj, emc> b;
+      protected Optional<fpj> c = Optional.empty();
+      protected final Set<emc> d = Sets.newHashSet();
 
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
+      protected a(emc $$0, Map<fpj, emc> $$1) {
          this.a = $$0;
-      }
-   }
-
-   protected static class a implements JsonDeserializer<fpb> {
-      private static final int a = 0;
-
-      public fpb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new fpb($$4, $$5);
+         this.b = $$1;
       }
 
-      protected int a(JsonObject $$0) {
-         int $$1 = arr.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+      @Override
+      public eml getBuffer(fpj $$0) {
+         Optional<fpj> $$1 = $$0.O();
+         emc $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.N()) {
+            if (this.c.isPresent()) {
+               fpj $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
+
+            if (this.d.add($$2)) {
+               $$2.a($$0.J(), $$0.I());
+            }
+
+            this.c = $$1;
+         }
+
+         return $$2;
+      }
+
+      private emc b(fpj $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
+
+      public void a() {
+         if (this.c.isPresent()) {
+            fpj $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
          }
       }
 
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = arr.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            eml $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
 
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = arr.e($$1.get($$3), "uv[" + $$3 + "]");
+         for (fpj $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(fpj $$0) {
+         emc $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.O());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
                }
-
-               return $$2;
             }
          }
       }

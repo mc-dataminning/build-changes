@@ -1,63 +1,69 @@
-import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.io.File;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eql {
+public class eql extends eqo {
    private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final File c;
-   private final DataFixer d;
-   private final fne[] e = new fne[9];
-   private boolean f;
+   private static final ui c = ui.c("mco.snapshot.creating");
+   private final long d;
+   private final eqh e;
+   private final String f;
+   private final String g;
+   private final ems h;
+   @Nullable
+   private eqw i;
+   @Nullable
+   private eqq j;
 
-   public eql(File $$0, DataFixer $$1) {
-      this.c = new File($$0, "hotbar.nbt");
+   public eql(ems $$0, long $$1, eqh $$2, String $$3, String $$4) {
       this.d = $$1;
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new fne();
-      }
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$0;
    }
 
-   private void b() {
+   @Override
+   public void run() {
+      emx $$0 = emx.a();
+
       try {
-         qw $$0 = rh.b(this.c);
-         if ($$0 == null) {
+         eno $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new eqw($$1.a, this.f, this.g);
+         this.j = new eqq(this.e, $$1.a, epm.a, () -> ero.O().execute(() -> ems.a($$1, this.h, true)));
+         if (this.d()) {
             return;
          }
 
-         int $$1 = rj.b($$0, 1343);
-         $$0 = atg.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2].a($$0.c(String.valueOf($$2), 10));
+         this.i.run();
+         if (this.d()) {
+            return;
          }
+
+         this.j.run();
+      } catch (eok var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
       } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
       }
    }
 
-   public void a() {
-      try {
-         qw $$0 = rj.g(new qw());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            $$0.a(String.valueOf($$1), this.a($$1).a());
-         }
-
-         rh.b($$0, this.c);
-      } catch (Exception var3) {
-         b.error("Failed to save creative mode options", var3);
-      }
+   @Override
+   public ui a() {
+      return c;
    }
 
-   public fne a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
+   @Override
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
       }
 
-      return this.e[$$0];
+      if (this.j != null) {
+         this.j.b();
+      }
    }
 }

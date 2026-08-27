@@ -1,92 +1,277 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
+public class bwt extends bww {
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float bT;
+   public float bU;
+   public float bV;
+   public float bW;
+   private float bX;
+   private float bY;
+   private float bZ;
+   private float ca;
+   private float cb;
+   private float cc;
 
-public class bwt {
-   public static final int a = 20;
-   public static final int b = 7;
-   private static final bgp i = bgp.a(5, 16);
-   private static final float j = 1.0F;
-   private static final float k = 1.0F;
-   private static final float l = 1.25F;
-   private static final float m = 1.25F;
-   private static final float n = 2.0F;
-   private static final float o = 1.25F;
-   private static final bgp p = bgp.a(600, 1200);
-   public static final int c = 5;
-   public static final int d = 5;
-   public static final float e = 1.5F;
-   private static final bgp q = bgp.a(600, 6000);
-   private static final bgp r = bgp.a(100, 300);
-   private static final bty s = bty.a().a($$0 -> !$$0.ag().equals(bja.U) && $$0.dL().B_().a($$0.cG()));
-   private static final float t = 3.0F;
-   public static final int f = 4;
-   public static final float g = 2.5F;
-   public static final float h = 1.0F;
-
-   protected static void a(bws $$0, ash $$1) {
-      $$0.dN().a(bsn.R, p.a($$1));
-      $$0.dN().a(bsn.U, q.a($$1));
+   public bwt(bjx<? extends bwt> $$0, cqz $$1) {
+      super($$0, $$1);
+      this.ag.b((long)this.ah());
+      this.bY = 1.0F / (this.ag.i() + 1.0F) * 0.2F;
    }
 
-   protected static bkm<?> a(bkm<bws> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      $$0.a(ImmutableSet.of(cdl.a));
-      $$0.b(cdl.b);
-      $$0.f();
-      return $$0;
+   @Override
+   protected void z() {
+      this.bO.a(0, new bwt.b(this));
+      this.bO.a(1, new bwt.a());
    }
 
-   private static void b(bkm<bws> $$0) {
-      $$0.a(cdl.a, 0, ImmutableList.of(new bnw(0.8F), new bky(2.0F), new bmi(45, 90), new bmm(), new blj(bsn.O), new blj(bsn.R), new blj(bsn.U)));
+   public static blo.a ge() {
+      return bkl.A().a(blp.l, 10.0);
    }
 
-   private static void c(bkm<bws> $$0) {
-      $$0.a(
-         cdl.b,
-         ImmutableList.of(
-            Pair.of(0, bnc.a(bja.bt, 6.0F, bgp.a(30, 60))),
-            Pair.of(0, new bkx(bja.U, 1.0F)),
-            Pair.of(1, new blq($$0x -> 1.25F)),
-            Pair.of(2, bla.a(i, 1.25F)),
-            Pair.of(3, new bmz(ImmutableList.of(Pair.of(bmu.a(1.0F), 2), Pair.of(bnj.a(1.0F, 3), 2), Pair.of(new bln(30, 60), 1))))
-         ),
-         ImmutableSet.of(Pair.of(bsn.V, bso.b), Pair.of(bsn.S, bso.b))
-      );
+   @Override
+   protected float b(bkv $$0, bju $$1) {
+      return $$1.b * 0.5F;
    }
 
-   private static void d(bkm<bws> $$0) {
-      $$0.a(
-         cdl.q,
-         ImmutableList.of(Pair.of(0, new bme(p, apg.jW)), Pair.of(1, new bmg<>(p, 5, 5, 1.5F, $$0x -> $$0x.go() ? apg.jR : apg.jH))),
-         ImmutableSet.of(Pair.of(bsn.N, bso.b), Pair.of(bsn.r, bso.b), Pair.of(bsn.m, bso.b), Pair.of(bsn.R, bso.b))
-      );
+   @Override
+   protected aqc w() {
+      return aqd.xo;
    }
 
-   private static void e(bkm<bws> $$0) {
-      $$0.a(
-         cdl.r,
-         ImmutableList.of(
-            Pair.of(
-               0,
-               new bms(
-                  $$0x -> $$0x.go() ? r : q, s, 3.0F, $$0x -> $$0x.m_() ? 1.0 : 2.5, $$0x -> $$0x.go() ? apg.jU : apg.jK, $$0x -> $$0x.go() ? apg.jV : apg.jL
-               )
-            ),
-            Pair.of(1, new bmr<>($$0x -> $$0x.go() ? r.a() : q.a(), 4, 7, 1.25F, s, 20, $$0x -> $$0x.go() ? apg.jT : apg.jJ))
-         ),
-         ImmutableSet.of(Pair.of(bsn.N, bso.b), Pair.of(bsn.r, bso.b), Pair.of(bsn.U, bso.b))
-      );
+   @Override
+   protected aqc d(bir $$0) {
+      return aqd.xq;
    }
 
-   public static void a(bws $$0) {
-      $$0.dN().a(ImmutableList.of(cdl.r, cdl.q, cdl.b));
+   @Override
+   protected aqc m_() {
+      return aqd.xp;
    }
 
-   public static cmm a() {
-      return cmm.a(cjo.oI);
+   protected aqc t() {
+      return aqd.xr;
+   }
+
+   @Override
+   public boolean a(ccx $$0) {
+      return !this.fS();
+   }
+
+   @Override
+   protected float eV() {
+      return 0.4F;
+   }
+
+   @Override
+   protected bjt.b aU() {
+      return bjt.b.c;
+   }
+
+   @Override
+   public void c_() {
+      super.c_();
+      this.c = this.b;
+      this.e = this.d;
+      this.bU = this.bT;
+      this.bW = this.bV;
+      this.bT = this.bT + this.bY;
+      if ((double)this.bT > Math.PI * 2) {
+         if (this.dL().B) {
+            this.bT = (float) (Math.PI * 2);
+         } else {
+            this.bT -= (float) (Math.PI * 2);
+            if (this.ag.a(10) == 0) {
+               this.bY = 1.0F / (this.ag.i() + 1.0F) * 0.2F;
+            }
+
+            this.dL().a(this, (byte)19);
+         }
+      }
+
+      if (this.ba()) {
+         if (this.bT < (float) Math.PI) {
+            float $$0 = this.bT / (float) Math.PI;
+            this.bV = asy.a($$0 * $$0 * (float) Math.PI) * (float) Math.PI * 0.25F;
+            if ((double)$$0 > 0.75) {
+               this.bX = 1.0F;
+               this.bZ = 1.0F;
+            } else {
+               this.bZ *= 0.8F;
+            }
+         } else {
+            this.bV = 0.0F;
+            this.bX *= 0.9F;
+            this.bZ *= 0.99F;
+         }
+
+         if (!this.dL().B) {
+            this.o((double)(this.ca * this.bX), (double)(this.cb * this.bX), (double)(this.cc * this.bX));
+         }
+
+         eif $$1 = this.do();
+         double $$2 = $$1.h();
+         this.aU = this.aU + (-((float)asy.d($$1.c, $$1.e)) * (180.0F / (float)Math.PI) - this.aU) * 0.1F;
+         this.r(this.aU);
+         this.d = this.d + (float) Math.PI * this.bZ * 1.5F;
+         this.b = this.b + (-((float)asy.d($$2, $$1.d)) * (180.0F / (float)Math.PI) - this.b) * 0.1F;
+      } else {
+         this.bV = asy.e(asy.a(this.bT)) * (float) Math.PI * 0.25F;
+         if (!this.dL().B) {
+            double $$3 = this.do().d;
+            if (this.a(bji.y)) {
+               $$3 = 0.05 * (double)(this.b(bji.y).e() + 1);
+            } else if (!this.aT()) {
+               $$3 -= 0.08;
+            }
+
+            this.o(0.0, $$3 * 0.98F, 0.0);
+         }
+
+         this.b = this.b + (-90.0F - this.b) * 0.02F;
+      }
+   }
+
+   @Override
+   public boolean a(bir $$0, float $$1) {
+      if (super.a($$0, $$1) && this.eg() != null) {
+         if (!this.dL().B) {
+            this.y();
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private eif j(eif $$0) {
+      eif $$1 = $$0.a(this.c * (float) (Math.PI / 180.0));
+      return $$1.b(-this.aV * (float) (Math.PI / 180.0));
+   }
+
+   private void y() {
+      this.a(this.t(), this.eV(), this.eW());
+      eif $$0 = this.j(new eif(0.0, -1.0, 0.0)).b(this.dq(), this.ds(), this.dw());
+
+      for (int $$1 = 0; $$1 < 30; $$1++) {
+         eif $$2 = this.j(new eif((double)this.ag.i() * 0.6 - 0.3, -1.0, (double)this.ag.i() * 0.6 - 0.3));
+         eif $$3 = $$2.a(0.3 + (double)(this.ag.i() * 2.0F));
+         ((alq)this.dL()).a(this.s(), $$0.c, $$0.d + 0.5, $$0.e, 0, $$3.c, $$3.d, $$3.e, 0.1F);
+      }
+   }
+
+   protected jq s() {
+      return js.ac;
+   }
+
+   @Override
+   public void h(eif $$0) {
+      this.a(bkp.a, this.do());
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 19) {
+         this.bT = 0.0F;
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      this.ca = $$0;
+      this.cb = $$1;
+      this.cc = $$2;
+   }
+
+   public boolean gf() {
+      return this.ca != 0.0F || this.cb != 0.0F || this.cc != 0.0F;
+   }
+
+   class a extends bre {
+      private static final float b = 3.0F;
+      private static final float c = 5.0F;
+      private static final float d = 10.0F;
+      private int e;
+
+      @Override
+      public boolean a() {
+         bkj $$0 = bwt.this.eg();
+         return bwt.this.aX() && $$0 != null ? bwt.this.f((bjt)$$0) < 100.0 : false;
+      }
+
+      @Override
+      public void c() {
+         this.e = 0;
+      }
+
+      @Override
+      public boolean R_() {
+         return true;
+      }
+
+      @Override
+      public void e() {
+         this.e++;
+         bkj $$0 = bwt.this.eg();
+         if ($$0 != null) {
+            eif $$1 = new eif(bwt.this.dq() - $$0.dq(), bwt.this.ds() - $$0.ds(), bwt.this.dw() - $$0.dw());
+            dgb $$2 = bwt.this.dL().a_(ht.a(bwt.this.dq() + $$1.c, bwt.this.ds() + $$1.d, bwt.this.dw() + $$1.e));
+            ebe $$3 = bwt.this.dL().b_(ht.a(bwt.this.dq() + $$1.c, bwt.this.ds() + $$1.d, bwt.this.dw() + $$1.e));
+            if ($$3.a(aqx.a) || $$2.i()) {
+               double $$4 = $$1.f();
+               if ($$4 > 0.0) {
+                  $$1.d();
+                  double $$5 = 3.0;
+                  if ($$4 > 5.0) {
+                     $$5 -= ($$4 - 5.0) / 5.0;
+                  }
+
+                  if ($$5 > 0.0) {
+                     $$1 = $$1.a($$5);
+                  }
+               }
+
+               if ($$2.i()) {
+                  $$1 = $$1.a(0.0, $$1.d, 0.0);
+               }
+
+               bwt.this.a((float)$$1.c / 20.0F, (float)$$1.d / 20.0F, (float)$$1.e / 20.0F);
+            }
+
+            if (this.e % 10 == 5) {
+               bwt.this.dL().a(js.e, bwt.this.dq(), bwt.this.ds(), bwt.this.dw(), 0.0, 0.0, 0.0);
+            }
+         }
+      }
+   }
+
+   class b extends bre {
+      private final bwt b;
+
+      public b(bwt $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      @Override
+      public void e() {
+         int $$0 = this.b.ek();
+         if ($$0 > 100) {
+            this.b.a(0.0F, 0.0F, 0.0F);
+         } else if (this.b.ef().a(b(50)) == 0 || !this.b.ai || !this.b.gf()) {
+            float $$1 = this.b.ef().i() * (float) (Math.PI * 2);
+            float $$2 = asy.b($$1) * 0.2F;
+            float $$3 = -0.1F + this.b.ef().i() * 0.2F;
+            float $$4 = asy.a($$1) * 0.2F;
+            this.b.a($$2, $$3, $$4);
+         }
+      }
    }
 }

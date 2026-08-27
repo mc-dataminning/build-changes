@@ -1,65 +1,97 @@
-import io.netty.util.internal.ThreadLocalRandom;
+import java.io.IOException;
+import java.io.InputStream;
 
-public interface ash {
-   @Deprecated
-   double a = 2.297;
+public class ash extends InputStream {
+   private static final int a = 8192;
+   private final InputStream b;
+   private final byte[] c;
+   private int d;
+   private int e;
 
-   static ash a() {
-      return a(dlb.a());
+   public ash(InputStream $$0) {
+      this($$0, 8192);
    }
 
-   @Deprecated
-   static ash b() {
-      return new dlf(dlb.a());
+   public ash(InputStream $$0, int $$1) {
+      this.b = $$0;
+      this.c = new byte[$$1];
    }
 
-   static ash a(long $$0) {
-      return new dkn($$0);
+   @Override
+   public int read() throws IOException {
+      if (this.e >= this.d) {
+         this.b();
+         if (this.e >= this.d) {
+            return -1;
+         }
+      }
+
+      return Byte.toUnsignedInt(this.c[this.e++]);
    }
 
-   static ash c() {
-      return new dlc(ThreadLocalRandom.current().nextLong());
+   @Override
+   public int read(byte[] $$0, int $$1, int $$2) throws IOException {
+      int $$3 = this.a();
+      if ($$3 <= 0) {
+         if ($$2 >= this.c.length) {
+            return this.b.read($$0, $$1, $$2);
+         }
+
+         this.b();
+         $$3 = this.a();
+         if ($$3 <= 0) {
+            return -1;
+         }
+      }
+
+      if ($$2 > $$3) {
+         $$2 = $$3;
+      }
+
+      System.arraycopy(this.c, this.e, $$0, $$1, $$2);
+      this.e += $$2;
+      return $$2;
    }
 
-   ash d();
+   @Override
+   public long skip(long $$0) throws IOException {
+      if ($$0 <= 0L) {
+         return 0L;
+      } else {
+         long $$1 = (long)this.a();
+         if ($$1 <= 0L) {
+            return this.b.skip($$0);
+         } else {
+            if ($$0 > $$1) {
+               $$0 = $$1;
+            }
 
-   dkz e();
-
-   void b(long var1);
-
-   int f();
-
-   int a(int var1);
-
-   default int a(int $$0, int $$1) {
-      return this.a($$1 - $$0 + 1) + $$0;
-   }
-
-   long g();
-
-   boolean h();
-
-   float i();
-
-   double j();
-
-   double k();
-
-   default double a(double $$0, double $$1) {
-      return $$0 + $$1 * (this.j() - this.j());
-   }
-
-   default void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.f();
+            this.e = (int)((long)this.e + $$0);
+            return $$0;
+         }
       }
    }
 
-   default int b(int $$0, int $$1) {
-      if ($$0 >= $$1) {
-         throw new IllegalArgumentException("bound - origin is non positive");
-      } else {
-         return $$0 + this.a($$1 - $$0);
+   @Override
+   public int available() throws IOException {
+      return this.a() + this.b.available();
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+   }
+
+   private int a() {
+      return this.d - this.e;
+   }
+
+   private void b() throws IOException {
+      this.d = 0;
+      this.e = 0;
+      int $$0 = this.b.read(this.c, 0, this.c.length);
+      if ($$0 > 0) {
+         this.d = $$0;
       }
    }
 }

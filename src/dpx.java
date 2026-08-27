@@ -1,40 +1,39 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpx implements dpu {
-   public static final Codec<dpx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bgj.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bgh.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bgh.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bgh.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bgh.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, dpx::new)
-   );
-   public final int b;
-   public final bgj c;
-   public final bgh d;
-   public final float e;
-   public final bgh f;
-   public final bgh g;
-   public final bgh h;
-   public final int i;
-   public final float j;
+public class dpx extends doo<dqz> {
+   public dpx(Codec<dqz> $$0) {
+      super($$0);
+   }
 
-   public dpx(int $$0, bgj $$1, bgh $$2, float $$3, bgh $$4, bgh $$5, bgh $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   @Override
+   public boolean a(doq<dqz> $$0) {
+      crt $$1 = $$0.b();
+      ht $$2 = $$0.e();
+      ht.a $$3 = new ht.a();
+      ht.a $$4 = new ht.a();
+
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dlk.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(hx.a, 1);
+            crx $$10 = $$1.s($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, cuc.dO.o(), 2);
+            }
+
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, cuc.dN.o(), 2);
+               dgb $$11 = $$1.a_($$4);
+               if ($$11.b(dbi.c)) {
+                  $$1.a($$4, $$11.a(dbi.c, Boolean.valueOf(true)), 2);
+               }
+            }
+         }
+      }
+
+      return true;
    }
 }

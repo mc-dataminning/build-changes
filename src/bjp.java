@@ -1,57 +1,52 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
 
-public enum bjp implements asu {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
+public class bjp {
+   private static final long a = Long.MAX_VALUE;
+   private long b = Long.MAX_VALUE;
+   private long c;
 
-   public static final Codec<bjp> i = asu.a(bjp::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private bjp(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
+   public void a(int $$0) {
+      this.b = (long)$$0 * 1000L / 20L;
+      this.c = 0L;
    }
 
-   public String a() {
-      return this.m;
+   public void b(int $$0) {
+      if (!this.c()) {
+         this.a($$0);
+      }
    }
 
-   @Override
-   public String c() {
-      return this.m;
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
+      } else {
+         this.a();
+      }
    }
 
-   public int b() {
-      return this.j;
+   public void a() {
+      this.b = Long.MAX_VALUE;
    }
 
-   public boolean d() {
-      return this.k;
+   public void a(Consumer<bjp> $$0) {
+      if (this.c()) {
+         $$0.accept(this);
+      }
    }
 
-   public boolean e() {
-      return this.l;
+   public void a(float $$0, float $$1) {
+      if (this.c()) {
+         long $$2 = asy.b((double)($$0 * 1000.0F / 20.0F));
+         this.c = this.c + (long)((float)($$2 - this.b) * $$1);
+         this.b = $$2;
+      }
    }
 
-   public int f() {
-      return this.o;
+   public long b() {
+      return this.c;
    }
 
-   public int g() {
-      return 32;
+   public boolean c() {
+      return this.b != Long.MAX_VALUE;
    }
 }

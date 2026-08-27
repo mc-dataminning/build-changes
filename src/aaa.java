@@ -1,56 +1,74 @@
-public class aaa implements ve<wx> {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
+import java.util.Set;
 
-   public aaa(biw $$0) {
-      this($$0.ah(), $$0.do());
-   }
+public class aaa implements wb<xu> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
+   private final Set<bkx> f;
+   private final int g;
 
-   public aaa(int $$0, ehh $$1) {
+   public aaa(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bkx> $$5, int $$6) {
       this.a = $$0;
-      double $$2 = 3.9;
-      double $$3 = asb.a($$1.c, -3.9, 3.9);
-      double $$4 = asb.a($$1.d, -3.9, 3.9);
-      double $$5 = asb.a($$1.e, -3.9, 3.9);
-      this.b = (int)($$3 * 8000.0);
-      this.c = (int)($$4 * 8000.0);
-      this.d = (int)($$5 * 8000.0);
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public aaa(so $$0) {
-      this.a = $$0.n();
-      this.b = $$0.readShort();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
+   public aaa(tl $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      this.f = bkx.a($$0.readUnsignedByte());
+      this.g = $$0.n();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.l(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
+   public void a(tl $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(bkx.a(this.f));
+      $$0.c(this.g);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
       return this.a;
    }
 
-   public int d() {
+   public double d() {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
    }
 
-   public int f() {
+   public float f() {
       return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public Set<bkx> i() {
+      return this.f;
    }
 }

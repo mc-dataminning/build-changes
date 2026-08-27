@@ -1,99 +1,37 @@
-import java.util.Optional;
-
 public class fmn extends fmq {
-   fmn(fis $$0, fml $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
-   }
+   private final fgt a;
+   private final fpj b = fpj.i(ftw.a);
 
-   fmn(fis $$0, fml $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
+   fmn(fjr $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fge(ero.O().aP().a(fiv.P));
       this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public flu b() {
-      return flu.b;
+   public fmu b() {
+      return fmu.e;
    }
 
-   public static class a implements flt<iy> {
-      private final fml a;
-
-      public a(fml $$0) {
-         this.a = $$0;
-      }
-
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ash $$8 = $$1.z;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         fmn $$12 = new fmn($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
-      }
+   @Override
+   public void a(eml $$0, eqz $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * asy.a($$3 * (float) Math.PI);
+      emh $$5 = new emh();
+      $$5.a($$1.f());
+      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$5.b(-1.0F, -1.0F, 1.0F);
+      $$5.a(0.0F, -1.101F, 1.5F);
+      fpb.a $$6 = ero.O().aO().b();
+      eml $$7 = $$6.getBuffer(this.b);
+      this.a.a($$5, $$7, 15728880, fzr.d, 1.0F, 1.0F, 1.0F, $$4);
+      $$6.b();
    }
 
-   public static class b implements flt<iy> {
-      private final fml a;
-
-      public b(fml $$0) {
-         this.a = $$0;
-      }
-
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmn $$8 = new fmn($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<is> o() {
-               return Optional.of(is.a);
-            }
-         };
-         $$8.t = asb.b($$1.z, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
-         return $$8;
-      }
-   }
-
-   public static class c implements flt<iy> {
-      private final fml a;
-
-      public c(fml $$0) {
-         this.a = $$0;
-      }
-
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmn $$8 = new fmn($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
-         return $$8;
-      }
-   }
-
-   public static class d implements flt<iy> {
-      private final fml a;
-
-      public d(fml $$0) {
-         this.a = $$0;
-      }
-
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
-         fmn $$9 = new fmn($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
+   public static class a implements fmt<jv> {
+      public fmq a(jv $$0, fjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fmn($$1, $$2, $$3, $$4);
       }
    }
 }

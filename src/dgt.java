@@ -1,15 +1,24 @@
-public enum dgt {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dgt implements atr {
+   a("single"),
+   b("left"),
+   c("right");
 
-   private final int d;
+   private final String d;
 
-   private dgt(int $$0) {
+   private dgt(String $$0) {
       this.d = $$0;
    }
 
-   public int a() {
+   @Override
+   public String c() {
       return this.d;
+   }
+
+   public dgt a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

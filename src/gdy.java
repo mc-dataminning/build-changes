@@ -1,110 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 
-public class gdy {
-   final Map<gdx<?>, Object> a;
+public class gdy extends apg {
+   private rt a;
 
-   gdy(Map<gdx<?>, Object> $$0) {
-      this.a = $$0;
-   }
-
-   public static gdy.a a() {
-      return new gdy.a();
-   }
-
-   public static Codec<gdy> a(final List<gdx<?>> $$0) {
-      return (new MapCodec<gdy>() {
-         public <T> RecordBuilder<T> a(gdy $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
-
-            for (gdx<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
-            }
-
-            return $$3;
-         }
-
-         private <T, V> RecordBuilder<T> a(gdy $$0x, RecordBuilder<T> $$1, gdx<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
-         }
-
-         public <T> DataResult<gdy> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<gdy.a> $$2 = DataResult.success(new gdy.a());
-
-            for (gdx<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
-            }
-
-            return $$2.map(gdy.a::a);
-         }
-
-         private <T, V> DataResult<gdy.a> a(DataResult<gdy.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gdx<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
-            }
-         }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(gdx::b).map($$0::createString);
-         }
-      }).codec();
-   }
-
-   @Nullable
-   public <T> T a(gdx<T> $$0) {
-      return (T)this.a.get($$0);
+   public gdy(gdz $$0, ij<agf> $$1, edb $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
    @Override
-   public String toString() {
-      return this.a.toString();
+   protected void b(alr $$0) {
+      if (this.b().a($$0.fR())) {
+         this.a = $$0.f(new rt());
+      }
+
+      super.b($$0);
    }
 
-   public Set<gdx<?>> b() {
-      return this.a.keySet();
+   @Override
+   public ui a(SocketAddress $$0, GameProfile $$1) {
+      return (ui)(this.b().a($$1) && this.a($$1.getName()) != null ? ui.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
    }
 
-   public static class a {
-      private final Map<gdx<?>, Object> a = new Reference2ObjectOpenHashMap();
+   public gdz b() {
+      return (gdz)super.c();
+   }
 
-      a() {
-      }
-
-      public <T> gdy.a a(gdx<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public <T> gdy.a b(gdx<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public gdy.a a(gdy $$0) {
-         this.a.putAll($$0.a);
-         return this;
-      }
-
-      public gdy a() {
-         return new gdy(this.a);
-      }
+   @Override
+   public rt r() {
+      return this.a;
    }
 }

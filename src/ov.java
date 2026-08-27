@@ -1,15 +1,24 @@
-public class ov {
-   public static final aey<dnd<?, ?>> a = or.a("pile_hay");
-   public static final aey<dnd<?, ?>> b = or.a("pile_melon");
-   public static final aey<dnd<?, ?>> c = or.a("pile_snow");
-   public static final aey<dnd<?, ?>> d = or.a("pile_ice");
-   public static final aey<dnd<?, ?>> e = or.a("pile_pumpkin");
+import com.google.common.collect.ImmutableList;
 
-   public static void a(nr<dnd<?, ?>> $$0) {
-      or.a($$0, a, dnq.j, new dpm(new dsc(cte.ij)));
-      or.a($$0, b, dnq.j, new dpm(drv.a(cte.fa)));
-      or.a($$0, c, dnq.j, new dpm(drv.a(cte.dN)));
-      or.a($$0, d, dnq.j, new dpm(new dsf(bfo.<dfd>a().a(cte.mW.o(), 1).a(cte.iC.o(), 5))));
-      or.a($$0, e, dnq.j, new dpm(new dsf(bfo.<dfd>a().a(cte.eZ.o(), 19).a(cte.ef.o(), 1))));
+public class ov {
+   public static final afv<dxj> a = a("empty");
+
+   public static afv<dxj> a(String $$0) {
+      return afv.a(jz.aD, new afw($$0));
+   }
+
+   public static void a(oo<dxj> $$0, String $$1, dxj $$2) {
+      $$0.a(a($$1), $$2);
+   }
+
+   public static void a(oo<dxj> $$0) {
+      ic<dxj> $$1 = $$0.a(jz.aD);
+      ib<dxj> $$2 = $$1.b(a);
+      $$0.a(a, new dxj($$2, ImmutableList.of(), dxj.a.b));
+      ok.a($$0);
+      ot.a($$0);
+      pf.a($$0);
+      of.a($$0);
+      pe.a($$0);
    }
 }

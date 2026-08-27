@@ -1,66 +1,89 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
+import java.util.List;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
 
 public class agk {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.b("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.b("clear.failed.multiple", $$0));
+   private static final afw a = new afw("tick");
+   private static final afw b = new afw("load");
+   private final MinecraftServer c;
+   private List<gx<du>> d = ImmutableList.of();
+   private boolean e;
+   private agj f;
 
-   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("clear").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((dt)$$0x.getSource(), Collections.singleton(((dt)$$0x.getSource()).h()), $$0xx -> true, -1)))
-            .then(
-               ((RequiredArgumentBuilder)du.a("targets", ee.d()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), $$0xx -> true, -1)))
-                  .then(
-                     ((RequiredArgumentBuilder)du.a("item", fz.a($$1)).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), fz.a($$0x, "item"), -1)))
-                        .then(
-                           du.a("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), fz.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
-                              )
-                        )
-                  )
-            )
-      );
+   public agk(MinecraftServer $$0, agj $$1) {
+      this.c = $$0;
+      this.f = $$1;
+      this.b($$1);
    }
 
-   private static int a(dt $$0, Collection<aku> $$1, Predicate<cjl> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = 0;
+   public CommandDispatcher<du> a() {
+      return this.c.aC().a();
+   }
 
-      for (aku $$5 : $$1) {
-         $$4 += $$5.fS().a($$2, $$3, $$5.bR.q());
-         $$5.bS.d();
-         $$5.bR.a($$5.fS());
+   public void b() {
+      if (this.e) {
+         this.e = false;
+         Collection<gx<du>> $$0 = this.f.b(b);
+         this.a($$0, b);
       }
 
-      if ($$4 == 0) {
-         if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().ab());
-         } else {
-            throw b.create($$1.size());
-         }
-      } else {
-         int $$6 = $$4;
-         if ($$3 == 0) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> tl.a("commands.clear.test.single", $$6, $$1.iterator().next().N_()), true);
-            } else {
-               $$0.a(() -> tl.a("commands.clear.test.multiple", $$6, $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> tl.a("commands.clear.success.single", $$6, $$1.iterator().next().N_()), true);
-         } else {
-            $$0.a(() -> tl.a("commands.clear.success.multiple", $$6, $$1.size()), true);
-         }
+      this.a(this.d, a);
+   }
 
-         return $$4;
+   private void a(Collection<gx<du>> $$0, afw $$1) {
+      this.c.aM().a($$1::toString);
+
+      for (gx<du> $$2 : $$0) {
+         this.a($$2, this.c());
       }
+
+      this.c.aM().c();
+   }
+
+   public void a(gx<du> $$0, du $$1) {
+      bes $$2 = this.c.aM();
+      $$2.a(() -> "function " + $$0.a());
+
+      try {
+         gz<du> $$3 = $$0.a(null, this.a(), $$1);
+         dv.a($$1, $$2x -> $$2x.a($$3, $$1));
+      } catch (CommandSyntaxException | dx var8) {
+      } finally {
+         $$2.c();
+      }
+   }
+
+   public void a(agj $$0) {
+      this.f = $$0;
+      this.b($$0);
+   }
+
+   private void b(agj $$0) {
+      this.d = ImmutableList.copyOf($$0.b(a));
+      this.e = true;
+   }
+
+   public du c() {
+      return this.c.aD().a(2).b();
+   }
+
+   public Optional<gx<du>> a(afw $$0) {
+      return this.f.a($$0);
+   }
+
+   public Collection<gx<du>> b(afw $$0) {
+      return this.f.b($$0);
+   }
+
+   public Iterable<afw> d() {
+      return this.f.a().keySet();
+   }
+
+   public Iterable<afw> e() {
+      return this.f.b();
    }
 }

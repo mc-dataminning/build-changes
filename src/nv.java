@@ -1,72 +1,35 @@
-public class nv {
-   @Deprecated
-   public static final dzj.a a = new dzj.a(-3, 1.0, 1.0, 1.0, 0.0);
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-   public static void a(nr<dzj.a> $$0) {
-      a($$0, 0, dkv.a, dkv.b, dkv.c, dkv.d);
-      a($$0, -2, dkv.e, dkv.f, dkv.g, dkv.h);
-      a($$0, dkv.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dkv.j, a);
-      a($$0, dkv.k, -3, 1.0);
-      a($$0, dkv.l, -7, 1.0);
-      a($$0, dkv.m, -1, 1.0);
-      a($$0, dkv.n, -5, 1.0);
-      a($$0, dkv.o, -7, 1.0, 1.0);
-      a($$0, dkv.p, -8, 1.0);
-      a($$0, dkv.q, -8, 1.0);
-      a($$0, dkv.r, -7, 1.0);
-      a($$0, dkv.s, -8, 1.0);
-      a($$0, dkv.t, -11, 1.0);
-      a($$0, dkv.u, -11, 1.0);
-      a($$0, dkv.v, -7, 1.0);
-      a($$0, dkv.w, -7, 1.0);
-      a($$0, dkv.x, -11, 1.0);
-      a($$0, dkv.y, -8, 1.0);
-      a($$0, dkv.z, -5, 1.0);
-      a($$0, dkv.A, -8, 1.0);
-      a($$0, dkv.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dkv.C, -8, 1.0);
-      a($$0, dkv.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dkv.E, -8, 1.0);
-      a($$0, dkv.F, -7, 1.0);
-      a($$0, dkv.G, -7, 1.0);
-      a($$0, dkv.H, -5, 1.0);
-      a($$0, dkv.I, -8, 1.0);
-      a($$0, dkv.J, -8, 1.0);
-      a($$0, dkv.K, -7, 1.0);
-      a($$0, dkv.L, -7, 1.0);
-      a($$0, dkv.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkv.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dkv.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dkv.P, -8, 1.0);
-      a($$0, dkv.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkv.R, -8, 1.0);
-      a($$0, dkv.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dkv.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkv.U, -3, 1.0);
-      a($$0, dkv.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dkv.W, -2, 1.0);
-      a($$0, dkv.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkv.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkv.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkv.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkv.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dkv.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dkv.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dkv.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dkv.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dkv.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dkv.ah, -4, 1.0);
+public abstract class nv extends nu<cke> {
+   private final CompletableFuture<nz.c<cua>> d;
+   private final Map<arh<cua>, arh<cke>> g = new HashMap<>();
+
+   public nv(kh $$0, CompletableFuture<id.b> $$1, CompletableFuture<nz.c<cua>> $$2) {
+      super($$0, jz.E, $$1, $$0x -> $$0x.j().g());
+      this.d = $$2;
    }
 
-   private static void a(nr<dzj.a> $$0, int $$1, aey<dzj.a> $$2, aey<dzj.a> $$3, aey<dzj.a> $$4, aey<dzj.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   public nv(kh $$0, CompletableFuture<id.b> $$1, CompletableFuture<nz.c<cke>> $$2, CompletableFuture<nz.c<cua>> $$3) {
+      super($$0, jz.E, $$1, $$2, $$0x -> $$0x.j().g());
+      this.d = $$3;
    }
 
-   private static void a(nr<dzj.a> $$0, aey<dzj.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new dzj.a($$2, $$3, $$4));
+   protected void a(arh<cua> $$0, arh<cke> $$1) {
+      this.g.put($$0, $$1);
+   }
+
+   @Override
+   protected CompletableFuture<id.b> b() {
+      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            are $$3 = this.c((arh<cke>)$$2);
+            Optional<are> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (id.b)$$0;
+      });
    }
 }

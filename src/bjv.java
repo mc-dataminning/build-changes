@@ -1,73 +1,59 @@
-public abstract class bjv extends bjo {
-   protected static final float bS = 0.0F;
-
-   protected bjv(bja<? extends bjv> $$0, cqb $$1) {
-      super($$0, $$1);
-   }
-
-   public float h(gw $$0) {
-      return this.a($$0, this.dL());
-   }
-
-   public float a(gw $$0, cqe $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean a(cqc $$0, bjq $$1) {
-      return this.a(this.dl(), $$0) >= 0.0F;
-   }
-
-   public boolean ga() {
-      return !this.L().l();
-   }
-
-   public boolean gb() {
-      return this.bz.a(bsn.Y) ? this.bz.c(bsn.Y).isPresent() : this.bO.c().anyMatch($$0 -> $$0.k() instanceof bra);
-   }
-
-   @Override
-   protected void fR() {
-      super.fR();
-      biw $$0 = this.fT();
-      if ($$0 != null && $$0.dL() == this.dL()) {
-         this.a($$0.dl(), 5);
-         float $$1 = this.e($$0);
-         if (this instanceof bkh && ((bkh)this).y()) {
-            if ($$1 > 10.0F) {
-               this.a(true, true);
-            }
-
-            return;
-         }
-
-         this.D($$1);
-         if ($$1 > 10.0F) {
-            this.a(true, true);
-            this.bO.a(bqh.a.a);
-         } else if ($$1 > 6.0F) {
-            double $$2 = ($$0.dq() - this.dq()) / (double)$$1;
-            double $$3 = ($$0.ds() - this.ds()) / (double)$$1;
-            double $$4 = ($$0.dw() - this.dw()) / (double)$$1;
-            this.f(this.do().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
-            this.cm();
-         } else if (this.gc() && !this.gb()) {
-            this.bO.b(bqh.a.a);
-            float $$5 = 2.0F;
-            ehh $$6 = new ehh($$0.dq() - this.dq(), $$0.ds() - this.ds(), $$0.dw() - this.dw()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
-            this.L().a(this.dq() + $$6.c, this.ds() + $$6.d, this.dw() + $$6.e, this.gd());
-         }
-      }
-   }
-
-   protected boolean gc() {
-      return true;
-   }
-
-   protected double gd() {
-      return 1.0;
-   }
-
-   protected void D(float $$0) {
-   }
+public class bjv {
+   public static final byte a = 1;
+   public static final byte b = 3;
+   public static final byte c = 4;
+   public static final byte d = 5;
+   public static final byte e = 6;
+   public static final byte f = 7;
+   public static final byte g = 8;
+   public static final byte h = 9;
+   public static final byte i = 10;
+   public static final byte j = 11;
+   public static final byte k = 12;
+   public static final byte l = 13;
+   public static final byte m = 14;
+   public static final byte n = 15;
+   public static final byte o = 16;
+   public static final byte p = 17;
+   public static final byte q = 18;
+   public static final byte r = 19;
+   public static final byte s = 20;
+   public static final byte t = 21;
+   public static final byte u = 22;
+   public static final byte v = 23;
+   public static final byte w = 24;
+   public static final byte x = 25;
+   public static final byte y = 26;
+   public static final byte z = 27;
+   public static final byte A = 28;
+   public static final byte B = 29;
+   public static final byte C = 30;
+   public static final byte D = 31;
+   public static final byte E = 32;
+   public static final byte F = 34;
+   public static final byte G = 35;
+   public static final byte H = 38;
+   public static final byte I = 39;
+   public static final byte J = 40;
+   public static final byte K = 41;
+   public static final byte L = 42;
+   public static final byte M = 43;
+   public static final byte N = 45;
+   public static final byte O = 46;
+   public static final byte P = 47;
+   public static final byte Q = 48;
+   public static final byte R = 49;
+   public static final byte S = 50;
+   public static final byte T = 51;
+   public static final byte U = 52;
+   public static final byte V = 53;
+   public static final byte W = 54;
+   public static final byte X = 55;
+   public static final byte Y = 56;
+   public static final byte Z = 58;
+   public static final byte aa = 59;
+   public static final byte ab = 60;
+   public static final byte ac = 61;
+   public static final byte ad = 62;
+   public static final byte ae = 63;
 }

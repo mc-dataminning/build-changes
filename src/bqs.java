@@ -1,27 +1,45 @@
-import javax.annotation.Nullable;
+public class bqs extends brr {
+   private final bvx g;
 
-public class bqs extends bre {
-   private static final int i = 10;
-   private static final int j = 7;
-
-   public bqs(bjv $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public bqs(bvx $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean a() {
-      akt $$0 = (akt)this.b.dL();
-      gw $$1 = this.b.dl();
-      return $$0.b($$1) ? false : super.a();
+      return this.g.s() && !this.g.ge() && super.a();
    }
 
-   @Nullable
    @Override
-   protected ehh h() {
-      akt $$0 = (akt)this.b.dL();
-      gw $$1 = this.b.dl();
-      hw $$2 = hw.a($$1);
-      hw $$3 = blf.a($$0, $$2, 2);
-      return $$3 != $$2 ? buc.a(this.b, 10, 7, ehh.c($$3.q()), (float) (Math.PI / 2)) : null;
+   public void c() {
+      super.c();
+      this.g.y(false);
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.g.y(false);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.g.y(this.m());
+   }
+
+   @Override
+   protected boolean a(crc $$0, ht $$1) {
+      if (!$$0.t($$1.c())) {
+         return false;
+      } else {
+         dgb $$2 = $$0.a_($$1);
+         if ($$2.a(cuc.cv)) {
+            return dee.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(cuc.cD) && $$2.c(cxf.b) ? true : $$2.a(aqs.R, $$0x -> $$0x.d(ctt.b).map($$0xx -> $$0xx != dgo.a).orElse(true));
+         }
+      }
    }
 }

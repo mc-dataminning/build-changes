@@ -1,42 +1,56 @@
+import com.google.common.collect.Sets;
 import java.util.EnumSet;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class bry extends bsh {
-   private final bvj a;
-   @Nullable
-   private bjm b;
-   private final bty c = bty.a().a(64.0);
+public class bry<T extends cef> extends bre {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   public bry(bvj $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(bqh.a.d));
+   public bry(T $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bre.a.a));
    }
 
    @Override
    public boolean a() {
-      ehc $$0 = this.a.cG().c(10.0, 8.0, 10.0);
-      List<? extends bjm> $$1 = this.a.dL().a(cbn.class, this.c, this.a, $$0);
-      List<cca> $$2 = this.a.dL().a(this.c, this.a, $$0);
-
-      for (bjm $$3 : $$1) {
-         cbn $$4 = (cbn)$$3;
-
-         for (cca $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
-            }
-         }
-      }
-
-      return this.b == null ? false : !(this.b instanceof cca) || !this.b.M_() && !((cca)this.b).f();
+      return this.c.q() == null && !this.c.cO() && this.c.gt() && !this.c.gs().a() && !((alq)this.c.dL()).b(this.c.dl());
    }
 
    @Override
-   public void c() {
-      this.a.h(this.b);
-      super.c();
+   public boolean b() {
+      return this.c.gt() && !this.c.gs().a() && this.c.dL() instanceof alq && !((alq)this.c.dL()).b(this.c.dl());
+   }
+
+   @Override
+   public void e() {
+      if (this.c.gt()) {
+         cee $$0 = this.c.gs();
+         if (this.c.ah > this.d) {
+            this.d = this.c.ah + 20;
+            this.a($$0);
+         }
+
+         if (!this.c.ga()) {
+            eif $$1 = buz.a(this.c, 15, 4, eif.c($$0.t()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.L().a($$1.c, $$1.d, $$1.e, 1.0);
+            }
+         }
+      }
+   }
+
+   private void a(cee $$0) {
+      if ($$0.v()) {
+         Set<cef> $$1 = Sets.newHashSet();
+         List<cef> $$2 = this.c.dL().a(cef.class, this.c.cG().g(16.0), $$1x -> !$$1x.gt() && ceg.a($$1x, $$0));
+         $$1.addAll($$2);
+
+         for (cef $$3 : $$1) {
+            $$0.a($$0.k(), $$3, null, true);
+         }
+      }
    }
 }

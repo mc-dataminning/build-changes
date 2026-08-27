@@ -1,376 +1,189 @@
-import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import java.nio.IntBuffer;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.OptionalLong;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.lwjgl.openal.AL;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.openal.ALC10;
-import org.lwjgl.openal.ALC11;
-import org.lwjgl.openal.ALCCapabilities;
-import org.lwjgl.openal.ALCapabilities;
-import org.lwjgl.openal.ALUtil;
-import org.lwjgl.openal.SOFTHRTF;
-import org.lwjgl.system.MemoryStack;
 import org.slf4j.Logger;
 
-public class ejf {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 0;
-   private static final int c = 30;
-   private long d;
-   private long e;
-   private boolean f;
-   @Nullable
-   private String g;
-   private static final ejf.a h = new ejf.a() {
-      @Nullable
-      @Override
-      public eje a() {
-         return null;
-      }
+public class ejf extends ecj {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "scoreboard";
+   private final eje c;
 
-      @Override
-      public boolean a(eje $$0) {
-         return false;
-      }
-
-      @Override
-      public void b() {
-      }
-
-      @Override
-      public int c() {
-         return 0;
-      }
-
-      @Override
-      public int d() {
-         return 0;
-      }
-   };
-   private ejf.a i = h;
-   private ejf.a j = h;
-   private final ejg k = new ejg();
-
-   public ejf() {
-      this.g = a();
+   public ejf(eje $$0) {
+      this.c = $$0;
    }
 
-   public void a(@Nullable String $$0, boolean $$1) {
-      this.d = a($$0);
-      this.f = false;
-      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
-      if (eji.a(this.d, "Get capabilities")) {
-         throw new IllegalStateException("Failed to get OpenAL capabilities");
-      } else if (!$$2.OpenALC11) {
-         throw new IllegalStateException("OpenAL 1.1 not supported");
-      } else {
-         this.a($$2.ALC_SOFT_HRTF && $$1);
-         MemoryStack $$3 = MemoryStack.stackPush();
+   public ejf b(rt $$0) {
+      this.b($$0.c("Objectives", 10));
+      this.c.a($$0.c("PlayerScores", 10));
+      if ($$0.b("DisplaySlots", 10)) {
+         this.c($$0.p("DisplaySlots"));
+      }
 
-         try {
-            IntBuffer $$4 = $$3.callocInt(3).put(6554).put(1).put(0).flip();
-            this.e = ALC10.alcCreateContext(this.d, $$4);
-         } catch (Throwable var9) {
-            if ($$3 != null) {
-               try {
-                  $$3.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
+      if ($$0.b("Teams", 9)) {
+         this.a($$0.c("Teams", 10));
+      }
 
-            throw var9;
+      return this;
+   }
+
+   private void a(rz $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         rt $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         ejc $$4 = this.c.e($$3);
+         ui $$5 = ui.a.a($$2.l("DisplayName"));
+         if ($$5 != null) {
+            $$4.a($$5);
          }
 
-         if ($$3 != null) {
-            $$3.close();
+         if ($$2.b("TeamColor", 8)) {
+            $$4.a(n.b($$2.l("TeamColor")));
          }
 
-         if (eji.a(this.d, "Create context")) {
-            throw new IllegalStateException("Unable to create OpenAL context");
-         } else {
-            ALC10.alcMakeContextCurrent(this.e);
-            int $$5 = this.i();
-            int $$6 = asb.a((int)asb.c((float)$$5), 2, 8);
-            int $$7 = asb.a($$5 - $$6, 8, 255);
-            this.i = new ejf.b($$7);
-            this.j = new ejf.b($$6);
-            ALCapabilities $$8 = AL.createCapabilities($$2);
-            eji.a("Initialization");
-            if (!$$8.AL_EXT_source_distance_model) {
-               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
-            } else {
-               AL10.alEnable(512);
-               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
-                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
-               } else {
-                  eji.a("Enable per-source distance models");
-                  a.info("OpenAL initialized on device {}", this.b());
-                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
-               }
+         if ($$2.b("AllowFriendlyFire", 99)) {
+            $$4.a($$2.q("AllowFriendlyFire"));
+         }
+
+         if ($$2.b("SeeFriendlyInvisibles", 99)) {
+            $$4.b($$2.q("SeeFriendlyInvisibles"));
+         }
+
+         if ($$2.b("MemberNamePrefix", 8)) {
+            ui $$6 = ui.a.a($$2.l("MemberNamePrefix"));
+            if ($$6 != null) {
+               $$4.b($$6);
             }
          }
+
+         if ($$2.b("MemberNameSuffix", 8)) {
+            ui $$7 = ui.a.a($$2.l("MemberNameSuffix"));
+            if ($$7 != null) {
+               $$4.c($$7);
+            }
+         }
+
+         if ($$2.b("NameTagVisibility", 8)) {
+            ejg.b $$8 = ejg.b.a($$2.l("NameTagVisibility"));
+            if ($$8 != null) {
+               $$4.a($$8);
+            }
+         }
+
+         if ($$2.b("DeathMessageVisibility", 8)) {
+            ejg.b $$9 = ejg.b.a($$2.l("DeathMessageVisibility"));
+            if ($$9 != null) {
+               $$4.b($$9);
+            }
+         }
+
+         if ($$2.b("CollisionRule", 8)) {
+            ejg.a $$10 = ejg.a.a($$2.l("CollisionRule"));
+            if ($$10 != null) {
+               $$4.a($$10);
+            }
+         }
+
+         this.a($$4, $$2.c("Players", 8));
       }
    }
 
-   private void a(boolean $$0) {
-      int $$1 = ALC10.alcGetInteger(this.d, 6548);
-      if ($$1 > 0) {
-         MemoryStack $$2 = MemoryStack.stackPush();
+   private void a(ejc $$0, rz $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c.a($$1.j($$2), $$0);
+      }
+   }
 
-         try {
-            IntBuffer $$3 = $$2.callocInt(10).put(6546).put($$0 ? 1 : 0).put(6550).put(0).put(0).flip();
-            if (!SOFTHRTF.alcResetDeviceSOFT(this.d, $$3)) {
-               a.warn("Failed to reset device: {}", ALC10.alcGetString(this.d, ALC10.alcGetError(this.d)));
-            }
-         } catch (Throwable var7) {
-            if ($$2 != null) {
-               try {
-                  $$2.close();
-               } catch (Throwable var6) {
-                  var7.addSuppressed(var6);
-               }
-            }
-
-            throw var7;
-         }
-
+   private void c(rt $$0) {
+      for (String $$1 : $$0.e()) {
+         eja $$2 = eja.t.a($$1);
          if ($$2 != null) {
-            $$2.close();
+            String $$3 = $$0.l($$1);
+            ejb $$4 = this.c.b($$3);
+            this.c.a($$2, $$4);
          }
       }
    }
 
-   private int i() {
-      MemoryStack $$0 = MemoryStack.stackPush();
-
-      int var7;
-      label58: {
-         try {
-            int $$1 = ALC10.alcGetInteger(this.d, 4098);
-            if (eji.a(this.d, "Get attributes size")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
-
-            IntBuffer $$2 = $$0.mallocInt($$1);
-            ALC10.alcGetIntegerv(this.d, 4099, $$2);
-            if (eji.a(this.d, "Get attributes")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
-
-            int $$3 = 0;
-
-            while ($$3 < $$1) {
-               int $$4 = $$2.get($$3++);
-               if ($$4 == 0) {
-                  break;
-               }
-
-               int $$5 = $$2.get($$3++);
-               if ($$4 == 4112) {
-                  var7 = $$5;
-                  break label58;
-               }
-            }
-         } catch (Throwable var9) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
-
-            throw var9;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return 30;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-
-      return var7;
-   }
-
-   @Nullable
-   public static String a() {
-      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
-         return null;
-      } else {
-         ALUtil.getStringList(0L, 4115);
-         return ALC10.alcGetString(0L, 4114);
+   private void b(rz $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         rt $$2 = $$0.a($$1);
+         String $$3 = $$2.l("CriteriaName");
+         ejh $$4 = ejh.a($$3).orElseGet(() -> {
+            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$3, ejh.a.d());
+            return ejh.a;
+         });
+         String $$5 = $$2.l("Name");
+         ui $$6 = ui.a.a($$2.l("DisplayName"));
+         ejh.a $$7 = ejh.a.a($$2.l("RenderType"));
+         this.c.a($$5, $$4, $$6, $$7);
       }
    }
 
-   public String b() {
-      String $$0 = ALC10.alcGetString(this.d, 4115);
-      if ($$0 == null) {
-         $$0 = ALC10.alcGetString(this.d, 4101);
-      }
+   @Override
+   public rt a(rt $$0) {
+      $$0.a("Objectives", this.b());
+      $$0.a("PlayerScores", this.c.h());
+      $$0.a("Teams", this.a());
+      this.d($$0);
+      return $$0;
+   }
 
-      if ($$0 == null) {
-         $$0 = "Unknown";
+   private rz a() {
+      rz $$0 = new rz();
+
+      for (ejc $$2 : this.c.g()) {
+         rt $$3 = new rt();
+         $$3.a("Name", $$2.b());
+         $$3.a("DisplayName", ui.a.a($$2.c()));
+         if ($$2.n().b() >= 0) {
+            $$3.a("TeamColor", $$2.n().g());
+         }
+
+         $$3.a("AllowFriendlyFire", $$2.h());
+         $$3.a("SeeFriendlyInvisibles", $$2.i());
+         $$3.a("MemberNamePrefix", ui.a.a($$2.e()));
+         $$3.a("MemberNameSuffix", ui.a.a($$2.f()));
+         $$3.a("NameTagVisibility", $$2.j().e);
+         $$3.a("DeathMessageVisibility", $$2.k().e);
+         $$3.a("CollisionRule", $$2.l().e);
+         rz $$4 = new rz();
+
+         for (String $$5 : $$2.g()) {
+            $$4.add(sl.a($$5));
+         }
+
+         $$3.a("Players", $$4);
+         $$0.add($$3);
       }
 
       return $$0;
    }
 
-   public synchronized boolean c() {
-      String $$0 = a();
-      if (Objects.equals(this.g, $$0)) {
-         return false;
-      } else {
-         this.g = $$0;
-         return true;
-      }
-   }
+   private void d(rt $$0) {
+      rt $$1 = new rt();
 
-   private static long a(@Nullable String $$0) {
-      OptionalLong $$1 = OptionalLong.empty();
-      if ($$0 != null) {
-         $$1 = b($$0);
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(a());
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(null);
-      }
-
-      if ($$1.isEmpty()) {
-         throw new IllegalStateException("Failed to open OpenAL device");
-      } else {
-         return $$1.getAsLong();
-      }
-   }
-
-   private static OptionalLong b(@Nullable String $$0) {
-      long $$1 = ALC10.alcOpenDevice($$0);
-      return $$1 != 0L && !eji.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
-   }
-
-   public void d() {
-      this.i.b();
-      this.j.b();
-      ALC10.alcDestroyContext(this.e);
-      if (this.d != 0L) {
-         ALC10.alcCloseDevice(this.d);
-      }
-   }
-
-   public ejg e() {
-      return this.k;
-   }
-
-   @Nullable
-   public eje a(ejf.c $$0) {
-      return ($$0 == ejf.c.b ? this.j : this.i).a();
-   }
-
-   public void a(eje $$0) {
-      if (!this.i.a($$0) && !this.j.a($$0)) {
-         throw new IllegalStateException("Tried to release unknown channel");
-      }
-   }
-
-   public String f() {
-      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
-   }
-
-   public List<String> g() {
-      List<String> $$0 = ALUtil.getStringList(0L, 4115);
-      return $$0 == null ? Collections.emptyList() : $$0;
-   }
-
-   public boolean h() {
-      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
-   }
-
-   interface a {
-      @Nullable
-      eje a();
-
-      boolean a(eje var1);
-
-      void b();
-
-      int c();
-
-      int d();
-   }
-
-   static class b implements ejf.a {
-      private final int a;
-      private final Set<eje> b = Sets.newIdentityHashSet();
-
-      public b(int $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public eje a() {
-         if (this.b.size() >= this.a) {
-            if (aa.aT) {
-               ejf.a.warn("Maximum sound pool size {} reached", this.a);
-            }
-
-            return null;
-         } else {
-            eje $$0 = eje.a();
-            if ($$0 != null) {
-               this.b.add($$0);
-            }
-
-            return $$0;
+      for (eja $$2 : eja.values()) {
+         ejb $$3 = this.c.a($$2);
+         if ($$3 != null) {
+            $$1.a($$2.c(), $$3.b());
          }
       }
 
-      @Override
-      public boolean a(eje $$0) {
-         if (!this.b.remove($$0)) {
-            return false;
-         } else {
-            $$0.b();
-            return true;
-         }
-      }
-
-      @Override
-      public void b() {
-         this.b.forEach(eje::b);
-         this.b.clear();
-      }
-
-      @Override
-      public int c() {
-         return this.a;
-      }
-
-      @Override
-      public int d() {
-         return this.b.size();
+      if (!$$1.g()) {
+         $$0.a("DisplaySlots", $$1);
       }
    }
 
-   public static enum c {
-      a,
-      b;
+   private rz b() {
+      rz $$0 = new rz();
+
+      for (ejb $$2 : this.c.c()) {
+         rt $$3 = new rt();
+         $$3.a("Name", $$2.b());
+         $$3.a("CriteriaName", $$2.c().d());
+         $$3.a("DisplayName", ui.a.a($$2.d()));
+         $$3.a("RenderType", $$2.f().a());
+         $$0.add($$3);
+      }
+
+      return $$0;
    }
 }

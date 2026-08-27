@@ -1,39 +1,79 @@
-import javax.annotation.Nullable;
+public class adm implements wb<aca> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 4;
+   private final ht d;
+   private final String e;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final deh.a i;
 
-public record adm(int a, @Nullable adq b) implements ve<adl> {
-   private static final int c = 1048576;
-
-   public static adm b(so $$0) {
-      int $$1 = $$0.n();
-      return new adm($$1, a($$1, $$0));
+   public adm(ht $$0, String $$1, deh.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$2;
    }
 
-   private static adq a(int $$0, so $$1) {
-      return c($$1);
-   }
-
-   private static adq c(so $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.j($$1);
-         return ads.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
+   public adm(tl $$0) {
+      this.d = $$0.e();
+      this.e = $$0.s();
+      this.i = $$0.b(deh.a.class);
+      int $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(tl $$0) {
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.i);
+      int $$1 = 0;
+      if (this.f) {
+         $$1 |= 1;
+      }
+
+      if (this.g) {
+         $$1 |= 2;
+      }
+
+      if (this.h) {
+         $$1 |= 4;
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(adl $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public adq d() {
-      return this.b;
+   public ht a() {
+      return this.d;
+   }
+
+   public String d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public boolean f() {
+      return this.g;
+   }
+
+   public boolean g() {
+      return this.h;
+   }
+
+   public deh.a h() {
+      return this.i;
    }
 }

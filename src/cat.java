@@ -1,118 +1,114 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
+public class cat extends bzu {
+   private static final int c = 300;
+   private static final afc<Boolean> d = aff.a(cat.class, afe.k);
+   public static final String b = "StrayConversionTime";
+   private int e;
+   private int bT;
 
-public class cat extends cap {
-   private static final int bV = 50;
-   private static final float bW = 0.35F;
-   private static final int bX = 7;
-   protected static final ImmutableList<bts<? extends btr<? super cat>>> bT = ImmutableList.of(bts.c, bts.d, bts.b, bts.f, bts.l);
-   protected static final ImmutableList<bsn<?>> bU = ImmutableList.of(
-      bsn.n, bsn.v, bsn.g, bsn.h, bsn.k, bsn.l, bsn.an, bsn.am, bsn.x, bsn.y, bsn.m, bsn.E, new bsn[]{bsn.o, bsn.p, bsn.q, bsn.t, bsn.aa, bsn.L, bsn.b}
-   );
-
-   public cat(bja<? extends cat> $$0, cqb $$1) {
+   public cat(bjx<? extends cat> $$0, cqz $$1) {
       super($$0, $$1);
-      this.bJ = 20;
-   }
-
-   public static bkr.a y() {
-      return bzo.gk().a(bks.l, 50.0).a(bks.m, 0.35F).a(bks.c, 7.0);
-   }
-
-   @Nullable
-   @Override
-   public bkf a(cqq $$0, bhc $$1, bjq $$2, @Nullable bkf $$3, @Nullable qw $$4) {
-      cau.a(this);
-      this.a($$0.D_(), $$1);
-      return super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected void a(ash $$0, bhc $$1) {
-      this.a(bjb.a, new cjl(cjo.ok));
+   protected void b_() {
+      super.b_();
+      this.al().a(d, false);
+   }
+
+   public boolean gf() {
+      return this.al().b(d);
+   }
+
+   public void w(boolean $$0) {
+      this.an.b(d, $$0);
    }
 
    @Override
-   protected bkm.b<cat> dO() {
-      return bkm.a(bU, bT);
+   public boolean ge() {
+      return this.gf();
    }
 
    @Override
-   protected bkm<?> a(Dynamic<?> $$0) {
-      return cau.a(this, this.dO().a($$0));
-   }
-
-   @Override
-   public bkm<cat> dN() {
-      return (bkm<cat>)super.dN();
-   }
-
-   @Override
-   public boolean s() {
-      return false;
-   }
-
-   @Override
-   public boolean k(cjl $$0) {
-      return $$0.a(cjo.ok) ? super.k($$0) : false;
-   }
-
-   @Override
-   protected void X() {
-      this.dL().ad().a("piglinBruteBrain");
-      this.dN().a((akt)this.dL(), this);
-      this.dL().ad().c();
-      cau.b(this);
-      cau.c(this);
-      super.X();
-   }
-
-   @Override
-   public cas gg() {
-      return this.fW() && this.gh() ? cas.a : cas.f;
-   }
-
-   @Override
-   public boolean a(bhu $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if (this.dL().B) {
-         return false;
-      } else {
-         if ($$2 && $$0.d() instanceof bjm) {
-            cau.a(this, (bjm)$$0.d());
+   public void l() {
+      if (!this.dL().B && this.bv() && !this.fU()) {
+         if (this.aA) {
+            if (this.gf()) {
+               this.bT--;
+               if (this.bT < 0) {
+                  this.gg();
+               }
+            } else {
+               this.e++;
+               if (this.e >= 140) {
+                  this.b(300);
+               }
+            }
+         } else {
+            this.e = -1;
+            this.w(false);
          }
+      }
 
-         return $$2;
+      super.l();
+   }
+
+   @Override
+   public void b(rt $$0) {
+      super.b($$0);
+      $$0.a("StrayConversionTime", this.gf() ? this.bT : -1);
+   }
+
+   @Override
+   public void a(rt $$0) {
+      super.a($$0);
+      if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
+         this.b($$0.h("StrayConversionTime"));
+      }
+   }
+
+   private void b(int $$0) {
+      this.bT = $$0;
+      this.w(true);
+   }
+
+   protected void gg() {
+      this.a(bjx.aU, true);
+      if (!this.aS()) {
+         this.dL().a(null, 1048, this.dl(), 0);
       }
    }
 
    @Override
-   protected apf w() {
-      return apg.sd;
+   public boolean dz() {
+      return false;
    }
 
    @Override
-   protected apf d(bhu $$0) {
-      return apg.sg;
+   protected aqc w() {
+      return aqd.vq;
    }
 
    @Override
-   protected apf l_() {
-      return apg.sf;
+   protected aqc d(bir $$0) {
+      return aqd.vB;
    }
 
    @Override
-   protected void b(gw $$0, dfd $$1) {
-      this.a(apg.sh, 0.15F, 1.0F);
-   }
-
-   protected void gl() {
-      this.a(apg.se, 1.0F, this.eW());
+   protected aqc m_() {
+      return aqd.vs;
    }
 
    @Override
-   protected void gi() {
-      this.a(apg.si, 1.0F, this.eW());
+   aqc t() {
+      return aqd.vD;
+   }
+
+   @Override
+   protected void a(bir $$0, int $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$0.d() instanceof bzx $$4 && $$4.gf()) {
+         $$4.gg();
+         this.a(ckm.tr);
+      }
    }
 }

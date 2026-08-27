@@ -1,34 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dra extends drg {
-   public static final Codec<dra> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dra::new));
+public class dra implements dqs {
+   public static final Codec<dra> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(dra.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dra::new)
+   );
+   public final List<dra.a> b;
+   public final int c;
+   public final float d;
 
-   public dra(bgj $$0, bgj $$1) {
-      super($$0, $$1);
+   public dra(List<dra.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
    }
 
-   @Override
-   protected drh<?> a() {
-      return drh.d;
+   public dra(List<dra.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
    }
 
-   @Override
-   protected void a(cqh $$0, drg.b $$1, ash $$2, dqq $$3, int $$4, drg.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      gw $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   public dra(dzn $$0, dgb $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new dra.a($$0, $$1)), $$2, $$3);
    }
 
-   @Override
-   public int a(ash $$0, int $$1, dqq $$2) {
-      return 0;
+   public dra(dzn $$0, dgb $$1, int $$2) {
+      this(ImmutableList.of(new dra.a($$0, $$1)), $$2, 0.0F);
    }
 
-   @Override
-   protected boolean a(ash $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public static dra.a a(dzn $$0, dgb $$1) {
+      return new dra.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<dra.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dzn.c.fieldOf("target").forGetter($$0x -> $$0x.b), dgb.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, dra.a::new)
+      );
+      public final dzn b;
+      public final dgb c;
+
+      a(dzn $$0, dgb $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

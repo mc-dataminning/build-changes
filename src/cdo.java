@@ -1,45 +1,76 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class cdo {
-   private final cdn a;
-   private final List<cdo.a> b = Lists.newArrayList();
-
-   public cdo(cdn $$0) {
-      this.a = $$0;
+public class cdo extends cdp {
+   public cdo(bjx<? extends cdo> $$0, cqz $$1) {
+      super($$0, $$1);
    }
 
-   public cdo a(int $$0, cdl $$1) {
-      this.b.add(new cdo.a($$0, $$1));
-      return this;
+   public cdo(cqz $$0, bxw $$1) {
+      this(bjx.ak, $$0);
+      this.b($$1);
+      this.e(
+         $$1.dq() - (double)($$1.df() + 1.0F) * 0.5 * (double)asy.a($$1.aU * (float) (Math.PI / 180.0)),
+         $$1.du() - 0.1F,
+         $$1.dw() + (double)($$1.df() + 1.0F) * 0.5 * (double)asy.b($$1.aU * (float) (Math.PI / 180.0))
+      );
    }
 
-   public cdn a() {
-      this.b.stream().map(cdo.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cdl $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   @Override
+   public void l() {
+      super.l();
+      eif $$0 = this.do();
+      eid $$1 = cdq.a(this, this::a);
+      this.a($$1);
+      double $$2 = this.dq() + $$0.c;
+      double $$3 = this.ds() + $$0.d;
+      double $$4 = this.dw() + $$0.e;
+      this.H();
+      float $$5 = 0.99F;
+      float $$6 = 0.06F;
+      if (this.dL().a(this.cG()).noneMatch(dga.a::i)) {
+         this.ak();
+      } else if (this.ba()) {
+         this.ak();
+      } else {
+         this.f($$0.a(0.99F));
+         if (!this.aT()) {
+            this.f(this.do().b(0.0, -0.06F, 0.0));
+         }
+
+         this.e($$2, $$3, $$4);
+      }
    }
 
-   static class a {
-      private final int a;
-      private final cdl b;
+   @Override
+   protected void a(eic $$0) {
+      super.a($$0);
+      if (this.v() instanceof bkj $$1) {
+         $$0.a().a(this.dM().a(this, $$1), 1.0F);
+      }
+   }
 
-      public a(int $$0, cdl $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   protected void a(eib $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         this.ak();
+      }
+   }
+
+   @Override
+   protected void b_() {
+   }
+
+   @Override
+   public void a(xv $$0) {
+      super.a($$0);
+      double $$1 = $$0.i();
+      double $$2 = $$0.j();
+      double $$3 = $$0.k();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dL().a(js.ab, this.dq(), this.ds(), this.dw(), $$1 * $$5, $$2, $$3 * $$5);
       }
 
-      public int a() {
-         return this.a;
-      }
-
-      public cdl b() {
-         return this.b;
-      }
+      this.o($$1, $$2, $$3);
    }
 }

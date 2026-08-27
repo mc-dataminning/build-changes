@@ -1,75 +1,105 @@
-public class fhy {
-   public static final String a = "left_fin";
-   public static final String b = "right_fin";
-   public static final String c = "top_fin";
-   public static final String d = "bottom_fin";
-   public static final String e = "tail_fin";
-   public static final String f = "left_blue_fin";
-   public static final String g = "right_blue_fin";
-   public static final String h = "left_arm";
-   public static final String i = "right_arm";
-   public static final String j = "left_wing";
-   public static final String k = "right_wing";
-   public static final String l = "left_wing_base";
-   public static final String m = "right_wing_base";
-   public static final String n = "left_wing_tip";
-   public static final String o = "right_wing_tip";
-   public static final String p = "left_ear";
-   public static final String q = "right_ear";
-   public static final String r = "left_leg";
-   public static final String s = "right_leg";
-   public static final String t = "left_hind_leg";
-   public static final String u = "right_hind_leg";
-   public static final String v = "left_mid_leg";
-   public static final String w = "right_mid_leg";
-   public static final String x = "left_front_leg";
-   public static final String y = "right_front_leg";
-   public static final String z = "left_hind_foot";
-   public static final String A = "right_hind_foot";
-   public static final String B = "left_front_foot";
-   public static final String C = "right_front_foot";
-   public static final String D = "left_hind_leg_tip";
-   public static final String E = "right_hind_leg_tip";
-   public static final String F = "left_front_leg_tip";
-   public static final String G = "right_front_leg_tip";
-   public static final String H = "left_lid";
-   public static final String I = "right_lid";
-   public static final String J = "left_chest";
-   public static final String K = "right_chest";
-   public static final String L = "left_horn";
-   public static final String M = "right_horn";
-   public static final String N = "left_eye";
-   public static final String O = "right_eye";
-   public static final String P = "jaw";
-   public static final String Q = "nose";
-   public static final String R = "arms";
-   public static final String S = "tail";
-   public static final String T = "cube";
-   public static final String U = "beak";
-   public static final String V = "back_fin";
-   public static final String W = "mane";
-   public static final String X = "neck";
-   public static final String Y = "mouth";
-   public static final String Z = "head";
-   public static final String aa = "hat";
-   public static final String ab = "body";
-   public static final String ac = "hat_rim";
-   public static final String ad = "jacket";
-   public static final String ae = "top_gills";
-   public static final String af = "left_gills";
-   public static final String ag = "right_gills";
-   public static final String ah = "root";
-   public static final String ai = "croaking_body";
-   public static final String aj = "tongue";
-   public static final String ak = "tongue_r1";
-   public static final String al = "left_hand";
-   public static final String am = "right_hand";
-   public static final String an = "left_foot";
-   public static final String ao = "right_foot";
-   public static final String ap = "eyes";
-   public static final String aq = "right_tendril";
-   public static final String ar = "left_tendril";
-   public static final String as = "right_ribcage";
-   public static final String at = "left_ribcage";
-   public static final String au = "bone";
+public class fhy<T extends bjt> extends fgg<T> {
+   private static final String a = "body0";
+   private static final String b = "body1";
+   private static final String f = "right_middle_front_leg";
+   private static final String g = "left_middle_front_leg";
+   private static final String h = "right_middle_hind_leg";
+   private static final String i = "left_middle_hind_leg";
+   private final fiw j;
+   private final fiw k;
+   private final fiw l;
+   private final fiw m;
+   private final fiw n;
+   private final fiw o;
+   private final fiw p;
+   private final fiw q;
+   private final fiw r;
+   private final fiw s;
+
+   public fhy(fiw $$0) {
+      this.j = $$0;
+      this.k = $$0.b("head");
+      this.l = $$0.b("right_hind_leg");
+      this.m = $$0.b("left_hind_leg");
+      this.n = $$0.b("right_middle_hind_leg");
+      this.o = $$0.b("left_middle_hind_leg");
+      this.p = $$0.b("right_middle_front_leg");
+      this.q = $$0.b("left_middle_front_leg");
+      this.r = $$0.b("right_front_leg");
+      this.s = $$0.b("left_front_leg");
+   }
+
+   public static fjc b() {
+      fje $$0 = new fje();
+      fjf $$1 = $$0.a();
+      int $$2 = 15;
+      $$1.a("head", fjb.c().a(32, 4).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F), fiy.a(0.0F, 15.0F, -3.0F));
+      $$1.a("body0", fjb.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fiy.a(0.0F, 15.0F, 0.0F));
+      $$1.a("body1", fjb.c().a(0, 12).a(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F), fiy.a(0.0F, 15.0F, 9.0F));
+      fjb $$3 = fjb.c().a(18, 0).a(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      fjb $$4 = fjb.c().a(18, 0).a().a(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      $$1.a("right_hind_leg", $$3, fiy.a(-4.0F, 15.0F, 2.0F));
+      $$1.a("left_hind_leg", $$4, fiy.a(4.0F, 15.0F, 2.0F));
+      $$1.a("right_middle_hind_leg", $$3, fiy.a(-4.0F, 15.0F, 1.0F));
+      $$1.a("left_middle_hind_leg", $$4, fiy.a(4.0F, 15.0F, 1.0F));
+      $$1.a("right_middle_front_leg", $$3, fiy.a(-4.0F, 15.0F, 0.0F));
+      $$1.a("left_middle_front_leg", $$4, fiy.a(4.0F, 15.0F, 0.0F));
+      $$1.a("right_front_leg", $$3, fiy.a(-4.0F, 15.0F, -1.0F));
+      $$1.a("left_front_leg", $$4, fiy.a(4.0F, 15.0F, -1.0F));
+      return fjc.a($$0, 64, 32);
+   }
+
+   @Override
+   public fiw a() {
+      return this.j;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.k.f = $$4 * (float) (Math.PI / 180.0);
+      this.k.e = $$5 * (float) (Math.PI / 180.0);
+      float $$6 = (float) (Math.PI / 4);
+      this.l.g = (float) (-Math.PI / 4);
+      this.m.g = (float) (Math.PI / 4);
+      this.n.g = -0.58119464F;
+      this.o.g = 0.58119464F;
+      this.p.g = -0.58119464F;
+      this.q.g = 0.58119464F;
+      this.r.g = (float) (-Math.PI / 4);
+      this.s.g = (float) (Math.PI / 4);
+      float $$7 = -0.0F;
+      float $$8 = (float) (Math.PI / 8);
+      this.l.f = (float) (Math.PI / 4);
+      this.m.f = (float) (-Math.PI / 4);
+      this.n.f = (float) (Math.PI / 8);
+      this.o.f = (float) (-Math.PI / 8);
+      this.p.f = (float) (-Math.PI / 8);
+      this.q.f = (float) (Math.PI / 8);
+      this.r.f = (float) (-Math.PI / 4);
+      this.s.f = (float) (Math.PI / 4);
+      float $$9 = -(asy.b($$1 * 0.6662F * 2.0F + 0.0F) * 0.4F) * $$2;
+      float $$10 = -(asy.b($$1 * 0.6662F * 2.0F + (float) Math.PI) * 0.4F) * $$2;
+      float $$11 = -(asy.b($$1 * 0.6662F * 2.0F + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$12 = -(asy.b($$1 * 0.6662F * 2.0F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      float $$13 = Math.abs(asy.a($$1 * 0.6662F + 0.0F) * 0.4F) * $$2;
+      float $$14 = Math.abs(asy.a($$1 * 0.6662F + (float) Math.PI) * 0.4F) * $$2;
+      float $$15 = Math.abs(asy.a($$1 * 0.6662F + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$16 = Math.abs(asy.a($$1 * 0.6662F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      this.l.f += $$9;
+      this.m.f += -$$9;
+      this.n.f += $$10;
+      this.o.f += -$$10;
+      this.p.f += $$11;
+      this.q.f += -$$11;
+      this.r.f += $$12;
+      this.s.f += -$$12;
+      this.l.g += $$13;
+      this.m.g += -$$13;
+      this.n.g += $$14;
+      this.o.g += -$$14;
+      this.p.g += $$15;
+      this.q.g += -$$15;
+      this.r.g += $$16;
+      this.s.g += -$$16;
+   }
 }

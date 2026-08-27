@@ -1,27 +1,14 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-public interface dr {
-   dr a = new dr() {
-      @Nullable
-      @Override
-      public ub a(String $$0) {
-         return null;
-      }
-   };
+public class dr extends RuntimeException {
+   private final ui a;
 
-   @Nullable
-   ub a(String var1);
+   public dr(ui $$0) {
+      super($$0.getString(), null, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES);
+      this.a = $$0;
+   }
 
-   public static record a(Map<String, ub> b) implements dr {
-      @Nullable
-      @Override
-      public ub a(String $$0) {
-         return this.b.get($$0);
-      }
-
-      public Map<String, ub> a() {
-         return this.b;
-      }
+   public ui a() {
+      return this.a;
    }
 }

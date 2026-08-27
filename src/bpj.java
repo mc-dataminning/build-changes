@@ -1,108 +1,80 @@
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 import java.util.Optional;
 
-public class bpj implements bpg {
-   protected final bjo a;
-   protected float b;
-   protected float c;
-   protected int d;
-   protected double e;
-   protected double f;
-   protected double g;
+public class bpj extends bpk {
+   private static final List<cke> c = ImmutableList.of(ckm.oH, ckm.ur);
 
-   public bpj(bjo $$0) {
-      this.a = $$0;
-   }
-
-   public void a(ehh $$0) {
-      this.a($$0.c, $$0.d, $$0.e);
-   }
-
-   public void a(biw $$0) {
-      this.a($$0.dq(), b($$0), $$0.dw());
-   }
-
-   public void a(biw $$0, float $$1, float $$2) {
-      this.a($$0.dq(), b($$0), $$0.dw(), $$1, $$2);
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.a($$0, $$1, $$2, (float)this.a.fH(), (float)this.a.Y());
-   }
-
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = 2;
-   }
-
-   public void a() {
-      if (this.c()) {
-         this.a.s(0.0F);
-      }
-
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0 -> this.a.aW = this.a(this.a.aW, $$0, this.b));
-         this.h().ifPresent($$0 -> this.a.s(this.a(this.a.dD(), $$0, this.c)));
-      } else {
-         this.a.aW = this.a(this.a.aW, this.a.aU, 10.0F);
-      }
-
-      this.b();
-   }
-
-   protected void b() {
-      if (!this.a.L().l()) {
-         this.a.aW = asb.c(this.a.aW, this.a.aU, (float)this.a.Z());
+   @Override
+   protected void a(alq $$0, cck $$1) {
+      Optional<ia> $$2 = $$1.dN().c(btk.c);
+      if (!$$2.isEmpty()) {
+         ia $$3 = $$2.get();
+         dgb $$4 = $$0.a_($$3.b());
+         if ($$4.a(cuc.pc)) {
+            this.a($$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
       }
    }
 
-   protected boolean c() {
-      return true;
+   private void a(alq $$0, cck $$1, ia $$2, dgb $$3) {
+      ht $$4 = $$2.b();
+      if ($$3.c(cvl.e) == 8) {
+         $$3 = cvl.a($$1, $$3, (cqz)$$0, $$4);
+      }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      bii $$8 = $$1.y();
+      int $$9 = $$8.b();
+      dgb $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         ckj $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.d());
+         if ($$13 != -1) {
+            int $$14 = $$12.L();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = cvl.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(cvl.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   public boolean d() {
-      return this.d > 0;
+   private void a(alq $$0, dgb $$1, ht $$2, dgb $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
    }
 
-   public double e() {
-      return this.e;
-   }
-
-   public double f() {
-      return this.f;
-   }
-
-   public double g() {
-      return this.g;
-   }
-
-   protected Optional<Float> h() {
-      double $$0 = this.e - this.a.dq();
-      double $$1 = this.f - this.a.du();
-      double $$2 = this.g - this.a.dw();
-      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(asb.d($$1, $$3) * 180.0F / (float)Math.PI)));
-   }
-
-   protected Optional<Float> i() {
-      double $$0 = this.e - this.a.dq();
-      double $$1 = this.g - this.a.dw();
-      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
-         ? Optional.empty()
-         : Optional.of((float)(asb.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
-   }
-
-   protected float a(float $$0, float $$1, float $$2) {
-      float $$3 = asb.c($$0, $$1);
-      float $$4 = asb.a($$3, -$$2, $$2);
-      return $$0 + $$4;
-   }
-
-   private static double b(biw $$0) {
-      return $$0 instanceof bjm ? $$0.du() : ($$0.cG().b + $$0.cG().e) / 2.0;
+   private void a(cck $$0) {
+      bii $$1 = $$0.y();
+      if ($$1.a_(ckm.oJ) <= 36) {
+         int $$2 = $$1.a_(ckm.oI);
+         int $$3 = 3;
+         int $$4 = 3;
+         int $$5 = Math.min(3, $$2 / 3);
+         if ($$5 != 0) {
+            int $$6 = $$5 * 3;
+            $$1.a(ckm.oI, $$6);
+            ckj $$7 = $$1.a(new ckj(ckm.oJ, $$5));
+            if (!$$7.b()) {
+               $$0.a($$7, 0.5F);
+            }
+         }
+      }
    }
 }

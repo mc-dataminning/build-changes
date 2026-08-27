@@ -1,21 +1,6 @@
-public enum ls {
-   a("building_blocks"),
-   b("decorations"),
-   c("redstone"),
-   d("transportation"),
-   e("tools"),
-   f("combat"),
-   g("food"),
-   h("brewing"),
-   i("misc");
+import com.google.gson.JsonElement;
+import java.util.function.Supplier;
 
-   private final String j;
-
-   private ls(String $$0) {
-      this.j = $$0;
-   }
-
-   public String a() {
-      return this.j;
-   }
+public interface ls extends Supplier<JsonElement> {
+   cua a();
 }

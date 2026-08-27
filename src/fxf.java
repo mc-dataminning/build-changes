@@ -1,46 +1,34 @@
-public class fxf extends fxl<bwz, ffr<bwz>> {
-   private static final aez[] a = new aez[]{
-      new aez("textures/entity/llama/decor/white.png"),
-      new aez("textures/entity/llama/decor/orange.png"),
-      new aez("textures/entity/llama/decor/magenta.png"),
-      new aez("textures/entity/llama/decor/light_blue.png"),
-      new aez("textures/entity/llama/decor/yellow.png"),
-      new aez("textures/entity/llama/decor/lime.png"),
-      new aez("textures/entity/llama/decor/pink.png"),
-      new aez("textures/entity/llama/decor/gray.png"),
-      new aez("textures/entity/llama/decor/light_gray.png"),
-      new aez("textures/entity/llama/decor/cyan.png"),
-      new aez("textures/entity/llama/decor/purple.png"),
-      new aez("textures/entity/llama/decor/blue.png"),
-      new aez("textures/entity/llama/decor/brown.png"),
-      new aez("textures/entity/llama/decor/green.png"),
-      new aez("textures/entity/llama/decor/red.png"),
-      new aez("textures/entity/llama/decor/black.png")
-   };
-   private static final aez b = new aez("textures/entity/llama/decor/trader_llama.png");
-   private final ffr<bwz> c;
+public class fxf extends fvj<bwx, fin<bwx>> {
+   private static final afw a = new afw("textures/entity/wolf/wolf.png");
+   private static final afw i = new afw("textures/entity/wolf/wolf_tame.png");
+   private static final afw j = new afw("textures/entity/wolf/wolf_angry.png");
 
-   public fxf(fuy<bwz, ffr<bwz>> $$0, fht $$1) {
-      super($$0);
-      this.c = new ffr<>($$1.a(fhw.as));
+   public fxf(fud.a $$0) {
+      super($$0, new fin<>($$0.a(fiv.bV)), 0.5F);
+      this.a(new fza(this));
    }
 
-   public void a(elj $$0, foa $$1, int $$2, bwz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      chz $$10 = $$3.gr();
-      aez $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gn()) {
-            return;
-         }
+   protected float a(bwx $$0, float $$1) {
+      return $$0.gm();
+   }
 
-         $$11 = b;
+   public void a(bwx $$0, float $$1, float $$2, emh $$3, fpb $$4, int $$5) {
+      if ($$0.gl()) {
+         float $$6 = $$0.E($$2);
+         this.f.a($$6, $$6, $$6);
       }
 
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      eln $$14 = $$1.getBuffer(foi.e($$11));
-      this.c.a($$0, $$14, $$2, fyr.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gl()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
+   }
+
+   public afw a(bwx $$0) {
+      if ($$0.s()) {
+         return i;
+      } else {
+         return $$0.Y_() ? j : a;
+      }
    }
 }

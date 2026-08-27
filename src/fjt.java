@@ -1,37 +1,13 @@
-import java.util.Locale;
+import java.util.List;
 
 public enum fjt {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
+   a,
+   b;
 
-   private final String k;
-   private final tl l;
-   private final tl m;
+   private static final List<fjt> c = List.of(values());
+   private static final ip.b d = ip.a(jy.aq);
 
-   private fjt(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = tl.c($$1);
-      this.m = tl.c($$1 + ".description");
-   }
-
-   public String a() {
-      return this.k;
-   }
-
-   public tl b() {
-      return this.l;
-   }
-
-   public tl c() {
-      return this.m;
+   public static ij<fjt> a() {
+      return new ij<>(c).a(a, d);
    }
 }

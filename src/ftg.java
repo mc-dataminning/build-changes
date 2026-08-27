@@ -1,18 +1,25 @@
-public class ftg<T extends bzy> extends ftw<T> {
-   private static final aez a = new aez("textures/entity/illager/evoker.png");
+public class ftg extends fvj<bvp, ffc> {
+   private static final afw a = new afw("textures/entity/bat.png");
 
-   public ftg(ftd.a $$0) {
-      super($$0, new ffm<>($$0.a(fhw.V)), 0.5F);
-      this.a(new fxe<T, ffm<T>>(this, $$0.d()) {
-         public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.go()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public ftg(fud.a $$0) {
+      super($$0, new ffc($$0.a(fiv.g)), 0.25F);
    }
 
-   public aez a(T $$0) {
+   public afw a(bvp $$0) {
       return a;
+   }
+
+   protected void a(bvp $$0, emh $$1, float $$2) {
+      $$1.b(0.35F, 0.35F, 0.35F);
+   }
+
+   protected void a(bvp $$0, emh $$1, float $$2, float $$3, float $$4) {
+      if ($$0.t()) {
+         $$1.a(0.0F, -0.1F, 0.0F);
+      } else {
+         $$1.a(0.0F, asy.b($$2 * 0.3F) * 0.1F, 0.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

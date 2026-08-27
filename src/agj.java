@@ -1,132 +1,97 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
 import java.io.IOException;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public class agj {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, aey<cqb>> a = ImmutableBiMap.of("o", cqb.h, "n", cqb.i, "e", cqb.j);
-   @Nullable
-   private static agb g;
-   @Nullable
-   private static aga h;
+public class agj implements aon {
+   private static final Logger a = LogUtils.getLogger();
+   private static final afp b = new afp("functions", ".mcfunction");
+   private volatile Map<afw, gx<du>> c = ImmutableMap.of();
+   private final ari<gx<du>> d = new ari<>(this::a, "tags/functions");
+   private volatile Map<afw, Collection<gx<du>>> e = Map.of();
+   private final int f;
+   private final CommandDispatcher<du> g;
 
-   public static void a(CommandDispatcher<dt> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)du.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)du.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((dt)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    du.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (dt)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((dt)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)du.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)du.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((dt)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 du.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (dt)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((dt)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(du.a("stop").executes($$0x -> a((dt)$$0x.getSource())))
-      );
+   public Optional<gx<du>> a(afw $$0) {
+      return Optional.ofNullable(this.c.get($$0));
    }
 
-   private static int a(dt $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> tl.b("You have now stopped chasing"), false);
-         h = null;
-      }
-
-      if (g != null) {
-         g.b();
-         $$0.a(() -> tl.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
+   public Map<afw, gx<du>> a() {
+      return this.c;
    }
 
-   private static boolean b(dt $$0) {
-      if (g != null) {
-         $$0.b(tl.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(tl.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
-      } else {
-         return false;
-      }
+   public Collection<gx<du>> b(afw $$0) {
+      return this.e.getOrDefault($$0, List.of());
    }
 
-   private static int a(dt $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         g = new agb($$1, $$2, $$0.l().ac(), 100);
+   public Iterable<afw> b() {
+      return this.e.keySet();
+   }
 
-         try {
-            g.a();
-            $$0.a(() -> tl.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(tl.b("Failed to start chase server on port " + $$2));
-            g = null;
+   public agj(int $$0, CommandDispatcher<du> $$1) {
+      this.f = $$0;
+      this.g = $$1;
+   }
+
+   @Override
+   public CompletableFuture<Void> a(aon.a $$0, aot $$1, bes $$2, bes $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Map<afw, List<ari.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
+      CompletableFuture<Map<afw, CompletableFuture<gx<du>>>> $$7 = CompletableFuture.<Map<afw, aor>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
+         Map<afw, CompletableFuture<gx<du>>> $$2x = Maps.newHashMap();
+         du $$3x = new du(dt.a, eif.b, eie.a, null, this.f, "", uh.a, null, null);
+
+         for (Entry<afw, aor> $$4x : $$1x.entrySet()) {
+            afw $$5x = $$4x.getKey();
+            afw $$6x = b.b($$5x);
+            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
+               List<String> $$3xx = a($$4x.getValue());
+               return gx.a($$6x, this.g, $$3x, $$3xx);
+            }, $$4));
          }
 
-         return 0;
-      }
+         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
+         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
+      });
+      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
+         Map<afw, CompletableFuture<gx<du>>> $$1x = (Map<afw, CompletableFuture<gx<du>>>)$$0x.getSecond();
+         Builder<afw, gx<du>> $$2x = ImmutableMap.builder();
+         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
+               if ($$3x != null) {
+                  a.error("Failed to load function {}", $$1xx, $$3x);
+               } else {
+                  $$2x.put($$1xx, $$2xxx);
+               }
+
+               return null;
+            }).join());
+         this.c = $$2x.build();
+         this.e = this.d.a((Map<afw, List<ari.a>>)$$0x.getFirst());
+      }, $$5);
    }
 
-   private static int b(dt $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         h = new aga($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> tl.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
+   private static List<String> a(aor $$0) {
+      try {
+         List var2;
+         try (BufferedReader $$1 = $$0.e()) {
+            var2 = $$1.lines().toList();
+         }
+
+         return var2;
+      } catch (IOException var6) {
+         throw new CompletionException(var6);
       }
    }
 }

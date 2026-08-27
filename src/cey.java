@@ -1,110 +1,106 @@
-public class cey extends cer {
-   private static final int k = 9;
-   private final bgx l;
-   private final int m;
+public class cey extends cep implements deu {
+   private boolean i = true;
 
-   private cey(cfw<?> $$0, int $$1, cbz $$2, int $$3) {
-      this($$0, $$1, $$2, new bhl(9 * $$3), $$3);
-   }
-
-   public static cey a(int $$0, cbz $$1) {
-      return new cey(cfw.a, $$0, $$1, 1);
-   }
-
-   public static cey b(int $$0, cbz $$1) {
-      return new cey(cfw.b, $$0, $$1, 2);
-   }
-
-   public static cey c(int $$0, cbz $$1) {
-      return new cey(cfw.c, $$0, $$1, 3);
-   }
-
-   public static cey d(int $$0, cbz $$1) {
-      return new cey(cfw.d, $$0, $$1, 4);
-   }
-
-   public static cey e(int $$0, cbz $$1) {
-      return new cey(cfw.e, $$0, $$1, 5);
-   }
-
-   public static cey f(int $$0, cbz $$1) {
-      return new cey(cfw.f, $$0, $$1, 6);
-   }
-
-   public static cey a(int $$0, cbz $$1, bgx $$2) {
-      return new cey(cfw.c, $$0, $$1, $$2, 3);
-   }
-
-   public static cey b(int $$0, cbz $$1, bgx $$2) {
-      return new cey(cfw.f, $$0, $$1, $$2, 6);
-   }
-
-   public cey(cfw<?> $$0, int $$1, cbz $$2, bgx $$3, int $$4) {
+   public cey(bjx<? extends cey> $$0, cqz $$1) {
       super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.l = $$3;
-      this.m = $$4;
-      $$3.d_($$2.m);
-      int $$5 = (this.m - 4) * 18;
+   }
 
-      for (int $$6 = 0; $$6 < this.m; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new cgj($$3, $$7 + $$6 * 9, 8 + $$7 * 18, 18 + $$6 * 18));
-         }
-      }
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         for (int $$9 = 0; $$9 < 9; $$9++) {
-            this.a(new cgj($$2, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 103 + $$8 * 18 + $$5));
-         }
-      }
-
-      for (int $$10 = 0; $$10 < 9; $$10++) {
-         this.a(new cgj($$2, $$10, 8 + $$10 * 18, 161 + $$5));
-      }
+   public cey(cqz $$0, double $$1, double $$2, double $$3) {
+      super(bjx.X, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public boolean a(cca $$0) {
-      return this.l.a($$0);
+   public ceo.a v() {
+      return ceo.a.f;
    }
 
    @Override
-   public cjl a(cca $$0, int $$1) {
-      cjl $$2 = cjl.b;
-      cgj $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.f()) {
-         cjl $$4 = $$3.e();
-         $$2 = $$4.p();
-         if ($$1 < this.m * 9) {
-            if (!this.a($$4, this.m * 9, this.i.size(), true)) {
-               return cjl.b;
+   public dgb x() {
+      return cuc.hc.o();
+   }
+
+   @Override
+   public int z() {
+      return 1;
+   }
+
+   @Override
+   public int b() {
+      return 5;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.G()) {
+         this.p($$4);
+      }
+   }
+
+   public boolean G() {
+      return this.i;
+   }
+
+   public void p(boolean $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public double H() {
+      return this.dq();
+   }
+
+   @Override
+   public double I() {
+      return this.ds() + 0.5;
+   }
+
+   @Override
+   public double K() {
+      return this.dw();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dL().B && this.bv() && this.G() && this.L()) {
+         this.e();
+      }
+   }
+
+   public boolean L() {
+      if (dev.a(this.dL(), this)) {
+         return true;
+      } else {
+         for (bzq $$1 : this.dL().a(bzq.class, this.cG().c(0.25, 0.0, 0.25), bjw.a)) {
+            if (dev.a(this, $$1)) {
+               return true;
             }
-         } else if (!this.a($$4, 0, this.m * 9, false)) {
-            return cjl.b;
          }
 
-         if ($$4.b()) {
-            $$3.d(cjl.b);
-         } else {
-            $$3.d();
-         }
+         return false;
       }
-
-      return $$2;
    }
 
    @Override
-   public void b(cca $$0) {
+   protected cke ag_() {
+      return ckm.ne;
+   }
+
+   @Override
+   protected void b(rt $$0) {
       super.b($$0);
-      this.l.c($$0);
+      $$0.a("Enabled", this.i);
    }
 
-   public bgx l() {
-      return this.l;
+   @Override
+   protected void a(rt $$0) {
+      super.a($$0);
+      this.i = $$0.e("Enabled") ? $$0.q("Enabled") : true;
    }
 
-   public int m() {
-      return this.m;
+   @Override
+   public cfp a(int $$0, ccw $$1) {
+      return new cgm($$0, $$1, this);
    }
 }

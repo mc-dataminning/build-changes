@@ -1,40 +1,34 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class ahr {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.pardon.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ui.b("commands.difficulty.failure", $$0));
 
-   public static void a(CommandDispatcher<dt> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("pardon").requires($$0x -> $$0x.c(3)))
-            .then(
-               du.a("targets", eg.a())
-                  .suggests(($$0x, $$1) -> dw.a(((dt)$$0x.getSource()).l().ac().f().a(), $$1))
-                  .executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets")))
-            )
-      );
-   }
+   public static void a(CommandDispatcher<du> $$0) {
+      LiteralArgumentBuilder<du> $$1 = dv.a("difficulty");
 
-   private static int a(dt $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aop $$2 = $$0.l().ac().f();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
-            $$3++;
-            $$0.a(() -> tl.a("commands.pardon.success", tl.b($$4.getName())), true);
-         }
+      for (bhy $$2 : bhy.values()) {
+         $$1.then(dv.a($$2.e()).executes($$1x -> a((du)$$1x.getSource(), $$2)));
       }
 
-      if ($$3 == 0) {
-         throw a.create();
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         bhy $$1x = ((du)$$0x.getSource()).f().ai();
+         ((du)$$0x.getSource()).a(() -> ui.a("commands.difficulty.query", $$1x.b()), false);
+         return $$1x.a();
+      }));
+   }
+
+   public static int a(du $$0, bhy $$1) throws CommandSyntaxException {
+      MinecraftServer $$2 = $$0.m();
+      if ($$2.aT().s() == $$1) {
+         throw a.create($$1.e());
       } else {
-         return $$3;
+         $$2.a($$1, true);
+         $$0.a(() -> ui.a("commands.difficulty.success", $$1.b()), true);
+         return 0;
       }
    }
 }

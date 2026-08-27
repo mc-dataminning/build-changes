@@ -1,162 +1,412 @@
-import java.util.Comparator;
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.Short2BooleanMap;
+import it.unimi.dsi.fastutil.shorts.Short2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class ebc {
-   private static final int a = 3;
-   private static final int b = 128;
-   private static final int c = 16;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = -1;
-   private static final int h = 4;
-   private static final int i = -1;
-   private static final int j = 3;
-   private static final int k = -1;
-   private static final int l = 2;
-   private static final int m = -1;
-   private final akt n;
+public abstract class ebc extends ebd {
+   public static final dgs a = dgr.i;
+   public static final dhb b = dgr.aM;
+   private static final int e = 200;
+   private static final ThreadLocal<Object2ByteLinkedOpenHashMap<cua.a>> f = ThreadLocal.withInitial(() -> {
+      Object2ByteLinkedOpenHashMap<cua.a> $$0 = new Object2ByteLinkedOpenHashMap<cua.a>(200) {
+         protected void rehash(int $$0) {
+         }
+      };
+      $$0.defaultReturnValue((byte)127);
+      return $$0;
+   });
+   private final Map<ebe, eiy> g = Maps.newIdentityHashMap();
 
-   public ebc(akt $$0) {
-      this.n = $$0;
+   @Override
+   protected void a(dgc.a<ebd, ebe> $$0) {
+      $$0.a(a);
    }
 
-   public Optional<l.a> a(gw $$0, boolean $$1, dgu $$2) {
-      bul $$3 = this.n.w();
-      int $$4 = $$1 ? 16 : 128;
-      $$3.a(this.n, $$0, $$4);
-      Optional<bum> $$5 = $$3.b($$0x -> $$0x.a(bup.r), $$0, $$4, bul.b.c)
-         .filter($$1x -> $$2.a($$1x.f()))
-         .sorted(Comparator.<bum>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
-         .filter($$0x -> this.n.a_($$0x.f()).b(dft.H))
-         .findFirst();
-      return $$5.map($$0x -> {
-         gw $$1x = $$0x.f();
-         this.n.k().a(aky.f, new cpi($$1x), 3, $$1x);
-         dfd $$2x = this.n.a_($$1x);
-         return l.a($$1x, $$2x.c(dft.H), 21, ha.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
-      });
-   }
+   @Override
+   public eif a(cqf $$0, ht $$1, ebe $$2) {
+      double $$3 = 0.0;
+      double $$4 = 0.0;
+      ht.a $$5 = new ht.a();
 
-   public Optional<l.a> a(gw $$0, ha.a $$1) {
-      ha $$2 = ha.a(ha.b.a, $$1);
-      double $$3 = -1.0;
-      gw $$4 = null;
-      double $$5 = -1.0;
-      gw $$6 = null;
-      dgu $$7 = this.n.B_();
-      int $$8 = Math.min(this.n.aj(), this.n.H_() + this.n.j()) - 1;
-      gw.a $$9 = $$0.j();
-
-      for (gw.a $$10 : gw.a($$0, 16, ha.f, ha.d)) {
-         int $$11 = Math.min($$8, this.n.a(dkm.a.e, $$10.u(), $$10.w()));
-         int $$12 = 1;
-         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
-            $$10.c($$2.g(), 1);
-
-            for (int $$13 = $$11; $$13 >= this.n.H_(); $$13--) {
-               $$10.q($$13);
-               if (this.a($$10)) {
-                  int $$14 = $$13;
-
-                  while ($$13 > this.n.H_() && this.a($$10.c(ha.a))) {
-                     $$13--;
-                  }
-
-                  if ($$13 + 4 <= $$8) {
-                     int $$15 = $$14 - $$13;
-                     if ($$15 <= 0 || $$15 >= 3) {
-                        $$10.q($$13);
-                        if (this.a($$10, $$9, $$2, 0)) {
-                           double $$16 = $$0.j($$10);
-                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
-                              $$3 = $$16;
-                              $$4 = $$10.i();
-                           }
-
-                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
-                              $$5 = $$16;
-                              $$6 = $$10.i();
-                           }
-                        }
+      for (hx $$6 : hx.c.a) {
+         $$5.a($$1, $$6);
+         ebe $$7 = $$0.b_($$5);
+         if (this.g($$7)) {
+            float $$8 = $$7.d();
+            float $$9 = 0.0F;
+            if ($$8 == 0.0F) {
+               if (!$$0.a_($$5).d()) {
+                  ht $$10 = $$5.d();
+                  ebe $$11 = $$0.b_($$10);
+                  if (this.g($$11)) {
+                     $$8 = $$11.d();
+                     if ($$8 > 0.0F) {
+                        $$9 = $$2.d() - ($$8 - 0.8888889F);
                      }
                   }
                }
+            } else if ($$8 > 0.0F) {
+               $$9 = $$2.d() - $$8;
+            }
+
+            if ($$9 != 0.0F) {
+               $$3 += (double)((float)$$6.j() * $$9);
+               $$4 += (double)((float)$$6.l() * $$9);
             }
          }
       }
 
-      if ($$3 == -1.0 && $$5 != -1.0) {
-         $$4 = $$6;
-         $$3 = $$5;
+      eif $$12 = new eif($$3, 0.0, $$4);
+      if ($$2.c(a)) {
+         for (hx $$13 : hx.c.a) {
+            $$5.a($$1, $$13);
+            if (this.a($$0, $$5, $$13) || this.a($$0, $$5.c(), $$13)) {
+               $$12 = $$12.d().b(0.0, -6.0, 0.0);
+               break;
+            }
+         }
       }
 
-      if ($$3 == -1.0) {
-         int $$17 = Math.max(this.n.H_() - -1, 70);
-         int $$18 = $$8 - 9;
-         if ($$18 < $$17) {
-            return Optional.empty();
+      return $$12.d();
+   }
+
+   private boolean g(ebe $$0) {
+      return $$0.c() || $$0.a().a(this);
+   }
+
+   protected boolean a(cqf $$0, ht $$1, hx $$2) {
+      dgb $$3 = $$0.a_($$1);
+      ebe $$4 = $$0.b_($$1);
+      if ($$4.a().a(this)) {
+         return false;
+      } else if ($$2 == hx.b) {
+         return true;
+      } else {
+         return $$3.b() instanceof cxw ? false : $$3.d($$0, $$1, $$2);
+      }
+   }
+
+   protected void a(cqz $$0, ht $$1, ebe $$2) {
+      if (!$$2.c()) {
+         dgb $$3 = $$0.a_($$1);
+         ht $$4 = $$1.d();
+         dgb $$5 = $$0.a_($$4);
+         ebe $$6 = this.a($$0, $$4, $$5);
+         if (this.a($$0, $$1, $$3, hx.a, $$4, $$5, $$0.b_($$4), $$6.a())) {
+            this.a($$0, $$4, $$5, hx.a, $$6);
+            if (this.a($$0, $$1) >= 3) {
+               this.a($$0, $$1, $$2, $$3);
+            }
+         } else if ($$2.b() || !this.a($$0, $$6.a(), $$1, $$3, $$4, $$5)) {
+            this.a($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   private void a(cqz $$0, ht $$1, ebe $$2, dgb $$3) {
+      int $$4 = $$2.e() - this.c($$0);
+      if ($$2.c(a)) {
+         $$4 = 7;
+      }
+
+      if ($$4 > 0) {
+         Map<hx, ebe> $$5 = this.b($$0, $$1, $$3);
+
+         for (Entry<hx, ebe> $$6 : $$5.entrySet()) {
+            hx $$7 = $$6.getKey();
+            ebe $$8 = $$6.getValue();
+            ht $$9 = $$1.a($$7);
+            dgb $$10 = $$0.a_($$9);
+            if (this.a($$0, $$1, $$3, $$7, $$9, $$10, $$0.b_($$9), $$8.a())) {
+               this.a($$0, $$9, $$10, $$7, $$8);
+            }
+         }
+      }
+   }
+
+   protected ebe a(cqz $$0, ht $$1, dgb $$2) {
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (hx $$5 : hx.c.a) {
+         ht $$6 = $$1.a($$5);
+         dgb $$7 = $$0.a_($$6);
+         ebe $$8 = $$7.u();
+         if ($$8.a().a(this) && this.a($$5, $$0, $$1, $$2, $$6, $$7)) {
+            if ($$8.b()) {
+               $$4++;
+            }
+
+            $$3 = Math.max($$3, $$8.e());
+         }
+      }
+
+      if (this.a($$0) && $$4 >= 2) {
+         dgb $$9 = $$0.a_($$1.d());
+         ebe $$10 = $$9.u();
+         if ($$9.e() || this.h($$10)) {
+            return this.a(false);
+         }
+      }
+
+      ht $$11 = $$1.c();
+      dgb $$12 = $$0.a_($$11);
+      ebe $$13 = $$12.u();
+      if (!$$13.c() && $$13.a().a(this) && this.a(hx.b, $$0, $$1, $$2, $$11, $$12)) {
+         return this.a(8, true);
+      } else {
+         int $$14 = $$3 - this.c($$0);
+         return $$14 <= 0 ? ebf.a.g() : this.a($$14, false);
+      }
+   }
+
+   private boolean a(hx $$0, cqf $$1, ht $$2, dgb $$3, ht $$4, dgb $$5) {
+      Object2ByteLinkedOpenHashMap<cua.a> $$7;
+      if (!$$3.b().p() && !$$5.b().p()) {
+         $$7 = f.get();
+      } else {
+         $$7 = null;
+      }
+
+      cua.a $$8;
+      if ($$7 != null) {
+         $$8 = new cua.a($$3, $$5, $$0);
+         byte $$9 = $$7.getAndMoveToFirst($$8);
+         if ($$9 != 127) {
+            return $$9 != 0;
+         }
+      } else {
+         $$8 = null;
+      }
+
+      eiy $$11 = $$3.k($$1, $$2);
+      eiy $$12 = $$5.k($$1, $$4);
+      boolean $$13 = !eiv.b($$11, $$12, $$0);
+      if ($$7 != null) {
+         if ($$7.size() == 200) {
+            $$7.removeLastByte();
          }
 
-         $$4 = new gw($$0.u(), asb.a($$0.v(), $$17, $$18), $$0.w()).i();
-         ha $$19 = $$2.h();
-         if (!$$7.a($$4)) {
-            return Optional.empty();
+         $$7.putAndMoveToFirst($$8, (byte)($$13 ? 1 : 0));
+      }
+
+      return $$13;
+   }
+
+   public abstract ebd d();
+
+   public ebe a(int $$0, boolean $$1) {
+      return this.d().g().a(b, $$0).a(a, $$1);
+   }
+
+   public abstract ebd e();
+
+   public ebe a(boolean $$0) {
+      return this.e().g().a(a, $$0);
+   }
+
+   protected abstract boolean a(cqz var1);
+
+   protected void a(cra $$0, ht $$1, dgb $$2, hx $$3, ebe $$4) {
+      if ($$2.b() instanceof cyp) {
+         ((cyp)$$2.b()).a($$0, $$1, $$2, $$4);
+      } else {
+         if (!$$2.i()) {
+            this.a($$0, $$1, $$2);
          }
 
-         for (int $$20 = -1; $$20 < 2; $$20++) {
-            for (int $$21 = 0; $$21 < 2; $$21++) {
-               for (int $$22 = -1; $$22 < 3; $$22++) {
-                  dfd $$23 = $$22 < 0 ? cte.co.o() : cte.a.o();
-                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
-                  this.n.b($$9, $$23);
+         $$0.a($$1, $$4.g(), 3);
+      }
+   }
+
+   protected abstract void a(cra var1, ht var2, dgb var3);
+
+   private static short a(ht $$0, ht $$1) {
+      int $$2 = $$1.u() - $$0.u();
+      int $$3 = $$1.w() - $$0.w();
+      return (short)(($$2 + 128 & 0xFF) << 8 | $$3 + 128 & 0xFF);
+   }
+
+   protected int a(crc $$0, ht $$1, int $$2, hx $$3, dgb $$4, ht $$5, Short2ObjectMap<Pair<dgb, ebe>> $$6, Short2BooleanMap $$7) {
+      int $$8 = 1000;
+
+      for (hx $$9 : hx.c.a) {
+         if ($$9 != $$3) {
+            ht $$10 = $$1.a($$9);
+            short $$11 = a($$5, $$10);
+            Pair<dgb, ebe> $$12 = (Pair<dgb, ebe>)$$6.computeIfAbsent($$11, $$2x -> {
+               dgb $$3x = $$0.a_($$10);
+               return Pair.of($$3x, $$3x.u());
+            });
+            dgb $$13 = (dgb)$$12.getFirst();
+            ebe $$14 = (ebe)$$12.getSecond();
+            if (this.a($$0, this.d(), $$1, $$4, $$9, $$10, $$13, $$14)) {
+               boolean $$15 = $$7.computeIfAbsent($$11, $$3x -> {
+                  ht $$4x = $$10.d();
+                  dgb $$5x = $$0.a_($$4x);
+                  return this.a($$0, this.d(), $$10, $$13, $$4x, $$5x);
+               });
+               if ($$15) {
+                  return $$2;
+               }
+
+               if ($$2 < this.b($$0)) {
+                  int $$16 = this.a($$0, $$10, $$2 + 1, $$9.g(), $$13, $$5, $$6, $$7);
+                  if ($$16 < $$8) {
+                     $$8 = $$16;
+                  }
                }
             }
          }
       }
 
-      for (int $$24 = -1; $$24 < 3; $$24++) {
-         for (int $$25 = -1; $$25 < 4; $$25++) {
-            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
-               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
-               this.n.a($$9, cte.co.o(), 3);
-            }
-         }
-      }
-
-      dfd $$26 = cte.ed.o().a(cye.b, $$1);
-
-      for (int $$27 = 0; $$27 < 2; $$27++) {
-         for (int $$28 = 0; $$28 < 3; $$28++) {
-            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
-            this.n.a($$9, $$26, 18);
-         }
-      }
-
-      return Optional.of(new l.a($$4.i(), 2, 3));
+      return $$8;
    }
 
-   private boolean a(gw.a $$0) {
-      dfd $$1 = this.n.a_($$0);
-      return $$1.r() && $$1.u().c();
+   private boolean a(cqf $$0, ebd $$1, ht $$2, dgb $$3, ht $$4, dgb $$5) {
+      if (!this.a(hx.a, $$0, $$2, $$3, $$4, $$5)) {
+         return false;
+      } else {
+         return $$5.u().a().a(this) ? true : this.a($$0, $$4, $$5, $$1);
+      }
    }
 
-   private boolean a(gw $$0, gw.a $$1, ha $$2, int $$3) {
-      ha $$4 = $$2.h();
+   private boolean a(cqf $$0, ebd $$1, ht $$2, dgb $$3, hx $$4, ht $$5, dgb $$6, ebe $$7) {
+      return !this.h($$7) && this.a($$4, $$0, $$2, $$3, $$5, $$6) && this.a($$0, $$5, $$6, $$1);
+   }
 
-      for (int $$5 = -1; $$5 < 3; $$5++) {
-         for (int $$6 = -1; $$6 < 4; $$6++) {
-            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
-            if ($$6 < 0 && !this.n.a_($$1).e()) {
-               return false;
+   private boolean h(ebe $$0) {
+      return $$0.a().a(this) && $$0.b();
+   }
+
+   protected abstract int b(crc var1);
+
+   private int a(crc $$0, ht $$1) {
+      int $$2 = 0;
+
+      for (hx $$3 : hx.c.a) {
+         ht $$4 = $$1.a($$3);
+         ebe $$5 = $$0.b_($$4);
+         if (this.h($$5)) {
+            $$2++;
+         }
+      }
+
+      return $$2;
+   }
+
+   protected Map<hx, ebe> b(cqz $$0, ht $$1, dgb $$2) {
+      int $$3 = 1000;
+      Map<hx, ebe> $$4 = Maps.newEnumMap(hx.class);
+      Short2ObjectMap<Pair<dgb, ebe>> $$5 = new Short2ObjectOpenHashMap();
+      Short2BooleanMap $$6 = new Short2BooleanOpenHashMap();
+
+      for (hx $$7 : hx.c.a) {
+         ht $$8 = $$1.a($$7);
+         short $$9 = a($$1, $$8);
+         Pair<dgb, ebe> $$10 = (Pair<dgb, ebe>)$$5.computeIfAbsent($$9, $$2x -> {
+            dgb $$3x = $$0.a_($$8);
+            return Pair.of($$3x, $$3x.u());
+         });
+         dgb $$11 = (dgb)$$10.getFirst();
+         ebe $$12 = (ebe)$$10.getSecond();
+         ebe $$13 = this.a($$0, $$8, $$11);
+         if (this.a($$0, $$13.a(), $$1, $$2, $$7, $$8, $$11, $$12)) {
+            ht $$14 = $$8.d();
+            boolean $$15 = $$6.computeIfAbsent($$9, $$4x -> {
+               dgb $$5x = $$0.a_($$14);
+               return this.a($$0, this.d(), $$8, $$11, $$14, $$5x);
+            });
+            int $$16;
+            if ($$15) {
+               $$16 = 0;
+            } else {
+               $$16 = this.a($$0, $$8, 1, $$7.g(), $$11, $$1, $$5, $$6);
             }
 
-            if ($$6 >= 0 && !this.a($$1)) {
-               return false;
+            if ($$16 < $$3) {
+               $$4.clear();
+            }
+
+            if ($$16 <= $$3) {
+               $$4.put($$7, $$13);
+               $$3 = $$16;
             }
          }
       }
 
-      return true;
+      return $$4;
+   }
+
+   private boolean a(cqf $$0, ht $$1, dgb $$2, ebd $$3) {
+      cua $$4 = $$2.b();
+      if ($$4 instanceof cyp $$5) {
+         return $$5.a(null, $$0, $$1, $$2, $$3);
+      } else if ($$4 instanceof cwe || $$2.a(aqs.aw) || $$2.a(cuc.cO) || $$2.a(cuc.dS) || $$2.a(cuc.nd)) {
+         return false;
+      } else {
+         return !$$2.a(cuc.ed) && !$$2.a(cuc.fx) && !$$2.a(cuc.kF) && !$$2.a(cuc.kN) ? !$$2.d() : false;
+      }
+   }
+
+   protected boolean a(cqf $$0, ht $$1, dgb $$2, hx $$3, ht $$4, dgb $$5, ebe $$6, ebd $$7) {
+      return $$6.a($$0, $$4, $$7, $$3) && this.a($$3, $$0, $$1, $$2, $$4, $$5) && this.a($$0, $$4, $$5, $$7);
+   }
+
+   protected abstract int c(crc var1);
+
+   protected int a(cqz $$0, ht $$1, ebe $$2, ebe $$3) {
+      return this.a((crc)$$0);
+   }
+
+   @Override
+   public void b(cqz $$0, ht $$1, ebe $$2) {
+      if (!$$2.b()) {
+         ebe $$3 = this.a($$0, $$1, $$0.a_($$1));
+         int $$4 = this.a($$0, $$1, $$2, $$3);
+         if ($$3.c()) {
+            $$2 = $$3;
+            $$0.a($$1, cuc.a.o(), 3);
+         } else if (!$$3.equals($$2)) {
+            $$2 = $$3;
+            dgb $$5 = $$3.g();
+            $$0.a($$1, $$5, 2);
+            $$0.a($$1, $$3.a(), $$4);
+            $$0.a($$1, $$5.b());
+         }
+      }
+
+      this.a($$0, $$1, $$2);
+   }
+
+   protected static int e(ebe $$0) {
+      return $$0.b() ? 0 : 8 - Math.min($$0.e(), 8) + ($$0.c(a) ? 8 : 0);
+   }
+
+   private static boolean c(ebe $$0, cqf $$1, ht $$2) {
+      return $$0.a().a($$1.b_($$2.c()).a());
+   }
+
+   @Override
+   public float a(ebe $$0, cqf $$1, ht $$2) {
+      return c($$0, $$1, $$2) ? 1.0F : $$0.d();
+   }
+
+   @Override
+   public float a(ebe $$0) {
+      return (float)$$0.e() / 9.0F;
+   }
+
+   @Override
+   public abstract int d(ebe var1);
+
+   @Override
+   public eiy b(ebe $$0, cqf $$1, ht $$2) {
+      return $$0.e() == 9 && c($$0, $$1, $$2) ? eiv.b() : this.g.computeIfAbsent($$0, $$2x -> eiv.a(0.0, 0.0, 0.0, 1.0, (double)$$2x.a($$1, $$2), 1.0));
    }
 }

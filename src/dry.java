@@ -1,30 +1,34 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dry extends drv {
-   protected final long c;
-   protected final dzj.a d;
-   protected final float e;
-   protected final dzj f;
+public class dry extends dse {
+   public static final Codec<dry> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dry::new));
 
-   protected static <P extends dry> P3<Mu<P>, Long, dzj.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         dzj.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         arj.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public dry(bhg $$0, bhg $$1) {
+      super($$0, $$1);
    }
 
-   protected dry(long $$0, dzj.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = dzj.b(new dll(new dkn($$0)), $$1);
+   @Override
+   protected dsf<?> a() {
+      return dsf.d;
    }
 
-   protected double a(gw $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   @Override
+   protected void a(crf $$0, dse.b $$1, ate $$2, dro $$3, int $$4, dse.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      ht $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   }
+
+   @Override
+   public int a(ate $$0, int $$1, dro $$2) {
+      return 0;
+   }
+
+   @Override
+   protected boolean a(ate $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

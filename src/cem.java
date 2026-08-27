@@ -1,27 +1,59 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
+
 public class cem {
-   public static final int a = 20;
-   public static final float b = 20.0F;
-   public static final float c = 5.0F;
-   public static final float d = 2.5F;
-   public static final float e = 4.0F;
-   public static final int f = 80;
-   public static final int g = 10;
-   public static final int h = 18;
-   public static final int i = 6;
-   public static final int j = 0;
-   public static final float k = 0.1F;
-   public static final float l = 0.3F;
-   public static final float m = 0.6F;
-   public static final float n = 0.8F;
-   public static final float o = 1.0F;
-   public static final float p = 1.2F;
-   public static final float q = 6.0F;
-   public static final float r = 0.05F;
-   public static final float s = 0.2F;
-   public static final float t = 0.005F;
-   public static final float u = 0.1F;
-   public static final float v = 0.0F;
-   public static final float w = 0.0F;
-   public static final float x = 0.1F;
-   public static final float y = 0.01F;
+   private final List<cej> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<cej> a() {
+      return ImmutableList.copyOf(this.a);
+   }
+
+   public cem a(int $$0, float $$1) {
+      this.a.add(new cej($$0, $$1));
+      this.b();
+      return this;
+   }
+
+   public cem a(Collection<cej> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<cej> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         cej $$1 = this.a.get(this.b);
+         cej $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cej $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
+
+         return $$5;
+      }
+   }
 }

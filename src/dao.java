@@ -1,68 +1,52 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import java.util.Collection;
 import javax.annotation.Nullable;
 
-public class dao extends cso {
-   public static final MapCodec<dao> a = b(dao::new);
-
-   @Override
-   public MapCodec<dao> a() {
-      return a;
-   }
-
-   protected dao(dfc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new del($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
-      return a($$2, ddb.j, $$0.B ? del::a : del::b);
-   }
-
-   @Override
-   public void a(dfd $$0, akt $$1, gw $$2, cjl $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public czg b_(dfd $$0) {
-      return czg.c;
-   }
-
-   @Override
-   public void a(cjl $$0, @Nullable cph $$1, List<tl> $$2, clc $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      Optional<tl> $$4 = this.a($$0);
-      if ($$4.isPresent()) {
-         $$2.add($$4.get());
-      } else {
-         $$2.add(tk.a);
-         $$2.add(tl.c("block.minecraft.spawner.desc1").a(n.h));
-         $$2.add(tk.a().b(tl.c("block.minecraft.spawner.desc2").a(n.j)));
-      }
-   }
-
-   private Optional<tl> a(cjl $$0) {
-      qw $$1 = che.a($$0);
-      if ($$1 != null && $$1.b("SpawnData", 10)) {
-         String $$2 = $$1.p("SpawnData").p("entity").l("id");
-         aez $$3 = aez.a($$2);
-         if ($$3 != null) {
-            return jb.h.b($$3).map($$0x -> tl.c($$0x.g()).a(n.h));
+public interface dao {
+   dao t_ = new dao() {
+      @Override
+      public boolean a(cra $$0, ht $$1, dgb $$2, @Nullable Collection<hx> $$3, boolean $$4) {
+         if ($$3 == null) {
+            return ((dau)cuc.qG).g().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
+         } else if (!$$3.isEmpty()) {
+            return !$$2.i() && !$$2.u().b(ebf.c) ? false : dau.a($$0, $$1, $$2, $$3);
+         } else {
+            return dao.super.a($$0, $$1, $$2, $$3, $$4);
          }
       }
 
-      return Optional.empty();
+      @Override
+      public int a(dat.a $$0, cra $$1, ht $$2, ate $$3, dat $$4, boolean $$5) {
+         return $$0.c() > 0 ? $$0.b() : 0;
+      }
+
+      @Override
+      public int i_(int $$0) {
+         return Math.max($$0 - 1, 0);
+      }
+   };
+
+   default byte b() {
+      return 1;
    }
+
+   default void a(cra $$0, dgb $$1, ht $$2, ate $$3) {
+   }
+
+   default boolean a(cra $$0, ht $$1, ate $$2) {
+      return false;
+   }
+
+   default boolean a(cra $$0, ht $$1, dgb $$2, @Nullable Collection<hx> $$3, boolean $$4) {
+      return ((cyy)cuc.qG).c().a($$2, $$0, $$1, $$4) > 0L;
+   }
+
+   default boolean d() {
+      return true;
+   }
+
+   default int i_(int $$0) {
+      return 1;
+   }
+
+   int a(dat.a var1, cra var2, ht var3, ate var4, dat var5, boolean var6);
 }

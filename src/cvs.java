@@ -1,16 +1,31 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface cvs {
-   @Nullable
-   dcz a(gw var1, dfd var2);
+public class cvs extends cua {
+   public static final MapCodec<cvs> a = b(cvs::new);
+   private static final ui b = ui.c("container.crafting");
 
-   @Nullable
-   default <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
-      return null;
+   @Override
+   public MapCodec<? extends cvs> a() {
+      return a;
    }
 
-   @Nullable
-   default <T extends dcz> djp a(akt $$0, T $$1) {
-      return $$1 instanceof djp.b<?> $$2 ? $$2.d() : null;
+   protected cvs(dga.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public bib a(dgb $$0, cqz $$1, ht $$2, ccx $$3, bia $$4, eib $$5) {
+      if ($$1.B) {
+         return bib.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(aqn.an);
+         return bib.b;
+      }
+   }
+
+   @Override
+   public bie b(dgb $$0, cqz $$1, ht $$2) {
+      return new bij(($$2x, $$3, $$4) -> new cge($$2x, $$3, cga.a($$1, $$2)), b);
    }
 }

@@ -1,92 +1,56 @@
-import java.util.stream.Stream;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ddo extends dcz {
-   public static final String a = "sherds";
-   private ddo.a b = ddo.a.a;
+public class ddo {
+   final String a;
 
-   public ddo(gw $$0, dfd $$1) {
-      super(ddb.O, $$0, $$1);
+   public ddo(String $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      this.b.a($$0);
+   public static afw a(afv<ddo> $$0, boolean $$1) {
+      String $$2 = $$1 ? "banner" : "shield";
+      return $$0.a().d("entity/" + $$2 + "/");
    }
 
-   @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      this.b = ddo.a.b($$0);
+   public String a() {
+      return this.a;
    }
 
-   public xe c() {
-      return xe.a(this);
+   @Nullable
+   public static ib<ddo> a(String $$0) {
+      return jy.am.h().filter($$1 -> $$1.a().a.equals($$0)).findAny().orElse(null);
    }
 
-   @Override
-   public qw as_() {
-      return this.o();
-   }
+   public static class a {
+      private final List<Pair<ib<ddo>, cix>> a = Lists.newArrayList();
 
-   public ha d() {
-      return this.q().c(dft.R);
-   }
-
-   public ddo.a f() {
-      return this.b;
-   }
-
-   public void a(cjl $$0) {
-      this.b = ddo.a.b(che.a($$0));
-   }
-
-   public cjl g() {
-      return a(this.b);
-   }
-
-   public static cjl a(ddo.a $$0) {
-      cjl $$1 = cjo.eg.ai_();
-      qw $$2 = $$0.a(new qw());
-      che.a($$1, ddb.O, $$2);
-      return $$1;
-   }
-
-   public static record a(cjg b, cjg c, cjg d, cjg e) {
-      public static final ddo.a a = new ddo.a(cjo.pX, cjo.pX, cjo.pX, cjo.pX);
-
-      public qw a(qw $$0) {
-         if (this.equals(a)) {
-            return $$0;
-         } else {
-            rc $$1 = new rc();
-            this.a().forEach($$1x -> $$1.add(ro.a(jb.i.b($$1x).toString())));
-            $$0.a("sherds", $$1);
-            return $$0;
-         }
+      public ddo.a a(afv<ddo> $$0, cix $$1) {
+         return this.a(jy.am.f($$0), $$1);
       }
 
-      public Stream<cjg> a() {
-         return Stream.of(this.b, this.c, this.d, this.e);
+      public ddo.a a(ib<ddo> $$0, cix $$1) {
+         return this.a(Pair.of($$0, $$1));
       }
 
-      public static ddo.a b(@Nullable qw $$0) {
-         if ($$0 != null && $$0.b("sherds", 9)) {
-            rc $$1 = $$0.c("sherds", 8);
-            return new ddo.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
-         } else {
-            return a;
-         }
+      public ddo.a a(Pair<ib<ddo>, cix> $$0) {
+         this.a.add($$0);
+         return this;
       }
 
-      private static cjg a(rc $$0, int $$1) {
-         if ($$1 >= $$0.size()) {
-            return cjo.pX;
-         } else {
-            rq $$2 = $$0.k($$1);
-            return jb.i.a(aez.a($$2.r_()));
+      public rz a() {
+         rz $$0 = new rz();
+
+         for (Pair<ib<ddo>, cix> $$1 : this.a) {
+            rt $$2 = new rt();
+            $$2.a("Pattern", ((ddo)((ib)$$1.getFirst()).a()).a);
+            $$2.a("Color", ((cix)$$1.getSecond()).a());
+            $$0.add($$2);
          }
+
+         return $$0;
       }
    }
 }

@@ -1,74 +1,35 @@
-public enum bjb implements asu {
-   a(bjb.a.a, 0, 0, "mainhand"),
-   b(bjb.a.a, 1, 5, "offhand"),
-   c(bjb.a.b, 0, 1, "feet"),
-   d(bjb.a.b, 1, 2, "legs"),
-   e(bjb.a.b, 2, 3, "chest"),
-   f(bjb.a.b, 3, 4, "head");
+import javax.annotation.Nullable;
 
-   public static final asu.a<bjb> g = asu.a(bjb::values);
-   private final bjb.a h;
-   private final int i;
-   private final int j;
-   private final String k;
+class bjb extends bjd {
+   private final boolean a;
 
-   private bjb(bjb.a $$0, int $$1, int $$2, String $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.k = $$3;
-   }
-
-   public bjb.a a() {
-      return this.h;
-   }
-
-   public int b() {
-      return this.i;
-   }
-
-   public int a(int $$0) {
-      return $$0 + this.i;
-   }
-
-   public int d() {
-      return this.j;
-   }
-
-   public String e() {
-      return this.k;
-   }
-
-   public boolean f() {
-      return this.h == bjb.a.b;
+   public bjb(bjf $$0, int $$1, boolean $$2) {
+      super($$0, $$1);
+      this.a = $$2;
    }
 
    @Override
-   public String c() {
-      return this.k;
-   }
-
-   public static bjb a(String $$0) {
-      bjb $$1 = g.a($$0);
-      if ($$1 != null) {
-         return $$1;
+   public void a(bkj $$0, int $$1) {
+      super.a($$0, $$1);
+      if (this.a == $$0.et()) {
+         $$0.b((float)Math.max(4 << $$1, 0));
       } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+         $$0.a($$0.dM().o(), (float)(6 << $$1));
       }
    }
 
-   public static bjb a(bjb.a $$0, int $$1) {
-      for (bjb $$2 : values()) {
-         if ($$2.a() == $$0 && $$2.b() == $$1) {
-            return $$2;
+   @Override
+   public void a(@Nullable bjt $$0, @Nullable bjt $$1, bkj $$2, int $$3, double $$4) {
+      if (this.a == $$2.et()) {
+         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
+         $$2.b((float)$$5);
+      } else {
+         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
+         if ($$0 == null) {
+            $$2.a($$2.dM().o(), (float)$$6);
+         } else {
+            $$2.a($$2.dM().c($$0, $$1), (float)$$6);
          }
       }
-
-      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

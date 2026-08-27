@@ -1,73 +1,75 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import java.util.Collection;
 
-@FunctionalInterface
-public interface uh {
-   Logger a = LogUtils.getLogger();
-   uh b = $$0 -> {
-      if ($$0.h()) {
-         a.error("Received chat message with signature from {}, but they have no chat session initialized", $$0.f());
-         return false;
-      } else {
-         return true;
-      }
-   };
-   uh c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.f());
-      return false;
-   };
+public class uh {
+   public static final ui a = ui.i();
+   public static final ui b = ui.c("options.on");
+   public static final ui c = ui.c("options.off");
+   public static final ui d = ui.c("gui.done");
+   public static final ui e = ui.c("gui.cancel");
+   public static final ui f = ui.c("gui.yes");
+   public static final ui g = ui.c("gui.no");
+   public static final ui h = ui.c("gui.ok");
+   public static final ui i = ui.c("gui.proceed");
+   public static final ui j = ui.c("gui.continue");
+   public static final ui k = ui.c("gui.back");
+   public static final ui l = ui.c("gui.toTitle");
+   public static final ui m = ui.c("gui.acknowledge");
+   public static final ui n = ui.c("chat.link.open");
+   public static final ui o = ui.c("gui.copy_link_to_clipboard");
+   public static final ui p = ui.c("menu.disconnect");
+   public static final ui q = ui.c("connect.failed");
+   public static final ui r = ui.b("\n");
+   public static final ui s = ui.b(". ");
+   public static final ui t = ui.b("...");
+   public static final ui u = a();
 
-   boolean updateAndValidate(ub var1);
+   public static uw a() {
+      return ui.b(" ");
+   }
 
-   public static class a implements uh {
-      private final asm d;
-      private final BooleanSupplier e;
-      @Nullable
-      private ub f;
-      private boolean g = true;
+   public static uw a(long $$0) {
+      return ui.a("gui.days", $$0);
+   }
 
-      public a(asm $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public static uw b(long $$0) {
+      return ui.a("gui.hours", $$0);
+   }
 
-      private boolean a(ub $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.j().a(this.f.j())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.f(), this.f.j().b(), this.f.j().d(), $$0.j().b(), $$0.j().d()}
-            );
-            return false;
-         } else {
-            return true;
+   public static uw c(long $$0) {
+      return ui.a("gui.minutes", $$0);
+   }
+
+   public static ui a(boolean $$0) {
+      return $$0 ? b : c;
+   }
+
+   public static uw a(ui $$0, boolean $$1) {
+      return ui.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   }
+
+   public static uw a(ui $$0, ui $$1) {
+      return ui.a("options.generic_value", $$0, $$1);
+   }
+
+   public static uw a(ui... $$0) {
+      uw $$1 = ui.i();
+
+      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+         $$1.b($$0[$$2]);
+         if ($$2 != $$0.length - 1) {
+            $$1.b(s);
          }
       }
 
-      private boolean b(ub $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.f());
-            return false;
-         } else {
-            return this.a($$0);
-         }
-      }
+      return $$1;
+   }
 
-      @Override
-      public boolean updateAndValidate(ub $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return false;
-         } else {
-            this.f = $$0;
-            return true;
-         }
-      }
+   public static ui b(ui... $$0) {
+      return a(Arrays.asList($$0));
+   }
+
+   public static ui a(Collection<? extends ui> $$0) {
+      return ul.a($$0, r);
    }
 }

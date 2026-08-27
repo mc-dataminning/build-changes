@@ -1,43 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cur extends csk {
-   public static final MapCodec<cur> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cuq.a.forGetter($$0x -> $$0x.c), t()).apply($$0, cur::new));
-   private final ctc c;
+public class cur extends cua {
+   public static final MapCodec<cur> a = b(cur::new);
+   protected static final eiy b = cua.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
    @Override
-   public MapCodec<cur> a() {
+   public MapCodec<? extends cur> a() {
+      return a;
+   }
+
+   public cur(dga.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public eiy a(dgb $$0, cqf $$1, ht $$2, eik $$3) {
       return b;
    }
 
-   protected cur(ctc $$0, dfc.d $$1) {
-      super($$1);
-      this.c = $$0;
+   @Override
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      return !$$0.a($$3, $$4) ? cuc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void b(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
-      this.a($$0, (cqc)$$1, $$2);
-   }
-
-   @Override
-   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.o().a(d, Boolean.valueOf(false)), 2);
-      }
-   }
-
-   @Override
-   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
-      if ($$1 == ha.a && !$$0.a($$3, $$4)) {
-         return cte.a.o();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, eah.c, eah.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public boolean a(dgb $$0, crc $$1, ht $$2) {
+      return !$$1.t($$2.d());
    }
 }

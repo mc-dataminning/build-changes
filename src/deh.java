@@ -1,198 +1,62 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class deh extends dcz {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 90;
-   private static final int c = 10;
-   @Nullable
-   private UUID d;
-   private dei e = this.f();
-   private dei f = this.f();
-   private boolean g;
-
-   public deh(gw $$0, dfd $$1) {
-      this(ddb.h, $$0, $$1);
-   }
-
-   public deh(ddb $$0, gw $$1, dfd $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   protected dei f() {
-      return new dei();
-   }
-
-   public boolean a(cca $$0) {
-      if (this.q().b() instanceof daa $$1) {
-         ehh $$2 = $$1.h(this.q());
-         double $$3 = $$0.dq() - ((double)this.p().u() + $$2.c);
-         double $$4 = $$0.dw() - ((double)this.p().w() + $$2.e);
-         float $$5 = $$1.g(this.q());
-         float $$6 = (float)(asb.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
-         return asb.d($$5, $$6) <= 90.0F;
-      } else {
-         return false;
+public class deh extends ddx {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final cqa d = new cqa() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         deh.this.e();
       }
-   }
 
-   public dei b(cca $$0) {
-      return this.a(this.a($$0));
-   }
+      @Override
+      public alq e() {
+         return (alq)deh.this.o;
+      }
 
-   public dei a(boolean $$0) {
-      return $$0 ? this.e : this.f;
-   }
+      @Override
+      public void f() {
+         dgb $$0 = deh.this.o.a_(deh.this.p);
+         this.e().a(deh.this.p, $$0, $$0, 3);
+      }
 
-   public dei g() {
-      return this.e;
-   }
+      @Override
+      public eif g() {
+         return eif.b(deh.this.p);
+      }
 
-   public dei i() {
-      return this.f;
-   }
+      @Override
+      public du i() {
+         hx $$0 = deh.this.q().c(cvj.b);
+         return new du(this, eif.b(deh.this.p), new eie(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().n(), null);
+      }
 
-   public int c() {
-      return 10;
-   }
+      @Override
+      public boolean j() {
+         return !deh.this.r();
+      }
+   };
 
-   public int d() {
-      return 90;
+   public deh(ht $$0, dgb $$1) {
+      super(ddz.w, $$0, $$1);
    }
 
    @Override
-   protected void b(qw $$0) {
+   protected void b(rt $$0) {
       super.b($$0);
-      dei.a.encodeStart(ri.a, this.e).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("front_text", $$1));
-      dei.a.encodeStart(ri.a, this.f).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("back_text", $$1));
-      $$0.a("is_waxed", this.g);
+      this.d.a($$0);
+      $$0.a("powered", this.d());
+      $$0.a("conditionMet", this.i());
+      $$0.a("auto", this.f());
    }
 
    @Override
-   public void a(qw $$0) {
+   public void a(rt $$0) {
       super.a($$0);
-      if ($$0.e("front_text")) {
-         dei.a.parse(ri.a, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
-      }
-
-      if ($$0.e("back_text")) {
-         dei.a.parse(ri.a, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
-      }
-
-      this.g = $$0.q("is_waxed");
-   }
-
-   private dei a(dei $$0) {
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         tl $$2 = this.a($$0.a($$1, false));
-         tl $$3 = this.a($$0.a($$1, true));
-         $$0 = $$0.a($$1, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   private tl a(tl $$0) {
-      if (this.o instanceof akt $$1) {
-         try {
-            return to.a(a(null, $$1, this.p), $$0, null, 0);
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(cca $$0, boolean $$1, List<alk> $$2) {
-      if (!this.w() && $$0.cv().equals(this.v()) && this.o != null) {
-         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
-         this.a(null);
-         this.o.a(this.p(), this.q(), this.q(), 3);
-      } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.ab().getString());
-      }
-   }
-
-   public boolean a(UnaryOperator<dei> $$0, boolean $$1) {
-      dei $$2 = this.a($$1);
-      return this.a($$0.apply($$2), $$1);
-   }
-
-   private dei a(cca $$0, List<alk> $$1, dei $$2) {
-      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-         alk $$4 = $$1.get($$3);
-         ui $$5 = $$2.a($$3, $$0.W()).a();
-         if ($$0.W()) {
-            $$2 = $$2.a($$3, tl.b($$4.b()).b($$5));
-         } else {
-            $$2 = $$2.a($$3, tl.b($$4.d()).b($$5), tl.b($$4.b()).b($$5));
-         }
-      }
-
-      return $$2;
-   }
-
-   public boolean a(dei $$0, boolean $$1) {
-      return $$1 ? this.c($$0) : this.b($$0);
-   }
-
-   private boolean b(dei $$0) {
-      if ($$0 != this.f) {
-         this.f = $$0;
-         this.x();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean c(dei $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.x();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(boolean $$0, cca $$1) {
-      return this.w() && this.a($$0).b($$1);
-   }
-
-   public boolean a(cca $$0, cqb $$1, gw $$2, boolean $$3) {
-      boolean $$4 = false;
-
-      for (tl $$5 : this.a($$3).b($$0.W())) {
-         ui $$6 = $$5.a();
-         tj $$7 = $$6.h();
-         if ($$7 != null && $$7.a() == tj.a.c) {
-            $$0.cK().aC().a(a($$0, $$1, $$2), $$7.b());
-            $$4 = true;
-         }
-      }
-
-      return $$4;
-   }
-
-   private static dt a(@Nullable cca $$0, cqb $$1, gw $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.ab().getString();
-      tl $$4 = (tl)($$0 == null ? tl.b("Sign") : $$0.N_());
-      return new dt(ds.a, ehh.b($$2), ehg.a, (akt)$$1, 2, $$3, $$4, $$1.n(), $$0);
-   }
-
-   public xe j() {
-      return xe.a(this);
-   }
-
-   @Override
-   public qw as_() {
-      return this.o();
+      this.d.b($$0);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
    }
 
    @Override
@@ -200,49 +64,83 @@ public class deh extends dcz {
       return true;
    }
 
-   public void a(@Nullable UUID $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   public UUID v() {
+   public cqa c() {
       return this.d;
    }
 
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean d() {
+      return this.a;
+   }
+
+   public boolean f() {
+      return this.b;
+   }
+
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.v() != deh.a.a) {
+         this.x();
+      }
+   }
+
+   public void g() {
+      deh.a $$0 = this.v();
+      if ($$0 == deh.a.b && (this.a || this.b) && this.o != null) {
+         this.x();
+      }
+   }
+
    private void x() {
-      this.e();
-      this.o.a(this.p(), this.q(), this.q(), 3);
+      cua $$0 = this.q().b();
+      if ($$0 instanceof cvj) {
+         this.j();
+         this.o.a(this.p, $$0, 1);
+      }
+   }
+
+   public boolean i() {
+      return this.c;
+   }
+
+   public boolean j() {
+      this.c = true;
+      if (this.w()) {
+         ht $$0 = this.p.a(this.o.a_(this.p).c(cvj.b).g());
+         if (this.o.a_($$0).b() instanceof cvj) {
+            ddx $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof deh && ((deh)$$1).c().k() > 0;
+         } else {
+            this.c = false;
+         }
+      }
+
+      return this.c;
+   }
+
+   public deh.a v() {
+      dgb $$0 = this.q();
+      if ($$0.a(cuc.fN)) {
+         return deh.a.c;
+      } else if ($$0.a(cuc.kG)) {
+         return deh.a.b;
+      } else {
+         return $$0.a(cuc.kH) ? deh.a.a : deh.a.c;
+      }
    }
 
    public boolean w() {
-      return this.g;
+      dgb $$0 = this.o.a_(this.p());
+      return $$0.b() instanceof cvj ? $$0.c(cvj.c) : false;
    }
 
-   public boolean b(boolean $$0) {
-      if (this.g != $$0) {
-         this.g = $$0;
-         this.x();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(UUID $$0) {
-      cca $$1 = this.o.b($$0);
-      return $$1 == null || $$1.i((double)this.p().u(), (double)this.p().v(), (double)this.p().w()) > 64.0;
-   }
-
-   public static void a(cqb $$0, gw $$1, dfd $$2, deh $$3) {
-      UUID $$4 = $$3.v();
-      if ($$4 != null) {
-         $$3.a($$3, $$0, $$4);
-      }
-   }
-
-   private void a(deh $$0, cqb $$1, UUID $$2) {
-      if ($$0.b($$2)) {
-         $$0.a(null);
-      }
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

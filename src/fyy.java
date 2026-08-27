@@ -1,15 +1,23 @@
-import java.util.Collection;
-import java.util.Locale;
-
-public class fyy extends RuntimeException {
-   private final Collection<fyx.a> a;
-
-   public fyy(fyx.a $$0, Collection<fyx.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+public class fyy<T extends bkj> extends fxp<T, fil<T>> {
+   public fyy(fvy<T, fil<T>> $$0, fox $$1) {
+      super($$0, $$1);
    }
 
-   public Collection<fyx.a> a() {
-      return this.a;
+   @Override
+   public void a(emh $$0, fpb $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ckj $$10 = $$3.eS();
+      $$0.a();
+      if ($$10.a(ckm.rv)) {
+         this.c().d().a($$0);
+         this.c().e().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      $$0.b();
    }
 }

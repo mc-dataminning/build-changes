@@ -1,53 +1,81 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class atu extends DataFix {
-   private final String a;
-   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
+public class atu {
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final Semaphore c = new Semaphore(1);
+   private final Lock d = new ReentrantLock();
+   @Nullable
+   private volatile Thread e;
+   @Nullable
+   private volatile y f;
 
-   public atu(Schema $$0) {
-      super($$0, false);
-      this.a = "Blending Data Fix v" + $$0.getVersionKey();
+   public atu(String $$0) {
+      this.b = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(azd.c);
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
-   }
+   public void a() {
+      boolean $$0 = false;
 
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      $$0 = $$0.remove("blending_data");
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
-      if ($$2 && $$3.isPresent()) {
-         String $$4 = bal.a($$3.get().asString("empty"));
-         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
-         if (!b.contains($$4)) {
-            $$0 = a($$0, 384, -64);
-         } else if ($$5.isPresent()) {
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
-            String $$7 = bal.a($$6.get("target_status").asString("empty"));
-            if (!b.contains($$7)) {
-               $$0 = a($$0, 256, 0);
+      try {
+         this.d.lock();
+         if (!this.c.tryAcquire()) {
+            this.e = Thread.currentThread();
+            $$0 = true;
+            this.d.unlock();
+
+            try {
+               this.c.acquire();
+            } catch (InterruptedException var6) {
+               Thread.currentThread().interrupt();
             }
+
+            throw this.f;
+         }
+      } finally {
+         if (!$$0) {
+            this.d.unlock();
          }
       }
-
-      return $$0;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
-      return $$0.set(
-         "blending_data",
-         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(hw.a($$2)), $$0.createString("max_section"), $$0.createInt(hw.a($$2 + $$1))))
-      );
+   public void b() {
+      try {
+         this.d.lock();
+         Thread $$0 = this.e;
+         if ($$0 != null) {
+            y $$1 = a(this.b, $$0);
+            this.f = $$1;
+            this.c.release();
+            throw $$1;
+         }
+
+         this.c.release();
+      } finally {
+         this.d.unlock();
+      }
+   }
+
+   public static y a(String $$0, @Nullable Thread $$1) {
+      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(atu::a).collect(Collectors.joining("\n"));
+      String $$3 = "Accessing " + $$0 + " from multiple threads";
+      o $$4 = new o($$3, new IllegalStateException($$3));
+      p $$5 = $$4.a("Thread dumps");
+      $$5.a("Thread dumps", $$2);
+      a.error("Thread dumps: \n" + $$2);
+      return new y($$4);
+   }
+
+   private static String a(Thread $$0) {
+      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
    }
 }

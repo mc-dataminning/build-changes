@@ -1,131 +1,55 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
+import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class to {
-   public static final String a = ", ";
-   public static final tl b = tl.b(", ").a(n.h);
-   public static final tl c = tl.b(", ");
+public class to extends ByteToMessageDecoder implements tt {
+   private static final Logger a = LogUtils.getLogger();
+   private final AttributeKey<tk.a<?>> b;
 
-   public static tz a(tz $$0, ui $$1) {
-      if ($$1.g()) {
-         return $$0;
-      } else {
-         ui $$2 = $$0.a();
-         if ($$2.g()) {
-            return $$0.b($$1);
+   public to(AttributeKey<tk.a<?>> $$0) {
+      this.b = $$0;
+   }
+
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         Attribute<tk.a<?>> $$4 = $$0.channel().attr(this.b);
+         tk.a<?> $$5 = (tk.a<?>)$$4.get();
+         tl $$6 = new tl($$1);
+         int $$7 = $$6.n();
+         wb<?> $$8 = $$5.a($$7, $$6);
+         if ($$8 == null) {
+            throw new IOException("Bad packet id " + $$7);
          } else {
-            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
-         }
-      }
-   }
+            bey.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
+            if ($$6.readableBytes() > 0) {
+               throw new IOException(
+                  "Packet "
+                     + $$5.a().a()
+                     + "/"
+                     + $$7
+                     + " ("
+                     + $$8.getClass().getSimpleName()
+                     + ") was larger than I expected, found "
+                     + $$6.readableBytes()
+                     + " bytes extra whilst reading packet "
+                     + $$7
+               );
+            } else {
+               $$2.add($$8);
+               if (a.isDebugEnabled()) {
+                  a.debug(tj.c, " IN: [{}:{}] {}", new Object[]{$$5.a().a(), $$7, $$8.getClass().getName()});
+               }
 
-   public static Optional<tz> a(@Nullable dt $$0, Optional<tl> $$1, @Nullable biw $$2, int $$3) throws CommandSyntaxException {
-      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
-   }
-
-   public static tz a(@Nullable dt $$0, tl $$1, @Nullable biw $$2, int $$3) throws CommandSyntaxException {
-      if ($$3 > 100) {
-         return $$1.f();
-      } else {
-         tz $$4 = $$1.b().a($$0, $$2, $$3 + 1);
-
-         for (tl $$5 : $$1.c()) {
-            $$4.b(a($$0, $$5, $$2, $$3 + 1));
-         }
-
-         return $$4.c(a($$0, $$1.a(), $$2, $$3));
-      }
-   }
-
-   private static ui a(@Nullable dt $$0, ui $$1, @Nullable biw $$2, int $$3) throws CommandSyntaxException {
-      tr $$4 = $$1.i();
-      if ($$4 != null) {
-         tl $$5 = $$4.a(tr.a.a);
-         if ($$5 != null) {
-            tr $$6 = new tr(tr.a.a, a($$0, $$5, $$2, $$3 + 1));
-            return $$1.a($$6);
-         }
-      }
-
-      return $$1;
-   }
-
-   public static tl a(Collection<String> $$0) {
-      return a($$0, $$0x -> tl.b($$0x).a(n.k));
-   }
-
-   public static <T extends Comparable<T>> tl a(Collection<T> $$0, Function<T, tl> $$1) {
-      if ($$0.isEmpty()) {
-         return tk.a;
-      } else if ($$0.size() == 1) {
-         return $$1.apply($$0.iterator().next());
-      } else {
-         List<T> $$2 = Lists.newArrayList($$0);
-         $$2.sort(Comparable::compareTo);
-         return b($$2, $$1);
-      }
-   }
-
-   public static <T> tl b(Collection<? extends T> $$0, Function<T, tl> $$1) {
-      return a($$0, b, $$1);
-   }
-
-   public static <T> tz a(Collection<? extends T> $$0, Optional<? extends tl> $$1, Function<T, tl> $$2) {
-      return a($$0, (tl)DataFixUtils.orElse($$1, b), $$2);
-   }
-
-   public static tl a(Collection<? extends tl> $$0, tl $$1) {
-      return a($$0, $$1, Function.identity());
-   }
-
-   public static <T> tz a(Collection<? extends T> $$0, tl $$1, Function<T, tl> $$2) {
-      if ($$0.isEmpty()) {
-         return tl.i();
-      } else if ($$0.size() == 1) {
-         return $$2.apply((T)$$0.iterator().next()).f();
-      } else {
-         tz $$3 = tl.i();
-         boolean $$4 = true;
-
-         for (T $$5 : $$0) {
-            if (!$$4) {
-               $$3.b($$1);
+               tt.a($$4, $$8);
             }
-
-            $$3.b($$2.apply($$5));
-            $$4 = false;
          }
-
-         return $$3;
       }
-   }
-
-   public static tz a(tl $$0) {
-      return tl.a("chat.square_brackets", $$0);
-   }
-
-   public static tl a(Message $$0) {
-      return (tl)($$0 instanceof tl ? (tl)$$0 : tl.b($$0.getString()));
-   }
-
-   public static boolean b(@Nullable tl $$0) {
-      if ($$0 != null && $$0.b() instanceof uw $$1) {
-         String $$2 = $$1.b();
-         String $$3 = $$1.c();
-         return $$3 != null || qr.a().b($$2);
-      } else {
-         return true;
-      }
-   }
-
-   public static tz a(String $$0) {
-      return a((tl)tl.b($$0).a($$1 -> $$1.a(n.k).a(new tj(tj.a.f, $$0)).a(new tr(tr.a.a, tl.c("chat.copy.click"))).a($$0)));
    }
 }

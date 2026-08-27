@@ -1,302 +1,88 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.PortUnreachableException;
-import java.net.SocketAddress;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-import java.nio.charset.StandardCharsets;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class aoz extends aoy {
-   private static final Logger d = LogUtils.getLogger();
-   private static final String e = "SMP";
-   private static final String f = "MINECRAFT";
-   private static final long g = 30000L;
-   private static final long h = 5000L;
-   private long i;
-   private final int j;
-   private final int k;
-   private final int l;
-   private final String m;
-   private final String n;
-   private DatagramSocket o;
-   private final byte[] p = new byte[1460];
-   private String q;
-   private String r;
-   private final Map<SocketAddress, aoz.a> s;
-   private final aou t;
-   private long u;
-   private final afp v;
+public class aoz<S> implements aop {
+   private static final int c = 2;
+   private static final int d = 2;
+   private static final int e = 1;
+   protected final CompletableFuture<atz> a = new CompletableFuture<>();
+   protected CompletableFuture<List<S>> b;
+   final Set<aon> f;
+   private final int g;
+   private int h;
+   private int i;
+   private final AtomicInteger j = new AtomicInteger();
+   private final AtomicInteger k = new AtomicInteger();
 
-   private aoz(afp $$0, int $$1) {
-      super("Query Listener");
-      this.v = $$0;
-      this.j = $$1;
-      this.r = $$0.b();
-      this.k = $$0.d();
-      this.m = $$0.f();
-      this.l = $$0.I();
-      this.n = $$0.q();
-      this.u = 0L;
-      this.q = "0.0.0.0";
-      if (!this.r.isEmpty() && !this.q.equals(this.r)) {
-         this.q = this.r;
-      } else {
-         this.r = "0.0.0.0";
-
-         try {
-            InetAddress $$2 = InetAddress.getLocalHost();
-            this.q = $$2.getHostAddress();
-         } catch (UnknownHostException var4) {
-            d.warn("Unable to determine local host IP, please set server-ip in server.properties", var4);
-         }
-      }
-
-      this.t = new aou(1460);
-      this.s = Maps.newHashMap();
+   public static aoz<Void> a(aot $$0, List<aon> $$1, Executor $$2, Executor $$3, CompletableFuture<atz> $$4) {
+      return new aoz<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bep.a, bep.a, $$2, $$5), $$4);
    }
 
-   @Nullable
-   public static aoz a(afp $$0) {
-      int $$1 = $$0.a().q;
-      if (0 < $$1 && 65535 >= $$1) {
-         aoz $$2 = new aoz($$0, $$1);
-         return !$$2.a() ? null : $$2;
-      } else {
-         d.warn("Invalid query port {} found in server.properties (queries disabled)", $$1);
-         return null;
-      }
-   }
+   protected aoz(Executor $$0, final Executor $$1, aot $$2, List<aon> $$3, aoz.a<S> $$4, CompletableFuture<atz> $$5) {
+      this.g = $$3.size();
+      this.j.incrementAndGet();
+      $$5.thenRun(this.k::incrementAndGet);
+      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
+      CompletableFuture<?> $$7 = $$5;
+      this.f = Sets.newHashSet($$3);
 
-   private void a(byte[] $$0, DatagramPacket $$1) throws IOException {
-      this.o.send(new DatagramPacket($$0, $$0.length, $$1.getSocketAddress()));
-   }
-
-   private boolean a(DatagramPacket $$0) throws IOException {
-      byte[] $$1 = $$0.getData();
-      int $$2 = $$0.getLength();
-      SocketAddress $$3 = $$0.getSocketAddress();
-      d.debug("Packet len {} [{}]", $$2, $$3);
-      if (3 <= $$2 && -2 == $$1[0] && -3 == $$1[1]) {
-         d.debug("Packet '{}' [{}]", aov.a($$1[2]), $$3);
-         switch ($$1[2]) {
-            case 0:
-               if (!this.c($$0)) {
-                  d.debug("Invalid challenge [{}]", $$3);
-                  return false;
-               } else if (15 == $$2) {
-                  this.a(this.b($$0), $$0);
-                  d.debug("Rules [{}]", $$3);
-               } else {
-                  aou $$4 = new aou(1460);
-                  $$4.a(0);
-                  $$4.a(this.a($$0.getSocketAddress()));
-                  $$4.a(this.m);
-                  $$4.a("SMP");
-                  $$4.a(this.n);
-                  $$4.a(Integer.toString(this.v.H()));
-                  $$4.a(Integer.toString(this.l));
-                  $$4.a((short)this.k);
-                  $$4.a(this.q);
-                  this.a($$4.a(), $$0);
-                  d.debug("Status [{}]", $$3);
-               }
-            default:
-               return true;
-            case 9:
-               this.d($$0);
-               d.debug("Challenge [{}]", $$3);
-               return true;
-         }
-      } else {
-         d.debug("Invalid packet [{}]", $$3);
-         return false;
-      }
-   }
-
-   private byte[] b(DatagramPacket $$0) throws IOException {
-      long $$1 = ac.b();
-      if ($$1 < this.u + 5000L) {
-         byte[] $$2 = this.t.a();
-         byte[] $$3 = this.a($$0.getSocketAddress());
-         $$2[1] = $$3[0];
-         $$2[2] = $$3[1];
-         $$2[3] = $$3[2];
-         $$2[4] = $$3[3];
-         return $$2;
-      } else {
-         this.u = $$1;
-         this.t.b();
-         this.t.a(0);
-         this.t.a(this.a($$0.getSocketAddress()));
-         this.t.a("splitnum");
-         this.t.a(128);
-         this.t.a(0);
-         this.t.a("hostname");
-         this.t.a(this.m);
-         this.t.a("gametype");
-         this.t.a("SMP");
-         this.t.a("game_id");
-         this.t.a("MINECRAFT");
-         this.t.a("version");
-         this.t.a(this.v.G());
-         this.t.a("plugins");
-         this.t.a(this.v.s());
-         this.t.a("map");
-         this.t.a(this.n);
-         this.t.a("numplayers");
-         this.t.a(this.v.H() + "");
-         this.t.a("maxplayers");
-         this.t.a(this.l + "");
-         this.t.a("hostport");
-         this.t.a(this.k + "");
-         this.t.a("hostip");
-         this.t.a(this.q);
-         this.t.a(0);
-         this.t.a(1);
-         this.t.a("player_");
-         this.t.a(0);
-         String[] $$4 = this.v.J();
-
-         for (String $$5 : $$4) {
-            this.t.a($$5);
-         }
-
-         this.t.a(0);
-         return this.t.a();
-      }
-   }
-
-   private byte[] a(SocketAddress $$0) {
-      return this.s.get($$0).c();
-   }
-
-   private Boolean c(DatagramPacket $$0) {
-      SocketAddress $$1 = $$0.getSocketAddress();
-      if (!this.s.containsKey($$1)) {
-         return false;
-      } else {
-         byte[] $$2 = $$0.getData();
-         return this.s.get($$1).a() == aov.c($$2, 7, $$0.getLength());
-      }
-   }
-
-   private void d(DatagramPacket $$0) throws IOException {
-      aoz.a $$1 = new aoz.a($$0);
-      this.s.put($$0.getSocketAddress(), $$1);
-      this.a($$1.b(), $$0);
-   }
-
-   private void d() {
-      if (this.a) {
-         long $$0 = ac.b();
-         if ($$0 >= this.i + 30000L) {
-            this.i = $$0;
-            this.s.values().removeIf($$1 -> $$1.a($$0));
-         }
-      }
-   }
-
-   @Override
-   public void run() {
-      d.info("Query running on {}:{}", this.r, this.j);
-      this.i = ac.b();
-      DatagramPacket $$0 = new DatagramPacket(this.p, this.p.length);
-
-      try {
-         while (this.a) {
-            try {
-               this.o.receive($$0);
-               this.d();
-               this.a($$0);
-            } catch (SocketTimeoutException var8) {
-               this.d();
-            } catch (PortUnreachableException var9) {
-            } catch (IOException var10) {
-               this.a(var10);
+      for (final aon $$8 : $$3) {
+         final CompletableFuture<?> $$9 = $$7;
+         CompletableFuture<S> $$10 = $$4.create(new aon.a() {
+            @Override
+            public <T> CompletableFuture<T> a(T $$0) {
+               $$1.execute(() -> {
+                  aoz.this.f.remove($$8);
+                  if (aoz.this.f.isEmpty()) {
+                     aoz.this.a.complete(atz.a);
+                  }
+               });
+               return aoz.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
             }
-         }
-      } finally {
-         d.debug("closeSocket: {}:{}", this.r, this.j);
-         this.o.close();
+         }, $$2, $$8, $$1x -> {
+            this.j.incrementAndGet();
+            $$0.execute(() -> {
+               $$1x.run();
+               this.k.incrementAndGet();
+            });
+         }, $$1x -> {
+            this.h++;
+            $$1.execute(() -> {
+               $$1x.run();
+               this.i++;
+            });
+         });
+         $$6.add($$10);
+         $$7 = $$10;
       }
+
+      this.b = ac.c($$6);
    }
 
    @Override
-   public boolean a() {
-      if (this.a) {
-         return true;
-      } else {
-         return !this.e() ? false : super.a();
-      }
+   public CompletableFuture<?> a() {
+      return this.b;
    }
 
-   private void a(Exception $$0) {
-      if (this.a) {
-         d.warn("Unexpected exception", $$0);
-         if (!this.e()) {
-            d.error("Failed to recover from exception, shutting down!");
-            this.a = false;
-         }
-      }
+   @Override
+   public float b() {
+      int $$0 = this.g - this.f.size();
+      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
+      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
+      return $$1 / $$2;
    }
 
-   private boolean e() {
-      try {
-         this.o = new DatagramSocket(this.j, InetAddress.getByName(this.r));
-         this.o.setSoTimeout(500);
-         return true;
-      } catch (Exception var2) {
-         d.warn("Unable to initialise query system on {}:{}", new Object[]{this.r, this.j, var2});
-         return false;
-      }
+   public static aop a(aot $$0, List<aon> $$1, Executor $$2, Executor $$3, CompletableFuture<atz> $$4, boolean $$5) {
+      return (aop)($$5 ? new aoo($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
    }
 
-   static class a {
-      private final long a = new Date().getTime();
-      private final int b;
-      private final byte[] c;
-      private final byte[] d;
-      private final String e;
-
-      public a(DatagramPacket $$0) {
-         byte[] $$1 = $$0.getData();
-         this.c = new byte[4];
-         this.c[0] = $$1[3];
-         this.c[1] = $$1[4];
-         this.c[2] = $$1[5];
-         this.c[3] = $$1[6];
-         this.e = new String(this.c, StandardCharsets.UTF_8);
-         this.b = ash.a().a(16777216);
-         this.d = String.format(Locale.ROOT, "\t%s%d\u0000", this.e, this.b).getBytes(StandardCharsets.UTF_8);
-      }
-
-      public Boolean a(long $$0) {
-         return this.a < $$0;
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public byte[] b() {
-         return this.d;
-      }
-
-      public byte[] c() {
-         return this.c;
-      }
-
-      public String d() {
-         return this.e;
-      }
+   protected interface a<S> {
+      CompletableFuture<S> create(aon.a var1, aot var2, aon var3, Executor var4, Executor var5);
    }
 }

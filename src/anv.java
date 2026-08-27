@@ -1,23 +1,27 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public class anv {
-   private static final Codec<anv> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(asi.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, anv::new)
+public record anv(ui c, int d, Optional<asq<Integer>> e) {
+   public static final Codec<anv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               uk.a.fieldOf("description").forGetter(anv::a),
+               Codec.INT.fieldOf("pack_format").forGetter(anv::b),
+               asq.a(Codec.INT).optionalFieldOf("supported_formats").forGetter(anv::c)
+            )
+            .apply($$0, anv::new)
    );
-   public static final amx<anv> a = amx.a("filter", b);
-   private final List<asi> c;
+   public static final anu<anv> b = anu.a("pack", a);
 
-   public anv(List<asi> $$0) {
-      this.c = List.copyOf($$0);
+   public ui a() {
+      return this.c;
    }
 
-   public boolean a(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   public int b() {
+      return this.d;
    }
 
-   public boolean b(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   public Optional<asq<Integer>> c() {
+      return this.e;
    }
 }

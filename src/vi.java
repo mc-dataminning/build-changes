@@ -1,55 +1,17 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class vi extends Exception {
+   private final ui a;
 
-public record vi(vx a) implements ve<vh> {
-   private static final int b = 1048576;
-   private static final Map<aez, so.a<? extends vx>> c = ImmutableMap.builder()
-      .put(vw.a, vw::new)
-      .put(vu.a, vu::new)
-      .put(vv.a, vv::new)
-      .put(vz.a, vz::new)
-      .put(wa.a, wa::new)
-      .put(wb.a, wb::new)
-      .put(wc.a, wc::new)
-      .put(wd.a, wd::new)
-      .put(we.a, we::new)
-      .put(wf.a, wf::new)
-      .put(wg.a, wg::new)
-      .put(wh.a, wh::new)
-      .put(wi.a, wi::new)
-      .put(wj.a, wj::new)
-      .put(wk.a, wk::new)
-      .put(wl.a, wl::new)
-      .put(wm.a, wm::new)
-      .put(wn.a, wn::new)
-      .build();
-
-   public vi(so $$0) {
-      this(a($$0.t(), $$0));
+   public vi(ui $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   private static vx a(aez $$0, so $$1) {
-      so.a<? extends vx> $$2 = c.get($$0);
-      return (vx)($$2 != null ? $$2.apply($$1) : b($$0, $$1));
+   public vi(ui $$0, Throwable $$1) {
+      super($$0.getString(), $$1);
+      this.a = $$0;
    }
 
-   private static vy b(aez $$0, so $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.j($$2);
-         return new vy($$0);
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   @Override
-   public void a(so $$0) {
-      $$0.a(this.a.a());
-      this.a.a($$0);
-   }
-
-   public void a(vh $$0) {
-      $$0.a(this);
+   public ui b() {
+      return this.a;
    }
 }

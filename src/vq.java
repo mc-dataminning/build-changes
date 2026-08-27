@@ -1,36 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record vq(vx a) implements ve<vo> {
-   private static final int b = 32767;
-   private static final Map<aez, so.a<? extends vx>> c = ImmutableMap.builder().put(vw.a, vw::new).build();
+public class vq implements uj {
+   private static final String d = "*";
+   public static final MapCodec<vq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(vq::b), Codec.STRING.fieldOf("objective").forGetter(vq::d)).apply($$0, vq::new)
+   );
+   public static final MapCodec<vq> b = a.fieldOf("score");
+   public static final uj.a<vq> c = new uj.a<>(b, "score");
+   private final String e;
+   @Nullable
+   private final ge f;
+   private final String g;
 
-   public vq(so $$0) {
-      this(a($$0.t(), $$0));
+   @Nullable
+   private static ge a(String $$0) {
+      try {
+         return new gf(new StringReader($$0)).t();
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
    }
 
-   private static vx a(aez $$0, so $$1) {
-      so.a<? extends vx> $$2 = c.get($$0);
-      return (vx)($$2 != null ? $$2.apply($$1) : b($$0, $$1));
+   public vq(String $$0, String $$1) {
+      this.e = $$0;
+      this.f = a($$0);
+      this.g = $$1;
    }
 
-   private static vy b(aez $$0, so $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 32767) {
-         $$1.j($$2);
-         return new vy($$0);
+   @Override
+   public uj.a<?> a() {
+      return c;
+   }
+
+   public String b() {
+      return this.e;
+   }
+
+   @Nullable
+   public ge c() {
+      return this.f;
+   }
+
+   public String d() {
+      return this.g;
+   }
+
+   private String a(du $$0) throws CommandSyntaxException {
+      if (this.f != null) {
+         List<? extends bjt> $$1 = this.f.b($$0);
+         if (!$$1.isEmpty()) {
+            if ($$1.size() != 1) {
+               throw eg.a.create();
+            }
+
+            return $$1.get(0).cx();
+         }
+      }
+
+      return this.e;
+   }
+
+   private String a(String $$0, du $$1) {
+      MinecraftServer $$2 = $$1.m();
+      if ($$2 != null) {
+         eje $$3 = $$2.aF();
+         ejb $$4 = $$3.b(this.g);
+         if ($$4 != null && $$3.b($$0, $$4)) {
+            ejd $$5 = $$3.c($$0, $$4);
+            return Integer.toString($$5.b());
+         }
+      }
+
+      return "";
+   }
+
+   @Override
+   public uw a(@Nullable du $$0, @Nullable bjt $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return ui.i();
       } else {
-         throw new IllegalArgumentException("Payload may not be larger than 32767 bytes");
+         String $$3 = this.a($$0);
+         String $$4 = $$1 != null && $$3.equals("*") ? $$1.cx() : $$3;
+         return ui.b(this.a($$4, $$0));
       }
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a.a());
-      this.a.a($$0);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof vq $$1 && this.e.equals($$1.e) && this.g.equals($$1.g)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public void a(vo $$0) {
-      $$0.a(this);
+   @Override
+   public int hashCode() {
+      int $$0 = this.e.hashCode();
+      return 31 * $$0 + this.g.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "score{name='" + this.e + "', objective='" + this.g + "'}";
    }
 }

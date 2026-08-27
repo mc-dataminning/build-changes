@@ -1,39 +1,98 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class etj {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+public class etj extends etb {
+   public static final int l = 120;
+   public static final int m = 150;
+   public static final int n = 20;
+   protected static final etj.b o = $$0 -> $$0.get();
+   protected final etj.c p;
+   protected final etj.b q;
 
-   public static void a(erz $$0, gaa $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1.a(), $$2, $$3, $$4);
+   public static etj.a a(ui $$0, etj.c $$1) {
+      return new etj.a($$0, $$1);
    }
 
-   public static void a(erz $$0, aez $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, true, false);
+   protected etj(int $$0, int $$1, int $$2, int $$3, ui $$4, etj.c $$5, etj.b $$6) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.p = $$5;
+      this.q = $$6;
    }
 
-   public static void a(erz $$0, aez $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
-      int $$7 = 8 + ($$6 ? 8 : 0);
-      int $$8 = 8 * ($$6 ? -1 : 1);
-      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6);
+   @Override
+   public void c() {
+      this.p.onPress(this);
+   }
+
+   @Override
+   protected uw aI_() {
+      return this.q.createNarrationMessage(() -> super.aI_());
+   }
+
+   @Override
+   public void a(exc $$0) {
+      this.c($$0);
+   }
+
+   public static class a {
+      private final ui a;
+      private final etj.c b;
+      @Nullable
+      private euu c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private etj.b h = etj.o;
+
+      public a(ui $$0, etj.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public etj.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public etj.a a(int $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public etj.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
+      }
+
+      public etj.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
+      }
+
+      public etj.a a(@Nullable euu $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public etj.a a(etj.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public etj a() {
+         etj $$0 = new etj(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
       }
    }
 
-   private static void a(erz $$0, aez $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = 8 + ($$5 ? 8 : 0);
-      int $$7 = 8 * ($$5 ? -1 : 1);
-      RenderSystem.enableBlend();
-      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
-      RenderSystem.disableBlend();
+   public interface b {
+      uw createNarrationMessage(Supplier<uw> var1);
+   }
+
+   public interface c {
+      void onPress(etj var1);
    }
 }

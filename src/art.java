@@ -1,66 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import java.util.Locale;
 
-public record art<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<art<Integer>> a = a(Codec.INT);
-
-   public art(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+public record art(int b) {
+   private static final String c = "#";
+   public static final Codec<art> a = Codec.STRING.comapFlatMap($$0 -> {
+      if (!$$0.startsWith("#")) {
+         return DataResult.error(() -> "Not a color code: " + $$0);
       } else {
-         this.b = b;
-         this.c = c;
+         try {
+            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
+            return DataResult.success(new art($$1));
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
+         }
       }
-   }
+   }, art::b);
 
-   public art(T $$0) {
-      this($$0, $$0);
-   }
-
-   public static <T extends Comparable<T>> Codec<art<T>> a(Codec<T> $$0) {
-      return arj.a($$0, "min_inclusive", "max_inclusive", art::a, art::a, art::b);
-   }
-
-   public static <T extends Comparable<T>> Codec<art<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return arj.a(
-         a($$0),
-         (Function<art<T>, DataResult<art<T>>>)($$2x -> {
-            if ($$2x.a().compareTo($$1) < 0) {
-               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b().compareTo($$2) > 0
-                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
-            }
-         })
-      );
-   }
-
-   public static <T extends Comparable<T>> DataResult<art<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new art($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
-
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
-   }
-
-   public boolean a(art<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   private String b() {
+      return String.format(Locale.ROOT, "#%08X", this.b);
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
+      return this.b();
    }
 
-   public T a() {
+   public int a() {
       return this.b;
-   }
-
-   public T b() {
-      return this.c;
    }
 }

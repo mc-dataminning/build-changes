@@ -1,41 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class dxz extends dys {
-   public static final Codec<dxz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               hs.a(jc.e).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, dxz::new)
+public class dxz extends dwa {
+   public static final bgp<csj.c> d = bgp.a(
+      new csj.c(bjx.i, 10, 2, 3), new csj.c(bjx.bs, 5, 4, 4), new csj.c(bjx.bl, 8, 5, 5), new csj.c(bjx.aJ, 2, 5, 5), new csj.c(bjx.al, 3, 4, 4)
    );
-   private final Optional<hi<ctc>> b;
-   private final float c;
+   public static final Codec<dxz> e = a(dxz::new);
 
-   public dxz(hi<ctc> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public dxz(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private dxz(Optional<hi<ctc>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dyv.c a(cqe $$0, gw $$1, gw $$2, dyv.c $$3, dyv.c $$4, dyr $$5) {
-      ash $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public dxz(dwa.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected dyu<?> a() {
-      return dyu.f;
+   public Optional<dwa.b> a(dwa.a $$0) {
+      cqg $$1 = $$0.h();
+      ht $$2 = new ht($$1.d(), 64, $$1.e());
+      return Optional.of(new dwa.b($$2, (Consumer<dws>)($$1x -> a($$1x, $$0))));
+   }
+
+   private static void a(dws $$0, dwa.a $$1) {
+      dxy.q $$2 = new dxy.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<dwe> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         dwe $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
+      }
+
+      $$0.a($$1.f(), 48, 70);
+   }
+
+   @Override
+   public dwj<?> e() {
+      return dwj.d;
    }
 }

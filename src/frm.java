@@ -1,52 +1,50 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+public class frm implements fra<dfx> {
+   private final fpu a;
 
-public class frm implements frj.a {
-   private static final int a = 160;
-   private final eqp b;
-   private final Int2ObjectMap<frm.a> c = new Int2ObjectOpenHashMap();
-
-   @Override
-   public void a() {
-      this.c.clear();
+   public frm(frb.a $$0) {
+      this.a = $$0.b();
    }
 
-   public void a(int $$0, gw $$1, List<wd.a> $$2) {
-      this.c.put($$0, new frm.a($$1, $$2));
-   }
-
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
-
-   public frm(eqp $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
-      eqa $$5 = this.b.j.m();
-      gw $$6 = gw.a($$5.b().c, 0.0, $$5.b().e);
-      ObjectIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         frm.a $$7 = (frm.a)var11.next();
-         gw $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               wd.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               frj.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+   public void a(dfx $$0, float $$1, emh $$2, fpb $$3, int $$4, int $$5) {
+      cqz $$6 = $$0.k();
+      if ($$6 != null) {
+         ht $$7 = $$0.p().a($$0.g().g());
+         dgb $$8 = $$0.i();
+         if (!$$8.i()) {
+            fpw.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(cuc.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.a(dfv.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.f() && !$$0.c()) {
+               dhd $$9 = $$8.a(cuc.br) ? dhd.b : dhd.a;
+               dgb $$10 = cuc.bz.o().a(dfv.c, $$9).a(dfv.a, $$8.c(dfu.a));
+               $$10 = $$10.a(dfv.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               ht $$11 = $$7.a($$0.g());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.a(dfu.c, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
             }
+
+            $$2.b();
+            fpw.b();
          }
       }
    }
 
-   static record a(gw a, List<wd.a> b) {
+   private void a(ht $$0, dgb $$1, emh $$2, fpb $$3, cqz $$4, boolean $$5, int $$6) {
+      fpj $$7 = fow.b($$1);
+      eml $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, ate.a(), $$1.a($$0), $$6);
+   }
+
+   @Override
+   public int aP_() {
+      return 68;
    }
 }

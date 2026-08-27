@@ -1,18 +1,29 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import net.minecraft.server.MinecraftServer;
 
-public final class eho extends eia {
-   protected eho(ehq $$0) {
-      super($$0);
+public class eho implements ehq<MinecraftServer> {
+   final afw a;
+
+   public eho(afw $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected DoubleList a(ha.a $$0) {
-      return new ehn(this.a.c($$0));
+   public void a(MinecraftServer $$0, ehs<MinecraftServer> $$1, long $$2) {
+      agk $$3 = $$0.aA();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   @Override
-   protected int a(ha.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return asb.a(asb.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public static class a extends ehq.a<MinecraftServer, eho> {
+      public a() {
+         super(new afw("function"), eho.class);
+      }
+
+      public void a(rt $$0, eho $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public eho a(rt $$0) {
+         afw $$1 = new afw($$0.l("Name"));
+         return new eho($$1);
+      }
    }
 }

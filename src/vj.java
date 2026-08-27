@@ -1,24 +1,78 @@
-public class vj implements ve<vh> {
-   private final tl a;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   public vj(tl $$0) {
-      this.a = $$0;
+public record vj(String d, @Nullable fo e) implements vk {
+   public static final MapCodec<vj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(vj::b)).apply($$0, vj::new));
+   public static final vk.a<vj> b = new vk.a<>(a, "block");
+
+   public vj(String $$0) {
+      this($$0, a($$0));
    }
 
-   public vj(so $$0) {
-      this.a = $$0.m();
+   @Nullable
+   private static fo a(String $$0) {
+      try {
+         return fm.a().a(new StringReader($$0));
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(this.a);
+   public Stream<rt> a(du $$0) {
+      if (this.e != null) {
+         alq $$1 = $$0.f();
+         ht $$2 = this.e.c($$0);
+         if ($$1.o($$2)) {
+            ddx $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.m());
+            }
+         }
+      }
+
+      return Stream.empty();
    }
 
-   public void a(vh $$0) {
-      $$0.a(this);
+   @Override
+   public vk.a<?> a() {
+      return b;
    }
 
-   public tl a() {
-      return this.a;
+   @Override
+   public String toString() {
+      return "block=" + this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof vj $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   public String b() {
+      return this.d;
+   }
+
+   @Nullable
+   public fo c() {
+      return this.e;
    }
 }

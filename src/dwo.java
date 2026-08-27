@@ -1,25 +1,26 @@
-import com.mojang.serialization.Codec;
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public class dwo extends dvc {
-   public static final Codec<dwo> d = a(dwo::new);
+@FunctionalInterface
+public interface dwo<C extends dqs> {
+   Optional<dwn<C>> createGenerator(dwo.a<C> var1);
 
-   public dwo(dvc.c $$0) {
-      super($$0);
+   static <C extends dqs> dwo<C> simple(Predicate<dwo.a<C>> $$0, dwn<C> $$1) {
+      Optional<dwn<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   @Override
-   public Optional<dvc.b> a(dvc.a $$0) {
-      return a($$0, dkm.a.c, $$1 -> a($$1, $$0));
+   static <C extends dqs> Predicate<dwo.a<C>> checkForBiomeOnTop(dlk.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   private static void a(dvu $$0, dvc.a $$1) {
-      gw $$2 = new gw($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new dwn.a($$2));
-   }
-
-   @Override
-   public dvl<?> e() {
-      return dvl.a;
+   public static record a<C extends dqs>(dhy a, csb b, dly c, long d, cqg e, C f, crb g, Predicate<ib<crx>> h, dzu i, ip j) {
+      public boolean a(dlk.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         ib<crx> $$4 = this.a.c().getNoiseBiome(in.a($$1), in.a($$3), in.a($$2), this.c.b());
+         return this.h.test($$4);
+      }
    }
 }

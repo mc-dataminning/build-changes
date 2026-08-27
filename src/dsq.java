@@ -1,69 +1,61 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
-public class dsq extends dsy {
-   public static final Codec<dsq> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  arj.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bgj.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, dsq::new)
-   );
-   private final int b;
-   private final bgj h;
+public abstract class dsq {
+   public static final Codec<dsq> d = jy.Z.q().dispatch(dsq::a, dsr::a);
+   protected final bhg e;
+   protected final dst f;
+   protected final Optional<dsn> g;
 
-   public dsq(int $$0, int $$1, int $$2, int $$3, bgj $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   protected static <P extends dsq> P3<Mu<P>, bhg, dst, Optional<dsn>> a(Instance<P> $$0) {
+      return $$0.group(
+         bhg.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         dst.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         dsn.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   @Override
-   protected dsz<?> a() {
-      return dsz.g;
+   public dsq(bhg $$0, dst $$1, Optional<dsn> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public List<drg.a> a(cqh $$0, BiConsumer<gw, dfd> $$1, ash $$2, int $$3, gw $$4, dqq $$5) {
-      ha $$6 = ha.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      gw.a $$8 = $$4.j();
-      gw $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<drg.a> $$10 = Lists.newArrayList();
+   protected abstract dsr<?> a();
 
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
+   public abstract boolean a(crf var1, BiConsumer<ht, dgb> var2, ate var3, ht var4, ht var5, dro var6);
+
+   protected boolean a(crf $$0, ht $$1) {
+      return dqa.c($$0, $$1);
+   }
+
+   protected void a(crf $$0, BiConsumer<ht, dgb> $$1, ate $$2, ht $$3, dro $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            dsn $$5 = this.g.get();
+            ht $$6 = $$3.c();
+            if ($$2.i() < $$5.b() && $$0.a($$6, dga.a::i)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
          }
-
-         if (dpc.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new drg.a($$8.i(), 0, false));
-         }
-
-         $$8.c(ha.b);
       }
+   }
 
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (dpc.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new drg.a($$8.i(), 0, false));
-         $$8.c($$6);
+   protected dgb a(crf $$0, ht $$1, dgb $$2) {
+      if ($$2.b(dgr.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(aqx.a));
+         return $$2.a(dgr.C, Boolean.valueOf($$3));
+      } else {
+         return $$2;
       }
+   }
 
-      return $$10;
+   public ht a(ht $$0, ate $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

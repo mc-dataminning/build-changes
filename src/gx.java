@@ -1,69 +1,86 @@
-public class gx {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   public static final int d = 3;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private int l;
-   private int m;
-   private int n;
-   private int o;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public gx(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3 - $$0 + 1;
-      this.i = $$4 - $$1 + 1;
-      this.j = $$5 - $$2 + 1;
-      this.k = this.h * this.i * this.j;
+public interface gx<T> {
+   afw a();
+
+   gz<T> a(@Nullable rt var1, CommandDispatcher<T> var2, T var3) throws dx;
+
+   private static boolean a(CharSequence $$0) {
+      int $$1 = $$0.length();
+      return $$1 > 0 && $$0.charAt($$1 - 1) == '\\';
    }
 
-   public boolean a() {
-      if (this.l == this.k) {
-         return false;
+   static <T extends dw<T>> gx<T> a(afw $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
+      gy<T> $$4 = new gy<>();
+
+      for (int $$5 = 0; $$5 < $$3.size(); $$5++) {
+         int $$6 = $$5 + 1;
+         String $$7 = $$3.get($$5).trim();
+         String $$10;
+         if (a($$7)) {
+            StringBuilder $$8 = new StringBuilder($$7);
+
+            do {
+               if (++$$5 == $$3.size()) {
+                  throw new IllegalArgumentException("Line continuation at end of file");
+               }
+
+               $$8.deleteCharAt($$8.length() - 1);
+               String $$9 = $$3.get($$5).trim();
+               $$8.append($$9);
+            } while (a($$8));
+
+            $$10 = $$8.toString();
+         } else {
+            $$10 = $$7;
+         }
+
+         StringReader $$12 = new StringReader($$10);
+         if ($$12.canRead() && $$12.peek() != '#') {
+            if ($$12.peek() == '/') {
+               $$12.skip();
+               if ($$12.peek() == '/') {
+                  throw new IllegalArgumentException(
+                     "Unknown or invalid command '" + $$10 + "' on line " + $$6 + " (if you intended to make a comment, use '#' not '//')"
+                  );
+               }
+
+               String $$13 = $$12.readUnquotedString();
+               throw new IllegalArgumentException(
+                  "Unknown or invalid command '" + $$10 + "' on line " + $$6 + " (did you mean '" + $$13 + "'? Do not use a preceding forwards slash.)"
+               );
+            }
+
+            if ($$12.peek() == '$') {
+               $$4.a($$10.substring(1), $$6);
+            } else {
+               try {
+                  $$4.a(a($$1, $$2, $$12));
+               } catch (CommandSyntaxException var11) {
+                  throw new IllegalArgumentException("Whilst parsing command on line " + $$6 + ": " + var11.getMessage());
+               }
+            }
+         }
+      }
+
+      return $$4.a($$0);
+   }
+
+   static <T extends dw<T>> gq<T> a(CommandDispatcher<T> $$0, T $$1, StringReader $$2) throws CommandSyntaxException {
+      ParseResults<T> $$3 = $$0.parse($$2, $$1);
+      dv.a($$3);
+      Optional<ContextChain<T>> $$4 = ContextChain.tryFlatten($$3.getContext().build($$2.getString()));
+      if ($$4.isEmpty()) {
+         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$3.getReader());
       } else {
-         this.m = this.l % this.h;
-         int $$0 = this.l / this.h;
-         this.n = $$0 % this.i;
-         this.o = $$0 / this.i;
-         this.l++;
-         return true;
+         return new gs.c<>($$2.getString(), $$4.get());
       }
-   }
-
-   public int b() {
-      return this.e + this.m;
-   }
-
-   public int c() {
-      return this.f + this.n;
-   }
-
-   public int d() {
-      return this.g + this.o;
-   }
-
-   public int e() {
-      int $$0 = 0;
-      if (this.m == 0 || this.m == this.h - 1) {
-         $$0++;
-      }
-
-      if (this.n == 0 || this.n == this.i - 1) {
-         $$0++;
-      }
-
-      if (this.o == 0 || this.o == this.j - 1) {
-         $$0++;
-      }
-
-      return $$0;
    }
 }

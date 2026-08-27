@@ -1,66 +1,102 @@
-public class fko extends fmq {
-   private final float a;
-   private final float b;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-   fko(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cjl $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public class fko {
+   final int a;
+   private final List<fko.a> b = new ArrayList<>();
+
+   public fko(int $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public flu b() {
-      return flu.a;
-   }
+   public void a(fkg $$0, IntCollection $$1, fko.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-   protected fko(fis $$0, double $$1, double $$2, double $$3, cjl $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(eqp.O().aq().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements flt<ir> {
-      public flq a(ir $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fko($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         fki $$6 = $$0.b($$4);
+         if ($$6 instanceof fkj.a) {
+            fkj.a $$5 = (fkj.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
       }
    }
 
-   public static class b implements flt<iy> {
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fko($$1, $$2, $$3, $$4, new cjl(cjo.qc));
+   public void a(uy $$0) {
+      this.b.add(new fko.a($$0));
+   }
+
+   public boolean b(uy $$0) {
+      boolean $$1 = false;
+      Iterator<fko.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         fko.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<uu> b;
+      private uy c;
+      private boolean d = true;
+      private int e;
+
+      a(uy $$0) {
+         this.b = new ObjectOpenHashSet($$0.l().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(uy $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.k());
+            if (this.d && this.c.f().equals($$0.f())) {
+               if (this.c.j().a($$0.j())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= fko.this.a || !this.d && this.b.isEmpty();
       }
    }
 
-   public static class c implements flt<iy> {
-      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fko($$1, $$2, $$3, $$4, new cjl(cjo.pO));
-      }
+   public interface b {
+      void accept(int var1, fkj.a var2);
    }
 }

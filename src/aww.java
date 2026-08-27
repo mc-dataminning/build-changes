@@ -1,27 +1,54 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
 public class aww extends DataFix {
+   private static final int[][] a = new int[][]{{0, 0, 1}, {-1, 0, 0}, {0, 0, -1}, {1, 0, 0}};
+
    public aww(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(azd.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(azd.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(aww::a));
+   private Dynamic<?> a(Dynamic<?> $$0, boolean $$1, boolean $$2) {
+      if (($$1 || $$2) && $$0.get("Facing").asNumber().result().isEmpty()) {
+         int $$3;
+         if ($$0.get("Direction").asNumber().result().isPresent()) {
+            $$3 = $$0.get("Direction").asByte((byte)0) % a.length;
+            int[] $$4 = a[$$3];
+            $$0 = $$0.set("TileX", $$0.createInt($$0.get("TileX").asInt(0) + $$4[0]));
+            $$0 = $$0.set("TileY", $$0.createInt($$0.get("TileY").asInt(0) + $$4[1]));
+            $$0 = $$0.set("TileZ", $$0.createInt($$0.get("TileZ").asInt(0) + $$4[2]));
+            $$0 = $$0.remove("Direction");
+            if ($$2 && $$0.get("ItemRotation").asNumber().result().isPresent()) {
+               $$0 = $$0.set("ItemRotation", $$0.createByte((byte)($$0.get("ItemRotation").asByte((byte)0) * 2)));
+            }
+         } else {
+            $$3 = $$0.get("Dir").asByte((byte)0) % a.length;
+            $$0 = $$0.remove("Dir");
+         }
+
+         $$0 = $$0.set("Facing", $$0.createByte((byte)$$3));
       }
+
+      return $$0;
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(baa.x, "Painting");
+      OpticFinder<?> $$1 = DSL.namedChoice("Painting", $$0);
+      Type<?> $$2 = this.getInputSchema().getChoiceType(baa.x, "ItemFrame");
+      OpticFinder<?> $$3 = DSL.namedChoice("ItemFrame", $$2);
+      Type<?> $$4 = this.getInputSchema().getType(baa.x);
+      TypeRewriteRule $$5 = this.fixTypeEverywhereTyped(
+         "EntityPaintingFix", $$4, $$2x -> $$2x.updateTyped($$1, $$0, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, true, false)))
+      );
+      TypeRewriteRule $$6 = this.fixTypeEverywhereTyped(
+         "EntityItemFrameFix", $$4, $$2x -> $$2x.updateTyped($$3, $$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, false, true)))
+      );
+      return TypeRewriteRule.seq($$5, $$6);
    }
 }

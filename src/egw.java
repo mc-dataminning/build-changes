@@ -1,25 +1,18 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class egw extends Exception {
-   private final Path a;
-   private final List<egy> b;
+public class egw {
+   private static final Codec<egv> d = jy.K.q().dispatch(egv::a, egu::a);
+   public static final Codec<egv> a = asg.a(
+      (Supplier<Codec<egv>>)(() -> Codec.either(egt.c, d)
+            .xmap($$0 -> (egv)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof egt $$1 ? Either.left($$1) : Either.right($$0)))
+   );
+   public static final egu b = a("storage", egx.a);
+   public static final egu c = a("context", egt.b);
 
-   public egw(Path $$0, List<egy> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
-   }
-
-   public static String a(Path $$0, List<egy> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   private static egu a(String $$0, Codec<? extends egv> $$1) {
+      return io.a(jy.K, new afw($$0), new egu($$1));
    }
 }

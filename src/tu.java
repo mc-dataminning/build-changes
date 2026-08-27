@@ -1,72 +1,24 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class tu {
-   private final int a;
-   private final ObjectList<tv> b = new ObjectArrayList();
-   @Nullable
-   private tx c;
+public class tu extends tj {
+   private static final Logger j = LogUtils.getLogger();
+   private static final ui k = ui.c("disconnect.exceeded_packet_rate");
+   private final int l;
 
    public tu(int $$0) {
-      this.a = $$0;
-
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.b.add(null);
-      }
+      super(wc.a);
+      this.l = $$0;
    }
 
-   public void a(tx $$0) {
-      if (!$$0.equals(this.c)) {
-         this.b.add(new tv($$0, true));
-         this.c = $$0;
-      }
-   }
-
-   public int a() {
-      return this.b.size();
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = this.b.size() - this.a;
-      if ($$0 >= 0 && $$0 <= $$1) {
-         this.b.removeElements(0, $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public Optional<ts> a(ts.b $$0) {
-      if (!this.a($$0.a())) {
-         return Optional.empty();
-      } else {
-         ObjectList<tx> $$1 = new ObjectArrayList($$0.b().cardinality());
-         if ($$0.b().length() > this.a) {
-            return Optional.empty();
-         } else {
-            for (int $$2 = 0; $$2 < this.a; $$2++) {
-               boolean $$3 = $$0.b().get($$2);
-               tv $$4 = (tv)this.b.get($$2);
-               if ($$3) {
-                  if ($$4 == null) {
-                     return Optional.empty();
-                  }
-
-                  this.b.set($$2, $$4.a());
-                  $$1.add($$4.b());
-               } else {
-                  if ($$4 != null && !$$4.c()) {
-                     return Optional.empty();
-                  }
-
-                  this.b.set($$2, null);
-               }
-            }
-
-            return Optional.of(new ts($$1));
-         }
+   @Override
+   protected void e() {
+      super.e();
+      float $$0 = this.q();
+      if ($$0 > (float)this.l) {
+         j.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
+         this.a(new wg(k), ts.a(() -> this.a(k)));
+         this.o();
       }
    }
 }

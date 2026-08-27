@@ -1,12 +1,17 @@
 public class cej {
-   private final String a;
+   private final int a;
+   private final float b;
 
-   public cej(String $$0) {
+   public cej(int $$0, float $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public String toString() {
+   public int a() {
       return this.a;
+   }
+
+   public float b() {
+      return this.b;
    }
 }

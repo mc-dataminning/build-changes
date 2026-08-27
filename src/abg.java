@@ -1,24 +1,24 @@
-public class abg implements ve<abd> {
-   private final int a;
+public class abg implements wb<xu> {
+   private final ui a;
 
-   public abg(int $$0) {
+   public abg(ui $$0) {
       this.a = $$0;
    }
 
-   public abg(so $$0) {
-      this.a = $$0.n();
+   public abg(tl $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
+   public void a(tl $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(abd $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public ui a() {
       return this.a;
    }
 }

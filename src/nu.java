@@ -1,24 +1,47 @@
-import java.util.OptionalLong;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class nu {
-   public static void a(nr<dim> $$0) {
-      $$0.a(
-         dik.a,
-         new dim(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, apv.ba, dik.e, 0.0F, new dim.a(false, true, bgp.a(0, 7), 0))
-      );
-      $$0.a(
-         dik.b,
-         new dim(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, apv.bb, dik.f, 0.1F, new dim.a(true, false, bgg.a(7), 15))
-      );
-      $$0.a(
-         dik.c,
-         new dim(
-            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, apv.bc, dik.g, 0.0F, new dim.a(false, true, bgp.a(0, 7), 0)
-         )
-      );
-      $$0.a(
-         dik.d,
-         new dim(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, apv.ba, dik.e, 0.0F, new dim.a(false, true, bgp.a(0, 7), 0))
-      );
+public abstract class nu<T> extends nz<T> {
+   private final Function<T, afv<T>> d;
+
+   public nu(kh $$0, afv<? extends io<T>> $$1, CompletableFuture<id.b> $$2, Function<T, afv<T>> $$3) {
+      super($$0, $$1, $$2);
+      this.d = $$3;
+   }
+
+   public nu(kh $$0, afv<? extends io<T>> $$1, CompletableFuture<id.b> $$2, CompletableFuture<nz.c<T>> $$3, Function<T, afv<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
+   }
+
+   protected nu.a<T> a(arh<T> $$0) {
+      are $$1 = this.c($$0);
+      return new nu.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends nz.b<T> {
+      private final Function<T, afv<T>> a;
+
+      a(are $$0, Function<T, afv<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public nu.a<T> a(arh<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final nu.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final nu.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

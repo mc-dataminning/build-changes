@@ -1,56 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class cvo extends cso {
-   public static final MapCodec<cvo> a = b(cvo::new);
-   protected static final eia b = ctc.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+public class cvo extends cua {
+   public static final MapCodec<cua> a = jy.f.q().fieldOf("dead");
+   public static final MapCodec<cvo> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, cvo::new));
+   private final cua c;
+
+   public cvo(cua $$0, dga.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
    @Override
    public MapCodec<cvo> a() {
-      return a;
-   }
-
-   protected cvo(dfc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dcz a(gw $$0, dfd $$1) {
-      return new deo($$0, $$1);
-   }
-
-   @Override
-   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
       return b;
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, biw $$3) {
-      if ($$1 instanceof akt && $$3.cs() && ehx.c(ehx.a($$3.cG().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), ehl.i)) {
-         aey<cqb> $$4 = $$1.ac() == cqb.j ? cqb.h : cqb.j;
-         akt $$5 = ((akt)$$1).n().a($$4);
-         if ($$5 == null) {
-            return;
-         }
-
-         $$3.b($$5);
+   public void a(dgb $$0, alq $$1, ht $$2, ate $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.o(), 2);
       }
    }
 
    @Override
-   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(iv.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public dgb a(dgb $$0, hx $$1, dgb $$2, cra $$3, ht $$4, ht $$5) {
+      if (!this.a($$3, $$4)) {
+         $$3.a($$4, this, 60 + $$3.E_().a(40));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public cjl a(cqe $$0, gw $$1, dfd $$2) {
-      return cjl.b;
-   }
+   protected boolean a(cqf $$0, ht $$1) {
+      for (hx $$2 : hx.values()) {
+         ebe $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(aqx.a)) {
+            return true;
+         }
+      }
 
-   @Override
-   public boolean a(dfd $$0, eaf $$1) {
       return false;
+   }
+
+   @Nullable
+   @Override
+   public dgb a(cmr $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
+      }
+
+      return this.o();
    }
 }

@@ -1,23 +1,25 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Objects;
-import java.util.Optional;
+public class aty<A, B> {
+   private A a;
+   private B b;
 
-public class aty extends DataFix {
-   public aty(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public aty(A $$0, B $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bal.a());
-      return this.fixTypeEverywhereTyped(
-         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(azd.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
-               Optional<String> $$3 = $$1.getOptional($$0);
-               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : avo.a($$2);
-            })
-      );
+   public A a() {
+      return this.a;
+   }
+
+   public void a(A $$0) {
+      this.a = $$0;
+   }
+
+   public B b() {
+      return this.b;
+   }
+
+   public void b(B $$0) {
+      this.b = $$0;
    }
 }

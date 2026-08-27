@@ -1,25 +1,22 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class bua {
-   @Nullable
-   public static ehh a(bjv $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = bud.a($$0, $$1);
-      return bug.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class bua extends bui {
+   public static final float a = 10.0F;
+
+   @Override
+   protected boolean a(bkj $$0, bkj $$1) {
+      return !$$0.dN().a(btk.T) && buo.c($$0, $$1) && bxj.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
    }
 
-   @Nullable
-   public static gw a(bjv $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      gw $$8 = bug.a($$0.ef(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         gw $$9 = bug.a($$0, $$1, $$0.ef(), $$8);
-         if (!bud.a($$9, $$0) && !bud.a($$7, $$0, $$9)) {
-            $$9 = bug.a($$9, $$0.dL().aj(), $$1x -> bud.c($$0, $$1x));
-            return bud.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   private boolean e(bkj $$0, bkj $$1) {
+      List<UUID> $$2 = $$0.dN().c(btk.Z).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cv());
+   }
+
+   @Override
+   protected btk<bkj> b() {
+      return btk.B;
    }
 }

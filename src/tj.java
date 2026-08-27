@@ -1,81 +1,538 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Queues;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.DefaultEventLoopGroup;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollSocketChannel;
+import io.netty.channel.local.LocalChannel;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.flow.FlowControlHandler;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.handler.timeout.TimeoutException;
+import io.netty.util.AttributeKey;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
-public class tj {
-   public static final Codec<tj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(tj.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, tj::new)
+public class tj extends SimpleChannelInboundHandler<wb<?>> {
+   private static final float j = 0.75F;
+   private static final Logger k = LogUtils.getLogger();
+   public static final Marker a = MarkerFactory.getMarker("NETWORK");
+   public static final Marker b = ac.a(MarkerFactory.getMarker("NETWORK_PACKETS"), $$0 -> $$0.add(a));
+   public static final Marker c = ac.a(MarkerFactory.getMarker("PACKET_RECEIVED"), $$0 -> $$0.add(b));
+   public static final Marker d = ac.a(MarkerFactory.getMarker("PACKET_SENT"), $$0 -> $$0.add(b));
+   public static final AttributeKey<tk.a<?>> e = AttributeKey.valueOf("serverbound_protocol");
+   public static final AttributeKey<tk.a<?>> f = AttributeKey.valueOf("clientbound_protocol");
+   public static final Supplier<NioEventLoopGroup> g = Suppliers.memoize(
+      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Client IO #%d").setDaemon(true).build())
    );
-   private final tj.a b;
-   private final String c;
+   public static final Supplier<EpollEventLoopGroup> h = Suppliers.memoize(
+      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Client IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<DefaultEventLoopGroup> i = Suppliers.memoize(
+      () -> new DefaultEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Local Client IO #%d").setDaemon(true).build())
+   );
+   private final wc l;
+   private final Queue<Consumer<tj>> m = Queues.newConcurrentLinkedQueue();
+   private Channel n;
+   private SocketAddress o;
+   @Nullable
+   private volatile tr p;
+   @Nullable
+   private volatile tr q;
+   @Nullable
+   private ui r;
+   private boolean s;
+   private boolean t;
+   private int u;
+   private int v;
+   private float w;
+   private float x;
+   private int y;
+   private boolean z;
+   @Nullable
+   private volatile ui A;
+   @Nullable
+   tb B;
 
-   public tj(tj.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public tj(wc $$0) {
+      this.l = $$0;
    }
 
-   public tj.a a() {
-      return this.b;
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      this.n = $$0.channel();
+      this.o = this.n.remoteAddress();
+      if (this.A != null) {
+         this.a(this.A);
+      }
    }
 
-   public String b() {
-      return this.c;
+   public static void a(Channel $$0) {
+      $$0.attr(e).set(tk.a.b(wc.a));
+      $$0.attr(f).set(tk.a.b(wc.b));
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         tj $$1 = (tj)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
+   public void channelInactive(ChannelHandlerContext $$0) {
+      this.a(ui.c("disconnect.endOfStream"));
+   }
+
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      if ($$1 instanceof tw) {
+         k.debug("Skipping packet due to errors", $$1.getCause());
       } else {
-         return false;
+         boolean $$2 = !this.z;
+         this.z = true;
+         if (this.n.isOpen()) {
+            if ($$1 instanceof TimeoutException) {
+               k.debug("Timeout", $$1);
+               this.a(ui.c("disconnect.timeout"));
+            } else {
+               ui $$3 = ui.a("disconnect.genericReason", "Internal Exception: " + $$1);
+               if ($$2) {
+                  k.debug("Failed to sent packet", $$1);
+                  if (this.i() == wc.b) {
+                     tk $$4 = ((tk.a)this.n.attr(f).get()).a();
+                     wb<?> $$5 = (wb<?>)($$4 == tk.d ? new aeh($$3) : new wg($$3));
+                     this.a($$5, ts.a(() -> this.a($$3)));
+                  } else {
+                     this.a($$3);
+                  }
+
+                  this.o();
+               } else {
+                  k.debug("Double fault", $$1);
+                  this.a($$3);
+               }
+            }
+         }
       }
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
+   protected void a(ChannelHandlerContext $$0, wb<?> $$1) {
+      if (this.n.isOpen()) {
+         tr $$2 = this.q;
+         if ($$2 == null) {
+            throw new IllegalStateException("Received a packet before the packet listener was initialized");
+         } else {
+            if ($$2.a($$1)) {
+               try {
+                  a($$1, $$2);
+               } catch (agh var5) {
+               } catch (RejectedExecutionException var6) {
+                  this.a(ui.c("multiplayer.disconnect.server_shutdown"));
+               } catch (ClassCastException var7) {
+                  k.error("Received {} that couldn't be processed", $$1.getClass(), var7);
+                  this.a(ui.c("multiplayer.disconnect.invalid_packet"));
+               }
+
+               this.u++;
+            }
+         }
+      }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   private static <T extends tr> void a(wb<T> $$0, tr $$1) {
+      $$0.a((T)$$1);
    }
 
-   public static enum a implements asu {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
+   public void a() {
+      this.n.config().setAutoRead(false);
+   }
 
-      public static final MapCodec<tj.a> g = asu.a(tj.a::values).fieldOf("action");
-      public static final MapCodec<tj.a> h = arj.a(g, tj.a::a);
-      private final boolean i;
-      private final String j;
+   public void b() {
+      this.n.config().setAutoRead(true);
+   }
 
-      private a(String $$0, boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
+   public void a(tr $$0) {
+      Validate.notNull($$0, "packetListener", new Object[0]);
+      wc $$1 = $$0.a();
+      if ($$1 != this.l) {
+         throw new IllegalStateException("Trying to set listener for wrong side: connection is " + this.l + ", but listener is " + $$1);
+      } else {
+         tk $$2 = $$0.b();
+         tk $$3 = ((tk.a)this.n.attr(a($$1)).get()).a();
+         if ($$3 != $$2) {
+            throw new IllegalStateException("Trying to set listener for protocol " + $$2.a() + ", but current " + $$1 + " protocol is " + $$3.a());
+         } else {
+            this.q = $$0;
+            this.p = null;
+         }
+      }
+   }
+
+   public void b(tr $$0) {
+      if (this.q != null) {
+         throw new IllegalStateException("Listener already set");
+      } else if (this.l == wc.a && $$0.a() == wc.a && $$0.b() == tk.a) {
+         this.q = $$0;
+      } else {
+         throw new IllegalStateException("Invalid initial listener");
+      }
+   }
+
+   public void a(String $$0, int $$1, aeu $$2) {
+      this.a($$0, $$1, $$2, ady.a);
+   }
+
+   public void a(String $$0, int $$1, aec $$2) {
+      this.a($$0, $$1, $$2, ady.b);
+   }
+
+   private void a(String $$0, int $$1, tr $$2, ady $$3) {
+      this.p = $$2;
+      this.a((Consumer<tj>)($$4 -> {
+         $$4.a($$3);
+         this.a($$2);
+         $$4.b(new adz(aa.b().e(), $$0, $$1, $$3), null, true);
+      }));
+   }
+
+   public void a(ady $$0) {
+      this.n.attr(f).set($$0.b().b(wc.b));
+   }
+
+   public void a(wb<?> $$0) {
+      this.a($$0, null);
+   }
+
+   public void a(wb<?> $$0, @Nullable ts $$1) {
+      this.a($$0, $$1, true);
+   }
+
+   public void a(wb<?> $$0, @Nullable ts $$1, boolean $$2) {
+      if (this.k()) {
+         this.t();
+         this.b($$0, $$1, $$2);
+      } else {
+         this.m.add($$3 -> $$3.b($$0, $$1, $$2));
+      }
+   }
+
+   public void a(Consumer<tj> $$0) {
+      if (this.k()) {
+         this.t();
+         $$0.accept(this);
+      } else {
+         this.m.add($$0);
+      }
+   }
+
+   private void b(wb<?> $$0, @Nullable ts $$1, boolean $$2) {
+      this.v++;
+      if (this.n.eventLoop().inEventLoop()) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.n.eventLoop().execute(() -> this.c($$0, $$1, $$2));
+      }
+   }
+
+   private void c(wb<?> $$0, @Nullable ts $$1, boolean $$2) {
+      ChannelFuture $$3 = $$2 ? this.n.writeAndFlush($$0) : this.n.write($$0);
+      if ($$1 != null) {
+         $$3.addListener($$1x -> {
+            if ($$1x.isSuccess()) {
+               $$1.a();
+            } else {
+               wb<?> $$2x = $$1.b();
+               if ($$2x != null) {
+                  ChannelFuture $$3x = this.n.writeAndFlush($$2x);
+                  $$3x.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
+               }
+            }
+         });
       }
 
-      public boolean a() {
-         return this.i;
+      $$3.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
+   }
+
+   public void c() {
+      if (this.k()) {
+         this.s();
+      } else {
+         this.m.add(tj::s);
+      }
+   }
+
+   private void s() {
+      if (this.n.eventLoop().inEventLoop()) {
+         this.n.flush();
+      } else {
+         this.n.eventLoop().execute(() -> this.n.flush());
+      }
+   }
+
+   private static AttributeKey<tk.a<?>> a(wc $$0) {
+      return switch ($$0) {
+         case b -> f;
+         case a -> e;
+      };
+   }
+
+   private void t() {
+      if (this.n != null && this.n.isOpen()) {
+         synchronized (this.m) {
+            Consumer<tj> $$0;
+            while (($$0 = this.m.poll()) != null) {
+               $$0.accept(this);
+            }
+         }
+      }
+   }
+
+   public void d() {
+      this.t();
+      if (this.q instanceof tx $$0) {
+         $$0.e();
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      if (!this.k() && !this.t) {
+         this.p();
       }
 
-      public static DataResult<tj.a> a(tj.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      if (this.n != null) {
+         this.n.flush();
       }
+
+      if (this.y++ % 20 == 0) {
+         this.e();
+      }
+
+      if (this.B != null) {
+         this.B.a();
+      }
+   }
+
+   protected void e() {
+      this.x = asy.i(0.75F, (float)this.v, this.x);
+      this.w = asy.i(0.75F, (float)this.u, this.w);
+      this.v = 0;
+      this.u = 0;
+   }
+
+   public SocketAddress f() {
+      return this.o;
+   }
+
+   public String a(boolean $$0) {
+      if (this.o == null) {
+         return "local";
+      } else {
+         return $$0 ? this.o.toString() : "IP hidden";
+      }
+   }
+
+   public void a(ui $$0) {
+      if (this.n == null) {
+         this.A = $$0;
+      }
+
+      if (this.k()) {
+         this.n.close().awaitUninterruptibly();
+         this.r = $$0;
+      }
+   }
+
+   public boolean g() {
+      return this.n instanceof LocalChannel || this.n instanceof LocalServerChannel;
+   }
+
+   public wc h() {
+      return this.l;
+   }
+
+   public wc i() {
+      return this.l.a();
+   }
+
+   public static tj a(InetSocketAddress $$0, boolean $$1, @Nullable atg $$2) {
+      tj $$3 = new tj(wc.b);
+      if ($$2 != null) {
+         $$3.a($$2);
+      }
+
+      ChannelFuture $$4 = a($$0, $$1, $$3);
+      $$4.syncUninterruptibly();
+      return $$3;
+   }
+
+   public static ChannelFuture a(InetSocketAddress $$0, boolean $$1, final tj $$2) {
+      Class<? extends SocketChannel> $$3;
+      EventLoopGroup $$4;
+      if (Epoll.isAvailable() && $$1) {
+         $$3 = EpollSocketChannel.class;
+         $$4 = (EventLoopGroup)h.get();
+      } else {
+         $$3 = NioSocketChannel.class;
+         $$4 = (EventLoopGroup)g.get();
+      }
+
+      return ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group($$4)).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            tj.a($$0);
+
+            try {
+               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+            } catch (ChannelException var3) {
+            }
+
+            ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
+            tj.a($$1, wc.b, $$2.B);
+            $$2.a($$1);
+         }
+      })).channel($$3)).connect($$0.getAddress(), $$0.getPort());
+   }
+
+   public static void a(ChannelPipeline $$0, wc $$1, @Nullable tb $$2) {
+      wc $$3 = $$1.a();
+      AttributeKey<tk.a<?>> $$4 = a($$1);
+      AttributeKey<tk.a<?>> $$5 = a($$3);
+      $$0.addLast("splitter", new ub($$2))
+         .addLast("decoder", new to($$4))
+         .addLast("prepender", new uc())
+         .addLast("encoder", new tp($$5))
+         .addLast("unbundler", new tn($$5))
+         .addLast("bundler", new tm($$4));
+   }
+
+   public void a(ChannelPipeline $$0) {
+      $$0.addLast(new ChannelHandler[]{new FlowControlHandler()}).addLast("packet_handler", this);
+   }
+
+   private static void b(ChannelPipeline $$0, wc $$1) {
+      wc $$2 = $$1.a();
+      AttributeKey<tk.a<?>> $$3 = a($$1);
+      AttributeKey<tk.a<?>> $$4 = a($$2);
+      $$0.addLast("validator", new tq($$3, $$4));
+   }
+
+   public static void a(ChannelPipeline $$0, wc $$1) {
+      b($$0, $$1);
+   }
+
+   public static tj a(SocketAddress $$0) {
+      final tj $$1 = new tj(wc.b);
+      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)i.get())).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            tj.a($$0);
+            ChannelPipeline $$1 = $$0.pipeline();
+            tj.a($$1, wc.b);
+            $$1.a($$1);
+         }
+      })).channel(LocalChannel.class)).connect($$0).syncUninterruptibly();
+      return $$1;
+   }
+
+   public void a(Cipher $$0, Cipher $$1) {
+      this.s = true;
+      this.n.pipeline().addBefore("splitter", "decrypt", new td($$0));
+      this.n.pipeline().addBefore("prepender", "encrypt", new te($$1));
+   }
+
+   public boolean j() {
+      return this.s;
+   }
+
+   public boolean k() {
+      return this.n != null && this.n.isOpen();
+   }
+
+   public boolean l() {
+      return this.n == null;
+   }
+
+   @Nullable
+   public tr m() {
+      return this.q;
+   }
+
+   @Nullable
+   public ui n() {
+      return this.r;
+   }
+
+   public void o() {
+      if (this.n != null) {
+         this.n.config().setAutoRead(false);
+      }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if ($$0 >= 0) {
+         if (this.n.pipeline().get("decompress") instanceof th) {
+            ((th)this.n.pipeline().get("decompress")).a($$0, $$1);
+         } else {
+            this.n.pipeline().addBefore("decoder", "decompress", new th($$0, $$1));
+         }
+
+         if (this.n.pipeline().get("compress") instanceof ti) {
+            ((ti)this.n.pipeline().get("compress")).a($$0);
+         } else {
+            this.n.pipeline().addBefore("encoder", "compress", new ti($$0));
+         }
+      } else {
+         if (this.n.pipeline().get("decompress") instanceof th) {
+            this.n.pipeline().remove("decompress");
+         }
+
+         if (this.n.pipeline().get("compress") instanceof ti) {
+            this.n.pipeline().remove("compress");
+         }
+      }
+   }
+
+   public void p() {
+      if (this.n != null && !this.n.isOpen()) {
+         if (this.t) {
+            k.warn("handleDisconnection() called twice");
+         } else {
+            this.t = true;
+            tr $$0 = this.m();
+            tr $$1 = $$0 != null ? $$0 : this.p;
+            if ($$1 != null) {
+               ui $$2 = Objects.requireNonNullElseGet(this.n(), () -> ui.c("multiplayer.disconnect.generic"));
+               $$1.a($$2);
+            }
+         }
+      }
+   }
+
+   public float q() {
+      return this.w;
+   }
+
+   public float r() {
+      return this.x;
+   }
+
+   public void a(atg $$0) {
+      this.B = new tb($$0);
    }
 }

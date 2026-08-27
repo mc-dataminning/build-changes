@@ -1,19 +1,18 @@
-import com.google.common.collect.Streams;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-public class fpm implements fpn {
-   public static final String a = "AND";
-   private final Iterable<? extends fpn> d;
+public class fpm {
+   private final Map<fpj, emc> a = fpj.G().stream().collect(Collectors.toMap($$0 -> (fpj)$$0, $$0 -> new emc($$0.H())));
 
-   public fpm(Iterable<? extends fpn> $$0) {
-      this.d = $$0;
+   public emc a(fpj $$0) {
+      return this.a.get($$0);
    }
 
-   @Override
-   public Predicate<dfd> getPredicate(dfe<ctc, dfd> $$0) {
-      List<Predicate<dfd>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
-      return $$1x -> $$1.stream().allMatch($$1xx -> $$1xx.test($$1x));
+   public void a() {
+      this.a.values().forEach(emc::g);
+   }
+
+   public void b() {
+      this.a.values().forEach(emc::h);
    }
 }

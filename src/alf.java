@@ -1,38 +1,22 @@
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+public record alf(String b, int c, ccv d, boolean e, int f, bkd g, boolean h, boolean i) {
+   public static final int a = 16;
 
-public class alf implements alc {
-   private final alc a;
-   private final bfx<Runnable> b;
-
-   private alf(alc $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = bfx.a($$1, "progressListener");
+   public alf(tl $$0) {
+      this($$0.d(16), $$0.readByte(), $$0.b(ccv.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bkd.class), $$0.readBoolean(), $$0.readBoolean());
    }
 
-   public static alf a(alc $$0, Executor $$1) {
-      alf $$2 = new alf($$0, $$1);
-      $$2.a();
-      return $$2;
+   public void a(tl $$0) {
+      $$0.a(this.b);
+      $$0.k(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
    }
 
-   @Override
-   public void a(cpi $$0) {
-      this.b.a(() -> this.a.a($$0));
-   }
-
-   @Override
-   public void a(cpi $$0, @Nullable dhe $$1) {
-      this.b.a(() -> this.a.a($$0, $$1));
-   }
-
-   @Override
-   public void a() {
-      this.b.a(this.a::a);
-   }
-
-   @Override
-   public void b() {
-      this.b.a(this.a::b);
+   public static alf a() {
+      return new alf("en_us", 2, ccv.a, true, 0, ccx.bB, false, false);
    }
 }

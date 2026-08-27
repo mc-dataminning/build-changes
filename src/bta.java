@@ -1,19 +1,21 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bta extends btr<bir> {
+public class bta<T extends bkj> extends bsx<T> {
+   private final ble i;
+
+   public bta(ble $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bkj> $$3) {
+      super($$0, $$1, 10, $$2, false, $$3);
+      this.i = $$0;
+   }
+
    @Override
-   public Set<bsn<?>> a() {
-      return ImmutableSet.of(bsn.J, bsn.h);
+   public boolean a() {
+      return !this.i.s() && super.a();
    }
 
-   protected void a(akt $$0, bir $$1) {
-      $$1.dN().c(bsn.h).ifPresent($$1x -> this.a($$1, $$1x));
-   }
-
-   private void a(bir $$0, bsp $$1) {
-      Optional<bir> $$2 = $$1.a($$1x -> $$1x.ag() == $$0.ag() && !$$1x.m_()).map(bir.class::cast);
-      $$0.dN().a(bsn.J, $$2);
+   @Override
+   public boolean b() {
+      return this.d != null ? this.d.a(this.e, this.c) : super.b();
    }
 }

@@ -1,22 +1,23 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
+import java.util.Optional;
 
-public class awi extends ayf {
+public class awi extends azc {
    public awi(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", azd.x, "minecraft:shulker");
+      super($$0, false, "EntityBrushableBlockFieldsRenameFix", baa.s, "minecraft:brushable_block");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
-      if (!$$1.isEmpty()) {
-         $$1.set(0, $$1.get(0) - 180.0);
-         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
-      } else {
-         return $$0;
-      }
+      return this.a(this.a($$0, "loot_table", "LootTable"), "loot_table_seed", "LootTableSeed");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2) {
+      Optional<? extends Dynamic<?>> $$3 = $$0.get($$1).result();
+      Optional<? extends Dynamic<?>> $$4 = $$3.map($$3x -> $$0.remove($$1).set($$2, $$3x));
+      return (Dynamic<?>)DataFixUtils.orElse($$4, $$0);
    }
 
    @Override

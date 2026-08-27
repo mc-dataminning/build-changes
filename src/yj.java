@@ -1,102 +1,74 @@
-public class yj implements ve<wx> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final int h;
-   private final boolean i;
-   private final it j;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
 
-   public <T extends it> yj(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.j = $$0;
-      this.i = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = $$6;
-      this.f = $$7;
-      this.g = $$8;
-      this.h = $$9;
+public record yj(List<yj.a> a) implements wb<xu> {
+   private static final int b = 2097152;
+
+   public yj(tl $$0) {
+      this($$0.a(yj.a::new));
    }
 
-   public yj(so $$0) {
-      iu<?> $$1 = $$0.a(jb.k);
-      this.i = $$0.readBoolean();
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readInt();
-      this.j = this.a($$0, (iu<it>)$$1);
-   }
-
-   private <T extends it> T a(so $$0, iu<T> $$1) {
-      return $$1.d().b($$1, $$0);
+   public static yj a(List<dii> $$0) {
+      return new yj($$0.stream().map(yj.a::new).toList());
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.a(jb.k, this.j.b());
-      $$0.a(this.i);
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.p(this.h);
-      this.j.a($$0);
+   public void a(tl $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public boolean a() {
-      return this.i;
-   }
-
-   public double d() {
-      return this.a;
-   }
-
-   public double e() {
-      return this.b;
-   }
-
-   public double f() {
-      return this.c;
-   }
-
-   public float g() {
-      return this.d;
-   }
-
-   public float h() {
-      return this.e;
-   }
-
-   public float i() {
-      return this.f;
-   }
-
-   public float j() {
-      return this.g;
-   }
-
-   public int k() {
-      return this.h;
-   }
-
-   public it l() {
-      return this.j;
-   }
-
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
+   }
+
+   public static record a(cqg a, byte[] b) {
+      public a(dii $$0) {
+         this($$0.f(), new byte[a($$0)]);
+         a(new tl(this.d()), $$0);
+      }
+
+      public a(tl $$0) {
+         this($$0.f(), $$0.a(2097152));
+      }
+
+      private static int a(dii $$0) {
+         int $$1 = 0;
+
+         for (dij $$2 : $$0.d()) {
+            $$1 += $$2.i().c();
+         }
+
+         return $$1;
+      }
+
+      public tl a() {
+         return new tl(Unpooled.wrappedBuffer(this.b));
+      }
+
+      private ByteBuf d() {
+         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
+         $$0.writerIndex(0);
+         return $$0;
+      }
+
+      public static void a(tl $$0, dii $$1) {
+         for (dij $$2 : $$1.d()) {
+            $$2.i().b($$0);
+         }
+      }
+
+      public void a(tl $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+      }
+
+      public cqg b() {
+         return this.a;
+      }
+
+      public byte[] c() {
+         return this.b;
+      }
    }
 }

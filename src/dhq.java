@@ -1,24 +1,58 @@
-import java.util.List;
-import java.util.function.Predicate;
+public interface dhq {
+   void a(dhs var1, double var2);
 
-public interface dhq<T> {
-   int a(T var1);
+   void a(dhs var1, double var2, double var4, long var6);
 
-   boolean a(Predicate<T> var1);
+   void a(dhs var1, double var2, double var4);
 
-   T a(int var1);
+   void a(dhs var1, int var2);
 
-   void a(so var1);
+   void b(dhs var1, int var2);
 
-   void b(so var1);
+   void b(dhs var1, double var2);
 
-   int a();
+   void c(dhs var1, double var2);
 
-   int b();
+   public static class a implements dhq {
+      private final dhs a;
 
-   dhq<T> c();
+      public a(dhs $$0) {
+         this.a = $$0;
+      }
 
-   public interface a {
-      <A> dhq<A> create(int var1, hj<A> var2, dhr<A> var3, List<A> var4);
+      @Override
+      public void a(dhs $$0, double $$1) {
+         this.a.a($$1);
+      }
+
+      @Override
+      public void a(dhs $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(dhs $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(dhs $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dhs $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dhs $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dhs $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

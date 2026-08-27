@@ -1,57 +1,74 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Locale;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gbi extends aez {
-   @VisibleForTesting
-   static final char e = '#';
-   private final String f;
+public class gbi implements aou {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gbh b = new gbh("US", "English", false);
+   private Map<String, gbh> c = ImmutableMap.of("en_us", b);
+   private String d;
 
-   private gbi(String $$0, String $$1, String $$2, @Nullable aez.a $$3) {
-      super($$0, $$1, $$3);
-      this.f = $$2;
+   public gbi(String $$0) {
+      this.d = $$0;
    }
 
-   public gbi(String $$0, String $$1, String $$2) {
-      super($$0, $$1);
-      this.f = j($$2);
-   }
-
-   public gbi(aez $$0, String $$1) {
-      this($$0.b(), $$0.a(), j($$1), null);
-   }
-
-   public static gbi c(String $$0, String $$1) {
-      return new gbi("minecraft", $$0, $$1);
-   }
-
-   private static String j(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String f() {
-      return this.f;
+   private static Map<String, gbh> a(Stream<anh> $$0) {
+      Map<String, gbh> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            gbu $$2 = $$1x.a(gbu.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 instanceof gbi && super.equals($$0)) {
-         gbi $$1 = (gbi)$$0;
-         return this.f.equals($$1.f);
-      } else {
-         return false;
+   public void a(aot $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         gbh $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
       }
+
+      gbe $$4 = gbe.a($$0, $$1, $$2);
+      gbg.a($$4);
+      ro.a($$4);
    }
 
-   @Override
-   public int hashCode() {
-      return 31 * super.hashCode() + this.f.hashCode();
+   public void a(String $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public String toString() {
-      return super.toString() + "#" + this.f;
+   public String a() {
+      return this.d;
+   }
+
+   public SortedMap<String, gbh> b() {
+      return new TreeMap<>(this.c);
+   }
+
+   @Nullable
+   public gbh b(String $$0) {
+      return this.c.get($$0);
    }
 }

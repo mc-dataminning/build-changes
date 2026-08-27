@@ -1,28 +1,55 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 
-public class aor extends aoo<GameProfile, aos> {
-   public aor(File $$0) {
-      super($$0);
+public class aor {
+   private final anh a;
+   private final aol<InputStream> b;
+   private final aol<aov> c;
+   @Nullable
+   private aov d;
+
+   public aor(anh $$0, aol<InputStream> $$1, aol<aov> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected aon<GameProfile> a(JsonObject $$0) {
-      return new aos($$0);
+   public aor(anh $$0, aol<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = aov.b;
+      this.d = aov.a;
    }
 
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
+   public anh a() {
+      return this.a;
    }
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(aon::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   public String b() {
+      return this.a.a();
    }
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   public boolean c() {
+      return this.a.b();
+   }
+
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public aov f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
+      }
+
+      return this.d;
    }
 }

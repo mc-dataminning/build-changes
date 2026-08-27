@@ -1,95 +1,117 @@
-public class faf extends ezk implements fah<cft> {
-   private final cft q;
-   private final cfd s = new cfd() {
-      @Override
-      public void a(cer $$0, int $$1, cjl $$2) {
-         faf.this.J();
+public class faf extends fbc<cfr> {
+   private static final afw x = new afw("container/anvil/text_field");
+   private static final afw y = new afw("container/anvil/text_field_disabled");
+   private static final afw z = new afw("container/anvil/error");
+   private static final afw A = new afw("textures/gui/container/anvil.png");
+   private static final ui B = ui.c("container.repair.expensive");
+   private ets C;
+   private final ccx D;
+
+   public faf(cfr $$0, ccw $$1, ui $$2) {
+      super($$0, $$1, $$2, A);
+      this.D = $$1.m;
+      this.l = 60;
+   }
+
+   @Override
+   protected void E() {
+      int $$0 = (this.g - this.c) / 2;
+      int $$1 = (this.h - this.k) / 2;
+      this.C = new ets(this.i, $$0 + 62, $$1 + 24, 103, 12, ui.c("container.repair"));
+      this.C.f(false);
+      this.C.m(-1);
+      this.C.n(-1);
+      this.C.d(false);
+      this.C.l(50);
+      this.C.b(this::a);
+      this.C.a("");
+      this.e(this.C);
+      this.c(this.C);
+      this.C.e(this.p.b(0).f());
+   }
+
+   @Override
+   public void a(ero $$0, int $$1, int $$2) {
+      String $$3 = this.C.a();
+      this.b($$0, $$1, $$2);
+      this.C.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.s.q();
       }
 
-      @Override
-      public void a(cer $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            faf.this.K();
+      return !this.C.a($$0, $$1, $$2) && !this.C.e() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      chh $$1 = this.p.b(0);
+      if ($$1.f()) {
+         String $$2 = $$0;
+         if (!$$1.e().A() && $$0.equals($$1.e().y().getString())) {
+            $$2 = "";
+         }
+
+         if (this.p.a($$2)) {
+            this.f.s.cn.b(new adh($$2));
          }
       }
-   };
-
-   public faf(cft $$0, cbz $$1, tl $$2) {
-      this.q = $$0;
-   }
-
-   public cft I() {
-      return this.q;
    }
 
    @Override
-   protected void aH_() {
-      super.aH_();
-      this.q.a(this.s);
-   }
+   protected void b(esy $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.p.n();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         ui $$5;
+         if ($$3 >= 40 && !this.f.s.fT().d) {
+            $$5 = B;
+            $$4 = 16736352;
+         } else if (!this.p.b(2).f()) {
+            $$5 = null;
+         } else {
+            $$5 = ui.a("container.repair.cost", $$3);
+            if (!this.p.b(2).a(this.D)) {
+               $$4 = 16736352;
+            }
+         }
 
-   @Override
-   public void az_() {
-      this.f.s.q();
-      super.az_();
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.q.b(this.s);
-   }
-
-   @Override
-   protected void l() {
-      if (this.f.s.ge()) {
-         this.d(esk.a(tk.d, $$0 -> this.az_()).a(this.g / 2 - 100, 196, 98, 20).a());
-         this.d(esk.a(tl.c("lectern.take_book"), $$0 -> this.c(3)).a(this.g / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.l();
+         if ($$5 != null) {
+            int $$8 = this.c - 8 - this.i.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
+            $$0.b(this.i, $$5, $$8, 69, $$4);
+         }
       }
    }
 
    @Override
-   protected void F() {
-      this.c(1);
+   protected void a(esy $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p.b(0).f() ? x : y, this.t + 59, this.u + 20, 110, 16);
    }
 
    @Override
-   protected void G() {
-      this.c(2);
+   public void d(esy $$0, int $$1, int $$2, float $$3) {
+      this.C.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.q.m()) {
-         this.c(100 + $$0);
-         return true;
-      } else {
-         return false;
+   protected void c(esy $$0, int $$1, int $$2) {
+      if ((this.p.b(0).f() || this.p.b(1).f()) && !this.p.b(this.p.o()).f()) {
+         $$0.a(z, $$1 + 99, $$2 + 45, 28, 21);
       }
    }
 
-   private void c(int $$0) {
-      this.f.q.a(this.q.j, $$0);
-   }
-
    @Override
-   public boolean j() {
-      return false;
-   }
-
-   void J() {
-      cjl $$0 = this.q.l();
-      this.a(ezk.a.a($$0));
-   }
-
-   void K() {
-      this.a(this.q.m());
-   }
-
-   @Override
-   protected void H() {
-      this.f.s.q();
+   public void a(cfp $$0, int $$1, ckj $$2) {
+      if ($$1 == 0) {
+         this.C.a($$2.b() ? "" : $$2.y().getString());
+         this.C.e(!$$2.b());
+         this.a(this.C);
+      }
    }
 }

@@ -1,65 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bna {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private static final int d = 4;
-
-   public static ble<bjv> a(float $$0) {
-      Long2LongMap $$1 = new Long2LongOpenHashMap();
-      MutableLong $$2 = new MutableLong(0L);
-      return bop.a(
-         (Function<bop.b<bjv>, ? extends App<bop.c<bjv>, bos<bjv>>>)($$3 -> $$3.group($$3.c(bsn.m), $$3.c(bsn.b))
-               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
-                     if ($$4x.V() - $$2.getValue() < 20L) {
-                        return false;
-                     } else {
-                        bul $$7 = $$4x.w();
-                        Optional<gw> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(bup.n), $$5.dl(), 48, bul.b.c);
-                        if (!$$8.isEmpty() && !($$8.get().j($$5.dl()) <= 4.0)) {
-                           MutableInt $$9 = new MutableInt(0);
-                           $$2.setValue($$4x.V() + (long)$$4x.D_().a(20));
-                           Predicate<gw> $$10 = $$3xxx -> {
-                              long $$4xx = $$3xxx.a();
-                              if ($$1.containsKey($$4xx)) {
-                                 return false;
-                              } else if ($$9.incrementAndGet() >= 5) {
-                                 return false;
-                              } else {
-                                 $$1.put($$4xx, $$2.getValue() + 40L);
-                                 return true;
+   public static bnk<bkj> a(int $$0, float $$1, int $$2) {
+      return bpm.a(
+         (Function<bpm.b<bkj>, ? extends App<bpm.c<bkj>, bpp<bkj>>>)($$3 -> $$3.group(
+                  $$3.c(btk.m), $$3.a(btk.b), $$3.a(btk.C), $$3.a(btk.t), $$3.a(btk.n), $$3.a(btk.r), $$3.a(btk.q)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.w()
+                           .d($$0xxxx -> $$0xxxx.a(bvm.n), $$0xxxx -> true, $$12.dl(), $$2 + 1, bvi.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.dj(), (double)$$2))
+                           .or(() -> $$11.w().a($$0xxxxx -> $$0xxxxx.a(bvm.n), $$0xxxxx -> true, bvi.b.c, $$12.dl(), $$0, $$12.ef()))
+                           .or(() -> $$3.<ia>a($$5).map(ia::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(ia.a($$11.ac(), $$10xx));
+                              if (!$$10xx.a($$12.dj(), (double)$$2)) {
+                                 $$4.a(new btn($$10xx, $$1, $$2));
                               }
-                           };
-                           Set<Pair<he<buo>, gw>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(bup.n), $$10, $$5.dl(), 48, bul.b.c).collect(Collectors.toSet());
-                           eav $$12 = bkw.a($$5, $$11);
-                           if ($$12 != null && $$12.j()) {
-                              gw $$13 = $$12.l();
-                              Optional<he<buo>> $$14 = $$7.c($$13);
-                              if ($$14.isPresent()) {
-                                 $$3x.a(new bsq($$13, $$0, 1));
-                                 abc.c($$4x, $$13);
-                              }
-                           } else if ($$9.getValue() < 5) {
-                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
+                           });
+                        return true;
                      }
-                  }))
+               ))
       );
    }
 }

@@ -1,23 +1,20 @@
-public enum dgo implements asu {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+public enum dgo implements atr {
+   a("head"),
+   b("foot");
 
-   private final String e;
-   private final boolean f;
+   private final String c;
 
-   private dgo(String $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private dgo(String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public boolean a() {
-      return this.f;
+      return this.c;
    }
 }

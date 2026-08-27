@@ -1,63 +1,51 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import java.nio.charset.StandardCharsets;
 
 public class ty {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final tx[] c;
-
-   public ty(int $$0) {
-      this.c = new tx[$$0];
-   }
-
-   public static ty a() {
-      return new ty(128);
-   }
-
-   public int a(tx $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
+   public static String a(ByteBuf $$0, int $$1) {
+      int $$2 = ByteBufUtil.utf8MaxBytes($$1);
+      int $$3 = tz.a($$0);
+      if ($$3 > $$2) {
+         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + $$3 + " > " + $$2 + ")");
+      } else if ($$3 < 0) {
+         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
+      } else {
+         int $$4 = $$0.readableBytes();
+         if ($$3 > $$4) {
+            throw new DecoderException("Not enough bytes in buffer, expected " + $$3 + ", but got " + $$4);
+         } else {
+            String $$5 = $$0.toString($$0.readerIndex(), $$3, StandardCharsets.UTF_8);
+            $$0.readerIndex($$0.readerIndex() + $$3);
+            if ($$5.length() > $$1) {
+               throw new DecoderException("The received string length is longer than maximum allowed (" + $$5.length() + " > " + $$1 + ")");
+            } else {
+               return $$5;
+            }
          }
       }
-
-      return -1;
    }
 
-   @Nullable
-   public tx a(int $$0) {
-      return this.c[$$0];
-   }
+   public static void a(ByteBuf $$0, CharSequence $$1, int $$2) {
+      if ($$1.length() > $$2) {
+         throw new EncoderException("String too big (was " + $$1.length() + " characters, max " + $$2 + ")");
+      } else {
+         int $$3 = ByteBufUtil.utf8MaxBytes($$1);
+         ByteBuf $$4 = $$0.alloc().buffer($$3);
 
-   public void a(ub $$0) {
-      List<tx> $$1 = $$0.l().d().a();
-      ArrayDeque<tx> $$2 = new ArrayDeque<>($$1.size() + 1);
-      $$2.addAll($$1);
-      tx $$3 = $$0.k();
-      if ($$3 != null) {
-         $$2.add($$3);
-      }
+         try {
+            int $$5 = ByteBufUtil.writeUtf8($$4, $$1);
+            int $$6 = ByteBufUtil.utf8MaxBytes($$2);
+            if ($$5 > $$6) {
+               throw new EncoderException("String too big (was " + $$5 + " bytes encoded, max " + $$6 + ")");
+            }
 
-      this.a($$2);
-   }
-
-   @VisibleForTesting
-   void a(List<tx> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
-
-   private void a(ArrayDeque<tx> $$0) {
-      Set<tx> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         tx $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
+            tz.a($$0, $$5);
+            $$0.writeBytes($$4);
+         } finally {
+            $$4.release();
          }
       }
    }

@@ -1,40 +1,24 @@
-public class aam implements ve<wx> {
-   private final int a;
-   private final int b;
-   private final int c;
+public class aam implements wb<xu> {
+   private final double a;
 
-   public aam(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public aam(dhs $$0) {
+      this.a = $$0.k();
    }
 
-   public aam(so $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   public aam(tl $$0) {
+      this.a = $$0.readDouble();
    }
 
    @Override
-   public void a(so $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
+   public void a(tl $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(wx $$0) {
+   public void a(xu $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }
