@@ -1,83 +1,169 @@
-public class fqi extends fsh {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final fsc M;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   fqi(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fsc $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = aup.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = aup.a(this.r, 0.0F, 0.0F);
-      this.x = aup.a(this.r, 0.8235294F, 0.9764706F);
-      this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
-      this.n = false;
-      this.M = $$7;
-      this.b($$7);
+public class fqi {
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public vq c;
+   public vq d;
+   @Nullable
+   public ahy.b e;
+   public long f;
+   public int g = aa.b().e();
+   public vq h = vq.b(aa.b().c());
+   public List<vq> i = Collections.emptyList();
+   private fqi.a l = fqi.a.c;
+   @Nullable
+   private byte[] m;
+   private fqi.c n;
+   private fqi.b o = fqi.b.a;
+
+   public fqi(String $$0, String $$1, fqi.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public sw a() {
+      sw $$0 = new sw();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+      }
+
+      if (this.l == fqi.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == fqi.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
+   }
+
+   public fqi.a b() {
+      return this.l;
+   }
+
+   public void a(fqi.a $$0) {
+      this.l = $$0;
+   }
+
+   public static fqi a(sw $$0) {
+      fqi $$1 = new fqi($$0.l("name"), $$0.l("ip"), fqi.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
+         }
+      }
+
+      if ($$0.b("acceptTextures", 1)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(fqi.a.a);
+         } else {
+            $$1.a(fqi.a.b);
+         }
       } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
+         $$1.a(fqi.a.c);
+      }
 
-         if (this.L) {
-            this.k += 0.002;
-         }
+      return $$1;
+   }
 
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
 
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == fqi.c.a;
+   }
+
+   public boolean e() {
+      return this.n == fqi.c.b;
+   }
+
+   public fqi.c f() {
+      return this.n;
+   }
+
+   public void a(fqi $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(fqi $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public fqi.b g() {
+      return this.o;
+   }
+
+   public void a(fqi.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            awl $$1 = awl.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
          }
+      }
+
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final vq d;
+
+      private a(String $$0) {
+         this.d = vq.c("addServer.resourcePack." + $$0);
+      }
+
+      public vq a() {
+         return this.d;
       }
    }
 
-   @Override
-   public frl b() {
-      return frl.b;
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * aup.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements frk<ka> {
-      private final fsc a;
-
-      public a(fsc $$0) {
-         this.a = $$0;
-      }
-
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqi($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

@@ -1,44 +1,48 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public abstract class gfe<T extends bno, M extends fmb<T>> {
+   private final gco<T, M> a;
 
-@FunctionalInterface
-public interface gfe {
-   Logger a = LogUtils.getLogger();
-
-   static gfe create(Collection<apj<?>> $$0) {
-      return ($$1, $$2) -> {
-         aql $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         epl $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = epl.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         ggl $$11 = $$3.a(ggl.a).orElse(ggl.e);
-         ggn $$12 = $$11.a($$7.a(), $$7.b());
-         if (aup.c($$7.a(), $$12.a()) && aup.c($$7.b(), $$12.b())) {
-            return new gev($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+   public gfe(gco<T, M> $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
-   gev loadSprite(ahh var1, aqh var2);
+   protected static <T extends bog> void a(
+      fmb<T> $$0,
+      fmb<T> $$1,
+      aiy $$2,
+      esa $$3,
+      fvm $$4,
+      int $$5,
+      T $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      if (!$$6.ce()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+      }
+   }
+
+   protected static <T extends bog> void a(fmb<T> $$0, aiy $$1, esa $$2, fvm $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
+      ese $$9 = $$3.getBuffer(fvu.e($$1));
+      $$0.a($$2, $$9, $$4, gbu.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   }
+
+   public M c() {
+      return this.a.a();
+   }
+
+   protected aiy a(T $$0) {
+      return this.a.a($$0);
+   }
+
+   public abstract void a(esa var1, fvm var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

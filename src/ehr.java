@@ -1,45 +1,44 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public abstract class ehr extends ehy {
-   protected final List<ehy> d;
-   private final ehq a;
+public interface ehr {
+   ie[] a = new ie[]{ie.e, ie.f, ie.a, ie.b, ie.c, ie.d};
 
-   protected ehr(List<ehy> $$0, List<eke> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
-   }
+   void a(ie var1, dlf var2, hz var3, hz var4, int var5, int var6);
 
-   @Override
-   public void a(eho $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
-      }
+   void a(hz var1, cyo var2, hz var3);
 
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+   void a(dlf var1, hz var2, cyo var3, hz var4, boolean var5);
+
+   default void a(hz $$0, cyo $$1, @Nullable ie $$2) {
+      for (ie $$3 : a) {
+         if ($$3 != $$2) {
+            this.a($$0.a($$3), $$1, $$0);
+         }
       }
    }
 
-   protected abstract ehq a(List<? extends ehq> var1);
-
-   @Override
-   public final boolean expand(ehf $$0, Consumer<ehx> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
+   static void a(cvo $$0, ie $$1, dlf $$2, hz $$3, hz $$4, int $$5, int $$6) {
+      dlf $$7 = $$0.a_($$3);
+      dlf $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
+      cyo.a($$7, $$8, $$0, $$3, $$5, $$6);
    }
 
-   public static <T extends ehr> Codec<T> a(ehr.a<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(atx.a(ehw.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
-
-   @FunctionalInterface
-   public interface a<T extends ehr> {
-      T create(List<ehy> var1, List<eke> var2);
+   static void a(cvn $$0, dlf $$1, hz $$2, cyo $$3, hz $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", kf.e.b($$3), $$3.h(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + kf.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new y($$7);
+      }
    }
 }

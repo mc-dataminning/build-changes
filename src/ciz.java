@@ -1,9 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ciz extends bjv, ckh {
-   int f();
-
-   int g();
-
-   List<cng> h();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ciz {
 }

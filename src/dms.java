@@ -1,104 +1,57 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public final class dms implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<dmr> c = new Long2ObjectLinkedOpenHashMap();
-   private final Path d;
-   private final boolean e;
+public record dms(String m, dlu n, dga o, dga p, atj q, atj r) {
+   private static final Map<String, dms> s = new Object2ObjectArrayMap();
+   public static final Codec<dms> a = avp.a(dms::b, s::get);
+   public static final dms b = a(new dms("oak", dlu.g));
+   public static final dms c = a(new dms("spruce", dlu.h));
+   public static final dms d = a(new dms("birch", dlu.i));
+   public static final dms e = a(new dms("acacia", dlu.j));
+   public static final dms f = a(new dms("cherry", dlu.k, dga.aU, dga.aX, atk.eD, atk.eE));
+   public static final dms g = a(new dms("jungle", dlu.l));
+   public static final dms h = a(new dms("dark_oak", dlu.m));
+   public static final dms i = a(new dms("crimson", dlu.n, dga.aT, dga.aQ, atk.qq, atk.qr));
+   public static final dms j = a(new dms("warped", dlu.o, dga.aT, dga.aQ, atk.qq, atk.qr));
+   public static final dms k = a(new dms("mangrove", dlu.p));
+   public static final dms l = a(new dms("bamboo", dlu.q, dga.aS, dga.aR, atk.bt, atk.bu));
 
-   dms(Path $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public dms(String $$0, dlu $$1) {
+      this($$0, $$1, dga.b, dga.aP, atk.it, atk.iu);
    }
 
-   private dmr b(cte $$0) throws IOException {
-      long $$1 = cte.c($$0.h(), $$0.i());
-      dmr $$2 = (dmr)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         if (this.c.size() >= 256) {
-            ((dmr)this.c.removeLast()).close();
-         }
-
-         v.c(this.d);
-         Path $$3 = this.d.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         dmr $$4 = new dmr($$3, this.d, this.e);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
-      }
+   private static dms a(dms $$0) {
+      s.put($$0.b(), $$0);
+      return $$0;
    }
 
-   @Nullable
-   public so a(cte $$0) throws IOException {
-      dmr $$1 = this.b($$0);
-
-      so var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
-         }
-
-         var4 = tb.a($$2);
-      }
-
-      return var4;
+   public static Stream<dms> a() {
+      return s.values().stream();
    }
 
-   public void a(cte $$0, ti $$1) throws IOException {
-      dmr $$2 = this.b($$0);
-
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            tb.a((DataInput)$$3, $$1, sx.a());
-         }
-      }
+   public String b() {
+      return this.m;
    }
 
-   protected void a(cte $$0, @Nullable so $$1) throws IOException {
-      dmr $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
-      } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            tb.a($$1, (DataOutput)$$3);
-         }
-      }
+   public dlu c() {
+      return this.n;
    }
 
-   @Override
-   public void close() throws IOException {
-      atw<IOException> $$0 = new atw<>();
-      ObjectIterator var2 = this.c.values().iterator();
-
-      while (var2.hasNext()) {
-         dmr $$1 = (dmr)var2.next();
-
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
-         }
-      }
-
-      $$0.a();
+   public dga d() {
+      return this.o;
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
+   public dga e() {
+      return this.p;
+   }
 
-      while (var1.hasNext()) {
-         dmr $$0 = (dmr)var1.next();
-         $$0.a();
-      }
+   public atj f() {
+      return this.q;
+   }
+
+   public atj g() {
+      return this.r;
    }
 }

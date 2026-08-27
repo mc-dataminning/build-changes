@@ -1,65 +1,40 @@
+import com.google.common.collect.ImmutableSet;
+import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
 
-public record ekd(ih<cwy> b, Optional<cz> c) implements eke {
-   public static final Codec<ekd> a = atx.a(
-      RecordCodecBuilder.create($$0 -> $$0.group(kd.e.r().fieldOf("block").forGetter(ekd::c), atx.a(cz.a, "properties").forGetter(ekd::d)).apply($$0, ekd::new)),
-      ekd::a
-   );
+public class ekd extends ekh {
+   public static final Codec<ekd> a = RecordCodecBuilder.create($$0 -> a($$0).and(eiv.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, ekd::new));
+   private final eiv.b b;
 
-   private static DataResult<ekd> a(ekd $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().n()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   public ekd(List<elu> $$0, eiv.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public ekf b() {
-      return ekg.j;
+   public ekj b() {
+      return ekk.v;
    }
 
    @Override
-   public Set<ejn<?>> a() {
-      return Set.of(ejq.g);
+   public Set<eld<?>> a() {
+      return ImmutableSet.of(this.b.a());
    }
 
-   public boolean a(ehf $$0) {
-      djp $$1 = $$0.c(ejq.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
-   }
-
-   public static ekd.a a(cwy $$0) {
-      return new ekd.a($$0);
-   }
-
-   public ih<cwy> c() {
-      return this.b;
-   }
-
-   public Optional<cz> d() {
-      return this.c;
-   }
-
-   public static class a implements eke.a {
-      private final ih<cwy> a;
-      private Optional<cz> b = Optional.empty();
-
-      public a(cwy $$0) {
-         this.a = $$0.r();
+   @Override
+   public coz a(coz $$0, eiv $$1) {
+      if ($$0.a(cpc.uj) && $$1.c(this.b.a()) instanceof chh $$2) {
+         GameProfile $$3 = $$2.fS();
+         $$0.x().a("SkullOwner", tl.a(new sw(), $$3));
       }
 
-      public ekd.a a(cz.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
+      return $$0;
+   }
 
-      @Override
-      public eke build() {
-         return new ekd(this.a, this.b);
-      }
+   public static ekh.a<?> a(eiv.b $$0) {
+      return a($$1 -> new ekd($$1, $$0));
    }
 }

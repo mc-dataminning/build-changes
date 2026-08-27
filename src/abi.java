@@ -1,64 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
+public record abi(vq b, vm.b c) implements xx<aag> {
+   public static final xo<uq, abi> a = xx.a(abi::a, abi::new);
 
-public class abi implements xg<zb> {
-   private final abi.a a;
-   private final List<ahh> b;
-   private final List<ahh> c;
-   private final arx d;
-
-   public abi(abi.a $$0, Collection<ahh> $$1, Collection<ahh> $$2, arx $$3) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = ImmutableList.copyOf($$2);
-      this.d = $$3;
+   private abi(uq $$0) {
+      this($$0.m(), new vm.b($$0));
    }
 
-   public abi(uj $$0) {
-      this.a = $$0.b(abi.a.class);
-      this.d = arx.a($$0);
-      this.b = $$0.a(uj::t);
-      if (this.a == abi.a.a) {
-         this.c = $$0.a(uj::t);
-      } else {
-         this.c = ImmutableList.of();
-      }
+   private void a(uq $$0) {
+      $$0.a(this.b);
+      this.c.a($$0);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      this.d.b($$0);
-      $$0.a(this.b, uj::a);
-      if (this.a == abi.a.a) {
-         $$0.a(this.c, uj::a);
-      }
+   public xz<abi> a() {
+      return aeq.B;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public List<ahh> a() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public List<ahh> d() {
+   public vm.b e() {
       return this.c;
-   }
-
-   public arx e() {
-      return this.d;
-   }
-
-   public abi.a f() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

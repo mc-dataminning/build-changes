@@ -1,56 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class cwx extends cvt {
-   public static final MapCodec<cwx> c = b(cwx::new);
+public class cwx extends cwq implements cwo.a {
+   public static final Codec<cwx> b = cwm.c.fieldOf("biome").xmap(cwx::new, $$0 -> $$0.c).stable().codec();
+   private final ij<cwm> c;
 
-   @Override
-   public MapCodec<cwx> a() {
-      return c;
-   }
-
-   protected cwx(djo.d $$0) {
-      super($$0);
+   public cwx(ij<cwm> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public dhd a(hx $$0, djp $$1) {
-      return new dhc($$0, $$1);
+   protected Stream<ij<cwm>> b() {
+      return Stream.of(this.c);
+   }
+
+   @Override
+   protected Codec<? extends cwq> a() {
+      return b;
+   }
+
+   @Override
+   public ij<cwm> getNoiseBiome(int $$0, int $$1, int $$2, cwv.f $$3) {
+      return this.c;
+   }
+
+   @Override
+   public ij<cwm> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
    }
 
    @Nullable
    @Override
-   public <T extends dhd> dhe<T> a(ctx $$0, djp $$1, dhf<T> $$2) {
-      return a($$0, $$2, dhf.C);
-   }
-
-   @Override
-   protected void a(ctx $$0, hx $$1, cfq $$2) {
-      dhd $$3 = $$0.c_($$1);
-      if ($$3 instanceof dhc) {
-         $$2.a((bkg)$$3);
-         $$2.a(asd.as);
+   public Pair<hz, ij<cwm>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ij<cwm>> $$5, awo $$6, boolean $$7, cwv.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new hz($$0, $$1, $$2), this.c) : Pair.of(new hz($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
       }
    }
 
+   @Nullable
    @Override
-   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, art.cs, aru.e, 1.0F, 1.0F, false);
-         }
+   public Pair<hz, ij<cwm>> a(hz $$0, int $$1, int $$2, int $$3, Predicate<ij<cwm>> $$4, cwv.f $$5, cvq $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
 
-         ic $$7 = $$0.c(a);
-         ic.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == ic.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == ic.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(jx.ab, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   @Override
+   public Set<ij<cwm>> a(int $$0, int $$1, int $$2, int $$3, cwv.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

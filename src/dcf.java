@@ -1,68 +1,65 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dcf extends cwy implements cxb {
+public class dcf extends cyo implements dfo {
    public static final MapCodec<dcf> a = b(dcf::new);
+   private static final dlw c = dlv.C;
+   protected static final eol b = cyo.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dcf> a() {
       return a;
    }
 
-   public dcf(djo.d $$0) {
+   protected dcf(dle.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(cua $$0, hx $$1, djp $$2) {
-      if (!$$0.a_($$1.c()).a((ctd)$$0, $$1)) {
-         return false;
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected egp c_(dlf $$0) {
+      return $$0.c(c) ? egq.c.a(false) : super.c_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dlf a(crg $$0) {
+      dlf $$1 = super.a($$0);
+      if ($$1 != null) {
+         egp $$2 = $$0.q().b_($$0.a());
+         return $$1.a(c, Boolean.valueOf($$2.a() == egq.c));
       } else {
-         for (hx $$3 : hx.a($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(asi.aK)) {
-               return true;
-            }
-         }
-
-         return false;
+         return null;
       }
    }
 
    @Override
-   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
-      return true;
+   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
+      hz $$3 = $$2.c();
+      dlf $$4 = $$1.a_($$3);
+      return $$4.d($$1, $$3, ie.a);
    }
 
    @Override
-   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (hx $$6 : hx.a($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         djp $$7 = $$0.a_($$6);
-         if ($$7.a(cxa.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(cxa.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? cxa.on.o() : cxa.ow.o(), 3);
-      } else if ($$5) {
-         $$0.a($$2, cxa.on.o(), 3);
-      } else if ($$4) {
-         $$0.a($$2, cxa.ow.o(), 3);
-      }
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return b;
    }
 
    @Override
-   public cxb.a av_() {
-      return cxb.a.a;
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      if ($$1 == ie.b && !this.a($$0, $$3, $$4)) {
+         return cyq.a.o();
+      } else {
+         if ($$0.c(c)) {
+            $$3.a($$4, egq.c, egq.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

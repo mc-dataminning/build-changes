@@ -1,14 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import java.util.Objects;
+import java.util.Optional;
 
-public class ayg extends baw {
-   public ayg(Schema $$0) {
-      super($$0, false, "EntityGoatMissingStateFix", bbw.y, "minecraft:goat");
+public class ayg extends DataFix {
+   public ayg(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("HasLeftHorn", $$0x.createBoolean(true)).set("HasRightHorn", $$0x.createBoolean(true)));
+   public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bew.a());
+      return this.fixTypeEverywhereTyped(
+         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(bdn.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+               Optional<String> $$3 = $$1.getOptional($$0);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : azu.a($$2);
+            })
+      );
    }
 }

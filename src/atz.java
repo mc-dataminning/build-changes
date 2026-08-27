@@ -1,69 +1,182 @@
-public class atz {
-   public static class a {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
+public final class atz {
+   public static final auo<cyo> a = a("wool");
+   public static final auo<cyo> b = a("planks");
+   public static final auo<cyo> c = a("stone_bricks");
+   public static final auo<cyo> d = a("wooden_buttons");
+   public static final auo<cyo> e = a("stone_buttons");
+   public static final auo<cyo> f = a("buttons");
+   public static final auo<cyo> g = a("wool_carpets");
+   public static final auo<cyo> h = a("wooden_doors");
+   public static final auo<cyo> i = a("wooden_stairs");
+   public static final auo<cyo> j = a("wooden_slabs");
+   public static final auo<cyo> k = a("wooden_fences");
+   public static final auo<cyo> l = a("pressure_plates");
+   public static final auo<cyo> m = a("wooden_pressure_plates");
+   public static final auo<cyo> n = a("stone_pressure_plates");
+   public static final auo<cyo> o = a("wooden_trapdoors");
+   public static final auo<cyo> p = a("doors");
+   public static final auo<cyo> q = a("saplings");
+   public static final auo<cyo> r = a("logs_that_burn");
+   public static final auo<cyo> s = a("overworld_natural_logs");
+   public static final auo<cyo> t = a("logs");
+   public static final auo<cyo> u = a("dark_oak_logs");
+   public static final auo<cyo> v = a("oak_logs");
+   public static final auo<cyo> w = a("birch_logs");
+   public static final auo<cyo> x = a("acacia_logs");
+   public static final auo<cyo> y = a("cherry_logs");
+   public static final auo<cyo> z = a("jungle_logs");
+   public static final auo<cyo> A = a("spruce_logs");
+   public static final auo<cyo> B = a("mangrove_logs");
+   public static final auo<cyo> C = a("crimson_stems");
+   public static final auo<cyo> D = a("warped_stems");
+   public static final auo<cyo> E = a("bamboo_blocks");
+   public static final auo<cyo> F = a("wart_blocks");
+   public static final auo<cyo> G = a("banners");
+   public static final auo<cyo> H = a("sand");
+   public static final auo<cyo> I = a("smelts_to_glass");
+   public static final auo<cyo> J = a("stairs");
+   public static final auo<cyo> K = a("slabs");
+   public static final auo<cyo> L = a("walls");
+   public static final auo<cyo> M = a("anvil");
+   public static final auo<cyo> N = a("rails");
+   public static final auo<cyo> O = a("leaves");
+   public static final auo<cyo> P = a("trapdoors");
+   public static final auo<cyo> Q = a("small_flowers");
+   public static final auo<cyo> R = a("beds");
+   public static final auo<cyo> S = a("fences");
+   public static final auo<cyo> T = a("tall_flowers");
+   public static final auo<cyo> U = a("flowers");
+   public static final auo<cyo> V = a("piglin_repellents");
+   public static final auo<cyo> W = a("gold_ores");
+   public static final auo<cyo> X = a("iron_ores");
+   public static final auo<cyo> Y = a("diamond_ores");
+   public static final auo<cyo> Z = a("redstone_ores");
+   public static final auo<cyo> aa = a("lapis_ores");
+   public static final auo<cyo> ab = a("coal_ores");
+   public static final auo<cyo> ac = a("emerald_ores");
+   public static final auo<cyo> ad = a("copper_ores");
+   public static final auo<cyo> ae = a("candles");
+   public static final auo<cyo> af = a("dirt");
+   public static final auo<cyo> ag = a("terracotta");
+   public static final auo<cyo> ah = a("concrete_powder");
+   public static final auo<cyo> ai = a("completes_find_tree_tutorial");
+   public static final auo<cyo> aj = a("flower_pots");
+   public static final auo<cyo> ak = a("enderman_holdable");
+   public static final auo<cyo> al = a("ice");
+   public static final auo<cyo> am = a("valid_spawn");
+   public static final auo<cyo> an = a("impermeable");
+   public static final auo<cyo> ao = a("underwater_bonemeals");
+   public static final auo<cyo> ap = a("coral_blocks");
+   public static final auo<cyo> aq = a("wall_corals");
+   public static final auo<cyo> ar = a("coral_plants");
+   public static final auo<cyo> as = a("corals");
+   public static final auo<cyo> at = a("bamboo_plantable_on");
+   public static final auo<cyo> au = a("standing_signs");
+   public static final auo<cyo> av = a("wall_signs");
+   public static final auo<cyo> aw = a("signs");
+   public static final auo<cyo> ax = a("ceiling_hanging_signs");
+   public static final auo<cyo> ay = a("wall_hanging_signs");
+   public static final auo<cyo> az = a("all_hanging_signs");
+   public static final auo<cyo> aA = a("all_signs");
+   public static final auo<cyo> aB = a("dragon_immune");
+   public static final auo<cyo> aC = a("dragon_transparent");
+   public static final auo<cyo> aD = a("wither_immune");
+   public static final auo<cyo> aE = a("wither_summon_base_blocks");
+   public static final auo<cyo> aF = a("beehives");
+   public static final auo<cyo> aG = a("crops");
+   public static final auo<cyo> aH = a("bee_growables");
+   public static final auo<cyo> aI = a("portals");
+   public static final auo<cyo> aJ = a("fire");
+   public static final auo<cyo> aK = a("nylium");
+   public static final auo<cyo> aL = a("beacon_base_blocks");
+   public static final auo<cyo> aM = a("soul_speed_blocks");
+   public static final auo<cyo> aN = a("wall_post_override");
+   public static final auo<cyo> aO = a("climbable");
+   public static final auo<cyo> aP = a("fall_damage_resetting");
+   public static final auo<cyo> aQ = a("shulker_boxes");
+   public static final auo<cyo> aR = a("hoglin_repellents");
+   public static final auo<cyo> aS = a("soul_fire_base_blocks");
+   public static final auo<cyo> aT = a("strider_warm_blocks");
+   public static final auo<cyo> aU = a("campfires");
+   public static final auo<cyo> aV = a("guarded_by_piglins");
+   public static final auo<cyo> aW = a("prevent_mob_spawning_inside");
+   public static final auo<cyo> aX = a("fence_gates");
+   public static final auo<cyo> aY = a("unstable_bottom_center");
+   public static final auo<cyo> aZ = a("mushroom_grow_block");
+   public static final auo<cyo> ba = a("infiniburn_overworld");
+   public static final auo<cyo> bb = a("infiniburn_nether");
+   public static final auo<cyo> bc = a("infiniburn_end");
+   public static final auo<cyo> bd = a("base_stone_overworld");
+   public static final auo<cyo> be = a("stone_ore_replaceables");
+   public static final auo<cyo> bf = a("deepslate_ore_replaceables");
+   public static final auo<cyo> bg = a("base_stone_nether");
+   public static final auo<cyo> bh = a("overworld_carver_replaceables");
+   public static final auo<cyo> bi = a("nether_carver_replaceables");
+   public static final auo<cyo> bj = a("candle_cakes");
+   public static final auo<cyo> bk = a("cauldrons");
+   public static final auo<cyo> bl = a("crystal_sound_blocks");
+   public static final auo<cyo> bm = a("inside_step_sound_blocks");
+   public static final auo<cyo> bn = a("combination_step_sound_blocks");
+   public static final auo<cyo> bo = a("camel_sand_step_sound_blocks");
+   public static final auo<cyo> bp = a("occludes_vibration_signals");
+   public static final auo<cyo> bq = a("dampens_vibrations");
+   public static final auo<cyo> br = a("dripstone_replaceable_blocks");
+   public static final auo<cyo> bs = a("cave_vines");
+   public static final auo<cyo> bt = a("moss_replaceable");
+   public static final auo<cyo> bu = a("lush_ground_replaceable");
+   public static final auo<cyo> bv = a("azalea_root_replaceable");
+   public static final auo<cyo> bw = a("small_dripleaf_placeable");
+   public static final auo<cyo> bx = a("big_dripleaf_placeable");
+   public static final auo<cyo> by = a("snow");
+   public static final auo<cyo> bz = a("mineable/axe");
+   public static final auo<cyo> bA = a("mineable/hoe");
+   public static final auo<cyo> bB = a("mineable/pickaxe");
+   public static final auo<cyo> bC = a("mineable/shovel");
+   public static final auo<cyo> bD = a("sword_efficient");
+   public static final auo<cyo> bE = a("needs_diamond_tool");
+   public static final auo<cyo> bF = a("needs_iron_tool");
+   public static final auo<cyo> bG = a("needs_stone_tool");
+   public static final auo<cyo> bH = a("features_cannot_replace");
+   public static final auo<cyo> bI = a("lava_pool_stone_cannot_replace");
+   public static final auo<cyo> bJ = a("geode_invalid_blocks");
+   public static final auo<cyo> bK = a("frog_prefer_jump_to");
+   public static final auo<cyo> bL = a("sculk_replaceable");
+   public static final auo<cyo> bM = a("sculk_replaceable_world_gen");
+   public static final auo<cyo> bN = a("ancient_city_replaceable");
+   public static final auo<cyo> bO = a("vibration_resonators");
+   public static final auo<cyo> bP = a("animals_spawnable_on");
+   public static final auo<cyo> bQ = a("armadillo_spawnable_on");
+   public static final auo<cyo> bR = a("axolotls_spawnable_on");
+   public static final auo<cyo> bS = a("goats_spawnable_on");
+   public static final auo<cyo> bT = a("mooshrooms_spawnable_on");
+   public static final auo<cyo> bU = a("parrots_spawnable_on");
+   public static final auo<cyo> bV = a("polar_bears_spawnable_on_alternate");
+   public static final auo<cyo> bW = a("rabbits_spawnable_on");
+   public static final auo<cyo> bX = a("foxes_spawnable_on");
+   public static final auo<cyo> bY = a("wolves_spawnable_on");
+   public static final auo<cyo> bZ = a("frogs_spawnable_on");
+   public static final auo<cyo> ca = a("azalea_grows_on");
+   public static final auo<cyo> cb = a("convertable_to_mud");
+   public static final auo<cyo> cc = a("mangrove_logs_can_grow_through");
+   public static final auo<cyo> cd = a("mangrove_roots_can_grow_through");
+   public static final auo<cyo> ce = a("dead_bush_may_place_on");
+   public static final auo<cyo> cf = a("snaps_goat_horn");
+   public static final auo<cyo> cg = a("replaceable_by_trees");
+   public static final auo<cyo> ch = a("snow_layer_cannot_survive_on");
+   public static final auo<cyo> ci = a("snow_layer_can_survive_on");
+   public static final auo<cyo> cj = a("invalid_spawn_inside");
+   public static final auo<cyo> ck = a("sniffer_diggable_block");
+   public static final auo<cyo> cl = a("sniffer_egg_hatch_boost");
+   public static final auo<cyo> cm = a("trail_ruins_replaceable");
+   public static final auo<cyo> cn = a("replaceable");
+   public static final auo<cyo> co = a("enchantment_power_provider");
+   public static final auo<cyo> cp = a("enchantment_power_transmitter");
+   public static final auo<cyo> cq = a("maintains_farmland");
 
-      public static int b(int $$0) {
-         return $$0 & 0xFF;
-      }
-
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
-
-      public static int d(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
-
-      public static int e(int $$0) {
-         return $$0 & 16777215;
-      }
-
-      public static int f(int $$0) {
-         return $$0 | 0xFF000000;
-      }
-
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1) {
-         return $$0 << 24 | $$1 & 16777215;
-      }
+   private atz() {
    }
 
-   public static class b {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
-
-      public static int b(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
-
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
-
-      public static int d(int $$0) {
-         return $$0 & 0xFF;
-      }
-
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1) {
-         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
-      }
-
-      public static int a(float $$0, int $$1, int $$2) {
-         int $$3 = aup.a($$0, a($$1), a($$2));
-         int $$4 = aup.a($$0, b($$1), b($$2));
-         int $$5 = aup.a($$0, c($$1), c($$2));
-         int $$6 = aup.a($$0, d($$1), d($$2));
-         return a($$3, $$4, $$5, $$6);
-      }
+   private static auo<cyo> a(String $$0) {
+      return auo.a(kg.f, new aiy($$0));
    }
 }

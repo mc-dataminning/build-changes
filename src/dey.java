@@ -1,28 +1,26 @@
-public enum dey {
-   a {
-      @Override
-      public boolean a(djp $$0, ctd $$1, hx $$2, ic $$3) {
-         return cwy.a($$0.l($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final emv e = cwy.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
 
-      @Override
-      public boolean a(djp $$0, ctd $$1, hx $$2, ic $$3) {
-         return !ems.c($$0.l($$1, $$2).a($$3), this.e, emg.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final emv e = ems.a(ems.b(), cwy.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), emg.e);
+public class dey extends cyx {
+   public static final MapCodec<dey> a = b(dey::new);
+   protected static final float b = 6.0F;
+   protected static final eol c = cyo.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-      @Override
-      public boolean a(djp $$0, ctd $$1, hx $$2, ic $$3) {
-         return !ems.c($$0.l($$1, $$2).a($$3), this.e, emg.c);
-      }
-   };
+   @Override
+   public MapCodec<dey> a() {
+      return a;
+   }
 
-   public abstract boolean a(djp var1, ctd var2, hx var3, ic var4);
+   protected dey(dle.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return c;
+   }
+
+   @Override
+   protected boolean b(dlf $$0, cut $$1, hz $$2) {
+      return $$0.a(atz.aK) || $$0.a(cyq.dX) || super.b($$0, $$1, $$2);
+   }
 }

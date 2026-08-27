@@ -1,35 +1,41 @@
-public class fzc extends fyz<cga> {
-   private static final ahh a = new ahh("textures/entity/illager/evoker_fangs.png");
-   private final fkk<cga> f;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public fzc(fza.a $$0) {
-      super($$0);
-      this.f = new fkk<>($$0.a(fni.Y));
+public class fzc implements fyx.a {
+   private final exh a;
+   private static final int b = 10;
+
+   public fzc(exh $$0) {
+      this.a = $$0;
    }
 
-   public void a(cga $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
-      float $$6 = $$0.a($$2);
-      if ($$6 != 0.0F) {
-         float $$7 = 2.0F;
-         if ($$6 > 0.9F) {
-            $$7 *= (1.0F - $$6) / 0.1F;
+   @Override
+   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
+      cvn $$5 = this.a.r;
+      hz $$6 = hz.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
+
+      for (hz $$8 : hz.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(cvw.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = awh.h($$10, 0.9F, 0.9F);
+         long $$12 = jb.e($$8.a());
+         if ($$7.add($$12)) {
+            fyx.a(
+               $$0,
+               $$1,
+               $$5.L().p().a(cvw.a, jb.a($$12)),
+               (double)jb.a(jb.b($$12), 8),
+               (double)jb.a(jb.c($$12), 8),
+               (double)jb.a(jb.d($$12), 8),
+               16711680,
+               0.3F
+            );
          }
 
-         $$3.a();
-         $$3.a(a.d.rotationDegrees(90.0F - $$0.dB()));
-         $$3.b(-$$7, -$$7, $$7);
-         float $$8 = 0.03125F;
-         $$3.a(0.0, -0.626, 0.0);
-         $$3.b(0.5F, 0.5F, 0.5F);
-         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dB(), $$0.dD());
-         eqo $$9 = $$4.getBuffer(this.f.a(a));
-         this.f.a($$3, $$9, $$5, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         if ($$9 != 15) {
+            fyx.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
       }
-   }
-
-   public ahh a(cga $$0) {
-      return a;
    }
 }

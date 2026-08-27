@@ -1,52 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface bio {
-   bin a();
+public class bio {
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bij f = bii.a;
 
-   static <T> bio.b<T> a(T $$0, int $$1) {
-      return new bio.b<>($$0, bin.a($$1));
+   public bio(LongSupplier $$0, String $$1, long $$2) {
+      this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
    }
 
-   public static class a implements bio {
-      private final bin a;
+   public bil a() {
+      this.f = new bie(this.b, () -> this.d, false);
+      this.d++;
+      return this.f;
+   }
 
-      public a(int $$0) {
-         this.a = bin.a($$0);
-      }
-
-      public a(bin $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bin a() {
-         return this.a;
+   public void b() {
+      if (this.f != bii.a) {
+         bik $$0 = this.f.d();
+         this.f = bii.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
       }
    }
 
-   public static class b<T> implements bio {
-      private final T a;
-      private final bin b;
+   @Nullable
+   public static bio a(String $$0) {
+      return null;
+   }
 
-      b(T $$0, bin $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public T b() {
-         return this.a;
-      }
-
-      @Override
-      public bin a() {
-         return this.b;
-      }
-
-      public static <E> Codec<bio.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bio.b::b), bin.a.fieldOf("weight").forGetter(bio.b::a)).apply($$1, bio.b::new)
-         );
-      }
+   public static bil a(bil $$0, @Nullable bio $$1) {
+      return $$1 != null ? bil.a($$1.a(), $$0) : $$0;
    }
 }

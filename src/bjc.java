@@ -1,64 +1,179 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
+import com.google.gson.JsonObject;
+import com.google.gson.LongSerializationPolicy;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.util.DoubleSummaryStatistics;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.DoubleStream;
 
-public class bjc extends bjh {
-   public static final Codec<bjc> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, bjc::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+public class bjc {
+   private static final String b = "bytesPerSecond";
+   private static final String c = "count";
+   private static final String d = "durationNanosTotal";
+   private static final String e = "totalBytes";
+   private static final String f = "countPerSecond";
+   final Gson a = new GsonBuilder().setPrettyPrinting().setLongSerializationPolicy(LongSerializationPolicy.DEFAULT).create();
 
-   public static bjc a(float $$0, float $$1, int $$2, int $$3) {
-      return new bjc($$0, $$1, $$2, $$3);
+   public String a(bja $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("startedEpoch", $$0.c().toEpochMilli());
+      $$1.addProperty("endedEpoch", $$0.d().toEpochMilli());
+      $$1.addProperty("durationMs", $$0.e().toMillis());
+      Duration $$2 = $$0.f();
+      if ($$2 != null) {
+         $$1.addProperty("worldGenDurationMs", $$2.toMillis());
+      }
+
+      $$1.add("heap", this.a($$0.i()));
+      $$1.add("cpuPercent", this.c($$0.h()));
+      $$1.add("network", this.c($$0));
+      $$1.add("fileIO", this.b($$0));
+      $$1.add("serverTick", this.b($$0.g()));
+      $$1.add("threadAllocation", this.a($$0.j()));
+      $$1.add("chunkGen", this.a($$0.a()));
+      return this.a.toJson($$1);
    }
 
-   private bjc(float $$0, float $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
+   private JsonElement a(bjh.a $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("allocationRateBytesPerSecond", $$0.e());
+      $$1.addProperty("gcCount", $$0.d());
+      $$1.addProperty("gcOverHeadPercent", $$0.a());
+      $$1.addProperty("gcTotalDurationMs", $$0.c().toMillis());
+      return $$1;
    }
 
-   @Override
-   public int a(auw $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   private JsonElement a(List<Pair<dng, bjm<bje>>> $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("durationNanosTotal", $$0.stream().mapToDouble($$0x -> (double)((bjm)$$0x.getSecond()).f().toNanos()).sum());
+      JsonArray $$2 = ac.a(new JsonArray(), $$1x -> $$1.add("status", $$1x));
+
+      for (Pair<dng, bjm<bje>> $$3 : $$0) {
+         bjm<bje> $$4 = (bjm<bje>)$$3.getSecond();
+         JsonObject $$5 = ac.a(new JsonObject(), $$2::add);
+         $$5.addProperty("state", ((dng)$$3.getFirst()).toString());
+         $$5.addProperty("count", $$4.d());
+         $$5.addProperty("durationNanosTotal", $$4.f().toNanos());
+         $$5.addProperty("durationNanosAvg", $$4.f().toNanos() / (long)$$4.d());
+         JsonObject $$6 = ac.a(new JsonObject(), $$1x -> $$5.add("durationNanosPercentiles", $$1x));
+         $$4.e().forEach(($$1x, $$2x) -> $$6.addProperty("p" + $$1x, $$2x));
+         Function<bje, JsonElement> $$7 = $$0x -> {
+            JsonObject $$1x = new JsonObject();
+            $$1x.addProperty("durationNanos", $$0x.a().toNanos());
+            $$1x.addProperty("level", $$0x.e());
+            $$1x.addProperty("chunkPosX", $$0x.b().e);
+            $$1x.addProperty("chunkPosZ", $$0x.b().f);
+            $$1x.addProperty("worldPosX", $$0x.c().c());
+            $$1x.addProperty("worldPosZ", $$0x.c().d());
+            return $$1x;
+         };
+         $$5.add("fastest", $$7.apply($$4.a()));
+         $$5.add("slowest", $$7.apply($$4.b()));
+         $$5.add("secondSlowest", (JsonElement)($$4.c() != null ? $$7.apply($$4.c()) : JsonNull.INSTANCE));
+      }
+
+      return $$1;
    }
 
-   public static int a(auw $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)aup.a(aup.c($$0, $$1, $$2), $$3, $$4);
+   private JsonElement a(bjj.a $$0) {
+      JsonArray $$1 = new JsonArray();
+      $$0.a().forEach(($$1x, $$2) -> $$1.add(ac.a(new JsonObject(), $$2x -> {
+            $$2x.addProperty("thread", $$1x);
+            $$2x.addProperty("bytesPerSecond", $$2);
+         })));
+      return $$1;
    }
 
-   @Override
-   public int a() {
-      return this.g;
+   private JsonElement b(List<bjk> $$0) {
+      if ($$0.isEmpty()) {
+         return JsonNull.INSTANCE;
+      } else {
+         JsonObject $$1 = new JsonObject();
+         double[] $$2 = $$0.stream().mapToDouble($$0x -> (double)$$0x.b().toNanos() / 1000000.0).toArray();
+         DoubleSummaryStatistics $$3 = DoubleStream.of($$2).summaryStatistics();
+         $$1.addProperty("minMs", $$3.getMin());
+         $$1.addProperty("averageMs", $$3.getAverage());
+         $$1.addProperty("maxMs", $$3.getMax());
+         Map<Integer, Double> $$4 = bis.a($$2);
+         $$4.forEach(($$1x, $$2x) -> $$1.addProperty("p" + $$1x, $$2x));
+         return $$1;
+      }
    }
 
-   @Override
-   public int b() {
-      return this.h;
+   private JsonElement b(bja $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.add("write", this.a($$0.m()));
+      $$1.add("read", this.a($$0.n()));
+      return $$1;
    }
 
-   @Override
-   public bji<?> c() {
-      return bji.f;
+   private JsonElement a(bjg.a $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("totalBytes", $$0.a());
+      $$1.addProperty("count", $$0.c());
+      $$1.addProperty("bytesPerSecond", $$0.b());
+      $$1.addProperty("countPerSecond", $$0.d());
+      JsonArray $$2 = new JsonArray();
+      $$1.add("topContributors", $$2);
+      $$0.f().forEach($$1x -> {
+         JsonObject $$2x = new JsonObject();
+         $$2.add($$2x);
+         $$2x.addProperty("path", (String)$$1x.getFirst());
+         $$2x.addProperty("totalBytes", (Number)$$1x.getSecond());
+      });
+      return $$1;
    }
 
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+   private JsonElement c(bja $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.add("sent", this.a($$0.l()));
+      $$1.add("received", this.a($$0.k()));
+      return $$1;
+   }
+
+   private JsonElement a(bji $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("totalBytes", $$0.d());
+      $$1.addProperty("count", $$0.c());
+      $$1.addProperty("bytesPerSecond", $$0.b());
+      $$1.addProperty("countPerSecond", $$0.a());
+      JsonArray $$2 = new JsonArray();
+      $$1.add("topContributors", $$2);
+      $$0.e().forEach($$1x -> {
+         JsonObject $$2x = new JsonObject();
+         $$2.add($$2x);
+         bji.b $$3 = (bji.b)$$1x.getFirst();
+         bji.a $$4 = (bji.a)$$1x.getSecond();
+         $$2x.addProperty("protocolId", $$3.b());
+         $$2x.addProperty("packetId", $$3.c());
+         $$2x.addProperty("totalBytes", $$4.b());
+         $$2x.addProperty("count", $$4.a());
+      });
+      return $$1;
+   }
+
+   private JsonElement c(List<bjf> $$0) {
+      JsonObject $$1 = new JsonObject();
+      BiFunction<List<bjf>, ToDoubleFunction<bjf>, JsonObject> $$2 = ($$0x, $$1x) -> {
+         JsonObject $$2x = new JsonObject();
+         DoubleSummaryStatistics $$3 = $$0x.stream().mapToDouble($$1x).summaryStatistics();
+         $$2x.addProperty("min", $$3.getMin());
+         $$2x.addProperty("average", $$3.getAverage());
+         $$2x.addProperty("max", $$3.getMax());
+         return $$2x;
+      };
+      $$1.add("jvm", (JsonElement)$$2.apply($$0, bjf::a));
+      $$1.add("userJvm", (JsonElement)$$2.apply($$0, bjf::b));
+      $$1.add("system", (JsonElement)$$2.apply($$0, bjf::c));
+      return $$1;
    }
 }

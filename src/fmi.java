@@ -1,70 +1,138 @@
-public class fmi<T extends car> extends fje<T> {
-   private static final float a = 9.0F;
-   private static final float b = 100.0F;
-   private final fnj f;
-   private final fnj g;
+public class fmi extends fmk<cej> {
+   private static final float[] a = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
+   private static final float[] b = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
+   private static final float[] f = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
+   private static final float[] g = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
+   private static final float[] h = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
+   private static final float[] i = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
+   private static final String j = "eye";
+   private static final String k = "tail0";
+   private static final String l = "tail1";
+   private static final String m = "tail2";
+   private final fpc n;
+   private final fpc o;
+   private final fpc p;
+   private final fpc[] q;
+   private final fpc[] r;
 
-   public fmi(fnj $$0) {
-      super(0.5F, 24.0F);
-      this.f = $$0.b("root");
-      this.g = this.f.b("bone").b("body").b("head");
+   public fmi(fpc $$0) {
+      this.n = $$0;
+      this.q = new fpc[12];
+      this.o = $$0.b("head");
+
+      for (int $$1 = 0; $$1 < this.q.length; $$1++) {
+         this.q[$$1] = this.o.b(a($$1));
+      }
+
+      this.p = this.o.b("eye");
+      this.r = new fpc[3];
+      this.r[0] = this.o.b("tail0");
+      this.r[1] = this.r[0].b("tail1");
+      this.r[2] = this.r[1].b("tail2");
    }
 
-   public static fnp b() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a().a("root", fno.c(), fnl.a(0.0F, 5.0F, 0.0F));
-      fns $$2 = $$1.a("bone", fno.c(), fnl.a(0.0F, 0.0F, 0.0F));
-      fns $$3 = $$2.a(
-         "body",
-         fno.c()
-            .a(62, 68)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new fnn(0.0F))
-            .a(62, 0)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new fnn(0.5F))
-            .a(87, 68)
-            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new fnn(0.0F)),
-         fnl.a(0.0F, 0.0F, 0.0F)
-      );
-      $$2.a("right_front_leg", fno.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fnn(0.0F)), fnl.a(-7.5F, 10.0F, -15.0F));
-      $$2.a("right_mid_leg", fno.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fnn(0.0F)), fnl.a(-7.5F, 10.0F, 0.0F));
-      $$2.a("right_hind_leg", fno.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fnn(0.0F)), fnl.a(-7.5F, 10.0F, 15.0F));
-      $$2.a("left_front_leg", fno.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fnn(0.0F)), fnl.a(7.5F, 10.0F, -15.0F));
-      $$2.a("left_mid_leg", fno.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fnn(0.0F)), fnl.a(7.5F, 10.0F, 0.0F));
-      $$2.a("left_hind_leg", fno.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fnn(0.0F)), fnl.a(7.5F, 10.0F, 15.0F));
-      fns $$4 = $$3.a(
+   private static String a(int $$0) {
+      return "spike" + $$0;
+   }
+
+   public static fpi b() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      fpl $$2 = $$1.a(
          "head",
-         fno.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new fnn(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new fnn(0.0F)),
-         fnl.a(0.0F, 6.5F, -19.48F)
+         fph.c()
+            .a(0, 0)
+            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
+            .a(0, 28)
+            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
+            .a(0, 28)
+            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
+            .a(16, 40)
+            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
+            .a(16, 40)
+            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
+         fpe.a
       );
-      $$4.a("left_ear", fno.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fnn(0.0F)), fnl.a(6.51F, -7.5F, -4.51F));
-      $$4.a("right_ear", fno.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fnn(0.0F)), fnl.a(-6.51F, -7.5F, -4.51F));
-      $$4.a("nose", fno.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new fnn(0.0F)), fnl.a(0.0F, -4.5F, -11.5F));
-      $$4.a("lower_beak", fno.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new fnn(0.0F)), fnl.a(0.0F, 2.5F, -12.5F));
-      return fnp.a($$0, 192, 192);
-   }
+      fph $$3 = fph.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fnj::c);
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.w()) {
-         this.a(ewq.e, $$1, $$2, 9.0F, 100.0F);
-      } else {
-         this.a(ewq.d, $$1, $$2, 9.0F, 100.0F);
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         float $$5 = b($$4, 0.0F, 0.0F);
+         float $$6 = c($$4, 0.0F, 0.0F);
+         float $$7 = d($$4, 0.0F, 0.0F);
+         float $$8 = (float) Math.PI * a[$$4];
+         float $$9 = (float) Math.PI * b[$$4];
+         float $$10 = (float) Math.PI * f[$$4];
+         $$2.a(a($$4), $$3, fpe.a($$5, $$6, $$7, $$8, $$9, $$10));
       }
 
-      this.a($$0.bY, ewq.f, $$3);
-      this.a($$0.bX, ewq.c, $$3);
-      this.a($$0.bZ, ewq.g, $$3);
-      this.a($$0.bU, ewq.i, $$3);
-      this.a($$0.bV, ewq.b, $$3);
-      if (this.e) {
-         this.a(ewq.a);
-      }
+      $$2.a("eye", fph.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), fpe.a(0.0F, 0.0F, -8.25F));
+      fpl $$11 = $$2.a("tail0", fph.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), fpe.a);
+      fpl $$12 = $$11.a("tail1", fph.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), fpe.a(-1.5F, 0.5F, 14.0F));
+      $$12.a("tail2", fph.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), fpe.a(0.5F, 0.5F, 6.0F));
+      return fpi.a($$0, 64, 64);
    }
 
    @Override
-   public fnj a() {
-      return this.f;
+   public fpc a() {
+      return this.n;
+   }
+
+   public void a(cej $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 - (float)$$0.ag;
+      this.o.f = $$4 * (float) (Math.PI / 180.0);
+      this.o.e = $$5 * (float) (Math.PI / 180.0);
+      float $$7 = (1.0F - $$0.F($$6)) * 0.55F;
+      this.a($$3, $$7);
+      bno $$8 = exh.O().am();
+      if ($$0.gi()) {
+         $$8 = $$0.gj();
+      }
+
+      if ($$8 != null) {
+         ens $$9 = $$8.j(0.0F);
+         ens $$10 = $$0.j(0.0F);
+         double $$11 = $$9.d - $$10.d;
+         if ($$11 > 0.0) {
+            this.p.c = 0.0F;
+         } else {
+            this.p.c = 1.0F;
+         }
+
+         ens $$12 = $$0.f(0.0F);
+         $$12 = new ens($$12.c, 0.0, $$12.e);
+         ens $$13 = new ens($$10.c - $$9.c, 0.0, $$10.e - $$9.e).d().b((float) (Math.PI / 2));
+         double $$14 = $$12.b($$13);
+         this.p.b = awh.c((float)Math.abs($$14)) * 2.0F * (float)Math.signum($$14);
+      }
+
+      this.p.k = true;
+      float $$15 = $$0.E($$6);
+      this.r[0].f = awh.a($$15) * (float) Math.PI * 0.05F;
+      this.r[1].f = awh.a($$15) * (float) Math.PI * 0.1F;
+      this.r[2].f = awh.a($$15) * (float) Math.PI * 0.15F;
+   }
+
+   private void a(float $$0, float $$1) {
+      for (int $$2 = 0; $$2 < 12; $$2++) {
+         this.q[$$2].b = b($$2, $$0, $$1);
+         this.q[$$2].c = c($$2, $$0, $$1);
+         this.q[$$2].d = d($$2, $$0, $$1);
+      }
+   }
+
+   private static float a(int $$0, float $$1, float $$2) {
+      return 1.0F + awh.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
+   }
+
+   private static float b(int $$0, float $$1, float $$2) {
+      return g[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float c(int $$0, float $$1, float $$2) {
+      return 16.0F + h[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float d(int $$0, float $$1, float $$2) {
+      return i[$$0] * a($$0, $$1, $$2);
    }
 }

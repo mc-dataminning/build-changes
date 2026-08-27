@@ -1,43 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dcu extends cwm {
-   public static final MapCodec<dcu> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dke.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dcu::new)
-   );
-   public static final dkg f = dkf.w;
+public class dcu extends cyo implements dfo {
+   public static final MapCodec<dcu> a = b(dcu::new);
+   public static final dlw b = dlv.j;
+   public static final dlw c = dlv.C;
+   protected static final eol d = eoi.a(cyo.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), cyo.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+   protected static final eol e = eoi.a(cyo.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), cyo.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
 
    @Override
    public MapCodec<dcu> a() {
-      return e;
+      return a;
    }
 
-   protected dcu(dke $$0, djo.d $$1) {
-      super($$1, $$0);
-      this.k(this.E.b().a(f, Boolean.valueOf(false)));
+   public dcu(dle.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dlf a(crg $$0) {
+      egp $$1 = $$0.q().b_($$0.a());
+
+      for (ie $$2 : $$0.f()) {
+         if ($$2.o() == ie.a.b) {
+            dlf $$3 = this.o().a(b, Boolean.valueOf($$2 == ie.b));
+            if ($$3.a((cvq)$$0.q(), $$0.a())) {
+               return $$3.a(c, Boolean.valueOf($$1.a() == egq.c));
+            }
+         }
+      }
+
+      return null;
    }
 
    @Override
-   protected int g(djp $$0) {
-      return $$0.c(f) ? 15 : 0;
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return $$0.c(b) ? e : d;
    }
 
    @Override
-   protected djp a(djp $$0, int $$1) {
-      return $$0.a(f, Boolean.valueOf($$1 > 0));
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(b, c);
    }
 
    @Override
-   protected int b(ctx $$0, hx $$1) {
-      Class<? extends blw> $$2 = switch (this.d.f()) {
-         case a -> blw.class;
-         case b -> bmo.class;
-      };
-      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
+      ie $$3 = m($$0).g();
+      return cyo.a($$1, $$2.a($$3), $$3.g());
+   }
+
+   protected static ie m(dlf $$0) {
+      return $$0.c(b) ? ie.a : ie.b;
    }
 
    @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(f);
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, egq.c, egq.c.a($$3));
+      }
+
+      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? cyq.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected egp c_(dlf $$0) {
+      return $$0.c(c) ? egq.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
+      return false;
    }
 }

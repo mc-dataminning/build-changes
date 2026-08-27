@@ -1,177 +1,109 @@
-public class cio extends cij {
-   private static final int k = 0;
-   private static final int l = 2;
-   private static final int m = 3;
-   private static final int n = 4;
-   private static final int o = 5;
-   private static final int p = 2;
-   private static final int q = 5;
-   private static final int r = 32;
-   private static final int s = 32;
-   private static final int t = 41;
-   private final bjv u;
-   private final cit v;
-   private final cke w;
+public class cio extends cho {
+   private static final aie<Boolean> e = aih.a(cio.class, aig.k);
 
-   public cio(int $$0, cfp $$1) {
-      this($$0, $$1, new bkl(5), new ckd(2));
+   public cio(bnu<? extends cio> $$0, cvn $$1) {
+      super($$0, $$1);
    }
 
-   public cio(int $$0, cfp $$1, bjv $$2, cit $$3) {
-      super(cjq.l, $$0);
-      a($$2, 5);
-      a($$3, 2);
-      this.u = $$2;
-      this.v = $$3;
-      this.a(new cio.c($$2, 0, 56, 51));
-      this.a(new cio.c($$2, 1, 79, 58));
-      this.a(new cio.c($$2, 2, 102, 51));
-      this.w = this.a(new cio.b($$2, 3, 79, 17));
-      this.a(new cio.a($$2, 4, 17, 17));
-      this.a($$3);
+   public cio(cvn $$0, bog $$1, double $$2, double $$3, double $$4) {
+      super(bnu.bp, $$1, $$2, $$3, $$4, $$0);
+   }
 
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         for (int $$5 = 0; $$5 < 9; $$5++) {
-            this.a(new cke($$1, $$5 + $$4 * 9 + 9, 8 + $$5 * 18, 84 + $$4 * 18));
+   @Override
+   protected float x() {
+      return this.z() ? 0.73F : super.x();
+   }
+
+   @Override
+   public boolean bN() {
+      return false;
+   }
+
+   @Override
+   public float a(cvf $$0, cut $$1, hz $$2, dlf $$3, egp $$4, float $$5) {
+      return this.z() && cdg.d($$3) ? Math.min(0.8F, $$5) : $$5;
+   }
+
+   @Override
+   protected void a(enp $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         bno $$1 = $$0.a();
+         boolean $$4;
+         if (this.w() instanceof bog $$3) {
+            $$4 = $$1.a(this.dN().a(this, $$3), 8.0F);
+            if ($$4) {
+               if ($$1.bx()) {
+                  this.a($$3, $$1);
+               } else {
+                  $$3.c(5.0F);
+               }
+            }
+         } else {
+            $$4 = $$1.a(this.dN().o(), 5.0F);
          }
-      }
 
-      for (int $$6 = 0; $$6 < 9; $$6++) {
-         this.a(new cke($$1, $$6, 8 + $$6 * 18, 142));
+         if ($$4 && $$1 instanceof bog $$6) {
+            int $$7 = 0;
+            if (this.dM().ak() == blr.c) {
+               $$7 = 10;
+            } else if (this.dM().ak() == blr.d) {
+               $$7 = 40;
+            }
+
+            if ($$7 > 0) {
+               $$6.b(new bnb(bnd.t, 20 * $$7, 1), this.I());
+            }
+         }
       }
    }
 
    @Override
-   public boolean a(cfq $$0) {
-      return this.u.a($$0);
+   protected void a(enq $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.dM().a(this, this.dr(), this.dt(), this.dx(), 1.0F, false, cvn.a.c);
+         this.am();
+      }
    }
 
    @Override
-   public cng a(cfq $$0, int $$1) {
-      cng $$2 = cng.f;
-      cke $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cng $$4 = $$3.g();
-         $$2 = $$4.p();
-         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
-            if (cio.a.b($$2)) {
-               if (this.a($$4, 4, 5, false) || this.w.a($$4) && !this.a($$4, 3, 4, false)) {
-                  return cng.f;
-               }
-            } else if (this.w.a($$4)) {
-               if (!this.a($$4, 3, 4, false)) {
-                  return cng.f;
-               }
-            } else if (cio.c.b($$2) && $$2.L() == 1) {
-               if (!this.a($$4, 0, 3, false)) {
-                  return cng.f;
-               }
-            } else if ($$1 >= 5 && $$1 < 32) {
-               if (!this.a($$4, 32, 41, false)) {
-                  return cng.f;
-               }
-            } else if ($$1 >= 32 && $$1 < 41) {
-               if (!this.a($$4, 5, 32, false)) {
-                  return cng.f;
-               }
-            } else if (!this.a($$4, 5, 41, false)) {
-               return cng.f;
-            }
-         } else {
-            if (!this.a($$4, 5, 41, true)) {
-               return cng.f;
-            }
-
-            $$3.b($$4, $$2);
-         }
-
-         if ($$4.b()) {
-            $$3.e(cng.f);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.L() == $$2.L()) {
-            return cng.f;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
+   public boolean bt() {
+      return false;
    }
 
-   public int l() {
-      return this.v.a(1);
+   @Override
+   public boolean a(bmn $$0, float $$1) {
+      return false;
    }
 
-   public int m() {
-      return this.v.a(0);
+   @Override
+   protected void c_() {
+      this.am.a(e, false);
    }
 
-   static class a extends cke {
-      public a(bjv $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cng $$0) {
-         return b($$0);
-      }
-
-      public static boolean b(cng $$0) {
-         return $$0.a(cnj.sn);
-      }
-
-      @Override
-      public int a() {
-         return 64;
-      }
+   public boolean z() {
+      return this.am.b(e);
    }
 
-   static class b extends cke {
-      public b(bjv $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cng $$0) {
-         return cpf.a($$0);
-      }
-
-      @Override
-      public int a() {
-         return 64;
-      }
+   public void a(boolean $$0) {
+      this.am.b(e, $$0);
    }
 
-   static class c extends cke {
-      public c(bjv $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
+   @Override
+   protected boolean s() {
+      return false;
+   }
 
-      @Override
-      public boolean a(cng $$0) {
-         return b($$0);
-      }
+   @Override
+   public void b(sw $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.z());
+   }
 
-      @Override
-      public int a() {
-         return 1;
-      }
-
-      @Override
-      public void a(cfq $$0, cng $$1) {
-         ih<cpe> $$2 = cpg.d($$1);
-         if ($$0 instanceof anf) {
-            am.l.a((anf)$$0, $$2);
-         }
-
-         super.a($$0, $$1);
-      }
-
-      public static boolean b(cng $$0) {
-         return $$0.a(cnj.sj) || $$0.a(cnj.vk) || $$0.a(cnj.vn) || $$0.a(cnj.sk);
-      }
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

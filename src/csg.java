@@ -1,35 +1,18 @@
-public class csg extends crr {
-   public csg(crr.a $$0, bmd... $$1) {
-      super($$0, crs.b, $$1);
-   }
+public interface csg<T extends csb<?>> {
+   csg<crs> a = a("crafting");
+   csg<csq> b = a("smelting");
+   csg<crn> c = a("blasting");
+   csg<csu> d = a("smoking");
+   csg<crp> e = a("campfire_cooking");
+   csg<csv> f = a("stonecutting");
+   csg<csr> g = a("smithing");
 
-   @Override
-   public int a(int $$0) {
-      return $$0 * 10;
-   }
-
-   @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 3;
+   static <T extends csb<?>> csg<T> a(final String $$0) {
+      return iv.a(kf.s, new aiy($$0), new csg<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

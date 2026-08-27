@@ -1,70 +1,66 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class ejo {
-   private final Set<ejn<?>> a;
-   private final Set<ejn<?>> b;
+public abstract class ejo implements ejg {
+   protected final List<elu> e;
+   private final Predicate<eiv> a;
 
-   ejo(Set<ejn<?>> $$0, Set<ejn<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
+   protected ejo(List<elu> $$0) {
+      this.e = $$0;
+      this.a = elw.a($$0);
    }
 
-   public boolean a(ejn<?> $$0) {
-      return this.b.contains($$0);
+   protected static <T extends ejo> P1<Mu<T>, List<elu>> a(Instance<T> $$0) {
+      return $$0.group(avp.a(elw.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   public Set<ejn<?>> a() {
-      return this.a;
-   }
-
-   public Set<ejn<?>> b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
-   }
-
-   public void a(eho $$0, ehg $$1) {
-      Set<ejn<?>> $$2 = $$1.a();
-      Set<ejn<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
+   public void a(eje $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
    }
 
-   public static ejo.a c() {
-      return new ejo.a();
+   protected final boolean a(eiv $$0) {
+      return this.a.test($$0);
    }
 
-   public static class a {
-      private final Set<ejn<?>> a = Sets.newIdentityHashSet();
-      private final Set<ejn<?>> b = Sets.newIdentityHashSet();
+   public abstract ejp a();
 
-      public ejo.a a(ejn<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
+   public abstract static class a<T extends ejo.a<T>> implements eln<T> {
+      private final Builder<elu> a = ImmutableList.builder();
+
+      protected abstract T aG_();
+
+      public T a(elu.a $$0) {
+         this.a.add($$0.build());
+         return this.aG_();
       }
 
-      public ejo.a b(ejn<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
+      public final T e() {
+         return this.aG_();
       }
 
-      public ejo a() {
-         return new ejo(this.a, this.b);
+      protected List<elu> f() {
+         return this.a.build();
       }
+
+      public ejf.a a(ejo.a<?> $$0) {
+         return new ejf.a(this, $$0);
+      }
+
+      public ejk.a b(ejo.a<?> $$0) {
+         return new ejk.a(this, $$0);
+      }
+
+      public ejs.a c(ejo.a<?> $$0) {
+         return new ejs.a(this, $$0);
+      }
+
+      public abstract ejo b();
    }
 }

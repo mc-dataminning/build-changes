@@ -4,21 +4,25 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class bqt {
-   public static bog<bmo> a(Function<bmo, Optional<bpt>> $$0, Predicate<bmo> $$1, int $$2, int $$3, float $$4) {
-      return brs.a(
-         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$5 -> $$5.group($$5.a(bvq.n), $$5.a(bvq.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<bpt> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        bpt $$11 = $$10.get();
-                        if ($$8.dj().a((ir)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           bpt $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new bvt($$12, $$4, $$2));
-                           return true;
-                        }
+   public static <T extends bog> bpx<bog> a(bnu<? extends T> $$0, int $$1, bxh<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+   }
+
+   public static <E extends bog, T extends bog> bpx<E> a(bnu<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, bxh<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<bog> $$8 = $$2x -> $$0.equals($$2x.ai()) && $$3.test((T)$$2x);
+      return btj.a(
+         (Function<btj.b<E>, ? extends App<btj.c<E>, btm<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(bxh.n), $$6x.c(bxh.m), $$6x.b(bxh.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     bxj $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<bog> $$14 = $$13.a($$3xxxx -> $$3xxxx.f((bno)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bqh($$5xxxx, true));
+                           $$8x.a(new bxk(new bqh($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
                      } else {
                         return false;
                      }

@@ -1,43 +1,77 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import javax.crypto.Cipher;
-import javax.crypto.ShortBufferException;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Set;
 
-public class ua {
-   private final Cipher a;
-   private byte[] b = new byte[0];
-   private byte[] c = new byte[0];
+public class ua extends ub {
+   private int a;
+   private final Set<tv<?>> b;
+   private final Deque<ud> c = new ArrayDeque<>();
 
-   protected ua(Cipher $$0) {
-      this.a = $$0;
-   }
+   public ua(uc... $$0) {
+      this.a = $$0.length;
+      Builder<tv<?>> $$1 = ImmutableSet.builder();
+      ud $$2 = ud.a();
 
-   private byte[] a(ByteBuf $$0) {
-      int $$1 = $$0.readableBytes();
-      if (this.b.length < $$1) {
-         this.b = new byte[$$1];
+      for (uc $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
       }
 
-      $$0.readBytes(this.b, 0, $$1);
-      return this.b;
+      this.c.push($$2);
+      $$1.add(sw.b);
+      this.b = $$1.build();
    }
 
-   protected ByteBuf a(ChannelHandlerContext $$0, ByteBuf $$1) throws ShortBufferException {
-      int $$2 = $$1.readableBytes();
-      byte[] $$3 = this.a($$1);
-      ByteBuf $$4 = $$0.alloc().heapBuffer(this.a.getOutputSize($$2));
-      $$4.writerIndex(this.a.update($$3, 0, $$2, $$4.array(), $$4.arrayOffset()));
-      return $$4;
+   @Override
+   public tq.b b(tv<?> $$0) {
+      return $$0 != sw.b ? tq.b.c : super.b($$0);
    }
 
-   protected void a(ByteBuf $$0, ByteBuf $$1) throws ShortBufferException {
-      int $$2 = $$0.readableBytes();
-      byte[] $$3 = this.a($$0);
-      int $$4 = this.a.getOutputSize($$2);
-      if (this.c.length < $$4) {
-         this.c = new byte[$$4];
+   @Override
+   public tq.a a(tv<?> $$0) {
+      ud $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return tq.a.d;
+      } else {
+         return !this.b.contains($$0) ? tq.a.b : super.a($$0);
+      }
+   }
+
+   @Override
+   public tq.a a(tv<?> $$0, String $$1) {
+      ud $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
+      } else {
+         if ($$0 == sw.b) {
+            ud $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
+            }
+         }
+
+         return tq.a.b;
+      }
+   }
+
+   @Override
+   public tq.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
       }
 
-      $$1.writeBytes(this.c, 0, this.a.update($$3, 0, $$2, this.c));
+      return super.b();
+   }
+
+   public int c() {
+      return this.a;
    }
 }

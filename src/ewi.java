@@ -1,34 +1,66 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import org.apache.commons.compress.utils.Lists;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record ewi(float a, boolean b, Map<String, List<ewh>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<ewh>> b = Maps.newHashMap();
-      private boolean c;
+public class ewi extends ewh {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vq c = vq.c("mco.configure.world.opening");
+   private final eth d;
+   private final ffe e;
+   private final boolean f;
+   private final exh g;
 
-      public static ewi.a a(float $$0) {
-         return new ewi.a($$0);
+   public ewi(eth $$0, ffe $$1, boolean $$2, exh $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+   }
+
+   @Override
+   public void run() {
+      esq $$0 = esq.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof euq) {
+                     ((euq)this.e).b();
+                  }
+
+                  this.d.e = eth.c.b;
+                  if (this.f) {
+                     esl.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
+               break;
+            }
+         } catch (eue var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to open server", var5);
+            this.a(var5);
+         }
       }
+   }
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
-
-      public ewi.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public ewi.a a(String $$0, ewh $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
-      }
-
-      public ewi b() {
-         return new ewi(this.a, this.c, this.b);
-      }
+   @Override
+   public vq a() {
+      return c;
    }
 }

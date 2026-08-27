@@ -1,73 +1,98 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class byj extends byc {
-   private static final blz bU = bmc.v.n().a(0.5F).b(0.665F);
-
-   public byj(bmc<? extends byj> $$0, ctx $$1) {
-      super($$0, $$1);
+public class byj extends byn<bog> {
+   @Override
+   public Set<bxh<?>> a() {
+      return ImmutableSet.of(bxh.h, bxh.g, bxh.M, bxh.am, bxh.au, bxh.ak, new bxh[]{bxh.al, bxh.ao, bxh.an, bxh.as, bxh.at, bxh.aw});
    }
 
    @Override
-   protected void B() {
-      this.bP.a(0, new bte(this));
-      this.bP.a(1, new bud(this, 2.0));
-      this.bP.a(2, new bsw(this, 1.0));
-      this.bP.a(3, new bus(this, 1.25, cqh.a(cnj.pv), false));
-      this.bP.a(4, new btj(this, 1.25));
-      this.bP.a(5, new bux(this, 1.0));
-      this.bP.a(6, new bts(this, cfq.class, 6.0F));
-      this.bP.a(7, new buf(this));
-   }
+   protected void a(aov $$0, bog $$1) {
+      bpf<?> $$2 = $$1.dO();
+      $$2.a(bxh.aw, c($$0, $$1));
+      Optional<boi> $$3 = Optional.empty();
+      Optional<cfr> $$4 = Optional.empty();
+      Optional<cfr> $$5 = Optional.empty();
+      Optional<cfx> $$6 = Optional.empty();
+      Optional<bog> $$7 = Optional.empty();
+      Optional<chh> $$8 = Optional.empty();
+      Optional<chh> $$9 = Optional.empty();
+      int $$10 = 0;
+      List<cfw> $$11 = Lists.newArrayList();
+      List<cfw> $$12 = Lists.newArrayList();
+      bxj $$13 = $$2.c(bxh.h).orElse(bxj.a());
 
-   public static bnt.a u() {
-      return bmq.C().a(bnu.n, 10.0).a(bnu.o, 0.2F);
-   }
+      for (bog $$14 : $$13.b($$0x -> true)) {
+         if ($$14 instanceof cfr) {
+            cfr $$15 = (cfr)$$14;
+            if ($$15.o_() && $$5.isEmpty()) {
+               $$5 = Optional.of($$15);
+            } else if ($$15.w()) {
+               $$10++;
+               if ($$4.isEmpty() && $$15.gm()) {
+                  $$4 = Optional.of($$15);
+               }
+            }
+         } else if ($$14 instanceof cga $$16) {
+            $$11.add($$16);
+         } else if ($$14 instanceof cfx) {
+            cfx $$17 = (cfx)$$14;
+            if ($$17.o_() && $$6.isEmpty()) {
+               $$6 = Optional.of($$17);
+            } else if ($$17.gh()) {
+               $$11.add($$17);
+            }
+         } else if ($$14 instanceof chh) {
+            chh $$18 = (chh)$$14;
+            if ($$8.isEmpty() && !cfy.a($$18) && $$1.c($$14)) {
+               $$8 = Optional.of($$18);
+            }
 
-   @Override
-   protected ars y() {
-      return art.fN;
-   }
-
-   @Override
-   protected ars d(bkv $$0) {
-      return art.fP;
-   }
-
-   @Override
-   protected ars n_() {
-      return art.fO;
-   }
-
-   @Override
-   protected void b(hx $$0, djp $$1) {
-      this.a(art.fR, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float eW() {
-      return 0.4F;
-   }
-
-   @Override
-   public bkc b(cfq $$0, bkb $$1) {
-      cng $$2 = $$0.b($$1);
-      if ($$2.a(cnj.qx) && !this.o_()) {
-         $$0.a(art.fQ, 1.0F, 1.0F);
-         cng $$3 = cni.a($$2, $$0, cnj.qD.ao_());
-         $$0.a($$1, $$3);
-         return bkc.a(this.dL().B);
-      } else {
-         return super.b($$0, $$1);
+            if ($$9.isEmpty() && !$$18.P_() && cfy.b($$18)) {
+               $$9 = Optional.of($$18);
+            }
+         } else if (!$$3.isEmpty() || !($$14 instanceof cfe) && !($$14 instanceof cdg)) {
+            if ($$7.isEmpty() && cfy.a($$14.ai())) {
+               $$7 = Optional.of($$14);
+            }
+         } else {
+            $$3 = Optional.of((boi)$$14);
+         }
       }
+
+      for (bog $$20 : $$2.c(bxh.g).orElse(ImmutableList.of())) {
+         if ($$20 instanceof cfw) {
+            cfw $$21 = (cfw)$$20;
+            if ($$21.gh()) {
+               $$12.add($$21);
+            }
+         }
+      }
+
+      $$2.a(bxh.M, $$3);
+      $$2.a(bxh.ak, $$4);
+      $$2.a(bxh.al, $$5);
+      $$2.a(bxh.ar, $$7);
+      $$2.a(bxh.am, $$8);
+      $$2.a(bxh.au, $$9);
+      $$2.a(bxh.an, $$12);
+      $$2.a(bxh.ao, $$11);
+      $$2.a(bxh.as, $$11.size());
+      $$2.a(bxh.at, $$10);
    }
 
-   @Nullable
-   public byj b(ane $$0, blr $$1) {
-      return bmc.v.a((ctx)$$0);
+   private static Optional<hz> c(aov $$0, bog $$1) {
+      return hz.a($$1.dm(), 8, 4, $$1x -> a($$0, $$1x));
    }
 
-   @Override
-   public blz e(bna $$0) {
-      return this.o_() ? bU : super.e($$0);
+   private static boolean a(aov $$0, hz $$1) {
+      dlf $$2 = $$0.a_($$1);
+      boolean $$3 = $$2.a(atz.V);
+      return $$3 && $$2.a(cyq.oh) ? czc.g($$2) : $$3;
    }
 }

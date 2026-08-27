@@ -1,54 +1,82 @@
-public class cih {
-   public static final cig a = new cig.a().a(4).a(0.3F).d();
-   public static final cig b = new cig.a().a(5).a(0.6F).d();
-   public static final cig c = new cig.a().a(3).a(0.3F).a().d();
-   public static final cig d = new cig.a().a(1).a(0.6F).d();
-   public static final cig e = a(6).d();
-   public static final cig f = new cig.a().a(5).a(0.6F).d();
-   public static final cig g = new cig.a().a(3).a(0.6F).d();
-   public static final cig h = new cig.a().a(2).a(0.3F).a(new blj(bll.q, 600, 0), 0.3F).a().d();
-   public static final cig i = new cig.a().a(4).a(0.3F).b().d();
-   public static final cig j = new cig.a().a(2).a(0.1F).d();
-   public static final cig k = new cig.a().a(8).a(0.8F).a().d();
-   public static final cig l = new cig.a().a(6).a(0.6F).a().d();
-   public static final cig m = new cig.a().a(5).a(0.6F).d();
-   public static final cig n = new cig.a().a(6).a(0.8F).a().d();
-   public static final cig o = new cig.a().a(8).a(0.8F).a().d();
-   public static final cig p = new cig.a().a(5).a(0.6F).a().d();
-   public static final cig q = new cig.a().a(6).a(0.8F).d();
-   public static final cig r = new cig.a().a(2).a(0.1F).d();
-   public static final cig s = new cig.a().a(1).a(0.3F).c().d();
-   public static final cig t = new cig.a()
-      .a(4)
-      .a(1.2F)
-      .a(new blj(bll.j, 400, 1), 1.0F)
-      .a(new blj(bll.k, 6000, 0), 1.0F)
-      .a(new blj(bll.l, 6000, 0), 1.0F)
-      .a(new blj(bll.v, 2400, 3), 1.0F)
-      .b()
-      .d();
-   public static final cig u = new cig.a().a(4).a(1.2F).a(new blj(bll.j, 100, 1), 1.0F).a(new blj(bll.v, 2400, 0), 1.0F).b().d();
-   public static final cig v = new cig.a().a(6).a(1.2F).d();
-   public static final cig w = new cig.a().a(6).a(0.1F).d();
-   public static final cig x = new cig.a().a(2).a(0.3F).d();
-   public static final cig y = a(6).d();
-   public static final cig z = new cig.a().a(2).a(0.3F).a().d();
-   public static final cig A = new cig.a().a(2).a(0.3F).a(new blj(bll.s, 100, 0), 0.6F).d();
-   public static final cig B = new cig.a().a(3).a(0.3F).a().d();
-   public static final cig C = new cig.a().a(1).a(0.3F).d();
-   public static final cig D = new cig.a().a(1).a(0.1F).a(new blj(bll.s, 1200, 1), 1.0F).a(new blj(bll.q, 300, 2), 1.0F).a(new blj(bll.i, 300, 0), 1.0F).d();
-   public static final cig E = new cig.a().a(8).a(0.3F).d();
-   public static final cig F = new cig.a().a(3).a(0.3F).a().d();
-   public static final cig G = a(10).d();
-   public static final cig H = new cig.a().a(4).a(0.1F).a(new blj(bll.q, 600, 0), 0.8F).a().d();
-   public static final cig I = new cig.a().a(2).a(0.1F).d();
-   public static final cig J = new cig.a().a(2).a(0.8F).a(new blj(bll.s, 100, 0), 1.0F).d();
-   public static final cig K = a(6).b().d();
-   public static final cig L = new cig.a().a(2).a(0.1F).d();
-   public static final cig M = new cig.a().a(2).a(0.1F).d();
-   public static final cig N = new cig.a().a(1).a(0.1F).d();
+public abstract class cih extends chz {
+   protected cih(bnu<? extends cih> $$0, cvn $$1) {
+      super($$0, $$1);
+   }
 
-   private static cig.a a(int $$0) {
-      return new cig.a().a($$0).a(0.6F);
+   protected cih(bnu<? extends cih> $$0, double $$1, double $$2, double $$3, cvn $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
+   }
+
+   protected cih(bnu<? extends cih> $$0, bog $$1, cvn $$2) {
+      this($$0, $$1.dr(), $$1.dv() - 0.1F, $$1.dx(), $$2);
+      this.b((bno)$$1);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cH().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
+      }
+
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      enq $$0 = cib.a(this, this::a);
+      boolean $$1 = false;
+      if ($$0.c() == enq.a.b) {
+         hz $$2 = ((eno)$$0).a();
+         dlf $$3 = this.dM().a_($$2);
+         if ($$3.a(cyq.ed)) {
+            this.f($$2);
+            $$1 = true;
+         } else if ($$3.a(cyq.kF)) {
+            dit $$4 = this.dM().c_($$2);
+            if ($$4 instanceof dki && dki.a(this)) {
+               dki.a(this.dM(), $$2, $$3, this, (dki)$$4);
+            }
+
+            $$1 = true;
+         }
+      }
+
+      if ($$0.c() != enq.a.a && !$$1) {
+         this.a($$0);
+      }
+
+      this.aQ();
+      ens $$5 = this.dp();
+      double $$6 = this.dr() + $$5.c;
+      double $$7 = this.dt() + $$5.d;
+      double $$8 = this.dx() + $$5.e;
+      this.J();
+      float $$11;
+      if (this.aZ()) {
+         for (int $$9 = 0; $$9 < 4; $$9++) {
+            float $$10 = 0.25F;
+            this.dM().a(jz.e, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
+         }
+
+         $$11 = 0.8F;
+      } else {
+         $$11 = 0.99F;
+      }
+
+      this.g($$5.a((double)$$11));
+      if (!this.aV()) {
+         ens $$13 = this.dp();
+         this.o($$13.c, $$13.d - (double)this.x(), $$13.e);
+      }
+
+      this.a_($$6, $$7, $$8);
+   }
+
+   protected float x() {
+      return 0.03F;
    }
 }

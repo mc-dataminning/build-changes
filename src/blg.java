@@ -1,15 +1,49 @@
-public class blg extends blh {
-   public blg(bli $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+
+public class blg extends bkz {
+   public static final Codec<blg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bke.b(bkz.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, blg::new)
+   );
+   private final bke<bkz> b;
+   private final int f;
+   private final int g;
+
+   public blg(bke<bkz> $$0) {
+      this.b = $$0;
+      List<bkg.b<bkz>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
+
+      for (bkg.b<bkz> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
+      }
+
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public boolean a() {
-      return true;
+   public int a(awo $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 1;
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.g;
+   }
+
+   @Override
+   public bla<?> c() {
+      return bla.e;
    }
 }

@@ -1,11 +1,29 @@
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public abstract class dyz extends dyv {
-   protected abstract int a(auw var1, hx var2);
+public class dyz extends dza {
+   public static final Codec<dyz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dyz::new));
+
+   public dyz(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
 
    @Override
-   public Stream<hx> a_(dyt $$0, auw $$1, hx $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   protected dzb<?> a() {
+      return dzb.a;
+   }
+
+   @Override
+   public List<dxi.a> a(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, int $$3, hz $$4, dws $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      }
+
+      return ImmutableList.of(new dxi.a($$4.b($$3), 0, false));
    }
 }

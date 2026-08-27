@@ -1,8 +1,8 @@
-import java.util.List;
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class lk {
-   public static lg a(km $$0) {
-      return new lg($$0, Set.of(), List.of(new lg.a(lj::new, ejp.c)));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface lk {
 }

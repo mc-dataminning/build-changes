@@ -1,117 +1,162 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dij extends dhd implements dob.b<doi.b>, doi {
-   private static final Logger b = LogUtils.getLogger();
-   private doi.a c;
-   private final doi.b d;
-   private final doi.d e = this.c();
-   private int h;
+public class dij extends dit implements blz {
+   public static final int a = 6;
+   public static final String b = "Patterns";
+   public static final String c = "Pattern";
+   public static final String d = "Color";
+   @Nullable
+   private vq e;
+   private cnn f;
+   @Nullable
+   private tc g;
+   @Nullable
+   private List<Pair<ij<dik>, cnn>> h;
 
-   protected dij(dhf<?> $$0, hx $$1, djp $$2) {
-      super($$0, $$1, $$2);
-      this.c = new doi.a();
-      this.d = new doi.b(this);
+   public dij(hz $$0, dlf $$1) {
+      super(div.t, $$0, $$1);
+      this.f = ((cxf)$$1.b()).b();
    }
 
-   public dij(hx $$0, djp $$1) {
-      this(dhf.I, $$0, $$1);
+   public dij(hz $$0, dlf $$1, cnn $$2) {
+      this($$0, $$1);
+      this.f = $$2;
    }
 
-   public doi.d c() {
-      return new dij.a(this.aE_());
-   }
-
-   @Override
-   public void a(so $$0) {
-      super.a($$0);
-      this.h = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         doi.a.a.parse(new Dynamic(tc.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
+   @Nullable
+   public static tc a(coz $$0) {
+      tc $$1 = null;
+      sw $$2 = cms.a($$0);
+      if ($$2 != null && $$2.b("Patterns", 9)) {
+         $$1 = $$2.c("Patterns", 10).e();
       }
+
+      return $$1;
+   }
+
+   public void a(coz $$0, cnn $$1) {
+      this.f = $$1;
+      this.b($$0);
+   }
+
+   public void b(coz $$0) {
+      this.g = a($$0);
+      this.h = null;
+      this.e = $$0.B() ? $$0.z() : null;
    }
 
    @Override
-   protected void b(so $$0) {
-      super.b($$0);
-      $$0.a("last_vibration_frequency", this.h);
-      doi.a.a.encodeStart(tc.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
+   public vq ad() {
+      return (vq)(this.e != null ? this.e : vq.c("block.minecraft.banner"));
    }
 
+   @Nullable
    @Override
-   public doi.a gh() {
-      return this.c;
-   }
-
-   @Override
-   public doi.d gi() {
+   public vq af() {
       return this.e;
    }
 
-   public int f() {
+   public void a(vq $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   protected void b(sw $$0) {
+      super.b($$0);
+      if (this.g != null) {
+         $$0.a("Patterns", this.g);
+      }
+
+      if (this.e != null) {
+         $$0.a("CustomName", vq.a.a(this.e));
+      }
+   }
+
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      if ($$0.b("CustomName", 8)) {
+         this.e = vq.a.a($$0.l("CustomName"));
+      }
+
+      this.g = $$0.c("Patterns", 10);
+      this.h = null;
+   }
+
+   public aan a() {
+      return aan.a(this);
+   }
+
+   @Override
+   public sw aA_() {
+      return this.q();
+   }
+
+   public static int c(coz $$0) {
+      sw $$1 = cms.a($$0);
+      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
+   }
+
+   public List<Pair<ij<dik>, cnn>> c() {
+      if (this.h == null) {
+         this.h = a(this.f, this.g);
+      }
+
       return this.h;
    }
 
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public doi.b g() {
-      return this.d;
-   }
-
-   protected class a implements doi.d {
-      public static final int b = 8;
-      protected final hx c;
-      private final dod a;
-
-      public a(hx $$1) {
-         this.c = $$1;
-         this.a = new dnv($$1);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public dod b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(ane $$0, hx $$1, ih<dnz> $$2, @Nullable dnz.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(dnz.f) && !$$2.a(dnz.i) ? ddq.n(dij.this.r()) : false;
-      }
-
-      @Override
-      public void a(ane $$0, hx $$1, ih<dnz> $$2, @Nullable blw $$3, @Nullable blw $$4, float $$5) {
-         djp $$6 = dij.this.r();
-         if (ddq.n($$6)) {
-            dij.this.a(doi.a_($$2));
-            int $$7 = doi.a_($$5, this.a());
-            if ($$6.b() instanceof ddq $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dij.this.f());
+   public static List<Pair<ij<dik>, cnn>> a(cnn $$0, @Nullable tc $$1) {
+      List<Pair<ij<dik>, cnn>> $$2 = Lists.newArrayList();
+      $$2.add(Pair.of(kf.am.f(dil.a), $$0));
+      if ($$1 != null) {
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            sw $$4 = $$1.a($$3);
+            ij<dik> $$5 = dik.a($$4.l("Pattern"));
+            if ($$5 != null) {
+               int $$6 = $$4.h("Color");
+               $$2.add(Pair.of($$5, cnn.a($$6)));
             }
          }
       }
 
-      @Override
-      public void e() {
-         dij.this.e();
+      return $$2;
+   }
+
+   public static void d(coz $$0) {
+      sw $$1 = cms.a($$0);
+      if ($$1 != null && $$1.b("Patterns", 9)) {
+         tc $$2 = $$1.c("Patterns", 10);
+         if (!$$2.isEmpty()) {
+            $$2.c($$2.size() - 1);
+            if ($$2.isEmpty()) {
+               $$1.r("Patterns");
+            }
+         }
+
+         $$1.r("id");
+         cms.a($$0, div.t, $$1);
+      }
+   }
+
+   public coz f() {
+      coz $$0 = new coz(cxt.a(this.f));
+      if (this.g != null && !this.g.isEmpty()) {
+         sw $$1 = new sw();
+         $$1.a("Patterns", this.g.e());
+         cms.a($$0, this.v(), $$1);
       }
 
-      @Override
-      public boolean f() {
-         return true;
+      if (this.e != null) {
+         $$0.a(this.e);
       }
+
+      return $$0;
+   }
+
+   public cnn g() {
+      return this.f;
    }
 }

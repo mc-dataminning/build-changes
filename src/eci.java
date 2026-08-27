@@ -1,24 +1,29 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eci extends dzo {
-   public static final Codec<eci> d = a(eci::new);
+public class eci extends eck {
+   public static final Codec<eci> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, eci::new));
 
-   public eci(dzo.c $$0) {
-      super($$0);
+   protected eci(Either<aiy, efe> $$0, ij<efc> $$1, ecn.a $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Optional<dzo.b> a(dzo.a $$0) {
-      return a($$0, doy.a.a, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(eag $$0, dzo.a $$1) {
-      $$0.a(new ech($$1.f(), $$1.h().d(), $$1.h().e()));
+   protected efa a(dfa $$0, eaw $$1, boolean $$2) {
+      efa $$3 = super.a($$0, $$1, $$2);
+      $$3.b(eeg.b);
+      $$3.a(eeg.d);
+      return $$3;
    }
 
    @Override
-   public dzx<?> e() {
-      return dzx.o;
+   public ecm<?> a() {
+      return ecm.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

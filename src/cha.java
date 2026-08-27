@@ -1,176 +1,239 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class cha extends ege {
-   private static final String a = "raids";
-   private final Map<Integer, cgy> b = Maps.newHashMap();
-   private final ane c;
-   private int d;
-   private int e;
-
-   public static ege.a<cha> a(ane $$0) {
-      return new ege.a<>(() -> new cha($$0), $$1 -> a($$0, $$1), avx.l);
-   }
-
-   public cha(ane $$0) {
-      this.c = $$0;
-      this.d = 1;
-      this.c();
-   }
-
-   public cgy a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public void a() {
-      this.e++;
-      Iterator<cgy> $$0 = this.b.values().iterator();
-
-      while ($$0.hasNext()) {
-         cgy $$1 = $$0.next();
-         if (this.c.Z().b(ctt.B)) {
-            $$1.n();
-         }
-
-         if ($$1.d()) {
-            $$0.remove();
-            this.c();
-         } else {
-            $$1.o();
-         }
-      }
-
-      if (this.e % 200 == 0) {
-         this.c();
-      }
-
-      adj.a(this.c, this.b.values());
-   }
-
-   public static boolean a(cgz $$0, cgy $$1) {
-      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bx() && $$0.gs() && $$0.el() <= 2400 && $$0.dL().E_() == $$1.i().E_() : false;
-   }
-
+public class cha extends cgp {
+   private static final int bV = 5;
    @Nullable
-   public cgy a(anf $$0) {
-      if ($$0.P_()) {
-         return null;
-      } else if (this.c.Z().b(ctt.B)) {
-         return null;
-      } else {
-         dmy $$1 = $$0.dL().E_();
-         if (!$$1.c()) {
-            return null;
-         } else {
-            hx $$2 = $$0.dl();
-            List<bxr> $$3 = this.c.y().c($$0x -> $$0x.a(ass.b), $$2, 64, bxq.b.b).toList();
-            int $$4 = 0;
-            emc $$5 = emc.b;
+   private hz bW;
+   private int bX;
 
-            for (bxr $$6 : $$3) {
-               hx $$7 = $$6.f();
-               $$5 = $$5.b((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
-               $$4++;
-            }
-
-            hx $$8;
-            if ($$4 > 0) {
-               $$5 = $$5.a(1.0 / (double)$$4);
-               $$8 = hx.a($$5);
-            } else {
-               $$8 = $$2;
-            }
-
-            cgy $$10 = this.a($$0.z(), $$8);
-            boolean $$11 = false;
-            if (!$$10.j()) {
-               if (!this.b.containsKey($$10.u())) {
-                  this.b.put($$10.u(), $$10);
-               }
-
-               $$11 = true;
-            } else if ($$10.m() < $$10.l()) {
-               $$11 = true;
-            } else {
-               $$0.e(bll.E);
-               $$0.c.b(new aad($$0, (byte)43));
-            }
-
-            if ($$11) {
-               $$10.a((cfq)$$0);
-               $$0.c.b(new aad($$0, (byte)43));
-               if (!$$10.c()) {
-                  $$0.a(asd.aA);
-                  am.J.a($$0);
-               }
-            }
-
-            this.c();
-            return $$10;
-         }
-      }
-   }
-
-   private cgy a(ane $$0, hx $$1) {
-      cgy $$2 = $$0.d($$1);
-      return $$2 != null ? $$2 : new cgy(this.b(), $$0, $$1);
-   }
-
-   public static cha a(ane $$0, so $$1) {
-      cha $$2 = new cha($$0);
-      $$2.d = $$1.h("NextAvailableID");
-      $$2.e = $$1.h("Tick");
-      su $$3 = $$1.c("Raids", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         so $$5 = $$3.a($$4);
-         cgy $$6 = new cgy($$0, $$5);
-         $$2.b.put($$6.u(), $$6);
-      }
-
-      return $$2;
+   public cha(bnu<? extends cha> $$0, cvn $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public so a(so $$0) {
-      $$0.a("NextAvailableID", this.d);
-      $$0.a("Tick", this.e);
-      su $$1 = new su();
-
-      for (cgy $$2 : this.b.values()) {
-         so $$3 = new so();
-         $$2.a($$3);
-         $$1.add($$3);
-      }
-
-      $$0.a("Raids", $$1);
-      return $$0;
-   }
-
-   public static String a(ih<dmy> $$0) {
-      return $$0.a(dmw.c) ? "raids_end" : "raids";
-   }
-
-   private int b() {
-      return ++this.d;
+   protected void B() {
+      this.bO.a(0, new buv(this));
+      this.bO.a(0, new bwm<>(this, cqx.a(new coz(cpc.sj), cqy.i), atk.AC, $$0 -> this.dM().Q() && !$$0.ce()));
+      this.bO.a(0, new bwm<>(this, new coz(cpc.qD), atk.AH, $$0 -> this.dM().P() && $$0.ce()));
+      this.bO.a(1, new bwk(this));
+      this.bO.a(1, new bui<>(this, cfg.class, 8.0F, 0.5, 0.5));
+      this.bO.a(1, new bui<>(this, ceg.class, 12.0F, 0.5, 0.5));
+      this.bO.a(1, new bui<>(this, cfc.class, 8.0F, 0.5, 0.5));
+      this.bO.a(1, new bui<>(this, cfb.class, 8.0F, 0.5, 0.5));
+      this.bO.a(1, new bui<>(this, ceq.class, 15.0F, 0.5, 0.5));
+      this.bO.a(1, new bui<>(this, cel.class, 12.0F, 0.5, 0.5));
+      this.bO.a(1, new bui<>(this, cff.class, 10.0F, 0.5, 0.5));
+      this.bO.a(1, new bvu(this, 0.5));
+      this.bO.a(1, new bvk(this));
+      this.bO.a(2, new cha.a(this, 2.0, 0.35));
+      this.bO.a(4, new bvp(this, 0.35));
+      this.bO.a(8, new bwo(this, 0.35));
+      this.bO.a(9, new bve(this, chh.class, 3.0F, 1.0F));
+      this.bO.a(10, new bvj(this, boi.class, 8.0F));
    }
 
    @Nullable
-   public cgy a(hx $$0, int $$1) {
-      cgy $$2 = null;
-      double $$3 = (double)$$1;
+   @Override
+   public bnj a(aov $$0, bnj $$1) {
+      return null;
+   }
 
-      for (cgy $$4 : this.b.values()) {
-         double $$5 = $$4.t().j($$0);
-         if ($$4.v() && $$5 < $$3) {
-            $$2 = $$4;
-            $$3 = $$5;
+   @Override
+   public boolean gj() {
+      return false;
+   }
+
+   @Override
+   public blu b(chh $$0, blt $$1) {
+      coz $$2 = $$0.b($$1);
+      if (!$$2.a(cpc.tH) && this.bx() && !this.gh() && !this.o_()) {
+         if ($$1 == blt.a) {
+            $$0.a(atu.S);
+         }
+
+         if (this.gi().isEmpty()) {
+            return blu.a(this.dM().B);
+         } else {
+            if (!this.dM().B) {
+               this.f($$0);
+               this.a($$0, this.Q_(), 1);
+            }
+
+            return blu.a(this.dM().B);
+         }
+      } else {
+         return super.b($$0, $$1);
+      }
+   }
+
+   @Override
+   protected void gn() {
+      if (this.dM().I().b(cju.d)) {
+         this.gq();
+      } else {
+         cgy.g[] $$0 = (cgy.g[])cgy.b.get(1);
+         cgy.g[] $$1 = (cgy.g[])cgy.b.get(2);
+         if ($$0 != null && $$1 != null) {
+            cum $$2 = this.gi();
+            this.a($$2, $$0, 5);
+            int $$3 = this.af.a($$1.length);
+            cgy.g $$4 = $$1[$$3];
+            cul $$5 = $$4.a(this, this.af);
+            if ($$5 != null) {
+               $$2.add($$5);
+            }
+         }
+      }
+   }
+
+   private void gq() {
+      cum $$0 = this.gi();
+
+      for (Pair<cgy.g[], Integer> $$1 : cgy.d) {
+         cgy.g[] $$2 = (cgy.g[])$$1.getLeft();
+         this.a($$0, $$2, (Integer)$$1.getRight());
+      }
+   }
+
+   @Override
+   public void b(sw $$0) {
+      super.b($$0);
+      $$0.a("DespawnDelay", this.bX);
+      if (this.bW != null) {
+         $$0.a("WanderTarget", tl.a(this.bW));
+      }
+   }
+
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      if ($$0.b("DespawnDelay", 99)) {
+         this.bX = $$0.h("DespawnDelay");
+      }
+
+      if ($$0.e("WanderTarget")) {
+         this.bW = tl.b($$0.p("WanderTarget"));
+      }
+
+      this.c_(Math.max(0, this.h()));
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(cul $$0) {
+      if ($$0.t()) {
+         int $$1 = 3 + this.af.a(4);
+         this.dM().b(new bnw(this.dM(), this.dr(), this.dt() + 0.5, this.dx(), $$1));
+      }
+   }
+
+   @Override
+   protected atj y() {
+      return this.gh() ? atk.AI : atk.AA;
+   }
+
+   @Override
+   protected atj d(bmn $$0) {
+      return atk.AF;
+   }
+
+   @Override
+   protected atj n_() {
+      return atk.AB;
+   }
+
+   @Override
+   protected atj c(coz $$0) {
+      return $$0.a(cpc.qD) ? atk.AD : atk.AE;
+   }
+
+   @Override
+   protected atj w(boolean $$0) {
+      return $$0 ? atk.AJ : atk.AG;
+   }
+
+   @Override
+   public atj gk() {
+      return atk.AJ;
+   }
+
+   public void v(int $$0) {
+      this.bX = $$0;
+   }
+
+   public int gp() {
+      return this.bX;
+   }
+
+   @Override
+   public void d_() {
+      super.d_();
+      if (!this.dM().B) {
+         this.gr();
+      }
+   }
+
+   private void gr() {
+      if (this.bX > 0 && !this.gh() && --this.bX == 0) {
+         this.am();
+      }
+   }
+
+   public void i(@Nullable hz $$0) {
+      this.bW = $$0;
+   }
+
+   @Nullable
+   hz gt() {
+      return this.bW;
+   }
+
+   class a extends bvb {
+      final cha a;
+      final double b;
+      final double c;
+
+      a(cha $$0, double $$1, double $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.a(EnumSet.of(bvb.a.a));
+      }
+
+      @Override
+      public void d() {
+         this.a.i(null);
+         cha.this.bN.n();
+      }
+
+      @Override
+      public boolean a() {
+         hz $$0 = this.a.gt();
+         return $$0 != null && this.a($$0, this.b);
+      }
+
+      @Override
+      public void e() {
+         hz $$0 = this.a.gt();
+         if ($$0 != null && cha.this.bN.l()) {
+            if (this.a($$0, 10.0)) {
+               ens $$1 = new ens((double)$$0.u() - this.a.dr(), (double)$$0.v() - this.a.dt(), (double)$$0.w() - this.a.dx()).d();
+               ens $$2 = $$1.a(10.0).b(this.a.dr(), this.a.dt(), this.a.dx());
+               cha.this.bN.a($$2.c, $$2.d, $$2.e, this.c);
+            } else {
+               cha.this.bN.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), this.c);
+            }
          }
       }
 
-      return $$2;
+      private boolean a(hz $$0, double $$1) {
+         return !$$0.a(this.a.dk(), $$1);
+      }
    }
 }

@@ -1,216 +1,243 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import java.util.Locale;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import io.netty.buffer.ByteBuf;
+import java.lang.reflect.Type;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class aiy {
-   static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.c("commands.debug.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vg.c("commands.debug.alreadyRunning"));
-   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vg.c("commands.debug.function.noRecursion"));
-   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vg.c("commands.debug.function.noReturnRun"));
+public class aiy implements Comparable<aiy> {
+   public static final Codec<aiy> a = Codec.STRING.comapFlatMap(aiy::b, aiy::toString).stable();
+   public static final xo<ByteBuf, aiy> b = xm.h.a(aiy::new, aiy::toString);
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(vq.c("argument.id.invalid"));
+   public static final char c = ':';
+   public static final String d = "minecraft";
+   public static final String e = "realms";
+   private final String g;
+   private final String h;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("debug").requires($$0x -> $$0x.c(3)))
-                  .then(dt.a("start").executes($$0x -> a((ds)$$0x.getSource()))))
-               .then(dt.a("stop").executes($$0x -> b((ds)$$0x.getSource()))))
-            .then(((LiteralArgumentBuilder)dt.a("function").requires($$0x -> $$0x.c(3))).then(dt.a("name", fx.a()).suggests(ajm.b).executes(new aiy.a())))
-      );
+   protected aiy(String $$0, String $$1, @Nullable aiy.a $$2) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   private static int a(ds $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.be()) {
-         throw c.create();
+   public aiy(String $$0, String $$1) {
+      this(c($$0, $$1), d($$0, $$1), null);
+   }
+
+   private aiy(String[] $$0) {
+      this($$0[0], $$0[1]);
+   }
+
+   public aiy(String $$0) {
+      this(b($$0, ':'));
+   }
+
+   public static aiy a(String $$0, char $$1) {
+      return new aiy(b($$0, $$1));
+   }
+
+   @Nullable
+   public static aiy a(String $$0) {
+      try {
+         return new aiy($$0);
+      } catch (z var2) {
+         return null;
+      }
+   }
+
+   @Nullable
+   public static aiy a(String $$0, String $$1) {
+      try {
+         return new aiy($$0, $$1);
+      } catch (z var3) {
+         return null;
+      }
+   }
+
+   protected static String[] b(String $$0, char $$1) {
+      String[] $$2 = new String[]{"minecraft", $$0};
+      int $$3 = $$0.indexOf($$1);
+      if ($$3 >= 0) {
+         $$2[1] = $$0.substring($$3 + 1);
+         if ($$3 >= 1) {
+            $$2[0] = $$0.substring(0, $$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   public static DataResult<aiy> b(String $$0) {
+      try {
+         return DataResult.success(new aiy($$0));
+      } catch (z var2) {
+         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+      }
+   }
+
+   public String a() {
+      return this.h;
+   }
+
+   public String b() {
+      return this.g;
+   }
+
+   public aiy c(String $$0) {
+      return new aiy(this.g, d(this.g, $$0), null);
+   }
+
+   public aiy a(UnaryOperator<String> $$0) {
+      return this.c($$0.apply(this.h));
+   }
+
+   public aiy d(String $$0) {
+      return this.c($$0 + this.h);
+   }
+
+   public aiy e(String $$0) {
+      return this.c(this.h + $$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.g + ":" + this.h;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         $$1.bf();
-         $$0.a(() -> vg.c("commands.debug.started"), true);
-         return 0;
+         return !($$0 instanceof aiy $$1) ? false : this.g.equals($$1.g) && this.h.equals($$1.h);
       }
    }
 
-   private static int b(ds $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.be()) {
-         throw b.create();
+   @Override
+   public int hashCode() {
+      return 31 * this.g.hashCode() + this.h.hashCode();
+   }
+
+   public int a(aiy $$0) {
+      int $$1 = this.h.compareTo($$0.h);
+      if ($$1 == 0) {
+         $$1 = this.g.compareTo($$0.g);
+      }
+
+      return $$1;
+   }
+
+   public String c() {
+      return this.toString().replace('/', '_').replace(':', '_');
+   }
+
+   public String d() {
+      return this.g + "." + this.h;
+   }
+
+   public String e() {
+      return this.g.equals("minecraft") ? this.h : this.d();
+   }
+
+   public String f(String $$0) {
+      return $$0 + "." + this.d();
+   }
+
+   public String b(String $$0, String $$1) {
+      return $$0 + "." + this.d() + "." + $$1;
+   }
+
+   public static aiy a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
+      }
+
+      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
+
+      try {
+         return new aiy($$2);
+      } catch (z var4) {
+         $$0.setCursor($$1);
+         throw f.createWithContext($$0);
+      }
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   }
+
+   public static boolean g(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!b($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean h(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!c($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static String c(String $$0, String $$1) {
+      if (!h($$0)) {
+         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
       } else {
-         bgs $$2 = $$1.bg();
-         double $$3 = (double)$$2.g() / (double)avq.a;
-         double $$4 = (double)$$2.f() / $$3;
-         $$0.a(() -> vg.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
-         return (int)$$4;
+         return $$0;
       }
    }
 
-   static class a extends gl.b<ds> implements gl.a<ds> {
-      public void a(ds $$0, ContextChain<ds> $$1, gj $$2, gp<ds> $$3) throws CommandSyntaxException {
-         if ($$2.c()) {
-            throw aiy.e.create();
-         } else if ($$3.a() != null) {
-            throw aiy.d.create();
-         } else {
-            CommandContext<ds> $$4 = $$1.getTopContext();
-            Collection<hb<ds>> $$5 = fx.a($$4, "name");
-            MinecraftServer $$6 = $$0.l();
-            String $$7 = "debug-trace-" + ac.e() + ".txt";
-            CommandDispatcher<ds> $$8 = $$0.l().aC().a();
-            int $$9 = 0;
+   public static boolean b(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   }
 
-            try {
-               Path $$10 = $$6.c("debug").toPath();
-               Files.createDirectories($$10);
-               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
-               aiy.b $$12 = new aiy.b($$11);
-               $$3.a($$12);
+   private static boolean c(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   }
 
-               for (final hb<ds> $$13 : $$5) {
-                  try {
-                     ds $$14 = $$0.a($$12).b(2);
-                     hd<ds> $$15 = $$13.a(null, $$8);
-                     $$3.a((new gv<ds>($$15, dp.a, false) {
-                        public void a(ds $$0, go<ds> $$1, gq $$2) {
-                           $$11.println($$13.a());
-                           super.a($$0, $$1, $$2);
-                        }
-                     }).bind($$14));
-                     $$9 += $$15.b().size();
-                  } catch (dv var18) {
-                     $$0.b(var18.a());
-                  }
-               }
-            } catch (IOException | UncheckedIOException var19) {
-               aiy.a.warn("Tracing failed", var19);
-               $$0.b(vg.c("commands.debug.function.traceFailed"));
-            }
+   public static boolean i(String $$0) {
+      String[] $$1 = b($$0, ':');
+      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
+   }
 
-            int $$18 = $$9;
-            $$3.a(($$4x, $$5x) -> {
-               if ($$5.size() == 1) {
-                  $$0.a(() -> vg.a("commands.debug.function.success.single", $$18, vg.a($$5.iterator().next().a()), $$7), true);
-               } else {
-                  $$0.a(() -> vg.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
-               }
-            });
-         }
+   private static String d(String $$0, String $$1) {
+      if (!g($$1)) {
+         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$1;
       }
    }
 
-   static class b implements dr, gr {
-      public static final int b = 1;
-      private final PrintWriter c;
-      private int d;
-      private boolean e;
+   protected interface a {
+   }
 
-      b(PrintWriter $$0) {
-         this.c = $$0;
+   public static class b implements JsonDeserializer<aiy>, JsonSerializer<aiy> {
+      public aiy a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new aiy(avx.a($$0, "location"));
       }
 
-      private void a(int $$0) {
-         this.b($$0);
-         this.d = $$0;
-      }
-
-      private void b(int $$0) {
-         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
-            this.c.write("    ");
-         }
-      }
-
-      private void e() {
-         if (this.e) {
-            this.c.println();
-            this.e = false;
-         }
-      }
-
-      @Override
-      public void a(int $$0, String $$1) {
-         this.e();
-         this.a($$0);
-         this.c.print("[C] ");
-         this.c.print($$1);
-         this.e = true;
-      }
-
-      @Override
-      public void a(int $$0, String $$1, int $$2) {
-         if (this.e) {
-            this.c.print(" -> ");
-            this.c.println($$2);
-            this.e = false;
-         } else {
-            this.a($$0);
-            this.c.print("[R = ");
-            this.c.print($$2);
-            this.c.print("] ");
-            this.c.println($$1);
-         }
-      }
-
-      @Override
-      public void a(int $$0, ahh $$1, int $$2) {
-         this.e();
-         this.a($$0);
-         this.c.print("[F] ");
-         this.c.print($$1);
-         this.c.print(" size=");
-         this.c.println($$2);
-      }
-
-      @Override
-      public void a(String $$0) {
-         this.e();
-         this.a(this.d + 1);
-         this.c.print("[E] ");
-         this.c.print($$0);
-      }
-
-      @Override
-      public void a(vg $$0) {
-         this.e();
-         this.b(this.d + 1);
-         this.c.print("[M] ");
-         this.c.println($$0.getString());
-      }
-
-      @Override
-      public boolean l_() {
-         return true;
-      }
-
-      @Override
-      public boolean x_() {
-         return true;
-      }
-
-      @Override
-      public boolean W_() {
-         return false;
-      }
-
-      @Override
-      public boolean m_() {
-         return true;
-      }
-
-      @Override
-      public void close() {
-         IOUtils.closeQuietly(this.c);
+      public JsonElement a(aiy $$0, Type $$1, JsonSerializationContext $$2) {
+         return new JsonPrimitive($$0.toString());
       }
    }
 }

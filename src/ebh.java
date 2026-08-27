@@ -1,25 +1,54 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class ebh extends dzo {
-   public static final Codec<ebh> d = a(ebh::new);
+public class ebh extends ehu {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   public ebh(dzo.c $$0) {
-      super($$0);
+   public static ehu.a<ebh> a() {
+      return new ehu.a<>(ebh::new, ebh::b, axo.o);
+   }
+
+   private ebh(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public ebh() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static ebh b(sw $$0) {
+      return new ebh(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
    }
 
    @Override
-   public Optional<dzo.b> a(dzo.a $$0) {
-      return a($$0, doy.a.c, $$1 -> a($$1, $$0));
+   public sw a(sw $$0) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
    }
 
-   private static void a(eag $$0, dzo.a $$1) {
-      hx $$2 = new hx($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new ebg.a($$2));
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
    }
 
-   @Override
-   public dzx<?> e() {
-      return dzx.a;
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

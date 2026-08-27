@@ -1,18 +1,19 @@
-public record yd(ahg<dnz> b, emc c) implements yb {
-   public static final ahh a = new ahh("debug/game_event");
+public interface yd extends aaa, ul {
+   void a(yg var1);
 
-   public yd(uj $$0) {
-      this($$0.a(ke.B), $$0.k());
-   }
+   void a(yh var1);
 
-   @Override
-   public void a(uj $$0) {
-      $$0.b(this.b);
-      $$0.a(this.c);
-   }
+   void a(ye var1);
 
-   @Override
-   public ahh a() {
-      return a;
-   }
+   void a(yf var1);
+
+   void a(yj var1);
+
+   void a(yi var1);
+
+   void a(ym var1);
+
+   void a(yk var1);
+
+   void a(yl var1);
 }

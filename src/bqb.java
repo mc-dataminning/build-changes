@@ -1,26 +1,18 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bqb {
-   private static final float b = 0.95F;
-   public static final int a = 3;
-
-   public static bog<bmo> a() {
-      return brs.a((Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$0 -> $$0.group($$0.b(bvq.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.z.i() <= 0.95F) {
-                  return false;
-               } else {
-                  hx $$5 = $$0.<ig>b($$1).b();
-                  if ($$5.a($$3.dl(), 3.0)) {
-                     djp $$6 = $$2.a_($$5);
-                     if ($$6.a(cxa.od)) {
-                        cwu $$7 = (cwu)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
+   public static <E extends bog, T> bpx<E> a(Predicate<E> $$0, bxh<? extends T> $$1, bxh<T> $$2, blf $$3) {
+      return btj.a(
+         (Function<btj.b<E>, ? extends App<btj.c<E>, btm<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
                   }
-
-                  return true;
-               }
-            })));
+               }))
+      );
    }
 }

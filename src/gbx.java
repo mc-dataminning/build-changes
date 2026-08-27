@@ -1,20 +1,27 @@
-public class gbx extends gag<ceu, fmv<ceu>> {
-   private static final ahh a = new ahh("textures/entity/warden/warden.png");
-   private static final ahh i = new ahh("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final ahh j = new ahh("textures/entity/warden/warden_heart.png");
-   private static final ahh k = new ahh("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final ahh l = new ahh("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gbx extends gbz<cem, fmr<cem>> {
+   private static final aiy a = new aiy("textures/entity/slime/magmacube.png");
 
-   public gbx(fza.a $$0) {
-      super($$0, new fmv<>($$0.a(fni.bN)), 0.9F);
-      this.a(new gdx<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fmv::e));
-      this.a(new gdx<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, aup.b($$2 * 0.045F) * 0.25F), fmv::f));
-      this.a(new gdx<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, aup.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fmv::f));
-      this.a(new gdx<>(this, a, ($$0x, $$1, $$2) -> $$0x.D($$1), fmv::c));
-      this.a(new gdx<>(this, j, ($$0x, $$1, $$2) -> $$0x.E($$1), fmv::d));
+   public gbx(gat.a $$0) {
+      super($$0, new fmr<>($$0.a(fpb.aw)), 0.25F);
    }
 
-   public ahh a(ceu $$0) {
+   protected int a(cem $$0, hz $$1) {
+      return 15;
+   }
+
+   public aiy a(cem $$0) {
       return a;
+   }
+
+   public void a(cem $$0, float $$1, float $$2, esa $$3, fvm $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.gh();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(cem $$0, esa $$1, float $$2) {
+      int $$3 = $$0.gh();
+      float $$4 = awh.i($$2, $$0.bS, $$0.e) / ((float)$$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
    }
 }

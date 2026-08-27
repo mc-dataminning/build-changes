@@ -1,48 +1,113 @@
-import com.google.common.collect.Iterables;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Map;
+import net.minecraft.server.MinecraftServer;
 
-public class ajq {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.help.failed"));
+public class ajq extends bmf {
+   private long g = 0L;
+   private long h = 0L;
+   private long i = 0L;
+   private long j = 0L;
+   private boolean k = false;
+   private final MinecraftServer l;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("help").executes($$1 -> {
-               Map<CommandNode<ds>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ds)$$1.getSource());
+   public ajq(MinecraftServer $$0) {
+      this.l = $$0;
+   }
 
-               for (String $$3 : $$2.values()) {
-                  ((ds)$$1.getSource()).a(() -> vg.b("/" + $$3), false);
-               }
+   public boolean a() {
+      return this.j > 0L;
+   }
 
-               return $$2.size();
-            }))
-            .then(
-               dt.a("command", StringArgumentType.greedyString())
-                  .executes(
-                     $$1 -> {
-                        ParseResults<ds> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ds)$$1.getSource());
-                        if ($$2.getContext().getNodes().isEmpty()) {
-                           throw a.create();
-                        } else {
-                           Map<CommandNode<ds>, String> $$3 = $$0.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ds)$$1.getSource()
-                           );
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.n();
+   }
 
-                           for (String $$4 : $$3.values()) {
-                              ((ds)$$1.getSource()).a(() -> vg.b("/" + $$2.getReader().getString() + " " + $$4), false);
-                           }
+   private void n() {
+      this.l.ae().a(aeh.a(this));
+   }
 
-                           return $$3.size();
-                        }
-                     }
-                  )
-            )
-      );
+   private void o() {
+      this.l.ae().a(aei.a(this));
+   }
+
+   public boolean a(int $$0) {
+      if (!this.l()) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.o();
+         return true;
+      }
+   }
+
+   public boolean b() {
+      if (this.d > 0) {
+         this.d = 0;
+         this.o();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean c() {
+      if (this.g > 0L) {
+         this.p();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(int $$0) {
+      boolean $$1 = this.g > 0L;
+      this.i = 0L;
+      this.j = (long)$$0;
+      this.g = (long)$$0;
+      this.k = this.l();
+      this.a(false);
+      return $$1;
+   }
+
+   private void p() {
+      long $$0 = this.j - this.g;
+      double $$1 = Math.max(1.0, (double)this.i) / (double)axh.b;
+      int $$2 = (int)((double)(axh.c * $$0) / $$1);
+      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
+      this.j = 0L;
+      this.i = 0L;
+      this.l.aF().a(() -> vq.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.g = 0L;
+      this.a(this.k);
+      this.l.B();
+   }
+
+   public boolean d() {
+      if (!this.e) {
+         return false;
+      } else if (this.g > 0L) {
+         this.h = System.nanoTime();
+         this.g--;
+         return true;
+      } else {
+         this.p();
+         return false;
+      }
+   }
+
+   public void e() {
+      this.i = this.i + (System.nanoTime() - this.h);
+   }
+
+   @Override
+   public void a(float $$0) {
+      super.a($$0);
+      this.l.B();
+      this.n();
+   }
+
+   public void a(aow $$0) {
+      $$0.d.b(aeh.a(this));
+      $$0.d.b(aei.a(this));
    }
 }

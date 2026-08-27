@@ -1,16 +1,18 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class bdj extends Schema {
-   public bdj(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bdj extends DataFix {
+   public bdj(Schema $$0) {
+      super($$0, false);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("Minecart");
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "RandomSequenceSettingsFix",
+         this.getInputSchema().getType(bdn.m),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", $$0xx -> $$0xx.emptyMap().set("sequences", $$0xx)))
+      );
    }
 }

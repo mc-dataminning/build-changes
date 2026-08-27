@@ -1,21 +1,34 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+public class dqq {
+   public final awo a;
+   private double b;
+   private boolean c;
 
-public abstract class dqq implements dqf {
-   protected final jb f;
-
-   protected static <P extends dqq> P1<Mu<P>, jb> a(Instance<P> $$0) {
-      return $$0.group(jb.v(16).optionalFieldOf("offset", jb.g).forGetter($$0x -> $$0x.f));
+   public dqq(awo $$0) {
+      this.a = $$0;
    }
 
-   protected dqq(jb $$0) {
-      this.f = $$0;
+   public void a() {
+      this.c = false;
    }
 
-   public final boolean a(cus $$0, hx $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
-   }
+   public double b() {
+      if (this.c) {
+         this.c = false;
+         return this.b;
+      } else {
+         double $$0;
+         double $$1;
+         double $$2;
+         do {
+            $$0 = 2.0 * this.a.j() - 1.0;
+            $$1 = 2.0 * this.a.j() - 1.0;
+            $$2 = awh.k($$0) + awh.k($$1);
+         } while ($$2 >= 1.0 || $$2 == 0.0);
 
-   protected abstract boolean a(djp var1);
+         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
+         this.b = $$1 * $$3;
+         this.c = true;
+         return $$0 * $$3;
+      }
+   }
 }

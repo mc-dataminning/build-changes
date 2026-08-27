@@ -1,83 +1,93 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class dri extends dsc<dun> {
-   public dri(Codec<dun> $$0) {
-      super($$0);
+public interface dri {
+   Codec<dri> a = avp.a(dri.b.d, avp.a(dri.a.d, dri.c.d)).xmap(dri::a, dri::a);
+   dri b = b(0);
+   dri c = c(0);
+
+   static dri a(int $$0) {
+      return new dri.b($$0);
    }
 
-   @Override
-   public boolean a(dse<dun> $$0) {
-      hx $$1 = $$0.e();
-      cus $$2 = $$0.b();
-      auw $$3 = $$0.d();
-      if ($$2.u($$1) && !$$2.u($$1.c())) {
-         hx.a $$4 = $$1.j();
-         hx.a $$5 = $$1.j();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
+   static dri b(int $$0) {
+      return new dri.a($$0);
+   }
 
-         while ($$2.u($$4)) {
-            if ($$2.s($$4)) {
-               return true;
-            }
+   static dri c(int $$0) {
+      return new dri.c($$0);
+   }
 
-            $$2.a($$4, cxa.dY.o(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ic.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ic.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ic.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ic.f));
-            $$4.c(ic.a);
-         }
+   static dri a() {
+      return b;
+   }
 
-         $$4.c(ic.b);
-         this.a($$2, $$3, $$5.a($$4, ic.c));
-         this.a($$2, $$3, $$5.a($$4, ic.d));
-         this.a($$2, $$3, $$5.a($$4, ic.e));
-         this.a($$2, $$3, $$5.a($$4, ic.f));
-         $$4.c(ic.a);
-         hx.a $$10 = new hx.a();
+   static dri b() {
+      return c;
+   }
 
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = aup.a($$11) * aup.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
+   private static dri a(Either<dri.b, Either<dri.a, dri.c>> $$0) {
+      return (dri)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
+   }
 
-                  while ($$2.u($$5.a($$10, ic.a))) {
-                     $$10.c(ic.a);
-                     if (--$$14 <= 0) {
-                        break;
-                     }
-                  }
+   private static Either<dri.b, Either<dri.a, dri.c>> a(dri $$0) {
+      return $$0 instanceof dri.b ? Either.left((dri.b)$$0) : Either.right($$0 instanceof dri.a ? Either.left((dri.a)$$0) : Either.right((dri.c)$$0));
+   }
 
-                  if (!$$2.u($$5.a($$10, ic.a))) {
-                     $$2.a($$10, cxa.dY.o(), 2);
-                  }
-               }
-            }
-         }
+   int a(drl var1);
 
-         return true;
-      } else {
-         return false;
+   public static record a(int e) implements dri {
+      public static final Codec<dri.a> d = Codec.intRange(doo.e, doo.d).fieldOf("above_bottom").xmap(dri.a::new, dri.a::c).codec();
+
+      @Override
+      public int a(drl $$0) {
+         return $$0.a() + this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 
-   private void a(cty $$0, auw $$1, hx $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, cxa.dY.o(), 2);
+   public static record b(int e) implements dri {
+      public static final Codec<dri.b> d = Codec.intRange(doo.e, doo.d).fieldOf("absolute").xmap(dri.b::new, dri.b::c).codec();
+
+      @Override
+      public int a(drl $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 
-   private boolean b(cty $$0, auw $$1, hx $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, cxa.dY.o(), 2);
-         return true;
-      } else {
-         return false;
+   public static record c(int e) implements dri {
+      public static final Codec<dri.c> d = Codec.intRange(doo.e, doo.d).fieldOf("below_top").xmap(dri.c::new, dri.c::c).codec();
+
+      @Override
+      public int a(drl $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 }

@@ -1,25 +1,77 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.function.BiConsumer;
 
-public interface dyw<P extends dyv> {
-   dyw<dyh> a = a("block_predicate_filter", dyh.a);
-   dyw<dyy> b = a("rarity_filter", dyy.a);
-   dyw<dza> c = a("surface_relative_threshold_filter", dza.a);
-   dyw<dzb> d = a("surface_water_depth_filter", dzb.a);
-   dyw<dyg> e = a("biome", dyg.a);
-   dyw<dyl> f = a("count", dyl.a);
-   dyw<dyq> g = a("noise_based_count", dyq.a);
-   dyw<dyr> h = a("noise_threshold_count", dyr.a);
-   dyw<dyk> i = a("count_on_every_layer", dyk.a);
-   dyw<dym> j = a("environment_scan", dym.a);
-   dyw<dyo> k = a("heightmap", dyo.a);
-   dyw<dyn> l = a("height_range", dyn.a);
-   dyw<dyp> m = a("in_square", dyp.a);
-   dyw<dyx> n = a("random_offset", dyx.a);
-   dyw<dyi> o = a("carving_mask", dyi.a);
+public class dyw extends dza {
+   public static final Codec<dyw> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dyw::new));
 
-   Codec<P> codec();
+   public dyw(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   private static <P extends dyv> dyw<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.U, $$0, () -> $$1);
+   @Override
+   protected dzb<?> a() {
+      return dzb.b;
+   }
+
+   @Override
+   public List<dxi.a> a(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, int $$3, hz $$4, dws $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      List<dxi.a> $$6 = Lists.newArrayList();
+      ie $$7 = ie.c.a.a($$2);
+      int $$8 = $$3 - $$2.a(4) - 1;
+      int $$9 = 3 - $$2.a(3);
+      hz.a $$10 = new hz.a();
+      int $$11 = $$4.u();
+      int $$12 = $$4.w();
+      OptionalInt $$13 = OptionalInt.empty();
+
+      for (int $$14 = 0; $$14 < $$3; $$14++) {
+         int $$15 = $$4.v() + $$14;
+         if ($$14 >= $$8 && $$9 > 0) {
+            $$11 += $$7.j();
+            $$12 += $$7.l();
+            $$9--;
+         }
+
+         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
+            $$13 = OptionalInt.of($$15 + 1);
+         }
+      }
+
+      if ($$13.isPresent()) {
+         $$6.add(new dxi.a(new hz($$11, $$13.getAsInt(), $$12), 1, false));
+      }
+
+      $$11 = $$4.u();
+      $$12 = $$4.w();
+      ie $$16 = ie.c.a.a($$2);
+      if ($$16 != $$7) {
+         int $$17 = $$8 - $$2.a(2) - 1;
+         int $$18 = 1 + $$2.a(3);
+         $$13 = OptionalInt.empty();
+
+         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
+            if ($$19 >= 1) {
+               int $$20 = $$4.v() + $$19;
+               $$11 += $$16.j();
+               $$12 += $$16.l();
+               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
+                  $$13 = OptionalInt.of($$20 + 1);
+               }
+            }
+
+            $$19++;
+         }
+
+         if ($$13.isPresent()) {
+            $$6.add(new dxi.a(new hz($$11, $$13.getAsInt(), $$12), 0, false));
+         }
+      }
+
+      return $$6;
    }
 }

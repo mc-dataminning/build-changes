@@ -1,111 +1,101 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class dlu<T> implements dmc<T> {
-   private final im<T> a;
-   private final atm<T> b;
-   private final dmd<T> c;
-   private final int d;
+public record dlu(String r, boolean s, boolean t, boolean u, dlu.a v, dga w, atj x, atj y, atj z, atj A, atj B, atj C, atj D, atj E) {
+   private static final Map<String, dlu> F = new Object2ObjectArrayMap();
+   public static final Codec<dlu> a = avp.a(dlu::b, F::get);
+   public static final dlu b = a(new dlu("iron", false, false, false, dlu.a.a, dga.g, atk.mN, atk.mO, atk.mV, atk.mW, atk.og, atk.oh, atk.yw, atk.yx));
+   public static final dlu c = a(new dlu("copper", true, true, false, dlu.a.a, dga.aj, atk.fz, atk.fA, atk.fG, atk.fH, atk.og, atk.oh, atk.yw, atk.yx));
+   public static final dlu d = a(new dlu("gold", false, true, false, dlu.a.a, dga.g, atk.mN, atk.mO, atk.mV, atk.mW, atk.og, atk.oh, atk.yw, atk.yx));
+   public static final dlu e = a(new dlu("stone", true, true, false, dlu.a.b, dga.f, atk.mN, atk.mO, atk.mV, atk.mW, atk.yB, atk.yC, atk.yw, atk.yx));
+   public static final dlu f = a(
+      new dlu("polished_blackstone", true, true, false, dlu.a.b, dga.f, atk.mN, atk.mO, atk.mV, atk.mW, atk.yB, atk.yC, atk.yw, atk.yx)
+   );
+   public static final dlu g = a(new dlu("oak"));
+   public static final dlu h = a(new dlu("spruce"));
+   public static final dlu i = a(new dlu("birch"));
+   public static final dlu j = a(new dlu("acacia"));
+   public static final dlu k = a(new dlu("cherry", true, true, true, dlu.a.a, dga.aU, atk.ev, atk.ew, atk.ex, atk.ey, atk.eB, atk.eC, atk.ez, atk.eA));
+   public static final dlu l = a(new dlu("jungle"));
+   public static final dlu m = a(new dlu("dark_oak"));
+   public static final dlu n = a(new dlu("crimson", true, true, true, dlu.a.a, dga.aT, atk.qi, atk.qj, atk.qk, atk.ql, atk.qo, atk.qp, atk.qm, atk.qn));
+   public static final dlu o = a(new dlu("warped", true, true, true, dlu.a.a, dga.aT, atk.qi, atk.qj, atk.qk, atk.ql, atk.qo, atk.qp, atk.qm, atk.qn));
+   public static final dlu p = a(new dlu("mangrove"));
+   public static final dlu q = a(new dlu("bamboo", true, true, true, dlu.a.a, dga.aS, atk.bl, atk.bm, atk.bn, atk.bo, atk.br, atk.bs, atk.bp, atk.bq));
 
-   public dlu(im<T> $$0, int $$1, dmd<T> $$2, List<T> $$3) {
-      this($$0, $$1, $$2);
-      $$3.forEach(this.b::c);
+   public dlu(String $$0) {
+      this($$0, true, true, true, dlu.a.a, dga.b, atk.BT, atk.BU, atk.BV, atk.BW, atk.BZ, atk.Ca, atk.BX, atk.BY);
    }
 
-   public dlu(im<T> $$0, int $$1, dmd<T> $$2) {
-      this($$0, $$1, $$2, atm.c(1 << $$1));
-   }
-
-   private dlu(im<T> $$0, int $$1, dmd<T> $$2, atm<T> $$3) {
-      this.a = $$0;
-      this.d = $$1;
-      this.c = $$2;
-      this.b = $$3;
-   }
-
-   public static <A> dmc<A> a(int $$0, im<A> $$1, dmd<A> $$2, List<A> $$3) {
-      return new dlu<>($$1, $$0, $$2, $$3);
-   }
-
-   @Override
-   public int a(T $$0) {
-      int $$1 = this.b.a($$0);
-      if ($$1 == -1) {
-         $$1 = this.b.c($$0);
-         if ($$1 >= 1 << this.d) {
-            $$1 = this.c.onResize(this.d + 1, $$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         if ($$0.test(this.b.a($$1))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         throw new dmb($$0);
-      } else {
-         return $$1;
-      }
-   }
-
-   @Override
-   public void a(uj $$0) {
-      this.b.a();
-      int $$1 = $$0.n();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.b.c(this.a.b($$0.n()));
-      }
-   }
-
-   @Override
-   public void b(uj $$0) {
-      int $$1 = this.b();
-      $$0.c($$1);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.c(this.a.a(this.b.a($$2)));
-      }
-   }
-
-   @Override
-   public int a() {
-      int $$0 = ux.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += ux.a(this.a.a(this.b.a($$1)));
-      }
-
+   private static dlu a(dlu $$0) {
+      F.put($$0.r, $$0);
       return $$0;
    }
 
-   public List<T> d() {
-      ArrayList<T> $$0 = new ArrayList<>();
-      this.b.iterator().forEachRemaining($$0::add);
-      return $$0;
+   public static Stream<dlu> a() {
+      return F.values().stream();
    }
 
-   @Override
-   public int b() {
-      return this.b.b();
+   public String b() {
+      return this.r;
    }
 
-   @Override
-   public dmc<T> c() {
-      return new dlu<>(this.a, this.d, this.c, this.b.c());
+   public boolean c() {
+      return this.s;
+   }
+
+   public boolean d() {
+      return this.t;
+   }
+
+   public boolean e() {
+      return this.u;
+   }
+
+   public dlu.a f() {
+      return this.v;
+   }
+
+   public dga g() {
+      return this.w;
+   }
+
+   public atj h() {
+      return this.x;
+   }
+
+   public atj i() {
+      return this.y;
+   }
+
+   public atj j() {
+      return this.z;
+   }
+
+   public atj k() {
+      return this.A;
+   }
+
+   public atj l() {
+      return this.B;
+   }
+
+   public atj m() {
+      return this.C;
+   }
+
+   public atj n() {
+      return this.D;
+   }
+
+   public atj o() {
+      return this.E;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

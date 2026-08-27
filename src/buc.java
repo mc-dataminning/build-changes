@@ -1,32 +1,17 @@
-public class buc extends btb {
-   private final boolean a;
-   private int b;
+public class buc implements bua {
+   private final boi b;
+   protected boolean a;
 
-   public buc(bmq $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+   public buc(boi $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public boolean b() {
-      return this.a && this.b > 0 && super.b();
+   public void a() {
+      this.a = true;
    }
 
-   @Override
-   public void c() {
-      this.b = 20;
-      this.a(true);
-   }
-
-   @Override
-   public void d() {
-      this.a(false);
-   }
-
-   @Override
-   public void e() {
-      this.b--;
-      super.e();
+   public void b() {
+      this.b.r(this.a);
+      this.a = false;
    }
 }

@@ -1,14 +1,26 @@
-public record zg(int a) implements xg<zb> {
-   public zg(uj $$0) {
-      this($$0.n());
+public record zg(long c, hz d) implements yy {
+   public static final xo<uq, zg> a = yy.a(zg::a, zg::new);
+   public static final yy.b<zg> b = yy.a("debug/neighbors_update");
+
+   private zg(uq $$0) {
+      this($$0.o(), $$0.e());
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
+   public yy.b<zg> a() {
+      return b;
    }
 
-   public void a(zb $$0) {
-      $$0.a(this);
+   public long b() {
+      return this.c;
+   }
+
+   public hz c() {
+      return this.d;
    }
 }

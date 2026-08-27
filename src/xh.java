@@ -1,8 +1,7 @@
-public enum xh {
-   a,
-   b;
+import com.mojang.serialization.MapCodec;
 
-   public xh a() {
-      return this == b ? a : b;
-   }
+public interface xh<T extends xg> {
+   MapCodec<T> a();
+
+   xo<vb, T> b();
 }

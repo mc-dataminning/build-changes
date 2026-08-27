@@ -1,20 +1,25 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class ecx extends edl {
-   public static final Codec<ecx> a = Codec.unit(() -> ecx.b);
-   public static final ecx b = new ecx();
+public class ecx extends ebe {
+   public static final Codec<ecx> d = a(ecx::new);
 
-   @Nullable
-   @Override
-   public edo.c a(cua $$0, hx $$1, hx $$2, edo.c $$3, edo.c $$4, edk $$5) {
-      hx $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(cxa.H);
-      return $$7 && !cwy.a($$4.b().j($$0, $$6)) ? new edo.c($$6, cxa.H.o(), $$4.c()) : $$4;
+   public ecx(ebe.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected edn<?> a() {
-      return edn.m;
+   public Optional<ebe.b> a(ebe.a $$0) {
+      return a($$0, dqo.a.c, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(ebw $$0, ebe.a $$1) {
+      hz $$2 = new hz($$1.h().a(9), 90, $$1.h().b(9));
+      $$0.a(new ecw.a($$2));
+   }
+
+   @Override
+   public ebn<?> e() {
+      return ebn.a;
    }
 }

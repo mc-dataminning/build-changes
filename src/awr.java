@@ -1,38 +1,59 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+public class awr {
+   private final int a;
+   private final int b;
+   private final float c;
+   private final float d;
 
-public class awr extends baw {
-   public awr(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityJukeboxFix", bbw.s, "minecraft:jukebox");
+   public awr(int $$0) {
+      if ($$0 < 2) {
+         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
+      } else if ($$0 > 30) {
+         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
+      } else {
+         int $$1 = 1 << $$0;
+         this.a = $$1 - 1;
+         this.b = $$0;
+         this.c = (float)$$1 / 360.0F;
+         this.d = 360.0F / (float)$$1;
+      }
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bbw.s, "minecraft:jukebox");
-      Type<?> $$2 = $$1.findFieldType("RecordItem");
-      OpticFinder<?> $$3 = DSL.fieldFinder("RecordItem", $$2);
-      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      int $$5 = $$4.get("Record").asInt(0);
-      if ($$5 > 0) {
-         $$4.remove("Record");
-         String $$6 = baf.a(azu.a($$5), 0);
-         if ($$6 != null) {
-            Dynamic<?> $$7 = $$4.emptyMap();
-            $$7 = $$7.set("id", $$7.createString($$6));
-            $$7 = $$7.set("Count", $$7.createByte((byte)1));
-            return $$0.set(
-                  $$3,
-                  (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not create record item stack."))).getFirst()
-               )
-               .set(DSL.remainderFinder(), $$4);
-         }
-      }
+   public boolean a(int $$0, int $$1) {
+      int $$2 = this.a() >> 1;
+      return ($$0 & $$2) == ($$1 & $$2);
+   }
 
-      return $$0;
+   public int a(ie $$0) {
+      if ($$0.o().b()) {
+         return 0;
+      } else {
+         int $$1 = $$0.e();
+         return $$1 << this.b - 2;
+      }
+   }
+
+   public int a(float $$0) {
+      return Math.round($$0 * this.c);
+   }
+
+   public int b(float $$0) {
+      return this.c(this.a($$0));
+   }
+
+   public float a(int $$0) {
+      return (float)$$0 * this.d;
+   }
+
+   public float b(int $$0) {
+      float $$1 = this.a(this.c($$0));
+      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
+   }
+
+   public int c(int $$0) {
+      return $$0 & this.a;
+   }
+
+   public int a() {
+      return this.a;
    }
 }

@@ -1,23 +1,29 @@
-public record adb(float a, boolean b) implements xg<zb> {
-   public adb(uj $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+public class adb implements xx<aag> {
+   public static final xo<uq, adb> a = xx.a(adb::a, adb::new);
+   private final int b;
+
+   public adb(dmw $$0) {
+      this.b = $$0.q();
    }
 
-   public static adb a(bkn $$0) {
-      return new adb($$0.f(), $$0.l());
+   private adb(uq $$0) {
+      this.b = $$0.n();
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public xz<adb> a() {
+      return aeq.at;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public boolean d() {
+   public int b() {
       return this.b;
    }
 }

@@ -1,113 +1,62 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Locale;
+import java.util.function.Function;
 
-public class ank extends amr {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<avi<ani<?>>> d = new Long2ObjectOpenHashMap();
-
-   public ank() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
-   }
-
-   private avi<ani<?>> g(long $$0) {
-      return (avi<ani<?>>)this.d.computeIfAbsent($$0, $$0x -> avi.a(4));
-   }
-
-   private int a(avi<ani<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, ani<?> $$1) {
-      avi<ani<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, ani<?> $$1) {
-      avi<ani<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(anj<T> $$0, cte $$1, int $$2, T $$3) {
-      this.a($$1.a(), new ani<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(anj<T> $$0, cte $$1, int $$2, T $$3) {
-      ani<T> $$4 = new ani<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<ani<cte>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<avi<ani<?>>> $$2 = (Entry<avi<ani<?>>>)var3.next();
-
-         for (ani<?> $$3 : (avi)$$2.getValue()) {
-            if ($$3.a() == anj.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
+public class ank implements anl {
+   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.data.block.invalid"));
+   public static final Function<String, anm.c> a = $$0 -> new anm.c() {
+         @Override
+         public anl a(CommandContext<du> $$0x) throws CommandSyntaxException {
+            hz $$1 = fo.a($$0, $$0 + "Pos");
+            dit $$2 = ((du)$$0.getSource()).e().c_($$1);
+            if ($$2 == null) {
+               throw ank.b.create();
+            } else {
+               return new ank($$2, $$1);
             }
          }
-      }
 
-      for (Pair<ani<cte>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         ani<cte> $$6 = (ani<cte>)$$4.getFirst();
-         this.b($$5, $$6);
-         cte $$7 = new cte($$5);
-         anj<cte> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
+         @Override
+         public ArgumentBuilder<du, ?> a(ArgumentBuilder<du, ?> $$0x, Function<ArgumentBuilder<du, ?>, ArgumentBuilder<du, ?>> $$1) {
+            return $$0.then(dv.a("block").then($$1.apply(dv.a($$0 + "Pos", fo.a()))));
+         }
+      };
+   private final dit c;
+   private final hz d;
+
+   public ank(dit $$0, hz $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected int b(long $$0) {
-      avi<ani<?>> $$1 = (avi<ani<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
-   }
-
-   public int a(cte $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
+   public void a(sw $$0) {
+      dlf $$1 = this.c.i().a_(this.d);
+      this.c.a($$0);
+      this.c.e();
+      this.c.i().a(this.d, $$1, $$1, 3);
    }
 
    @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
+   public sw a() {
+      return this.c.o();
    }
 
-   public void a() {
-      this.b(Integer.MAX_VALUE);
+   @Override
+   public vq b() {
+      return vq.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
    }
 
-   public String d(long $$0) {
-      avi<ani<?>> $$1 = (avi<ani<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   @Override
+   public vq a(tt $$0) {
+      return vq.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), tl.c($$0));
+   }
+
+   @Override
+   public vq a(em.g $$0, double $$1, int $$2) {
+      return vq.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

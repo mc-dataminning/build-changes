@@ -1,76 +1,146 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.locks.LockSupport;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public interface bkk extends bjv {
-   String c = "LootTable";
-   String d = "LootTableSeed";
+public abstract class bkk<R extends Runnable> implements bjs, bkm<R>, Executor {
+   private final String b;
+   private static final Logger c = LogUtils.getLogger();
+   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
+   private int e;
 
-   @Nullable
-   ahh aC_();
-
-   void a(@Nullable ahh var1);
-
-   default void a(ahh $$0, long $$1) {
-      this.a($$0);
-      this.a($$1);
+   protected bkk(String $$0) {
+      this.b = $$0;
+      bjq.a.a(this);
    }
 
-   long aD_();
+   protected abstract R f(Runnable var1);
 
-   void a(long var1);
+   protected abstract boolean e(R var1);
 
-   hx aE_();
-
-   @Nullable
-   ctx i();
-
-   static void a(ctd $$0, auw $$1, hx $$2, ahh $$3) {
-      if ($$0.c_($$2) instanceof bkk $$5) {
-         $$5.a($$3, $$1.g());
-      }
+   public boolean br() {
+      return Thread.currentThread() == this.aw();
    }
 
-   default boolean c_(so $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.a(new ahh($$0.l("LootTable")));
-         this.a($$0.i("LootTableSeed"));
-         return true;
+   protected abstract Thread aw();
+
+   protected boolean av() {
+      return !this.br();
+   }
+
+   public int bs() {
+      return this.d.size();
+   }
+
+   @Override
+   public String bt() {
+      return this.b;
+   }
+
+   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
+      return this.av() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
+   }
+
+   private CompletableFuture<Void> a(Runnable $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.run();
+         return null;
+      }, this);
+   }
+
+   public CompletableFuture<Void> g(Runnable $$0) {
+      if (this.av()) {
+         return this.a($$0);
       } else {
-         return false;
+         $$0.run();
+         return CompletableFuture.completedFuture(null);
       }
    }
 
-   default boolean d_(so $$0) {
-      ahh $$1 = this.aC_();
-      if ($$1 == null) {
+   public void h(Runnable $$0) {
+      if (!this.br()) {
+         this.a($$0).join();
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void i(R $$0) {
+      this.d.add($$0);
+      LockSupport.unpark(this.aw());
+   }
+
+   @Override
+   public void execute(Runnable $$0) {
+      if (this.av()) {
+         this.i(this.f($$0));
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void c(Runnable $$0) {
+      this.execute($$0);
+   }
+
+   protected void bu() {
+      this.d.clear();
+   }
+
+   protected void bv() {
+      while (this.x()) {
+      }
+   }
+
+   public boolean x() {
+      R $$0 = this.d.peek();
+      if ($$0 == null) {
+         return false;
+      } else if (this.e == 0 && !this.e($$0)) {
          return false;
       } else {
-         $$0.a("LootTable", $$1.toString());
-         long $$2 = this.aD_();
-         if ($$2 != 0L) {
-            $$0.a("LootTableSeed", $$2);
-         }
-
+         this.d(this.d.remove());
          return true;
       }
    }
 
-   default void e_(@Nullable cfq $$0) {
-      ctx $$1 = this.i();
-      hx $$2 = this.aE_();
-      ahh $$3 = this.aC_();
-      if ($$3 != null && $$1 != null && $$1.o() != null) {
-         ehn $$4 = $$1.o().aJ().getLootTable($$3);
-         if ($$0 instanceof anf) {
-            am.O.a((anf)$$0, $$3);
-         }
+   public void c(BooleanSupplier $$0) {
+      this.e++;
 
-         this.a(null);
-         ehl.a $$5 = new ehl.a((ane)$$1).a(ejq.f, emc.b($$2));
-         if ($$0 != null) {
-            $$5.a($$0.go()).a(ejq.a, $$0);
+      try {
+         while (!$$0.getAsBoolean()) {
+            if (!this.x()) {
+               this.bw();
+            }
          }
-
-         $$4.a(this, $$5.a(ejp.c), this.aD_());
+      } finally {
+         this.e--;
       }
+   }
+
+   protected void bw() {
+      Thread.yield();
+      LockSupport.parkNanos("waiting for tasks", 100000L);
+   }
+
+   protected void d(R $$0) {
+      try {
+         $$0.run();
+      } catch (Exception var3) {
+         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bt(), var3);
+         throw var3;
+      }
+   }
+
+   @Override
+   public List<bjp> bq() {
+      return ImmutableList.of(bjp.a(this.b + "-pending-tasks", bjo.b, this::bs));
    }
 }

@@ -1,44 +1,166 @@
-import java.util.Locale;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.util.function.LongPredicate;
 
-public interface egb {
-   ic[] a = new ic[]{ic.e, ic.f, ic.a, ic.b, ic.c, ic.d};
+public abstract class egb {
+   public static final long e = Long.MAX_VALUE;
+   private static final int a = 255;
+   protected final int f;
+   private final egf b;
+   private final Long2ByteMap c;
+   private volatile boolean d;
 
-   void a(ic var1, djp var2, hx var3, hx var4, int var5, int var6);
+   protected egb(int $$0, int $$1, final int $$2) {
+      if ($$0 >= 254) {
+         throw new IllegalArgumentException("Level count must be < 254.");
+      } else {
+         this.f = $$0;
+         this.b = new egf($$0, $$1);
+         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$2) {
+                  super.rehash($$0);
+               }
+            }
+         };
+         this.c.defaultReturnValue((byte)-1);
+      }
+   }
 
-   void a(hx var1, cwy var2, hx var3);
+   protected void e(long $$0) {
+      int $$1 = this.c.remove($$0) & 255;
+      if ($$1 != 255) {
+         int $$2 = this.c($$0);
+         int $$3 = this.a($$2, $$1);
+         this.b.a($$0, $$3, this.f);
+         this.d = !this.b.b();
+      }
+   }
 
-   void a(djp var1, hx var2, cwy var3, hx var4, boolean var5);
+   public void a(LongPredicate $$0) {
+      LongList $$1 = new LongArrayList();
+      this.c.keySet().forEach($$2 -> {
+         if ($$0.test($$2)) {
+            $$1.add($$2);
+         }
+      });
+      $$1.forEach(this::e);
+   }
 
-   default void a(hx $$0, cwy $$1, @Nullable ic $$2) {
-      for (ic $$3 : a) {
-         if ($$3 != $$2) {
-            this.a($$0.a($$3), $$1, $$0);
+   private int a(int $$0, int $$1) {
+      return Math.min(Math.min($$0, $$1), this.f - 1);
+   }
+
+   protected void f(long $$0) {
+      this.a($$0, $$0, this.f - 1, false);
+   }
+
+   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
+      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
+      this.d = !this.b.b();
+   }
+
+   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if (!this.a($$1)) {
+         $$2 = awh.a($$2, 0, this.f - 1);
+         $$3 = awh.a($$3, 0, this.f - 1);
+         boolean $$6 = $$4 == 255;
+         if ($$6) {
+            $$4 = $$3;
+         }
+
+         int $$7;
+         if ($$5) {
+            $$7 = Math.min($$4, $$2);
+         } else {
+            $$7 = awh.a(this.a($$1, $$0, $$2), 0, this.f - 1);
+         }
+
+         int $$9 = this.a($$3, $$4);
+         if ($$3 != $$7) {
+            int $$10 = this.a($$3, $$7);
+            if ($$9 != $$10 && !$$6) {
+               this.b.a($$1, $$9, $$10);
+            }
+
+            this.b.a($$1, $$10);
+            this.c.put($$1, (byte)$$7);
+         } else if (!$$6) {
+            this.b.a($$1, $$9, this.f);
+            this.c.remove($$1);
          }
       }
    }
 
-   static void a(cty $$0, ic $$1, djp $$2, hx $$3, hx $$4, int $$5, int $$6) {
-      djp $$7 = $$0.a_($$3);
-      djp $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
-      cwy.a($$7, $$8, $$0, $$3, $$5, $$6);
-   }
+   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
+      int $$4 = this.c.get($$1) & 255;
+      int $$5 = awh.a(this.b($$0, $$1, $$2), 0, this.f - 1);
+      if ($$3) {
+         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
+      } else {
+         boolean $$6 = $$4 == 255;
+         int $$7;
+         if ($$6) {
+            $$7 = awh.a(this.c($$1), 0, this.f - 1);
+         } else {
+            $$7 = $$4;
+         }
 
-   static void a(ctx $$0, djp $$1, hx $$2, cwy $$3, hx $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", kd.e.b($$3), $$3.h(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + kd.e.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new y($$7);
+         if ($$5 == $$7) {
+            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
+         }
       }
    }
+
+   protected final boolean b() {
+      return this.d;
+   }
+
+   protected final int b(int $$0) {
+      if (this.b.b()) {
+         return $$0;
+      } else {
+         while (!this.b.b() && $$0 > 0) {
+            $$0--;
+            long $$1 = this.b.a();
+            int $$2 = awh.a(this.c($$1), 0, this.f - 1);
+            int $$3 = this.c.remove($$1) & 255;
+            if ($$3 < $$2) {
+               this.a($$1, $$3);
+               this.a($$1, $$3, true);
+            } else if ($$3 > $$2) {
+               this.a($$1, this.f - 1);
+               if ($$3 != this.f - 1) {
+                  this.b.a($$1, this.a(this.f - 1, $$3));
+                  this.c.put($$1, (byte)$$3);
+               }
+
+               this.a($$1, $$2, false);
+            }
+         }
+
+         this.d = !this.b.b();
+         return $$0;
+      }
+   }
+
+   public int c() {
+      return this.c.size();
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 == Long.MAX_VALUE;
+   }
+
+   protected abstract int a(long var1, long var3, int var5);
+
+   protected abstract void a(long var1, int var3, boolean var4);
+
+   protected abstract int c(long var1);
+
+   protected abstract void a(long var1, int var3);
+
+   protected abstract int b(long var1, long var3, int var5);
 }

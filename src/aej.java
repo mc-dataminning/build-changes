@@ -1,32 +1,59 @@
-public class aej implements xg<adk> {
-   private final boolean a;
-   private final boolean b;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-   public aej(boolean $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class aej implements xx<aag> {
+   public static final xo<vb, aej> a = xx.a(aej::a, aej::new);
+   private final boolean b;
+   private final List<af> c;
+   private final Set<aiy> d;
+   private final Map<aiy, ah> e;
+
+   public aej(boolean $$0, Collection<af> $$1, Set<aiy> $$2, Map<aiy, ah> $$3) {
+      this.b = $$0;
+      this.c = List.copyOf($$1);
+      this.d = Set.copyOf($$2);
+      this.e = Map.copyOf($$3);
    }
 
-   public aej(uj $$0) {
-      this.a = $$0.readBoolean();
+   private aej(vb $$0) {
       this.b = $$0.readBoolean();
+      this.c = af.b.decode($$0);
+      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, uq::s);
+      this.e = $$0.a(uq::s, ah::b);
+   }
+
+   private void a(vb $$0) {
+      $$0.a(this.b);
+      af.b.encode($$0, this.c);
+      $$0.a(this.d, uq::a);
+      $$0.a(this.e, uq::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public xz<aej> a() {
+      return aeq.aZ;
    }
 
-   public void a(adk $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
-      return this.a;
+   public List<af> b() {
+      return this.c;
    }
 
-   public boolean d() {
+   public Set<aiy> e() {
+      return this.d;
+   }
+
+   public Map<aiy, ah> f() {
+      return this.e;
+   }
+
+   public boolean g() {
       return this.b;
    }
 }

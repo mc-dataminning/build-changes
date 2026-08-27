@@ -1,59 +1,100 @@
-import javax.annotation.Nullable;
+public class fgp extends fgd<ckp> {
+   private static final aiy x = new aiy("container/crafter/disabled_slot");
+   private static final aiy y = new aiy("container/crafter/powered_redstone");
+   private static final aiy z = new aiy("container/crafter/unpowered_redstone");
+   private static final aiy A = new aiy("textures/gui/container/crafter.png");
+   private static final vq B = vq.c("gui.togglable_slot");
+   private final chh C;
 
-public abstract class fgp extends fdm {
-   private final vg b;
-   @Nullable
-   private final vg c;
-   private final vg k;
-   @Nullable
-   protected ext a;
-   private eyk l = eyk.a;
-
-   protected fgp(vg $$0, vg $$1, vg $$2) {
-      this($$0, $$1, null, $$2);
+   public fgp(ckp $$0, chg $$1, vq $$2) {
+      super($$0, $$1, $$2);
+      this.C = $$1.m;
    }
-
-   protected fgp(vg $$0, vg $$1, @Nullable vg $$2, vg $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.k = $$3;
-   }
-
-   protected abstract void a(int var1);
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.l = eyk.a(this.i, this.b, this.g - 100);
-      int $$0 = (this.l.a() + 1) * this.o();
-      if (this.c != null) {
-         int $$1 = this.i.a(this.c);
-         this.a = ext.a(this.c, this.i).a(this.g / 2 - $$1 / 2 - 8, 76 + $$0).a();
-         this.d(this.a);
+   protected void aQ_() {
+      super.aQ_();
+      this.l = (this.c - this.i.a(this.e)) / 2;
+   }
+
+   @Override
+   protected void a(clw $$0, int $$1, int $$2, ckk $$3) {
+      if ($$0 instanceof ckq && !$$0.h() && !this.C.P_()) {
+         switch ($$3) {
+            case a:
+               if (this.p.e($$1)) {
+                  this.a($$1);
+               } else if (this.p.g().b()) {
+                  this.b($$1);
+               }
+               break;
+            case c:
+               coz $$4 = this.C.fT().a($$2);
+               if (this.p.e($$1) && !$$4.b()) {
+                  this.a($$1);
+               }
+         }
       }
 
-      this.a($$0);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(int $$0) {
+      this.a($$0, true);
+   }
+
+   private void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   private void a(int $$0, boolean $$1) {
+      this.p.a($$0, $$1);
+      super.a($$0, this.p.j, $$1);
+      float $$2 = $$1 ? 1.0F : 0.75F;
+      this.C.a(atk.zJ.a(), 0.4F, $$2);
    }
 
    @Override
-   public vg i() {
-      return this.k;
+   public void a(eyu $$0, clw $$1) {
+      if ($$1 instanceof ckq $$2 && this.p.e($$1.e)) {
+         this.a($$0, $$2);
+         return;
+      }
+
+      super.a($$0, $$1);
+   }
+
+   private void a(eyu $$0, ckq $$1) {
+      $$0.a(x, $$1.f - 1, $$1.g - 1, 18, 18);
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.c($$0);
-      int $$4 = this.g / 2 - this.l.b() / 2;
-      this.l.b($$0, $$4, 70, this.o(), 16777215);
+      this.a($$0, $$1, $$2);
+      if (this.r instanceof ckq && !this.p.e(this.r.e) && this.p.g().b() && !this.r.h() && !this.C.P_()) {
+         $$0.a(this.i, B, $$1, $$2);
+      }
    }
 
-   protected void c(exe $$0) {
-      $$0.b(this.i, this.e, 25, 30, 16777215);
+   private void c(eyu $$0) {
+      int $$1 = this.g / 2 + 9;
+      int $$2 = this.h / 2 - 48;
+      aiy $$3;
+      if (this.p.l()) {
+         $$3 = y;
+      } else {
+         $$3 = z;
+      }
+
+      $$0.a($$3, $$1, $$2, 16, 16);
    }
 
-   protected int o() {
-      return 9 * 2;
+   @Override
+   protected void a(eyu $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

@@ -1,60 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dtg extends dsc<dux> {
-   public dtg(Codec<dux> $$0) {
+public class dtg extends dth {
+   public dtg(Codec<dwd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dse<dux> $$0) {
-      cus $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+   protected boolean a(cvo $$0, awo $$1, hz $$2, dlf $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
          return false;
       } else {
-         dux $$3 = $$0.f();
-         auw $$4 = $$0.d();
-         dds $$5 = dds.b();
-         int $$6 = $$3.f() + $$3.d();
+         ie $$4 = ie.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ie> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
+         for (ie $$8 : $$6.subList(0, $$5)) {
+            hz.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ie $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(ie.b);
+               ie[] $$13 = new ie[]{$$8, ie.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
             }
 
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
             }
 
-            $$5.j();
-         }
+            $$9.c($$11.g());
+            $$9.c(ie.b);
 
-         hx $$11 = $$2.d();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
-            $$1.a($$2, cxa.qU.o(), 3);
-         }
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
 
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            hx $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ic.b)) {
-               $$1.a($$14, cxa.qV.o().a(ddr.d, Boolean.valueOf(true)), 3);
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ie.b);
+               }
             }
          }
 
          return true;
-      }
-   }
-
-   private boolean a(cty $$0, hx $$1) {
-      djp $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof ddn) {
-         return true;
-      } else {
-         return !$$2.i() && (!$$2.a(cxa.G) || !$$2.u().b()) ? false : ic.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
       }
    }
 }

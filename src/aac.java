@@ -1,24 +1,12 @@
-public record aac(vg a, vc.b b) implements xg<zb> {
-   public aac(uj $$0) {
-      this($$0.m(), new vc.b($$0));
+public class aac {
+   public static final xz<aab> a = a("cookie_request");
+   public static final xz<aae> b = b("cookie_response");
+
+   private static <T extends xx<aaa>> xz<T> a(String $$0) {
+      return new xz<>(xy.b, new aiy($$0));
    }
 
-   @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      this.b.a($$0);
-   }
-
-   public void a(zb $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   public vc.b d() {
-      return this.b;
+   private static <T extends xx<aad>> xz<T> b(String $$0) {
+      return new xz<>(xy.a, new aiy($$0));
    }
 }

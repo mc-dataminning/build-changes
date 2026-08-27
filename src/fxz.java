@@ -1,45 +1,39 @@
-import javax.annotation.Nullable;
+public class fxz implements fxm<dkb> {
+   private final fnu<?> a;
 
-public class fxz extends gab<cbr, fjk> {
-   public static final ahh a = new ahh("textures/entity/armorstand/wood.png");
-
-   public fxz(fza.a $$0) {
-      super($$0, new fjl($$0.a(fni.c)), 0.0F);
-      this.a(new gdb<>(this, new fjk($$0.a(fni.d)), new fjk($$0.a(fni.e)), $$0.g()));
-      this.a(new gde<>(this, $$0.d()));
-      this.a(new gcu<>(this, $$0.f()));
-      this.a(new gcq<>(this, $$0.f(), $$0.d()));
+   public fxz(fxn.a $$0) {
+      this.a = new fnu($$0.a(fpb.bg));
    }
 
-   public ahh a(cbr $$0) {
-      return a;
-   }
-
-   protected void a(cbr $$0, eqk $$1, float $$2, float $$3, float $$4) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$5 = (float)($$0.dL().X() - $$0.bK) + $$4;
-      if ($$5 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(aup.a($$5 / 1.5F * (float) Math.PI) * 3.0F));
-      }
-   }
-
-   protected boolean b(cbr $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bX() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cB();
-   }
-
-   @Nullable
-   protected fub a(cbr $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.B()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         ahh $$4 = this.a($$0);
-         if ($$2) {
-            return fub.c($$4, false);
-         } else {
-            return $$1 ? fub.a($$4, false) : null;
+   public void a(dkb $$0, float $$1, esa $$2, fvm $$3, int $$4, int $$5) {
+      ie $$6 = ie.b;
+      if ($$0.n()) {
+         dlf $$7 = $$0.i().a_($$0.aE_());
+         if ($$7.b() instanceof dfm) {
+            $$6 = $$7.c(dfm.b);
          }
       }
+
+      cnn $$8 = $$0.w();
+      gix $$9;
+      if ($$8 == null) {
+         $$9 = fwb.i;
+      } else {
+         $$9 = fwb.j.get($$8.a());
+      }
+
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fpc $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      ese $$13 = $$9.a($$3, fvu::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

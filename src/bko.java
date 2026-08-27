@@ -1,9 +1,27 @@
-import javax.annotation.Nullable;
+public abstract class bko<R extends Runnable> extends bkk<R> {
+   private int b;
 
-public interface bko extends bjv {
-   int[] a(ic var1);
+   public bko(String $$0) {
+      super($$0);
+   }
 
-   boolean a(int var1, cng var2, @Nullable ic var3);
+   @Override
+   public boolean av() {
+      return this.bx() || super.av();
+   }
 
-   boolean b(int var1, cng var2, ic var3);
+   protected boolean bx() {
+      return this.b != 0;
+   }
+
+   @Override
+   public void d(R $$0) {
+      this.b++;
+
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
+      }
+   }
 }

@@ -1,428 +1,96 @@
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumSet;
+import java.lang.reflect.Array;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-public abstract class dll implements ctd, cuy.a, dly, dmi {
-   public static final int a = -1;
-   private static final Logger n = LogUtils.getLogger();
-   private static final LongSet o = new LongOpenHashSet();
-   protected final ShortList[] b;
-   protected volatile boolean c;
-   private volatile boolean p;
-   protected final cte d;
-   private long q;
-   @Nullable
-   @Deprecated
-   private cux r;
-   @Nullable
-   protected dpc e;
-   protected final dmj f;
-   @Nullable
-   protected dqb g;
-   protected final Map<doy.a, doy> h = Maps.newEnumMap(doy.a.class);
-   protected eej i;
-   private final Map<dzo, dzw> s = Maps.newHashMap();
-   private final Map<dzo, LongSet> t = Maps.newHashMap();
-   protected final Map<hx, so> j = Maps.newHashMap();
-   protected final Map<hx, dhd> k = Maps.newHashMap();
-   protected final ctz l;
-   protected final dlx[] m;
+public class dll {
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dlj>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   public dll(cte $$0, dmj $$1, ctz $$2, it<cuw> $$3, long $$4, @Nullable dlx[] $$5, @Nullable dqb $$6) {
-      this.d = $$0;
-      this.f = $$1;
-      this.l = $$2;
-      this.m = new dlx[$$2.am()];
-      this.q = $$4;
-      this.b = new ShortList[$$2.am()];
-      this.g = $$6;
-      this.i = new eej($$2);
-      if ($$5 != null) {
-         if (this.m.length == $$5.length) {
-            System.arraycopy($$5, 0, this.m, 0, this.m.length);
+   private dll() {
+      this.c.put(' ', $$0 -> true);
+   }
+
+   public dll a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
+         }
+
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
          } else {
-            n.warn("Could not set level chunk sections, array length is {} instead of {}", $$5.length, this.m.length);
-         }
-      }
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
 
-      a($$3, this.m);
-   }
-
-   private static void a(it<cuw> $$0, dlx[] $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$1[$$2] == null) {
-            $$1[$$2] = new dlx($$0);
-         }
-      }
-   }
-
-   public doc a(int $$0) {
-      return doc.a;
-   }
-
-   @Nullable
-   public abstract djp a(hx var1, djp var2, boolean var3);
-
-   public abstract void a(dhd var1);
-
-   public abstract void a(blw var1);
-
-   public int a() {
-      dlx[] $$0 = this.d();
-
-      for (int $$1 = $$0.length - 1; $$1 >= 0; $$1--) {
-         dlx $$2 = $$0[$$1];
-         if (!$$2.c()) {
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   @Deprecated(
-      forRemoval = true
-   )
-   public int b() {
-      int $$0 = this.a();
-      return $$0 == -1 ? this.J_() : iz.c(this.g($$0));
-   }
-
-   public Set<hx> c() {
-      Set<hx> $$0 = Sets.newHashSet(this.j.keySet());
-      $$0.addAll(this.k.keySet());
-      return $$0;
-   }
-
-   public dlx[] d() {
-      return this.m;
-   }
-
-   public dlx b(int $$0) {
-      return this.d()[$$0];
-   }
-
-   public Collection<Entry<doy.a, doy>> e() {
-      return Collections.unmodifiableSet(this.h.entrySet());
-   }
-
-   public void a(doy.a $$0, long[] $$1) {
-      this.a($$0).a(this, $$0, $$1);
-   }
-
-   public doy a(doy.a $$0) {
-      return this.h.computeIfAbsent($$0, $$0x -> new doy(this, $$0x));
-   }
-
-   public boolean b(doy.a $$0) {
-      return this.h.get($$0) != null;
-   }
-
-   public int a(doy.a $$0, int $$1, int $$2) {
-      doy $$3 = this.h.get($$0);
-      if ($$3 == null) {
-         if (aa.aW && this instanceof dlw) {
-            n.error("Unprimed heightmap: " + $$0 + " " + $$1 + " " + $$2);
-         }
-
-         doy.a(this, EnumSet.of($$0));
-         $$3 = this.h.get($$0);
-      }
-
-      return $$3.a($$1 & 15, $$2 & 15) - 1;
-   }
-
-   public cte f() {
-      return this.d;
-   }
-
-   @Nullable
-   @Override
-   public dzw a(dzo $$0) {
-      return this.s.get($$0);
-   }
-
-   @Override
-   public void a(dzo $$0, dzw $$1) {
-      this.s.put($$0, $$1);
-      this.c = true;
-   }
-
-   public Map<dzo, dzw> g() {
-      return Collections.unmodifiableMap(this.s);
-   }
-
-   public void a(Map<dzo, dzw> $$0) {
-      this.s.clear();
-      this.s.putAll($$0);
-      this.c = true;
-   }
-
-   @Override
-   public LongSet b(dzo $$0) {
-      return this.t.getOrDefault($$0, o);
-   }
-
-   @Override
-   public void a(dzo $$0, long $$1) {
-      this.t.computeIfAbsent($$0, $$0x -> new LongOpenHashSet()).add($$1);
-      this.c = true;
-   }
-
-   @Override
-   public Map<dzo, LongSet> h() {
-      return Collections.unmodifiableMap(this.t);
-   }
-
-   @Override
-   public void b(Map<dzo, LongSet> $$0) {
-      this.t.clear();
-      this.t.putAll($$0);
-      this.c = true;
-   }
-
-   public boolean a(int $$0, int $$1) {
-      if ($$0 < this.J_()) {
-         $$0 = this.J_();
-      }
-
-      if ($$1 >= this.al()) {
-         $$1 = this.al() - 1;
-      }
-
-      for (int $$2 = $$0; $$2 <= $$1; $$2 += 16) {
-         if (!this.b(this.e($$2)).c()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean i() {
-      return this.c;
-   }
-
-   public abstract dlq j();
-
-   public dlq k() {
-      dlq $$0 = this.j();
-      dom $$1 = this.x();
-      if ($$1 != null) {
-         dlq $$2 = $$1.a();
-         return $$2.b($$0) ? $$2 : $$0;
-      } else {
-         return $$0;
-      }
-   }
-
-   public abstract void d(hx var1);
-
-   public void e(hx $$0) {
-      n.warn("Trying to mark a block for PostProcessing @ {}, but this operation is not supported.", $$0);
-   }
-
-   public ShortList[] n() {
-      return this.b;
-   }
-
-   public void a(short $$0, int $$1) {
-      a(this.n(), $$1).add($$0);
-   }
-
-   public void a(so $$0) {
-      this.j.put(dhd.c($$0), $$0);
-   }
-
-   @Nullable
-   public so f(hx $$0) {
-      return this.j.get($$0);
-   }
-
-   @Nullable
-   public abstract so g(hx var1);
-
-   @Override
-   public final void a(BiConsumer<hx, djp> $$0) {
-      this.a($$0x -> $$0x.h() != 0, $$0);
-   }
-
-   public void a(Predicate<djp> $$0, BiConsumer<hx, djp> $$1) {
-      hx.a $$2 = new hx.a();
-
-      for (int $$3 = this.an(); $$3 < this.ao(); $$3++) {
-         dlx $$4 = this.b(this.f($$3));
-         if ($$4.a($$0)) {
-            hx $$5 = iz.a(this.d, $$3).j();
-
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               for (int $$7 = 0; $$7 < 16; $$7++) {
-                  for (int $$8 = 0; $$8 < 16; $$8++) {
-                     djp $$9 = $$4.a($$8, $$6, $$7);
-                     if ($$0.test($$9)) {
-                        $$1.accept($$2.a($$5, $$8, $$6, $$7), $$9);
-                     }
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
                   }
                }
             }
+
+            this.b.add($$0);
+            return this;
          }
+      } else {
+         throw new IllegalArgumentException("Empty pattern for aisle");
       }
    }
 
-   public abstract enw<cwy> o();
-
-   public abstract enw<eey> p();
-
-   public abstract dll.a q();
-
-   public dmj r() {
-      return this.f;
+   public static dll a() {
+      return new dll();
    }
 
-   public boolean s() {
-      return this.g != null;
-   }
-
-   @Nullable
-   public dqb t() {
-      return this.g;
-   }
-
-   public void a(dqb $$0) {
-      this.g = $$0;
-   }
-
-   public long u() {
-      return this.q;
-   }
-
-   public void a(long $$0) {
-      this.q += $$0;
-   }
-
-   public void b(long $$0) {
-      this.q = $$0;
-   }
-
-   public static ShortList a(ShortList[] $$0, int $$1) {
-      if ($$0[$$1] == null) {
-         $$0[$$1] = new ShortArrayList();
-      }
-
-      return $$0[$$1];
-   }
-
-   public boolean v() {
-      return this.p;
-   }
-
-   public void b(boolean $$0) {
-      this.p = $$0;
-      this.a(true);
-   }
-
-   @Override
-   public int J_() {
-      return this.l.J_();
-   }
-
-   @Override
-   public int K_() {
-      return this.l.K_();
-   }
-
-   public dpc a(Function<dll, dpc> $$0) {
-      if (this.e == null) {
-         this.e = $$0.apply(this);
-      }
-
-      return this.e;
-   }
-
-   @Deprecated
-   public cux a(Supplier<cux> $$0) {
-      if (this.r == null) {
-         this.r = $$0.get();
-      }
-
-      return this.r;
-   }
-
-   @Override
-   public ih<cuw> getNoiseBiome(int $$0, int $$1, int $$2) {
-      try {
-         int $$3 = is.a(this.J_());
-         int $$4 = $$3 + is.a(this.K_()) - 1;
-         int $$5 = aup.a($$1, $$3, $$4);
-         int $$6 = this.e(is.c($$5));
-         return this.m[$$6].c($$0 & 3, $$5 & 3, $$2 & 3);
-      } catch (Throwable var8) {
-         o $$8 = o.a(var8, "Getting biome");
-         p $$9 = $$8.a("Biome being got");
-         $$9.a("Location", () -> p.a(this, $$0, $$1, $$2));
-         throw new y($$8);
-      }
-   }
-
-   public void a(cuz $$0, cvf.f $$1) {
-      cte $$2 = this.f();
-      int $$3 = is.a($$2.d());
-      int $$4 = is.a($$2.e());
-      ctz $$5 = this.z();
-
-      for (int $$6 = $$5.an(); $$6 < $$5.ao(); $$6++) {
-         dlx $$7 = this.b(this.f($$6));
-         int $$8 = is.d($$6);
-         $$7.a($$0, $$1, $$3, $$8, $$4);
-      }
-   }
-
-   public boolean w() {
-      return !this.h().isEmpty();
-   }
-
-   @Nullable
-   public dom x() {
-      return null;
-   }
-
-   public boolean y() {
-      return this.x() != null;
-   }
-
-   public ctz z() {
+   public dll a(char $$0, Predicate<dlj> $$1) {
+      this.c.put($$0, $$1);
       return this;
    }
 
-   public void A() {
-      this.i.a(this);
+   public dlk b() {
+      return new dlk(this.c());
    }
 
-   @Override
-   public eej B() {
-      return this.i;
+   private Predicate<dlj>[][][] c() {
+      this.d();
+      Predicate<dlj>[][][] $$0 = (Predicate<dlj>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            }
+         }
+      }
+
+      return $$0;
    }
 
-   public static record a(enu<cwy> a, enu<eey> b) {
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
+
+      for (Entry<Character, Predicate<dlj>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
+         }
+      }
+
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+      }
    }
 }

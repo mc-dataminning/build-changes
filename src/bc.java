@@ -1,35 +1,29 @@
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Predicate;
 
 public class bc {
-   private final auu a;
-   private final ehj b;
+   public static final Codec<bc> a = elw.a.listOf().xmap(bc::new, $$0 -> $$0.b);
+   private final List<elu> b;
+   private final Predicate<eiv> c;
 
-   public bc(auu $$0, ehj $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   bc(List<elu> $$0) {
+      this.b = $$0;
+      this.c = elw.a($$0);
    }
 
-   public void a(Optional<bb> $$0, String $$1) {
-      $$0.ifPresent($$1x -> this.a($$1x, $$1));
+   public static bc a(elu... $$0) {
+      return new bc(List.of($$0));
    }
 
-   public void a(List<bb> $$0, String $$1) {
-      this.a($$0, ejp.l, $$1);
+   public boolean a(eiv $$0) {
+      return this.c.test($$0);
    }
 
-   public void a(bb $$0, String $$1) {
-      this.a($$0, ejp.l, $$1);
-   }
-
-   public void a(bb $$0, ejo $$1, String $$2) {
-      $$0.a(new eho(this.a.a($$2), $$1, this.b));
-   }
-
-   public void a(List<bb> $$0, ejo $$1, String $$2) {
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         bb $$4 = $$0.get($$3);
-         $$4.a(new eho(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
+   public void a(eje $$0) {
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         elu $$2 = this.b.get($$1);
+         $$2.a($$0.a("[" + $$1 + "]"));
       }
    }
 }

@@ -1,91 +1,59 @@
-public class cpx extends cqc {
-   public cpx(cqa $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+
+public class cpx extends cnj {
+   protected static final Map<cyo, dlf> a = Maps.newHashMap(
+      new Builder()
+         .put(cyq.i, cyq.kE.o())
+         .put(cyq.j, cyq.kE.o())
+         .put(cyq.l, cyq.kE.o())
+         .put(cyq.k, cyq.kE.o())
+         .put(cyq.fl, cyq.kE.o())
+         .put(cyq.sH, cyq.kE.o())
+         .build()
+   );
+
+   public cpx(cqm $$0, float $$1, float $$2, cou.a $$3) {
+      super($$1, $$2, $$0, atz.bC, $$3);
    }
 
-   public boolean a(ciz $$0, ctx $$1) {
-      int $$2 = 0;
-      cng $$3 = cng.f;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cng $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cnj.tX)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cnj.tW)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$3.u() && $$2 > 0;
-   }
-
-   public cng a(ciz $$0, iu $$1) {
-      int $$2 = 0;
-      cng $$3 = cng.f;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cng $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cnj.tX)) {
-               if (!$$3.b()) {
-                  return cng.f;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cnj.tW)) {
-                  return cng.f;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      if (!$$3.b() && $$3.u() && $$2 >= 1 && cpd.d($$3) < 2) {
-         cng $$6 = new cng(cnj.tX, $$2);
-         so $$7 = $$3.v().h();
-         $$7.a("generation", cpd.d($$3) + 1);
-         $$6.c($$7);
-         return $$6;
+   @Override
+   public blu a(cri $$0) {
+      cvn $$1 = $$0.q();
+      hz $$2 = $$0.a();
+      dlf $$3 = $$1.a_($$2);
+      if ($$0.k() == ie.a) {
+         return blu.d;
       } else {
-         return cng.f;
-      }
-   }
+         chh $$4 = $$0.o();
+         dlf $$5 = a.get($$3.b());
+         dlf $$6 = null;
+         if ($$5 != null && $$1.a_($$2.c()).i()) {
+            $$1.a($$4, $$2, atk.wc, atl.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof czc && $$3.c(czc.c)) {
+            if (!$$1.y_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
 
-   public iq<cng> a(ciz $$0) {
-      iq<cng> $$1 = iq.a($$0.b(), cng.f);
+            czc.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.a(czc.c, Boolean.valueOf(false));
+         }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cng $$3 = $$0.a($$2);
-         if ($$3.d().s()) {
-            $$1.set($$2, new cng($$3.d().r()));
-         } else if ($$3.d() instanceof cpd) {
-            $$1.set($$2, $$3.c(1));
-            break;
+         if ($$6 != null) {
+            if (!$$1.B) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(dpp.c, $$2, dpp.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, bog.d($$0.p()));
+               }
+            }
+
+            return blu.a($$1.B);
+         } else {
+            return blu.d;
          }
       }
-
-      return $$1;
-   }
-
-   @Override
-   public cqo<?> at_() {
-      return cqo.d;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
    }
 }

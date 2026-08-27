@@ -1,54 +1,105 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public class cn extends cv<cn.a> {
-   @Override
-   public Codec<cn.a> a() {
-      return cn.a.a;
+public record cn(Map<ij<bmz>, cn.b> b) {
+   public static final Codec<cn> a = Codec.unboundedMap(kf.d.r(), cn.b.a).xmap(cn::new, cn::a);
+
+   public boolean a(bno $$0) {
+      if ($$0 instanceof bog $$1 && this.a($$1.eu())) {
+         return true;
+      }
+
+      return false;
    }
 
-   public void a(anf $$0, cng $$1, @Nullable blw $$2) {
-      ehf $$3 = bp.b($$0, $$2);
-      this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
+   public boolean a(bog $$0) {
+      return this.a($$0.eu());
    }
 
-   public static record a(Optional<bb> b, Optional<ca> c, Optional<bb> d) implements cv.a {
-      public static final Codec<cn.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(cn.a::a), atx.a(ca.a, "item").forGetter(cn.a::b), atx.a(bp.b, "entity").forGetter(cn.a::c))
-               .apply($$0, cn.a::new)
+   public boolean a(Map<ij<bmz>, bnb> $$0) {
+      for (Entry<ij<bmz>, cn.b> $$1 : this.b.entrySet()) {
+         bnb $$2 = $$0.get($$1.getKey());
+         if (!$$1.getValue().a($$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public Map<ij<bmz>, cn.b> a() {
+      return this.b;
+   }
+
+   public static class a {
+      private final Builder<ij<bmz>, cn.b> a = ImmutableMap.builder();
+
+      public static cn.a a() {
+         return new cn.a();
+      }
+
+      public cn.a a(ij<bmz> $$0) {
+         this.a.put($$0, new cn.b());
+         return this;
+      }
+
+      public cn.a a(ij<bmz> $$0, cn.b $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public Optional<cn> b() {
+         return Optional.of(new cn(this.a.build()));
+      }
+   }
+
+   public static record b(cm.d b, cm.d c, Optional<Boolean> d, Optional<Boolean> e) {
+      public static final Codec<cn.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  avp.a(cm.d.d, "amplifier", cm.d.c).forGetter(cn.b::a),
+                  avp.a(cm.d.d, "duration", cm.d.c).forGetter(cn.b::b),
+                  avp.a(Codec.BOOL, "ambient").forGetter(cn.b::c),
+                  avp.a(Codec.BOOL, "visible").forGetter(cn.b::d)
+               )
+               .apply($$0, cn.b::new)
       );
 
-      public static an<cn.a> a(bb $$0, Optional<ca> $$1, Optional<bb> $$2) {
-         return am.P.a(new cn.a(Optional.of($$0), $$1, $$2));
+      public b() {
+         this(cm.d.c, cm.d.c, Optional.empty(), Optional.empty());
       }
 
-      public static an<cn.a> a(Optional<bb> $$0, Optional<ca> $$1, Optional<bb> $$2) {
-         return am.Q.a(new cn.a($$0, $$1, $$2));
+      public boolean a(@Nullable bnb $$0) {
+         if ($$0 == null) {
+            return false;
+         } else if (!this.b.d($$0.d())) {
+            return false;
+         } else if (!this.c.d($$0.c())) {
+            return false;
+         } else {
+            return this.d.isPresent() && this.d.get() != $$0.e() ? false : !this.e.isPresent() || this.e.get() == $$0.f();
+         }
       }
 
-      public boolean a(anf $$0, cng $$1, ehf $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
-      }
-
-      @Override
-      public void a(bc $$0) {
-         cv.a.super.a($$0);
-         $$0.a(this.d, ".entity");
-      }
-
-      @Override
-      public Optional<bb> a() {
+      public cm.d a() {
          return this.b;
       }
 
-      public Optional<ca> b() {
+      public cm.d b() {
          return this.c;
       }
 
-      public Optional<bb> c() {
+      public Optional<Boolean> c() {
          return this.d;
+      }
+
+      public Optional<Boolean> d() {
+         return this.e;
       }
    }
 }

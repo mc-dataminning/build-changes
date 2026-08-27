@@ -1,27 +1,27 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.Objects;
 
-public class bbd extends bae {
-   public bbd(Schema $$0) {
-      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
+public class bbd extends DataFix {
+   public bbd(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
-      if ($$1.isPresent()) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
-         Optional<String> $$3 = $$2.get("Name").asString().result();
-         if ($$3.isPresent()) {
-            String $$4 = $$3.get();
-            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
-            $$2 = $$2.set("Name", $$2.createString($$4));
-         }
-
-         return $$0.set("display", $$2);
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bdn.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bdn.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
       } else {
-         return $$0;
+         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bbd::a));
       }
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
    }
 }

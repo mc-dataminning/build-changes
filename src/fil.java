@@ -1,274 +1,318 @@
+import com.google.common.collect.Maps;
+import com.google.common.hash.Hashing;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.slf4j.Logger;
 
-public class fil {
-   private static final vg a = vg.c("selectWorld.newWorld");
-   private final List<Consumer<fil>> b = new ArrayList<>();
-   private String c = a.getString();
-   private fil.a d = fil.a.a;
-   private bjz e = bjz.c;
+public class fil extends ffe {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 200;
+   private static final vq c = vq.c("pack.dropInfo").a(n.h);
+   private static final vq k = vq.c("pack.folderInfo");
+   private static final int l = 20;
+   private static final aiy m = new aiy("textures/misc/unknown_pack.png");
+   private final fik n;
    @Nullable
-   private Boolean f;
-   private String g;
-   private boolean h;
-   private boolean i;
-   private final Path j;
-   private String k;
-   private fik l;
-   private fil.b m;
-   private final List<fil.b> n = new ArrayList<>();
-   private final List<fil.b> o = new ArrayList<>();
-   private ctt p = new ctt();
+   private fil.a o;
+   private long p;
+   private fim q;
+   private fim r;
+   private final Path t;
+   private ezh u;
+   private final Map<String, aiy> v = Maps.newHashMap();
 
-   public fil(Path $$0, fik $$1, Optional<ahg<dzd>> $$2, OptionalLong $$3) {
-      this.j = $$0;
-      this.l = $$1;
-      this.m = new fil.b(a($$1, $$2).orElse(null));
-      this.r();
-      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
-      this.h = $$1.b().c();
-      this.i = $$1.b().d();
-      this.k = this.c(this.c);
+   public fil(arl $$0, Consumer<arl> $$1, Path $$2, vq $$3) {
+      super($$3);
+      this.n = new fik(this::H, this::a, $$0, $$1);
+      this.t = $$2;
+      this.o = fil.a.a($$2);
    }
 
-   public void a(Consumer<fil> $$0) {
-      this.b.add($$0);
+   @Override
+   public void d() {
+      this.n.c();
+      this.E();
    }
 
-   public void a() {
-      boolean $$0 = this.j();
-      if ($$0 != this.l.b().d()) {
-         this.l = this.l.a($$1x -> $$1x.a($$0));
-      }
-
-      boolean $$1 = this.i();
-      if ($$1 != this.l.b().c()) {
-         this.l = this.l.a($$1x -> $$1x.b($$1));
-      }
-
-      for (Consumer<fil> $$2 : this.b) {
-         $$2.accept(this);
-      }
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
-      this.k = this.c($$0);
-      this.a();
-   }
-
-   private String c(String $$0) {
-      String $$1 = $$0.trim();
-
-      try {
-         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
-      } catch (Exception var5) {
+   private void E() {
+      if (this.o != null) {
          try {
-            return v.a(this.j, "World", "");
-         } catch (IOException var4) {
-            throw new RuntimeException("Could not create save folder", var4);
+            this.o.close();
+            this.o = null;
+         } catch (Exception var2) {
          }
       }
    }
 
-   public String b() {
-      return this.c;
+   @Override
+   protected void aQ_() {
+      this.q = this.d(new fim(this.f, this, 200, this.h, vq.c("pack.available.title")));
+      this.q.m(this.g / 2 - 4 - 200);
+      this.r = this.d(new fim(this.f, this, 200, this.h, vq.c("pack.selected.title")));
+      this.r.m(this.g / 2 + 4);
+      this.d(ezh.a(vq.c("pack.openFolder"), $$0 -> ac.j().a(this.t.toUri())).a(this.g / 2 - 154, this.h - 48, 150, 20).a(fas.a(k)).a());
+      this.u = this.d(ezh.a(vp.d, $$0 -> this.d()).a(this.g / 2 + 4, this.h - 48, 150, 20).a());
+      this.I();
    }
 
-   public String c() {
-      return this.k;
-   }
+   @Override
+   public void e() {
+      if (this.o != null) {
+         try {
+            if (this.o.a()) {
+               this.p = 20L;
+            }
+         } catch (IOException var2) {
+            a.warn("Failed to poll for directory {} changes, stopping", this.t);
+            this.E();
+         }
+      }
 
-   public void a(fil.a $$0) {
-      this.d = $$0;
-      this.a();
-   }
-
-   public fil.a d() {
-      return this.l() ? fil.a.d : this.d;
-   }
-
-   public void a(bjz $$0) {
-      this.e = $$0;
-      this.a();
-   }
-
-   public bjz e() {
-      return this.f() ? bjz.d : this.e;
-   }
-
-   public boolean f() {
-      return this.d() == fil.a.b;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-      this.a();
-   }
-
-   public boolean g() {
-      if (this.l()) {
-         return true;
-      } else if (this.f()) {
-         return false;
-      } else {
-         return this.f == null ? this.d() == fil.a.c : this.f;
+      if (this.p > 0L && --this.p == 0L) {
+         this.I();
       }
    }
 
-   public void b(String $$0) {
-      this.g = $$0;
-      this.l = this.l.a($$0x -> $$0x.a(dpw.a(this.h())));
-      this.a();
+   private void H() {
+      this.a(this.r, this.n.b());
+      this.a(this.q, this.n.a());
+      this.u.j = !this.r.l().isEmpty();
    }
 
-   public String h() {
-      return this.g;
+   private void a(fim $$0, Stream<fik.a> $$1) {
+      $$0.l().clear();
+      fim.a $$2 = $$0.i();
+      String $$3 = $$2 == null ? "" : $$2.b();
+      $$0.a(null);
+      $$1.forEach($$2x -> {
+         fim.a $$3x = new fim.a(this.f, $$0, $$2x);
+         $$0.l().add($$3x);
+         if ($$2x.c().equals($$3)) {
+            $$0.a($$3x);
+         }
+      });
    }
 
-   public void b(boolean $$0) {
-      this.h = $$0;
-      this.a();
+   public void a(fim $$0) {
+      fim $$1 = this.r == $$0 ? this.q : this.r;
+      this.a(eyr.a($$1.j(), $$1, this));
    }
 
-   public boolean i() {
-      return this.l() ? false : this.h;
+   public void o() {
+      this.r.a(null);
+      this.q.a(null);
    }
 
-   public void c(boolean $$0) {
-      this.i = $$0;
-      this.a();
+   private void I() {
+      this.n.d();
+      this.H();
+      this.p = 0L;
+      this.v.clear();
    }
 
-   public boolean j() {
-      return !this.l() && !this.f() ? this.i : false;
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      $$0.a(this.i, c, this.g / 2, 20, 16777215);
    }
 
-   public void a(fik $$0) {
-      this.l = $$0;
-      this.r();
-      this.a();
+   @Override
+   public void b(eyu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 
-   public fik k() {
-      return this.l;
-   }
-
-   public void a(fik.a $$0) {
-      this.l = this.l.a($$0);
-      this.a();
-   }
-
-   protected boolean a(cur $$0) {
-      cur $$1 = this.l.g();
-      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
-         this.l = new fik(this.l.b(), this.l.c(), this.l.d(), this.l.e(), this.l.f(), $$0);
-         return true;
-      } else {
-         return false;
+   protected static void a(exh $$0, List<Path> $$1, Path $$2) {
+      MutableBoolean $$3 = new MutableBoolean();
+      $$1.forEach($$2x -> {
+         try (Stream<Path> $$3x = Files.walk($$2x)) {
+            $$3x.forEach($$3xx -> {
+               try {
+                  ac.b($$2x.getParent(), $$2, $$3xx);
+               } catch (IOException var5) {
+                  a.warn("Failed to copy datapack file  from {} to {}", new Object[]{$$3xx, $$2, var5});
+                  $$3.setTrue();
+               }
+            });
+         } catch (IOException var8) {
+            a.warn("Failed to copy datapack file from {} to {}", $$2x, $$2);
+            $$3.setTrue();
+         }
+      });
+      if ($$3.isTrue()) {
+         fbp.c($$0, $$2.toString());
       }
    }
 
-   public boolean l() {
-      return this.l.d().c();
+   @Override
+   public void a(List<Path> $$0) {
+      String $$1 = a($$0).collect(Collectors.joining(", "));
+      this.f.a(new fdx($$1x -> {
+         if ($$1x) {
+            List<Path> $$2 = new ArrayList<>($$0.size());
+            Set<Path> $$3 = new HashSet<>($$0);
+            ark<Path> $$4 = new ark<Path>(this.f.bc()) {
+               protected Path a(Path $$0) {
+                  return $$0;
+               }
+
+               protected Path b(Path $$0) {
+                  return $$0;
+               }
+            };
+            List<enj> $$5 = new ArrayList<>();
+
+            for (Path $$6 : $$0) {
+               try {
+                  Path $$7 = $$4.a($$6, $$5);
+                  if ($$7 == null) {
+                     a.warn("Path {} does not seem like pack", $$6);
+                  } else {
+                     $$2.add($$7);
+                     $$3.remove($$7);
+                  }
+               } catch (IOException var10) {
+                  a.warn("Failed to check {} for packs", $$6, var10);
+               }
+            }
+
+            if (!$$5.isEmpty()) {
+               this.f.a(fet.b(() -> this.f.a(this)));
+               return;
+            }
+
+            if (!$$2.isEmpty()) {
+               a(this.f, $$2, this.t);
+               this.I();
+            }
+
+            if (!$$3.isEmpty()) {
+               String $$9 = a($$3).collect(Collectors.joining(", "));
+               this.f.a(new fdr(() -> this.f.a(this), vq.c("pack.dropRejected.title"), vq.a("pack.dropRejected.message", $$9)));
+               return;
+            }
+         }
+
+         this.f.a(this);
+      }, vq.c("pack.dropConfirm"), vq.b($$1)));
    }
 
-   public void a(fil.b $$0) {
-      this.m = $$0;
-      ih<dzd> $$1 = $$0.c();
-      if ($$1 != null) {
-         this.a(($$1x, $$2) -> $$1.a().a());
+   private static Stream<String> a(Collection<Path> $$0) {
+      return $$0.stream().map(Path::getFileName).map(Path::toString);
+   }
+
+   private aiy a(ggv $$0, ari $$1) {
+      try {
+         aiy var9;
+         try (aqo $$2 = $$1.e()) {
+            ars<InputStream> $$3 = $$2.a("pack.png");
+            if ($$3 == null) {
+               return m;
+            }
+
+            String $$4 = $$1.f();
+            aiy $$5 = new aiy("minecraft", "pack/" + ac.a($$4, aiy::b) + "/" + Hashing.sha1().hashUnencodedChars($$4) + "/icon");
+
+            try (InputStream $$6 = $$3.get()) {
+               erb $$7 = erb.a($$6);
+               $$0.a($$5, new ggh($$7));
+               var9 = $$5;
+            }
+         }
+
+         return var9;
+      } catch (Exception var14) {
+         a.warn("Failed to load icon from pack {}", $$1.f(), var14);
+         return m;
       }
    }
 
-   public fil.b m() {
-      return this.m;
+   private aiy a(ari $$0) {
+      return this.v.computeIfAbsent($$0.f(), $$1 -> this.a(this.f.Y(), $$0));
    }
 
-   @Nullable
-   public fih n() {
-      ih<dzd> $$0 = this.m().c();
-      return $$0 != null ? fih.a.get($$0.e()) : null;
-   }
+   static class a implements AutoCloseable {
+      private final WatchService a;
+      private final Path b;
 
-   public List<fil.b> o() {
-      return this.n;
-   }
+      public a(Path $$0) throws IOException {
+         this.b = $$0;
+         this.a = $$0.getFileSystem().newWatchService();
 
-   public List<fil.b> p() {
-      return this.o;
-   }
+         try {
+            this.b($$0);
 
-   private void r() {
-      it<dzd> $$0 = this.k().a().d(ke.aK);
-      this.n.clear();
-      this.n.addAll(a($$0, atb.a).orElseGet(() -> $$0.h().map(fil.b::new).toList()));
-      this.o.clear();
-      this.o.addAll(a($$0, atb.b).orElse(this.n));
-      ih<dzd> $$1 = this.m.c();
-      if ($$1 != null) {
-         this.m = a(this.k(), $$1.e()).map(fil.b::new).orElse(this.n.get(0));
-      }
-   }
-
-   private static Optional<ih<dzd>> a(fik $$0, Optional<ahg<dzd>> $$1) {
-      return $$1.flatMap($$1x -> $$0.a().d(ke.aK).b($$1x));
-   }
-
-   private static Optional<List<fil.b>> a(it<dzd> $$0, asx<dzd> $$1) {
-      return $$0.b($$1).map($$0x -> $$0x.a().map(fil.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
-   }
-
-   public void a(ctt $$0) {
-      this.p = $$0;
-      this.a();
-   }
-
-   public ctt q() {
-      return this.p;
-   }
-
-   public static enum a {
-      a("survival", ctu.a),
-      b("hardcore", ctu.a),
-      c("creative", ctu.b),
-      d("spectator", ctu.d);
-
-      public final ctu e;
-      public final vg f;
-      private final vg g;
-
-      private a(String $$0, ctu $$1) {
-         this.e = $$1;
-         this.f = vg.c("selectWorld.gameMode." + $$0);
-         this.g = vg.c("selectWorld.gameMode." + $$0 + ".info");
-      }
-
-      public vg a() {
-         return this.g;
-      }
-   }
-
-   public static record b(@Nullable ih<dzd> a) {
-      private static final vg b = vg.c("generator.custom");
-
-      public vg a() {
-         return Optional.ofNullable(this.a).flatMap(ih::e).map($$0 -> vg.c($$0.a().f("generator"))).orElse(b);
-      }
-
-      public boolean b() {
-         return Optional.ofNullable(this.a).flatMap(ih::e).filter($$0 -> $$0.equals(dze.d)).isPresent();
+            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream($$0)) {
+               for (Path $$2 : $$1) {
+                  if (Files.isDirectory($$2, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$2);
+                  }
+               }
+            }
+         } catch (Exception var7) {
+            this.a.close();
+            throw var7;
+         }
       }
 
       @Nullable
-      public ih<dzd> c() {
-         return this.a;
+      public static fil.a a(Path $$0) {
+         try {
+            return new fil.a($$0);
+         } catch (IOException var2) {
+            fil.a.warn("Failed to initialize pack directory {} monitoring", $$0, var2);
+            return null;
+         }
+      }
+
+      private void b(Path $$0) throws IOException {
+         $$0.register(this.a, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
+      }
+
+      public boolean a() throws IOException {
+         boolean $$0 = false;
+
+         WatchKey $$1;
+         while (($$1 = this.a.poll()) != null) {
+            for (WatchEvent<?> $$3 : $$1.pollEvents()) {
+               $$0 = true;
+               if ($$1.watchable() == this.b && $$3.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
+                  Path $$4 = this.b.resolve((Path)$$3.context());
+                  if (Files.isDirectory($$4, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$4);
+                  }
+               }
+            }
+
+            $$1.reset();
+         }
+
+         return $$0;
+      }
+
+      @Override
+      public void close() throws IOException {
+         this.a.close();
       }
    }
 }

@@ -1,21 +1,12 @@
-import com.mojang.serialization.Codec;
+public class jw {
+   private final int b;
+   public static final jw a = new jw(1000);
 
-public abstract class jw<T extends jv> {
-   private final boolean a;
-   private final jv.a<T> b;
-
-   protected jw(boolean $$0, jv.a<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public jw(int $$0) {
+      this.b = $$0;
    }
 
-   public boolean c() {
-      return this.a;
-   }
-
-   public jv.a<T> d() {
+   public int a() {
       return this.b;
    }
-
-   public abstract Codec<T> e();
 }

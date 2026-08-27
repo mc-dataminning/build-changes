@@ -1,17 +1,43 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 
-public interface jv {
-   jw<?> b();
+public class jv implements jx {
+   public static final jx.a<jv> a = new jx.a<jv>() {
+      public jv a(jy<jv> $$0, StringReader $$1) throws CommandSyntaxException {
+         $$1.expect(' ');
+         gc.a $$2 = gc.a(kf.h.p(), $$1);
+         coz $$3 = new gb($$2.a(), $$2.b()).a(1, false);
+         return new jv($$0, $$3);
+      }
+   };
+   private final jy<jv> b;
+   private final coz c;
 
-   void a(uj var1);
+   public static Codec<jv> a(jy<jv> $$0) {
+      return coz.a.xmap($$1 -> new jv($$0, $$1), $$0x -> $$0x.c);
+   }
 
-   String a();
+   public static xo<? super vb, jv> b(jy<jv> $$0) {
+      return coz.f.a($$1 -> new jv($$0, $$1), $$0x -> $$0x.c);
+   }
 
-   @Deprecated
-   public interface a<T extends jv> {
-      T b(jw<T> var1, StringReader var2) throws CommandSyntaxException;
+   public jv(jy<jv> $$0, coz $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-      T b(jw<T> var1, uj var2);
+   @Override
+   public String a() {
+      return kf.j.b(this.b()) + " " + new gb(this.c.e(), this.c.w()).b();
+   }
+
+   @Override
+   public jy<jv> b() {
+      return this.b;
+   }
+
+   public coz c() {
+      return this.c;
    }
 }

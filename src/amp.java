@@ -1,111 +1,39 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import java.util.Collections;
 
-public class amp<T> {
-   public static final int a = amn.a + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Optional<T>>>> b = IntStream.range(0, a)
-      .mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap())
-      .collect(Collectors.toList());
-   private volatile int c = a;
-   private final String d;
-   private final LongSet e = new LongOpenHashSet();
-   private final int f;
-
-   public amp(String $$0, int $$1) {
-      this.d = $$0;
-      this.f = $$1;
+public class amp {
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).h()), hz.a(((du)$$0x.getSource()).d()), 0.0F)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("targets", eh.d())
+                     .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), hz.a(((du)$$0x.getSource()).d()), 0.0F)))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("pos", fo.a()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), fo.c($$0x, "pos"), 0.0F)))
+                        .then(dv.a("angle", ea.a()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), fo.c($$0x, "pos"), ea.a($$0x, "angle"))))
+                  )
+            )
+      );
    }
 
-   protected void a(int $$0, cte $$1, int $$2) {
-      if ($$0 < a) {
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$3 = this.b.get($$0);
-         List<Optional<T>> $$4 = (List<Optional<T>>)$$3.remove($$1.a());
-         if ($$0 == this.c) {
-            while (this.b() && this.b.get(this.c).isEmpty()) {
-               this.c++;
-            }
-         }
+   private static int a(du $$0, Collection<aow> $$1, hz $$2, float $$3) {
+      aix<cvn> $$4 = $$0.e().ae();
 
-         if ($$4 != null && !$$4.isEmpty()) {
-            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
-            this.c = Math.min(this.c, $$2);
-         }
-      }
-   }
-
-   protected void a(Optional<T> $$0, long $$1, int $$2) {
-      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
-      this.c = Math.min(this.c, $$2);
-   }
-
-   protected void a(long $$0, boolean $$1) {
-      for (Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$2 : this.b) {
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$2.get($$0);
-         if ($$3 != null) {
-            if ($$1) {
-               $$3.clear();
-            } else {
-               $$3.removeIf($$0x -> $$0x.isEmpty());
-            }
-
-            if ($$3.isEmpty()) {
-               $$2.remove($$0);
-            }
-         }
+      for (aow $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
 
-      while (this.b() && this.b.get(this.c).isEmpty()) {
-         this.c++;
-      }
-
-      this.e.remove($$0);
-   }
-
-   private Runnable a(long $$0) {
-      return () -> this.e.add($$0);
-   }
-
-   @Nullable
-   public Stream<Either<T, Runnable>> a() {
-      if (this.e.size() >= this.f) {
-         return null;
-      } else if (!this.b()) {
-         return null;
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> vq.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().Q_()), true);
       } else {
-         int $$0 = this.c;
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$1 = this.b.get($$0);
-         long $$2 = $$1.firstLongKey();
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$1.removeFirst();
-
-         while (this.b() && this.b.get(this.c).isEmpty()) {
-            this.c++;
-         }
-
-         return $$3.stream().map($$1x -> $$1x.map(Either::left).orElseGet(() -> Either.right(this.a($$2))));
+         $$0.a(() -> vq.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
       }
-   }
 
-   public boolean b() {
-      return this.c < a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d + " " + this.c + "...";
-   }
-
-   @VisibleForTesting
-   LongSet c() {
-      return new LongOpenHashSet(this.e);
+      return $$1.size();
    }
 }

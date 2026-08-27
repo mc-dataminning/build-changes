@@ -1,61 +1,86 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class cfe {
-   public static final int a = 1;
-   public static final int b = 5;
-   private static final int[] d = new int[]{0, 10, 70, 150, 250};
-   public static final Codec<cfe> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kd.y.q().fieldOf("type").orElseGet(() -> cfi.c).forGetter($$0x -> $$0x.e),
-               kd.z.q().fieldOf("profession").orElseGet(() -> cfg.b).forGetter($$0x -> $$0x.f),
-               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, cfe::new)
-   );
-   private final cfi e;
-   private final cfg f;
-   private final int g;
-
-   public cfe(cfi $$0, cfg $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = Math.max(1, $$2);
+public class cfe extends cdw {
+   public cfe(bnu<? extends cfe> $$0, cvn $$1) {
+      super($$0, $$1);
+      this.a(eha.i, 8.0F);
    }
 
-   public cfi a() {
-      return this.e;
+   @Override
+   protected void B() {
+      this.bP.a(3, new bwu<>(this, cfw.class, true));
+      super.B();
    }
 
-   public cfg b() {
-      return this.f;
+   @Override
+   protected atj y() {
+      return atk.BF;
    }
 
-   public int c() {
-      return this.g;
+   @Override
+   protected atj d(bmn $$0) {
+      return atk.BH;
    }
 
-   public cfe a(cfi $$0) {
-      return new cfe($$0, this.f, this.g);
+   @Override
+   protected atj n_() {
+      return atk.BG;
    }
 
-   public cfe a(cfg $$0) {
-      return new cfe(this.e, $$0, this.g);
+   @Override
+   atj w() {
+      return atk.BI;
    }
 
-   public cfe a(int $$0) {
-      return new cfe(this.e, this.f, $$0);
+   @Override
+   protected void a(bmn $$0, int $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$0.d() instanceof cdz $$4 && $$4.gh()) {
+         $$4.gi();
+         this.a((cvm)cpc.ui);
+      }
    }
 
-   public static int b(int $$0) {
-      return d($$0) ? d[$$0 - 1] : 0;
+   @Override
+   protected void a(awo $$0, bls $$1) {
+      this.a(bnv.a, new coz(cpc.oP));
    }
 
-   public static int c(int $$0) {
-      return d($$0) ? d[$$0] : 0;
+   @Override
+   protected void b(awo $$0, bls $$1) {
    }
 
-   public static boolean d(int $$0) {
-      return $$0 >= 1 && $$0 < 5;
+   @Nullable
+   @Override
+   public boy a(cwc $$0, bls $$1, bok $$2, @Nullable boy $$3, @Nullable sw $$4) {
+      boy $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      this.f(bpl.c).a(4.0);
+      this.A();
+      return $$5;
+   }
+
+   @Override
+   public boolean B(bno $$0) {
+      if (!super.B($$0)) {
+         return false;
+      } else {
+         if ($$0 instanceof bog) {
+            ((bog)$$0).b(new bnb(bnd.t, 200), this);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   protected chn b(coz $$0, float $$1) {
+      chn $$2 = super.b($$0, $$1);
+      $$2.g(100);
+      return $$2;
+   }
+
+   @Override
+   public boolean c(bnb $$0) {
+      return $$0.a(bnd.t) ? false : super.c($$0);
    }
 }

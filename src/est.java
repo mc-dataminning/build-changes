@@ -1,164 +1,289 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.Proxy;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import javax.annotation.Nullable;
 
-public class est extends exr {
-   private static final ahh t = new ahh("widget/slot_frame");
-   private static final ahh u = new ahh("icon/checkmark");
-   public static final ahh a = new ahh("textures/gui/realms/empty_frame.png");
-   public static final ahh b = new ahh("minecraft", "textures/gui/title/background/panorama_0.png");
-   public static final ahh c = new ahh("minecraft", "textures/gui/title/background/panorama_2.png");
-   public static final ahh d = new ahh("minecraft", "textures/gui/title/background/panorama_3.png");
-   private static final vg v = vg.c("mco.configure.world.slot.tooltip.active");
-   private static final vg w = vg.c("mco.configure.world.slot.tooltip.minigame");
-   private static final vg x = vg.c("mco.configure.world.slot.tooltip");
-   static final vg y = vg.c("mco.worldSlot.minigame");
-   private final int z;
-   @Nullable
-   private est.b A;
-   @Nullable
-   private ezc B;
+public abstract class est<T extends est<T>> {
+   protected HttpURLConnection a;
+   private boolean c;
+   protected String b;
+   private static final int d = 60000;
+   private static final int e = 5000;
+   private static final String f = "Is-Prerelease";
+   private static final String g = "Cookie";
 
-   public est(int $$0, int $$1, int $$2, int $$3, int $$4, exr.c $$5) {
-      super($$0, $$1, $$2, $$3, vf.a, $$5, p);
-      this.z = $$4;
-   }
-
-   @Nullable
-   public est.b a() {
-      return this.A;
-   }
-
-   public void a(err $$0) {
-      this.A = new est.b($$0, this.z);
-      this.a(this.A, $$0.o);
-   }
-
-   private void a(est.b $$0, String $$1) {
-      vg $$2 = switch ($$0.c) {
-         case c -> v;
-         case b -> $$0.b ? w : x;
-         default -> null;
-      };
-      if ($$2 == null) {
-         this.b(vg.b($$0.e));
-      } else {
-         this.B = ezc.a($$2);
-         if ($$0.a) {
-            this.b($$2);
+   public est(String $$0, int $$1, int $$2) {
+      try {
+         this.b = $$0;
+         Proxy $$3 = esr.a();
+         if ($$3 != null) {
+            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
          } else {
-            vu $$3 = $$2.f().b(vf.a()).b(vg.b($$0.e));
-            if ($$0.b) {
-               $$3 = $$3.b(vf.u).f($$1);
+            this.a = (HttpURLConnection)new URL($$0).openConnection();
+         }
+
+         this.a.setConnectTimeout($$1);
+         this.a.setReadTimeout($$2);
+      } catch (MalformedURLException var5) {
+         throw new euc(var5.getMessage(), var5);
+      } catch (IOException var6) {
+         throw new euc(var6.getMessage(), var6);
+      }
+   }
+
+   public void a(String $$0, String $$1) {
+      a(this.a, $$0, $$1);
+   }
+
+   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
+      String $$3 = $$0.getRequestProperty("Cookie");
+      if ($$3 == null) {
+         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
+      } else {
+         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
+      }
+   }
+
+   public void a(boolean $$0) {
+      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
+   }
+
+   public int a() {
+      return a(this.a);
+   }
+
+   public static int a(HttpURLConnection $$0) {
+      String $$1 = $$0.getHeaderField("Retry-After");
+
+      try {
+         return Integer.valueOf($$1);
+      } catch (Exception var3) {
+         return 5;
+      }
+   }
+
+   public int b() {
+      try {
+         this.d();
+         return this.a.getResponseCode();
+      } catch (Exception var2) {
+         throw new euc(var2.getMessage(), var2);
+      }
+   }
+
+   public String c() {
+      try {
+         this.d();
+         String $$0;
+         if (this.b() >= 400) {
+            $$0 = this.a(this.a.getErrorStream());
+         } else {
+            $$0 = this.a(this.a.getInputStream());
+         }
+
+         this.f();
+         return $$0;
+      } catch (IOException var2) {
+         throw new euc(var2.getMessage(), var2);
+      }
+   }
+
+   private String a(@Nullable InputStream $$0) throws IOException {
+      if ($$0 == null) {
+         return "";
+      } else {
+         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
+         StringBuilder $$2 = new StringBuilder();
+
+         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
+            $$2.append((char)$$3);
+         }
+
+         return $$2.toString();
+      }
+   }
+
+   private void f() {
+      byte[] $$0 = new byte[1024];
+
+      try {
+         InputStream $$1 = this.a.getInputStream();
+
+         while ($$1.read($$0) > 0) {
+         }
+
+         $$1.close();
+         return;
+      } catch (Exception var9) {
+         try {
+            InputStream $$3 = this.a.getErrorStream();
+            if ($$3 != null) {
+               while ($$3.read($$0) > 0) {
+               }
+
+               $$3.close();
+               return;
+            }
+         } catch (IOException var8) {
+            return;
+         }
+      } finally {
+         if (this.a != null) {
+            this.a.disconnect();
+         }
+      }
+   }
+
+   protected T d() {
+      if (this.c) {
+         return (T)this;
+      } else {
+         T $$0 = this.e();
+         this.c = true;
+         return $$0;
+      }
+   }
+
+   protected abstract T e();
+
+   public static est<?> a(String $$0) {
+      return new est.b($$0, 5000, 60000);
+   }
+
+   public static est<?> a(String $$0, int $$1, int $$2) {
+      return new est.b($$0, $$1, $$2);
+   }
+
+   public static est<?> b(String $$0, String $$1) {
+      return new est.c($$0, $$1, 5000, 60000);
+   }
+
+   public static est<?> a(String $$0, String $$1, int $$2, int $$3) {
+      return new est.c($$0, $$1, $$2, $$3);
+   }
+
+   public static est<?> b(String $$0) {
+      return new est.a($$0, 5000, 60000);
+   }
+
+   public static est<?> c(String $$0, String $$1) {
+      return new est.d($$0, $$1, 5000, 60000);
+   }
+
+   public static est<?> b(String $$0, String $$1, int $$2, int $$3) {
+      return new est.d($$0, $$1, $$2, $$3);
+   }
+
+   public String c(String $$0) {
+      return a(this.a, $$0);
+   }
+
+   public static String a(HttpURLConnection $$0, String $$1) {
+      try {
+         return $$0.getHeaderField($$1);
+      } catch (Exception var3) {
+         return "";
+      }
+   }
+
+   public static class a extends est<est.a> {
+      public a(String $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public est.a f() {
+         try {
+            this.a.setDoOutput(true);
+            this.a.setRequestMethod("DELETE");
+            this.a.connect();
+            return this;
+         } catch (Exception var2) {
+            throw new euc(var2.getMessage(), var2);
+         }
+      }
+   }
+
+   public static class b extends est<est.b> {
+      public b(String $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public est.b f() {
+         try {
+            this.a.setDoInput(true);
+            this.a.setDoOutput(true);
+            this.a.setUseCaches(false);
+            this.a.setRequestMethod("GET");
+            return this;
+         } catch (Exception var2) {
+            throw new euc(var2.getMessage(), var2);
+         }
+      }
+   }
+
+   public static class c extends est<est.c> {
+      private final String c;
+
+      public c(String $$0, String $$1, int $$2, int $$3) {
+         super($$0, $$2, $$3);
+         this.c = $$1;
+      }
+
+      public est.c f() {
+         try {
+            if (this.c != null) {
+               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             }
 
-            this.b($$3);
+            this.a.setDoInput(true);
+            this.a.setDoOutput(true);
+            this.a.setUseCaches(false);
+            this.a.setRequestMethod("POST");
+            OutputStream $$0 = this.a.getOutputStream();
+            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
+            $$1.write(this.c);
+            $$1.close();
+            $$0.flush();
+            return this;
+         } catch (Exception var3) {
+            throw new euc(var3.getMessage(), var3);
          }
       }
    }
 
-   static est.a a(err $$0, boolean $$1, boolean $$2) {
-      if ($$1 && !$$0.j && $$0.e != err.c.c) {
-         return est.a.c;
-      } else {
-         return $$1 || $$2 && $$0.j ? est.a.a : est.a.b;
+   public static class d extends est<est.d> {
+      private final String c;
+
+      public d(String $$0, String $$1, int $$2, int $$3) {
+         super($$0, $$2, $$3);
+         this.c = $$1;
       }
-   }
 
-   @Override
-   public void b(exe $$0, int $$1, int $$2, float $$3) {
-      if (this.A != null) {
-         int $$4 = this.B();
-         int $$5 = this.C();
-         boolean $$6 = this.z();
-         if (this.B != null) {
-            this.B.a(this.y(), this.aK_(), this.F());
+      public est.d f() {
+         try {
+            if (this.c != null) {
+               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+            }
+
+            this.a.setDoOutput(true);
+            this.a.setDoInput(true);
+            this.a.setRequestMethod("PUT");
+            OutputStream $$0 = this.a.getOutputStream();
+            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
+            $$1.write(this.c);
+            $$1.close();
+            $$0.flush();
+            return this;
+         } catch (Exception var3) {
+            throw new euc(var3.getMessage(), var3);
          }
-
-         ahh $$7;
-         if (this.A.b) {
-            $$7 = eug.a(String.valueOf(this.A.h), this.A.i);
-         } else if (this.A.a) {
-            $$7 = a;
-         } else if (this.A.i != null && this.A.h != -1L) {
-            $$7 = eug.a(String.valueOf(this.A.h), this.A.i);
-         } else if (this.z == 1) {
-            $$7 = b;
-         } else if (this.z == 2) {
-            $$7 = c;
-         } else if (this.z == 3) {
-            $$7 = d;
-         } else {
-            $$7 = a;
-         }
-
-         if (this.A.d) {
-            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-         }
-
-         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
-         boolean $$14 = $$6 && this.A.c != est.a.a;
-         if ($$14) {
-            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         } else if (this.A.d) {
-            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
-         } else {
-            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-         }
-
-         $$0.a(t, $$4, $$5, 80, 80);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         if (this.A.d) {
-            RenderSystem.enableBlend();
-            $$0.a(u, $$4 + 67, $$5 + 4, 9, 8);
-            RenderSystem.disableBlend();
-         }
-
-         exc $$15 = evr.O().h;
-         $$0.a($$15, this.A.e, $$4 + 40, $$5 + 66, -1);
-         $$0.a($$15, eqv.a(this.A.f, this.A.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-   }
-
-   public static class b {
-      final boolean d;
-      final String e;
-      final String f;
-      final err.a g;
-      final long h;
-      @Nullable
-      final String i;
-      public final boolean a;
-      public final boolean b;
-      public final est.a c;
-
-      public b(err $$0, int $$1) {
-         this.b = $$1 == 4;
-         if (this.b) {
-            this.d = $$0.m == err.d.b;
-            this.e = est.y.getString();
-            this.h = (long)$$0.p;
-            this.i = $$0.q;
-            this.a = $$0.p == -1;
-            this.f = "";
-            this.g = err.a.a;
-         } else {
-            ery $$2 = $$0.i.get($$1);
-            this.d = $$0.n == $$1 && $$0.m != err.d.b;
-            this.e = $$2.a($$1);
-            this.h = $$2.l;
-            this.i = $$2.m;
-            this.a = $$2.n;
-            this.f = $$2.j;
-            this.g = $$2.k;
-         }
-
-         this.c = est.a($$0, this.d, this.b);
       }
    }
 }

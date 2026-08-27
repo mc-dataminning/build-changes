@@ -1,46 +1,35 @@
-public abstract class cce extends cgz {
-   protected cce(bmc<? extends cce> $$0, ctx $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
+
+public enum cce implements axc {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
+
+   public static final Codec<cce> h = axc.a(cce::values);
+   private static final IntFunction<cce> i = auz.a(cce::a, values(), auz.a.b);
+   private final int j;
+   private final String k;
+
+   private cce(int $$0, String $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public int a() {
+      return this.j;
+   }
+
+   public static cce a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   protected void B() {
-      super.B();
-   }
-
-   @Override
-   public bmt eS() {
-      return bmt.d;
-   }
-
-   public cce.a u() {
-      return cce.a.a;
-   }
-
-   @Override
-   public boolean c(bmo $$0) {
-      return $$0 instanceof cey && $$0.o_() ? false : super.c($$0);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-   }
-
-   protected class b extends buc {
-      public b(cgz $$1) {
-         super($$1, false);
-      }
-
-      @Override
-      public boolean a() {
-         return super.a() && cce.this.gu();
-      }
+   public String c() {
+      return this.k;
    }
 }

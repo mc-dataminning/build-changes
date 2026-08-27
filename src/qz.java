@@ -1,71 +1,67 @@
 import java.util.List;
 
 public class qz {
-   public static final dyv a = dyo.a(doy.a.e);
-   public static final dyv b = dyo.a(doy.a.c);
-   public static final dyv c = dyo.a(doy.a.a);
-   public static final dyv d = dyo.a(doy.a.d);
-   public static final dyv e = dyn.a(dps.a(), dps.b());
-   public static final dyv f = dyn.a(dps.b(10), dps.c(10));
-   public static final dyv g = dyn.a(dps.b(8), dps.c(8));
-   public static final dyv h = dyn.a(dps.b(4), dps.c(4));
-   public static final dyv i = dyn.a(dps.a(), dps.a(256));
+   public static final aix<eai> a = rb.a("delta");
+   public static final aix<eai> b = rb.a("small_basalt_columns");
+   public static final aix<eai> c = rb.a("large_basalt_columns");
+   public static final aix<eai> d = rb.a("basalt_blobs");
+   public static final aix<eai> e = rb.a("blackstone_blobs");
+   public static final aix<eai> f = rb.a("glowstone_extra");
+   public static final aix<eai> g = rb.a("glowstone");
+   public static final aix<eai> h = rb.a("crimson_forest_vegetation");
+   public static final aix<eai> i = rb.a("warped_forest_vegetation");
+   public static final aix<eai> j = rb.a("nether_sprouts");
+   public static final aix<eai> k = rb.a("twisting_vines");
+   public static final aix<eai> l = rb.a("weeping_vines");
+   public static final aix<eai> m = rb.a("patch_crimson_roots");
+   public static final aix<eai> n = rb.a("basalt_pillar");
+   public static final aix<eai> o = rb.a("spring_delta");
+   public static final aix<eai> p = rb.a("spring_closed");
+   public static final aix<eai> q = rb.a("spring_closed_double");
+   public static final aix<eai> r = rb.a("spring_open");
+   public static final aix<eai> s = rb.a("patch_soul_fire");
+   public static final aix<eai> t = rb.a("patch_fire");
 
-   public static void a(pf<dys> $$0) {
-      qt.a($$0);
-      qu.a($$0);
-      qv.a($$0);
-      qw.a($$0);
-      qx.a($$0);
-      qy.a($$0);
-      ra.a($$0);
-      rb.a($$0);
-      rc.a($$0);
-   }
-
-   public static ahg<dys> a(String $$0) {
-      return ahg.a(ke.aC, new ahh($$0));
-   }
-
-   public static void a(pf<dys> $$0, ahg<dys> $$1, ih<drp<?, ?>> $$2, List<dyv> $$3) {
-      $$0.a($$1, new dys($$2, List.copyOf($$3)));
-   }
-
-   public static void a(pf<dys> $$0, ahg<dys> $$1, ih<drp<?, ?>> $$2, dyv... $$3) {
-      a($$0, $$1, $$2, List.of($$3));
-   }
-
-   public static dyv a(int $$0, float $$1, int $$2) {
-      float $$3 = 1.0F / $$1;
-      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
-         throw new IllegalStateException("Chance data cannot be represented as list weight");
-      } else {
-         bim<bjh> $$4 = bim.<bjh>a().a(bje.a($$0), (int)$$3 - 1).a(bje.a($$0 + $$2), 1).a();
-         return dyl.a(new bjo($$4));
-      }
-   }
-
-   public static dyu a() {
-      return dyh.a(dqf.c);
-   }
-
-   public static dyh a(cwy $$0) {
-      return dyh.a(dqf.a($$0.o(), hx.b));
-   }
-
-   public static ih<dys> a(ih<drp<?, ?>> $$0, dyv... $$1) {
-      return ih.a(new dys($$0, List.of($$1)));
-   }
-
-   public static <FC extends dug, F extends dsc<FC>> ih<dys> a(F $$0, FC $$1, dyv... $$2) {
-      return a(ih.a(new drp($$0, $$1)), $$2);
-   }
-
-   public static <FC extends dug, F extends dsc<FC>> ih<dys> a(F $$0, FC $$1) {
-      return a($$0, $$1, dqf.c);
-   }
-
-   public static <FC extends dug, F extends dsc<FC>> ih<dys> a(F $$0, FC $$1, dqf $$2) {
-      return a($$0, $$1, dyh.a($$2));
+   public static void a(ph<eai> $$0) {
+      ik<dtf<?, ?>> $$1 = $$0.a(kg.aw);
+      ij<dtf<?, ?>> $$2 = $$1.b(qo.a);
+      ij<dtf<?, ?>> $$3 = $$1.b(qo.b);
+      ij<dtf<?, ?>> $$4 = $$1.b(qo.c);
+      ij<dtf<?, ?>> $$5 = $$1.b(qo.d);
+      ij<dtf<?, ?>> $$6 = $$1.b(qo.e);
+      ij<dtf<?, ?>> $$7 = $$1.b(qo.f);
+      ij<dtf<?, ?>> $$8 = $$1.b(qo.g);
+      ij<dtf<?, ?>> $$9 = $$1.b(qo.i);
+      ij<dtf<?, ?>> $$10 = $$1.b(qo.k);
+      ij<dtf<?, ?>> $$11 = $$1.b(qo.m);
+      ij<dtf<?, ?>> $$12 = $$1.b(qo.o);
+      ij<dtf<?, ?>> $$13 = $$1.b(qo.p);
+      ij<dtf<?, ?>> $$14 = $$1.b(qo.q);
+      ij<dtf<?, ?>> $$15 = $$1.b(qo.r);
+      ij<dtf<?, ?>> $$16 = $$1.b(qo.s);
+      ij<dtf<?, ?>> $$17 = $$1.b(qo.t);
+      ij<dtf<?, ?>> $$18 = $$1.b(qo.v);
+      ij<dtf<?, ?>> $$19 = $$1.b(qo.u);
+      rb.a($$0, a, $$2, eaa.a(40), dzw.a());
+      rb.a($$0, b, $$3, eaa.a(4), dzw.a());
+      rb.a($$0, c, $$4, eaa.a(2), dzw.a());
+      rb.a($$0, d, $$5, eab.a(75), eaf.a(), rb.e, dzw.a());
+      rb.a($$0, e, $$6, eab.a(25), eaf.a(), rb.e, dzw.a());
+      rb.a($$0, f, $$7, eab.a(bkr.a(0, 9)), eaf.a(), rb.h, dzw.a());
+      rb.a($$0, g, $$7, eab.a(10), eaf.a(), rb.e, dzw.a());
+      rb.a($$0, h, $$8, eaa.a(6), dzw.a());
+      rb.a($$0, i, $$9, eaa.a(5), dzw.a());
+      rb.a($$0, j, $$10, eaa.a(4), dzw.a());
+      rb.a($$0, k, $$11, eab.a(10), eaf.a(), rb.e, dzw.a());
+      rb.a($$0, l, $$12, eab.a(10), eaf.a(), rb.e, dzw.a());
+      rb.a($$0, m, $$13, rb.e, dzw.a());
+      rb.a($$0, n, $$14, eab.a(10), eaf.a(), rb.e, dzw.a());
+      rb.a($$0, o, $$15, eab.a(16), eaf.a(), rb.h, dzw.a());
+      rb.a($$0, p, $$16, eab.a(16), eaf.a(), rb.f, dzw.a());
+      rb.a($$0, q, $$16, eab.a(32), eaf.a(), rb.f, dzw.a());
+      rb.a($$0, r, $$17, eab.a(8), eaf.a(), rb.h, dzw.a());
+      List<eal> $$20 = List.of(eab.a(blf.a(0, 5)), eaf.a(), rb.h, dzw.a());
+      rb.a($$0, s, $$18, $$20);
+      rb.a($$0, t, $$19, $$20);
    }
 }

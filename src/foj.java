@@ -1,68 +1,78 @@
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import java.util.List;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
-public class foj extends SimpleChannelInboundHandler<ByteBuf> {
-   private static final Splitter a = Splitter.on('\u0000').limit(6);
-   private final fpr b;
-   private final foj.a c;
+public class foj<T extends cau> extends fnl<T> {
+   private static final String j = "egg_belly";
+   private final fpc k;
 
-   public foj(fpr $$0, foj.a $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public foj(fpc $$0) {
+      super($$0, true, 120.0F, 0.0F, 9.0F, 6.0F, 120);
+      this.k = $$0.b("egg_belly");
    }
 
-   public void channelActive(ChannelHandlerContext $$0) throws Exception {
-      super.channelActive($$0);
-      ByteBuf $$1 = $$0.alloc().buffer();
+   public static fpi c() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      $$1.a("head", fph.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), fpe.a(0.0F, 19.0F, -10.0F));
+      $$1.a(
+         "body",
+         fph.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
+         fpe.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("egg_belly", fph.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), fpe.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 1;
+      $$1.a("right_hind_leg", fph.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fpe.a(-3.5F, 22.0F, 11.0F));
+      $$1.a("left_hind_leg", fph.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), fpe.a(3.5F, 22.0F, 11.0F));
+      $$1.a("right_front_leg", fph.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fpe.a(-5.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", fph.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), fpe.a(5.0F, 21.0F, -4.0F));
+      return fpi.a($$0, 128, 64);
+   }
 
-      try {
-         $$1.writeByte(254);
-         $$1.writeByte(1);
-         $$1.writeByte(250);
-         anw.a($$1, "MC|PingHost");
-         int $$2 = $$1.writerIndex();
-         $$1.writeShort(0);
-         int $$3 = $$1.writerIndex();
-         $$1.writeByte(127);
-         anw.a($$1, this.b.a());
-         $$1.writeInt(this.b.b());
-         int $$4 = $$1.writerIndex() - $$3;
-         $$1.setShort($$2, $$4);
-         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception var6) {
-         $$1.release();
-         throw var6;
+   @Override
+   protected Iterable<fpc> b() {
+      return Iterables.concat(super.b(), ImmutableList.of(this.k));
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.f.e = awh.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
+      this.g.e = awh.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
+      this.h.g = awh.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
+      this.i.g = awh.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
+      this.h.e = 0.0F;
+      this.i.e = 0.0F;
+      this.h.f = 0.0F;
+      this.i.f = 0.0F;
+      this.f.f = 0.0F;
+      this.g.f = 0.0F;
+      if (!$$0.aZ() && $$0.aC()) {
+         float $$6 = $$0.w() ? 4.0F : 1.0F;
+         float $$7 = $$0.w() ? 2.0F : 1.0F;
+         float $$8 = 5.0F;
+         this.h.f = awh.b($$6 * $$1 * 5.0F + (float) Math.PI) * 8.0F * $$2 * $$7;
+         this.h.g = 0.0F;
+         this.i.f = awh.b($$6 * $$1 * 5.0F) * 8.0F * $$2 * $$7;
+         this.i.g = 0.0F;
+         this.f.f = awh.b($$1 * 5.0F + (float) Math.PI) * 3.0F * $$2;
+         this.f.e = 0.0F;
+         this.g.f = awh.b($$1 * 5.0F) * 3.0F * $$2;
+         this.g.e = 0.0F;
       }
+
+      this.k.k = !this.e && $$0.u();
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      short $$2 = $$1.readUnsignedByte();
-      if ($$2 == 255) {
-         String $$3 = anw.a($$1);
-         List<String> $$4 = a.splitToList($$3);
-         if ("§1".equals($$4.get(0))) {
-            int $$5 = aup.a($$4.get(1), 0);
-            String $$6 = $$4.get(2);
-            String $$7 = $$4.get(3);
-            int $$8 = aup.a($$4.get(4), -1);
-            int $$9 = aup.a($$4.get(5), -1);
-            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
-         }
+   @Override
+   public void a(esa $$0, ese $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      boolean $$8 = this.k.k;
+      if ($$8) {
+         $$0.a();
+         $$0.a(0.0F, -0.08F, 0.0F);
       }
 
-      $$0.close();
-   }
-
-   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
-      $$0.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void handleResponse(int var1, String var2, String var3, int var4, int var5);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$8) {
+         $$0.b();
+      }
    }
 }

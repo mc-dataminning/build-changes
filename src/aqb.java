@@ -1,19 +1,15 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.function.Consumer;
 
-@FunctionalInterface
-public interface aqb<T> {
-   static aqb<InputStream> create(Path $$0) {
-      return () -> Files.newInputStream($$0);
+public class aqb implements apl {
+   public static final apl.a a = new apl.a("join_world");
+
+   @Override
+   public void a(Consumer<xx<?>> $$0) {
+      $$0.accept(zs.a);
    }
 
-   static aqb<InputStream> create(ZipFile $$0, ZipEntry $$1) {
-      return () -> $$0.getInputStream($$1);
+   @Override
+   public apl.a a() {
+      return a;
    }
-
-   T get() throws IOException;
 }

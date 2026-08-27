@@ -1,87 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dad extends dav {
-   public static final MapCodec<dad> a = b(dad::new);
-   public static final int b = 3;
-   public static final dkp c = dkf.as;
-   private static final int f = 4;
-   private static final int g = 2;
+public class dad extends cyo {
+   public static final MapCodec<cyo> a = kf.e.q().fieldOf("dead");
+   public static final MapCodec<dad> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, dad::new));
+   private final cyo c;
+
+   public dad(cyo $$0, dle.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
    @Override
    public MapCodec<dad> a() {
-      return a;
-   }
-
-   public dad(djo.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+      return b;
    }
 
    @Override
-   public void b(djp $$0, ane $$1, hx $$2, auw $$3) {
-      this.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(djp $$0, ane $$1, hx $$2, auw $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
-         hx.a $$4 = new hx.a();
-
-         for (ic $$5 : ic.values()) {
-            $$4.a($$2, $$5);
-            djp $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, aup.a($$3, 20, 40));
-            }
-         }
-      } else {
-         $$1.a($$2, this, aup.a($$3, 20, 40));
-      }
-   }
-
-   private boolean e(djp $$0, ctx $$1, hx $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.d($$0, $$1, $$2);
-         return true;
+   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.o(), 2);
       }
    }
 
    @Override
-   public void a(djp $$0, ctx $$1, hx $$2, cwy $$3, hx $$4, boolean $$5) {
-      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      if (!this.a($$3, $$4)) {
+         $$3.a($$4, this, 60 + $$3.F_().a(40));
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private boolean a(ctd $$0, hx $$1, int $$2) {
-      int $$3 = 0;
-      hx.a $$4 = new hx.a();
-
-      for (ic $$5 : ic.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
+   protected boolean a(cut $$0, hz $$1) {
+      for (ie $$2 : ie.values()) {
+         egp $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(aue.a)) {
+            return true;
          }
       }
 
-      return true;
+      return false;
    }
 
+   @Nullable
    @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(c);
-   }
+   public dlf a(crg $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().F_().a(40));
+      }
 
-   @Override
-   public cng a(cua $$0, hx $$1, djp $$2) {
-      return cng.f;
+      return this.o();
    }
 }

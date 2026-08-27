@@ -1,922 +1,1680 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Collection;
+import com.mojang.datafixers.util.Pair;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public final class cng {
-   public static final Codec<cng> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kd.h.r().fieldOf("id").forGetter(cng::e),
-               Codec.INT.fieldOf("Count").forGetter(cng::L),
-               so.a.optionalFieldOf("tag").forGetter($$0x -> Optional.ofNullable($$0x.v()))
-            )
-            .apply($$0, cng::new)
-   );
-   private static final Codec<cnb> n = atx.a(
-      kd.h.q(), (Function<cnb, DataResult<cnb>>)($$0 -> $$0 == cnj.a ? DataResult.error(() -> "Item must not be minecraft:air") : DataResult.success($$0))
-   );
-   public static final Codec<cng> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kd.h.r().fieldOf("item").forGetter(cng::e), atx.a(tm.i, "nbt").forGetter($$0x -> Optional.ofNullable($$0x.v())))
-            .apply($$0, ($$0x, $$1) -> new cng($$0x, 1, $$1))
-   );
-   public static final Codec<cng> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(n.fieldOf("item").forGetter(cng::d), atx.a(atx.j, "count", Integer.valueOf(1)).forGetter(cng::L)).apply($$0, cng::new)
-   );
-   public static final Codec<cng> d = n.xmap(cng::new, cng::d);
-   public static final MapCodec<cng> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kd.h.q().fieldOf("result").forGetter(cng::d), Codec.INT.fieldOf("count").forGetter(cng::L)).apply($$0, cng::new)
-   );
-   private static final Logger o = LogUtils.getLogger();
-   public static final cng f = new cng((Void)null);
-   public static final DecimalFormat g = ac.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-   public static final String h = "Enchantments";
-   public static final String i = "display";
-   public static final String j = "Name";
-   public static final String k = "Lore";
-   public static final String l = "Damage";
-   public static final String m = "color";
-   private static final String p = "Unbreakable";
-   private static final String q = "RepairCost";
-   private static final String r = "CanDestroy";
-   private static final String s = "CanPlaceOn";
-   private static final String t = "HideFlags";
-   private static final vg u = vg.c("item.disabled").a(n.m);
-   private static final int v = 0;
-   private static final wd w = wd.a.a(n.f).b(true);
-   private int x;
-   private int y;
-   @Deprecated
+public class cng {
+   private static final aix<cnf> a = a("building_blocks");
+   private static final aix<cnf> b = a("colored_blocks");
+   private static final aix<cnf> c = a("natural_blocks");
+   private static final aix<cnf> d = a("functional_blocks");
+   private static final aix<cnf> e = a("redstone_blocks");
+   private static final aix<cnf> f = a("hotbar");
+   private static final aix<cnf> g = a("search");
+   private static final aix<cnf> h = a("tools_and_utilities");
+   private static final aix<cnf> i = a("combat");
+   private static final aix<cnf> j = a("food_and_drinks");
+   private static final aix<cnf> k = a("ingredients");
+   private static final aix<cnf> l = a("spawn_eggs");
+   private static final aix<cnf> m = a("op_blocks");
+   private static final aix<cnf> n = a("inventory");
+   private static final Comparator<ij<cdo>> o = Comparator.comparing(ij::a, Comparator.<cdo>comparingInt($$0 -> $$0.b() * $$0.a()).thenComparing(cdo::a));
    @Nullable
-   private final cnb z;
-   @Nullable
-   private so A;
-   @Nullable
-   private blw B;
-   @Nullable
-   private cko C;
-   @Nullable
-   private cko D;
+   private static cnf.d p;
 
-   public Optional<ckm> a() {
-      return this.d().h(this);
+   private static aix<cnf> a(String $$0) {
+      return aix.a(kg.p, new aiy($$0));
    }
 
-   public cng(ctw $$0) {
-      this($$0, 1);
-   }
+   public static cnf a(iv<cnf> $$0) {
+      iv.a($$0, a, cnf.a(cnf.f.a, 0).a(vq.c("itemGroup.buildingBlocks")).a(() -> new coz(cyq.cj)).a(($$0x, $$1) -> {
+         $$1.a(cpc.bB);
+         $$1.a(cpc.cj);
+         $$1.a(cpc.bO);
+         $$1.a(cpc.bY);
+         $$1.a(cpc.K);
+         $$1.a(cpc.gs);
+         $$1.a(cpc.dR);
+         $$1.a(cpc.eY);
+         $$1.a(cpc.nv);
+         $$1.a(cpc.mI);
+         $$1.a(cpc.nc);
+         $$1.a(cpc.mw);
+         $$1.a(cpc.mh);
+         $$1.a(cpc.bC);
+         $$1.a(cpc.ck);
+         $$1.a(cpc.bP);
+         $$1.a(cpc.bZ);
+         $$1.a(cpc.L);
+         $$1.a(cpc.gt);
+         $$1.a(cpc.dS);
+         $$1.a(cpc.eZ);
+         $$1.a(cpc.nw);
+         $$1.a(cpc.mJ);
+         $$1.a(cpc.nd);
+         $$1.a(cpc.mx);
+         $$1.a(cpc.mi);
+         $$1.a(cpc.bD);
+         $$1.a(cpc.cl);
+         $$1.a(cpc.bQ);
+         $$1.a(cpc.ca);
+         $$1.a(cpc.M);
+         $$1.a(cpc.gu);
+         $$1.a(cpc.dT);
+         $$1.a(cpc.fa);
+         $$1.a(cpc.nx);
+         $$1.a(cpc.mK);
+         $$1.a(cpc.ne);
+         $$1.a(cpc.my);
+         $$1.a(cpc.mj);
+         $$1.a(cpc.bE);
+         $$1.a(cpc.cm);
+         $$1.a(cpc.bR);
+         $$1.a(cpc.cb);
+         $$1.a(cpc.N);
+         $$1.a(cpc.gv);
+         $$1.a(cpc.dU);
+         $$1.a(cpc.fb);
+         $$1.a(cpc.ny);
+         $$1.a(cpc.mL);
+         $$1.a(cpc.nf);
+         $$1.a(cpc.mz);
+         $$1.a(cpc.mk);
+         $$1.a(cpc.bF);
+         $$1.a(cpc.cn);
+         $$1.a(cpc.bS);
+         $$1.a(cpc.cc);
+         $$1.a(cpc.O);
+         $$1.a(cpc.gw);
+         $$1.a(cpc.dV);
+         $$1.a(cpc.fc);
+         $$1.a(cpc.nz);
+         $$1.a(cpc.mM);
+         $$1.a(cpc.ng);
+         $$1.a(cpc.mA);
+         $$1.a(cpc.ml);
+         $$1.a(cpc.bH);
+         $$1.a(cpc.cp);
+         $$1.a(cpc.bU);
+         $$1.a(cpc.ce);
+         $$1.a(cpc.Q);
+         $$1.a(cpc.gy);
+         $$1.a(cpc.dX);
+         $$1.a(cpc.fe);
+         $$1.a(cpc.nB);
+         $$1.a(cpc.mO);
+         $$1.a(cpc.ni);
+         $$1.a(cpc.mC);
+         $$1.a(cpc.mn);
+         $$1.a(cpc.bI);
+         $$1.a(cpc.cq);
+         $$1.a(cpc.bV);
+         $$1.a(cpc.cf);
+         $$1.a(cpc.R);
+         $$1.a(cpc.gz);
+         $$1.a(cpc.dY);
+         $$1.a(cpc.ff);
+         $$1.a(cpc.nC);
+         $$1.a(cpc.mP);
+         $$1.a(cpc.nj);
+         $$1.a(cpc.mD);
+         $$1.a(cpc.mo);
+         $$1.a(cpc.bG);
+         $$1.a(cpc.co);
+         $$1.a(cpc.bT);
+         $$1.a(cpc.cd);
+         $$1.a(cpc.P);
+         $$1.a(cpc.gx);
+         $$1.a(cpc.dW);
+         $$1.a(cpc.fd);
+         $$1.a(cpc.nA);
+         $$1.a(cpc.mN);
+         $$1.a(cpc.nh);
+         $$1.a(cpc.mB);
+         $$1.a(cpc.mm);
+         $$1.a(cpc.bN);
+         $$1.a(cpc.ci);
+         $$1.a(cpc.S);
+         $$1.a(cpc.V);
+         $$1.a(cpc.gA);
+         $$1.a(cpc.gB);
+         $$1.a(cpc.dZ);
+         $$1.a(cpc.ea);
+         $$1.a(cpc.fg);
+         $$1.a(cpc.nD);
+         $$1.a(cpc.mQ);
+         $$1.a(cpc.nk);
+         $$1.a(cpc.mE);
+         $$1.a(cpc.mp);
+         $$1.a(cpc.bL);
+         $$1.a(cpc.cr);
+         $$1.a(cpc.bW);
+         $$1.a(cpc.cg);
+         $$1.a(cpc.T);
+         $$1.a(cpc.gC);
+         $$1.a(cpc.eb);
+         $$1.a(cpc.fh);
+         $$1.a(cpc.nE);
+         $$1.a(cpc.mR);
+         $$1.a(cpc.nl);
+         $$1.a(cpc.mF);
+         $$1.a(cpc.mq);
+         $$1.a(cpc.bM);
+         $$1.a(cpc.cs);
+         $$1.a(cpc.bX);
+         $$1.a(cpc.ch);
+         $$1.a(cpc.U);
+         $$1.a(cpc.gD);
+         $$1.a(cpc.ec);
+         $$1.a(cpc.fi);
+         $$1.a(cpc.nF);
+         $$1.a(cpc.mS);
+         $$1.a(cpc.nm);
+         $$1.a(cpc.mG);
+         $$1.a(cpc.mr);
+         $$1.a(cpc.b);
+         $$1.a(cpc.lc);
+         $$1.a(cpc.ed);
+         $$1.a(cpc.ms);
+         $$1.a(cpc.mf);
+         $$1.a(cpc.J);
+         $$1.a(cpc.eR);
+         $$1.a(cpc.ei);
+         $$1.a(cpc.gG);
+         $$1.a(cpc.eC);
+         $$1.a(cpc.la);
+         $$1.a(cpc.ls);
+         $$1.a(cpc.gH);
+         $$1.a(cpc.ex);
+         $$1.a(cpc.ee);
+         $$1.a(cpc.fB);
+         $$1.a(cpc.fD);
+         $$1.a(cpc.fX);
+         $$1.a(cpc.ek);
+         $$1.a(cpc.gN);
+         $$1.a(cpc.fE);
+         $$1.a(cpc.fC);
+         $$1.a(cpc.kY);
+         $$1.a(cpc.lq);
+         $$1.a(cpc.gL);
+         $$1.a(cpc.c);
+         $$1.a(cpc.lf);
+         $$1.a(cpc.lw);
+         $$1.a(cpc.gM);
+         $$1.a(cpc.d);
+         $$1.a(cpc.kW);
+         $$1.a(cpc.lo);
+         $$1.a(cpc.e);
+         $$1.a(cpc.lj);
+         $$1.a(cpc.lA);
+         $$1.a(cpc.gU);
+         $$1.a(cpc.f);
+         $$1.a(cpc.kZ);
+         $$1.a(cpc.lr);
+         $$1.a(cpc.g);
+         $$1.a(cpc.lg);
+         $$1.a(cpc.lx);
+         $$1.a(cpc.gQ);
+         $$1.a(cpc.h);
+         $$1.a(cpc.li);
+         $$1.a(cpc.lz);
+         $$1.a(cpc.i);
+         $$1.a(cpc.j);
+         $$1.a(cpc.lk);
+         $$1.a(cpc.lB);
+         $$1.a(cpc.gY);
+         $$1.a(cpc.fL);
+         $$1.a(cpc.k);
+         $$1.a(cpc.ll);
+         $$1.a(cpc.lC);
+         $$1.a(cpc.gZ);
+         $$1.a(cpc.fH);
+         $$1.a(cpc.fI);
+         $$1.a(cpc.lm);
+         $$1.a(cpc.lD);
+         $$1.a(cpc.ha);
+         $$1.a(cpc.fJ);
+         $$1.a(cpc.fK);
+         $$1.a(cpc.ln);
+         $$1.a(cpc.lE);
+         $$1.a(cpc.hb);
+         $$1.a(cpc.fM);
+         $$1.a(cpc.m);
+         $$1.a(cpc.o);
+         $$1.a(cpc.n);
+         $$1.a(cpc.p);
+         $$1.a(cpc.q);
+         $$1.a(cpc.r);
+         $$1.a(cpc.t);
+         $$1.a(cpc.s);
+         $$1.a(cpc.u);
+         $$1.a(cpc.v);
+         $$1.a(cpc.x);
+         $$1.a(cpc.w);
+         $$1.a(cpc.y);
+         $$1.a(cpc.z);
+         $$1.a(cpc.ey);
+         $$1.a(cpc.fW);
+         $$1.a(cpc.ej);
+         $$1.a(cpc.gI);
+         $$1.a(cpc.fF);
+         $$1.a(cpc.fG);
+         $$1.a(cpc.fY);
+         $$1.a(cpc.el);
+         $$1.a(cpc.gO);
+         $$1.a(cpc.cI);
+         $$1.a(cpc.gp);
+         $$1.a(cpc.ef);
+         $$1.a(cpc.gS);
+         $$1.a(cpc.cJ);
+         $$1.a(cpc.ew);
+         $$1.a(cpc.ld);
+         $$1.a(cpc.lu);
+         $$1.a(cpc.cK);
+         $$1.a(cpc.eg);
+         $$1.a(cpc.iP);
+         $$1.a(cpc.iS);
+         $$1.a(cpc.eo);
+         $$1.a(cpc.gK);
+         $$1.a(cpc.iQ);
+         $$1.a(cpc.ev);
+         $$1.a(cpc.kX);
+         $$1.a(cpc.lp);
+         $$1.a(cpc.iR);
+         $$1.a(cpc.ep);
+         $$1.a(cpc.iO);
+         $$1.a(cpc.iI);
+         $$1.a(cpc.iL);
+         $$1.a(cpc.er);
+         $$1.a(cpc.gJ);
+         $$1.a(cpc.iJ);
+         $$1.a(cpc.iM);
+         $$1.a(cpc.es);
+         $$1.a(cpc.iK);
+         $$1.a(cpc.iN);
+         $$1.a(cpc.et);
+         $$1.a(cpc.fm);
+         $$1.a(cpc.gb);
+         $$1.a(cpc.gc);
+         $$1.a(cpc.gf);
+         $$1.a(cpc.em);
+         $$1.a(cpc.gP);
+         $$1.a(cpc.ge);
+         $$1.a(cpc.gd);
+         $$1.a(cpc.iY);
+         $$1.a(cpc.lh);
+         $$1.a(cpc.ly);
+         $$1.a(cpc.gR);
+         $$1.a(cpc.fp);
+         $$1.a(cpc.fr);
+         $$1.a(cpc.fq);
+         $$1.a(cpc.wx);
+         $$1.a(cpc.wA);
+         $$1.a(cpc.wz);
+         $$1.a(cpc.wy);
+         $$1.a(cpc.gV);
+         $$1.a(cpc.wE);
+         $$1.a(cpc.wB);
+         $$1.a(cpc.wD);
+         $$1.a(cpc.wC);
+         $$1.a(cpc.gW);
+         $$1.a(cpc.mt);
+         $$1.a(cpc.mg);
+         $$1.a(cpc.wF);
+         $$1.a(cpc.wI);
+         $$1.a(cpc.wH);
+         $$1.a(cpc.wG);
+         $$1.a(cpc.gX);
+         $$1.a(cpc.gm);
+         $$1.a(cpc.gn);
+         $$1.a(cpc.lb);
+         $$1.a(cpc.lt);
+         $$1.a(cpc.gT);
+         $$1.a(cpc.eI);
+         $$1.a(cpc.eJ);
+         $$1.a(cpc.eK);
+         $$1.a(cpc.eq);
+         $$1.a(cpc.aD);
+         $$1.a(cpc.aJ);
+         $$1.a(cpc.fQ);
+         $$1.a(cpc.mH);
+         $$1.a(cpc.nb);
+         $$1.a(cpc.mv);
+         $$1.a(cpc.fR);
+         $$1.a(cpc.aL);
+         $$1.a(cpc.mu);
+         $$1.a(cpc.lI);
+         $$1.a(cpc.gr);
+         $$1.a(cpc.cH);
+         $$1.a(cpc.aM);
+         $$1.a(cpc.aN);
+         $$1.a(cpc.hg);
+         $$1.a(cpc.hj);
+         $$1.a(cpc.en);
+         $$1.a(cpc.hf);
+         $$1.a(cpc.hh);
+         $$1.a(cpc.hi);
+         $$1.a(cpc.eu);
+         $$1.a(cpc.le);
+         $$1.a(cpc.lv);
+         $$1.a(cpc.aH);
+         $$1.a(cpc.aK);
+         $$1.a(cpc.aR);
+         $$1.a(cpc.xX);
+         $$1.a(cpc.aV);
+         $$1.a(cpc.aZ);
+         $$1.a(cpc.bd);
+         $$1.a(cpc.mT);
+         $$1.a(cpc.nn);
+         $$1.a(cpc.yf);
+         $$1.a(cpc.aO);
+         $$1.a(cpc.aS);
+         $$1.a(cpc.xY);
+         $$1.a(cpc.aW);
+         $$1.a(cpc.ba);
+         $$1.a(cpc.be);
+         $$1.a(cpc.mU);
+         $$1.a(cpc.no);
+         $$1.a(cpc.yg);
+         $$1.a(cpc.aP);
+         $$1.a(cpc.aT);
+         $$1.a(cpc.xZ);
+         $$1.a(cpc.aX);
+         $$1.a(cpc.bb);
+         $$1.a(cpc.bf);
+         $$1.a(cpc.mV);
+         $$1.a(cpc.np);
+         $$1.a(cpc.yh);
+         $$1.a(cpc.aQ);
+         $$1.a(cpc.aU);
+         $$1.a(cpc.ya);
+         $$1.a(cpc.aY);
+         $$1.a(cpc.bc);
+         $$1.a(cpc.bg);
+         $$1.a(cpc.mW);
+         $$1.a(cpc.nq);
+         $$1.a(cpc.yi);
+         $$1.a(cpc.bh);
+         $$1.a(cpc.bl);
+         $$1.a(cpc.yb);
+         $$1.a(cpc.bp);
+         $$1.a(cpc.bt);
+         $$1.a(cpc.bx);
+         $$1.a(cpc.mX);
+         $$1.a(cpc.nr);
+         $$1.a(cpc.yj);
+         $$1.a(cpc.bi);
+         $$1.a(cpc.bm);
+         $$1.a(cpc.yc);
+         $$1.a(cpc.bq);
+         $$1.a(cpc.bu);
+         $$1.a(cpc.by);
+         $$1.a(cpc.mY);
+         $$1.a(cpc.ns);
+         $$1.a(cpc.yk);
+         $$1.a(cpc.bj);
+         $$1.a(cpc.bn);
+         $$1.a(cpc.yd);
+         $$1.a(cpc.br);
+         $$1.a(cpc.bv);
+         $$1.a(cpc.bz);
+         $$1.a(cpc.mZ);
+         $$1.a(cpc.nt);
+         $$1.a(cpc.yl);
+         $$1.a(cpc.bk);
+         $$1.a(cpc.bo);
+         $$1.a(cpc.ye);
+         $$1.a(cpc.bs);
+         $$1.a(cpc.bw);
+         $$1.a(cpc.bA);
+         $$1.a(cpc.na);
+         $$1.a(cpc.nu);
+         $$1.a(cpc.ym);
+      }).d());
+      iv.a($$0, b, cnf.a(cnf.f.a, 1).a(vq.c("itemGroup.coloredBlocks")).a(() -> new coz(cyq.bJ)).a(($$0x, $$1) -> {
+         $$1.a(cpc.cT);
+         $$1.a(cpc.db);
+         $$1.a(cpc.da);
+         $$1.a(cpc.di);
+         $$1.a(cpc.df);
+         $$1.a(cpc.dh);
+         $$1.a(cpc.cU);
+         $$1.a(cpc.cX);
+         $$1.a(cpc.cY);
+         $$1.a(cpc.dg);
+         $$1.a(cpc.dc);
+         $$1.a(cpc.cW);
+         $$1.a(cpc.de);
+         $$1.a(cpc.dd);
+         $$1.a(cpc.cV);
+         $$1.a(cpc.cZ);
+         $$1.a(cpc.hD);
+         $$1.a(cpc.hL);
+         $$1.a(cpc.hK);
+         $$1.a(cpc.hS);
+         $$1.a(cpc.hP);
+         $$1.a(cpc.hR);
+         $$1.a(cpc.hE);
+         $$1.a(cpc.hH);
+         $$1.a(cpc.hI);
+         $$1.a(cpc.hQ);
+         $$1.a(cpc.hM);
+         $$1.a(cpc.hG);
+         $$1.a(cpc.hO);
+         $$1.a(cpc.hN);
+         $$1.a(cpc.hF);
+         $$1.a(cpc.hJ);
+         $$1.a(cpc.hT);
+         $$1.a(cpc.hk);
+         $$1.a(cpc.hs);
+         $$1.a(cpc.hr);
+         $$1.a(cpc.hz);
+         $$1.a(cpc.hw);
+         $$1.a(cpc.hy);
+         $$1.a(cpc.hl);
+         $$1.a(cpc.ho);
+         $$1.a(cpc.hp);
+         $$1.a(cpc.hx);
+         $$1.a(cpc.ht);
+         $$1.a(cpc.hn);
+         $$1.a(cpc.hv);
+         $$1.a(cpc.hu);
+         $$1.a(cpc.hm);
+         $$1.a(cpc.hq);
+         $$1.a(cpc.jI);
+         $$1.a(cpc.jQ);
+         $$1.a(cpc.jP);
+         $$1.a(cpc.jX);
+         $$1.a(cpc.jU);
+         $$1.a(cpc.jW);
+         $$1.a(cpc.jJ);
+         $$1.a(cpc.jM);
+         $$1.a(cpc.jN);
+         $$1.a(cpc.jV);
+         $$1.a(cpc.jR);
+         $$1.a(cpc.jL);
+         $$1.a(cpc.jT);
+         $$1.a(cpc.jS);
+         $$1.a(cpc.jK);
+         $$1.a(cpc.jO);
+         $$1.a(cpc.jY);
+         $$1.a(cpc.kg);
+         $$1.a(cpc.kf);
+         $$1.a(cpc.kn);
+         $$1.a(cpc.kk);
+         $$1.a(cpc.km);
+         $$1.a(cpc.jZ);
+         $$1.a(cpc.kc);
+         $$1.a(cpc.kd);
+         $$1.a(cpc.kl);
+         $$1.a(cpc.kh);
+         $$1.a(cpc.kb);
+         $$1.a(cpc.kj);
+         $$1.a(cpc.ki);
+         $$1.a(cpc.ka);
+         $$1.a(cpc.ke);
+         $$1.a(cpc.js);
+         $$1.a(cpc.jA);
+         $$1.a(cpc.jz);
+         $$1.a(cpc.jH);
+         $$1.a(cpc.jE);
+         $$1.a(cpc.jG);
+         $$1.a(cpc.jt);
+         $$1.a(cpc.jw);
+         $$1.a(cpc.jx);
+         $$1.a(cpc.jF);
+         $$1.a(cpc.jB);
+         $$1.a(cpc.jv);
+         $$1.a(cpc.jD);
+         $$1.a(cpc.jC);
+         $$1.a(cpc.ju);
+         $$1.a(cpc.jy);
+         $$1.a(cpc.cF);
+         $$1.a(cpc.cG);
+         $$1.a(cpc.ic);
+         $$1.a(cpc.ik);
+         $$1.a(cpc.ij);
+         $$1.a(cpc.ir);
+         $$1.a(cpc.io);
+         $$1.a(cpc.iq);
+         $$1.a(cpc.id);
+         $$1.a(cpc.ig);
+         $$1.a(cpc.ih);
+         $$1.a(cpc.ip);
+         $$1.a(cpc.il);
+         $$1.a(cpc.if);
+         $$1.a(cpc.in);
+         $$1.a(cpc.im);
+         $$1.a(cpc.ie);
+         $$1.a(cpc.ii);
+         $$1.a(cpc.fS);
+         $$1.a(cpc.is);
+         $$1.a(cpc.iA);
+         $$1.a(cpc.iz);
+         $$1.a(cpc.iH);
+         $$1.a(cpc.iE);
+         $$1.a(cpc.iG);
+         $$1.a(cpc.it);
+         $$1.a(cpc.iw);
+         $$1.a(cpc.ix);
+         $$1.a(cpc.iF);
+         $$1.a(cpc.iB);
+         $$1.a(cpc.iv);
+         $$1.a(cpc.iD);
+         $$1.a(cpc.iC);
+         $$1.a(cpc.iu);
+         $$1.a(cpc.iy);
+         $$1.a(cpc.jb);
+         $$1.a(cpc.jc);
+         $$1.a(cpc.jk);
+         $$1.a(cpc.jj);
+         $$1.a(cpc.jr);
+         $$1.a(cpc.jo);
+         $$1.a(cpc.jq);
+         $$1.a(cpc.jd);
+         $$1.a(cpc.jg);
+         $$1.a(cpc.jh);
+         $$1.a(cpc.jp);
+         $$1.a(cpc.jl);
+         $$1.a(cpc.jf);
+         $$1.a(cpc.jn);
+         $$1.a(cpc.jm);
+         $$1.a(cpc.je);
+         $$1.a(cpc.ji);
+         $$1.a(cpc.rB);
+         $$1.a(cpc.rJ);
+         $$1.a(cpc.rI);
+         $$1.a(cpc.rQ);
+         $$1.a(cpc.rN);
+         $$1.a(cpc.rP);
+         $$1.a(cpc.rC);
+         $$1.a(cpc.rF);
+         $$1.a(cpc.rG);
+         $$1.a(cpc.rO);
+         $$1.a(cpc.rK);
+         $$1.a(cpc.rE);
+         $$1.a(cpc.rM);
+         $$1.a(cpc.rL);
+         $$1.a(cpc.rD);
+         $$1.a(cpc.rH);
+         $$1.a(cpc.wK);
+         $$1.a(cpc.wL);
+         $$1.a(cpc.wT);
+         $$1.a(cpc.wS);
+         $$1.a(cpc.xa);
+         $$1.a(cpc.wX);
+         $$1.a(cpc.wZ);
+         $$1.a(cpc.wM);
+         $$1.a(cpc.wP);
+         $$1.a(cpc.wQ);
+         $$1.a(cpc.wY);
+         $$1.a(cpc.wU);
+         $$1.a(cpc.wO);
+         $$1.a(cpc.wW);
+         $$1.a(cpc.wV);
+         $$1.a(cpc.wN);
+         $$1.a(cpc.wR);
+         $$1.a(cpc.uL);
+         $$1.a(cpc.uT);
+         $$1.a(cpc.uS);
+         $$1.a(cpc.va);
+         $$1.a(cpc.uX);
+         $$1.a(cpc.uZ);
+         $$1.a(cpc.uM);
+         $$1.a(cpc.uP);
+         $$1.a(cpc.uQ);
+         $$1.a(cpc.uY);
+         $$1.a(cpc.uU);
+         $$1.a(cpc.uO);
+         $$1.a(cpc.uW);
+         $$1.a(cpc.uV);
+         $$1.a(cpc.uN);
+         $$1.a(cpc.uR);
+      }).d());
+      iv.a($$0, c, cnf.a(cnf.f.a, 2).a(vq.c("itemGroup.natural")).a(() -> new coz(cyq.i)).a(($$0x, $$1) -> {
+         $$1.a(cpc.B);
+         $$1.a(cpc.E);
+         $$1.a(cpc.fZ);
+         $$1.a(cpc.hV);
+         $$1.a(cpc.C);
+         $$1.a(cpc.D);
+         $$1.a(cpc.F);
+         $$1.a(cpc.eO);
+         $$1.a(cpc.G);
+         $$1.a(cpc.eW);
+         $$1.a(cpc.aj);
+         $$1.a(cpc.af);
+         $$1.a(cpc.cI);
+         $$1.a(cpc.ai);
+         $$1.a(cpc.iP);
+         $$1.a(cpc.eT);
+         $$1.a(cpc.hU);
+         $$1.a(cpc.kU);
+         $$1.a(cpc.eU);
+         $$1.a(cpc.eS);
+         $$1.a(cpc.dM);
+         $$1.a(cpc.dK);
+         $$1.a(cpc.b);
+         $$1.a(cpc.i);
+         $$1.a(cpc.c);
+         $$1.a(cpc.e);
+         $$1.a(cpc.g);
+         $$1.a(cpc.l);
+         $$1.a(cpc.m);
+         $$1.a(cpc.A);
+         $$1.a(cpc.xf);
+         $$1.a(cpc.iI);
+         $$1.a(cpc.iV);
+         $$1.a(cpc.eD);
+         $$1.a(cpc.ww);
+         $$1.a(cpc.fm);
+         $$1.a(cpc.H);
+         $$1.a(cpc.I);
+         $$1.a(cpc.fn);
+         $$1.a(cpc.fo);
+         $$1.a(cpc.iZ);
+         $$1.a(cpc.wx);
+         $$1.a(cpc.fp);
+         $$1.a(cpc.fr);
+         $$1.a(cpc.gm);
+         $$1.a(cpc.ak);
+         $$1.a(cpc.al);
+         $$1.a(cpc.am);
+         $$1.a(cpc.an);
+         $$1.a(cpc.ao);
+         $$1.a(cpc.ap);
+         $$1.a(cpc.aq);
+         $$1.a(cpc.ar);
+         $$1.a(cpc.as);
+         $$1.a(cpc.at);
+         $$1.a(cpc.au);
+         $$1.a(cpc.av);
+         $$1.a(cpc.aw);
+         $$1.a(cpc.ax);
+         $$1.a(cpc.ay);
+         $$1.a(cpc.az);
+         $$1.a(cpc.aA);
+         $$1.a(cpc.aB);
+         $$1.a(cpc.aC);
+         $$1.a(cpc.aE);
+         $$1.a(cpc.aF);
+         $$1.a(cpc.aG);
+         $$1.a(cpc.ft);
+         $$1.a(cpc.aH);
+         $$1.a(cpc.aI);
+         $$1.a(cpc.xb);
+         $$1.a(cpc.xc);
+         $$1.a(cpc.xd);
+         $$1.a(cpc.xe);
+         $$1.a(cpc.bB);
+         $$1.a(cpc.bC);
+         $$1.a(cpc.bD);
+         $$1.a(cpc.bE);
+         $$1.a(cpc.bF);
+         $$1.a(cpc.bH);
+         $$1.a(cpc.bI);
+         $$1.a(cpc.bJ);
+         $$1.a(cpc.bK);
+         $$1.a(cpc.bG);
+         $$1.a(cpc.fP);
+         $$1.a(cpc.bL);
+         $$1.a(cpc.bM);
+         $$1.a(cpc.ct);
+         $$1.a(cpc.cu);
+         $$1.a(cpc.cv);
+         $$1.a(cpc.cw);
+         $$1.a(cpc.cx);
+         $$1.a(cpc.cz);
+         $$1.a(cpc.cA);
+         $$1.a(cpc.cy);
+         $$1.a(cpc.cB);
+         $$1.a(cpc.cC);
+         $$1.a(cpc.fN);
+         $$1.a(cpc.fO);
+         $$1.a(cpc.iW);
+         $$1.a(cpc.iX);
+         $$1.a(cpc.wp);
+         $$1.a(cpc.W);
+         $$1.a(cpc.X);
+         $$1.a(cpc.Y);
+         $$1.a(cpc.Z);
+         $$1.a(cpc.aa);
+         $$1.a(cpc.ac);
+         $$1.a(cpc.ad);
+         $$1.a(cpc.ab);
+         $$1.a(cpc.cO);
+         $$1.a(cpc.cP);
+         $$1.a(cpc.dz);
+         $$1.a(cpc.dA);
+         $$1.a(cpc.dB);
+         $$1.a(cpc.dC);
+         $$1.a(cpc.cM);
+         $$1.a(cpc.cN);
+         $$1.a(cpc.cQ);
+         $$1.a(cpc.dj);
+         $$1.a(cpc.dk);
+         $$1.a(cpc.dl);
+         $$1.a(cpc.dm);
+         $$1.a(cpc.dn);
+         $$1.a(cpc.do);
+         $$1.a(cpc.dp);
+         $$1.a(cpc.dq);
+         $$1.a(cpc.dr);
+         $$1.a(cpc.ds);
+         $$1.a(cpc.dt);
+         $$1.a(cpc.du);
+         $$1.a(cpc.dw);
+         $$1.a(cpc.dv);
+         $$1.a(cpc.dL);
+         $$1.a(cpc.dy);
+         $$1.a(cpc.dQ);
+         $$1.a(cpc.dI);
+         $$1.a(cpc.eV);
+         $$1.a(cpc.dD);
+         $$1.a(cpc.dE);
+         $$1.a(cpc.dF);
+         $$1.a(cpc.dG);
+         $$1.a(cpc.dH);
+         $$1.a(cpc.fU);
+         $$1.a(cpc.ia);
+         $$1.a(cpc.ib);
+         $$1.a(cpc.hW);
+         $$1.a(cpc.hX);
+         $$1.a(cpc.hY);
+         $$1.a(cpc.hZ);
+         $$1.a(cpc.dx);
+         $$1.a(cpc.dO);
+         $$1.a(cpc.dP);
+         $$1.a(cpc.eG);
+         $$1.a(cpc.eH);
+         $$1.a(cpc.fV);
+         $$1.a(cpc.dN);
+         $$1.a(cpc.xj);
+         $$1.a(cpc.ko);
+         $$1.a(cpc.kp);
+         $$1.a(cpc.pu);
+         $$1.a(cpc.rg);
+         $$1.a(cpc.rX);
+         $$1.a(cpc.rY);
+         $$1.a(cpc.vh);
+         $$1.a(cpc.ve);
+         $$1.a(cpc.vf);
+         $$1.a(cpc.wm);
+         $$1.a(cpc.wl);
+         $$1.a(cpc.si);
+         $$1.a(cpc.ga);
+         $$1.a(cpc.cR);
+         $$1.a(cpc.cS);
+         $$1.a(cpc.dJ);
+         $$1.a(cpc.qM);
+         $$1.a(cpc.kv);
+         $$1.a(cpc.kw);
+         $$1.a(cpc.kx);
+         $$1.a(cpc.ky);
+         $$1.a(cpc.kz);
+         $$1.a(cpc.kq);
+         $$1.a(cpc.kr);
+         $$1.a(cpc.ks);
+         $$1.a(cpc.kt);
+         $$1.a(cpc.ku);
+         $$1.a(cpc.kA);
+         $$1.a(cpc.kB);
+         $$1.a(cpc.kC);
+         $$1.a(cpc.kD);
+         $$1.a(cpc.kE);
+         $$1.a(cpc.kJ);
+         $$1.a(cpc.kF);
+         $$1.a(cpc.kG);
+         $$1.a(cpc.kH);
+         $$1.a(cpc.kI);
+         $$1.a(cpc.kK);
+         $$1.a(cpc.kL);
+         $$1.a(cpc.kM);
+         $$1.a(cpc.kN);
+         $$1.a(cpc.kO);
+         $$1.a(cpc.kP);
+         $$1.a(cpc.kQ);
+         $$1.a(cpc.kR);
+         $$1.a(cpc.kS);
+         $$1.a(cpc.kT);
+         $$1.a(cpc.cD);
+         $$1.a(cpc.cE);
+         $$1.a(cpc.fT);
+         $$1.a(cpc.fj);
+         $$1.a(cpc.fk);
+         $$1.a(cpc.fl);
+         $$1.a(cpc.hC);
+         $$1.a(cpc.wr);
+         $$1.a(cpc.wu);
+         $$1.a(cpc.lN);
+         $$1.a(cpc.lO);
+         $$1.a(cpc.xg);
+         $$1.a(cpc.xh);
+         $$1.a(cpc.xi);
+         $$1.a(cpc.gg);
+         $$1.a(cpc.gh);
+         $$1.a(cpc.gi);
+         $$1.a(cpc.gj);
+         $$1.a(cpc.lY);
+         $$1.a(cpc.cL);
+         $$1.a(cpc.ae);
+      }).d());
+      iv.a($$0, d, cnf.a(cnf.f.a, 3).a(vq.c("itemGroup.functional")).a(() -> new coz(cpc.qb)).a(($$0x, $$1) -> {
+         $$1.a(cpc.eE);
+         $$1.a(cpc.fs);
+         $$1.a(cpc.lH);
+         $$1.a(cpc.wj);
+         $$1.a(cpc.wk);
+         $$1.a(cpc.fR);
+         $$1.a(cpc.eF);
+         $$1.a(cpc.iO);
+         $$1.a(cpc.md);
+         $$1.a(cpc.yj);
+         $$1.a(cpc.yk);
+         $$1.a(cpc.yl);
+         $$1.a(cpc.ym);
+         $$1.a(cpc.ft);
+         $$1.a(cpc.wp);
+         $$1.a(cpc.xg);
+         $$1.a(cpc.xh);
+         $$1.a(cpc.xi);
+         $$1.a(cpc.ww);
+         $$1.a(cpc.fV);
+         $$1.a(cpc.iV);
+         $$1.a(cpc.eN);
+         $$1.a(cpc.wh);
+         $$1.a(cpc.wd);
+         $$1.a(cpc.we);
+         $$1.a(cpc.wg);
+         $$1.a(cpc.wf);
+         $$1.a(cpc.vR);
+         $$1.a(cpc.eP);
+         $$1.a(cpc.wb);
+         $$1.a(cpc.wc);
+         $$1.a(cpc.wn);
+         $$1.a(cpc.wo);
+         $$1.a(cpc.hc);
+         $$1.a(cpc.hd);
+         $$1.a(cpc.he);
+         $$1.a(cpc.vZ);
+         $$1.a(cpc.me);
+         $$1.a(cpc.eX);
+         $$1.a(cpc.gk);
+         $$1.a(cpc.vb);
+         $$1.a(cpc.sp);
+         $$1.a(cpc.sq);
+         $$1.a(cpc.wi);
+         $$1.a(cpc.gF);
+         $$1.a(cpc.kV);
+         $$1.a(cpc.wv);
+         $$1.a(cpc.eQ);
+         $$1.a(cpc.lF);
+         $$1.a(cpc.wr);
+         $$1.a(cpc.ws);
+         $$1.a(cpc.ag);
+         $$1.a(cpc.ah);
+         $$1.a(cpc.lW);
+         $$1.a(cpc.ua);
+         $$1.a(cpc.eB);
+         $$1.a(cpc.uB);
+         $$1.a(cpc.tY);
+         $$1.a(cpc.tZ);
+         $$1.a(cpc.pY);
+         $$0x.c().a(kg.R).ifPresent($$1x -> a($$1, $$1x, $$0xxx -> $$0xxx.a(aui.a), cnf.g.a));
+         $$1.a(cpc.ez);
+         $$1.a(cpc.eA);
+         $$1.a(cpc.lT);
+         $$1.a(cpc.cG);
+         $$1.a(cpc.qb);
+         $$1.a(cpc.qm);
+         $$1.a(cpc.qc);
+         $$1.a(cpc.qn);
+         $$1.a(cpc.qd);
+         $$1.a(cpc.qo);
+         $$1.a(cpc.qe);
+         $$1.a(cpc.qp);
+         $$1.a(cpc.qf);
+         $$1.a(cpc.qq);
+         $$1.a(cpc.qh);
+         $$1.a(cpc.qs);
+         $$1.a(cpc.qi);
+         $$1.a(cpc.qt);
+         $$1.a(cpc.qg);
+         $$1.a(cpc.qr);
+         $$1.a(cpc.qj);
+         $$1.a(cpc.qu);
+         $$1.a(cpc.qk);
+         $$1.a(cpc.qv);
+         $$1.a(cpc.ql);
+         $$1.a(cpc.qw);
+         $$1.a(cpc.eM);
+         $$1.a(cpc.wa);
+         $$1.a(cpc.gq);
+         $$1.a(cpc.jb);
+         $$1.a(cpc.jc);
+         $$1.a(cpc.jk);
+         $$1.a(cpc.jj);
+         $$1.a(cpc.jr);
+         $$1.a(cpc.jo);
+         $$1.a(cpc.jq);
+         $$1.a(cpc.jd);
+         $$1.a(cpc.jg);
+         $$1.a(cpc.jh);
+         $$1.a(cpc.jp);
+         $$1.a(cpc.jl);
+         $$1.a(cpc.jf);
+         $$1.a(cpc.jn);
+         $$1.a(cpc.jm);
+         $$1.a(cpc.je);
+         $$1.a(cpc.ji);
+         $$1.a(cpc.wJ);
+         $$1.a(cpc.rB);
+         $$1.a(cpc.rJ);
+         $$1.a(cpc.rI);
+         $$1.a(cpc.rQ);
+         $$1.a(cpc.rN);
+         $$1.a(cpc.rP);
+         $$1.a(cpc.rC);
+         $$1.a(cpc.rF);
+         $$1.a(cpc.rG);
+         $$1.a(cpc.rO);
+         $$1.a(cpc.rK);
+         $$1.a(cpc.rE);
+         $$1.a(cpc.rM);
+         $$1.a(cpc.rL);
+         $$1.a(cpc.rD);
+         $$1.a(cpc.rH);
+         $$1.a(cpc.wK);
+         $$1.a(cpc.wL);
+         $$1.a(cpc.wT);
+         $$1.a(cpc.wS);
+         $$1.a(cpc.xa);
+         $$1.a(cpc.wX);
+         $$1.a(cpc.wZ);
+         $$1.a(cpc.wM);
+         $$1.a(cpc.wP);
+         $$1.a(cpc.wQ);
+         $$1.a(cpc.wY);
+         $$1.a(cpc.wU);
+         $$1.a(cpc.wO);
+         $$1.a(cpc.wW);
+         $$1.a(cpc.wV);
+         $$1.a(cpc.wN);
+         $$1.a(cpc.wR);
+         $$1.a(cpc.uL);
+         $$1.a(cpc.uT);
+         $$1.a(cpc.uS);
+         $$1.a(cpc.va);
+         $$1.a(cpc.uX);
+         $$1.a(cpc.uZ);
+         $$1.a(cpc.uM);
+         $$1.a(cpc.uP);
+         $$1.a(cpc.uQ);
+         $$1.a(cpc.uY);
+         $$1.a(cpc.uU);
+         $$1.a(cpc.uO);
+         $$1.a(cpc.uW);
+         $$1.a(cpc.uV);
+         $$1.a(cpc.uN);
+         $$1.a(cpc.uR);
+         $$1.a(ciq.s());
+         $$1.a(cpc.uh);
+         $$1.a(cpc.ui);
+         $$1.a(cpc.uj);
+         $$1.a(cpc.uk);
+         $$1.a(cpc.ul);
+         $$1.a(cpc.un);
+         $$1.a(cpc.um);
+         $$1.a(cpc.go);
+         $$1.a(cpc.gl);
+         $$1.a(cpc.sr);
+         $$1.a(cpc.fu);
+         $$1.a(cpc.fv);
+         $$1.a(cpc.fw);
+         $$1.a(cpc.fx);
+         $$1.a(cpc.fy);
+         $$1.a(cpc.fz);
+         $$1.a(cpc.fA);
+      }).d());
+      iv.a($$0, e, cnf.a(cnf.f.a, 4).a(vq.c("itemGroup.redstone")).a(() -> new coz(cpc.lG)).a(($$0x, $$1) -> {
+         $$1.a(cpc.lG);
+         $$1.a(cpc.lH);
+         $$1.a(cpc.lI);
+         $$1.a(cpc.lJ);
+         $$1.a(cpc.lK);
+         $$1.a(cpc.lU);
+         $$1.a(cpc.yj);
+         $$1.a(cpc.yk);
+         $$1.a(cpc.yl);
+         $$1.a(cpc.ym);
+         $$1.a(cpc.lV);
+         $$1.a(cpc.mh);
+         $$1.a(cpc.mf);
+         $$1.a(cpc.mw);
+         $$1.a(cpc.ms);
+         $$1.a(cpc.mu);
+         $$1.a(cpc.mv);
+         $$1.a(cpc.lY);
+         $$1.a(cpc.lZ);
+         $$1.a(cpc.gj);
+         $$1.a(cpc.aH);
+         $$1.a(cpc.cT);
+         $$1.a(cpc.ma);
+         $$1.a(cpc.pr);
+         $$1.a(cpc.lT);
+         $$1.a(cpc.lX);
+         $$1.a(cpc.lW);
+         $$1.a(cpc.lL);
+         $$1.a(cpc.lM);
+         $$1.a(cpc.lN);
+         $$1.a(cpc.lO);
+         $$1.a(cpc.lR);
+         $$1.a(cpc.lS);
+         $$1.a(cpc.rS);
+         $$1.a(cpc.lQ);
+         $$1.a(cpc.eM);
+         $$1.a(cpc.wa);
+         $$1.a(cpc.eA);
+         $$1.a(cpc.eP);
+         $$1.a(cpc.mb);
+         $$1.a(cpc.eX);
+         $$1.a(cpc.eB);
+         $$1.a(cpc.lP);
+         $$1.a(cpc.me);
+         $$1.a(cpc.vZ);
+         $$1.a(cpc.sq);
+         $$1.a(cpc.nI);
+         $$1.a(cpc.nG);
+         $$1.a(cpc.nH);
+         $$1.a(cpc.nJ);
+         $$1.a(cpc.nL);
+         $$1.a(cpc.nP);
+         $$1.a(cpc.nM);
+         $$1.a(cpc.nN);
+         $$1.a(cpc.nO);
+         $$1.a(cpc.nU);
+         $$1.a(cpc.ok);
+         $$1.a(cpc.mI);
+         $$1.a(cpc.mH);
+         $$1.a(cpc.nv);
+         $$1.a(cpc.nc);
+         $$1.a(cpc.nb);
+         $$1.a(cpc.mc);
+         $$1.a(cpc.md);
+         $$1.a(cpc.wi);
+         $$1.a(cpc.dO);
+         $$1.a(cpc.uB);
+         $$1.a(cpc.as);
+      }).d());
+      iv.a($$0, f, cnf.a(cnf.f.a, 5).a(vq.c("itemGroup.hotbar")).a(() -> new coz(cyq.cl)).a().a(cnf.h.c).d());
+      iv.a($$0, g, cnf.a(cnf.f.a, 6).a(vq.c("itemGroup.search")).a(() -> new coz(cpc.qR)).a(($$1, $$2) -> {
+         Set<coz> $$3 = cpa.a();
 
-   public cng(ih<cnb> $$0) {
-      this($$0.a(), 1);
-   }
-
-   public cng(ih<cnb> $$0, int $$1, Optional<so> $$2) {
-      this($$0, $$1);
-      $$2.ifPresent(this::c);
-   }
-
-   public cng(ih<cnb> $$0, int $$1) {
-      this($$0.a(), $$1);
-   }
-
-   public cng(ctw $$0, int $$1) {
-      this.z = $$0.j();
-      this.x = $$1;
-      if (this.z.n()) {
-         this.b(this.k());
-      }
-   }
-
-   private cng(@Nullable Void $$0) {
-      this.z = null;
-   }
-
-   private cng(so $$0) {
-      this.z = kd.h.a(new ahh($$0.l("id")));
-      this.x = $$0.f("Count");
-      if ($$0.b("tag", 10)) {
-         this.A = $$0.p("tag").h();
-         this.d().b(this.A);
-      }
-
-      if (this.d().n()) {
-         this.b(this.k());
-      }
-   }
-
-   public static cng a(so $$0) {
-      try {
-         return new cng($$0);
-      } catch (RuntimeException var2) {
-         o.debug("Tried to load invalid item: {}", $$0, var2);
-         return f;
-      }
-   }
-
-   public boolean b() {
-      return this == f || this.z == cnj.a || this.x <= 0;
-   }
-
-   public boolean a(cia $$0) {
-      return this.b() || this.d().a($$0);
-   }
-
-   public cng a(int $$0) {
-      int $$1 = Math.min($$0, this.L());
-      cng $$2 = this.c($$1);
-      this.h($$1);
-      return $$2;
-   }
-
-   public cng c() {
-      if (this.b()) {
-         return f;
-      } else {
-         cng $$0 = this.p();
-         this.f(0);
-         return $$0;
-      }
-   }
-
-   public cnb d() {
-      return this.b() ? cnj.a : this.z;
-   }
-
-   public ih<cnb> e() {
-      return this.d().i();
-   }
-
-   public boolean a(asx<cnb> $$0) {
-      return this.d().i().a($$0);
-   }
-
-   public boolean a(cnb $$0) {
-      return this.d() == $$0;
-   }
-
-   public boolean a(Predicate<ih<cnb>> $$0) {
-      return $$0.test(this.d().i());
-   }
-
-   public boolean a(ih<cnb> $$0) {
-      return this.d().i() == $$0;
-   }
-
-   public boolean a(il<cnb> $$0) {
-      return $$0.a(this.e());
-   }
-
-   public Stream<asx<cnb>> f() {
-      return this.d().i().c();
-   }
-
-   public bkc a(cpr $$0) {
-      cfq $$1 = $$0.o();
-      hx $$2 = $$0.a();
-      djt $$3 = new djt($$0.q(), $$2, false);
-      if ($$1 != null && !$$1.fT().e && !this.a($$0.q().I_().d(ke.f), $$3)) {
-         return bkc.d;
-      } else {
-         cnb $$4 = this.d();
-         bkc $$5 = $$4.a($$0);
-         if ($$1 != null && $$5.c()) {
-            $$1.b(asd.c.b($$4));
+         for (cnf $$4 : $$0) {
+            if ($$4.k() != cnf.h.d) {
+               $$3.addAll($$4.m());
+            }
          }
 
-         return $$5;
-      }
-   }
+         $$2.a($$3);
+      }).a("item_search.png").a().a(cnf.h.d).d());
+      iv.a($$0, h, cnf.a(cnf.f.b, 0).a(vq.c("itemGroup.tools")).a(() -> new coz(cpc.pg)).a(($$0x, $$1) -> {
+         $$1.a(cpc.oL);
+         $$1.a(cpc.oM);
+         $$1.a(cpc.oN);
+         $$1.a(cpc.oO);
+         $$1.a(cpc.oQ);
+         $$1.a(cpc.oR);
+         $$1.a(cpc.oS);
+         $$1.a(cpc.oT);
+         $$1.a(cpc.pa);
+         $$1.a(cpc.pb);
+         $$1.a(cpc.pc);
+         $$1.a(cpc.pd);
+         $$1.a(cpc.oV);
+         $$1.a(cpc.oW);
+         $$1.a(cpc.oX);
+         $$1.a(cpc.oY);
+         $$1.a(cpc.pf);
+         $$1.a(cpc.pg);
+         $$1.a(cpc.ph);
+         $$1.a(cpc.pi);
+         $$1.a(cpc.pk);
+         $$1.a(cpc.pl);
+         $$1.a(cpc.pm);
+         $$1.a(cpc.pn);
+         $$1.a(cpc.qx);
+         $$1.a(cpc.qy);
+         $$1.a(cpc.qG);
+         $$1.a(cpc.qF);
+         $$1.a(cpc.qH);
+         $$1.a(cpc.qE);
+         $$1.a(cpc.qI);
+         $$1.a(cpc.qJ);
+         $$1.a(cpc.qz);
+         $$1.a(cpc.qA);
+         $$1.a(cpc.qD);
+         $$1.a(cpc.qU);
+         $$1.a(cpc.or);
+         $$1.a(cpc.tV);
+         $$1.a(cpc.rx);
+         $$1.a(cpc.rU);
+         $$1.a(cpc.xl);
+         $$1.a(cpc.uH);
+         $$1.a(cpc.uG);
+         if ($$0x.a().b(cju.b)) {
+            $$1.a(cpc.qT);
+         }
 
-   public float a(djp $$0) {
-      return this.d().a(this, $$0);
-   }
+         $$1.a(cpc.qR);
+         $$1.a(cpc.qS);
+         $$1.a(cpc.qV);
+         $$1.a(cpc.qW);
+         $$1.a(cpc.uf);
+         $$1.a(cpc.tW);
+         $$1.a(cpc.se);
+         $$1.a(cpc.sr);
+         $$1.a(cpc.nS);
+         b($$1, cnf.g.a);
+         $$1.a(cpc.nK);
+         $$1.a(cpc.nQ);
+         $$1.a(cpc.nR);
+         $$1.a(cpc.nT);
+         $$1.a(cpc.nU);
+         $$1.a(cpc.nV);
+         $$1.a(cpc.nW);
+         $$1.a(cpc.nX);
+         $$1.a(cpc.nY);
+         $$1.a(cpc.nZ);
+         $$1.a(cpc.oa);
+         $$1.a(cpc.ob);
+         $$1.a(cpc.oc);
+         $$1.a(cpc.of);
+         $$1.a(cpc.og);
+         $$1.a(cpc.oh);
+         $$1.a(cpc.oi);
+         $$1.a(cpc.od);
+         $$1.a(cpc.oe);
+         $$1.a(cpc.oj);
+         $$1.a(cpc.ok);
+         $$1.a(cpc.nI);
+         $$1.a(cpc.nG);
+         $$1.a(cpc.nH);
+         $$1.a(cpc.nJ);
+         $$1.a(cpc.nL);
+         $$1.a(cpc.nP);
+         $$1.a(cpc.nM);
+         $$1.a(cpc.nN);
+         $$1.a(cpc.nO);
+         $$0x.c().a(kg.D).ifPresent($$1x -> a($$1, $$1x, cpc.vY, aug.c, cnf.g.a));
+         $$1.a(cpc.vu);
+         $$1.a(cpc.vv);
+         $$1.a(cpc.vw);
+         $$1.a(cpc.vx);
+         $$1.a(cpc.vy);
+         $$1.a(cpc.vz);
+         $$1.a(cpc.vA);
+         $$1.a(cpc.vB);
+         $$1.a(cpc.vC);
+         $$1.a(cpc.vD);
+         $$1.a(cpc.vE);
+         $$1.a(cpc.vF);
+         $$1.a(cpc.vG);
+         $$1.a(cpc.vH);
+         $$1.a(cpc.vI);
+         $$1.a(cpc.vJ);
+      }).d());
+      iv.a($$0, i, cnf.a(cnf.f.b, 1).a(vq.c("itemGroup.combat")).a(() -> new coz(cpc.pj)).a(($$0x, $$1) -> {
+         $$1.a(cpc.oK);
+         $$1.a(cpc.oP);
+         $$1.a(cpc.oZ);
+         $$1.a(cpc.oU);
+         $$1.a(cpc.pe);
+         $$1.a(cpc.pj);
+         $$1.a(cpc.oN);
+         $$1.a(cpc.oS);
+         $$1.a(cpc.pc);
+         $$1.a(cpc.oX);
+         $$1.a(cpc.ph);
+         $$1.a(cpc.pm);
+         $$1.a(cpc.vL);
+         $$1.a(cpc.vo);
+         $$1.a(cpc.px);
+         $$1.a(cpc.py);
+         $$1.a(cpc.pz);
+         $$1.a(cpc.pA);
+         $$1.a(cpc.pB);
+         $$1.a(cpc.pC);
+         $$1.a(cpc.pD);
+         $$1.a(cpc.pE);
+         $$1.a(cpc.pF);
+         $$1.a(cpc.pG);
+         $$1.a(cpc.pH);
+         $$1.a(cpc.pI);
+         $$1.a(cpc.pN);
+         $$1.a(cpc.pO);
+         $$1.a(cpc.pP);
+         $$1.a(cpc.pQ);
+         $$1.a(cpc.pJ);
+         $$1.a(cpc.pK);
+         $$1.a(cpc.pL);
+         $$1.a(cpc.pM);
+         $$1.a(cpc.pR);
+         $$1.a(cpc.pS);
+         $$1.a(cpc.pT);
+         $$1.a(cpc.pU);
+         $$1.a(cpc.on);
+         $$1.a(cpc.uF);
+         $$1.a(cpc.uC);
+         $$1.a(cpc.uD);
+         $$1.a(cpc.uE);
+         $$1.a(cpc.oq);
+         $$1.a(cpc.vp);
+         $$1.a(cpc.mc);
+         $$1.a(cpc.vb);
+         $$1.a(cpc.qB);
+         $$1.a(cpc.qQ);
+         $$1.a(cpc.ot);
+         $$1.a(cpc.vP);
+         b($$1, cnf.g.a);
+         $$1.a(cpc.ou);
+         $$1.a(cpc.vl);
+         $$0x.c().a(kg.X).ifPresent($$1x -> a($$1, $$1x, cpc.vm, cnf.g.a));
+      }).d());
+      iv.a($$0, j, cnf.a(cnf.f.b, 2).a(vq.c("itemGroup.foodAndDrink")).a(() -> new coz(cpc.pZ)).a(($$0x, $$1) -> {
+         $$1.a(cpc.os);
+         $$1.a(cpc.pZ);
+         $$1.a(cpc.qa);
+         $$1.a(cpc.rV);
+         $$1.a(cpc.wl);
+         $$1.a(cpc.wm);
+         $$1.a(cpc.vc);
+         $$1.a(cpc.ub);
+         $$1.a(cpc.ug);
+         $$1.a(cpc.uc);
+         $$1.a(cpc.ud);
+         $$1.a(cpc.ue);
+         $$1.a(cpc.vg);
+         $$1.a(cpc.rW);
+         $$1.a(cpc.rZ);
+         $$1.a(cpc.sa);
+         $$1.a(cpc.pW);
+         $$1.a(cpc.pX);
+         $$1.a(cpc.uJ);
+         $$1.a(cpc.uK);
+         $$1.a(cpc.sb);
+         $$1.a(cpc.sc);
+         $$1.a(cpc.uw);
+         $$1.a(cpc.ux);
+         $$1.a(cpc.qY);
+         $$1.a(cpc.rc);
+         $$1.a(cpc.qZ);
+         $$1.a(cpc.rd);
+         $$1.a(cpc.ra);
+         $$1.a(cpc.rb);
+         $$1.a(cpc.pw);
+         $$1.a(cpc.rR);
+         $$1.a(cpc.rA);
+         $$1.a(cpc.up);
+         $$1.a(cpc.sd);
+         $$1.a(cpc.sl);
+         $$1.a(cpc.pq);
+         $$1.a(cpc.vi);
+         $$1.a(cpc.uy);
+         a($$1, cnf.g.a);
+         $$1.a(cpc.qD);
+         $$1.a(cpc.wt);
+         $$0x.c().a(kg.X).ifPresent($$1x -> {
+            a($$1, $$1x, cpc.sj, cnf.g.a);
+            a($$1, $$1x, cpc.vk, cnf.g.a);
+            a($$1, $$1x, cpc.vn, cnf.g.a);
+         });
+      }).d());
+      iv.a($$0, k, cnf.a(cnf.f.b, 3).a(vq.c("itemGroup.ingredients")).a(() -> new coz(cpc.oD)).a(($$0x, $$1) -> {
+         $$1.a(cpc.ov);
+         $$1.a(cpc.ow);
+         $$1.a(cpc.oC);
+         $$1.a(cpc.oE);
+         $$1.a(cpc.oG);
+         $$1.a(cpc.oy);
+         $$1.a(cpc.oz);
+         $$1.a(cpc.ox);
+         $$1.a(cpc.aC);
+         $$1.a(cpc.oA);
+         $$1.a(cpc.oB);
+         $$1.a(cpc.vr);
+         $$1.a(cpc.sh);
+         $$1.a(cpc.oD);
+         $$1.a(cpc.oF);
+         $$1.a(cpc.oH);
+         $$1.a(cpc.oJ);
+         $$1.a(cpc.oI);
+         $$1.a(cpc.po);
+         $$1.a(cpc.pV);
+         $$1.a(cpc.pv);
+         $$1.a(cpc.ry);
+         $$1.a(cpc.rx);
+         $$1.a(cpc.pr);
+         $$1.a(cpc.ps);
+         $$1.a(cpc.qB);
+         $$1.a(cpc.qQ);
+         $$1.a(cpc.qC);
+         $$1.a(cpc.uA);
+         $$1.a(cpc.wq);
+         $$1.a(cpc.re);
+         $$1.a(cpc.rf);
+         $$1.a(cpc.oo);
+         $$1.a(cpc.op);
+         $$1.a(cpc.qP);
+         $$1.a(cpc.qL);
+         $$1.a(cpc.uu);
+         $$1.a(cpc.uv);
+         $$1.a(cpc.vN);
+         $$1.a(cpc.vO);
+         $$1.a(cpc.tV);
+         $$1.a(cpc.sf);
+         $$1.a(cpc.uo);
+         $$1.a(cpc.se);
+         $$1.a(cpc.sr);
+         $$1.a(cpc.vq);
+         $$1.a(cpc.vd);
+         $$1.a(cpc.xk);
+         $$1.a(cpc.vK);
+         $$1.a(cpc.rh);
+         $$1.a(cpc.rp);
+         $$1.a(cpc.ro);
+         $$1.a(cpc.rw);
+         $$1.a(cpc.rt);
+         $$1.a(cpc.rv);
+         $$1.a(cpc.ri);
+         $$1.a(cpc.rl);
+         $$1.a(cpc.rm);
+         $$1.a(cpc.ru);
+         $$1.a(cpc.rq);
+         $$1.a(cpc.rk);
+         $$1.a(cpc.rs);
+         $$1.a(cpc.rr);
+         $$1.a(cpc.rj);
+         $$1.a(cpc.rn);
+         $$1.a(cpc.pp);
+         $$1.a(cpc.qK);
+         $$1.a(cpc.ut);
+         $$1.a(cpc.qN);
+         $$1.a(cpc.qO);
+         $$1.a(cpc.ur);
+         $$1.a(cpc.sk);
+         $$1.a(cpc.si);
+         $$1.a(cpc.lG);
+         $$1.a(cpc.qX);
+         $$1.a(cpc.pt);
+         $$1.a(cpc.vj);
+         $$1.a(cpc.sm);
+         $$1.a(cpc.sn);
+         $$1.a(cpc.rz);
+         $$1.a(cpc.uz);
+         $$1.a(cpc.ss);
+         $$1.a(cpc.sl);
+         $$1.a(cpc.rb);
+         $$1.a(cpc.so);
+         $$1.a(cpc.ug);
+         $$1.a(cpc.sg);
+         $$1.a(cpc.on);
+         $$1.a(cpc.vM);
+         $$1.a(cpc.vS);
+         $$1.a(cpc.vT);
+         $$1.a(cpc.vU);
+         $$1.a(cpc.vV);
+         $$1.a(cpc.vW);
+         $$1.a(cpc.vX);
+         $$1.a(cpc.xD);
+         $$1.a(cpc.xE);
+         $$1.a(cpc.xF);
+         $$1.a(cpc.xG);
+         $$1.a(cpc.xH);
+         $$1.a(cpc.xI);
+         $$1.a(cpc.xJ);
+         $$1.a(cpc.xK);
+         $$1.a(cpc.xL);
+         $$1.a(cpc.xM);
+         $$1.a(cpc.xN);
+         $$1.a(cpc.xO);
+         $$1.a(cpc.xP);
+         $$1.a(cpc.xQ);
+         $$1.a(cpc.xR);
+         $$1.a(cpc.xS);
+         $$1.a(cpc.xT);
+         $$1.a(cpc.xU);
+         $$1.a(cpc.xV);
+         $$1.a(cpc.xW);
+         $$1.a(cpc.xm);
+         $$1.a(cpc.xn);
+         $$1.a(cpc.xt);
+         $$1.a(cpc.xq);
+         $$1.a(cpc.xp);
+         $$1.a(cpc.xo);
+         $$1.a(cpc.xy);
+         $$1.a(cpc.xB);
+         $$1.a(cpc.xz);
+         $$1.a(cpc.xC);
+         $$1.a(cpc.xr);
+         $$1.a(cpc.xA);
+         $$1.a(cpc.xu);
+         $$1.a(cpc.xv);
+         $$1.a(cpc.xw);
+         $$1.a(cpc.xs);
+         $$1.a(cpc.xx);
+         $$1.a(cpc.tU);
+         $$1.a(cpc.yo);
+         Set<auo<cou>> $$2 = Set.of(auh.ba, auh.bb, auh.bc, auh.bd, auh.be, auh.bf, auh.bg, auh.bh, auh.bj, auh.bk, auh.bl, auh.bm, auh.bn, auh.bo, auh.bp);
+         $$0x.c().a(kg.t).ifPresent($$2x -> {
+            a($$1, $$2x, $$2, cnf.g.b);
+            b($$1, $$2x, $$2, cnf.g.c);
+         });
+      }).d());
+      iv.a($$0, l, cnf.a(cnf.f.b, 4).a(vq.c("itemGroup.spawnEggs")).a(() -> new coz(cpc.th)).a(($$0x, $$1) -> {
+         $$1.a(cpc.eL);
+         $$1.a(cpc.yn);
+         $$1.a(cpc.su);
+         $$1.a(cpc.st);
+         $$1.a(cpc.sv);
+         $$1.a(cpc.sw);
+         $$1.a(cpc.sx);
+         $$1.a(cpc.sy);
+         $$1.a(cpc.sz);
+         $$1.a(cpc.sB);
+         $$1.a(cpc.sA);
+         $$1.a(cpc.sC);
+         $$1.a(cpc.sD);
+         $$1.a(cpc.sE);
+         $$1.a(cpc.sF);
+         $$1.a(cpc.sG);
+         $$1.a(cpc.sH);
+         $$1.a(cpc.sI);
+         $$1.a(cpc.sJ);
+         $$1.a(cpc.sK);
+         $$1.a(cpc.sM);
+         $$1.a(cpc.sN);
+         $$1.a(cpc.sO);
+         $$1.a(cpc.sP);
+         $$1.a(cpc.sQ);
+         $$1.a(cpc.sR);
+         $$1.a(cpc.sS);
+         $$1.a(cpc.sT);
+         $$1.a(cpc.sU);
+         $$1.a(cpc.sV);
+         $$1.a(cpc.sW);
+         $$1.a(cpc.sX);
+         $$1.a(cpc.sY);
+         $$1.a(cpc.sZ);
+         $$1.a(cpc.ta);
+         $$1.a(cpc.tb);
+         $$1.a(cpc.tc);
+         $$1.a(cpc.td);
+         $$1.a(cpc.te);
+         $$1.a(cpc.tf);
+         $$1.a(cpc.tg);
+         $$1.a(cpc.th);
+         $$1.a(cpc.ti);
+         $$1.a(cpc.tj);
+         $$1.a(cpc.tk);
+         $$1.a(cpc.tl);
+         $$1.a(cpc.tm);
+         $$1.a(cpc.tn);
+         $$1.a(cpc.to);
+         $$1.a(cpc.tp);
+         $$1.a(cpc.tq);
+         $$1.a(cpc.tr);
+         $$1.a(cpc.ts);
+         $$1.a(cpc.tt);
+         $$1.a(cpc.tu);
+         $$1.a(cpc.tv);
+         $$1.a(cpc.tw);
+         $$1.a(cpc.tx);
+         $$1.a(cpc.ty);
+         $$1.a(cpc.tz);
+         $$1.a(cpc.tA);
+         $$1.a(cpc.tB);
+         $$1.a(cpc.tC);
+         $$1.a(cpc.tD);
+         $$1.a(cpc.tE);
+         $$1.a(cpc.tF);
+         $$1.a(cpc.tG);
+         $$1.a(cpc.tH);
+         $$1.a(cpc.tI);
+         $$1.a(cpc.tJ);
+         $$1.a(cpc.tK);
+         $$1.a(cpc.tL);
+         $$1.a(cpc.tN);
+         $$1.a(cpc.tO);
+         $$1.a(cpc.tP);
+         $$1.a(cpc.tQ);
+         $$1.a(cpc.tR);
+         $$1.a(cpc.tS);
+         $$1.a(cpc.tT);
+      }).d());
+      iv.a($$0, m, cnf.a(cnf.f.b, 5).a(vq.c("itemGroup.op")).a(() -> new coz(cpc.gE)).a().a(($$0x, $$1) -> {
+         if ($$0x.b()) {
+            $$1.a(cpc.gE);
+            $$1.a(cpc.iU);
+            $$1.a(cpc.iT);
+            $$1.a(cpc.uI);
+            $$1.a(cpc.om);
+            $$1.a(cpc.ol);
+            $$1.a(cpc.ja);
+            $$1.a(cpc.hA);
+            $$1.a(cpc.vt);
 
-   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
-      return this.d().a($$0, $$1, $$2);
-   }
-
-   public cng a(ctx $$0, bmo $$1) {
-      return this.d().a(this, $$0, $$1);
-   }
-
-   public so b(so $$0) {
-      ahh $$1 = kd.h.b(this.d());
-      $$0.a("id", $$1 == null ? "minecraft:air" : $$1.toString());
-      $$0.a("Count", (byte)this.x);
-      if (this.A != null) {
-         $$0.a("tag", this.A.h());
-      }
-
-      return $$0;
-   }
-
-   public int g() {
-      return this.d().k();
-   }
-
-   public boolean h() {
-      return this.g() > 1 && (!this.i() || !this.j());
-   }
-
-   public boolean i() {
-      if (!this.b() && this.d().l() > 0) {
-         so $$0 = this.v();
-         return $$0 == null || !$$0.q("Unbreakable");
-      } else {
-         return false;
-      }
-   }
-
-   public boolean j() {
-      return this.i() && this.k() > 0;
-   }
-
-   public int k() {
-      return this.A == null ? 0 : this.A.h("Damage");
-   }
-
-   public void b(int $$0) {
-      this.w().a("Damage", Math.max(0, $$0));
-   }
-
-   public int l() {
-      return this.d().l();
-   }
-
-   public boolean a(int $$0, auw $$1, @Nullable anf $$2) {
-      if (!this.i()) {
-         return false;
-      } else {
-         if ($$0 > 0) {
-            int $$3 = crt.a(crv.w, this);
-            int $$4 = 0;
-
-            for (int $$5 = 0; $$3 > 0 && $$5 < $$0; $$5++) {
-               if (crp.a(this, $$3, $$1)) {
-                  $$4++;
-               }
+            for (int $$2 = 15; $$2 >= 0; $$2--) {
+               $$1.a(ddb.a(new coz(cpc.hB), $$2));
             }
 
-            $$0 -= $$4;
-            if ($$0 <= 0) {
-               return false;
-            }
+            $$0x.c().a(kg.R).ifPresent($$1x -> a($$1, $$1x, $$0xxx -> !$$0xxx.a(aui.a), cnf.g.a));
          }
-
-         if ($$2 != null && $$0 != 0) {
-            am.u.a($$2, this, this.k() + $$0);
-         }
-
-         int $$6 = this.k() + $$0;
-         this.b($$6);
-         return $$6 >= this.l();
-      }
+      }).d());
+      return iv.a($$0, n, cnf.a(cnf.f.b, 6).a(vq.c("itemGroup.inventory")).a(() -> new coz(cyq.cv)).a("inventory.png").b().a().a(cnf.h.b).c().d());
    }
 
-   public <T extends bmo> void a(int $$0, T $$1, Consumer<T> $$2) {
-      if (!$$1.dL().B && (!($$1 instanceof cfq) || !((cfq)$$1).fT().d)) {
-         if (this.i()) {
-            if (this.a($$0, $$1.eg(), $$1 instanceof anf ? (anf)$$1 : null)) {
-               $$2.accept($$1);
-               cnb $$3 = this.d();
-               this.h(1);
-               if ($$1 instanceof cfq) {
-                  ((cfq)$$1).b(asd.d.b($$3));
-               }
+   public static void a() {
+      Map<Pair<cnf.f, Integer>, String> $$0 = new HashMap<>();
 
-               this.b(0);
-            }
-         }
-      }
-   }
-
-   public boolean m() {
-      return this.d().e(this);
-   }
-
-   public int n() {
-      return this.d().f(this);
-   }
-
-   public int o() {
-      return this.d().g(this);
-   }
-
-   public boolean a(cke $$0, cir $$1, cfq $$2) {
-      return this.d().a(this, $$0, $$1, $$2);
-   }
-
-   public boolean a(cng $$0, cke $$1, cir $$2, cfq $$3, bng $$4) {
-      return this.d().a(this, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void a(bmo $$0, cfq $$1) {
-      cnb $$2 = this.d();
-      if ($$2.a(this, $$0, $$1)) {
-         $$1.b(asd.c.b($$2));
-      }
-   }
-
-   public void a(ctx $$0, djp $$1, hx $$2, cfq $$3) {
-      cnb $$4 = this.d();
-      if ($$4.a(this, $$0, $$1, $$2, $$3)) {
-         $$3.b(asd.c.b($$4));
-      }
-   }
-
-   public boolean b(djp $$0) {
-      return this.d().a_($$0);
-   }
-
-   public bkc a(cfq $$0, bmo $$1, bkb $$2) {
-      return this.d().a(this, $$0, $$1, $$2);
-   }
-
-   public cng p() {
-      if (this.b()) {
-         return f;
-      } else {
-         cng $$0 = new cng(this.d(), this.x);
-         $$0.e(this.K());
-         if (this.A != null) {
-            $$0.A = this.A.h();
-         }
-
-         return $$0;
-      }
-   }
-
-   public cng c(int $$0) {
-      if (this.b()) {
-         return f;
-      } else {
-         cng $$1 = this.p();
-         $$1.f($$0);
-         return $$1;
-      }
-   }
-
-   public static boolean a(cng $$0, cng $$1) {
-      if ($$0 == $$1) {
-         return true;
-      } else {
-         return $$0.L() != $$1.L() ? false : c($$0, $$1);
-      }
-   }
-
-   public static boolean b(cng $$0, cng $$1) {
-      return $$0.a($$1.d());
-   }
-
-   public static boolean c(cng $$0, cng $$1) {
-      if (!$$0.a($$1.d())) {
-         return false;
-      } else {
-         return $$0.b() && $$1.b() ? true : Objects.equals($$0.A, $$1.A);
-      }
-   }
-
-   public String q() {
-      return this.d().j(this);
-   }
-
-   @Override
-   public String toString() {
-      return this.L() + " " + this.d();
-   }
-
-   public void a(ctx $$0, blw $$1, int $$2, boolean $$3) {
-      if (this.y > 0) {
-         this.y--;
-      }
-
-      if (this.d() != null) {
-         this.d().a(this, $$0, $$1, $$2, $$3);
-      }
-   }
-
-   public void a(ctx $$0, cfq $$1, int $$2) {
-      $$1.a(asd.b.b(this.d()), $$2);
-      this.d().b(this, $$0, $$1);
-   }
-
-   public void a(ctx $$0) {
-      this.d().a(this, $$0);
-   }
-
-   public int r() {
-      return this.d().b(this);
-   }
-
-   public cpa s() {
-      return this.d().c(this);
-   }
-
-   public void a(ctx $$0, bmo $$1, int $$2) {
-      this.d().a(this, $$0, $$1, $$2);
-   }
-
-   public boolean t() {
-      return this.d().l(this);
-   }
-
-   public boolean u() {
-      return !this.b() && this.A != null && !this.A.g();
-   }
-
-   @Nullable
-   public so v() {
-      return this.A;
-   }
-
-   public so w() {
-      if (this.A == null) {
-         this.c(new so());
-      }
-
-      return this.A;
-   }
-
-   public so a(String $$0) {
-      if (this.A != null && this.A.b($$0, 10)) {
-         return this.A.p($$0);
-      } else {
-         so $$1 = new so();
-         this.a($$0, $$1);
-         return $$1;
-      }
-   }
-
-   @Nullable
-   public so b(String $$0) {
-      return this.A != null && this.A.b($$0, 10) ? this.A.p($$0) : null;
-   }
-
-   public void c(String $$0) {
-      if (this.A != null && this.A.e($$0)) {
-         this.A.r($$0);
-         if (this.A.g()) {
-            this.A = null;
-         }
-      }
-   }
-
-   public su x() {
-      return this.A != null ? this.A.c("Enchantments", 10) : new su();
-   }
-
-   public void c(@Nullable so $$0) {
-      this.A = $$0;
-      if (this.d().n()) {
-         this.b(this.k());
-      }
-
-      if ($$0 != null) {
-         this.d().b($$0);
-      }
-   }
-
-   public vg y() {
-      so $$0 = this.b("display");
-      if ($$0 != null && $$0.b("Name", 8)) {
-         try {
-            vg $$1 = vg.a.a($$0.l("Name"));
-            if ($$1 != null) {
-               return $$1;
-            }
-
-            $$0.r("Name");
-         } catch (Exception var3) {
-            $$0.r("Name");
-         }
-      }
-
-      return this.d().m(this);
-   }
-
-   public cng a(@Nullable vg $$0) {
-      so $$1 = this.a("display");
-      if ($$0 != null) {
-         $$1.a("Name", vg.a.a($$0));
-      } else {
-         $$1.r("Name");
-      }
-
-      return this;
-   }
-
-   public void z() {
-      so $$0 = this.b("display");
-      if ($$0 != null) {
-         $$0.r("Name");
-         if ($$0.g()) {
-            this.c("display");
-         }
-      }
-
-      if (this.A != null && this.A.g()) {
-         this.A = null;
-      }
-   }
-
-   public boolean A() {
-      so $$0 = this.b("display");
-      return $$0 != null && $$0.b("Name", 8);
-   }
-
-   public List<vg> a(@Nullable cfq $$0, coy $$1) {
-      List<vg> $$2 = Lists.newArrayList();
-      vu $$3 = vg.i().b(this.y()).a(this.C().e);
-      if (this.A()) {
-         $$3.a(n.u);
-      }
-
-      $$2.add($$3);
-      if (!$$1.a() && !this.A() && this.a(cnj.rT)) {
-         Integer $$4 = cnn.d(this);
+      for (aix<cnf> $$1 : kf.ap.f()) {
+         cnf $$2 = kf.ap.e($$1);
+         String $$3 = $$2.a().getString();
+         String $$4 = $$0.put(Pair.of($$2.g(), $$2.f()), $$3);
          if ($$4 != null) {
-            $$2.add(cnn.k(this));
+            throw new IllegalArgumentException("Duplicate position: " + $$3 + " vs. " + $$4);
          }
       }
-
-      int $$5 = this.P();
-      if (a($$5, cng.a.f)) {
-         this.d().a(this, $$0 == null ? null : $$0.dL(), $$2, $$1);
-      }
-
-      if (this.u()) {
-         if (a($$5, cng.a.h) && $$0 != null) {
-            cpj.a(this, $$0.dL().I_(), $$2);
-         }
-
-         if (a($$5, cng.a.a)) {
-            a($$2, this.x());
-         }
-
-         if (this.A.b("display", 10)) {
-            so $$6 = this.A.p("display");
-            if (a($$5, cng.a.g) && $$6.b("color", 99)) {
-               if ($$1.a()) {
-                  $$2.add(vg.a("item.color", String.format(Locale.ROOT, "#%06X", $$6.h("color"))).a(n.h));
-               } else {
-                  $$2.add(vg.c("item.dyed").a(n.h, n.u));
-               }
-            }
-
-            if ($$6.d("Lore") == 9) {
-               su $$7 = $$6.c("Lore", 8);
-
-               for (int $$8 = 0; $$8 < $$7.size(); $$8++) {
-                  String $$9 = $$7.j($$8);
-
-                  try {
-                     vu $$10 = vg.a.a($$9);
-                     if ($$10 != null) {
-                        $$2.add(vj.a($$10, w));
-                     }
-                  } catch (Exception var19) {
-                     $$6.r("Lore");
-                  }
-               }
-            }
-         }
-      }
-
-      if (a($$5, cng.a.b)) {
-         for (bmd $$12 : bmd.values()) {
-            Multimap<ih<bnp>, bns> $$13 = this.a($$12);
-            if (!$$13.isEmpty()) {
-               $$2.add(vf.a);
-               $$2.add(vg.c("item.modifiers." + $$12.e()).a(n.h));
-
-               for (Entry<ih<bnp>, bns> $$14 : $$13.entries()) {
-                  bns $$15 = $$14.getValue();
-                  double $$16 = $$15.c();
-                  boolean $$17 = false;
-                  if ($$0 != null) {
-                     if ($$15.a() == cnb.m) {
-                        $$16 += $$0.h(bnu.c);
-                        $$16 += (double)crt.a(this, bmt.a);
-                        $$17 = true;
-                     } else if ($$15.a() == cnb.n) {
-                        $$16 += $$0.h(bnu.e);
-                        $$17 = true;
-                     }
-                  }
-
-                  double $$18;
-                  if ($$15.b() == bns.a.b || $$15.b() == bns.a.c) {
-                     $$18 = $$16 * 100.0;
-                  } else if ($$14.getKey().a(bnu.k)) {
-                     $$18 = $$16 * 10.0;
-                  } else {
-                     $$18 = $$16;
-                  }
-
-                  if ($$17) {
-                     $$2.add(vf.a().b(vg.a("attribute.modifier.equals." + $$15.b().a(), g.format($$18), vg.c($$14.getKey().a().c()))).a(n.c));
-                  } else if ($$16 > 0.0) {
-                     $$2.add(vg.a("attribute.modifier.plus." + $$15.b().a(), g.format($$18), vg.c($$14.getKey().a().c())).a(n.j));
-                  } else if ($$16 < 0.0) {
-                     $$18 *= -1.0;
-                     $$2.add(vg.a("attribute.modifier.take." + $$15.b().a(), g.format($$18), vg.c($$14.getKey().a().c())).a(n.m));
-                  }
-               }
-            }
-         }
-      }
-
-      if (this.u()) {
-         if (a($$5, cng.a.c) && this.A.q("Unbreakable")) {
-            $$2.add(vg.c("item.unbreakable").a(n.j));
-         }
-
-         if (a($$5, cng.a.d) && this.A.b("CanDestroy", 9)) {
-            su $$21 = this.A.c("CanDestroy", 8);
-            if (!$$21.isEmpty()) {
-               $$2.add(vf.a);
-               $$2.add(vg.c("item.canBreak").a(n.h));
-
-               for (int $$22 = 0; $$22 < $$21.size(); $$22++) {
-                  $$2.addAll(d($$21.j($$22)));
-               }
-            }
-         }
-
-         if (a($$5, cng.a.e) && this.A.b("CanPlaceOn", 9)) {
-            su $$23 = this.A.c("CanPlaceOn", 8);
-            if (!$$23.isEmpty()) {
-               $$2.add(vf.a);
-               $$2.add(vg.c("item.canPlace").a(n.h));
-
-               for (int $$24 = 0; $$24 < $$23.size(); $$24++) {
-                  $$2.addAll(d($$23.j($$24)));
-               }
-            }
-         }
-      }
-
-      if ($$1.a()) {
-         if (this.j()) {
-            $$2.add(vg.a("item.durability", this.l() - this.k(), this.l()));
-         }
-
-         $$2.add(vg.b(kd.h.b(this.d()).toString()).a(n.i));
-         if (this.u()) {
-            $$2.add(vg.a("item.nbt_tags", this.A.e().size()).a(n.i));
-         }
-      }
-
-      if ($$0 != null && !this.d().a($$0.dL().I())) {
-         $$2.add(u);
-      }
-
-      return $$2;
    }
 
-   private static boolean a(int $$0, cng.a $$1) {
-      return ($$0 & $$1.a()) == 0;
+   public static cnf b() {
+      return kf.ap.e(a);
    }
 
-   private int P() {
-      return this.u() && this.A.b("HideFlags", 99) ? this.A.h("HideFlags") : 0;
+   private static void a(cnf.e $$0, il<cqv> $$1, cou $$2, cnf.g $$3) {
+      $$1.b().filter($$0x -> !$$0x.a(cqy.a)).map($$1x -> cqx.a(new coz($$2), $$1x)).forEach($$2x -> $$0.a($$2x, $$3));
    }
 
-   public void a(cng.a $$0) {
-      so $$1 = this.w();
-      $$1.a("HideFlags", $$1.h("HideFlags") | $$0.a());
+   private static void a(cnf.e $$0, il<cti> $$1, Set<auo<cou>> $$2, cnf.g $$3) {
+      $$1.b().map(ij::a).filter($$1x -> $$2.contains($$1x.d())).map($$0x -> cnv.a(new ctk($$0x, $$0x.a()))).forEach($$2x -> $$0.a($$2x, $$3));
    }
 
-   public static void a(List<vg> $$0, su $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         so $$3 = $$1.a($$2);
-         kd.f.b(crt.b($$3)).ifPresent($$2x -> $$0.add($$2x.d(crt.a($$3))));
+   private static void b(cnf.e $$0, il<cti> $$1, Set<auo<cou>> $$2, cnf.g $$3) {
+      $$1.b()
+         .map(ij::a)
+         .filter($$1x -> $$2.contains($$1x.d()))
+         .flatMap($$0x -> IntStream.rangeClosed($$0x.f(), $$0x.a()).mapToObj($$1x -> cnv.a(new ctk($$0x, $$1x))))
+         .forEach($$2x -> $$0.a($$2x, $$3));
+   }
+
+   private static void a(cnf.e $$0, il<cor> $$1, cou $$2, auo<cor> $$3, cnf.g $$4) {
+      $$1.a($$3).ifPresent($$3x -> $$3x.a().map($$1xx -> cos.a($$2, $$1xx)).forEach($$2xx -> $$0.a($$2xx, $$4)));
+   }
+
+   private static void a(cnf.e $$0, cnf.g $$1) {
+      List<dgp> $$2 = dgp.c();
+      Set<coz> $$3 = cpa.a();
+
+      for (dgp $$4 : $$2) {
+         coz $$5 = new coz(cpc.vQ);
+         cqj.a($$5, $$4.b());
+         $$3.add($$5);
+      }
+
+      $$0.a($$3, $$1);
+   }
+
+   private static void b(cnf.e $$0, cnf.g $$1) {
+      for (byte $$2 : cod.a) {
+         coz $$3 = new coz(cpc.uq);
+         cod.a($$3, $$2);
+         $$0.a($$3, $$1);
       }
    }
 
-   private static Collection<vg> d(String $$0) {
-      try {
-         return (Collection<vg>)fk.b(kd.e.p(), $$0, true)
-            .map(
-               $$0x -> Lists.newArrayList(new vg[]{$$0x.a().b().f().a(n.i)}),
-               $$0x -> $$0x.a().a().map($$0xx -> ((cwy)$$0xx.a()).f().a(n.i)).collect(Collectors.toList())
-            );
-      } catch (CommandSyntaxException var2) {
-         return Lists.newArrayList(new vg[]{vg.b("missingno").a(n.i)});
-      }
+   private static void a(cnf.e $$0, il.c<cdo> $$1, Predicate<ij<cdo>> $$2, cnf.g $$3) {
+      $$1.b().filter($$2).sorted(o).forEach($$2x -> {
+         coz $$3x = new coz(cpc.pY);
+         sw $$4 = $$3x.a("EntityTag");
+         cdn.a($$4, $$2x);
+         $$0.a($$3x, $$3);
+      });
    }
 
-   public boolean B() {
-      return this.d().i(this);
+   public static List<cnf> c() {
+      return f().filter(cnf::i).toList();
    }
 
-   public cnx C() {
-      return this.d().n(this);
+   public static List<cnf> d() {
+      return f().toList();
    }
 
-   public boolean D() {
-      return !this.d().d_(this) ? false : !this.E();
+   private static Stream<cnf> f() {
+      return kf.ap.s();
    }
 
-   public void a(crr $$0, int $$1) {
-      this.w();
-      if (!this.A.b("Enchantments", 9)) {
-         this.A.a("Enchantments", new su());
-      }
-
-      su $$2 = this.A.c("Enchantments", 10);
-      $$2.add(crt.a(crt.a($$0), (byte)$$1));
+   public static cnf e() {
+      return kf.ap.e(g);
    }
 
-   public boolean E() {
-      return this.A != null && this.A.b("Enchantments", 9) ? !this.A.c("Enchantments", 10).isEmpty() : false;
+   private static void a(cnf.d $$0) {
+      f().filter($$0x -> $$0x.k() == cnf.h.a).forEach($$1 -> $$1.a($$0));
+      f().filter($$0x -> $$0x.k() != cnf.h.a).forEach($$1 -> $$1.a($$0));
    }
 
-   public void a(String $$0, tl $$1) {
-      this.w().a($$0, $$1);
-   }
-
-   public boolean F() {
-      return this.B instanceof cbu;
-   }
-
-   public void a(@Nullable blw $$0) {
-      this.B = $$0;
-   }
-
-   @Nullable
-   public cbu G() {
-      return this.B instanceof cbu ? (cbu)this.H() : null;
-   }
-
-   @Nullable
-   public blw H() {
-      return !this.b() ? this.B : null;
-   }
-
-   public int I() {
-      return this.u() && this.A.b("RepairCost", 3) ? this.A.h("RepairCost") : 0;
-   }
-
-   public void d(int $$0) {
-      if ($$0 > 0) {
-         this.w().a("RepairCost", $$0);
+   public static boolean a(cjs $$0, boolean $$1, il.b $$2) {
+      if (p != null && !p.a($$0, $$1, $$2)) {
+         return false;
       } else {
-         this.c("RepairCost");
-      }
-   }
-
-   public Multimap<ih<bnp>, bns> a(bmd $$0) {
-      Multimap<ih<bnp>, bns> $$1;
-      if (this.u() && this.A.b("AttributeModifiers", 9)) {
-         $$1 = HashMultimap.create();
-         su $$2 = this.A.c("AttributeModifiers", 10);
-
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            so $$4 = $$2.a($$3);
-            if (!$$4.b("Slot", 8) || $$4.l("Slot").equals($$0.e())) {
-               ahh $$5 = ahh.a($$4.l("AttributeName"));
-               if ($$5 != null) {
-                  Optional<ih.c<bnp>> $$6 = kd.u.c($$5);
-                  if (!$$6.isEmpty()) {
-                     bns $$7 = bns.a($$4);
-                     if ($$7 != null && $$7.a().getLeastSignificantBits() != 0L && $$7.a().getMostSignificantBits() != 0L) {
-                        $$1.put($$6.get(), $$7);
-                     }
-                  }
-               }
-            }
-         }
-      } else {
-         $$1 = this.d().a($$0);
-      }
-
-      return $$1;
-   }
-
-   public void a(ih<bnp> $$0, bns $$1, @Nullable bmd $$2) {
-      this.w();
-      if (!this.A.b("AttributeModifiers", 9)) {
-         this.A.a("AttributeModifiers", new su());
-      }
-
-      su $$3 = this.A.c("AttributeModifiers", 10);
-      so $$4 = $$1.d();
-      $$4.a("AttributeName", $$0.e().orElseThrow(() -> new IllegalArgumentException("Cannot add unregistered attribute")).a().toString());
-      if ($$2 != null) {
-         $$4.a("Slot", $$2.e());
-      }
-
-      $$3.add($$4);
-   }
-
-   public vg J() {
-      vu $$0 = vg.i().b(this.y());
-      if (this.A()) {
-         $$0.a(n.u);
-      }
-
-      vu $$1 = vj.a((vg)$$0);
-      if (!this.b()) {
-         $$1.a(this.C().e).a($$0x -> $$0x.a(new vm(vm.a.b, new vm.c(this))));
-      }
-
-      return $$1;
-   }
-
-   public boolean a(it<cwy> $$0, djt $$1) {
-      if (this.D == null) {
-         this.D = new cko("CanPlaceOn");
-      }
-
-      return this.D.a(this, $$0, $$1);
-   }
-
-   public boolean b(it<cwy> $$0, djt $$1) {
-      if (this.C == null) {
-         this.C = new cko("CanDestroy");
-      }
-
-      return this.C.a(this, $$0, $$1);
-   }
-
-   public int K() {
-      return this.y;
-   }
-
-   public void e(int $$0) {
-      this.y = $$0;
-   }
-
-   public int L() {
-      return this.b() ? 0 : this.x;
-   }
-
-   public void f(int $$0) {
-      this.x = $$0;
-   }
-
-   public void g(int $$0) {
-      this.f(this.L() + $$0);
-   }
-
-   public void h(int $$0) {
-      this.g(-$$0);
-   }
-
-   public void b(ctx $$0, bmo $$1, int $$2) {
-      this.d().a($$0, $$1, this, $$2);
-   }
-
-   public void a(ccb $$0) {
-      this.d().a($$0);
-   }
-
-   public boolean M() {
-      return this.d().t();
-   }
-
-   public ars N() {
-      return this.d().ap_();
-   }
-
-   public ars O() {
-      return this.d().aq_();
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      private final int i = 1 << this.ordinal();
-
-      public int a() {
-         return this.i;
+         p = new cnf.d($$0, $$1, $$2);
+         a(p);
+         return true;
       }
    }
 }

@@ -1,19 +1,15 @@
-public record af(ahh a, ae b) {
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      this.b.a($$0);
-   }
+import java.util.List;
 
-   public static af b(uj $$0) {
-      return new af($$0.t(), ae.b($$0));
-   }
+public record af(aiy c, ae d) {
+   public static final xo<vb, af> a = xo.a(aiy.b, af::a, ae.b, af::b, af::new);
+   public static final xo<vb, List<af>> b = a.a(xm.a());
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof af $$1 && this.a.equals($$1.a)) {
+         if ($$0 instanceof af $$1 && this.c.equals($$1.c)) {
             return true;
          }
 
@@ -23,11 +19,19 @@ public record af(ahh a, ae b) {
 
    @Override
    public int hashCode() {
-      return this.a.hashCode();
+      return this.c.hashCode();
    }
 
    @Override
    public String toString() {
-      return this.a.toString();
+      return this.c.toString();
+   }
+
+   public aiy a() {
+      return this.c;
+   }
+
+   public ae b() {
+      return this.d;
    }
 }

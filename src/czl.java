@@ -1,63 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class czl extends cwk {
-   public static final MapCodec<czl> a = b(czl::new);
+public class czl extends dcd implements cyr, czk {
+   public static final MapCodec<czl> c = b(czl::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<czl> a() {
-      return a;
+      return c;
    }
 
-   protected czl(djo.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dhd a(hx $$0, djp $$1) {
-      return new dis($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dhd> dhe<T> a(ctx $$0, djp $$1, dhf<T> $$2) {
-      return a($$2, dhf.v, $$0.B ? dis::a : dis::b);
+   public czl(dle.d $$0) {
+      super($$0, ie.a, t_, false, 0.1);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(u_, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
-      dhd $$4 = $$1.c_($$2);
-      if ($$4 instanceof dis) {
-         int $$5 = ((dis)$$4).g();
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
-            }
-
-            $$1.a(jx.Z, $$7, $$8, $$9, $$10, $$11, $$12);
-         }
-      }
+   protected int a(awo $$0) {
+      return 1;
    }
 
    @Override
-   public cng a(cua $$0, hx $$1, djp $$2) {
-      return cng.f;
+   protected boolean g(dlf $$0) {
+      return $$0.i();
    }
 
    @Override
-   public boolean a(djp $$0, eey $$1) {
-      return false;
+   protected cyo b() {
+      return cyq.sw;
+   }
+
+   @Override
+   protected dlf a(dlf $$0, dlf $$1) {
+      return $$1.a(u_, $$0.c(u_));
+   }
+
+   @Override
+   protected dlf a(dlf $$0, awo $$1) {
+      return super.a($$0, $$1).a(u_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   public coz a(cvq $$0, hz $$1, dlf $$2) {
+      return new coz(cpc.wm);
+   }
+
+   @Override
+   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
+      return czk.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      super.a($$0);
+      $$0.a(u_);
+   }
+
+   @Override
+   public boolean b(cvq $$0, hz $$1, dlf $$2) {
+      return !$$2.c(u_);
+   }
+
+   @Override
+   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
+      $$0.a($$2, $$3.a(u_, Boolean.valueOf(true)), 2);
    }
 }

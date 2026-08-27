@@ -1,59 +1,95 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fxl implements fxe.a {
-   private final evr a;
-   private final Map<Long, Map<hx, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class fxl implements asb {
+   private Map<div<?>, fxm<?>> d = ImmutableMap.of();
+   private final eys e;
+   private final foy f;
+   public cvn a;
+   public ews b;
+   public enq c;
+   private final Supplier<fwg> g;
+   private final Supplier<gbr> h;
+   private final Supplier<gar> i;
 
-   fxl(evr $$0) {
-      this.a = $$0;
+   public fxl(eys $$0, foy $$1, Supplier<fwg> $$2, Supplier<gbr> $$3, Supplier<gar> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public void a(long $$0, hx $$1) {
-      Map<hx, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
+   @Nullable
+   public <E extends dit> fxm<E> a(E $$0) {
+      return (fxm<E>)this.d.get($$0.v());
    }
 
-   @Override
-   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.r.X();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<hx> $$8 = Sets.newHashSet();
-      Map<hx, Integer> $$9 = Maps.newHashMap();
-      eqo $$10 = $$1.getBuffer(fub.w());
-      Iterator<Entry<Long, Map<hx, Integer>>> $$11 = this.b.entrySet().iterator();
+   public void a(cvn $$0, ews $$1, enq $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<hx, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<hx, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<hx, Integer> $$16 : $$14.entrySet()) {
-               hx $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  elx $$19 = new elx(hx.b).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  ftr.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dit> void a(E $$0, float $$1, esa $$2, fvm $$3) {
+      fxm<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.n() && $$0.v().a($$0.r())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
             }
          }
       }
+   }
 
-      for (Entry<hx, Integer> $$20 : $$9.entrySet()) {
-         hx $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         fxe.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+   private static <T extends dit> void a(fxm<T> $$0, T $$1, float $$2, esa $$3, fvm $$4) {
+      cvn $$5 = $$1.i();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = fvk.a($$5, $$1.aE_());
+      } else {
+         $$6 = 15728880;
       }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, ggl.d);
+   }
+
+   public <E extends dit> boolean a(E $$0, esa $$1, fvm $$2, int $$3, int $$4) {
+      fxm<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(dit $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new y($$3);
+      }
+   }
+
+   public void a(@Nullable cvn $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(asa $$0) {
+      fxn.a $$1 = new fxn.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = fxo.a($$1);
    }
 }

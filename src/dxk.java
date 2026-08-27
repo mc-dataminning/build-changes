@@ -1,76 +1,39 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dxk {
-   public static final Codec<dxk> c = kd.X.q().dispatch(dxk::a, dxl::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
+public class dxk extends dxi {
+   public static final Codec<dxk> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dxk::new)
+   );
+   protected final int b;
 
-   protected static <P extends dxk> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
+   public dxk(bkz $$0, bkz $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public dxk(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected dxj<?> a() {
+      return dxj.g;
    }
 
-   protected abstract dxl<?> a();
+   @Override
+   protected void a(cvt $$0, dxi.b $$1, awo $$2, dws $$3, int $$4, dxi.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
 
-   public abstract List<dvs.a> a(cud var1, BiConsumer<hx, djp> var2, auw var3, int var4, hx var5, dvc var6);
-
-   public int a(auw $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
-
-   private static boolean c(cud $$0, hx $$1) {
-      return $$0.a($$1, $$0x -> dsc.b($$0x) && !$$0x.a(cxa.i) && !$$0x.a(cxa.fl));
-   }
-
-   protected static void a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, hx $$3, dvc $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
       }
    }
 
-   protected boolean b(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, hx $$3, dvc $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   @Override
+   public int a(awo $$0, int $$1, dws $$2) {
+      return this.b;
    }
 
-   protected boolean a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, hx $$3, dvc $$4, Function<djp, djp> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, hx.a $$3, dvc $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(cud $$0, hx $$1) {
-      return dto.c($$0, $$1);
-   }
-
-   public boolean b(cud $$0, hx $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(asi.t));
+   @Override
+   protected boolean a(awo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

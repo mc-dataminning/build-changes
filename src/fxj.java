@@ -1,41 +1,53 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public class fxj implements fxm<dip> {
+   private final fpc a;
+   private final fpc b;
 
-public class fxj implements fxe.a {
-   private final evr a;
-   private static final int b = 10;
-
-   public fxj(evr $$0) {
-      this.a = $$0;
+   public fxj(fxn.a $$0) {
+      this.a = $$0.a(fpb.j);
+      this.b = $$0.a(fpb.i);
    }
 
-   @Override
-   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
-      ctx $$5 = this.a.r;
-      hx $$6 = hx.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public static fpi b() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      $$1.a("main", fph.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fpe.a);
+      $$1.a("left_leg", fph.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fph.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fpi.a($$0, 64, 64);
+   }
 
-      for (hx $$8 : hx.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(cug.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = aup.h($$10, 0.9F, 0.9F);
-         long $$12 = iz.e($$8.a());
-         if ($$7.add($$12)) {
-            fxe.a(
-               $$0,
-               $$1,
-               $$5.L().p().a(cug.a, iz.a($$12)),
-               (double)iz.a(iz.b($$12), 8),
-               (double)iz.a(iz.c($$12), 8),
-               (double)iz.a(iz.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
+   public static fpi c() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      $$1.a("main", fph.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fpe.a);
+      $$1.a("left_leg", fph.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fph.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fpi.a($$0, 64, 64);
+   }
 
-         if ($$9 != 15) {
-            fxe.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
-         }
+   public void a(dip $$0, float $$1, esa $$2, fvm $$3, int $$4, int $$5) {
+      gix $$6 = fwb.p[$$0.d().a()];
+      cvn $$7 = $$0.i();
+      if ($$7 != null) {
+         dlf $$8 = $$0.r();
+         dav.c<? extends dip> $$9 = dav.a(div.y, cyh::h, cyh::g, czr.c, $$8, $$7, $$0.aE_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new fxp<>()).get($$4);
+         this.a($$2, $$3, $$8.c(cyh.b) == dls.a ? this.a : this.b, $$8.c(cyh.aE), $$6, $$10, $$5, false);
+      } else {
+         this.a($$2, $$3, this.a, ie.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, ie.d, $$6, $$4, $$5, true);
       }
+   }
+
+   private void a(esa $$0, fvm $$1, fpc $$2, ie $$3, gix $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      ese $$8 = $$4.a($$1, fvu::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

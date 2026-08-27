@@ -1,5 +1,8 @@
-public interface gip extends gio {
-   boolean m();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void q();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gip {
 }

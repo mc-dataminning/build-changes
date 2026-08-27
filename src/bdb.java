@@ -1,23 +1,21 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import java.util.Locale;
 import java.util.Optional;
 
-public class bdb extends baw {
+public class bdb extends DataFix {
    public bdb(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Zombie Villager XP rebuild", bbw.y, "minecraft:zombie_villager");
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
-         if ($$1.isEmpty()) {
-            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
-            return $$0x.set("Xp", $$0x.createInt(bct.a($$2)));
-         } else {
-            return $$0x;
-         }
-      });
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(bdn.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Optional<String> $$1 = $$0x.get("lang").asString().result();
+               return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
+            })
+      );
    }
 }

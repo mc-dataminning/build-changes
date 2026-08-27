@@ -1,45 +1,53 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class ecw {
+   public static class a extends ebi {
+      public a(hz $$0) {
+         super(ebv.aa, 0, new eaw($$0));
+      }
 
-public class ecw extends edl {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<ecw> a = Codec.unit(() -> ecw.b);
-   public static final ecw b = new ecw();
+      public a(sw $$0) {
+         super(ebv.aa, $$0);
+      }
 
-   private ecw() {
-   }
+      @Override
+      protected void a(ebu $$0, sw $$1) {
+      }
 
-   @Nullable
-   @Override
-   public edo.c a(cua $$0, hx $$1, hx $$2, edo.c $$3, edo.c $$4, edk $$5) {
-      djp $$6 = $$4.b();
-      if ($$6.a(cxa.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
+      @Override
+      public void a(cwi $$0, cwg $$1, dnc $$2, awo $$3, eaw $$4, cuu $$5, hz $$6) {
+         int $$7 = $$0.a(dqo.a.c, this.f.h(), this.f.j());
+         hz.a $$8 = new hz.a(this.f.h(), $$7, this.f.j());
 
-            djp $$9;
-            try {
-               fk.a $$8 = fk.a($$0.a(ke.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               throw new RuntimeException(var11);
+         while ($$8.v() > $$0.J_()) {
+            dlf $$9 = $$0.a_($$8);
+            dlf $$10 = $$0.a_($$8.d());
+            if ($$10 == cyq.aV.o() || $$10 == cyq.b.o() || $$10 == cyq.g.o() || $$10 == cyq.c.o() || $$10 == cyq.e.o()) {
+               dlf $$11 = !$$9.i() && !this.b($$9) ? $$9 : cyq.I.o();
+
+               for (ie $$12 : ie.values()) {
+                  hz $$13 = $$8.a($$12);
+                  dlf $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     hz $$15 = $$13.d();
+                     dlf $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != ie.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new eaw($$8);
+               this.a($$0, $$4, $$3, $$8, eit.G, null);
+               return;
             }
 
-            return $$9.a(cxa.kN) ? null : new edo.c($$4.a(), $$9, null);
+            $$8.e(0, -1, 0);
          }
-      } else {
-         return $$4;
       }
-   }
 
-   @Override
-   protected edn<?> a() {
-      return edn.h;
+      private boolean b(dlf $$0) {
+         return $$0 == cyq.G.o() || $$0 == cyq.H.o();
+      }
    }
 }

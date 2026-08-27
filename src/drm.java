@@ -1,58 +1,83 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-public class drm extends dsc<dun> {
-   public drm(Codec<dun> $$0) {
-      super($$0);
+public class drm {
+   public static final MapCodec<drm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(drm::b),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(drm::c),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(drm::d),
+               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(drm::new))
+   );
+   public static final drm b = new drm((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
+
+   public drm(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   @Override
-   public boolean a(dse<dun> $$0) {
-      hx $$1 = $$0.e();
-      cus $$2 = $$0.b();
-      auw $$3 = $$0.d();
-      if ($$1.v() > $$2.A_() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(cxa.G) && !$$2.a_($$1.d()).a(cxa.G)) {
-         return false;
+   public static drm a() {
+      return new drm(f(), true, false);
+   }
+
+   private drm(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public long b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f.isPresent();
+   }
+
+   public drm a(boolean $$0) {
+      return new drm(this.c, this.d, $$0, this.f);
+   }
+
+   public drm b(boolean $$0) {
+      return new drm(this.c, $$0, this.e, this.f);
+   }
+
+   public drm a(OptionalLong $$0) {
+      return new drm($$0.orElse(f()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
       } else {
-         boolean $$4 = false;
-
-         for (ic $$5 : ic.values()) {
-            if ($$5 != ic.a && $$2.a_($$1.a($$5)).a(cxa.iC)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, cxa.mW.o(), 2);
-
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  hx $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  djp $$10 = $$2.a_($$9);
-                  if ($$10.i() || $$10.a(cxa.G) || $$10.a(cxa.iC) || $$10.a(cxa.dO)) {
-                     for (ic $$11 : ic.values()) {
-                        djp $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(cxa.mW)) {
-                           $$2.a($$9, cxa.mW.o(), 2);
-                           break;
-                        }
-                     }
-                  }
-               }
-            }
-
-            return true;
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
          }
       }
+   }
+
+   public static long f() {
+      return awo.a().g();
    }
 }

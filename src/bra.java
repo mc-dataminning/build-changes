@@ -1,97 +1,72 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
-public class bra extends bof<cfd> {
-   private static final int c = 5;
-   private static final float d = 0.5F;
-   private Set<cnb> e = ImmutableSet.of();
+public final class bra {
+   public static Optional<ens> a(boi $$0, ens $$1, float $$2, int $$3, boolean $$4) {
+      ens $$5 = $$0.dk();
+      ens $$6 = new ens($$1.c - $$5.c, 0.0, $$1.e - $$5.e).d().a(0.5);
+      ens $$7 = $$1.d($$6);
+      ens $$8 = $$7.d($$5);
+      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
+      double $$10 = Math.atan2($$8.e, $$8.c);
+      double $$11 = $$8.a(0.0, $$8.d, 0.0).g();
+      double $$12 = Math.sqrt($$11);
+      double $$13 = $$8.d;
+      double $$14 = 0.08;
+      double $$15 = Math.sin((double)(2.0F * $$9));
+      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
+      double $$17 = Math.sin((double)$$9);
+      double $$18 = Math.cos((double)$$9);
+      double $$19 = Math.sin($$10);
+      double $$20 = Math.cos($$10);
+      double $$21 = $$11 * 0.08 / ($$12 * $$15 - 2.0 * $$13 * $$16);
+      if ($$21 < 0.0) {
+         return Optional.empty();
+      } else {
+         double $$22 = Math.sqrt($$21);
+         if ($$22 > (double)$$2) {
+            return Optional.empty();
+         } else {
+            double $$23 = $$22 * $$18;
+            double $$24 = $$22 * $$17;
+            if ($$4) {
+               int $$25 = awh.c($$12 / $$23) * 2;
+               double $$26 = 0.0;
+               ens $$27 = null;
+               bnr $$28 = $$0.a(bor.g);
 
-   public bra() {
-      super(ImmutableMap.of(bvq.q, bvr.a, bvq.h, bvr.a));
-   }
-
-   protected boolean a(ane $$0, cfd $$1) {
-      return boh.a($$1.dN(), bvq.q, bmc.bh);
-   }
-
-   protected boolean a(ane $$0, cfd $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(ane $$0, cfd $$1, long $$2) {
-      cfd $$3 = (cfd)$$1.dN().c(bvq.q).get();
-      boh.a($$1, $$3, 0.5F);
-      this.e = a($$1, $$3);
-   }
-
-   protected void c(ane $$0, cfd $$1, long $$2) {
-      cfd $$3 = (cfd)$$1.dN().c(bvq.q).get();
-      if (!($$1.f($$3) > 5.0)) {
-         boh.a($$1, $$3, 0.5F);
-         $$1.a($$0, $$3, $$2);
-         if ($$1.gx() && ($$1.gq().b() == cfg.g || $$3.gy())) {
-            a($$1, cfd.bX.keySet(), $$3);
-         }
-
-         if ($$3.gq().b() == cfg.g && $$1.A().a_(cnj.pv) > cnj.pv.k() / 2) {
-            a($$1, ImmutableSet.of(cnj.pv), $$3);
-         }
-
-         if (!this.e.isEmpty() && $$1.A().a(this.e)) {
-            a($$1, this.e, $$3);
-         }
-      }
-   }
-
-   protected void d(ane $$0, cfd $$1, long $$2) {
-      $$1.dN().b(bvq.q);
-   }
-
-   private static Set<cnb> a(cfd $$0, cfd $$1) {
-      ImmutableSet<cnb> $$2 = $$1.gq().b().d();
-      ImmutableSet<cnb> $$3 = $$0.gq().b().d();
-      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
-   }
-
-   private static void a(cfd $$0, Set<cnb> $$1, bmo $$2) {
-      bkl $$3 = $$0.A();
-      cng $$4 = cng.f;
-      int $$5 = 0;
-
-      while ($$5 < $$3.b()) {
-         cng $$6;
-         cnb $$7;
-         int $$8;
-         label28: {
-            $$6 = $$3.a($$5);
-            if (!$$6.b()) {
-               $$7 = $$6.d();
-               if ($$1.contains($$7)) {
-                  if ($$6.L() > $$6.g() / 2) {
-                     $$8 = $$6.L() / 2;
-                     break label28;
+               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
+                  $$26 += $$12 / (double)$$25;
+                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * 0.08 / (2.0 * $$21 * Math.pow($$18, 2.0));
+                  double $$31 = $$26 * $$20;
+                  double $$32 = $$26 * $$19;
+                  ens $$33 = new ens($$5.c + $$31, $$5.d + $$30, $$5.e + $$32);
+                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
+                     return Optional.empty();
                   }
 
-                  if ($$6.L() > 24) {
-                     $$8 = $$6.L() - 24;
-                     break label28;
-                  }
+                  $$27 = $$33;
                }
             }
 
-            $$5++;
-            continue;
+            return Optional.of(new ens($$23 * $$20, $$24, $$23 * $$19).a(0.95F));
          }
+      }
+   }
 
-         $$6.h($$8);
-         $$4 = new cng($$7, $$8);
-         break;
+   private static boolean a(boi $$0, bnr $$1, ens $$2, ens $$3) {
+      ens $$4 = $$3.d($$2);
+      double $$5 = (double)Math.min($$1.a(), $$1.b());
+      int $$6 = awh.c($$4.f() / $$5);
+      ens $$7 = $$4.d();
+      ens $$8 = $$2;
+
+      for (int $$9 = 0; $$9 < $$6; $$9++) {
+         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.a($$5 * 0.9F));
+         if (!$$0.dM().a($$0, $$1.a($$8))) {
+            return false;
+         }
       }
 
-      if (!$$4.b()) {
-         boh.a($$0, $$4, $$2.dj());
-      }
+      return true;
    }
 }

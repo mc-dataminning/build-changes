@@ -1,117 +1,22 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
+@FunctionalInterface
 public interface frl {
-   frl a = new frl() {
-      @Override
-      public void a(eqf $$0, gfc $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gfa.e);
-         $$0.a(eqp.b.h, eqi.l);
-      }
-
-      @Override
-      public void a(eqm $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   frl b = new frl() {
-      @Override
-      public void a(eqf $$0, gfc $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ftm::u);
-         RenderSystem.setShaderTexture(0, gfa.f);
-         $$0.a(eqp.b.h, eqi.l);
-      }
-
-      @Override
-      public void a(eqm $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   frl c = new frl() {
-      @Override
-      public void a(eqf $$0, gfc $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gfa.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$0.a(eqp.b.h, eqi.l);
-      }
-
-      @Override
-      public void a(eqm $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   frl d = new frl() {
-      @Override
-      public void a(eqf $$0, gfc $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gfa.f);
-         $$0.a(eqp.b.h, eqi.l);
-      }
-
-      @Override
-      public void a(eqm $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   frl e = new frl() {
-      @Override
-      public void a(eqf $$0, gfc $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-      }
-
-      @Override
-      public void a(eqm $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   frl f = new frl() {
-      @Override
-      public void a(eqf $$0, gfc $$1) {
-      }
-
-      @Override
-      public void a(eqm $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
+   Logger a = LogUtils.getLogger();
+   frl b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(frj.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
       }
    };
 
-   void a(eqf var1, gfc var2);
-
-   void a(eqm var1);
+   Optional<frj> resolve(frk var1);
 }

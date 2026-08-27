@@ -1,50 +1,24 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
 
-public class dxy extends dxv {
-   public static final Codec<dxy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dps.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dps.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, dxy::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dps d;
-   private final dps e;
-   private final LongSet f = new LongOpenHashSet();
+public class dxy<P extends dxx> {
+   public static final dxy<dyg> a = a("simple_state_provider", dyg.b);
+   public static final dxy<dyh> b = a("weighted_state_provider", dyh.b);
+   public static final dxy<dyc> c = a("noise_threshold_provider", dyc.b);
+   public static final dxy<dyb> d = a("noise_provider", dyb.g);
+   public static final dxy<dxz> e = a("dual_noise_provider", dxz.b);
+   public static final dxy<dye> f = a("rotated_block_provider", dye.b);
+   public static final dxy<dyd> g = a("randomized_int_state_provider", dyd.b);
+   private final Codec<P> h;
 
-   private dxy(dps $$0, dps $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private static <P extends dxx> dxy<P> a(String $$0, Codec<P> $$1) {
+      return iv.a(kf.V, $$0, new dxy<>($$1));
    }
 
-   public static dxy a(dps $$0, dps $$1) {
-      return new dxy($$0, $$1);
+   private dxy(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public int a(auw $$0, dpv $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
-         }
-
-         return $$2;
-      } else {
-         return aup.b($$0, $$2, $$3);
-      }
-   }
-
-   @Override
-   public dxw<?> a() {
-      return dxw.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+   public Codec<P> a() {
+      return this.h;
    }
 }

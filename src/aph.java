@@ -1,29 +1,43 @@
-import java.nio.file.Path;
-import java.util.Map;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-interface aph {
-   aph a = new aph() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-   };
-   aph b = new aph() {
-      @Override
-      public String toString() {
-         return "relative";
-      }
-   };
+public class aph implements ape {
+   private final ape a;
+   private final bkn<Runnable> b;
+   private boolean c;
 
-   public static record a(Map<String, ape> c) implements aph {
-      public Map<String, ape> a() {
-         return this.c;
+   private aph(ape $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = bkn.a($$1, "progressListener");
+   }
+
+   public static aph a(ape $$0, Executor $$1) {
+      aph $$2 = new aph($$0, $$1);
+      $$2.a();
+      return $$2;
+   }
+
+   @Override
+   public void a(cuu $$0) {
+      this.b.a(() -> this.a.a($$0));
+   }
+
+   @Override
+   public void a(cuu $$0, @Nullable dng $$1) {
+      if (this.c) {
+         this.b.a(() -> this.a.a($$0, $$1));
       }
    }
 
-   public static record b(Path c) implements aph {
-      public Path a() {
-         return this.c;
-      }
+   @Override
+   public void a() {
+      this.c = true;
+      this.b.a(this.a::a);
+   }
+
+   @Override
+   public void b() {
+      this.c = false;
+      this.b.a(this.a::b);
    }
 }

@@ -1,23 +1,45 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class dwz<P extends dwy> {
-   public static final dwz<dxa> a = a("trunk_vine", dxa.a);
-   public static final dwz<dwx> b = a("leave_vine", dwx.a);
-   public static final dwz<dww> c = a("cocoa", dww.a);
-   public static final dwz<dwv> d = a("beehive", dwv.a);
-   public static final dwz<dwt> e = a("alter_ground", dwt.a);
-   public static final dwz<dwu> f = a("attached_to_leaves", dwu.a);
-   private final Codec<P> g;
+public class dwz extends dwx {
+   public static final Codec<dwz> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
+               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
+               a()
+            )
+            .apply($$0, dwz::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   private static <P extends dwy> dwz<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.Z, $$0, new dwz<>($$1));
+   public dwz(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
+      super($$5);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   private dwz(Codec<P> $$0) {
-      this.g = $$0;
+   @Override
+   protected dwy<?> b() {
+      return dwy.b;
    }
 
-   public Codec<P> a() {
-      return this.g;
+   @Override
+   public int a(int $$0, int $$1) {
+      if ($$1 < this.e) {
+         return this.g;
+      } else {
+         return $$1 >= $$0 - this.f ? this.i : this.h;
+      }
    }
 }

@@ -1,110 +1,88 @@
-import java.util.function.Predicate;
+public class clf extends ckb {
+   private static final int o = 1;
+   private static final int p = 1;
+   public static final int k = 1;
+   public static final int l = 2;
+   public static final int m = 3;
+   public static final int n = 100;
+   private final bln q;
+   private final ckl r;
 
-public class clf extends cnw implements cpb {
-   public static final int a = 20;
-   public static final int b = 15;
+   public clf(int $$0) {
+      this($$0, new bmd(1), new clv(1));
+   }
 
-   public clf(cnb.a $$0) {
-      super($$0);
+   public clf(int $$0, bln $$1, ckl $$2) {
+      super(cli.r, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.q = $$1;
+      this.r = $$2;
+      this.a(new clw($$1, 0, 0, 0) {
+         @Override
+         public void b() {
+            super.b();
+            clf.this.a(this.d);
+         }
+      });
+      this.a($$2);
    }
 
    @Override
-   public void a(cng $$0, ctx $$1, bmo $$2, int $$3) {
-      if ($$2 instanceof cfq $$4) {
-         boolean $$5 = $$4.fT().d || crt.a(crv.B, $$0) > 0;
-         cng $$6 = $$4.g($$0);
-         if (!$$6.b() || $$5) {
-            if ($$6.b()) {
-               $$6 = new cng(cnj.ou);
-            }
-
-            int $$7 = this.b($$0) - $$3;
-            float $$8 = a($$7);
-            if (!((double)$$8 < 0.1)) {
-               boolean $$9 = $$5 && $$6.a(cnj.ou);
-               if (!$$1.B) {
-                  ckv $$10 = (ckv)($$6.d() instanceof ckv ? $$6.d() : cnj.ou);
-                  cfw $$11 = $$10.a($$1, $$6, $$4);
-                  $$11.a($$4, $$4.dD(), $$4.dB(), 0.0F, $$8 * 3.0F, 1.0F);
-                  if ($$8 == 1.0F) {
-                     $$11.a(true);
-                  }
-
-                  int $$12 = crt.a(crv.y, $$0);
-                  if ($$12 > 0) {
-                     $$11.h($$11.z() + (double)$$12 * 0.5 + 0.5);
-                  }
-
-                  int $$13 = crt.a(crv.z, $$0);
-                  if ($$13 > 0) {
-                     $$11.b($$13);
-                  }
-
-                  if (crt.a(crv.A, $$0) > 0) {
-                     $$11.g(100);
-                  }
-
-                  $$0.a(1, $$4, $$1x -> $$1x.d($$4.fo()));
-                  if ($$9 || $$4.fT().d && ($$6.a(cnj.vl) || $$6.a(cnj.vm))) {
-                     $$11.d = cfw.a.c;
-                  }
-
-                  $$1.b($$11);
+   public boolean b(chh $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.a(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.r.a(0);
+               this.a(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.r.a(0);
+               this.a(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.gf()) {
+                  return false;
                }
 
-               $$1.a(null, $$4.dq(), $$4.ds(), $$4.dw(), art.aD, aru.h, 1.0F, 1.0F / ($$1.F_().i() * 0.4F + 1.2F) + $$8 * 0.5F);
-               if (!$$9 && !$$4.fT().d) {
-                  $$6.h(1);
-                  if ($$6.b()) {
-                     $$4.fS().g($$6);
-                  }
+               coz $$5 = this.q.b(0);
+               this.q.e();
+               if (!$$0.fT().e($$5)) {
+                  $$0.a($$5, false);
                }
 
-               $$4.b(asd.c.b(this));
-            }
+               return true;
+            default:
+               return false;
          }
       }
    }
 
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
-      }
-
-      return $$1;
+   @Override
+   public coz a(chh $$0, int $$1) {
+      return coz.h;
    }
 
    @Override
-   public int b(cng $$0) {
-      return 72000;
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
    }
 
    @Override
-   public cpa c(cng $$0) {
-      return cpa.e;
+   public boolean a(chh $$0) {
+      return this.q.a($$0);
    }
 
-   @Override
-   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
-      cng $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.g($$3).b();
-      if (!$$1.fT().d && !$$4) {
-         return bkd.d($$3);
-      } else {
-         $$1.c($$2);
-         return bkd.b($$3);
-      }
+   public coz l() {
+      return this.q.a(0);
    }
 
-   @Override
-   public Predicate<cng> b() {
-      return c;
-   }
-
-   @Override
-   public int d() {
-      return 15;
+   public int m() {
+      return this.r.a(0);
    }
 }

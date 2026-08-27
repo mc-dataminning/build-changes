@@ -1,29 +1,18 @@
-public class gaw extends gag<byx, flx<byx>> {
-   private static final ahh a = new ahh("textures/entity/fish/salmon.png");
+public class gaw<T extends cex> extends gbm<T> {
+   private static final aiy a = new aiy("textures/entity/illager/evoker.png");
 
-   public gaw(fza.a $$0) {
-      super($$0, new flx<>($$0.a(fni.bc)), 0.4F);
+   public gaw(gat.a $$0) {
+      super($$0, new fmp<>($$0.a(fpb.X)), 0.5F);
+      this.a(new gex<T, fmp<T>>(this, $$0.d()) {
+         public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gq()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public ahh a(byx $$0) {
+   public aiy a(T $$0) {
       return a;
-   }
-
-   protected void a(byx $$0, eqk $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = 1.0F;
-      float $$6 = 1.0F;
-      if (!$$0.aZ()) {
-         $$5 = 1.3F;
-         $$6 = 1.7F;
-      }
-
-      float $$7 = $$5 * 4.3F * aup.a($$6 * 0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$7));
-      $$1.a(0.0F, 0.0F, -0.4F);
-      if (!$$0.aZ()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
    }
 }

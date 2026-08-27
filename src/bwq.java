@@ -1,27 +1,32 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class bwq extends bvl {
+   private final cfg b;
+   private int c;
 
-public abstract class bwq extends bww<bmo> {
-   protected abstract boolean a(bmo var1, bmo var2);
-
-   protected abstract bvq<bmo> b();
-
-   @Override
-   public Set<bvq<?>> a() {
-      return ImmutableSet.of(this.b());
+   public bwq(cfg $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
    @Override
-   protected void a(ane $$0, bmo $$1) {
-      $$1.dN().a(this.b(), this.b($$1));
+   public void c() {
+      super.c();
+      this.c = 0;
    }
 
-   private Optional<bmo> b(bmo $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   @Override
+   public void d() {
+      super.d();
+      this.b.v(false);
    }
 
-   protected Optional<bvs> a(bmo $$0) {
-      return $$0.dN().c(bvq.h);
+   @Override
+   public void e() {
+      super.e();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.v(true);
+      } else {
+         this.b.v(false);
+      }
    }
 }

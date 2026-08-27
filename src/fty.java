@@ -1,70 +1,118 @@
-public class fty {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
-
-   public fty(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public class fty extends fua {
+   fty(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   public fty a(fty $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
+   @Override
+   public fte b() {
+      return fte.b;
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
+      }
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
+   public static class a implements ftd<kc> {
+      private final ftv a;
+
+      public a(ftv $$0) {
+         this.a = $$0;
+      }
+
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fty $$8 = new fty($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.F_().a(5));
+         return $$8;
+      }
    }
 
-   public void b(int $$0) {
-      this.b = $$0;
+   public static class b implements ftd<kc> {
+      private final ftv a;
+
+      public b(ftv $$0) {
+         this.a = $$0;
+      }
+
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fty $$8 = new fty($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.z.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
    }
 
-   public int c() {
-      return this.c;
+   public static class c implements ftd<kc> {
+      private final ftv a;
+
+      public c(ftv $$0) {
+         this.a = $$0;
+      }
+
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fty $$8 = new fty($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
    }
 
-   public int d() {
-      return this.d;
+   public static class d implements ftd<kc> {
+      private final ftv a;
+
+      public d(ftv $$0) {
+         this.a = $$0;
+      }
+
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fty $$8 = new fty($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
    }
 
-   public void c(int $$0) {
-      this.c = $$0;
-   }
+   public static class e implements ftd<kc> {
+      private final ftv a;
 
-   public void d(int $$0) {
-      this.d = $$0;
-   }
+      public e(ftv $$0) {
+         this.a = $$0;
+      }
 
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fty $$8 = new fty($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

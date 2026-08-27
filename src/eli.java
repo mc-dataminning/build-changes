@@ -1,18 +1,41 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.List;
 
-public class eli {
-   private static final Codec<elh> d = kd.K.q().dispatch(elh::a, elg::a);
-   public static final Codec<elh> a = atx.a(
-      (Supplier<Codec<elh>>)(() -> Codec.either(ele.b, d)
-            .xmap($$0 -> (elh)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ele $$1 ? Either.left($$1) : Either.right($$0)))
-   );
-   public static final elg b = a("fixed", elf.a);
-   public static final elg c = a("context", ele.a);
+public class eli extends ell {
+   public static final Codec<eli> a = a(eli::new);
+   public static final Codec<eli> b = b(eli::new);
 
-   private static elg a(String $$0, Codec<? extends elh> $$1) {
-      return it.a(kd.K, new ahh($$0), new elg($$1));
+   eli(List<elu> $$0) {
+      super($$0, elw.a($$0));
+   }
+
+   public static eli a(List<elu> $$0) {
+      return new eli(List.copyOf($$0));
+   }
+
+   @Override
+   public elv b() {
+      return elw.d;
+   }
+
+   public static eli.a a(elu.a... $$0) {
+      return new eli.a($$0);
+   }
+
+   public static class a extends ell.a {
+      public a(elu.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public eli.a and(elu.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected elu a(List<elu> $$0) {
+         return new eli($$0);
+      }
    }
 }

@@ -1,106 +1,123 @@
-import com.google.common.collect.Maps;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.datafixers.util.Pair;
-import java.util.Comparator;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Either;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.function.ToIntFunction;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class ala {
-   private static final Map<Pair<cks, bmd>, cnb> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(Pair.of(ckt.b, bmd.f), cnj.pB);
-      $$0.put(Pair.of(ckt.b, bmd.e), cnj.pC);
-      $$0.put(Pair.of(ckt.b, bmd.d), cnj.pD);
-      $$0.put(Pair.of(ckt.b, bmd.c), cnj.pE);
-      $$0.put(Pair.of(ckt.c, bmd.f), cnj.pF);
-      $$0.put(Pair.of(ckt.c, bmd.e), cnj.pG);
-      $$0.put(Pair.of(ckt.c, bmd.d), cnj.pH);
-      $$0.put(Pair.of(ckt.c, bmd.c), cnj.pI);
-      $$0.put(Pair.of(ckt.d, bmd.f), cnj.pN);
-      $$0.put(Pair.of(ckt.d, bmd.e), cnj.pO);
-      $$0.put(Pair.of(ckt.d, bmd.d), cnj.pP);
-      $$0.put(Pair.of(ckt.d, bmd.c), cnj.pQ);
-      $$0.put(Pair.of(ckt.g, bmd.f), cnj.pR);
-      $$0.put(Pair.of(ckt.g, bmd.e), cnj.pS);
-      $$0.put(Pair.of(ckt.g, bmd.d), cnj.pT);
-      $$0.put(Pair.of(ckt.g, bmd.c), cnj.pU);
-      $$0.put(Pair.of(ckt.e, bmd.f), cnj.pJ);
-      $$0.put(Pair.of(ckt.e, bmd.e), cnj.pK);
-      $$0.put(Pair.of(ckt.e, bmd.d), cnj.pL);
-      $$0.put(Pair.of(ckt.e, bmd.c), cnj.pM);
-      $$0.put(Pair.of(ckt.f, bmd.f), cnj.on);
-   });
-   private static final List<ahg<cpm>> b = List.of(
-      cpn.a, cpn.b, cpn.c, cpn.d, cpn.e, cpn.f, cpn.g, cpn.h, cpn.i, cpn.j, cpn.k, cpn.l, cpn.m, cpn.n, cpn.o, cpn.p
-   );
-   private static final List<ahg<cpk>> c = List.of(cpl.a, cpl.b, cpl.c, cpl.d, cpl.e, cpl.f, cpl.g, cpl.h, cpl.i, cpl.j);
-   private static final ToIntFunction<ahg<cpm>> d = ac.e(b);
-   private static final ToIntFunction<ahg<cpk>> e = ac.e(c);
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("argument.pos.unloaded"));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("commands.fillbiome.toobig", $$0, $$1));
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("spawn_armor_trims").requires($$0x -> $$0x.c(2)))
-            .executes($$0x -> a((ds)$$0x.getSource(), ((ds)$$0x.getSource()).h()))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("fillbiome").requires($$0x -> $$0x.c(2)))
+            .then(
+               dv.a("from", fo.a())
+                  .then(
+                     dv.a("to", fo.a())
+                        .then(
+                           ((RequiredArgumentBuilder)dv.a("biome", et.a($$1, kg.at))
+                                 .executes($$0x -> a((du)$$0x.getSource(), fo.a($$0x, "from"), fo.a($$0x, "to"), et.a($$0x, "biome", kg.at), $$0xx -> true)))
+                              .then(
+                                 dv.a("replace")
+                                    .then(
+                                       dv.a("filter", ew.a($$1, kg.at))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (du)$$0x.getSource(),
+                                                   fo.a($$0x, "from"),
+                                                   fo.a($$0x, "to"),
+                                                   et.a($$0x, "biome", kg.at),
+                                                   ew.a($$0x, "filter", kg.at)::test
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ds $$0, cfq $$1) {
-      ctx $$2 = $$1.dL();
-      iq<cpj> $$3 = iq.a();
-      it<cpm> $$4 = $$2.I_().d(ke.aJ);
-      it<cpk> $$5 = $$2.I_().d(ke.aI);
-      $$4.s()
-         .sorted(Comparator.comparing($$1x -> d.applyAsInt($$4.c($$1x).orElse(null))))
-         .forEachOrdered(
-            $$3x -> $$5.s()
-                  .sorted(Comparator.comparing($$1xx -> e.applyAsInt($$5.c($$1xx).orElse(null))))
-                  .forEachOrdered($$4x -> $$3.add(new cpj($$5.d($$4x), $$4.d($$3x))))
-         );
-      hx $$6 = $$1.dl().a($$1.cE(), 5);
-      int $$7 = ckt.values().length - 1;
-      double $$8 = 3.0;
-      int $$9 = 0;
-      int $$10 = 0;
+   private static int a(int $$0) {
+      return iu.c(iu.a($$0));
+   }
 
-      for (cpj $$11 : $$3) {
-         for (cks $$12 : ckt.values()) {
-            if ($$12 != ckt.a) {
-               double $$13 = (double)$$6.u() + 0.5 - (double)($$9 % $$5.b()) * 3.0;
-               double $$14 = (double)$$6.v() + 0.5 + (double)($$10 % $$7) * 3.0;
-               double $$15 = (double)$$6.w() + 0.5 + (double)($$9 / $$5.b() * 10);
-               cbr $$16 = new cbr($$2, $$13, $$14, $$15);
-               $$16.r(180.0F);
-               $$16.e(true);
+   private static hz a(hz $$0) {
+      return new hz(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
 
-               for (bmd $$17 : bmd.values()) {
-                  cnb $$18 = a.get(Pair.of($$12, $$17));
-                  if ($$18 != null) {
-                     cng $$19 = new cng($$18);
-                     cpj.a($$2.I_(), $$19, $$11);
-                     $$16.a($$17, $$19);
-                     if ($$18 instanceof ckr) {
-                        ckr $$20 = (ckr)$$18;
-                        if ($$20.d() == ckt.f) {
-                           $$16.b($$11.a().a().a($$11.b()).f().f(" ").b($$11.b().a().e()));
-                           $$16.n(true);
-                           continue;
-                        }
-                     }
+   private static cwp a(MutableInt $$0, dnb $$1, eaw $$2, ij<cwm> $$3, Predicate<ij<cwm>> $$4) {
+      return ($$5, $$6, $$7, $$8) -> {
+         int $$9 = iu.c($$5);
+         int $$10 = iu.c($$6);
+         int $$11 = iu.c($$7);
+         ij<cwm> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         if ($$2.c($$9, $$10, $$11) && $$4.test($$12)) {
+            $$0.increment();
+            return $$3;
+         } else {
+            return $$12;
+         }
+      };
+   }
 
-                     $$16.j(true);
-                  }
+   public static Either<Integer, CommandSyntaxException> a(aov $$0, hz $$1, hz $$2, ij<cwm> $$3) {
+      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
+      });
+   }
+
+   public static Either<Integer, CommandSyntaxException> a(aov $$0, hz $$1, hz $$2, ij<cwm> $$3, Predicate<ij<cwm>> $$4, Consumer<Supplier<vq>> $$5) {
+      hz $$6 = a($$1);
+      hz $$7 = a($$2);
+      eaw $$8 = eaw.a($$6, $$7);
+      int $$9 = $$8.d() * $$8.e() * $$8.f();
+      int $$10 = $$0.Z().c(cvj.z);
+      if ($$9 > $$10) {
+         return Either.right(b.create($$10, $$9));
+      } else {
+         List<dnb> $$11 = new ArrayList<>();
+
+         for (int $$12 = jb.a($$8.j()); $$12 <= jb.a($$8.m()); $$12++) {
+            for (int $$13 = jb.a($$8.h()); $$13 <= jb.a($$8.k()); $$13++) {
+               dnb $$14 = $$0.a($$13, $$12, dng.n, false);
+               if ($$14 == null) {
+                  return Either.right(a.create());
                }
 
-               $$2.b($$16);
-               $$10++;
+               $$11.add($$14);
             }
          }
 
-         $$9++;
-      }
+         MutableInt $$15 = new MutableInt(0);
 
-      $$0.a(() -> vg.b("Armorstands with trimmed armor spawned around you"), true);
-      return 1;
+         for (dnb $$16 : $$11) {
+            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.l().i().b());
+            $$16.a(true);
+         }
+
+         $$0.l().a.a($$11);
+         $$5.accept(() -> vq.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
+         return Either.left($$15.getValue());
+      }
+   }
+
+   private static int a(du $$0, hz $$1, hz $$2, ij.c<cwm> $$3, Predicate<ij<cwm>> $$4) throws CommandSyntaxException {
+      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
+      Optional<CommandSyntaxException> $$6 = $$5.right();
+      if ($$6.isPresent()) {
+         throw (CommandSyntaxException)$$6.get();
+      } else {
+         return (Integer)$$5.left().get();
+      }
    }
 }

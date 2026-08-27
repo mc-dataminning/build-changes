@@ -1,146 +1,119 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PushbackInputStream;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eif extends eir {
-   private static final Map<ahh, eif.c> b = Stream.of(eif.a.a, eif.d.b, eif.e.b).collect(Collectors.toMap(eif.c::a, Function.identity()));
-   private static final Codec<eif.c> c = ahh.a.comapFlatMap($$0 -> {
-      eif.c $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
-   }, eif.c::a);
-   private static final MapCodec<eif.b> d = atx.a("formula", "parameters", c, eif.b::a, eif.c::b);
-   public static final Codec<eif> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(kd.f.r().fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, eif::new)
-   );
-   private final ih<crr> e;
-   private final eif.b f;
+public class eif {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, ehu> b = Maps.newHashMap();
+   private final DataFixer c;
+   private final File d;
 
-   private eif(List<eke> $$0, ih<crr> $$1, eif.b $$2) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
+   public eif(File $$0, DataFixer $$1) {
+      this.c = $$1;
+      this.d = $$0;
    }
 
-   @Override
-   public eit b() {
-      return eiu.r;
+   private File a(String $$0) {
+      return new File(this.d, $$0 + ".dat");
    }
 
-   @Override
-   public Set<ejn<?>> a() {
-      return ImmutableSet.of(ejq.i);
-   }
-
-   @Override
-   public cng a(cng $$0, ehf $$1) {
-      cng $$2 = $$1.c(ejq.i);
+   public <T extends ehu> T a(ehu.a<T> $$0, String $$1) {
+      T $$2 = this.b($$0, $$1);
       if ($$2 != null) {
-         int $$3 = crt.a(this.e.a(), $$2);
-         int $$4 = this.f.a($$1.b(), $$0.L(), $$3);
-         $$0.f($$4);
+         return $$2;
+      } else {
+         T $$3 = (T)$$0.a().get();
+         this.a($$1, $$3);
+         return $$3;
+      }
+   }
+
+   @Nullable
+   public <T extends ehu> T b(ehu.a<T> $$0, String $$1) {
+      ehu $$2 = this.b.get($$1);
+      if ($$2 == null && !this.b.containsKey($$1)) {
+         $$2 = this.a($$0.b(), $$0.c(), $$1);
+         this.b.put($$1, $$2);
       }
 
-      return $$0;
+      return (T)$$2;
    }
 
-   public static eir.a<?> a(crr $$0, float $$1, int $$2) {
-      return a($$3 -> new eif($$3, $$0.j(), new eif.a($$2, $$1)));
-   }
-
-   public static eir.a<?> a(crr $$0) {
-      return a($$1 -> new eif($$1, $$0.j(), new eif.d()));
-   }
-
-   public static eir.a<?> b(crr $$0) {
-      return a($$1 -> new eif($$1, $$0.j(), new eif.e(1)));
-   }
-
-   public static eir.a<?> a(crr $$0, int $$1) {
-      return a($$2 -> new eif($$2, $$0.j(), new eif.e($$1)));
-   }
-
-   static record a(int b, float c) implements eif.b {
-      private static final Codec<eif.a> d = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(eif.a::b), Codec.FLOAT.fieldOf("probability").forGetter(eif.a::c)).apply($$0, eif.a::new)
-      );
-      public static final eif.c a = new eif.c(new ahh("binomial_with_bonus_count"), d);
-
-      @Override
-      public int a(auw $$0, int $$1, int $$2) {
-         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
-            if ($$0.i() < this.c) {
-               $$1++;
-            }
+   @Nullable
+   private <T extends ehu> T a(Function<sw, T> $$0, axo $$1, String $$2) {
+      try {
+         File $$3 = this.a($$2);
+         if ($$3.exists()) {
+            sw $$4 = this.a($$2, $$1, aa.b().d().c());
+            return $$0.apply($$4.p("data"));
          }
-
-         return $$1;
+      } catch (Exception var6) {
+         a.error("Error loading saved data: {}", $$2, var6);
       }
 
-      @Override
-      public eif.c a() {
-         return a;
-      }
+      return null;
    }
 
-   interface b {
-      int a(auw var1, int var2, int var3);
-
-      eif.c a();
+   public void a(String $$0, ehu $$1) {
+      this.b.put($$0, $$1);
    }
 
-   static record c(ahh a, Codec<? extends eif.b> b) {
-   }
+   public sw a(String $$0, axo $$1, int $$2) throws IOException {
+      File $$3 = this.a($$0);
 
-   static record d() implements eif.b {
-      public static final Codec<eif.d> a = Codec.unit(eif.d::new);
-      public static final eif.c b = new eif.c(new ahh("ore_drops"), a);
-
-      @Override
-      public int a(auw $$0, int $$1, int $$2) {
-         if ($$2 > 0) {
-            int $$3 = $$0.a($$2 + 2) - 1;
-            if ($$3 < 0) {
-               $$3 = 0;
-            }
-
-            return $$1 * ($$3 + 1);
+      sw var9;
+      try (
+         FileInputStream $$4 = new FileInputStream($$3);
+         PushbackInputStream $$5 = new PushbackInputStream($$4, 2);
+      ) {
+         sw $$6;
+         if (this.a($$5)) {
+            $$6 = tj.a($$5, tf.a());
          } else {
-            return $$1;
+            try (DataInputStream $$7 = new DataInputStream($$5)) {
+               $$6 = tj.a($$7);
+            }
+         }
+
+         int $$10 = tl.b($$6, 1343);
+         var9 = $$1.a(this.c, $$6, $$10, $$2);
+      }
+
+      return var9;
+   }
+
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
          }
       }
 
-      @Override
-      public eif.c a() {
-         return b;
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
       }
+
+      return $$2;
    }
 
-   static record e(int c) implements eif.b {
-      public static final Codec<eif.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(eif.e::b)).apply($$0, eif.e::new)
-      );
-      public static final eif.c b = new eif.c(new ahh("uniform_bonus_count"), a);
-
-      @Override
-      public int a(auw $$0, int $$1, int $$2) {
-         return $$1 + $$0.a(this.c * $$2 + 1);
-      }
-
-      @Override
-      public eif.c a() {
-         return b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   public void a() {
+      this.b.forEach(($$0, $$1) -> {
+         if ($$1 != null) {
+            $$1.a(this.a($$0));
+         }
+      });
    }
 }

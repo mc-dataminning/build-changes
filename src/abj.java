@@ -1,31 +1,40 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import javax.annotation.Nullable;
 
-public class abj implements xg<zb> {
-   private final IntList a;
+public class abj implements xx<aag> {
+   public static final xo<uq, abj> a = xx.a(abj::a, abj::new);
+   private final int b;
+   private final byte c;
 
-   public abj(IntList $$0) {
-      this.a = new IntArrayList($$0);
+   public abj(bno $$0, byte $$1) {
+      this.b = $$0.aj();
+      this.c = $$1;
    }
 
-   public abj(int... $$0) {
-      this.a = new IntArrayList($$0);
+   private abj(uq $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
    }
 
-   public abj(uj $$0) {
-      this.a = $$0.a();
+   private void a(uq $$0) {
+      $$0.p(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
+   public xz<abj> a() {
+      return aeq.C;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public IntList a() {
-      return this.a;
+   @Nullable
+   public bno a(cvn $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
+      return this.c;
    }
 }

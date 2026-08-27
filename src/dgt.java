@@ -1,162 +1,73 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dgt extends dhd implements bkh {
-   public static final int a = 6;
-   public static final String b = "Patterns";
-   public static final String c = "Pattern";
-   public static final String d = "Color";
-   @Nullable
-   private vg e;
-   private clv f;
-   @Nullable
-   private su g;
-   @Nullable
-   private List<Pair<ih<dgu>, clv>> h;
+public class dgt extends daw implements dde {
+   public static final MapCodec<dgt> c = b(dgt::new);
+   public static final dmd<dmb> d = daw.b;
+   protected static final float e = 6.0F;
+   protected static final eol f = cyo.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
-   public dgt(hx $$0, djp $$1) {
-      super(dhf.t, $$0, $$1);
-      this.f = ((cvp)$$1.b()).b();
+   @Override
+   public MapCodec<dgt> a() {
+      return c;
    }
 
-   public dgt(hx $$0, djp $$1, clv $$2) {
-      this($$0, $$1);
-      this.f = $$2;
-   }
-
-   @Nullable
-   public static su a(cng $$0) {
-      su $$1 = null;
-      so $$2 = cla.a($$0);
-      if ($$2 != null && $$2.b("Patterns", 9)) {
-         $$1 = $$2.c("Patterns", 10).e();
-      }
-
-      return $$1;
-   }
-
-   public void a(cng $$0, clv $$1) {
-      this.f = $$1;
-      this.b($$0);
-   }
-
-   public void b(cng $$0) {
-      this.g = a($$0);
-      this.h = null;
-      this.e = $$0.A() ? $$0.y() : null;
+   public dgt(dle.d $$0) {
+      super($$0);
    }
 
    @Override
-   public vg ad() {
-      return (vg)(this.e != null ? this.e : vg.c("block.minecraft.banner"));
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return f;
+   }
+
+   @Override
+   protected boolean b(dlf $$0, cut $$1, hz $$2) {
+      return $$0.d($$1, $$2, ie.b) && !$$0.a(cyq.kJ);
+   }
+
+   @Override
+   public coz a(cvq $$0, hz $$1, dlf $$2) {
+      return new coz(cyq.bw);
    }
 
    @Nullable
    @Override
-   public vg af() {
-      return this.e;
-   }
-
-   public void a(vg $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(so $$0) {
-      super.b($$0);
-      if (this.g != null) {
-         $$0.a("Patterns", this.g);
-      }
-
-      if (this.e != null) {
-         $$0.a("CustomName", vg.a.a(this.e));
-      }
-   }
-
-   @Override
-   public void a(so $$0) {
-      super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = vg.a.a($$0.l("CustomName"));
-      }
-
-      this.g = $$0.c("Patterns", 10);
-      this.h = null;
-   }
-
-   public zi a() {
-      return zi.a(this);
-   }
-
-   @Override
-   public so aA_() {
-      return this.q();
-   }
-
-   public static int c(cng $$0) {
-      so $$1 = cla.a($$0);
-      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
-   }
-
-   public List<Pair<ih<dgu>, clv>> c() {
-      if (this.h == null) {
-         this.h = a(this.f, this.g);
-      }
-
-      return this.h;
-   }
-
-   public static List<Pair<ih<dgu>, clv>> a(clv $$0, @Nullable su $$1) {
-      List<Pair<ih<dgu>, clv>> $$2 = Lists.newArrayList();
-      $$2.add(Pair.of(kd.am.f(dgv.a), $$0));
+   public dlf a(crg $$0) {
+      dlf $$1 = super.a($$0);
       if ($$1 != null) {
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            so $$4 = $$1.a($$3);
-            ih<dgu> $$5 = dgu.a($$4.l("Pattern"));
-            if ($$5 != null) {
-               int $$6 = $$4.h("Color");
-               $$2.add(Pair.of($$5, clv.a($$6)));
-            }
+         egp $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(aue.a) && $$2.e() == 8) {
+            return $$1;
          }
       }
 
-      return $$2;
+      return null;
    }
 
-   public static void d(cng $$0) {
-      so $$1 = cla.a($$0);
-      if ($$1 != null && $$1.b("Patterns", 9)) {
-         su $$2 = $$1.c("Patterns", 10);
-         if (!$$2.isEmpty()) {
-            $$2.c($$2.size() - 1);
-            if ($$2.isEmpty()) {
-               $$1.r("Patterns");
-            }
-         }
-
-         $$1.r("id");
-         cla.a($$0, dhf.t, $$1);
+   @Override
+   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
+      if ($$0.c(d) == dmb.a) {
+         dlf $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == dmb.b;
+      } else {
+         egp $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(aue.a) && $$4.e() == 8;
       }
    }
 
-   public cng f() {
-      cng $$0 = new cng(cwd.a(this.f));
-      if (this.g != null && !this.g.isEmpty()) {
-         so $$1 = new so();
-         $$1.a("Patterns", this.g.e());
-         cla.a($$0, this.v(), $$1);
-      }
-
-      if (this.e != null) {
-         $$0.a(this.e);
-      }
-
-      return $$0;
+   @Override
+   protected egp c_(dlf $$0) {
+      return egq.c.a(false);
    }
 
-   public clv g() {
-      return this.f;
+   @Override
+   public boolean a(@Nullable chh $$0, cut $$1, hz $$2, dlf $$3, ego $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cvo $$0, hz $$1, dlf $$2, egp $$3) {
+      return false;
    }
 }

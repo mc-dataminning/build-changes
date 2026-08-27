@@ -1,25 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Objects;
 
-public class baj extends baw {
+public class baj extends bdy {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:illager_beast_spawn_egg", "minecraft:ravager_spawn_egg").build();
+
    public baj(Schema $$0, boolean $$1) {
-      super($$0, $$1, "JigsawPropertiesFix", bbw.s, "minecraft:jigsaw");
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      String $$1 = $$0.get("attachement_type").asString("minecraft:empty");
-      String $$2 = $$0.get("target_pool").asString("minecraft:empty");
-      return $$0.set("name", $$0.createString($$1))
-         .set("target", $$0.createString($$1))
-         .remove("attachement_type")
-         .set("pool", $$0.createString($$2))
-         .remove("target_pool");
+      super("EntityRavagerRenameFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), baj::a);
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:illager_beast", $$0) ? "minecraft:ravager" : $$0;
    }
 }

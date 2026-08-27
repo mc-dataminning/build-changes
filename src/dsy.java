@@ -1,57 +1,83 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class dsy extends dsc<dup> {
-   public dsy(Codec<dup> $$0) {
+public class dsy extends dts<dwd> {
+   public dsy(Codec<dwd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dse<dup> $$0) {
-      cty $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      auw $$3 = $$0.d();
-      dup $$4 = $$0.f();
-      Optional<ic> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         hx $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && dry.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         dry.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
+   public boolean a(dtu<dwd> $$0) {
+      hz $$1 = $$0.e();
+      cwi $$2 = $$0.b();
+      awo $$3 = $$0.d();
+      if ($$2.u($$1) && !$$2.u($$1.c())) {
+         hz.a $$4 = $$1.j();
+         hz.a $$5 = $$1.j();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-   private static Optional<ic> a(cty $$0, hx $$1, auw $$2) {
-      boolean $$3 = dry.b($$0.a_($$1.c()));
-      boolean $$4 = dry.b($$0.a_($$1.d()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? ic.a : ic.b);
-      } else if ($$3) {
-         return Optional.of(ic.a);
-      } else {
-         return $$4 ? Optional.of(ic.b) : Optional.empty();
-      }
-   }
+         while ($$2.u($$4)) {
+            if ($$2.s($$4)) {
+               return true;
+            }
 
-   private static void a(cty $$0, auw $$1, hx $$2, dup $$3) {
-      dry.c($$0, $$2);
+            $$2.a($$4, cyq.dY.o(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ie.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ie.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ie.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ie.f));
+            $$4.c(ie.a);
+         }
 
-      for (ic $$4 : ic.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            hx $$5 = $$2.a($$4);
-            dry.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               hx $$6 = $$5.a(ic.b($$1));
-               dry.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  hx $$7 = $$6.a(ic.b($$1));
-                  dry.c($$0, $$7);
+         $$4.c(ie.b);
+         this.a($$2, $$3, $$5.a($$4, ie.c));
+         this.a($$2, $$3, $$5.a($$4, ie.d));
+         this.a($$2, $$3, $$5.a($$4, ie.e));
+         this.a($$2, $$3, $$5.a($$4, ie.f));
+         $$4.c(ie.a);
+         hz.a $$10 = new hz.a();
+
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = awh.a($$11) * awh.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
+
+                  while ($$2.u($$5.a($$10, ie.a))) {
+                     $$10.c(ie.a);
+                     if (--$$14 <= 0) {
+                        break;
+                     }
+                  }
+
+                  if (!$$2.u($$5.a($$10, ie.a))) {
+                     $$2.a($$10, cyq.dY.o(), 2);
+                  }
                }
             }
          }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(cvo $$0, awo $$1, hz $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, cyq.dY.o(), 2);
+      }
+   }
+
+   private boolean b(cvo $$0, awo $$1, hz $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, cyq.dY.o(), 2);
+         return true;
+      } else {
+         return false;
       }
    }
 }

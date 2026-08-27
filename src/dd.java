@@ -1,53 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dd extends cv<dd.a> {
-   @Override
-   public Codec<dd.a> a() {
-      return dd.a.a;
-   }
-
-   public void a(anf $$0, blw $$1, emc $$2, int $$3) {
-      ehf $$4 = bp.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
-   }
-
-   public static record a(Optional<bb> b, ck.d c, Optional<bb> d) implements cv.a {
-      public static final Codec<dd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  atx.a(bp.b, "player").forGetter(dd.a::a),
-                  atx.a(ck.d.d, "signal_strength", ck.d.c).forGetter(dd.a::b),
-                  atx.a(bp.b, "projectile").forGetter(dd.a::c)
-               )
-               .apply($$0, dd.a::new)
+public record dd<T>(auo<T> a, boolean b) {
+   public static <T> Codec<dd<T>> a(aix<? extends iv<T>> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(auo.a($$0).fieldOf("id").forGetter(dd::a), Codec.BOOL.fieldOf("expected").forGetter(dd::b)).apply($$1, dd::new)
       );
+   }
 
-      public static an<dd.a> a(ck.d $$0, Optional<bb> $$1) {
-         return am.M.a(new dd.a(Optional.empty(), $$0, $$1));
-      }
+   public static <T> dd<T> a(auo<T> $$0) {
+      return new dd<>($$0, true);
+   }
 
-      public boolean a(ehf $$0, emc $$1, int $$2) {
-         return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
-      }
+   public static <T> dd<T> b(auo<T> $$0) {
+      return new dd<>($$0, false);
+   }
 
-      @Override
-      public void a(bc $$0) {
-         cv.a.super.a($$0);
-         $$0.a(this.d, ".projectile");
-      }
-
-      @Override
-      public Optional<bb> a() {
-         return this.b;
-      }
-
-      public ck.d b() {
-         return this.c;
-      }
-
-      public Optional<bb> c() {
-         return this.d;
-      }
+   public boolean a(ij<T> $$0) {
+      return $$0.a(this.a) == this.b;
    }
 }

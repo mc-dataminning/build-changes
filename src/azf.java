@@ -1,38 +1,29 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 
-public class azf extends bcf {
+public class azf extends DataFix {
    public azf(Schema $$0, boolean $$1) {
-      super("EntityZombieSplitFix", $$0, $$1);
+      super($$0, $$1);
    }
 
-   @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      if (Objects.equals("Zombie", $$0)) {
-         String $$2 = "Zombie";
-         int $$3 = $$1.get("ZombieType").asInt(0);
-         switch ($$3) {
-            case 0:
-            default:
-               break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-               $$2 = "ZombieVillager";
-               $$1 = $$1.set("Profession", $$1.createInt($$3 - 1));
-               break;
-            case 6:
-               $$2 = "Husk";
-         }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bdn.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(bdn.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
+            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
+            String $$2x = $$1xx.get("Status").asString("empty");
+            if (Objects.equals($$2x, "postprocessed")) {
+               $$1xx = $$1xx.set("Status", $$1xx.createString("fullchunk"));
+            }
 
-         $$1 = $$1.remove("ZombieType");
-         return Pair.of($$2, $$1);
-      } else {
-         return Pair.of($$0, $$1);
-      }
+            return $$0xx.set(DSL.remainderFinder(), $$1xx);
+         }));
    }
 }

@@ -1,35 +1,99 @@
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
+
 public interface vv {
-   vg a();
-
-   void a(anf var1, boolean var2, vc.a var3);
-
-   static vv a(vw $$0) {
-      return (vv)($$0.h() ? new vv.a($$0.d()) : new vv.b($$0));
-   }
-
-   public static record a(vg a) implements vv {
+   Optional<axk> a = Optional.of(axk.a);
+   vv b = new vv() {
       @Override
-      public void a(anf $$0, boolean $$1, vc.a $$2) {
-         $$0.c.a(this.a, $$2);
-      }
-   }
-
-   public static record b(vw a) implements vv {
-      @Override
-      public vg a() {
-         return this.a.d();
+      public <T> Optional<T> a(vv.a<T> $$0) {
+         return Optional.empty();
       }
 
       @Override
-      public void a(anf $$0, boolean $$1, vc.a $$2) {
-         vw $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.c.a($$3, $$2);
+      public <T> Optional<T> a(vv.b<T> $$0, wn $$1) {
+         return Optional.empty();
+      }
+   };
+
+   <T> Optional<T> a(vv.a<T> var1);
+
+   <T> Optional<T> a(vv.b<T> var1, wn var2);
+
+   static vv e(final String $$0) {
+      return new vv() {
+         @Override
+         public <T> Optional<T> a(vv.a<T> $$0x) {
+            return $$0.accept($$0);
          }
-      }
 
-      public vw b() {
-         return this.a;
-      }
+         @Override
+         public <T> Optional<T> a(vv.b<T> $$0x, wn $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
+   }
+
+   static vv a(final String $$0, final wn $$1) {
+      return new vv() {
+         @Override
+         public <T> Optional<T> a(vv.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(vv.b<T> $$0x, wn $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static vv a(vv... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static vv a(final List<? extends vv> $$0) {
+      return new vv() {
+         @Override
+         public <T> Optional<T> a(vv.a<T> $$0x) {
+            for (vv $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(vv.b<T> $$0x, wn $$1) {
+            for (vv $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(wn var1, String var2);
    }
 }

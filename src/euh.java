@@ -1,41 +1,40 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Date;
-import java.util.UUID;
-
 public class euh {
-   private static final vg a = vg.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
+   private final evv a;
+   private boolean b;
+   private String c;
 
-   public static vg a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
+   public euh(evv $$0) {
+      this.a = $$0;
+      evv.a $$1 = $$0.a();
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public void a(etf $$0) {
+      evv.a $$1 = this.b($$0);
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
+
+   private evv.a b(etf $$0) {
+      evv.a $$1 = new evv.a();
+      $$1.a = $$0.a;
+      evv.a $$2 = this.a.a();
+      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
+      if ($$3) {
+         return $$2;
       } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return vg.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return vg.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return vg.a("mco.time.hoursAgo", $$3);
-         } else {
-            long $$4 = $$1 / 86400L;
-            return vg.a("mco.time.daysAgo", $$4);
-         }
+         $$1.b = true;
+         this.a.a($$1);
+         return $$1;
       }
-   }
-
-   public static vg a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
-   }
-
-   public static void a(exe $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      evr $$5 = evr.O();
-      ProfileResult $$6 = $$5.ak().fetchProfile($$4, false);
-      gga $$7 = $$6 != null ? $$5.al().b($$6.profile()) : gft.a($$4);
-      eyq.a($$0, $$7.a(), $$1, $$2, $$3);
    }
 }

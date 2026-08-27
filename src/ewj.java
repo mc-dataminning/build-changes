@@ -1,4 +1,36 @@
-import org.joml.Vector3f;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record ewj(float a, Vector3f b, ewh.a c) {
+public class ewj extends ewh {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vq c = vq.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
+
+   public ewj(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public void run() {
+      esq $$0 = esq.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (eud var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
+   }
+
+   @Override
+   public vq a() {
+      return c;
+   }
 }

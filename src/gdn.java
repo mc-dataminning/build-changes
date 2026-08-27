@@ -1,49 +1,24 @@
-public class gdn extends gdl<byy, flz<byy>> {
-   private static final ahh a = new ahh("textures/entity/sheep/sheep_fur.png");
-   private final fly<byy> b;
+public class gdn extends gbz<cgu, fom<cgu>> {
+   private static final aiy a = new aiy("textures/entity/villager/villager.png");
 
-   public gdn(gav<byy, flz<byy>> $$0, fnf $$1) {
-      super($$0);
-      this.b = new fly<>($$1.a(fni.be));
+   public gdn(gat.a $$0) {
+      super($$0, new fom<>($$0.a(fpb.bL)), 0.5F);
+      this.a(new gej<>(this, $$0.f(), $$0.d()));
+      this.a(new gfp<>(this, $$0.e(), "villager"));
+      this.a(new gei<>(this, $$0.d()));
    }
 
-   public void a(eqk $$0, ftt $$1, int $$2, byy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.A()) {
-         if ($$3.ce()) {
-            evr $$10 = evr.O();
-            boolean $$11 = $$10.b($$3);
-            if ($$11) {
-               this.c().a(this.b);
-               this.b.a($$3, $$4, $$5, $$6);
-               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-               eqo $$12 = $$1.getBuffer(fub.r(a));
-               this.b.a($$0, $$12, $$2, gab.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
-            }
-         } else {
-            float $$21;
-            float $$22;
-            float $$23;
-            if ($$3.ae() && "jeb_".equals($$3.ad().getString())) {
-               int $$13 = 25;
-               int $$14 = $$3.ah / 25 + $$3.aj();
-               int $$15 = clv.values().length;
-               int $$16 = $$14 % $$15;
-               int $$17 = ($$14 + 1) % $$15;
-               float $$18 = ((float)($$3.ah % 25) + $$6) / 25.0F;
-               float[] $$19 = byy.a(clv.a($$16));
-               float[] $$20 = byy.a(clv.a($$17));
-               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
-               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
-               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
-            } else {
-               float[] $$24 = byy.a($$3.w());
-               $$21 = $$24[0];
-               $$22 = $$24[1];
-               $$23 = $$24[2];
-            }
+   public aiy a(cgu $$0) {
+      return a;
+   }
 
-            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
-         }
-      }
+   protected void a(cgu $$0, esa $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.dZ();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(cgu $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 }

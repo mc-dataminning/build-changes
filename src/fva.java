@@ -1,111 +1,115 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.joml.Matrix4f;
 
 public class fva {
-   public static final fva a = new fva();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final fva.a[] c;
-   private final ahh[] d;
+   private static final int a = 6;
+   private final aiy[] b = new aiy[6];
 
-   private fva() {
-      this.c = new fva.a[0];
-      this.d = new ahh[0];
-   }
-
-   public fva(ghf $$0, fuv $$1, List<fuz> $$2) {
-      this.d = $$2.stream().flatMap(fuz::b).map(fuz.b::a).distinct().toArray(ahh[]::new);
-      Object2IntMap<ahh> $$3 = new Object2IntOpenHashMap();
-
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
+   public fva(aiy $$0) {
+      for (int $$1 = 0; $$1 < 6; $$1++) {
+         this.b[$$1] = $$0.c($$0.a() + "_" + $$1 + ".png");
       }
-
-      List<fva.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         fuz $$7 = $$2.get($$6);
-         ghb $$8 = this.a($$0, $$1, $$7);
-         fva.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new fva.b($$2x, $$1x.b());
-         }).toArray(fva.b[]::new);
-         $$5.add(new fva.a($$9, $$8));
-      }
-
-      this.c = $$5.toArray(new fva.a[0]);
    }
 
-   @Nullable
-   private ghb a(ghf $$0, fuv $$1, fuz $$2) {
-      ghm $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), ghc.a);
-   }
+   public void a(exh $$0, float $$1, float $$2, float $$3) {
+      esc $$4 = esc.b();
+      erv $$5 = $$4.d();
+      Matrix4f $$6 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aM().k() / (float)$$0.aM().l(), 0.05F, 10.0F);
+      RenderSystem.backupProjectionMatrix();
+      RenderSystem.setProjectionMatrix($$6, esi.a);
+      esa $$7 = RenderSystem.getModelViewStack();
+      $$7.a();
+      $$7.e();
+      $$7.a(a.b.rotationDegrees(180.0F));
+      RenderSystem.applyModelViewMatrix();
+      RenderSystem.setShader(fvf::t);
+      RenderSystem.enableBlend();
+      RenderSystem.disableCull();
+      RenderSystem.depthMask(false);
+      int $$8 = 2;
 
-   @Nullable
-   public ghb a(ghb $$0, cng $$1, @Nullable foe $$2, @Nullable bmo $$3, int $$4) {
-      if (this.c.length != 0) {
-         cnb $$5 = $$1.d();
-         int $$6 = this.d.length;
-         float[] $$7 = new float[$$6];
+      for (int $$9 = 0; $$9 < 4; $$9++) {
+         $$7.a();
+         float $$10 = ((float)($$9 % 2) / 2.0F - 0.5F) / 256.0F;
+         float $$11 = ((float)($$9 / 2) / 2.0F - 0.5F) / 256.0F;
+         float $$12 = 0.0F;
+         $$7.a($$10, $$11, 0.0F);
+         $$7.a(a.b.rotationDegrees($$1));
+         $$7.a(a.d.rotationDegrees($$2));
+         RenderSystem.applyModelViewMatrix();
 
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            ahh $$9 = this.d[$$8];
-            gej $$10 = gei.a($$5, $$9);
-            if ($$10 != null) {
-               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
-            } else {
-               $$7[$$8] = Float.NEGATIVE_INFINITY;
+         for (int $$13 = 0; $$13 < 6; $$13++) {
+            RenderSystem.setShaderTexture(0, this.b[$$13]);
+            $$5.a(esf.b.h, ery.s);
+            int $$14 = Math.round(255.0F * $$3) / ($$9 + 1);
+            if ($$13 == 0) {
+               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
             }
+
+            if ($$13 == 1) {
+               $$5.a(1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 2) {
+               $$5.a(1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 3) {
+               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 4) {
+               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 5) {
+               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            $$4.c();
          }
 
-         for (fva.a $$11 : this.c) {
-            if ($$11.a($$7)) {
-               ghb $$12 = $$11.b;
-               if ($$12 == null) {
-                  return $$0;
-               }
-
-               return $$12;
-            }
-         }
+         $$7.b();
+         RenderSystem.applyModelViewMatrix();
+         RenderSystem.colorMask(true, true, true, false);
       }
 
-      return $$0;
+      RenderSystem.colorMask(true, true, true, true);
+      RenderSystem.restoreProjectionMatrix();
+      $$7.b();
+      RenderSystem.applyModelViewMatrix();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableCull();
+      RenderSystem.enableDepthTest();
    }
 
-   static class a {
-      private final fva.b[] a;
-      @Nullable
-      final ghb b;
+   public CompletableFuture<Void> a(ggv $$0, Executor $$1) {
+      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
 
-      a(fva.b[] $$0, @Nullable ghb $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$2[$$3] = $$0.a(this.b[$$3], $$1);
       }
 
-      boolean a(float[] $$0) {
-         for (fva.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   static class b {
-      public final int a;
-      public final float b;
-
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+      return CompletableFuture.allOf($$2);
    }
 }

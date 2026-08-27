@@ -1,34 +1,39 @@
-@FunctionalInterface
-public interface dp {
-   dp a = new dp() {
-      @Override
-      public void onResult(boolean $$0, int $$1) {
-      }
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-      @Override
-      public String toString() {
-         return "<empty>";
-      }
-   };
+public class dp {
+   public static final Codec<dp> a = aiy.a.xmap(dp::new, dp::a);
+   private final aiy b;
+   private boolean c;
+   private Optional<hd<du>> d = Optional.empty();
 
-   void onResult(boolean var1, int var2);
-
-   default void onSuccess(int $$0) {
-      this.onResult(true, $$0);
+   public dp(aiy $$0) {
+      this.b = $$0;
    }
 
-   default void onFailure() {
-      this.onResult(false, 0);
+   public Optional<hd<du>> a(ajm $$0) {
+      if (!this.c) {
+         this.d = $$0.a(this.b);
+         this.c = true;
+      }
+
+      return this.d;
    }
 
-   static dp chain(dp $$0, dp $$1) {
-      if ($$0 == a) {
-         return $$1;
+   public aiy a() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
       } else {
-         return $$1 == a ? $$0 : ($$2, $$3) -> {
-            $$0.onResult($$2, $$3);
-            $$1.onResult($$2, $$3);
-         };
+         if ($$0 instanceof dp $$1 && this.a().equals($$1.a())) {
+            return true;
+         }
+
+         return false;
       }
    }
 }

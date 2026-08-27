@@ -1,18 +1,45 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public class ekt {
-   private static final Codec<eks> d = kd.J.q().dispatch(eks::a, ekr::a);
-   public static final Codec<eks> a = atx.a(
-      (Supplier<Codec<eks>>)(() -> Codec.either(ekq.c, d)
-            .xmap($$0 -> (eks)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof ekq $$1 ? Either.left($$1) : Either.right($$0)))
+public class ekt extends ekh {
+   public static final Codec<ekt> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(emq.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, ekt::new)
    );
-   public static final ekr b = a("storage", eku.a);
-   public static final ekr c = a("context", ekq.b);
+   private final emp b;
+   private final boolean c;
 
-   private static ekr a(String $$0, Codec<? extends eks> $$1) {
-      return it.a(kd.J, new ahh($$0), new ekr($$1));
+   private ekt(List<elu> $$0, emp $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   @Override
+   public ekj b() {
+      return ekk.c;
+   }
+
+   @Override
+   public Set<eld<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public coz a(coz $$0, eiv $$1) {
+      int $$2 = this.c ? $$0.M() : 0;
+      $$0.f(awh.a($$2 + this.b.a($$1), 0, $$0.g()));
+      return $$0;
+   }
+
+   public static ekh.a<?> a(emp $$0) {
+      return a($$1 -> new ekt($$1, $$0, false));
+   }
+
+   public static ekh.a<?> a(emp $$0, boolean $$1) {
+      return a($$2 -> new ekt($$2, $$0, $$1));
    }
 }

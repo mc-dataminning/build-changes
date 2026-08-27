@@ -1,237 +1,54 @@
-import com.mojang.datafixers.util.Either;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public interface ih<T> {
-   T a();
+public enum ih implements axc {
+   a("down_east", ie.a, ie.f),
+   b("down_north", ie.a, ie.c),
+   c("down_south", ie.a, ie.d),
+   d("down_west", ie.a, ie.e),
+   e("up_east", ie.b, ie.f),
+   f("up_north", ie.b, ie.c),
+   g("up_south", ie.b, ie.d),
+   h("up_west", ie.b, ie.e),
+   i("west_up", ie.e, ie.b),
+   j("east_up", ie.f, ie.b),
+   k("north_up", ie.c, ie.b),
+   l("south_up", ie.d, ie.b);
 
-   boolean b();
+   private static final Int2ObjectMap<ih> m = ac.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
+      for (ih $$1 : values()) {
+         $$0.put(b($$1.p, $$1.o), $$1);
+      }
+   });
+   private final String n;
+   private final ie o;
+   private final ie p;
 
-   boolean a(ahh var1);
-
-   boolean a(ahg<T> var1);
-
-   boolean a(Predicate<ahg<T>> var1);
-
-   boolean a(asx<T> var1);
-
-   @Deprecated
-   boolean a(ih<T> var1);
-
-   Stream<asx<T>> c();
-
-   Either<ahg<T>, T> d();
-
-   Optional<ahg<T>> e();
-
-   ih.b f();
-
-   boolean a(ik<T> var1);
-
-   default String g() {
-      return this.e().map($$0 -> $$0.a().toString()).orElse("[unregistered]");
+   private static int b(ie $$0, ie $$1) {
+      return $$1.ordinal() << 3 | $$0.ordinal();
    }
 
-   static <T> ih<T> a(T $$0) {
-      return new ih.a<>($$0);
+   private ih(String $$0, ie $$1, ie $$2) {
+      this.n = $$0;
+      this.p = $$1;
+      this.o = $$2;
    }
 
-   public static record a<T>(T a) implements ih<T> {
-      @Override
-      public boolean b() {
-         return true;
-      }
-
-      @Override
-      public boolean a(ahh $$0) {
-         return false;
-      }
-
-      @Override
-      public boolean a(ahg<T> $$0) {
-         return false;
-      }
-
-      @Override
-      public boolean a(asx<T> $$0) {
-         return false;
-      }
-
-      @Override
-      public boolean a(ih<T> $$0) {
-         return this.a.equals($$0.a());
-      }
-
-      @Override
-      public boolean a(Predicate<ahg<T>> $$0) {
-         return false;
-      }
-
-      @Override
-      public Either<ahg<T>, T> d() {
-         return Either.right(this.a);
-      }
-
-      @Override
-      public Optional<ahg<T>> e() {
-         return Optional.empty();
-      }
-
-      @Override
-      public ih.b f() {
-         return ih.b.b;
-      }
-
-      @Override
-      public String toString() {
-         return "Direct{" + this.a + "}";
-      }
-
-      @Override
-      public boolean a(ik<T> $$0) {
-         return true;
-      }
-
-      @Override
-      public Stream<asx<T>> c() {
-         return Stream.of();
-      }
+   @Override
+   public String c() {
+      return this.n;
    }
 
-   public static enum b {
-      a,
-      b;
+   public static ih a(ie $$0, ie $$1) {
+      int $$2 = b($$0, $$1);
+      return (ih)m.get($$2);
    }
 
-   public static class c<T> implements ih<T> {
-      private final ik<T> a;
-      private Set<asx<T>> b = Set.of();
-      private final ih.c.a c;
-      @Nullable
-      private ahg<T> d;
-      @Nullable
-      private T e;
+   public ie a() {
+      return this.p;
+   }
 
-      protected c(ih.c.a $$0, ik<T> $$1, @Nullable ahg<T> $$2, @Nullable T $$3) {
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$2;
-         this.e = $$3;
-      }
-
-      public static <T> ih.c<T> a(ik<T> $$0, ahg<T> $$1) {
-         return new ih.c<>(ih.c.a.a, $$0, $$1, null);
-      }
-
-      @Deprecated
-      public static <T> ih.c<T> a(ik<T> $$0, @Nullable T $$1) {
-         return new ih.c<>(ih.c.a.b, $$0, null, $$1);
-      }
-
-      public ahg<T> h() {
-         if (this.d == null) {
-            throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
-         } else {
-            return this.d;
-         }
-      }
-
-      @Override
-      public T a() {
-         if (this.e == null) {
-            throw new IllegalStateException("Trying to access unbound value '" + this.d + "' from registry " + this.a);
-         } else {
-            return this.e;
-         }
-      }
-
-      @Override
-      public boolean a(ahh $$0) {
-         return this.h().a().equals($$0);
-      }
-
-      @Override
-      public boolean a(ahg<T> $$0) {
-         return this.h() == $$0;
-      }
-
-      @Override
-      public boolean a(asx<T> $$0) {
-         return this.b.contains($$0);
-      }
-
-      @Override
-      public boolean a(ih<T> $$0) {
-         return $$0.a(this.h());
-      }
-
-      @Override
-      public boolean a(Predicate<ahg<T>> $$0) {
-         return $$0.test(this.h());
-      }
-
-      @Override
-      public boolean a(ik<T> $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public Either<ahg<T>, T> d() {
-         return Either.left(this.h());
-      }
-
-      @Override
-      public Optional<ahg<T>> e() {
-         return Optional.of(this.h());
-      }
-
-      @Override
-      public ih.b f() {
-         return ih.b.a;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d != null && this.e != null;
-      }
-
-      void b(ahg<T> $$0) {
-         if (this.d != null && $$0 != this.d) {
-            throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
-         } else {
-            this.d = $$0;
-         }
-      }
-
-      protected void b(T $$0) {
-         if (this.c == ih.c.a.b && this.e != $$0) {
-            throw new IllegalStateException("Can't change holder " + this.d + " value: existing=" + this.e + ", new=" + $$0);
-         } else {
-            this.e = $$0;
-         }
-      }
-
-      void a(Collection<asx<T>> $$0) {
-         this.b = Set.copyOf($$0);
-      }
-
-      @Override
-      public Stream<asx<T>> c() {
-         return this.b.stream();
-      }
-
-      @Override
-      public String toString() {
-         return "Reference{" + this.d + "=" + this.e + "}";
-      }
-
-      protected static enum a {
-         a,
-         b;
-      }
+   public ie b() {
+      return this.o;
    }
 }

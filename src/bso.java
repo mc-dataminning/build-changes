@@ -1,32 +1,23 @@
-public class bso extends bsm {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-   public bso(bmq $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
-   }
-
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dD(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.N().l()) {
-            this.a.s(this.a(this.a.dD(), 0.0F, 5.0F));
-         }
-
-         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
-      }
-
-      float $$0 = aup.g(this.a.aW - this.a.aU);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aU -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aU += 4.0F;
-      }
+public class bso {
+   public static bpx<boo> a(bxh<ii> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return btj.a(
+         (Function<btj.b<boo>, ? extends App<btj.c<boo>, btm<boo>>>)($$5 -> $$5.group($$5.a(bxh.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  ii $$10 = $$5.b($$6);
+                  if ($$7.ae() != $$10.a() || !$$10.b().a($$8.dk(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new bxk($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

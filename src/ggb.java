@@ -1,140 +1,159 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.hash.Hashing;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.SignatureState;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftProfileTextures;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-import com.mojang.authlib.properties.Property;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Duration;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class ggb {
-   static final Logger a = LogUtils.getLogger();
-   private final MinecraftSessionService b;
-   private final LoadingCache<ggb.a, CompletableFuture<gga>> c;
-   private final ggb.b d;
-   private final ggb.b e;
-   private final ggb.b f;
+   private static final Map<aiy, ggc> a = Maps.newHashMap();
+   private static final String b = "CustomModelData";
+   private static final aiy c = new aiy("damaged");
+   private static final aiy d = new aiy("damage");
+   private static final gfz e = ($$0x, $$1, $$2, $$3) -> $$0x.k() ? 1.0F : 0.0F;
+   private static final gfz f = ($$0x, $$1, $$2, $$3) -> awh.a((float)$$0x.l() / (float)$$0x.m(), 0.0F, 1.0F);
+   private static final Map<cou, Map<aiy, ggc>> g = Maps.newHashMap();
 
-   public ggb(gfc $$0, Path $$1, final MinecraftSessionService $$2, final Executor $$3) {
-      this.b = $$2;
-      this.d = new ggb.b($$0, $$1, Type.SKIN);
-      this.e = new ggb.b($$0, $$1, Type.CAPE);
-      this.f = new ggb.b($$0, $$1, Type.ELYTRA);
-      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<ggb.a, CompletableFuture<gga>>() {
-         public CompletableFuture<gga> a(ggb.a $$0) {
-            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
-               Property $$2xx = $$0.b();
-               if ($$2xx == null) {
-                  return MinecraftProfileTextures.EMPTY;
-               } else {
-                  MinecraftProfileTextures $$3xx = $$2.unpackTextures($$2xx);
-                  if ($$3xx.signatureState() == SignatureState.INVALID) {
-                     ggb.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
-                  }
+   private static gfz a(aiy $$0, gfz $$1) {
+      a.put($$0, $$1);
+      return $$1;
+   }
 
-                  return $$3xx;
-               }
-            }, ac.f()).thenComposeAsync($$1 -> ggb.this.a($$0.a(), $$1), $$3);
+   private static void a(ggc $$0) {
+      a.put(new aiy("custom_model_data"), $$0);
+   }
+
+   private static void a(cou $$0, aiy $$1, gfz $$2) {
+      g.computeIfAbsent($$0, $$0x -> Maps.newHashMap()).put($$1, $$2);
+   }
+
+   @Nullable
+   public static ggc a(cou $$0, aiy $$1) {
+      if ($$0.l() > 0) {
+         if (d.equals($$1)) {
+            return f;
+         }
+
+         if (c.equals($$1)) {
+            return e;
+         }
+      }
+
+      ggc $$2 = a.get($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         Map<aiy, ggc> $$3 = g.get($$0);
+         return $$3 == null ? null : $$3.get($$1);
+      }
+   }
+
+   static {
+      a(new aiy("lefthanded"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fm() != boa.b ? 1.0F : 0.0F);
+      a(new aiy("cooldown"), ($$0x, $$1, $$2, $$3) -> $$2 instanceof chh ? ((chh)$$2).go().a($$0x.d(), 0.0F) : 0.0F);
+      gfz $$0 = ($$0x, $$1, $$2, $$3) -> {
+         if (!$$0x.a(auh.aM)) {
+            return Float.NEGATIVE_INFINITY;
+         } else {
+            return $$1 == null ? 0.0F : cra.a($$1.I_(), $$0x, true).map(cra::b).map(ij::a).map(crb::c).orElse(0.0F);
+         }
+      };
+      a(mc.a, $$0);
+      a(($$0x, $$1, $$2, $$3) -> $$0x.v() ? (float)$$0x.w().h("CustomModelData") : 0.0F);
+      a(cpc.ot, new aiy("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return $$2.fp() != $$0x ? 0.0F : (float)($$0x.s() - $$2.fq()) / 20.0F;
          }
       });
-   }
+      a(cpc.xl, new aiy("brushing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fp() == $$0x ? (float)($$2.fq() % 10) / 10.0F : 0.0F);
+      a(cpc.ot, new aiy("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cpc.qT, new aiy("filled"), ($$0x, $$1, $$2, $$3) -> cnb.d($$0x));
+      a(cpc.qV, new aiy("time"), new gfz() {
+         private double a;
+         private double b;
+         private long c;
 
-   public Supplier<gga> a(GameProfile $$0) {
-      CompletableFuture<gga> $$1 = this.c($$0);
-      gga $$2 = gft.a($$0);
-      return () -> $$1.getNow($$2);
-   }
+         @Override
+         public float unclampedCall(coz $$0, @Nullable fpx $$1, @Nullable bog $$2, int $$3) {
+            bno $$4 = (bno)($$2 != null ? $$2 : $$0.I());
+            if ($$4 == null) {
+               return 0.0F;
+            } else {
+               if ($$1 == null && $$4.dM() instanceof fpx) {
+                  $$1 = (fpx)$$4.dM();
+               }
 
-   public gga b(GameProfile $$0) {
-      gga $$1 = this.c($$0).getNow(null);
-      return $$1 != null ? $$1 : gft.a($$0);
-   }
+               if ($$1 == null) {
+                  return 0.0F;
+               } else {
+                  double $$5;
+                  if ($$1.E_().j()) {
+                     $$5 = (double)$$1.f(1.0F);
+                  } else {
+                     $$5 = Math.random();
+                  }
 
-   public CompletableFuture<gga> c(GameProfile $$0) {
-      Property $$1 = this.b.getPackedTextures($$0);
-      return (CompletableFuture<gga>)this.c.getUnchecked(new ggb.a($$0.getId(), $$1));
-   }
-
-   CompletableFuture<gga> a(UUID $$0, MinecraftProfileTextures $$1) {
-      MinecraftProfileTexture $$2 = $$1.skin();
-      CompletableFuture<ahh> $$3;
-      gga.a $$4;
-      if ($$2 != null) {
-         $$3 = this.d.a($$2);
-         $$4 = gga.a.a($$2.getMetadata("model"));
-      } else {
-         gga $$5 = gft.a($$0);
-         $$3 = CompletableFuture.completedFuture($$5.a());
-         $$4 = $$5.e();
-      }
-
-      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
-      MinecraftProfileTexture $$9 = $$1.cape();
-      CompletableFuture<ahh> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
-      MinecraftProfileTexture $$11 = $$1.elytra();
-      CompletableFuture<ahh> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
-      return CompletableFuture.allOf($$3, $$10, $$12)
-         .thenApply($$6x -> new gga($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
-   }
-
-   static record a(UUID a, @Nullable Property b) {
-   }
-
-   static class b {
-      private final gfc a;
-      private final Path b;
-      private final Type c;
-      private final Map<String, CompletableFuture<ahh>> d = new Object2ObjectOpenHashMap();
-
-      b(gfc $$0, Path $$1, Type $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public CompletableFuture<ahh> a(MinecraftProfileTexture $$0) {
-         String $$1 = $$0.getHash();
-         CompletableFuture<ahh> $$2 = this.d.get($$1);
-         if ($$2 == null) {
-            $$2 = this.b($$0);
-            this.d.put($$1, $$2);
+                  $$5 = this.a($$1, $$5);
+                  return (float)$$5;
+               }
+            }
          }
 
-         return $$2;
-      }
+         private double a(cvn $$0, double $$1) {
+            if ($$0.X() != this.c) {
+               this.c = $$0.X();
+               double $$2 = $$1 - this.a;
+               $$2 = awh.c($$2 + 0.5, 1.0) - 0.5;
+               this.b += $$2 * 0.1;
+               this.b *= 0.9;
+               this.a = awh.c(this.a + this.b, 1.0);
+            }
 
-      private CompletableFuture<ahh> b(MinecraftProfileTexture $$0) {
-         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
-         ahh $$2 = this.a($$1);
-         Path $$3 = this.b.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
-         CompletableFuture<ahh> $$4 = new CompletableFuture<>();
-         gep $$5 = new gep($$3.toFile(), $$0.getUrl(), gft.a(), this.c == Type.SKIN, () -> $$4.complete($$2));
-         this.a.a($$2, $$5);
-         return $$4;
-      }
+            return this.a;
+         }
+      });
+      a(cpc.qR, new aiy("angle"), new gga(($$0x, $$1, $$2) -> cnd.d($$1) ? cnd.a($$1.x()) : cnd.a($$0x)));
+      a(cpc.qS, new aiy("angle"), new gga(($$0x, $$1, $$2) -> $$2 instanceof chh $$3 ? $$3.gs().orElse(null) : null));
+      a(cpc.vP, new aiy("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return cnh.d($$0x) ? 0.0F : (float)($$0x.s() - $$2.fq()) / (float)cnh.k($$0x);
+         }
+      });
+      a(cpc.vP, new aiy("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x && !cnh.d($$0x) ? 1.0F : 0.0F);
+      a(cpc.vP, new aiy("charged"), ($$0x, $$1, $$2, $$3) -> cnh.d($$0x) ? 1.0F : 0.0F);
+      a(cpc.vP, new aiy("firework"), ($$0x, $$1, $$2, $$3) -> cnh.d($$0x) && cnh.a($$0x, cpc.uq) ? 1.0F : 0.0F);
+      a(cpc.nS, new aiy("broken"), ($$0x, $$1, $$2, $$3) -> cnt.d($$0x) ? 0.0F : 1.0F);
+      a(cpc.qU, new aiy("cast"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            boolean $$4 = $$2.eT() == $$0x;
+            boolean $$5 = $$2.eU() == $$0x;
+            if ($$2.eT().d() instanceof cof) {
+               $$5 = false;
+            }
 
-      private ahh a(String $$0) {
-         String $$1 = switch (this.c) {
-            case SKIN -> "skins";
-            case CAPE -> "capes";
-            case ELYTRA -> "elytra";
-            default -> throw new IncompatibleClassChangeError();
-         };
-         return new ahh($$1 + "/" + $$0);
-      }
+            return ($$4 || $$5) && $$2 instanceof chh && ((chh)$$2).co != null ? 1.0F : 0.0F;
+         }
+      });
+      a(cpc.vo, new aiy("blocking"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cpc.vL, new aiy("throwing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cpc.hB, new aiy("level"), ($$0x, $$1, $$2, $$3) -> {
+         sw $$4 = $$0x.b("BlockStateTag");
+
+         try {
+            if ($$4 != null) {
+               tt $$5 = $$4.c(ddb.c.f());
+               if ($$5 != null) {
+                  return (float)Integer.parseInt($$5.t_()) / 16.0F;
+               }
+            }
+         } catch (NumberFormatException var6) {
+         }
+
+         return 1.0F;
+      });
+      a(cpc.vY, new aiy("tooting"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
    }
 }

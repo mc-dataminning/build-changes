@@ -1,94 +1,71 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
-public class fu {
-   private static final char c = '~';
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("argument.pos.missing.double"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.c("argument.pos.missing.int"));
-   private final boolean d;
-   private final double e;
+public class fu implements ArgumentType<fq> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("argument.pos2d.incomplete"));
+   private final boolean c;
 
-   public fu(boolean $$0, double $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public fu(boolean $$0) {
+      this.c = $$0;
    }
 
-   public double a(double $$0) {
-      return this.d ? this.e + $$0 : this.e;
+   public static fu a() {
+      return new fu(true);
    }
 
-   public static fu a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '^') {
-         throw ft.b.createWithContext($$0);
-      } else if (!$$0.canRead()) {
+   public static fu a(boolean $$0) {
+      return new fu($$0);
+   }
+
+   public static enr a(CommandContext<du> $$0, String $$1) {
+      ens $$2 = ((fq)$$0.getArgument($$1, fq.class)).a((du)$$0.getSource());
+      return new enr((float)$$2.c, (float)$$2.e);
+   }
+
+   public fq a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      if (!$$0.canRead()) {
          throw a.createWithContext($$0);
       } else {
-         boolean $$2 = b($$0);
-         int $$3 = $$0.getCursor();
-         double $$4 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
-         String $$5 = $$0.getString().substring($$3, $$0.getCursor());
-         if ($$2 && $$5.isEmpty()) {
-            return new fu(true, 0.0);
+         fw $$2 = fw.a($$0, this.c);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            fw $$3 = fw.a($$0, this.c);
+            return new fx($$2, new fw(true, 0.0), $$3);
          } else {
-            if (!$$5.contains(".") && !$$2 && $$1) {
-               $$4 += 0.5;
-            }
-
-            return new fu($$2, $$4);
+            $$0.setCursor($$1);
+            throw a.createWithContext($$0);
          }
       }
    }
 
-   public static fu a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '^') {
-         throw ft.b.createWithContext($$0);
-      } else if (!$$0.canRead()) {
-         throw b.createWithContext($$0);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if (!($$0.getSource() instanceof dz)) {
+         return Suggestions.empty();
       } else {
-         boolean $$1 = b($$0);
-         double $$2;
-         if ($$0.canRead() && $$0.peek() != ' ') {
-            $$2 = $$1 ? $$0.readDouble() : (double)$$0.readInt();
+         String $$2 = $$1.getRemaining();
+         Collection<dz.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(dz.b.a);
          } else {
-            $$2 = 0.0;
+            $$3 = ((dz)$$0.getSource()).C();
          }
 
-         return new fu($$1, $$2);
+         return dz.b($$2, $$3, $$1, dv.a(this::a));
       }
    }
 
-   public static boolean b(StringReader $$0) {
-      boolean $$1;
-      if ($$0.peek() == '~') {
-         $$1 = true;
-         $$0.skip();
-      } else {
-         $$1 = false;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof fu $$1)) {
-         return false;
-      } else {
-         return this.d != $$1.d ? false : Double.compare($$1.e, this.e) == 0;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.d ? 1 : 0;
-      long $$1 = Double.doubleToLongBits(this.e);
-      return 31 * $$0 + (int)($$1 ^ $$1 >>> 32);
-   }
-
-   public boolean a() {
-      return this.d;
+   public Collection<String> getExamples() {
+      return b;
    }
 }

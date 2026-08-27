@@ -1,140 +1,20 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class btu extends btk {
-   protected final bmx a;
-   private final double b;
-   private final boolean c;
-   private efo d;
-   private double e;
-   private double f;
-   private double g;
-   private int h;
-   private int i;
-   private final int j = 20;
-   private long k;
-   private static final long l = 20L;
-
-   public btu(bmx $$0, double $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.a(EnumSet.of(btk.a.a, btk.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      long $$0 = this.a.dL().X();
-      if ($$0 - this.k < 20L) {
-         return false;
-      } else {
-         this.k = $$0;
-         bmo $$1 = this.a.q();
-         if ($$1 == null) {
-            return false;
-         } else if (!$$1.bx()) {
-            return false;
-         } else {
-            this.d = this.a.N().a($$1, 0);
-            return this.d != null ? true : this.a.i($$1);
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      bmo $$0 = this.a.q();
-      if ($$0 == null) {
-         return false;
-      } else if (!$$0.bx()) {
-         return false;
-      } else if (!this.c) {
-         return !this.a.N().l();
-      } else {
-         return !this.a.a($$0.dl()) ? false : !($$0 instanceof cfq) || !$$0.P_() && !((cfq)$$0).f();
-      }
-   }
-
-   @Override
-   public void c() {
-      this.a.N().a(this.d, this.b);
-      this.a.v(true);
-      this.h = 0;
-      this.i = 0;
-   }
-
-   @Override
-   public void d() {
-      bmo $$0 = this.a.q();
-      if (!bmb.e.test($$0)) {
-         this.a.h(null);
-      }
-
-      this.a.v(false);
-      this.a.N().n();
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      bmo $$0 = this.a.q();
-      if ($$0 != null) {
-         this.a.I().a($$0, 30.0F, 30.0F);
-         this.h = Math.max(this.h - 1, 0);
-         if ((this.c || this.a.O().a($$0))
-            && this.h <= 0
-            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.i(this.e, this.f, this.g) >= 1.0 || this.a.eg().i() < 0.05F)) {
-            this.e = $$0.dq();
-            this.f = $$0.ds();
-            this.g = $$0.dw();
-            this.h = 4 + this.a.eg().a(7);
-            double $$1 = this.a.f((blw)$$0);
-            if ($$1 > 1024.0) {
-               this.h += 10;
-            } else if ($$1 > 256.0) {
-               this.h += 5;
-            }
-
-            if (!this.a.N().a($$0, this.b)) {
-               this.h += 15;
-            }
-
-            this.h = this.a(this.h);
-         }
-
-         this.i = Math.max(this.i - 1, 0);
-         this.a($$0);
-      }
-   }
-
-   protected void a(bmo $$0) {
-      if (this.b($$0)) {
-         this.h();
-         this.a.a(bkb.a);
-         this.a.B($$0);
-      }
-   }
-
-   protected void h() {
-      this.i = this.a(20);
-   }
-
-   protected boolean i() {
-      return this.i <= 0;
-   }
-
-   protected boolean b(bmo $$0) {
-      return this.i() && this.a.i($$0) && this.a.O().a($$0);
-   }
-
-   protected int k() {
-      return this.i;
-   }
-
-   protected int l() {
-      return this.a(20);
+public class btu {
+   public static bpx<bog> a() {
+      return btj.a(
+         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$0 -> $$0.group($$0.a(bxh.n), $$0.a(bxh.az), $$0.a(bxh.ay), $$0.c(bxh.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<hz> $$7 = $$0.<bog>a($$3).map(bno::dm).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new bpz($$7.get()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

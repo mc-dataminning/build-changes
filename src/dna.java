@@ -1,91 +1,51 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import java.util.BitSet;
+import java.util.stream.Stream;
 
-public enum dna {
-   a {
-      @Override
-      public void a(ane $$0, dnb $$1, List<cau> $$2, int $$3, hx $$4) {
-         hx $$5 = new hx(0, 128, 0);
+public class dna {
+   private final int a;
+   private final BitSet b;
+   private dna.a c = ($$0x, $$1x, $$2) -> false;
 
-         for (cau $$6 : $$2) {
-            $$6.a($$5);
-         }
+   public dna(int $$0, int $$1) {
+      this.a = $$1;
+      this.b = new BitSet(256 * $$0);
+   }
 
-         $$1.a(b);
-      }
-   },
-   b {
-      @Override
-      public void a(ane $$0, dnb $$1, List<cau> $$2, int $$3, hx $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new hx(0, 128, 0), 0);
-            }
-         } else {
-            $$1.a(c);
-         }
-      }
-   },
-   c {
-      @Override
-      public void a(ane $$0, dnb $$1, List<cau> $$2, int $$3, hx $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<dtm.a> $$8 = dtm.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               dtm.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (cau $$11 : $$2) {
-                     $$11.a(new hx($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
+   public void a(dna.a $$0) {
+      this.c = $$0;
+   }
 
-                  for (hx $$13 : hx.a(new hx($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new hx($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
+   public dna(long[] $$0, int $$1) {
+      this.a = $$1;
+      this.b = BitSet.valueOf($$0);
+   }
 
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, ctx.a.b);
-                  dva $$14 = new dva(true, ImmutableList.of($$10), new hx(0, 128, 0));
-                  dsc.J.a($$14, $$0, $$0.l().g(), auw.a(), new hx($$10.a(), 45, $$10.b()));
-               }
-            } else if ($$6) {
-               $$1.a(d);
-            }
-         }
-      }
-   },
-   d {
-      @Override
-      public void a(ane $$0, dnb $$1, List<cau> $$2, int $$3, hx $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
+   private int c(int $$0, int $$1, int $$2) {
+      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
+   }
 
-            for (cau $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dq(), $$5.ds(), $$5.dw(), 6.0F, ctx.a.a);
-               $$5.am();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new hx(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (cau $$6 : $$2) {
-               $$6.a(new hx(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new hx(0, 128, 0), 0);
-         }
-      }
-   },
-   e {
-      @Override
-      public void a(ane $$0, dnb $$1, List<cau> $$2, int $$3, hx $$4) {
-      }
-   };
+   public void a(int $$0, int $$1, int $$2) {
+      this.b.set(this.c($$0, $$1, $$2));
+   }
 
-   public abstract void a(ane var1, dnb var2, List<cau> var3, int var4, hx var5);
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
+   }
+
+   public Stream<hz> a(cuu $$0) {
+      return this.b.stream().mapToObj($$1 -> {
+         int $$2 = $$1 & 15;
+         int $$3 = $$1 >> 4 & 15;
+         int $$4 = $$1 >> 8;
+         return $$0.a($$2, $$4 + this.a, $$3);
+      });
+   }
+
+   public long[] a() {
+      return this.b.toLongArray();
+   }
+
+   public interface a {
+      boolean test(int var1, int var2, int var3);
+   }
 }

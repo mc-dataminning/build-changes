@@ -1,47 +1,26 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DynamicOps;
-import java.util.Locale;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public abstract class ayu extends DataFix {
-   protected final String a;
-
-   public ayu(String $$0, Schema $$1, boolean $$2) {
-      super($$1, $$2);
-      this.a = $$0;
+public class ayu extends DataFix {
+   public ayu(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.y);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.y);
-      return this.fixTypeEverywhere(
-         this.a,
-         $$0,
-         $$1,
-         $$2 -> $$3 -> {
-               String $$4 = (String)$$3.getFirst();
-               Type<?> $$5 = (Type<?>)$$0.types().get($$4);
-               Pair<String, Typed<?>> $$6 = this.a($$4, this.a($$3.getSecond(), $$2, $$5));
-               Type<?> $$7 = (Type<?>)$$1.types().get($$6.getFirst());
-               if (!$$7.equals(((Typed)$$6.getSecond()).getType(), true, true)) {
-                  throw new IllegalStateException(
-                     String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$7, ((Typed)$$6.getSecond()).getType())
-                  );
-               } else {
-                  return Pair.of((String)$$6.getFirst(), ((Typed)$$6.getSecond()).getValue());
-               }
-            }
-      );
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
+         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
+         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
+      } else {
+         return $$0;
+      }
    }
 
-   private <A> Typed<A> a(Object $$0, DynamicOps<?> $$1, Type<A> $$2) {
-      return new Typed($$2, $$1, $$0);
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bdn.u), $$0 -> $$0.update(DSL.remainderFinder(), ayu::a));
    }
-
-   protected abstract Pair<String, Typed<?>> a(String var1, Typed<?> var2);
 }

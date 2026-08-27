@@ -1,27 +1,50 @@
-import com.mojang.brigadier.CommandDispatcher;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
-public class lb implements kk {
-   private final km d;
-   private final CompletableFuture<ij.b> e;
+public class lb implements km {
+   private static final Logger d = LogUtils.getLogger();
+   private final Path e;
+   private final CompletableFuture<il.b> f;
+   private static final MapCodec<aix<cwm>> g = aix.a(kg.at).fieldOf("biome");
+   private static final Codec<cwv.c<aix<cwm>>> h = cwv.c.a(g).fieldOf("biomes").codec();
 
-   public lb(km $$0, CompletableFuture<ij.b> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public lb(ko $$0, CompletableFuture<il.b> $$1) {
+      this.e = $$0.a(ko.b.c).resolve("biome_parameters");
+      this.f = $$1;
    }
 
    @Override
-   public CompletableFuture<?> a(ki $$0) {
-      Path $$1 = this.d.a(km.b.c).resolve("commands.json");
-      return this.e.thenCompose($$2 -> {
-         CommandDispatcher<ds> $$3 = new dt(dt.a.a, dt.a($$2)).a();
-         return kk.a($$0, hl.a($$3, $$3.getRoot()), $$1);
+   public CompletableFuture<?> a(kk $$0) {
+      return this.f.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = aiw.a(JsonOps.INSTANCE, $$1);
+         List<CompletableFuture<?>> $$3 = new ArrayList<>();
+         cxa.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
+         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
       });
+   }
+
+   private static <E> CompletableFuture<?> a(Path $$0, kk $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
+      return $$5.isPresent() ? km.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
+   }
+
+   private Path a(aiy $$0) {
+      return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
    }
 
    @Override
    public final String a() {
-      return "Command Syntax";
+      return "Biome Parameters";
    }
 }

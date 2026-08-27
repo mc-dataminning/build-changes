@@ -1,56 +1,16 @@
-public class zd implements xg<zb> {
-   private final int a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final int e;
+public record zd() implements yy {
+   public static final xo<uq, zd> a = yy.a(zd::a, zd::new);
+   public static final yy.b<zd> b = yy.a("debug/game_test_clear");
 
-   public zd(bme $$0) {
-      this.a = $$0.aj();
-      this.b = $$0.dq();
-      this.c = $$0.ds();
-      this.d = $$0.dw();
-      this.e = $$0.q();
+   private zd(uq $$0) {
+      this();
    }
 
-   public zd(uj $$0) {
-      this.a = $$0.n();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readShort();
+   private void a(uq $$0) {
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.l(this.e);
-   }
-
-   public void a(zb $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
+   public yy.b<zd> a() {
+      return b;
    }
 }

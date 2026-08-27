@@ -1,18 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 
-public class bba extends DataFix {
-   public bba(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bba extends bbv {
+   public bba(Schema $$0) {
+      super($$0, "Remove filtered text from books", $$0x -> $$0x.equals("minecraft:writable_book") || $$0x.equals("minecraft:written_book"));
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.E);
-      return this.fixTypeEverywhereTyped(
-         "ObjectiveDisplayNameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("DisplayName", avw::a))
-      );
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.remove("filtered_title").remove("filtered_pages");
    }
 }

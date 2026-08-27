@@ -1,54 +1,34 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bl extends cv<bl.a> {
+public class bl extends cx<bl.a> {
    @Override
    public Codec<bl.a> a() {
       return bl.a.a;
    }
 
-   public void a(anf $$0, djp $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(aow $$0, coz $$1, int $$2) {
+      this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   public static record a(Optional<bb> b, Optional<ih<cwy>> c, Optional<cz> d) implements cv.a {
-      public static final Codec<bl.a> a = atx.a(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(bl.a::a), atx.a(kd.e.r(), "block").forGetter(bl.a::b), atx.a(cz.a, "state").forGetter(bl.a::c))
-                  .apply($$0, bl.a::new)
-         ),
-         bl.a::a
+   public static record a(Optional<bc> b, Optional<cc> c, cm.d d) implements cx.a {
+      public static final Codec<bl.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(bl.a::a), avp.a(cc.a, "item").forGetter(bl.a::c), avp.a(cm.d.d, "levels", cm.d.c).forGetter(bl.a::d))
+               .apply($$0, bl.a::new)
       );
 
-      private static DataResult<bl.a> a(bl.a $$0) {
-         return $$0.c
-            .<DataResult<bl.a>>flatMap(
-               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((cwy)$$1.a()).n())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
-            )
-            .orElseGet(() -> DataResult.success($$0));
+      public static an<bl.a> b() {
+         return am.j.a(new bl.a(Optional.empty(), Optional.empty(), cm.d.c));
       }
 
-      public static an<bl.a> a(cwy $$0) {
-         return am.e.a(new bl.a(Optional.empty(), Optional.of($$0.r()), Optional.empty()));
-      }
-
-      public boolean a(djp $$0) {
-         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+      public boolean a(coz $$0, int $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
       }
 
       @Override
-      public Optional<bb> a() {
+      public Optional<bc> a() {
          return this.b;
-      }
-
-      public Optional<ih<cwy>> b() {
-         return this.c;
-      }
-
-      public Optional<cz> c() {
-         return this.d;
       }
    }
 }

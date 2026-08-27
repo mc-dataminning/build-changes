@@ -1,115 +1,86 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fah extends gem implements gen {
-   private static final int e = 256;
-   private final fai f;
-   private final boolean g;
-   private final fah.a h;
+public class fah extends ezf {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final fah.a n;
+   private final Supplier<ght> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   public fah(fai $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new fah.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? epl.b.a : epl.b.d, this.a(), 256, 256);
-      this.f = $$0;
+   public fah(int $$0, int $$1, foy $$2, Supplier<ght> $$3) {
+      super(0, 0, $$0, $$1, vp.a);
+      this.n = fah.a.a($$2);
+      this.o = $$3;
    }
 
    @Override
-   public void a(aqj $$0) {
+   protected void b(eyu $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.B() + (float)this.w() / 2.0F, (float)(this.C() + this.u()), 100.0F);
+      float $$4 = (float)this.u() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      Matrix4f $$5 = $$0.c().c().a();
+      $$5.rotateAround(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
+      this.n.a($$0, this.o.get());
+      $$0.c().b();
    }
 
    @Override
-   public void close() {
-      this.b();
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = awh.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
+   }
+
+   @Override
+   public void a(gll $$0) {
+   }
+
+   @Override
+   protected void a(fdc $$0) {
+   }
+
+   @Override
+   public boolean A() {
+      return false;
    }
 
    @Nullable
-   public fak a(eoo $$0) {
-      if ($$0.c() != this.g) {
-         return null;
-      } else {
-         fah.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fak(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
-      }
-   }
-
    @Override
-   public void a(ahh $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   public eyr a(fdi $$0) {
+      return null;
    }
 
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fah.a e;
-      @Nullable
-      private fah.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   static record a(fng<?> a, fng<?> b) {
+      public static fah.a a(foy $$0) {
+         fng<?> $$1 = new fng($$0.a(fpb.aO), false);
+         fng<?> $$2 = new fng($$0.a(fpb.aS), true);
+         $$1.e = false;
+         $$2.e = false;
+         return new fah.a($$1, $$2);
       }
 
-      @Nullable
-      fah.a a(eoo $$0) {
-         if (this.e != null && this.f != null) {
-            fah.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fah.a(this.a, this.b, $$2, this.d);
-                  this.f = new fah.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fah.a(this.a, this.b, this.c, $$3);
-                  this.f = new fah.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
-         }
+      public void a(eyu $$0, ght $$1) {
+         $$0.e();
+         eqw.c();
+         $$0.c().a();
+         $$0.c().a(new Matrix4f().scaling(1.0F, 1.0F, -1.0F));
+         $$0.c().a(0.0F, -1.5F, 0.0F);
+         fng<?> $$2 = $$1.e() == ght.a.a ? this.b : this.a;
+         fvu $$3 = $$2.a($$1.a());
+         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, ggl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.c().b();
+         $$0.e();
+         eqw.b();
       }
    }
 }

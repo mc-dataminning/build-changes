@@ -1,21 +1,42 @@
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+public record aol(int a, int b) {
+   private static final long c = 32L;
+   private static final long d = 4294967295L;
 
-public class aol implements anu {
-   public static final anu.a a = new anu.a("server_resource_pack");
-   private final MinecraftServer.b b;
+   public cuu a() {
+      return new cuu(jb.a(this.a), jb.a(this.b));
+   }
 
-   public aol(MinecraftServer.b $$0) {
-      this.b = $$0;
+   public long b() {
+      return a(this.a, this.b);
+   }
+
+   public static long a(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
    }
 
    @Override
-   public void a(Consumer<xg<?>> $$0) {
-      $$0.accept(new xp(this.b.a(), this.b.b(), this.b.c(), this.b.d(), this.b.e()));
+   public String toString() {
+      return "[" + this.a + ", " + this.b + "]";
    }
 
    @Override
-   public anu.a a() {
-      return a;
+   public int hashCode() {
+      return cuu.d(this.a, this.b);
+   }
+
+   public int c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

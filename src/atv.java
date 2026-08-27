@@ -1,100 +1,28 @@
-import com.google.common.base.Charsets;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class atv implements AutoCloseable {
-   public static final String a = "session.lock";
-   private final FileChannel b;
-   private final FileLock c;
-   private static final ByteBuffer d;
+public class atv {
+   protected final Object2IntMap<atr<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
 
-   public static atv a(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-      v.c($$0);
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-
-      try {
-         $$2.write(d.duplicate());
-         $$2.force(true);
-         FileLock $$3 = $$2.tryLock();
-         if ($$3 == null) {
-            throw atv.a.a($$1);
-         } else {
-            return new atv($$2, $$3);
-         }
-      } catch (IOException var6) {
-         try {
-            $$2.close();
-         } catch (IOException var5) {
-            var6.addSuppressed(var5);
-         }
-
-         throw var6;
-      }
+   public atv() {
+      this.a.defaultReturnValue(0);
    }
 
-   private atv(FileChannel $$0, FileLock $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public void b(chh $$0, atr<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
    }
 
-   @Override
-   public void close() throws IOException {
-      try {
-         if (this.c.isValid()) {
-            this.c.release();
-         }
-      } finally {
-         if (this.b.isOpen()) {
-            this.b.close();
-         }
-      }
+   public void a(chh $$0, atr<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
    }
 
-   public boolean a() {
-      return this.c.isValid();
+   public <T> int a(att<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
    }
 
-   public static boolean b(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-
-      try {
-         boolean var4;
-         try (
-            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
-            FileLock $$3 = $$2.tryLock();
-         ) {
-            var4 = $$3 == null;
-         }
-
-         return var4;
-      } catch (AccessDeniedException var10) {
-         return true;
-      } catch (NoSuchFileException var11) {
-         return false;
-      }
-   }
-
-   static {
-      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
-      d = ByteBuffer.allocateDirect($$0.length);
-      d.put($$0);
-      d.flip();
-   }
-
-   public static class a extends IOException {
-      private a(Path $$0, String $$1) {
-         super($$0.toAbsolutePath() + ": " + $$1);
-      }
-
-      public static atv.a a(Path $$0) {
-         return new atv.a($$0, "already locked (possibly by other Minecraft instance?)");
-      }
+   public int a(atr<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

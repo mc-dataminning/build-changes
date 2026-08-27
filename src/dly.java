@@ -1,7 +1,20 @@
-import java.util.function.BiConsumer;
+public enum dly implements axc {
+   a("compare"),
+   b("subtract");
 
-public interface dly extends ctd {
-   void a(BiConsumer<hx, djp> var1);
+   private final String c;
 
-   eej B();
+   private dly(String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

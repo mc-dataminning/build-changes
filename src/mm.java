@@ -1,17 +1,43 @@
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
-public class mm implements Supplier<JsonElement> {
-   private final ahh a;
+public class mm<T> {
+   final String a;
+   final Function<T, JsonElement> b;
 
-   public mm(ahh $$0) {
+   public mm(String $$0, Function<T, JsonElement> $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public JsonElement a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("parent", this.a.toString());
-      return $$0;
+   public mm<T>.a a(T $$0) {
+      return new mm.a($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a;
+   }
+
+   public class a {
+      private final T b;
+
+      public a(T $$1) {
+         this.b = $$1;
+      }
+
+      public mm<T> a() {
+         return mm.this;
+      }
+
+      public void a(JsonObject $$0) {
+         $$0.add(mm.this.a, mm.this.b.apply(this.b));
+      }
+
+      @Override
+      public String toString() {
+         return mm.this.a + "=" + this.b;
+      }
    }
 }

@@ -1,56 +1,24 @@
-public class aei implements xg<adk> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
+public record aei(int b) implements xx<aag> {
+   public static final xo<uq, aei> a = xx.a(aei::a, aei::new);
 
-   public aei(blw $$0) {
-      this.a = $$0.dq();
-      this.b = $$0.ds();
-      this.c = $$0.dw();
-      this.d = $$0.dB();
-      this.e = $$0.dD();
+   private aei(uq $$0) {
+      this($$0.n());
    }
 
-   public aei(uj $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   public static aei a(bmf $$0) {
+      return new aei($$0.k());
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   public xz<aei> a() {
+      return aeq.cc;
    }
 
-   public void a(adk $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
-   }
-
-   public double a() {
-      return this.a;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

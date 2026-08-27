@@ -1,38 +1,16 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
 public class xi {
-   private static final Logger a = LogUtils.getLogger();
+   public static final MapCodec<xg> a = kf.ar.q().dispatchMap(xg::a, $$0 -> $$0.a().codec());
+   public static final Codec<xg> b = a.codec();
+   public static final xo<vb, xg> c = xm.a(kg.as).b(xg::a, xh::b);
+   public static final xo<vb, Optional<xg>> d = c.a(xm::a);
 
-   public static <T extends up> void a(xg<T> $$0, T $$1, ane $$2) throws ahs {
-      a($$0, $$1, $$2.o());
-   }
-
-   public static <T extends up> void a(xg<T> $$0, T $$1, bis<?> $$2) throws ahs {
-      if (!$$2.bq()) {
-         $$2.c(() -> {
-            if ($$1.a($$0)) {
-               try {
-                  $$0.a($$1);
-               } catch (Exception var6) {
-                  if (var6 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
-                     if (var6 instanceof y $$4) {
-                        $$1.a($$4.a());
-                        throw var6;
-                     }
-
-                     o $$5 = o.a(var6, "Main thread packet handler");
-                     $$1.a($$5);
-                     throw new y($$5);
-                  }
-
-                  a.error("Failed to handle packet {}, suppressing error", $$0, var6);
-               }
-            } else {
-               a.debug("Ignoring packet due to disconnection: {}", $$0);
-            }
-         });
-         throw ahs.a;
-      }
+   public static xh<?> a(iv<xh<?>> $$0) {
+      iv.a($$0, "blank", xe.b);
+      iv.a($$0, "styled", xj.a);
+      return iv.a($$0, "fixed", xf.a);
    }
 }

@@ -1,37 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyq extends dyz {
-   public static final Codec<dyq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dyq::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class dyq extends dyo {
+   public static final Codec<dyq> a = Codec.unit(() -> dyq.b);
+   public static final dyq b = new dyq();
 
-   private dyq(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static dyq a(int $$0, double $$1, double $$2) {
-      return new dyq($$0, $$1, $$2);
+   @Override
+   protected dyp<?> a() {
+      return dyp.a;
    }
 
    @Override
-   protected int a(auw $$0, hx $$1) {
-      double $$2 = cuw.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
-   }
+   public void a(dyo.a $$0) {
+      awo $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            hz $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dhi.d);
+            }
+         }
 
-   @Override
-   public dyw<?> b() {
-      return dyw.g;
+         if ($$1.a(3) > 0) {
+            hz $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dhi.f);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            hz $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dhi.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            hz $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dhi.c);
+            }
+         }
+      });
    }
 }

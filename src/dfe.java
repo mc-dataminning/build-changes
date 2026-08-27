@@ -1,91 +1,84 @@
 import com.mojang.serialization.MapCodec;
 
-public class dfe extends cwy {
-   public static final MapCodec<dfe> a = b(dfe::new);
-   private static final dkp b = dkf.aT;
-   private static final int c = 20;
-   private static final int d = 8;
+public class dfe extends day implements dfd {
+   public static final MapCodec<dfe> b = b(dfe::new);
 
    @Override
    public MapCodec<dfe> a() {
-      return a;
+      return b;
    }
 
-   public dfe(djo.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
-   }
-
-   @Override
-   public void a(ctx $$0, djp $$1, ely $$2, cgi $$3) {
-      int $$4 = a((cty)$$0, $$1, $$2, (blw)$$3);
-      if ($$3.w() instanceof anf $$6) {
-         $$6.a(asd.aE);
-         am.M.a($$6, $$3, $$2.e(), $$4);
-      }
-   }
-
-   private static int a(cty $$0, djp $$1, ely $$2, blw $$3) {
-      int $$4 = a($$2, $$2.e());
-      int $$5 = $$3 instanceof cfw ? 20 : 8;
-      if (!$$0.N().a($$2.a(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.a(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(ely $$0, emc $$1) {
-      ic $$2 = $$0.b();
-      double $$3 = Math.abs(aup.e($$1.c) - 0.5);
-      double $$4 = Math.abs(aup.e($$1.d) - 0.5);
-      double $$5 = Math.abs(aup.e($$1.e) - 0.5);
-      ic.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == ic.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == ic.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, aup.c(15.0 * aup.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(cty $$0, djp $$1, int $$2, hx $$3, int $$4) {
-      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+   public dfe(dle.d $$0) {
+      super(bkw.a(1), $$0);
    }
 
    @Override
-   public void a(djp $$0, ane $$1, hx $$2, auw $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
-      }
-   }
+   public int a(dfi.a $$0, cvo $$1, hz $$2, awo $$3, dfi $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         hz $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               hz $$10 = $$7.c();
+               dlf $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.w().e(), atl.e, 1.0F, 1.0F);
+            }
 
-   @Override
-   public int a(djp $$0, ctd $$1, hx $$2, ic $$3) {
-      return $$0.c(b);
-   }
-
-   @Override
-   public boolean f_(djp $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public void b(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
-      if (!$$1.y_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.N().a($$2, this)) {
-            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
+      } else {
+         return $$6;
       }
+   }
+
+   private static int a(dfi $$0, hz $$1, hz $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = awh.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = awh.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private dlf a(cvo $$0, hz $$1, awo $$2, boolean $$3) {
+      dlf $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = cyq.qV.o().a(dfh.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = cyq.qQ.o();
+      }
+
+      return $$4.b(dlv.C) && !$$0.b_($$1).c() ? $$4.a(dlv.C, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(cvo $$0, hz $$1) {
+      dlf $$2 = $$0.a_($$1.c());
+      if ($$2.i() || $$2.a(cyq.G) && $$2.u().b(egq.c)) {
+         int $$3 = 0;
+
+         for (hz $$4 : hz.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dlf $$5 = $$0.a_($$4);
+            if ($$5.a(cyq.qQ) || $$5.a(cyq.qV)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean d() {
+      return false;
    }
 }

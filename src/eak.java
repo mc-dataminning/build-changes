@@ -1,25 +1,10 @@
-import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public enum eak implements avl {
-   a("linear"),
-   b("triangular");
-
-   public static final Codec<eak> c = avl.a(eak::values);
-   private final String d;
-
-   private eak(String $$0) {
-      this.d = $$0;
-   }
-
+public abstract class eak extends eal {
    @Override
-   public String c() {
-      return this.d;
+   public final Stream<hz> a_(eaj $$0, awo $$1, hz $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
    }
 
-   public int a(auw $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
-   }
+   protected abstract boolean a(eaj var1, awo var2, hz var3);
 }

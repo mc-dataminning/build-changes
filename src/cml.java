@@ -1,123 +1,120 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.EnumMap;
+import java.util.function.Supplier;
 
-public class cml extends cnb {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final String b = "Fireworks";
-   public static final String c = "Explosion";
-   public static final String d = "Explosions";
-   public static final String e = "Flight";
-   public static final String f = "Type";
-   public static final String g = "Trail";
-   public static final String h = "Flicker";
-   public static final String i = "Colors";
-   public static final String j = "FadeColors";
-   public static final double k = 0.15;
+public enum cml implements axc, cmk {
+   a("leather", 5, ac.a(new EnumMap<>(cmj.a.class), $$0 -> {
+      $$0.put(cmj.a.d, 1);
+      $$0.put(cmj.a.c, 2);
+      $$0.put(cmj.a.b, 3);
+      $$0.put(cmj.a.a, 1);
+   }), 15, atk.as, 0.0F, 0.0F, () -> cry.a(cpc.qC)),
+   b("chainmail", 15, ac.a(new EnumMap<>(cmj.a.class), $$0 -> {
+      $$0.put(cmj.a.d, 1);
+      $$0.put(cmj.a.c, 4);
+      $$0.put(cmj.a.b, 5);
+      $$0.put(cmj.a.a, 2);
+   }), 12, atk.am, 0.0F, 0.0F, () -> cry.a(cpc.oD)),
+   c("iron", 15, ac.a(new EnumMap<>(cmj.a.class), $$0 -> {
+      $$0.put(cmj.a.d, 2);
+      $$0.put(cmj.a.c, 5);
+      $$0.put(cmj.a.b, 6);
+      $$0.put(cmj.a.a, 2);
+   }), 9, atk.ar, 0.0F, 0.0F, () -> cry.a(cpc.oD)),
+   d("gold", 7, ac.a(new EnumMap<>(cmj.a.class), $$0 -> {
+      $$0.put(cmj.a.d, 1);
+      $$0.put(cmj.a.c, 3);
+      $$0.put(cmj.a.b, 5);
+      $$0.put(cmj.a.a, 2);
+   }), 25, atk.aq, 0.0F, 0.0F, () -> cry.a(cpc.oH)),
+   e("diamond", 33, ac.a(new EnumMap<>(cmj.a.class), $$0 -> {
+      $$0.put(cmj.a.d, 3);
+      $$0.put(cmj.a.c, 6);
+      $$0.put(cmj.a.b, 8);
+      $$0.put(cmj.a.a, 3);
+   }), 10, atk.an, 2.0F, 0.0F, () -> cry.a(cpc.ox)),
+   f("turtle", 25, ac.a(new EnumMap<>(cmj.a.class), $$0 -> {
+      $$0.put(cmj.a.d, 2);
+      $$0.put(cmj.a.c, 5);
+      $$0.put(cmj.a.b, 6);
+      $$0.put(cmj.a.a, 2);
+   }), 9, atk.au, 0.0F, 0.0F, () -> cry.a(cpc.oo)),
+   g("netherite", 37, ac.a(new EnumMap<>(cmj.a.class), $$0 -> {
+      $$0.put(cmj.a.d, 3);
+      $$0.put(cmj.a.c, 6);
+      $$0.put(cmj.a.b, 8);
+      $$0.put(cmj.a.a, 3);
+   }), 15, atk.at, 3.0F, 0.1F, () -> cry.a(cpc.oI));
 
-   public cml(cnb.a $$0) {
-      super($$0);
+   public static final Codec<cml> h = axc.a(cml::values);
+   private static final EnumMap<cmj.a, Integer> i = ac.a(new EnumMap<>(cmj.a.class), $$0 -> {
+      $$0.put(cmj.a.d, 13);
+      $$0.put(cmj.a.c, 15);
+      $$0.put(cmj.a.b, 16);
+      $$0.put(cmj.a.a, 11);
+   });
+   private final String j;
+   private final int k;
+   private final EnumMap<cmj.a, Integer> l;
+   private final int m;
+   private final atj n;
+   private final float o;
+   private final float p;
+   private final awc<cry> q;
+
+   private cml(String $$0, int $$1, EnumMap<cmj.a, Integer> $$2, int $$3, atj $$4, float $$5, float $$6, Supplier<cry> $$7) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.n = $$4;
+      this.o = $$5;
+      this.p = $$6;
+      this.q = new awc<>($$7);
    }
 
    @Override
-   public bkc a(cpr $$0) {
-      ctx $$1 = $$0.q();
-      if (!$$1.B) {
-         cng $$2 = $$0.n();
-         emc $$3 = $$0.l();
-         ic $$4 = $$0.k();
-         cgd $$5 = new cgd($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.h(1);
-      }
-
-      return bkc.a($$1.B);
+   public int a(cmj.a $$0) {
+      return i.get($$0) * this.k;
    }
 
    @Override
-   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
-      if ($$1.fw()) {
-         cng $$3 = $$1.b($$2);
-         if (!$$0.B) {
-            cgd $$4 = new cgd($$0, $$3, $$1);
-            $$0.b($$4);
-            if (!$$1.fT().d) {
-               $$3.h(1);
-            }
-
-            $$1.b(asd.c.b(this));
-         }
-
-         return bkd.a($$1.b($$2), $$0.y_());
-      } else {
-         return bkd.c($$1.b($$2));
-      }
+   public int b(cmj.a $$0) {
+      return this.l.get($$0);
    }
 
    @Override
-   public void a(cng $$0, @Nullable ctx $$1, List<vg> $$2, coy $$3) {
-      so $$4 = $$0.b("Fireworks");
-      if ($$4 != null) {
-         if ($$4.b("Flight", 99)) {
-            $$2.add(vg.c("item.minecraft.firework_rocket.flight").b(vf.u).f(String.valueOf($$4.f("Flight"))).a(n.h));
-         }
-
-         su $$5 = $$4.c("Explosions", 10);
-         if (!$$5.isEmpty()) {
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               so $$7 = $$5.a($$6);
-               List<vg> $$8 = Lists.newArrayList();
-               cmm.a($$7, $$8);
-               if (!$$8.isEmpty()) {
-                  for (int $$9 = 1; $$9 < $$8.size(); $$9++) {
-                     $$8.set($$9, vg.b("  ").b($$8.get($$9)).a(n.h));
-                  }
-
-                  $$2.addAll($$8);
-               }
-            }
-         }
-      }
-   }
-
-   public static void a(cng $$0, byte $$1) {
-      $$0.a("Fireworks").a("Flight", $$1);
+   public int a() {
+      return this.m;
    }
 
    @Override
-   public cng ao_() {
-      cng $$0 = new cng(this);
-      a($$0, (byte)1);
-      return $$0;
+   public atj b() {
+      return this.n;
    }
 
-   public static enum a {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
+   @Override
+   public cry d() {
+      return this.q.a();
+   }
 
-      private static final IntFunction<cml.a> f = ath.a(cml.a::a, values(), ath.a.a);
-      private final int g;
-      private final String h;
+   @Override
+   public String e() {
+      return this.j;
+   }
 
-      private a(int $$0, String $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
+   @Override
+   public float f() {
+      return this.o;
+   }
 
-      public int a() {
-         return this.g;
-      }
+   @Override
+   public float g() {
+      return this.p;
+   }
 
-      public String b() {
-         return this.h;
-      }
-
-      public static cml.a a(int $$0) {
-         return f.apply($$0);
-      }
+   @Override
+   public String c() {
+      return this.j;
    }
 }

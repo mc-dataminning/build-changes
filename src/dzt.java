@@ -1,8 +1,6 @@
 import javax.annotation.Nullable;
 
 public interface dzt {
-   void a(dzs var1);
-
    @Nullable
-   dzs a(dzg var1);
+   dlf a(dqs var1, int var2, int var3, int var4);
 }

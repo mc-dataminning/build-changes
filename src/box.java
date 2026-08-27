@@ -1,41 +1,65 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import java.util.function.Predicate;
 
-public class box extends bof<cfd> {
-   private static final int d = 1200;
-   final float c;
+public interface box {
+   box b = new box() {
+      @Override
+      public coz a() {
+         return coz.h;
+      }
 
-   public box(float $$0) {
-      super(ImmutableMap.of(bvq.d, bvr.a), 1200);
-      this.c = $$0;
-   }
+      @Override
+      public boolean a(coz $$0) {
+         return false;
+      }
+   };
 
-   protected boolean a(ane $$0, cfd $$1) {
-      return $$1.dN().g().map($$0x -> $$0x == chc.b || $$0x == chc.c || $$0x == chc.d).orElse(true);
-   }
-
-   protected boolean a(ane $$0, cfd $$1, long $$2) {
-      return $$1.dN().a(bvq.d);
-   }
-
-   protected void b(ane $$0, cfd $$1, long $$2) {
-      boh.a($$1, $$1.dN().c(bvq.d).get().b(), this.c, 1);
-   }
-
-   protected void c(ane $$0, cfd $$1, long $$2) {
-      Optional<ig> $$3 = $$1.dN().c(bvq.d);
-      $$3.ifPresent($$1x -> {
-         hx $$2x = $$1x.b();
-         ane $$3x = $$0.o().a($$1x.a());
-         if ($$3x != null) {
-            bxq $$4 = $$3x.y();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
-
-            adj.c($$0, $$2x);
+   static box a(final bln $$0, final int $$1, final Predicate<coz> $$2) {
+      return new box() {
+         @Override
+         public coz a() {
+            return $$0.a($$1);
          }
-      });
-      $$1.dN().b(bvq.d);
+
+         @Override
+         public boolean a(coz $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
    }
+
+   static box a(bln $$0, int $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   static box a(final bog $$0, final bnv $$1, final Predicate<coz> $$2) {
+      return new box() {
+         @Override
+         public coz a() {
+            return $$0.c($$1);
+         }
+
+         @Override
+         public boolean a(coz $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
+   }
+
+   static box a(bog $$0, bnv $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   coz a();
+
+   boolean a(coz var1);
 }

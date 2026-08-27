@@ -1,83 +1,26 @@
-public class fqh extends fsh {
-   fqh(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
-   }
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-   @Override
-   public float b(float $$0) {
-      return this.D * aup.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
-   }
-
-   @Override
-   public frl b() {
-      return frl.b;
-   }
-
-   public static class a implements frk<ka> {
-      private final fsc a;
-
-      public a(fsc $$0) {
-         this.a = $$0;
+public interface fqh {
+   fqh a = new fqh() {
+      @Override
+      public CompletableFuture<Optional<chj>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqh $$8 = new fqh($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      public boolean b() {
+         return false;
       }
+   };
+
+   static fqh a(UserApiService $$0, exw $$1, Path $$2) {
+      return (fqh)($$1.g() == exw.a.c ? new fpq($$0, $$1.b(), $$2) : a);
    }
 
-   public static class b implements frk<ka> {
-      private final fsc a;
+   CompletableFuture<Optional<chj>> a();
 
-      public b(fsc $$0) {
-         this.a = $$0;
-      }
-
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqh $$8 = new fqh($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements frk<ka> {
-      private final fsc a;
-
-      public c(fsc $$0) {
-         this.a = $$0;
-      }
-
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqh $$8 = new fqh($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
+   boolean b();
 }

@@ -1,374 +1,140 @@
-import com.google.common.hash.HashCode;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.hash.Hashing;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.SignatureState;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
+import com.mojang.authlib.minecraft.MinecraftProfileTextures;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
+import com.mojang.authlib.properties.Property;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import java.time.Duration;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class ghu {
-   private final ghr a;
-   final ghs b;
-   private final ght c;
-   private final Runnable d;
-   private ghu.c e;
-   final List<ghu.e> f = new ArrayList<>();
+   static final Logger a = LogUtils.getLogger();
+   private final MinecraftSessionService b;
+   private final LoadingCache<ghu.a, CompletableFuture<ght>> c;
+   private final ghu.b d;
+   private final ghu.b e;
+   private final ghu.b f;
 
-   public ghu(ghr $$0, ghs $$1, ght $$2, Runnable $$3, ghu.c $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
+   public ghu(ggv $$0, Path $$1, final MinecraftSessionService $$2, final Executor $$3) {
+      this.b = $$2;
+      this.d = new ghu.b($$0, $$1, Type.SKIN);
+      this.e = new ghu.b($$0, $$1, Type.CAPE);
+      this.f = new ghu.b($$0, $$1, Type.ELYTRA);
+      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<ghu.a, CompletableFuture<ght>>() {
+         public CompletableFuture<ght> a(ghu.a $$0) {
+            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
+               Property $$2xx = $$0.b();
+               if ($$2xx == null) {
+                  return MinecraftProfileTextures.EMPTY;
+               } else {
+                  MinecraftProfileTextures $$3xx = $$2.unpackTextures($$2xx);
+                  if ($$3xx.signatureState() == SignatureState.INVALID) {
+                     ghu.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
+                  }
 
-   void f() {
-      this.d.run();
-   }
-
-   private void b(UUID $$0) {
-      for (ghu.e $$1 : this.f) {
-         if ($$1.a.equals($$0)) {
-            $$1.a(ghu.d.f);
-         }
-      }
-   }
-
-   public void a(UUID $$0, URL $$1, @Nullable HashCode $$2) {
-      if (this.e == ghu.c.c) {
-         this.b.a($$0, ghs.a.a);
-      } else {
-         this.a($$0, new ghu.e($$0, $$1, $$2));
-      }
-   }
-
-   public void a(UUID $$0, Path $$1) {
-      if (this.e == ghu.c.c) {
-         this.b.a($$0, ghs.a.a);
-      } else {
-         URL $$2;
-         try {
-            $$2 = $$1.toUri().toURL();
-         } catch (MalformedURLException var5) {
-            throw new IllegalStateException("Can't convert path to URL " + $$1, var5);
-         }
-
-         ghu.e $$5 = new ghu.e($$0, $$2, null);
-         $$5.f = ghu.b.c;
-         $$5.d = $$1;
-         this.a($$0, $$5);
-      }
-   }
-
-   private void a(UUID $$0, ghu.e $$1) {
-      this.b($$0);
-      this.f.add($$1);
-      if (this.e == ghu.c.b) {
-         this.a($$1);
-      }
-
-      this.f();
-   }
-
-   private void a(ghu.e $$0) {
-      this.b.a($$0.a, ghs.b.a);
-      $$0.h = true;
-   }
-
-   @Nullable
-   private ghu.e c(UUID $$0) {
-      for (ghu.e $$1 : this.f) {
-         if (!$$1.a() && $$1.a.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      return null;
-   }
-
-   public void a(UUID $$0) {
-      ghu.e $$1 = this.c($$0);
-      if ($$1 != null) {
-         $$1.a(ghu.d.e);
-         this.f();
-      }
-   }
-
-   public void a() {
-      for (ghu.e $$0 : this.f) {
-         $$0.a(ghu.d.e);
-      }
-
-      this.f();
-   }
-
-   public void b() {
-      this.e = ghu.c.b;
-
-      for (ghu.e $$0 : this.f) {
-         if (!$$0.h && !$$0.a()) {
-            this.a($$0);
-         }
-      }
-
-      this.f();
-   }
-
-   public void c() {
-      this.e = ghu.c.c;
-
-      for (ghu.e $$0 : this.f) {
-         if (!$$0.h) {
-            $$0.a(ghu.d.c);
-         }
-      }
-
-      this.f();
-   }
-
-   public void d() {
-      this.e = ghu.c.a;
-   }
-
-   public void e() {
-      boolean $$0 = this.h();
-      if (!$$0) {
-         this.i();
-      }
-
-      this.g();
-   }
-
-   private void g() {
-      this.f.removeIf($$0 -> {
-         if ($$0.g != ghu.a.a) {
-            return false;
-         } else if ($$0.e != null) {
-            ghs.a $$1 = $$0.e.g;
-            if ($$1 != null) {
-               this.b.a($$0.a, $$1);
-            }
-
-            return true;
-         } else {
-            return false;
+                  return $$3xx;
+               }
+            }, ac.f()).thenComposeAsync($$1 -> ghu.this.a($$0.a(), $$1), $$3);
          }
       });
    }
 
-   private void a(Collection<ghu.e> $$0, aot.b $$1) {
-      if (!$$1.b().isEmpty()) {
-         for (ghu.e $$2 : this.f) {
-            if ($$2.g != ghu.a.c) {
-               if ($$1.b().contains($$2.a)) {
-                  $$2.a(ghu.d.a);
-               } else {
-                  $$2.a(ghu.d.d);
-               }
-            }
-         }
-      }
-
-      for (ghu.e $$3 : $$0) {
-         Path $$4 = $$1.a().get($$3.a);
-         if ($$4 != null) {
-            $$3.f = ghu.b.c;
-            $$3.d = $$4;
-            if (!$$3.a()) {
-               this.b.a($$3.a, ghs.b.b);
-            }
-         }
-      }
-
-      this.f();
+   public Supplier<ght> a(GameProfile $$0) {
+      CompletableFuture<ght> $$1 = this.c($$0);
+      ght $$2 = ghm.a($$0);
+      return () -> $$1.getNow($$2);
    }
 
-   private boolean h() {
-      List<ghu.e> $$0 = new ArrayList<>();
-      boolean $$1 = false;
+   public ght b(GameProfile $$0) {
+      ght $$1 = this.c($$0).getNow(null);
+      return $$1 != null ? $$1 : ghm.a($$0);
+   }
 
-      for (ghu.e $$2 : this.f) {
-         if (!$$2.a() && $$2.h) {
-            if ($$2.f != ghu.b.c) {
-               $$1 = true;
-            }
+   public CompletableFuture<ght> c(GameProfile $$0) {
+      Property $$1 = this.b.getPackedTextures($$0);
+      return (CompletableFuture<ght>)this.c.getUnchecked(new ghu.a($$0.getId(), $$1));
+   }
 
-            if ($$2.f == ghu.b.a) {
-               $$2.f = ghu.b.b;
-               $$0.add($$2);
-            }
-         }
+   CompletableFuture<ght> a(UUID $$0, MinecraftProfileTextures $$1) {
+      MinecraftProfileTexture $$2 = $$1.skin();
+      CompletableFuture<aiy> $$3;
+      ght.a $$4;
+      if ($$2 != null) {
+         $$3 = this.d.a($$2);
+         $$4 = ght.a.a($$2.getMetadata("model"));
+      } else {
+         ght $$5 = ghm.a($$0);
+         $$3 = CompletableFuture.completedFuture($$5.a());
+         $$4 = $$5.e();
       }
 
-      if (!$$0.isEmpty()) {
-         Map<UUID, aot.c> $$3 = new HashMap<>();
-
-         for (ghu.e $$4 : $$0) {
-            $$3.put($$4.a, new aot.c($$4.b, $$4.c));
-         }
-
-         this.a.a($$3, $$1x -> this.a($$0, $$1x));
-      }
-
-      return $$1;
+      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
+      MinecraftProfileTexture $$9 = $$1.cape();
+      CompletableFuture<aiy> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
+      MinecraftProfileTexture $$11 = $$1.elytra();
+      CompletableFuture<aiy> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
+      return CompletableFuture.allOf($$3, $$10, $$12)
+         .thenApply($$6x -> new ght($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
    }
 
-   private void i() {
-      boolean $$0 = false;
-      final List<ghu.e> $$1 = new ArrayList<>();
-      final List<ghu.e> $$2 = new ArrayList<>();
-
-      for (ghu.e $$3 : this.f) {
-         if ($$3.g == ghu.a.b) {
-            return;
-         }
-
-         boolean $$4 = $$3.h && $$3.f == ghu.b.c && !$$3.a();
-         if ($$4 && $$3.g == ghu.a.a) {
-            $$1.add($$3);
-            $$0 = true;
-         }
-
-         if ($$3.g == ghu.a.c) {
-            if (!$$4) {
-               $$0 = true;
-               $$2.add($$3);
-            } else {
-               $$1.add($$3);
-            }
-         }
-      }
-
-      if ($$0) {
-         for (ghu.e $$5 : $$1) {
-            if ($$5.g != ghu.a.c) {
-               $$5.g = ghu.a.b;
-            }
-         }
-
-         for (ghu.e $$6 : $$2) {
-            $$6.g = ghu.a.b;
-         }
-
-         this.c.scheduleReload(new ght.a() {
-            @Override
-            public void a() {
-               for (ghu.e $$0 : $$1) {
-                  $$0.g = ghu.a.c;
-                  if ($$0.e == null) {
-                     ghu.this.b.a($$0.a, ghs.a.b);
-                  }
-               }
-
-               for (ghu.e $$1 : $$2) {
-                  $$1.g = ghu.a.a;
-               }
-
-               ghu.this.f();
-            }
-
-            @Override
-            public void a(boolean $$0) {
-               if (!$$0) {
-                  $$1.clear();
-
-                  for (ghu.e $$1 : ghu.this.f) {
-                     switch ($$1.g) {
-                        case c:
-                           $$1.add($$1);
-                           break;
-                        case b:
-                           $$1.g = ghu.a.a;
-                           $$1.a(ghu.d.b);
-                           break;
-                        case a:
-                           $$1.a(ghu.d.d);
-                     }
-                  }
-
-                  ghu.this.f();
-               } else {
-                  for (ghu.e $$2 : ghu.this.f) {
-                     if ($$2.g == ghu.a.b) {
-                        $$2.g = ghu.a.a;
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public List<ght.b> b() {
-               return $$1.stream().map($$0 -> new ght.b($$0.a, $$0.d)).toList();
-            }
-         });
-      }
+   static record a(UUID a, @Nullable Property b) {
    }
 
-   static enum a {
-      a,
-      b,
-      c;
-   }
+   static class b {
+      private final ggv a;
+      private final Path b;
+      private final Type c;
+      private final Map<String, CompletableFuture<aiy>> d = new Object2ObjectOpenHashMap();
 
-   static enum b {
-      a,
-      b,
-      c;
-   }
-
-   public static enum c {
-      a,
-      b,
-      c;
-   }
-
-   static enum d {
-      a(ghs.a.d),
-      b(ghs.a.e),
-      c(ghs.a.a),
-      d(ghs.a.c),
-      e(null),
-      f(null);
-
-      @Nullable
-      final ghs.a g;
-
-      private d(@Nullable ghs.a $$0) {
-         this.g = $$0;
-      }
-   }
-
-   static class e {
-      final UUID a;
-      final URL b;
-      @Nullable
-      final HashCode c;
-      @Nullable
-      Path d;
-      @Nullable
-      ghu.d e;
-      ghu.b f = ghu.b.a;
-      ghu.a g = ghu.a.a;
-      boolean h;
-
-      e(UUID $$0, URL $$1, @Nullable HashCode $$2) {
+      b(ggv $$0, Path $$1, Type $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
-      public void a(ghu.d $$0) {
-         if (this.e == null) {
-            this.e = $$0;
+      public CompletableFuture<aiy> a(MinecraftProfileTexture $$0) {
+         String $$1 = $$0.getHash();
+         CompletableFuture<aiy> $$2 = this.d.get($$1);
+         if ($$2 == null) {
+            $$2 = this.b($$0);
+            this.d.put($$1, $$2);
          }
+
+         return $$2;
       }
 
-      public boolean a() {
-         return this.e != null;
+      private CompletableFuture<aiy> b(MinecraftProfileTexture $$0) {
+         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
+         aiy $$2 = this.a($$1);
+         Path $$3 = this.b.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
+         CompletableFuture<aiy> $$4 = new CompletableFuture<>();
+         ggi $$5 = new ggi($$3.toFile(), $$0.getUrl(), ghm.a(), this.c == Type.SKIN, () -> $$4.complete($$2));
+         this.a.a($$2, $$5);
+         return $$4;
+      }
+
+      private aiy a(String $$0) {
+         String $$1 = switch (this.c) {
+            case SKIN -> "skins";
+            case CAPE -> "capes";
+            case ELYTRA -> "elytra";
+            default -> throw new IncompatibleClassChangeError();
+         };
+         return new aiy($$1 + "/" + $$0);
       }
    }
 }

@@ -1,140 +1,81 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class eot extends eow {
-   public static final int a = 854;
-   public static final int b = 480;
-   static final eot.b l = new eot.b(854, 480);
+public class eot implements eos {
+   private static final String a = "Score";
+   private static final String b = "Locked";
+   private static final String c = "display";
+   private static final String d = "format";
+   private int e;
+   private boolean f = true;
+   @Nullable
+   private vq g;
+   @Nullable
+   private xg h;
 
-   public eot(int $$0, int $$1) {
-      super(true);
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0, $$1));
-      } else {
-         this.b($$0, $$1);
-      }
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   private void b(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      eot.b $$2 = this.c($$0, $$1);
-      this.h = GlStateManager.glGenFramebuffers();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texParameter(3553, 34892, 0);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-      GlStateManager._bindTexture(0);
-      this.e = $$2.a;
-      this.f = $$2.b;
-      this.c = $$2.a;
-      this.d = $$2.b;
-      this.b();
-      GlStateManager._glBindFramebuffer(36160, 0);
+   public void a(int $$0) {
+      this.e = $$0;
    }
 
-   private eot.b c(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.i = TextureUtil.generateTextureId();
-      this.j = TextureUtil.generateTextureId();
-      eot.a $$2 = eot.a.a;
-
-      for (eot.b $$3 : eot.b.a($$0, $$1)) {
-         $$2 = eot.a.a;
-         if (this.a($$3)) {
-            $$2 = $$2.a(eot.a.b);
-         }
-
-         if (this.b($$3)) {
-            $$2 = $$2.a(eot.a.c);
-         }
-
-         if ($$2 == eot.a.d) {
-            return $$3;
-         }
-      }
-
-      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
+   @Override
+   public boolean b() {
+      return this.f;
    }
 
-   private boolean a(eot.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
-      return GlStateManager._getError() != 1285;
+   public void a(boolean $$0) {
+      this.f = $$0;
    }
 
-   private boolean b(eot.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
-      return GlStateManager._getError() != 1285;
+   @Nullable
+   public vq d() {
+      return this.g;
    }
 
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final eot.a[] e = values();
-
-      eot.a a(eot.a $$0) {
-         return e[this.ordinal() | $$0.ordinal()];
-      }
+   public void a(@Nullable vq $$0) {
+      this.g = $$0;
    }
 
-   static class b {
-      public final int a;
-      public final int b;
+   @Nullable
+   @Override
+   public xg c() {
+      return this.h;
+   }
 
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public void b(@Nullable xg $$0) {
+      this.h = $$0;
+   }
+
+   public sw e() {
+      sw $$0 = new sw();
+      $$0.a("Score", this.e);
+      $$0.a("Locked", this.f);
+      if (this.g != null) {
+         $$0.a("display", vq.a.a(this.g));
       }
 
-      static List<eot.b> a(int $$0, int $$1) {
-         RenderSystem.assertOnRenderThreadOrInit();
-         int $$2 = RenderSystem.maxSupportedTextureSize();
-         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new eot.b($$0, $$1), eot.l) : ImmutableList.of(eot.l);
+      if (this.h != null) {
+         xi.b.encodeStart(tk.a, this.h).result().ifPresent($$1 -> $$0.a("format", $$1));
       }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            eot.b $$1 = (eot.b)$$0;
-            return this.a == $$1.a && this.b == $$1.b;
-         } else {
-            return false;
-         }
+      return $$0;
+   }
+
+   public static eot a(sw $$0) {
+      eot $$1 = new eot();
+      $$1.e = $$0.h("Score");
+      $$1.f = $$0.q("Locked");
+      if ($$0.b("display", 8)) {
+         $$1.g = vq.a.a($$0.l("display"));
       }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b);
+      if ($$0.b("format", 10)) {
+         xi.b.parse(tk.a, $$0.c("format")).result().ifPresent($$1x -> $$1.h = $$1x);
       }
 
-      @Override
-      public String toString() {
-         return this.a + "x" + this.b;
-      }
+      return $$1;
    }
 }

@@ -1,21 +1,222 @@
-public class ffu extends fel<ckb> {
-   private static final ahh x = new ahh("textures/gui/container/shulker_box.png");
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public ffu(ckb $$0, cfp $$1, vg $$2) {
-      super($$0, $$1, $$2);
-      this.k++;
+public class ffu extends ffe implements fps.a {
+   private static final aiy p = new aiy("textures/gui/advancements/window.png");
+   public static final int a = 252;
+   public static final int b = 140;
+   private static final int q = 9;
+   private static final int r = 18;
+   public static final int c = 234;
+   public static final int k = 113;
+   private static final int t = 8;
+   private static final int u = 6;
+   public static final int l = 16;
+   public static final int m = 16;
+   public static final int n = 14;
+   public static final int o = 7;
+   private static final double v = 16.0;
+   private static final vq w = vq.c("advancements.sad_label");
+   private static final vq x = vq.c("advancements.empty");
+   private static final vq y = vq.c("gui.advancements");
+   private final fps z;
+   private final Map<af, ffq> A = Maps.newLinkedHashMap();
+   @Nullable
+   private ffq B;
+   private boolean C;
+
+   public ffu(fps $$0) {
+      super(ewz.a);
+      this.z = $$0;
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   protected void aQ_() {
+      this.A.clear();
+      this.B = null;
+      this.z.a(this);
+      if (this.B == null && !this.A.isEmpty()) {
+         ffq $$0 = this.A.values().iterator().next();
+         this.z.a($$0.c().b(), true);
+      } else {
+         this.z.a(this.B == null ? null : this.B.c().b(), true);
+      }
    }
 
    @Override
-   protected void a(exe $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   public void k() {
+      this.z.a(null);
+      fpy $$0 = this.f.J();
+      if ($$0 != null) {
+         $$0.b(aga.b());
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         int $$3 = (this.g - 252) / 2;
+         int $$4 = (this.h - 140) / 2;
+
+         for (ffq $$5 : this.A.values()) {
+            if ($$5.a($$3, $$4, $$0, $$1)) {
+               this.z.a($$5.c().b(), true);
+               break;
+            }
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.f.m.T.a($$0, $$1)) {
+         this.f.a(null);
+         this.f.n.i();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      int $$4 = (this.g - 252) / 2;
+      int $$5 = (this.h - 140) / 2;
+      this.b($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2, $$4, $$5);
+      this.a($$0, $$4, $$5);
+      this.b($$0, $$1, $$2, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if ($$2 != 0) {
+         this.C = false;
+         return false;
+      } else {
+         if (!this.C) {
+            this.C = true;
+         } else if (this.B != null) {
+            this.B.a($$3, $$4);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.B != null) {
+         this.B.a($$2 * 16.0, $$3 * 16.0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(eyu $$0, int $$1, int $$2, int $$3, int $$4) {
+      ffq $$5 = this.B;
+      if ($$5 == null) {
+         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
+         int $$6 = $$3 + 9 + 117;
+         $$0.a(this.i, x, $$6, $$4 + 18 + 56 - 9 / 2, -1);
+         $$0.a(this.i, w, $$6, $$4 + 18 + 113 - 9, -1);
+      } else {
+         $$5.b($$0, $$3 + 9, $$4 + 18);
+      }
+   }
+
+   public void a(eyu $$0, int $$1, int $$2) {
+      RenderSystem.enableBlend();
+      $$0.a(p, $$1, $$2, 0, 0, 252, 140);
+      if (this.A.size() > 1) {
+         for (ffq $$3 : this.A.values()) {
+            $$3.a($$0, $$1, $$2, $$3 == this.B);
+         }
+
+         for (ffq $$4 : this.A.values()) {
+            $$4.a($$0, $$1, $$2);
+         }
+      }
+
+      $$0.a(this.i, y, $$1 + 8, $$2 + 6, 4210752, false);
+   }
+
+   private void b(eyu $$0, int $$1, int $$2, int $$3, int $$4) {
+      if (this.B != null) {
+         $$0.c().a();
+         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
+         RenderSystem.enableDepthTest();
+         this.B.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
+         RenderSystem.disableDepthTest();
+         $$0.c().b();
+      }
+
+      if (this.A.size() > 1) {
+         for (ffq $$5 : this.A.values()) {
+            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
+               $$0.a(this.i, $$5.d(), $$1, $$2);
+            }
+         }
+      }
+   }
+
+   @Override
+   public void a(ag $$0) {
+      ffq $$1 = ffq.a(this.f, this, this.A.size(), $$0);
+      if ($$1 != null) {
+         this.A.put($$0.b(), $$1);
+      }
+   }
+
+   @Override
+   public void b(ag $$0) {
+   }
+
+   @Override
+   public void c(ag $$0) {
+      ffq $$1 = this.f($$0);
+      if ($$1 != null) {
+         $$1.a($$0);
+      }
+   }
+
+   @Override
+   public void d(ag $$0) {
+   }
+
+   @Override
+   public void a(ag $$0, ah $$1) {
+      ffs $$2 = this.e($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
+   }
+
+   @Override
+   public void a(@Nullable af $$0) {
+      this.B = this.A.get($$0);
+   }
+
+   @Override
+   public void a() {
+      this.A.clear();
+      this.B = null;
+   }
+
+   @Nullable
+   public ffs e(ag $$0) {
+      ffq $$1 = this.f($$0);
+      return $$1 == null ? null : $$1.a($$0.b());
+   }
+
+   @Nullable
+   private ffq f(ag $$0) {
+      ag $$1 = $$0.d();
+      return this.A.get($$1.b());
    }
 }

@@ -1,46 +1,17 @@
-public class egh {
-   private final hx a;
-   private final int b;
-   private final int c;
+public interface egh {
+   void a(hz var1);
 
-   public egh(hx $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   boolean L_();
+
+   int a();
+
+   default void a(hz $$0, boolean $$1) {
+      this.a(jb.a($$0), $$1);
    }
 
-   public static egh a(so $$0) {
-      hx $$1 = td.b($$0.p("Pos"));
-      int $$2 = $$0.h("Rotation");
-      int $$3 = $$0.h("EntityId");
-      return new egh($$1, $$2, $$3);
-   }
+   void a(jb var1, boolean var2);
 
-   public so a() {
-      so $$0 = new so();
-      $$0.a("Pos", td.a(this.a));
-      $$0.a("Rotation", this.b);
-      $$0.a("EntityId", this.c);
-      return $$0;
-   }
+   void a(cuu var1, boolean var2);
 
-   public hx b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(hx $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
-   }
+   void b(cuu var1);
 }

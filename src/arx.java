@@ -1,153 +1,70 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public final class arx {
-   private static final Map<cjx, Pair<String, String>> a = ImmutableMap.of(
-      cjx.a,
-      Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cjx.b,
-      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cjx.c,
-      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cjx.d,
-      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
-   );
-   private final Map<cjx, arx.a> b;
+public class arx implements asa, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private arq b;
+   private final List<aru> c = Lists.newArrayList();
+   private final aqp d;
 
-   private arx(Map<cjx, arx.a> $$0) {
-      this.b = $$0;
-   }
-
-   public arx() {
-      this(ac.a(Maps.newEnumMap(cjx.class), $$0 -> {
-         for (cjx $$1 : cjx.values()) {
-            $$0.put($$1, new arx.a(false, false));
-         }
-      }));
-   }
-
-   public boolean a(cjx $$0) {
-      return this.b.get($$0).a;
-   }
-
-   public void a(cjx $$0, boolean $$1) {
-      this.b.get($$0).a = $$1;
-   }
-
-   public boolean b(cjx $$0) {
-      return this.b.get($$0).b;
-   }
-
-   public void b(cjx $$0, boolean $$1) {
-      this.b.get($$0).b = $$1;
-   }
-
-   public static arx a(uj $$0) {
-      Map<cjx, arx.a> $$1 = Maps.newEnumMap(cjx.class);
-
-      for (cjx $$2 : cjx.values()) {
-         boolean $$3 = $$0.readBoolean();
-         boolean $$4 = $$0.readBoolean();
-         $$1.put($$2, new arx.a($$3, $$4));
-      }
-
-      return new arx($$1);
-   }
-
-   public void b(uj $$0) {
-      for (cjx $$1 : cjx.values()) {
-         arx.a $$2 = this.b.get($$1);
-         if ($$2 == null) {
-            $$0.a(false);
-            $$0.a(false);
-         } else {
-            $$0.a($$2.a);
-            $$0.a($$2.b);
-         }
-      }
-   }
-
-   public static arx a(so $$0) {
-      Map<cjx, arx.a> $$1 = Maps.newEnumMap(cjx.class);
-      a.forEach(($$2, $$3) -> {
-         boolean $$4 = $$0.q((String)$$3.getFirst());
-         boolean $$5 = $$0.q((String)$$3.getSecond());
-         $$1.put($$2, new arx.a($$4, $$5));
-      });
-      return new arx($$1);
-   }
-
-   public void b(so $$0) {
-      a.forEach(($$1, $$2) -> {
-         arx.a $$3 = this.b.get($$1);
-         $$0.a((String)$$2.getFirst(), $$3.a);
-         $$0.a((String)$$2.getSecond(), $$3.b);
-      });
-   }
-
-   public arx a() {
-      Map<cjx, arx.a> $$0 = Maps.newEnumMap(cjx.class);
-
-      for (cjx $$1 : cjx.values()) {
-         arx.a $$2 = this.b.get($$1);
-         $$0.put($$1, $$2.a());
-      }
-
-      return new arx($$0);
-   }
-
-   public void a(arx $$0) {
-      this.b.clear();
-
-      for (cjx $$1 : cjx.values()) {
-         arx.a $$2 = $$0.b.get($$1);
-         this.b.put($$1, $$2.a());
-      }
+   public arx(aqp $$0) {
+      this.d = $$0;
+      this.b = new art($$0, List.of());
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof arx && this.b.equals(((arx)$$0).b);
+   public void close() {
+      this.b.close();
+   }
+
+   public void a(aru $$0) {
+      this.c.add($$0);
+   }
+
+   public arw a(Executor $$0, Executor $$1, CompletableFuture<axk> $$2, List<aqo> $$3) {
+      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(aqo::a).collect(Collectors.joining(", "))));
+      this.b.close();
+      this.b = new art(this.d, $$3);
+      return asg.a(this.b, this.c, $$0, $$1, $$2, a.isDebugEnabled());
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public Optional<ary> getResource(aiy $$0) {
+      return this.b.getResource($$0);
    }
 
-   static final class a {
-      boolean a;
-      boolean b;
+   @Override
+   public Set<String> a() {
+      return this.b.a();
+   }
 
-      public a(boolean $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public List<ary> a(aiy $$0) {
+      return this.b.a($$0);
+   }
 
-      public arx.a a() {
-         return new arx.a(this.a, this.b);
-      }
+   @Override
+   public Map<aiy, ary> b(String $$0, Predicate<aiy> $$1) {
+      return this.b.b($$0, $$1);
+   }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return !($$0 instanceof arx.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
-         }
-      }
+   @Override
+   public Map<aiy, List<ary>> c(String $$0, Predicate<aiy> $$1) {
+      return this.b.c($$0, $$1);
+   }
 
-      @Override
-      public int hashCode() {
-         int $$0 = this.a ? 1 : 0;
-         return 31 * $$0 + (this.b ? 1 : 0);
-      }
-
-      @Override
-      public String toString() {
-         return "[open=" + this.a + ", filtering=" + this.b + "]";
-      }
+   @Override
+   public Stream<aqo> b() {
+      return this.b.b();
    }
 }

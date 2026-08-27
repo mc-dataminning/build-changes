@@ -1,171 +1,61 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map;
+import java.util.UUID;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class doy {
+public class doy<T extends dow> {
    private static final Logger a = LogUtils.getLogger();
-   static final Predicate<djp> b = $$0 -> !$$0.i();
-   static final Predicate<djp> c = djo.a::d;
-   private final atf d;
-   private final Predicate<djp> e;
-   private final dll f;
+   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
+   private final Map<UUID, T> c = Maps.newHashMap();
 
-   public doy(dll $$0, doy.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = aup.e($$0.K_() + 1);
-      this.d = new avf($$2, 256);
-   }
+   public <U extends T> void a(dpd<T, U> $$0, auu<U> $$1) {
+      ObjectIterator var3 = this.b.values().iterator();
 
-   public static void a(dll $$0, Set<doy.a> $$1) {
-      int $$2 = $$1.size();
-      ObjectList<doy> $$3 = new ObjectArrayList($$2);
-      ObjectListIterator<doy> $$4 = $$3.iterator();
-      int $$5 = $$0.b() + 16;
-      hx.a $$6 = new hx.a();
-
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            for (doy.a $$9 : $$1) {
-               $$3.add($$0.a($$9));
-            }
-
-            for (int $$10 = $$5 - 1; $$10 >= $$0.J_(); $$10--) {
-               $$6.d($$7, $$10, $$8);
-               djp $$11 = $$0.a_($$6);
-               if (!$$11.a(cxa.a)) {
-                  while ($$4.hasNext()) {
-                     doy $$12 = (doy)$$4.next();
-                     if ($$12.e.test($$11)) {
-                        $$12.a($$7, $$8, $$10 + 1);
-                        $$4.remove();
-                     }
-                  }
-
-                  if ($$3.isEmpty()) {
-                     break;
-                  }
-
-                  $$4.back($$2);
-               }
-            }
+      while (var3.hasNext()) {
+         T $$2 = (T)var3.next();
+         U $$3 = (U)$$0.a($$2);
+         if ($$3 != null && $$1.accept($$3).a()) {
+            return;
          }
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, djp $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
+   public Iterable<T> a() {
+      return Iterables.unmodifiableIterable(this.b.values());
+   }
+
+   public void a(T $$0) {
+      UUID $$1 = $$0.cw();
+      if (this.c.containsKey($$1)) {
+         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
       } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            hx.a $$5 = new hx.a();
-
-            for (int $$6 = $$1 - 1; $$6 >= this.f.J_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
-
-            this.a($$0, $$2, this.f.J_());
-            return true;
-         }
-
-         return false;
+         this.c.put($$1, $$0);
+         this.b.put($$0.aj(), $$0);
       }
    }
 
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
+   public void b(T $$0) {
+      this.c.remove($$0.cw());
+      this.b.remove($$0.aj());
    }
 
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
+   @Nullable
+   public T a(int $$0) {
+      return (T)this.b.get($$0);
    }
 
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.J_();
+   @Nullable
+   public T a(UUID $$0) {
+      return this.c.get($$0);
    }
 
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.J_());
-   }
-
-   public void a(dll $$0, doy.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements avl {
-      a("WORLD_SURFACE_WG", doy.b.a, doy.b),
-      b("WORLD_SURFACE", doy.b.c, doy.b),
-      c("OCEAN_FLOOR_WG", doy.b.a, doy.c),
-      d("OCEAN_FLOOR", doy.b.b, doy.c),
-      e("MOTION_BLOCKING", doy.b.c, $$0 -> $$0.d() || !$$0.u().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", doy.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof dbh));
-
-      public static final Codec<doy.a> g = avl.a(doy.a::values);
-      private final String h;
-      private final doy.b i;
-      private final Predicate<djp> j;
-
-      private a(String $$0, doy.b $$1, Predicate<djp> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public String a() {
-         return this.h;
-      }
-
-      public boolean b() {
-         return this.i == doy.b.c;
-      }
-
-      public boolean d() {
-         return this.i != doy.b.a;
-      }
-
-      public Predicate<djp> e() {
-         return this.j;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c;
+   public int b() {
+      return this.c.size();
    }
 }

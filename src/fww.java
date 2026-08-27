@@ -1,74 +1,85 @@
-import org.joml.FrustumIntersection;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fww {
-   public static final int a = 4;
-   private final FrustumIntersection b = new FrustumIntersection();
-   private final Matrix4f c = new Matrix4f();
-   private Vector4f d;
-   private double e;
-   private double f;
-   private double g;
+public class fww implements gjf {
+   private final List<fwx> a;
 
-   public fww(Matrix4f $$0, Matrix4f $$1) {
-      this.a($$0, $$1);
+   public fww(List<fwx> $$0) {
+      this.a = $$0;
    }
 
-   public fww(fww $$0) {
-      this.b.set($$0.c);
-      this.c.set($$0.c);
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.d = $$0.d;
+   public List<fwx> a() {
+      return this.a;
    }
 
-   public fww a(int $$0) {
-      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
-      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
-      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
-      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
-      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
-
-      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
-         this.b
-               .intersectAab(
-                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
-               )
-            != -2;
-         this.g = this.g - (double)(this.d.z() * 4.0F)
-      ) {
-         this.e = this.e - (double)(this.d.x() * 4.0F);
-         this.f = this.f - (double)(this.d.y() * 4.0F);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fww $$1 ? this.a.equals($$1.a) : false;
       }
-
-      return this;
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 
-   private void a(Matrix4f $$0, Matrix4f $$1) {
-      $$1.mul($$0, this.c);
-      this.b.set(this.c);
-      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   @Override
+   public Collection<aiy> f() {
+      return this.a().stream().map(fwx::a).collect(Collectors.toSet());
    }
 
-   public boolean a(elx $$0) {
-      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   @Override
+   public void a(Function<aiy, gjf> $$0) {
+      this.a().stream().map(fwx::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
    }
 
-   private boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - this.e);
-      float $$7 = (float)($$1 - this.f);
-      float $$8 = (float)($$2 - this.g);
-      float $$9 = (float)($$3 - this.e);
-      float $$10 = (float)($$4 - this.f);
-      float $$11 = (float)($$5 - this.g);
-      return this.b.testAab($$6, $$7, $$8, $$9, $$10, $$11);
+   @Nullable
+   @Override
+   public giu a(giy $$0, Function<gix, ggu> $$1, gjc $$2, aiy $$3) {
+      if (this.a().isEmpty()) {
+         return null;
+      } else {
+         gjg.a $$4 = new gjg.a();
+
+         for (fwx $$5 : this.a()) {
+            giu $$6 = $$0.a($$5.a(), $$5);
+            $$4.a($$6, $$5.d());
+         }
+
+         return $$4.a();
+      }
+   }
+
+   public static class a implements JsonDeserializer<fww> {
+      public fww a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         List<fwx> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.size() == 0) {
+               throw new JsonParseException("Empty variant array");
+            }
+
+            for (JsonElement $$5 : $$4) {
+               $$3.add((fwx)$$2.deserialize($$5, fwx.class));
+            }
+         } else {
+            $$3.add((fwx)$$2.deserialize($$0, fwx.class));
+         }
+
+         return new fww($$3);
+      }
    }
 }

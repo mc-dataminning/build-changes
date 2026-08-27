@@ -1,166 +1,125 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fuw {
-   private final Map<String, fvd> a = Maps.newLinkedHashMap();
-   private fvi b;
-
-   public static fuw a(fuw.a $$0, Reader $$1) {
-      return auf.a($$0.a, $$1, fuw.class);
-   }
-
-   public static fuw a(fuw.a $$0, JsonElement $$1) {
-      return (fuw)$$0.a.fromJson($$1, fuw.class);
-   }
-
-   public fuw(Map<String, fvd> $$0, fvi $$1) {
-      this.b = $$1;
-      this.a.putAll($$0);
-   }
-
-   public fuw(List<fuw> $$0) {
-      fuw $$1 = null;
-
-      for (fuw $$2 : $$0) {
-         if ($$2.c()) {
-            this.a.clear();
-            $$1 = $$2;
-         }
-
-         this.a.putAll($$2.a);
+   private static final fuw a = new fuw("") {
+      @Override
+      public void a(exh $$0) {
       }
 
-      if ($$1 != null) {
-         this.b = $$1.b;
+      @Override
+      public void a(fuw.c $$0, String $$1, String $$2) {
       }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
+   @Nullable
+   private fuw.b e;
+
+   fuw(String $$0) {
+      this.d = exh.O().p.toPath().resolve($$0);
    }
 
-   @VisibleForTesting
-   public boolean a(String $$0) {
-      return this.a.get($$0) != null;
+   public static fuw a(@Nullable String $$0) {
+      return $$0 == null ? a : new fuw($$0);
    }
 
-   @VisibleForTesting
-   public fvd b(String $$0) {
-      fvd $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new fuw.c();
+   public void a(fuw.c $$0, String $$1, String $$2) {
+      this.e = new fuw.b($$0, $$1, $$2);
+   }
+
+   public void a(exh $$0) {
+      if ($$0.q != null && this.e != null) {
+         ac.g().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            fuw.a $$2 = new fuw.a(this.e, Instant.now(), $$0.q.j());
+            Codec.list(fuw.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
       } else {
-         return $$1;
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fuw $$1 && this.a.equals($$1.a)) {
-            return this.c() ? this.b.equals($$1.b) : !$$1.c();
-         }
+   static record a(fuw.b b, Instant c, cvk d) {
+      public static final Codec<fuw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fuw.b.a.forGetter(fuw.a::a), avp.m.fieldOf("lastPlayedTime").forGetter(fuw.a::b), cvk.f.fieldOf("gamemode").forGetter(fuw.a::c))
+               .apply($$0, fuw.a::new)
+      );
 
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
-   }
-
-   public Map<String, fvd> a() {
-      return this.a;
-   }
-
-   @VisibleForTesting
-   public Set<fvd> b() {
-      Set<fvd> $$0 = Sets.newHashSet(this.a.values());
-      if (this.c()) {
-         $$0.addAll(this.b.b());
-      }
-
-      return $$0;
-   }
-
-   public boolean c() {
-      return this.b != null;
-   }
-
-   public fvi d() {
-      return this.b;
-   }
-
-   public static final class a {
-      protected final Gson a = new GsonBuilder()
-         .registerTypeAdapter(fuw.class, new fuw.b())
-         .registerTypeAdapter(fve.class, new fve.a())
-         .registerTypeAdapter(fvd.class, new fvd.a())
-         .registerTypeAdapter(fvi.class, new fvi.a(this))
-         .registerTypeAdapter(fvk.class, new fvk.a())
-         .create();
-      private djq<cwy, djp> b;
-
-      public djq<cwy, djp> a() {
+      public fuw.b a() {
          return this.b;
       }
 
-      public void a(djq<cwy, djp> $$0) {
-         this.b = $$0;
+      public Instant b() {
+         return this.c;
+      }
+
+      public cvk c() {
+         return this.d;
       }
    }
 
-   public static class b implements JsonDeserializer<fuw> {
-      public fuw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, fvd> $$4 = this.a($$2, $$3);
-         fvi $$5 = this.b($$2, $$3);
-         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
-            return new fuw($$4, $$5);
-         } else {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
-         }
+   static record b(fuw.c b, String c, String d) {
+      public static final MapCodec<fuw.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  fuw.c.d.fieldOf("type").forGetter(fuw.b::a), avp.o.fieldOf("id").forGetter(fuw.b::b), Codec.STRING.fieldOf("name").forGetter(fuw.b::c)
+               )
+               .apply($$0, fuw.b::new)
+      );
+
+      public fuw.c a() {
+         return this.b;
       }
 
-      protected Map<String, fvd> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, fvd> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = auf.u($$1, "variants");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (fvd)$$0.deserialize($$4.getValue(), fvd.class));
-            }
-         }
-
-         return $$2;
+      public String b() {
+         return this.c;
       }
 
-      @Nullable
-      protected fvi b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
-         } else {
-            JsonArray $$2 = auf.v($$1, "multipart");
-            return (fvi)$$0.deserialize($$2, fvi.class);
-         }
+      public String c() {
+         return this.d;
       }
    }
 
-   protected class c extends RuntimeException {
+   public static enum c implements axc {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<fuw.c> d = axc.a(fuw.c::values);
+      private final String e;
+
+      private c(String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

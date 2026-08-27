@@ -1,22 +1,13 @@
-public enum eue {
-   a(0, dze.a),
-   b(1, dze.b),
-   c(2, dze.c),
-   d(3, dze.d);
+public class eue extends eud {
+   public static final int b = 5;
+   public final int c;
 
-   private final int e;
-   private final vg f;
-
-   private eue(int $$0, ahg<dzd> $$1) {
-      this.e = $$0;
-      this.f = vg.c($$1.a().f("generator"));
-   }
-
-   public vg a() {
-      return this.f;
-   }
-
-   public int b() {
-      return this.e;
+   public eue(int $$0, int $$1) {
+      super(ess.b.a($$1));
+      if ($$0 >= 0 && $$0 <= 120) {
+         this.c = $$0;
+      } else {
+         this.c = 5;
+      }
    }
 }

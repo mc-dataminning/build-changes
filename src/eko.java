@@ -1,50 +1,82 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 
-public record eko(Optional<Boolean> b, Optional<Boolean> c) implements eke {
+public class eko extends ekh {
+   private static final Codec<Pair<ij<dik>, cnn>> b = Codec.mapPair(kf.am.r().fieldOf("pattern"), cnn.q.fieldOf("color")).codec();
    public static final Codec<eko> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atx.a(Codec.BOOL, "raining").forGetter(eko::d), atx.a(Codec.BOOL, "thundering").forGetter(eko::e)).apply($$0, eko::new)
+      $$0 -> a($$0)
+            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
+            .apply($$0, eko::new)
    );
+   private final List<Pair<ij<dik>, cnn>> c;
+   private final boolean d;
+
+   eko(List<elu> $$0, List<Pair<ij<dik>, cnn>> $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+   }
 
    @Override
-   public ekf b() {
-      return ekg.p;
+   protected coz a(coz $$0, eiv $$1) {
+      sw $$2 = cms.a($$0);
+      if ($$2 == null) {
+         $$2 = new sw();
+      }
+
+      dik.a $$3 = new dik.a();
+      this.c.forEach($$3::a);
+      tc $$4 = $$3.a();
+      tc $$5;
+      if (this.d) {
+         $$5 = $$2.c("Patterns", 10).e();
+         $$5.addAll($$4);
+      } else {
+         $$5 = $$4;
+      }
+
+      $$2.a("Patterns", $$5);
+      cms.a($$0, div.t, $$2);
+      return $$0;
    }
 
-   public boolean a(ehf $$0) {
-      ane $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ab() ? false : !this.c.isPresent() || this.c.get() == $$1.aa();
+   @Override
+   public ekj b() {
+      return ekk.y;
    }
 
-   public static eko.a c() {
-      return new eko.a();
+   public static eko.a a(boolean $$0) {
+      return new eko.a($$0);
    }
 
-   public Optional<Boolean> d() {
-      return this.b;
-   }
+   public static class a extends ekh.a<eko.a> {
+      private final Builder<Pair<ij<dik>, cnn>> a = ImmutableList.builder();
+      private final boolean b;
 
-   public Optional<Boolean> e() {
-      return this.c;
-   }
+      a(boolean $$0) {
+         this.b = $$0;
+      }
 
-   public static class a implements eke.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public eko.a a(boolean $$0) {
-         this.a = Optional.of($$0);
+      protected eko.a a() {
          return this;
       }
 
-      public eko.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
+      @Override
+      public eki b() {
+         return new eko(this.g(), this.a.build(), this.b);
       }
 
-      public eko a() {
-         return new eko(this.a, this.b);
+      public eko.a a(aix<dik> $$0, cnn $$1) {
+         return this.a(kf.am.f($$0), $$1);
+      }
+
+      public eko.a a(ij<dik> $$0, cnn $$1) {
+         this.a.add(Pair.of($$0, $$1));
+         return this;
       }
    }
 }

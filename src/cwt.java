@@ -1,59 +1,70 @@
-import com.mojang.serialization.MapCodec;
+public abstract class cwt {
+   public static final aix<cwm> a = a("the_void");
+   public static final aix<cwm> b = a("plains");
+   public static final aix<cwm> c = a("sunflower_plains");
+   public static final aix<cwm> d = a("snowy_plains");
+   public static final aix<cwm> e = a("ice_spikes");
+   public static final aix<cwm> f = a("desert");
+   public static final aix<cwm> g = a("swamp");
+   public static final aix<cwm> h = a("mangrove_swamp");
+   public static final aix<cwm> i = a("forest");
+   public static final aix<cwm> j = a("flower_forest");
+   public static final aix<cwm> k = a("birch_forest");
+   public static final aix<cwm> l = a("dark_forest");
+   public static final aix<cwm> m = a("old_growth_birch_forest");
+   public static final aix<cwm> n = a("old_growth_pine_taiga");
+   public static final aix<cwm> o = a("old_growth_spruce_taiga");
+   public static final aix<cwm> p = a("taiga");
+   public static final aix<cwm> q = a("snowy_taiga");
+   public static final aix<cwm> r = a("savanna");
+   public static final aix<cwm> s = a("savanna_plateau");
+   public static final aix<cwm> t = a("windswept_hills");
+   public static final aix<cwm> u = a("windswept_gravelly_hills");
+   public static final aix<cwm> v = a("windswept_forest");
+   public static final aix<cwm> w = a("windswept_savanna");
+   public static final aix<cwm> x = a("jungle");
+   public static final aix<cwm> y = a("sparse_jungle");
+   public static final aix<cwm> z = a("bamboo_jungle");
+   public static final aix<cwm> A = a("badlands");
+   public static final aix<cwm> B = a("eroded_badlands");
+   public static final aix<cwm> C = a("wooded_badlands");
+   public static final aix<cwm> D = a("meadow");
+   public static final aix<cwm> E = a("cherry_grove");
+   public static final aix<cwm> F = a("grove");
+   public static final aix<cwm> G = a("snowy_slopes");
+   public static final aix<cwm> H = a("frozen_peaks");
+   public static final aix<cwm> I = a("jagged_peaks");
+   public static final aix<cwm> J = a("stony_peaks");
+   public static final aix<cwm> K = a("river");
+   public static final aix<cwm> L = a("frozen_river");
+   public static final aix<cwm> M = a("beach");
+   public static final aix<cwm> N = a("snowy_beach");
+   public static final aix<cwm> O = a("stony_shore");
+   public static final aix<cwm> P = a("warm_ocean");
+   public static final aix<cwm> Q = a("lukewarm_ocean");
+   public static final aix<cwm> R = a("deep_lukewarm_ocean");
+   public static final aix<cwm> S = a("ocean");
+   public static final aix<cwm> T = a("deep_ocean");
+   public static final aix<cwm> U = a("cold_ocean");
+   public static final aix<cwm> V = a("deep_cold_ocean");
+   public static final aix<cwm> W = a("frozen_ocean");
+   public static final aix<cwm> X = a("deep_frozen_ocean");
+   public static final aix<cwm> Y = a("mushroom_fields");
+   public static final aix<cwm> Z = a("dripstone_caves");
+   public static final aix<cwm> aa = a("lush_caves");
+   public static final aix<cwm> ab = a("deep_dark");
+   public static final aix<cwm> ac = a("nether_wastes");
+   public static final aix<cwm> ad = a("warped_forest");
+   public static final aix<cwm> ae = a("crimson_forest");
+   public static final aix<cwm> af = a("soul_sand_valley");
+   public static final aix<cwm> ag = a("basalt_deltas");
+   public static final aix<cwm> ah = a("the_end");
+   public static final aix<cwm> ai = a("end_highlands");
+   public static final aix<cwm> aj = a("end_midlands");
+   public static final aix<cwm> ak = a("small_end_islands");
+   public static final aix<cwm> al = a("end_barrens");
 
-public class cwt extends cyt {
-   public static final MapCodec<cwt> a = b(cwt::new);
-   public static final int b = 3;
-   public static final dkp c = dkf.as;
-   private static final emv[] g = new emv[]{
-      cwy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      cwy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      cwy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      cwy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
-
-   @Override
-   public MapCodec<cwt> a() {
-      return a;
-   }
-
-   public cwt(djo.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected dkp b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 3;
-   }
-
-   @Override
-   protected ctw d() {
-      return cnj.vh;
-   }
-
-   @Override
-   public void b(djp $$0, ane $$1, hx $$2, auw $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected int a(ctx $$0) {
-      return super.a($$0) / 3;
-   }
-
-   @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return g[this.g($$0)];
+   private static aix<cwm> a(String $$0) {
+      return aix.a(kg.at, new aiy($$0));
    }
 }

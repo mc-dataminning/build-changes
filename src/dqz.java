@@ -1,32 +1,95 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dqz implements cva {
+   private int a;
 
-public class dqz extends dqw {
-   public static final Codec<dqz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dqw.d.forGetter($$0x -> $$0x),
-               bjf.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bjf.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bjf.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, dqz::new)
-   );
-   public final bjf b;
-   public final bjf c;
-   final bjf j;
+   @Override
+   public int a(aov $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.Z().b(cvj.K)) {
+         return 0;
+      } else {
+         awo $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.Y() / 24000L;
+            if ($$4 < 5L || !$$0.P()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  chh $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.P_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dm(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     hz.a $$9 = $$6.dm().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        ij<cwm> $$11 = $$0.t($$9);
+                        if ($$11.a(aty.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-   public dqz(float $$0, dxv $$1, bjf $$2, dps $$3, dqx $$4, il<cwy> $$5, bjf $$6, bjf $$7, bjf $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(dqo.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
+
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
+
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public dqz(float $$0, dxv $$1, bjf $$2, dps $$3, il<cwy> $$4, bjf $$5, bjf $$6, bjf $$7) {
-      this($$0, $$1, $$2, $$3, dqx.a, $$4, $$5, $$6, $$7);
-   }
+   private boolean a(aov $$0, hz $$1, awo $$2, boolean $$3) {
+      dlf $$4 = $$0.a_($$1);
+      if (!cvy.a($$0, $$1, $$4, $$4.u(), bnu.aA)) {
+         return false;
+      } else if (!ceo.b(bnu.aA, $$0, bok.p, $$1, $$2)) {
+         return false;
+      } else {
+         ceo $$5 = bnu.aA.a((cvn)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.go();
+            }
 
-   public dqz(dqw $$0, bjf $$1, bjf $$2, bjf $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bok.p, null, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
+      }
    }
 }

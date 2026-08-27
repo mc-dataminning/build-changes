@@ -1,29 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bqw {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
-
-   public static bpq<bmx> a(bvq<ig> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return brs.a(
-         (Function<brs.b<bmx>, ? extends App<brs.c<bmx>, brv<bmx>>>)($$4 -> $$4.group($$4.a(bvq.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  ig $$9 = $$4.b($$5);
-                  if ($$6.ae() != $$9.a() || !$$9.b().a($$7.dj(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
-                     return true;
-                  } else {
-                     Optional<emc> $$10 = Optional.ofNullable(bxk.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new bvt($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+   public static brh<bog> a(int $$0, float $$1, int $$2) {
+      return btj.a(
+         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$3 -> $$3.group(
+                  $$3.c(bxh.m), $$3.a(bxh.b), $$3.a(bxh.C), $$3.a(bxh.t), $$3.a(bxh.n), $$3.a(bxh.r), $$3.a(bxh.q)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.y()
+                           .d($$0xxxx -> $$0xxxx.a(bzl.n), $$0xxxx -> true, $$12.dm(), $$2 + 1, bzh.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.dk(), (double)$$2))
+                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(bzl.n), $$0xxxxx -> true, bzh.b.c, $$12.dm(), $$0, $$12.eh()))
+                           .or(() -> $$3.<ii>a($$5).map(ii::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(ii.a($$11.ae(), $$10xx));
+                              if (!$$10xx.a($$12.dk(), (double)$$2)) {
+                                 $$4.a(new bxk($$10xx, $$1, $$2));
+                              }
+                           });
+                        return true;
+                     }
+               ))
       );
    }
 }

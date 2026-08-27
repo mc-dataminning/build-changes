@@ -1,40 +1,59 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
 
-public abstract class bjh {
-   private static final Codec<Either<Integer, bjh>> a = Codec.either(Codec.INT, kd.M.q().dispatch(bjh::c, bji::codec));
-   public static final Codec<bjh> c = a.xmap(
-      $$0 -> (bjh)$$0.map(bje::a, $$0x -> $$0x), $$0 -> $$0.c() == bji.a ? Either.left(((bje)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bjh> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bjh> e = b(1, Integer.MAX_VALUE);
-
-   public static Codec<bjh> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+public record bjh(Instant a, long b, bjh.b c) {
+   public static bjh a(RecordedEvent $$0) {
+      return new bjh($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? bjh.b.a : bjh.b.b);
    }
 
-   public static <T extends bjh> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return atx.a(
-         $$2,
-         (Function<T, DataResult<T>>)($$2x -> {
-            if ($$2x.a() < $$0) {
-               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b() > $$1
-                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
-            }
-         })
-      );
+   public static bjh.a a(Duration $$0, List<bjh> $$1, Duration $$2, int $$3) {
+      return new bjh.a($$0, $$2, $$3, a($$1));
    }
 
-   public abstract int a(auw var1);
+   private static double a(List<bjh> $$0) {
+      long $$1 = 0L;
+      Map<bjh.b, List<bjh>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
+      List<bjh> $$3 = $$2.get(bjh.b.a);
+      List<bjh> $$4 = $$2.get(bjh.b.b);
 
-   public abstract int a();
+      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
+         bjh $$6 = $$3.get($$5);
+         bjh $$7 = $$4.get($$5 - 1);
+         $$1 += $$6.b - $$7.b;
+      }
 
-   public abstract int b();
+      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
+      return (double)$$1 / (double)$$8.getSeconds();
+   }
 
-   public abstract bji<?> c();
+   public static record a(Duration a, Duration b, int c, double d) {
+      public float a() {
+         return (float)this.b.toMillis() / (float)this.a.toMillis();
+      }
+
+      public Duration b() {
+         return this.a;
+      }
+
+      public Duration c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public double e() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a,
+      b;
+   }
 }

@@ -1,36 +1,57 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class bcm extends DataFix {
-   public bcm(Schema $$0) {
-      super($$0, false);
+   public bcm(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.J);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "StructureSettingsFlatten", $$0, $$1x -> $$1x.updateTyped($$1, $$1xx -> ac.a($$1xx, $$1.type(), $$0xxx -> $$0xxx.updateMapValues(bcm::a)))
-      );
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      if (!"MobSpawner".equals($$0.get("id").asString(""))) {
+         return $$0;
+      } else {
+         Optional<String> $$1 = $$0.get("EntityId").asString().result();
+         if ($$1.isPresent()) {
+            Dynamic<?> $$2 = (Dynamic<?>)DataFixUtils.orElse($$0.get("SpawnData").result(), $$0.emptyMap());
+            $$2 = $$2.set("id", $$2.createString($$1.get().isEmpty() ? "Pig" : $$1.get()));
+            $$0 = $$0.set("SpawnData", $$2);
+            $$0 = $$0.remove("EntityId");
+         }
+
+         Optional<? extends Stream<? extends Dynamic<?>>> $$3 = $$0.get("SpawnPotentials").asStreamOpt().result();
+         if ($$3.isPresent()) {
+            $$0 = $$0.set("SpawnPotentials", $$0.createList($$3.get().map($$0x -> {
+               Optional<String> $$1x = $$0x.get("Type").asString().result();
+               if ($$1x.isPresent()) {
+                  Dynamic<?> $$2 = ((Dynamic)DataFixUtils.orElse($$0x.get("Properties").result(), $$0x.emptyMap())).set("id", $$0x.createString($$1x.get()));
+                  return $$0x.set("Entity", $$2).remove("Type").remove("Properties");
+               } else {
+                  return $$0x;
+               }
+            })));
+         }
+
+         return $$0;
+      }
    }
 
-   private static Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.getSecond();
-      return Pair.of((Dynamic)$$0.getFirst(), $$1.update("generator", $$0x -> $$0x.update("settings", $$0xx -> $$0xx.update("structures", bcm::a))));
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = $$0.get("structures")
-         .orElseEmptyMap()
-         .updateMapValues($$1x -> $$1x.mapSecond($$1xx -> $$1xx.set("type", $$0.createString("minecraft:random_spread"))));
-      return (Dynamic<?>)DataFixUtils.orElse(
-         $$0.get("stronghold").result().map($$2 -> $$1.set("minecraft:stronghold", $$2.set("type", $$0.createString("minecraft:concentric_rings")))), $$1
-      );
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bdn.C);
+      return this.fixTypeEverywhereTyped("MobSpawnerEntityIdentifiersFix", this.getInputSchema().getType(bdn.C), $$0, $$1 -> {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
+         $$2 = $$2.set("id", $$2.createString("MobSpawner"));
+         DataResult<? extends Pair<? extends Typed<?>, ?>> $$3 = $$0.readTyped(this.a($$2));
+         return $$3.result().isEmpty() ? $$1 : (Typed)((Pair)$$3.result().get()).getFirst();
+      });
    }
 }

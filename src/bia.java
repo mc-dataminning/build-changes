@@ -1,5 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bia {
-   List<bhx> bp();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bia {
 }

@@ -1,264 +1,222 @@
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class cag extends cae implements bnm<can> {
-   private static final UUID bU = UUID.fromString("556E1665-8B10-40C8-8F9D-CF9B1667F295");
-   private static final agn<Integer> bV = agq.a(cag.class, agp.b);
-   private static final blz bX = bmc.aa.n().a(bly.a().a(blx.a, 0.0F, bmc.aa.l() + 0.125F, 0.0F)).a(0.5F);
+public class cag extends caa implements bow, bpd<cag.a> {
+   private static final aie<String> bT = aih.a(cag.class, aig.e);
+   private static final int bU = 1024;
+   private static final String bW = "stew_effects";
+   @Nullable
+   private List<dgp.a> bX;
+   @Nullable
+   private UUID bY;
 
-   public cag(bmc<? extends cag> $$0, ctx $$1) {
+   public cag(bnu<? extends cag> $$0, cvn $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(auw $$0) {
-      this.f(bnu.n).a((double)a($$0::a));
-      this.f(bnu.o).a(b($$0::j));
-      this.f(bnu.j).a(a($$0::j));
+   public float a(hz $$0, cvq $$1) {
+      return $$1.a_($$0.d()).a(cyq.fl) ? 10.0F : $$1.w($$0);
+   }
+
+   public static boolean c(bnu<cag> $$0, cvo $$1, bok $$2, hz $$3, awo $$4) {
+      return $$1.a_($$3.d()).a(atz.bT) && a($$1, $$3);
+   }
+
+   @Override
+   public void a(aov $$0, bof $$1) {
+      UUID $$2 = $$1.cw();
+      if (!$$2.equals(this.bY)) {
+         this.a(this.w() == cag.a.a ? cag.a.b : cag.a.a);
+         this.bY = $$2;
+         this.a(atk.om, 2.0F, 1.0F);
+      }
    }
 
    @Override
    protected void c_() {
       super.c_();
-      this.an.a(bV, 0);
+      this.am.a(bT, cag.a.a.d);
    }
 
    @Override
-   public void b(so $$0) {
+   public blu b(chh $$0, blt $$1) {
+      coz $$2 = $$0.b($$1);
+      if ($$2.a(cpc.pp) && !this.o_()) {
+         boolean $$3 = false;
+         coz $$4;
+         if (this.bX != null) {
+            $$3 = true;
+            $$4 = new coz(cpc.vQ);
+            cqj.a($$4, this.bX);
+            this.bX = null;
+         } else {
+            $$4 = new coz(cpc.pq);
+         }
+
+         coz $$6 = cpb.a($$2, $$0, $$4, false);
+         $$0.a($$1, $$6);
+         atj $$7;
+         if ($$3) {
+            $$7 = atk.op;
+         } else {
+            $$7 = atk.oo;
+         }
+
+         this.a($$7, 1.0F, 1.0F);
+         return blu.a(this.dM().B);
+      } else if ($$2.a(cpc.rU) && this.a()) {
+         this.a(atl.h);
+         this.a(dpp.M, $$0);
+         if (!this.dM().B) {
+            $$2.a(1, $$0, d($$1));
+         }
+
+         return blu.a(this.dM().B);
+      } else if (this.w() == cag.a.b && $$2.a(auh.O)) {
+         if (this.bX != null) {
+            for (int $$9 = 0; $$9 < 2; $$9++) {
+               this.dM().a(jz.ab, this.dr() + this.af.j() / 2.0, this.e(0.5), this.dx() + this.af.j() / 2.0, 0.0, this.af.j() / 5.0, 0.0);
+            }
+         } else {
+            Optional<List<dgp.a>> $$10 = this.l($$2);
+            if ($$10.isEmpty()) {
+               return blu.d;
+            }
+
+            if (!$$0.fU().d) {
+               $$2.h(1);
+            }
+
+            for (int $$11 = 0; $$11 < 4; $$11++) {
+               this.dM().a(jz.q, this.dr() + this.af.j() / 2.0, this.e(0.5), this.dx() + this.af.j() / 2.0, 0.0, this.af.j() / 5.0, 0.0);
+            }
+
+            this.bX = $$10.get();
+            this.a(atk.on, 2.0F, 1.0F);
+         }
+
+         return blu.a(this.dM().B);
+      } else {
+         return super.b($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(atl $$0) {
+      this.dM().a(null, this, atk.oq, $$0, 1.0F, 1.0F);
+      if (!this.dM().y_()) {
+         caa $$1 = bnu.v.a(this.dM());
+         if ($$1 != null) {
+            ((aov)this.dM()).a(jz.x, this.dr(), this.e(0.5), this.dx(), 1, 0.0, 0.0, 0.0, 0.0);
+            this.am();
+            $$1.b(this.dr(), this.dt(), this.dx(), this.dC(), this.dE());
+            $$1.t(this.ew());
+            $$1.aU = this.aU;
+            if (this.ae()) {
+               $$1.b(this.af());
+               $$1.n(this.cB());
+            }
+
+            if (this.fN()) {
+               $$1.fL();
+            }
+
+            $$1.m(this.cr());
+            this.dM().b($$1);
+
+            for (int $$2 = 0; $$2 < 5; $$2++) {
+               this.dM().b(new cds(this.dM(), this.dr(), this.e(1.0), this.dx(), new coz(this.w().e.b())));
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean a() {
+      return this.bx() && !this.o_();
+   }
+
+   @Override
+   public void b(sw $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gn());
-      if (!this.cq.a(1).b()) {
-         $$0.a("ArmorItem", this.cq.a(1).b(new so()));
+      $$0.a("Type", this.w().c());
+      if (this.bX != null) {
+         dgp.a.b.encodeStart(tk.a, this.bX).result().ifPresent($$1 -> $$0.a("stew_effects", $$1));
       }
    }
 
-   public cng u() {
-      return this.c(bmd.e);
-   }
-
-   private void n(cng $$0) {
-      this.a(bmd.e, $$0);
-      this.a(bmd.e, 0.0F);
-   }
-
    @Override
-   public void a(so $$0) {
+   public void a(sw $$0) {
       super.a($$0);
-      this.w($$0.h("Variant"));
-      if ($$0.b("ArmorItem", 10)) {
-         cng $$1 = cng.a($$0.p("ArmorItem"));
-         if (!$$1.b() && this.l($$1)) {
-            this.cq.a(1, $$1);
-         }
-      }
-
-      this.gC();
-   }
-
-   private void w(int $$0) {
-      this.an.b(bV, $$0);
-   }
-
-   private int gn() {
-      return this.an.b(bV);
-   }
-
-   private void a(can $$0, cai $$1) {
-      this.w($$0.a() & 0xFF | $$1.a() << 8 & 0xFF00);
-   }
-
-   public can w() {
-      return can.a(this.gn() & 0xFF);
-   }
-
-   public void a(can $$0) {
-      this.w($$0.a() & 0xFF | this.gn() & -256);
-   }
-
-   public cai gf() {
-      return cai.a((this.gn() & 0xFF00) >> 8);
-   }
-
-   @Override
-   protected void gC() {
-      if (!this.dL().B) {
-         super.gC();
-         this.o(this.cq.a(1));
-         this.a(bmd.e, 0.0F);
+      this.a(cag.a.a($$0.l("Type")));
+      if ($$0.b("stew_effects", 9)) {
+         dgp.a.b.parse(tk.a, $$0.c("stew_effects")).result().ifPresent($$0x -> this.bX = $$0x);
       }
    }
 
-   private void o(cng $$0) {
-      this.n($$0);
-      if (!this.dL().B) {
-         this.f(bnu.a).b(bU);
-         if (this.l($$0)) {
-            int $$1 = ((ckq)$$0.d()).c();
-            if ($$1 != 0) {
-               this.f(bnu.a).c(new bns(bU, "Horse armor bonus", (double)$$1, bns.a.a));
-            }
-         }
-      }
+   private Optional<List<dgp.a>> l(coz $$0) {
+      dgp $$1 = dgp.a($$0.d());
+      return $$1 != null ? Optional.of($$1.b()) : Optional.empty();
    }
 
-   @Override
-   public void a(bjv $$0) {
-      cng $$1 = this.u();
-      super.a($$0);
-      cng $$2 = this.u();
-      if (this.ah > 20 && this.l($$2) && $$1 != $$2) {
-         this.a(art.mj, 0.5F, 1.0F);
-      }
+   public void a(cag.a $$0) {
+      this.am.b(bT, $$0.d);
    }
 
-   @Override
-   protected void a(dek $$0) {
-      super.a($$0);
-      if (this.ag.a(10) == 0) {
-         this.a(art.mk, $$0.a() * 0.6F, $$0.b());
-      }
-   }
-
-   @Override
-   protected ars y() {
-      return art.mh;
-   }
-
-   @Override
-   protected ars n_() {
-      return art.ml;
+   public cag.a w() {
+      return cag.a.a(this.am.b(bT));
    }
 
    @Nullable
-   @Override
-   protected ars gm() {
-      return art.mm;
+   public cag c(aov $$0, bnj $$1) {
+      cag $$2 = bnu.aq.a((cvn)$$0);
+      if ($$2 != null) {
+         $$2.a(this.a((cag)$$1));
+      }
+
+      return $$2;
    }
 
-   @Override
-   protected ars d(bkv $$0) {
-      return art.mo;
-   }
-
-   @Override
-   protected ars gE() {
-      return art.mi;
-   }
-
-   @Override
-   public bkc b(cfq $$0, bkb $$1) {
-      boolean $$2 = !this.o_() && this.gu() && $$0.fI();
-      if (!this.bP() && !$$2) {
-         cng $$3 = $$0.b($$1);
-         if (!$$3.b()) {
-            if (this.m($$3)) {
-               return this.c($$0, $$3);
-            }
-
-            if (!this.gu()) {
-               this.gL();
-               return bkc.a(this.dL().B);
-            }
-         }
-
-         return super.b($$0, $$1);
+   private cag.a a(cag $$0) {
+      cag.a $$1 = this.w();
+      cag.a $$2 = $$0.w();
+      cag.a $$3;
+      if ($$1 == $$2 && this.af.a(1024) == 0) {
+         $$3 = $$1 == cag.a.b ? cag.a.a : cag.a.b;
       } else {
-         return super.b($$0, $$1);
-      }
-   }
-
-   @Override
-   public boolean a(byc $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof caf) && !($$0 instanceof cag) ? false : this.gN() && ((cae)$$0).gN();
-      }
-   }
-
-   @Nullable
-   @Override
-   public blr a(ane $$0, blr $$1) {
-      if ($$1 instanceof caf) {
-         caj $$2 = bmc.ar.a((ctx)$$0);
-         if ($$2 != null) {
-            this.a($$1, $$2);
-         }
-
-         return $$2;
-      } else {
-         cag $$3 = (cag)$$1;
-         cag $$4 = bmc.aa.a((ctx)$$0);
-         if ($$4 != null) {
-            int $$5 = this.ag.a(9);
-            can $$6;
-            if ($$5 < 4) {
-               $$6 = this.w();
-            } else if ($$5 < 8) {
-               $$6 = $$3.w();
-            } else {
-               $$6 = ac.a(can.values(), this.ag);
-            }
-
-            int $$9 = this.ag.a(5);
-            cai $$10;
-            if ($$9 < 2) {
-               $$10 = this.gf();
-            } else if ($$9 < 4) {
-               $$10 = $$3.gf();
-            } else {
-               $$10 = ac.a(cai.values(), this.ag);
-            }
-
-            $$4.a($$6, $$10);
-            this.a($$1, $$4);
-         }
-
-         return $$4;
-      }
-   }
-
-   @Override
-   public boolean gO() {
-      return true;
-   }
-
-   @Override
-   public boolean l(cng $$0) {
-      if ($$0.d() instanceof ckq $$1 && $$1.d() == ckq.a.a) {
-         return true;
+         $$3 = this.af.h() ? $$1 : $$2;
       }
 
-      return false;
+      return $$3;
    }
 
-   @Nullable
-   @Override
-   public bnh a(cum $$0, bka $$1, bms $$2, @Nullable bnh $$3, @Nullable so $$4) {
-      auw $$5 = $$0.F_();
-      can $$6;
-      if ($$3 instanceof cag.a) {
-         $$6 = ((cag.a)$$3).a;
-      } else {
-         $$6 = ac.a(can.values(), $$5);
-         $$3 = new cag.a($$6);
+   public static enum a implements axc {
+      a("red", cyq.cg.o()),
+      b("brown", cyq.cf.o());
+
+      public static final axc.a<cag.a> c = axc.a(cag.a::values);
+      final String d;
+      final dlf e;
+
+      private a(String $$0, dlf $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      this.a($$6, ac.a(cai.values(), $$5));
-      return super.a($$0, $$1, $$2, $$3, $$4);
-   }
+      public dlf a() {
+         return this.e;
+      }
 
-   @Override
-   public blz e(bna $$0) {
-      return this.o_() ? bX : super.e($$0);
-   }
+      @Override
+      public String c() {
+         return this.d;
+      }
 
-   public static class a extends blr.a {
-      public final can a;
-
-      public a(can $$0) {
-         super(true);
-         this.a = $$0;
+      static cag.a a(String $$0) {
+         return c.a($$0, a);
       }
    }
 }

@@ -1,127 +1,82 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
 
-public class ama extends aqw {
-   private static final Logger a = LogUtils.getLogger();
+public class ama {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.recipe.take.failed"));
 
-   public ama(amb $$0, io<ahq> $$1, egy $$2) {
-      super($$0, $$1, $$2, $$0.a().H);
-      amc $$3 = $$0.a();
-      this.a($$3.F);
-      this.b($$3.G);
-      super.a($$3.V.get());
-      this.z();
-      this.x();
-      this.y();
-      this.w();
-      this.A();
-      this.C();
-      this.B();
-      if (!this.i().b().exists()) {
-         this.D();
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dv.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)dv.a("targets", eh.d())
+                              .then(
+                                 dv.a("recipe", ev.a())
+                                    .suggests(hp.b)
+                                    .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), Collections.singleton(ev.b($$0x, "recipe"))))
+                              ))
+                           .then(dv.a("*").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), ((du)$$0x.getSource()).l().aG().b())))
+                     )
+               ))
+            .then(
+               dv.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("targets", eh.d())
+                           .then(
+                              dv.a("recipe", ev.a())
+                                 .suggests(hp.b)
+                                 .executes($$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), Collections.singleton(ev.b($$0x, "recipe"))))
+                           ))
+                        .then(dv.a("*").executes($$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), ((du)$$0x.getSource()).l().aG().b())))
+                  )
+            )
+      );
+   }
+
+   private static int a(du $$0, Collection<aow> $$1, Collection<csd<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (aow $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> vq.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> vq.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.b().i($$0);
-   }
+   private static int b(du $$0, Collection<aow> $$1, Collection<csd<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-   @Override
-   public void a(GameProfile $$0) {
-      super.a($$0);
-      this.B();
-   }
-
-   @Override
-   public void b(GameProfile $$0) {
-      super.b($$0);
-      this.B();
-   }
-
-   @Override
-   public void a() {
-      this.C();
-   }
-
-   private void w() {
-      try {
-         this.g().e();
-      } catch (IOException var2) {
-         a.warn("Failed to save ip banlist: ", var2);
+      for (aow $$4 : $$1) {
+         $$3 += $$4.b($$2);
       }
-   }
 
-   private void x() {
-      try {
-         this.f().e();
-      } catch (IOException var2) {
-         a.warn("Failed to save user banlist: ", var2);
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> vq.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> vq.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
       }
-   }
-
-   private void y() {
-      try {
-         this.g().f();
-      } catch (IOException var2) {
-         a.warn("Failed to load ip banlist: ", var2);
-      }
-   }
-
-   private void z() {
-      try {
-         this.f().f();
-      } catch (IOException var2) {
-         a.warn("Failed to load user banlist: ", var2);
-      }
-   }
-
-   private void A() {
-      try {
-         this.k().f();
-      } catch (Exception var2) {
-         a.warn("Failed to load operators list: ", var2);
-      }
-   }
-
-   private void B() {
-      try {
-         this.k().e();
-      } catch (Exception var2) {
-         a.warn("Failed to save operators list: ", var2);
-      }
-   }
-
-   private void C() {
-      try {
-         this.i().f();
-      } catch (Exception var2) {
-         a.warn("Failed to load white-list: ", var2);
-      }
-   }
-
-   private void D() {
-      try {
-         this.i().e();
-      } catch (Exception var2) {
-         a.warn("Failed to save white-list: ", var2);
-      }
-   }
-
-   @Override
-   public boolean c(GameProfile $$0) {
-      return !this.o() || this.f($$0) || this.i().a($$0);
-   }
-
-   public amb b() {
-      return (amb)super.c();
-   }
-
-   @Override
-   public boolean d(GameProfile $$0) {
-      return this.k().a($$0);
    }
 }

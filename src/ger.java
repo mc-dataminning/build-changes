@@ -1,50 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import javax.annotation.Nullable;
+public class ger extends gfe<cad, fmd<cad>> {
+   private final fvi a;
 
-public final class ger {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final ahh d = new ahh("missingno");
-   private static final aql e = new aql.a().a(ggl.a, new ggl(ImmutableList.of(new ggk(0, -1)), 16, 16, 1, false)).a();
-   @Nullable
-   private static geo f;
+   public ger(gco<cad, fmd<cad>> $$0, fvi $$1) {
+      super($$0);
+      this.a = $$1;
+   }
 
-   private static epl a(int $$0, int $$1) {
-      epl $$2 = new epl($$0, $$1, false);
-      int $$3 = -16777216;
-      int $$4 = -524040;
+   public void a(esa $$0, fvm $$1, int $$2, cad $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fD();
+      boolean $$11 = $$3.o_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
+      }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         for (int $$6 = 0; $$6 < $$0; $$6++) {
-            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
-               $$2.a($$6, $$5, -524040);
-            } else {
-               $$2.a($$6, $$5, -16777216);
-            }
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.E($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.o_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
          }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
       }
 
-      return $$2;
-   }
-
-   public static gev a() {
-      epl $$0 = a(16, 16);
-      return new gev(d, new ggn(16, 16), $$0, e);
-   }
-
-   public static ahh b() {
-      return d;
-   }
-
-   public static geo c() {
-      if (f == null) {
-         epl $$0 = a(16, 16);
-         $$0.i();
-         f = new geo($$0);
-         evr.O().Y().a(d, f);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
       }
 
-      return f;
+      coz $$14 = $$3.c(bnv.a);
+      this.a.a($$3, $$14, cow.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

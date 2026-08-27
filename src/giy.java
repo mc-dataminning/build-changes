@@ -1,10 +1,8 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public interface giy<T> extends gjb<T> {
-   static <T> giy<T> b() {
-      return $$0 -> List.of();
-   }
+public interface giy {
+   gjf a(aiy var1);
 
-   default void a() {
-   }
+   @Nullable
+   giu a(aiy var1, gjc var2);
 }

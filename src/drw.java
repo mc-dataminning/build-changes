@@ -1,47 +1,22 @@
 import com.mojang.serialization.Codec;
 
-public class drw extends dsc<dud> {
-   public drw(Codec<dud> $$0) {
-      super($$0);
-   }
+public interface drw<P extends drv> {
+   drw<dsb> a = a("matching_blocks", dsb.a);
+   drw<dsa> b = a("matching_block_tag", dsa.e);
+   drw<dsc> c = a("matching_fluids", dsc.a);
+   drw<dry> d = a("has_sturdy_face", dry.a);
+   drw<dsf> e = a("solid", dsf.a);
+   drw<dse> f = a("replaceable", dse.a);
+   drw<dsi> g = a("would_survive", dsi.a);
+   drw<drz> h = a("inside_world_bounds", drz.a);
+   drw<dru> i = a("any_of", dru.a);
+   drw<drt> j = a("all_of", drt.a);
+   drw<dsd> k = a("not", dsd.a);
+   drw<dsh> l = a("true", dsh.e);
 
-   @Override
-   public boolean a(dse<dud> $$0) {
-      dud $$1 = $$0.f();
-      hx $$2 = $$0.e();
-      cus $$3 = $$0.b();
-      auw $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      hx.a $$10 = new hx.a();
+   Codec<P> codec();
 
-      for (hx $$11 : hx.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
-   }
-
-   protected boolean a(dud $$0, cus $$1, auw $$2, int $$3, int $$4, hx.a $$5) {
-      boolean $$6 = false;
-
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            djp $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
-         }
-      }
-
-      return $$6;
+   private static <P extends drv> drw<P> a(String $$0, Codec<P> $$1) {
+      return iv.a(kf.O, $$0, () -> $$1);
    }
 }

@@ -1,136 +1,237 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.logging.LogUtils;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Deque;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class akl {
-   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.clone.overlap"));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("commands.clone.toobig", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vq.c("commands.clone.failed"));
+   public static final Predicate<dlj> a = $$0 -> !$$0.a().i();
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("resetchunks").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ds)$$0x.getSource(), 0, true)))
-            .then(
-               ((RequiredArgumentBuilder)dt.a("range", IntegerArgumentType.integer(0, 5))
-                     .executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
-                  .then(
-                     dt.a("skipOldChunks", BoolArgumentType.bool())
-                        .executes(
-                           $$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("clone").requires($$0x -> $$0x.c(2)))
+               .then(a($$1, $$0x -> ((du)$$0x.getSource()).e())))
+            .then(dv.a("from").then(dv.a("sourceDimension", ef.a()).then(a($$1, $$0x -> ef.a($$0x, "sourceDimension")))))
       );
    }
 
-   private static int a(ds $$0, int $$1, boolean $$2) {
-      ane $$3 = $$0.e();
-      anc $$4 = $$3.l();
-      $$4.a.d();
-      emc $$5 = $$0.d();
-      cte $$6 = new cte(hx.a($$5));
-      int $$7 = $$6.f - $$1;
-      int $$8 = $$6.f + $$1;
-      int $$9 = $$6.e - $$1;
-      int $$10 = $$6.e + $$1;
+   private static ArgumentBuilder<du, ?> a(dq $$0, akl.b<CommandContext<du>, aov> $$1) {
+      return dv.a("begin", fo.a())
+         .then(
+            ((RequiredArgumentBuilder)dv.a("end", fo.a()).then(a($$0, $$1, $$0x -> ((du)$$0x.getSource()).e())))
+               .then(dv.a("to").then(dv.a("targetDimension", ef.a()).then(a($$0, $$1, $$0x -> ef.a($$0x, "targetDimension")))))
+         );
+   }
 
-      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
-         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
-            cte $$13 = new cte($$12, $$11);
-            dlw $$14 = $$4.a($$12, $$11, false);
-            if ($$14 != null && (!$$2 || !$$14.s())) {
-               for (hx $$15 : hx.b($$13.d(), $$3.J_(), $$13.e(), $$13.f(), $$3.al() - 1, $$13.g())) {
-                  $$3.a($$15, cxa.a.o(), 16);
-               }
-            }
-         }
-      }
+   private static akl.c a(CommandContext<du> $$0, aov $$1, String $$2) throws CommandSyntaxException {
+      hz $$3 = fo.a($$0, $$1, $$2);
+      return new akl.c($$1, $$3);
+   }
 
-      biv<Runnable> $$16 = biv.a(ac.f(), "worldgen-resetchunks");
-      long $$17 = System.currentTimeMillis();
-      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
-      UnmodifiableIterator var33 = ImmutableList.of(dlq.f, dlq.g, dlq.h, dlq.i, dlq.j, dlq.k).iterator();
+   private static ArgumentBuilder<du, ?> a(dq $$0, akl.b<CommandContext<du>, aov> $$1, akl.b<CommandContext<du>, aov> $$2) {
+      akl.b<CommandContext<du>, akl.c> $$3 = $$1x -> a($$1x, $$1.apply($$1x), "begin");
+      akl.b<CommandContext<du>, akl.c> $$4 = $$1x -> a($$1x, $$1.apply($$1x), "end");
+      akl.b<CommandContext<du>, akl.c> $$5 = $$1x -> a($$1x, $$2.apply($$1x), "destination");
+      return ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("destination", fo.a())
+                  .executes($$3x -> a((du)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), $$0xx -> true, akl.d.c)))
+               .then(
+                  a(
+                     $$3,
+                     $$4,
+                     $$5,
+                     $$0x -> $$0xx -> true,
+                     dv.a("replace").executes($$3x -> a((du)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), $$0xx -> true, akl.d.c))
+                  )
+               ))
+            .then(
+               a(
+                  $$3,
+                  $$4,
+                  $$5,
+                  $$0x -> a,
+                  dv.a("masked").executes($$3x -> a((du)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), a, akl.d.c))
+               )
+            ))
+         .then(
+            dv.a("filtered")
+               .then(
+                  a(
+                     $$3,
+                     $$4,
+                     $$5,
+                     $$0x -> fk.a($$0x, "filter"),
+                     dv.a("filter", fk.a($$0))
+                        .executes($$3x -> a((du)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), fk.a($$3x, "filter"), akl.d.c))
+                  )
+               )
+         );
+   }
 
-      while (var33.hasNext()) {
-         dlq $$19 = (dlq)var33.next();
-         long $$20 = System.currentTimeMillis();
-         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
+   private static ArgumentBuilder<du, ?> a(
+      akl.b<CommandContext<du>, akl.c> $$0,
+      akl.b<CommandContext<du>, akl.c> $$1,
+      akl.b<CommandContext<du>, akl.c> $$2,
+      akl.b<CommandContext<du>, Predicate<dlj>> $$3,
+      ArgumentBuilder<du, ?> $$4
+   ) {
+      return $$4.then(dv.a("force").executes($$4x -> a((du)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), akl.d.a)))
+         .then(dv.a("move").executes($$4x -> a((du)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), akl.d.b)))
+         .then(dv.a("normal").executes($$4x -> a((du)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), akl.d.c)));
+   }
 
-         for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
-            for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
-               cte $$24 = new cte($$23, $$22);
-               dlw $$25 = $$4.a($$23, $$22, false);
-               if ($$25 != null && (!$$2 || !$$25.s())) {
-                  List<dll> $$26 = Lists.newArrayList();
-                  int $$27 = Math.max(1, $$19.e());
+   private static int a(du $$0, akl.c $$1, akl.c $$2, akl.c $$3, Predicate<dlj> $$4, akl.d $$5) throws CommandSyntaxException {
+      hz $$6 = $$1.b();
+      hz $$7 = $$2.b();
+      eaw $$8 = eaw.a($$6, $$7);
+      hz $$9 = $$3.b();
+      hz $$10 = $$9.a($$8.c());
+      eaw $$11 = eaw.a($$9, $$10);
+      aov $$12 = $$1.a();
+      aov $$13 = $$3.a();
+      if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
+         throw b.create();
+      } else {
+         int $$14 = $$8.d() * $$8.e() * $$8.f();
+         int $$15 = $$0.e().Z().c(cvj.z);
+         if ($$14 > $$15) {
+            throw c.create($$15, $$14);
+         } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
+            List<akl.a> $$16 = Lists.newArrayList();
+            List<akl.a> $$17 = Lists.newArrayList();
+            List<akl.a> $$18 = Lists.newArrayList();
+            Deque<hz> $$19 = Lists.newLinkedList();
+            hz $$20 = new hz($$11.h() - $$8.h(), $$11.i() - $$8.i(), $$11.j() - $$8.j());
 
-                  for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
-                     for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
-                        dll $$30 = $$4.a($$29, $$28, $$19.d(), true);
-                        dll $$31;
-                        if ($$30 instanceof dlv) {
-                           $$31 = new dlv(((dlv)$$30).C(), true);
-                        } else if ($$30 instanceof dlw) {
-                           $$31 = new dlv((dlw)$$30, true);
+            for (int $$21 = $$8.j(); $$21 <= $$8.m(); $$21++) {
+               for (int $$22 = $$8.i(); $$22 <= $$8.l(); $$22++) {
+                  for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
+                     hz $$24 = new hz($$23, $$22, $$21);
+                     hz $$25 = $$24.a((jd)$$20);
+                     dlj $$26 = new dlj($$12, $$24, false);
+                     dlf $$27 = $$26.a();
+                     if ($$4.test($$26)) {
+                        dit $$28 = $$12.c_($$24);
+                        if ($$28 != null) {
+                           sw $$29 = $$28.q();
+                           $$17.add(new akl.a($$25, $$27, $$29));
+                           $$19.addLast($$24);
+                        } else if (!$$27.i($$12, $$24) && !$$27.r($$12, $$24)) {
+                           $$18.add(new akl.a($$25, $$27, null));
+                           $$19.addFirst($$24);
                         } else {
-                           $$31 = $$30;
+                           $$16.add(new akl.a($$25, $$27, null));
+                           $$19.addLast($$24);
                         }
-
-                        $$26.add($$31);
                      }
                   }
-
-                  $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.q(), $$4.a(), $$0xx -> {
-                        throw new UnsupportedOperationException("Not creating full chunks here");
-                     }, $$26).thenApply($$1xx -> {
-                        if ($$19 == dlq.g) {
-                           $$1xx.left().ifPresent($$0xxx -> doy.a($$0xxx, dlq.b));
-                        }
-
-                        return Unit.INSTANCE;
-                     }), $$16::a);
                }
             }
-         }
 
-         $$0.l().c($$21::isDone);
-         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
-      }
+            if ($$5 == akl.d.b) {
+               for (hz $$30 : $$19) {
+                  dit $$31 = $$12.c_($$30);
+                  bll.a_($$31);
+                  $$12.a($$30, cyq.hW.o(), 2);
+               }
 
-      long $$34 = System.currentTimeMillis();
-
-      for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
-         for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
-            cte $$37 = new cte($$36, $$35);
-            dlw $$38 = $$4.a($$36, $$35, false);
-            if ($$38 != null && (!$$2 || !$$38.s())) {
-               for (hx $$39 : hx.b($$37.d(), $$3.J_(), $$37.e(), $$37.f(), $$3.al() - 1, $$37.g())) {
-                  $$4.a($$39);
+               for (hz $$32 : $$19) {
+                  $$12.a($$32, cyq.a.o(), 3);
                }
             }
+
+            List<akl.a> $$33 = Lists.newArrayList();
+            $$33.addAll($$16);
+            $$33.addAll($$17);
+            $$33.addAll($$18);
+            List<akl.a> $$34 = Lists.reverse($$33);
+
+            for (akl.a $$35 : $$34) {
+               dit $$36 = $$13.c_($$35.a);
+               bll.a_($$36);
+               $$13.a($$35.a, cyq.hW.o(), 2);
+            }
+
+            int $$37 = 0;
+
+            for (akl.a $$38 : $$33) {
+               if ($$13.a($$38.a, $$38.b, 2)) {
+                  $$37++;
+               }
+            }
+
+            for (akl.a $$39 : $$17) {
+               dit $$40 = $$13.c_($$39.a);
+               if ($$39.c != null && $$40 != null) {
+                  $$40.a($$39.c);
+                  $$40.e();
+               }
+
+               $$13.a($$39.a, $$39.b, 2);
+            }
+
+            for (akl.a $$41 : $$34) {
+               $$13.b($$41.a, $$41.b.b());
+            }
+
+            $$13.m().a($$12.m(), $$8, $$20);
+            if ($$37 == 0) {
+               throw d.create();
+            } else {
+               int $$42 = $$37;
+               $$0.a(() -> vq.a("commands.clone.success", $$42), true);
+               return $$37;
+            }
+         } else {
+            throw fo.a.create();
          }
       }
+   }
 
-      a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
-      long $$40 = System.currentTimeMillis() - $$17;
-      $$0.a(
-         () -> vg.b(
-               String.format(
-                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
-               )
-            ),
-         true
-      );
-      return 1;
+   static class a {
+      public final hz a;
+      public final dlf b;
+      @Nullable
+      public final sw c;
+
+      public a(hz $$0, dlf $$1, @Nullable sw $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+   }
+
+   @FunctionalInterface
+   interface b<T, R> {
+      R apply(T var1) throws CommandSyntaxException;
+   }
+
+   static record c(aov a, hz b) {
+   }
+
+   static enum d {
+      a(true),
+      b(true),
+      c(false);
+
+      private final boolean d;
+
+      private d(boolean $$0) {
+         this.d = $$0;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
    }
 }

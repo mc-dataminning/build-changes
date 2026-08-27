@@ -1,549 +1,424 @@
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.RecordBuilder.AbstractStringBuilder;
-import it.unimi.dsi.fastutil.bytes.ByteArrayList;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Collection;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class tc implements DynamicOps<tl> {
-   public static final tc a = new tc();
-   private static final String b = "";
+public class tc extends sv<tt> {
+   private static final int b = 37;
+   public static final tv<tc> a = new tv.b<tc>() {
+      public tc a(DataInput $$0, tf $$1) throws IOException {
+         $$1.b();
 
-   protected tc() {
-   }
-
-   public tl a() {
-      return sq.b;
-   }
-
-   public <U> U a(DynamicOps<U> $$0, tl $$1) {
-      switch ($$1.b()) {
-         case 0:
-            return (U)$$0.empty();
-         case 1:
-            return (U)$$0.createByte(((te)$$1).i());
-         case 2:
-            return (U)$$0.createShort(((te)$$1).h());
-         case 3:
-            return (U)$$0.createInt(((te)$$1).g());
-         case 4:
-            return (U)$$0.createLong(((te)$$1).f());
-         case 5:
-            return (U)$$0.createFloat(((te)$$1).k());
-         case 6:
-            return (U)$$0.createDouble(((te)$$1).j());
-         case 7:
-            return (U)$$0.createByteList(ByteBuffer.wrap(((sl)$$1).e()));
-         case 8:
-            return (U)$$0.createString($$1.t_());
-         case 9:
-            return (U)this.convertList($$0, $$1);
-         case 10:
-            return (U)this.convertMap($$0, $$1);
-         case 11:
-            return (U)$$0.createIntList(Arrays.stream(((ss)$$1).g()));
-         case 12:
-            return (U)$$0.createLongList(Arrays.stream(((sv)$$1).g()));
-         default:
-            throw new IllegalStateException("Unknown tag type: " + $$1);
-      }
-   }
-
-   public DataResult<Number> a(tl $$0) {
-      return $$0 instanceof te $$1 ? DataResult.success($$1.l()) : DataResult.error(() -> "Not a number");
-   }
-
-   public tl a(Number $$0) {
-      return sp.a($$0.doubleValue());
-   }
-
-   public tl a(byte $$0) {
-      return sm.a($$0);
-   }
-
-   public tl a(short $$0) {
-      return tg.a($$0);
-   }
-
-   public tl a(int $$0) {
-      return st.a($$0);
-   }
-
-   public tl a(long $$0) {
-      return sw.a($$0);
-   }
-
-   public tl a(float $$0) {
-      return sr.a($$0);
-   }
-
-   public tl a(double $$0) {
-      return sp.a($$0);
-   }
-
-   public tl a(boolean $$0) {
-      return sm.a($$0);
-   }
-
-   public DataResult<String> b(tl $$0) {
-      return $$0 instanceof tj $$1 ? DataResult.success($$1.t_()) : DataResult.error(() -> "Not a string");
-   }
-
-   public tl a(String $$0) {
-      return tj.a($$0);
-   }
-
-   public DataResult<tl> a(tl $$0, tl $$1) {
-      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
-   }
-
-   public DataResult<tl> a(tl $$0, List<tl> $$1) {
-      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
-   }
-
-   public DataResult<tl> a(tl $$0, tl $$1, tl $$2) {
-      if (!($$0 instanceof so) && !($$0 instanceof sq)) {
-         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
-      } else if (!($$1 instanceof tj)) {
-         return DataResult.error(() -> "key is not a string: " + $$1, $$0);
-      } else {
-         so $$3 = new so();
-         if ($$0 instanceof so $$4) {
-            $$4.e().forEach($$2x -> $$3.a($$2x, $$4.c($$2x)));
+         tc var3;
+         try {
+            var3 = d($$0, $$1);
+         } finally {
+            $$1.c();
          }
 
-         $$3.a($$1.t_(), $$2);
-         return DataResult.success($$3);
+         return var3;
       }
-   }
 
-   public DataResult<tl> a(tl $$0, MapLike<tl> $$1) {
-      if (!($$0 instanceof so) && !($$0 instanceof sq)) {
-         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
-      } else {
-         so $$2 = new so();
-         if ($$0 instanceof so $$3) {
-            $$3.e().forEach($$2x -> $$2.a($$2x, $$3.c($$2x)));
-         }
+      private static tc d(DataInput $$0, tf $$1) throws IOException {
+         $$1.b(37L);
+         byte $$2 = $$0.readByte();
+         int $$3 = $$0.readInt();
+         if ($$2 == 0 && $$3 > 0) {
+            throw new ti("Missing type on ListTag");
+         } else {
+            $$1.a(4L, (long)$$3);
+            tv<?> $$4 = tw.a($$2);
+            List<tt> $$5 = Lists.newArrayListWithCapacity($$3);
 
-         List<tl> $$4 = Lists.newArrayList();
-         $$1.entries().forEach($$2x -> {
-            tl $$3 = (tl)$$2x.getFirst();
-            if (!($$3 instanceof tj)) {
-               $$4.add($$3);
-            } else {
-               $$2.a($$3.t_(), (tl)$$2x.getSecond());
+            for (int $$6 = 0; $$6 < $$3; $$6++) {
+               $$5.add($$4.c($$0, $$1));
             }
-         });
-         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$2) : DataResult.success($$2);
+
+            return new tc($$5, $$2);
+         }
+      }
+
+      @Override
+      public tq.b a(DataInput $$0, tq $$1, tf $$2) throws IOException {
+         $$2.b();
+
+         tq.b var4;
+         try {
+            var4 = c($$0, $$1, $$2);
+         } finally {
+            $$2.c();
+         }
+
+         return var4;
+      }
+
+      private static tq.b c(DataInput $$0, tq $$1, tf $$2) throws IOException {
+         $$2.b(37L);
+         tv<?> $$3 = tw.a($$0.readByte());
+         int $$4 = $$0.readInt();
+         switch ($$1.a($$3, $$4)) {
+            case c:
+               return tq.b.c;
+            case b:
+               $$3.a($$0, $$4, $$2);
+               return $$1.b();
+            default:
+               $$2.a(4L, (long)$$4);
+               int $$5 = 0;
+
+               while (true) {
+                  label41: {
+                     if ($$5 < $$4) {
+                        switch ($$1.b($$3, $$5)) {
+                           case d:
+                              return tq.b.c;
+                           case c:
+                              $$3.b($$0, $$2);
+                              break;
+                           case b:
+                              $$3.b($$0, $$2);
+                              break label41;
+                           default:
+                              switch ($$3.a($$0, $$1, $$2)) {
+                                 case c:
+                                    return tq.b.c;
+                                 case b:
+                                    break;
+                                 default:
+                                    break label41;
+                              }
+                        }
+                     }
+
+                     int $$6 = $$4 - 1 - $$5;
+                     if ($$6 > 0) {
+                        $$3.a($$0, $$6, $$2);
+                     }
+
+                     return $$1.b();
+                  }
+
+                  $$5++;
+               }
+         }
+      }
+
+      @Override
+      public void b(DataInput $$0, tf $$1) throws IOException {
+         $$1.b();
+
+         try {
+            tv<?> $$2 = tw.a($$0.readByte());
+            int $$3 = $$0.readInt();
+            $$2.a($$0, $$3, $$1);
+         } finally {
+            $$1.c();
+         }
+      }
+
+      @Override
+      public String a() {
+         return "LIST";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_List";
+      }
+   };
+   private final List<tt> c;
+   private byte w;
+
+   tc(List<tt> $$0, byte $$1) {
+      this.c = $$0;
+      this.w = $$1;
+   }
+
+   public tc() {
+      this(Lists.newArrayList(), (byte)0);
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      if (this.c.isEmpty()) {
+         this.w = 0;
+      } else {
+         this.w = this.c.get(0).b();
+      }
+
+      $$0.writeByte(this.w);
+      $$0.writeInt(this.c.size());
+
+      for (tt $$1 : this.c) {
+         $$1.a($$0);
       }
    }
 
-   public DataResult<Stream<Pair<tl, tl>>> c(tl $$0) {
-      return $$0 instanceof so $$1
-         ? DataResult.success($$1.e().stream().map($$1x -> Pair.of(this.a($$1x), $$1.c($$1x))))
-         : DataResult.error(() -> "Not a map: " + $$0);
-   }
+   @Override
+   public int a() {
+      int $$0 = 37;
+      $$0 += 4 * this.c.size();
 
-   public DataResult<Consumer<BiConsumer<tl, tl>>> d(tl $$0) {
-      return $$0 instanceof so $$1
-         ? DataResult.success((Consumer<BiConsumer>)$$1x -> $$1.e().forEach($$2 -> $$1x.accept(this.a($$2), $$1.c($$2))))
-         : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public DataResult<MapLike<tl>> e(tl $$0) {
-      return $$0 instanceof so $$1 ? DataResult.success(new MapLike<tl>() {
-         @Nullable
-         public tl a(tl $$0) {
-            return $$1.c($$0.t_());
-         }
-
-         @Nullable
-         public tl a(String $$0) {
-            return $$1.c($$0);
-         }
-
-         public Stream<Pair<tl, tl>> entries() {
-            return $$1.e().stream().map($$1xx -> Pair.of(tc.this.a($$1xx), $$1.c($$1xx)));
-         }
-
-         @Override
-         public String toString() {
-            return "MapLike[" + $$1 + "]";
-         }
-      }) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public tl a(Stream<Pair<tl, tl>> $$0) {
-      so $$1 = new so();
-      $$0.forEach($$1x -> $$1.a(((tl)$$1x.getFirst()).t_(), (tl)$$1x.getSecond()));
-      return $$1;
-   }
-
-   private static tl a(so $$0) {
-      if ($$0.f() == 1) {
-         tl $$1 = $$0.c("");
-         if ($$1 != null) {
-            return $$1;
-         }
+      for (tt $$1 : this.c) {
+         $$0 += $$1.a();
       }
 
       return $$0;
    }
 
-   public DataResult<Stream<tl>> f(tl $$0) {
-      if ($$0 instanceof su $$1) {
-         return $$1.f() == 10 ? DataResult.success($$1.stream().map($$0x -> a((so)$$0x))) : DataResult.success($$1.stream());
-      } else {
-         return $$0 instanceof sn<?> $$2 ? DataResult.success($$2.stream().map($$0x -> $$0x)) : DataResult.error(() -> "Not a list");
-      }
+   @Override
+   public byte b() {
+      return 9;
    }
 
-   public DataResult<Consumer<Consumer<tl>>> g(tl $$0) {
-      if ($$0 instanceof su $$1) {
-         return $$1.f() == 10
-            ? DataResult.success((Consumer<Consumer>)$$1x -> $$1.forEach($$1xx -> $$1.accept(a((so)$$1xx))))
-            : DataResult.success($$1::forEach);
-      } else {
-         return $$0 instanceof sn<?> $$2 ? DataResult.success($$2::forEach) : DataResult.error(() -> "Not a list: " + $$0);
-      }
-   }
-
-   public DataResult<ByteBuffer> h(tl $$0) {
-      return $$0 instanceof sl $$1 ? DataResult.success(ByteBuffer.wrap($$1.e())) : super.getByteBuffer($$0);
-   }
-
-   public tl a(ByteBuffer $$0) {
-      ByteBuffer $$1 = $$0.duplicate().clear();
-      byte[] $$2 = new byte[$$0.capacity()];
-      $$1.get(0, $$2, 0, $$2.length);
-      return new sl($$2);
-   }
-
-   public DataResult<IntStream> i(tl $$0) {
-      return $$0 instanceof ss $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getIntStream($$0);
-   }
-
-   public tl a(IntStream $$0) {
-      return new ss($$0.toArray());
-   }
-
-   public DataResult<LongStream> j(tl $$0) {
-      return $$0 instanceof sv $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getLongStream($$0);
-   }
-
-   public tl a(LongStream $$0) {
-      return new sv($$0.toArray());
-   }
-
-   public tl b(Stream<tl> $$0) {
-      return tc.d.a.a($$0).a();
-   }
-
-   public tl a(tl $$0, String $$1) {
-      if ($$0 instanceof so $$2) {
-         so $$3 = new so();
-         $$2.e().stream().filter($$1x -> !Objects.equals($$1x, $$1)).forEach($$2x -> $$3.a($$2x, $$2.c($$2x)));
-         return $$3;
-      } else {
-         return $$0;
-      }
+   @Override
+   public tv<tc> c() {
+      return a;
    }
 
    @Override
    public String toString() {
-      return "NBT";
+      return this.t_();
    }
 
-   public RecordBuilder<tl> mapBuilder() {
-      return new tc.h();
+   private void g() {
+      if (this.c.isEmpty()) {
+         this.w = 0;
+      }
    }
 
-   private static Optional<tc.f> k(tl $$0) {
-      if ($$0 instanceof sq) {
-         return Optional.of(tc.d.a);
+   @Override
+   public tt c(int $$0) {
+      tt $$1 = this.c.remove($$0);
+      this.g();
+      return $$1;
+   }
+
+   @Override
+   public boolean isEmpty() {
+      return this.c.isEmpty();
+   }
+
+   public sw a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         tt $$1 = this.c.get($$0);
+         if ($$1.b() == 10) {
+            return (sw)$$1;
+         }
+      }
+
+      return new sw();
+   }
+
+   public tc b(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         tt $$1 = this.c.get($$0);
+         if ($$1.b() == 9) {
+            return (tc)$$1;
+         }
+      }
+
+      return new tc();
+   }
+
+   public short d(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         tt $$1 = this.c.get($$0);
+         if ($$1.b() == 2) {
+            return ((to)$$1).h();
+         }
+      }
+
+      return 0;
+   }
+
+   public int e(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         tt $$1 = this.c.get($$0);
+         if ($$1.b() == 3) {
+            return ((tb)$$1).g();
+         }
+      }
+
+      return 0;
+   }
+
+   public int[] f(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         tt $$1 = this.c.get($$0);
+         if ($$1.b() == 11) {
+            return ((ta)$$1).g();
+         }
+      }
+
+      return new int[0];
+   }
+
+   public long[] g(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         tt $$1 = this.c.get($$0);
+         if ($$1.b() == 12) {
+            return ((td)$$1).g();
+         }
+      }
+
+      return new long[0];
+   }
+
+   public double h(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         tt $$1 = this.c.get($$0);
+         if ($$1.b() == 6) {
+            return ((sx)$$1).j();
+         }
+      }
+
+      return 0.0;
+   }
+
+   public float i(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         tt $$1 = this.c.get($$0);
+         if ($$1.b() == 5) {
+            return ((sz)$$1).k();
+         }
+      }
+
+      return 0.0F;
+   }
+
+   public String j(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         tt $$1 = this.c.get($$0);
+         return $$1.b() == 8 ? $$1.t_() : $$1.toString();
       } else {
-         if ($$0 instanceof sn<?> $$1) {
-            if ($$1.isEmpty()) {
-               return Optional.of(tc.d.a);
-            }
-
-            if ($$1 instanceof su $$2) {
-               return switch ($$2.f()) {
-                  case 0 -> Optional.of(tc.d.a);
-                  case 10 -> Optional.of(new tc.b($$2));
-                  default -> Optional.of(new tc.c($$2));
-               };
-            }
-
-            if ($$1 instanceof sl $$3) {
-               return Optional.of(new tc.a($$3.e()));
-            }
-
-            if ($$1 instanceof ss $$4) {
-               return Optional.of(new tc.e($$4.g()));
-            }
-
-            if ($$1 instanceof sv $$5) {
-               return Optional.of(new tc.g($$5.g()));
-            }
-         }
-
-         return Optional.empty();
+         return "";
       }
    }
 
-   static class a implements tc.f {
-      private final ByteArrayList a = new ByteArrayList();
-
-      public a(byte $$0) {
-         this.a.add($$0);
-      }
-
-      public a(byte[] $$0) {
-         this.a.addElements(0, $$0);
-      }
-
-      @Override
-      public tc.f a(tl $$0) {
-         if ($$0 instanceof sm $$1) {
-            this.a.add($$1.i());
-            return this;
-         } else {
-            return new tc.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public tl a() {
-         return new sl(this.a.toByteArray());
-      }
+   @Override
+   public int size() {
+      return this.c.size();
    }
 
-   static class b implements tc.f {
-      private final su a = new su();
-
-      public b() {
-      }
-
-      public b(Collection<tl> $$0) {
-         this.a.addAll($$0);
-      }
-
-      public b(IntArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(st.a($$0x))));
-      }
-
-      public b(ByteArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(sm.a($$0x))));
-      }
-
-      public b(LongArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(sw.a($$0x))));
-      }
-
-      private static boolean a(so $$0) {
-         return $$0.f() == 1 && $$0.e("");
-      }
-
-      private static tl b(tl $$0) {
-         if ($$0 instanceof so $$1 && !a($$1)) {
-            return $$1;
-         }
-
-         return c($$0);
-      }
-
-      private static so c(tl $$0) {
-         so $$1 = new so();
-         $$1.a("", $$0);
-         return $$1;
-      }
-
-      @Override
-      public tc.f a(tl $$0) {
-         this.a.add(b($$0));
-         return this;
-      }
-
-      @Override
-      public tl a() {
-         return this.a;
-      }
+   public tt k(int $$0) {
+      return this.c.get($$0);
    }
 
-   static class c implements tc.f {
-      private final su a = new su();
-
-      c(tl $$0) {
-         this.a.add($$0);
-      }
-
-      c(su $$0) {
-         this.a.addAll($$0);
-      }
-
-      @Override
-      public tc.f a(tl $$0) {
-         if ($$0.b() != this.a.f()) {
-            return new tc.b().a(this.a).a($$0);
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      @Override
-      public tl a() {
-         return this.a;
-      }
-   }
-
-   static class d implements tc.f {
-      public static final tc.d a = new tc.d();
-
-      private d() {
-      }
-
-      @Override
-      public tc.f a(tl $$0) {
-         if ($$0 instanceof so $$1) {
-            return new tc.b().a($$1);
-         } else if ($$0 instanceof sm $$2) {
-            return new tc.a($$2.i());
-         } else if ($$0 instanceof st $$3) {
-            return new tc.e($$3.g());
-         } else {
-            return (tc.f)($$0 instanceof sw $$4 ? new tc.g($$4.f()) : new tc.c($$0));
-         }
-      }
-
-      @Override
-      public tl a() {
-         return new su();
-      }
-   }
-
-   static class e implements tc.f {
-      private final IntArrayList a = new IntArrayList();
-
-      public e(int $$0) {
-         this.a.add($$0);
-      }
-
-      public e(int[] $$0) {
-         this.a.addElements(0, $$0);
-      }
-
-      @Override
-      public tc.f a(tl $$0) {
-         if ($$0 instanceof st $$1) {
-            this.a.add($$1.g());
-            return this;
-         } else {
-            return new tc.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public tl a() {
-         return new ss(this.a.toIntArray());
-      }
-   }
-
-   interface f {
-      tc.f a(tl var1);
-
-      default tc.f a(Iterable<tl> $$0) {
-         tc.f $$1 = this;
-
-         for (tl $$2 : $$0) {
-            $$1 = $$1.a($$2);
-         }
-
-         return $$1;
-      }
-
-      default tc.f a(Stream<tl> $$0) {
-         return this.a($$0::iterator);
-      }
-
-      tl a();
-   }
-
-   static class g implements tc.f {
-      private final LongArrayList a = new LongArrayList();
-
-      public g(long $$0) {
-         this.a.add($$0);
-      }
-
-      public g(long[] $$0) {
-         this.a.addElements(0, $$0);
-      }
-
-      @Override
-      public tc.f a(tl $$0) {
-         if ($$0 instanceof sw $$1) {
-            this.a.add($$1.f());
-            return this;
-         } else {
-            return new tc.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public tl a() {
-         return new sv(this.a.toLongArray());
-      }
-   }
-
-   class h extends AbstractStringBuilder<tl, so> {
-      protected h() {
-         super(tc.this);
-      }
-
-      protected so a() {
-         return new so();
-      }
-
-      protected so a(String $$0, tl $$1, so $$2) {
-         $$2.a($$0, $$1);
+   @Override
+   public tt d(int $$0, tt $$1) {
+      tt $$2 = this.k($$0);
+      if (!this.a($$0, $$1)) {
+         throw new UnsupportedOperationException(String.format(Locale.ROOT, "Trying to add tag of type %d to list of %d", $$1.b(), this.w));
+      } else {
          return $$2;
       }
+   }
 
-      protected DataResult<tl> a(so $$0, tl $$1) {
-         if ($$1 == null || $$1 == sq.b) {
-            return DataResult.success($$0);
-         } else if (!($$1 instanceof so $$2)) {
-            return DataResult.error(() -> "mergeToMap called with not a map: " + $$1, $$1);
-         } else {
-            so $$3 = new so(Maps.newHashMap($$2.i()));
+   @Override
+   public void c(int $$0, tt $$1) {
+      if (!this.b($$0, $$1)) {
+         throw new UnsupportedOperationException(String.format(Locale.ROOT, "Trying to add tag of type %d to list of %d", $$1.b(), this.w));
+      }
+   }
 
-            for (Entry<String, tl> $$4 : $$0.i().entrySet()) {
-               $$3.a($$4.getKey(), $$4.getValue());
+   @Override
+   public boolean a(int $$0, tt $$1) {
+      if (this.a($$1)) {
+         this.c.set($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, tt $$1) {
+      if (this.a($$1)) {
+         this.c.add($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean a(tt $$0) {
+      if ($$0.b() == 0) {
+         return false;
+      } else if (this.w == 0) {
+         this.w = $$0.b();
+         return true;
+      } else {
+         return this.w == $$0.b();
+      }
+   }
+
+   public tc e() {
+      Iterable<tt> $$0 = (Iterable<tt>)(tw.a(this.w).d() ? this.c : Iterables.transform(this.c, tt::d));
+      List<tt> $$1 = Lists.newArrayList($$0);
+      return new tc($$1, this.w);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof tc && Objects.equals(this.c, ((tc)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   @Override
+   public void a(tx $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public byte f() {
+      return this.w;
+   }
+
+   @Override
+   public void clear() {
+      this.c.clear();
+      this.w = 0;
+   }
+
+   @Override
+   public tq.b a(tq $$0) {
+      switch ($$0.a(tw.a(this.w), this.c.size())) {
+         case c:
+            return tq.b.c;
+         case b:
+            return $$0.b();
+         default:
+            int $$1 = 0;
+
+            while ($$1 < this.c.size()) {
+               tt $$2 = this.c.get($$1);
+               switch ($$0.b($$2.c(), $$1)) {
+                  case d:
+                     return tq.b.c;
+                  case c:
+                     return $$0.b();
+                  default:
+                     switch ($$2.a($$0)) {
+                        case c:
+                           return tq.b.c;
+                        case b:
+                           return $$0.b();
+                     }
+                  case b:
+                     $$1++;
+               }
             }
 
-            return DataResult.success($$3);
-         }
+            return $$0.b();
       }
    }
 }

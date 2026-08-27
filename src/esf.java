@@ -1,99 +1,162 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class esf extends esg {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "http://";
-   private static final int c = 8080;
-   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
-   private final boolean e;
+public class esf {
+   private final ImmutableList<esg> a;
+   private final ImmutableMap<String, esg> b;
+   private final IntList c = new IntArrayList();
+   private final int d;
    @Nullable
-   private final String f;
-   private final URI g;
+   private esd e;
 
-   private esf(boolean $$0, @Nullable String $$1, URI $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
+   public esf(ImmutableMap<String, esg> $$0) {
+      this.b = $$0;
+      this.a = $$0.values().asList();
+      int $$1 = 0;
+      UnmodifiableIterator var3 = $$0.values().iterator();
 
-   @Nullable
-   public static esf a(String $$0) {
-      try {
-         JsonParser $$1 = new JsonParser();
-         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-         String $$3 = eud.b("uploadEndpoint", $$2, null);
-         if ($$3 != null) {
-            int $$4 = eud.a("port", $$2, -1);
-            URI $$5 = a($$3, $$4);
-            if ($$5 != null) {
-               boolean $$6 = eud.a("worldClosed", $$2, false);
-               String $$7 = eud.b("token", $$2, null);
-               return new esf($$6, $$7, $$5);
-            }
-         }
-      } catch (Exception var8) {
-         a.error("Could not parse UploadInfo: {}", var8.getMessage());
+      while (var3.hasNext()) {
+         esg $$2 = (esg)var3.next();
+         this.c.add($$1);
+         $$1 += $$2.e();
       }
 
-      return null;
+      this.d = $$1;
    }
 
-   @Nullable
-   @VisibleForTesting
-   public static URI a(String $$0, int $$1) {
-      Matcher $$2 = d.matcher($$0);
-      String $$3 = a($$0, $$2);
-
-      try {
-         URI $$4 = new URI($$3);
-         int $$5 = a($$1, $$4.getPort());
-         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
-      } catch (URISyntaxException var6) {
-         a.warn("Failed to parse URI {}", $$3, var6);
-         return null;
-      }
+   @Override
+   public String toString() {
+      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
    }
 
-   private static int a(int $$0, int $$1) {
-      if ($$0 != -1) {
-         return $$0;
+   public int a() {
+      return this.b() / 4;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ImmutableList<esg> c() {
+      return this.a;
+   }
+
+   public ImmutableList<String> d() {
+      return this.b.keySet().asList();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         esf $$1 = (esf)$$0;
+         return this.d != $$1.d ? false : this.b.equals($$1.b);
       } else {
-         return $$1 != -1 ? $$1 : 8080;
+         return false;
       }
    }
 
-   private static String a(String $$0, Matcher $$1) {
-      return $$1.find() ? $$0 : "http://" + $$0;
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   public static String b(@Nullable String $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 != null) {
-         $$1.addProperty("token", $$0);
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::h);
+      } else {
+         this.h();
+      }
+   }
+
+   private void h() {
+      int $$0 = this.b();
+      List<esg> $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
+      }
+   }
+
+   public void f() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::i);
+      } else {
+         this.i();
+      }
+   }
+
+   private void i() {
+      ImmutableList<esg> $$0 = this.c();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         esg $$2 = (esg)$$0.get($$1);
+         $$2.a($$1);
+      }
+   }
+
+   public esd g() {
+      esd $$0 = this.e;
+      if ($$0 == null) {
+         this.e = $$0 = new esd(esd.a.b);
       }
 
-      return $$1.toString();
+      return $$0;
    }
 
-   @Nullable
-   public String a() {
-      return this.f;
+   public static enum a {
+      a(5123, 2),
+      b(5125, 4);
+
+      public final int c;
+      public final int d;
+
+      private a(int $$0, int $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      public static esf.a a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
+      }
    }
 
-   public URI b() {
-      return this.g;
-   }
+   public static enum b {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
 
-   public boolean c() {
-      return this.e;
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
+
+      private b(int $$0, int $$1, int $$2, boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+      }
+
+      public int a(int $$0) {
+         return switch (this) {
+            case b, c, d, e, f, g -> $$0;
+            case a, h -> $$0 / 4 * 6;
+            default -> 0;
+         };
+      }
    }
 }

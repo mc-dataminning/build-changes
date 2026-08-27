@@ -1,44 +1,58 @@
-public class gie extends ghx {
-   public static final int n = 20;
-   private final fsv o;
-   private int p;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public gie(fsv $$0) {
-      super(art.hH, aru.h, gio.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public class gie {
+   public static final gif a = new gif();
+   public static final String b = "animation";
+   public static final int c = 1;
+   public static final int d = -1;
+   public static final gie e = new gie(Lists.newArrayList(), -1, -1, 1, false) {
+      @Override
+      public gig a(int $$0, int $$1) {
+         return new gig($$0, $$1);
+      }
+   };
+   private final List<gid> f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final boolean j;
+
+   public gie(List<gid> $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
    }
 
-   @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dG() && (this.p <= 20 || this.o.fw())) {
-         this.f = (double)((float)this.o.dq());
-         this.g = (double)((float)this.o.ds());
-         this.h = (double)((float)this.o.dw());
-         float $$0 = (float)this.o.do().g();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = aup.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
-
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
+   public gig a(int $$0, int $$1) {
+      if (this.g != -1) {
+         return this.h != -1 ? new gig(this.g, this.h) : new gig(this.g, $$1);
+      } else if (this.h != -1) {
+         return new gig($$0, this.h);
       } else {
-         this.n();
+         int $$2 = Math.min($$0, $$1);
+         return new gig($$2, $$2);
       }
+   }
+
+   public int a() {
+      return this.i;
+   }
+
+   public boolean b() {
+      return this.j;
+   }
+
+   public void a(gie.a $$0) {
+      for (gid $$1 : this.f) {
+         $$0.accept($$1.a(), $$1.a(this.i));
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(int var1, int var2);
    }
 }

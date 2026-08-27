@@ -1,32 +1,44 @@
-public class aez implements xg<adk> {
-   private final int a;
-   private final cng b;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public aez(int $$0, cng $$1) {
-      this.a = $$0;
-      this.b = $$1.p();
+public record aez(String b, Instant c, long d, @Nullable wc e, vx.b f) implements xx<aes> {
+   public static final xo<uq, aez> a = xx.a(aez::a, aez::new);
+
+   private aez(uq $$0) {
+      this($$0.d(256), $$0.v(), $$0.readLong(), $$0.c(wc::a), new vx.b($$0));
    }
 
-   public void a(adk $$0) {
-      $$0.a(this);
-   }
-
-   public aez(uj $$0) {
-      this.a = $$0.readShort();
-      this.b = $$0.r();
+   private void a(uq $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, wc::a);
+      this.f.a($$0);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.l(this.a);
-      $$0.a(this.b);
+   public xz<aez> a() {
+      return aeq.bi;
    }
 
-   public int a() {
-      return this.a;
+   public void a(aes $$0) {
+      $$0.a(this);
    }
 
-   public cng d() {
-      return this.b;
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public wc g() {
+      return this.e;
+   }
+
+   public vx.b h() {
+      return this.f;
    }
 }

@@ -1,29 +1,62 @@
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public abstract class dzn extends dzo {
-   private final dzn.a d;
-   private final int e;
+public class dzn extends dzl {
+   public static final Codec<dzn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dri.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dri.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dzn::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dri d;
+   private final dri e;
    private final int f;
 
-   protected dzn(dzn.a $$0, int $$1, int $$2, dzo.c $$3) {
-      super($$3);
+   private dzn(dri $$0, dri $$1, int $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
    }
 
+   public static dzn a(dri $$0, dri $$1, int $$2) {
+      return new dzn($$0, $$1, $$2);
+   }
+
+   public static dzn a(dri $$0, dri $$1) {
+      return a($$0, $$1, 0);
+   }
+
    @Override
-   public Optional<dzo.b> a(dzo.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, doy.a.a, $$1 -> this.a($$1, $$0));
+   public int a(awo $$0, drl $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return awh.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + awh.b($$0, 0, $$6) + awh.b($$0, 0, $$5);
+         }
+      }
    }
 
-   private void a(eag $$0, dzo.a $$1) {
-      cte $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   @Override
+   public dzm<?> a() {
+      return dzm.e;
    }
 
-   @FunctionalInterface
-   protected interface a {
-      dzs construct(dpx var1, int var2, int var3);
+   @Override
+   public String toString() {
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

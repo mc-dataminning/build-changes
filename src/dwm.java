@@ -1,48 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dwm extends dwk {
-   public static final Codec<dwm> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  djp.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(djp.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(djp.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
+public class dwm implements dvw {
+   public static final Codec<dwm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eai.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
+               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
+               auo.b(kg.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
+               dxx.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
+               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
+               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
+               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
+               dxx.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
+               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
+               drv.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
             )
             .apply($$0, dwm::new)
    );
-   private final float g;
-   private final float h;
-   private final djp i;
-   private final List<djp> j;
-   private final List<djp> k;
+   public final ij<eai> b;
+   public final int c;
+   public final int d;
+   public final auo<cyo> e;
+   public final dxx f;
+   public final int g;
+   public final int h;
+   public final int i;
+   public final int j;
+   public final dxx k;
+   public final int l;
+   public final int n;
+   public final drv o;
 
-   public dwm(long $$0, eec.a $$1, float $$2, float $$3, float $$4, djp $$5, List<djp> $$6, List<djp> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-   }
-
-   @Override
-   protected dwi<?> a() {
-      return dwi.c;
-   }
-
-   @Override
-   public djp a(auw $$0, hx $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
-      }
+   public dwm(ij<eai> $$0, int $$1, int $$2, auo<cyo> $$3, dxx $$4, int $$5, int $$6, int $$7, int $$8, dxx $$9, int $$10, int $$11, drv $$12) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.n = $$11;
+      this.o = $$12;
    }
 }

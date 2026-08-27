@@ -1,45 +1,30 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.IntFunction;
 
-public class chf {
-   private final che a;
-   private final List<chf.a> b = Lists.newArrayList();
+public enum chf implements awj {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
 
-   public chf(che $$0) {
-      this.a = $$0;
+   private static final IntFunction<chf> d = auz.a(chf::a, values(), auz.a.b);
+   private final int e;
+   private final String f;
+
+   private chf(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public chf a(int $$0, chc $$1) {
-      this.b.add(new chf.a($$0, $$1));
-      return this;
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public che a() {
-      this.b.stream().map(chf.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         chc $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   static class a {
-      private final int a;
-      private final chc b;
-
-      public a(int $$0, chc $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public chc b() {
-         return this.b;
-      }
+   public static chf a(int $$0) {
+      return d.apply($$0);
    }
 }

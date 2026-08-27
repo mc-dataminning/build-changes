@@ -1,37 +1,34 @@
-public class aff implements xg<adk> {
-   private final ely a;
-   private final bkb b;
+public class aff implements xx<aes> {
+   public static final xo<uq, aff> a = xx.a(aff::a, aff::new);
+   private final int b;
    private final int c;
 
-   public aff(bkb $$0, ely $$1, int $$2) {
+   public aff(int $$0, int $$1) {
       this.b = $$0;
-      this.a = $$1;
-      this.c = $$2;
+      this.c = $$1;
    }
 
-   public aff(uj $$0) {
-      this.b = $$0.b(bkb.class);
-      this.a = $$0.y();
-      this.c = $$0.n();
+   private aff(uq $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.readByte();
+   }
+
+   private void a(uq $$0) {
+      $$0.k(this.b);
+      $$0.k(this.c);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.b);
-      $$0.a(this.a);
-      $$0.c(this.c);
+   public xz<aff> a() {
+      return aeq.bo;
    }
 
-   public void a(adk $$0) {
+   public void a(aes $$0) {
       $$0.a(this);
    }
 
-   public bkb a() {
+   public int b() {
       return this.b;
-   }
-
-   public ely d() {
-      return this.a;
    }
 
    public int e() {

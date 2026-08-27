@@ -1,61 +1,22 @@
-public class fuj implements eqo {
-   private final eqo a;
-   private final gfb b;
+public class fuj extends frs {
+   private static final int a = 12235202;
 
-   public fuj(eqo $$0, gfb $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   protected fuj(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, ftv $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+      this.v = 0.7294118F;
+      this.w = 0.69411767F;
+      this.x = 0.7607843F;
    }
 
-   @Override
-   public eqo a(double $$0, double $$1, double $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
+   public static class a implements ftd<kc> {
+      private final ftv a;
 
-   @Override
-   public eqo a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
-   }
+      public a(ftv $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public eqo a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
-   }
-
-   @Override
-   public eqo a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public eqo b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
-
-   @Override
-   public eqo a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.a.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void l() {
-      this.a.l();
-   }
-
-   @Override
-   public void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fuj($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      }
    }
 }

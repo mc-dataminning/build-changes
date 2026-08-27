@@ -1,45 +1,33 @@
-import net.minecraft.server.MinecraftServer;
+public enum arj {
+   a("old"),
+   b("new"),
+   c("compatible");
 
-public class arj implements dr {
-   private static final String b = "Rcon";
-   private static final vg c = vg.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
+   private final vq d;
+   private final vq e;
 
-   public arj(MinecraftServer $$0) {
-      this.e = $$0;
+   private arj(String $$0) {
+      this.d = vq.c("pack.incompatible." + $$0).a(n.h);
+      this.e = vq.c("pack.incompatible.confirm." + $$0);
    }
 
-   public void e() {
-      this.d.setLength(0);
+   public boolean a() {
+      return this == c;
    }
 
-   public String f() {
-      return this.d.toString();
+   public static arj a(avz<Integer> $$0, int $$1) {
+      if ($$0.b() < $$1) {
+         return a;
+      } else {
+         return $$1 < $$0.a() ? b : c;
+      }
    }
 
-   public ds g() {
-      ane $$0 = this.e.F();
-      return new ds(this, emc.a($$0.T()), emb.a, $$0, 4, "Rcon", c, this.e, null);
+   public vq b() {
+      return this.d;
    }
 
-   @Override
-   public void a(vg $$0) {
-      this.d.append($$0.getString());
-   }
-
-   @Override
-   public boolean l_() {
-      return true;
-   }
-
-   @Override
-   public boolean x_() {
-      return true;
-   }
-
-   @Override
-   public boolean W_() {
-      return this.e.k();
+   public vq c() {
+      return this.e;
    }
 }

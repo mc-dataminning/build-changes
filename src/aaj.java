@@ -1,80 +1,42 @@
-public class aaj implements xg<zb> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final double d;
-   private final long e;
-   private final int f;
+public class aaj implements xx<aag> {
+   public static final xo<uq, aaj> a = xx.a(aaj::a, aaj::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
    private final int g;
    private final int h;
 
-   public aaj(uj $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.o();
-      this.f = $$0.n();
-      this.g = $$0.n();
-      this.h = $$0.n();
+   public aaj(bno $$0, int $$1) {
+      this.g = $$0.aj();
+      this.h = $$1;
    }
 
-   public aaj(dlg $$0) {
-      this.a = $$0.a();
-      this.b = $$0.b();
-      this.c = $$0.i();
-      this.d = $$0.k();
-      this.e = $$0.j();
-      this.f = $$0.m();
-      this.g = $$0.r();
-      this.h = $$0.q();
+   private aaj(uq $$0) {
+      this.g = $$0.n();
+      this.h = $$0.readUnsignedByte();
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.g);
+      $$0.k(this.h);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.c(this.f);
-      $$0.c(this.g);
-      $$0.c(this.h);
+   public xz<aaj> a() {
+      return aeq.e;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.d;
-   }
-
-   public double f() {
-      return this.c;
-   }
-
-   public long g() {
-      return this.e;
-   }
-
-   public int h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.h;
-   }
-
-   public int j() {
+   public int b() {
       return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

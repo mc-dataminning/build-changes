@@ -1,10 +1,7 @@
-import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
@@ -12,114 +9,47 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class er<T> implements ArgumentType<ih.c<T>> {
-   private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vg.b("entity.not_summonable", $$0));
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vg.b("argument.resource.not_found", $$0, $$1));
-   public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> vg.b("argument.resource.invalid_type", $$0, $$1, $$2)
-   );
-   final ahg<? extends it<T>> e;
-   private final ij<T> f;
+public class er implements ArgumentType<jx> {
+   private static final Collection<String> b = Arrays.asList("foo", "foo:bar", "particle with options");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vq.b("particle.notFound", $$0));
+   private final il<jy<?>> c;
 
-   public er(dn $$0, ahg<? extends it<T>> $$1) {
-      this.e = $$1;
-      this.f = $$0.a($$1);
+   public er(dq $$0) {
+      this.c = $$0.a(kg.S);
    }
 
-   public static <T> er<T> a(dn $$0, ahg<? extends it<T>> $$1) {
-      return new er<>($$0, $$1);
+   public static er a(dq $$0) {
+      return new er($$0);
    }
 
-   public static <T> ih.c<T> a(CommandContext<ds> $$0, String $$1, ahg<it<T>> $$2) throws CommandSyntaxException {
-      ih.c<T> $$3 = (ih.c<T>)$$0.getArgument($$1, ih.c.class);
-      ahg<?> $$4 = $$3.h();
-      if ($$4.b($$2)) {
-         return $$3;
-      } else {
-         throw b.create($$4.a(), $$4.b(), $$2.a());
-      }
+   public static jx a(CommandContext<du> $$0, String $$1) {
+      return (jx)$$0.getArgument($$1, jx.class);
    }
 
-   public static ih.c<bnp> a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ke.c);
-   }
-
-   public static ih.c<drp<?, ?>> b(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ke.aw);
-   }
-
-   public static ih.c<dzo> c(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ke.aD);
-   }
-
-   public static ih.c<bmc<?>> d(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ke.u);
-   }
-
-   public static ih.c<bmc<?>> e(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      ih.c<bmc<?>> $$2 = a($$0, $$1, ke.u);
-      if (!$$2.a().c()) {
-         throw d.create($$2.h().a().toString());
-      } else {
-         return $$2;
-      }
-   }
-
-   public static ih.c<blh> f(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ke.Q);
-   }
-
-   public static ih.c<crr> g(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ke.t);
-   }
-
-   public ih.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      ahh $$1 = ahh.a($$0);
-      ahg<T> $$2 = ahg.a(this.e, $$1);
-      return this.f.a($$2).orElseThrow(() -> a.create($$1, this.e.a()));
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dx.a(this.f.c().map(ahg::a), $$1);
+   public jx a(StringReader $$0) throws CommandSyntaxException {
+      return a($$0, this.c);
    }
 
    public Collection<String> getExamples() {
-      return c;
+      return b;
    }
 
-   public static class a<T> implements hj<er<T>, er.a<T>.a> {
-      public void a(er.a<T>.a $$0, uj $$1) {
-         $$1.b($$0.b);
-      }
+   public static jx a(StringReader $$0, il<jy<?>> $$1) throws CommandSyntaxException {
+      jy<?> $$2 = b($$0, $$1);
+      return a($$0, (jy<jx>)$$2);
+   }
 
-      public er.a<T>.a a(uj $$0) {
-         return new er.a.a($$0.u());
-      }
+   private static jy<?> b(StringReader $$0, il<jy<?>> $$1) throws CommandSyntaxException {
+      aiy $$2 = aiy.a($$0);
+      aix<jy<?>> $$3 = aix.a(kg.S, $$2);
+      return $$1.a($$3).orElseThrow(() -> a.create($$2)).a();
+   }
 
-      public void a(er.a<T>.a $$0, JsonObject $$1) {
-         $$1.addProperty("registry", $$0.b.a().toString());
-      }
+   private static <T extends jx> T a(StringReader $$0, jy<T> $$1) throws CommandSyntaxException {
+      return $$1.d().b($$1, $$0);
+   }
 
-      public er.a<T>.a a(er<T> $$0) {
-         return new er.a.a($$0.e);
-      }
-
-      public final class a implements hj.a<er<T>> {
-         final ahg<? extends it<T>> b;
-
-         a(ahg<? extends it<T>> $$1) {
-            this.b = $$1;
-         }
-
-         public er<T> a(dn $$0) {
-            return new er<>($$0, this.b);
-         }
-
-         @Override
-         public hj<er<T>, ?> a() {
-            return a.this;
-         }
-      }
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return dz.a(this.c.c().map(aix::a), $$1);
    }
 }

@@ -1,41 +1,70 @@
-public class fvr implements fvt<dhb> {
-   public static final ghe a = new ghe(gfa.e, new ahh("entity/bell/bell_body"));
-   private static final String b = "bell_body";
-   private final fnj c;
+public class fvr {
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   public fvr(fvu.a $$0) {
-      fnj $$1 = $$0.a(fni.l);
-      this.c = $$1.b("bell_body");
+   public fvr(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static fnp b() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      fns $$2 = $$1.a("bell_body", fno.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fnl.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", fno.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fnl.a(-8.0F, -12.0F, -8.0F));
-      return fnp.a($$0, 32, 32);
+   public fvr a(fvr $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   public void a(dhb $$0, float $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      float $$7 = 0.0F;
-      float $$8 = 0.0F;
-      if ($$0.b) {
-         float $$9 = aup.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
-         if ($$0.c == ic.c) {
-            $$7 = -$$9;
-         } else if ($$0.c == ic.d) {
-            $$7 = $$9;
-         } else if ($$0.c == ic.f) {
-            $$8 = -$$9;
-         } else if ($$0.c == ic.e) {
-            $$8 = $$9;
-         }
-      }
+   public int a() {
+      return this.a;
+   }
 
-      this.c.e = $$7;
-      this.c.g = $$8;
-      eqo $$10 = a.a($$3, fub::c);
-      this.c.a($$2, $$10, $$4, $$5);
+   public int b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(int $$0) {
+      this.b = $$0;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

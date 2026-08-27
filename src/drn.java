@@ -1,48 +1,84 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import java.util.function.LongFunction;
 
-public class drn extends dsc<dun> {
-   public drn(Codec<dun> $$0) {
-      super($$0);
+public class drn extends dqp {
+   private final awo d;
+   private int e;
+
+   public drn(awo $$0) {
+      super(0L);
+      this.d = $$0;
+   }
+
+   public int l() {
+      return this.e;
    }
 
    @Override
-   public boolean a(dse<dun> $$0) {
-      auw $$1 = $$0.d();
-      cus $$2 = $$0.b();
-      cte $$3 = new cte($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      hx.a $$6 = new hx.a();
-      IntListIterator var8 = $$4.iterator();
+   public awo d() {
+      return this.d.d();
+   }
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
+   @Override
+   public drb e() {
+      return this.d.e();
+   }
 
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            hx $$9 = $$2.a(doy.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, cxa.cv.o(), 2);
-               bkk.a($$2, $$1, $$9, ehd.b);
-               djp $$10 = cxa.cp.o();
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof dqp $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   }
 
-               for (ic $$11 : ic.c.a) {
-                  hx $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
 
-               return true;
-            }
-         }
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
+   }
+
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
+   }
+
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
+   }
+
+   public static awo a(int $$0, int $$1, long $$2, long $$3) {
+      return awo.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
+   }
+
+   public static enum a {
+      a(dqp::new),
+      b(drp::new);
+
+      private final LongFunction<awo> c;
+
+      private a(LongFunction<awo> $$0) {
+         this.c = $$0;
       }
 
-      return false;
+      public awo a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

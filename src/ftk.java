@@ -1,51 +1,38 @@
-public enum ftk {
-   a(new ftk.b(ftk.a.f, ftk.a.e, ftk.a.a), new ftk.b(ftk.a.f, ftk.a.e, ftk.a.d), new ftk.b(ftk.a.c, ftk.a.e, ftk.a.d), new ftk.b(ftk.a.c, ftk.a.e, ftk.a.a)),
-   b(new ftk.b(ftk.a.f, ftk.a.b, ftk.a.d), new ftk.b(ftk.a.f, ftk.a.b, ftk.a.a), new ftk.b(ftk.a.c, ftk.a.b, ftk.a.a), new ftk.b(ftk.a.c, ftk.a.b, ftk.a.d)),
-   c(new ftk.b(ftk.a.c, ftk.a.b, ftk.a.d), new ftk.b(ftk.a.c, ftk.a.e, ftk.a.d), new ftk.b(ftk.a.f, ftk.a.e, ftk.a.d), new ftk.b(ftk.a.f, ftk.a.b, ftk.a.d)),
-   d(new ftk.b(ftk.a.f, ftk.a.b, ftk.a.a), new ftk.b(ftk.a.f, ftk.a.e, ftk.a.a), new ftk.b(ftk.a.c, ftk.a.e, ftk.a.a), new ftk.b(ftk.a.c, ftk.a.b, ftk.a.a)),
-   e(new ftk.b(ftk.a.f, ftk.a.b, ftk.a.d), new ftk.b(ftk.a.f, ftk.a.e, ftk.a.d), new ftk.b(ftk.a.f, ftk.a.e, ftk.a.a), new ftk.b(ftk.a.f, ftk.a.b, ftk.a.a)),
-   f(new ftk.b(ftk.a.c, ftk.a.b, ftk.a.a), new ftk.b(ftk.a.c, ftk.a.e, ftk.a.a), new ftk.b(ftk.a.c, ftk.a.e, ftk.a.d), new ftk.b(ftk.a.c, ftk.a.b, ftk.a.d));
+public class ftk extends fua {
+   private final ftv a;
 
-   private static final ftk[] g = ac.a(new ftk[6], $$0 -> {
-      $$0[ftk.a.e] = a;
-      $$0[ftk.a.b] = b;
-      $$0[ftk.a.d] = c;
-      $$0[ftk.a.a] = d;
-      $$0[ftk.a.f] = e;
-      $$0[ftk.a.c] = f;
-   });
-   private final ftk.b[] h;
-
-   public static ftk a(ic $$0) {
-      return g[$$0.d()];
+   ftk(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftv $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
-   private ftk(ftk.b... $$0) {
-      this.h = $$0;
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
-   public ftk.b a(int $$0) {
-      return this.h[$$0];
+   @Override
+   public fte b() {
+      return fte.c;
    }
 
-   public static final class a {
-      public static final int a = ic.d.d();
-      public static final int b = ic.b.d();
-      public static final int c = ic.f.d();
-      public static final int d = ic.c.d();
-      public static final int e = ic.a.d();
-      public static final int f = ic.e.d();
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public static record a(ftv a) implements ftd<kc> {
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ftk $$8 = new ftk($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.z.a(4) + 6);
+         return $$8;
       }
    }
 }

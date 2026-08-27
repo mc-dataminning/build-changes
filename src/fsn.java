@@ -1,55 +1,146 @@
-public class fsn extends fsh {
-   private float a;
+public class fsn extends fua {
+   static final awo a = awo.a();
+   private final ftv b;
 
-   fsn(foe $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
+   fsn(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftv $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.b = $$7;
+      this.D *= 0.75F;
       this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+      this.b($$7);
    }
 
    @Override
-   public frl b() {
-      return frl.b;
+   public fte b() {
+      return fte.c;
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = awh.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * aup.b(this.a));
-         this.l = this.l + (double)(0.6F * aup.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(hx.a(this.g, this.h, this.i)).a(asn.a) || this.m) {
-            this.k();
-         }
+      super.a();
+      this.b(this.b);
+   }
 
-         this.a += 0.08F;
+   public static class a implements ftd<kc> {
+      private final double a = 0.25;
+      private final ftv b;
+
+      public a(ftv $$0) {
+         this.b = $$0;
+      }
+
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsn $$8 = new fsn($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
+         int $$9 = 2;
+         int $$10 = 4;
+         $$8.a($$1.z.a(2) + 2);
+         return $$8;
       }
    }
 
-   public static class a implements frk<ka> {
-      private final fsc a;
+   public static class b implements ftd<kc> {
+      private final ftv a;
 
-      public a(fsc $$0) {
+      public b(ftv $$0) {
          this.a = $$0;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fsn $$8 = new fsn($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsn $$8 = new fsn($$1, $$2, $$3, $$4, 0.5 - fsn.a.j(), $$6, 0.5 - fsn.a.j(), this.a);
+         if ($$1.z.h()) {
+            $$8.a(0.6F, 1.0F, 0.8F);
+         } else {
+            $$8.a(0.08F, 0.4F, 0.4F);
+         }
+
+         $$8.k *= 0.2F;
+         if ($$5 == 0.0 && $$7 == 0.0) {
+            $$8.j *= 0.1F;
+            $$8.l *= 0.1F;
+         }
+
+         $$8.a((int)(8.0 / ($$1.z.j() * 0.8 + 0.2)));
+         return $$8;
+      }
+   }
+
+   public static class c implements ftd<kc> {
+      private final double a = 0.01;
+      private final ftv b;
+
+      public c(ftv $$0) {
+         this.b = $$0;
+      }
+
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsn $$8 = new fsn($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         if ($$1.z.h()) {
+            $$8.a(0.29F, 0.58F, 0.51F);
+         } else {
+            $$8.a(0.43F, 0.77F, 0.62F);
+         }
+
+         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class d implements ftd<kc> {
+      private final double a = 0.01;
+      private final ftv b;
+
+      public d(ftv $$0) {
+         this.b = $$0;
+      }
+
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsn $$8 = new fsn($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class e implements ftd<kc> {
+      private final double a = 0.01;
+      private final ftv b;
+
+      public e(ftv $$0) {
+         this.b = $$0;
+      }
+
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsn $$8 = new fsn($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(0.91F, 0.55F, 0.08F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.z.a(30) + 10);
          return $$8;
       }
    }

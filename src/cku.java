@@ -1,42 +1,77 @@
-import java.util.function.Consumer;
+public class cku extends ckb {
+   private static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final bln p;
 
-public class cku extends cnb {
-   public cku(cnb.a $$0) {
-      super($$0);
+   public cku(int $$0, chg $$1) {
+      this($$0, $$1, new bmd(9));
+   }
+
+   public cku(int $$0, chg $$1, bln $$2) {
+      super(cli.g, $$0);
+      a($$2, 9);
+      this.p = $$2;
+      $$2.d_($$1.m);
+
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            this.a(new clw($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new clw($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
+         }
+      }
+
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new clw($$1, $$7, 8 + $$7 * 18, 142));
+      }
    }
 
    @Override
-   public bkc a(cpr $$0) {
-      ic $$1 = $$0.k();
-      if ($$1 == ic.a) {
-         return bkc.e;
-      } else {
-         ctx $$2 = $$0.q();
-         cpp $$3 = new cpp($$0);
-         hx $$4 = $$3.a();
-         cng $$5 = $$0.n();
-         emc $$6 = emc.c($$4);
-         elx $$7 = bmc.e.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof ane $$8) {
-               Consumer<cbr> $$9 = bmc.a($$8, $$5, $$0.o());
-               cbr $$10 = bmc.e.b($$8, $$5.v(), $$9, $$4, bms.m, true, true);
-               if ($$10 == null) {
-                  return bkc.e;
-               }
+   public boolean a(chh $$0) {
+      return this.p.a($$0);
+   }
 
-               float $$11 = (float)aup.d((aup.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dq(), $$10.ds(), $$10.dw(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dq(), $$10.ds(), $$10.dw(), art.aA, aru.e, 0.75F, 0.8F);
-               $$10.a(dnz.t, $$0.o());
+   @Override
+   public coz a(chh $$0, int $$1) {
+      coz $$2 = coz.h;
+      clw $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         coz $$4 = $$3.g();
+         $$2 = $$4.q();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return coz.h;
             }
-
-            $$5.h(1);
-            return bkc.a($$2.B);
-         } else {
-            return bkc.e;
+         } else if (!this.a($$4, 0, 9, false)) {
+            return coz.h;
          }
+
+         if ($$4.b()) {
+            $$3.e(coz.h);
+         } else {
+            $$3.b();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return coz.h;
+         }
+
+         $$3.a($$0, $$4);
       }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(chh $$0) {
+      super.b($$0);
+      this.p.c($$0);
    }
 }

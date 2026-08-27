@@ -1,17 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public class bpz implements brk {
+   private final hz a;
+   private final ens b;
 
-public class bpz {
-   public static bog<cfd> a() {
-      return brs.a((Function<brs.b<cfd>, ? extends App<brs.c<cfd>, brv<cfd>>>)($$0 -> $$0.group($$0.c(bvq.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               cfe $$3 = $$1.gq();
-               if ($$3.b() != cfg.b && $$3.b() != cfg.m && $$1.w() == 0 && $$3.c() <= 1) {
-                  $$1.a($$1.gq().a(cfg.b));
-                  $$1.c($$0xx);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public bpz(hz $$0) {
+      this.a = $$0.i();
+      this.b = ens.b($$0);
+   }
+
+   public bpz(ens $$0) {
+      this.a = hz.a($$0);
+      this.b = $$0;
+   }
+
+   @Override
+   public ens a() {
+      return this.b;
+   }
+
+   @Override
+   public hz b() {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(bog $$0) {
+      return true;
+   }
+
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

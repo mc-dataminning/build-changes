@@ -1,121 +1,84 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.stream.LongStream;
+import java.util.function.Supplier;
 
-public class awk extends DataFix {
-   private static final int a = 6;
-   private static final int b = 16;
-   private static final int c = 16;
-   private static final int d = 4096;
-   private static final int e = 9;
-   private static final int f = 256;
-
-   public awk(Schema $$0) {
-      super($$0, false);
+public class awk {
+   public static void a(cvn $$0, hz $$1, jx $$2, bkz $$3) {
+      for (ie $$4 : ie.values()) {
+         a($$0, $$1, $$2, $$3, $$4, () -> a($$0.z), 0.55);
+      }
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      OpticFinder<?> $$3 = $$2.type().findField("Sections");
-      Type<?> $$4 = ((ListType)$$3.type()).getElement();
-      OpticFinder<?> $$5 = DSL.typeFinder($$4);
-      Type<Pair<String, Dynamic<?>>> $$6 = DSL.named(bbw.u.typeName(), DSL.remainderType());
-      OpticFinder<List<Pair<String, Dynamic<?>>>> $$7 = DSL.fieldFinder("Palette", DSL.list($$6));
-      return this.fixTypeEverywhereTyped(
-         "BitStorageAlignFix", $$0, this.getOutputSchema().getType(bbw.c), $$4x -> $$4x.updateTyped($$2, $$3xx -> this.a(a($$3, $$5, $$7, $$3xx)))
-      );
+   public static void a(cvn $$0, hz $$1, jx $$2, bkz $$3, ie $$4, Supplier<ens> $$5, double $$6) {
+      int $$7 = $$3.a($$0.z);
+
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         a($$0, $$1, $$4, $$2, $$5.get(), $$6);
+      }
    }
 
-   private Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(), $$0x -> $$0x.update("Heightmaps", $$1 -> $$1.updateMapValues($$1x -> $$1x.mapSecond($$1xx -> a($$0x, $$1xx, 256, 9))))
-      );
+   private static ens a(awo $$0) {
+      return new ens(awh.a($$0, -0.5, 0.5), awh.a($$0, -0.5, 0.5), awh.a($$0, -0.5, 0.5));
    }
 
-   private static Typed<?> a(OpticFinder<?> $$0, OpticFinder<?> $$1, OpticFinder<List<Pair<String, Dynamic<?>>>> $$2, Typed<?> $$3) {
-      return $$3.updateTyped(
-         $$0,
-         $$2x -> $$2x.updateTyped(
-               $$1,
-               $$1xx -> {
-                  int $$2xx = $$1xx.getOptional($$2).map($$0xxx -> Math.max(4, DataFixUtils.ceillog2($$0xxx.size()))).orElse(0);
-                  return $$2xx != 0 && !aup.d($$2xx)
-                     ? $$1xx.update(DSL.remainderFinder(), $$1xxx -> $$1xxx.update("BlockStates", $$2xxx -> a($$1xxx, $$2xxx, 4096, $$2xx)))
-                     : $$1xx;
-               }
-            )
-      );
+   public static void a(ie.a $$0, cvn $$1, hz $$2, double $$3, jx $$4, blf $$5) {
+      ens $$6 = ens.b($$2);
+      boolean $$7 = $$0 == ie.a.a;
+      boolean $$8 = $$0 == ie.a.b;
+      boolean $$9 = $$0 == ie.a.c;
+      int $$10 = $$5.a($$1.z);
+
+      for (int $$11 = 0; $$11 < $$10; $$11++) {
+         double $$12 = $$6.c + awh.a($$1.z, -1.0, 1.0) * ($$7 ? 0.5 : $$3);
+         double $$13 = $$6.d + awh.a($$1.z, -1.0, 1.0) * ($$8 ? 0.5 : $$3);
+         double $$14 = $$6.e + awh.a($$1.z, -1.0, 1.0) * ($$9 ? 0.5 : $$3);
+         double $$15 = $$7 ? awh.a($$1.z, -1.0, 1.0) : 0.0;
+         double $$16 = $$8 ? awh.a($$1.z, -1.0, 1.0) : 0.0;
+         double $$17 = $$9 ? awh.a($$1.z, -1.0, 1.0) : 0.0;
+         $$1.a($$4, $$12, $$13, $$14, $$15, $$16, $$17);
+      }
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1, int $$2, int $$3) {
-      long[] $$4 = $$1.asLongStream().toArray();
-      long[] $$5 = a($$2, $$3, $$4);
-      return $$0.createLongList(LongStream.of($$5));
+   public static void a(cvn $$0, hz $$1, ie $$2, jx $$3, ens $$4, double $$5) {
+      ens $$6 = ens.b($$1);
+      int $$7 = $$2.j();
+      int $$8 = $$2.k();
+      int $$9 = $$2.l();
+      double $$10 = $$6.c + ($$7 == 0 ? awh.a($$0.z, -0.5, 0.5) : (double)$$7 * $$5);
+      double $$11 = $$6.d + ($$8 == 0 ? awh.a($$0.z, -0.5, 0.5) : (double)$$8 * $$5);
+      double $$12 = $$6.e + ($$9 == 0 ? awh.a($$0.z, -0.5, 0.5) : (double)$$9 * $$5);
+      double $$13 = $$7 == 0 ? $$4.a() : 0.0;
+      double $$14 = $$8 == 0 ? $$4.b() : 0.0;
+      double $$15 = $$9 == 0 ? $$4.c() : 0.0;
+      $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
    }
 
-   public static long[] a(int $$0, int $$1, long[] $$2) {
-      int $$3 = $$2.length;
-      if ($$3 == 0) {
-         return $$2;
-      } else {
-         long $$4 = (1L << $$1) - 1L;
-         int $$5 = 64 / $$1;
-         int $$6 = ($$0 + $$5 - 1) / $$5;
-         long[] $$7 = new long[$$6];
-         int $$8 = 0;
-         int $$9 = 0;
-         long $$10 = 0L;
-         int $$11 = 0;
-         long $$12 = $$2[0];
-         long $$13 = $$3 > 1 ? $$2[1] : 0L;
+   public static void a(cvn $$0, hz $$1, awo $$2, jx $$3) {
+      double $$4 = (double)$$1.u() + $$2.j();
+      double $$5 = (double)$$1.v() - 0.05;
+      double $$6 = (double)$$1.w() + $$2.j();
+      $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   }
 
-         for (int $$14 = 0; $$14 < $$0; $$14++) {
-            int $$15 = $$14 * $$1;
-            int $$16 = $$15 >> 6;
-            int $$17 = ($$14 + 1) * $$1 - 1 >> 6;
-            int $$18 = $$15 ^ $$16 << 6;
-            if ($$16 != $$11) {
-               $$12 = $$13;
-               $$13 = $$16 + 1 < $$3 ? $$2[$$16 + 1] : 0L;
-               $$11 = $$16;
-            }
+   public static void a(cvo $$0, hz $$1, int $$2, jx $$3) {
+      double $$4 = 0.5;
+      dlf $$5 = $$0.a_($$1);
+      double $$6 = $$5.i() ? 1.0 : $$5.j($$0, $$1).c(ie.a.b);
+      a($$0, $$1, $$2, 0.5, $$6, true, $$3);
+   }
 
-            long $$19;
-            if ($$16 == $$17) {
-               $$19 = $$12 >>> $$18 & $$4;
-            } else {
-               int $$20 = 64 - $$18;
-               $$19 = ($$12 >>> $$18 | $$13 << $$20) & $$4;
-            }
+   public static void a(cvo $$0, hz $$1, int $$2, double $$3, double $$4, boolean $$5, jx $$6) {
+      awo $$7 = $$0.F_();
 
-            int $$22 = $$9 + $$1;
-            if ($$22 >= 64) {
-               $$7[$$8++] = $$10;
-               $$10 = $$19;
-               $$9 = $$1;
-            } else {
-               $$10 |= $$19 << $$9;
-               $$9 = $$22;
-            }
+      for (int $$8 = 0; $$8 < $$2; $$8++) {
+         double $$9 = $$7.k() * 0.02;
+         double $$10 = $$7.k() * 0.02;
+         double $$11 = $$7.k() * 0.02;
+         double $$12 = 0.5 - $$3;
+         double $$13 = (double)$$1.u() + $$12 + $$7.j() * $$3 * 2.0;
+         double $$14 = (double)$$1.v() + $$7.j() * $$4;
+         double $$15 = (double)$$1.w() + $$12 + $$7.j() * $$3 * 2.0;
+         if ($$5 || !$$0.a_(hz.a($$13, $$14, $$15).d()).i()) {
+            $$0.a($$6, $$13, $$14, $$15, $$9, $$10, $$11);
          }
-
-         if ($$10 != 0L) {
-            $$7[$$8] = $$10;
-         }
-
-         return $$7;
       }
    }
 }

@@ -1,24 +1,23 @@
-public class acq implements xg<zb> {
-   private final vg a;
+import javax.annotation.Nullable;
 
-   public acq(vg $$0) {
-      this.a = $$0;
-   }
-
-   public acq(uj $$0) {
-      this.a = $$0.m();
-   }
+public record acq(int b, ij<bmz> c) implements xx<aag> {
+   public static final xo<vb, acq> a = xo.a(xm.d, $$0 -> $$0.b, xm.b(kg.Q), acq::e, acq::new);
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
+   public xz<acq> a() {
+      return aeq.aj;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public vg a() {
-      return this.a;
+   @Nullable
+   public bno a(cvn $$0) {
+      return $$0.a(this.b);
+   }
+
+   public ij<bmz> e() {
+      return this.c;
    }
 }

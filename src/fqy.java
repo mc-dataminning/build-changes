@@ -1,53 +1,67 @@
-public class fqy extends fsh {
-   fqy(foe $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
+
+public record fqy(String a, @Nullable fqy.a b) {
+   public static fqy a() {
+      return a(null);
    }
 
-   @Override
-   public frl b() {
-      return frl.b;
+   public static fqy a(String $$0) {
+      return a(new fqy.a.b($$0));
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * aup.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public static fqy a(eth $$0) {
+      return a(new fqy.a.a($$0));
    }
 
-   public static class a implements frk<ka> {
-      private final fsc a;
+   public static fqy a(@Nullable fqy.a $$0) {
+      return new fqy(g(), $$0);
+   }
 
-      public a(fsc $$0) {
-         this.a = $$0;
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof fqy.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof fqy.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("24w03a");
+      if (exh.e().a()) {
+         $$0.append(" (modded)");
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqy $$8 = new fqy($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
+      return $$0.toString();
    }
 
-   public static class b implements frk<ka> {
-      private final fsc a;
+   public String e() {
+      return this.a;
+   }
 
-      public b(fsc $$0) {
-         this.a = $$0;
+   @Nullable
+   public fqy.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements fqy.a {
+         public a(eth $$0) {
+            this($$0.a, $$0.n);
+         }
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqy $$8 = new fqy($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public static record b(String a) implements fqy.a {
       }
    }
 }

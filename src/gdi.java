@@ -1,25 +1,34 @@
-public class gdi<T extends cfq> extends gdl<T, flo<T>> {
-   private final flj a;
+public class gdi extends gas<cdt> {
+   private final fwg a;
 
-   public gdi(gav<T, flo<T>> $$0, fnf $$1) {
+   public gdi(gat.a $$0) {
       super($$0);
-      this.a = new flj($$1.a(fni.aC));
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   public void a(eqk $$0, ftt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   public void a(cdt $$0, float $$1, float $$2, esa $$3, fvm $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.5F, 0.0F);
+      int $$6 = $$0.s();
+      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+         $$7 = awh.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      $$3.a(a.d.rotationDegrees(-90.0F));
+      $$3.a(-0.5F, -0.5F, 0.5F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      gdh.a(this.a, $$0.u(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(eqk $$0, ftt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      so $$9 = $$8 ? $$3.gj() : $$3.gk();
-      bmc.a($$9.l("id")).filter($$0x -> $$0x == bmc.av).ifPresent($$10 -> {
-         $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
-         bys.b $$11 = bys.b.a($$9.h("Variant"));
-         eqo $$12 = $$1.getBuffer(this.a.a(gam.a($$11)));
-         this.a.a($$0, $$12, $$2, ges.d, $$4, $$5, $$6, $$7, $$3.ah);
-         $$0.b();
-      });
+   public aiy a(cdt $$0) {
+      return ggt.e;
    }
 }

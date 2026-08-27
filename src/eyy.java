@@ -1,56 +1,46 @@
-public class eyy extends exo {
-   private float a = 0.5F;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   public eyy(vg $$0, exc $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+public abstract class eyy extends ezf {
+   protected static final int e = 2;
+   private static final fau a = new fau(new aiy("widget/button"), new aiy("widget/button_disabled"), new aiy("widget/button_highlighted"));
+
+   public eyy(int $$0, int $$1, int $$2, int $$3, vq $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public eyy(int $$0, int $$1, vg $$2, exc $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
+   public abstract void b();
+
+   @Override
+   protected void b(eyu $$0, int $$1, int $$2, float $$3) {
+      exh $$4 = exh.O();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.enableDepthTest();
+      $$0.a(a.a(this.j, this.z()), this.B(), this.C(), this.w(), this.u());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | awh.f(this.l * 255.0F) << 24);
    }
 
-   public eyy(int $$0, int $$1, int $$2, int $$3, vg $$4, exc $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
-   }
-
-   public eyy b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private eyy b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public eyy d() {
-      return this.b(0.0F);
-   }
-
-   public eyy e() {
-      return this.b(0.5F);
-   }
-
-   public eyy f() {
-      return this.b(1.0F);
+   public void a(eyu $$0, eys $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
    @Override
-   public void b(exe $$0, int $$1, int $$2, float $$3) {
-      vg $$4 = this.x();
-      exc $$5 = this.a();
-      int $$6 = this.w();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.B() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.C() + (this.u() - 9) / 2;
-      aub $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   public void a(double $$0, double $$1) {
+      this.b();
    }
 
-   private aub a(vg $$0, int $$1) {
-      exc $$2 = this.a();
-      vl $$3 = $$2.a($$0, $$1 - $$2.a(vf.t));
-      return sj.a().a(vl.a($$3, vf.t));
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.j || !this.k) {
+         return false;
+      } else if (fdh.a($$0)) {
+         this.a(exh.O().ai());
+         this.b();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,18 +1,30 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+public class bwl extends bvb {
+   private final boo a;
 
-public class bwl extends bww<bmo> {
-   @Override
-   public Set<bvq<?>> a() {
-      return ImmutableSet.of(bvq.X);
+   public bwl(boo $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void a(ane $$0, bmo $$1) {
-      if ($$1.aZ()) {
-         $$1.dN().a(bvq.X, avt.a);
-      } else {
-         $$1.dN().b(bvq.X);
+   public boolean a() {
+      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(aue.a);
+   }
+
+   @Override
+   public void c() {
+      hz $$0 = null;
+
+      for (hz $$2 : hz.b(
+         awh.a(this.a.dr() - 2.0), awh.a(this.a.dt() - 2.0), awh.a(this.a.dx() - 2.0), awh.a(this.a.dr() + 2.0), this.a.ds(), awh.a(this.a.dx() + 2.0)
+      )) {
+         if (this.a.dM().b_($$2).a(aue.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

@@ -1,40 +1,33 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class acc implements xx<aag> {
+   public static final xo<vb, acc> a = xo.a(xm.d, acc::b, xm.a(kg.P), acc::e, vs.b, acc::f, acc::new);
+   private final int b;
+   private final cli<?> c;
+   private final vq d;
 
-public class acc implements xg<zb> {
-   private final emx a;
-   private final String b;
-
-   public acc(emx $$0, @Nullable emy $$1) {
-      this.a = $$0;
-      if ($$1 == null) {
-         this.b = "";
-      } else {
-         this.b = $$1.b();
-      }
-   }
-
-   public acc(uj $$0) {
-      this.a = $$0.a(emx.u);
-      this.b = $$0.s();
+   public acc(int $$0, cli<?> $$1, vq $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(emx::a, this.a);
-      $$0.a(this.b);
+   public xz<acc> a() {
+      return aeq.V;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public emx a() {
-      return this.a;
+   public int b() {
+      return this.b;
    }
 
-   @Nullable
-   public String d() {
-      return Objects.equals(this.b, "") ? null : this.b;
+   public cli<?> e() {
+      return this.c;
+   }
+
+   public vq f() {
+      return this.d;
    }
 }

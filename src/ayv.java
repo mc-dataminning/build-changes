@@ -1,87 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
 
-public class ayv extends DataFix {
-   public ayv(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
+public final class ayv {
+   public static final ImmutableMap<String, String> a = ImmutableMap.builder()
+      .put("minecraft:badlands_plateau", "minecraft:badlands")
+      .put("minecraft:bamboo_jungle_hills", "minecraft:bamboo_jungle")
+      .put("minecraft:birch_forest_hills", "minecraft:birch_forest")
+      .put("minecraft:dark_forest_hills", "minecraft:dark_forest")
+      .put("minecraft:desert_hills", "minecraft:desert")
+      .put("minecraft:desert_lakes", "minecraft:desert")
+      .put("minecraft:giant_spruce_taiga_hills", "minecraft:old_growth_spruce_taiga")
+      .put("minecraft:giant_spruce_taiga", "minecraft:old_growth_spruce_taiga")
+      .put("minecraft:giant_tree_taiga_hills", "minecraft:old_growth_pine_taiga")
+      .put("minecraft:giant_tree_taiga", "minecraft:old_growth_pine_taiga")
+      .put("minecraft:gravelly_mountains", "minecraft:windswept_gravelly_hills")
+      .put("minecraft:jungle_edge", "minecraft:sparse_jungle")
+      .put("minecraft:jungle_hills", "minecraft:jungle")
+      .put("minecraft:modified_badlands_plateau", "minecraft:badlands")
+      .put("minecraft:modified_gravelly_mountains", "minecraft:windswept_gravelly_hills")
+      .put("minecraft:modified_jungle_edge", "minecraft:sparse_jungle")
+      .put("minecraft:modified_jungle", "minecraft:jungle")
+      .put("minecraft:modified_wooded_badlands_plateau", "minecraft:wooded_badlands")
+      .put("minecraft:mountain_edge", "minecraft:windswept_hills")
+      .put("minecraft:mountains", "minecraft:windswept_hills")
+      .put("minecraft:mushroom_field_shore", "minecraft:mushroom_fields")
+      .put("minecraft:shattered_savanna", "minecraft:windswept_savanna")
+      .put("minecraft:shattered_savanna_plateau", "minecraft:windswept_savanna")
+      .put("minecraft:snowy_mountains", "minecraft:snowy_plains")
+      .put("minecraft:snowy_taiga_hills", "minecraft:snowy_taiga")
+      .put("minecraft:snowy_taiga_mountains", "minecraft:snowy_taiga")
+      .put("minecraft:snowy_tundra", "minecraft:snowy_plains")
+      .put("minecraft:stone_shore", "minecraft:stony_shore")
+      .put("minecraft:swamp_hills", "minecraft:swamp")
+      .put("minecraft:taiga_hills", "minecraft:taiga")
+      .put("minecraft:taiga_mountains", "minecraft:taiga")
+      .put("minecraft:tall_birch_forest", "minecraft:old_growth_birch_forest")
+      .put("minecraft:tall_birch_hills", "minecraft:old_growth_birch_forest")
+      .put("minecraft:wooded_badlands_plateau", "minecraft:wooded_badlands")
+      .put("minecraft:wooded_hills", "minecraft:forest")
+      .put("minecraft:wooded_mountains", "minecraft:windswept_forest")
+      .put("minecraft:lofty_peaks", "minecraft:jagged_peaks")
+      .put("minecraft:snowcapped_peaks", "minecraft:frozen_peaks")
+      .build();
 
-   public TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Schema $$1 = this.getOutputSchema();
-      Type<?> $$2 = $$0.getTypeRaw(bbw.x);
-      Type<?> $$3 = $$1.getTypeRaw(bbw.x);
-      Type<?> $$4 = $$0.getTypeRaw(bbw.y);
-      return this.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
-      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(bbw.x.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
-      Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
-         bbw.x.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
-      );
-      Type<?> $$7 = $$0.getType(bbw.x);
-      Type<?> $$8 = $$1.getType(bbw.x);
-      if (!Objects.equals($$7, $$5)) {
-         throw new IllegalStateException("Old entity type is not what was expected.");
-      } else if (!$$8.equals($$6, true, true)) {
-         throw new IllegalStateException("New entity type is not what was expected.");
-      } else {
-         OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$9 = DSL.typeFinder($$5);
-         OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$10 = DSL.typeFinder($$6);
-         OpticFinder<NewEntityTree> $$11 = DSL.typeFinder($$3);
-         Type<?> $$12 = $$0.getType(bbw.b);
-         Type<?> $$13 = $$1.getType(bbw.b);
-         return TypeRewriteRule.seq(
-            this.fixTypeEverywhere(
-               "EntityRidingToPassengerFix",
-               $$5,
-               $$6,
-               $$5x -> $$6x -> {
-                     Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$7x = Optional.empty();
-                     Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>> $$8x = $$6x;
-
-                     while (true) {
-                        Either<List<NewEntityTree>, Unit> $$9x = (Either<List<NewEntityTree>, Unit>)DataFixUtils.orElse(
-                           $$7x.map(
-                              $$4xxx -> {
-                                 Typed<NewEntityTree> $$5xxx = (Typed<NewEntityTree>)$$3.pointTyped($$5x)
-                                    .orElseThrow(() -> new IllegalStateException("Could not create new entity tree"));
-                                 NewEntityTree $$6xx = (NewEntityTree)$$5xxx.set($$10, $$4xxx)
-                                    .getOptional($$11)
-                                    .orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                                 return Either.left(ImmutableList.of($$6xx));
-                              }
-                           ),
-                           Either.right(DSL.unit())
-                        );
-                        $$7x = Optional.of(Pair.of(bbw.x.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
-                        Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
-                        if ($$10x.isEmpty()) {
-                           return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                        }
-
-                        $$8x = (Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>)new Typed($$2, $$5x, $$10x.get())
-                           .getOptional($$9)
-                           .orElseThrow(() -> new IllegalStateException("Should always have an entity here"));
-                     }
-                  }
-            ),
-            this.writeAndRead("player RootVehicle injecter", $$12, $$13)
-         );
-      }
+   private ayv() {
    }
 }

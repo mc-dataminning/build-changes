@@ -1,65 +1,44 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class cnc {
-   private final Map<cnb, cnc.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cnb $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class cnc extends cou {
+   public cnc(cou.a $$0) {
+      super($$0);
    }
 
-   public float a(cnb $$0, float $$1) {
-      cnc.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return aup.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
+   @Override
+   public coz a(coz $$0, cvn $$1, bog $$2) {
+      coz $$3 = super.a($$0, $$1, $$2);
+      if (!$$1.B) {
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            double $$5 = $$2.dr() + ($$2.eh().j() - 0.5) * 16.0;
+            double $$6 = awh.a($$2.dt() + (double)($$2.eh().a(16) - 8), (double)$$1.J_(), (double)($$1.J_() + ((aov)$$1).k() - 1));
+            double $$7 = $$2.dx() + ($$2.eh().j() - 0.5) * 16.0;
+            if ($$2.bO()) {
+               $$2.ac();
+            }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<cnb, cnc.a>> $$0 = this.a.entrySet().iterator();
+            ens $$8 = $$2.dk();
+            if ($$2.b($$5, $$6, $$7, true)) {
+               $$1.a(dpp.R, $$8, dpp.a.a($$2));
+               atl $$10;
+               atj $$9;
+               if ($$2 instanceof cad) {
+                  $$9 = atk.ja;
+                  $$10 = atl.g;
+               } else {
+                  $$9 = atk.eY;
+                  $$10 = atl.h;
+               }
 
-         while ($$0.hasNext()) {
-            Entry<cnb, cnc.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
+               $$1.a(null, $$2.dr(), $$2.dt(), $$2.dx(), $$9, $$10);
+               $$2.n();
+               break;
             }
          }
+
+         if ($$2 instanceof chh $$13) {
+            $$13.go().a(this, 20);
+         }
       }
-   }
 
-   public void a(cnb $$0, int $$1) {
-      this.a.put($$0, new cnc.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(cnb $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(cnb $$0, int $$1) {
-   }
-
-   protected void c(cnb $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+      return $$3;
    }
 }

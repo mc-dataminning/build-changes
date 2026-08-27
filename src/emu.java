@@ -1,46 +1,30 @@
-public final class emu extends eml {
-   private final eml d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   protected emu(eml $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public record emu(eiv.b c) implements emx {
+   public static final Codec<emu> a = RecordCodecBuilder.create($$0 -> $$0.group(eiv.b.e.fieldOf("target").forGetter(emu::c)).apply($$0, emu::new));
+   public static final Codec<emu> b = eiv.b.e.xmap(emu::new, emu::c);
+
+   public static emx a(eiv.b $$0) {
+      return new emu($$0);
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   public emw a() {
+      return emy.c;
+   }
+
+   @Nullable
+   @Override
+   public eov a(eiv $$0) {
+      return $$0.c(this.c.a());
    }
 
    @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public int a(ic.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(ic.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(ic.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return aup.a($$1, $$2, $$3) - $$2;
+   public Set<eld<?>> b() {
+      return ImmutableSet.of(this.c.a());
    }
 }

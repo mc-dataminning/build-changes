@@ -1,24 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-record ebd(bim<List<eaz>> c) implements eaz {
-   static Codec<ebd> a = RecordCodecBuilder.create($$0 -> $$0.group(bim.b(Codec.list(eaz.b)).fieldOf("groups").forGetter(ebd::c)).apply($$0, ebd::new));
+public abstract class ebd extends ebe {
+   private final ebd.a d;
+   private final int e;
+   private final int f;
 
-   @Override
-   public void a(auw $$0, BiConsumer<ahg<eax>, ahg<eax>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   protected ebd(ebd.a $$0, int $$1, int $$2, ebe.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public Stream<ahg<eax>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(eaz::a);
+   public Optional<ebe.b> a(ebe.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dqo.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   @Override
-   public Codec<ebd> b() {
-      return a;
+   private void a(ebw $$0, ebe.a $$1) {
+      cuu $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
+
+   @FunctionalInterface
+   protected interface a {
+      ebi construct(drn var1, int var2, int var3);
    }
 }

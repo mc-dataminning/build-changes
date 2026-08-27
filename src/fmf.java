@@ -1,39 +1,44 @@
-public class fmf extends fmg {
-   private final fnj b;
-   protected final fnj a;
+public class fmf<T extends bno> extends fmk<T> {
+   private final fpc a;
+   private final fpc[] b = new fpc[9];
 
-   public fmf(fnj $$0) {
-      this.b = $$0;
-      this.a = $$0.b("head");
+   public fmf(fpc $$0) {
+      this.a = $$0;
+
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static fnr a() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      $$1.a("head", fno.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fnl.a);
-      return $$0;
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   public static fnp b() {
-      fnr $$0 = a();
-      fns $$1 = $$0.a();
-      $$1.a("head").a("hat", fno.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fnn(0.25F)), fnl.a);
-      return fnp.a($$0, 64, 64);
-   }
+   public static fpi b() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      $$1.a("body", fph.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fpe.a(0.0F, 17.6F, 0.0F));
+      awo $$2 = awo.a(1660L);
 
-   public static fnp c() {
-      fnr $$0 = a();
-      return fnp.a($$0, 64, 32);
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), fph.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fpe.a($$4, 24.6F, $$5));
+      }
+
+      return fpi.a($$0, 64, 32);
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
+         this.b[$$6].e = 0.2F * awh.a($$3 * 0.3F + (float)$$6) + 0.4F;
+      }
    }
 
    @Override
-   public void a(eqk $$0, eqo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public fpc a() {
+      return this.a;
    }
 }

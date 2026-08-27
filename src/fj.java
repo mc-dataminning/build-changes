@@ -1,39 +1,68 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import java.util.Set;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class fj implements ArgumentType<fh> {
-   private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "foo{bar=baz}");
-   private final ij<cwy> b;
+public class fj implements Predicate<dlj> {
+   private final dlf a;
+   private final Set<dmi<?>> b;
+   @Nullable
+   private final sw c;
 
-   public fj(dn $$0) {
-      this.b = $$0.a(ke.f);
+   public fj(dlf $$0, Set<dmi<?>> $$1, @Nullable sw $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static fj a(dn $$0) {
-      return new fj($$0);
+   public dlf a() {
+      return this.a;
    }
 
-   public fh a(StringReader $$0) throws CommandSyntaxException {
-      fk.a $$1 = fk.a(this.b, $$0, true);
-      return new fh($$1.a(), $$1.b().keySet(), $$1.c());
+   public Set<dmi<?>> b() {
+      return this.b;
    }
 
-   public static fh a(CommandContext<ds> $$0, String $$1) {
-      return (fh)$$0.getArgument($$1, fh.class);
+   public boolean a(dlj $$0) {
+      dlf $$1 = $$0.a();
+      if (!$$1.a(this.a.b())) {
+         return false;
+      } else {
+         for (dmi<?> $$2 : this.b) {
+            if ($$1.c($$2) != this.a.c($$2)) {
+               return false;
+            }
+         }
+
+         if (this.c == null) {
+            return true;
+         } else {
+            dit $$3 = $$0.b();
+            return $$3 != null && tl.a(this.c, $$3.o(), true);
+         }
+      }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fk.a(this.b, $$1, false, true);
+   public boolean a(aov $$0, hz $$1) {
+      return this.a(new dlj($$0, $$1, false));
    }
 
-   public Collection<String> getExamples() {
-      return a;
+   public boolean a(aov $$0, hz $$1, int $$2) {
+      dlf $$3 = cyo.b(this.a, $$0, $$1);
+      if ($$3.i()) {
+         $$3 = this.a;
+      }
+
+      if (!$$0.a($$1, $$3, $$2)) {
+         return false;
+      } else {
+         if (this.c != null) {
+            dit $$4 = $$0.c_($$1);
+            if ($$4 != null) {
+               $$4.a(this.c);
+            }
+         }
+
+         return true;
+      }
    }
 }

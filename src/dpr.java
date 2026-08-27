@@ -1,47 +1,20 @@
-import java.util.concurrent.atomic.AtomicLong;
+public interface dpr {
+   dpt a();
 
-@Deprecated
-public class dpr implements don {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dpa i = new dpa(this);
+   int b();
 
-   public dpr(long $$0) {
-      this.b($$0);
+   boolean a(aov var1, ij<dpp> var2, dpp.a var3, ens var4);
+
+   default dpr.a c() {
+      return dpr.a.a;
    }
 
-   @Override
-   public auw d() {
-      return new dpr(this.g());
+   public static enum a {
+      a,
+      b;
    }
 
-   @Override
-   public dpl e() {
-      return new doz.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1;
-      long $$2;
-      do {
-         $$1 = this.h.get();
-         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      } while (!this.h.compareAndSet($$1, $$2));
-
-      return (int)($$2 >>> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
+   public interface b<T extends dpr> {
+      T d();
    }
 }

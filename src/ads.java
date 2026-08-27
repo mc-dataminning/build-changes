@@ -1,38 +1,44 @@
-import java.time.Instant;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record ads(String a, Instant b, long c, @Nullable vs d, vn.b e) implements xg<adk> {
-   public ads(uj $$0) {
-      this($$0.d(256), $$0.w(), $$0.readLong(), $$0.c(vs::a), new vn.b($$0));
+public record ads(String b, String c, int d, @Nullable vq e, Optional<xg> f) implements xx<aag> {
+   public static final xo<vb, ads> a = xx.a(ads::a, ads::new);
+
+   private ads(vb $$0) {
+      this($$0.r(), $$0.r(), $$0.n(), $$0.c(uq::m), xi.d.decode($$0));
+   }
+
+   private void a(vb $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.a(this.e, uq::a);
+      xi.d.encode($$0, this.f);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a, 256);
-      $$0.a(this.b);
-      $$0.b(this.c);
-      $$0.a(this.d, vs::a);
-      this.e.a($$0);
+   public xz<ads> a() {
+      return aeq.aK;
    }
 
-   public void a(adk $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public Instant d() {
-      return this.b;
-   }
-
-   public long e() {
+   public String e() {
       return this.c;
    }
 
-   @Nullable
-   public vs f() {
+   public int f() {
       return this.d;
    }
 
-   public vn.b g() {
+   @Nullable
+   public vq g() {
       return this.e;
+   }
+
+   public Optional<xg> h() {
+      return this.f;
    }
 }

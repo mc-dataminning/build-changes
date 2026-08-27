@@ -1,52 +1,48 @@
-import javax.annotation.Nullable;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.List;
 
 public class amz {
-   @Nullable
-   protected static hx a(ane $$0, int $$1, int $$2) {
-      boolean $$3 = $$0.E_().h();
-      dlw $$4 = $$0.d(iz.a($$1), iz.a($$2));
-      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(doy.a.e, $$1 & 15, $$2 & 15);
-      if ($$5 < $$0.J_()) {
-         return null;
-      } else {
-         int $$6 = $$4.a(doy.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(doy.a.d, $$1 & 15, $$2 & 15)) {
-            return null;
+   private static final wn a = wn.a.a(new vw(vw.a.a, vq.c("chat.type.team.hover"))).a(new vo(vo.a.d, "/teammsg "));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.teammsg.failed.noteam"));
+
+   public static void a(CommandDispatcher<du> $$0) {
+      LiteralCommandNode<du> $$1 = $$0.register((LiteralArgumentBuilder)dv.a("teammsg").then(dv.a("message", el.a()).executes($$0x -> {
+         du $$1x = (du)$$0x.getSource();
+         bno $$2 = $$1x.g();
+         eor $$3 = $$2.cg();
+         if ($$3 == null) {
+            throw b.create();
          } else {
-            hx.a $$7 = new hx.a();
-
-            for (int $$8 = $$5 + 1; $$8 >= $$0.J_(); $$8--) {
-               $$7.d($$1, $$8, $$2);
-               djp $$9 = $$0.a_($$7);
-               if (!$$9.u().c()) {
-                  break;
-               }
-
-               if (cwy.a($$9.k($$0, $$7), ic.b)) {
-                  return $$7.c().i();
-               }
+            List<aow> $$4 = $$1x.l().ae().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cg() == $$3).toList();
+            if (!$$4.isEmpty()) {
+               el.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
             }
 
-            return null;
+            return $$4.size();
          }
-      }
+      })));
+      $$0.register((LiteralArgumentBuilder)dv.a("tm").redirect($$1));
    }
 
-   @Nullable
-   public static hx a(ane $$0, cte $$1) {
-      if (aa.a($$1)) {
-         return null;
-      } else {
-         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
-            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
-               hx $$4 = a($$0, $$2, $$3);
-               if ($$4 != null) {
-                  return $$4;
-               }
-            }
-         }
+   private static void a(du $$0, bno $$1, eor $$2, List<aow> $$3, wg $$4) {
+      vq $$5 = $$2.d().c(a);
+      vm.a $$6 = vm.a(vm.g, $$0).c($$5);
+      vm.a $$7 = vm.a(vm.h, $$0).c($$5);
+      wf $$8 = wf.a($$4);
+      boolean $$9 = false;
 
-         return null;
+      for (aow $$10 : $$3) {
+         vm.a $$11 = $$10 == $$1 ? $$7 : $$6;
+         boolean $$12 = $$0.a($$10);
+         $$10.a($$8, $$12, $$11);
+         $$9 |= $$12 && $$4.j();
+      }
+
+      if ($$9) {
+         $$0.a(asn.f);
       }
    }
 }

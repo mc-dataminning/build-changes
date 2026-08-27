@@ -1,16 +1,5 @@
-import javax.annotation.Nullable;
+public interface xg {
+   we a(int var1);
 
-public interface xg<T extends up> {
-   void a(uj var1);
-
-   void a(T var1);
-
-   default boolean b() {
-      return false;
-   }
-
-   @Nullable
-   default ui c() {
-      return null;
-   }
+   xh<? extends xg> a();
 }

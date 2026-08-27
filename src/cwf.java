@@ -1,67 +1,40 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cwf extends cwy implements ddy {
-   public static final MapCodec<cwf> a = b(cwf::new);
-   public static final dkg b = dkf.C;
+public interface cwf {
+   void a(bnu<?> var1, awo var2);
 
-   @Override
-   public MapCodec<cwf> a() {
-      return a;
-   }
-
-   protected cwf(djo.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public boolean a_(djp $$0, ctd $$1, hx $$2) {
-      return true;
-   }
-
-   @Override
-   public ddd b_(djp $$0) {
-      return ddd.a;
-   }
-
-   @Override
-   public float d(djp $$0, ctd $$1, hx $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, efa.c, efa.c.a($$3));
+   static void a(coz $$0, List<vq> $$1, String $$2) {
+      vq $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(vp.a);
+         $$1.add(vq.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(vp.a().b(vq.c("block.minecraft.spawner.desc2").a(n.j)));
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public eez c_(djp $$0) {
-      return $$0.c(b) ? efa.c.a(false) : super.c_($$0);
    }
 
    @Nullable
-   @Override
-   public djp a(cpp $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == efa.c));
+   static vq a(coz $$0, String $$1) {
+      sw $$2 = cms.a($$0);
+      if ($$2 != null) {
+         aiy $$3 = a($$2, $$1);
+         if ($$3 != null) {
+            return kf.g.b($$3).map($$0x -> vq.c($$0x.g()).a(n.h)).orElse(null);
+         }
+      }
+
+      return null;
    }
 
-   @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public cng a(@Nullable cfq $$0, cty $$1, hx $$2, djp $$3) {
-      return $$0 != null && $$0.f() ? ddy.super.a($$0, $$1, $$2, $$3) : cng.f;
-   }
-
-   @Override
-   public boolean a(@Nullable cfq $$0, ctd $$1, hx $$2, djp $$3, eey $$4) {
-      return $$0 != null && $$0.f() ? ddy.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   @Nullable
+   private static aiy a(sw $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return aiy.a($$2);
+      } else {
+         return null;
+      }
    }
 }

@@ -1,55 +1,58 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class aym extends DataFix {
-   private static final List<String> a = Lists.newArrayList(new String[]{"MinecartRideable", "MinecartChest", "MinecartFurnace"});
+public class aym extends bcn {
+   public static final String a = "_filtered_correct";
+   private static final String b = "black";
 
-   public aym(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public aym(Schema $$0, String $$1, String $$2) {
+      super($$0, false, $$1, bdn.s, $$2);
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.y);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.y);
-      return this.fixTypeEverywhere(
-         "EntityMinecartIdentifiersFix",
-         $$0,
-         $$1,
-         $$2 -> $$3 -> {
-               if (!Objects.equals($$3.getFirst(), "Minecart")) {
-                  return $$3;
-               } else {
-                  Typed<? extends Pair<String, ?>> $$4 = (Typed<? extends Pair<String, ?>>)$$0.point($$2, "Minecart", $$3.getSecond())
-                     .orElseThrow(IllegalStateException::new);
-                  Dynamic<?> $$5 = (Dynamic<?>)$$4.getOrCreate(DSL.remainderFinder());
-                  int $$6 = $$5.get("Type").asInt(0);
-                  String $$7;
-                  if ($$6 > 0 && $$6 < a.size()) {
-                     $$7 = a.get($$6);
-                  } else {
-                     $$7 = "MinecartRideable";
-                  }
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.set("front_text", b($$0)).set("back_text", c($$0)).set("is_waxed", $$0.createBoolean(false));
+   }
 
-                  return Pair.of(
-                     $$7,
-                     (DataResult)$$4.write()
-                        .map($$2xx -> ((Type)$$1.types().get($$7)).read($$2xx))
-                        .result()
-                        .orElseThrow(() -> new IllegalStateException("Could not read the new minecart."))
-                  );
-               }
-            }
-      );
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Dynamic<T> $$1 = axn.a($$0.getOps());
+      List<Dynamic<T>> $$2 = a($$0, "Text").map($$1x -> $$1x.orElse($$1)).toList();
+      Dynamic<T> $$3 = $$0.emptyMap()
+         .set("messages", $$0.createList($$2.stream()))
+         .set("color", $$0.get("Color").result().orElse($$0.createString("black")))
+         .set("has_glowing_text", $$0.get("GlowingText").result().orElse($$0.createBoolean(false)))
+         .set("_filtered_correct", $$0.createBoolean(true));
+      List<Optional<Dynamic<T>>> $$4 = a($$0, "FilteredText").toList();
+      if ($$4.stream().anyMatch(Optional::isPresent)) {
+         $$3 = $$3.set("filtered_messages", $$0.createList(Streams.mapWithIndex($$4.stream(), ($$1x, $$2x) -> {
+            Dynamic<T> $$3x = $$2.get((int)$$2x);
+            return $$1x.orElse($$3x);
+         })));
+      }
+
+      return $$3;
+   }
+
+   private static <T> Stream<Optional<Dynamic<T>>> a(Dynamic<T> $$0, String $$1) {
+      return Stream.of($$0.get($$1 + "1").result(), $$0.get($$1 + "2").result(), $$0.get($$1 + "3").result(), $$0.get($$1 + "4").result());
+   }
+
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return $$0.emptyMap().set("messages", d($$0)).set("color", $$0.createString("black")).set("has_glowing_text", $$0.createBoolean(false));
+   }
+
+   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
+      Dynamic<T> $$1 = axn.a($$0.getOps());
+      return $$0.createList(Stream.of($$1, $$1, $$1, $$1));
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), aym::a);
    }
 }

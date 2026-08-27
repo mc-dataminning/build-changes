@@ -1,43 +1,32 @@
-import java.util.Locale;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public enum eqw {
-   a,
-   b,
-   c,
-   d;
+public class eqw {
+   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
+   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
+   private static final Vector3f e = new Vector3f(0.2F, -1.0F, -1.0F).normalize();
+   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
 
-   private static final int e = 1024;
-
-   public static eqw a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
-         }
-      }
+   public static void a(Matrix4f $$0) {
+      RenderSystem.setupLevelDiffuseLighting(c, d, $$0);
    }
 
-   public static double a(long $$0, eqw $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   public static void b(Matrix4f $$0) {
+      RenderSystem.setupLevelDiffuseLighting(a, b, $$0);
    }
 
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
-      }
+   public static void a() {
+      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
    }
 
-   public static String b(long $$0, eqw $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   public static void b() {
+      RenderSystem.setupGui3DDiffuseLighting(a, b);
+   }
+
+   public static void c() {
+      RenderSystem.setShaderLights(e, f);
    }
 }

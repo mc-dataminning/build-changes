@@ -1,133 +1,84 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.function.ToIntFunction;
 
-public class ddb extends cwo {
-   public static final MapCodec<ddb> c = b(ddb::new);
-   public static final dkg d = dkf.r;
-   private static final Map<ctd, List<ddb.a>> h = new WeakHashMap<>();
-   public static final int e = 60;
-   public static final int f = 8;
-   public static final int g = 160;
-   private static final int i = 2;
+public class ddb extends cyo implements dfo {
+   public static final MapCodec<ddb> a = b(ddb::new);
+   public static final int b = 15;
+   public static final dmf c = dlv.aP;
+   public static final dlw d = dlv.C;
+   public static final ToIntFunction<dlf> e = $$0 -> $$0.c(c);
 
    @Override
-   public MapCodec<? extends ddb> a() {
-      return c;
+   public MapCodec<ddb> a() {
+      return a;
    }
 
-   protected ddb(djo.d $$0) {
+   public ddb(dle.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
+      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public void b(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
-      for (ic $$5 : ic.values()) {
-         $$1.a($$2.a($$5), this);
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
+      if (!$$1.B && $$3.gq()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return blu.a;
+      } else {
+         return blu.b;
       }
    }
 
    @Override
-   public void a(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
-      if (!$$4) {
-         for (ic $$5 : ic.values()) {
-            $$1.a($$2.a($$5), this);
-         }
-      }
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return $$3.a(cpc.hB) ? eoi.b() : eoi.a();
    }
 
    @Override
-   public int a(djp $$0, ctd $$1, hx $$2, ic $$3) {
-      return $$0.c(d) && ic.b != $$3 ? 15 : 0;
-   }
-
-   protected boolean a(ctx $$0, hx $$1, djp $$2) {
-      return $$0.b($$1.d(), ic.a);
-   }
-
-   @Override
-   public void a(djp $$0, ane $$1, hx $$2, auw $$3) {
-      boolean $$4 = this.a($$1, $$2, $$0);
-      List<ddb.a> $$5 = h.get($$1);
-
-      while ($$5 != null && !$$5.isEmpty() && $$1.X() - $$5.get(0).b > 60L) {
-         $$5.remove(0);
-      }
-
-      if ($$0.c(d)) {
-         if ($$4) {
-            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
-            if (a($$1, $$2, true)) {
-               $$1.c(1502, $$2, 0);
-               $$1.a($$2, $$1.a_($$2).b(), 160);
-            }
-         }
-      } else if (!$$4 && !a($$1, $$2, false)) {
-         $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
-      }
-   }
-
-   @Override
-   public void a(djp $$0, ctx $$1, hx $$2, cwy $$3, hx $$4, boolean $$5) {
-      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.N().b($$2, this)) {
-         $$1.a($$2, this, 2);
-      }
-   }
-
-   @Override
-   public int b(djp $$0, ctd $$1, hx $$2, ic $$3) {
-      return $$3 == ic.a ? $$0.b($$1, $$2, $$3) : 0;
-   }
-
-   @Override
-   public boolean f_(djp $$0) {
+   protected boolean a_(dlf $$0, cut $$1, hz $$2) {
       return true;
    }
 
    @Override
-   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
-      if ($$0.c(d)) {
-         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         $$1.a(jr.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      }
+   protected det b_(dlf $$0) {
+      return det.a;
    }
 
    @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(d);
+   protected float d(dlf $$0, cut $$1, hz $$2) {
+      return 1.0F;
    }
 
-   private static boolean a(ctx $$0, hx $$1, boolean $$2) {
-      List<ddb.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
-      if ($$2) {
-         $$3.add(new ddb.a($$1.i(), $$0.X()));
+   @Override
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, egq.c, egq.c.a($$3));
       }
 
-      int $$4 = 0;
-
-      for (ddb.a $$5 : $$3) {
-         if ($$5.a.equals($$1)) {
-            if (++$$4 >= 8) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static class a {
-      final hx a;
-      final long b;
+   @Override
+   protected egp c_(dlf $$0) {
+      return $$0.c(d) ? egq.c.a(false) : super.c_($$0);
+   }
 
-      public a(hx $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public coz a(cvq $$0, hz $$1, dlf $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(c));
+   }
+
+   public static coz a(coz $$0, int $$1) {
+      if ($$1 != 15) {
+         sw $$2 = new sw();
+         $$2.a(c.f(), String.valueOf($$1));
+         $$0.a("BlockStateTag", $$2);
       }
+
+      return $$0;
    }
 }

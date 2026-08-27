@@ -1,30 +1,15 @@
-public class crn extends crr {
-   public crn(crr.a $$0, bmd... $$1) {
-      super($$0, crs.l, $$1);
+public class crn extends crk {
+   public crn(String $$0, crq $$1, cry $$2, coz $$3, float $$4, int $$5) {
+      super(csg.c, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 25;
+   public coz g() {
+      return new coz(cyq.nW);
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   @Override
-   public boolean a(cng $$0) {
-      return !$$0.a(cnj.vo) && super.a($$0);
+   public csf<?> at_() {
+      return csf.q;
    }
 }

@@ -1,24 +1,85 @@
-public class abw implements xg<zb> {
-   private final int a;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public abw(dlg $$0) {
-      this.a = $$0.r();
+public record abw(int b, boolean c, Set<aix<cvn>> d, int e, int f, int g, boolean h, boolean i, boolean j, aen k, boolean l) implements xx<aag> {
+   public static final xo<uq, abw> a = xx.a(abw::a, abw::new);
+
+   private abw(uq $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(kg.aM)),
+         $$0.n(),
+         $$0.n(),
+         $$0.n(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new aen($$0),
+         $$0.readBoolean()
+      );
    }
 
-   public abw(uj $$0) {
-      this.a = $$0.n();
+   private void a(uq $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, uq::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
+   public xz<abw> a() {
+      return aeq.N;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public boolean e() {
+      return this.c;
+   }
+
+   public Set<aix<cvn>> f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public aen m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

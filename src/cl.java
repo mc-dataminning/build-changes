@@ -1,105 +1,37 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
 
-public record cl(Map<ih<blh>, cl.b> b) {
-   public static final Codec<cl> a = Codec.unboundedMap(kd.d.r(), cl.b.a).xmap(cl::new, cl::a);
-
-   public boolean a(blw $$0) {
-      if ($$0 instanceof bmo $$1 && this.a($$1.et())) {
-         return true;
-      }
-
-      return false;
+public class cl extends cx<cl.a> {
+   @Override
+   public Codec<cl.a> a() {
+      return cl.a.a;
    }
 
-   public boolean a(bmo $$0) {
-      return this.a($$0.et());
+   public void a(aow $$0, aiy $$1) {
+      this.a($$0, $$1x -> $$1x.b($$1));
    }
 
-   public boolean a(Map<ih<blh>, blj> $$0) {
-      for (Entry<ih<blh>, cl.b> $$1 : this.b.entrySet()) {
-         blj $$2 = $$0.get($$1.getKey());
-         if (!$$1.getValue().a($$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public Map<ih<blh>, cl.b> a() {
-      return this.b;
-   }
-
-   public static class a {
-      private final Builder<ih<blh>, cl.b> a = ImmutableMap.builder();
-
-      public static cl.a a() {
-         return new cl.a();
-      }
-
-      public cl.a a(ih<blh> $$0) {
-         this.a.put($$0, new cl.b());
-         return this;
-      }
-
-      public cl.a a(ih<blh> $$0, cl.b $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public Optional<cl> b() {
-         return Optional.of(new cl(this.a.build()));
-      }
-   }
-
-   public static record b(ck.d b, ck.d c, Optional<Boolean> d, Optional<Boolean> e) {
-      public static final Codec<cl.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  atx.a(ck.d.d, "amplifier", ck.d.c).forGetter(cl.b::a),
-                  atx.a(ck.d.d, "duration", ck.d.c).forGetter(cl.b::b),
-                  atx.a(Codec.BOOL, "ambient").forGetter(cl.b::c),
-                  atx.a(Codec.BOOL, "visible").forGetter(cl.b::d)
-               )
-               .apply($$0, cl.b::new)
+   public static record a(Optional<bc> b, aiy c) implements cx.a {
+      public static final Codec<cl.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(cl.a::a), aiy.a.fieldOf("loot_table").forGetter(cl.a::b)).apply($$0, cl.a::new)
       );
 
-      public b() {
-         this(ck.d.c, ck.d.c, Optional.empty(), Optional.empty());
+      public static an<cl.a> a(aiy $$0) {
+         return am.Q.a(new cl.a(Optional.empty(), $$0));
       }
 
-      public boolean a(@Nullable blj $$0) {
-         if ($$0 == null) {
-            return false;
-         } else if (!this.b.d($$0.d())) {
-            return false;
-         } else if (!this.c.d($$0.c())) {
-            return false;
-         } else {
-            return this.d.isPresent() && this.d.get() != $$0.e() ? false : !this.e.isPresent() || this.e.get() == $$0.f();
-         }
+      public boolean b(aiy $$0) {
+         return this.c.equals($$0);
       }
 
-      public ck.d a() {
+      @Override
+      public Optional<bc> a() {
          return this.b;
       }
 
-      public ck.d b() {
+      public aiy b() {
          return this.c;
-      }
-
-      public Optional<Boolean> c() {
-         return this.d;
-      }
-
-      public Optional<Boolean> d() {
-         return this.e;
       }
    }
 }

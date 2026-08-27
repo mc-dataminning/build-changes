@@ -1,5 +1,17 @@
-public interface civ {
-   void a(cij var1, int var2, cng var3);
+public class civ {
+   private final int a;
+   private final float b;
 
-   void a(cij var1, int var2, int var3);
+   public civ(int $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
 }

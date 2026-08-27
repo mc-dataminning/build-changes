@@ -1,54 +1,32 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class add implements xg<zb> {
-   private final boolean a;
-   private final List<af> b;
-   private final Set<ahh> c;
-   private final Map<ahh, ah> d;
+public class add implements xx<aag> {
+   public static final xo<uq, add> a = xx.a(add::a, add::new);
+   private final int b;
 
-   public add(boolean $$0, Collection<af> $$1, Set<ahh> $$2, Map<ahh, ah> $$3) {
-      this.a = $$0;
-      this.b = List.copyOf($$1);
-      this.c = Set.copyOf($$2);
-      this.d = Map.copyOf($$3);
+   public add(bno $$0) {
+      this.b = $$0.aj();
    }
 
-   public add(uj $$0) {
-      this.a = $$0.readBoolean();
-      this.b = $$0.a(af::b);
-      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, uj::t);
-      this.d = $$0.a(uj::t, ah::b);
+   private add(uq $$0) {
+      this.b = $$0.n();
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.c, uj::a);
-      $$0.a(this.d, uj::a, ($$0x, $$1) -> $$1.a($$0x));
+   public xz<add> a() {
+      return aeq.av;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public List<af> a() {
-      return this.b;
-   }
-
-   public Set<ahh> d() {
-      return this.c;
-   }
-
-   public Map<ahh, ah> e() {
-      return this.d;
-   }
-
-   public boolean f() {
-      return this.a;
+   @Nullable
+   public bno a(cvn $$0) {
+      return $$0.a(this.b);
    }
 }

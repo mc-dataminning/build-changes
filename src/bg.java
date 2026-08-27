@@ -1,58 +1,72 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public record bg(ck.c b, ck.c c, ck.c d, ck.c e, ck.c f) {
+public record bg(List<dd<bmp>> b, Optional<br> c, Optional<br> d) {
    public static final Codec<bg> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atx.a(ck.c.d, "x", ck.c.c).forGetter(bg::a),
-               atx.a(ck.c.d, "y", ck.c.c).forGetter(bg::b),
-               atx.a(ck.c.d, "z", ck.c.c).forGetter(bg::c),
-               atx.a(ck.c.d, "horizontal", ck.c.c).forGetter(bg::d),
-               atx.a(ck.c.d, "absolute", ck.c.c).forGetter(bg::e)
+               avp.a(dd.a(kg.r).listOf(), "tags", List.of()).forGetter(bg::a),
+               avp.a(br.a, "direct_entity").forGetter(bg::b),
+               avp.a(br.a, "source_entity").forGetter(bg::c)
             )
             .apply($$0, bg::new)
    );
 
-   public static bg a(ck.c $$0) {
-      return new bg(ck.c.c, ck.c.c, ck.c.c, $$0, ck.c.c);
+   public boolean a(aow $$0, bmn $$1) {
+      return this.a($$0.z(), $$0.dk(), $$1);
    }
 
-   public static bg b(ck.c $$0) {
-      return new bg(ck.c.c, $$0, ck.c.c, ck.c.c, ck.c.c);
-   }
-
-   public static bg c(ck.c $$0) {
-      return new bg(ck.c.c, ck.c.c, ck.c.c, ck.c.c, $$0);
-   }
-
-   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - $$3);
-      float $$7 = (float)($$1 - $$4);
-      float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)aup.e($$6)) || !this.c.d((double)aup.e($$7)) || !this.d.d((double)aup.e($$8))) {
-         return false;
-      } else {
-         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
+   public boolean a(aov $$0, ens $$1, bmn $$2) {
+      for (dd<bmp> $$3 : this.b) {
+         if (!$$3.a($$2.k())) {
+            return false;
+         }
       }
+
+      return this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c()) ? false : !this.d.isPresent() || this.d.get().a($$0, $$1, $$2.d());
    }
 
-   public ck.c a() {
+   public List<dd<bmp>> a() {
       return this.b;
    }
 
-   public ck.c b() {
+   public Optional<br> b() {
       return this.c;
    }
 
-   public ck.c c() {
+   public Optional<br> c() {
       return this.d;
    }
 
-   public ck.c d() {
-      return this.e;
-   }
+   public static class a {
+      private final Builder<dd<bmp>> a = ImmutableList.builder();
+      private Optional<br> b = Optional.empty();
+      private Optional<br> c = Optional.empty();
 
-   public ck.c e() {
-      return this.f;
+      public static bg.a a() {
+         return new bg.a();
+      }
+
+      public bg.a a(dd<bmp> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public bg.a a(br.a $$0) {
+         this.b = Optional.of($$0.b());
+         return this;
+      }
+
+      public bg.a b(br.a $$0) {
+         this.c = Optional.of($$0.b());
+         return this;
+      }
+
+      public bg b() {
+         return new bg(this.a.build(), this.b, this.c);
+      }
    }
 }

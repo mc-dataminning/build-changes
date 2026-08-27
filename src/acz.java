@@ -1,40 +1,45 @@
-public class acz implements xg<zb> {
-   private final int a;
-   private final int b;
-   private final int c;
+public class acz implements xx<aag> {
+   public static final xo<uq, acz> a = xx.a(acz::a, acz::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-   public acz(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public acz(dmw $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   public acz(uj $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
-      this.c = $$0.n();
+   private acz(uq $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.o();
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public xz<acz> a() {
+      return aeq.ar;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public int d() {
+   public double b() {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

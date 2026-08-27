@@ -1,40 +1,46 @@
-public class cno extends cnb {
-   private static final int a = 32;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public cno(cnb.a $$0) {
-      super($$0);
+public class cno extends cou implements cpy {
+   private static final Map<cnn, cno> a = Maps.newEnumMap(cnn.class);
+   private final cnn b;
+
+   public cno(cnn $$0, cou.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public cng a(cng $$0, ctx $$1, bmo $$2) {
-      if ($$2 instanceof anf $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(asd.c.b(this));
+   public blu a(coz $$0, chh $$1, bog $$2, blt $$3) {
+      if ($$2 instanceof cap $$4 && $$4.bx() && !$$4.A() && $$4.w() != this.b) {
+         $$4.dM().a($$1, $$4, atk.hx, atl.h, 1.0F, 1.0F);
+         if (!$$1.dM().B) {
+            $$4.b(this.b);
+            $$0.h(1);
+         }
+
+         return blu.a($$1.dM().B);
       }
 
-      if ($$2 instanceof cfq && !((cfq)$$2).fT().d) {
-         $$0.h(1);
+      return blu.d;
+   }
+
+   public cnn d() {
+      return this.b;
+   }
+
+   public static cno a(cnn $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(cvn $$0, dkc $$1, boolean $$2, chh $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.d()), $$2)) {
+         $$0.a(null, $$1.aE_(), atk.hx, atl.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
       }
-
-      if (!$$1.B) {
-         $$2.er();
-      }
-
-      return $$0.b() ? new cng(cnj.qx) : $$0;
-   }
-
-   @Override
-   public int b(cng $$0) {
-      return 32;
-   }
-
-   @Override
-   public cpa c(cng $$0) {
-      return cpa.c;
-   }
-
-   @Override
-   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
-      return cni.a($$0, $$1, $$2);
    }
 }

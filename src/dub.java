@@ -1,18 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dub implements dug {
-   public static final Codec<dub> a = bjh.b(0, 256).fieldOf("count").xmap(dub::new, dub::a).codec();
-   private final bjh b;
+public class dub implements dvw {
+   public static final Codec<dub> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dlf.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               dlf.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               dlf.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               dlf.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               drv.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dub::new)
+   );
+   public final dlf b;
+   public final dlf c;
+   public final dlf d;
+   public final dlf e;
+   public final drv f;
+   public final boolean g;
 
-   public dub(int $$0) {
-      this.b = bje.a($$0);
-   }
-
-   public dub(bjh $$0) {
+   public dub(dlf $$0, dlf $$1, dlf $$2, dlf $$3, drv $$4, boolean $$5) {
       this.b = $$0;
-   }
-
-   public bjh a() {
-      return this.b;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

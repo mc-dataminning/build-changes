@@ -1,73 +1,93 @@
 import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import org.apache.commons.io.IOUtils;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class eqz {
-   public static List<esb> a(eqz.a... $$0) {
-      for (eqz.a $$1 : $$0) {
-         a($$1.j);
-      }
+public final class eqz {
+   private final long a;
+   private final List<erd> b;
+   private erd c;
+   private int d;
+   private int e;
 
-      List<esb> $$2 = Lists.newArrayList();
-
-      for (eqz.a $$3 : $$0) {
-         $$2.add(new esb($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(esb::a));
-      return $$2;
+   public eqz(long $$0) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+      this.a();
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
+   public void a() {
+      RenderSystem.assertInInitPhase();
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         erd $$2 = new erd($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
          }
       }
 
-      return (int)((double)$$2 / 5.0);
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new erd($$5);
    }
 
-   private static long b() {
-      return ac.b();
-   }
+   public erd a(Optional<erd> $$0) {
+      RenderSystem.assertInInitPhase();
+      if ($$0.isPresent()) {
+         erd $$1 = $$0.get();
 
-   public static List<esb> a() {
-      return a(eqz.a.values());
-   }
-
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String i;
-      final String j;
-
-      private a(String $$0, String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+         for (erd $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
+            }
+         }
       }
+
+      return this.b();
+   }
+
+   public int a(erd $$0) {
+      RenderSystem.assertInInitPhase();
+      return this.b.indexOf($$0);
+   }
+
+   public erd b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public erd a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int e() {
+      return this.b.size();
+   }
+
+   public long f() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

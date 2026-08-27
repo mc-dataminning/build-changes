@@ -1,7 +1,11 @@
-import javax.annotation.Nullable;
+import java.util.Set;
 
-@FunctionalInterface
 public interface cjp {
-   @Nullable
-   cij createMenu(int var1, cfp var2, cfq var3);
+   Set<aix<? extends iv<? extends cjp>>> by = Set.of(kg.F, kg.f, kg.u, kg.P);
+
+   cjs m();
+
+   default boolean a(cjs $$0) {
+      return this.m().a($$0);
+   }
 }

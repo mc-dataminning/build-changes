@@ -1,39 +1,38 @@
-public class fuq {
-   protected final int[] a;
-   protected final int b;
-   protected final ic c;
-   protected final gfb d;
-   private final boolean e;
+import com.google.common.collect.ForwardingList;
+import java.util.List;
 
-   public fuq(int[] $$0, int $$1, ic $$2, gfb $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
+public class fuq extends ForwardingList<coz> {
+   private final is<coz> a = is.a(chg.g(), coz.h);
 
-   public gfb a() {
-      return this.d;
-   }
-
-   public int[] b() {
+   protected List<coz> delegate() {
       return this.a;
    }
 
-   public boolean c() {
-      return this.b != -1;
+   public tc a() {
+      tc $$0 = new tc();
+
+      for (coz $$1 : this.delegate()) {
+         $$0.add($$1.b(new sw()));
+      }
+
+      return $$0;
    }
 
-   public int d() {
-      return this.b;
+   public void a(tc $$0) {
+      List<coz> $$1 = this.delegate();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.set($$2, coz.a($$0.a($$2)));
+      }
    }
 
-   public ic e() {
-      return this.c;
-   }
+   public boolean isEmpty() {
+      for (coz $$0 : this.delegate()) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
 
-   public boolean f() {
-      return this.e;
+      return true;
    }
 }

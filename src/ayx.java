@@ -1,26 +1,48 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
+import com.mojang.datafixers.types.Type;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-public class ayx extends baw {
-   public ayx(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", bbw.y, "minecraft:shulker");
+public class ayx extends DataFix {
+   public ayx(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
-      if (!$$1.isEmpty()) {
-         $$1.set(0, $$1.get(0) - 180.0);
-         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
-      } else {
-         return $$0;
-      }
-   }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bdn.c);
+      OpticFinder<?> $$1 = $$0.findField("Level");
+      return this.fixTypeEverywhereTyped("Leaves fix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> {
+               Optional<IntStream> $$1xx = $$0xxx.get("Biomes").asIntStreamOpt().result();
+               if ($$1xx.isEmpty()) {
+                  return $$0xxx;
+               } else {
+                  int[] $$2 = $$1xx.get().toArray();
+                  if ($$2.length != 256) {
+                     return $$0xxx;
+                  } else {
+                     int[] $$3 = new int[1024];
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+                     for (int $$4 = 0; $$4 < 4; $$4++) {
+                        for (int $$5 = 0; $$5 < 4; $$5++) {
+                           int $$6 = ($$5 << 2) + 2;
+                           int $$7 = ($$4 << 2) + 2;
+                           int $$8 = $$7 << 4 | $$6;
+                           $$3[$$4 << 2 | $$5] = $$2[$$8];
+                        }
+                     }
+
+                     for (int $$9 = 1; $$9 < 64; $$9++) {
+                        System.arraycopy($$3, 0, $$3, $$9 * 16, 16);
+                     }
+
+                     return $$0xxx.set("Biomes", $$0xxx.createIntList(Arrays.stream($$3)));
+                  }
+               }
+            })));
    }
 }

@@ -1,39 +1,60 @@
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class nf {
-   private final mx a;
-   private final cqh b;
-   private final cqh c;
-   private final cqh d;
-   private final Map<String, an<?>> e = new LinkedHashMap<>();
+public class nf implements my {
+   private final mz b;
+   private final cou c;
+   private final cry d;
+   private final int e;
+   private final Map<String, an<?>> f = new LinkedHashMap<>();
+   @Nullable
+   private String g;
+   private final csp.a<?> h;
 
-   public nf(mx $$0, cqh $$1, cqh $$2, cqh $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public nf(mz $$0, csp.a<?> $$1, cry $$2, cvm $$3, int $$4) {
+      this.b = $$0;
+      this.h = $$1;
+      this.c = $$3.j();
+      this.d = $$2;
+      this.e = $$4;
    }
 
-   public static nf a(cqh $$0, cqh $$1, cqh $$2, mx $$3) {
-      return new nf($$3, $$0, $$1, $$2);
+   public static nf a(cry $$0, mz $$1, cvm $$2) {
+      return new nf($$1, csv::new, $$0, $$2, 1);
    }
 
-   public nf a(String $$0, an<?> $$1) {
-      this.e.put($$0, $$1);
+   public static nf a(cry $$0, mz $$1, cvm $$2, int $$3) {
+      return new nf($$1, csv::new, $$0, $$2, $$3);
+   }
+
+   public nf b(String $$0, an<?> $$1) {
+      this.f.put($$0, $$1);
       return this;
    }
 
-   public void a(my $$0, ahh $$1) {
-      this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", ct.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.e.forEach($$2::a);
-      crc $$3 = new crc(this.b, this.c, this.d);
-      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.a.a() + "/")));
+   public nf b(@Nullable String $$0) {
+      this.g = $$0;
+      return this;
    }
 
-   private void a(ahh $$0) {
-      if (this.e.isEmpty()) {
+   @Override
+   public cou a() {
+      return this.c;
+   }
+
+   @Override
+   public void a(na $$0, aiy $$1) {
+      this.a($$1);
+      ae.a $$2 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
+      this.f.forEach($$2::a);
+      csp $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new coz(this.c, this.e));
+      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
+   }
+
+   private void a(aiy $$0) {
+      if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }

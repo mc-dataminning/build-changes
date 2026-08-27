@@ -1,114 +1,110 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cxo extends cvq {
-   public static final MapCodec<cxo> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kd.e.q().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, cxo::new)
-   );
-   public static final dkg d = cvq.b;
-   protected static final float e = 1.0F;
-   protected static final emv f = cwy.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
-   protected static final emv g = cwy.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
-   protected static final emv h = ems.a(f, g);
-   private static final Map<cxn, cxo> i = Maps.newHashMap();
-   private static final Iterable<emc> j = ImmutableList.of(new emc(0.5, 1.0, 0.5));
-   private final cxn k;
+public class cxo extends dbk {
+   public static final MapCodec<cxo> a = b(cxo::new);
+   public static final dlz b = dcj.aE;
+   private static final eol c = cyo.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+   private static final eol d = cyo.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
+   private static final eol e = cyo.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
+   private static final eol f = cyo.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
+   private static final eol g = cyo.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
+   private static final eol h = cyo.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
+   private static final eol i = cyo.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
+   private static final eol j = eoi.a(c, d, e, f);
+   private static final eol k = eoi.a(c, g, h, i);
+   private static final vq l = vq.c("container.repair");
+   private static final float m = 2.0F;
+   private static final int n = 40;
 
    @Override
    public MapCodec<cxo> a() {
-      return c;
+      return a;
    }
 
-   protected cxo(cwy $$0, djo.d $$1) {
-      super($$1);
-      this.k(this.E.b().a(d, Boolean.valueOf(false)));
-      if ($$0 instanceof cxn $$2) {
-         i.put($$2, this);
-         this.k = $$2;
+   public cxo(dle.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ie.c));
+   }
+
+   @Override
+   public dlf a(crg $$0) {
+      return this.o().a(b, $$0.g().h());
+   }
+
+   @Override
+   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
+      if ($$1.B) {
+         return blu.a;
       } else {
-         throw new IllegalArgumentException("Expected block to be of " + cxn.class + " was " + $$0.getClass());
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(atu.aC);
+         return blu.b;
+      }
+   }
+
+   @Nullable
+   @Override
+   protected bly b(dlf $$0, cvn $$1, hz $$2) {
+      return new bme(($$2x, $$3, $$4) -> new ckd($$2x, $$3, ckm.a($$1, $$2)), l);
+   }
+
+   @Override
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      ie $$4 = $$0.c(b);
+      return $$4.o() == ie.a.a ? j : k;
+   }
+
+   @Override
+   protected void a(cdr $$0) {
+      $$0.b(2.0F, 40);
+   }
+
+   @Override
+   public void a(cvn $$0, hz $$1, dlf $$2, dlf $$3, cdr $$4) {
+      if (!$$4.aU()) {
+         $$0.c(1031, $$1, 0);
       }
    }
 
    @Override
-   protected Iterable<emc> b(djp $$0) {
-      return j;
+   public void a(cvn $$0, hz $$1, cdr $$2) {
+      if (!$$2.aU()) {
+         $$0.c(1029, $$1, 0);
+      }
    }
 
    @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return h;
+   public bmn a(bno $$0) {
+      return $$0.dN().b($$0);
    }
 
-   @Override
-   public bke a(cng $$0, djp $$1, ctx $$2, hx $$3, cfq $$4, bkb $$5, ely $$6) {
-      if ($$0.a(cnj.or) || $$0.a(cnj.tV)) {
-         return bke.e;
-      } else if (a($$6) && $$0.b() && $$1.c(d)) {
-         a($$4, $$1, $$2, $$3);
-         return bke.a($$2.B);
+   @Nullable
+   public static dlf e(dlf $$0) {
+      if ($$0.a(cyq.gS)) {
+         return cyq.gT.o().a(b, $$0.c(b));
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         return $$0.a(cyq.gT) ? cyq.gU.o().a(b, $$0.c(b)) : null;
       }
    }
 
    @Override
-   public bkc a(djp $$0, ctx $$1, hx $$2, cfq $$3, ely $$4) {
-      bkc $$5 = cxk.a($$1, $$2, cxa.eg.o(), $$3);
-      if ($$5.a()) {
-         c($$0, $$1, $$2);
-      }
-
-      return $$5;
-   }
-
-   private static boolean a(ely $$0) {
-      return $$0.e().d - (double)$$0.a().v() > 0.5;
+   protected dlf a(dlf $$0, dfa $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(d);
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public cng a(cua $$0, hx $$1, djp $$2) {
-      return new cng(cxa.eg);
-   }
-
-   @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      return $$1 == ic.a && !$$0.a($$3, $$4) ? cxa.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(djp $$0, cua $$1, hx $$2) {
-      return $$1.a_($$2.d()).e();
-   }
-
-   @Override
-   public int a(djp $$0, ctx $$1, hx $$2) {
-      return cxk.d;
-   }
-
-   @Override
-   public boolean d_(djp $$0) {
-      return true;
-   }
-
-   @Override
-   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
+   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
       return false;
    }
 
-   public static djp a(cxn $$0) {
-      return i.get($$0).o();
-   }
-
-   public static boolean g(djp $$0) {
-      return $$0.a(asi.bj, $$1 -> $$1.b(d) && !$$0.c(d));
+   @Override
+   public int b(dlf $$0, cut $$1, hz $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

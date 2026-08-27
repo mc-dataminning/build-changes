@@ -1,85 +1,25 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+public class fpr {
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = ac.c();
 
-public final class fpr {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final fpr c = new fpr(HostAndPort.fromParts("server.invalid", 25565));
-
-   public fpr(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
+   public void a() {
+      this.e = ac.c();
    }
 
-   private fpr(HostAndPort $$0) {
-      this.b = $$0;
-   }
-
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(ac.c() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = awh.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
       }
    }
 
-   public int b() {
-      return this.b.getPort();
-   }
-
-   public static fpr a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new fpr($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
-         }
-      }
-   }
-
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof fpr ? this.b.equals(((fpr)$$0).b) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public float b() {
+      return (float)(7000000.0 / this.c);
    }
 }

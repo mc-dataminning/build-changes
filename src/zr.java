@@ -1,24 +1,12 @@
-public class zr implements xg<zb> {
-   private final boolean a;
-
-   public zr(boolean $$0) {
-      this.a = $$0;
-   }
-
-   public zr(uj $$0) {
-      this.a = $$0.readBoolean();
-   }
-
+public interface zr extends yd {
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
+   default up b() {
+      return up.e;
    }
 
-   public void a(zb $$0) {
-      $$0.a(this);
-   }
+   void a(zs var1);
 
-   public boolean a() {
-      return this.a;
-   }
+   void a(zt var1);
+
+   void a(zu var1);
 }

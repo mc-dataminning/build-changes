@@ -1,60 +1,120 @@
-import java.util.Objects;
+import com.mojang.authlib.GameProfile;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
-public final class ani<T> implements Comparable<ani<?>> {
-   private final anj<T> a;
-   private final int b;
-   private final T c;
-   private long d;
+public class ani {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.whitelist.alreadyOn"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.whitelist.alreadyOff"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vq.c("commands.whitelist.add.failed"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vq.c("commands.whitelist.remove.failed"));
 
-   protected ani(anj<T> $$0, int $$1, T $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
+                                 "whitelist"
+                              )
+                              .requires($$0x -> $$0x.c(3)))
+                           .then(dv.a("on").executes($$0x -> b((du)$$0x.getSource()))))
+                        .then(dv.a("off").executes($$0x -> c((du)$$0x.getSource()))))
+                     .then(dv.a("list").executes($$0x -> d((du)$$0x.getSource()))))
+                  .then(dv.a("add").then(dv.a("targets", ej.a()).suggests(($$0x, $$1) -> {
+                     asn $$2 = ((du)$$0x.getSource()).l().ae();
+                     return dz.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fS())).map($$0xx -> $$0xx.fS().getName()), $$1);
+                  }).executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets"))))))
+               .then(
+                  dv.a("remove")
+                     .then(
+                        dv.a("targets", ej.a())
+                           .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ae().j(), $$1))
+                           .executes($$0x -> b((du)$$0x.getSource(), ej.a($$0x, "targets")))
+                     )
+               ))
+            .then(dv.a("reload").executes($$0x -> a((du)$$0x.getSource())))
+      );
    }
 
-   public int a(ani<?> $$0) {
-      int $$1 = Integer.compare(this.b, $$0.b);
-      if ($$1 != 0) {
-         return $$1;
+   private static int a(du $$0) {
+      $$0.l().ae().a();
+      $$0.a(() -> vq.c("commands.whitelist.reloaded"), true);
+      $$0.l().a($$0);
+      return 1;
+   }
+
+   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      asv $$2 = $$0.l().ae().i();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.a($$4)) {
+            asw $$5 = new asw($$4);
+            $$2.a($$5);
+            $$0.a(() -> vq.a("commands.whitelist.add.success", vq.b($$4.getName())), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw c.create();
       } else {
-         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
-         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
+         return $$3;
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   private static int b(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      asv $$2 = $$0.l().ae().i();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            asw $$5 = new asw($$4);
+            $$2.b($$5);
+            $$0.a(() -> vq.a("commands.whitelist.remove.success", vq.b($$4.getName())), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw d.create();
       } else {
-         return !($$0 instanceof ani<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
+         $$0.l().a($$0);
+         return $$3;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
+   private static int b(du $$0) throws CommandSyntaxException {
+      asn $$1 = $$0.l().ae();
+      if ($$1.o()) {
+         throw a.create();
+      } else {
+         $$1.a(true);
+         $$0.a(() -> vq.c("commands.whitelist.enabled"), true);
+         $$0.l().a($$0);
+         return 1;
+      }
    }
 
-   @Override
-   public String toString() {
-      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+   private static int c(du $$0) throws CommandSyntaxException {
+      asn $$1 = $$0.l().ae();
+      if (!$$1.o()) {
+         throw b.create();
+      } else {
+         $$1.a(false);
+         $$0.a(() -> vq.c("commands.whitelist.disabled"), true);
+         return 1;
+      }
    }
 
-   public anj<T> a() {
-      return this.a;
-   }
+   private static int d(du $$0) {
+      String[] $$1 = $$0.l().ae().j();
+      if ($$1.length == 0) {
+         $$0.a(() -> vq.c("commands.whitelist.none"), false);
+      } else {
+         $$0.a(() -> vq.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+      }
 
-   public int b() {
-      return this.b;
-   }
-
-   protected void a(long $$0) {
-      this.d = $$0;
-   }
-
-   protected boolean b(long $$0) {
-      long $$1 = this.a.b();
-      return $$1 != 0L && $$0 - this.d > $$1;
+      return $$1.length;
    }
 }

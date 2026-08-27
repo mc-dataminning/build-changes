@@ -1,5 +1,8 @@
-public abstract class fdg implements eyu {
-   public boolean a() {
-      return true;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fdg {
 }

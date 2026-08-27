@@ -1,32 +1,27 @@
-public class bnp {
-   public static final int a = 64;
-   private final double b;
-   private boolean c;
-   private final String d;
+import java.util.List;
 
-   protected bnp(String $$0, double $$1) {
-      this.b = $$1;
-      this.d = $$0;
+public enum bnp {
+   a(bnp.a.c),
+   b(bnp.a.b),
+   c(bnp.a.c),
+   d(bnp.a.d);
+
+   private final bnp.a e;
+
+   private bnp(bnp.a $$0) {
+      this.e = $$0;
    }
 
-   public double a() {
-      return this.b;
+   public List<ens> a(float $$0, float $$1) {
+      return this.e.create($$0, $$1);
    }
 
-   public boolean b() {
-      return this.c;
-   }
+   public interface a {
+      List<ens> a = List.of(ens.b);
+      bnp.a b = ($$0, $$1) -> a;
+      bnp.a c = ($$0, $$1) -> List.of(new ens(0.0, (double)$$1, 0.0));
+      bnp.a d = ($$0, $$1) -> List.of(new ens(0.0, (double)$$1 / 2.0, 0.0));
 
-   public bnp a(boolean $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public double a(double $$0) {
-      return $$0;
-   }
-
-   public String c() {
-      return this.d;
+      List<ens> create(float var1, float var2);
    }
 }

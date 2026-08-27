@@ -1,49 +1,22 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public interface auu {
-   auu a(String var1);
+@FunctionalInterface
+public interface auu<T> {
+   auu.a accept(T var1);
 
-   void b(String var1);
+   static <T> auu<T> forConsumer(Consumer<T> $$0) {
+      return $$1 -> {
+         $$0.accept($$1);
+         return auu.a.a;
+      };
+   }
 
-   public static class a implements auu {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
+   public static enum a {
+      a,
+      b;
 
-      public a() {
-         this(HashMultimap.create(), () -> "");
-      }
-
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private String b() {
-         if (this.c == null) {
-            this.c = this.b.get();
-         }
-
-         return this.c;
-      }
-
-      @Override
-      public auu a(String $$0) {
-         return new auu.a(this.a, () -> this.b() + $$0);
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.put(this.b(), $$0);
-      }
-
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
+      public boolean a() {
+         return this == b;
       }
    }
 }

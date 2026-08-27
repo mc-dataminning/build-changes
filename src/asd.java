@@ -1,98 +1,27 @@
-public class asd {
-   public static final asc<cwy> a = a("mined", kd.e);
-   public static final asc<cnb> b = a("crafted", kd.h);
-   public static final asc<cnb> c = a("used", kd.h);
-   public static final asc<cnb> d = a("broken", kd.h);
-   public static final asc<cnb> e = a("picked_up", kd.h);
-   public static final asc<cnb> f = a("dropped", kd.h);
-   public static final asc<bmc<?>> g = a("killed", kd.g);
-   public static final asc<bmc<?>> h = a("killed_by", kd.g);
-   public static final asc<ahh> i = a("custom", kd.m);
-   public static final ahh j = a("leave_game", asb.b);
-   public static final ahh k = a("play_time", asb.e);
-   public static final ahh l = a("total_world_time", asb.e);
-   public static final ahh m = a("time_since_death", asb.e);
-   public static final ahh n = a("time_since_rest", asb.e);
-   public static final ahh o = a("sneak_time", asb.e);
-   public static final ahh p = a("walk_one_cm", asb.d);
-   public static final ahh q = a("crouch_one_cm", asb.d);
-   public static final ahh r = a("sprint_one_cm", asb.d);
-   public static final ahh s = a("walk_on_water_one_cm", asb.d);
-   public static final ahh t = a("fall_one_cm", asb.d);
-   public static final ahh u = a("climb_one_cm", asb.d);
-   public static final ahh v = a("fly_one_cm", asb.d);
-   public static final ahh w = a("walk_under_water_one_cm", asb.d);
-   public static final ahh x = a("minecart_one_cm", asb.d);
-   public static final ahh y = a("boat_one_cm", asb.d);
-   public static final ahh z = a("pig_one_cm", asb.d);
-   public static final ahh A = a("horse_one_cm", asb.d);
-   public static final ahh B = a("aviate_one_cm", asb.d);
-   public static final ahh C = a("swim_one_cm", asb.d);
-   public static final ahh D = a("strider_one_cm", asb.d);
-   public static final ahh E = a("jump", asb.b);
-   public static final ahh F = a("drop", asb.b);
-   public static final ahh G = a("damage_dealt", asb.c);
-   public static final ahh H = a("damage_dealt_absorbed", asb.c);
-   public static final ahh I = a("damage_dealt_resisted", asb.c);
-   public static final ahh J = a("damage_taken", asb.c);
-   public static final ahh K = a("damage_blocked_by_shield", asb.c);
-   public static final ahh L = a("damage_absorbed", asb.c);
-   public static final ahh M = a("damage_resisted", asb.c);
-   public static final ahh N = a("deaths", asb.b);
-   public static final ahh O = a("mob_kills", asb.b);
-   public static final ahh P = a("animals_bred", asb.b);
-   public static final ahh Q = a("player_kills", asb.b);
-   public static final ahh R = a("fish_caught", asb.b);
-   public static final ahh S = a("talked_to_villager", asb.b);
-   public static final ahh T = a("traded_with_villager", asb.b);
-   public static final ahh U = a("eat_cake_slice", asb.b);
-   public static final ahh V = a("fill_cauldron", asb.b);
-   public static final ahh W = a("use_cauldron", asb.b);
-   public static final ahh X = a("clean_armor", asb.b);
-   public static final ahh Y = a("clean_banner", asb.b);
-   public static final ahh Z = a("clean_shulker_box", asb.b);
-   public static final ahh aa = a("interact_with_brewingstand", asb.b);
-   public static final ahh ab = a("interact_with_beacon", asb.b);
-   public static final ahh ac = a("inspect_dropper", asb.b);
-   public static final ahh ad = a("inspect_hopper", asb.b);
-   public static final ahh ae = a("inspect_dispenser", asb.b);
-   public static final ahh af = a("play_noteblock", asb.b);
-   public static final ahh ag = a("tune_noteblock", asb.b);
-   public static final ahh ah = a("pot_flower", asb.b);
-   public static final ahh ai = a("trigger_trapped_chest", asb.b);
-   public static final ahh aj = a("open_enderchest", asb.b);
-   public static final ahh ak = a("enchant_item", asb.b);
-   public static final ahh al = a("play_record", asb.b);
-   public static final ahh am = a("interact_with_furnace", asb.b);
-   public static final ahh an = a("interact_with_crafting_table", asb.b);
-   public static final ahh ao = a("open_chest", asb.b);
-   public static final ahh ap = a("sleep_in_bed", asb.b);
-   public static final ahh aq = a("open_shulker_box", asb.b);
-   public static final ahh ar = a("open_barrel", asb.b);
-   public static final ahh as = a("interact_with_blast_furnace", asb.b);
-   public static final ahh at = a("interact_with_smoker", asb.b);
-   public static final ahh au = a("interact_with_lectern", asb.b);
-   public static final ahh av = a("interact_with_campfire", asb.b);
-   public static final ahh aw = a("interact_with_cartography_table", asb.b);
-   public static final ahh ax = a("interact_with_loom", asb.b);
-   public static final ahh ay = a("interact_with_stonecutter", asb.b);
-   public static final ahh az = a("bell_ring", asb.b);
-   public static final ahh aA = a("raid_trigger", asb.b);
-   public static final ahh aB = a("raid_win", asb.b);
-   public static final ahh aC = a("interact_with_anvil", asb.b);
-   public static final ahh aD = a("interact_with_grindstone", asb.b);
-   public static final ahh aE = a("target_hit", asb.b);
-   public static final ahh aF = a("interact_with_smithing_table", asb.b);
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-   private static ahh a(String $$0, asb $$1) {
-      ahh $$2 = new ahh($$0);
-      it.a(kd.m, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+@FunctionalInterface
+public interface asd {
+   Optional<ary> getResource(aiy var1);
+
+   default ary getResourceOrThrow(aiy $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   private static <T> asc<T> a(String $$0, it<T> $$1) {
-      vg $$2 = vg.c("stat_type.minecraft." + $$0);
-      return it.a(kd.x, $$0, new asc<>($$1, $$2));
+   default InputStream open(aiy $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
+   }
+
+   default BufferedReader openAsReader(aiy $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
+   }
+
+   static asd fromMap(Map<aiy, ary> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
    }
 }

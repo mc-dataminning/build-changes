@@ -1,13 +1,14 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 
-public class azj extends bae {
-   public azj(Schema $$0) {
-      super($$0, "Remove filtered text from books", $$0x -> $$0x.equals("minecraft:writable_book") || $$0x.equals("minecraft:written_book"));
+public class azj extends bcn {
+   public azj(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Colorless shulker entity fix", bdn.y, "minecraft:shulker");
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.remove("filtered_title").remove("filtered_pages");
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.get("Color").asInt(0) == 10 ? $$0x.set("Color", $$0x.createByte((byte)16)) : $$0x);
    }
 }

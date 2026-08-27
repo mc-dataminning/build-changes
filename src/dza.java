@@ -1,39 +1,76 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class dza extends dyu {
-   public static final Codec<dza> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               doy.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dza::new)
-   );
-   private final doy.a c;
-   private final int d;
-   private final int e;
+public abstract class dza {
+   public static final Codec<dza> c = kf.X.q().dispatch(dza::a, dzb::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   private dza(doy.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   protected static <P extends dza> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public static dza a(doy.a $$0, int $$1, int $$2) {
-      return new dza($$0, $$1, $$2);
+   public dza(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   protected boolean a(dyt $$0, auw $$1, hx $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   protected abstract dzb<?> a();
+
+   public abstract List<dxi.a> a(cvt var1, BiConsumer<hz, dlf> var2, awo var3, int var4, hz var5, dws var6);
+
+   public int a(awo $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
    }
 
-   @Override
-   public dyw<?> b() {
-      return dyw.c;
+   private static boolean c(cvt $$0, hz $$1) {
+      return $$0.a($$1, $$0x -> dts.b($$0x) && !$$0x.a(cyq.i) && !$$0x.a(cyq.fl));
+   }
+
+   protected static void a(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, hz $$3, dws $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
+      }
+   }
+
+   protected boolean b(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, hz $$3, dws $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, hz $$3, dws $$4, Function<dlf, dlf> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, hz.a $$3, dws $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(cvt $$0, hz $$1) {
+      return dve.c($$0, $$1);
+   }
+
+   public boolean b(cvt $$0, hz $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(atz.t));
    }
 }

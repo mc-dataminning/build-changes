@@ -1,23 +1,14 @@
-public interface cxb {
-   boolean b(cua var1, hx var2, djp var3);
+public class cxb {
+   public static final aix<cxa> a = a("nether");
+   public static final aix<cxa> b = a("overworld");
 
-   boolean a(ctx var1, auw var2, hx var3, djp var4);
-
-   void a(ane var1, auw var2, hx var3, djp var4);
-
-   default hx a(hx $$0) {
-      return switch (this.av_()) {
-         case a -> $$0.c();
-         case b -> $$0;
-      };
+   public static void a(ph<cxa> $$0) {
+      ik<cwm> $$1 = $$0.a(kg.at);
+      $$0.a(a, new cxa(cxa.a.a, $$1));
+      $$0.a(b, new cxa(cxa.a.b, $$1));
    }
 
-   default cxb.a av_() {
-      return cxb.a.b;
-   }
-
-   public static enum a {
-      a,
-      b;
+   private static aix<cxa> a(String $$0) {
+      return aix.a(kg.aL, new aiy($$0));
    }
 }

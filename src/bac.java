@@ -1,35 +1,33 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
 
-public class bac extends DataFix {
+public class bac extends bcn {
    public bac(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "EntityItemFrameDirectionFix", bdn.y, "minecraft:item_frame");
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbw.A.typeName(), bde.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
-         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
-            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
-            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
-            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
-            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
-         } else {
-            return $$2x;
-         }
-      });
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("Facing", $$0.createByte(a($$0.get("Facing").asByte((byte)0))));
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   private static byte a(byte $$0) {
+      switch ($$0) {
+         case 0:
+            return 3;
+         case 1:
+            return 4;
+         case 2:
+         default:
+            return 2;
+         case 3:
+            return 5;
+      }
    }
 }

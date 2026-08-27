@@ -1,173 +1,111 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Predicate;
 
-public class cbj extends cax {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 5;
-   private int d;
-   @Nullable
-   private efo e;
-   @Nullable
-   private emc f;
-   @Nullable
-   private bmo g;
-   private boolean h;
+public class cbj {
+   private static final float a = 4.0F;
+   private static final float b = 2.0F;
+   private static final float c = 2.5F;
+   private static final float d = 2.5F;
+   private static final float e = 1.0F;
+   private static final blf f = blf.a(5, 16);
+   private static final ImmutableList<byo<? extends byn<? super cbi>>> g = ImmutableList.of(byo.c, byo.f, byo.t, byo.o);
+   private static final ImmutableList<bxh<?>> h = ImmutableList.of(
+      bxh.Z, bxh.x, bxh.y, bxh.m, bxh.n, bxh.E, bxh.t, bxh.h, bxh.O, bxh.P, bxh.Q, bxh.R, new bxh[]{bxh.r, bxh.K}
+   );
 
-   public cbj(cav $$0) {
-      super($$0);
+   protected static void a(cbi $$0, awo $$1) {
    }
 
-   @Override
-   public void c() {
-      if (this.g == null) {
-         b.warn("Skipping player strafe phase because no player was found");
-         this.a.gc().a(cbl.a);
-      } else {
-         if (this.e != null && this.e.c()) {
-            double $$0 = this.g.dq();
-            double $$1 = this.g.dw();
-            double $$2 = $$0 - this.a.dq();
-            double $$3 = $$1 - this.a.dw();
-            double $$4 = Math.sqrt($$2 * $$2 + $$3 * $$3);
-            double $$5 = Math.min(0.4F + $$4 / 80.0 - 1.0, 10.0);
-            this.f = new emc($$0, this.g.ds() + $$5, $$1);
+   public static bpf.b<cbi> a() {
+      return bpf.a(h, g);
+   }
+
+   protected static bpf<?> a(bpf<cbi> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(ciu.a));
+      $$0.b(ciu.b);
+      $$0.f();
+      return $$0;
+   }
+
+   private static void b(bpf<cbi> $$0) {
+      $$0.a(ciu.a, 0, ImmutableList.of(new bsq(0.8F), new cbj.a(4.0F), new brc(45, 90), new brg(), new bqc(bxh.P), new bqc(bxh.Q)));
+   }
+
+   private static void c(bpf<cbi> $$0) {
+      $$0.a(
+         ciu.b,
+         ImmutableList.of(
+            Pair.of(0, brw.a(bnu.bw, 6.0F, blf.a(30, 60))),
+            Pair.of(1, new bpq(bnu.n)),
+            Pair.of(
+               2,
+               new brt(
+                  ImmutableList.of(Pair.of(new bqj($$0x -> 2.5F, $$0x -> $$0x.o_() ? 2.5 : 3.5), 1), Pair.of(btj.a(Predicate.not(cbi::w), bpt.a(f, 2.5F)), 1))
+               )
+            ),
+            Pair.of(3, new brn(blf.a(150, 250), 30.0F, 0.0F, 0.0F)),
+            Pair.of(
+               4,
+               new brt(
+                  ImmutableMap.of(bxh.m, bxi.b),
+                  ImmutableList.of(
+                     Pair.of(btj.a(Predicate.not(cbi::w), bro.a(2.0F)), 1),
+                     Pair.of(btj.a(Predicate.not(cbi::w), bsd.a(2.0F, 3)), 1),
+                     Pair.of(new cbj.b(20), 1),
+                     Pair.of(new bqg(30, 60), 1)
+                  )
+               )
+            )
+         )
+      );
+   }
+
+   public static void a(cbi $$0) {
+      $$0.dO().a(ImmutableList.of(ciu.b));
+   }
+
+   public static cry b() {
+      return cbi.bT;
+   }
+
+   public static class a extends bpr {
+      public a(float $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected void b(aov $$0, boo $$1, long $$2) {
+         if ($$1 instanceof cbi $$3) {
+            $$3.gt();
          }
 
-         double $$6 = this.f == null ? 0.0 : this.f.c(this.a.dq(), this.a.ds(), this.a.dw());
-         if ($$6 < 100.0 || $$6 > 22500.0) {
-            this.j();
-         }
-
-         double $$7 = 64.0;
-         if (this.g.f(this.a) < 4096.0) {
-            if (this.a.D(this.g)) {
-               this.d++;
-               emc $$8 = new emc(this.g.dq() - this.a.dq(), 0.0, this.g.dw() - this.a.dw()).d();
-               emc $$9 = new emc((double)aup.a(this.a.dB() * (float) (Math.PI / 180.0)), 0.0, (double)(-aup.b(this.a.dB() * (float) (Math.PI / 180.0)))).d();
-               float $$10 = (float)$$9.b($$8);
-               float $$11 = (float)(Math.acos((double)$$10) * 180.0F / (float)Math.PI);
-               $$11 += 0.5F;
-               if (this.d >= 5 && $$11 >= 0.0F && $$11 < 10.0F) {
-                  double $$12 = 1.0;
-                  emc $$13 = this.a.f(1.0F);
-                  double $$14 = this.a.e.dq() - $$13.c * 1.0;
-                  double $$15 = this.a.e.e(0.5) + 0.5;
-                  double $$16 = this.a.e.dw() - $$13.e * 1.0;
-                  double $$17 = this.g.dq() - $$14;
-                  double $$18 = this.g.e(0.5) - $$15;
-                  double $$19 = this.g.dw() - $$16;
-                  if (!this.a.aU()) {
-                     this.a.dL().a(null, 1017, this.a.dl(), 0);
-                  }
-
-                  cfz $$20 = new cfz(this.a.dL(), this.a, $$17, $$18, $$19);
-                  $$20.b($$14, $$15, $$16, 0.0F, 0.0F);
-                  this.a.dL().b($$20);
-                  this.d = 0;
-                  if (this.e != null) {
-                     while (!this.e.c()) {
-                        this.e.a();
-                     }
-                  }
-
-                  this.a.gc().a(cbl.a);
-               }
-            } else if (this.d > 0) {
-               this.d--;
-            }
-         } else if (this.d > 0) {
-            this.d--;
-         }
+         super.b($$0, $$1, $$2);
       }
    }
 
-   private void j() {
-      if (this.e == null || this.e.c()) {
-         int $$0 = this.a.A();
-         int $$1 = $$0;
-         if (this.a.eg().a(8) == 0) {
-            this.h = !this.h;
-            $$1 = $$0 + 6;
-         }
+   public static class b extends bpw<cbi> {
+      private final int c;
 
-         if (this.h) {
-            $$1++;
-         } else {
-            $$1--;
-         }
-
-         if (this.a.gd() != null && this.a.gd().e() > 0) {
-            $$1 %= 12;
-            if ($$1 < 0) {
-               $$1 += 12;
-            }
-         } else {
-            $$1 -= 12;
-            $$1 &= 7;
-            $$1 += 12;
-         }
-
-         this.e = this.a.a($$0, $$1, null);
-         if (this.e != null) {
-            this.e.a();
-         }
+      public b(int $$0) {
+         super(ImmutableMap.of());
+         this.c = $$0 * 20;
       }
 
-      this.k();
-   }
-
-   private void k() {
-      if (this.e != null && !this.e.c()) {
-         jb $$0 = this.e.g();
-         this.e.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.eg().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.f = new emc($$1, $$3, $$2);
+      protected boolean a(aov $$0, cbi $$1) {
+         return !$$1.aZ() && $$1.gu() >= (long)this.c && !$$1.fU() && $$1.aC() && !$$1.cO() && $$1.gg();
       }
-   }
 
-   @Override
-   public void d() {
-      this.d = 0;
-      this.f = null;
-      this.e = null;
-      this.g = null;
-   }
-
-   public void a(bmo $$0) {
-      this.g = $$0;
-      int $$1 = this.a.A();
-      int $$2 = this.a.r(this.g.dq(), this.g.ds(), this.g.dw());
-      int $$3 = this.g.dp();
-      int $$4 = this.g.dv();
-      double $$5 = (double)$$3 - this.a.dq();
-      double $$6 = (double)$$4 - this.a.dw();
-      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
-      double $$8 = Math.min(0.4F + $$7 / 80.0 - 1.0, 10.0);
-      int $$9 = aup.a(this.g.ds() + $$8);
-      efm $$10 = new efm($$3, $$9, $$4);
-      this.e = this.a.a($$1, $$2, $$10);
-      if (this.e != null) {
-         this.e.a();
-         this.k();
+      protected void a(aov $$0, cbi $$1, long $$2) {
+         if ($$1.go()) {
+            $$1.gs();
+         } else if (!$$1.gd()) {
+            $$1.gr();
+         }
       }
-   }
-
-   @Nullable
-   @Override
-   public emc g() {
-      return this.f;
-   }
-
-   @Override
-   public cbl<cbj> i() {
-      return cbl.b;
    }
 }

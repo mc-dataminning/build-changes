@@ -1,40 +1,115 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class duj implements dug {
-   public static final Codec<duj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bjh.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bjf.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bjf.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bjf.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bjf.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, duj::new)
-   );
-   public final int b;
-   public final bjh c;
-   public final bjf d;
-   public final float e;
-   public final bjf f;
-   public final bjf g;
-   public final bjf h;
-   public final int i;
-   public final float j;
+public class duj extends dts<dwd> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bnu<?>[] b = new bnu[]{bnu.aL, bnu.bs, bnu.bs, bnu.aU};
+   private static final dlf c = cyq.nc.o();
 
-   public duj(int $$0, bjh $$1, bjf $$2, float $$3, bjf $$4, bjf $$5, bjf $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   public duj(Codec<dwd> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(dtu<dwd> $$0) {
+      Predicate<dlf> $$1 = dts.a(atz.bH);
+      hz $$2 = $$0.e();
+      awo $$3 = $$0.d();
+      cwi $$4 = $$0.b();
+      int $$5 = 3;
+      int $$6 = $$3.a(2) + 2;
+      int $$7 = -$$6 - 1;
+      int $$8 = $$6 + 1;
+      int $$9 = -1;
+      int $$10 = 4;
+      int $$11 = $$3.a(2) + 2;
+      int $$12 = -$$11 - 1;
+      int $$13 = $$11 + 1;
+      int $$14 = 0;
+
+      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
+         for (int $$16 = -1; $$16 <= 4; $$16++) {
+            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
+               hz $$18 = $$2.b($$15, $$16, $$17);
+               boolean $$19 = $$4.a_($$18).e();
+               if ($$16 == -1 && !$$19) {
+                  return false;
+               }
+
+               if ($$16 == 4 && !$$19) {
+                  return false;
+               }
+
+               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.c())) {
+                  $$14++;
+               }
+            }
+         }
+      }
+
+      if ($$14 >= 1 && $$14 <= 5) {
+         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
+            for (int $$21 = 3; $$21 >= -1; $$21--) {
+               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
+                  hz $$23 = $$2.b($$20, $$21, $$22);
+                  dlf $$24 = $$4.a_($$23);
+                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
+                     if ($$23.v() >= $$4.J_() && !$$4.a_($$23.d()).e()) {
+                        $$4.a($$23, c, 2);
+                     } else if ($$24.e() && !$$24.a(cyq.cv)) {
+                        if ($$21 == -1 && $$3.a(4) != 0) {
+                           this.a($$4, $$23, cyq.cn.o(), $$1);
+                        } else {
+                           this.a($$4, $$23, cyq.m.o(), $$1);
+                        }
+                     }
+                  } else if (!$$24.a(cyq.cv) && !$$24.a(cyq.ct)) {
+                     this.a($$4, $$23, c, $$1);
+                  }
+               }
+            }
+         }
+
+         for (int $$25 = 0; $$25 < 2; $$25++) {
+            for (int $$26 = 0; $$26 < 3; $$26++) {
+               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
+               int $$28 = $$2.v();
+               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
+               hz $$30 = new hz($$27, $$28, $$29);
+               if ($$4.u($$30)) {
+                  int $$31 = 0;
+
+                  for (ie $$32 : ie.c.a) {
+                     if ($$4.a_($$30.a($$32)).e()) {
+                        $$31++;
+                     }
+                  }
+
+                  if ($$31 == 1) {
+                     this.a($$4, $$30, ebi.a($$4, $$30, cyq.cv.o()), $$1);
+                     bmc.a($$4, $$3, $$30, eit.d);
+                     break;
+                  }
+               }
+            }
+         }
+
+         this.a($$4, $$2, cyq.ct.o(), $$1);
+         if ($$4.c_($$2) instanceof dkg $$34) {
+            $$34.a(this.a($$3), $$3);
+         } else {
+            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private bnu<?> a(awo $$0) {
+      return ac.a(b, $$0);
    }
 }

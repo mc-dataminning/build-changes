@@ -1,67 +1,46 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class ghe {
-   public static final Comparator<ghe> a = Comparator.<ghe, ahh>comparing(ghe::a).thenComparing(ghe::b);
-   private final ahh b;
-   private final ahh c;
-   @Nullable
-   private fub d;
+   private final aiy a;
+   private final ary b;
+   private final AtomicReference<erb> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   public ghe(ahh $$0, ahh $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ghe(aiy $$0, ary $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   public ahh a() {
-      return this.b;
-   }
-
-   public ahh b() {
-      return this.c;
-   }
-
-   public gfb c() {
-      return evr.O().a(this.a()).apply(this.b());
-   }
-
-   public fub a(Function<ahh, fub> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
+   public erb a() throws IOException {
+      erb $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = erb.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
       }
 
-      return this.d;
+      return $$0;
    }
 
-   public eqo a(ftt $$0, Function<ahh, fub> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public eqo a(ftt $$0, Function<ahh, fub> $$1, boolean $$2) {
-      return this.c().a(fzy.c($$0, this.a($$1), true, $$2));
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ghe $$1 = (ghe)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         erb $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

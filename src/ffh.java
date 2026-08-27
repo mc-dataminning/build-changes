@@ -1,24 +1,28 @@
-public class ffh extends fel<cjh> {
-   private static final ahh x = new ahh("container/grindstone/error");
-   private static final ahh y = new ahh("textures/gui/container/grindstone.png");
-
-   public ffh(cjh $$0, cfp $$1, vg $$2) {
-      super($$0, $$1, $$2);
+public class ffh extends few {
+   public ffh(ffe $$0, exl $$1) {
+      super($$0, $$1, vq.c("options.skinCustomisation.title"));
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
+   protected void aQ_() {
+      int $$0 = 0;
 
-   @Override
-   protected void a(exe $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(y, $$4, $$5, 0, 0, this.c, this.k);
-      if ((this.p.b(0).h() || this.p.b(1).h()) && !this.p.b(2).h()) {
-         $$0.a(x, $$4 + 92, $$5 + 31, 28, 21);
+      for (chi $$1 : chi.values()) {
+         this.d(ezo.b(this.b.a($$1)).a(this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150, 20, $$1.d(), ($$1x, $$2) -> this.b.a($$1, $$2)));
+         $$0++;
       }
+
+      this.d(this.b.t().a(this.b, this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150));
+      if (++$$0 % 2 == 1) {
+         $$0++;
+      }
+
+      this.d(ezh.a(vp.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h / 6 + 24 * ($$0 >> 1), 200, 20).a());
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
    }
 }

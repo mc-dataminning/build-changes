@@ -1,64 +1,36 @@
-public class acs implements xg<zb> {
-   private final ih<ars> a;
-   private final aru b;
-   private final int c;
-   private final float d;
-   private final float e;
-   private final long f;
+public record acs(aen e, byte f) implements xx<aag> {
+   public static final xo<uq, acs> a = xx.a(acs::a, acs::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public acs(ih<ars> $$0, aru $$1, blw $$2, float $$3, float $$4, long $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.aj();
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   private acs(uq $$0) {
+      this(new aen($$0), $$0.readByte());
    }
 
-   public acs(uj $$0) {
-      this.a = $$0.a(kd.b.t(), ars::b);
-      this.b = $$0.b(aru.class);
-      this.c = $$0.n();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readLong();
+   private void a(uq $$0) {
+      this.e.a($$0);
+      $$0.k(this.f);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(kd.b.t(), this.a, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.b(this.f);
+   public xz<acs> a() {
+      return aeq.ak;
    }
 
-   public ih<ars> a() {
-      return this.a;
+   public void a(aag $$0) {
+      $$0.a(this);
    }
 
-   public aru d() {
-      return this.b;
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
+   public aen b() {
       return this.e;
    }
 
-   public long h() {
+   public byte e() {
       return this.f;
-   }
-
-   public void a(zb $$0) {
-      $$0.a(this);
    }
 }

@@ -1,17 +1,40 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.DSL.TypeReference;
 
-public class bdn extends bde {
-   public bdn(int $$0, Schema $$1) {
-      super($$0, $$1);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:trapped_chest", () -> DSL.optionalFields("Items", DSL.list(bbw.t.in($$0))));
-      return $$1;
-   }
+public class bdn {
+   public static final TypeReference a = () -> "level";
+   public static final TypeReference b = () -> "player";
+   public static final TypeReference c = () -> "chunk";
+   public static final TypeReference d = () -> "hotbar";
+   public static final TypeReference e = () -> "options";
+   public static final TypeReference f = () -> "structure";
+   public static final TypeReference g = () -> "stats";
+   public static final TypeReference h = () -> "saved_data/command_storage";
+   public static final TypeReference i = () -> "saved_data/chunks";
+   public static final TypeReference j = () -> "saved_data/map_data";
+   public static final TypeReference k = () -> "saved_data/idcounts";
+   public static final TypeReference l = () -> "saved_data/raids";
+   public static final TypeReference m = () -> "saved_data/random_sequences";
+   public static final TypeReference n = () -> "saved_data/structure_feature_indices";
+   public static final TypeReference o = () -> "saved_data/scoreboard";
+   public static final TypeReference p = () -> "advancements";
+   public static final TypeReference q = () -> "poi_chunk";
+   public static final TypeReference r = () -> "entity_chunk";
+   public static final TypeReference s = () -> "block_entity";
+   public static final TypeReference t = () -> "item_stack";
+   public static final TypeReference u = () -> "block_state";
+   public static final TypeReference v = () -> "flat_block_state";
+   public static final TypeReference w = () -> "entity_name";
+   public static final TypeReference x = () -> "entity_tree";
+   public static final TypeReference y = () -> "entity";
+   public static final TypeReference z = () -> "block_name";
+   public static final TypeReference A = () -> "item_name";
+   public static final TypeReference B = () -> "game_event_name";
+   public static final TypeReference C = () -> "untagged_spawner";
+   public static final TypeReference D = () -> "structure_feature";
+   public static final TypeReference E = () -> "objective";
+   public static final TypeReference F = () -> "team";
+   public static final TypeReference G = () -> "recipe";
+   public static final TypeReference H = () -> "biome";
+   public static final TypeReference I = () -> "multi_noise_biome_source_parameter_list";
+   public static final TypeReference J = () -> "world_gen_settings";
 }

@@ -1,63 +1,92 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
-import javax.swing.JComponent;
-import javax.swing.Timer;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Collection;
 import net.minecraft.server.MinecraftServer;
 
-public class amj extends JComponent {
-   private static final DecimalFormat a = ac.a(
-      new DecimalFormat("########0.000"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT))
-   );
-   private final int[] b = new int[256];
-   private int c;
-   private final String[] d = new String[11];
-   private final MinecraftServer e;
-   private final Timer f;
+public class amj {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.schedule.same_tick"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vq.b("commands.schedule.cleared.failure", $$0));
+   private static final SuggestionProvider<du> c = ($$0, $$1) -> dz.b(((du)$$0.getSource()).l().aY().I().s().a(), $$1);
 
-   public amj(MinecraftServer $$0) {
-      this.e = $$0;
-      this.setPreferredSize(new Dimension(456, 246));
-      this.setMinimumSize(new Dimension(456, 246));
-      this.setMaximumSize(new Dimension(456, 246));
-      this.f = new Timer(500, $$0x -> this.b());
-      this.f.start();
-      this.setBackground(Color.BLACK);
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("schedule").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dv.a("function")
+                     .then(
+                        dv.a("function", fz.a())
+                           .suggests(ald.b)
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("time", fh.a())
+                                       .executes($$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
+                                    .then(
+                                       dv.a("append")
+                                          .executes(
+                                             $$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("replace")
+                                       .executes($$0x -> a((du)$$0x.getSource(), fz.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
+                                 )
+                           )
+                     )
+               ))
+            .then(
+               dv.a("clear")
+                  .then(
+                     dv.a("function", StringArgumentType.greedyString())
+                        .suggests(c)
+                        .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
+                  )
+            )
+      );
    }
 
-   private void b() {
-      long $$0 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-      this.d[0] = "Memory use: " + $$0 / 1024L / 1024L + " mb (" + Runtime.getRuntime().freeMemory() * 100L / Runtime.getRuntime().maxMemory() + "% free)";
-      this.d[1] = "Avg tick: " + a.format((double)this.e.aP() / (double)avq.b) + " ms";
-      this.b[this.c++ & 0xFF] = (int)($$0 * 100L / Runtime.getRuntime().maxMemory());
-      this.repaint();
-   }
+   private static int a(du $$0, Pair<aiy, Either<hd<du>, Collection<hd<du>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
+      if ($$2 == 0) {
+         throw a.create();
+      } else {
+         long $$4 = $$0.e().X() + (long)$$2;
+         aiy $$5 = (aiy)$$1.getFirst();
+         enf<MinecraftServer> $$6 = $$0.l().aY().I().s();
+         ((Either)$$1.getSecond()).ifLeft($$6x -> {
+            String $$7 = $$5.toString();
+            if ($$3) {
+               $$6.a($$7);
+            }
 
-   @Override
-   public void paint(Graphics $$0) {
-      $$0.setColor(new Color(16777215));
-      $$0.fillRect(0, 0, 456, 246);
+            $$6.a($$7, $$4, new enb($$5));
+            $$0.a(() -> vq.a("commands.schedule.created.function", vq.a($$5), $$2, $$4), true);
+         }).ifRight($$6x -> {
+            String $$7 = "#" + $$5;
+            if ($$3) {
+               $$6.a($$7);
+            }
 
-      for (int $$1 = 0; $$1 < 256; $$1++) {
-         int $$2 = this.b[$$1 + this.c & 0xFF];
-         $$0.setColor(new Color($$2 + 28 << 16));
-         $$0.fillRect($$1, 100 - $$2, 1, $$2);
+            $$6.a($$7, $$4, new enc($$5));
+            $$0.a(() -> vq.a("commands.schedule.created.tag", vq.a($$5), $$2, $$4), true);
+         });
+         return Math.floorMod($$4, Integer.MAX_VALUE);
       }
-
-      $$0.setColor(Color.BLACK);
-
-      for (int $$3 = 0; $$3 < this.d.length; $$3++) {
-         String $$4 = this.d[$$3];
-         if ($$4 != null) {
-            $$0.drawString($$4, 32, 116 + $$3 * 16);
-         }
-      }
    }
 
-   public void a() {
-      this.f.stop();
+   private static int a(du $$0, String $$1) throws CommandSyntaxException {
+      int $$2 = $$0.l().aY().I().s().a($$1);
+      if ($$2 == 0) {
+         throw b.create($$1);
+      } else {
+         $$0.a(() -> vq.a("commands.schedule.cleared.success", $$2, $$1), true);
+         return $$2;
+      }
    }
 }

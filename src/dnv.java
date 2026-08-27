@@ -1,37 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 
-public class dnv implements dod {
-   public static final Codec<dnv> a = RecordCodecBuilder.create($$0 -> $$0.group(hx.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dnv::new));
-   final hx c;
+public interface dnv<T> {
+   T a(int var1, int var2, int var3);
 
-   public dnv(hx $$0) {
-      this.c = $$0;
+   void a(Consumer<T> var1);
+
+   void b(uq var1);
+
+   int c();
+
+   boolean a(Predicate<T> var1);
+
+   void a(dnu.b<T> var1);
+
+   dnu<T> e();
+
+   dnv.a<T> a(io<T> var1, dnu.d var2);
+
+   public static record a<T>(List<T> a, Optional<LongStream> b) {
    }
 
-   @Override
-   public Optional<emc> a(ctx $$0) {
-      return Optional.of(emc.b(this.c));
-   }
-
-   @Override
-   public doe<?> a() {
-      return doe.a;
-   }
-
-   public static class a implements doe<dnv> {
-      public dnv a(uj $$0) {
-         return new dnv($$0.e());
-      }
-
-      public void a(uj $$0, dnv $$1) {
-         $$0.a($$1.c);
-      }
-
-      @Override
-      public Codec<dnv> a() {
-         return dnv.a;
-      }
+   public interface b<T, C extends dnv<T>> {
+      DataResult<C> read(io<T> var1, dnu.d var2, dnv.a<T> var3);
    }
 }

@@ -1,94 +1,105 @@
+import com.google.common.collect.Comparators;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Objects;
 import org.slf4j.Logger;
 
-public class apq implements apw {
-   static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final aoy c;
-   private final apv d;
-   private final els e;
+public class apq {
+   private static final Logger c = LogUtils.getLogger();
+   public static final float a = 0.01F;
+   public static final float b = 64.0F;
+   private static final float d = 9.0F;
+   private static final int e = 10;
+   private final LongSet f = new LongOpenHashSet();
+   private final boolean g;
+   private float h = 9.0F;
+   private float i;
+   private int j;
+   private int k = 1;
 
-   public apq(Path $$0, aoy $$1, apv $$2, els $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public apq(boolean $$0) {
+      this.g = $$0;
    }
 
-   private static String a(Path $$0) {
-      return $$0.getFileName().toString();
+   public void a(dnm $$0) {
+      this.f.add($$0.f().a());
    }
 
-   @Override
-   public void loadPacks(Consumer<apr> $$0) {
-      try {
-         v.c(this.b);
-         a(this.b, this.e, false, ($$1, $$2) -> {
-            String $$3 = a($$1);
-            apr $$4 = apr.a("file/" + $$3, vg.b($$3), false, $$2, this.c, apr.b.a, this.d);
-            if ($$4 != null) {
-               $$0.accept($$4);
-            }
-         });
-      } catch (IOException var3) {
-         a.warn("Failed to list packs in {}", this.b, var3);
+   public void a(aow $$0, cuu $$1) {
+      if (!this.f.remove($$1.a()) && $$0.bx()) {
+         $$0.d.b(new abl($$1));
       }
    }
 
-   public static void a(Path $$0, els $$1, boolean $$2, BiConsumer<Path, apr.c> $$3) throws IOException {
-      apq.a $$4 = new apq.a($$1, $$2);
+   public void a(aow $$0) {
+      if (this.j < this.k) {
+         float $$1 = Math.max(1.0F, this.h);
+         this.i = Math.min(this.i + this.h, $$1);
+         if (!(this.i < 1.0F)) {
+            if (!this.f.isEmpty()) {
+               aov $$2 = $$0.z();
+               aof $$3 = $$2.l().a;
+               List<dnm> $$4 = this.a($$3, $$0.do());
+               if (!$$4.isEmpty()) {
+                  apu $$5 = $$0.d;
+                  this.j++;
+                  $$5.b(aav.a);
 
-      try (DirectoryStream<Path> $$5 = Files.newDirectoryStream($$0)) {
-         for (Path $$6 : $$5) {
-            try {
-               List<elt> $$7 = new ArrayList<>();
-               apr.c $$8 = $$4.a($$6, $$7);
-               if (!$$7.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", elr.a($$6, $$7));
-               } else if ($$8 != null) {
-                  $$3.accept($$6, $$8);
-               } else {
-                  a.info("Found non-pack entry '{}', ignoring", $$6);
+                  for (dnm $$6 : $$4) {
+                     a($$5, $$2, $$6);
+                  }
+
+                  $$5.b(new aau($$4.size()));
+                  this.i = this.i - (float)$$4.size();
                }
-            } catch (IOException var11) {
-               a.warn("Failed to read properties of '{}', ignoring", $$6, var11);
             }
          }
       }
    }
 
-   static class a extends apt<apr.c> {
-      private final boolean a;
+   private static void a(apu $$0, aov $$1, dnm $$2) {
+      $$0.b(new abr($$2, $$1.z_(), null, null));
+      cuu $$3 = $$2.f();
+      aep.a($$1, $$3);
+   }
 
-      protected a(els $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
+   private List<dnm> a(aof $$0, cuu $$1) {
+      int $$2 = awh.d(this.i);
+      List<dnm> $$4;
+      if (!this.g && this.f.size() > $$2) {
+         $$4 = this.f
+            .stream()
+            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
+            .stream()
+            .mapToLong(Long::longValue)
+            .mapToObj($$0::d)
+            .filter(Objects::nonNull)
+            .toList();
+      } else {
+         $$4 = this.f.longStream().mapToObj($$0::d).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
 
-      @Nullable
-      protected apr.c a(Path $$0) {
-         FileSystem $$1 = $$0.getFileSystem();
-         if ($$1 != FileSystems.getDefault() && !($$1 instanceof apg)) {
-            apq.a.info("Can't open pack archive at {}", $$0);
-            return null;
-         } else {
-            return new aov.a($$0, this.a);
-         }
+      for (dnm $$5 : $$4) {
+         this.f.remove($$5.f().a());
       }
 
-      protected apr.c b(Path $$0) {
-         return new aoz.a($$0, this.a);
+      return $$4;
+   }
+
+   public void a(float $$0) {
+      this.j--;
+      this.h = Double.isNaN((double)$$0) ? 0.01F : awh.a($$0, 0.01F, 64.0F);
+      if (this.j == 0) {
+         this.i = 1.0F;
       }
+
+      this.k = 10;
+   }
+
+   public boolean a(long $$0) {
+      return this.f.contains($$0);
    }
 }

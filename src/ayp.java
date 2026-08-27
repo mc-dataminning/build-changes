@@ -1,36 +1,28 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
 
-public class ayp extends baw {
-   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("donkeykong", "donkey_kong");
-      $$0.put("burningskull", "burning_skull");
-      $$0.put("skullandroses", "skull_and_roses");
-   });
-
+public class ayp extends DataFix {
    public ayp(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityPaintingMotiveFix", bbw.y, "minecraft:painting");
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Motive").asString().result();
-      if ($$1.isPresent()) {
-         String $$2 = $$1.get().toLowerCase(Locale.ROOT);
-         return $$0.set("Motive", $$0.createString(new ahh(a.getOrDefault($$2, $$2)).toString()));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bdn.z);
+      Type<?> $$1 = this.getOutputSchema().getType(bdn.z);
+      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bdn.z.typeName(), DSL.or(DSL.intType(), bew.a()));
+      Type<Pair<String, String>> $$3 = DSL.named(bdn.z.typeName(), bew.a());
+      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
+         return this.fixTypeEverywhere(
+            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(ayr::a, $$0xxxx -> ayr.a(bew.a($$0xxxx))))
+         );
       } else {
-         return $$0;
+         throw new IllegalStateException("Expected and actual types don't match.");
       }
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

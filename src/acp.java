@@ -1,40 +1,36 @@
-public class acp implements xg<zb> {
-   private final long a;
-   private final long b;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public acp(long $$0, long $$1, boolean $$2) {
-      this.a = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
+public class acp implements xx<aag> {
+   public static final xo<uq, acp> a = xx.a(acp::a, acp::new);
+   private final IntList b;
 
-      this.b = $$3;
+   public acp(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   public acp(uj $$0) {
-      this.a = $$0.readLong();
-      this.b = $$0.readLong();
+   public acp(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private acp(uq $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
+   public xz<acp> a() {
+      return aeq.ai;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public long a() {
-      return this.a;
-   }
-
-   public long d() {
+   public IntList b() {
       return this.b;
    }
 }

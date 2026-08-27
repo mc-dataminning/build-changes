@@ -1,22 +1,21 @@
-import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public record bhu<T extends bht>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
-   public static <T extends bht> bhu<T> a(List<T> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("No values");
-      } else {
-         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bht::a)).toList();
-         Duration $$2 = $$1.stream().map(bht::a).reduce(Duration::plus).orElse(Duration.ZERO);
-         T $$3 = (T)$$1.get(0);
-         T $$4 = (T)$$1.get($$1.size() - 1);
-         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
-         int $$6 = $$1.size();
-         Map<Integer, Double> $$7 = bha.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
-         return new bhu<>($$3, $$4, $$5, $$6, $$7, $$2);
-      }
+public class bhu extends bew {
+   public bhu(int $$0, Schema $$1) {
+      super($$0, $$1);
+   }
+
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bdn.t.in($$0))));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      a($$0, $$1, "minecraft:shulker_box");
+      return $$1;
    }
 }

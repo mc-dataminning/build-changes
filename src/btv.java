@@ -1,27 +1,35 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class btv extends buh {
-   private static final int i = 10;
-   private static final int j = 7;
+public class btv<E extends cgl> extends bpw<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
 
-   public btv(bmx $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public btv(int $$0) {
+      super(ImmutableMap.of(bxh.aB, bxi.a, bxh.o, bxi.b, bxh.m, bxi.b, bxh.n, bxi.c, bxh.B, bxi.c, bxh.az, bxi.c, bxh.aG, bxi.c), $$0);
    }
 
-   @Override
-   public boolean a() {
-      ane $$0 = (ane)this.b.dL();
-      hx $$1 = this.b.dl();
-      return $$0.c($$1) ? false : super.a();
+   protected boolean a(aov $$0, E $$1, long $$2) {
+      return true;
    }
 
-   @Nullable
-   @Override
-   protected emc h() {
-      ane $$0 = (ane)this.b.dL();
-      hx $$1 = this.b.dl();
-      iz $$2 = iz.a($$1);
-      iz $$3 = boh.a($$0, $$2, 2);
-      return $$3 != $$2 ? bxh.a(this.b, 10, 7, emc.c($$3.q()), (float) (Math.PI / 2)) : null;
+   protected void b(aov $$0, E $$1, long $$2) {
+      $$1.a(atk.AZ, 5.0F, 1.0F);
+   }
+
+   protected void c(aov $$0, E $$1, long $$2) {
+      if ($$1.c(bor.m)) {
+         $$1.b(bor.a);
+      }
+
+      $$1.dO().b(bxh.aB);
+      $$1.dO().c(bxh.B).filter($$1::a).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.c($$1x);
+         }
+
+         if (!$$1.dO().a(bxh.az)) {
+            cgm.a($$1, $$1x.dm());
+         }
+      });
    }
 }

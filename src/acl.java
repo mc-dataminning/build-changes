@@ -1,190 +1,141 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.base.MoreObjects;
+import com.mojang.authlib.GameProfile;
 import java.util.Collection;
-import java.util.Optional;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class acl implements xg<zb> {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 3;
-   private static final int e = 4;
-   private static final int f = 40;
-   private static final int g = 40;
-   private final int h;
-   private final String i;
-   private final Collection<String> j;
-   private final Optional<acl.b> k;
+public class acl implements xx<aag> {
+   public static final xo<uq, acl> a = xx.a(acl::a, acl::new);
+   private final EnumSet<acl.a> b;
+   private final List<acl.b> c;
 
-   private acl(String $$0, int $$1, Optional<acl.b> $$2, Collection<String> $$3) {
-      this.i = $$0;
-      this.h = $$1;
-      this.k = $$2;
-      this.j = ImmutableList.copyOf($$3);
+   public acl(EnumSet<acl.a> $$0, Collection<aow> $$1) {
+      this.b = $$0;
+      this.c = $$1.stream().map(acl.b::new).toList();
    }
 
-   public static acl a(enb $$0, boolean $$1) {
-      return new acl($$0.b(), $$1 ? 0 : 2, Optional.of(new acl.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
+   public acl(acl.a $$0, aow $$1) {
+      this.b = EnumSet.of($$0);
+      this.c = List.of(new acl.b($$1));
    }
 
-   public static acl a(enb $$0) {
-      return new acl($$0.b(), 1, Optional.empty(), ImmutableList.of());
+   public static acl a(Collection<aow> $$0) {
+      EnumSet<acl.a> $$1 = EnumSet.of(acl.a.a, acl.a.b, acl.a.c, acl.a.d, acl.a.e, acl.a.f);
+      return new acl($$1, $$0);
    }
 
-   public static acl a(enb $$0, String $$1, acl.a $$2) {
-      return new acl($$0.b(), $$2 == acl.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
+   private acl(uq $$0) {
+      this.b = $$0.a(acl.a.class);
+      this.c = $$0.a((xp<? super uq, acl.b>)($$0x -> {
+         acl.c $$1 = new acl.c($$0x.p());
+
+         for (acl.a $$2 : this.b) {
+            $$2.g.read($$1, $$0x);
+         }
+
+         return $$1.a();
+      }));
    }
 
-   public acl(uj $$0) {
-      this.i = $$0.s();
-      this.h = $$0.readByte();
-      if (b(this.h)) {
-         this.k = Optional.of(new acl.b($$0));
-      } else {
-         this.k = Optional.empty();
-      }
+   private void a(uq $$0) {
+      $$0.a(this.b, acl.a.class);
+      $$0.a(this.c, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
 
-      if (a(this.h)) {
-         this.j = $$0.a(uj::s);
-      } else {
-         this.j = ImmutableList.of();
-      }
+         for (acl.a $$2 : this.b) {
+            $$2.h.write($$0x, $$1);
+         }
+      });
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.i);
-      $$0.k(this.h);
-      if (b(this.h)) {
-         this.k.orElseThrow(() -> new IllegalStateException("Parameters not present, but method is" + this.h)).a($$0);
-      }
-
-      if (a(this.h)) {
-         $$0.a(this.j, uj::a);
-      }
+   public xz<acl> a() {
+      return aeq.ae;
    }
 
-   private static boolean a(int $$0) {
-      return $$0 == 0 || $$0 == 3 || $$0 == 4;
-   }
-
-   private static boolean b(int $$0) {
-      return $$0 == 0 || $$0 == 2;
-   }
-
-   @Nullable
-   public acl.a a() {
-      switch (this.h) {
-         case 0:
-         case 3:
-            return acl.a.a;
-         case 1:
-         case 2:
-         default:
-            return null;
-         case 4:
-            return acl.a.b;
-      }
-   }
-
-   @Nullable
-   public acl.a d() {
-      switch (this.h) {
-         case 0:
-            return acl.a.a;
-         case 1:
-            return acl.a.b;
-         default:
-            return null;
-      }
-   }
-
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public String e() {
-      return this.i;
+   public EnumSet<acl.a> b() {
+      return this.b;
    }
 
-   public Collection<String> f() {
-      return this.j;
+   public List<acl.b> e() {
+      return this.c;
    }
 
-   public Optional<acl.b> g() {
-      return this.k;
+   public List<acl.b> f() {
+      return this.b.contains(acl.a.a) ? this.c : List.of();
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("actions", this.b).add("entries", this.c).toString();
    }
 
    public static enum a {
-      a,
-      b;
+      a(($$0, $$1) -> {
+         GameProfile $$2 = new GameProfile($$0.a, $$1.d(16));
+         $$2.getProperties().putAll($$1.A());
+         $$0.b = $$2;
+      }, ($$0, $$1) -> {
+         GameProfile $$2 = Objects.requireNonNull($$1.b());
+         $$0.a($$2.getName(), 16);
+         $$0.a($$2.getProperties());
+      }),
+      b(($$0, $$1) -> $$0.g = $$1.c(wh.a::a), ($$0, $$1) -> $$0.a($$1.g, wh.a::a)),
+      c(($$0, $$1) -> $$0.e = cvk.a($$1.n()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
+      e(($$0, $$1) -> $$0.d = $$1.n(), ($$0, $$1) -> $$0.c($$1.d())),
+      f(($$0, $$1) -> $$0.f = $$1.c(uq::m), ($$0, $$1) -> $$0.a($$1.f(), uq::a));
+
+      final acl.a.a g;
+      final acl.a.b h;
+
+      private a(acl.a.a $$0, acl.a.b $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public interface a {
+         void read(acl.c var1, uq var2);
+      }
+
+      public interface b {
+         void write(uq var1, acl.b var2);
+      }
    }
 
-   public static class b {
-      private final vg a;
-      private final vg b;
-      private final vg c;
-      private final String d;
-      private final String e;
-      private final n f;
-      private final int g;
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, cvk e, @Nullable vq f, @Nullable wh.a g) {
 
-      public b(enb $$0) {
-         this.a = $$0.c();
-         this.g = $$0.m();
-         this.d = $$0.j().e;
-         this.e = $$0.l().e;
-         this.f = $$0.n();
-         this.b = $$0.e();
-         this.c = $$0.f();
+      b(aow $$0) {
+         this($$0.cw(), $$0.fS(), true, $$0.d.l(), $$0.f.b(), $$0.N(), x.a($$0.ab(), wh::a));
+      }
+   }
+
+   static class c {
+      final UUID a;
+      @Nullable
+      GameProfile b;
+      boolean c;
+      int d;
+      cvk e;
+      @Nullable
+      vq f;
+      @Nullable
+      wh.a g;
+
+      c(UUID $$0) {
+         this.e = cvk.e;
+         this.a = $$0;
       }
 
-      public b(uj $$0) {
-         this.a = $$0.m();
-         this.g = $$0.readByte();
-         this.d = $$0.d(40);
-         this.e = $$0.d(40);
-         this.f = $$0.b(n.class);
-         this.b = $$0.m();
-         this.c = $$0.m();
-      }
-
-      public vg a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.g;
-      }
-
-      public n c() {
-         return this.f;
-      }
-
-      public String d() {
-         return this.d;
-      }
-
-      public String e() {
-         return this.e;
-      }
-
-      public vg f() {
-         return this.b;
-      }
-
-      public vg g() {
-         return this.c;
-      }
-
-      public void a(uj $$0) {
-         $$0.a(this.a);
-         $$0.k(this.g);
-         $$0.a(this.d);
-         $$0.a(this.e);
-         $$0.a(this.f);
-         $$0.a(this.b);
-         $$0.a(this.c);
+      acl.b a() {
+         return new acl.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g);
       }
    }
 }

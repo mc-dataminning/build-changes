@@ -1,74 +1,65 @@
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public class eee {
-   private final eef[] a;
-   private final double b;
-   private final double c;
+public class eee extends efb {
+   public static final Codec<eee> a = Codec.unit(() -> eee.b);
+   public static final eee b = new eee();
+   private final Map<cyo, cyo> c = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cyq.m, cyq.pr);
+      $$0.put(cyq.cn, cyq.pr);
+      $$0.put(cyq.b, cyq.pv);
+      $$0.put(cyq.eH, cyq.pw);
+      $$0.put(cyq.eI, cyq.pw);
+      $$0.put(cyq.cQ, cyq.ps);
+      $$0.put(cyq.ni, cyq.ps);
+      $$0.put(cyq.nk, cyq.pD);
+      $$0.put(cyq.fj, cyq.pA);
+      $$0.put(cyq.ng, cyq.pA);
+      $$0.put(cyq.jI, cyq.pu);
+      $$0.put(cyq.nw, cyq.pu);
+      $$0.put(cyq.jE, cyq.pE);
+      $$0.put(cyq.jD, cyq.pE);
+      $$0.put(cyq.jK, cyq.pz);
+      $$0.put(cyq.nu, cyq.pz);
+      $$0.put(cyq.nK, cyq.pB);
+      $$0.put(cyq.nI, cyq.pB);
+      $$0.put(cyq.fP, cyq.pt);
+      $$0.put(cyq.fQ, cyq.pt);
+      $$0.put(cyq.eK, cyq.py);
+      $$0.put(cyq.eJ, cyq.px);
+      $$0.put(cyq.eW, cyq.eX);
+   });
 
-   public eee(auw $$0, List<Integer> $$1) {
-      this($$0, new IntRBTreeSet($$1));
+   private eee() {
    }
 
-   private eee(auw $$0, IntSortedSet $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
+   @Override
+   public efe.c a(cvq $$0, hz $$1, hz $$2, efe.c $$3, efe.c $$4, efa $$5) {
+      cyo $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
       } else {
-         int $$2 = -$$1.firstInt();
-         int $$3 = $$1.lastInt();
-         int $$4 = $$2 + $$3 + 1;
-         if ($$4 < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-         } else {
-            eef $$5 = new eef($$0);
-            int $$6 = $$3;
-            this.a = new eef[$$4];
-            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
-               this.a[$$3] = $$5;
-            }
-
-            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
-               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
-                  this.a[$$7] = new eef($$0);
-               } else {
-                  $$0.b(262);
-               }
-            }
-
-            if ($$3 > 0) {
-               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
-               auw $$9 = new dpx(new doz($$8));
-
-               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
-                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
-                     this.a[$$10] = new eef($$9);
-                  } else {
-                     $$9.b(262);
-                  }
-               }
-            }
-
-            this.c = Math.pow(2.0, (double)$$3);
-            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
+         dlf $$7 = $$4.b();
+         dlf $$8 = $$6.o();
+         if ($$7.b(dgh.b)) {
+            $$8 = $$8.a(dgh.b, $$7.c(dgh.b));
          }
+
+         if ($$7.b(dgh.c)) {
+            $$8 = $$8.a(dgh.c, $$7.c(dgh.c));
+         }
+
+         if ($$7.b(dfq.b)) {
+            $$8 = $$8.a(dfq.b, $$7.c(dfq.b));
+         }
+
+         return new efe.c($$4.a(), $$8, $$4.c());
       }
    }
 
-   public double a(double $$0, double $$1, boolean $$2) {
-      double $$3 = 0.0;
-      double $$4 = this.c;
-      double $$5 = this.b;
-
-      for (eef $$6 : this.a) {
-         if ($$6 != null) {
-            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
-         }
-
-         $$4 /= 2.0;
-         $$5 *= 2.0;
-      }
-
-      return $$3;
+   @Override
+   protected efd<?> a() {
+      return efd.l;
    }
 }

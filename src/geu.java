@@ -1,119 +1,101 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class geu extends gem {
-   static final Logger f = LogUtils.getLogger();
-   protected final ahh e;
+public class geu<T extends bog, M extends fmo<T>, A extends fmo<T>> extends gfe<T, M> {
+   private static final Map<String, aiy> a = Maps.newHashMap();
+   private final A b;
+   private final A c;
+   private final ggt d;
 
-   public geu(ahh $$0) {
-      this.e = $$0;
+   public geu(gco<T, M> $$0, A $$1, A $$2, gja $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3.a(fwb.g);
    }
 
-   @Override
-   public void a(aqj $$0) throws IOException {
-      geu.a $$1 = this.b($$0);
-      $$1.c();
-      ggx $$2 = $$1.a();
-      boolean $$3;
-      boolean $$4;
-      if ($$2 != null) {
-         $$3 = $$2.a();
-         $$4 = $$2.b();
-      } else {
-         $$3 = false;
-         $$4 = false;
-      }
-
-      epl $$7 = $$1.b();
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
-      } else {
-         this.a($$7, $$3, $$4);
-      }
+   public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$3, bnv.e, $$2, this.a(bnv.e));
+      this.a($$0, $$1, $$3, bnv.d, $$2, this.a(bnv.d));
+      this.a($$0, $$1, $$3, bnv.c, $$2, this.a(bnv.c));
+      this.a($$0, $$1, $$3, bnv.f, $$2, this.a(bnv.f));
    }
 
-   private void a(epl $$0, boolean $$1, boolean $$2) {
-      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
-   }
-
-   protected geu.a b(aqj $$0) {
-      return geu.a.a($$0, this.e);
-   }
-
-   protected static class a implements Closeable {
-      @Nullable
-      private final ggx a;
-      @Nullable
-      private final epl b;
-      @Nullable
-      private final IOException c;
-
-      public a(IOException $$0) {
-         this.c = $$0;
-         this.a = null;
-         this.b = null;
-      }
-
-      public a(@Nullable ggx $$0, epl $$1) {
-         this.c = null;
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public static geu.a a(aqj $$0, ahh $$1) {
-         try {
-            aqh $$2 = $$0.getResourceOrThrow($$1);
-
-            epl $$4;
-            try (InputStream $$3 = $$2.d()) {
-               $$4 = epl.a($$3);
+   private void a(esa $$0, fvm $$1, T $$2, bnv $$3, int $$4, A $$5) {
+      coz $$6 = $$2.c($$3);
+      if ($$6.d() instanceof cmj $$7) {
+         if ($$7.g() == $$3) {
+            this.c().a($$5);
+            this.a($$5, $$3);
+            boolean $$9 = this.b($$3);
+            if ($$7 instanceof cnq $$10) {
+               int $$11 = $$10.e_($$6);
+               float $$12 = (float)($$11 >> 16 & 0xFF) / 255.0F;
+               float $$13 = (float)($$11 >> 8 & 0xFF) / 255.0F;
+               float $$14 = (float)($$11 & 0xFF) / 255.0F;
+               this.a($$0, $$1, $$4, $$7, $$5, $$9, $$12, $$13, $$14, null);
+               this.a($$0, $$1, $$4, $$7, $$5, $$9, 1.0F, 1.0F, 1.0F, "overlay");
+            } else {
+               this.a($$0, $$1, $$4, $$7, $$5, $$9, 1.0F, 1.0F, 1.0F, null);
             }
 
-            ggx $$6 = null;
-
-            try {
-               $$6 = $$2.f().a(ggx.a).orElse(null);
-            } catch (RuntimeException var8) {
-               geu.f.warn("Failed reading metadata of: {}", $$1, var8);
+            cra.a($$2.dM().I_(), $$6, true).ifPresent($$6x -> this.a($$7.d(), $$0, $$1, $$4, $$6x, $$5, $$9));
+            if ($$6.C()) {
+               this.a($$0, $$1, $$4, $$5);
             }
-
-            return new geu.a($$6, $$4);
-         } catch (IOException var10) {
-            return new geu.a(var10);
          }
       }
+   }
 
-      @Nullable
-      public ggx a() {
-         return this.a;
+   protected void a(A $$0, bnv $$1) {
+      $$0.b_(false);
+      switch ($$1) {
+         case f:
+            $$0.k.k = true;
+            $$0.l.k = true;
+            break;
+         case e:
+            $$0.m.k = true;
+            $$0.n.k = true;
+            $$0.o.k = true;
+            break;
+         case d:
+            $$0.m.k = true;
+            $$0.p.k = true;
+            $$0.q.k = true;
+            break;
+         case c:
+            $$0.p.k = true;
+            $$0.q.k = true;
       }
+   }
 
-      public epl b() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         } else {
-            return this.b;
-         }
-      }
+   private void a(esa $$0, fvm $$1, int $$2, cmj $$3, A $$4, boolean $$5, float $$6, float $$7, float $$8, @Nullable String $$9) {
+      ese $$10 = $$1.getBuffer(fvu.a(this.a($$3, $$5, $$9)));
+      $$4.a($$0, $$10, $$2, ggl.d, $$6, $$7, $$8, 1.0F);
+   }
 
-      @Override
-      public void close() {
-         if (this.b != null) {
-            this.b.close();
-         }
-      }
+   private void a(cmk $$0, esa $$1, fvm $$2, int $$3, cra $$4, A $$5, boolean $$6) {
+      ggu $$7 = this.d.a($$6 ? $$4.a($$0) : $$4.b($$0));
+      ese $$8 = $$7.a($$2.getBuffer(fwb.a($$4.a().a().d())));
+      $$5.a($$1, $$8, $$3, ggl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
 
-      public void c() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         }
-      }
+   private void a(esa $$0, fvm $$1, int $$2, A $$3) {
+      $$3.a($$0, $$1.getBuffer(fvu.k()), $$2, ggl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   private A a(bnv $$0) {
+      return this.b($$0) ? this.b : this.c;
+   }
+
+   private boolean b(bnv $$0) {
+      return $$0 == bnv.d;
+   }
+
+   private aiy a(cmj $$0, boolean $$1, @Nullable String $$2) {
+      String $$3 = "textures/models/armor/" + $$0.d().e() + "_layer_" + ($$1 ? 2 : 1) + ($$2 == null ? "" : "_" + $$2) + ".png";
+      return a.computeIfAbsent($$3, aiy::new);
    }
 }

@@ -1,31 +1,105 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record cf(ck.d b) {
-   public static final Codec<cf> a = RecordCodecBuilder.create($$0 -> $$0.group(atx.a(ck.d.d, "light", ck.d.c).forGetter(cf::a)).apply($$0, cf::new));
-
-   public boolean a(ane $$0, hx $$1) {
-      return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
+public class cf extends cx<cf.a> {
+   @Override
+   public Codec<cf.a> a() {
+      return cf.a.a;
    }
 
-   public ck.d a() {
-      return this.b;
+   public void a(aow $$0, bno $$1, bmn $$2) {
+      eiv $$3 = br.b($$0, $$1);
+      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
-   public static class a {
-      private ck.d a = ck.d.c;
+   public static record a(Optional<bc> b, Optional<bc> c, Optional<bg> d) implements cx.a {
+      public static final Codec<cf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(cf.a::a), avp.a(br.b, "entity").forGetter(cf.a::e), avp.a(bg.a, "killing_blow").forGetter(cf.a::f))
+               .apply($$0, cf.a::new)
+      );
 
-      public static cf.a a() {
-         return new cf.a();
+      public static an<cf.a> a(Optional<br> $$0) {
+         return am.c.a(new cf.a(Optional.empty(), br.a($$0), Optional.empty()));
       }
 
-      public cf.a a(ck.d $$0) {
-         this.a = $$0;
-         return this;
+      public static an<cf.a> a(br.a $$0) {
+         return am.c.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), Optional.empty()));
       }
 
-      public cf b() {
-         return new cf(this.a);
+      public static an<cf.a> b() {
+         return am.c.a(new cf.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static an<cf.a> a(Optional<br> $$0, Optional<bg> $$1) {
+         return am.c.a(new cf.a(Optional.empty(), br.a($$0), $$1));
+      }
+
+      public static an<cf.a> a(br.a $$0, Optional<bg> $$1) {
+         return am.c.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), $$1));
+      }
+
+      public static an<cf.a> a(Optional<br> $$0, bg.a $$1) {
+         return am.c.a(new cf.a(Optional.empty(), br.a($$0), Optional.of($$1.b())));
+      }
+
+      public static an<cf.a> a(br.a $$0, bg.a $$1) {
+         return am.c.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), Optional.of($$1.b())));
+      }
+
+      public static an<cf.a> c() {
+         return am.Z.a(new cf.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static an<cf.a> b(Optional<br> $$0) {
+         return am.d.a(new cf.a(Optional.empty(), br.a($$0), Optional.empty()));
+      }
+
+      public static an<cf.a> b(br.a $$0) {
+         return am.d.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), Optional.empty()));
+      }
+
+      public static an<cf.a> d() {
+         return am.d.a(new cf.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static an<cf.a> b(Optional<br> $$0, Optional<bg> $$1) {
+         return am.d.a(new cf.a(Optional.empty(), br.a($$0), $$1));
+      }
+
+      public static an<cf.a> b(br.a $$0, Optional<bg> $$1) {
+         return am.d.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), $$1));
+      }
+
+      public static an<cf.a> b(Optional<br> $$0, bg.a $$1) {
+         return am.d.a(new cf.a(Optional.empty(), br.a($$0), Optional.of($$1.b())));
+      }
+
+      public static an<cf.a> b(br.a $$0, bg.a $$1) {
+         return am.d.a(new cf.a(Optional.empty(), Optional.of(br.a($$0)), Optional.of($$1.b())));
+      }
+
+      public boolean a(aow $$0, eiv $$1, bmn $$2) {
+         return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
+      }
+
+      @Override
+      public void a(bd $$0) {
+         cx.a.super.a($$0);
+         $$0.a(this.c, ".entity");
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
+
+      public Optional<bc> e() {
+         return this.c;
+      }
+
+      public Optional<bg> f() {
+         return this.d;
       }
    }
 }

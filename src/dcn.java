@@ -1,34 +1,31 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcn extends ddz {
-   public static final MapCodec<dcn> b = b(dcn::new);
+public class dcn extends dcm {
+   public static final MapCodec<dcn> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.e.q().fieldOf("host").forGetter(dcm::b), u()).apply($$0, dcn::new));
 
    @Override
    public MapCodec<dcn> a() {
       return b;
    }
 
-   protected dcn(djo.d $$0) {
-      super(ddz.b.e, $$0);
+   public dcn(cyo $$0, dle.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(dez.i, ie.a.b));
    }
 
    @Override
-   public void a(ctx $$0, hx $$1, djp $$2, @Nullable bmo $$3, cng $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$0.c_($$1) instanceof dio $$6) {
-         GameProfile $$7 = null;
-         if ($$4.u()) {
-            so $$8 = $$4.v();
-            if ($$8.b("SkullOwner", 10)) {
-               $$7 = td.a($$8.p("SkullOwner"));
-            } else if ($$8.b("SkullOwner", 8) && !ac.b($$8.l("SkullOwner"))) {
-               $$7 = new GameProfile(ac.d, $$8.l("SkullOwner"));
-            }
-         }
+   protected dlf a(dlf $$0, dfa $$1) {
+      return dez.b($$0, $$1);
+   }
 
-         $$6.a($$7);
-      }
+   @Override
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(dez.i);
+   }
+
+   @Override
+   public dlf a(crg $$0) {
+      return this.o().a(dez.i, $$0.k().o());
    }
 }

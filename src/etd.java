@@ -1,274 +1,55 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.UUID;
 
-public class etd extends gld {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ReentrantLock b = new ReentrantLock();
-   private static final int c = 200;
-   private static final int v = 80;
-   private static final int w = 95;
-   private static final int x = 1;
-   private final fdm y;
-   private final esh z;
-   private final vg A;
-   private final RateLimiter B;
-   private exr C;
-   private final String D;
-   private final etd.a E;
-   @Nullable
-   private volatile vg F;
-   private volatile vg G = vg.c("mco.download.preparing");
-   @Nullable
-   private volatile String H;
-   private volatile boolean I;
-   private volatile boolean J = true;
-   private volatile boolean K;
-   private volatile boolean L;
-   @Nullable
-   private Long M;
-   @Nullable
-   private Long N;
-   private long O;
-   private int P;
-   private static final String[] Q = new String[]{"", ".", ". .", ". . ."};
-   private int R;
-   private boolean S;
-   private final BooleanConsumer T;
+public class etd extends etw implements etq {
+   @SerializedName("name")
+   private String a;
+   @SerializedName("uuid")
+   private UUID b;
+   @SerializedName("operator")
+   private boolean c;
+   @SerializedName("accepted")
+   private boolean d;
+   @SerializedName("online")
+   private boolean e;
 
-   public etd(fdm $$0, esh $$1, String $$2, BooleanConsumer $$3) {
-      super(evj.a);
-      this.T = $$3;
-      this.y = $$0;
-      this.D = $$2;
-      this.z = $$1;
-      this.E = new etd.a();
-      this.A = vg.c("mco.download.title");
-      this.B = RateLimiter.create(0.1F);
+   public String a() {
+      return this.a;
    }
 
-   @Override
-   public void aP_() {
-      this.C = this.d(exr.a(vf.e, $$0 -> {
-         this.I = true;
-         this.I();
-      }).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
-      this.E();
+   public void a(String $$0) {
+      this.a = $$0;
    }
 
-   private void E() {
-      if (!this.K) {
-         if (!this.S && this.a(this.z.a) >= 5368709120L) {
-            vg $$0 = vg.a("mco.download.confirmation.line1", eqw.b(5368709120L));
-            vg $$1 = vg.c("mco.download.confirmation.line2");
-            this.f.a(new etg($$0x -> {
-               this.S = true;
-               this.f.a(this);
-               this.J();
-            }, etg.a.a, $$0, $$1, false));
-         } else {
-            this.J();
-         }
-      }
+   public UUID b() {
+      return this.b;
    }
 
-   private long a(String $$0) {
-      eqx $$1 = new eqx();
-      return $$1.a($$0);
+   public void a(UUID $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void e() {
-      super.e();
-      this.P++;
-      if (this.G != null && this.B.tryAcquire(1)) {
-         vg $$0 = this.H();
-         this.f.aW().c($$0);
-      }
+   public boolean c() {
+      return this.c;
    }
 
-   private vg H() {
-      List<vg> $$0 = Lists.newArrayList();
-      $$0.add(this.A);
-      $$0.add(this.G);
-      if (this.H != null) {
-         $$0.add(vg.a("mco.download.percent", this.H));
-         $$0.add(vg.a("mco.download.speed.narration", eqw.b(this.O)));
-      }
-
-      if (this.F != null) {
-         $$0.add(this.F);
-      }
-
-      return vf.a($$0);
+   public void a(boolean $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.I = true;
-         this.I();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public boolean d() {
+      return this.d;
    }
 
-   private void I() {
-      if (this.K && this.T != null && this.F == null) {
-         this.T.accept(true);
-      }
-
-      this.f.a(this.y);
+   public void b(boolean $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.A, this.g / 2, 20, 16777215);
-      $$0.a(this.i, this.G, this.g / 2, 50, 16777215);
-      if (this.J) {
-         this.c($$0);
-      }
-
-      if (this.E.a != 0L && !this.I) {
-         this.d($$0);
-         this.e($$0);
-      }
-
-      if (this.F != null) {
-         $$0.a(this.i, this.F, this.g / 2, 110, 16711680);
-      }
+   public boolean e() {
+      return this.e;
    }
 
-   private void c(exe $$0) {
-      int $$1 = this.i.a(this.G);
-      if (this.P % 10 == 0) {
-         this.R++;
-      }
-
-      $$0.a(this.i, Q[this.R % Q.length], this.g / 2 + $$1 / 2 + 5, 50, 16777215, false);
-   }
-
-   private void d(exe $$0) {
-      double $$1 = Math.min((double)this.E.a / (double)this.E.b, 1.0);
-      this.H = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.g - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -2501934);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.i, vg.a("mco.download.percent", this.H), this.g / 2, 84, 16777215);
-   }
-
-   private void e(exe $$0) {
-      if (this.P % 20 == 0) {
-         if (this.M != null) {
-            long $$1 = ac.b() - this.N;
-            if ($$1 == 0L) {
-               $$1 = 1L;
-            }
-
-            this.O = 1000L * (this.E.a - this.M) / $$1;
-            this.a($$0, this.O);
-         }
-
-         this.M = this.E.a;
-         this.N = ac.b();
-      } else {
-         this.a($$0, this.O);
-      }
-   }
-
-   private void a(exe $$0, long $$1) {
-      if ($$1 > 0L) {
-         int $$2 = this.i.b(this.H);
-         $$0.a(this.i, vg.a("mco.download.speed", eqw.b($$1)), this.g / 2 + $$2 / 2 + 15, 84, 16777215, false);
-      }
-   }
-
-   private void J() {
-      new Thread(() -> {
-         try {
-            try {
-               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
-                  this.G = vg.c("mco.download.failed");
-                  return;
-               }
-
-               if (this.I) {
-                  this.K();
-                  return;
-               }
-
-               this.G = vg.a("mco.download.downloading", this.D);
-               eqx $$0 = new eqx();
-               $$0.a(this.z.a);
-               $$0.a(this.z, this.D, this.E, this.f.l());
-
-               while (!$$0.b()) {
-                  if ($$0.c()) {
-                     $$0.a();
-                     this.F = vg.c("mco.download.failed");
-                     this.C.b(vf.d);
-                     return;
-                  }
-
-                  if ($$0.d()) {
-                     if (!this.L) {
-                        this.G = vg.c("mco.download.extracting");
-                     }
-
-                     this.L = true;
-                  }
-
-                  if (this.I) {
-                     $$0.a();
-                     this.K();
-                     return;
-                  }
-
-                  try {
-                     Thread.sleep(500L);
-                  } catch (InterruptedException var8) {
-                     a.error("Failed to check Realms backup download status");
-                  }
-               }
-
-               this.K = true;
-               this.G = vg.c("mco.download.done");
-               this.C.b(vf.d);
-               return;
-            } catch (InterruptedException var9) {
-               a.error("Could not acquire upload lock");
-            } catch (Exception var10) {
-               this.F = vg.c("mco.download.failed");
-               a.info("Exception while downloading world", var10);
-            }
-         } finally {
-            if (!b.isHeldByCurrentThread()) {
-               return;
-            } else {
-               b.unlock();
-               this.J = false;
-               this.K = true;
-            }
-         }
-      }).start();
-   }
-
-   private void K() {
-      this.G = vg.c("mco.download.cancelled");
-   }
-
-   public static class a {
-      public volatile long a;
-      public volatile long b;
+   public void c(boolean $$0) {
+      this.e = $$0;
    }
 }

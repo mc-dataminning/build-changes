@@ -1,41 +1,37 @@
-import javax.annotation.Nullable;
+public class acy implements xx<aag> {
+   public static final xo<uq, acy> a = xx.a(acy::a, acy::new);
+   private final double b;
+   private final double c;
 
-public class acy implements xg<zb> {
-   private final int a;
-   @Nullable
-   private final so b;
-
-   public acy(int $$0, @Nullable so $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public acy(dmw $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   public acy(uj $$0) {
-      this.a = $$0.n();
-      this.b = $$0.q();
+   private acy(uq $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.a((tl)this.b);
+   public xz<acy> a() {
+      return aeq.aq;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public double b() {
+      return this.c;
    }
 
-   @Nullable
-   public so d() {
+   public double e() {
       return this.b;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
    }
 }

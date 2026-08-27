@@ -1,55 +1,49 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
 import java.util.Set;
-import org.slf4j.Logger;
 
-public class eje extends eir {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eje> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(ela.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
-            .apply($$0, eje::new)
-   );
-   private final ekz c;
-   private final boolean d;
+public class eje {
+   private final awm a;
+   private final ele b;
+   private final eiz c;
+   private final Set<eix<?>> d;
 
-   private eje(List<eke> $$0, ekz $$1, boolean $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   public eje(awm $$0, ele $$1, eiz $$2) {
+      this($$0, $$1, $$2, Set.of());
    }
 
-   @Override
-   public eit b() {
-      return eiu.j;
+   private eje(awm $$0, ele $$1, eiz $$2, Set<eix<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public Set<ejn<?>> a() {
-      return this.c.a();
+   public eje a(String $$0) {
+      return new eje(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   @Override
-   public cng a(cng $$0, ehf $$1) {
-      if ($$0.i()) {
-         int $$2 = $$0.l();
-         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - aup.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(aup.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
-      }
-
-      return $$0;
+   public eje a(String $$0, eix<?> $$1) {
+      ImmutableSet<eix<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new eje(this.a.a($$0), this.b, this.c, $$2);
    }
 
-   public static eir.a<?> a(ekz $$0) {
-      return a($$1 -> new eje($$1, $$0, false));
+   public boolean a(eix<?> $$0) {
+      return this.d.contains($$0);
    }
 
-   public static eir.a<?> a(ekz $$0, boolean $$1) {
-      return a($$2 -> new eje($$2, $$0, $$1));
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(eiw $$0) {
+      this.b.a(this, $$0);
+   }
+
+   public eiz a() {
+      return this.c;
+   }
+
+   public eje a(ele $$0) {
+      return new eje(this.a, $$0, this.c, this.d);
    }
 }

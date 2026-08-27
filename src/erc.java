@@ -1,178 +1,105 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.util.Locale;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWMonitorCallback;
 import org.slf4j.Logger;
 
-public interface erc {
-   vg a = vg.c("mco.errorMessage.noDetails");
-   Logger b = LogUtils.getLogger();
+public class erc {
+   private static final Logger a = LogUtils.getLogger();
+   private final Long2ObjectMap<eqz> b = new Long2ObjectOpenHashMap();
+   private final era c;
 
-   int a();
+   public erc(era $$0) {
+      RenderSystem.assertInInitPhase();
+      this.c = $$0;
+      GLFW.glfwSetMonitorCallback(this::a);
+      PointerBuffer $$1 = GLFW.glfwGetMonitors();
+      if ($$1 != null) {
+         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
+            long $$3 = $$1.get($$2);
+            this.b.put($$3, $$0.createMonitor($$3));
+         }
+      }
+   }
 
-   vg b();
+   private void a(long $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      if ($$1 == 262145) {
+         this.b.put($$0, this.c.createMonitor($$0));
+         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
+      } else if ($$1 == 262146) {
+         this.b.remove($$0);
+         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
+      }
+   }
 
-   String c();
+   @Nullable
+   public eqz a(long $$0) {
+      RenderSystem.assertInInitPhase();
+      return (eqz)this.b.get($$0);
+   }
 
-   static erc a(int $$0, String $$1) {
-      if ($$0 == 429) {
-         return erc.b.c;
-      } else if (Strings.isNullOrEmpty($$1)) {
-         return erc.b.b($$0);
+   @Nullable
+   public eqz a(ere $$0) {
+      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
+      if ($$1 != 0L) {
+         return this.a($$1);
       } else {
-         try {
-            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
-            String $$3 = auf.a($$2, "reason", null);
-            String $$4 = auf.a($$2, "errorMsg", null);
-            int $$5 = auf.a($$2, "errorCode", -1);
-            if ($$4 != null || $$3 != null || $$5 != -1) {
-               return new erc.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
+         int $$2 = $$0.q();
+         int $$3 = $$2 + $$0.m();
+         int $$4 = $$0.r();
+         int $$5 = $$4 + $$0.n();
+         int $$6 = -1;
+         eqz $$7 = null;
+         long $$8 = GLFW.glfwGetPrimaryMonitor();
+         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
+         ObjectIterator var12 = this.b.values().iterator();
+
+         while (var12.hasNext()) {
+            eqz $$9 = (eqz)var12.next();
+            int $$10 = $$9.c();
+            int $$11 = $$10 + $$9.b().a();
+            int $$12 = $$9.d();
+            int $$13 = $$12 + $$9.b().b();
+            int $$14 = a($$2, $$10, $$11);
+            int $$15 = a($$3, $$10, $$11);
+            int $$16 = a($$4, $$12, $$13);
+            int $$17 = a($$5, $$12, $$13);
+            int $$18 = Math.max(0, $$15 - $$14);
+            int $$19 = Math.max(0, $$17 - $$16);
+            int $$20 = $$18 * $$19;
+            if ($$20 > $$6) {
+               $$7 = $$9;
+               $$6 = $$20;
+            } else if ($$20 == $$6 && $$8 == $$9.f()) {
+               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
+               $$7 = $$9;
             }
-         } catch (Exception var6) {
-            b.error("Could not parse RealmsError", var6);
          }
 
-         return new erc.d($$0, $$1);
+         a.debug("Selected monitor: {}", $$7);
+         return $$7;
       }
    }
 
-   public static record a(String d) implements erc {
-      public static final int c = 401;
-
-      @Override
-      public int a() {
-         return 401;
-      }
-
-      @Override
-      public vg b() {
-         return vg.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
+   public static int a(int $$0, int $$1, int $$2) {
+      if ($$0 < $$1) {
+         return $$1;
+      } else {
+         return $$0 > $$2 ? $$2 : $$0;
       }
    }
 
-   public static record b(int e, @Nullable vg f) implements erc {
-      public static final erc.b c = new erc.b(429, vg.c("mco.errorMessage.serviceBusy"));
-      public static final vg d = vg.c("mco.errorMessage.retry");
-
-      public static erc.b a(String $$0) {
-         return new erc.b(500, vg.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
-      }
-
-      public static erc.b a(esm $$0) {
-         return new erc.b(500, vg.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
-      }
-
-      public static erc.b a(int $$0) {
-         return new erc.b($$0, d);
-      }
-
-      public static erc.b b(int $$0) {
-         return new erc.b($$0, null);
-      }
-
-      @Override
-      public int a() {
-         return this.e;
-      }
-
-      @Override
-      public vg b() {
-         return this.f != null ? this.f : a;
-      }
-
-      @Override
-      public String c() {
-         return this.f != null
-            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
-            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      @Nullable
-      public vg e() {
-         return this.f;
-      }
-   }
-
-   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements erc {
-      @Override
-      public int a() {
-         return this.d;
-      }
-
-      @Override
-      public vg b() {
-         String $$0 = "mco.errorMessage." + this.d;
-         if (ggg.a($$0)) {
-            return vg.c($$0);
-         } else {
-            if (this.e != null) {
-               String $$1 = "mco.errorReason." + this.e;
-               if (ggg.a($$1)) {
-                  return vg.c($$1);
-               }
-            }
-
-            return (vg)(this.f != null ? vg.b(this.f) : a);
-         }
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public int e() {
-         return this.d;
-      }
-
-      @Nullable
-      public String f() {
-         return this.e;
-      }
-
-      @Nullable
-      public String g() {
-         return this.f;
-      }
-   }
-
-   public static record d(int c, String d) implements erc {
-      @Override
-      public int a() {
-         return this.c;
-      }
-
-      @Override
-      public vg b() {
-         return vg.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public String e() {
-         return this.d;
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
+      if ($$0 != null) {
+         $$0.free();
       }
    }
 }

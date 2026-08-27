@@ -1,27 +1,51 @@
-public class cie {
-   public static final int a = 20;
-   public static final float b = 20.0F;
-   public static final float c = 5.0F;
-   public static final float d = 2.5F;
-   public static final float e = 4.0F;
-   public static final int f = 80;
-   public static final int g = 10;
-   public static final int h = 18;
-   public static final int i = 6;
-   public static final int j = 0;
-   public static final float k = 0.1F;
-   public static final float l = 0.3F;
-   public static final float m = 0.6F;
-   public static final float n = 0.8F;
-   public static final float o = 1.0F;
-   public static final float p = 1.2F;
-   public static final float q = 6.0F;
-   public static final float r = 0.05F;
-   public static final float s = 0.2F;
-   public static final float t = 0.005F;
-   public static final float u = 0.1F;
-   public static final float v = 0.0F;
-   public static final float w = 0.0F;
-   public static final float x = 0.1F;
-   public static final float y = 0.01F;
+public class cie extends cig {
+   public cie(bnu<? extends cie> $$0, cvn $$1) {
+      super($$0, $$1);
+   }
+
+   public cie(cvn $$0, bog $$1) {
+      super(bnu.aR, $$1, $$0);
+   }
+
+   public cie(cvn $$0, double $$1, double $$2, double $$3) {
+      super(bnu.aR, $$1, $$2, $$3, $$0);
+   }
+
+   @Override
+   protected cou s() {
+      return cpc.qB;
+   }
+
+   private jx y() {
+      coz $$0 = this.u();
+      return (jx)($$0.b() ? jz.T : new jv(jz.Q, $$0));
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         jx $$1 = this.y();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dM().a($$1, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   @Override
+   protected void a(enp $$0) {
+      super.a($$0);
+      bno $$1 = $$0.a();
+      int $$2 = $$1 instanceof cdx ? 3 : 0;
+      $$1.a(this.dN().b(this, this.w()), (float)$$2);
+   }
+
+   @Override
+   protected void a(enq $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.dM().a(this, (byte)3);
+         this.am();
+      }
+   }
 }

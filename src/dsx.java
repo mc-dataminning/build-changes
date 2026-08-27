@@ -1,158 +1,118 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.BitSet;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dsx extends dsc<duo> {
-   public dsx(Codec<duo> $$0) {
+public class dsx extends dts<dvq> {
+   private static final ImmutableList<cyo> a = ImmutableList.of(cyq.H, cyq.F, cyq.kJ, cyq.dW, cyq.fn, cyq.fo, cyq.fp, cyq.fq, cyq.cv, cyq.ct);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int an = 15;
+
+   public dsx(Codec<dvq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dse<duo> $$0) {
-      auw $$1 = $$0.d();
-      hx $$2 = $$0.e();
-      cus $$3 = $$0.b();
-      duo $$4 = $$0.f();
-      float $$5 = $$1.i() * (float) Math.PI;
-      float $$6 = (float)$$4.c / 8.0F;
-      int $$7 = aup.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
-      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
-      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
-      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
-      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
-      int $$12 = 2;
-      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
-      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
-      int $$15 = $$2.u() - aup.f($$6) - $$7;
-      int $$16 = $$2.v() - 2 - $$7;
-      int $$17 = $$2.w() - aup.f($$6) - $$7;
-      int $$18 = 2 * (aup.f($$6) + $$7);
-      int $$19 = 2 * (2 + $$7);
-
-      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
-         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
-            if ($$16 <= $$3.a(doy.a.c, $$20, $$21)) {
-               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
-            }
-         }
-      }
-
-      return false;
-   }
-
-   protected boolean a(
-      cus $$0, auw $$1, duo $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
-   ) {
-      int $$14 = 0;
-      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
-      hx.a $$16 = new hx.a();
-      int $$17 = $$2.c;
-      double[] $$18 = new double[$$17 * 4];
-
-      for (int $$19 = 0; $$19 < $$17; $$19++) {
-         float $$20 = (float)$$19 / (float)$$17;
-         double $$21 = aup.d((double)$$20, $$3, $$4);
-         double $$22 = aup.d((double)$$20, $$7, $$8);
-         double $$23 = aup.d((double)$$20, $$5, $$6);
-         double $$24 = $$1.j() * (double)$$17 / 16.0;
-         double $$25 = ((double)(aup.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
-         $$18[$$19 * 4 + 0] = $$21;
-         $$18[$$19 * 4 + 1] = $$22;
-         $$18[$$19 * 4 + 2] = $$23;
-         $$18[$$19 * 4 + 3] = $$25;
-      }
-
-      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
-         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
-            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
-               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
-                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
-                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
-                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
-                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
-                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
-                     if ($$31 > 0.0) {
-                        $$18[$$27 * 4 + 3] = -1.0;
-                     } else {
-                        $$18[$$26 * 4 + 3] = -1.0;
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      try (dlj $$32 = new dlj($$0)) {
-         for (int $$33 = 0; $$33 < $$17; $$33++) {
-            double $$34 = $$18[$$33 * 4 + 3];
-            if (!($$34 < 0.0)) {
-               double $$35 = $$18[$$33 * 4 + 0];
-               double $$36 = $$18[$$33 * 4 + 1];
-               double $$37 = $$18[$$33 * 4 + 2];
-               int $$38 = Math.max(aup.a($$35 - $$34), $$9);
-               int $$39 = Math.max(aup.a($$36 - $$34), $$10);
-               int $$40 = Math.max(aup.a($$37 - $$34), $$11);
-               int $$41 = Math.max(aup.a($$35 + $$34), $$38);
-               int $$42 = Math.max(aup.a($$36 + $$34), $$39);
-               int $$43 = Math.max(aup.a($$37 + $$34), $$40);
-
-               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
-                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
-                  if ($$45 * $$45 < 1.0) {
-                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
-                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
-                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
-                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
-                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
-                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.d($$46)) {
-                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
-                                 if (!$$15.get($$50)) {
-                                    $$15.set($$50);
-                                    $$16.d($$44, $$46, $$48);
-                                    if ($$0.f_($$16)) {
-                                       dlx $$51 = $$32.a($$16);
-                                       if ($$51 != null) {
-                                          int $$52 = iz.b($$44);
-                                          int $$53 = iz.b($$46);
-                                          int $$54 = iz.b($$48);
-                                          djp $$55 = $$51.a($$52, $$53, $$54);
-
-                                          for (duo.a $$56 : $$2.b) {
-                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
-                                                $$51.a($$52, $$53, $$54, $$56.c, false);
-                                                $$14++;
-                                                break;
-                                             }
-                                          }
-                                       }
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return $$14 > 0;
-   }
-
-   public static boolean a(djp $$0, Function<hx, djp> $$1, auw $$2, duo $$3, duo.a $$4, hx.a $$5) {
-      if (!$$4.b.a($$0, $$2)) {
+   public boolean a(dtu<dvq> $$0) {
+      int $$1 = $$0.c().e();
+      hz $$2 = $$0.e();
+      cwi $$3 = $$0.b();
+      awo $$4 = $$0.d();
+      dvq $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.j())) {
          return false;
       } else {
-         return a($$2, $$3.d) ? true : !a($$1, $$5);
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
+
+         for (hz $$11 : hz.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
+            }
+         }
+
+         return $$10;
       }
    }
 
-   protected static boolean a(auw $$0, float $$1) {
-      if ($$1 <= 0.0F) {
-         return true;
-      } else {
-         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
+   private boolean a(cvo $$0, int $$1, hz $$2, int $$3, int $$4) {
+      boolean $$5 = false;
+
+      for (hz $$6 : hz.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         hz $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
+
+            for (hz.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (hz)$$10)) {
+                  this.a($$0, $$10, cyq.dY.o());
+                  $$10.c(ie.b);
+                  $$5 = true;
+               } else {
+                  if (!$$0.a_($$10).a(cyq.dY)) {
+                     break;
+                  }
+
+                  $$10.c(ie.b);
+               }
+            }
+         }
       }
+
+      return $$5;
+   }
+
+   @Nullable
+   private static hz a(cvo $$0, int $$1, hz.a $$2, int $$3) {
+      while ($$2.v() > $$0.J_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
+         }
+
+         $$2.c(ie.a);
+      }
+
+      return null;
+   }
+
+   private static boolean a(cvo $$0, int $$1, hz.a $$2) {
+      if (!a($$0, $$1, (hz)$$2)) {
+         return false;
+      } else {
+         dlf $$3 = $$0.a_($$2.c(ie.a));
+         $$2.c(ie.b);
+         return !$$3.i() && !a.contains($$3.b());
+      }
+   }
+
+   @Nullable
+   private static hz a(cvo $$0, hz.a $$1, int $$2) {
+      while ($$1.v() < $$0.al() && $$2 > 0) {
+         $$2--;
+         dlf $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.i()) {
+            return $$1;
+         }
+
+         $$1.c(ie.b);
+      }
+
+      return null;
+   }
+
+   private static boolean a(cvo $$0, int $$1, hz $$2) {
+      dlf $$3 = $$0.a_($$2);
+      return $$3.i() || $$3.a(cyq.H) && $$2.v() <= $$1;
    }
 }

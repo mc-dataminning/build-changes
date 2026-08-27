@@ -1,61 +1,79 @@
-public class fsk extends fsh {
-   private final fsc a;
-   private static final int b = 8;
+import javax.annotation.Nullable;
 
-   protected fsk(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fsc $$8) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$8;
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.j *= 0.0;
-      this.k *= 0.9;
-      this.l *= 0.0;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      this.D *= 0.75F * $$7;
-      this.t = (int)(8.0F / aup.b(this.r, 0.5F, 1.0F) * $$7);
-      this.t = Math.max(this.t, 1);
-      this.b($$8);
-      this.n = true;
+public class fsk extends fua {
+   private final float a;
+   private final ftv b;
+
+   fsk(fpx $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, ftv $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public frl b() {
-      return frl.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public fru.a p() {
-      return fru.a.b;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public fte b() {
+      return fte.b;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * aup.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return this.D * awh.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements frk<ka> {
-      private final fsc a;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
 
-      public a(fsc $$0) {
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
+      }
+   }
+
+   public static class a implements ftd<jr> {
+      private final ftv a;
+
+      public a(ftv $$0) {
          this.a = $$0;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fsk($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
+      @Nullable
+      public fta a(jr $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dlf $$8 = $$0.c();
+         if (!$$8.i() && $$8.l() == det.a) {
+            return null;
+         } else {
+            hz $$9 = hz.a($$2, $$3, $$4);
+            int $$10 = exh.O().au().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dbk) {
+               $$10 = ((dbk)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new fsk($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

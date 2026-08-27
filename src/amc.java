@@ -1,201 +1,136 @@
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.concurrent.CompletableFuture;
 import org.slf4j.Logger;
 
-public class amc extends amf<amc> {
-   static final Logger aa = LogUtils.getLogger();
-   private static final Pattern ab = Pattern.compile("^[a-fA-F0-9]{40}$");
-   private static final Splitter ac = Splitter.on(',').trimResults();
-   public final boolean a = this.a("online-mode", true);
-   public final boolean b = this.a("prevent-proxy-connections", false);
-   public final String c = this.a("server-ip", "");
-   public final boolean d = this.a("spawn-animals", true);
-   public final boolean e = this.a("spawn-npcs", true);
-   public final boolean f = this.a("pvp", true);
-   public final boolean g = this.a("allow-flight", false);
-   public final String h = this.a("motd", "A Minecraft Server");
-   public final boolean i = this.a("force-gamemode", false);
-   public final boolean j = this.a("enforce-whitelist", false);
-   public final bjz k = this.a("difficulty", a(bjz::a, bjz::a), bjz::e, bjz.b);
-   public final ctu l = this.a("gamemode", a(ctu::a, ctu::a), ctu::b, ctu.a);
-   public final String m = this.a("level-name", "world");
-   public final int n = this.a("server-port", 25565);
-   @Nullable
-   public final Boolean o = this.b("announce-player-achievements");
-   public final boolean p = this.a("enable-query", false);
-   public final int q = this.a("query.port", 25565);
-   public final boolean r = this.a("enable-rcon", false);
-   public final int s = this.a("rcon.port", 25575);
-   public final String t = this.a("rcon.password", "");
-   public final boolean u = this.a("hardcore", false);
-   public final boolean v = this.a("allow-nether", true);
-   public final boolean w = this.a("spawn-monsters", true);
-   public final boolean x = this.a("use-native-transport", true);
-   public final boolean y = this.a("enable-command-block", false);
-   public final int z = this.a("spawn-protection", 16);
-   public final int A = this.a("op-permission-level", 4);
-   public final int B = this.a("function-permission-level", 2);
-   public final long C = this.a("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
-   public final int D = this.a("max-chained-neighbor-updates", 1000000);
-   public final int E = this.a("rate-limit", 0);
-   public final int F = this.a("view-distance", 10);
-   public final int G = this.a("simulation-distance", 10);
-   public final int H = this.a("max-players", 20);
-   public final int I = this.a("network-compression-threshold", 256);
-   public final boolean J = this.a("broadcast-rcon-to-ops", true);
-   public final boolean K = this.a("broadcast-console-to-ops", true);
-   public final int L = this.a("max-world-size", $$0x -> aup.a($$0x, 1, 29999984), 29999984);
-   public final boolean M = this.a("sync-chunk-writes", true);
-   public final boolean N = this.a("enable-jmx-monitoring", false);
-   public final boolean O = this.a("enable-status", true);
-   public final boolean P = this.a("hide-online-players", false);
-   public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> aup.a($$0x, 10, 1000), 100);
-   public final String R = this.a("text-filtering-config", "");
-   public final Optional<MinecraftServer.b> S;
-   public final ctl T;
-   public final amf<amc>.a<Integer> U = this.b("player-idle-timeout", 0);
-   public final amf<amc>.a<Boolean> V = this.b("white-list", false);
-   public final boolean W = this.a("enforce-secure-profile", true);
-   public final boolean X = this.a("log-ips", true);
-   private final amc.a ad;
-   public final dpw Y;
+public class amc {
+   private static final Logger a = LogUtils.getLogger();
 
-   public amc(Properties $$0) {
-      super($$0);
-      String $$1 = this.a("level-seed", "");
-      boolean $$2 = this.a("generate-structures", true);
-      long $$3 = dpw.a($$1).orElse(dpw.f());
-      this.Y = new dpw($$3, $$2, false);
-      this.ad = new amc.a(
-         this.a("generator-settings", $$0x -> auf.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), dze.a.a().toString())
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("resetchunks").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), 0, true)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("range", IntegerArgumentType.integer(0, 5))
+                     .executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
+                  .then(
+                     dv.a("skipOldChunks", BoolArgumentType.bool())
+                        .executes(
+                           $$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
+                        )
+                  )
+            )
       );
-      this.S = a(
-         this.a("resource-pack-id", ""),
-         this.a("resource-pack", ""),
-         this.a("resource-pack-sha1", ""),
-         this.a("resource-pack-hash"),
-         this.a("require-resource-pack", false),
-         this.a("resource-pack-prompt", "")
+   }
+
+   private static int a(du $$0, int $$1, boolean $$2) {
+      aov $$3 = $$0.e();
+      aot $$4 = $$3.l();
+      $$4.a.d();
+      ens $$5 = $$0.d();
+      cuu $$6 = new cuu(hz.a($$5));
+      int $$7 = $$6.f - $$1;
+      int $$8 = $$6.f + $$1;
+      int $$9 = $$6.e - $$1;
+      int $$10 = $$6.e + $$1;
+
+      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
+         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
+            cuu $$13 = new cuu($$12, $$11);
+            dnm $$14 = $$4.a($$12, $$11, false);
+            if ($$14 != null && (!$$2 || !$$14.s())) {
+               for (hz $$15 : hz.b($$13.d(), $$3.J_(), $$13.e(), $$13.f(), $$3.al() - 1, $$13.g())) {
+                  $$3.a($$15, cyq.a.o(), 16);
+               }
+            }
+         }
+      }
+
+      bkn<Runnable> $$16 = bkn.a(ac.f(), "worldgen-resetchunks");
+      long $$17 = System.currentTimeMillis();
+      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
+      UnmodifiableIterator var33 = ImmutableList.of(dng.f, dng.g, dng.h, dng.i, dng.j, dng.k).iterator();
+
+      while (var33.hasNext()) {
+         dng $$19 = (dng)var33.next();
+         long $$20 = System.currentTimeMillis();
+         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
+
+         for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
+            for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
+               cuu $$24 = new cuu($$23, $$22);
+               dnm $$25 = $$4.a($$23, $$22, false);
+               if ($$25 != null && (!$$2 || !$$25.s())) {
+                  List<dnb> $$26 = Lists.newArrayList();
+                  int $$27 = Math.max(1, $$19.e());
+
+                  for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
+                     for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
+                        dnb $$30 = $$4.a($$29, $$28, $$19.d(), true);
+                        dnb $$31;
+                        if ($$30 instanceof dnl) {
+                           $$31 = new dnl(((dnl)$$30).C(), true);
+                        } else if ($$30 instanceof dnm) {
+                           $$31 = new dnl((dnm)$$30, true);
+                        } else {
+                           $$31 = $$30;
+                        }
+
+                        $$26.add($$31);
+                     }
+                  }
+
+                  $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.q(), $$4.a(), $$0xx -> {
+                        throw new UnsupportedOperationException("Not creating full chunks here");
+                     }, $$26).thenApply($$1xx -> {
+                        if ($$19 == dng.g) {
+                           $$1xx.left().ifPresent($$0xxx -> dqo.a($$0xxx, dng.b));
+                        }
+
+                        return Unit.INSTANCE;
+                     }), $$16::a);
+               }
+            }
+         }
+
+         $$0.l().c($$21::isDone);
+         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
+      }
+
+      long $$34 = System.currentTimeMillis();
+
+      for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
+         for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
+            cuu $$37 = new cuu($$36, $$35);
+            dnm $$38 = $$4.a($$36, $$35, false);
+            if ($$38 != null && (!$$2 || !$$38.s())) {
+               for (hz $$39 : hz.b($$37.d(), $$3.J_(), $$37.e(), $$37.f(), $$3.al() - 1, $$37.g())) {
+                  $$4.a($$39);
+               }
+            }
+         }
+      }
+
+      a.debug("blockChanged took " + (System.currentTimeMillis() - $$34) + " ms");
+      long $$40 = System.currentTimeMillis() - $$17;
+      $$0.a(
+         () -> vq.b(
+               String.format(
+                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$40, $$18, (float)$$40 / (float)$$18
+               )
+            ),
+         true
       );
-      this.T = b(this.a("initial-enabled-packs", String.join(",", cur.c.a().a())), this.a("initial-disabled-packs", String.join(",", cur.c.a().b())));
-   }
-
-   public static amc a(Path $$0) {
-      return new amc(b($$0));
-   }
-
-   protected amc a(iu $$0, Properties $$1) {
-      return new amc($$1);
-   }
-
-   @Nullable
-   private static vg c(String $$0) {
-      if (!Strings.isNullOrEmpty($$0)) {
-         try {
-            return vg.a.a($$0);
-         } catch (Exception var2) {
-            aa.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
-         }
-      }
-
-      return null;
-   }
-
-   private static Optional<MinecraftServer.b> a(String $$0, String $$1, String $$2, @Nullable String $$3, boolean $$4, String $$5) {
-      if ($$1.isEmpty()) {
-         return Optional.empty();
-      } else {
-         String $$6;
-         if (!$$2.isEmpty()) {
-            $$6 = $$2;
-            if (!Strings.isNullOrEmpty($$3)) {
-               aa.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
-            }
-         } else if (!Strings.isNullOrEmpty($$3)) {
-            aa.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
-            $$6 = $$3;
-         } else {
-            $$6 = "";
-         }
-
-         if ($$6.isEmpty()) {
-            aa.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
-         } else if (!ab.matcher($$6).matches()) {
-            aa.warn("Invalid sha1 for resource-pack-sha1");
-         }
-
-         vg $$9 = c($$5);
-         UUID $$10;
-         if ($$0.isEmpty()) {
-            $$10 = UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8));
-            aa.warn("resource-pack-id missing, using default of {}", $$10);
-         } else {
-            try {
-               $$10 = UUID.fromString($$0);
-            } catch (IllegalArgumentException var10) {
-               aa.warn("Failed to parse '{}' into UUID", $$0);
-               return Optional.empty();
-            }
-         }
-
-         return Optional.of(new MinecraftServer.b($$10, $$1, $$6, $$4, $$9));
-      }
-   }
-
-   private static ctl b(String $$0, String $$1) {
-      List<String> $$2 = ac.splitToList($$0);
-      List<String> $$3 = ac.splitToList($$1);
-      return new ctl($$2, $$3);
-   }
-
-   public dpt a(iu $$0) {
-      return this.ad.a($$0);
-   }
-
-   static record a(JsonObject a, String b) {
-      private static final Map<String, ahg<dzd>> c = Map.of("default", dze.a, "largebiomes", dze.c);
-
-      public dpt a(iu $$0) {
-         it<dzd> $$1 = $$0.d(ke.aK);
-         ih.c<dzd> $$2 = $$1.b(dze.a)
-            .or(() -> $$1.h().findAny())
-            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         ih<dzd> $$3 = Optional.ofNullable(ahh.a(this.b))
-            .map($$0x -> ahg.a(ke.aK, $$0x))
-            .or(() -> Optional.ofNullable(c.get(this.b)))
-            .flatMap($$1::b)
-            .orElseGet(() -> {
-               amc.aa.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
-               return $$2;
-            });
-         dpt $$4 = $$3.a().a();
-         if ($$3.a(dze.b)) {
-            ahf<JsonElement> $$5 = ahf.a(JsonOps.INSTANCE, $$0);
-            Optional<dxr> $$6 = dxr.a.parse(new Dynamic($$5, this.a())).resultOrPartial(amc.aa::error);
-            if ($$6.isPresent()) {
-               return $$4.a($$0, new dot($$6.get()));
-            }
-         }
-
-         return $$4;
-      }
+      return 1;
    }
 }

@@ -1,32 +1,38 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public abstract class baw extends DataFix {
-   private final String a;
-   private final String b;
-   private final TypeReference c;
-
-   public baw(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.c = $$3;
-      this.b = $$4;
+public class baw extends bdx {
+   public baw(Schema $$0, boolean $$1) {
+      super("EntityZombieSplitFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<?> $$0 = DSL.namedChoice(this.b, this.getInputSchema().getChoiceType(this.c, this.b));
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(this.c),
-         this.getOutputSchema().getType(this.c),
-         $$1 -> $$1.updateTyped($$0, this.getOutputSchema().getChoiceType(this.c, this.b), this::a)
-      );
-   }
+   @Override
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals("Zombie", $$0)) {
+         String $$2 = "Zombie";
+         int $$3 = $$1.get("ZombieType").asInt(0);
+         switch ($$3) {
+            case 0:
+            default:
+               break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+               $$2 = "ZombieVillager";
+               $$1 = $$1.set("Profession", $$1.createInt($$3 - 1));
+               break;
+            case 6:
+               $$2 = "Husk";
+         }
 
-   protected abstract Typed<?> a(Typed<?> var1);
+         $$1 = $$1.remove("ZombieType");
+         return Pair.of($$2, $$1);
+      } else {
+         return Pair.of($$0, $$1);
+      }
+   }
 }

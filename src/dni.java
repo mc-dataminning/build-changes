@@ -1,61 +1,69 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dni<T extends dng> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+public class dni extends dnm {
+   private final ij<cwm> n;
 
-   public <U extends T> void a(dnn<T, U> $$0, atd<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
-
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
-         }
-      }
+   public dni(cvn $$0, cuu $$1, ij<cwm> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
-   }
-
-   public void a(T $$0) {
-      UUID $$1 = $$0.cw();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
-      } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.aj(), $$0);
-      }
-   }
-
-   public void b(T $$0) {
-      this.c.remove($$0.cw());
-      this.b.remove($$0.aj());
+   @Override
+   public dlf a_(hz $$0) {
+      return cyq.nb.o();
    }
 
    @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
+   @Override
+   public dlf a(hz $$0, dlf $$1, boolean $$2) {
+      return null;
+   }
+
+   @Override
+   public egp b_(hz $$0) {
+      return egq.a.g();
+   }
+
+   @Override
+   public int i(hz $$0) {
+      return 0;
    }
 
    @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
+   @Override
+   public dit a(hz $$0, dnm.b $$1) {
+      return null;
    }
 
-   public int b() {
-      return this.c.size();
+   @Override
+   public void b(dit $$0) {
+   }
+
+   @Override
+   public void a(dit $$0) {
+   }
+
+   @Override
+   public void d(hz $$0) {
+   }
+
+   @Override
+   public boolean C() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public aoo D() {
+      return aoo.b;
+   }
+
+   @Override
+   public ij<cwm> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

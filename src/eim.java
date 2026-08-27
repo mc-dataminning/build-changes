@@ -1,125 +1,313 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class eim extends eir {
-   public static final asx<dzo> a = ast.l;
-   public static final egg.a b = egg.a.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final Codec<eim> f = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  atx.a(asx.a(ke.aD), "destination", a).forGetter($$0x -> $$0x.h),
-                  egg.a.I.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  atx.a(Codec.BYTE, "zoom", Byte.valueOf((byte)2)).forGetter($$0x -> $$0x.j),
-                  atx.a(Codec.INT, "search_radius", Integer.valueOf(50)).forGetter($$0x -> $$0x.k),
-                  atx.a(Codec.BOOL, "skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
-               )
-            )
-            .apply($$0, eim::new)
-   );
-   private final asx<dzo> h;
-   private final egg.a i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+public class eim implements Comparable<eim> {
+   public static final vq a = vq.c("selectWorld.select");
+   private final cvr b;
+   private final ein c;
+   private final String d;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final Path h;
+   @Nullable
+   private vq i;
 
-   eim(List<eke> $$0, asx<dzo> $$1, egg.a $$2, byte $$3, int $$4, boolean $$5) {
-      super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+   public eim(cvr $$0, ein $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$3;
    }
 
-   @Override
-   public eit b() {
-      return eiu.m;
+   public String a() {
+      return this.d;
    }
 
-   @Override
-   public Set<ejn<?>> a() {
-      return ImmutableSet.of(ejq.f);
+   public String b() {
+      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
    }
 
-   @Override
-   public cng a(cng $$0, ehf $$1) {
-      if (!$$0.a(cnj.uf)) {
-         return $$0;
+   public Path c() {
+      return this.h;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public long f() {
+      return this.c.b();
+   }
+
+   public int a(eim $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
       } else {
-         emc $$2 = $$1.c(ejq.f);
-         if ($$2 != null) {
-            ane $$3 = $$1.d();
-            hx $$4 = $$3.a(this.h, hx.a($$2), this.k, this.l);
-            if ($$4 != null) {
-               cng $$5 = cnn.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cnn.a($$3, $$5);
-               egj.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
+         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
+      }
+   }
+
+   public cvr g() {
+      return this.b;
+   }
+
+   public cvk h() {
+      return this.b.b();
+   }
+
+   public boolean i() {
+      return this.b.c();
+   }
+
+   public boolean j() {
+      return this.b.e();
+   }
+
+   public we k() {
+      return axd.b(this.c.c()) ? vq.c("selectWorld.versionUnknown") : vq.b(this.c.c());
+   }
+
+   public ein l() {
+      return this.c;
+   }
+
+   public boolean m() {
+      return this.o().a();
+   }
+
+   public boolean n() {
+      return this.o() == eim.a.b;
+   }
+
+   public eim.a o() {
+      ad $$0 = aa.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.c.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return eim.a.c;
+      } else {
+         return $$2 > $$1 ? eim.a.b : eim.a.a;
+      }
+   }
+
+   public boolean p() {
+      return this.f;
+   }
+
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
+
+   public boolean r() {
+      return aa.b().d().a(this.c.d());
+   }
+
+   public vq s() {
+      if (this.i == null) {
+         this.i = this.z();
+      }
+
+      return this.i;
+   }
+
+   private vq z() {
+      if (this.p()) {
+         return vq.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return vq.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return vq.a("selectWorld.incompatible.info", this.k()).a(n.m);
+      } else {
+         we $$0 = this.i() ? vq.i().b(vq.c("gameMode.hardcore").b(-65536)) : vq.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(vq.c("selectWorld.cheats"));
          }
 
+         if (this.e()) {
+            $$0.f(", ").b(vq.c("selectWorld.experimental").a(n.o));
+         }
+
+         we $$1 = this.k();
+         we $$2 = vq.b(", ").b(vq.c("selectWorld.version")).b(vp.v);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
+         } else {
+            $$2.b($$1);
+         }
+
+         $$0.b($$2);
          return $$0;
       }
    }
 
-   public static eim.a c() {
-      return new eim.a();
+   public vq t() {
+      return a;
    }
 
-   public static class a extends eir.a<eim.a> {
-      private asx<dzo> a;
-      private egg.a b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public boolean u() {
+      return !this.q();
+   }
 
-      public a() {
-         this.a = eim.a;
-         this.b = eim.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
-      }
+   public boolean v() {
+      return !this.d() && !this.p();
+   }
 
-      protected eim.a a() {
-         return this;
-      }
+   public boolean w() {
+      return !this.q();
+   }
 
-      public eim.a a(asx<dzo> $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public boolean x() {
+      return !this.q();
+   }
 
-      public eim.a a(egg.a $$0) {
-         this.b = $$0;
-         return this;
-      }
+   public boolean y() {
+      return true;
+   }
 
-      public eim.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
 
-      public eim.a a(int $$0) {
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(boolean $$0, boolean $$1, String $$2) {
          this.d = $$0;
-         return this;
+         this.e = $$1;
+         this.f = $$2;
       }
 
-      public eim.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends eim {
+      private static final vq b = vq.c("recover_world.warning").a($$0 -> $$0.a(-65536));
+      private static final vq c = vq.c("recover_world.button");
+      private final long d;
+
+      public b(String $$0, Path $$1, long $$2) {
+         super(null, null, $$0, false, false, false, $$1);
+         this.d = $$2;
       }
 
       @Override
-      public eis b() {
-         return new eim(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public vq s() {
+         return b;
+      }
+
+      @Override
+      public long f() {
+         return this.d;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public vq t() {
+         return c;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
+   }
+
+   public static class c extends eim {
+      private static final vq b = vq.c("symlink_warning.more_info");
+      private static final vq c = vq.c("symlink_warning.title").b(-65536);
+
+      public c(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public vq s() {
+         return c;
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public vq t() {
+         return b;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
       }
    }
 }

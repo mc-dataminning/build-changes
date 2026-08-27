@@ -1,62 +1,66 @@
-import org.apache.commons.lang3.Validate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-public class avz {
-   private static final int a = 6;
-   private final long[] b;
-   private final int c;
-   private final long d;
-   private final int e;
+public record avz<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<avz<Integer>> a = a(Codec.INT);
 
-   public avz(int $$0, int $$1) {
-      this($$0, $$1, new long[aup.d($$1 * $$0, 64) / 64]);
-   }
-
-   public avz(int $$0, int $$1, long[] $$2) {
-      Validate.inclusiveBetween(1L, 32L, (long)$$0);
-      this.e = $$1;
-      this.c = $$0;
-      this.b = $$2;
-      this.d = (1L << $$0) - 1L;
-      int $$3 = aup.d($$1 * $$0, 64) / 64;
-      if ($$2.length != $$3) {
-         throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
-      }
-   }
-
-   public void a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, this.d, (long)$$1);
-      int $$2 = $$0 * this.c;
-      int $$3 = $$2 >> 6;
-      int $$4 = ($$0 + 1) * this.c - 1 >> 6;
-      int $$5 = $$2 ^ $$3 << 6;
-      this.b[$$3] = this.b[$$3] & ~(this.d << $$5) | ((long)$$1 & this.d) << $$5;
-      if ($$3 != $$4) {
-         int $$6 = 64 - $$5;
-         int $$7 = this.c - $$6;
-         this.b[$$4] = this.b[$$4] >>> $$7 << $$7 | ((long)$$1 & this.d) >> $$6;
-      }
-   }
-
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      int $$1 = $$0 * this.c;
-      int $$2 = $$1 >> 6;
-      int $$3 = ($$0 + 1) * this.c - 1 >> 6;
-      int $$4 = $$1 ^ $$2 << 6;
-      if ($$2 == $$3) {
-         return (int)(this.b[$$2] >>> $$4 & this.d);
+   public avz(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
       } else {
-         int $$5 = 64 - $$4;
-         return (int)((this.b[$$2] >>> $$4 | this.b[$$3] << $$5) & this.d);
+         this.b = b;
+         this.c = c;
       }
    }
 
-   public long[] a() {
+   public avz(T $$0) {
+      this($$0, $$0);
+   }
+
+   public static <T extends Comparable<T>> Codec<avz<T>> a(Codec<T> $$0) {
+      return avp.a($$0, "min_inclusive", "max_inclusive", avz::a, avz::a, avz::b);
+   }
+
+   public static <T extends Comparable<T>> Codec<avz<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return avp.a(
+         a($$0),
+         (Function<avz<T>, DataResult<avz<T>>>)($$2x -> {
+            if ($$2x.a().compareTo($$1) < 0) {
+               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b().compareTo($$2) > 0
+                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
+      );
+   }
+
+   public static <T extends Comparable<T>> DataResult<avz<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new avz($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   }
+
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   }
+
+   public boolean a(avz<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
+   }
+
+   public T a() {
       return this.b;
    }
 
-   public int b() {
+   public T b() {
       return this.c;
    }
 }

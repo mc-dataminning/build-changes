@@ -1,18 +1,20 @@
-public class gbv extends fzt<cdl> {
-   private static final ahh a = new ahh("textures/entity/illager/vindicator.png");
+public class gbv extends gbz<cby, fmu<cby>> {
+   private static final aiy a = new aiy("textures/entity/llama/creamy.png");
+   private static final aiy i = new aiy("textures/entity/llama/white.png");
+   private static final aiy j = new aiy("textures/entity/llama/brown.png");
+   private static final aiy k = new aiy("textures/entity/llama/gray.png");
 
-   public gbv(fza.a $$0) {
-      super($$0, new fkx<>($$0.a(fni.bM)), 0.5F);
-      this.a(new gde<cdl, fkx<cdl>>(this, $$0.d()) {
-         public void a(eqk $$0, ftt $$1, int $$2, cdl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.fX()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public gbv(gat.a $$0, fpa $$1) {
+      super($$0, new fmu<>($$0.a($$1)), 0.7F);
+      this.a(new gey(this, $$0.f()));
    }
 
-   public ahh a(cdl $$0) {
-      return a;
+   public aiy a(cby $$0) {
+      return switch ($$0.gs()) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+      };
    }
 }

@@ -1,65 +1,74 @@
-public abstract class gib extends ghx {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final byd n;
-   private boolean r;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gib(byd $$0, ars $$1, aru $$2) {
-      super($$1, $$2, gio.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dq());
-      this.g = (double)((float)$$0.ds());
-      this.h = (double)((float)$$0.dw());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+public class gib implements asb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gia b = new gia("US", "English", false);
+   private Map<String, gia> c = ImmutableMap.of("en_us", b);
+   private String d;
+
+   public gib(String $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         evr.O().ai().a((gip)this.o());
-         this.r = true;
-      }
-
-      if (!this.n.dG() && !this.r) {
-         this.f = (double)((float)this.n.dq());
-         this.g = (double)((float)this.n.ds());
-         this.h = (double)((float)this.n.dw());
-         float $$1 = (float)this.n.do().h();
-         if ($$1 >= 0.01F) {
-            this.e = aup.i(aup.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = aup.i(aup.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
+   private static Map<String, gia> a(Stream<aqo> $$0) {
+      Map<String, gia> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            gin $$2 = $$1x.a(gin.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
          }
-      } else {
-         this.n();
+      });
+      return ImmutableMap.copyOf($$1);
+   }
+
+   @Override
+   public void a(asa $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         gia $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
       }
+
+      ghx $$4 = ghx.a($$0, $$1, $$2);
+      ghz.a($$4);
+      sr.a($$4);
    }
 
-   private float u() {
-      return this.n.o_() ? 1.1F : 0.7F;
+   public void a(String $$0) {
+      this.d = $$0;
    }
 
-   private float v() {
-      return this.n.o_() ? 1.5F : 1.1F;
+   public String a() {
+      return this.d;
    }
 
-   @Override
-   public boolean r() {
-      return true;
+   public SortedMap<String, gia> b() {
+      return new TreeMap<>(this.c);
    }
 
-   @Override
-   public boolean s() {
-      return !this.n.aU();
+   @Nullable
+   public gia b(String $$0) {
+      return this.c.get($$0);
    }
-
-   protected abstract ghx o();
-
-   protected abstract boolean p();
 }

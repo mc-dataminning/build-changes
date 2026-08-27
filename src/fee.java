@@ -1,31 +1,49 @@
-public class fee extends fde {
-   private static final int c = 24;
+public class fee extends ffe {
+   private static final aiy a = new aiy("textures/gui/demo_background.png");
+   private faa b = faa.a;
+   private faa c = faa.a;
 
-   public fee(fdm $$0, evv $$1) {
-      super($$0, $$1, vg.c("controls.title"));
+   public fee() {
+      super(vq.c("demo.help.title"));
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      int $$0 = this.g / 2 - 155;
-      int $$1 = $$0 + 160;
-      int $$2 = this.h / 6 - 12;
-      this.d(exr.a(vg.c("options.mouse_settings"), $$0x -> this.f.a(new fda(this, this.b))).a($$0, $$2, 150, 20).a());
-      this.d(exr.a(vg.c("controls.keybinds"), $$0x -> this.f.a(new feg(this, this.b))).a($$1, $$2, 150, 20).a());
-      $$2 += 24;
-      this.d(this.b.Z().a(this.b, $$0, $$2, 150));
-      this.d(this.b.aa().a(this.b, $$1, $$2, 150));
-      $$2 += 24;
-      this.d(this.b.F().a(this.b, $$0, $$2, 150));
-      this.d(this.b.G().a(this.b, $$1, $$2, 150));
-      $$2 += 24;
-      this.d(exr.a(vf.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, $$2, 200, 20).a());
+   protected void aQ_() {
+      int $$0 = -16;
+      this.d(ezh.a(vq.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ac.j().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.d(ezh.a(vq.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      exl $$1 = this.f.m;
+      this.b = faa.a(
+         this.i,
+         vq.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         vq.c("demo.help.movementMouse"),
+         vq.a("demo.help.jump", $$1.B.k()),
+         vq.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = faa.a(this.i, vq.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
+   public void b(eyu $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

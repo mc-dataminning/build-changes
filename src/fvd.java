@@ -1,85 +1,51 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public enum fvd {
+   a(new fvd.b(fvd.a.f, fvd.a.e, fvd.a.a), new fvd.b(fvd.a.f, fvd.a.e, fvd.a.d), new fvd.b(fvd.a.c, fvd.a.e, fvd.a.d), new fvd.b(fvd.a.c, fvd.a.e, fvd.a.a)),
+   b(new fvd.b(fvd.a.f, fvd.a.b, fvd.a.d), new fvd.b(fvd.a.f, fvd.a.b, fvd.a.a), new fvd.b(fvd.a.c, fvd.a.b, fvd.a.a), new fvd.b(fvd.a.c, fvd.a.b, fvd.a.d)),
+   c(new fvd.b(fvd.a.c, fvd.a.b, fvd.a.d), new fvd.b(fvd.a.c, fvd.a.e, fvd.a.d), new fvd.b(fvd.a.f, fvd.a.e, fvd.a.d), new fvd.b(fvd.a.f, fvd.a.b, fvd.a.d)),
+   d(new fvd.b(fvd.a.f, fvd.a.b, fvd.a.a), new fvd.b(fvd.a.f, fvd.a.e, fvd.a.a), new fvd.b(fvd.a.c, fvd.a.e, fvd.a.a), new fvd.b(fvd.a.c, fvd.a.b, fvd.a.a)),
+   e(new fvd.b(fvd.a.f, fvd.a.b, fvd.a.d), new fvd.b(fvd.a.f, fvd.a.e, fvd.a.d), new fvd.b(fvd.a.f, fvd.a.e, fvd.a.a), new fvd.b(fvd.a.f, fvd.a.b, fvd.a.a)),
+   f(new fvd.b(fvd.a.c, fvd.a.b, fvd.a.a), new fvd.b(fvd.a.c, fvd.a.e, fvd.a.a), new fvd.b(fvd.a.c, fvd.a.e, fvd.a.d), new fvd.b(fvd.a.c, fvd.a.b, fvd.a.d));
 
-public class fvd implements ghm {
-   private final List<fve> a;
+   private static final fvd[] g = ac.a(new fvd[6], $$0 -> {
+      $$0[fvd.a.e] = a;
+      $$0[fvd.a.b] = b;
+      $$0[fvd.a.d] = c;
+      $$0[fvd.a.a] = d;
+      $$0[fvd.a.f] = e;
+      $$0[fvd.a.c] = f;
+   });
+   private final fvd.b[] h;
 
-   public fvd(List<fve> $$0) {
-      this.a = $$0;
+   public static fvd a(ie $$0) {
+      return g[$$0.d()];
    }
 
-   public List<fve> a() {
-      return this.a;
+   private fvd(fvd.b... $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof fvd $$1 ? this.a.equals($$1.a) : false;
-      }
+   public fvd.b a(int $$0) {
+      return this.h[$$0];
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public static final class a {
+      public static final int a = ie.d.d();
+      public static final int b = ie.b.d();
+      public static final int c = ie.f.d();
+      public static final int d = ie.c.d();
+      public static final int e = ie.a.d();
+      public static final int f = ie.e.d();
    }
 
-   @Override
-   public Collection<ahh> f() {
-      return this.a().stream().map(fve::a).collect(Collectors.toSet());
-   }
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
 
-   @Override
-   public void a(Function<ahh, ghm> $$0) {
-      this.a().stream().map(fve::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
-   }
-
-   @Nullable
-   @Override
-   public ghb a(ghf $$0, Function<ghe, gfb> $$1, ghj $$2, ahh $$3) {
-      if (this.a().isEmpty()) {
-         return null;
-      } else {
-         ghn.a $$4 = new ghn.a();
-
-         for (fve $$5 : this.a()) {
-            ghb $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
-         }
-
-         return $$4.a();
-      }
-   }
-
-   public static class a implements JsonDeserializer<fvd> {
-      public fvd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<fve> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.size() == 0) {
-               throw new JsonParseException("Empty variant array");
-            }
-
-            for (JsonElement $$5 : $$4) {
-               $$3.add((fve)$$2.deserialize($$5, fve.class));
-            }
-         } else {
-            $$3.add((fve)$$2.deserialize($$0, fve.class));
-         }
-
-         return new fvd($$3);
+      b(int $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

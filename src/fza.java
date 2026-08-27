@@ -1,60 +1,52 @@
-@FunctionalInterface
-public interface fza<T extends blw> {
-   fyz<T> create(fza.a var1);
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-   public static class a {
-      private final fyy a;
-      private final fzy b;
-      private final fun c;
-      private final ftp d;
-      private final aqj e;
-      private final fnf f;
-      private final exc g;
+public class fza implements fyx.a {
+   private static final int a = 160;
+   private final exh b;
+   private final Int2ObjectMap<fza.a> c = new Int2ObjectOpenHashMap();
 
-      public a(fyy $$0, fzy $$1, fun $$2, ftp $$3, aqj $$4, fnf $$5, exc $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void a(int $$0, hz $$1, List<ze.a> $$2) {
+      this.c.put($$0, new fza.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public fza(exh $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
+      ews $$5 = this.b.j.m();
+      hz $$6 = hz.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         fza.a $$7 = (fza.a)var11.next();
+         hz $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               ze.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               fyx.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
+         }
       }
+   }
 
-      public fyy a() {
-         return this.a;
-      }
-
-      public fzy b() {
-         return this.b;
-      }
-
-      public fun c() {
-         return this.c;
-      }
-
-      public ftp d() {
-         return this.d;
-      }
-
-      public aqj e() {
-         return this.e;
-      }
-
-      public fnf f() {
-         return this.f;
-      }
-
-      public ghh g() {
-         return this.c.a().a();
-      }
-
-      public fnj a(fnh $$0) {
-         return this.f.a($$0);
-      }
-
-      public exc h() {
-         return this.g;
-      }
+   static record a(hz a, List<ze.a> b) {
    }
 }

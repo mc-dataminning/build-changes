@@ -1,52 +1,110 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class dqu extends dqw {
+public record dqu(dqh b, dqh c, dqh d, dqh e, dqh f, dqh g, dqh h, dqh i, dqh j, dqh k, dqh l, dqh m, dqh n, dqh o, dqh p) {
    public static final Codec<dqu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dqw.d.forGetter($$0x -> $$0x), bjf.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dqu.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+               a("barrier", dqu::a),
+               a("fluid_level_floodedness", dqu::b),
+               a("fluid_level_spread", dqu::c),
+               a("lava", dqu::d),
+               a("temperature", dqu::e),
+               a("vegetation", dqu::f),
+               a("continents", dqu::g),
+               a("erosion", dqu::h),
+               a("depth", dqu::i),
+               a("ridges", dqu::j),
+               a("initial_density_without_jaggedness", dqu::k),
+               a("final_density", dqu::l),
+               a("vein_toggle", dqu::m),
+               a("vein_ridged", dqu::n),
+               a("vein_gap", dqu::o)
             )
             .apply($$0, dqu::new)
    );
-   public final bjf b;
-   public final dqu.a c;
 
-   public dqu(float $$0, dxv $$1, bjf $$2, dps $$3, dqx $$4, il<cwy> $$5, bjf $$6, dqu.a $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
+   private static RecordCodecBuilder<dqu, dqh> a(String $$0, Function<dqu, dqh> $$1) {
+      return dqh.d.fieldOf($$0).forGetter($$1);
    }
 
-   public dqu(dqw $$0, bjf $$1, dqu.a $$2) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
-   }
-
-   public static class a {
-      public static final Codec<dqu.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bjf.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
-                  bjf.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
-                  atx.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
-                  bjf.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
-                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dqu.a::new)
+   public dqu a(dqh.f $$0) {
+      return new dqu(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
       );
-      public final bjf b;
-      public final bjf c;
-      public final int d;
-      public final bjf e;
-      public final float f;
-      public final float g;
+   }
 
-      public a(bjf $$0, bjf $$1, int $$2, bjf $$3, float $$4, float $$5) {
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-         this.b = $$0;
-         this.c = $$1;
-      }
+   public dqh a() {
+      return this.b;
+   }
+
+   public dqh b() {
+      return this.c;
+   }
+
+   public dqh c() {
+      return this.d;
+   }
+
+   public dqh d() {
+      return this.e;
+   }
+
+   public dqh e() {
+      return this.f;
+   }
+
+   public dqh f() {
+      return this.g;
+   }
+
+   public dqh g() {
+      return this.h;
+   }
+
+   public dqh h() {
+      return this.i;
+   }
+
+   public dqh i() {
+      return this.j;
+   }
+
+   public dqh j() {
+      return this.k;
+   }
+
+   public dqh k() {
+      return this.l;
+   }
+
+   public dqh l() {
+      return this.m;
+   }
+
+   public dqh m() {
+      return this.n;
+   }
+
+   public dqh n() {
+      return this.o;
+   }
+
+   public dqh o() {
+      return this.p;
    }
 }

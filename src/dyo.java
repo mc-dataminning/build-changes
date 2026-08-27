@@ -1,29 +1,66 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
-public class dyo extends dyv {
-   public static final Codec<dyo> a = RecordCodecBuilder.create($$0 -> $$0.group(doy.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, dyo::new));
-   private final doy.a c;
+public abstract class dyo {
+   public static final Codec<dyo> h = kf.Z.q().dispatch(dyo::a, dyp::a);
 
-   private dyo(doy.a $$0) {
-      this.c = $$0;
-   }
+   protected abstract dyp<?> a();
 
-   public static dyo a(doy.a $$0) {
-      return new dyo($$0);
-   }
+   public abstract void a(dyo.a var1);
 
-   @Override
-   public Stream<hx> a_(dyt $$0, auw $$1, hx $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new hx($$3, $$5, $$4)) : Stream.of();
-   }
+   public static final class a {
+      private final cvt a;
+      private final BiConsumer<hz, dlf> b;
+      private final awo c;
+      private final ObjectArrayList<hz> d;
+      private final ObjectArrayList<hz> e;
+      private final ObjectArrayList<hz> f;
 
-   @Override
-   public dyw<?> b() {
-      return dyw.k;
+      public a(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, Set<hz> $$3, Set<hz> $$4, Set<hz> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(jd::v));
+         this.e.sort(Comparator.comparingInt(jd::v));
+         this.f.sort(Comparator.comparingInt(jd::v));
+      }
+
+      public void a(hz $$0, dlw $$1) {
+         this.a($$0, cyq.ff.o().a($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(hz $$0, dlf $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(hz $$0) {
+         return this.a.a($$0, dle.a::i);
+      }
+
+      public cvt a() {
+         return this.a;
+      }
+
+      public awo b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<hz> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<hz> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<hz> e() {
+         return this.f;
+      }
    }
 }

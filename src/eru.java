@@ -1,4 +1,8 @@
-public class eru extends esg {
-   public volatile String a = "0";
-   public volatile String b = "";
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@ept
+@eps
+interface eru {
 }

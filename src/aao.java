@@ -1,43 +1,53 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+public class aao implements xx<aag> {
+   public static final xo<vb, aao> a = xx.a(aao::a, aao::new);
+   private final hz b;
+   private final int c;
+   private final int d;
+   private final cyo e;
 
-public class aao implements xg<zb> {
-   private final int a;
-   private final int b;
-   private final aap c;
-
-   public aao(cte $$0, eeo $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.a = $$0.e;
-      this.b = $$0.f;
-      this.c = new aap($$0, $$1, $$2, $$3);
+   public aao(hz $$0, cyo $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public aao(uj $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
-      this.c = new aap($$0, this.a, this.b);
+   private aao(vb $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.readUnsignedByte();
+      this.e = xm.a(kg.f).decode($$0);
+   }
+
+   private void a(vb $$0) {
+      $$0.a(this.b);
+      $$0.k(this.c);
+      $$0.k(this.d);
+      xm.a(kg.f).encode($$0, this.e);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-      this.c.a($$0);
+   public xz<aao> a() {
+      return aeq.j;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public int d() {
+   public hz b() {
       return this.b;
    }
 
-   public aap e() {
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public cyo g() {
+      return this.e;
    }
 }

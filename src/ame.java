@@ -1,92 +1,56 @@
-import com.google.common.collect.Streams;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadInfo;
-import java.lang.management.ThreadMXBean;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
-public class ame implements Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final long b = 10000L;
-   private static final int c = 1;
-   private final amb d;
-   private final long e;
+public class ame {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vq.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vq.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vq.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(vq.c("commands.ride.mount.failure.wrong_dimension"));
 
-   public ame(amb $$0) {
-      this.d = $$0;
-      this.e = $$0.bo() * avq.b;
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("ride").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("target", eh.a())
+                     .then(dv.a("mount").then(dv.a("vehicle", eh.a()).executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"), eh.a($$0x, "vehicle"))))))
+                  .then(dv.a("dismount").executes($$0x -> a((du)$$0x.getSource(), eh.a($$0x, "target"))))
+            )
+      );
    }
 
-   @Override
-   public void run() {
-      while (this.d.v()) {
-         long $$0 = this.d.az();
-         long $$1 = ac.c();
-         long $$2 = $$1 - $$0;
-         if ($$2 > this.e) {
-            a.error(
-               LogUtils.FATAL_MARKER,
-               "A single server tick took {} seconds (should be max {})",
-               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)avq.a),
-               String.format(Locale.ROOT, "%.2f", this.d.aO().g() / (float)avq.c)
-            );
-            a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
-            ThreadMXBean $$3 = ManagementFactory.getThreadMXBean();
-            ThreadInfo[] $$4 = $$3.dumpAllThreads(true, true);
-            StringBuilder $$5 = new StringBuilder();
-            Error $$6 = new Error("Watchdog");
-
-            for (ThreadInfo $$7 : $$4) {
-               if ($$7.getThreadId() == this.d.aw().getId()) {
-                  $$6.setStackTrace($$7.getStackTrace());
-               }
-
-               $$5.append($$7);
-               $$5.append("\n");
-            }
-
-            o $$8 = new o("Watching Server", $$6);
-            this.d.b($$8.g());
-            p $$9 = $$8.a("Thread Dump");
-            $$9.a("Threads", $$5);
-            p $$10 = $$8.a("Performance stats");
-            $$10.a("Random tick rate", () -> this.d.aY().q().a(ctt.o).toString());
-            $$10.a("Level stats", () -> Streams.stream(this.d.H()).map($$0x -> $$0x.ae() + ": " + $$0x.F()).collect(Collectors.joining(",\n")));
-            ahj.a("Crash report:\n" + $$8.e());
-            File $$11 = new File(new File(this.d.z(), "crash-reports"), "crash-" + ac.e() + "-server.txt");
-            if ($$8.a($$11)) {
-               a.error("This crash report has been saved to: {}", $$11.getAbsolutePath());
-            } else {
-               a.error("We were unable to save this crash report to disk.");
-            }
-
-            this.a();
-         }
-
-         try {
-            Thread.sleep(($$0 + this.e - $$1) / avq.b);
-         } catch (InterruptedException var15) {
-         }
+   private static int a(du $$0, bno $$1, bno $$2) throws CommandSyntaxException {
+      bno $$3 = $$1.cZ();
+      if ($$3 != null) {
+         throw b.create($$1.Q_(), $$3.Q_());
+      } else if ($$2.ai() == bnu.bw) {
+         throw d.create();
+      } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dM() != $$2.dM()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.Q_(), $$2.Q_());
+      } else {
+         $$0.a(() -> vq.a("commands.ride.mount.success", $$1.Q_(), $$2.Q_()), true);
+         return 1;
       }
    }
 
-   private void a() {
-      try {
-         Timer $$0 = new Timer();
-         $$0.schedule(new TimerTask() {
-            @Override
-            public void run() {
-               Runtime.getRuntime().halt(1);
-            }
-         }, 10000L);
-         System.exit(1);
-      } catch (Throwable var2) {
-         Runtime.getRuntime().halt(1);
+   private static int a(du $$0, bno $$1) throws CommandSyntaxException {
+      bno $$2 = $$1.cZ();
+      if ($$2 == null) {
+         throw a.create($$1.Q_());
+      } else {
+         $$1.ac();
+         $$0.a(() -> vq.a("commands.ride.dismount.success", $$1.Q_(), $$2.Q_()), true);
+         return 1;
       }
    }
 }

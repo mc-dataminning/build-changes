@@ -1,27 +1,9 @@
-public class gbc extends gag<cdf, fmh<cdf>> {
-   private static final ahh a = new ahh("textures/entity/slime/slime.png");
-
-   public gbc(fza.a $$0) {
-      super($$0, new fmh<>($$0.a(fni.bo)), 0.25F);
-      this.a(new gdp<>(this, $$0.f()));
+public class gbc extends gbz<cbl, fme<cbl>> {
+   public gbc(gat.a $$0) {
+      super($$0, new fme<>($$0.a(fpb.aa)), 0.3F);
    }
 
-   public void a(cdf $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gg();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(cdf $$0, eqk $$1, float $$2) {
-      float $$3 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$4 = (float)$$0.gg();
-      float $$5 = aup.i($$2, $$0.bT, $$0.e) / ($$4 * 0.5F + 1.0F);
-      float $$6 = 1.0F / ($$5 + 1.0F);
-      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
-   }
-
-   public ahh a(cdf $$0) {
-      return a;
+   public aiy a(cbl $$0) {
+      return $$0.A().a();
    }
 }

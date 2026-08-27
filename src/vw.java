@@ -1,135 +1,251 @@
-import com.google.common.primitives.Ints;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public record vw(wb d, @Nullable vs e, vz f, @Nullable vg g, vk h) {
-   public static final MapCodec<vw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               wb.a.fieldOf("link").forGetter(vw::k),
-               vs.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
-               vz.a.forGetter(vw::m),
-               vi.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
-               vk.a.optionalFieldOf("filter_mask", vk.c).forGetter(vw::o)
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new vw($$0x, (vs)$$1.orElse(null), $$2, (vg)$$3.orElse(null), $$4))
-   );
-   private static final UUID i = ac.d;
-   public static final Duration b = Duration.ofMinutes(5L);
-   public static final Duration c = b.plus(Duration.ofMinutes(2L));
+public class vw {
+   public static final Codec<vw> a = Codec.either(vw.d.a.codec(), vw.d.b.codec())
+      .xmap($$0 -> new vw((vw.d<?>)$$0.map($$0x -> $$0x, $$0x -> $$0x)), $$0 -> Either.left($$0.b));
+   private final vw.d<?> b;
 
-   public static vw a(String $$0) {
-      return a(i, $$0);
+   public <T> vw(vw.a<T> $$0, T $$1) {
+      this(new vw.d<>($$0, $$1));
    }
 
-   public static vw a(UUID $$0, String $$1) {
-      vz $$2 = vz.a($$1);
-      wb $$3 = wb.a($$0);
-      return new vw($$3, null, $$2, null, vk.c);
+   private vw(vw.d<?> $$0) {
+      this.b = $$0;
    }
 
-   public vw a(vg $$0) {
-      vg $$1 = !$$0.equals(vg.b(this.c())) ? $$0 : null;
-      return new vw(this.d, this.e, this.f, $$1, this.h);
-   }
-
-   public vw a() {
-      return this.g != null ? new vw(this.d, this.e, this.f, null, this.h) : this;
-   }
-
-   public vw a(vk $$0) {
-      return this.h.equals($$0) ? this : new vw(this.d, this.e, this.f, this.g, $$0);
-   }
-
-   public vw a(boolean $$0) {
-      return this.a($$0 ? this.h : vk.c);
-   }
-
-   public vw b() {
-      vz $$0 = vz.a(this.c());
-      wb $$1 = wb.a(this.g());
-      return new vw($$1, null, $$0, this.g, this.h);
-   }
-
-   public static void a(avc.a $$0, wb $$1, vz $$2) throws SignatureException {
-      $$0.update(Ints.toByteArray(1));
-      $$1.a($$0);
-      $$2.a($$0);
-   }
-
-   public boolean a(avd $$0) {
-      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
-   }
-
-   public String c() {
-      return this.f.a();
-   }
-
-   public vg d() {
-      return Objects.requireNonNullElseGet(this.g, () -> vg.b(this.c()));
-   }
-
-   public Instant e() {
-      return this.f.b();
-   }
-
-   public long f() {
-      return this.f.c();
-   }
-
-   public boolean a(Instant $$0) {
-      return $$0.isAfter(this.e().plus(b));
-   }
-
-   public boolean b(Instant $$0) {
-      return $$0.isAfter(this.e().plus(c));
-   }
-
-   public UUID g() {
-      return this.d.c();
-   }
-
-   public boolean h() {
-      return this.g().equals(i);
-   }
-
-   public boolean i() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.i() && this.d.c().equals($$0);
-   }
-
-   public boolean j() {
-      return this.h.b();
-   }
-
-   public wb k() {
-      return this.d;
+   public vw.a<?> a() {
+      return this.b.c;
    }
 
    @Nullable
-   public vs l() {
-      return this.e;
+   public <T> T a(vw.a<T> $$0) {
+      return this.b.c == $$0 ? $$0.a(this.b.d) : null;
    }
 
-   public vz m() {
-      return this.f;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? ((vw)$$0).b.equals(this.b) : false;
+      }
    }
 
-   @Nullable
-   public vg n() {
-      return this.g;
+   @Override
+   public String toString() {
+      return this.b.toString();
    }
 
-   public vk o() {
-      return this.h;
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public static class a<T> implements axc {
+      public static final vw.a<vq> a = new vw.a<>("show_text", true, vs.a, DataResult::success);
+      public static final vw.a<vw.c> b = new vw.a<>("show_item", true, vw.c.b, vw.c::a);
+      public static final vw.a<vw.b> c = new vw.a<>("show_entity", true, vw.b.a, vw.b::a);
+      public static final Codec<vw.a<?>> d = axc.b(() -> new vw.a[]{a, b, c});
+      public static final Codec<vw.a<?>> e = avp.a(d, vw.a::a);
+      private final String f;
+      private final boolean g;
+      final Codec<vw.d<T>> h;
+      final Codec<vw.d<T>> i;
+
+      public a(String $$0, boolean $$1, Codec<T> $$2, Function<vq, DataResult<T>> $$3) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h = $$2.xmap($$0x -> new vw.d<>(this, (T)$$0x), $$0x -> $$0x.d).fieldOf("contents").codec();
+         this.i = Codec.of(Encoder.error("Can't encode in legacy format"), vs.a.flatMap($$3).map($$0x -> new vw.d<>(this, (T)$$0x)));
+      }
+
+      public boolean a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+
+      T a(Object $$0) {
+         return (T)$$0;
+      }
+
+      @Override
+      public String toString() {
+         return "<action " + this.f + ">";
+      }
+
+      private static DataResult<vw.a<?>> a(@Nullable vw.a<?> $$0) {
+         if ($$0 == null) {
+            return DataResult.error(() -> "Unknown action");
+         } else {
+            return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+         }
+      }
+   }
+
+   public static class b {
+      public static final Codec<vw.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  kf.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                  jc.e.fieldOf("id").forGetter($$0x -> $$0x.c),
+                  avp.a(vs.a, "name").forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, vw.b::new)
+      );
+      public final bnu<?> b;
+      public final UUID c;
+      public final Optional<vq> d;
+      @Nullable
+      private List<vq> e;
+
+      public b(bnu<?> $$0, UUID $$1, @Nullable vq $$2) {
+         this($$0, $$1, Optional.ofNullable($$2));
+      }
+
+      public b(bnu<?> $$0, UUID $$1, Optional<vq> $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public static DataResult<vw.b> a(vq $$0) {
+         try {
+            sw $$1 = tu.a($$0.getString());
+            vq $$2 = vq.a.a($$1.l("name"));
+            bnu<?> $$3 = kf.g.a(new aiy($$1.l("type")));
+            UUID $$4 = UUID.fromString($$1.l("id"));
+            return DataResult.success(new vw.b($$3, $$4, $$2));
+         } catch (Exception var5) {
+            return DataResult.error(() -> "Failed to parse tooltip: " + var5.getMessage());
+         }
+      }
+
+      public List<vq> a() {
+         if (this.e == null) {
+            this.e = new ArrayList<>();
+            this.d.ifPresent(this.e::add);
+            this.e.add(vq.a("gui.entity_tooltip.type", this.b.h()));
+            this.e.add(vq.b(this.c.toString()));
+         }
+
+         return this.e;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            vw.b $$1 = (vw.b)$$0;
+            return this.b.equals($$1.b) && this.c.equals($$1.c) && this.d.equals($$1.d);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.b.hashCode();
+         $$0 = 31 * $$0 + this.c.hashCode();
+         return 31 * $$0 + this.d.hashCode();
+      }
+   }
+
+   public static class c {
+      public static final Codec<vw.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  kf.h.q().fieldOf("id").forGetter($$0x -> $$0x.c),
+                  avp.a(Codec.INT, "count", Integer.valueOf(1)).forGetter($$0x -> $$0x.d),
+                  avp.a(tu.i, "tag").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, vw.c::new)
+      );
+      public static final Codec<vw.c> b = Codec.either(kf.h.q(), a)
+         .xmap($$0 -> (vw.c)$$0.map($$0x -> new vw.c($$0x, 1, Optional.empty()), $$0x -> $$0x), Either::right);
+      private final cou c;
+      private final int d;
+      private final Optional<sw> e;
+      @Nullable
+      private coz f;
+
+      c(cou $$0, int $$1, @Nullable sw $$2) {
+         this($$0, $$1, Optional.ofNullable($$2));
+      }
+
+      c(cou $$0, int $$1, Optional<sw> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public c(coz $$0) {
+         this($$0.d(), $$0.M(), $$0.w() != null ? Optional.of($$0.w().h()) : Optional.empty());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            vw.c $$1 = (vw.c)$$0;
+            return this.d == $$1.d && this.c.equals($$1.c) && this.e.equals($$1.e);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.c.hashCode();
+         $$0 = 31 * $$0 + this.d;
+         return 31 * $$0 + this.e.hashCode();
+      }
+
+      public coz a() {
+         if (this.f == null) {
+            this.f = new coz(this.c, this.d);
+            this.e.ifPresent(this.f::c);
+         }
+
+         return this.f;
+      }
+
+      private static DataResult<vw.c> a(vq $$0) {
+         try {
+            sw $$1 = tu.a($$0.getString());
+            return DataResult.success(new vw.c(coz.a($$1)));
+         } catch (CommandSyntaxException var2) {
+            return DataResult.error(() -> "Failed to parse item tag: " + var2.getMessage());
+         }
+      }
+   }
+
+   static record d<T>(vw.a<T> c, T d) {
+      public static final MapCodec<vw.d<?>> a = vw.a.e.dispatchMap("action", vw.d::a, $$0 -> $$0.h);
+      public static final MapCodec<vw.d<?>> b = vw.a.e.dispatchMap("action", vw.d::a, $$0 -> $$0.i);
+
+      public vw.a<T> a() {
+         return this.c;
+      }
+
+      public T b() {
+         return this.d;
+      }
    }
 }

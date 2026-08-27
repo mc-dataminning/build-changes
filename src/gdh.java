@@ -1,25 +1,33 @@
-public class gdh extends gdl<byr, fli<byr>> {
-   private final ftp a;
+public class gdh extends gby<cjm> {
+   private final fwg f;
 
-   public gdh(gav<byr, fli<byr>> $$0, ftp $$1) {
-      super($$0);
-      this.a = $$1;
+   public gdh(gat.a $$0) {
+      super($$0, fpb.bC);
+      this.f = $$0.c();
    }
 
-   public void a(eqk $$0, ftt $$1, int $$2, byr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cng $$10 = $$3.c(bmd.a);
-      if ($$3.A() && !$$3.gx()) {
-         float $$11 = -0.6F;
-         float $$12 = 1.4F;
-         if ($$3.gl()) {
-            $$11 -= 0.2F * aup.a($$7 * 0.6F) + 0.2F;
-            $$12 -= 0.09F * aup.a($$7 * 0.6F);
-         }
-
-         $$0.a();
-         $$0.a(0.1F, $$12, $$11);
-         this.a.a($$3, $$10, cnd.h, false, $$0, $$1, $$2);
-         $$0.b();
+   protected void a(cjm $$0, float $$1, dlf $$2, esa $$3, fvm $$4, int $$5) {
+      int $$6 = $$0.D();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = awh.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
+
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   }
+
+   public static void a(fwg $$0, dlf $$1, esa $$2, fvm $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = ggl.a(ggl.a(1.0F), 10);
+      } else {
+         $$6 = ggl.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

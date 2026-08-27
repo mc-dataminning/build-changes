@@ -1,37 +1,52 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.Locale;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class awe extends DataFix {
-   private final String a;
-   private final TypeReference b;
-
-   public awe(Schema $$0, String $$1, TypeReference $$2) {
-      super($$0, true);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
-      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
-      return this.a(this.a, $$0, $$1);
-   }
-
-   protected final <K> TypeRewriteRule a(String $$0, TaggedChoiceType<K> $$1, TaggedChoiceType<?> $$2) {
-      if ($$1.getKeyType() != $$2.getKeyType()) {
-         throw new IllegalStateException("Could not inject: key type is not the same");
+public class awe implements TypeAdapterFactory {
+   @Nullable
+   public <T> TypeAdapter<T> create(Gson $$0, TypeToken<T> $$1) {
+      Class<T> $$2 = $$1.getRawType();
+      if (!$$2.isEnum()) {
+         return null;
       } else {
-         return this.fixTypeEverywhere($$0, $$1, $$2, $$1x -> $$1xx -> {
-               if (!$$2.hasType($$1xx.getFirst())) {
-                  throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown type %s in %s ", $$1xx.getFirst(), this.b));
+         final Map<String, T> $$3 = Maps.newHashMap();
+
+         for (T $$4 : $$2.getEnumConstants()) {
+            $$3.put(this.a($$4), $$4);
+         }
+
+         return new TypeAdapter<T>() {
+            public void write(JsonWriter $$0, T $$1) throws IOException {
+               if ($$1 == null) {
+                  $$0.nullValue();
                } else {
-                  return $$1xx;
+                  $$0.value(awe.this.a($$1));
                }
-            });
+            }
+
+            @Nullable
+            public T read(JsonReader $$0) throws IOException {
+               if ($$0.peek() == JsonToken.NULL) {
+                  $$0.nextNull();
+                  return null;
+               } else {
+                  return $$3.get($$0.nextString());
+               }
+            }
+         };
       }
+   }
+
+   String a(Object $$0) {
+      return $$0 instanceof Enum ? ((Enum)$$0).name().toLowerCase(Locale.ROOT) : $$0.toString().toLowerCase(Locale.ROOT);
    }
 }

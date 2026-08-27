@@ -1,7 +1,9 @@
-public abstract class fmg extends flf {
-   public fmg() {
-      super(fub::i);
+public class fmg extends fkv<cei> {
+   public fmg(fpc $$0) {
+      super($$0);
    }
 
-   public abstract void a(float var1, float var2, float var3);
+   public boolean a(cei $$0) {
+      return false;
+   }
 }

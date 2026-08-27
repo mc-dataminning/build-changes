@@ -1,48 +1,112 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class ecn extends edb {
+public class ecn {
+   private static final int c = Integer.MIN_VALUE;
+   private static final MutableObject<Codec<ij<ecn>>> d = new MutableObject();
    public static final Codec<ecn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               ic.a.e.fieldOf("axis").orElse(ic.a.b).forGetter($$0x -> $$0x.g)
+               avp.a(d::getValue).fieldOf("fallback").forGetter(ecn::a),
+               Codec.mapPair(ecl.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, ecn::new)
    );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final ic.a g;
+   public static final Codec<ij<ecn>> b = ac.a(aiu.a(kg.aG, a), d::setValue);
+   private final List<Pair<ecl, Integer>> e;
+   private final ObjectArrayList<ecl> f;
+   private final ij<ecn> g;
+   private int h = Integer.MIN_VALUE;
 
-   public ecn(float $$0, float $$1, int $$2, int $$3, ic.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
+   public ecn(ij<ecn> $$0, List<Pair<ecl, Integer>> $$1) {
+      this.e = $$1;
+      this.f = new ObjectArrayList();
+
+      for (Pair<ecl, Integer> $$2 : $$1) {
+         ecl $$3 = (ecl)$$2.getFirst();
+
+         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
+            this.f.add($$3);
+         }
       }
+
+      this.g = $$0;
    }
 
-   @Override
-   public boolean a(hx $$0, hx $$1, hx $$2, auw $$3) {
-      ic $$4 = ic.a(ic.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= aup.b(this.b, this.d, aup.g((float)$$8, (float)this.e, (float)this.f));
+   public ecn(ij<ecn> $$0, List<Pair<Function<ecn.a, ? extends ecl>, Integer>> $$1, ecn.a $$2) {
+      this.e = Lists.newArrayList();
+      this.f = new ObjectArrayList();
+
+      for (Pair<Function<ecn.a, ? extends ecl>, Integer> $$3 : $$1) {
+         ecl $$4 = (ecl)((Function)$$3.getFirst()).apply($$2);
+         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
+
+         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
+            this.f.add($$4);
+         }
+      }
+
+      this.g = $$0;
    }
 
-   @Override
-   protected edc<?> a() {
-      return edc.c;
+   public int a(eff $$0) {
+      if (this.h == Integer.MIN_VALUE) {
+         this.h = this.f.stream().filter($$0x -> $$0x != ece.b).mapToInt($$1 -> $$1.a($$0, hz.c, dfa.a).e()).max().orElse(0);
+      }
+
+      return this.h;
+   }
+
+   public ij<ecn> a() {
+      return this.g;
+   }
+
+   public ecl a(awo $$0) {
+      return (ecl)this.f.get($$0.a(this.f.size()));
+   }
+
+   public List<ecl> b(awo $$0) {
+      return ac.a(this.f, $$0);
+   }
+
+   public int b() {
+      return this.f.size();
+   }
+
+   public static enum a implements axc {
+      a("terrain_matching", ImmutableList.of(new eel(dqo.a.a, -1))),
+      b("rigid", ImmutableList.of());
+
+      public static final axc.a<ecn.a> c = axc.a(ecn.a::values);
+      private final String d;
+      private final ImmutableList<efb> e;
+
+      private a(String $$0, ImmutableList<efb> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      public static ecn.a a(String $$0) {
+         return c.a($$0);
+      }
+
+      public ImmutableList<efb> b() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

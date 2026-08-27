@@ -1,21 +1,23 @@
-public class elz extends ema {
-   private final blw b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public elz(blw $$0) {
-      this($$0, $$0.dj());
-   }
-
-   public elz(blw $$0, emc $$1) {
-      super($$1);
-      this.b = $$0;
-   }
-
-   public blw a() {
-      return this.b;
-   }
+public record elz(float b) implements elu {
+   public static final Codec<elz> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(elz::c)).apply($$0, elz::new));
 
    @Override
-   public ema.a c() {
-      return ema.a.c;
+   public elv b() {
+      return elw.e;
+   }
+
+   public boolean a(eiv $$0) {
+      return $$0.b().i() < this.b;
+   }
+
+   public static elu.a a(float $$0) {
+      return () -> new elz($$0);
+   }
+
+   public float c() {
+      return this.b;
    }
 }

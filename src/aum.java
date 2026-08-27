@@ -1,52 +1,109 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Locale;
-import java.util.Map;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class aum implements TypeAdapterFactory {
-   @Nullable
-   public <T> TypeAdapter<T> create(Gson $$0, TypeToken<T> $$1) {
-      Class<T> $$2 = $$1.getRawType();
-      if (!$$2.isEnum()) {
-         return null;
-      } else {
-         final Map<String, T> $$3 = Maps.newHashMap();
+public class aum {
+   private static final Codec<aum> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avp.p.fieldOf("id").forGetter(aum::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, aum::new)
+   );
+   public static final Codec<aum> a = Codec.either(avp.p, b)
+      .xmap($$0 -> (aum)$$0.map($$0x -> new aum($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
+   private final aiy c;
+   private final boolean d;
+   private final boolean e;
 
-         for (T $$4 : $$2.getEnumConstants()) {
-            $$3.put(this.a($$4), $$4);
+   private aum(aiy $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   private aum(avp.f $$0, boolean $$1) {
+      this.c = $$0.a();
+      this.d = $$0.b();
+      this.e = $$1;
+   }
+
+   private avp.f a() {
+      return new avp.f(this.c, this.d);
+   }
+
+   public static aum a(aiy $$0) {
+      return new aum($$0, false, true);
+   }
+
+   public static aum b(aiy $$0) {
+      return new aum($$0, false, false);
+   }
+
+   public static aum c(aiy $$0) {
+      return new aum($$0, true, true);
+   }
+
+   public static aum d(aiy $$0) {
+      return new aum($$0, true, false);
+   }
+
+   public <T> boolean a(aum.a<T> $$0, Consumer<T> $$1) {
+      if (this.d) {
+         Collection<T> $$2 = $$0.b(this.c);
+         if ($$2 == null) {
+            return !this.e;
          }
 
-         return new TypeAdapter<T>() {
-            public void write(JsonWriter $$0, T $$1) throws IOException {
-               if ($$1 == null) {
-                  $$0.nullValue();
-               } else {
-                  $$0.value(aum.this.a($$1));
-               }
-            }
+         $$2.forEach($$1);
+      } else {
+         T $$3 = $$0.a(this.c);
+         if ($$3 == null) {
+            return !this.e;
+         }
 
-            @Nullable
-            public T read(JsonReader $$0) throws IOException {
-               if ($$0.peek() == JsonToken.NULL) {
-                  $$0.nextNull();
-                  return null;
-               } else {
-                  return $$3.get($$0.nextString());
-               }
-            }
-         };
+         $$1.accept($$3);
+      }
+
+      return true;
+   }
+
+   public void a(Consumer<aiy> $$0) {
+      if (this.d && this.e) {
+         $$0.accept(this.c);
       }
    }
 
-   String a(Object $$0) {
-      return $$0 instanceof Enum ? ((Enum)$$0).name().toLowerCase(Locale.ROOT) : $$0.toString().toLowerCase(Locale.ROOT);
+   public void b(Consumer<aiy> $$0) {
+      if (this.d && !this.e) {
+         $$0.accept(this.c);
+      }
+   }
+
+   public boolean a(Predicate<aiy> $$0, Predicate<aiy> $$1) {
+      return !this.e || (this.d ? $$1 : $$0).test(this.c);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      if (this.d) {
+         $$0.append('#');
+      }
+
+      $$0.append(this.c);
+      if (!this.e) {
+         $$0.append('?');
+      }
+
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      @Nullable
+      T a(aiy var1);
+
+      @Nullable
+      Collection<T> b(aiy var1);
    }
 }

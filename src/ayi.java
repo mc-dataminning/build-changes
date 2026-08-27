@@ -5,31 +5,34 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class ayi extends baw {
+public class ayi extends bcn {
    public ayi(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityHorseSaddleFix", bbw.y, "EntityHorse");
+      super($$0, $$1, "BlockEntityJukeboxFix", bdn.s, "minecraft:jukebox");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbw.A.typeName(), bde.a()));
-      Type<?> $$2 = this.getInputSchema().getTypeRaw(bbw.t);
-      OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
-      Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
-      Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
-         Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
-         $$6 = $$6.set($$1, Pair.of(bbw.A.typeName(), "minecraft:saddle"));
-         Dynamic<?> $$7 = $$5.emptyMap();
-         $$7 = $$7.set("Count", $$7.createByte((byte)1));
-         $$7 = $$7.set("Damage", $$7.createShort((short)0));
-         $$6 = $$6.set(DSL.remainderFinder(), $$7);
-         $$5.remove("Saddle");
-         return $$0.set($$3, $$6).set(DSL.remainderFinder(), $$5);
-      } else {
-         return $$0;
+      Type<?> $$1 = this.getInputSchema().getChoiceType(bdn.s, "minecraft:jukebox");
+      Type<?> $$2 = $$1.findFieldType("RecordItem");
+      OpticFinder<?> $$3 = DSL.fieldFinder("RecordItem", $$2);
+      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      int $$5 = $$4.get("Record").asInt(0);
+      if ($$5 > 0) {
+         $$4.remove("Record");
+         String $$6 = bbw.a(bbl.a($$5), 0);
+         if ($$6 != null) {
+            Dynamic<?> $$7 = $$4.emptyMap();
+            $$7 = $$7.set("id", $$7.createString($$6));
+            $$7 = $$7.set("Count", $$7.createByte((byte)1));
+            return $$0.set(
+                  $$3,
+                  (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not create record item stack."))).getFirst()
+               )
+               .set(DSL.remainderFinder(), $$4);
+         }
       }
+
+      return $$0;
    }
 }

@@ -1,12 +1,25 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+public class cud extends cti {
+   public cud(cti.a $$0, bnv... $$1) {
+      super($$0, auh.bk, $$1);
+   }
 
-public interface cud {
-   boolean a(hx var1, Predicate<djp> var2);
+   @Override
+   public int a(int $$0) {
+      return 10 + $$0 * 7;
+   }
 
-   boolean b(hx var1, Predicate<eez> var2);
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
 
-   <T extends dhd> Optional<T> a(hx var1, dhf<T> var2);
+   @Override
+   public int a() {
+      return 3;
+   }
 
-   hx a(doy.a var1, hx var2);
+   @Override
+   public boolean a(cti $$0) {
+      return super.a($$0) && $$0 != ctl.E && $$0 != ctl.H;
+   }
 }

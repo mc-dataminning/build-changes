@@ -1,41 +1,113 @@
-public class eyc extends eyl {
-   private static final int a = 1426063360;
-   private static final int b = 4;
-   private final boolean c;
-
-   public eyc(int $$0, vg $$1, exc $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public eyc(int $$0, vg $$1, exc $$2, boolean $$3) {
-      super($$1, $$2);
-      this.c($$0);
-      this.b(true);
-      this.j = true;
-      this.c = $$3;
-   }
-
-   @Override
-   protected void a(fbk $$0) {
-      $$0.a(fbj.a, this.x());
-   }
-
-   @Override
-   public void b(exe $$0, int $$1, int $$2, float $$3) {
-      if (this.aK_() || this.c) {
-         int $$4 = this.B() - 4;
-         int $$5 = this.C() - 4;
-         int $$6 = this.w() + 8;
-         int $$7 = this.u() + 8;
-         int $$8 = this.c ? (this.aK_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, 1426063360);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(gjs $$0) {
-   }
+public class eyc {
+   public static final exy a = exy.a.a(0.5F)
+      .a()
+      .a("head", new exx(exx.d.b, new exz(0.0F, eya.b(180.0F, 0.0F, 0.0F), exx.b.a)))
+      .a("head", new exx(exx.d.a, new exz(0.0F, eya.a(0.0F, 0.5F, 0.0F), exx.b.a)))
+      .a("body", new exx(exx.d.b, new exz(0.0F, eya.b(180.0F, 0.0F, 0.0F), exx.b.a)))
+      .a("body", new exx(exx.d.a, new exz(0.0F, eya.a(0.0F, 0.5F, 0.0F), exx.b.a)))
+      .a("feet", new exx(exx.d.b, new exz(0.0F, eya.b(0.0F, 0.0F, 0.0F), exx.b.a)))
+      .a("right_wing", new exx(exx.d.b, new exz(0.0F, eya.b(0.0F, -10.0F, 0.0F), exx.b.a)))
+      .a("right_wing", new exx(exx.d.a, new exz(0.0F, eya.a(0.0F, 0.0F, 1.0F), exx.b.a)))
+      .a("right_wing_tip", new exx(exx.d.b, new exz(0.0F, eya.b(0.0F, -120.0F, 0.0F), exx.b.a)))
+      .a("left_wing", new exx(exx.d.b, new exz(0.0F, eya.b(0.0F, 10.0F, 0.0F), exx.b.a)))
+      .a("left_wing", new exx(exx.d.a, new exz(0.0F, eya.a(0.0F, 0.0F, 1.0F), exx.b.a)))
+      .a("left_wing_tip", new exx(exx.d.b, new exz(0.0F, eya.b(0.0F, 120.0F, 0.0F), exx.b.a)))
+      .b();
+   public static final exy b = exy.a.a(0.5F)
+      .a()
+      .a(
+         "head",
+         new exx(
+            exx.d.b,
+            new exz(0.0F, eya.b(0.0F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.125F, eya.b(20.0F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.5F, eya.b(0.0F, 0.0F, 0.0F), exx.b.a)
+         )
+      )
+      .a(
+         "head",
+         new exx(
+            exx.d.a,
+            new exz(0.0F, eya.a(0.0F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.125F, eya.a(0.0F, 2.0F, 0.0F), exx.b.a),
+            new exz(0.25F, eya.a(0.0F, 1.0F, 0.0F), exx.b.a),
+            new exz(0.375F, eya.a(0.0F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.4583F, eya.a(0.0F, -1.0F, 0.0F), exx.b.a),
+            new exz(0.5F, eya.a(0.0F, 0.0F, 0.0F), exx.b.a)
+         )
+      )
+      .a(
+         "body",
+         new exx(
+            exx.d.b,
+            new exz(0.0F, eya.b(40.0F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.25F, eya.b(52.5F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.5F, eya.b(40.0F, 0.0F, 0.0F), exx.b.a)
+         )
+      )
+      .a(
+         "body",
+         new exx(
+            exx.d.a,
+            new exz(0.0F, eya.a(0.0F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.125F, eya.a(0.0F, 2.0F, 0.0F), exx.b.a),
+            new exz(0.25F, eya.a(0.0F, 1.0F, 0.0F), exx.b.a),
+            new exz(0.375F, eya.a(0.0F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.4583F, eya.a(0.0F, -1.0F, 0.0F), exx.b.a),
+            new exz(0.5F, eya.a(0.0F, 0.0F, 0.0F), exx.b.a)
+         )
+      )
+      .a(
+         "feet",
+         new exx(
+            exx.d.b,
+            new exz(0.0F, eya.b(10.0F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.125F, eya.b(-21.25F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.25F, eya.b(-12.5F, 0.0F, 0.0F), exx.b.a),
+            new exz(0.5F, eya.b(10.0F, 0.0F, 0.0F), exx.b.a)
+         )
+      )
+      .a(
+         "right_wing",
+         new exx(
+            exx.d.b,
+            new exz(0.0F, eya.b(0.0F, 85.0F, 0.0F), exx.b.a),
+            new exz(0.125F, eya.b(0.0F, -55.0F, 0.0F), exx.b.a),
+            new exz(0.25F, eya.b(0.0F, 50.0F, 0.0F), exx.b.a),
+            new exz(0.375F, eya.b(0.0F, 70.0F, 0.0F), exx.b.a),
+            new exz(0.5F, eya.b(0.0F, 85.0F, 0.0F), exx.b.a)
+         )
+      )
+      .a(
+         "right_wing_tip",
+         new exx(
+            exx.d.b,
+            new exz(0.0F, eya.b(0.0F, 10.5F, 0.0F), exx.b.a),
+            new exz(0.0417F, eya.b(0.0F, 65.5F, 0.0F), exx.b.a),
+            new exz(0.2083F, eya.b(0.0F, -135.0F, 0.0F), exx.b.a),
+            new exz(0.5F, eya.b(0.0F, 10.5F, 0.0F), exx.b.a)
+         )
+      )
+      .a(
+         "left_wing",
+         new exx(
+            exx.d.b,
+            new exz(0.0F, eya.b(0.0F, -85.0F, 0.0F), exx.b.a),
+            new exz(0.125F, eya.b(0.0F, 55.0F, 0.0F), exx.b.a),
+            new exz(0.25F, eya.b(0.0F, -50.0F, 0.0F), exx.b.a),
+            new exz(0.375F, eya.b(0.0F, -70.0F, 0.0F), exx.b.a),
+            new exz(0.5F, eya.b(0.0F, -85.0F, 0.0F), exx.b.a)
+         )
+      )
+      .a(
+         "left_wing_tip",
+         new exx(
+            exx.d.b,
+            new exz(0.0F, eya.b(0.0F, -10.5F, 0.0F), exx.b.a),
+            new exz(0.0417F, eya.b(0.0F, -65.5F, 0.0F), exx.b.a),
+            new exz(0.2083F, eya.b(0.0F, 135.0F, 0.0F), exx.b.a),
+            new exz(0.5F, eya.b(0.0F, -10.5F, 0.0F), exx.b.a)
+         )
+      )
+      .b();
 }

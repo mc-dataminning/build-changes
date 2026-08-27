@@ -1,25 +1,22 @@
-public class cmh extends cnb {
-   public cmh(cnb.a $$0) {
-      super($$0);
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cmh extends cou {
+   private final cyo a;
+
+   public cmh(cyo $$0, cou.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
-      cng $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), art.ie, aru.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      $$1.gn().a(this, 20);
-      if (!$$0.B) {
-         cgr $$4 = new cgr($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public String a() {
+      return this.a.h();
+   }
 
-      $$1.b(asd.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
-      }
-
-      return bkd.a($$3, $$0.y_());
+   @Override
+   public void a(coz $$0, @Nullable cvn $$1, List<vq> $$2, cqq $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

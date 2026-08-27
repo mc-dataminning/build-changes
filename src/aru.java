@@ -1,22 +1,14 @@
-public enum aru {
-   a("master"),
-   b("music"),
-   c("record"),
-   d("weather"),
-   e("block"),
-   f("hostile"),
-   g("neutral"),
-   h("player"),
-   i("ambient"),
-   j("voice");
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-   private final String k;
+public interface aru {
+   CompletableFuture<Void> a(aru.a var1, asa var2, bil var3, bil var4, Executor var5, Executor var6);
 
-   private aru(String $$0) {
-      this.k = $$0;
+   default String c() {
+      return this.getClass().getSimpleName();
    }
 
-   public String a() {
-      return this.k;
+   public interface a {
+      <T> CompletableFuture<T> a(T var1);
    }
 }

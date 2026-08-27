@@ -1,67 +1,44 @@
-public class cqi extends cqc {
-   public cqi(cqa $$0) {
-      super($$0);
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class cqi extends cms {
+   protected final cyo d;
+   private final ie c;
+
+   public cqi(cyo $$0, cyo $$1, cou.a $$2, ie $$3) {
+      super($$0, $$2);
+      this.d = $$1;
+      this.c = $$3;
    }
 
-   public boolean a(ciz $$0, ctx $$1) {
-      int $$2 = 0;
-      cng $$3 = cng.f;
+   protected boolean a(cvq $$0, dlf $$1, hz $$2) {
+      return $$1.a($$0, $$2);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cng $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cnj.rT)) {
-               if (!$$3.b()) {
-                  return false;
-               }
+   @Nullable
+   @Override
+   protected dlf c(crg $$0) {
+      dlf $$1 = this.d.a($$0);
+      dlf $$2 = null;
+      cvq $$3 = $$0.q();
+      hz $$4 = $$0.a();
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cnj.uf)) {
-                  return false;
-               }
-
-               $$2++;
+      for (ie $$5 : $$0.f()) {
+         if ($$5 != this.c.g()) {
+            dlf $$6 = $$5 == this.c ? this.e().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
             }
          }
       }
 
-      return !$$3.b() && $$2 > 0;
-   }
-
-   public cng a(ciz $$0, iu $$1) {
-      int $$2 = 0;
-      cng $$3 = cng.f;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cng $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cnj.rT)) {
-               if (!$$3.b()) {
-                  return cng.f;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cnj.uf)) {
-                  return cng.f;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : cng.f;
+      return $$2 != null && $$3.a($$2, $$4, enx.a()) ? $$2 : null;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
-   }
-
-   @Override
-   public cqo<?> at_() {
-      return cqo.e;
+   public void a(Map<cyo, cou> $$0, cou $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.d, $$1);
    }
 }

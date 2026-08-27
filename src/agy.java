@@ -1,8 +1,36 @@
-public class agy {
-   public static final ahg<cnb> a = a("pumpkin_seeds");
-   public static final ahg<cnb> b = a("melon_seeds");
+import com.mojang.authlib.GameProfile;
 
-   private static ahg<cnb> a(String $$0) {
-      return ahg.a(ke.F, new ahh($$0));
+public class agy implements xx<agw> {
+   public static final xo<uq, agy> a = xx.a(agy::a, agy::new);
+   private final GameProfile b;
+
+   public agy(GameProfile $$0) {
+      this.b = $$0;
+   }
+
+   private agy(uq $$0) {
+      this.b = $$0.z();
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public xz<agy> a() {
+      return ahc.b;
+   }
+
+   public void a(agw $$0) {
+      $$0.a(this);
+   }
+
+   public GameProfile b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

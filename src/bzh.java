@@ -1,110 +1,232 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.nio.file.Path;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+import java.util.function.BooleanSupplier;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public class bzh {
-   private static final float a = 1.0F;
-   private static final float b = 2.25F;
-   private static final float c = 1.75F;
-   private static final float d = 2.5F;
-   private static final int e = 4;
-   private static final int f = 16;
-   private static final int g = 6;
-   private static final int h = 30;
-   private static final int i = 60;
-   private static final int j = 600;
-   private static final int k = 32;
-   private static final int l = 20;
+public class bzh extends dok<bzj> {
+   public static final int a = 6;
+   public static final int b = 1;
+   private final bzh.a d;
+   private final LongSet e = new LongOpenHashSet();
 
-   protected static bno<?> a(bno<bzg> $$0) {
-      b($$0);
-      c($$0);
-      $$0.a(ImmutableSet.of(chc.a));
-      $$0.b(chc.b);
-      $$0.f();
-      return $$0;
+   public bzh(Path $$0, DataFixer $$1, boolean $$2, iw $$3, cvp $$4) {
+      super($$0, bzj::a, bzj::new, $$1, axo.q, $$2, $$3, $$4);
+      this.d = new bzh.a();
    }
 
-   private static void b(bno<bzg> $$0) {
-      $$0.a(chc.a, 0, ImmutableList.of(new bqz(0.8F), new boa(2.5F), new bpl(45, 90), new bpp(), new bol(bvq.aO), new bol(bvq.aP)));
+   public void a(hz $$0, ij<bzk> $$1) {
+      this.f(jb.c($$0)).a($$0, $$1);
    }
 
-   private static void c(bno<bzg> $$0) {
-      $$0.a(
-         chc.b,
-         ImmutableList.of(
-            Pair.of(0, boz.a($$0x -> true, 1.75F, true, 32)),
-            Pair.of(1, new bov(bzh::b, 2.25F, 20)),
-            Pair.of(2, bqt.a(bzh::b, Predicate.not(bzh::c), 4, 16, 2.25F)),
-            Pair.of(3, bqf.a(6.0F, bjn.a(30, 60))),
-            Pair.of(4, new bqc(ImmutableList.of(Pair.of(bpx.b(1.0F), 2), Pair.of(bqm.a(1.0F, 3), 2), Pair.of(new bop(30, 60), 1))))
-         ),
-         ImmutableSet.of()
-      );
+   public void a(hz $$0) {
+      this.d(jb.c($$0)).ifPresent($$1 -> $$1.a($$0));
    }
 
-   public static void a(bzg $$0) {
-      $$0.dN().a(ImmutableList.of(chc.b));
+   public long a(Predicate<ij<bzk>> $$0, hz $$1, int $$2, bzh.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).count();
    }
 
-   public static void a(bmo $$0, hx $$1) {
-      bno<?> $$2 = $$0.dN();
-      ig $$3 = ig.a($$0.dL().ae(), $$1);
-      Optional<ig> $$4 = $$2.c(bvq.aN);
-      if ($$4.isEmpty()) {
-         $$2.a(bvq.aN, $$3);
-         $$2.a(bvq.aO, 600);
-      } else if ($$4.get().equals($$3)) {
-         $$2.a(bvq.aO, 600);
-      }
+   public boolean a(aix<bzk> $$0, hz $$1) {
+      return this.a($$1, (Predicate<ij<bzk>>)($$1x -> $$1x.a($$0)));
    }
 
-   private static Optional<bpt> b(bmo $$0) {
-      bno<?> $$1 = $$0.dN();
-      Optional<ig> $$2 = $$1.c(bvq.aN);
-      if ($$2.isPresent()) {
-         ig $$3 = $$2.get();
-         if (a($$0, $$1, $$3)) {
-            return Optional.of(new boi($$3.b().c()));
-         }
-
-         $$1.b(bvq.aN);
-      }
-
-      return d($$0);
+   public Stream<bzi> b(Predicate<ij<bzk>> $$0, hz $$1, int $$2, bzh.b $$3) {
+      int $$4 = Math.floorDiv($$2, 16) + 1;
+      return cuu.a(new cuu($$1), $$4).flatMap($$2x -> this.a($$0, $$2x, $$3)).filter($$2x -> {
+         hz $$3x = $$2x.f();
+         return Math.abs($$3x.u() - $$1.u()) <= $$2 && Math.abs($$3x.w() - $$1.w()) <= $$2;
+      });
    }
 
-   private static boolean c(bmo $$0) {
-      bno<?> $$1 = $$0.dN();
-      return $$1.a(bvq.L);
+   public Stream<bzi> c(Predicate<ij<bzk>> $$0, hz $$1, int $$2, bzh.b $$3) {
+      int $$4 = $$2 * $$2;
+      return this.b($$0, $$1, $$2, $$3).filter($$2x -> $$2x.f().j($$1) <= (double)$$4);
    }
 
-   private static boolean a(bmo $$0, bno<?> $$1, ig $$2) {
-      Optional<Integer> $$3 = $$1.c(bvq.aO);
-      ctx $$4 = $$0.dL();
-      return $$4.ae() == $$2.a() && $$4.a_($$2.b()).a(cxa.aY) && $$3.isPresent();
+   @axl
+   public Stream<bzi> a(Predicate<ij<bzk>> $$0, cuu $$1, bzh.b $$2) {
+      return IntStream.range(this.c.an(), this.c.ao())
+         .boxed()
+         .map($$1x -> this.d(jb.a($$1, $$1x).s()))
+         .filter(Optional::isPresent)
+         .flatMap($$2x -> ((bzj)$$2x.get()).a($$0, $$2));
    }
 
-   private static Optional<bpt> d(bmo $$0) {
-      return a($$0).map($$0x -> new boq($$0x, true));
+   public Stream<hz> a(Predicate<ij<bzk>> $$0, Predicate<hz> $$1, hz $$2, int $$3, bzh.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).map(bzi::f).filter($$1);
    }
 
-   public static Optional<anf> a(bmo $$0) {
-      ctx $$1 = $$0.dL();
-      if (!$$1.y_() && $$1 instanceof ane $$2) {
-         Optional<UUID> $$3 = $$0.dN().c(bvq.aM);
-         if ($$3.isPresent()) {
-            if ($$2.a($$3.get()) instanceof anf $$5 && ($$5.e.d() || $$5.e.e()) && $$5.a($$0, 64.0)) {
-               return Optional.of($$5);
+   public Stream<Pair<ij<bzk>, hz>> b(Predicate<ij<bzk>> $$0, Predicate<hz> $$1, hz $$2, int $$3, bzh.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).filter($$1x -> $$1.test($$1x.f())).map($$0x -> Pair.of($$0x.g(), $$0x.f()));
+   }
+
+   public Stream<Pair<ij<bzk>, hz>> c(Predicate<ij<bzk>> $$0, Predicate<hz> $$1, hz $$2, int $$3, bzh.b $$4) {
+      return this.b($$0, $$1, $$2, $$3, $$4).sorted(Comparator.comparingDouble($$1x -> ((hz)$$1x.getSecond()).j($$2)));
+   }
+
+   public Optional<hz> d(Predicate<ij<bzk>> $$0, Predicate<hz> $$1, hz $$2, int $$3, bzh.b $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4).findFirst();
+   }
+
+   public Optional<hz> d(Predicate<ij<bzk>> $$0, hz $$1, int $$2, bzh.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).map(bzi::f).min(Comparator.comparingDouble($$1x -> $$1x.j($$1)));
+   }
+
+   public Optional<Pair<ij<bzk>, hz>> e(Predicate<ij<bzk>> $$0, hz $$1, int $$2, bzh.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).min(Comparator.comparingDouble($$1x -> $$1x.f().j($$1))).map($$0x -> Pair.of($$0x.g(), $$0x.f()));
+   }
+
+   public Optional<hz> e(Predicate<ij<bzk>> $$0, Predicate<hz> $$1, hz $$2, int $$3, bzh.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).map(bzi::f).filter($$1).min(Comparator.comparingDouble($$1x -> $$1x.j($$2)));
+   }
+
+   public Optional<hz> a(Predicate<ij<bzk>> $$0, BiPredicate<ij<bzk>, hz> $$1, hz $$2, int $$3) {
+      return this.c($$0, $$2, $$3, bzh.b.a).filter($$1x -> $$1.test($$1x.g(), $$1x.f())).findFirst().map($$0x -> {
+         $$0x.b();
+         return $$0x.f();
+      });
+   }
+
+   public Optional<hz> a(Predicate<ij<bzk>> $$0, Predicate<hz> $$1, bzh.b $$2, hz $$3, int $$4, awo $$5) {
+      List<bzi> $$6 = ac.a(this.c($$0, $$3, $$4, $$2), $$5);
+      return $$6.stream().filter($$1x -> $$1.test($$1x.f())).findFirst().map(bzi::f);
+   }
+
+   public boolean b(hz $$0) {
+      return this.d(jb.c($$0)).map($$1 -> $$1.c($$0)).orElseThrow(() -> ac.b(new IllegalStateException("POI never registered at " + $$0)));
+   }
+
+   public boolean a(hz $$0, Predicate<ij<bzk>> $$1) {
+      return this.d(jb.c($$0)).map($$2 -> $$2.a($$0, $$1)).orElse(false);
+   }
+
+   public Optional<ij<bzk>> c(hz $$0) {
+      return this.d(jb.c($$0)).flatMap($$1 -> $$1.d($$0));
+   }
+
+   @Deprecated
+   @axl
+   public int d(hz $$0) {
+      return this.d(jb.c($$0)).map($$1 -> $$1.b($$0)).orElse(0);
+   }
+
+   public int a(jb $$0) {
+      this.d.a();
+      return this.d.c($$0.s());
+   }
+
+   boolean g(long $$0) {
+      Optional<bzj> $$1 = this.c($$0);
+      return $$1 == null ? false : $$1.<Boolean>map($$0x -> $$0x.a($$0xx -> $$0xx.a(auj.b), bzh.b.b).findAny().isPresent()).orElse(false);
+   }
+
+   @Override
+   public void a(BooleanSupplier $$0) {
+      super.a($$0);
+      this.d.a();
+   }
+
+   @Override
+   protected void a(long $$0) {
+      super.a($$0);
+      this.d.b($$0, this.d.b($$0), false);
+   }
+
+   @Override
+   protected void b(long $$0) {
+      this.d.b($$0, this.d.b($$0), false);
+   }
+
+   public void a(jb $$0, dnn $$1) {
+      ac.a(this.d($$0.s()), $$2 -> $$2.a($$2x -> {
+            if (a($$1)) {
+               this.a($$1, $$0, $$2x);
             }
+         }), () -> {
+         if (a($$1)) {
+            bzj $$2 = this.f($$0.s());
+            this.a($$1, $$0, $$2::a);
+         }
+      });
+   }
 
-            return Optional.empty();
+   private static boolean a(dnn $$0) {
+      return $$0.a(bzl::b);
+   }
+
+   private void a(dnn $$0, jb $$1, BiConsumer<hz, ij<bzk>> $$2) {
+      $$1.t().forEach($$2x -> {
+         dlf $$3 = $$0.a(jb.b($$2x.u()), jb.b($$2x.v()), jb.b($$2x.w()));
+         bzl.a($$3).ifPresent($$2xx -> $$2.accept($$2x, $$2xx));
+      });
+   }
+
+   public void a(cvq $$0, hz $$1, int $$2) {
+      jb.a(new cuu($$1), Math.floorDiv($$2, 16), this.c.an(), this.c.ao())
+         .map($$0x -> Pair.of($$0x, this.d($$0x.s())))
+         .filter($$0x -> !((Optional)$$0x.getSecond()).<Boolean>map(bzj::a).orElse(false))
+         .map($$0x -> ((jb)$$0x.getFirst()).r())
+         .filter($$0x -> this.e.add($$0x.a()))
+         .forEach($$1x -> $$0.a($$1x.e, $$1x.f, dng.c));
+   }
+
+   final class a extends aor {
+      private final Long2ByteMap b = new Long2ByteOpenHashMap();
+
+      protected a() {
+         super(7, 16, 256);
+         this.b.defaultReturnValue((byte)7);
+      }
+
+      @Override
+      protected int b(long $$0) {
+         return bzh.this.g($$0) ? 0 : 7;
+      }
+
+      @Override
+      protected int c(long $$0) {
+         return this.b.get($$0);
+      }
+
+      @Override
+      protected void a(long $$0, int $$1) {
+         if ($$1 > 6) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, (byte)$$1);
          }
       }
 
-      return Optional.empty();
+      public void a() {
+         super.b(Integer.MAX_VALUE);
+      }
+   }
+
+   public static enum b {
+      a(bzi::d),
+      b(bzi::e),
+      c($$0 -> true);
+
+      private final Predicate<? super bzi> d;
+
+      private b(Predicate<? super bzi> $$0) {
+         this.d = $$0;
+      }
+
+      public Predicate<? super bzi> a() {
+         return this.d;
+      }
    }
 }

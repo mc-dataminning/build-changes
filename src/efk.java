@@ -1,38 +1,17 @@
-public enum efk {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F),
-   z(0.0F);
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-   private final float A;
+public class efk implements efm {
+   private static final efk b = new efk();
+   public static final Codec<efk> a = Codec.unit(b);
 
-   private efk(float $$0) {
-      this.A = $$0;
+   @Override
+   public sw a(awo $$0, @Nullable sw $$1) {
+      return new sw();
    }
 
-   public float a() {
-      return this.A;
+   @Override
+   public efn<?> a() {
+      return efn.a;
    }
 }

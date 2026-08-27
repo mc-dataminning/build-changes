@@ -1,53 +1,50 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class dxz extends dxv {
-   public static final Codec<dxz> a = RecordCodecBuilder.create(
+public class dxz extends dyb {
+   public static final Codec<dxz> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dps.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dps.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+               avz.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               efs.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               avp.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
             )
+            .and(b($$0))
             .apply($$0, dxz::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final dps d;
-   private final dps e;
-   private final int f;
+   private final avz<Integer> i;
+   private final efs.a j;
+   private final float k;
+   private final efs l;
 
-   private dxz(dps $$0, dps $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static dxz a(dps $$0, dps $$1, int $$2) {
-      return new dxz($$0, $$1, $$2);
+   public dxz(avz<Integer> $$0, efs.a $$1, float $$2, long $$3, efs.a $$4, float $$5, List<dlf> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = efs.b(new drn(new dqp($$3)), $$1);
    }
 
    @Override
-   public int a(auw $$0, dpv $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = aup.a($$0, $$2 + this.f, $$3);
-         int $$5 = aup.a($$0, $$2, $$4 - 1);
-         return aup.a($$0, $$2, $$5 - 1 + this.f);
+   protected dxy<?> a() {
+      return dxy.e;
+   }
+
+   @Override
+   public dlf a(awo $$0, hz $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)awh.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dlf> $$4 = Lists.newArrayListWithCapacity($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
+
+      return this.a($$4, $$1, (double)this.e);
    }
 
-   @Override
-   public dxw<?> a() {
-      return dxw.d;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   protected double a(hz $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

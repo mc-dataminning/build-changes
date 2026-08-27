@@ -1,31 +1,24 @@
-public class aem implements xg<adk> {
-   private static final int a = 2;
-   private final boolean b;
+import java.util.Collection;
+import java.util.List;
 
-   public aem(cfn $$0) {
-      this.b = $$0.b;
-   }
+public class aem implements xx<aag> {
+   public static final xo<vb, aem> a = xo.a(csd.a.a(xm.a()), $$0 -> $$0.b, aem::new);
+   private final List<csd<?>> b;
 
-   public aem(uj $$0) {
-      byte $$1 = $$0.readByte();
-      this.b = ($$1 & 2) != 0;
+   public aem(Collection<csd<?>> $$0) {
+      this.b = List.copyOf($$0);
    }
 
    @Override
-   public void a(uj $$0) {
-      byte $$1 = 0;
-      if (this.b) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   public xz<aem> a() {
+      return aeq.bc;
    }
 
-   public void a(adk $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public List<csd<?>> b() {
       return this.b;
    }
 }

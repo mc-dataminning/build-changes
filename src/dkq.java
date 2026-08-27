@@ -1,62 +1,70 @@
-public enum dkq implements avl {
-   a("harp", art.rs, dkq.a.a),
-   b("basedrum", art.rm, dkq.a.a),
-   c("snare", art.rv, dkq.a.a),
-   d("hat", art.rt, dkq.a.a),
-   e("bass", art.rn, dkq.a.a),
-   f("flute", art.rq, dkq.a.a),
-   g("bell", art.ro, dkq.a.a),
-   h("guitar", art.rr, dkq.a.a),
-   i("chime", art.rp, dkq.a.a),
-   j("xylophone", art.rw, dkq.a.a),
-   k("iron_xylophone", art.rx, dkq.a.a),
-   l("cow_bell", art.ry, dkq.a.a),
-   m("didgeridoo", art.rz, dkq.a.a),
-   n("bit", art.rA, dkq.a.a),
-   o("banjo", art.rB, dkq.a.a),
-   p("pling", art.ru, dkq.a.a),
-   q("zombie", art.rC, dkq.a.b),
-   r("skeleton", art.rD, dkq.a.b),
-   s("creeper", art.rE, dkq.a.b),
-   t("dragon", art.rF, dkq.a.b),
-   u("wither_skeleton", art.rG, dkq.a.b),
-   v("piglin", art.rH, dkq.a.b),
-   w("custom_head", art.zJ, dkq.a.c);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private final String x;
-   private final ih<ars> y;
-   private final dkq.a z;
+public record dkq(int c, int d, float e, float f, float g, float h, int i, int j, bke<cwe> k, bke<aiy> l) {
+   public static dkq a = new dkq(14, 4, 6.0F, 2.0F, 2.0F, 1.0F, 40, 36000, bke.b(), bke.<aiy>a().a(eit.aN).a(eit.aM).a());
+   public static MapCodec<dkq> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 128).optionalFieldOf("required_player_range", a.c).forGetter(dkq::a),
+               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dkq::b),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dkq::c),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dkq::d),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dkq::e),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dkq::f),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dkq::g),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", a.j).forGetter(dkq::h),
+               cwe.c.optionalFieldOf("spawn_potentials", bke.b()).forGetter(dkq::i),
+               bke.a(aiy.a).optionalFieldOf("loot_tables_to_eject", a.l).forGetter(dkq::j)
+            )
+            .apply($$0, dkq::new)
+   );
 
-   private dkq(String $$0, ih<ars> $$1, dkq.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   public int a(int $$0) {
+      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
    }
 
-   @Override
-   public String c() {
-      return this.x;
+   public int b(int $$0) {
+      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
    }
 
-   public ih<ars> a() {
-      return this.y;
+   public int a() {
+      return this.c;
    }
 
-   public boolean b() {
-      return this.z == dkq.a.a;
+   public int b() {
+      return this.d;
    }
 
-   public boolean d() {
-      return this.z == dkq.a.c;
+   public float c() {
+      return this.e;
    }
 
-   public boolean e() {
-      return this.z != dkq.a.a;
+   public float d() {
+      return this.f;
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public float e() {
+      return this.g;
+   }
+
+   public float f() {
+      return this.h;
+   }
+
+   public int g() {
+      return this.i;
+   }
+
+   public int h() {
+      return this.j;
+   }
+
+   public bke<cwe> i() {
+      return this.k;
+   }
+
+   public bke<aiy> j() {
+      return this.l;
    }
 }

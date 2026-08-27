@@ -1,14 +1,7 @@
-public enum epx {
-   a(0),
-   b(1);
+public record epx(ens b, ens c, ens d) {
+   public static final epx a = new epx(ens.b, new ens(0.0, 0.0, -1.0), new ens(0.0, 1.0, 0.0));
 
-   private final int c;
-
-   private epx(int $$0) {
-      this.c = $$0;
-   }
-
-   public int a() {
-      return this.c;
+   public ens a() {
+      return this.c.c(this.d);
    }
 }

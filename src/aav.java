@@ -1,24 +1,18 @@
-public class aav implements xg<zb> {
-   private final bkb a;
+import io.netty.buffer.ByteBuf;
 
-   public aav(bkb $$0) {
-      this.a = $$0;
-   }
+public class aav implements xx<aag> {
+   public static final aav a = new aav();
+   public static final xo<ByteBuf, aav> b = xo.a(a);
 
-   public aav(uj $$0) {
-      this.a = $$0.b(bkb.class);
+   private aav() {
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
+   public xz<aav> a() {
+      return aeq.o;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
-   }
-
-   public bkb a() {
-      return this.a;
    }
 }

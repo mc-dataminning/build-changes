@@ -1,42 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.OptionalLong;
 
 public class pk {
-   public static final ahg<eax> a = pm.a("pillager_outpost/base_plates");
-
-   public static void a(pf<eax> $$0) {
-      ii<edm> $$1 = $$0.a(ke.aE);
-      ih<edm> $$2 = $$1.b(pn.q);
-      ii<eax> $$3 = $$0.a(ke.aG);
-      ih<eax> $$4 = $$3.b(pm.a);
-      $$0.a(a, new eax($$4, ImmutableList.of(Pair.of(eav.a("pillager_outpost/base_plate"), 1)), eax.a.b));
-      pm.a(
-         $$0,
-         "pillager_outpost/towers",
-         new eax(
-            $$4,
-            ImmutableList.of(Pair.of(eav.b(ImmutableList.of(eav.a("pillager_outpost/watchtower"), eav.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            eax.a.b
+   public static void a(ph<doo> $$0) {
+      $$0.a(
+         dom.a,
+         new doo(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, atz.ba, dom.e, 0.0F, new doo.a(false, true, blf.a(0, 7), 0))
+      );
+      $$0.a(
+         dom.b,
+         new doo(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, atz.bb, dom.f, 0.1F, new doo.a(true, false, bkw.a(7), 15))
+      );
+      $$0.a(
+         dom.c,
+         new doo(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, atz.bc, dom.g, 0.0F, new doo.a(false, true, blf.a(0, 7), 0)
          )
       );
-      pm.a($$0, "pillager_outpost/feature_plates", new eax($$4, ImmutableList.of(Pair.of(eav.a("pillager_outpost/feature_plate"), 1)), eax.a.a));
-      pm.a(
-         $$0,
-         "pillager_outpost/features",
-         new eax(
-            $$4,
-            ImmutableList.of(
-               Pair.of(eav.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(eav.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(eav.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(eav.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(eav.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(eav.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(eav.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(eav.g(), 6)
-            ),
-            eax.a.b
-         )
+      $$0.a(
+         dom.d,
+         new doo(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, atz.ba, dom.e, 0.0F, new doo.a(false, true, blf.a(0, 7), 0))
       );
    }
 }

@@ -1,52 +1,89 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class akm {
-   public static <T extends du<T>> void a(CommandDispatcher<T> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.damage.invulnerable"));
+
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new akm.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new akm.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new akm.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("damage").requires($$0x -> $$0x.c(2)))
+            .then(
+               dv.a("target", eh.a())
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (du)$$0x.getSource(), eh.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((du)$$0x.getSource()).e().ai().n()
+                                 )
+                           ))
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("damageType", et.a($$1, kg.r))
+                                    .executes(
+                                       $$0x -> a(
+                                             (du)$$0x.getSource(),
+                                             eh.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new bmn(et.a($$0x, "damageType", kg.r))
+                                          )
+                                    ))
+                                 .then(
+                                    dv.a("at")
+                                       .then(
+                                          dv.a("location", fv.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      eh.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bmn(et.a($$0x, "damageType", kg.r), fv.a($$0x, "location"))
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 dv.a("by")
+                                    .then(
+                                       ((RequiredArgumentBuilder)dv.a("entity", eh.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (du)$$0x.getSource(),
+                                                      eh.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bmn(et.a($$0x, "damageType", kg.r), eh.a($$0x, "entity"))
+                                                   )
+                                             ))
+                                          .then(
+                                             dv.a("from")
+                                                .then(
+                                                   dv.a("cause", eh.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (du)$$0x.getSource(),
+                                                               eh.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new bmn(et.a($$0x, "damageType", kg.r), eh.a($$0x, "entity"), eh.a($$0x, "cause"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   static class a<T extends du<T>> implements gl.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, gj $$2, gp<T> $$3) {
-         $$0.p().onFailure();
-         gq $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
-   }
-
-   static class b<T extends du<T>> implements gm.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, gj $$3, gp<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(gy.a());
-            }
-         } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new gu.a<>($$6, $$5, $$3.d(), $$0, $$1));
-         }
-      }
-   }
-
-   static class c<T extends du<T>> implements gl.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, gj $$2, gp<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         gq $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+   private static int a(du $$0, bno $$1, float $$2, bmn $$3) throws CommandSyntaxException {
+      if ($$1.a($$3, $$2)) {
+         $$0.a(() -> vq.a("commands.damage.success", $$2, $$1.Q_()), true);
+         return 1;
+      } else {
+         throw a.create();
       }
    }
 }

@@ -1,14 +1,24 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cmq extends cla {
-   public cmq(cwy $$0, cnb.a $$1) {
-      super($$0, $$1);
+public class cmq extends cou {
+   private final auo<dik> a;
+
+   public cmq(auo<dik> $$0, cou.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   @Nullable
+   public auo<dik> b() {
+      return this.a;
+   }
+
    @Override
-   protected djp c(cpp $$0) {
-      cfq $$1 = $$0.o();
-      return $$1 != null && !$$1.gp() ? null : super.c($$0);
+   public void a(coz $$0, @Nullable cvn $$1, List<vq> $$2, cqq $$3) {
+      $$2.add(this.d().a(n.h));
+   }
+
+   public we d() {
+      return vq.c(this.a() + ".desc");
    }
 }

@@ -1,51 +1,39 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 
 public class alp {
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
-               .then(dt.a("clear").executes($$0x -> a((ds)$$0x.getSource(), ImmutableList.of(((ds)$$0x.getSource()).h())))))
-            .then(
-               dt.a("set")
-                  .then(
-                     dt.a("warning_level", IntegerArgumentType.integer(0, 4))
-                        .executes(
-                           $$0x -> a((ds)$$0x.getSource(), ImmutableList.of(((ds)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
-                        )
-                  )
-            )
+   public static void a(CommandDispatcher<du> $$0) {
+      LiteralCommandNode<du> $$1 = $$0.register(
+         (LiteralArgumentBuilder)dv.a("msg").then(dv.a("targets", eh.d()).then(dv.a("message", el.a()).executes($$0x -> {
+            Collection<aow> $$1x = eh.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               el.a($$0x, "message", $$2 -> a((du)$$0x.getSource(), $$1x, $$2));
+            }
+
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)dv.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)dv.a("w").redirect($$1));
    }
 
-   private static int a(ds $$0, Collection<? extends cfq> $$1, int $$2) {
-      for (cfq $$3 : $$1) {
-         $$3.aa().ifPresent($$1x -> $$1x.a($$2));
+   private static void a(du $$0, Collection<aow> $$1, wg $$2) {
+      vm.a $$3 = vm.a(vm.e, $$0);
+      wf $$4 = wf.a($$2);
+      boolean $$5 = false;
+
+      for (aow $$6 : $$1) {
+         vm.a $$7 = vm.a(vm.f, $$0).c($$6.Q_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> vg.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vg.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
+      if ($$5) {
+         $$0.a(asn.f);
       }
-
-      return $$1.size();
-   }
-
-   private static int a(ds $$0, Collection<? extends cfq> $$1) {
-      for (cfq $$2 : $$1) {
-         $$2.aa().ifPresent(cew::b);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vg.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vg.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
    }
 }

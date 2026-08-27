@@ -1,128 +1,111 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class dbs extends ddl implements ddy {
-   public static final MapCodec<dbs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dje.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dbs::new)
-   );
-   public static final dkp b = dkf.at;
-   public static final int c = 4;
-   private static final emv[] j = new emv[]{
-      cwy.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
-      cwy.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
-      cwy.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
-      cwy.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
-      cwy.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private static final dkg k = dkf.C;
-   public static final dkg d = dkf.j;
+public class dbs extends cyo {
+   public static final MapCodec<dbs> a = b(dbs::new);
+   private static final int c = 2;
+   private static final int d = 5;
+   private static final int e = 3600;
+   private static final int f = 12000;
+   protected static final eol b = cyo.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
+   private static int g = 3600;
+   private static int h = 12000;
 
    @Override
    public MapCodec<dbs> a() {
       return a;
    }
 
-   public dbs(dje $$0, djo.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(f, Integer.valueOf(0)).a(b, Integer.valueOf(0)).a(k, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   public dbs(dle.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(f).a(b).a(k).a(d);
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return b;
    }
 
    @Override
-   protected boolean b(djp $$0, ctd $$1, hx $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(cxa.dR);
-   }
-
-   @Nullable
-   @Override
-   public djp a(cpp $$0) {
-      eez $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == efa.c;
-      return super.a($$0).a(k, Boolean.valueOf($$2)).a(b, Integer.valueOf(4));
+   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
+      return a($$1, $$2.d());
    }
 
    @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      emc $$4 = $$0.n($$1, $$2);
-      emv $$5;
-      if (!$$0.c(d)) {
-         $$5 = j[4];
+   protected void b(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
+      $$1.a($$2, this, a($$1.F_()));
+   }
+
+   private static int a(awo $$0) {
+      return $$0.b(g, h);
+   }
+
+   @Override
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      return !this.a($$0, $$3, $$4) ? cyq.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
+      if (!this.a($$0, $$1, $$2)) {
+         this.a((cvn)$$1, $$2);
       } else {
-         $$5 = j[$$0.c(b)];
+         this.a($$1, $$2, $$3);
       }
-
-      return $$5.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   public boolean a(djp $$0, cua $$1, hx $$2) {
-      return h($$0) ? $$1.a_($$2.c()).a(cxa.aL) : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      if ($$0.c(k)) {
-         $$3.a($$4, efa.c, efa.c.a($$3));
+   protected void a(dlf $$0, cvn $$1, hz $$2, bno $$3) {
+      if ($$3.ai().equals(bnu.N)) {
+         this.a($$1, $$2);
       }
-
-      return $$1 == ic.b && !$$0.a($$3, $$4) ? cxa.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public eez c_(djp $$0) {
-      return $$0.c(k) ? efa.c.a(false) : super.c_($$0);
+   private static boolean a(cut $$0, hz $$1) {
+      egp $$2 = $$0.b_($$1);
+      egp $$3 = $$0.b_($$1.c());
+      return $$2.a() == egq.c && $$3.a() == egq.a;
    }
 
-   @Override
-   public void b(djp $$0, ane $$1, hx $$2, auw $$3) {
-      if (!h($$0)) {
-         if ($$3.a(7) == 0) {
-            this.a($$1, $$2, $$0, $$3);
+   private void a(aov $$0, hz $$1, awo $$2) {
+      this.a((cvn)$$0, $$1);
+      $$0.a(null, $$1, atk.jt, atl.e, 1.0F, 1.0F);
+      this.b($$0, $$1, $$2);
+   }
+
+   private void a(cvn $$0, hz $$1) {
+      $$0.b($$1, false);
+   }
+
+   private void b(aov $$0, hz $$1, awo $$2) {
+      int $$3 = $$2.b(2, 6);
+
+      for (int $$4 = 1; $$4 <= $$3; $$4++) {
+         cbo $$5 = bnu.aY.a((cvn)$$0);
+         if ($$5 != null) {
+            double $$6 = (double)$$1.u() + this.b($$2);
+            double $$7 = (double)$$1.w() + this.b($$2);
+            int $$8 = $$2.b(1, 361);
+            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
+            $$5.fL();
+            $$0.b($$5);
          }
-      } else {
-         if (!n($$0)) {
-            $$1.a($$2, $$0.a(b), 2);
-         }
       }
    }
 
-   @Override
-   public boolean b(cua $$0, hx $$1, djp $$2) {
-      return !h($$2) || !n($$2);
+   private double b(awo $$0) {
+      double $$1 = (double)(cbo.c / 2.0F);
+      return awh.a($$0.j(), $$1, 1.0 - $$1);
    }
 
-   @Override
-   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
-      return h($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
+   @VisibleForTesting
+   public static void a(int $$0, int $$1) {
+      g = $$0;
+      h = $$1;
    }
 
-   @Override
-   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
-      if (h($$3) && !n($$3)) {
-         $$0.a($$2, $$3.a(b), 2);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private static boolean h(djp $$0) {
-      return $$0.c(d);
-   }
-
-   private static boolean n(djp $$0) {
-      return $$0.c(b) == 4;
-   }
-
-   public static djp c() {
-      return b(0);
-   }
-
-   public static djp b(int $$0) {
-      return cxa.E.o().a(d, Boolean.valueOf(true)).a(b, Integer.valueOf($$0));
+   @VisibleForTesting
+   public static void b() {
+      g = 3600;
+      h = 12000;
    }
 }

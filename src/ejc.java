@@ -1,30 +1,146 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class ejc extends eir {
+public class ejc {
    public static final Codec<ejc> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(asx.b(ke.D).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, ejc::new)
+      $$0 -> $$0.group(
+               ejm.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
+               avp.a(elw.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
+               avp.a(ekk.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
+               emq.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
+               emq.a.fieldOf("bonus_rolls").orElse(emn.a(0.0F)).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, ejc::new)
    );
-   private final asx<cmy> b;
+   private final List<ejo> b;
+   private final List<elu> c;
+   private final Predicate<eiv> d;
+   private final List<eki> e;
+   private final BiFunction<coz, eiv, coz> f;
+   private final emp g;
+   private final emp h;
 
-   private ejc(List<eke> $$0, asx<cmy> $$1) {
-      super($$0);
-      this.b = $$1;
+   ejc(List<ejo> $$0, List<elu> $$1, List<eki> $$2, emp $$3, emp $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = elw.a($$1);
+      this.e = $$2;
+      this.f = ekk.a($$2);
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   @Override
-   public eit b() {
-      return eiu.A;
+   private void b(Consumer<coz> $$0, eiv $$1) {
+      awo $$2 = $$1.b();
+      List<ejn> $$3 = Lists.newArrayList();
+      MutableInt $$4 = new MutableInt();
+
+      for (ejo $$5 : this.b) {
+         $$5.expand($$1, $$3x -> {
+            int $$4x = $$3x.a($$1.c());
+            if ($$4x > 0) {
+               $$3.add($$3x);
+               $$4.add($$4x);
+            }
+         });
+      }
+
+      int $$6 = $$3.size();
+      if ($$4.intValue() != 0 && $$6 != 0) {
+         if ($$6 == 1) {
+            $$3.get(0).a($$0, $$1);
+         } else {
+            int $$7 = $$2.a($$4.intValue());
+
+            for (ejn $$8 : $$3) {
+               $$7 -= $$8.a($$1.c());
+               if ($$7 < 0) {
+                  $$8.a($$0, $$1);
+                  return;
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public cng a(cng $$0, ehf $$1) {
-      cmz.a($$0, this.b, $$1.b());
-      return $$0;
+   public void a(Consumer<coz> $$0, eiv $$1) {
+      if (this.d.test($$1)) {
+         Consumer<coz> $$2 = eki.a(this.f, $$0, $$1);
+         int $$3 = this.g.a($$1) + awh.d(this.h.b($$1) * $$1.c());
+
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.b($$2, $$1);
+         }
+      }
    }
 
-   public static eir.a<?> a(asx<cmy> $$0) {
-      return a($$1 -> new ejc($$1, $$0));
+   public void a(eje $$0) {
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
+
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
+      }
+
+      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
+         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
+      }
+
+      this.g.a($$0.a(".rolls"));
+      this.h.a($$0.a(".bonusRolls"));
+   }
+
+   public static ejc.a a() {
+      return new ejc.a();
+   }
+
+   public static class a implements ekf<ejc.a>, eln<ejc.a> {
+      private final Builder<ejo> a = ImmutableList.builder();
+      private final Builder<elu> b = ImmutableList.builder();
+      private final Builder<eki> c = ImmutableList.builder();
+      private emp d = emn.a(1.0F);
+      private emp e = emn.a(0.0F);
+
+      public ejc.a a(emp $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ejc.a a() {
+         return this;
+      }
+
+      public ejc.a b(emp $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ejc.a a(ejo.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      public ejc.a a(elu.a $$0) {
+         this.b.add($$0.build());
+         return this;
+      }
+
+      public ejc.a a(eki.a $$0) {
+         this.c.add($$0.b());
+         return this;
+      }
+
+      public ejc b() {
+         return new ejc(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
+      }
    }
 }

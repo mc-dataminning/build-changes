@@ -1,42 +1,27 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+public interface tx {
+   void a(tr var1);
 
-public class tx extends tt {
-   private final Deque<tv> a = new ArrayDeque<>();
+   void a(su var1);
 
-   public tx(tu... $$0) {
-      tv $$1 = tv.a();
+   void a(to var1);
 
-      for (tu $$2 : $$0) {
-         $$1.a($$2);
-      }
+   void a(tb var1);
 
-      this.a.push($$1);
-   }
+   void a(te var1);
 
-   @Override
-   public ti.a a(tn<?> $$0, String $$1) {
-      tv $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return ti.a.b;
-      } else {
-         if ($$0 == so.b) {
-            tv $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
+   void a(sz var1);
 
-         return super.a($$0, $$1);
-      }
-   }
+   void a(sx var1);
 
-   @Override
-   public ti.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   void a(st var1);
 
-      return super.b();
-   }
+   void a(ta var1);
+
+   void a(td var1);
+
+   void a(tc var1);
+
+   void a(sw var1);
+
+   void a(sy var1);
 }

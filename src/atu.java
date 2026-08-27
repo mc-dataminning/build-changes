@@ -1,53 +1,98 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+public class atu {
+   public static final att<cyo> a = a("mined", kf.e);
+   public static final att<cou> b = a("crafted", kf.h);
+   public static final att<cou> c = a("used", kf.h);
+   public static final att<cou> d = a("broken", kf.h);
+   public static final att<cou> e = a("picked_up", kf.h);
+   public static final att<cou> f = a("dropped", kf.h);
+   public static final att<bnu<?>> g = a("killed", kf.g);
+   public static final att<bnu<?>> h = a("killed_by", kf.g);
+   public static final att<aiy> i = a("custom", kf.m);
+   public static final aiy j = a("leave_game", ats.b);
+   public static final aiy k = a("play_time", ats.e);
+   public static final aiy l = a("total_world_time", ats.e);
+   public static final aiy m = a("time_since_death", ats.e);
+   public static final aiy n = a("time_since_rest", ats.e);
+   public static final aiy o = a("sneak_time", ats.e);
+   public static final aiy p = a("walk_one_cm", ats.d);
+   public static final aiy q = a("crouch_one_cm", ats.d);
+   public static final aiy r = a("sprint_one_cm", ats.d);
+   public static final aiy s = a("walk_on_water_one_cm", ats.d);
+   public static final aiy t = a("fall_one_cm", ats.d);
+   public static final aiy u = a("climb_one_cm", ats.d);
+   public static final aiy v = a("fly_one_cm", ats.d);
+   public static final aiy w = a("walk_under_water_one_cm", ats.d);
+   public static final aiy x = a("minecart_one_cm", ats.d);
+   public static final aiy y = a("boat_one_cm", ats.d);
+   public static final aiy z = a("pig_one_cm", ats.d);
+   public static final aiy A = a("horse_one_cm", ats.d);
+   public static final aiy B = a("aviate_one_cm", ats.d);
+   public static final aiy C = a("swim_one_cm", ats.d);
+   public static final aiy D = a("strider_one_cm", ats.d);
+   public static final aiy E = a("jump", ats.b);
+   public static final aiy F = a("drop", ats.b);
+   public static final aiy G = a("damage_dealt", ats.c);
+   public static final aiy H = a("damage_dealt_absorbed", ats.c);
+   public static final aiy I = a("damage_dealt_resisted", ats.c);
+   public static final aiy J = a("damage_taken", ats.c);
+   public static final aiy K = a("damage_blocked_by_shield", ats.c);
+   public static final aiy L = a("damage_absorbed", ats.c);
+   public static final aiy M = a("damage_resisted", ats.c);
+   public static final aiy N = a("deaths", ats.b);
+   public static final aiy O = a("mob_kills", ats.b);
+   public static final aiy P = a("animals_bred", ats.b);
+   public static final aiy Q = a("player_kills", ats.b);
+   public static final aiy R = a("fish_caught", ats.b);
+   public static final aiy S = a("talked_to_villager", ats.b);
+   public static final aiy T = a("traded_with_villager", ats.b);
+   public static final aiy U = a("eat_cake_slice", ats.b);
+   public static final aiy V = a("fill_cauldron", ats.b);
+   public static final aiy W = a("use_cauldron", ats.b);
+   public static final aiy X = a("clean_armor", ats.b);
+   public static final aiy Y = a("clean_banner", ats.b);
+   public static final aiy Z = a("clean_shulker_box", ats.b);
+   public static final aiy aa = a("interact_with_brewingstand", ats.b);
+   public static final aiy ab = a("interact_with_beacon", ats.b);
+   public static final aiy ac = a("inspect_dropper", ats.b);
+   public static final aiy ad = a("inspect_hopper", ats.b);
+   public static final aiy ae = a("inspect_dispenser", ats.b);
+   public static final aiy af = a("play_noteblock", ats.b);
+   public static final aiy ag = a("tune_noteblock", ats.b);
+   public static final aiy ah = a("pot_flower", ats.b);
+   public static final aiy ai = a("trigger_trapped_chest", ats.b);
+   public static final aiy aj = a("open_enderchest", ats.b);
+   public static final aiy ak = a("enchant_item", ats.b);
+   public static final aiy al = a("play_record", ats.b);
+   public static final aiy am = a("interact_with_furnace", ats.b);
+   public static final aiy an = a("interact_with_crafting_table", ats.b);
+   public static final aiy ao = a("open_chest", ats.b);
+   public static final aiy ap = a("sleep_in_bed", ats.b);
+   public static final aiy aq = a("open_shulker_box", ats.b);
+   public static final aiy ar = a("open_barrel", ats.b);
+   public static final aiy as = a("interact_with_blast_furnace", ats.b);
+   public static final aiy at = a("interact_with_smoker", ats.b);
+   public static final aiy au = a("interact_with_lectern", ats.b);
+   public static final aiy av = a("interact_with_campfire", ats.b);
+   public static final aiy aw = a("interact_with_cartography_table", ats.b);
+   public static final aiy ax = a("interact_with_loom", ats.b);
+   public static final aiy ay = a("interact_with_stonecutter", ats.b);
+   public static final aiy az = a("bell_ring", ats.b);
+   public static final aiy aA = a("raid_trigger", ats.b);
+   public static final aiy aB = a("raid_win", ats.b);
+   public static final aiy aC = a("interact_with_anvil", ats.b);
+   public static final aiy aD = a("interact_with_grindstone", ats.b);
+   public static final aiy aE = a("target_hit", ats.b);
+   public static final aiy aF = a("interact_with_smithing_table", ats.b);
 
-public class atu<K, V extends atu.a<K>> {
-   private final Map<K, V> a = new HashMap<>();
-
-   public atu<K, V> a(K $$0, V $$1) {
-      this.a.put($$0, $$1);
-      return this;
+   private static aiy a(String $$0, ats $$1) {
+      aiy $$2 = new aiy($$0);
+      iv.a(kf.m, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
-      if ($$1.add($$2)) {
-         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
-         V $$4 = this.a.get($$2);
-         if ($$4 != null) {
-            $$3.accept($$2, $$4);
-         }
-      }
-   }
-
-   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
-      Collection<K> $$3 = $$0.get($$2);
-      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
-   }
-
-   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
-      if (!a($$0, $$1, $$2)) {
-         $$0.put($$1, $$2);
-      }
-   }
-
-   public void a(BiConsumer<K, V> $$0) {
-      Multimap<K, K> $$1 = HashMultimap.create();
-      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
-      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
-      Set<K> $$2 = new HashSet<>();
-      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
-   }
-
-   public interface a<K> {
-      void a(Consumer<K> var1);
-
-      void b(Consumer<K> var1);
+   private static <T> att<T> a(String $$0, iv<T> $$1) {
+      vq $$2 = vq.c("stat_type.minecraft." + $$0);
+      return iv.a(kf.x, $$0, new att<>($$1, $$2));
    }
 }

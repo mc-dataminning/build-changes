@@ -1,30 +1,21 @@
-public class cbg extends cay {
-   private static final int b = 40;
-   private int c;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public cbg(cav $$0) {
-      super($$0);
-   }
+public class cbg {
+   public static bpx<bog> a() {
+      return btj.a(
+         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$0 -> $$0.group($$0.b(bxh.N), $$0.a(bxh.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                  int $$6 = $$0.<Integer>b($$1);
+                  if ($$6 <= 0) {
+                     $$1.b();
+                     $$2.b();
+                     $$4.dO().f();
+                  } else {
+                     $$1.a($$6 - 1);
+                  }
 
-   @Override
-   public void b() {
-      this.a.dL().a(this.a.dq(), this.a.ds(), this.a.dw(), art.hP, this.a.db(), 2.5F, 0.8F + this.a.eg().i() * 0.3F, false);
-   }
-
-   @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gc().a(cbl.f);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.c = 0;
-   }
-
-   @Override
-   public cbl<cbg> i() {
-      return cbl.h;
+                  return true;
+               }))
+      );
    }
 }

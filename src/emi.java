@@ -1,21 +1,11 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class emi extends AbstractDoubleList {
-   private final int a;
+public interface emi {
+   @Nullable
+   tt a(eiv var1);
 
-   emi(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
-   }
+   Set<eld<?>> b();
 
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
-   }
-
-   public int size() {
-      return this.a + 1;
-   }
+   emh a();
 }

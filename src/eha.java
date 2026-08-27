@@ -1,66 +1,38 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public enum eha {
+   a(-1.0F),
+   b(0.0F),
+   c(0.0F),
+   d(0.0F),
+   e(0.0F),
+   f(-1.0F),
+   g(0.0F),
+   h(-1.0F),
+   i(-1.0F),
+   j(8.0F),
+   k(8.0F),
+   l(0.0F),
+   m(-1.0F),
+   n(8.0F),
+   o(16.0F),
+   p(8.0F),
+   q(-1.0F),
+   r(0.0F),
+   s(-1.0F),
+   t(-1.0F),
+   u(4.0F),
+   v(-1.0F),
+   w(8.0F),
+   x(0.0F),
+   y(0.0F),
+   z(0.0F);
 
-public interface eha extends ehc {
-   @Override
-   String g();
+   private final float A;
 
-   void a(boolean var1);
-
-   int l();
-
-   void f(int var1);
-
-   void e(int var1);
-
-   int j();
-
-   @Override
-   default void a(p $$0, ctz $$1) {
-      ehc.super.a($$0, $$1);
-      $$0.a("Level name", this::g);
-      $$0.a(
-         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
+   private eha(float $$0) {
+      this.A = $$0;
    }
 
-   int h();
-
-   void a(int var1);
-
-   int v();
-
-   void g(int var1);
-
-   int w();
-
-   void h(int var1);
-
-   @Nullable
-   UUID x();
-
-   void a(UUID var1);
-
-   ctu m();
-
-   void a(dlg.c var1);
-
-   dlg.c r();
-
-   boolean p();
-
-   void c(boolean var1);
-
-   boolean o();
-
-   void a(ctu var1);
-
-   elp<MinecraftServer> u();
-
-   void a(long var1);
-
-   void b(long var1);
+   public float a() {
+      return this.A;
+   }
 }

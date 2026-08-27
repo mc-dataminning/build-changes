@@ -1,16 +1,29 @@
-public interface afn extends ue {
-   @Override
-   default ui b() {
-      return ui.d;
+public class afn implements xx<aes> {
+   public static final xo<uq, afn> a = xx.a(afn::a, afn::new);
+   private final boolean b;
+
+   public afn(boolean $$0) {
+      this.b = $$0;
    }
 
-   void a(afq var1);
+   private afn(uq $$0) {
+      this.b = $$0.readBoolean();
+   }
 
-   void a(afp var1);
+   private void a(uq $$0) {
+      $$0.a(this.b);
+   }
 
-   void a(afs var1);
+   @Override
+   public xz<afn> a() {
+      return aeq.bw;
+   }
 
-   void a(afr var1);
+   public void a(aes $$0) {
+      $$0.a(this);
+   }
 
-   void a(afo var1);
+   public boolean b() {
+      return this.b;
+   }
 }

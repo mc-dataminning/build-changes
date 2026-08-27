@@ -1,76 +1,41 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class cwb extends cwy implements cxb {
-   public static final MapCodec<cwb> a = b(cwb::new);
-   protected static final float b = 4.0F;
-   protected static final emv c = cwy.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public class cwb {
+   private final List<cwb.a> a = Lists.newArrayList();
 
-   @Override
-   public MapCodec<cwb> a() {
-      return a;
-   }
-
-   public cwb(djo.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      emc $$4 = $$0.n($$1, $$2);
-      return c.a($$4.c, $$4.d, $$4.e);
-   }
-
-   @Override
-   public void b(djp $$0, ane $$1, hx $$2, auw $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
+   public void a(hz $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new cwb.a($$0, $$1));
       }
    }
 
-   @Override
-   public boolean a(djp $$0, cua $$1, hx $$2) {
-      return $$1.a_($$2.d()).a(asi.at);
-   }
-
-   @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return cxa.a.o();
+   public double b(hz $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
       } else {
-         if ($$1 == ic.b && $$2.a(cxa.mZ)) {
-            $$3.a($$4, cxa.mZ.o(), 2);
+         double $$2 = 0.0;
+
+         for (cwb.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return $$2 * $$1;
       }
    }
 
-   @Override
-   public cng a(cua $$0, hx $$1, djp $$2) {
-      return new cng(cnj.dQ);
-   }
+   static class a {
+      private final hz a;
+      private final double b;
 
-   @Override
-   public boolean b(cua $$0, hx $$1, djp $$2) {
-      return $$0.a_($$1.c()).i();
-   }
+      public a(hz $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
-      this.a($$0, $$2);
-   }
-
-   @Override
-   public float a(djp $$0, cfq $$1, ctd $$2, hx $$3) {
-      return $$1.eT().d() instanceof cos ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(ctx $$0, hx $$1) {
-      $$0.a($$1.c(), cxa.mZ.o().a(cwc.i, dkb.b), 3);
+      public double a(hz $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

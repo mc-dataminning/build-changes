@@ -1,14 +1,16 @@
-import java.time.Duration;
-import jdk.jfr.consumer.RecordedEvent;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public record bhm(Duration a, cte b, amu c, dlq d, String e) implements bht {
-   public static bhm a(RecordedEvent $$0) {
-      return new bhm(
-         $$0.getDuration(),
-         new cte($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
-         new amu($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
-         dlq.a($$0.getString("status")),
-         $$0.getString("level")
-      );
+public class bhm extends bew {
+   public bhm(int $$0, Schema $$1) {
+      super($$0, $$1);
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:armadillo", () -> bex.a($$0));
+      return $$1;
    }
 }

@@ -1,186 +1,137 @@
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class apr {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final apr.c c;
-   private final vg d;
-   private final apr.a e;
-   private final apr.b f;
+public abstract class apr implements yo {
+   private static final Logger e = LogUtils.getLogger();
+   public static final int a = 15000;
+   private static final vq f = vq.c("disconnect.timeout");
+   static final vq b = vq.c("multiplayer.disconnect.unexpected_query_response");
+   protected final MinecraftServer c;
+   protected final uo d;
    private final boolean g;
-   private final boolean h;
-   private final apv i;
+   private long h;
+   private boolean i;
+   private long j;
+   private int k;
+   private volatile boolean l = false;
 
-   @Nullable
-   public static apr a(String $$0, vg $$1, boolean $$2, apr.c $$3, aoy $$4, apr.b $$5, apv $$6) {
-      int $$7 = aa.b().a($$4);
-      apr.a $$8 = a($$0, $$3, $$7);
-      return $$8 != null ? a($$0, $$1, $$2, $$3, $$8, $$5, false, $$6) : null;
+   public apr(MinecraftServer $$0, uo $$1, apk $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.h = ac.b();
+      this.k = $$2.b();
+      this.g = $$2.d();
    }
 
-   public static apr a(String $$0, vg $$1, boolean $$2, apr.c $$3, apr.a $$4, apr.b $$5, boolean $$6, apv $$7) {
-      return new apr($$0, $$2, $$3, $$1, $$4, $$5, $$6, $$7);
+   @Override
+   public void a(vq $$0) {
+      if (this.i()) {
+         e.info("Stopping singleplayer server as player logged out");
+         this.c.a(false);
+      }
    }
 
-   private apr(String $$0, boolean $$1, apr.c $$2, vg $$3, apr.a $$4, apr.b $$5, boolean $$6, apv $$7) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.g = $$1;
-      this.f = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   @Override
+   public void a(yr $$0) {
+      if (this.i && $$0.b() == this.j) {
+         int $$1 = (int)(ac.b() - this.h);
+         this.k = (this.k * 3 + $$1) / 4;
+         this.i = false;
+      } else if (!this.i()) {
+         this.b(f);
+      }
    }
 
-   @Nullable
-   public static apr.a a(String $$0, apr.c $$1, int $$2) {
+   @Override
+   public void a(ys $$0) {
+   }
+
+   @Override
+   public void a(yq $$0) {
+   }
+
+   @Override
+   public void a(yt $$0) {
+      ya.a($$0, this, this.c);
+      if ($$0.e() == yt.a.b && this.c.V()) {
+         e.info("Disconnecting {} due to resource pack {} rejection", this.j().getName(), $$0.b());
+         this.b(vq.c("multiplayer.requiredTexturePrompt.disconnect"));
+      }
+   }
+
+   @Override
+   public void a(aae $$0) {
+      this.b(b);
+   }
+
+   protected void f() {
+      this.c.aR().a("keepAlive");
+      long $$0 = ac.b();
+      if ($$0 - this.h >= 15000L) {
+         if (this.i) {
+            this.b(f);
+         } else {
+            this.i = true;
+            this.h = $$0;
+            this.j = $$0;
+            this.b(new yg(this.j));
+         }
+      }
+
+      this.c.aR().c();
+   }
+
+   public void g() {
+      this.l = true;
+   }
+
+   public void h() {
+      this.l = false;
+      this.d.a();
+   }
+
+   public void b(xx<?> $$0) {
+      this.a($$0, null);
+   }
+
+   public void a(xx<?> $$0, @Nullable ux $$1) {
+      boolean $$2 = !this.l || !this.c.br();
+
       try {
-         apr.a var11;
-         try (aox $$3 = $$1.a($$0)) {
-            apl $$4 = $$3.a(apl.b);
-            if ($$4 == null) {
-               a.warn("Missing metadata in pack {}", $$0);
-               return null;
-            }
-
-            aou $$5 = $$3.a(aou.a);
-            cia $$6 = $$5 != null ? $$5.a() : cia.a();
-            auh<Integer> $$7 = a($$0, $$4);
-            aps $$8 = aps.a($$7, $$2);
-            aow $$9 = $$3.a(aow.a);
-            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
-            var11 = new apr.a($$4.a(), $$8, $$6, $$10);
-         }
-
-         return var11;
-      } catch (Exception var14) {
-         a.warn("Failed to read pack {} metadata", $$0, var14);
-         return null;
+         this.d.a($$0, $$1, $$2);
+      } catch (Throwable var7) {
+         o $$4 = o.a(var7, "Sending packet");
+         p $$5 = $$4.a("Packet being sent");
+         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
+         throw new y($$4);
       }
    }
 
-   private static auh<Integer> a(String $$0, apl $$1) {
-      int $$2 = $$1.b();
-      if ($$1.c().isEmpty()) {
-         return new auh<>($$2);
-      } else {
-         auh<Integer> $$3 = $$1.c().get();
-         if (!$$3.a($$2)) {
-            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
-            return new auh<>($$2);
-         } else {
-            return $$3;
-         }
-      }
+   public void b(vq $$0) {
+      this.d.a(new yf($$0), ux.a(() -> this.d.a($$0)));
+      this.d.m();
+      this.c.h(this.d::n);
    }
 
-   public vg a() {
-      return this.d;
+   protected boolean i() {
+      return this.c.a(this.j());
    }
 
-   public vg b() {
-      return this.e.a();
+   protected abstract GameProfile j();
+
+   @axl
+   public GameProfile k() {
+      return this.j();
    }
 
-   public vg a(boolean $$0) {
-      return vj.a(this.i.a(vg.b(this.b)))
-         .a($$1 -> $$1.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.b)).a(new vm(vm.a.a, vg.i().b(this.d).f("\n").b(this.e.a))));
+   public int l() {
+      return this.k;
    }
 
-   public aps c() {
-      return this.e.b();
-   }
-
-   public cia d() {
-      return this.e.c();
-   }
-
-   public aox e() {
-      return this.c.a(this.b, this.e);
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public apr.b i() {
-      return this.f;
-   }
-
-   public apv j() {
-      return this.i;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof apr $$1) ? false : this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static record a(vg a, aps b, cia c, List<String> d) {
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      public <T> int a(List<T> $$0, T $$1, Function<T, apr> $$2, boolean $$3) {
-         apr.b $$4 = $$3 ? this.a() : this;
-         if ($$4 == b) {
-            int $$5;
-            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
-               apr $$6 = $$2.apply($$0.get($$5));
-               if (!$$6.h() || $$6.i() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$5, $$1);
-            return $$5;
-         } else {
-            int $$7;
-            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
-               apr $$8 = $$2.apply($$0.get($$7));
-               if (!$$8.h() || $$8.i() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$7 + 1, $$1);
-            return $$7 + 1;
-         }
-      }
-
-      public apr.b a() {
-         return this == a ? b : a;
-      }
-   }
-
-   public interface c {
-      aox a(String var1);
-
-      aox a(String var1, apr.a var2);
+   protected apk a(aok $$0) {
+      return new apk(this.j(), this.k, $$0, this.g);
    }
 }

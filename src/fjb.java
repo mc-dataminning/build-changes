@@ -1,9 +1,8 @@
-public class fjb extends RuntimeException {
-   public fjb(String $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public fjb(String $$0, Throwable $$1) {
-      super($$0, $$1);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fjb {
 }

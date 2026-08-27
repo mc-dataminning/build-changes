@@ -1,23 +1,42 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class ela {
-   private static final Codec<ekz> f = kd.I.q().dispatch(ekz::b, eky::a);
-   public static final Codec<ekz> a = atx.a(
-      (Supplier<Codec<ekz>>)(() -> {
-         Codec<ekz> $$0 = atx.e(f, elc.a);
-         return Codec.either(ekx.b, $$0)
-            .xmap($$0x -> (ekz)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof ekx $$1 ? Either.left($$1) : Either.right($$0x));
-      })
-   );
-   public static final eky b = a("constant", ekx.a);
-   public static final eky c = a("uniform", elc.a);
-   public static final eky d = a("binomial", ekw.a);
-   public static final eky e = a("score", elb.a);
+public class ela extends ekh {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<ela> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ela::new));
 
-   private static eky a(String $$0, Codec<? extends ekz> $$1) {
-      return it.a(kd.I, new ahh($$0), new eky($$1));
+   private ela(List<elu> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public ekj b() {
+      return ekk.h;
+   }
+
+   @Override
+   public coz a(coz $$0, eiv $$1) {
+      if ($$0.b()) {
+         return $$0;
+      } else {
+         Optional<csd<csq>> $$2 = $$1.d().r().a(csg.b, new bmd($$0), $$1.d());
+         if ($$2.isPresent()) {
+            coz $$3 = $$2.get().b().a($$1.d().I_());
+            if (!$$3.b()) {
+               return $$3.c($$0.M());
+            }
+         }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
+      }
+   }
+
+   public static ekh.a<?> c() {
+      return a(ela::new);
    }
 }

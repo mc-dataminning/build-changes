@@ -1,55 +1,43 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dae extends cxh implements cxb {
-   public static final MapCodec<dae> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ahg.a(ke.aw).fieldOf("feature").forGetter($$0x -> $$0x.e), kd.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
-            .apply($$0, dae::new)
-   );
-   protected static final emv b = cwy.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final cwy d;
-   private final ahg<drp<?, ?>> e;
+public class dae extends cxw {
+   public static final MapCodec<dae> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dad.a.forGetter($$0x -> $$0x.c), u()).apply($$0, dae::new));
+   private final cyo c;
 
    @Override
    public MapCodec<dae> a() {
-      return a;
-   }
-
-   protected dae(ahg<drp<?, ?>> $$0, cwy $$1, djo.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
       return b;
    }
 
-   @Override
-   protected boolean b(djp $$0, ctd $$1, hx $$2) {
-      return $$0.a(asi.aK) || $$0.a(cxa.fl) || $$0.a(cxa.dX) || super.b($$0, $$1, $$2);
-   }
-
-   private Optional<? extends ih<drp<?, ?>>> a(cua $$0) {
-      return $$0.I_().d(ke.aw).b(this.e);
+   protected dae(cyo $$0, dle.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public boolean b(cua $$0, hx $$1, djp $$2) {
-      djp $$3 = $$0.a_($$1.d());
-      return $$3.a(this.d);
+   protected void b(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
+      this.a($$0, (cvo)$$1, $$2);
    }
 
    @Override
-   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
-      return (double)$$1.i() < 0.4;
+   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.o().a(d, Boolean.valueOf(false)), 2);
+      }
    }
 
    @Override
-   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
-      this.a($$0).ifPresent($$3x -> ((drp)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      if ($$1 == ie.a && !$$0.a($$3, $$4)) {
+         return cyq.a.o();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, egq.c, egq.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

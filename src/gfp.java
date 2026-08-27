@@ -1,123 +1,64 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.IOException;
 import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.UnaryOperator;
 
-public class gfp implements gff {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<gfp> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ahh.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               atx.a(gfp.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, gfp::new)
-   );
-   private final ahh d;
-   private final List<gfp.a> e;
-   private final double f;
-   private final double g;
+public class gfp<T extends bog & cgw, M extends fmb<T> & fol> extends gfe<T, M> {
+   private static final Int2ObjectMap<aiy> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, new aiy("stone"));
+      $$0.put(2, new aiy("iron"));
+      $$0.put(3, new aiy("gold"));
+      $$0.put(4, new aiy("emerald"));
+      $$0.put(5, new aiy("diamond"));
+   });
+   private final Object2ObjectMap<cgz, gih.a> b = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<cgx, gih.a> c = new Object2ObjectOpenHashMap();
+   private final asa d;
+   private final String e;
 
-   public gfp(ahh $$0, List<gfp.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public gfp(gco<T, M> $$0, asa $$1, String $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Override
-   public void a(aqj $$0, gff.a $$1) {
-      ahh $$2 = a.a(this.d);
-      Optional<aqh> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         gfl $$4 = new gfl($$2, $$3.get(), this.e.size());
-
-         for (gfp.a $$5 : this.e) {
-            $$1.a($$5.b, new gfp.b($$4, $$5, this.f, this.g));
+   public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ce()) {
+         cgv $$10 = $$3.gr();
+         cgz $$11 = $$10.a();
+         cgx $$12 = $$10.b();
+         gih.a $$13 = this.a(this.b, "type", kf.y, $$11);
+         gih.a $$14 = this.a(this.c, "profession", kf.z, $$12);
+         M $$15 = this.c();
+         $$15.a($$14 == gih.a.a || $$14 == gih.a.b && $$13 != gih.a.c);
+         aiy $$16 = this.a("type", kf.y.b($$11));
+         a($$15, $$16, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         $$15.a(true);
+         if ($$12 != cgx.b && !$$3.o_()) {
+            aiy $$17 = this.a("profession", kf.z.b($$12));
+            a($$15, $$17, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            if ($$12 != cgx.m) {
+               aiy $$18 = this.a("profession_level", (aiy)a.get(awh.a($$10.c(), 1, a.size())));
+               a($$15, $$18, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            }
          }
-      } else {
-         c.warn("Missing sprite: {}", $$2);
       }
    }
 
-   @Override
-   public gfh a() {
-      return gfi.d;
+   private aiy a(String $$0, aiy $$1) {
+      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
    }
 
-   static record a(ahh b, double c, double d, double e, double f) {
-      public static final Codec<gfp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ahh.a.fieldOf("sprite").forGetter(gfp.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(gfp.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(gfp.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(gfp.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(gfp.a::e)
-               )
-               .apply($$0, gfp.a::new)
-      );
-
-      public ahh a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements gff.b {
-      private final gfl a;
-      private final gfp.a b;
-      private final double c;
-      private final double d;
-
-      b(gfl $$0, gfp.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public gev a(gfe $$0) {
-         try {
-            epl $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = aup.a(this.b.c * $$2);
-            int $$5 = aup.a(this.b.d * $$3);
-            int $$6 = aup.a(this.b.e * $$2);
-            int $$7 = aup.a(this.b.f * $$3);
-            epl $$8 = new epl(epl.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new gev(this.b.b, new ggn($$6, $$7), $$8, aql.a);
-         } catch (Exception var16) {
-            gfp.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
-         }
-
-         return ger.a();
-      }
-
-      @Override
-      public void a() {
-         this.a.b();
-      }
+   public <K> gih.a a(Object2ObjectMap<K, gih.a> $$0, String $$1, id<K> $$2, K $$3) {
+      return (gih.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
+            try {
+               return $$0xx.f().a(gih.a).map(gih::a);
+            } catch (IOException var2x) {
+               return Optional.empty();
+            }
+         }).orElse(gih.a.a));
    }
 }

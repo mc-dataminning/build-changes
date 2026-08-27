@@ -1,54 +1,45 @@
-import net.minecraft.server.MinecraftServer;
+public class aoe {
+   private static final int b = 33;
+   private static final int c = 32;
+   private static final int d = 31;
+   public static final int a = 33 + dng.b();
 
-public class aoe implements afl {
-   private static final vg a = vg.c("disconnect.ignoring_status_request");
-   private final MinecraftServer b;
-   private final uh c;
-
-   public aoe(MinecraftServer $$0, uh $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static dng a(int $$0) {
+      return $$0 < 33 ? dng.n : dng.a($$0 - 33);
    }
 
-   @Override
-   public void a(afk $$0) {
-      switch ($$0.f()) {
-         case b:
-            this.c.a(afj.b);
-            if ($$0.a() != aa.b().e()) {
-               vg $$1;
-               if ($$0.a() < 754) {
-                  $$1 = vg.a("multiplayer.disconnect.outdated_client", aa.b().c());
-               } else {
-                  $$1 = vg.a("multiplayer.disconnect.incompatible", aa.b().c());
-               }
+   public static int a(dng $$0) {
+      return 33 + dng.a($$0);
+   }
 
-               this.c.a(new afs($$1));
-               this.c.a($$1);
-            } else {
-               this.c.a(new aof(this.b, this.c));
-            }
-            break;
-         case a:
-            agi $$3 = this.b.as();
-            if (this.b.ak() && $$3 != null) {
-               this.c.a(afj.a);
-               this.c.a(new aoh($$3, this.c));
-            } else {
-               this.c.a(a);
-            }
-            break;
-         default:
-            throw new UnsupportedOperationException("Invalid intention " + $$0.f());
+   public static aoo b(int $$0) {
+      if ($$0 <= 31) {
+         return aoo.d;
+      } else if ($$0 <= 32) {
+         return aoo.c;
+      } else {
+         return $$0 <= 33 ? aoo.b : aoo.a;
       }
    }
 
-   @Override
-   public void a(vg $$0) {
+   public static int a(aoo $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
    }
 
-   @Override
-   public boolean c() {
-      return this.c.k();
+   public static boolean c(int $$0) {
+      return $$0 <= 31;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 <= 32;
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 <= a;
    }
 }

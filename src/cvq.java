@@ -1,76 +1,199 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class cvq extends cwy {
-   public static final int a = 3;
-   public static final dkg b = dkf.r;
+public interface cvq extends cuq, cux, cwd, cwo.a {
+   @Nullable
+   dnb a(int var1, int var2, dng var3, boolean var4);
 
-   @Override
-   protected abstract MapCodec<? extends cvq> a();
+   @Deprecated
+   boolean b(int var1, int var2);
 
-   protected cvq(djo.d $$0) {
-      super($$0);
+   int a(dqo.a var1, int var2, int var3);
+
+   int C_();
+
+   cwo G_();
+
+   default ij<cwm> t(hz $$0) {
+      return this.G_().a($$0);
    }
 
-   protected abstract Iterable<emc> b(djp var1);
-
-   public static boolean c(djp $$0) {
-      return $$0.b(b) && ($$0.a(asi.ae) || $$0.a(asi.bj)) && $$0.c(b);
+   default Stream<dlf> c(enn $$0) {
+      int $$1 = awh.a($$0.a);
+      int $$2 = awh.a($$0.d);
+      int $$3 = awh.a($$0.b);
+      int $$4 = awh.a($$0.e);
+      int $$5 = awh.a($$0.c);
+      int $$6 = awh.a($$0.f);
+      return this.a($$1, $$3, $$5, $$2, $$4, $$6) ? this.a($$0) : Stream.empty();
    }
 
    @Override
-   public void a(ctx $$0, djp $$1, ely $$2, cgi $$3) {
-      if (!$$0.B && $$3.bN() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
+   default int a(hz $$0, cuy $$1) {
+      return $$1.getColor(this.t($$0).a(), (double)$$0.u(), (double)$$0.w());
+   }
+
+   @Override
+   default ij<cwm> getNoiseBiome(int $$0, int $$1, int $$2) {
+      dnb $$3 = this.a(iu.e($$0), iu.e($$2), dng.f, false);
+      return $$3 != null ? $$3.getNoiseBiome($$0, $$1, $$2) : this.a($$0, $$1, $$2);
+   }
+
+   ij<cwm> a(int var1, int var2, int var3);
+
+   boolean y_();
+
+   @Deprecated
+   int A_();
+
+   doo E_();
+
+   @Override
+   default int J_() {
+      return this.E_().n();
+   }
+
+   @Override
+   default int K_() {
+      return this.E_().o();
+   }
+
+   default hz a(dqo.a $$0, hz $$1) {
+      return new hz($$1.u(), this.a($$0, $$1.u(), $$1.w()), $$1.w());
+   }
+
+   default boolean u(hz $$0) {
+      return this.a_($$0).i();
+   }
+
+   default boolean v(hz $$0) {
+      if ($$0.v() >= this.A_()) {
+         return this.h($$0);
+      } else {
+         hz $$1 = new hz($$0.u(), this.A_(), $$0.w());
+         if (!this.h($$1)) {
+            return false;
+         } else {
+            for (hz var4 = $$1.d(); var4.v() > $$0.v(); var4 = var4.d()) {
+               dlf $$2 = this.a_(var4);
+               if ($$2.b(this, var4) > 0 && !$$2.k()) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
    }
 
-   protected boolean d(djp $$0) {
-      return !$$0.c(b);
+   default float w(hz $$0) {
+      return this.x($$0) - 0.5F;
    }
 
+   @Deprecated
+   default float x(hz $$0) {
+      float $$1 = (float)this.A($$0) / 15.0F;
+      float $$2 = $$1 / (4.0F - 3.0F * $$1);
+      return awh.i(this.E_().s(), $$2, 1.0F);
+   }
+
+   default dnb y(hz $$0) {
+      return this.a(jb.a($$0.u()), jb.a($$0.w()));
+   }
+
+   default dnb a(int $$0, int $$1) {
+      return this.a($$0, $$1, dng.n, true);
+   }
+
+   default dnb a(int $$0, int $$1, dng $$2) {
+      return this.a($$0, $$1, $$2, true);
+   }
+
+   @Nullable
    @Override
-   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
+   default cut c(int $$0, int $$1) {
+      return this.a($$0, $$1, dng.c, false);
    }
 
-   private static void a(ctx $$0, emc $$1, auw $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(jx.ab, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, art.dA, aru.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+   default boolean z(hz $$0) {
+      return this.b_($$0).a(aue.a);
+   }
+
+   default boolean d(enn $$0) {
+      int $$1 = awh.a($$0.a);
+      int $$2 = awh.c($$0.d);
+      int $$3 = awh.a($$0.b);
+      int $$4 = awh.c($$0.e);
+      int $$5 = awh.a($$0.c);
+      int $$6 = awh.c($$0.f);
+      hz.a $$7 = new hz.a();
+
+      for (int $$8 = $$1; $$8 < $$2; $$8++) {
+         for (int $$9 = $$3; $$9 < $$4; $$9++) {
+            for (int $$10 = $$5; $$10 < $$6; $$10++) {
+               dlf $$11 = this.a_($$7.d($$8, $$9, $$10));
+               if (!$$11.u().c()) {
+                  return true;
+               }
+            }
          }
       }
 
-      $$0.a(jx.aG, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
+      return false;
    }
 
-   public static void a(@Nullable cfq $$0, djp $$1, cty $$2, hx $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof cvq) {
-         ((cvq)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(jx.ab, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+   default int A(hz $$0) {
+      return this.c($$0, this.C_());
+   }
+
+   default int c(hz $$0, int $$1) {
+      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000 ? this.b($$0, $$1) : 15;
+   }
+
+   @Deprecated
+   default boolean f(int $$0, int $$1) {
+      return this.b(jb.a($$0), jb.a($$1));
+   }
+
+   @Deprecated
+   default boolean B(hz $$0) {
+      return this.f($$0.u(), $$0.w());
+   }
+
+   @Deprecated
+   default boolean a(hz $$0, hz $$1) {
+      return this.a($$0.u(), $$0.v(), $$0.w(), $$1.u(), $$1.v(), $$1.w());
+   }
+
+   @Deprecated
+   default boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$4 >= this.J_() && $$1 < this.al() ? this.b($$0, $$2, $$3, $$5) : false;
+   }
+
+   @Deprecated
+   default boolean b(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = jb.a($$0);
+      int $$5 = jb.a($$2);
+      int $$6 = jb.a($$1);
+      int $$7 = jb.a($$3);
+
+      for (int $$8 = $$4; $$8 <= $$5; $$8++) {
+         for (int $$9 = $$6; $$9 <= $$7; $$9++) {
+            if (!this.b($$8, $$9)) {
+               return false;
+            }
+         }
       }
 
-      $$2.a(null, $$3, art.dC, aru.e, 1.0F, 1.0F);
-      $$2.a($$0, dnz.c, $$3);
+      return true;
    }
 
-   private static void a(cty $$0, djp $$1, hx $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
-   }
+   iw I_();
 
-   @Override
-   public void a(djp $$0, ctx $$1, hx $$2, ctp $$3, BiConsumer<cng, hx> $$4) {
-      if ($$3.j() == ctp.a.d && !$$1.y_() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
-      }
+   cjs I();
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+   default <T> il<T> a(aix<? extends iv<? extends T>> $$0) {
+      iv<T> $$1 = this.I_().d($$0);
+      return $$1.p().a(this.I());
    }
 }

@@ -1,66 +1,118 @@
-public class cji extends cij {
-   public static final int k = 5;
-   private final bjv l;
+public class cji extends cja {
+   static final aie<String> c = aih.a(cji.class, aig.e);
+   static final aie<vq> d = aih.a(cji.class, aig.f);
+   private final cuo e = new cji.a();
+   private static final int i = 4;
+   private int j;
 
-   public cji(int $$0, cfp $$1) {
-      this($$0, $$1, new bkl(5));
+   public cji(bnu<? extends cji> $$0, cvn $$1) {
+      super($$0, $$1);
    }
 
-   public cji(int $$0, cfp $$1, bjv $$2) {
-      super(cjq.q, $$0);
-      this.l = $$2;
-      a($$2, 5);
-      $$2.d_($$1.m);
-      int $$3 = 51;
-
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         this.a(new cke($$2, $$4, 44 + $$4 * 18, 20));
-      }
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cke($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new cke($$1, $$7, 8 + $$7 * 18, 109));
-      }
+   public cji(cvn $$0, double $$1, double $$2, double $$3) {
+      super(bnu.u, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean a(cfq $$0) {
-      return this.l.a($$0);
+   protected cou ai_() {
+      return cpc.nL;
    }
 
    @Override
-   public cng a(cfq $$0, int $$1) {
-      cng $$2 = cng.f;
-      cke $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cng $$4 = $$3.g();
-         $$2 = $$4.p();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cng.f;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cng.f;
-         }
-
-         if ($$4.b()) {
-            $$3.e(cng.f);
-         } else {
-            $$3.b();
-         }
-      }
-
-      return $$2;
+   protected void c_() {
+      super.c_();
+      this.an().a(c, "");
+      this.an().a(d, vp.a);
    }
 
    @Override
-   public void b(cfq $$0) {
+   protected void a(sw $$0) {
+      super.a($$0);
+      this.e.b($$0);
+      this.an().b(c, this.C().m());
+      this.an().b(d, this.C().l());
+   }
+
+   @Override
+   protected void b(sw $$0) {
       super.b($$0);
-      this.l.c($$0);
+      this.e.a($$0);
+   }
+
+   @Override
+   public cja.a w() {
+      return cja.a.g;
+   }
+
+   @Override
+   public dlf y() {
+      return cyq.fN.o();
+   }
+
+   public cuo C() {
+      return this.e;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ag - this.j >= 4) {
+         this.C().a(this.dM());
+         this.j = this.ag;
+      }
+   }
+
+   @Override
+   public blu a(chh $$0, blt $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(aie<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.an().b(d));
+         } catch (Throwable var3) {
+         }
+      } else if (c.equals($$0)) {
+         this.e.a(this.an().b(c));
+      }
+   }
+
+   @Override
+   public boolean cM() {
+      return true;
+   }
+
+   public class a extends cuo {
+      @Override
+      public aov e() {
+         return (aov)cji.this.dM();
+      }
+
+      @Override
+      public void f() {
+         cji.this.an().b(cji.c, this.m());
+         cji.this.an().b(cji.d, this.l());
+      }
+
+      @Override
+      public ens g() {
+         return cji.this.dk();
+      }
+
+      public cji h() {
+         return cji.this;
+      }
+
+      @Override
+      public du i() {
+         return new du(this, cji.this.dk(), cji.this.bG(), this.e(), 2, this.n().getString(), cji.this.Q_(), this.e().o(), cji.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !cji.this.dH();
+      }
    }
 }

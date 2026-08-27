@@ -1,71 +1,72 @@
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.security.SignatureException;
-import java.time.Instant;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record vz(String b, Instant c, long d, vn e) {
-   public static final MapCodec<vz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("content").forGetter(vz::a),
-               atx.m.fieldOf("time_stamp").forGetter(vz::b),
-               Codec.LONG.fieldOf("salt").forGetter(vz::c),
-               vn.a.optionalFieldOf("last_seen", vn.b).forGetter(vz::d)
-            )
-            .apply($$0, vz::new)
-   );
+public class vz {
+   private final int a;
+   private final ObjectList<wa> b = new ObjectArrayList();
+   @Nullable
+   private wc c;
 
-   public static vz a(String $$0) {
-      return new vz($$0, Instant.now(), 0L, vn.b);
-   }
+   public vz(int $$0) {
+      this.a = $$0;
 
-   public void a(avc.a $$0) throws SignatureException {
-      $$0.update(Longs.toByteArray(this.d));
-      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
-      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
-      $$0.update(Ints.toByteArray($$1.length));
-      $$0.update($$1);
-      this.e.a($$0);
-   }
-
-   public vz.a a(vt $$0) {
-      return new vz.a(this.b, this.c, this.d, this.e.a($$0));
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public Instant b() {
-      return this.c;
-   }
-
-   public long c() {
-      return this.d;
-   }
-
-   public vn d() {
-      return this.e;
-   }
-
-   public static record a(String a, Instant b, long c, vn.a d) {
-      public a(uj $$0) {
-         this($$0.d(256), $$0.w(), $$0.readLong(), new vn.a($$0));
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
       }
+   }
 
-      public void a(uj $$0) {
-         $$0.a(this.a, 256);
-         $$0.a(this.b);
-         $$0.b(this.c);
-         this.d.a($$0);
+   public void a(wc $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new wa($$0, true));
+         this.c = $$0;
       }
+   }
 
-      public Optional<vz> a(vt $$0) {
-         return this.d.a($$0).map($$0x -> new vz(this.a, this.b, this.c, $$0x));
+   public int a() {
+      return this.b.size();
+   }
+
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public Optional<vx> a(vx.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
+      } else {
+         ObjectList<wc> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               wa $$4 = (wa)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, null);
+               }
+            }
+
+            return Optional.of(new vx($$1));
+         }
       }
    }
 }

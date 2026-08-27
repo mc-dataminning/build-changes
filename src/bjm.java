@@ -1,57 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class bjm extends bjf {
-   public static final Codec<bjm> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bjm::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
-
-   private bjm(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
-
-   public static bjm b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
+public record bjm<T extends bjl>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
+   public static <T extends bjl> bjm<T> a(List<T> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("No values");
       } else {
-         return new bjm($$0, $$1);
+         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bjl::a)).toList();
+         Duration $$2 = $$1.stream().map(bjl::a).reduce(Duration::plus).orElse(Duration.ZERO);
+         T $$3 = (T)$$1.get(0);
+         T $$4 = (T)$$1.get($$1.size() - 1);
+         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
+         int $$6 = $$1.size();
+         Map<Integer, Double> $$7 = bis.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
+         return new bjm<>($$3, $$4, $$5, $$6, $$7, $$2);
       }
-   }
-
-   @Override
-   public float a(auw $$0) {
-      return aup.b($$0, this.b, this.d);
-   }
-
-   @Override
-   public float a() {
-      return this.b;
-   }
-
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bjg<?> c() {
-      return bjg.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
    }
 }

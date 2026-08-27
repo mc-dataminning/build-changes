@@ -1,9 +1,7 @@
-public class ahl {
-   public final String a;
-   public final ds b;
+public record ahl() implements ahj {
+   public static final ahl a = new ahl();
 
-   public ahl(String $$0, ds $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Override
+   public void a(uq $$0) {
    }
 }

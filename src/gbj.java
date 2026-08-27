@@ -1,23 +1,24 @@
-public class gbj extends gag<cdj, fmm<cdj>> {
-   private static final ahh a = new ahh("textures/entity/strider/strider.png");
-   private static final ahh i = new ahh("textures/entity/strider/strider_cold.png");
-   private static final float j = 0.5F;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gbj(fza.a $$0) {
-      super($$0, new fmm<>($$0.a(fni.bz)), 0.5F);
-      this.a(new gdm<>(this, new fmm<>($$0.a(fni.bA)), new ahh("textures/entity/strider/strider_saddle.png")));
+public final class gbj extends fzo<cbx, fmm<cbx>> {
+   private static final Map<cce, aiy> a = ac.a(Maps.newEnumMap(cce.class), $$0 -> {
+      $$0.put(cce.a, new aiy("textures/entity/horse/horse_white.png"));
+      $$0.put(cce.b, new aiy("textures/entity/horse/horse_creamy.png"));
+      $$0.put(cce.c, new aiy("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(cce.d, new aiy("textures/entity/horse/horse_brown.png"));
+      $$0.put(cce.e, new aiy("textures/entity/horse/horse_black.png"));
+      $$0.put(cce.f, new aiy("textures/entity/horse/horse_gray.png"));
+      $$0.put(cce.g, new aiy("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public gbj(gat.a $$0) {
+      super($$0, new fmm<>($$0.a(fpb.al)), 1.1F);
+      this.a(new get(this));
+      this.a(new ges(this, $$0.f()));
    }
 
-   public ahh a(cdj $$0) {
-      return $$0.u() ? i : a;
-   }
-
-   protected float b(cdj $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.5F : $$1;
-   }
-
-   protected boolean c(cdj $$0) {
-      return super.a($$0) || $$0.u();
+   public aiy a(cbx $$0) {
+      return a.get($$0.w());
    }
 }

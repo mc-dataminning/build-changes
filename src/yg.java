@@ -1,16 +1,29 @@
-public record yg() implements yb {
-   public static final ahh a = new ahh("debug/game_test_clear");
+public class yg implements xx<yd> {
+   public static final xo<uq, yg> a = xx.a(yg::a, yg::new);
+   private final long b;
 
-   public yg(uj $$0) {
-      this();
+   public yg(long $$0) {
+      this.b = $$0;
+   }
+
+   private yg(uq $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(uq $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
+   public xz<yg> a() {
+      return yn.c;
    }
 
-   @Override
-   public ahh a() {
-      return a;
+   public void a(yd $$0) {
+      $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

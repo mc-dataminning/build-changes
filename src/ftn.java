@@ -1,168 +1,80 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class ftn extends aqo<ftn.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ahh b = new ahh("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
+public abstract class ftn extends fta {
+   protected float D;
+   private final Quaternionf a = new Quaternionf();
 
-   public boolean a() {
-      return !this.c.isEmpty();
+   protected ftn(fpx $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
    }
 
-   public boolean b() {
-      return this.a() && !this.e;
+   protected ftn(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
    }
 
-   public void d() {
-      this.d = true;
+   public ftn.a p() {
+      return ftn.a.a;
    }
 
-   public void e() {
-      this.e = true;
-   }
-
-   public void f() {
-      this.e = true;
-      this.f = true;
-   }
-
-   public boolean g() {
-      return this.d && !this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public void i() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
-   @Nullable
-   public String j() {
-      return (String)this.c.get("renderer");
-   }
-
-   @Nullable
-   public String k() {
-      return (String)this.c.get("version");
-   }
-
-   @Nullable
-   public String l() {
-      return (String)this.c.get("vendor");
-   }
-
-   @Nullable
-   public String m() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected ftn.a a(aqj $$0, bgt $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      $$1.a();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         $$1.a("compile_regex");
-         a($$5.getAsJsonArray("renderer"), $$2);
-         a($$5.getAsJsonArray("version"), $$3);
-         a($$5.getAsJsonArray("vendor"), $$4);
-         $$1.c();
+   @Override
+   public void a(ese $$0, ews $$1, float $$2) {
+      ens $$3 = $$1.b();
+      float $$4 = (float)(awh.d((double)$$2, this.d, this.g) - $$3.a());
+      float $$5 = (float)(awh.d((double)$$2, this.e, this.h) - $$3.b());
+      float $$6 = (float)(awh.d((double)$$2, this.f, this.i) - $$3.c());
+      this.p().setRotation(this.a, $$1, $$2);
+      if (this.z != 0.0F) {
+         this.a.rotateZ(awh.i($$2, this.A, this.z));
       }
 
-      $$1.b();
-      return new ftn.a($$2, $$3, $$4);
-   }
+      Vector3f[] $$7 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$8 = this.b($$2);
 
-   protected void a(ftn.a $$0, aqj $$1, bgt $$2) {
-      this.c = $$0.a();
-   }
-
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
-   }
-
-   @Nullable
-   private static JsonObject c(aqj $$0, bgt $$1) {
-      $$1.a("parse_json");
-      JsonObject $$2 = null;
-
-      try (Reader $$3 = $$0.openAsReader(b)) {
-         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
-      } catch (JsonSyntaxException | IOException var8) {
-         a.warn("Failed to load GPU warnlist");
+      for (int $$9 = 0; $$9 < 4; $$9++) {
+         Vector3f $$10 = $$7[$$9];
+         $$10.rotate(this.a);
+         $$10.mul($$8);
+         $$10.add($$4, $$5, $$6);
       }
 
-      $$1.c();
-      return $$2;
+      float $$11 = this.c();
+      float $$12 = this.d();
+      float $$13 = this.e();
+      float $$14 = this.f();
+      int $$15 = this.a($$2);
+      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
+      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
    }
 
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
+   public float b(float $$0) {
+      return this.D;
+   }
 
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   @Override
+   public fta d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
+   }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
+   protected abstract float c();
 
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
+   protected abstract float d();
 
-            while ($$4.find()) {
-               $$2.add($$4.group());
-            }
-         }
+   protected abstract float e();
 
-         return String.join(", ", $$2);
-      }
+   protected abstract float f();
 
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         String $$1 = a(this.a, epd.c());
-         if (!$$1.isEmpty()) {
-            $$0.put("renderer", $$1);
-         }
+   public interface a {
+      ftn.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
+      ftn.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
 
-         String $$2 = a(this.b, epd.d());
-         if (!$$2.isEmpty()) {
-            $$0.put("version", $$2);
-         }
-
-         String $$3 = a(this.c, epd.a());
-         if (!$$3.isEmpty()) {
-            $$0.put("vendor", $$3);
-         }
-
-         return $$0.build();
-      }
+      void setRotation(Quaternionf var1, ews var2, float var3);
    }
 }

@@ -1,70 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record dpg(int g, int h, int i, int j) {
-   public static final Codec<dpg> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(dmy.e, dmy.d).fieldOf("min_y").forGetter(dpg::c),
-                  Codec.intRange(0, dmy.c).fieldOf("height").forGetter(dpg::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dpg::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dpg::f)
-               )
-               .apply($$0, dpg::new)
-      )
-      .comapFlatMap(dpg::a, Function.identity());
-   protected static final dpg b = a(-64, 384, 1, 2);
-   protected static final dpg c = a(0, 128, 1, 2);
-   protected static final dpg d = a(0, 128, 2, 1);
-   protected static final dpg e = a(-64, 192, 1, 2);
-   protected static final dpg f = a(0, 256, 2, 1);
+public class dpg<T extends dow> implements dpf<T> {
+   private final doy<T> a;
+   private final dpb<T> b;
 
-   private static DataResult<dpg> a(dpg $$0) {
-      if ($$0.c() + $$0.d() > dmy.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dmy.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
-      }
+   public dpg(doy<T> $$0, dpb<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static dpg a(int $$0, int $$1, int $$2, int $$3) {
-      dpg $$4 = new dpg($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
    }
 
-   public int a() {
-      return is.c(this.f());
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
-   public int b() {
-      return is.c(this.e());
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
-   public dpg a(ctz $$0) {
-      int $$1 = Math.max(this.g, $$0.J_());
-      int $$2 = Math.min(this.g + this.h, $$0.al()) - $$1;
-      return new dpg($$1, $$2, this.i, this.j);
+   @Override
+   public <U extends T> void a(dpd<T, U> $$0, auu<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   public int c() {
-      return this.g;
+   @Override
+   public void a(enn $$0, Consumer<T> $$1) {
+      this.b.b($$0, auu.forConsumer($$1));
    }
 
-   public int d() {
-      return this.h;
-   }
-
-   public int e() {
-      return this.i;
-   }
-
-   public int f() {
-      return this.j;
+   @Override
+   public <U extends T> void a(dpd<T, U> $$0, enn $$1, auu<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

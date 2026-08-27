@@ -7,33 +7,33 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record aj(int c, List<ahh> d, List<ahh> e, Optional<dm> f) {
+public record aj(int c, List<aiy> d, List<aiy> e, Optional<dp> f) {
    public static final Codec<aj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atx.a(Codec.INT, "experience", Integer.valueOf(0)).forGetter(aj::a),
-               atx.a(ahh.a.listOf(), "loot", List.of()).forGetter(aj::b),
-               atx.a(ahh.a.listOf(), "recipes", List.of()).forGetter(aj::c),
-               atx.a(dm.a, "function").forGetter(aj::d)
+               avp.a(Codec.INT, "experience", Integer.valueOf(0)).forGetter(aj::a),
+               avp.a(aiy.a.listOf(), "loot", List.of()).forGetter(aj::b),
+               avp.a(aiy.a.listOf(), "recipes", List.of()).forGetter(aj::c),
+               avp.a(dp.a, "function").forGetter(aj::d)
             )
             .apply($$0, aj::new)
    );
    public static final aj b = new aj(0, List.of(), List.of(), Optional.empty());
 
-   public void a(anf $$0) {
+   public void a(aow $$0) {
       $$0.d(this.c);
-      ehl $$1 = new ehl.a($$0.z()).a(ejq.a, $$0).a(ejq.f, $$0.dj()).a(ejp.k);
+      ejb $$1 = new ejb.a($$0.z()).a(elg.a, $$0).a(elg.f, $$0.dk()).a(elf.k);
       boolean $$2 = false;
 
-      for (ahh $$3 : this.d) {
-         ObjectListIterator var6 = $$0.d.aJ().getLootTable($$3).a($$1).iterator();
+      for (aiy $$3 : this.d) {
+         ObjectListIterator var6 = $$0.e.aJ().getLootTable($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cng $$4 = (cng)var6.next();
+            coz $$4 = (coz)var6.next();
             if ($$0.i($$4)) {
-               $$0.dL().a(null, $$0.dq(), $$0.ds(), $$0.dw(), art.nd, aru.h, 0.2F, (($$0.eg().i() - $$0.eg().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dM().a(null, $$0.dr(), $$0.dt(), $$0.dx(), atk.nd, atl.h, 0.2F, (($$0.eh().i() - $$0.eh().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               ccb $$5 = $$0.a($$4, false);
+               cds $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.x();
                   $$5.b($$0.cw());
@@ -50,7 +50,7 @@ public record aj(int c, List<ahh> d, List<ahh> e, Optional<dm> f) {
          $$0.a(this.e);
       }
 
-      MinecraftServer $$6 = $$0.d;
+      MinecraftServer $$6 = $$0.e;
       this.f.flatMap($$1x -> $$1x.a($$6.aC())).ifPresent($$2x -> $$6.aC().a($$2x, $$0.dd().a().a(2)));
    }
 
@@ -58,23 +58,23 @@ public record aj(int c, List<ahh> d, List<ahh> e, Optional<dm> f) {
       return this.c;
    }
 
-   public List<ahh> b() {
+   public List<aiy> b() {
       return this.d;
    }
 
-   public List<ahh> c() {
+   public List<aiy> c() {
       return this.e;
    }
 
-   public Optional<dm> d() {
+   public Optional<dp> d() {
       return this.f;
    }
 
    public static class a {
       private int a;
-      private final Builder<ahh> b = ImmutableList.builder();
-      private final Builder<ahh> c = ImmutableList.builder();
-      private Optional<ahh> d = Optional.empty();
+      private final Builder<aiy> b = ImmutableList.builder();
+      private final Builder<aiy> c = ImmutableList.builder();
+      private Optional<aiy> d = Optional.empty();
 
       public static aj.a a(int $$0) {
          return new aj.a().b($$0);
@@ -85,35 +85,35 @@ public record aj(int c, List<ahh> d, List<ahh> e, Optional<dm> f) {
          return this;
       }
 
-      public static aj.a a(ahh $$0) {
+      public static aj.a a(aiy $$0) {
          return new aj.a().b($$0);
       }
 
-      public aj.a b(ahh $$0) {
+      public aj.a b(aiy $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static aj.a c(ahh $$0) {
+      public static aj.a c(aiy $$0) {
          return new aj.a().d($$0);
       }
 
-      public aj.a d(ahh $$0) {
+      public aj.a d(aiy $$0) {
          this.c.add($$0);
          return this;
       }
 
-      public static aj.a e(ahh $$0) {
+      public static aj.a e(aiy $$0) {
          return new aj.a().f($$0);
       }
 
-      public aj.a f(ahh $$0) {
+      public aj.a f(aiy $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
       public aj a() {
-         return new aj(this.a, this.b.build(), this.c.build(), this.d.map(dm::new));
+         return new aj(this.a, this.b.build(), this.c.build(), this.d.map(dp::new));
       }
    }
 }

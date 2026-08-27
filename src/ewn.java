@@ -1,200 +1,67 @@
-public class ewn {
-   public static final ewi a = ewi.a.a(1.125F)
-      .a(
-         "head",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.b(-12.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.75F, ewk.b(-12.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.9167F, ewk.b(5.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "head",
-         new ewh(
-            ewh.d.a,
-            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.a(0.0F, -2.0F, 0.0F), ewh.b.a),
-            new ewj(0.7917F, ewk.a(0.0F, -1.0F, 2.0F), ewh.b.a),
-            new ewj(0.9583F, ewk.a(0.0F, -1.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a("wind_bottom", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)))
-      .a(
-         "wind_mid",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.b(12.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.75F, ewk.b(12.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.9167F, ewk.b(-10.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new ewh(
-            ewh.d.a,
-            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.a(0.0F, 0.0F, 5.0F), ewh.b.a),
-            new ewj(0.75F, ewk.a(0.0F, 0.0F, 6.0F), ewh.b.a),
-            new ewj(0.9167F, ewk.a(0.0F, 0.0F, -2.0F), ewh.b.a),
-            new ewj(1.125F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.b(15.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.75F, ewk.b(15.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.9167F, ewk.b(-10.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new ewh(
-            ewh.d.a,
-            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.a(0.0F, 0.0F, 3.0F), ewh.b.a),
-            new ewj(0.8333F, ewk.a(0.0F, 0.0F, 4.0F), ewh.b.a),
-            new ewj(0.9583F, ewk.a(0.0F, 0.0F, -2.0F), ewh.b.a),
-            new ewj(1.125F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.b(12.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.75F, ewk.b(12.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.9167F, ewk.b(-2.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ewh(
-            ewh.d.a,
-            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.a(0.0F, 3.0F, 5.0F), ewh.b.a),
-            new ewj(0.8333F, ewk.a(0.0F, 3.0F, 6.0F), ewh.b.a),
-            new ewj(0.9583F, ewk.a(0.0F, 3.0F, -1.0F), ewh.b.a),
-            new ewj(1.125F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a("rods", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(1.0F, ewk.b(0.0F, 360.0F, 0.0F), ewh.b.a)))
-      .b();
-   public static final ewi b = ewi.a.a(1.125F)
-      .a(
-         "body",
-         new ewh(
-            ewh.d.a,
-            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.a(0.0F, -10.0F, 0.0F), ewh.b.a),
-            new ewj(0.625F, ewk.a(0.0F, -10.0F, 0.0F), ewh.b.a),
-            new ewj(0.75F, ewk.a(0.0F, 11.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "head",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.b(22.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.625F, ewk.b(22.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.8333F, ewk.b(-19.25F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new ewh(
-            ewh.d.c,
-            new ewj(0.0F, ewk.a(1.0, 1.0, 1.0), ewh.b.a),
-            new ewj(0.5F, ewk.a(1.0, 1.0, 1.0), ewh.b.a),
-            new ewj(0.625F, ewk.a(1.0, 1.0, 1.0), ewh.b.a),
-            new ewj(0.75F, ewk.a(1.0, 1.3F, 1.0), ewh.b.a),
-            new ewj(1.125F, ewk.a(1.0, 1.0, 1.0), ewh.b.a)
-         )
-      )
-      .a(
-         "wind_bottom",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.625F, ewk.b(0.0F, 90.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.b(0.0F, 360.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "wind_bottom",
-         new ewh(
-            ewh.d.c,
-            new ewj(0.0F, ewk.a(1.0, 1.0, 1.0), ewh.b.a),
-            new ewj(0.5F, ewk.a(1.0, 1.0, 1.0), ewh.b.a),
-            new ewj(0.625F, ewk.a(1.0, 1.0, 1.0), ewh.b.a),
-            new ewj(0.75F, ewk.a(1.0, 1.1F, 1.0), ewh.b.a),
-            new ewj(1.125F, ewk.a(1.0, 1.0, 1.0), ewh.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.625F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.b(0.0F, 180.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new ewh(
-            ewh.d.a,
-            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.a(0.0F, -6.0F, 0.0F), ewh.b.a),
-            new ewj(0.625F, ewk.a(0.0F, -6.0F, 0.0F), ewh.b.a),
-            new ewj(0.75F, ewk.a(0.0F, 2.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.625F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.b(0.0F, 90.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new ewh(
-            ewh.d.a,
-            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.a(0.0F, -5.0F, 0.0F), ewh.b.a),
-            new ewj(0.625F, ewk.a(0.0F, -5.0F, 0.0F), ewh.b.a),
-            new ewj(0.75F, ewk.a(0.0F, 2.0F, 0.0F), ewh.b.a),
-            new ewj(1.125F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a("rods", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(0.8333F, ewk.b(0.0F, 360.0F, 0.0F), ewh.b.a)))
-      .b();
-   public static final ewi c = ewi.a.a(0.2F)
-      .a("body", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(0.2F, ewk.a(0.0F, 0.0F, -6.0F), ewh.b.a)))
-      .a("wind_mid", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(0.2F, ewk.a(0.0F, 0.0F, -3.0F), ewh.b.a)))
-      .a("wind_top", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a), new ewj(0.2F, ewk.a(0.0F, 0.0F, -2.0F), ewh.b.a)))
-      .b();
-   public static final ewi d = ewi.a.a(0.1F)
-      .a("body", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.0F, -6.0F), ewh.b.a), new ewj(0.1F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)))
-      .a("wind_mid", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.0F, -3.0F), ewh.b.a), new ewj(0.1F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)))
-      .a("wind_top", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.0F, -2.0F), ewh.b.a), new ewj(0.1F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)))
-      .b();
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
+
+public class ewn extends ewh {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vq c = vq.c("mco.backup.restoring");
+   private final esw d;
+   private final long e;
+   private final euq f;
+
+   public ewn(esw $$0, long $$1, euq $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   public void run() {
+      esq $$0 = esq.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(this.f.f());
+            return;
+         } catch (eue var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (eud var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var5);
+            a(new euu(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
+         }
+      }
+   }
+
+   @Override
+   public vq a() {
+      return c;
+   }
 }

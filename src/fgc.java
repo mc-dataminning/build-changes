@@ -1,90 +1,135 @@
-public class fgc implements fge {
-   private static final ahh a = new ahh("container/bundle/background");
-   private static final int b = 4;
-   private static final int c = 1;
-   private static final int d = 18;
-   private static final int e = 20;
-   private final iq<cng> f;
-   private final int g;
+public abstract class fgc extends ffe {
+   private static final vq m = vq.c("advMode.setCommand");
+   private static final vq n = vq.c("advMode.command");
+   private static final vq o = vq.c("advMode.previousOutput");
+   protected ezq a;
+   protected ezq b;
+   protected ezh c;
+   protected ezh k;
+   protected ezo<Boolean> l;
+   ezk p;
 
-   public fgc(ckl $$0) {
-      this.f = $$0.a();
-      this.g = $$0.b();
+   public fgc() {
+      super(ewz.a);
    }
 
    @Override
-   public int a() {
-      return this.c() + 4;
-   }
-
-   @Override
-   public int a(exc $$0) {
-      return this.b();
-   }
-
-   private int b() {
-      return this.d() * 18 + 2;
-   }
-
-   private int c() {
-      return this.e() * 20 + 2;
-   }
-
-   @Override
-   public void a(exc $$0, int $$1, int $$2, exe $$3) {
-      int $$4 = this.d();
-      int $$5 = this.e();
-      $$3.a(a, $$1, $$2, this.b(), this.c());
-      boolean $$6 = this.g >= 64;
-      int $$7 = 0;
-
-      for (int $$8 = 0; $$8 < $$5; $$8++) {
-         for (int $$9 = 0; $$9 < $$4; $$9++) {
-            int $$10 = $$1 + $$9 * 18 + 1;
-            int $$11 = $$2 + $$8 * 20 + 1;
-            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
-         }
+   public void e() {
+      if (!this.o().j()) {
+         this.d();
       }
    }
 
-   private void a(int $$0, int $$1, int $$2, boolean $$3, exe $$4, exc $$5) {
-      if ($$2 >= this.f.size()) {
-         this.a($$4, $$0, $$1, $$3 ? fgc.a.a : fgc.a.b);
+   abstract cuo o();
+
+   abstract int E();
+
+   @Override
+   protected void aQ_() {
+      this.c = this.d(ezh.a(vp.d, $$0x -> this.H()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
+      this.k = this.d(ezh.a(vp.e, $$0x -> this.d()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.o().o();
+      this.l = this.d(ezo.a(vq.b("O"), vq.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.E(), 20, 20, vq.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         cuo $$2 = this.o();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new ezq(this.i, this.g / 2 - 150, 50, 300, 20, vq.c("advMode.command")) {
+         @Override
+         protected we aN_() {
+            return super.aN_().b(fgc.this.p.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.e(this.a);
+      this.b = new ezq(this.i, this.g / 2 - 150, this.E(), 276, 20, vq.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.e(this.b);
+      this.p = new ezk(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.p.a(true);
+      this.p.d();
+      this.c($$0);
+   }
+
+   @Override
+   protected void aH_() {
+      this.c(this.a);
+   }
+
+   @Override
+   protected vq B() {
+      return this.p.a() ? this.p.b() : super.B();
+   }
+
+   @Override
+   public void a(exh $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.p.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.o().l().getString() : "-");
+   }
+
+   protected void H() {
+      cuo $$0 = this.o();
+      this.a($$0);
+      if (!$$0.o()) {
+         $$0.c(null);
+      }
+
+      this.f.a(null);
+   }
+
+   protected abstract void a(cuo var1);
+
+   private void a(String $$0) {
+      this.p.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.p.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
       } else {
-         cng $$6 = this.f.get($$2);
-         this.a($$4, $$0, $$1, fgc.a.b);
-         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
-         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
-         if ($$2 == 0) {
-            fel.a($$4, $$0 + 1, $$1 + 1, 0);
-         }
+         this.H();
+         return true;
       }
    }
 
-   private void a(exe $$0, int $$1, int $$2, fgc.a $$3) {
-      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.p.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
    }
 
-   private int d() {
-      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.size() + 1.0)));
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.p.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
    }
 
-   private int e() {
-      return (int)Math.ceil(((double)this.f.size() + 1.0) / (double)this.d());
-   }
-
-   static enum a {
-      a(new ahh("container/bundle/blocked_slot"), 18, 20),
-      b(new ahh("container/bundle/slot"), 18, 20);
-
-      public final ahh c;
-      public final int d;
-      public final int e;
-
-      private a(ahh $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, m, this.g / 2, 20, 16777215);
+      $$0.b(this.i, n, this.g / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.E() - 135;
+         $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
       }
+
+      this.p.a($$0, $$1, $$2);
    }
 }

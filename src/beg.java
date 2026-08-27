@@ -1,21 +1,23 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class beg extends bde {
-   public beg(int $$0, Schema $$1) {
+public class beg extends DataFix {
+   public beg(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bbw.t.in($$0))));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      a($$0, $$1, "minecraft:campfire");
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bdn.F.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bdn.F))) {
+         throw new IllegalStateException("Team type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", axn::a)));
+      }
    }
 }

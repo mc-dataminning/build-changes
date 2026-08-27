@@ -1,30 +1,70 @@
-public class buu extends btk {
-   private final bmx a;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public buu(bmx $$0) {
+public class buu extends bvb {
+   protected final boo a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final cvn f;
+
+   public buu(boo $$0, double $$1) {
       this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dM();
+      this.a(EnumSet.of(bvb.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.aC() && !this.a.dL().b_(this.a.dl()).a(asn.a);
+      if (this.a.q() != null) {
+         return false;
+      } else if (!this.f.P()) {
+         return false;
+      } else if (!this.a.bN()) {
+         return false;
+      } else if (!this.f.h(this.a.dm())) {
+         return false;
+      } else {
+         return !this.a.c(bnv.f).b() ? false : this.h();
+      }
+   }
+
+   protected boolean h() {
+      ens $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return !this.a.N().l();
    }
 
    @Override
    public void c() {
-      hx $$0 = null;
+      this.a.N().a(this.b, this.c, this.d, this.e);
+   }
 
-      for (hx $$2 : hx.b(
-         aup.a(this.a.dq() - 2.0), aup.a(this.a.ds() - 2.0), aup.a(this.a.dw() - 2.0), aup.a(this.a.dq() + 2.0), this.a.dr(), aup.a(this.a.dw() + 2.0)
-      )) {
-         if (this.a.dL().b_($$2).a(asn.a)) {
-            $$0 = $$2;
-            break;
+   @Nullable
+   protected ens i() {
+      awo $$0 = this.a.eh();
+      hz $$1 = this.a.dm();
+
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         hz $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.h($$3) < 0.0F) {
+            return ens.c($$3);
          }
       }
 
-      if ($$0 != null) {
-         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+      return null;
    }
 }

@@ -1,69 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.Set;
 
-public class ekg {
-   private static final Codec<eke> t = kd.H.q().dispatch("condition", eke::b, ekf::a);
-   public static final Codec<eke> a = atx.a((Supplier<Codec<eke>>)(() -> atx.e(t, ejs.b)));
-   public static final ekf b = a("inverted", ekb.a);
-   public static final ekf c = a("any_of", ejt.a);
-   public static final ekf d = a("all_of", ejs.a);
-   public static final ekf e = a("random_chance", ekj.a);
-   public static final ekf f = a("random_chance_with_looting", ekk.a);
-   public static final ekf g = a("entity_properties", ekh.a);
-   public static final ekf h = a("killed_by_player", eki.a);
-   public static final ekf i = a("entity_scores", ejz.a);
-   public static final ekf j = a("block_state_property", ekd.a);
-   public static final ekf k = a("match_tool", ekl.a);
-   public static final ekf l = a("table_bonus", eju.a);
-   public static final ekf m = a("survives_explosion", eka.a);
-   public static final ekf n = a("damage_source_properties", ejy.a);
-   public static final ekf o = a("location_check", ekc.a);
-   public static final ekf p = a("weather_check", eko.a);
-   public static final ekf q = a("reference", ejw.a);
-   public static final ekf r = a("time_check", ekm.a);
-   public static final ekf s = a("value_check", ekn.a);
+public class ekg extends ekh {
+   public static final Codec<ekg> a = RecordCodecBuilder.create($$0 -> a($$0).and(eiu.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, ekg::new));
+   private final eiu b;
 
-   private static ekf a(String $$0, Codec<? extends eke> $$1) {
-      return it.a(kd.H, new ahh($$0), new ekf($$1));
+   private ekg(List<elu> $$0, eiu $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public static <T> Predicate<T> a(List<? extends Predicate<T>> $$0) {
-      List<Predicate<T>> $$1 = List.copyOf($$0);
-
-      return switch ($$1.size()) {
-         case 0 -> $$0x -> true;
-         case 1 -> (Predicate)$$1.get(0);
-         case 2 -> $$1.get(0).and($$1.get(1));
-         default -> $$1x -> {
-         for (Predicate<T> $$2 : $$1) {
-            if (!$$2.test((T)$$1x)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   @Override
+   public ekj b() {
+      return ekk.q;
    }
 
-   public static <T> Predicate<T> b(List<? extends Predicate<T>> $$0) {
-      List<Predicate<T>> $$1 = List.copyOf($$0);
+   @Override
+   public Set<eld<?>> a() {
+      return this.b.a();
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> $$0x -> false;
-         case 1 -> (Predicate)$$1.get(0);
-         case 2 -> $$1.get(0).or($$1.get(1));
-         default -> $$1x -> {
-         for (Predicate<T> $$2 : $$1) {
-            if ($$2.test((T)$$1x)) {
-               return true;
-            }
-         }
+   @Override
+   public coz a(coz $$0, eiv $$1) {
+      int $$2 = this.b.a($$1, $$0.M());
+      $$0.f($$2);
+      return $$0;
+   }
 
-         return false;
-      };
-      };
+   public static ekh.a<?> a(eiu $$0) {
+      return a($$1 -> new ekg($$1, $$0));
    }
 }

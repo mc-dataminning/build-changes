@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dqm extends dqq {
-   private final il<eey> e;
-   public static final Codec<dqm> a = RecordCodecBuilder.create($$0 -> a($$0).and(iv.a(ke.y).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dqm::new));
+public class dqm {
+   public static final Codec<dqm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dvx.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
+               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dqm::new)
+   );
+   public final double b;
+   public final double c;
+   public final int d;
 
-   public dqm(jb $$0, il<eey> $$1) {
-      super($$0);
-      this.e = $$1;
-   }
-
-   @Override
-   protected boolean a(djp $$0) {
-      return $$0.u().a(this.e);
-   }
-
-   @Override
-   public dqg<?> a() {
-      return dqg.c;
+   public dqm(double $$0, double $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

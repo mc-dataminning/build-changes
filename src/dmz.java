@@ -1,19 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public record dmz(ih<dmy> e, dlm f) {
-   public static final Codec<dmz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dmy.j.fieldOf("type").forGetter(dmz::a), dlm.a.fieldOf("generator").forGetter(dmz::b)).apply($$0, $$0.stable(dmz::new))
-   );
-   public static final ahg<dmz> b = ahg.a(ke.aN, new ahh("overworld"));
-   public static final ahg<dmz> c = ahg.a(ke.aN, new ahh("the_nether"));
-   public static final ahg<dmz> d = ahg.a(ke.aN, new ahh("the_end"));
+public class dmz implements AutoCloseable {
+   private final cvo a;
+   private final Long2ObjectMap<dnn> b = new Long2ObjectOpenHashMap();
+   @Nullable
+   private dnn c;
+   private long d;
 
-   public ih<dmy> a() {
-      return this.e;
+   public dmz(cvo $$0) {
+      this.a = $$0;
    }
 
-   public dlm b() {
-      return this.f;
+   @Nullable
+   public dnn a(hz $$0) {
+      int $$1 = this.a.e($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.am()) {
+         long $$2 = jb.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (dnn)this.b.computeIfAbsent($$2, $$2x -> {
+               dnb $$3 = this.a.a(jb.a($$0.u()), jb.a($$0.w()));
+               dnn $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
+         }
+
+         return this.c;
+      } else {
+         return null;
+      }
+   }
+
+   public dlf b(hz $$0) {
+      dnn $$1 = this.a($$0);
+      if ($$1 == null) {
+         return cyq.a.o();
+      } else {
+         int $$2 = jb.b($$0.u());
+         int $$3 = jb.b($$0.v());
+         int $$4 = jb.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
+
+      while (var1.hasNext()) {
+         dnn $$0 = (dnn)var1.next();
+         $$0.b();
+      }
    }
 }

@@ -1,35 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cpm(ahh c, ih<cnb> d, vg e, boolean f) {
-   public static final Codec<cpm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ahh.a.fieldOf("asset_id").forGetter(cpm::a),
-               ahe.a(ke.F).fieldOf("template_item").forGetter(cpm::b),
-               vi.a.fieldOf("description").forGetter(cpm::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cpm::d)
-            )
-            .apply($$0, cpm::new)
-   );
-   public static final Codec<ih<cpm>> b = ahd.a(ke.aJ, a);
-
-   public vg a(ih<cpk> $$0) {
-      return this.e.f().c($$0.a().e().a());
+public class cpm extends cms {
+   public cpm(cyo $$0, cou.a $$1) {
+      super($$0, $$1);
    }
 
-   public ahh a() {
-      return this.c;
+   @Override
+   public blu a(cri $$0) {
+      return blu.d;
    }
 
-   public ih<cnb> b() {
-      return this.d;
-   }
-
-   public vg c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
+   @Override
+   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
+      eno $$3 = a($$0, $$1, cuw.b.b);
+      eno $$4 = $$3.a($$3.a().c());
+      blu $$5 = super.a(new cri($$1, $$2, $$4));
+      return new blv<>($$5, $$1.b($$2));
    }
 }

@@ -1,27 +1,17 @@
-public class fra extends frf {
-   fra(foe $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 8;
+import java.util.Locale;
+
+public enum fra {
+   a("chat"),
+   b("skin"),
+   c("username");
+
+   private final String d;
+
+   private fra(String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
    }
 
-   @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(jx.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-      }
-
-      this.s++;
-      if (this.s == this.t) {
-         this.k();
-      }
-   }
-
-   public static class a implements frk<ka> {
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fra($$1, $$2, $$3, $$4);
-      }
+   public String a() {
+      return this.d;
    }
 }

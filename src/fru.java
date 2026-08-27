@@ -1,80 +1,66 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class fru extends fua {
+   private final float a;
+   private final float b;
 
-public abstract class fru extends frh {
-   protected float D;
-   private final Quaternionf a = new Quaternionf();
-
-   protected fru(foe $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-   }
-
-   protected fru(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-   }
-
-   public fru.a p() {
-      return fru.a.a;
+   fru(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, coz $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public void a(eqo $$0, evc $$1, float $$2) {
-      emc $$3 = $$1.b();
-      float $$4 = (float)(aup.d((double)$$2, this.d, this.g) - $$3.a());
-      float $$5 = (float)(aup.d((double)$$2, this.e, this.h) - $$3.b());
-      float $$6 = (float)(aup.d((double)$$2, this.f, this.i) - $$3.c());
-      this.p().setRotation(this.a, $$1, $$2);
-      if (this.z != 0.0F) {
-         this.a.rotateZ(aup.i($$2, this.A, this.z));
-      }
-
-      Vector3f[] $$7 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$8 = this.b($$2);
-
-      for (int $$9 = 0; $$9 < 4; $$9++) {
-         Vector3f $$10 = $$7[$$9];
-         $$10.rotate(this.a);
-         $$10.mul($$8);
-         $$10.add($$4, $$5, $$6);
-      }
-
-      float $$11 = this.c();
-      float $$12 = this.d();
-      float $$13 = this.e();
-      float $$14 = this.f();
-      int $$15 = this.a($$2);
-      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
+   public fte b() {
+      return fte.a;
    }
 
-   public float b(float $$0) {
-      return this.D;
+   protected fru(fpx $$0, double $$1, double $$2, double $$3, coz $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(exh.O().aq().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public frh d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
-   protected abstract float c();
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
 
-   protected abstract float d();
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
 
-   protected abstract float e();
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
 
-   protected abstract float f();
+   public static class a implements ftd<jv> {
+      public fta a(jv $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fru($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
+      }
+   }
 
-   public interface a {
-      fru.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      fru.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+   public static class b implements ftd<kc> {
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fru($$1, $$2, $$3, $$4, new coz(cpc.qP));
+      }
+   }
 
-      void setRotation(Quaternionf var1, evc var2, float var3);
+   public static class c implements ftd<kc> {
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fru($$1, $$2, $$3, $$4, new coz(cpc.qB));
+      }
    }
 }

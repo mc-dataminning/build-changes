@@ -1,61 +1,46 @@
-import java.nio.ByteBuffer;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
+public final class eok extends eob {
+   private final eob d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-public class eok {
-   @Nullable
-   private ByteBuffer a;
-   private final AudioFormat b;
-   private boolean c;
-   private int d;
-
-   public eok(ByteBuffer $$0, AudioFormat $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   protected eok(eob $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   OptionalInt a() {
-      if (!this.c) {
-         if (this.a == null) {
-            return OptionalInt.empty();
-         }
-
-         int $$0 = eoj.a(this.b);
-         int[] $$1 = new int[1];
-         AL10.alGenBuffers($$1);
-         if (eoj.a("Creating buffer")) {
-            return OptionalInt.empty();
-         }
-
-         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
-         if (eoj.a("Assigning buffer data")) {
-            return OptionalInt.empty();
-         }
-
-         this.d = $$1[0];
-         this.c = true;
-         this.a = null;
-      }
-
-      return OptionalInt.of(this.d);
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public void b() {
-      if (this.c) {
-         AL10.alDeleteBuffers(new int[]{this.d});
-         if (eoj.a("Deleting stream buffers")) {
-            return;
-         }
-      }
-
-      this.c = false;
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public OptionalInt c() {
-      OptionalInt $$0 = this.a();
-      this.c = false;
-      return $$0;
+   @Override
+   public int a(ie.a $$0) {
+      return this.a($$0, this.d.a($$0));
+   }
+
+   @Override
+   public int b(ie.a $$0) {
+      return this.a($$0, this.d.b($$0));
+   }
+
+   private int a(ie.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return awh.a($$1, $$2, $$3) - $$2;
    }
 }

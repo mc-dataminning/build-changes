@@ -1,84 +1,160 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ddo extends czi implements ddn {
-   public static final MapCodec<ddo> b = b(ddo::new);
+public class ddo {
+   public static final ddo.e[] a = new ddo.e[]{ddo.e.a, ddo.e.b, ddo.e.c};
+   private final ddo.b b;
 
-   @Override
-   public MapCodec<ddo> a() {
-      return b;
+   public ddo(ddn $$0) {
+      this(new ddo.a($$0));
    }
 
-   public ddo(djo.d $$0) {
-      super(bje.a(1), $$0);
+   public ddo(ddo.b $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public int a(dds.a $$0, cty $$1, hx $$2, auw $$3, dds $$4, boolean $$5) {
-      int $$6 = $$0.b();
-      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
-         hx $$7 = $$0.a();
-         boolean $$8 = $$7.a($$2, (double)$$4.e());
-         if (!$$8 && a($$1, $$7)) {
-            int $$9 = $$4.d();
-            if ($$3.a($$9) < $$6) {
-               hx $$10 = $$7.c();
-               djp $$11 = this.a($$1, $$10, $$3, $$4.h());
-               $$1.a($$10, $$11, 3);
-               $$1.a(null, $$7, $$11.w().e(), aru.e, 1.0F, 1.0F);
-            }
-
-            return Math.max(0, $$6 - $$9);
-         } else {
-            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
-         }
-      } else {
-         return $$6;
-      }
+   public boolean a(dlf $$0, cut $$1, hz $$2, ie $$3) {
+      return ie.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
    }
 
-   private static int a(dds $$0, hx $$1, hx $$2, int $$3) {
-      int $$4 = $$0.e();
-      float $$5 = aup.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
-      int $$6 = aup.h(24 - $$4);
-      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
-      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   public Optional<ddo.c> a(dlf $$0, cvo $$1, hz $$2, awo $$3) {
+      return ie.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
    }
 
-   private djp a(cty $$0, hx $$1, auw $$2, boolean $$3) {
-      djp $$4;
-      if ($$2.a(11) == 0) {
-         $$4 = cxa.qV.o().a(ddr.d, Boolean.valueOf($$3));
-      } else {
-         $$4 = cxa.qQ.o();
-      }
-
-      return $$4.b(dkf.C) && !$$0.b_($$1).c() ? $$4.a(dkf.C, Boolean.valueOf(true)) : $$4;
+   public long a(dlf $$0, cvo $$1, hz $$2, boolean $$3) {
+      return ie.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
    }
 
-   private static boolean a(cty $$0, hx $$1) {
-      djp $$2 = $$0.a_($$1.c());
-      if ($$2.i() || $$2.a(cxa.G) && $$2.u().b(efa.c)) {
-         int $$3 = 0;
+   public Optional<ddo.c> a(dlf $$0, cvo $$1, hz $$2, ie $$3, awo $$4, boolean $$5) {
+      return ie.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
 
-         for (hx $$4 : hx.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
-            djp $$5 = $$0.a_($$4);
-            if ($$5.a(cxa.qQ) || $$5.a(cxa.qV)) {
-               $$3++;
-            }
+   private long a(dlf $$0, cvo $$1, hz $$2, ie $$3, boolean $$4) {
+      return ie.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
 
-            if ($$3 > 2) {
-               return false;
+   @VisibleForTesting
+   public Optional<ddo.c> a(dlf $$0, cvo $$1, hz $$2, ie $$3, ie $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<ddo.c> a(dlf $$0, cut $$1, hz $$2, ie $$3, ie $$4, ddo.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (ddo.e $$6 : this.b.a()) {
+            ddo.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
             }
          }
 
-         return true;
+         return Optional.empty();
       } else {
+         return Optional.empty();
+      }
+   }
+
+   public Optional<ddo.c> a(cvo $$0, ddo.c $$1, boolean $$2) {
+      dlf $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
+   }
+
+   public static class a implements ddo.b {
+      protected ddn a;
+
+      public a(ddn $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public dlf a(dlf $$0, cut $$1, hz $$2, ie $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(cut $$0, hz $$1, hz $$2, ie $$3, dlf $$4) {
+         return $$4.i() || $$4.a(this.a) || $$4.a(cyq.G) && $$4.u().b();
+      }
+
+      @Override
+      public boolean a(cut $$0, hz $$1, ddo.c $$2) {
+         dlf $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
+      }
+   }
+
+   public interface b {
+      @Nullable
+      dlf a(dlf var1, cut var2, hz var3, ie var4);
+
+      boolean a(cut var1, hz var2, ddo.c var3);
+
+      default ddo.e[] a() {
+         return ddo.a;
+      }
+
+      default boolean a(dlf $$0, ie $$1) {
+         return ddn.a($$0, $$1);
+      }
+
+      default boolean a(dlf $$0) {
          return false;
       }
+
+      default boolean b(dlf $$0, ie $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(cvo $$0, ddo.c $$1, dlf $$2, boolean $$3) {
+         dlf $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
+         } else {
+            return false;
+         }
+      }
    }
 
-   @Override
-   public boolean d() {
-      return false;
+   public static record c(hz a, ie b) {
+   }
+
+   @FunctionalInterface
+   public interface d {
+      boolean test(cut var1, hz var2, ddo.c var3);
+   }
+
+   public static enum e {
+      a {
+         @Override
+         public ddo.c a(hz $$0, ie $$1, ie $$2) {
+            return new ddo.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public ddo.c a(hz $$0, ie $$1, ie $$2) {
+            return new ddo.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public ddo.c a(hz $$0, ie $$1, ie $$2) {
+            return new ddo.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
+
+      public abstract ddo.c a(hz var1, ie var2, ie var3);
    }
 }

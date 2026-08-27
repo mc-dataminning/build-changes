@@ -1,29 +1,21 @@
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-public class eny<T> implements enp<T> {
-   private final Function<hx, enw<T>> a;
+public class eny extends AbstractDoubleList {
+   private final int a;
 
-   public eny(Function<hx, enw<T>> $$0) {
-      this.a = $$0;
+   eny(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
    }
 
-   @Override
-   public boolean a(hx $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
    }
 
-   @Override
-   public void a(ent<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(hx $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   public int size() {
+      return this.a + 1;
    }
 }

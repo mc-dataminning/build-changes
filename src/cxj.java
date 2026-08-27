@@ -1,98 +1,95 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cxj extends cwy {
-   public static final MapCodec<cxj> a = b(cxj::new);
-   public static final dkp b = dkf.aw;
-   public static final int c = 15;
-   protected static final int d = 1;
-   protected static final emv e = cwy.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   protected static final emv f = cwy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public abstract class cxj extends cya {
+   public static final dlz a = dcj.aE;
+   public static final dlw b = dlv.r;
 
-   @Override
-   public MapCodec<cxj> a() {
-      return a;
-   }
-
-   protected cxj(djo.d $$0) {
+   protected cxj(dle.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      this.k(this.E.b().a(a, ie.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(djp $$0, ane $$1, hx $$2, auw $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected abstract MapCodec<? extends cxj> a();
+
+   @Override
+   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
+      if ($$1.B) {
+         return blu.a;
+      } else {
+         this.a($$1, $$2, $$3);
+         return blu.b;
+      }
+   }
+
+   protected abstract void a(cvn var1, hz var2, chh var3);
+
+   @Override
+   public dlf a(crg $$0) {
+      return this.o().a(a, $$0.g().g());
+   }
+
+   @Override
+   public void a(cvn $$0, hz $$1, dlf $$2, bog $$3, coz $$4) {
+      if ($$4.B()) {
+         dit $$5 = $$0.c_($$1);
+         if ($$5 instanceof dii) {
+            ((dii)$$5).a($$4.z());
+         }
       }
    }
 
    @Override
-   public void b(djp $$0, ane $$1, hx $$2, auw $$3) {
-      hx $$4 = $$2.c();
-      if ($$1.u($$4)) {
-         int $$5 = 1;
-
-         while ($$1.a_($$2.c($$5)).a(this)) {
-            $$5++;
-         }
-
-         if ($$5 < 3) {
-            int $$6 = $$0.c(b);
-            if ($$6 == 15) {
-               $$1.b($$4, this.o());
-               djp $$7 = $$0.a(b, Integer.valueOf(0));
-               $$1.a($$2, $$7, 4);
-               $$1.a($$7, $$4, this, $$2, false);
-            } else {
-               $$1.a($$2, $$0.a(b, Integer.valueOf($$6 + 1)), 4);
+   protected void a(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dit $$5 = $$1.c_($$2);
+         if ($$5 instanceof dii) {
+            if ($$1 instanceof aov) {
+               blq.a($$1, $$2, (dii)$$5);
+               ((dii)$$5).a((aov)$$1, ens.b($$2));
             }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
          }
       }
    }
 
    @Override
-   public emv b(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return e;
+   protected boolean d_(dlf $$0) {
+      return true;
    }
 
    @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return f;
+   protected int a(dlf $$0, cvn $$1, hz $$2) {
+      return ckb.a($$1.c_($$2));
    }
 
    @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected det b_(dlf $$0) {
+      return det.c;
    }
 
    @Override
-   public boolean a(djp $$0, cua $$1, hx $$2) {
-      for (ic $$3 : ic.c.a) {
-         djp $$4 = $$1.a_($$2.a($$3));
-         if ($$4.e() || $$1.b_($$2.a($$3)).a(asn.b)) {
-            return false;
-         }
-      }
-
-      djp $$5 = $$1.a_($$2.d());
-      return ($$5.a(cxa.dQ) || $$5.a(asi.H)) && !$$1.a_($$2.c()).k();
+   protected dlf a(dlf $$0, dfa $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public void a(djp $$0, ctx $$1, hx $$2, blw $$3) {
-      $$3.a($$1.ai().j(), 1.0F);
+   protected dlf a(dlf $$0, ddk $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
    @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(b);
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(a, b);
    }
 
-   @Override
-   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
-      return false;
+   @Nullable
+   protected static <T extends dit> diu<T> a(cvn $$0, div<T> $$1, div<? extends dii> $$2) {
+      return $$0.B ? null : a($$1, $$2, dii::a);
    }
 }

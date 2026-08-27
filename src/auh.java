@@ -1,66 +1,129 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
+public final class auh {
+   public static final auo<cou> a = a("wool");
+   public static final auo<cou> b = a("planks");
+   public static final auo<cou> c = a("stone_bricks");
+   public static final auo<cou> d = a("wooden_buttons");
+   public static final auo<cou> e = a("stone_buttons");
+   public static final auo<cou> f = a("buttons");
+   public static final auo<cou> g = a("wool_carpets");
+   public static final auo<cou> h = a("wooden_doors");
+   public static final auo<cou> i = a("wooden_stairs");
+   public static final auo<cou> j = a("wooden_slabs");
+   public static final auo<cou> k = a("wooden_fences");
+   public static final auo<cou> l = a("fence_gates");
+   public static final auo<cou> m = a("wooden_pressure_plates");
+   public static final auo<cou> n = a("wooden_trapdoors");
+   public static final auo<cou> o = a("doors");
+   public static final auo<cou> p = a("saplings");
+   public static final auo<cou> q = a("logs_that_burn");
+   public static final auo<cou> r = a("logs");
+   public static final auo<cou> s = a("dark_oak_logs");
+   public static final auo<cou> t = a("oak_logs");
+   public static final auo<cou> u = a("birch_logs");
+   public static final auo<cou> v = a("acacia_logs");
+   public static final auo<cou> w = a("cherry_logs");
+   public static final auo<cou> x = a("jungle_logs");
+   public static final auo<cou> y = a("spruce_logs");
+   public static final auo<cou> z = a("mangrove_logs");
+   public static final auo<cou> A = a("crimson_stems");
+   public static final auo<cou> B = a("warped_stems");
+   public static final auo<cou> C = a("bamboo_blocks");
+   public static final auo<cou> D = a("wart_blocks");
+   public static final auo<cou> E = a("banners");
+   public static final auo<cou> F = a("sand");
+   public static final auo<cou> G = a("smelts_to_glass");
+   public static final auo<cou> H = a("stairs");
+   public static final auo<cou> I = a("slabs");
+   public static final auo<cou> J = a("walls");
+   public static final auo<cou> K = a("anvil");
+   public static final auo<cou> L = a("rails");
+   public static final auo<cou> M = a("leaves");
+   public static final auo<cou> N = a("trapdoors");
+   public static final auo<cou> O = a("small_flowers");
+   public static final auo<cou> P = a("beds");
+   public static final auo<cou> Q = a("fences");
+   public static final auo<cou> R = a("tall_flowers");
+   public static final auo<cou> S = a("flowers");
+   public static final auo<cou> T = a("piglin_repellents");
+   public static final auo<cou> U = a("piglin_loved");
+   public static final auo<cou> V = a("ignored_by_piglin_babies");
+   public static final auo<cou> W = a("piglin_food");
+   public static final auo<cou> X = a("fox_food");
+   public static final auo<cou> Y = a("gold_ores");
+   public static final auo<cou> Z = a("iron_ores");
+   public static final auo<cou> aa = a("diamond_ores");
+   public static final auo<cou> ab = a("redstone_ores");
+   public static final auo<cou> ac = a("lapis_ores");
+   public static final auo<cou> ad = a("coal_ores");
+   public static final auo<cou> ae = a("emerald_ores");
+   public static final auo<cou> af = a("copper_ores");
+   public static final auo<cou> ag = a("non_flammable_wood");
+   public static final auo<cou> ah = a("soul_fire_base_blocks");
+   public static final auo<cou> ai = a("candles");
+   public static final auo<cou> aj = a("dirt");
+   public static final auo<cou> ak = a("terracotta");
+   public static final auo<cou> al = a("completes_find_tree_tutorial");
+   public static final auo<cou> am = a("boats");
+   public static final auo<cou> an = a("chest_boats");
+   public static final auo<cou> ao = a("fishes");
+   public static final auo<cou> ap = a("signs");
+   public static final auo<cou> aq = a("music_discs");
+   public static final auo<cou> ar = a("creeper_drop_music_discs");
+   public static final auo<cou> as = a("coals");
+   public static final auo<cou> at = a("arrows");
+   public static final auo<cou> au = a("lectern_books");
+   public static final auo<cou> av = a("bookshelf_books");
+   public static final auo<cou> aw = a("beacon_payment_items");
+   public static final auo<cou> ax = a("stone_tool_materials");
+   public static final auo<cou> ay = a("stone_crafting_materials");
+   public static final auo<cou> az = a("freeze_immune_wearables");
+   public static final auo<cou> aA = a("axolotl_tempt_items");
+   public static final auo<cou> aB = a("dampens_vibrations");
+   public static final auo<cou> aC = a("cluster_max_harvestables");
+   public static final auo<cou> aD = a("compasses");
+   public static final auo<cou> aE = a("hanging_signs");
+   public static final auo<cou> aF = a("creeper_igniters");
+   public static final auo<cou> aG = a("noteblock_top_instruments");
+   public static final auo<cou> aH = a("foot_armor");
+   public static final auo<cou> aI = a("leg_armor");
+   public static final auo<cou> aJ = a("chest_armor");
+   public static final auo<cou> aK = a("head_armor");
+   public static final auo<cou> aL = a("skulls");
+   public static final auo<cou> aM = a("trimmable_armor");
+   public static final auo<cou> aN = a("trim_materials");
+   public static final auo<cou> aO = a("trim_templates");
+   public static final auo<cou> aP = a("sniffer_food");
+   public static final auo<cou> aQ = a("decorated_pot_sherds");
+   public static final auo<cou> aR = a("decorated_pot_ingredients");
+   public static final auo<cou> aS = a("swords");
+   public static final auo<cou> aT = a("axes");
+   public static final auo<cou> aU = a("hoes");
+   public static final auo<cou> aV = a("pickaxes");
+   public static final auo<cou> aW = a("shovels");
+   public static final auo<cou> aX = a("tools");
+   public static final auo<cou> aY = a("breaks_decorated_pots");
+   public static final auo<cou> aZ = a("villager_plantable_seeds");
+   public static final auo<cou> ba = a("enchantable/foot_armor");
+   public static final auo<cou> bb = a("enchantable/leg_armor");
+   public static final auo<cou> bc = a("enchantable/chest_armor");
+   public static final auo<cou> bd = a("enchantable/head_armor");
+   public static final auo<cou> be = a("enchantable/armor");
+   public static final auo<cou> bf = a("enchantable/sword");
+   public static final auo<cou> bg = a("enchantable/weapon");
+   public static final auo<cou> bh = a("enchantable/mining");
+   public static final auo<cou> bi = a("enchantable/mining_loot");
+   public static final auo<cou> bj = a("enchantable/fishing");
+   public static final auo<cou> bk = a("enchantable/trident");
+   public static final auo<cou> bl = a("enchantable/durability");
+   public static final auo<cou> bm = a("enchantable/bow");
+   public static final auo<cou> bn = a("enchantable/equippable");
+   public static final auo<cou> bo = a("enchantable/crossbow");
+   public static final auo<cou> bp = a("enchantable/vanishing");
 
-public record auh<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<auh<Integer>> a = a(Codec.INT);
-
-   public auh(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
-      } else {
-         this.b = b;
-         this.c = c;
-      }
+   private auh() {
    }
 
-   public auh(T $$0) {
-      this($$0, $$0);
-   }
-
-   public static <T extends Comparable<T>> Codec<auh<T>> a(Codec<T> $$0) {
-      return atx.a($$0, "min_inclusive", "max_inclusive", auh::a, auh::a, auh::b);
-   }
-
-   public static <T extends Comparable<T>> Codec<auh<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return atx.a(
-         a($$0),
-         (Function<auh<T>, DataResult<auh<T>>>)($$2x -> {
-            if ($$2x.a().compareTo($$1) < 0) {
-               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-            } else {
-               return $$2x.b().compareTo($$2) > 0
-                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                  : DataResult.success($$2x);
-            }
-         })
-      );
-   }
-
-   public static <T extends Comparable<T>> DataResult<auh<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new auh($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
-
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
-   }
-
-   public boolean a(auh<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   private static auo<cou> a(String $$0) {
+      return auo.a(kg.F, new aiy($$0));
    }
 }

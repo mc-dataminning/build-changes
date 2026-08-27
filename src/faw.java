@@ -1,83 +1,71 @@
-public abstract class faw implements fbc {
-   private int c;
-   private int d;
-   protected int a;
-   protected int b;
+public abstract class faw {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final eys d;
+   protected final awq e;
 
-   public faw(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.B() + ($$0 - this.B());
-         $$1.n($$2);
-      });
-      this.c = $$0;
-   }
-
-   @Override
-   public void o(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.C() + ($$0 - this.C());
-         $$1.o($$2);
-      });
+   protected faw(eys $$0, awq $$1) {
       this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public int B() {
-      return this.c;
+   public int a(int $$0) {
+      return Math.min(this.e.a() + 2, $$0);
    }
 
-   @Override
-   public int C() {
-      return this.d;
+   public void a(eyu $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(fvu.C(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.a() - ($$2 - 2));
+      int $$8 = this.e.b() - $$7;
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         long $$11 = this.e.a($$7 + $$9);
+         $$5 = Math.min($$5, $$11);
+         $$6 = Math.max($$6, $$11);
+         $$4 += $$11;
+         int $$12 = this.b((double)$$11);
+         int $$13 = this.a($$11);
+         $$0.a(fvu.C(), $$10, $$3 - $$12, $$10 + 1, $$3, $$13);
+      }
+
+      $$0.a(fvu.C(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(fvu.C(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(fvu.C(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(fvu.C(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$14 = this.a((double)$$5) + " min";
+         String $$15 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$16 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$14, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$15, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$16, $$1 + $$2 - this.d.b($$16) - 2, $$3 - 60 - 9, 14737632);
+      }
+
+      this.a($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public int w() {
-      return this.a;
+   protected void a(eyu $$0, int $$1, int $$2, int $$3) {
    }
 
-   @Override
-   public int u() {
-      return this.b;
+   protected void a(eyu $$0, String $$1, int $$2, int $$3) {
+      $$0.a(fvu.C(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
    }
 
-   protected abstract static class a {
-      public final fbd a;
-      public final fbe.a b;
+   protected abstract String a(double var1);
 
-      protected a(fbd $$0, fbe $$1) {
-         this.a = $$0;
-         this.b = $$1.h();
-      }
+   protected abstract int b(double var1);
 
-      public int a() {
-         return this.a.u() + this.b.b + this.b.d;
-      }
+   protected abstract int a(long var1);
 
-      public int b() {
-         return this.a.w() + this.b.a + this.b.c;
-      }
-
-      public void a(int $$0, int $$1) {
-         float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.w() - this.b.c);
-         int $$4 = (int)aup.i(this.b.e, $$2, $$3);
-         this.a.n($$4 + $$0);
-      }
-
-      public void b(int $$0, int $$1) {
-         float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.u() - this.b.d);
-         int $$4 = Math.round(aup.i(this.b.f, $$2, $$3));
-         this.a.o($$4 + $$0);
-      }
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = awh.a($$0, $$1, $$5);
+      return $$0 < $$3 ? avr.b.a((float)($$0 / ($$3 - $$1)), $$2, $$4) : avr.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

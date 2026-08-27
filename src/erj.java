@@ -1,28 +1,95 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.Set;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class erj extends esg {
-   public Set<String> a = Sets.newHashSet();
+public class erj {
+   public void a(float $$0) {
+   }
 
-   public static erj a(String $$0) {
-      erj $$1 = new erj();
-      JsonParser $$2 = new JsonParser();
+   public void a(float $$0, float $$1) {
+   }
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
-            }
-         }
-      } catch (Exception var8) {
-      }
+   public void a(float $$0, float $$1, float $$2) {
+   }
 
-      return $$1;
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+   }
+
+   public void a(int $$0) {
+   }
+
+   public void a(int $$0, int $$1) {
+   }
+
+   public void a(int $$0, int $$1, int $$2) {
+   }
+
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+   }
+
+   public void a(float[] $$0) {
+   }
+
+   public void a(Vector3f $$0) {
+   }
+
+   public void a(Vector4f $$0) {
+   }
+
+   public void c(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+   }
+
+   public void a(Matrix4f $$0) {
+   }
+
+   public void a(Matrix3f $$0) {
    }
 }

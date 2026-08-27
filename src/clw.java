@@ -1,46 +1,156 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class clw extends cnb implements cof {
-   private static final Map<clv, clw> a = Maps.newEnumMap(clv.class);
-   private final clv b;
+public class clw {
+   private final int a;
+   public final bln d;
+   public int e;
+   public final int f;
+   public final int g;
 
-   public clw(clv $$0, cnb.a $$1) {
-      super($$1);
-      this.b = $$0;
-      a.put($$0, this);
+   public clw(bln $$0, int $$1, int $$2, int $$3) {
+      this.d = $$0;
+      this.a = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   @Override
-   public bkc a(cng $$0, cfq $$1, bmo $$2, bkb $$3) {
-      if ($$2 instanceof byy $$4 && $$4.bx() && !$$4.A() && $$4.w() != this.b) {
-         $$4.dL().a($$1, $$4, art.hx, aru.h, 1.0F, 1.0F);
-         if (!$$1.dL().B) {
-            $$4.b(this.b);
-            $$0.h(1);
+   public void b(coz $$0, coz $$1) {
+      int $$2 = $$1.M() - $$0.M();
+      if ($$2 > 0) {
+         this.a($$1, $$2);
+      }
+   }
+
+   protected void a(coz $$0, int $$1) {
+   }
+
+   protected void b(int $$0) {
+   }
+
+   protected void b_(coz $$0) {
+   }
+
+   public void a(chh $$0, coz $$1) {
+      this.b();
+   }
+
+   public boolean a(coz $$0) {
+      return true;
+   }
+
+   public coz g() {
+      return this.d.a(this.a);
+   }
+
+   public boolean h() {
+      return !this.g().b();
+   }
+
+   public void e(coz $$0) {
+      this.a($$0, this.g());
+   }
+
+   public void a(coz $$0, coz $$1) {
+      this.f($$0);
+   }
+
+   public void f(coz $$0) {
+      this.d.a(this.a, $$0);
+      this.b();
+   }
+
+   public void b() {
+      this.d.e();
+   }
+
+   public int a() {
+      return this.d.al_();
+   }
+
+   public int a_(coz $$0) {
+      return Math.min(this.a(), $$0.g());
+   }
+
+   @Nullable
+   public Pair<aiy, aiy> c() {
+      return null;
+   }
+
+   public coz a(int $$0) {
+      return this.d.a(this.a, $$0);
+   }
+
+   public boolean a(chh $$0) {
+      return true;
+   }
+
+   public boolean d() {
+      return true;
+   }
+
+   public Optional<coz> a(int $$0, int $$1, chh $$2) {
+      if (!this.a($$2)) {
+         return Optional.empty();
+      } else if (!this.b($$2) && $$1 < this.g().M()) {
+         return Optional.empty();
+      } else {
+         $$0 = Math.min($$0, $$1);
+         coz $$3 = this.a($$0);
+         if ($$3.b()) {
+            return Optional.empty();
+         } else {
+            if (this.g().b()) {
+               this.a(coz.h, $$3);
+            }
+
+            return Optional.of($$3);
+         }
+      }
+   }
+
+   public coz b(int $$0, int $$1, chh $$2) {
+      Optional<coz> $$3 = this.a($$0, $$1, $$2);
+      $$3.ifPresent($$1x -> this.a($$2, $$1x));
+      return $$3.orElse(coz.h);
+   }
+
+   public coz d(coz $$0) {
+      return this.b($$0, $$0.M());
+   }
+
+   public coz b(coz $$0, int $$1) {
+      if (!$$0.b() && this.a($$0)) {
+         coz $$2 = this.g();
+         int $$3 = Math.min(Math.min($$1, $$0.M()), this.a_($$0) - $$2.M());
+         if ($$2.b()) {
+            this.e($$0.a($$3));
+         } else if (coz.c($$2, $$0)) {
+            $$0.h($$3);
+            $$2.g($$3);
+            this.e($$2);
          }
 
-         return bkc.a($$1.dL().B);
-      }
-
-      return bkc.d;
-   }
-
-   public clv d() {
-      return this.b;
-   }
-
-   public static clw a(clv $$0) {
-      return a.get($$0);
-   }
-
-   @Override
-   public boolean a(ctx $$0, dim $$1, boolean $$2, cfq $$3) {
-      if ($$1.a($$0x -> $$0x.a(this.d()), $$2)) {
-         $$0.a(null, $$1.aE_(), art.hx, aru.e, 1.0F, 1.0F);
-         return true;
+         return $$0;
       } else {
-         return false;
+         return $$0;
       }
+   }
+
+   public boolean b(chh $$0) {
+      return this.a($$0) && this.a(this.g());
+   }
+
+   public int i() {
+      return this.a;
+   }
+
+   public boolean e() {
+      return true;
+   }
+
+   public boolean f() {
+      return false;
    }
 }

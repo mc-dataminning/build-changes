@@ -1,17 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public record asw(List<asv> b, boolean c) {
-   public static final Codec<asw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(asv.a.listOf().fieldOf("values").forGetter(asw::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(asw::b)).apply($$0, asw::new)
-   );
-
-   public List<asv> a() {
-      return this.b;
+public class asw extends asr<GameProfile> {
+   public asw(GameProfile $$0) {
+      super($$0);
    }
 
-   public boolean b() {
-      return this.c;
+   public asw(JsonObject $$0) {
+      super(b($$0));
+   }
+
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId() == null ? "" : this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+      }
+   }
+
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
+
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
+
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

@@ -1,68 +1,109 @@
-import java.util.Set;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public class fh implements Predicate<djt> {
-   private final djp a;
-   private final Set<dks<?>> b;
-   @Nullable
-   private final so c;
+public class fh implements ArgumentType<Integer> {
+   private static final Collection<String> a = Arrays.asList("0d", "0s", "0t", "0");
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("argument.time.invalid_unit"));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("argument.time.tick_count_too_low", $$1, $$0));
+   private static final Object2IntMap<String> d = new Object2IntOpenHashMap();
+   final int e;
 
-   public fh(djp $$0, Set<dks<?>> $$1, @Nullable so $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private fh(int $$0) {
+      this.e = $$0;
    }
 
-   public djp a() {
-      return this.a;
+   public static fh a() {
+      return new fh(0);
    }
 
-   public Set<dks<?>> b() {
-      return this.b;
+   public static fh a(int $$0) {
+      return new fh($$0);
    }
 
-   public boolean a(djt $$0) {
-      djp $$1 = $$0.a();
-      if (!$$1.a(this.a.b())) {
-         return false;
+   public Integer a(StringReader $$0) throws CommandSyntaxException {
+      float $$1 = $$0.readFloat();
+      String $$2 = $$0.readUnquotedString();
+      int $$3 = d.getOrDefault($$2, 0);
+      if ($$3 == 0) {
+         throw b.create();
       } else {
-         for (dks<?> $$2 : this.b) {
-            if ($$1.c($$2) != this.a.c($$2)) {
-               return false;
-            }
-         }
-
-         if (this.c == null) {
-            return true;
+         int $$4 = Math.round($$1 * (float)$$3);
+         if ($$4 < this.e) {
+            throw c.create($$4, this.e);
          } else {
-            dhd $$3 = $$0.b();
-            return $$3 != null && td.a(this.c, $$3.o(), true);
+            return $$4;
          }
       }
    }
 
-   public boolean a(ane $$0, hx $$1) {
-      return this.a(new djt($$0, $$1, false));
-   }
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      StringReader $$2 = new StringReader($$1.getRemaining());
 
-   public boolean a(ane $$0, hx $$1, int $$2) {
-      djp $$3 = cwy.b(this.a, $$0, $$1);
-      if ($$3.i()) {
-         $$3 = this.a;
+      try {
+         $$2.readFloat();
+      } catch (CommandSyntaxException var5) {
+         return $$1.buildFuture();
       }
 
-      if (!$$0.a($$1, $$3, $$2)) {
-         return false;
-      } else {
-         if (this.c != null) {
-            dhd $$4 = $$0.c_($$1);
-            if ($$4 != null) {
-               $$4.a(this.c);
-            }
+      return dz.b(d.keySet(), $$1.createOffset($$1.getStart() + $$2.getCursor()));
+   }
+
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   static {
+      d.put("d", 24000);
+      d.put("s", 20);
+      d.put("t", 1);
+      d.put("", 1);
+   }
+
+   public static class a implements hl<fh, fh.a.a> {
+      public void a(fh.a.a $$0, uq $$1) {
+         $$1.p($$0.b);
+      }
+
+      public fh.a.a a(uq $$0) {
+         int $$1 = $$0.readInt();
+         return new fh.a.a($$1);
+      }
+
+      public void a(fh.a.a $$0, JsonObject $$1) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      public fh.a.a a(fh $$0) {
+         return new fh.a.a($$0.e);
+      }
+
+      public final class a implements hl.a<fh> {
+         final int b;
+
+         a(int $$1) {
+            this.b = $$1;
          }
 
-         return true;
+         public fh a(dq $$0) {
+            return fh.a(this.b);
+         }
+
+         @Override
+         public hl<fh, ?> a() {
+            return a.this;
+         }
       }
    }
 }

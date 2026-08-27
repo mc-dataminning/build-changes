@@ -1,174 +1,176 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class ffl extends ffd<cjk> implements fhg {
-   private float x;
-   private float y;
-   private final fha z = new fha();
-   private boolean A;
-   private boolean B;
+public class ffl extends few {
+   private static final vq c = vq.c("options.graphics.fabulous").a(n.u);
+   private static final vq k = vq.a("options.graphics.warning.message", c, c);
+   private static final vq l = vq.c("options.graphics.warning.title").a(n.m);
+   private static final vq m = vq.c("options.graphics.warning.accept");
+   private static final vq n = vq.c("options.graphics.warning.cancel");
+   private fae o;
+   private final fvg p;
+   private final int q;
 
-   public ffl(cfq $$0) {
-      super($$0.bV, $$0.fS(), vg.c("container.crafting"));
-      this.l = 97;
+   private static exk<?>[] a(exl $$0) {
+      return new exk[]{
+         $$0.j(),
+         $$0.e(),
+         $$0.l(),
+         $$0.f(),
+         $$0.k(),
+         $$0.h(),
+         $$0.L(),
+         $$0.Y(),
+         $$0.an(),
+         $$0.B(),
+         $$0.am(),
+         $$0.i(),
+         $$0.X(),
+         $$0.ao(),
+         $$0.A(),
+         $$0.M(),
+         $$0.ag(),
+         $$0.g(),
+         $$0.ah(),
+         $$0.ac(),
+         $$0.aj(),
+         $$0.ak()
+      };
+   }
+
+   public ffl(ffe $$0, exl $$1) {
+      super($$0, $$1, vq.c("options.videoTitle"));
+      this.p = $$0.f.ah();
+      this.p.i();
+      if ($$1.j().c() == exa.c) {
+         this.p.e();
+      }
+
+      this.q = $$1.A().c();
    }
 
    @Override
-   public void E() {
-      if (this.f.q.f()) {
-         this.f.a(new ffa(this.f.s, this.f.s.cr.y(), this.f.m.G().c()));
+   protected void aQ_() {
+      this.o = this.d(new fae(this.f, this.g, this.h - 64, 32, 25));
+      int $$0 = -1;
+      ere $$1 = this.f.aM();
+      eqz $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
       } else {
-         this.z.g();
-      }
-   }
-
-   @Override
-   protected void aP_() {
-      if (this.f.q.f()) {
-         this.f.a(new ffa(this.f.s, this.f.s.cr.y(), this.f.m.G().c()));
-      } else {
-         super.aP_();
-         this.A = this.g < 379;
-         this.z.a(this.g, this.h, this.f, this.A, this.p);
-         this.t = this.z.a(this.g, this.c);
-         this.d(new eyd(this.t + 104, this.h / 2 - 22, 20, 18, fha.a, $$0 -> {
-            this.z.e();
-            this.t = this.z.a(this.g, this.c);
-            $$0.c(this.t + 104, this.h / 2 - 22);
-            this.B = true;
-         }));
-         this.e(this.z);
-         this.c(this.z);
-      }
-   }
-
-   @Override
-   protected void b(exe $$0, int $$1, int $$2) {
-      $$0.a(this.i, this.e, this.l, this.m, 4210752, false);
-   }
-
-   @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      if (this.z.f() && this.A) {
-         this.b($$0, $$1, $$2, $$3);
-         this.z.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.z.a($$0, $$1, $$2, $$3);
-         this.z.a($$0, this.t, this.u, false, $$3);
+         Optional<erd> $$4 = $$1.f();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
       }
 
-      this.a($$0, $$1, $$2);
-      this.z.a($$0, this.t, this.u, $$1, $$2);
-      this.x = (float)$$1;
-      this.y = (float)$$2;
+      exk<Integer> $$6 = new exk<>("options.fullscreen.resolution", exk.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return vq.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return exl.a($$1x, vq.c("options.fullscreen.current"));
+         } else {
+            erd $$3x = $$2.a($$2x);
+            return exl.a($$1x, vq.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
+         }
+      }, new exk.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
+         }
+      });
+      this.o.a($$6);
+      this.o.a(this.b.C());
+      this.o.a(a(this.b));
+      this.d(ezh.a(vp.d, $$1x -> {
+         this.f.m.as();
+         $$1.g();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
    @Override
-   protected void a(exe $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.t;
-      int $$5 = this.u;
-      $$0.a(a, $$4, $$5, 0, 0, this.c, this.k);
-      a($$0, $$4 + 26, $$5 + 8, $$4 + 75, $$5 + 78, 30, 0.0625F, this.x, this.y, this.f.s);
-   }
-
-   public static void a(exe $$0, int $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, bmo $$9) {
-      float $$10 = (float)($$1 + $$3) / 2.0F;
-      float $$11 = (float)($$2 + $$4) / 2.0F;
-      $$0.c($$1, $$2, $$3, $$4);
-      float $$12 = (float)Math.atan((double)(($$10 - $$7) / 40.0F));
-      float $$13 = (float)Math.atan((double)(($$11 - $$8) / 40.0F));
-      Quaternionf $$14 = new Quaternionf().rotateZ((float) Math.PI);
-      Quaternionf $$15 = new Quaternionf().rotateX($$13 * 20.0F * (float) (Math.PI / 180.0));
-      $$14.mul($$15);
-      float $$16 = $$9.aU;
-      float $$17 = $$9.dB();
-      float $$18 = $$9.dD();
-      float $$19 = $$9.aX;
-      float $$20 = $$9.aW;
-      $$9.aU = 180.0F + $$12 * 20.0F;
-      $$9.r(180.0F + $$12 * 40.0F);
-      $$9.s(-$$13 * 20.0F);
-      $$9.aW = $$9.dB();
-      $$9.aX = $$9.dB();
-      Vector3f $$21 = new Vector3f(0.0F, $$9.dh() / 2.0F + $$6, 0.0F);
-      a($$0, $$10, $$11, $$5, $$21, $$14, $$15, $$9);
-      $$9.aU = $$16;
-      $$9.r($$17);
-      $$9.s($$18);
-      $$9.aX = $$19;
-      $$9.aW = $$20;
-      $$0.f();
-   }
-
-   public static void a(exe $$0, float $$1, float $$2, int $$3, Vector3f $$4, Quaternionf $$5, @Nullable Quaternionf $$6, bmo $$7) {
-      $$0.c().a();
-      $$0.c().a((double)$$1, (double)$$2, 50.0);
-      $$0.c().a(new Matrix4f().scaling((float)$$3, (float)$$3, (float)(-$$3)));
-      $$0.c().a($$4.x, $$4.y, $$4.z);
-      $$0.c().a($$5);
-      epg.c();
-      fyy $$8 = evr.O().ao();
-      if ($$6 != null) {
-         $$6.conjugate();
-         $$8.a($$6);
+   public void k() {
+      if (this.b.A().c() != this.q) {
+         this.f.b(this.b.A().c());
+         this.f.P();
       }
 
-      $$8.a(false);
-      RenderSystem.runAsFancy(() -> $$8.a($$7, 0.0, 0.0, 0.0, 0.0F, 1.0F, $$0.c(), $$0.d(), 15728880));
-      $$0.e();
-      $$8.a(true);
-      $$0.c().b();
-      epg.b();
-   }
-
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.A || !this.z.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      super.k();
    }
 
    @Override
    public boolean a(double $$0, double $$1, int $$2) {
-      if (this.z.a($$0, $$1, $$2)) {
-         this.a(this.z);
+      int $$3 = this.b.an().c();
+      if (super.a($$0, $$1, $$2)) {
+         if (this.b.an().c() != $$3) {
+            this.f.a();
+         }
+
+         if (this.p.g()) {
+            List<vq> $$4 = Lists.newArrayList(new vq[]{k, vp.s});
+            String $$5 = this.p.j();
+            if ($$5 != null) {
+               $$4.add(vp.s);
+               $$4.add(vq.a("options.graphics.warning.renderer", $$5).a(n.h));
+            }
+
+            String $$6 = this.p.l();
+            if ($$6 != null) {
+               $$4.add(vp.s);
+               $$4.add(vq.a("options.graphics.warning.vendor", $$6).a(n.h));
+            }
+
+            String $$7 = this.p.k();
+            if ($$7 != null) {
+               $$4.add(vp.s);
+               $$4.add(vq.a("options.graphics.warning.version", $$7).a(n.h));
+            }
+
+            this.f.a(new ffk(l, $$4, ImmutableList.of(new ffk.a(m, $$0x -> {
+               this.b.j().a(exa.c);
+               exh.O().f.f();
+               this.p.e();
+               this.f.a(this);
+            }), new ffk.a(n, $$0x -> {
+               this.p.f();
+               this.f.a(this);
+            }))));
+         }
+
          return true;
       } else {
-         return this.A && this.z.f() ? false : super.a($$0, $$1, $$2);
+         return false;
       }
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.B) {
-         this.B = false;
-         return true;
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (ffe.t()) {
+         exk<Integer> $$4 = this.b.an();
+         int $$5 = $$4.c() + (int)Math.signum($$3);
+         if ($$5 != 0) {
+            $$4.a($$5);
+            if ($$4.c() == $$5) {
+               this.f.a();
+               return true;
+            }
+         }
+
+         return false;
       } else {
-         return super.b($$0, $$1, $$2);
+         return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      return this.z.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
-   }
-
-   @Override
-   protected void a(cke $$0, int $$1, int $$2, cis $$3) {
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.z.a($$0);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
    }
 
    @Override
-   public void I() {
-      this.z.i();
-   }
-
-   @Override
-   public fha J() {
-      return this.z;
+   public void b(eyu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

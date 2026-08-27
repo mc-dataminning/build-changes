@@ -1,99 +1,71 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cwe extends cwk {
-   public static final MapCodec<cwe> a = b(cwe::new);
-   public static final dkj b = dkf.P;
-   public static final dkg c = dkf.u;
+public record cwe(sw d, Optional<cwe.a> e) {
+   public static final String a = "entity";
+   public static final Codec<cwe> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(sw.a.fieldOf("entity").forGetter($$0x -> $$0x.d), cwe.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
+            .apply($$0, cwe::new)
+   );
+   public static final Codec<bke<cwe>> c = bke.a(b);
 
-   @Override
-   public MapCodec<cwe> a() {
-      return a;
+   public cwe() {
+      this(new sw(), Optional.empty());
    }
 
-   public cwe(djo.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ic.c).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public bkc a(djp $$0, ctx $$1, hx $$2, cfq $$3, ely $$4) {
-      if ($$1.B) {
-         return bkc.a;
-      } else {
-         dhd $$5 = $$1.c_($$2);
-         if ($$5 instanceof dgw) {
-            $$3.a((dgw)$$5);
-            $$3.a(asd.ar);
-            ceh.a($$3, true);
-         }
-
-         return bkc.b;
-      }
-   }
-
-   @Override
-   public void a(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
-      bjy.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public void a(djp $$0, ane $$1, hx $$2, auw $$3) {
-      dhd $$4 = $$1.c_($$2);
-      if ($$4 instanceof dgw) {
-         ((dgw)$$4).m();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dhd a(hx $$0, djp $$1) {
-      return new dgw($$0, $$1);
-   }
-
-   @Override
-   public ddd b_(djp $$0) {
-      return ddd.c;
-   }
-
-   @Override
-   public void a(ctx $$0, hx $$1, djp $$2, @Nullable bmo $$3, cng $$4) {
-      if ($$4.A()) {
-         dhd $$5 = $$0.c_($$1);
-         if ($$5 instanceof dgw) {
-            ((dgw)$$5).a($$4.y());
+   public cwe(sw d, Optional<cwe.a> e) {
+      if (d.e("id")) {
+         aiy $$2 = aiy.a(d.l("id"));
+         if ($$2 != null) {
+            d.a("id", $$2.toString());
+         } else {
+            d.r("id");
          }
       }
+
+      this.d = d;
+      this.e = e;
    }
 
-   @Override
-   public boolean d_(djp $$0) {
-      return true;
+   public sw a() {
+      return this.d;
    }
 
-   @Override
-   public int a(djp $$0, ctx $$1, hx $$2) {
-      return cij.a($$1.c_($$2));
+   public Optional<cwe.a> b() {
+      return this.e;
    }
 
-   @Override
-   public djp a(djp $$0, ddk $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public sw c() {
+      return this.d;
    }
 
-   @Override
-   public djp a(djp $$0, dbu $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public Optional<cwe.a> d() {
+      return this.e;
    }
 
-   @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(b, c);
-   }
+   public static record a(avz<Integer> b, avz<Integer> c) {
+      private static final avz<Integer> d = new avz<>(0, 15);
+      public static final Codec<cwe.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, cwe.a::new)
+      );
 
-   @Override
-   public djp a(cpp $$0) {
-      return this.o().a(b, $$0.d().g());
+      private static DataResult<avz<Integer>> a(avz<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<avz<Integer>> a(String $$0) {
+         return avp.a(avz.a.optionalFieldOf($$0, d), cwe.a::a);
+      }
+
+      public avz<Integer> a() {
+         return this.b;
+      }
+
+      public avz<Integer> b() {
+         return this.c;
+      }
    }
 }

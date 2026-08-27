@@ -1,24 +1,26 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class bwo extends bww<bmq> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
+public class bwo extends bvy {
+   public static final float i = 0.001F;
+   protected final float j;
 
-   @Override
-   public Set<bvq<?>> a() {
-      return ImmutableSet.of(bvq.L);
+   public bwo(boo $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
-   protected void a(ane $$0, bmq $$1) {
-      bno<?> $$2 = $$1.dN();
-      List<ccb> $$3 = $$0.a(ccb.class, $$1.cH().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      Optional<ccb> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.q())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::D).findFirst();
-      $$2.a(bvq.L, $$4);
+   public bwo(boo $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
+   }
+
+   @Nullable
+   @Override
+   protected ens h() {
+      if (this.b.bc()) {
+         ens $$0 = bzb.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
+      } else {
+         return this.b.eh().i() >= this.j ? bzb.a(this.b, 10, 7) : super.h();
+      }
    }
 }

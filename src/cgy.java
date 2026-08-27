@@ -1,774 +1,1197 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class cgy {
-   private static final int h = 2;
-   private static final int i = 0;
-   private static final int j = 1;
-   private static final int k = 2;
-   private static final int l = 32;
-   private static final int m = 48000;
-   private static final int n = 3;
-   private static final String o = "block.minecraft.ominous_banner";
-   private static final String p = "event.minecraft.raid.raiders_remaining";
-   public static final int a = 16;
-   private static final int q = 40;
-   private static final int r = 300;
-   public static final int b = 2400;
-   public static final int c = 600;
-   private static final int s = 30;
-   public static final int d = 24000;
-   public static final int e = 5;
-   private static final int t = 2;
-   private static final vg u = vg.c("event.minecraft.raid");
-   private static final vg v = vg.c("event.minecraft.raid.victory.full");
-   private static final vg w = vg.c("event.minecraft.raid.defeat.full");
-   private static final int x = 48000;
-   public static final int f = 9216;
-   public static final int g = 12544;
-   private final Map<Integer, cgz> y = Maps.newHashMap();
-   private final Map<Integer, Set<cgz>> z = Maps.newHashMap();
-   private final Set<UUID> A = Sets.newHashSet();
-   private long B;
-   private hx C;
-   private final ane D;
-   private boolean E;
-   private final int F;
-   private float G;
-   private int H;
-   private boolean I;
-   private int J;
-   private final anb K = new anb(u, bjs.a.c, bjs.b.c);
-   private int L;
-   private int M;
-   private final auw N = auw.a();
-   private final int O;
-   private cgy.a P;
-   private int Q;
-   private Optional<hx> R = Optional.empty();
-
-   public cgy(int $$0, ane $$1, hx $$2) {
-      this.F = $$0;
-      this.D = $$1;
-      this.I = true;
-      this.M = 300;
-      this.K.a(0.0F);
-      this.C = $$2;
-      this.O = this.a($$1.ak());
-      this.P = cgy.a.a;
-   }
-
-   public cgy(ane $$0, so $$1) {
-      this.D = $$0;
-      this.F = $$1.h("Id");
-      this.E = $$1.q("Started");
-      this.I = $$1.q("Active");
-      this.B = $$1.i("TicksActive");
-      this.H = $$1.h("BadOmenLevel");
-      this.J = $$1.h("GroupsSpawned");
-      this.M = $$1.h("PreRaidTicks");
-      this.L = $$1.h("PostRaidTicks");
-      this.G = $$1.j("TotalHealth");
-      this.C = new hx($$1.h("CX"), $$1.h("CY"), $$1.h("CZ"));
-      this.O = $$1.h("NumGroups");
-      this.P = cgy.a.a($$1.l("Status"));
-      this.A.clear();
-      if ($$1.b("HeroesOfTheVillage", 9)) {
-         for (tl $$3 : $$1.c("HeroesOfTheVillage", 11)) {
-            this.A.add(td.a($$3));
-         }
-      }
-   }
-
-   public boolean a() {
-      return this.e() || this.f();
-   }
-
-   public boolean b() {
-      return this.c() && this.r() == 0 && this.M > 0;
-   }
-
-   public boolean c() {
-      return this.J > 0;
-   }
-
-   public boolean d() {
-      return this.P == cgy.a.d;
-   }
-
-   public boolean e() {
-      return this.P == cgy.a.b;
-   }
-
-   public boolean f() {
-      return this.P == cgy.a.c;
-   }
-
-   public float g() {
-      return this.G;
-   }
-
-   public Set<cgz> h() {
-      Set<cgz> $$0 = Sets.newHashSet();
-
-      for (Set<cgz> $$1 : this.z.values()) {
-         $$0.addAll($$1);
-      }
-
-      return $$0;
-   }
-
-   public ctx i() {
-      return this.D;
-   }
-
-   public boolean j() {
-      return this.E;
-   }
-
-   public int k() {
-      return this.J;
-   }
-
-   private Predicate<anf> x() {
-      return $$0 -> {
-         hx $$1 = $$0.dl();
-         return $$0.bx() && this.D.d($$1) == this;
-      };
-   }
-
-   private void y() {
-      Set<anf> $$0 = Sets.newHashSet(this.K.h());
-      List<anf> $$1 = this.D.a(this.x());
-
-      for (anf $$2 : $$1) {
-         if (!$$0.contains($$2)) {
-            this.K.a($$2);
-         }
-      }
-
-      for (anf $$3 : $$0) {
-         if (!$$1.contains($$3)) {
-            this.K.b($$3);
-         }
-      }
-   }
-
-   public int l() {
-      return 5;
-   }
-
-   public int m() {
-      return this.H;
-   }
-
-   public void a(int $$0) {
-      this.H = $$0;
-   }
-
-   public void a(cfq $$0) {
-      if ($$0.a(bll.E)) {
-         this.H = this.H + $$0.c(bll.E).d() + 1;
-         this.H = aup.a(this.H, 0, this.l());
-      }
-
-      $$0.e(bll.E);
-   }
-
-   public void n() {
-      this.I = false;
-      this.K.b();
-      this.P = cgy.a.d;
-   }
-
-   public void o() {
-      if (!this.d()) {
-         if (this.P == cgy.a.a) {
-            boolean $$0 = this.I;
-            this.I = this.D.B(this.C);
-            if (this.D.ak() == bjz.a) {
-               this.n();
-               return;
-            }
-
-            if ($$0 != this.I) {
-               this.K.d(this.I);
-            }
-
-            if (!this.I) {
-               return;
-            }
-
-            if (!this.D.c(this.C)) {
-               this.z();
-            }
-
-            if (!this.D.c(this.C)) {
-               if (this.J > 0) {
-                  this.P = cgy.a.c;
-               } else {
-                  this.n();
-               }
-            }
-
-            this.B++;
-            if (this.B >= 48000L) {
-               this.n();
-               return;
-            }
-
-            int $$1 = this.r();
-            if ($$1 == 0 && this.A()) {
-               if (this.M <= 0) {
-                  if (this.M == 0 && this.J > 0) {
-                     this.M = 300;
-                     this.K.a(u);
-                     return;
+   private static final int e = 12;
+   private static final int f = 16;
+   private static final int g = 3;
+   private static final int h = 1;
+   private static final int i = 2;
+   private static final int j = 5;
+   private static final int k = 10;
+   private static final int l = 10;
+   private static final int m = 20;
+   private static final int n = 15;
+   private static final int o = 30;
+   private static final int p = 30;
+   private static final float q = 0.05F;
+   private static final float r = 0.2F;
+   public static final Map<cgx, Int2ObjectMap<cgy.g[]>> a = ac.a(
+      Maps.newHashMap(),
+      $$0 -> {
+         $$0.put(
+            cgx.g,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{
+                     new cgy.b(cpc.pv, 20, 16, 2),
+                     new cgy.b(cpc.uc, 26, 16, 2),
+                     new cgy.b(cpc.ub, 22, 16, 2),
+                     new cgy.b(cpc.vg, 15, 16, 2),
+                     new cgy.i(cpc.pw, 1, 6, 16, 1)
+                  },
+                  2,
+                  new cgy.g[]{new cgy.b(cyq.eZ, 6, 12, 10), new cgy.i(cpc.up, 1, 4, 5), new cgy.i(cpc.os, 1, 4, 16, 5)},
+                  3,
+                  new cgy.g[]{new cgy.i(cpc.rR, 3, 18, 10), new cgy.b(cyq.fa, 4, 12, 20)},
+                  4,
+                  new cgy.g[]{
+                     new cgy.i(cyq.eg, 1, 1, 12, 15),
+                     new cgy.j(bnd.p, 100, 15),
+                     new cgy.j(bnd.h, 160, 15),
+                     new cgy.j(bnd.r, 140, 15),
+                     new cgy.j(bnd.o, 120, 15),
+                     new cgy.j(bnd.s, 280, 15),
+                     new cgy.j(bnd.w, 7, 15)
+                  },
+                  5,
+                  new cgy.g[]{new cgy.i(cpc.ug, 3, 3, 30), new cgy.i(cpc.ss, 4, 3, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cgx.h,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{
+                     new cgy.b(cpc.pr, 20, 16, 2),
+                     new cgy.b(cpc.ov, 10, 16, 2),
+                     new cgy.h(cpc.qY, 6, 1, cpc.rc, 6, 16, 1, 0.05F),
+                     new cgy.i(cpc.qG, 3, 1, 16, 1)
+                  },
+                  2,
+                  new cgy.g[]{new cgy.b(cpc.qY, 15, 16, 10), new cgy.h(cpc.qZ, 6, 1, cpc.rd, 6, 16, 5, 0.05F), new cgy.i(cpc.wn, 2, 1, 5)},
+                  3,
+                  new cgy.g[]{new cgy.b(cpc.qZ, 13, 16, 20), new cgy.e(cpc.qU, 3, 3, 10, 0.2F)},
+                  4,
+                  new cgy.g[]{new cgy.b(cpc.ra, 6, 12, 30)},
+                  5,
+                  new cgy.g[]{
+                     new cgy.b(cpc.rb, 4, 12, 30),
+                     new cgy.c(
+                        1,
+                        12,
+                        30,
+                        ImmutableMap.builder()
+                           .put(cgz.c, cpc.nT)
+                           .put(cgz.g, cpc.nV)
+                           .put(cgz.e, cpc.nV)
+                           .put(cgz.a, cpc.nZ)
+                           .put(cgz.b, cpc.nZ)
+                           .put(cgz.d, cpc.ob)
+                           .put(cgz.f, cpc.of)
+                           .build()
+                     )
                   }
-               } else {
-                  boolean $$2 = this.R.isPresent();
-                  boolean $$3 = !$$2 && this.M % 5 == 0;
-                  if ($$2 && !this.D.f(this.R.get())) {
-                     $$3 = true;
-                  }
-
-                  if ($$3) {
-                     int $$4 = 0;
-                     if (this.M < 100) {
-                        $$4 = 1;
-                     } else if (this.M < 40) {
-                        $$4 = 2;
-                     }
-
-                     this.R = this.d($$4);
-                  }
-
-                  if (this.M == 300 || this.M % 20 == 0) {
-                     this.y();
-                  }
-
-                  this.M--;
-                  this.K.a(aup.a((float)(300 - this.M) / 300.0F, 0.0F, 1.0F));
+               )
+            )
+         );
+         $$0.put(
+            cgx.n,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{
+                     new cgy.b(cyq.bA, 18, 16, 2),
+                     new cgy.b(cyq.bM, 18, 16, 2),
+                     new cgy.b(cyq.bP, 18, 16, 2),
+                     new cgy.b(cyq.bH, 18, 16, 2),
+                     new cgy.i(cpc.rU, 2, 1, 1)
+                  },
+                  2,
+                  new cgy.g[]{
+                     new cgy.b(cpc.rh, 12, 16, 10),
+                     new cgy.b(cpc.ro, 12, 16, 10),
+                     new cgy.b(cpc.rw, 12, 16, 10),
+                     new cgy.b(cpc.rk, 12, 16, 10),
+                     new cgy.b(cpc.rm, 12, 16, 10),
+                     new cgy.i(cyq.bA, 1, 1, 16, 5),
+                     new cgy.i(cyq.bB, 1, 1, 16, 5),
+                     new cgy.i(cyq.bC, 1, 1, 16, 5),
+                     new cgy.i(cyq.bD, 1, 1, 16, 5),
+                     new cgy.i(cyq.bE, 1, 1, 16, 5),
+                     new cgy.i(cyq.bF, 1, 1, 16, 5),
+                     new cgy.i(cyq.bG, 1, 1, 16, 5),
+                     new cgy.i(cyq.bH, 1, 1, 16, 5),
+                     new cgy.i(cyq.bI, 1, 1, 16, 5),
+                     new cgy.i(cyq.bJ, 1, 1, 16, 5),
+                     new cgy.i(cyq.bK, 1, 1, 16, 5),
+                     new cgy.i(cyq.bL, 1, 1, 16, 5),
+                     new cgy.i(cyq.bM, 1, 1, 16, 5),
+                     new cgy.i(cyq.bN, 1, 1, 16, 5),
+                     new cgy.i(cyq.bO, 1, 1, 16, 5),
+                     new cgy.i(cyq.bP, 1, 1, 16, 5),
+                     new cgy.i(cyq.ik, 1, 4, 16, 5),
+                     new cgy.i(cyq.il, 1, 4, 16, 5),
+                     new cgy.i(cyq.im, 1, 4, 16, 5),
+                     new cgy.i(cyq.in, 1, 4, 16, 5),
+                     new cgy.i(cyq.io, 1, 4, 16, 5),
+                     new cgy.i(cyq.ip, 1, 4, 16, 5),
+                     new cgy.i(cyq.iq, 1, 4, 16, 5),
+                     new cgy.i(cyq.ir, 1, 4, 16, 5),
+                     new cgy.i(cyq.is, 1, 4, 16, 5),
+                     new cgy.i(cyq.it, 1, 4, 16, 5),
+                     new cgy.i(cyq.iu, 1, 4, 16, 5),
+                     new cgy.i(cyq.iv, 1, 4, 16, 5),
+                     new cgy.i(cyq.iw, 1, 4, 16, 5),
+                     new cgy.i(cyq.ix, 1, 4, 16, 5),
+                     new cgy.i(cyq.iy, 1, 4, 16, 5),
+                     new cgy.i(cyq.iz, 1, 4, 16, 5)
+                  },
+                  3,
+                  new cgy.g[]{
+                     new cgy.b(cpc.rl, 12, 16, 20),
+                     new cgy.b(cpc.rp, 12, 16, 20),
+                     new cgy.b(cpc.ri, 12, 16, 20),
+                     new cgy.b(cpc.rv, 12, 16, 20),
+                     new cgy.b(cpc.rn, 12, 16, 20),
+                     new cgy.i(cyq.aZ, 3, 1, 12, 10),
+                     new cgy.i(cyq.bd, 3, 1, 12, 10),
+                     new cgy.i(cyq.bn, 3, 1, 12, 10),
+                     new cgy.i(cyq.bo, 3, 1, 12, 10),
+                     new cgy.i(cyq.bk, 3, 1, 12, 10),
+                     new cgy.i(cyq.bl, 3, 1, 12, 10),
+                     new cgy.i(cyq.bi, 3, 1, 12, 10),
+                     new cgy.i(cyq.bg, 3, 1, 12, 10),
+                     new cgy.i(cyq.bm, 3, 1, 12, 10),
+                     new cgy.i(cyq.bc, 3, 1, 12, 10),
+                     new cgy.i(cyq.bh, 3, 1, 12, 10),
+                     new cgy.i(cyq.be, 3, 1, 12, 10),
+                     new cgy.i(cyq.bb, 3, 1, 12, 10),
+                     new cgy.i(cyq.ba, 3, 1, 12, 10),
+                     new cgy.i(cyq.bf, 3, 1, 12, 10),
+                     new cgy.i(cyq.bj, 3, 1, 12, 10)
+                  },
+                  4,
+                  new cgy.g[]{
+                     new cgy.b(cpc.rt, 12, 16, 30),
+                     new cgy.b(cpc.rr, 12, 16, 30),
+                     new cgy.b(cpc.rs, 12, 16, 30),
+                     new cgy.b(cpc.ru, 12, 16, 30),
+                     new cgy.b(cpc.rj, 12, 16, 30),
+                     new cgy.b(cpc.rq, 12, 16, 30),
+                     new cgy.i(cpc.uL, 3, 1, 12, 15),
+                     new cgy.i(cpc.uW, 3, 1, 12, 15),
+                     new cgy.i(cpc.uO, 3, 1, 12, 15),
+                     new cgy.i(cpc.uZ, 3, 1, 12, 15),
+                     new cgy.i(cpc.uR, 3, 1, 12, 15),
+                     new cgy.i(cpc.uY, 3, 1, 12, 15),
+                     new cgy.i(cpc.uQ, 3, 1, 12, 15),
+                     new cgy.i(cpc.uS, 3, 1, 12, 15),
+                     new cgy.i(cpc.va, 3, 1, 12, 15),
+                     new cgy.i(cpc.uV, 3, 1, 12, 15),
+                     new cgy.i(cpc.uN, 3, 1, 12, 15),
+                     new cgy.i(cpc.uU, 3, 1, 12, 15),
+                     new cgy.i(cpc.uX, 3, 1, 12, 15),
+                     new cgy.i(cpc.uP, 3, 1, 12, 15),
+                     new cgy.i(cpc.uM, 3, 1, 12, 15),
+                     new cgy.i(cpc.uT, 3, 1, 12, 15)
+                  },
+                  5,
+                  new cgy.g[]{new cgy.i(cpc.pY, 2, 3, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cgx.i,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{new cgy.b(cpc.po, 32, 16, 2), new cgy.i(cpc.ou, 1, 16, 1), new cgy.h(cyq.L, 10, 1, cpc.pV, 10, 12, 1, 0.05F)},
+                  2,
+                  new cgy.g[]{new cgy.b(cpc.pV, 26, 12, 10), new cgy.i(cpc.ot, 2, 1, 5)},
+                  3,
+                  new cgy.g[]{new cgy.b(cpc.pr, 14, 16, 20), new cgy.i(cpc.vP, 3, 1, 10)},
+                  4,
+                  new cgy.g[]{new cgy.b(cpc.ps, 24, 16, 30), new cgy.e(cpc.ot, 2, 3, 15)},
+                  5,
+                  new cgy.g[]{new cgy.b(cpc.ma, 8, 12, 30), new cgy.e(cpc.vP, 3, 3, 15), new cgy.k(cpc.ou, 5, cpc.vm, 5, 2, 12, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cgx.k,
+            a(
+               ImmutableMap.builder()
+                  .put(1, new cgy.g[]{new cgy.b(cpc.qN, 24, 16, 2), new cgy.d(1), new cgy.i(cyq.cl, 9, 1, 12, 1)})
+                  .put(2, new cgy.g[]{new cgy.b(cpc.qO, 4, 12, 10), new cgy.d(5), new cgy.i(cpc.wj, 1, 1, 5)})
+                  .put(3, new cgy.g[]{new cgy.b(cpc.re, 5, 12, 20), new cgy.d(10), new cgy.i(cpc.cF, 1, 4, 10)})
+                  .put(4, new cgy.g[]{new cgy.b(cpc.tW, 2, 12, 30), new cgy.d(15), new cgy.i(cpc.qV, 5, 1, 15), new cgy.i(cpc.qR, 4, 1, 15)})
+                  .put(5, new cgy.g[]{new cgy.i(cpc.uH, 20, 1, 30)})
+                  .build()
+            )
+         );
+         $$0.put(
+            cgx.e,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{new cgy.b(cpc.qN, 24, 16, 2), new cgy.i(cpc.uf, 7, 1, 1)},
+                  2,
+                  new cgy.g[]{new cgy.b(cpc.fS, 11, 16, 10), new cgy.l(13, auk.d, "filled_map.monument", ehw.a.j, 12, 5)},
+                  3,
+                  new cgy.g[]{new cgy.b(cpc.qR, 1, 12, 20), new cgy.l(14, auk.c, "filled_map.mansion", ehw.a.i, 12, 10)},
+                  4,
+                  new cgy.g[]{
+                     new cgy.i(cpc.tY, 7, 1, 15),
+                     new cgy.i(cpc.uL, 3, 1, 15),
+                     new cgy.i(cpc.uW, 3, 1, 15),
+                     new cgy.i(cpc.uO, 3, 1, 15),
+                     new cgy.i(cpc.uZ, 3, 1, 15),
+                     new cgy.i(cpc.uR, 3, 1, 15),
+                     new cgy.i(cpc.uY, 3, 1, 15),
+                     new cgy.i(cpc.uQ, 3, 1, 15),
+                     new cgy.i(cpc.uS, 3, 1, 15),
+                     new cgy.i(cpc.va, 3, 1, 15),
+                     new cgy.i(cpc.uV, 3, 1, 15),
+                     new cgy.i(cpc.uN, 3, 1, 15),
+                     new cgy.i(cpc.uU, 3, 1, 15),
+                     new cgy.i(cpc.uX, 3, 1, 15),
+                     new cgy.i(cpc.uP, 3, 1, 15),
+                     new cgy.i(cpc.uM, 3, 1, 15),
+                     new cgy.i(cpc.uT, 3, 1, 15)
+                  },
+                  5,
+                  new cgy.g[]{new cgy.i(cpc.vW, 8, 1, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cgx.f,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{new cgy.b(cpc.sd, 32, 16, 2), new cgy.i(cpc.lG, 1, 2, 1)},
+                  2,
+                  new cgy.g[]{new cgy.b(cpc.oH, 3, 12, 10), new cgy.i(cpc.oz, 1, 1, 5)},
+                  3,
+                  new cgy.g[]{new cgy.b(cpc.uz, 2, 12, 20), new cgy.i(cyq.ec, 4, 1, 12, 10)},
+                  4,
+                  new cgy.g[]{new cgy.b(cpc.oo, 4, 12, 30), new cgy.b(cpc.sk, 9, 12, 30), new cgy.i(cpc.se, 5, 1, 15)},
+                  5,
+                  new cgy.g[]{new cgy.b(cpc.si, 22, 12, 30), new cgy.i(cpc.tU, 3, 1, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cgx.c,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{
+                     new cgy.b(cpc.ov, 15, 16, 2),
+                     new cgy.i(new coz(cpc.pH), 7, 1, 12, 1, 0.2F),
+                     new cgy.i(new coz(cpc.pI), 4, 1, 12, 1, 0.2F),
+                     new cgy.i(new coz(cpc.pF), 5, 1, 12, 1, 0.2F),
+                     new cgy.i(new coz(cpc.pG), 9, 1, 12, 1, 0.2F)
+                  },
+                  2,
+                  new cgy.g[]{
+                     new cgy.b(cpc.oD, 4, 12, 10),
+                     new cgy.i(new coz(cpc.wi), 36, 1, 12, 5, 0.2F),
+                     new cgy.i(new coz(cpc.pE), 1, 1, 12, 5, 0.2F),
+                     new cgy.i(new coz(cpc.pD), 3, 1, 12, 5, 0.2F)
+                  },
+                  3,
+                  new cgy.g[]{
+                     new cgy.b(cpc.qz, 1, 12, 20),
+                     new cgy.b(cpc.ox, 1, 12, 20),
+                     new cgy.i(new coz(cpc.pB), 1, 1, 12, 10, 0.2F),
+                     new cgy.i(new coz(cpc.pC), 4, 1, 12, 10, 0.2F),
+                     new cgy.i(new coz(cpc.vo), 5, 1, 12, 10, 0.2F)
+                  },
+                  4,
+                  new cgy.g[]{new cgy.e(cpc.pL, 14, 3, 15, 0.2F), new cgy.e(cpc.pM, 8, 3, 15, 0.2F)},
+                  5,
+                  new cgy.g[]{new cgy.e(cpc.pJ, 8, 3, 30, 0.2F), new cgy.e(cpc.pK, 16, 3, 30, 0.2F)}
+               )
+            )
+         );
+         $$0.put(
+            cgx.p,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{new cgy.b(cpc.ov, 15, 16, 2), new cgy.i(new coz(cpc.pc), 3, 1, 12, 1, 0.2F), new cgy.e(cpc.oZ, 2, 3, 1)},
+                  2,
+                  new cgy.g[]{new cgy.b(cpc.oD, 4, 12, 10), new cgy.i(new coz(cpc.wi), 36, 1, 12, 5, 0.2F)},
+                  3,
+                  new cgy.g[]{new cgy.b(cpc.pV, 24, 12, 20)},
+                  4,
+                  new cgy.g[]{new cgy.b(cpc.ox, 1, 12, 30), new cgy.e(cpc.ph, 12, 3, 15, 0.2F)},
+                  5,
+                  new cgy.g[]{new cgy.e(cpc.pe, 8, 3, 30, 0.2F)}
+               )
+            )
+         );
+         $$0.put(
+            cgx.o,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{
+                     new cgy.b(cpc.ov, 15, 16, 2),
+                     new cgy.i(new coz(cpc.oS), 1, 1, 12, 1, 0.2F),
+                     new cgy.i(new coz(cpc.oQ), 1, 1, 12, 1, 0.2F),
+                     new cgy.i(new coz(cpc.oR), 1, 1, 12, 1, 0.2F),
+                     new cgy.i(new coz(cpc.oT), 1, 1, 12, 1, 0.2F)
+                  },
+                  2,
+                  new cgy.g[]{new cgy.b(cpc.oD, 4, 12, 10), new cgy.i(new coz(cpc.wi), 36, 1, 12, 5, 0.2F)},
+                  3,
+                  new cgy.g[]{
+                     new cgy.b(cpc.pV, 30, 12, 20),
+                     new cgy.e(cpc.pc, 1, 3, 10, 0.2F),
+                     new cgy.e(cpc.pa, 2, 3, 10, 0.2F),
+                     new cgy.e(cpc.pb, 3, 3, 10, 0.2F),
+                     new cgy.i(new coz(cpc.pi), 4, 1, 3, 10, 0.2F)
+                  },
+                  4,
+                  new cgy.g[]{new cgy.b(cpc.ox, 1, 12, 30), new cgy.e(cpc.ph, 12, 3, 15, 0.2F), new cgy.e(cpc.pf, 5, 3, 15, 0.2F)},
+                  5,
+                  new cgy.g[]{new cgy.e(cpc.pg, 13, 3, 30, 0.2F)}
+               )
+            )
+         );
+         $$0.put(
+            cgx.d,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{new cgy.b(cpc.sb, 14, 16, 2), new cgy.b(cpc.pW, 7, 16, 2), new cgy.b(cpc.uw, 4, 16, 2), new cgy.i(cpc.uy, 1, 1, 1)},
+                  2,
+                  new cgy.g[]{new cgy.b(cpc.ov, 15, 16, 2), new cgy.i(cpc.pX, 1, 5, 16, 5), new cgy.i(cpc.sc, 1, 8, 16, 5)},
+                  3,
+                  new cgy.g[]{new cgy.b(cpc.uJ, 7, 16, 20), new cgy.b(cpc.rZ, 10, 16, 20)},
+                  4,
+                  new cgy.g[]{new cgy.b(cpc.qM, 10, 12, 30)},
+                  5,
+                  new cgy.g[]{new cgy.b(cpc.wl, 10, 12, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cgx.j,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{new cgy.b(cpc.qC, 6, 16, 2), new cgy.a(cpc.pz, 3), new cgy.a(cpc.py, 7)},
+                  2,
+                  new cgy.g[]{new cgy.b(cpc.pV, 26, 12, 10), new cgy.a(cpc.px, 5, 12, 5), new cgy.a(cpc.pA, 4, 12, 5)},
+                  3,
+                  new cgy.g[]{new cgy.b(cpc.uA, 9, 12, 20), new cgy.a(cpc.py, 7)},
+                  4,
+                  new cgy.g[]{new cgy.b(cpc.oo, 4, 12, 30), new cgy.a(cpc.uF, 6, 12, 15)},
+                  5,
+                  new cgy.g[]{new cgy.i(new coz(cpc.nK), 6, 1, 12, 30, 0.2F), new cgy.a(cpc.px, 5, 12, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cgx.l,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cgy.g[]{new cgy.b(cpc.qL, 10, 16, 2), new cgy.i(cpc.qK, 1, 10, 16, 1)},
+                  2,
+                  new cgy.g[]{new cgy.b(cyq.b, 20, 16, 10), new cgy.i(cyq.eK, 1, 4, 16, 5)},
+                  3,
+                  new cgy.g[]{
+                     new cgy.b(cyq.c, 16, 16, 20),
+                     new cgy.b(cyq.g, 16, 16, 20),
+                     new cgy.b(cyq.e, 16, 16, 20),
+                     new cgy.i(cyq.su, 1, 4, 16, 10),
+                     new cgy.i(cyq.h, 1, 4, 16, 10),
+                     new cgy.i(cyq.f, 1, 4, 16, 10),
+                     new cgy.i(cyq.d, 1, 4, 16, 10)
+                  },
+                  4,
+                  new cgy.g[]{
+                     new cgy.b(cpc.oA, 12, 12, 30),
+                     new cgy.i(cyq.hk, 1, 1, 12, 15),
+                     new cgy.i(cyq.hj, 1, 1, 12, 15),
+                     new cgy.i(cyq.hu, 1, 1, 12, 15),
+                     new cgy.i(cyq.hm, 1, 1, 12, 15),
+                     new cgy.i(cyq.hq, 1, 1, 12, 15),
+                     new cgy.i(cyq.hr, 1, 1, 12, 15),
+                     new cgy.i(cyq.hy, 1, 1, 12, 15),
+                     new cgy.i(cyq.hx, 1, 1, 12, 15),
+                     new cgy.i(cyq.hp, 1, 1, 12, 15),
+                     new cgy.i(cyq.hl, 1, 1, 12, 15),
+                     new cgy.i(cyq.ho, 1, 1, 12, 15),
+                     new cgy.i(cyq.hw, 1, 1, 12, 15),
+                     new cgy.i(cyq.hs, 1, 1, 12, 15),
+                     new cgy.i(cyq.ht, 1, 1, 12, 15),
+                     new cgy.i(cyq.hn, 1, 1, 12, 15),
+                     new cgy.i(cyq.hv, 1, 1, 12, 15),
+                     new cgy.i(cyq.lh, 1, 1, 12, 15),
+                     new cgy.i(cyq.lg, 1, 1, 12, 15),
+                     new cgy.i(cyq.lr, 1, 1, 12, 15),
+                     new cgy.i(cyq.lj, 1, 1, 12, 15),
+                     new cgy.i(cyq.ln, 1, 1, 12, 15),
+                     new cgy.i(cyq.lo, 1, 1, 12, 15),
+                     new cgy.i(cyq.lv, 1, 1, 12, 15),
+                     new cgy.i(cyq.lu, 1, 1, 12, 15),
+                     new cgy.i(cyq.lm, 1, 1, 12, 15),
+                     new cgy.i(cyq.li, 1, 1, 12, 15),
+                     new cgy.i(cyq.ll, 1, 1, 12, 15),
+                     new cgy.i(cyq.lt, 1, 1, 12, 15),
+                     new cgy.i(cyq.lp, 1, 1, 12, 15),
+                     new cgy.i(cyq.lq, 1, 1, 12, 15),
+                     new cgy.i(cyq.lk, 1, 1, 12, 15),
+                     new cgy.i(cyq.ls, 1, 1, 12, 15)
+                  },
+                  5,
+                  new cgy.g[]{new cgy.i(cyq.hf, 1, 1, 12, 30), new cgy.i(cyq.hd, 1, 1, 12, 30)}
+               )
+            )
+         );
+      }
+   );
+   public static final Int2ObjectMap<cgy.g[]> b = a(
+      ImmutableMap.of(
+         1,
+         new cgy.g[]{
+            new cgy.i(cpc.cS, 2, 1, 5, 1),
+            new cgy.i(cpc.qP, 4, 1, 5, 1),
+            new cgy.i(cpc.ft, 2, 1, 5, 1),
+            new cgy.i(cpc.vN, 5, 1, 5, 1),
+            new cgy.i(cpc.cN, 1, 1, 12, 1),
+            new cgy.i(cpc.dI, 1, 1, 8, 1),
+            new cgy.i(cpc.fj, 1, 1, 4, 1),
+            new cgy.i(cpc.dJ, 3, 1, 12, 1),
+            new cgy.i(cpc.eV, 3, 1, 8, 1),
+            new cgy.i(cpc.dj, 1, 1, 12, 1),
+            new cgy.i(cpc.dk, 1, 1, 12, 1),
+            new cgy.i(cpc.dl, 1, 1, 8, 1),
+            new cgy.i(cpc.dm, 1, 1, 12, 1),
+            new cgy.i(cpc.dn, 1, 1, 12, 1),
+            new cgy.i(cpc.do, 1, 1, 12, 1),
+            new cgy.i(cpc.dp, 1, 1, 12, 1),
+            new cgy.i(cpc.dq, 1, 1, 12, 1),
+            new cgy.i(cpc.dr, 1, 1, 12, 1),
+            new cgy.i(cpc.ds, 1, 1, 12, 1),
+            new cgy.i(cpc.dt, 1, 1, 12, 1),
+            new cgy.i(cpc.du, 1, 1, 7, 1),
+            new cgy.i(cpc.pu, 1, 1, 12, 1),
+            new cgy.i(cpc.vh, 1, 1, 12, 1),
+            new cgy.i(cpc.rX, 1, 1, 12, 1),
+            new cgy.i(cpc.rY, 1, 1, 12, 1),
+            new cgy.i(cpc.aa, 5, 1, 8, 1),
+            new cgy.i(cpc.Y, 5, 1, 8, 1),
+            new cgy.i(cpc.ac, 5, 1, 8, 1),
+            new cgy.i(cpc.Z, 5, 1, 8, 1),
+            new cgy.i(cpc.W, 5, 1, 8, 1),
+            new cgy.i(cpc.X, 5, 1, 8, 1),
+            new cgy.i(cpc.ab, 5, 1, 8, 1),
+            new cgy.i(cpc.ad, 5, 1, 8, 1),
+            new cgy.i(cpc.rv, 1, 3, 12, 1),
+            new cgy.i(cpc.rh, 1, 3, 12, 1),
+            new cgy.i(cpc.rs, 1, 3, 12, 1),
+            new cgy.i(cpc.rn, 1, 3, 12, 1),
+            new cgy.i(cpc.rw, 1, 3, 12, 1),
+            new cgy.i(cpc.ru, 1, 3, 12, 1),
+            new cgy.i(cpc.rp, 1, 3, 12, 1),
+            new cgy.i(cpc.rj, 1, 3, 12, 1),
+            new cgy.i(cpc.rl, 1, 3, 12, 1),
+            new cgy.i(cpc.ro, 1, 3, 12, 1),
+            new cgy.i(cpc.rr, 1, 3, 12, 1),
+            new cgy.i(cpc.rk, 1, 3, 12, 1),
+            new cgy.i(cpc.rm, 1, 3, 12, 1),
+            new cgy.i(cpc.ri, 1, 3, 12, 1),
+            new cgy.i(cpc.rt, 1, 3, 12, 1),
+            new cgy.i(cpc.rq, 1, 3, 12, 1),
+            new cgy.i(cpc.kw, 3, 1, 8, 1),
+            new cgy.i(cpc.kx, 3, 1, 8, 1),
+            new cgy.i(cpc.ky, 3, 1, 8, 1),
+            new cgy.i(cpc.kz, 3, 1, 8, 1),
+            new cgy.i(cpc.kv, 3, 1, 8, 1),
+            new cgy.i(cpc.fU, 1, 1, 12, 1),
+            new cgy.i(cpc.dz, 1, 1, 12, 1),
+            new cgy.i(cpc.dA, 1, 1, 12, 1),
+            new cgy.i(cpc.ga, 1, 2, 5, 1),
+            new cgy.i(cpc.dP, 1, 2, 5, 1),
+            new cgy.i(cpc.af, 1, 8, 8, 1),
+            new cgy.i(cpc.ai, 1, 4, 6, 1),
+            new cgy.i(cpc.xf, 1, 2, 5, 1),
+            new cgy.i(cpc.F, 1, 2, 5, 1),
+            new cgy.i(cpc.dM, 1, 2, 5, 1)
+         },
+         2,
+         new cgy.g[]{
+            new cgy.i(cpc.qH, 5, 1, 4, 1),
+            new cgy.i(cpc.qE, 5, 1, 4, 1),
+            new cgy.i(cpc.hU, 3, 1, 6, 1),
+            new cgy.i(cpc.kU, 6, 1, 6, 1),
+            new cgy.i(cpc.pt, 1, 1, 8, 1),
+            new cgy.i(cpc.E, 3, 3, 6, 1)
+         }
+      )
+   );
+   private static final cgy.l s = new cgy.l(8, auk.f, "filled_map.village_desert", ehw.a.B, 12, 5);
+   private static final cgy.l t = new cgy.l(8, auk.e, "filled_map.village_savanna", ehw.a.D, 12, 5);
+   private static final cgy.l u = new cgy.l(8, auk.g, "filled_map.village_plains", ehw.a.C, 12, 5);
+   private static final cgy.l v = new cgy.l(8, auk.h, "filled_map.village_taiga", ehw.a.F, 12, 5);
+   private static final cgy.l w = new cgy.l(8, auk.i, "filled_map.village_snowy", ehw.a.E, 12, 5);
+   private static final cgy.l x = new cgy.l(8, auk.j, "filled_map.explorer_jungle", ehw.a.G, 12, 5);
+   private static final cgy.l y = new cgy.l(8, auk.k, "filled_map.explorer_swamp", ehw.a.H, 12, 5);
+   public static final Map<cgx, Int2ObjectMap<cgy.g[]>> c = Map.of(
+      cgx.k,
+      a(
+         ImmutableMap.builder()
+            .put(1, new cgy.g[]{new cgy.b(cpc.qN, 24, 16, 2), a(1), new cgy.i(cyq.cl, 9, 1, 12, 1)})
+            .put(2, new cgy.g[]{new cgy.b(cpc.qO, 4, 12, 10), a(5), new cgy.i(cpc.wj, 1, 1, 5)})
+            .put(3, new cgy.g[]{new cgy.b(cpc.re, 5, 12, 20), a(10), new cgy.i(cpc.cF, 1, 4, 10)})
+            .put(4, new cgy.g[]{new cgy.b(cpc.tW, 2, 12, 30), new cgy.i(cpc.qV, 5, 1, 15), new cgy.i(cpc.qR, 4, 1, 15)})
+            .put(5, new cgy.g[]{a(), new cgy.i(cpc.uH, 20, 1, 30)})
+            .build()
+      ),
+      cgx.c,
+      a(
+         ImmutableMap.builder()
+            .put(1, new cgy.g[]{new cgy.b(cpc.ov, 15, 12, 2), new cgy.b(cpc.oD, 5, 12, 2)})
+            .put(
+               2,
+               new cgy.g[]{
+                  cgy.m.a(new cgy.i(cpc.pI, 4, 1, 12, 5, 0.05F), cgz.a, cgz.c, cgz.d, cgz.e, cgz.g),
+                  cgy.m.a(new cgy.i(cpc.pE, 4, 1, 12, 5, 0.05F), cgz.b, cgz.f),
+                  cgy.m.a(new cgy.i(cpc.pF, 5, 1, 12, 5, 0.05F), cgz.a, cgz.c, cgz.d, cgz.e, cgz.g),
+                  cgy.m.a(new cgy.i(cpc.pB, 5, 1, 12, 5, 0.05F), cgz.b, cgz.f),
+                  cgy.m.a(new cgy.i(cpc.pH, 7, 1, 12, 5, 0.05F), cgz.a, cgz.c, cgz.d, cgz.e, cgz.g),
+                  cgy.m.a(new cgy.i(cpc.pD, 7, 1, 12, 5, 0.05F), cgz.b, cgz.f),
+                  cgy.m.a(new cgy.i(cpc.pG, 9, 1, 12, 5, 0.05F), cgz.a, cgz.c, cgz.d, cgz.e, cgz.g),
+                  cgy.m.a(new cgy.i(cpc.pC, 9, 1, 12, 5, 0.05F), cgz.b, cgz.f)
                }
+            )
+            .put(3, new cgy.g[]{new cgy.b(cpc.qz, 1, 12, 20), new cgy.i(cpc.vo, 5, 1, 12, 10, 0.05F), new cgy.i(cpc.wi, 36, 1, 12, 10, 0.2F)})
+            .put(
+               4,
+               new cgy.g[]{
+                  cgy.m.a(new cgy.i(a(cpc.pI, ctl.h, 1), 8, 1, 3, 15, 0.05F), cgz.a),
+                  cgy.m.a(new cgy.i(a(cpc.pF, ctl.h, 1), 9, 1, 3, 15, 0.05F), cgz.a),
+                  cgy.m.a(new cgy.i(a(cpc.pH, ctl.h, 1), 11, 1, 3, 15, 0.05F), cgz.a),
+                  cgy.m.a(new cgy.i(a(cpc.pG, ctl.h, 1), 13, 1, 3, 15, 0.05F), cgz.a),
+                  cgy.m.a(new cgy.i(a(cpc.pI, ctl.a, 1), 8, 1, 3, 15, 0.05F), cgz.c),
+                  cgy.m.a(new cgy.i(a(cpc.pF, ctl.a, 1), 9, 1, 3, 15, 0.05F), cgz.c),
+                  cgy.m.a(new cgy.i(a(cpc.pH, ctl.a, 1), 11, 1, 3, 15, 0.05F), cgz.c),
+                  cgy.m.a(new cgy.i(a(cpc.pG, ctl.a, 1), 13, 1, 3, 15, 0.05F), cgz.c),
+                  cgy.m.a(new cgy.i(a(cpc.pI, ctl.k, 1), 2, 1, 3, 15, 0.05F), cgz.d),
+                  cgy.m.a(new cgy.i(a(cpc.pF, ctl.k, 1), 3, 1, 3, 15, 0.05F), cgz.d),
+                  cgy.m.a(new cgy.i(a(cpc.pH, ctl.k, 1), 5, 1, 3, 15, 0.05F), cgz.d),
+                  cgy.m.a(new cgy.i(a(cpc.pG, ctl.k, 1), 7, 1, 3, 15, 0.05F), cgz.d),
+                  cgy.m.a(new cgy.i(a(cpc.pI, ctl.j, 1), 8, 1, 3, 15, 0.05F), cgz.e),
+                  cgy.m.a(new cgy.i(a(cpc.pF, ctl.g, 1), 9, 1, 3, 15, 0.05F), cgz.e),
+                  cgy.m.a(new cgy.i(a(cpc.pE, ctl.w, 1), 8, 1, 3, 15, 0.05F), cgz.b),
+                  cgy.m.a(new cgy.i(a(cpc.pB, ctl.w, 1), 9, 1, 3, 15, 0.05F), cgz.b),
+                  cgy.m.a(new cgy.i(a(cpc.pD, ctl.w, 1), 11, 1, 3, 15, 0.05F), cgz.b),
+                  cgy.m.a(new cgy.i(a(cpc.pC, ctl.w, 1), 13, 1, 3, 15, 0.05F), cgz.b),
+                  cgy.m.a(new cgy.i(a(cpc.pE, ctl.L, 1), 8, 1, 3, 15, 0.05F), cgz.f),
+                  cgy.m.a(new cgy.i(a(cpc.pB, ctl.L, 1), 9, 1, 3, 15, 0.05F), cgz.f),
+                  cgy.m.a(new cgy.i(a(cpc.pD, ctl.L, 1), 11, 1, 3, 15, 0.05F), cgz.f),
+                  cgy.m.a(new cgy.i(a(cpc.pC, ctl.L, 1), 13, 1, 3, 15, 0.05F), cgz.f),
+                  cgy.m.a(new cgy.h(cpc.pM, 1, 4, cpc.pL, 1, 3, 15, 0.05F, true), cgz.g),
+                  cgy.m.a(new cgy.h(cpc.pL, 1, 4, cpc.pK, 1, 3, 15, 0.05F, true), cgz.g),
+                  cgy.m.a(new cgy.h(cpc.pJ, 1, 4, cpc.pM, 1, 3, 15, 0.05F, true), cgz.g),
+                  cgy.m.a(new cgy.h(cpc.pK, 1, 2, cpc.pJ, 1, 3, 15, 0.05F, true), cgz.g)
+               }
+            )
+            .put(
+               5,
+               new cgy.g[]{
+                  cgy.m.a(new cgy.h(cpc.ox, 4, 16, a(cpc.pK, ctl.h, 1), 1, 3, 30, 0.05F), cgz.a),
+                  cgy.m.a(new cgy.h(cpc.ox, 3, 16, a(cpc.pL, ctl.h, 1), 1, 3, 30, 0.05F), cgz.a),
+                  cgy.m.a(new cgy.h(cpc.ox, 3, 16, a(cpc.pL, ctl.a, 1), 1, 3, 30, 0.05F), cgz.c),
+                  cgy.m.a(new cgy.h(cpc.ox, 2, 12, a(cpc.pM, ctl.a, 1), 1, 3, 30, 0.05F), cgz.c),
+                  cgy.m.a(new cgy.h(cpc.ox, 2, 6, a(cpc.pJ, ctl.k, 1), 1, 3, 30, 0.05F), cgz.d),
+                  cgy.m.a(new cgy.h(cpc.ox, 3, 8, a(cpc.pK, ctl.k, 1), 1, 3, 30, 0.05F), cgz.d),
+                  cgy.m.a(new cgy.h(cpc.ox, 2, 12, a(cpc.pM, ctl.j, 1), 1, 3, 30, 0.05F), cgz.e),
+                  cgy.m.a(new cgy.h(cpc.ox, 3, 12, a(cpc.pJ, ctl.g, 1), 1, 3, 30, 0.05F), cgz.e),
+                  cgy.m.a(new cgy.i(a(cpc.pB, ctl.e, 1), 9, 1, 3, 30, 0.05F), cgz.b),
+                  cgy.m.a(new cgy.i(a(cpc.pE, ctl.c, 1), 8, 1, 3, 30, 0.05F), cgz.b),
+                  cgy.m.a(new cgy.i(a(cpc.pB, ctl.f, 1), 9, 1, 3, 30, 0.05F), cgz.f),
+                  cgy.m.a(new cgy.i(a(cpc.pE, ctl.i, 1), 8, 1, 3, 30, 0.05F), cgz.f),
+                  cgy.m.a(new cgy.h(cpc.ox, 4, 18, a(cpc.pK, ctl.d, 1), 1, 3, 30, 0.05F), cgz.g),
+                  cgy.m.a(new cgy.h(cpc.ox, 3, 18, a(cpc.pL, ctl.d, 1), 1, 3, 30, 0.05F), cgz.g),
+                  cgy.m.a(new cgy.b(cpc.aM, 1, 12, 30, 42), cgz.g),
+                  cgy.m.a(new cgy.b(cpc.aJ, 1, 12, 30, 4), cgz.a, cgz.b, cgz.c, cgz.d, cgz.e, cgz.f)
+               }
+            )
+            .build()
+      ),
+      cgx.e,
+      a(
+         ImmutableMap.of(
+            1,
+            new cgy.g[]{new cgy.b(cpc.qN, 24, 16, 2), new cgy.i(cpc.uf, 7, 1, 1)},
+            2,
+            new cgy.g[]{
+               new cgy.b(cpc.fS, 11, 16, 10),
+               new cgy.m(ImmutableMap.builder().put(cgz.a, t).put(cgz.d, u).put(cgz.c, v).put(cgz.g, w).put(cgz.e, u).put(cgz.b, t).put(cgz.f, w).build()),
+               new cgy.m(ImmutableMap.builder().put(cgz.a, u).put(cgz.d, s).put(cgz.c, t).put(cgz.g, u).put(cgz.e, v).put(cgz.b, s).put(cgz.f, v).build()),
+               new cgy.m(
+                  ImmutableMap.builder().put(cgz.a, x).put(cgz.d, x).put(cgz.c, new cgy.f()).put(cgz.g, y).put(cgz.e, y).put(cgz.b, y).put(cgz.f, x).build()
+               )
+            },
+            3,
+            new cgy.g[]{new cgy.b(cpc.qR, 1, 12, 20), new cgy.l(13, auk.d, "filled_map.monument", ehw.a.j, 12, 10)},
+            4,
+            new cgy.g[]{
+               new cgy.i(cpc.tY, 7, 1, 15),
+               new cgy.i(cpc.uL, 3, 1, 15),
+               new cgy.i(cpc.uW, 3, 1, 15),
+               new cgy.i(cpc.uO, 3, 1, 15),
+               new cgy.i(cpc.uZ, 3, 1, 15),
+               new cgy.i(cpc.uR, 3, 1, 15),
+               new cgy.i(cpc.uY, 3, 1, 15),
+               new cgy.i(cpc.uQ, 3, 1, 15),
+               new cgy.i(cpc.uS, 3, 1, 15),
+               new cgy.i(cpc.va, 3, 1, 15),
+               new cgy.i(cpc.uV, 3, 1, 15),
+               new cgy.i(cpc.uN, 3, 1, 15),
+               new cgy.i(cpc.uU, 3, 1, 15),
+               new cgy.i(cpc.uX, 3, 1, 15),
+               new cgy.i(cpc.uP, 3, 1, 15),
+               new cgy.i(cpc.uM, 3, 1, 15),
+               new cgy.i(cpc.uT, 3, 1, 15)
+            },
+            5,
+            new cgy.g[]{new cgy.i(cpc.vW, 8, 1, 30), new cgy.l(14, auk.c, "filled_map.mansion", ehw.a.i, 1, 30)}
+         )
+      )
+   );
+   public static final List<Pair<cgy.g[], Integer>> d = ImmutableList.builder()
+      .add(
+         Pair.of(
+            new cgy.g[]{
+               new cgy.b(a(cqy.c), 1, 1, 1),
+               new cgy.b(cpc.qy, 1, 1, 1, 2),
+               new cgy.b(cpc.qD, 1, 1, 1, 2),
+               new cgy.b(cpc.sm, 1, 1, 1, 3),
+               new cgy.b(cpc.ud, 4, 1, 1),
+               new cgy.b(cpc.hC, 1, 1, 1)
+            },
+            2
+         )
+      )
+      .add(
+         Pair.of(
+            new cgy.g[]{
+               new cgy.i(cpc.hU, 1, 1, 6, 1),
+               new cgy.i(cpc.kU, 6, 1, 6, 1),
+               new cgy.i(cpc.pt, 1, 4, 2, 1),
+               new cgy.i(cpc.E, 3, 3, 6, 1),
+               new cgy.i(cyq.Y, 1, 8, 4, 1),
+               new cgy.i(cyq.W, 1, 8, 4, 1),
+               new cgy.i(cyq.aa, 1, 8, 4, 1),
+               new cgy.i(cyq.X, 1, 8, 4, 1),
+               new cgy.i(cyq.U, 1, 8, 4, 1),
+               new cgy.i(cyq.V, 1, 8, 4, 1),
+               new cgy.i(cyq.Z, 1, 8, 4, 1),
+               new cgy.e(cpc.pb, 1, 1, 1, 0.2F),
+               new cgy.i(a(cqy.j), 5, 1, 1, 1)
+            },
+            2
+         )
+      )
+      .add(
+         Pair.of(
+            new cgy.g[]{
+               new cgy.i(cpc.qH, 3, 1, 4, 1),
+               new cgy.i(cpc.qE, 3, 1, 4, 1),
+               new cgy.i(cpc.cS, 2, 1, 5, 1),
+               new cgy.i(cpc.qP, 4, 1, 5, 1),
+               new cgy.i(cpc.ft, 2, 1, 5, 1),
+               new cgy.i(cpc.vN, 5, 1, 5, 1),
+               new cgy.i(cpc.cN, 1, 1, 12, 1),
+               new cgy.i(cpc.dI, 1, 1, 8, 1),
+               new cgy.i(cpc.fj, 1, 1, 4, 1),
+               new cgy.i(cpc.dJ, 3, 1, 12, 1),
+               new cgy.i(cpc.eV, 3, 1, 8, 1),
+               new cgy.i(cpc.dj, 1, 1, 12, 1),
+               new cgy.i(cpc.dk, 1, 1, 12, 1),
+               new cgy.i(cpc.dl, 1, 1, 8, 1),
+               new cgy.i(cpc.dm, 1, 1, 12, 1),
+               new cgy.i(cpc.dn, 1, 1, 12, 1),
+               new cgy.i(cpc.do, 1, 1, 12, 1),
+               new cgy.i(cpc.dp, 1, 1, 12, 1),
+               new cgy.i(cpc.dq, 1, 1, 12, 1),
+               new cgy.i(cpc.dr, 1, 1, 12, 1),
+               new cgy.i(cpc.ds, 1, 1, 12, 1),
+               new cgy.i(cpc.dt, 1, 1, 12, 1),
+               new cgy.i(cpc.du, 1, 1, 7, 1),
+               new cgy.i(cpc.pu, 1, 1, 12, 1),
+               new cgy.i(cpc.vh, 1, 1, 12, 1),
+               new cgy.i(cpc.rX, 1, 1, 12, 1),
+               new cgy.i(cpc.rY, 1, 1, 12, 1),
+               new cgy.i(cpc.aa, 5, 1, 8, 1),
+               new cgy.i(cpc.Y, 5, 1, 8, 1),
+               new cgy.i(cpc.ac, 5, 1, 8, 1),
+               new cgy.i(cpc.Z, 5, 1, 8, 1),
+               new cgy.i(cpc.W, 5, 1, 8, 1),
+               new cgy.i(cpc.X, 5, 1, 8, 1),
+               new cgy.i(cpc.ab, 5, 1, 8, 1),
+               new cgy.i(cpc.ad, 5, 1, 8, 1),
+               new cgy.i(cpc.rv, 1, 3, 12, 1),
+               new cgy.i(cpc.rh, 1, 3, 12, 1),
+               new cgy.i(cpc.rs, 1, 3, 12, 1),
+               new cgy.i(cpc.rn, 1, 3, 12, 1),
+               new cgy.i(cpc.rw, 1, 3, 12, 1),
+               new cgy.i(cpc.ru, 1, 3, 12, 1),
+               new cgy.i(cpc.rp, 1, 3, 12, 1),
+               new cgy.i(cpc.rj, 1, 3, 12, 1),
+               new cgy.i(cpc.rl, 1, 3, 12, 1),
+               new cgy.i(cpc.ro, 1, 3, 12, 1),
+               new cgy.i(cpc.rr, 1, 3, 12, 1),
+               new cgy.i(cpc.rk, 1, 3, 12, 1),
+               new cgy.i(cpc.rm, 1, 3, 12, 1),
+               new cgy.i(cpc.ri, 1, 3, 12, 1),
+               new cgy.i(cpc.rt, 1, 3, 12, 1),
+               new cgy.i(cpc.rq, 1, 3, 12, 1),
+               new cgy.i(cpc.kw, 3, 1, 8, 1),
+               new cgy.i(cpc.kx, 3, 1, 8, 1),
+               new cgy.i(cpc.ky, 3, 1, 8, 1),
+               new cgy.i(cpc.kz, 3, 1, 8, 1),
+               new cgy.i(cpc.kv, 3, 1, 8, 1),
+               new cgy.i(cpc.fU, 1, 3, 4, 1),
+               new cgy.i(cpc.dz, 1, 3, 4, 1),
+               new cgy.i(cpc.dA, 1, 3, 4, 1),
+               new cgy.i(cpc.ga, 1, 5, 2, 1),
+               new cgy.i(cpc.dP, 1, 2, 5, 1),
+               new cgy.i(cpc.af, 1, 8, 8, 1),
+               new cgy.i(cpc.ai, 1, 4, 6, 1),
+               new cgy.i(cpc.xf, 1, 2, 5, 1),
+               new cgy.i(cpc.F, 1, 2, 5, 1),
+               new cgy.i(cpc.dM, 1, 2, 5, 1)
+            },
+            5
+         )
+      )
+      .build();
+
+   private static cgy.g a(int $$0) {
+      return new cgy.m(
+         ImmutableMap.builder()
+            .put(cgz.a, new cgy.d($$0, ctl.b, ctl.h, ctl.B))
+            .put(cgz.b, new cgy.d($$0, ctl.c, ctl.e, ctl.y))
+            .put(cgz.c, new cgy.d($$0, ctl.z, ctl.o, ctl.p))
+            .put(cgz.d, new cgy.d($$0, ctl.q, ctl.k, ctl.t))
+            .put(cgz.e, new cgy.d($$0, ctl.g, ctl.s, ctl.j))
+            .put(cgz.f, new cgy.d($$0, ctl.i, ctl.f, ctl.M))
+            .put(cgz.g, new cgy.d($$0, ctl.d, ctl.r, ctl.A))
+            .build()
+      );
+   }
+
+   private static cgy.g a() {
+      return new cgy.m(
+         ImmutableMap.builder()
+            .put(cgz.a, new cgy.d(30, 3, 3, ctl.u))
+            .put(cgz.b, new cgy.d(30, 2, 2, ctl.w))
+            .put(cgz.c, new cgy.d(30, 3, 3, ctl.a))
+            .put(cgz.d, new cgy.d(30, 3, 3, ctl.n))
+            .put(cgz.e, new cgy.d(30, ctl.v))
+            .put(cgz.f, new cgy.d(30, ctl.L))
+            .put(cgz.g, new cgy.d(30, 2, 2, ctl.x))
+            .build()
+      );
+   }
+
+   private static Int2ObjectMap<cgy.g[]> a(ImmutableMap<Integer, cgy.g[]> $$0) {
+      return new Int2ObjectOpenHashMap($$0);
+   }
+
+   private static coz a(ij<cqv> $$0) {
+      return cqx.a(new coz(cpc.sj), $$0);
+   }
+
+   private static coz a(cou $$0, cti $$1, int $$2) {
+      coz $$3 = new coz($$0);
+      $$3.a($$1, $$2);
+      return $$3;
+   }
+
+   static class a implements cgy.g {
+      private final cou a;
+      private final int b;
+      private final int c;
+      private final int d;
+
+      public a(cou $$0, int $$1) {
+         this($$0, $$1, 12, 1);
+      }
+
+      public a(cou $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         coz $$2 = new coz(cpc.oy, this.b);
+         coz $$3 = new coz(this.a);
+         if (this.a instanceof cnq) {
+            List<cno> $$4 = Lists.newArrayList();
+            $$4.add(a($$1));
+            if ($$1.i() > 0.7F) {
+               $$4.add(a($$1));
             }
 
-            if (this.B % 20L == 0L) {
-               this.y();
-               this.F();
-               if ($$1 > 0) {
-                  if ($$1 <= 2) {
-                     this.K.a(u.f().f(" - ").b(vg.a("event.minecraft.raid.raiders_remaining", $$1)));
-                  } else {
-                     this.K.a(u);
-                  }
-               } else {
-                  this.K.a(u);
-               }
+            if ($$1.i() > 0.8F) {
+               $$4.add(a($$1));
             }
 
-            boolean $$5 = false;
-            int $$6 = 0;
+            $$3 = cnr.a($$3, $$4);
+         }
 
-            while (this.G()) {
-               hx $$7 = this.R.isPresent() ? this.R.get() : this.a($$6, 20);
-               if ($$7 != null) {
-                  this.E = true;
-                  this.b($$7);
-                  if (!$$5) {
-                     this.a($$7);
-                     $$5 = true;
-                  }
-               } else {
-                  $$6++;
-               }
+         return new cul($$2, $$3, this.c, this.d, 0.2F);
+      }
 
-               if ($$6 > 3) {
-                  this.n();
-                  break;
-               }
-            }
+      private static cno a(awo $$0) {
+         return cno.a(cnn.a($$0.a(16)));
+      }
+   }
 
-            if (this.j() && !this.A() && $$1 == 0) {
-               if (this.L < 40) {
-                  this.L++;
-               } else {
-                  this.P = cgy.a.b;
+   static class b implements cgy.g {
+      private final coz a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final float e;
 
-                  for (UUID $$8 : this.A) {
-                     blw $$9 = this.D.a($$8);
-                     if ($$9 instanceof bmo) {
-                        bmo $$10 = (bmo)$$9;
-                        if (!$$9.P_()) {
-                           $$10.b(new blj(bll.F, 48000, this.H - 1, false, false, true));
-                           if ($$10 instanceof anf $$11) {
-                              $$11.a(asd.aB);
-                              am.I.a($$11);
-                           }
-                        }
-                     }
-                  }
-               }
-            }
+      public b(cvm $$0, int $$1, int $$2, int $$3) {
+         this($$0, $$1, $$2, $$3, 1);
+      }
 
-            this.H();
-         } else if (this.a()) {
-            this.Q++;
-            if (this.Q >= 600) {
-               this.n();
-               return;
-            }
+      public b(cvm $$0, int $$1, int $$2, int $$3, int $$4) {
+         this(new coz($$0.j(), $$1), $$2, $$3, $$4);
+      }
 
-            if (this.Q % 20 == 0) {
-               this.y();
-               this.K.d(true);
-               if (this.e()) {
-                  this.K.a(0.0F);
-                  this.K.a(v);
-               } else {
-                  this.K.a(w);
-               }
-            }
+      public b(coz $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = 0.05F;
+      }
+
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         return new cul(this.a.q(), new coz(cpc.oy, this.d), this.b, this.c, this.e);
+      }
+   }
+
+   static class c implements cgy.g {
+      private final Map<cgz, cou> a;
+      private final int b;
+      private final int c;
+      private final int d;
+
+      public c(int $$0, int $$1, int $$2, Map<cgz, cou> $$3) {
+         kf.y.s().filter($$1x -> !$$3.containsKey($$1x)).findAny().ifPresent($$0x -> {
+            throw new IllegalStateException("Missing trade for villager type: " + kf.y.b($$0x));
+         });
+         this.a = $$3;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      @Nullable
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         if ($$0 instanceof cgw $$2) {
+            coz $$3 = new coz(this.a.get($$2.gr().a()), this.b);
+            return new cul($$3, new coz(cpc.oy), this.c, this.d, 0.05F);
+         } else {
+            return null;
          }
       }
    }
 
-   private void z() {
-      Stream<iz> $$0 = iz.a(iz.a(this.C), 2);
-      $$0.filter(this.D::a).map(iz::q).min(Comparator.comparingDouble($$0x -> $$0x.j(this.C))).ifPresent(this::c);
-   }
+   static class d implements cgy.g {
+      private final int a;
+      private final List<cti> b;
+      private final int c;
+      private final int d;
 
-   private Optional<hx> d(int $$0) {
-      for (int $$1 = 0; $$1 < 3; $$1++) {
-         hx $$2 = this.a($$0, 1);
-         if ($$2 != null) {
-            return Optional.of($$2);
+      public d(int $$0) {
+         this($$0, kf.f.s().filter(cti::i).toArray(cti[]::new));
+      }
+
+      public d(int $$0, cti... $$1) {
+         this($$0, 0, Integer.MAX_VALUE, $$1);
+      }
+
+      public d(int $$0, int $$1, int $$2, cti... $$3) {
+         this.c = $$1;
+         this.d = $$2;
+         this.a = $$0;
+         this.b = Arrays.asList($$3);
+      }
+
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         cti $$2 = this.b.get($$1.a(this.b.size()));
+         int $$3 = Math.max($$2.f(), this.c);
+         int $$4 = Math.min($$2.a(), this.d);
+         int $$5 = awh.a($$1, $$3, $$4);
+         coz $$6 = cnv.a(new ctk($$2, $$5));
+         int $$7 = 2 + $$1.a(5 + $$5 * 10) + 3 * $$5;
+         if ($$2.b()) {
+            $$7 *= 2;
          }
-      }
 
-      return Optional.empty();
-   }
-
-   private boolean A() {
-      return this.C() ? !this.D() : !this.B();
-   }
-
-   private boolean B() {
-      return this.k() == this.O;
-   }
-
-   private boolean C() {
-      return this.H > 1;
-   }
-
-   private boolean D() {
-      return this.k() > this.O;
-   }
-
-   private boolean E() {
-      return this.B() && this.r() == 0 && this.C();
-   }
-
-   private void F() {
-      Iterator<Set<cgz>> $$0 = this.z.values().iterator();
-      Set<cgz> $$1 = Sets.newHashSet();
-
-      while ($$0.hasNext()) {
-         Set<cgz> $$2 = $$0.next();
-
-         for (cgz $$3 : $$2) {
-            hx $$4 = $$3.dl();
-            if ($$3.dG() || $$3.dL().ae() != this.D.ae() || this.C.j($$4) >= 12544.0) {
-               $$1.add($$3);
-            } else if ($$3.ah > 600) {
-               if (this.D.a($$3.cw()) == null) {
-                  $$1.add($$3);
-               }
-
-               if (!this.D.c($$4) && $$3.el() > 2400) {
-                  $$3.c($$3.gx() + 1);
-               }
-
-               if ($$3.gx() >= 30) {
-                  $$1.add($$3);
-               }
-            }
+         if ($$7 > 64) {
+            $$7 = 64;
          }
-      }
 
-      for (cgz $$5 : $$1) {
-         this.a($$5, true);
+         return new cul(new coz(cpc.oy, $$7), new coz(cpc.qO), $$6, 12, this.a, 0.2F);
       }
    }
 
-   private void a(hx $$0) {
-      float $$1 = 13.0F;
-      int $$2 = 64;
-      Collection<anf> $$3 = this.K.h();
-      long $$4 = this.N.g();
+   static class e implements cgy.g {
+      private final coz a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final float e;
 
-      for (anf $$5 : this.D.x()) {
-         emc $$6 = $$5.dj();
-         emc $$7 = emc.b($$0);
-         double $$8 = Math.sqrt(($$7.c - $$6.c) * ($$7.c - $$6.c) + ($$7.e - $$6.e) * ($$7.e - $$6.e));
-         double $$9 = $$6.c + 13.0 / $$8 * ($$7.c - $$6.c);
-         double $$10 = $$6.e + 13.0 / $$8 * ($$7.e - $$6.e);
-         if ($$8 <= 64.0 || $$3.contains($$5)) {
-            $$5.c.b(new act(art.uu, aru.g, $$9, $$5.ds(), $$10, 64.0F, 1.0F, $$4));
-         }
+      public e(cou $$0, int $$1, int $$2, int $$3) {
+         this($$0, $$1, $$2, $$3, 0.05F);
+      }
+
+      public e(cou $$0, int $$1, int $$2, int $$3, float $$4) {
+         this.a = new coz($$0);
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         int $$2 = 5 + $$1.a(15);
+         coz $$3 = ctj.a($$1, new coz(this.a.d()), $$2, false);
+         int $$4 = Math.min(this.b + $$2, 64);
+         coz $$5 = new coz(cpc.oy, $$4);
+         return new cul($$5, $$3, this.c, this.d, this.e);
       }
    }
 
-   private void b(hx $$0) {
-      boolean $$1 = false;
-      int $$2 = this.J + 1;
-      this.G = 0.0F;
-      bka $$3 = this.D.d_($$0);
-      boolean $$4 = this.E();
-
-      for (cgy.b $$5 : cgy.b.f) {
-         int $$6 = this.a($$5, $$2, $$4) + this.a($$5, this.N, $$2, $$3, $$4);
-         int $$7 = 0;
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            cgz $$9 = $$5.g.a((ctx)this.D);
-            if ($$9 == null) {
-               break;
-            }
-
-            if (!$$1 && $$9.gg()) {
-               $$9.w(true);
-               this.a($$2, $$9);
-               $$1 = true;
-            }
-
-            this.a($$2, $$9, $$0, false);
-            if ($$5.g == bmc.aF) {
-               cgz $$10 = null;
-               if ($$2 == this.a(bjz.c)) {
-                  $$10 = bmc.aA.a((ctx)this.D);
-               } else if ($$2 >= this.a(bjz.d)) {
-                  if ($$7 == 0) {
-                     $$10 = bmc.I.a((ctx)this.D);
-                  } else {
-                     $$10 = bmc.bi.a((ctx)this.D);
-                  }
-               }
-
-               $$7++;
-               if ($$10 != null) {
-                  this.a($$2, $$10, $$0, false);
-                  $$10.a($$0, 0.0F, 0.0F);
-                  $$10.m($$9);
-               }
-            }
-         }
-      }
-
-      this.R = Optional.empty();
-      this.J++;
-      this.p();
-      this.H();
-   }
-
-   public void a(int $$0, cgz $$1, @Nullable hx $$2, boolean $$3) {
-      boolean $$4 = this.b($$0, $$1);
-      if ($$4) {
-         $$1.a(this);
-         $$1.b($$0);
-         $$1.z(true);
-         $$1.c(0);
-         if (!$$3 && $$2 != null) {
-            $$1.a_((double)$$2.u() + 0.5, (double)$$2.v() + 1.0, (double)$$2.w() + 0.5);
-            $$1.a(this.D, this.D.d_($$2), bms.h, null, null);
-            $$1.a($$0, false);
-            $$1.c(true);
-            this.D.a_($$1);
-         }
+   static class f implements cgy.g {
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         return null;
       }
    }
 
-   public void p() {
-      this.K.a(aup.a(this.q() / this.G, 0.0F, 1.0F));
+   public interface g {
+      @Nullable
+      cul a(bno var1, awo var2);
    }
 
-   public float q() {
-      float $$0 = 0.0F;
+   static class h implements cgy.g {
+      private final coz a;
+      private final int b;
+      private final coz c;
+      private final int d;
+      private final int e;
+      private final float f;
+      private final boolean g;
 
-      for (Set<cgz> $$1 : this.z.values()) {
-         for (cgz $$2 : $$1) {
-            $$0 += $$2.ev();
-         }
+      public h(cvm $$0, int $$1, int $$2, cou $$3, int $$4, int $$5, int $$6, float $$7) {
+         this($$0, $$1, $$2, new coz($$3), $$4, $$5, $$6, $$7, false);
       }
 
-      return $$0;
-   }
+      public h(cvm $$0, int $$1, int $$2, cou $$3, int $$4, int $$5, int $$6, float $$7, boolean $$8) {
+         this($$0, $$1, $$2, new coz($$3), $$4, $$5, $$6, $$7, $$8);
+      }
 
-   private boolean G() {
-      return this.M == 0 && (this.J < this.O || this.E()) && this.r() == 0;
-   }
+      public h(cvm $$0, int $$1, int $$2, coz $$3, int $$4, int $$5, int $$6, float $$7) {
+         this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+      }
 
-   public int r() {
-      return this.z.values().stream().mapToInt(Set::size).sum();
-   }
+      private h(cvm $$0, int $$1, int $$2, coz $$3, int $$4, int $$5, int $$6, float $$7, boolean $$8) {
+         this.a = new coz($$0, $$1);
+         this.b = $$2;
+         this.c = $$3.c($$4);
+         this.d = $$5;
+         this.e = $$6;
+         this.f = $$7;
+         this.g = $$8;
+      }
 
-   public void a(cgz $$0, boolean $$1) {
-      Set<cgz> $$2 = this.z.get($$0.gv());
-      if ($$2 != null) {
-         boolean $$3 = $$2.remove($$0);
-         if ($$3) {
-            if ($$1) {
-               this.G = this.G - $$0.ev();
-            }
-
-            $$0.a(null);
-            this.p();
-            this.H();
-         }
+      @Nullable
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         return new cul(new coz(cpc.oy, this.b), this.a.q(), this.c.q(), 0, this.d, this.e, this.f, 0, this.g);
       }
    }
 
-   private void H() {
-      this.D.z().c();
-   }
+   static class i implements cgy.g {
+      private final coz a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final float e;
 
-   public static cng s() {
-      cng $$0 = new cng(cnj.uL);
-      so $$1 = new so();
-      su $$2 = new dgu.a().a(dgv.z, clv.j).a(dgv.f, clv.i).a(dgv.j, clv.h).a(dgv.E, clv.i).a(dgv.k, clv.p).a(dgv.B, clv.i).a(dgv.y, clv.i).a(dgv.E, clv.p).a();
-      $$1.a("Patterns", $$2);
-      cla.a($$0, dhf.t, $$1);
-      $$0.a(cng.a.f);
-      $$0.a(vg.c("block.minecraft.ominous_banner").a(n.g));
-      return $$0;
-   }
-
-   @Nullable
-   public cgz b(int $$0) {
-      return this.y.get($$0);
-   }
-
-   @Nullable
-   private hx a(int $$0, int $$1) {
-      int $$2 = $$0 == 0 ? 2 : 2 - $$0;
-      hx.a $$3 = new hx.a();
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         float $$5 = this.D.z.i() * (float) (Math.PI * 2);
-         int $$6 = this.C.u() + aup.d(aup.b($$5) * 32.0F * (float)$$2) + this.D.z.a(5);
-         int $$7 = this.C.w() + aup.d(aup.a($$5) * 32.0F * (float)$$2) + this.D.z.a(5);
-         int $$8 = this.D.a(doy.a.b, $$6, $$7);
-         $$3.d($$6, $$8, $$7);
-         if (!this.D.c($$3) || $$0 >= 2) {
-            int $$9 = 10;
-            if (this.D.b($$3.u() - 10, $$3.w() - 10, $$3.u() + 10, $$3.w() + 10)
-               && this.D.f($$3)
-               && (cui.a(bni.c.a, this.D, $$3, bmc.aF) || this.D.a_($$3.d()).a(cxa.dN) && this.D.a_($$3).i())) {
-               return $$3;
-            }
-         }
+      public i(cyo $$0, int $$1, int $$2, int $$3, int $$4) {
+         this(new coz($$0), $$1, $$2, $$3, $$4);
       }
 
-      return null;
-   }
-
-   private boolean b(int $$0, cgz $$1) {
-      return this.a($$0, $$1, true);
-   }
-
-   public boolean a(int $$0, cgz $$1, boolean $$2) {
-      this.z.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
-      Set<cgz> $$3 = this.z.get($$0);
-      cgz $$4 = null;
-
-      for (cgz $$5 : $$3) {
-         if ($$5.cw().equals($$1.cw())) {
-            $$4 = $$5;
-            break;
-         }
+      public i(cou $$0, int $$1, int $$2, int $$3) {
+         this(new coz($$0), $$1, $$2, 12, $$3);
       }
 
-      if ($$4 != null) {
-         $$3.remove($$4);
-         $$3.add($$1);
+      public i(cou $$0, int $$1, int $$2, int $$3, int $$4) {
+         this(new coz($$0), $$1, $$2, $$3, $$4);
       }
 
-      $$3.add($$1);
-      if ($$2) {
-         this.G = this.G + $$1.ev();
+      public i(coz $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, $$1, $$2, $$3, $$4, 0.05F);
       }
 
-      this.p();
-      this.H();
-      return true;
+      public i(cou $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+         this(new coz($$0), $$1, $$2, $$3, $$4, $$5);
+      }
+
+      public i(coz $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.a.f($$2);
+         this.c = $$3;
+         this.d = $$4;
+         this.e = $$5;
+      }
+
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         return new cul(new coz(cpc.oy, this.b), this.a.q(), this.c, this.d, this.e);
+      }
    }
 
-   public void a(int $$0, cgz $$1) {
-      this.y.put($$0, $$1);
-      $$1.a(bmd.f, s());
-      $$1.a(bmd.f, 2.0F);
+   static class j implements cgy.g {
+      private final List<dgp.a> a;
+      private final int b;
+      private final float c;
+
+      public j(ij<bmz> $$0, int $$1, int $$2) {
+         this(List.of(new dgp.a($$0, $$1)), $$2, 0.05F);
+      }
+
+      public j(List<dgp.a> $$0, int $$1, float $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Nullable
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         coz $$2 = new coz(cpc.vQ, 1);
+         cqj.a($$2, this.a);
+         return new cul(new coz(cpc.oy, 1), $$2, 12, this.b, this.c);
+      }
    }
 
-   public void c(int $$0) {
-      this.y.remove($$0);
+   static class k implements cgy.g {
+      private final coz a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final int e;
+      private final cou f;
+      private final int g;
+      private final float h;
+
+      public k(cou $$0, int $$1, cou $$2, int $$3, int $$4, int $$5, int $$6) {
+         this.a = new coz($$2);
+         this.c = $$4;
+         this.d = $$5;
+         this.e = $$6;
+         this.f = $$0;
+         this.g = $$1;
+         this.b = $$3;
+         this.h = 0.05F;
+      }
+
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         coz $$2 = new coz(cpc.oy, this.c);
+         List<ij<cqv>> $$3 = kf.i.h().filter($$0x -> !((cqv)$$0x.a()).a().isEmpty() && cqw.a($$0x)).collect(Collectors.toList());
+         ij<cqv> $$4 = ac.a($$3, $$1);
+         coz $$5 = cqx.a(new coz(this.a.d(), this.b), $$4);
+         return new cul($$2, new coz(this.f, this.g), $$5, this.d, this.e, this.h);
+      }
    }
 
-   public hx t() {
-      return this.C;
-   }
+   static class l implements cgy.g {
+      private final int a;
+      private final auo<ebe> b;
+      private final String c;
+      private final ehw.a d;
+      private final int e;
+      private final int f;
 
-   private void c(hx $$0) {
-      this.C = $$0;
-   }
+      public l(int $$0, auo<ebe> $$1, String $$2, ehw.a $$3, int $$4, int $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
 
-   public int u() {
-      return this.F;
-   }
-
-   private int a(cgy.b $$0, int $$1, boolean $$2) {
-      return $$2 ? $$0.h[this.O] : $$0.h[$$1];
-   }
-
-   private int a(cgy.b $$0, auw $$1, int $$2, bka $$3, boolean $$4) {
-      bjz $$5 = $$3.a();
-      boolean $$6 = $$5 == bjz.b;
-      boolean $$7 = $$5 == bjz.c;
-      int $$9;
-      switch ($$0) {
-         case d:
-            if ($$6 || $$2 <= 2 || $$2 == 4) {
-               return 0;
-            }
-
-            $$9 = 1;
-            break;
-         case c:
-         case a:
-            if ($$6) {
-               $$9 = $$1.a(2);
-            } else if ($$7) {
-               $$9 = 1;
+      @Nullable
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         if (!($$0.dM() instanceof aov)) {
+            return null;
+         } else {
+            aov $$2 = (aov)$$0.dM();
+            hz $$3 = $$2.a(this.b, $$0.dm(), 100, true);
+            if ($$3 != null) {
+               coz $$4 = cpg.a($$2, $$3.u(), $$3.w(), (byte)2, true, true);
+               cpg.a($$2, $$4);
+               ehz.a($$4, $$3, "+", this.d);
+               $$4.a(vq.c(this.c));
+               return new cul(new coz(cpc.oy, this.a), new coz(cpc.qR), $$4, this.e, this.f, 0.2F);
             } else {
-               $$9 = 2;
-            }
-            break;
-         case e:
-            $$9 = !$$6 && $$4 ? 1 : 0;
-            break;
-         default:
-            return 0;
-      }
-
-      return $$9 > 0 ? $$1.a($$9 + 1) : 0;
-   }
-
-   public boolean v() {
-      return this.I;
-   }
-
-   public so a(so $$0) {
-      $$0.a("Id", this.F);
-      $$0.a("Started", this.E);
-      $$0.a("Active", this.I);
-      $$0.a("TicksActive", this.B);
-      $$0.a("BadOmenLevel", this.H);
-      $$0.a("GroupsSpawned", this.J);
-      $$0.a("PreRaidTicks", this.M);
-      $$0.a("PostRaidTicks", this.L);
-      $$0.a("TotalHealth", this.G);
-      $$0.a("NumGroups", this.O);
-      $$0.a("Status", this.P.a());
-      $$0.a("CX", this.C.u());
-      $$0.a("CY", this.C.v());
-      $$0.a("CZ", this.C.w());
-      su $$1 = new su();
-
-      for (UUID $$2 : this.A) {
-         $$1.add(td.a($$2));
-      }
-
-      $$0.a("HeroesOfTheVillage", $$1);
-      return $$0;
-   }
-
-   public int a(bjz $$0) {
-      switch ($$0) {
-         case b:
-            return 3;
-         case c:
-            return 5;
-         case d:
-            return 7;
-         default:
-            return 0;
-      }
-   }
-
-   public float w() {
-      int $$0 = this.m();
-      if ($$0 == 2) {
-         return 0.1F;
-      } else if ($$0 == 3) {
-         return 0.25F;
-      } else if ($$0 == 4) {
-         return 0.5F;
-      } else {
-         return $$0 == 5 ? 0.75F : 0.0F;
-      }
-   }
-
-   public void a(blw $$0) {
-      this.A.add($$0.cw());
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final cgy.a[] e = values();
-
-      static cgy.a a(String $$0) {
-         for (cgy.a $$1 : e) {
-            if ($$0.equalsIgnoreCase($$1.name())) {
-               return $$1;
+               return null;
             }
          }
-
-         return a;
-      }
-
-      public String a() {
-         return this.name().toLowerCase(Locale.ROOT);
       }
    }
 
-   static enum b {
-      a(bmc.bi, new int[]{0, 0, 2, 0, 1, 4, 2, 5}),
-      b(bmc.I, new int[]{0, 0, 0, 0, 0, 1, 1, 2}),
-      c(bmc.aA, new int[]{0, 4, 3, 3, 4, 4, 4, 2}),
-      d(bmc.bm, new int[]{0, 0, 0, 0, 3, 0, 0, 1}),
-      e(bmc.aF, new int[]{0, 0, 0, 1, 0, 1, 0, 2});
+   static record m(Map<cgz, cgy.g> a) implements cgy.g {
+      public static cgy.m a(cgy.g $$0, cgz... $$1) {
+         return new cgy.m(Arrays.stream($$1).collect(Collectors.toMap($$0x -> $$0x, $$1x -> $$0)));
+      }
 
-      static final cgy.b[] f = values();
-      final bmc<? extends cgz> g;
-      final int[] h;
-
-      private b(bmc<? extends cgz> $$0, int[] $$1) {
-         this.g = $$0;
-         this.h = $$1;
+      @Nullable
+      @Override
+      public cul a(bno $$0, awo $$1) {
+         if ($$0 instanceof cgw $$2) {
+            cgz $$3 = $$2.gr().a();
+            cgy.g $$4 = this.a.get($$3);
+            return $$4 == null ? null : $$4.a($$0, $$1);
+         } else {
+            return null;
+         }
       }
    }
 }

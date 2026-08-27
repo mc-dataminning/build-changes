@@ -1,39 +1,60 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
+import com.google.common.collect.Maps;
 import java.util.Collection;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public class ajy {
-   public static void a(CommandDispatcher<ds> $$0) {
-      LiteralCommandNode<ds> $$1 = $$0.register(
-         (LiteralArgumentBuilder)dt.a("msg").then(dt.a("targets", ef.d()).then(dt.a("message", ej.a()).executes($$0x -> {
-            Collection<anf> $$1x = ef.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               ej.a($$0x, "message", $$2 -> a((ds)$$0x.getSource(), $$1x, $$2));
-            }
+   private final Map<aiy, ajx> a = Maps.newHashMap();
 
-            return $$1x.size();
-         })))
-      );
-      $$0.register((LiteralArgumentBuilder)dt.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)dt.a("w").redirect($$1));
+   @Nullable
+   public ajx a(aiy $$0) {
+      return this.a.get($$0);
    }
 
-   private static void a(ds $$0, Collection<anf> $$1, vw $$2) {
-      vc.a $$3 = vc.a(vc.e, $$0);
-      vv $$4 = vv.a($$2);
-      boolean $$5 = false;
+   public ajx a(aiy $$0, vq $$1) {
+      ajx $$2 = new ajx($$0, $$1);
+      this.a.put($$0, $$2);
+      return $$2;
+   }
 
-      for (anf $$6 : $$1) {
-         vc.a $$7 = vc.a(vc.f, $$0).c($$6.Q_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.j();
+   public void a(ajx $$0) {
+      this.a.remove($$0.a());
+   }
+
+   public Collection<aiy> a() {
+      return this.a.keySet();
+   }
+
+   public Collection<ajx> b() {
+      return this.a.values();
+   }
+
+   public sw c() {
+      sw $$0 = new sw();
+
+      for (ajx $$1 : this.a.values()) {
+         $$0.a($$1.a().toString(), $$1.f());
       }
 
-      if ($$5) {
-         $$0.a(aqw.f);
+      return $$0;
+   }
+
+   public void a(sw $$0) {
+      for (String $$1 : $$0.e()) {
+         aiy $$2 = new aiy($$1);
+         this.a.put($$2, ajx.a($$0.p($$1), $$2));
+      }
+   }
+
+   public void a(aow $$0) {
+      for (ajx $$1 : this.a.values()) {
+         $$1.c($$0);
+      }
+   }
+
+   public void b(aow $$0) {
+      for (ajx $$1 : this.a.values()) {
+         $$1.d($$0);
       }
    }
 }

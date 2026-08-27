@@ -1,58 +1,41 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
 
-public record ejw(ahh b) implements eke {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<ejw> a = RecordCodecBuilder.create($$0 -> $$0.group(ahh.a.fieldOf("name").forGetter(ejw::c)).apply($$0, ejw::new));
+public class ejw extends ekh {
+   public static final Codec<ejw> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ejw::new));
 
-   @Override
-   public ekf b() {
-      return ekg.q;
+   private ejw(List<elu> $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(eho $$0) {
-      ehh<eke> $$1 = new ehh<>(ehk.a, this.b);
-      if ($$0.a($$1)) {
-         $$0.b("Condition " + this.b + " is recursively called");
-      } else {
-         eke.super.a($$0);
-         $$0.a()
-            .getElementOptional($$1)
-            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.b("Unknown condition table called " + this.b));
-      }
+   public ekj b() {
+      return ekk.t;
    }
 
-   public boolean a(ehf $$0) {
-      eke $$1 = $$0.a().getElement(ehk.a, this.b);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b);
-         return false;
-      } else {
-         ehf.c<?> $$2 = ehf.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
+   @Override
+   public coz a(coz $$0, eiv $$1) {
+      Float $$2 = $$1.c(elg.j);
+      if ($$2 != null) {
+         awo $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.M();
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
             }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
          }
+
+         $$0.f($$6);
       }
+
+      return $$0;
    }
 
-   public static eke.a a(ahh $$0) {
-      return () -> new ejw($$0);
-   }
-
-   public ahh c() {
-      return this.b;
+   public static ekh.a<?> c() {
+      return a(ejw::new);
    }
 }

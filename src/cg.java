@@ -1,32 +1,44 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record cg(ck.d c, Optional<bp> d) implements bq {
-   public static final MapCodec<cg> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(atx.a(ck.d.d, "blocks_set_on_fire", ck.d.c).forGetter(cg::b), atx.a(bp.a, "entity_struck").forGetter(cg::c)).apply($$0, cg::new)
-   );
-
-   public static cg a(ck.d $$0) {
-      return new cg($$0, Optional.empty());
-   }
-
+public class cg extends cx<cg.a> {
    @Override
-   public bq.a a() {
-      return bq.b.b;
+   public Codec<cg.a> a() {
+      return cg.a.a;
    }
 
-   @Override
-   public boolean a(blw $$0, ane $$1, @Nullable emc $$2) {
-      return !($$0 instanceof bmn $$3) ? false : this.c.d($$3.s()) && (this.d.isEmpty() || $$3.u().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public void a(aow $$0, ens $$1, int $$2) {
+      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   public ck.d b() {
-      return this.c;
-   }
+   public static record a(Optional<bc> b, Optional<bi> c, cm.d d) implements cx.a {
+      public static final Codec<cg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  avp.a(br.b, "player").forGetter(cg.a::a), avp.a(bi.a, "distance").forGetter(cg.a::b), avp.a(cm.d.d, "duration", cm.d.c).forGetter(cg.a::c)
+               )
+               .apply($$0, cg.a::new)
+      );
 
-   public Optional<bp> c() {
-      return this.d;
+      public static an<cg.a> a(bi $$0) {
+         return am.v.a(new cg.a(Optional.empty(), Optional.of($$0), cm.d.c));
+      }
+
+      public boolean a(aow $$0, ens $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.dr(), $$0.dt(), $$0.dx()) ? false : this.d.d($$2);
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
+      }
+
+      public Optional<bi> b() {
+         return this.c;
+      }
+
+      public cm.d c() {
+         return this.d;
+      }
    }
 }

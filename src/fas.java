@@ -1,17 +1,43 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record fas(ahh c) implements faq {
-   public static final MapCodec<fas> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ahh.a.fieldOf("id").forGetter(fas::c)).apply($$0, fas::new));
+public class fas implements fdd {
+   private static final int a = 170;
+   private final vq b;
+   @Nullable
+   private List<avt> c;
+   @Nullable
+   private final vq d;
 
-   @Override
-   public far a() {
-      return far.e;
+   private fas(vq $$0, @Nullable vq $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public static fas a(vq $$0, @Nullable vq $$1) {
+      return new fas($$0, $$1);
+   }
+
+   public static fas a(vq $$0) {
+      return new fas($$0, $$0);
    }
 
    @Override
-   public Either<faq.a, faq.b> b() {
-      return Either.right(new faq.b(this.c));
+   public void b(fdc $$0) {
+      if (this.d != null) {
+         $$0.a(fdb.c, this.d);
+      }
+   }
+
+   public List<avt> a(exh $$0) {
+      if (this.c == null) {
+         this.c = a($$0, this.b);
+      }
+
+      return this.c;
+   }
+
+   public static List<avt> a(exh $$0, vq $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

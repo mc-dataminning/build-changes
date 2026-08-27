@@ -1,78 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record ead(List<dzs> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ahh c = new ahh("jigsaw");
-   private static final Map<ahh, ahh> d = ImmutableMap.builder()
-      .put(new ahh("nvi"), c)
-      .put(new ahh("pcp"), c)
-      .put(new ahh("bastionremnant"), c)
-      .put(new ahh("runtime"), c)
-      .build();
+public class ead extends eal {
+   public static final Codec<ead> a = RecordCodecBuilder.create($$0 -> $$0.group(dzl.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ead::new));
+   private final dzl c;
 
-   public ead(List<dzs> a) {
-      this.a = List.copyOf(a);
+   private ead(dzl $$0) {
+      this.c = $$0;
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   public static ead a(dzl $$0) {
+      return new ead($$0);
    }
 
-   public boolean a(hx $$0) {
-      for (dzs $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public static ead a(dri $$0, dri $$1) {
+      return a(dzo.a($$0, $$1));
    }
 
-   public tl a(eae $$0) {
-      su $$1 = new su();
-
-      for (dzs $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
+   public static ead b(dri $$0, dri $$1) {
+      return a(dzn.a($$0, $$1));
    }
 
-   public static ead a(su $$0, eae $$1) {
-      List<dzs> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         so $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         ahh $$6 = new ahh($$5);
-         ahh $$7 = d.getOrDefault($$6, $$6);
-         eaf $$8 = kd.S.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               dzs $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new ead($$2);
+   @Override
+   public Stream<hz> a_(eaj $$0, awo $$1, hz $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
    }
 
-   public dzg b() {
-      return dzs.a(this.a.stream());
-   }
-
-   public List<dzs> c() {
-      return this.a;
+   @Override
+   public eam<?> b() {
+      return eam.l;
    }
 }

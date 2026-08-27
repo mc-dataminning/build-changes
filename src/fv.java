@@ -1,113 +1,62 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
-public class fv implements fo {
-   private final fu a;
-   private final fu b;
-   private final fu c;
+public class fv implements ArgumentType<fq> {
+   private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("argument.pos3d.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("argument.pos.mixed"));
+   private final boolean d;
 
-   public fv(fu $$0, fu $$1, fu $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fv(boolean $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public emc a(ds $$0) {
-      emc $$1 = $$0.d();
-      return new emc(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public static fv a() {
+      return new fv(true);
    }
 
-   @Override
-   public emb b(ds $$0) {
-      emb $$1 = $$0.k();
-      return new emb((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public static fv a(boolean $$0) {
+      return new fv($$0);
    }
 
-   @Override
-   public boolean a() {
-      return this.a.a();
+   public static ens a(CommandContext<du> $$0, String $$1) {
+      return ((fq)$$0.getArgument($$1, fq.class)).a((du)$$0.getSource());
    }
 
-   @Override
-   public boolean b() {
-      return this.b.a();
+   public static fq b(CommandContext<du> $$0, String $$1) {
+      return (fq)$$0.getArgument($$1, fq.class);
    }
 
-   @Override
-   public boolean c() {
-      return this.c.a();
+   public fq a(StringReader $$0) throws CommandSyntaxException {
+      return (fq)($$0.canRead() && $$0.peek() == '^' ? fr.a($$0) : fx.a($$0, this.d));
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof fv $$1)) {
-         return false;
-      } else if (!this.a.equals($$1.a)) {
-         return false;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if (!($$0.getSource() instanceof dz)) {
+         return Suggestions.empty();
       } else {
-         return !this.b.equals($$1.b) ? false : this.c.equals($$1.c);
-      }
-   }
-
-   public static fv a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      fu $$2 = fu.a($$0);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         fu $$3 = fu.a($$0);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            fu $$4 = fu.a($$0);
-            return new fv($$2, $$3, $$4);
+         String $$2 = $$1.getRemaining();
+         Collection<dz.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(dz.b.a);
          } else {
-            $$0.setCursor($$1);
-            throw ft.a.createWithContext($$0);
+            $$3 = ((dz)$$0.getSource()).C();
          }
-      } else {
-         $$0.setCursor($$1);
-         throw ft.a.createWithContext($$0);
+
+         return dz.a($$2, $$3, $$1, dv.a(this::a));
       }
    }
 
-   public static fv a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-      fu $$3 = fu.a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         fu $$4 = fu.a($$0, false);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            fu $$5 = fu.a($$0, $$1);
-            return new fv($$3, $$4, $$5);
-         } else {
-            $$0.setCursor($$2);
-            throw ft.a.createWithContext($$0);
-         }
-      } else {
-         $$0.setCursor($$2);
-         throw ft.a.createWithContext($$0);
-      }
-   }
-
-   public static fv a(double $$0, double $$1, double $$2) {
-      return new fv(new fu(false, $$0), new fu(false, $$1), new fu(false, $$2));
-   }
-
-   public static fv a(emb $$0) {
-      return new fv(new fu(false, (double)$$0.i), new fu(false, (double)$$0.j), new fu(true, 0.0));
-   }
-
-   public static fv d() {
-      return new fv(new fu(true, 0.0), new fu(true, 0.0), new fu(true, 0.0));
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public Collection<String> getExamples() {
+      return c;
    }
 }

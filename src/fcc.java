@@ -1,28 +1,13 @@
-public class fcc extends fdo {
-   public fcc(fdm $$0, evv $$1) {
-      super(
-         $$0,
-         $$1,
-         vg.c("options.chat.title"),
-         new evu[]{
-            $$1.m(),
-            $$1.I(),
-            $$1.J(),
-            $$1.K(),
-            $$1.n(),
-            $$1.p(),
-            $$1.u(),
-            $$1.o(),
-            $$1.y(),
-            $$1.v(),
-            $$1.x(),
-            $$1.w(),
-            $$1.ap(),
-            $$1.H(),
-            $$1.ab(),
-            $$1.S(),
-            $$1.ad()
-         }
-      );
+import org.joml.Matrix4f;
+
+public class fcc extends fcb {
+   public static final fcc a = new fcc();
+
+   public fcc() {
+      super(fbz.b(new aiy("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   }
+
+   @Override
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, ese $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

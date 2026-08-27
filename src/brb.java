@@ -1,28 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class brb {
-   public static <E extends bmo> bpq<E> a(List<Pair<? extends brv<? super E>, Integer>> $$0) {
-      return a($$0, bot.a.b, bot.b.a);
+public class brb extends bpw<cgu> {
+   private final float c;
+
+   public brb(float $$0) {
+      super(ImmutableMap.of(bxh.m, bxi.c, bxh.n, bxi.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   public static <E extends bmo> bpq<E> a(List<Pair<? extends brv<? super E>, Integer>> $$0, bot.a $$1, bot.b $$2) {
-      bqo<brv<? super E>> $$3 = new bqo<>();
-      $$0.forEach($$1x -> $$3.a((brv<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return brs.a((Function<brs.b<E>, ? extends App<brs.c<E>, brv<E>>>)($$3x -> $$3x.a((brv<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bot.a.b) {
-               $$3.a();
-            }
+   protected boolean a(aov $$0, cgu $$1) {
+      chh $$2 = $$1.gg();
+      return $$1.bx() && $$2 != null && !$$1.aZ() && !$$1.S && $$1.f($$2) <= 16.0 && $$2.bW != null;
+   }
 
-            for (brv<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bot.b.a) {
-                  break;
-               }
-            }
+   protected boolean a(aov $$0, cgu $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
 
-            return true;
-         }))));
+   protected void b(aov $$0, cgu $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(aov $$0, cgu $$1, long $$2) {
+      bpf<?> $$3 = $$1.dO();
+      $$3.b(bxh.m);
+      $$3.b(bxh.n);
+   }
+
+   protected void d(aov $$0, cgu $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cgu $$0) {
+      bpf<?> $$1 = $$0.dO();
+      $$1.a(bxh.m, new bxk(new bqh($$0.gg(), false), this.c, 2));
+      $$1.a(bxh.n, new bqh($$0.gg(), true));
    }
 }

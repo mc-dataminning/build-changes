@@ -1,45 +1,34 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+public class gfl<T extends bog> extends gfe<T, fng<T>> {
+   public static final aiy a = new aiy("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fpc c;
 
-public class gfl {
-   private final ahh a;
-   private final aqh b;
-   private final AtomicReference<epl> c = new AtomicReference<>();
-   private final AtomicInteger d;
-
-   public gfl(ahh $$0, aqh $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
+   public gfl(gco<T, fng<T>> $$0, foy $$1) {
+      super($$0);
+      fpc $$2 = $$1.a(fpb.aV);
+      this.c = $$2.b("box");
    }
 
-   public epl a() throws IOException {
-      epl $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = epl.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
-               }
-            }
-         }
-      }
-
-      return $$0;
+   public static fpi a() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      $$1.a("box", fph.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fpe.a);
+      return fpi.a($$0, 64, 64);
    }
 
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         epl $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
+   public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fj()) {
+         ese $$10 = $$1.getBuffer(fvu.e(a));
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, ggl.d);
+            $$0.b();
          }
       }
    }

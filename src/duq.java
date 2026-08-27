@@ -1,13 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duq implements dug {
-   public static final Codec<duq> k = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, duq::new)
-   );
-   public final float l;
+public class duq extends dts<dwj> {
+   public duq(Codec<dwj> $$0) {
+      super($$0);
+   }
 
-   public duq(float $$0) {
-      this.l = $$0;
+   @Override
+   public boolean a(dtu<dwj> $$0) {
+      dwj $$1 = $$0.f();
+      awo $$2 = $$0.d();
+      hz $$3 = $$0.e();
+      cwi $$4 = $$0.b();
+      int $$5 = 0;
+      hz.a $$6 = new hz.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
+
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
+         }
+      }
+
+      return $$5 > 0;
    }
 }

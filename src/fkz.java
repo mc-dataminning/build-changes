@@ -1,57 +1,70 @@
-import java.util.Arrays;
-
-public class fkz<T extends cdf> extends fks<T> {
-   private static final int a = 8;
-   private final fnj b;
-   private final fnj[] f = new fnj[8];
-
-   public fkz(fnj $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
+public class fkz {
+   public static void a(fpc $$0, fpc $$1, fpc $$2, boolean $$3) {
+      fpc $$4 = $$3 ? $$0 : $$1;
+      fpc $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   private static String a(int $$0) {
-      return "cube" + $$0;
+   public static void a(fpc $$0, fpc $$1, bog $$2, boolean $$3) {
+      fpc $$4 = $$3 ? $$0 : $$1;
+      fpc $$5 = $$3 ? $$1 : $$0;
+      $$4.f = $$3 ? -0.8F : 0.8F;
+      $$4.e = -0.97079635F;
+      $$5.e = $$4.e;
+      float $$6 = (float)cnh.k($$2.fp());
+      float $$7 = awh.a((float)$$2.fr(), 0.0F, $$6);
+      float $$8 = $$7 / $$6;
+      $$5.f = awh.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
+      $$5.e = awh.i($$8, $$5.e, (float) (-Math.PI / 2));
    }
 
-   public static fnp b() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = $$2;
-         if ($$2 == 2) {
-            $$3 = 24;
-            $$4 = 10;
-         } else if ($$2 == 3) {
-            $$3 = 24;
-            $$4 = 19;
-         }
-
-         $$1.a(a($$2), fno.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fnl.a);
+   public static <T extends boi> void a(fpc $$0, fpc $$1, T $$2, float $$3, float $$4) {
+      float $$5 = awh.a($$3 * (float) Math.PI);
+      float $$6 = awh.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2.fm() == boa.b) {
+         $$0.e = -1.8849558F + awh.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + awh.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + awh.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + awh.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
       }
 
-      $$1.a("inside_cube", fno.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fnl.a);
-      return fnp.a($$0, 64, 32);
+      a($$0, $$1, $$4);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   public static void a(fpc $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (awh.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * awh.a($$1 * 0.067F) * 0.05F;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      float $$4 = aup.i($$3, $$0.bT, $$0.e);
-      if ($$4 < 0.0F) {
-         $$4 = 0.0F;
-      }
-
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
-      }
+   public static void a(fpc $$0, fpc $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
    }
 
-   @Override
-   public fnj a() {
-      return this.b;
+   public static void a(fpc $$0, fpc $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = awh.a($$3 * (float) Math.PI);
+      float $$6 = awh.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

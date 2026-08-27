@@ -1,45 +1,48 @@
-public class cjg extends cke {
-   private final cfq a;
-   private int b;
+public class cjg extends cja {
+   public cjg(bnu<?> $$0, cvn $$1) {
+      super($$0, $$1);
+   }
 
-   public cjg(cfq $$0, bjv $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+   public cjg(cvn $$0, double $$1, double $$2, double $$3) {
+      super(bnu.ap, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean a(cng $$0) {
-      return false;
-   }
-
-   @Override
-   public cng a(int $$0) {
-      if (this.h()) {
-         this.b = this.b + Math.min($$0, this.g().L());
+   public blu a(chh $$0, blt $$1) {
+      if ($$0.fI()) {
+         return blu.d;
+      } else if (this.bP()) {
+         return blu.d;
+      } else if (!this.dM().B) {
+         return $$0.m(this) ? blu.b : blu.d;
+      } else {
+         return blu.a;
       }
-
-      return super.a($$0);
    }
 
    @Override
-   public void a(cfq $$0, cng $$1) {
-      this.b_($$1);
-      super.a($$0, $$1);
+   protected cou ai_() {
+      return cpc.nL;
    }
 
    @Override
-   protected void a(cng $$0, int $$1) {
-      this.b += $$1;
-      this.b_($$0);
-   }
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.bP()) {
+            this.bB();
+         }
 
-   @Override
-   protected void b_(cng $$0) {
-      $$0.a(this.a.dL(), this.a, this.b);
-      if (this.a instanceof anf $$1 && this.d instanceof dgs $$2) {
-         $$2.a($$1);
+         if (this.O() == 0) {
+            this.n(-this.P());
+            this.d(10);
+            this.b(50.0F);
+            this.bq();
+         }
       }
+   }
 
-      this.b = 0;
+   @Override
+   public cja.a w() {
+      return cja.a.a;
    }
 }

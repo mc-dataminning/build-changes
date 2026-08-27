@@ -1,28 +1,40 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Set;
+import java.util.EnumSet;
 
-public class bwz extends bww<bmo> {
-   @Override
-   public Set<bvq<?>> a() {
-      return ImmutableSet.of(bvq.i);
+public class bwz extends bxb {
+   private final bpa a;
+   private bog b;
+   private int c;
+
+   public bwz(bpa $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(bvb.a.d));
    }
 
    @Override
-   protected void a(ane $$0, bmo $$1) {
-      $$1.dN().a(bvq.i, this.a($$1));
+   public boolean a() {
+      if (this.a.u() && !this.a.gg()) {
+         bog $$0 = this.a.R_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.ek();
+            int $$1 = $$0.el();
+            return $$1 != this.c && this.a(this.b, byu.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
-   private List<bmo> a(bmo $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
+   @Override
+   public void c() {
+      this.e.h(this.b);
+      bog $$0 = this.a.R_();
+      if ($$0 != null) {
+         this.c = $$0.el();
+      }
 
-   private boolean b(bmo $$0) {
-      return $$0.ai() == bmc.bh && $$0.o_();
-   }
-
-   private bvs c(bmo $$0) {
-      return $$0.dN().c(bvq.h).orElse(bvs.a());
+      super.c();
    }
 }

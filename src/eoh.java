@@ -1,7 +1,20 @@
-public record eoh(emc b, emc c, emc d) {
-   public static final eoh a = new eoh(emc.b, new emc(0.0, 0.0, -1.0), new emc(0.0, 1.0, 0.0));
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   public emc a() {
-      return this.c.c(this.d);
+public class eoh extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
+
+   public eoh(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
+   }
+
+   public int size() {
+      return this.a.size();
    }
 }

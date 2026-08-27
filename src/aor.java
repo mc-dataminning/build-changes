@@ -1,85 +1,61 @@
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
-
-public class aor implements aox {
-   private final aox c;
-   private final List<aox> d;
-
-   public aor(aox $$0, List<aox> $$1) {
-      this.c = $$0;
-      List<aox> $$2 = new ArrayList<>($$1.size() + 1);
-      $$2.addAll(Lists.reverse($$1));
-      $$2.add($$0);
-      this.d = List.copyOf($$2);
+public abstract class aor extends egb {
+   protected aor(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Nullable
    @Override
-   public aqb<InputStream> a(String... $$0) {
-      return this.c.a($$0);
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            for (int $$4 = -1; $$4 <= 1; $$4++) {
+               for (int $$5 = -1; $$5 <= 1; $$5++) {
+                  long $$6 = jb.a($$0, $$3, $$4, $$5);
+                  if ($$6 != $$0) {
+                     this.b($$0, $$6, $$1, $$2);
+                  }
+               }
+            }
+         }
+      }
    }
 
-   @Nullable
    @Override
-   public aqb<InputStream> a(aoy $$0, ahh $$1) {
-      for (aox $$2 : this.d) {
-         aqb<InputStream> $$3 = $$2.a($$0, $$1);
-         if ($$3 != null) {
-            return $$3;
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               long $$7 = jb.a($$0, $$4, $$5, $$6);
+               if ($$7 == $$0) {
+                  $$7 = Long.MAX_VALUE;
+               }
+
+               if ($$7 != $$1) {
+                  int $$8 = this.b($$7, $$0, this.c($$7));
+                  if ($$3 > $$8) {
+                     $$3 = $$8;
+                  }
+
+                  if ($$3 == 0) {
+                     return $$3;
+                  }
+               }
+            }
          }
       }
 
-      return null;
+      return $$3;
    }
 
    @Override
-   public void a(aoy $$0, String $$1, String $$2, aox.a $$3) {
-      Map<ahh, aqb<InputStream>> $$4 = new HashMap<>();
-
-      for (aox $$5 : this.d) {
-         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
-      }
-
-      $$4.forEach($$3);
+   protected int b(long $$0, long $$1, int $$2) {
+      return this.a($$0) ? this.b($$1) : $$2 + 1;
    }
 
-   @Override
-   public Set<String> a(aoy $$0) {
-      Set<String> $$1 = new HashSet<>();
+   protected abstract int b(long var1);
 
-      for (aox $$2 : this.d) {
-         $$1.addAll($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public <T> T a(apj<T> $$0) throws IOException {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public String a() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.b();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(aox::close);
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
    }
 }

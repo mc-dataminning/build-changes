@@ -1,24 +1,9 @@
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public class dne<T> {
-   private final cte a;
-   private final List<T> b;
-
-   public dne(cte $$0, List<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public cte a() {
-      return this.a;
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public boolean c() {
-      return this.b.isEmpty();
+public class dne {
+   public static Codec<? extends dnc> a(iv<Codec<? extends dnc>> $$0) {
+      iv.a($$0, "noise", dqr.c);
+      iv.a($$0, "flat", dqj.c);
+      return iv.a($$0, "debug", dqf.c);
    }
 }

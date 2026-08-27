@@ -1,125 +1,62 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bum extends btx {
-   private final cwy g;
-   private final bmq h;
-   private int i;
-   private static final int j = 20;
+public class bum extends bvb {
+   private final boo a;
 
-   public bum(cwy $$0, bmx $$1, double $$2, int $$3) {
-      super($$1, $$2, 24, $$3);
-      this.g = $$0;
-      this.h = $$1;
+   public bum(boo $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bvb.a.a, bvb.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.h.dL().Z().b(ctt.c)) {
-         return false;
-      } else if (this.c > 0) {
-         this.c--;
-         return false;
-      } else if (this.n()) {
-         this.c = b(20);
-         return true;
-      } else {
-         this.c = this.a(this.a);
-         return false;
-      }
+      return this.a.ci() < 140;
    }
 
    @Override
-   public void d() {
-      super.d();
-      this.h.ab = 1.0F;
+   public boolean b() {
+      return this.a();
+   }
+
+   @Override
+   public boolean S_() {
+      return false;
    }
 
    @Override
    public void c() {
-      super.c();
-      this.i = 0;
+      this.h();
    }
 
-   public void a(cty $$0, hx $$1) {
-   }
+   private void h() {
+      Iterable<hz> $$0 = hz.b(
+         awh.a(this.a.dr() - 1.0), this.a.ds(), awh.a(this.a.dx() - 1.0), awh.a(this.a.dr() + 1.0), awh.a(this.a.dt() + 8.0), awh.a(this.a.dx() + 1.0)
+      );
+      hz $$1 = null;
 
-   public void a(ctx $$0, hx $$1) {
+      for (hz $$2 : $$0) {
+         if (this.a(this.a.dM(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = hz.a(this.a.dr(), this.a.dt() + 8.0, this.a.dx());
+      }
+
+      this.a.N().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void e() {
-      super.e();
-      ctx $$0 = this.h.dL();
-      hx $$1 = this.h.dl();
-      hx $$2 = this.a($$1, $$0);
-      auw $$3 = this.h.eg();
-      if (this.m() && $$2 != null) {
-         if (this.i > 0) {
-            emc $$4 = this.h.do();
-            this.h.o($$4.c, 0.3, $$4.e);
-            if (!$$0.B) {
-               double $$5 = 0.08;
-               ((ane)$$0)
-                  .a(
-                     new jt(jx.Q, new cng(cnj.qQ)),
-                     (double)$$2.u() + 0.5,
-                     (double)$$2.v() + 0.7,
-                     (double)$$2.w() + 0.5,
-                     3,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     0.15F
-                  );
-            }
-         }
-
-         if (this.i % 2 == 0) {
-            emc $$6 = this.h.do();
-            this.h.o($$6.c, -0.3, $$6.e);
-            if (this.i % 6 == 0) {
-               this.a((cty)$$0, this.e);
-            }
-         }
-
-         if (this.i > 60) {
-            $$0.a($$2, false);
-            if (!$$0.B) {
-               for (int $$7 = 0; $$7 < 20; $$7++) {
-                  double $$8 = $$3.k() * 0.02;
-                  double $$9 = $$3.k() * 0.02;
-                  double $$10 = $$3.k() * 0.02;
-                  ((ane)$$0).a(jx.Y, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
-               }
-
-               this.a($$0, $$2);
-            }
-         }
-
-         this.i++;
-      }
+      this.h();
+      this.a.a(0.02F, new ens((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
+      this.a.a(bol.a, this.a.dp());
    }
 
-   @Nullable
-   private hx a(hx $$0, ctd $$1) {
-      if ($$1.a_($$0).a(this.g)) {
-         return $$0;
-      } else {
-         hx[] $$2 = new hx[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
-
-         for (hx $$3 : $$2) {
-            if ($$1.a_($$3).a(this.g)) {
-               return $$3;
-            }
-         }
-
-         return null;
-      }
-   }
-
-   @Override
-   protected boolean a(cua $$0, hx $$1) {
-      dll $$2 = $$0.a(iz.a($$1.u()), iz.a($$1.w()), dlq.n, false);
-      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
+   private boolean a(cvq $$0, hz $$1) {
+      dlf $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(cyq.nd)) && $$2.a($$0, $$1, ehf.a);
    }
 }

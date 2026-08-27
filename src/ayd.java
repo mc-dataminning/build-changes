@@ -1,29 +1,25 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
+import com.mojang.serialization.OptionalDynamic;
 
 public class ayd extends DataFix {
-   public ayd(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public ayd(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bde.a());
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bdn.c);
       return this.fixTypeEverywhereTyped(
-         "EntityCustomNameToComponentFix", this.getInputSchema().getType(bbw.y), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
-               Optional<String> $$3 = $$1.getOptional($$0);
-               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:commandblock_minecart") ? $$2 : a($$2);
-            })
+         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
       );
    }
 
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      String $$1 = $$0.get("CustomName").asString("");
-      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", avw.a($$0.getOps(), $$1));
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      return $$2 ? $$0 : $$0.remove("blending_data");
    }
 }

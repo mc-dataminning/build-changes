@@ -1,28 +1,29 @@
-public class fsi extends frt {
-   fsi(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fsc $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
+public class fsi extends ftm {
+   fsi(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftv $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
       this.j = $$4;
       this.k = $$5;
       this.l = $$6;
       this.D *= 0.75F;
       this.t = 60 + this.r.a(12);
+      this.c(15916745);
       this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      }
    }
 
-   public static class a implements frk<ka> {
-      private final fsc a;
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
 
-      public a(fsc $$0) {
+   public static class a implements ftd<kc> {
+      private final ftv a;
+
+      public a(ftv $$0) {
          this.a = $$0;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fsi($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }

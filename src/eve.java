@@ -1,113 +1,77 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Consumer;
 
-public class eve extends arw {
-   private static final Logger c = LogUtils.getLogger();
-   private Map<ewa, List<fhe>> d = ImmutableMap.of();
-   private List<fhe> e = ImmutableList.of();
+public class eve extends gmw {
+   private static final vq b = vq.c("mco.reset.world.seed");
+   public static final vq a = vq.c("mco.reset.world.generate");
+   private static final int c = 10;
+   private static final int v = 210;
+   private final fct w = new fct(this);
+   private final Consumer<ewa> x;
+   private ezq y;
+   private evu z = evu.a;
+   private boolean A = true;
+   private final Set<String> B = new HashSet<>();
+   private final vq C;
 
-   public void a(Iterable<cqm<?>> $$0, iu $$1) {
-      Map<ewa, List<List<cqm<?>>>> $$2 = a($$0);
-      Map<ewa, List<fhe>> $$3 = Maps.newHashMap();
-      Builder<fhe> $$4 = ImmutableList.builder();
-      $$2.forEach(($$3x, $$4x) -> $$3.put($$3x, $$4x.stream().map($$1xx -> new fhe($$1, $$1xx)).peek($$4::add).collect(ImmutableList.toImmutableList())));
-      ewa.w
-         .forEach(
-            ($$1x, $$2x) -> $$3.put(
-                  $$1x, $$2x.stream().flatMap($$1xx -> $$3.getOrDefault($$1xx, ImmutableList.of()).stream()).collect(ImmutableList.toImmutableList())
-               )
-         );
-      this.d = ImmutableMap.copyOf($$3);
-      this.e = $$4.build();
+   public eve(Consumer<ewa> $$0, vq $$1) {
+      super(a);
+      this.x = $$0;
+      this.C = $$1;
    }
 
-   private static Map<ewa, List<List<cqm<?>>>> a(Iterable<cqm<?>> $$0) {
-      Map<ewa, List<List<cqm<?>>>> $$1 = Maps.newHashMap();
-      Table<ewa, String, List<cqm<?>>> $$2 = HashBasedTable.create();
+   @Override
+   public void aQ_() {
+      this.y = new ezq(this.i, 210, 20, vq.c("mco.reset.world.seed"));
+      this.y.f(32);
+      this.w.a(new fao(this.e, this.i));
+      fcx $$0 = this.w.c(fcx.d()).a(10);
+      $$0.a(fcp.a(this.i, this.y, b));
+      $$0.a(ezo.a(evu::a).a(evu.values()).a(this.z).a(0, 0, 210, 20, vq.c("selectWorld.mapType"), ($$0x, $$1x) -> this.z = $$1x));
+      $$0.a(ezo.b(this.A).a(0, 0, 210, 20, vq.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.A = $$1x));
+      this.a($$0);
+      fcx $$1 = this.w.b(fcx.e().a(10));
+      $$1.a(ezh.a(this.C, $$0x -> this.x.accept(this.E())).a());
+      $$1.a(ezh.a(vp.k, $$0x -> this.d()).a());
+      this.w.a($$1x -> {
+         ezf var10000 = this.d($$1x);
+      });
+      this.c();
+   }
 
-      for (cqm<?> $$3 : $$0) {
-         cqk<?> $$4 = $$3.b();
-         if (!$$4.as_() && !$$4.i()) {
-            ewa $$5 = g($$3);
-            String $$6 = $$4.c();
-            if ($$6.isEmpty()) {
-               $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add(ImmutableList.of($$3));
-            } else {
-               List<cqm<?>> $$7 = (List<cqm<?>>)$$2.get($$5, $$6);
-               if ($$7 == null) {
-                  $$7 = Lists.newArrayList();
-                  $$2.put($$5, $$6, $$7);
-                  $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add($$7);
+   @Override
+   protected void aH_() {
+      this.c(this.y);
+   }
+
+   private void a(fcx $$0) {
+      arl $$1 = aro.c();
+      $$1.a();
+      $$0.a(ezh.a(vq.c("selectWorld.experiments"), $$1x -> this.f.a(new fjx(this, $$1, $$0xx -> {
+            this.B.clear();
+
+            for (ari $$1xx : $$0xx.f()) {
+               if ($$1xx.j() == arm.d) {
+                  this.B.add($$1xx.f());
                }
-
-               $$7.add($$3);
             }
-         }
-      }
 
-      return $$1;
+            this.f.a(this);
+         }))).a(210).a());
    }
 
-   private static ewa g(cqm<?> $$0) {
-      cqk<?> $$1 = $$0.b();
-      if ($$1 instanceof cqb $$2) {
-         return switch ($$2.d()) {
-            case a -> ewa.b;
-            case c -> ewa.d;
-            case b -> ewa.c;
-            case d -> ewa.e;
-         };
-      } else {
-         cqp<?> $$3 = $$1.e();
-         if ($$1 instanceof cpt $$4) {
-            cpz $$5 = $$4.f();
-            if ($$3 == cqp.b) {
-               return switch ($$5) {
-                  case b -> ewa.h;
-                  case a -> ewa.g;
-                  case c -> ewa.i;
-               };
-            }
-
-            if ($$3 == cqp.c) {
-               return $$5 == cpz.b ? ewa.k : ewa.l;
-            }
-
-            if ($$3 == cqp.d) {
-               return ewa.n;
-            }
-
-            if ($$3 == cqp.e) {
-               return ewa.q;
-            }
-         }
-
-         if ($$3 == cqp.f) {
-            return ewa.o;
-         } else if ($$3 == cqp.g) {
-            return ewa.p;
-         } else {
-            c.warn("Unknown recipe category: {}/{}", LogUtils.defer(() -> kd.s.b($$1.e())), LogUtils.defer($$0::a));
-            return ewa.r;
-         }
-      }
+   private ewa E() {
+      return new ewa(this.y.a(), this.z, this.A, this.B);
    }
 
-   public List<fhe> b() {
-      return this.e;
+   @Override
+   protected void c() {
+      this.w.a();
    }
 
-   public List<fhe> a(ewa $$0) {
-      return this.d.getOrDefault($$0, Collections.emptyList());
+   @Override
+   public void d() {
+      this.x.accept(null);
    }
 }

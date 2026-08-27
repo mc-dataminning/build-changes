@@ -1,69 +1,34 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dxc extends dxk {
-   public static final Codec<dxc> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  atx.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bjh.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, dxc::new)
-   );
-   private final int b;
-   private final bjh h;
+public class dxc extends dxi {
+   public static final Codec<dxc> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dxc::new));
 
-   public dxc(int $$0, int $$1, int $$2, int $$3, bjh $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   public dxc(bkz $$0, bkz $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected dxl<?> a() {
-      return dxl.g;
+   protected dxj<?> a() {
+      return dxj.d;
    }
 
    @Override
-   public List<dvs.a> a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, int $$3, hx $$4, dvc $$5) {
-      ic $$6 = ic.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      hx.a $$8 = $$4.j();
-      hx $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<dvs.a> $$10 = Lists.newArrayList();
+   protected void a(cvt $$0, dxi.b $$1, awo $$2, dws $$3, int $$4, dxi.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      hz $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   }
 
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
+   @Override
+   public int a(awo $$0, int $$1, dws $$2) {
+      return 0;
+   }
 
-         if (dto.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new dvs.a($$8.i(), 0, false));
-         }
-
-         $$8.c(ic.b);
-      }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (dto.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new dvs.a($$8.i(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
+   @Override
+   protected boolean a(awo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

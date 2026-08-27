@@ -1,73 +1,101 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class dam extends dal implements cxb {
-   protected dam(djo.d $$0, ic $$1, emv $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class dam extends cya {
+   public static final MapCodec<dam> a = b(dam::new);
+   public static final dmf b = dlv.aT;
+   public static final dlw c = dlv.p;
+   protected static final eol d = cyo.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
+
+   @Override
+   public MapCodec<dam> a() {
+      return a;
+   }
+
+   public dam(dle.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dam> a();
-
-   protected djp a(djp $$0, djp $$1) {
-      return $$1;
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return d;
    }
 
    @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      dan $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, efa.c, efa.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public cng a(cua $$0, hx $$1, djp $$2) {
-      return new cng(this.c());
-   }
-
-   @Override
-   public boolean b(cua $$0, hx $$1, djp $$2) {
-      Optional<hx> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
+   protected boolean g_(dlf $$0) {
       return true;
    }
 
    @Override
-   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
-      Optional<hx> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         djp $$5 = $$0.a_($$4.get());
-         ((dan)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+   protected int a(dlf $$0, cut $$1, hz $$2, ie $$3) {
+      return $$0.c(b);
+   }
+
+   private static void d(dlf $$0, cvn $$1, hz $$2) {
+      int $$3 = $$1.a(cvw.a, $$2) - $$1.C_();
+      float $$4 = $$1.a(1.0F);
+      boolean $$5 = $$0.c(c);
+      if ($$5) {
+         $$3 = 15 - $$3;
+      } else if ($$3 > 0) {
+         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
+         $$4 += ($$6 - $$4) * 0.2F;
+         $$3 = Math.round((float)$$3 * awh.b($$4));
+      }
+
+      $$3 = awh.a($$3, 0, 15);
+      if ($$0.c(b) != $$3) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf($$3)), 3);
       }
    }
 
-   private Optional<hx> a(ctd $$0, hx $$1, cwy $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
+   @Override
+   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
+      if ($$3.gf()) {
+         if ($$1.B) {
+            return blu.a;
+         } else {
+            dlf $$5 = $$0.a(c);
+            $$1.a($$2, $$5, 2);
+            $$1.a(dpp.c, $$2, dpp.a.a($$3, $$5));
+            d($$5, $$1, $$2);
+            return blu.b;
+         }
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
-   public boolean a(djp $$0, cpp $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().j()) ? false : $$2;
+   protected det b_(dlf $$0) {
+      return det.c;
    }
 
    @Override
-   protected cwy b() {
-      return this;
+   protected boolean f_(dlf $$0) {
+      return true;
+   }
+
+   @Override
+   public dit a(hz $$0, dlf $$1) {
+      return new dji($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dit> diu<T> a(cvn $$0, dlf $$1, div<T> $$2) {
+      return !$$0.B && $$0.E_().g() ? a($$2, div.q, dam::a) : null;
+   }
+
+   private static void a(cvn $$0, hz $$1, dlf $$2, dji $$3) {
+      if ($$0.X() % 20L == 0L) {
+         d($$2, $$0, $$1);
+      }
+   }
+
+   @Override
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(b, c);
    }
 }

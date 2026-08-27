@@ -1,53 +1,154 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duh implements dug {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<duh> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dov.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               dox.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               dow.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               bjh.b(1, 20).fieldOf("outer_wall_distance").orElse(bjn.a(4, 5)).forGetter($$0x -> $$0x.i),
-               bjh.b(1, 20).fieldOf("distribution_points").orElse(bjn.a(3, 4)).forGetter($$0x -> $$0x.j),
-               bjh.b(0, 10).fieldOf("point_offset").orElse(bjn.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
-            )
-            .apply($$0, duh::new)
-   );
-   public final dov c;
-   public final dox d;
-   public final dow e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final bjh i;
-   public final bjh j;
-   public final bjh k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+@Deprecated
+public class duh extends dts<duh.a> {
+   private static final dlf a = cyq.nc.o();
 
-   public duh(dov $$0, dox $$1, dow $$2, double $$3, double $$4, boolean $$5, bjh $$6, bjh $$7, bjh $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   public duh(Codec<duh.a> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(dtu<duh.a> $$0) {
+      hz $$1 = $$0.e();
+      cwi $$2 = $$0.b();
+      awo $$3 = $$0.d();
+      duh.a $$4 = $$0.f();
+      if ($$1.v() <= $$2.J_() + 4) {
+         return false;
+      } else {
+         $$1 = $$1.c(4);
+         boolean[] $$5 = new boolean[2048];
+         int $$6 = $$3.a(4) + 4;
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            double $$8 = $$3.j() * 6.0 + 3.0;
+            double $$9 = $$3.j() * 4.0 + 2.0;
+            double $$10 = $$3.j() * 6.0 + 3.0;
+            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
+            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
+            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
+
+            for (int $$14 = 1; $$14 < 15; $$14++) {
+               for (int $$15 = 1; $$15 < 15; $$15++) {
+                  for (int $$16 = 1; $$16 < 7; $$16++) {
+                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
+                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
+                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
+                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
+                     if ($$20 < 1.0) {
+                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
+                     }
+                  }
+               }
+            }
+         }
+
+         dlf $$21 = $$4.a().a($$3, $$1);
+
+         for (int $$22 = 0; $$22 < 16; $$22++) {
+            for (int $$23 = 0; $$23 < 16; $$23++) {
+               for (int $$24 = 0; $$24 < 8; $$24++) {
+                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
+                     && (
+                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
+                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
+                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
+                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
+                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
+                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
+                     );
+                  if ($$25) {
+                     dlf $$26 = $$2.a_($$1.b($$22, $$24, $$23));
+                     if ($$24 >= 4 && $$26.k()) {
+                        return false;
+                     }
+
+                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
+                        return false;
+                     }
+                  }
+               }
+            }
+         }
+
+         for (int $$27 = 0; $$27 < 16; $$27++) {
+            for (int $$28 = 0; $$28 < 16; $$28++) {
+               for (int $$29 = 0; $$29 < 8; $$29++) {
+                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
+                     hz $$30 = $$1.b($$27, $$29, $$28);
+                     if (this.c($$2.a_($$30))) {
+                        boolean $$31 = $$29 >= 4;
+                        $$2.a($$30, $$31 ? a : $$21, 2);
+                        if ($$31) {
+                           $$2.a($$30, a.b(), 0);
+                           this.a($$2, $$30);
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         dlf $$32 = $$4.b().a($$3, $$1);
+         if (!$$32.i()) {
+            for (int $$33 = 0; $$33 < 16; $$33++) {
+               for (int $$34 = 0; $$34 < 16; $$34++) {
+                  for (int $$35 = 0; $$35 < 8; $$35++) {
+                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
+                        && (
+                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
+                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
+                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
+                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
+                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
+                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
+                        );
+                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
+                        dlf $$37 = $$2.a_($$1.b($$33, $$35, $$34));
+                        if ($$37.e() && !$$37.a(atz.bI)) {
+                           hz $$38 = $$1.b($$33, $$35, $$34);
+                           $$2.a($$38, $$32, 2);
+                           this.a($$2, $$38);
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         if ($$21.u().a(aue.a)) {
+            for (int $$39 = 0; $$39 < 16; $$39++) {
+               for (int $$40 = 0; $$40 < 16; $$40++) {
+                  int $$41 = 4;
+                  hz $$42 = $$1.b($$39, 4, $$40);
+                  if ($$2.t($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
+                     $$2.a($$42, cyq.dO.o(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean c(dlf $$0) {
+      return !$$0.a(atz.bH);
+   }
+
+   public static record a(dxx b, dxx c) implements dvw {
+      public static final Codec<duh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dxx.a.fieldOf("fluid").forGetter(duh.a::a), dxx.a.fieldOf("barrier").forGetter(duh.a::b)).apply($$0, duh.a::new)
+      );
+
+      public dxx a() {
+         return this.b;
+      }
+
+      public dxx b() {
+         return this.c;
+      }
    }
 }

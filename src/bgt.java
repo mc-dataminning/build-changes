@@ -1,101 +1,35 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
 import java.util.function.Supplier;
 
-public interface bgt {
-   String b = "root";
-
-   void a();
-
-   void b();
-
-   void a(String var1);
-
-   void a(Supplier<String> var1);
-
-   void c();
-
-   void b(String var1);
-
-   void b(Supplier<String> var1);
-
-   void a(bhw var1);
-
-   default void d(String $$0) {
-      this.a($$0, 1);
+public class bgt extends bew {
+   public bgt(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   void a(String var1, int var2);
-
-   default void c(Supplier<String> $$0) {
-      this.a($$0, 1);
-   }
-
-   void a(Supplier<String> var1, int var2);
-
-   static bgt a(final bgt $$0, final bgt $$1) {
-      if ($$0 == bgq.a) {
-         return $$1;
-      } else {
-         return $$1 == bgq.a ? $$0 : new bgt() {
-            @Override
-            public void a() {
-               $$0.a();
-               $$1.a();
-            }
-
-            @Override
-            public void b() {
-               $$0.b();
-               $$1.b();
-            }
-
-            @Override
-            public void a(String $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void a(Supplier<String> $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void a(bhw $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void c() {
-               $$0.c();
-               $$1.c();
-            }
-
-            @Override
-            public void b(String $$0x) {
-               $$0.b($$0);
-               $$1.b($$0);
-            }
-
-            @Override
-            public void b(Supplier<String> $$0x) {
-               $$0.b($$0);
-               $$1.b($$0);
-            }
-
-            @Override
-            public void a(String $$0x, int $$1x) {
-               $$0.a($$0, $$1);
-               $$1.a($$0, $$1);
-            }
-
-            @Override
-            public void a(Supplier<String> $$0x, int $$1x) {
-               $$0.a($$0, $$1);
-               $$1.a($$0, $$1);
-            }
-         };
-      }
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bdn.c,
+         () -> DSL.optionalFields(
+               "entities",
+               DSL.list(bdn.x.in($$0)),
+               "block_entities",
+               DSL.list(DSL.or(bdn.s.in($$0), DSL.remainder())),
+               "block_ticks",
+               DSL.list(DSL.fields("i", bdn.z.in($$0))),
+               "sections",
+               DSL.list(
+                  DSL.optionalFields(
+                     "biomes", DSL.optionalFields("palette", DSL.list(bdn.H.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(bdn.u.in($$0)))
+                  )
+               ),
+               "structures",
+               DSL.optionalFields("starts", DSL.compoundList(bdn.D.in($$0)))
+            )
+      );
    }
 }

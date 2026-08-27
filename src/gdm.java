@@ -1,21 +1,17 @@
-public class gdm<T extends blw & bne, M extends fkj<T>> extends gdl<T, M> {
-   private final ahh a;
-   private final M b;
+public class gdm extends gbz<cfb, fok> {
+   private static final aiy a = new aiy("textures/entity/illager/vex.png");
+   private static final aiy i = new aiy("textures/entity/illager/vex_charging.png");
 
-   public gdm(gav<T, M> $$0, M $$1, ahh $$2) {
-      super($$0);
-      this.b = $$1;
-      this.a = $$2;
+   public gdm(gat.a $$0) {
+      super($$0, new fok($$0.a(fpb.bK)), 0.3F);
+      this.a(new gex<>(this, $$0.d()));
    }
 
-   @Override
-   public void a(eqk $$0, ftt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eqo $$10 = $$1.getBuffer(fub.e(this.a));
-         this.b.a($$0, $$10, $$2, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   protected int a(cfb $$0, hz $$1) {
+      return 15;
+   }
+
+   public aiy a(cfb $$0) {
+      return $$0.gh() ? i : a;
    }
 }

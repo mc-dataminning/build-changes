@@ -1,242 +1,143 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fap implements eon {
-   static final Logger a = LogUtils.getLogger();
-   private final epl b;
-   private final fae<fap.b> c;
+public class fap implements glk {
+   private static final long a = 3000L;
+   private final exh b;
+   private final List<fap.a> c = Lists.newArrayList();
+   private boolean d;
+   private final List<fap.a> e = new ArrayList<>();
 
-   fap(epl $$0, fae<fap.b> $$1) {
+   public fap(exh $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   @Override
-   public void close() {
-      this.b.close();
-   }
+   public void a(eyu $$0) {
+      gll $$1 = this.b.ai();
+      if (!this.d && this.b.m.T().c()) {
+         $$1.a(this);
+         this.d = true;
+      } else if (this.d && !this.b.m.T().c()) {
+         $$1.b(this);
+         this.d = false;
+      }
 
-   @Nullable
-   @Override
-   public eom a(int $$0) {
-      return this.c.a($$0);
-   }
+      if (this.d) {
+         epx $$2 = $$1.b();
+         ens $$3 = $$2.b();
+         ens $$4 = $$2.c();
+         ens $$5 = $$2.a();
+         this.e.clear();
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.c.b());
-   }
-
-   public static record a(ahh c, int d, int e, int[][] f) implements faq {
-      private static final Codec<int[][]> g = atx.a(Codec.STRING.listOf().xmap($$0 -> {
-         int $$1 = $$0.size();
-         int[][] $$2 = new int[$$1][];
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
+         for (fap.a $$6 : this.c) {
+            if ($$6.b($$3)) {
+               this.e.add($$6);
+            }
          }
 
-         return $$2;
-      }, $$0 -> {
-         List<String> $$1 = new ArrayList<>($$0.length);
+         if (!this.e.isEmpty()) {
+            int $$7 = 0;
+            int $$8 = 0;
+            double $$9 = this.b.m.z().c();
+            Iterator<fap.a> $$10 = this.e.iterator();
 
-         for (int[] $$2 : $$0) {
-            $$1.add(new String($$2, 0, $$2.length));
-         }
+            while ($$10.hasNext()) {
+               fap.a $$11 = $$10.next();
+               if ((double)$$11.b() + 3000.0 * $$9 <= (double)ac.b()) {
+                  $$10.remove();
+               } else {
+                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
+               }
+            }
 
-         return $$1;
-      }), fap.a::a);
-      public static final MapCodec<fap.a> a = atx.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ahh.a.fieldOf("file").forGetter(fap.a::c),
-                     Codec.INT.optionalFieldOf("height", 8).forGetter(fap.a::d),
-                     Codec.INT.fieldOf("ascent").forGetter(fap.a::e),
-                     g.fieldOf("chars").forGetter(fap.a::f)
-                  )
-                  .apply($$0, fap.a::new)
-         ),
-         fap.a::a
-      );
+            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
 
-      private static DataResult<int[][]> a(int[][] $$0) {
-         int $$1 = $$0.length;
-         if ($$1 == 0) {
-            return DataResult.error(() -> "Expected to find data in codepoint grid");
-         } else {
-            int[] $$2 = $$0[0];
-            int $$3 = $$2.length;
-            if ($$3 == 0) {
-               return DataResult.error(() -> "Expected to find data in codepoint grid");
-            } else {
-               for (int $$4 = 1; $$4 < $$1; $$4++) {
-                  int[] $$5 = $$0[$$4];
-                  if ($$5.length != $$3) {
-                     return DataResult.error(
-                        () -> "Lines in codepoint grid have to be the same length (found: "
-                              + $$5.length
-                              + " codepoints, expected: "
-                              + $$3
-                              + "), pad with \\u0000"
-                     );
+            for (fap.a $$12 : this.e) {
+               int $$13 = 255;
+               vq $$14 = $$12.a();
+               ens $$15 = $$12.c().d($$3).d();
+               double $$16 = $$5.b($$15);
+               double $$17 = $$4.b($$15);
+               boolean $$18 = $$17 > 0.5;
+               int $$19 = $$8 / 2;
+               int $$20 = 9;
+               int $$21 = $$20 / 2;
+               float $$22 = 1.0F;
+               int $$23 = this.b.h.a($$14);
+               int $$24 = awh.d(awh.b(255.0F, 75.0F, (float)(ac.b() - $$12.b()) / (float)(3000.0 * $$9)));
+               int $$25 = $$24 << 16 | $$24 << 8 | $$24;
+               $$0.c().a();
+               $$0.c().a((float)$$0.a() - (float)$$19 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$20 + 1)) * 1.0F, 0.0F);
+               $$0.c().b(1.0F, 1.0F, 1.0F);
+               $$0.a(-$$19 - 1, -$$21 - 1, $$19 + 1, $$21 + 1, this.b.m.b(0.8F));
+               int $$26 = $$25 + -16777216;
+               if (!$$18) {
+                  if ($$16 > 0.0) {
+                     $$0.b(this.b.h, ">", $$19 - this.b.h.b(">"), -$$21, $$26);
+                  } else if ($$16 < 0.0) {
+                     $$0.b(this.b.h, "<", -$$19, -$$21, $$26);
                   }
                }
 
-               return DataResult.success($$0);
+               $$0.b(this.b.h, $$14, -$$23 / 2, -$$21, $$26);
+               $$0.c().b();
+               $$7++;
             }
          }
-      }
-
-      private static DataResult<fap.a> a(fap.a $$0) {
-         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
-      }
-
-      @Override
-      public far a() {
-         return far.a;
-      }
-
-      @Override
-      public Either<faq.a, faq.b> b() {
-         return Either.left(this::a);
-      }
-
-      private eon a(aqj $$0) throws IOException {
-         ahh $$1 = this.c.d("textures/");
-
-         fap var22;
-         try (InputStream $$2 = $$0.open($$1)) {
-            epl $$3 = epl.a(epl.a.a, $$2);
-            int $$4 = $$3.a();
-            int $$5 = $$3.b();
-            int $$6 = $$4 / this.f[0].length;
-            int $$7 = $$5 / this.f.length;
-            float $$8 = (float)this.d / (float)$$7;
-            fae<fap.b> $$9 = new fae<>(fap.b[]::new, fap.b[][]::new);
-
-            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
-               int $$11 = 0;
-
-               for (int $$12 : this.f[$$10]) {
-                  int $$13 = $$11++;
-                  if ($$12 != 0) {
-                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
-                     fap.b $$15 = $$9.a($$12, new fap.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
-                     if ($$15 != null) {
-                        fap.a.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
-                     }
-                  }
-               }
-            }
-
-            var22 = new fap($$3, $$9);
-         }
-
-         return var22;
-      }
-
-      private int a(epl $$0, int $$1, int $$2, int $$3, int $$4) {
-         int $$5;
-         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
-            int $$6 = $$3 * $$1 + $$5;
-
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               int $$8 = $$4 * $$2 + $$7;
-               if ($$0.e($$6, $$8) != 0) {
-                  return $$5 + 1;
-               }
-            }
-         }
-
-         return $$5 + 1;
       }
    }
 
-   static record b(float a, epl b, int c, int d, int e, int f, int g, int h) implements eom {
+   @Override
+   public void a(gkh $$0, glm $$1, float $$2) {
+      if ($$1.a() != null) {
+         vq $$3 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (fap.a $$4 : this.c) {
+               if ($$4.a().equals($$3)) {
+                  $$4.a(new ens($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
 
-      @Override
-      public float getAdvance() {
-         return (float)this.g;
+         this.c.add(new fap.a($$3, $$2, new ens($$0.h(), $$0.i(), $$0.j())));
+      }
+   }
+
+   public static class a {
+      private final vq a;
+      private final float b;
+      private long c;
+      private ens d;
+
+      public a(vq $$0, float $$1, ens $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.d = $$2;
+         this.c = ac.b();
       }
 
-      @Override
-      public fak bake(Function<eoo, fak> $$0) {
-         return $$0.apply(new eoo() {
-            @Override
-            public float d() {
-               return 1.0F / b.this.a;
-            }
-
-            @Override
-            public int a() {
-               return b.this.e;
-            }
-
-            @Override
-            public int b() {
-               return b.this.f;
-            }
-
-            @Override
-            public float j() {
-               return eoo.super.j() + 7.0F - (float)b.this.h;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
-            }
-
-            @Override
-            public boolean c() {
-               return b.this.b.c().a() > 1;
-            }
-         });
-      }
-
-      public float c() {
+      public vq a() {
          return this.a;
       }
 
-      public epl d() {
-         return this.b;
-      }
-
-      public int e() {
+      public long b() {
          return this.c;
       }
 
-      public int f() {
+      public ens c() {
          return this.d;
       }
 
-      public int g() {
-         return this.e;
+      public void a(ens $$0) {
+         this.d = $$0;
+         this.c = ac.b();
       }
 
-      public int h() {
-         return this.f;
-      }
-
-      public int i() {
-         return this.g;
-      }
-
-      public int j() {
-         return this.h;
+      public boolean b(ens $$0) {
+         return Float.isInfinite(this.b) || $$0.a((it)this.d, (double)this.b);
       }
    }
 }

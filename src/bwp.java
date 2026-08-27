@@ -1,29 +1,99 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bwp<T extends bmo> extends bww<T> {
-   @Override
-   protected void a(ane $$0, T $$1) {
-      elx $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<bmo> $$3 = $$0.a(bmo.class, $$2, $$1x -> $$1x != $$1 && $$1x.bx());
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      bno<?> $$4 = $$1.dN();
-      $$4.a(bvq.g, $$3);
-      $$4.a(bvq.h, new bvs($$1, $$3));
+public class bwp extends bvb {
+   private final bvb a;
+   private final int b;
+   private boolean c;
+
+   public bwp(int $$0, bvb $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+   public boolean a(bwp $$0) {
+      return this.S_() && $$0.i() < this.i();
    }
 
    @Override
-   public Set<bvq<?>> a() {
-      return ImmutableSet.of(bvq.g, bvq.h);
+   public boolean a() {
+      return this.a.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean S_() {
+      return this.a.S_();
+   }
+
+   @Override
+   public void c() {
+      if (!this.c) {
+         this.c = true;
+         this.a.c();
+      }
+   }
+
+   @Override
+   public void d() {
+      if (this.c) {
+         this.c = false;
+         this.a.d();
+      }
+   }
+
+   @Override
+   public boolean T_() {
+      return this.a.T_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void a(EnumSet<bvb.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<bvb.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public bvb k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((bwp)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

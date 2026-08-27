@@ -1,96 +1,60 @@
-import java.util.ArrayList;
-import javax.annotation.Nullable;
-
-public class csw extends ArrayList<csv> {
-   public csw() {
-   }
-
-   private csw(int $$0) {
+public class csw extends crt {
+   public csw(crr $$0) {
       super($$0);
    }
 
-   public csw(so $$0) {
-      su $$1 = $$0.c("Recipes", 10);
+   public boolean a(ckr $$0, cvn $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.add(new csv($$1.a($$2)));
-      }
-   }
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         coz $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if ($$7.a(cyq.cf.j()) && !$$4) {
+               $$4 = true;
+            } else if ($$7.a(cyq.cg.j()) && !$$3) {
+               $$3 = true;
+            } else if ($$7.a(auh.O) && !$$2) {
+               $$2 = true;
+            } else {
+               if (!$$7.a(cpc.pp) || $$5) {
+                  return false;
+               }
 
-   @Nullable
-   public csv a(cng $$0, cng $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         csv $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
-      } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            csv $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
+               $$5 = true;
             }
          }
-
-         return null;
       }
+
+      return $$2 && $$4 && $$3 && $$5;
    }
 
-   public void a(uj $$0) {
-      $$0.a(this, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.d());
-         $$0x.a($$1.c());
-         $$0x.a($$1.p());
-         $$0x.p($$1.g());
-         $$0x.p($$1.i());
-         $$0x.p($$1.o());
-         $$0x.p($$1.m());
-         $$0x.a($$1.n());
-         $$0x.p($$1.k());
-      });
-   }
+   public coz a(ckr $$0, iw $$1) {
+      coz $$2 = new coz(cpc.vQ, 1);
 
-   public static csw b(uj $$0) {
-      return $$0.a(csw::new, $$0x -> {
-         cng $$1 = $$0x.r();
-         cng $$2 = $$0x.r();
-         cng $$3 = $$0x.r();
-         boolean $$4 = $$0x.readBoolean();
-         int $$5 = $$0x.readInt();
-         int $$6 = $$0x.readInt();
-         int $$7 = $$0x.readInt();
-         int $$8 = $$0x.readInt();
-         float $$9 = $$0x.readFloat();
-         int $$10 = $$0x.readInt();
-         csv $$11 = new csv($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
-         if ($$4) {
-            $$11.q();
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         coz $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            dgp $$5 = dgp.a($$4.d());
+            if ($$5 != null) {
+               cqj.a($$2, $$5.b());
+               break;
+            }
          }
-
-         $$11.b($$8);
-         return $$11;
-      });
-   }
-
-   public so a() {
-      so $$0 = new so();
-      su $$1 = new su();
-
-      for (int $$2 = 0; $$2 < this.size(); $$2++) {
-         csv $$3 = this.get($$2);
-         $$1.add($$3.t());
       }
 
-      $$0.a("Recipes", $$1);
-      return $$0;
+      return $$2;
    }
 
-   public csw b() {
-      csw $$0 = new csw(this.size());
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 2 && $$1 >= 2;
+   }
 
-      for (csv $$1 : this) {
-         $$0.add($$1.u());
-      }
-
-      return $$0;
+   @Override
+   public csf<?> at_() {
+      return csf.n;
    }
 }

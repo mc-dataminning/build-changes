@@ -1,72 +1,111 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class dnk<T extends dng> {
-   private static final Logger a = LogUtils.getLogger();
-   private final ati<T> b;
-   private dnt c;
+public class dnk<T> implements dns<T> {
+   private final io<T> a;
+   private final ave<T> b;
+   private final dnt<T> c;
+   private final int d;
 
-   public dnk(Class<T> $$0, dnt $$1) {
-      this.c = $$1;
-      this.b = new ati<>($$0);
+   public dnk(io<T> $$0, int $$1, dnt<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::d);
    }
 
-   public void a(T $$0) {
-      this.b.add($$0);
+   public dnk(io<T> $$0, int $$1, dnt<T> $$2) {
+      this($$0, $$1, $$2, ave.c(1 << $$1));
    }
 
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
+   private dnk(io<T> $$0, int $$1, dnt<T> $$2, ave<T> $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
    }
 
-   public atd.a a(elx $$0, atd<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cH().c($$0) && $$1.accept($$2).a()) {
-            return atd.a.b;
+   public static <A> dns<A> a(int $$0, io<A> $$1, dnt<A> $$2, List<A> $$3) {
+      return new dnk<>($$1, $$0, $$2, $$3);
+   }
+
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.d($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
          }
       }
 
-      return atd.a.a;
-   }
-
-   public <U extends T> atd.a a(dnn<T, U> $$0, elx $$1, atd<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return atd.a.a;
-      } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cH().c($$1) && $$2.accept($$5).a()) {
-               return atd.a.b;
-            }
-         }
-
-         return atd.a.a;
-      }
-   }
-
-   public boolean a() {
-      return this.b.isEmpty();
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public dnt c() {
-      return this.c;
-   }
-
-   public dnt a(dnt $$0) {
-      dnt $$1 = this.c;
-      this.c = $$0;
       return $$1;
    }
 
-   @avu
-   public int d() {
-      return this.b.size();
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new dnr($$0);
+      } else {
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(uq $$0) {
+      this.b.a();
+      int $$1 = $$0.n();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.d(this.a.b($$0.n()));
+      }
+   }
+
+   @Override
+   public void b(uq $$0) {
+      int $$1 = this.b();
+      $$0.c($$1);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
+      }
+   }
+
+   @Override
+   public int a() {
+      int $$0 = vh.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += vh.a(this.a.a(this.b.a($$1)));
+      }
+
+      return $$0;
+   }
+
+   public List<T> d() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.b.b();
+   }
+
+   @Override
+   public dns<T> c() {
+      return new dnk<>(this.a, this.d, this.c, this.b.c());
    }
 }

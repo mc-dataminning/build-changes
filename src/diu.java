@@ -1,9 +1,4 @@
-public interface diu {
-   void a();
-
-   boolean b();
-
-   hx c();
-
-   String d();
+@FunctionalInterface
+public interface diu<T extends dit> {
+   void tick(cvn var1, hz var2, dlf var3, T var4);
 }

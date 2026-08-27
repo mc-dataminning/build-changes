@@ -1,77 +1,57 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+public class fds extends ffe {
+   private final Runnable c;
+   protected final fds.a a;
+   private final vq k;
+   private final boolean l;
+   private faa m = faa.a;
+   protected int b;
+   private ezj n;
 
-public class fds extends fdm {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final vg k;
-   private final vl l;
-   private final ImmutableList<fds.a> m;
-   private eyk n = eyk.a;
-   private int o;
-   private int p;
-
-   protected fds(vg $$0, List<vg> $$1, ImmutableList<fds.a> $$2) {
-      super($$0);
-      this.l = vl.a($$1);
-      this.k = vf.a($$0, vj.a($$1, vf.a));
-      this.m = $$2;
+   public fds(Runnable $$0, fds.a $$1, vq $$2, vq $$3, boolean $$4) {
+      super($$2);
+      this.c = $$0;
+      this.a = $$1;
+      this.k = $$3;
+      this.l = $$4;
    }
 
    @Override
-   public vg i() {
-      return this.k;
-   }
-
-   @Override
-   public void aP_() {
-      UnmodifiableIterator $$1 = this.m.iterator();
-
-      while ($$1.hasNext()) {
-         fds.a $$0 = (fds.a)$$1.next();
-         this.p = Math.max(this.p, 20 + this.i.a($$0.a) + 20);
-      }
-
-      int $$1x = 5 + this.p + 5;
-      int $$2 = $$1x * this.m.size();
-      this.n = eyk.a(this.i, this.l, $$2);
-      int $$3 = this.n.a() * 9;
-      this.o = (int)((double)this.h / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.o + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.g / 2.0 - (double)$$2 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.m.iterator(); var6.hasNext(); $$5 += $$1x) {
-         fds.a $$6 = (fds.a)var6.next();
-         this.d(exr.a($$6.a, $$6.b).a($$5, $$4, this.p, 20).a());
+   protected void aQ_() {
+      super.aQ_();
+      this.m = faa.a(this.i, this.k, this.g - 50);
+      int $$0 = (this.m.a() + 1) * 9;
+      this.d(ezh.a(vq.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
+      this.d(ezh.a(vq.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.d(ezh.a(vp.e, $$0x -> this.c.run()).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+      this.n = ezj.a(vq.c("selectWorld.backupEraseCache"), this.i).a(this.g / 2 - 155 + 80, 76 + $$0).a();
+      if (this.l) {
+         this.d(this.n);
       }
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.o - 9 * 2, -1);
-      this.n.a($$0, this.g / 2, this.o);
+      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
+      this.m.a($$0, this.g / 2, 70);
    }
 
    @Override
-   public void b(exe $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   @Override
-   public boolean aN_() {
+   public boolean aO_() {
       return false;
    }
 
-   public static final class a {
-      final vg a;
-      final exr.c b;
-
-      public a(vg $$0, exr.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.run();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
+   }
+
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

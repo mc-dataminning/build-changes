@@ -1,28 +1,32 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Queues;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Locale;
 
-public final class avb<T> extends AbstractIterator<T> {
-   private final Int2ObjectMap<Deque<T>> a = new Int2ObjectOpenHashMap();
+public record avb(int b) {
+   private static final String c = "#";
+   public static final Codec<avb> a = Codec.STRING.comapFlatMap($$0 -> {
+      if (!$$0.startsWith("#")) {
+         return DataResult.error(() -> "Not a color code: " + $$0);
+      } else {
+         try {
+            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
+            return DataResult.success(new avb($$1));
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
+         }
+      }
+   }, avb::b);
 
-   public void a(T $$0, int $$1) {
-      ((Deque)this.a.computeIfAbsent($$1, $$0x -> Queues.newArrayDeque())).addLast($$0);
+   private String b() {
+      return String.format(Locale.ROOT, "#%08X", this.b);
    }
 
-   @Nullable
-   protected T computeNext() {
-      Optional<Deque<T>> $$0 = this.a
-         .int2ObjectEntrySet()
-         .stream()
-         .filter($$0x -> !((Deque)$$0x.getValue()).isEmpty())
-         .max(Comparator.comparingInt(Entry::getKey))
-         .map(Entry::getValue);
-      return $$0.map(Deque::removeFirst).orElseGet(() -> (T)this.endOfData());
+   @Override
+   public String toString() {
+      return this.b();
+   }
+
+   public int a() {
+      return this.b;
    }
 }

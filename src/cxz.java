@@ -1,51 +1,89 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface cxz<T extends Enum<T>> {
-   int y_ = 4;
+public class cxz extends cxw {
+   public static final MapCodec<cxz> b = b(cxz::new);
+   public static final dlz c = dcj.aE;
+   private static final Map<ie, eol> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         ie.c,
+         cyo.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         ie.d,
+         cyo.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         ie.e,
+         cyo.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         ie.f,
+         cyo.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
 
-   Optional<djp> i_(djp var1);
-
-   float az_();
-
-   default void a_(djp $$0, ane $$1, hx $$2, auw $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   @Override
+   public MapCodec<? extends cxz> a() {
+      return b;
    }
 
-   T c();
+   protected cxz(dle.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, ie.c).a(d, Boolean.valueOf(true)));
+   }
 
-   default Optional<djp> c(djp $$0, ane $$1, hx $$2, auw $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
+   @Override
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return e.get($$0.c(c));
+   }
 
-      for (hx $$7 : hx.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
+   @Override
+   protected dlf a(dlf $$0, dfa $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
 
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof cxz<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
+   @Override
+   protected dlf a(dlf $$0, ddk $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
 
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
+   @Override
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, egq.c, egq.c.a($$3));
+      }
+
+      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? cyq.a.o() : $$0;
+   }
+
+   @Override
+   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
+      ie $$3 = $$0.c(c);
+      hz $$4 = $$2.a($$3.g());
+      dlf $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dlf a(crg $$0) {
+      dlf $$1 = super.a($$0);
+      cvq $$2 = $$0.q();
+      hz $$3 = $$0.a();
+      ie[] $$4 = $$0.f();
+
+      for (ie $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.a(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
          }
       }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.az_();
-      return $$3.i() < $$13 ? this.i_($$0) : Optional.empty();
+      return null;
    }
 }

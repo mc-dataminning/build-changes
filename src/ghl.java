@@ -1,121 +1,69 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class ghl implements ghb {
-   protected final List<fuq> a;
-   protected final Map<ic, List<fuq>> b;
-   protected final boolean c;
-   protected final boolean d;
-   protected final boolean e;
-   protected final gfb f;
-   protected final fvc g;
-   protected final fva h;
+public class ghl extends arg {
+   private static final arc c = new arc(vq.c("resourcePack.vanilla.description"), aa.b().a(aqp.a), Optional.empty());
+   private static final aqh d = aqh.a(arc.b, c);
+   private static final vq e = vq.c("resourcePack.vanilla.name");
+   public static final String b = "high_contrast";
+   private static final Map<String, vq> f = Map.of(
+      "programmer_art", vq.c("resourcePack.programmer_art.name"), "high_contrast", vq.c("resourcePack.high_contrast.name")
+   );
+   private static final aiy g = new aiy("minecraft", "resourcepacks");
+   @Nullable
+   private final Path h;
 
-   public ghl(List<fuq> $$0, Map<ic, List<fuq>> $$1, boolean $$2, boolean $$3, boolean $$4, gfb $$5, fvc $$6, fva $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$4;
-      this.e = $$3;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public ghl(Path $$0, eni $$1) {
+      super(aqp.a, b($$0), g, $$1);
+      this.h = this.a($$0);
    }
 
-   @Override
-   public List<fuq> a(@Nullable djp $$0, @Nullable ic $$1, auw $$2) {
-      return $$1 == null ? this.a : this.b.get($$1);
-   }
-
-   @Override
-   public boolean a() {
-      return this.c;
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public boolean c() {
-      return this.e;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public gfb e() {
-      return this.f;
-   }
-
-   @Override
-   public fvc f() {
-      return this.g;
-   }
-
-   @Override
-   public fva g() {
-      return this.h;
-   }
-
-   public static class a {
-      private final List<fuq> a = Lists.newArrayList();
-      private final Map<ic, List<fuq>> b = Maps.newEnumMap(ic.class);
-      private final fva c;
-      private final boolean d;
-      private gfb e;
-      private final boolean f;
-      private final boolean g;
-      private final fvc h;
-
-      public a(fuv $$0, fva $$1, boolean $$2) {
-         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
-      }
-
-      private a(boolean $$0, boolean $$1, boolean $$2, fvc $$3, fva $$4) {
-         for (ic $$5 : ic.values()) {
-            this.b.put($$5, Lists.newArrayList());
+   @Nullable
+   private Path a(Path $$0) {
+      if (aa.aU && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
          }
-
-         this.c = $$4;
-         this.d = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.h = $$3;
       }
 
-      public ghl.a a(ic $$0, fuq $$1) {
-         this.b.get($$0).add($$1);
-         return this;
-      }
+      return null;
+   }
 
-      public ghl.a a(fuq $$0) {
-         this.a.add($$0);
-         return this;
-      }
+   private static aqr b(Path $$0) {
+      aqs $$1 = new aqs().a(d).a("minecraft", "realms");
+      return $$1.b().a().a(aqp.a, $$0).c();
+   }
 
-      public ghl.a a(gfb $$0) {
-         this.e = $$0;
-         return this;
-      }
+   @Override
+   protected vq a(String $$0) {
+      vq $$1 = f.get($$0);
+      return (vq)($$1 != null ? $$1 : vq.b($$0));
+   }
 
-      public ghl.a a() {
-         return this;
-      }
+   @Nullable
+   @Override
+   protected ari a(aqo $$0) {
+      return ari.a("vanilla", e, true, b($$0), aqp.a, ari.b.b, arm.c);
+   }
 
-      public ghb b() {
-         if (this.e == null) {
-            throw new RuntimeException("Missing particle!");
-         } else {
-            return new ghl(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
-         }
+   @Nullable
+   @Override
+   protected ari a(String $$0, ari.c $$1, vq $$2) {
+      return ari.a($$0, $$2, false, $$1, aqp.a, ari.b.a, arm.c);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, ari>> $$0) {
+      super.a($$0);
+      if (this.h != null) {
+         this.a(this.h, $$0);
       }
    }
 }

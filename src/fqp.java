@@ -1,30 +1,30 @@
-public class fqp extends frt {
-   fqp(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fsc $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
-      this.b($$7);
-   }
+import com.mojang.serialization.Codec;
+import java.util.function.Supplier;
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
+public interface fqp {
+   Codec<fqp> a = axc.a(fqp.a::values).dispatch(fqp::a, fqp.a::a);
 
-   public static class a implements frk<ka> {
-      private final fsc a;
+   fqp.a a();
 
-      public a(fsc $$0) {
-         this.a = $$0;
+   public static enum a implements axc {
+      a("player", () -> fqq.a.b),
+      b("system", () -> fqq.b.b);
+
+      private final String c;
+      private final Supplier<Codec<? extends fqp>> d;
+
+      private a(String $$0, Supplier<Codec<? extends fqp>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqp($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      private Codec<? extends fqp> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
       }
    }
 }

@@ -1,60 +1,13 @@
-public class aml implements Comparable<aml> {
-   private final int a;
-   private final hx b;
-   private int c;
-   private int d;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-   public aml(int $$0, hx $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public hx b() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      if ($$0 > 10) {
-         $$0 = 10;
-      }
-
-      this.c = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public void b(int $$0) {
-      this.d = $$0;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aml $$1 = (aml)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.a);
-   }
-
-   public int a(aml $$0) {
-      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
+public class aml {
+   public static void a(CommandDispatcher<du> $$0, boolean $$1) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
+         long $$1x = ((du)$$0x.getSource()).e().C();
+         vq $$2 = vt.a(String.valueOf($$1x));
+         ((du)$$0x.getSource()).a(() -> vq.a("commands.seed.success", $$2), false);
+         return (int)$$1x;
+      }));
    }
 }

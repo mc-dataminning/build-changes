@@ -1,130 +1,159 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.Codec;
+import java.util.BitSet;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class vu implements vg {
-   private final vh c;
-   private final List<vg> d;
-   private wd e;
-   private aub f = aub.a;
-   @Nullable
-   private sj g;
+public class vu {
+   public static final Codec<vu> a = axc.a(vu.a::values).dispatch(vu::c, vu.a::a);
+   public static final vu b = new vu(new BitSet(0), vu.a.b);
+   public static final vu c = new vu(new BitSet(0), vu.a.a);
+   public static final wn d = wn.a.a(n.i).a(new vw(vw.a.a, vq.c("chat.filtered")));
+   static final Codec<vu> e = Codec.unit(c);
+   static final Codec<vu> f = Codec.unit(b);
+   static final Codec<vu> g = avp.s.xmap(vu::new, vu::d);
+   private static final char h = '#';
+   private final BitSet i;
+   private final vu.a j;
 
-   vu(vh $$0, List<vg> $$1, wd $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private vu(BitSet $$0, vu.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   public static vu a(vh $$0) {
-      return new vu($$0, Lists.newArrayList(), wd.a);
+   private vu(BitSet $$0) {
+      this.i = $$0;
+      this.j = vu.a.c;
    }
 
-   @Override
-   public vh b() {
-      return this.c;
+   public vu(int $$0) {
+      this(new BitSet($$0), vu.a.c);
    }
 
-   @Override
-   public List<vg> c() {
-      return this.d;
+   private vu.a c() {
+      return this.j;
    }
 
-   public vu b(wd $$0) {
-      this.e = $$0;
-      return this;
+   private BitSet d() {
+      return this.i;
    }
 
-   @Override
-   public wd a() {
-      return this.e;
+   public static vu a(uq $$0) {
+      vu.a $$1 = $$0.b(vu.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new vu($$0.y(), vu.a.c);
+      };
    }
 
-   public vu f(String $$0) {
-      return this.b(vg.b($$0));
-   }
-
-   public vu b(vg $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public vu a(UnaryOperator<wd> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public vu c(wd $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public vu a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public vu a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public vu b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public aub g() {
-      sj $$0 = sj.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
+   public static void a(uq $$0, vu $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == vu.a.c) {
+         $$0.a($$1.i);
       }
+   }
 
-      return this.f;
+   public void a(int $$0) {
+      this.i.set($$0);
+   }
+
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
+               }
+            }
+
+            yield new String($$1);
+         }
+      };
+   }
+
+   @Nullable
+   public vq b(String $$0) {
+      return switch (this.j) {
+         case a -> vq.b($$0);
+         case b -> null;
+         case c -> {
+            we $$1 = vq.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(vq.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
+   }
+
+   public boolean a() {
+      return this.j == vu.a.a;
+   }
+
+   public boolean b() {
+      return this.j == vu.a.b;
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         vu $$1 = (vu)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
       } else {
-         return !($$0 instanceof vu $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
    }
 
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
+   static enum a implements axc {
+      a("pass_through", () -> vu.e),
+      b("fully_filtered", () -> vu.f),
+      c("partially_filtered", () -> vu.g);
 
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
+      private final String d;
+      private final Supplier<Codec<vu>> e;
 
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
-
-         $$0.append(']');
+      private a(String $$0, Supplier<Codec<vu>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      return $$0.toString();
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      private Codec<vu> a() {
+         return this.e.get();
+      }
    }
 }

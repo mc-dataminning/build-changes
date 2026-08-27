@@ -1,21 +1,12 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dum extends dty {
-   public static final Codec<dum> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwh.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               atx.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               atx.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dum::new)
-   );
-   public final int d;
-   public final int e;
-
-   public dum(dwh $$0, int $$1, int $$2) {
+public class dum extends dts<dwd> {
+   public dum(Codec<dwd> $$0) {
       super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   }
+
+   @Override
+   public boolean a(dtu<dwd> $$0) {
+      return true;
    }
 }

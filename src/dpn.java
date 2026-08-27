@@ -1,63 +1,68 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-public final class dpn {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public class dpn implements dpt {
+   public static final Codec<dpn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jc.a.fieldOf("source_entity").forGetter(dpn::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
+            .apply($$0, ($$0x, $$1) -> new dpn(Either.right(Either.left($$0x)), $$1))
+   );
+   public static final xo<vb, dpn> b = xo.a(xm.d, dpn::c, xm.f, $$0 -> $$0.f, ($$0, $$1) -> new dpn(Either.right(Either.right($$0)), $$1));
+   private Either<bno, Either<UUID, Integer>> e;
+   private final float f;
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   public dpn(bno $$0, float $$1) {
+      this(Either.left($$0), $$1);
    }
 
-   public static dpn.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dpn.a($$1, $$2);
+   private dpn(Either<bno, Either<UUID, Integer>> $$0, float $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static dpn.a c(long $$0) {
-      return b($$0).a();
-   }
-
-   public static dpn.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dpn.a($$2, $$3);
-   }
-
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
-   }
-
-   public static record a(long a, long b) {
-      public dpn.a a(long $$0, long $$1) {
-         return new dpn.a(this.a ^ $$0, this.b ^ $$1);
+   @Override
+   public Optional<ens> a(cvn $$0) {
+      if (this.e.left().isEmpty()) {
+         this.b($$0);
       }
 
-      public dpn.a a(dpn.a $$0) {
-         return this.a($$0.a, $$0.b);
+      return this.e.left().map($$0x -> $$0x.dk().b(0.0, (double)this.f, 0.0));
+   }
+
+   private void b(cvn $$0) {
+      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bno)$$1.map($$1x -> $$0 instanceof aov $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.e = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.e.map(bno::cw, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   private int c() {
+      return (Integer)this.e.map(bno::aj, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
+   }
+
+   @Override
+   public dpu<dpn> a() {
+      return dpu.b;
+   }
+
+   public static class a implements dpu<dpn> {
+      @Override
+      public Codec<dpn> a() {
+         return dpn.a;
       }
 
-      public dpn.a a() {
-         return new dpn.a(dpn.a(this.a), dpn.a(this.b));
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
+      @Override
+      public xo<vb, dpn> b() {
+         return dpn.b;
       }
    }
 }

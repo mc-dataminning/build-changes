@@ -1,31 +1,33 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebl extends dzo {
-   public static final Codec<ebl> d = a(ebl::new);
+public record ebl(ebl.a b, bki<cwy.c> c) {
+   public static final Codec<ebl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ebl.a.c.fieldOf("bounding_box").forGetter(ebl::a), bki.c(cwy.c.a).fieldOf("spawns").forGetter(ebl::b)).apply($$0, ebl::new)
+   );
 
-   public ebl(dzo.c $$0) {
-      super($$0);
+   public ebl.a a() {
+      return this.b;
    }
 
-   @Override
-   public Optional<dzo.b> a(dzo.a $$0) {
-      ddk $$1 = ddk.a($$0.f());
-      hx $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dzo.b($$2, (Consumer<eag>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   public bki<cwy.c> b() {
+      return this.c;
    }
 
-   private void a(eag $$0, hx $$1, ddk $$2, dzo.a $$3) {
-      List<dzs> $$4 = Lists.newArrayList();
-      ebk.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
-   }
+   public static enum a implements axc {
+      a("piece"),
+      b("full");
 
-   @Override
-   public dzx<?> e() {
-      return dzx.c;
+      public static final Codec<ebl.a> c = axc.a(ebl.a::values);
+      private final String d;
+
+      private a(String $$0) {
+         this.d = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

@@ -1,61 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.context.CommandContext;
 
 public class alf {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.summon.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.c("commands.summon.failed.uuid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vg.c("commands.summon.invalidPosition"));
-
-   public static void a(CommandDispatcher<ds> $$0, dn $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("summon").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)dt.a("entity", er.a($$1, ke.u))
-                     .suggests(hn.d)
-                     .executes($$0x -> b((ds)$$0x.getSource(), er.e($$0x, "entity"), ((ds)$$0x.getSource()).d(), new so(), true)))
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("pos", ft.a())
-                           .executes($$0x -> b((ds)$$0x.getSource(), er.e($$0x, "entity"), ft.a($$0x, "pos"), new so(), true)))
-                        .then(dt.a("nbt", ec.a()).executes($$0x -> b((ds)$$0x.getSource(), er.e($$0x, "entity"), ft.a($$0x, "pos"), ec.a($$0x, "nbt"), false)))
-                  )
-            )
-      );
-   }
-
-   public static blw a(ds $$0, ih.c<bmc<?>> $$1, emc $$2, so $$3, boolean $$4) throws CommandSyntaxException {
-      hx $$5 = hx.a($$2);
-      if (!ctx.l($$5)) {
-         throw c.create();
-      } else {
-         so $$6 = $$3.h();
-         $$6.a("id", $$1.h().a().toString());
-         ane $$7 = $$0.e();
-         blw $$8 = bmc.a($$6, $$7, $$1x -> {
-            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dB(), $$1x.dD());
-            return $$1x;
-         });
-         if ($$8 == null) {
-            throw a.create();
-         } else {
-            if ($$4 && $$8 instanceof bmq) {
-               ((bmq)$$8).a($$0.e(), $$0.e().d_($$8.dl()), bms.n, null, null);
-            }
-
-            if (!$$7.e($$8)) {
-               throw b.create();
-            } else {
-               return $$8;
+   public static void a(CommandDispatcher<du> $$0) {
+      final LiteralArgumentBuilder<du> $$1 = (LiteralArgumentBuilder<du>)dv.a("gamerule").requires($$0x -> $$0x.c(2));
+      cvj.a(
+         new cvj.c() {
+            @Override
+            public <T extends cvj.g<T>> void a(cvj.e<T> $$0, cvj.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)dv.a($$0.a()).executes($$1xxx -> alf.a((du)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> alf.a($$1xxx, $$0)))
+               );
             }
          }
-      }
+      );
+      $$0.register($$1);
    }
 
-   private static int b(ds $$0, ih.c<bmc<?>> $$1, emc $$2, so $$3, boolean $$4) throws CommandSyntaxException {
-      blw $$5 = a($$0, $$1, $$2, $$3, $$4);
-      $$0.a(() -> vg.a("commands.summon.success", $$5.Q_()), true);
-      return 1;
+   static <T extends cvj.g<T>> int a(CommandContext<du> $$0, cvj.e<T> $$1) {
+      du $$2 = (du)$$0.getSource();
+      T $$3 = $$2.l().aK().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> vq.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
+
+   static <T extends cvj.g<T>> int a(du $$0, cvj.e<T> $$1) {
+      T $$2 = $$0.l().aK().a($$1);
+      $$0.a(() -> vq.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

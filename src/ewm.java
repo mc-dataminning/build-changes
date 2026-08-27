@@ -1,113 +1,59 @@
-public class ewm {
-   public static final ewi a = ewi.a.a(0.5F)
-      .a()
-      .a("head", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(180.0F, 0.0F, 0.0F), ewh.b.a)))
-      .a("head", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.5F, 0.0F), ewh.b.a)))
-      .a("body", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(180.0F, 0.0F, 0.0F), ewh.b.a)))
-      .a("body", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.5F, 0.0F), ewh.b.a)))
-      .a("feet", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)))
-      .a("right_wing", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, -10.0F, 0.0F), ewh.b.a)))
-      .a("right_wing", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.0F, 1.0F), ewh.b.a)))
-      .a("right_wing_tip", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, -120.0F, 0.0F), ewh.b.a)))
-      .a("left_wing", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 10.0F, 0.0F), ewh.b.a)))
-      .a("left_wing", new ewh(ewh.d.a, new ewj(0.0F, ewk.a(0.0F, 0.0F, 1.0F), ewh.b.a)))
-      .a("left_wing_tip", new ewh(ewh.d.b, new ewj(0.0F, ewk.b(0.0F, 120.0F, 0.0F), ewh.b.a)))
-      .b();
-   public static final ewi b = ewi.a.a(0.5F)
-      .a()
-      .a(
-         "head",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.125F, ewk.b(20.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.b(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "head",
-         new ewh(
-            ewh.d.a,
-            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.125F, ewk.a(0.0F, 2.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.a(0.0F, 1.0F, 0.0F), ewh.b.a),
-            new ewj(0.375F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.4583F, ewk.a(0.0F, -1.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(40.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.b(52.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.b(40.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ewh(
-            ewh.d.a,
-            new ewj(0.0F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.125F, ewk.a(0.0F, 2.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.a(0.0F, 1.0F, 0.0F), ewh.b.a),
-            new ewj(0.375F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.4583F, ewk.a(0.0F, -1.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.a(0.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "feet",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(10.0F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.125F, ewk.b(-21.25F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.b(-12.5F, 0.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.b(10.0F, 0.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "right_wing",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 85.0F, 0.0F), ewh.b.a),
-            new ewj(0.125F, ewk.b(0.0F, -55.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.b(0.0F, 50.0F, 0.0F), ewh.b.a),
-            new ewj(0.375F, ewk.b(0.0F, 70.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.b(0.0F, 85.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "right_wing_tip",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, 10.5F, 0.0F), ewh.b.a),
-            new ewj(0.0417F, ewk.b(0.0F, 65.5F, 0.0F), ewh.b.a),
-            new ewj(0.2083F, ewk.b(0.0F, -135.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.b(0.0F, 10.5F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "left_wing",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, -85.0F, 0.0F), ewh.b.a),
-            new ewj(0.125F, ewk.b(0.0F, 55.0F, 0.0F), ewh.b.a),
-            new ewj(0.25F, ewk.b(0.0F, -50.0F, 0.0F), ewh.b.a),
-            new ewj(0.375F, ewk.b(0.0F, -70.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.b(0.0F, -85.0F, 0.0F), ewh.b.a)
-         )
-      )
-      .a(
-         "left_wing_tip",
-         new ewh(
-            ewh.d.b,
-            new ewj(0.0F, ewk.b(0.0F, -10.5F, 0.0F), ewh.b.a),
-            new ewj(0.0417F, ewk.b(0.0F, -65.5F, 0.0F), ewh.b.a),
-            new ewj(0.2083F, ewk.b(0.0F, 135.0F, 0.0F), ewh.b.a),
-            new ewj(0.5F, ewk.b(0.0F, -10.5F, 0.0F), ewh.b.a)
-         )
-      )
-      .b();
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
+
+public abstract class ewm extends ewh {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final vq d;
+   private final Runnable e;
+
+   public ewm(long $$0, vq $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   protected abstract void a(esq var1, long var2) throws eud;
+
+   @Override
+   public void run() {
+      esq $$0 = esq.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (eue var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
+      }
+   }
+
+   @Override
+   public vq a() {
+      return this.d;
+   }
 }

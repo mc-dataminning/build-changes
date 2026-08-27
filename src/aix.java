@@ -1,41 +1,60 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.google.common.collect.MapMaker;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-public class aix {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.deop.failed"));
+public class aix<T> {
+   private static final ConcurrentMap<aix.a, aix<?>> a = new MapMaker().weakValues().makeMap();
+   private final aiy b;
+   private final aiy c;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("deop").requires($$0x -> $$0x.c(3)))
-            .then(
-               dt.a("targets", eh.a())
-                  .suggests(($$0x, $$1) -> dx.a(((ds)$$0x.getSource()).l().ae().l(), $$1))
-                  .executes($$0x -> a((ds)$$0x.getSource(), eh.a($$0x, "targets")))
-            )
-      );
+   public static <T> Codec<aix<T>> a(aix<? extends iv<T>> $$0) {
+      return aiy.a.xmap($$1 -> a($$0, $$1), aix::a);
    }
 
-   private static int a(ds $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aqw $$2 = $$0.l().ae();
-      int $$3 = 0;
+   public static <T> xo<ByteBuf, aix<T>> b(aix<? extends iv<T>> $$0) {
+      return aiy.b.a($$1 -> a($$0, $$1), aix::a);
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.f($$4)) {
-            $$2.b($$4);
-            $$3++;
-            $$0.a(() -> vg.a("commands.deop.success", $$1.iterator().next().getName()), true);
-         }
-      }
+   public static <T> aix<T> a(aix<? extends iv<T>> $$0, aiy $$1) {
+      return a($$0.c, $$1);
+   }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
+   public static <T> aix<iv<T>> a(aiy $$0) {
+      return a(kg.a, $$0);
+   }
+
+   private static <T> aix<T> a(aiy $$0, aiy $$1) {
+      return (aix<T>)a.computeIfAbsent(new aix.a($$0, $$1), $$0x -> new aix($$0x.a, $$0x.b));
+   }
+
+   private aix(aiy $$0, aiy $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public String toString() {
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
+   }
+
+   public boolean c(aix<? extends iv<?>> $$0) {
+      return this.b.equals($$0.a());
+   }
+
+   public <E> Optional<aix<E>> d(aix<? extends iv<E>> $$0) {
+      return this.c($$0) ? Optional.of((aix<E>)this) : Optional.empty();
+   }
+
+   public aiy a() {
+      return this.c;
+   }
+
+   public aiy b() {
+      return this.b;
+   }
+
+   static record a(aiy a, aiy b) {
    }
 }

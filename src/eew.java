@@ -1,61 +1,26 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
 public class eew extends eey {
-   @Override
-   public cnb a() {
-      return cnj.a;
+   public static final Codec<eew> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dlf.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, eew::new)
+   );
+   private final dlf b;
+   private final float d;
+
+   public eew(dlf $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public boolean a(eez $$0, ctd $$1, hx $$2, eey $$3, ic $$4) {
-      return true;
+   public boolean a(dlf $$0, awo $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
    }
 
    @Override
-   public emc a(ctd $$0, hx $$1, eez $$2) {
-      return emc.b;
-   }
-
-   @Override
-   public int a(cua $$0) {
-      return 0;
-   }
-
-   @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(eez $$0, ctd $$1, hx $$2) {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(eez $$0) {
-      return 0.0F;
-   }
-
-   @Override
-   protected djp b(eez $$0) {
-      return cxa.a.o();
-   }
-
-   @Override
-   public boolean c(eez $$0) {
-      return false;
-   }
-
-   @Override
-   public int d(eez $$0) {
-      return 0;
-   }
-
-   @Override
-   public emv b(eez $$0, ctd $$1, hx $$2) {
-      return ems.a();
+   protected eez<?> a() {
+      return eez.f;
    }
 }

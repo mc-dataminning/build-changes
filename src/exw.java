@@ -1,25 +1,77 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class exw {
-   private static final aub a = aub.codepoint(32, wd.a);
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final exw.a f;
 
-   private static String a(String $$0) {
-      return evr.O().m.I().c() ? $$0 : n.a($$0);
+   public exw(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, exw.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public static List<aub> a(vl $$0, int $$1, exc $$2) {
-      evh $$3 = new evh();
-      $$0.a(($$1x, $$2x) -> {
-         $$3.a(vl.a(a($$2x), $$1x));
-         return Optional.empty();
-      }, wd.a);
-      List<aub> $$4 = Lists.newArrayList();
-      $$2.b().a($$3.b(), $$1, wd.a, ($$1x, $$2x) -> {
-         aub $$3x = sj.a().a($$1x);
-         $$4.add($$2x ? aub.composite(a, $$3x) : $$3x);
-      });
-      return (List<aub>)($$4.isEmpty() ? Lists.newArrayList(new aub[]{aub.a}) : $$4);
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   }
+
+   public UUID b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public exw.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, exw.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
+      }
+
+      @Nullable
+      public static exw.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
+      }
+
+      public String a() {
+         return this.e;
+      }
    }
 }

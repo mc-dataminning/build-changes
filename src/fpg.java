@@ -1,37 +1,24 @@
-import java.util.Locale;
+public class fpg {
+   public static final fpg a = new fpg(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-public enum fpg {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
-
-   private final String k;
-   private final vg l;
-   private final vg m;
-
-   private fpg(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = vg.c($$1);
-      this.m = vg.c($$1 + ".description");
+   public fpg(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public String a() {
-      return this.k;
+   public fpg(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   public vg b() {
-      return this.l;
+   public fpg a(float $$0) {
+      return new fpg(this.b + $$0, this.c + $$0, this.d + $$0);
    }
 
-   public vg c() {
-      return this.m;
+   public fpg a(float $$0, float $$1, float $$2) {
+      return new fpg(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

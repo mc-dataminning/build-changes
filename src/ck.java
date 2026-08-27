@@ -1,253 +1,226 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
-public interface ck<T extends Number> {
-   SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("argument.range.empty"));
-   SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.c("argument.range.swapped"));
+public record ck(
+   Optional<ck.b> b, Optional<aix<cwm>> c, Optional<aix<ebe>> d, Optional<aix<cvn>> e, Optional<Boolean> f, Optional<ch> g, Optional<av> h, Optional<by> i
+) {
+   public static final Codec<ck> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avp.a(ck.b.a, "position").forGetter(ck::a),
+               avp.a(aix.a(kg.at), "biome").forGetter(ck::b),
+               avp.a(aix.a(kg.aD), "structure").forGetter(ck::c),
+               avp.a(aix.a(kg.aM), "dimension").forGetter(ck::d),
+               avp.a(Codec.BOOL, "smokey").forGetter(ck::e),
+               avp.a(ch.a, "light").forGetter(ck::f),
+               avp.a(av.a, "block").forGetter(ck::g),
+               avp.a(by.a, "fluid").forGetter(ck::h)
+            )
+            .apply($$0, ck::new)
+   );
 
-   Optional<T> a();
-
-   Optional<T> b();
-
-   default boolean c() {
-      return this.a().isEmpty() && this.b().isEmpty();
+   private static Optional<ck> a(
+      Optional<ck.b> $$0,
+      Optional<aix<cwm>> $$1,
+      Optional<aix<ebe>> $$2,
+      Optional<aix<cvn>> $$3,
+      Optional<Boolean> $$4,
+      Optional<ch> $$5,
+      Optional<av> $$6,
+      Optional<by> $$7
+   ) {
+      return $$0.isEmpty() && $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty() && $$4.isEmpty() && $$5.isEmpty() && $$6.isEmpty() && $$7.isEmpty()
+         ? Optional.empty()
+         : Optional.of(new ck($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   default Optional<T> d() {
-      Optional<T> $$0 = this.a();
-      Optional<T> $$1 = this.b();
-      return $$0.equals($$1) ? $$0 : Optional.empty();
-   }
-
-   static <T extends Number, R extends ck<T>> Codec<R> a(Codec<T> $$0, ck.a<T, R> $$1) {
-      Codec<R> $$2 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group(atx.a($$0, "min").forGetter(ck::a), atx.a($$0, "max").forGetter(ck::b)).apply($$2x, $$1::create)
-      );
-      return Codec.either($$2, $$0).xmap($$1x -> (ck)$$1x.map($$0xx -> $$0xx, $$1xx -> $$1.create(Optional.of((T)$$1xx), Optional.of((T)$$1xx))), $$0x -> {
-         Optional<T> $$1x = $$0x.d();
-         return $$1x.isPresent() ? Either.right($$1x.get()) : Either.left($$0x);
-      });
-   }
-
-   static <T extends Number, R extends ck<T>> R a(
-      StringReader $$0, ck.b<T, R> $$1, Function<String, T> $$2, Supplier<DynamicCommandExceptionType> $$3, Function<T, T> $$4
-   ) throws CommandSyntaxException {
-      if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
+   public boolean a(aov $$0, double $$1, double $$2, double $$3) {
+      if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
+         return false;
+      } else if (this.e.isPresent() && this.e.get() != $$0.ae()) {
+         return false;
       } else {
-         int $$5 = $$0.getCursor();
-
-         try {
-            Optional<T> $$6 = a($$0, $$2, $$3).map($$4);
-            Optional<T> $$7;
-            if ($$0.canRead(2) && $$0.peek() == '.' && $$0.peek(1) == '.') {
-               $$0.skip();
-               $$0.skip();
-               $$7 = a($$0, $$2, $$3).map($$4);
-               if ($$6.isEmpty() && $$7.isEmpty()) {
-                  throw a.createWithContext($$0);
+         hz $$4 = hz.a($$1, $$2, $$3);
+         boolean $$5 = $$0.p($$4);
+         if (!this.c.isPresent() || $$5 && $$0.t($$4).a(this.c.get())) {
+            if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == czc.a($$0, $$4)) {
+                  if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
+                     return false;
+                  } else {
+                     return this.h.isPresent() && !this.h.get().a($$0, $$4) ? false : !this.i.isPresent() || this.i.get().a($$0, $$4);
+                  }
+               } else {
+                  return false;
                }
             } else {
-               $$7 = $$6;
+               return false;
             }
-
-            if ($$6.isEmpty() && $$7.isEmpty()) {
-               throw a.createWithContext($$0);
-            } else {
-               return $$1.create($$0, $$6, $$7);
-            }
-         } catch (CommandSyntaxException var8) {
-            $$0.setCursor($$5);
-            throw new CommandSyntaxException(var8.getType(), var8.getRawMessage(), var8.getInput(), $$5);
-         }
-      }
-   }
-
-   private static <T extends Number> Optional<T> a(StringReader $$0, Function<String, T> $$1, Supplier<DynamicCommandExceptionType> $$2) throws CommandSyntaxException {
-      int $$3 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0)) {
-         $$0.skip();
-      }
-
-      String $$4 = $$0.getString().substring($$3, $$0.getCursor());
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         try {
-            return Optional.of($$1.apply($$4));
-         } catch (NumberFormatException var6) {
-            throw $$2.get().createWithContext($$0, $$4);
-         }
-      }
-   }
-
-   private static boolean a(StringReader $$0) {
-      char $$1 = $$0.peek();
-      if (($$1 < '0' || $$1 > '9') && $$1 != '-') {
-         return $$1 != '.' ? false : !$$0.canRead(2) || $$0.peek(1) != '.';
-      } else {
-         return true;
-      }
-   }
-
-   @FunctionalInterface
-   public interface a<T extends Number, R extends ck<T>> {
-      R create(Optional<T> var1, Optional<T> var2);
-   }
-
-   @FunctionalInterface
-   public interface b<T extends Number, R extends ck<T>> {
-      R create(StringReader var1, Optional<T> var2, Optional<T> var3) throws CommandSyntaxException;
-   }
-
-   public static record c(Optional<Double> e, Optional<Double> f, Optional<Double> g, Optional<Double> h) implements ck<Double> {
-      public static final ck.c c = new ck.c(Optional.empty(), Optional.empty());
-      public static final Codec<ck.c> d = ck.a(Codec.DOUBLE, ck.c::new);
-
-      private c(Optional<Double> $$0, Optional<Double> $$1) {
-         this($$0, $$1, a($$0), a($$1));
-      }
-
-      private static ck.c a(StringReader $$0, Optional<Double> $$1, Optional<Double> $$2) throws CommandSyntaxException {
-         if ($$1.isPresent() && $$2.isPresent() && $$1.get() > $$2.get()) {
-            throw b.createWithContext($$0);
          } else {
-            return new ck.c($$1, $$2);
+            return false;
          }
-      }
-
-      private static Optional<Double> a(Optional<Double> $$0) {
-         return $$0.map($$0x -> $$0x * $$0x);
-      }
-
-      public static ck.c a(double $$0) {
-         return new ck.c(Optional.of($$0), Optional.of($$0));
-      }
-
-      public static ck.c a(double $$0, double $$1) {
-         return new ck.c(Optional.of($$0), Optional.of($$1));
-      }
-
-      public static ck.c b(double $$0) {
-         return new ck.c(Optional.of($$0), Optional.empty());
-      }
-
-      public static ck.c c(double $$0) {
-         return new ck.c(Optional.empty(), Optional.of($$0));
-      }
-
-      public boolean d(double $$0) {
-         return this.e.isPresent() && this.e.get() > $$0 ? false : this.f.isEmpty() || !(this.f.get() < $$0);
-      }
-
-      public boolean e(double $$0) {
-         return this.g.isPresent() && this.g.get() > $$0 ? false : this.h.isEmpty() || !(this.h.get() < $$0);
-      }
-
-      public static ck.c a(StringReader $$0) throws CommandSyntaxException {
-         return a($$0, $$0x -> $$0x);
-      }
-
-      public static ck.c a(StringReader $$0, Function<Double, Double> $$1) throws CommandSyntaxException {
-         return ck.a($$0, ck.c::a, Double::parseDouble, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidDouble, $$1);
-      }
-
-      @Override
-      public Optional<Double> a() {
-         return this.e;
-      }
-
-      @Override
-      public Optional<Double> b() {
-         return this.f;
-      }
-
-      public Optional<Double> e() {
-         return this.g;
-      }
-
-      public Optional<Double> f() {
-         return this.h;
       }
    }
 
-   public static record d(Optional<Integer> e, Optional<Integer> f, Optional<Long> g, Optional<Long> h) implements ck<Integer> {
-      public static final ck.d c = new ck.d(Optional.empty(), Optional.empty());
-      public static final Codec<ck.d> d = ck.a(Codec.INT, ck.d::new);
+   public Optional<ck.b> a() {
+      return this.b;
+   }
 
-      private d(Optional<Integer> $$0, Optional<Integer> $$1) {
-         this($$0, $$1, $$0.map($$0x -> $$0x.longValue() * $$0x.longValue()), a($$1));
+   public Optional<aix<cwm>> b() {
+      return this.c;
+   }
+
+   public Optional<aix<ebe>> c() {
+      return this.d;
+   }
+
+   public Optional<aix<cvn>> d() {
+      return this.e;
+   }
+
+   public Optional<Boolean> e() {
+      return this.f;
+   }
+
+   public Optional<ch> f() {
+      return this.g;
+   }
+
+   public Optional<av> g() {
+      return this.h;
+   }
+
+   public Optional<by> h() {
+      return this.i;
+   }
+
+   public static class a {
+      private cm.c a;
+      private cm.c b;
+      private cm.c c;
+      private Optional<aix<cwm>> d;
+      private Optional<aix<ebe>> e;
+      private Optional<aix<cvn>> f;
+      private Optional<Boolean> g;
+      private Optional<ch> h;
+      private Optional<av> i;
+      private Optional<by> j;
+
+      public a() {
+         this.a = cm.c.c;
+         this.b = cm.c.c;
+         this.c = cm.c.c;
+         this.d = Optional.empty();
+         this.e = Optional.empty();
+         this.f = Optional.empty();
+         this.g = Optional.empty();
+         this.h = Optional.empty();
+         this.i = Optional.empty();
+         this.j = Optional.empty();
       }
 
-      private static ck.d a(StringReader $$0, Optional<Integer> $$1, Optional<Integer> $$2) throws CommandSyntaxException {
-         if ($$1.isPresent() && $$2.isPresent() && $$1.get() > $$2.get()) {
-            throw b.createWithContext($$0);
-         } else {
-            return new ck.d($$1, $$2);
-         }
+      public static ck.a a() {
+         return new ck.a();
       }
 
-      private static Optional<Long> a(Optional<Integer> $$0) {
-         return $$0.map($$0x -> $$0x.longValue() * $$0x.longValue());
+      public static ck.a a(aix<cwm> $$0) {
+         return a().d($$0);
       }
 
-      public static ck.d a(int $$0) {
-         return new ck.d(Optional.of($$0), Optional.of($$0));
+      public static ck.a b(aix<cvn> $$0) {
+         return a().f($$0);
       }
 
-      public static ck.d a(int $$0, int $$1) {
-         return new ck.d(Optional.of($$0), Optional.of($$1));
+      public static ck.a c(aix<ebe> $$0) {
+         return a().e($$0);
       }
 
-      public static ck.d b(int $$0) {
-         return new ck.d(Optional.of($$0), Optional.empty());
+      public static ck.a a(cm.c $$0) {
+         return a().c($$0);
       }
 
-      public static ck.d c(int $$0) {
-         return new ck.d(Optional.empty(), Optional.of($$0));
+      public ck.a b(cm.c $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      public boolean d(int $$0) {
-         return this.e.isPresent() && this.e.get() > $$0 ? false : this.f.isEmpty() || this.f.get() >= $$0;
+      public ck.a c(cm.c $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      public boolean a(long $$0) {
-         return this.g.isPresent() && this.g.get() > $$0 ? false : this.h.isEmpty() || this.h.get() >= $$0;
+      public ck.a d(cm.c $$0) {
+         this.c = $$0;
+         return this;
       }
 
-      public static ck.d a(StringReader $$0) throws CommandSyntaxException {
-         return a($$0, $$0x -> $$0x);
+      public ck.a d(aix<cwm> $$0) {
+         this.d = Optional.of($$0);
+         return this;
       }
 
-      public static ck.d a(StringReader $$0, Function<Integer, Integer> $$1) throws CommandSyntaxException {
-         return ck.a($$0, ck.d::a, Integer::parseInt, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidInt, $$1);
+      public ck.a e(aix<ebe> $$0) {
+         this.e = Optional.of($$0);
+         return this;
       }
 
-      @Override
-      public Optional<Integer> a() {
-         return this.e;
+      public ck.a f(aix<cvn> $$0) {
+         this.f = Optional.of($$0);
+         return this;
       }
 
-      @Override
-      public Optional<Integer> b() {
-         return this.f;
+      public ck.a a(ch.a $$0) {
+         this.h = Optional.of($$0.b());
+         return this;
       }
 
-      public Optional<Long> e() {
-         return this.g;
+      public ck.a a(av.a $$0) {
+         this.i = Optional.of($$0.b());
+         return this;
       }
 
-      public Optional<Long> f() {
-         return this.h;
+      public ck.a a(by.a $$0) {
+         this.j = Optional.of($$0.b());
+         return this;
+      }
+
+      public ck.a a(boolean $$0) {
+         this.g = Optional.of($$0);
+         return this;
+      }
+
+      public ck b() {
+         Optional<ck.b> $$0 = ck.b.a(this.a, this.b, this.c);
+         return new ck($$0, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
+   }
+
+   static record b(cm.c b, cm.c c, cm.c d) {
+      public static final Codec<ck.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  avp.a(cm.c.d, "x", cm.c.c).forGetter(ck.b::a), avp.a(cm.c.d, "y", cm.c.c).forGetter(ck.b::b), avp.a(cm.c.d, "z", cm.c.c).forGetter(ck.b::c)
+               )
+               .apply($$0, ck.b::new)
+      );
+
+      static Optional<ck.b> a(cm.c $$0, cm.c $$1, cm.c $$2) {
+         return $$0.c() && $$1.c() && $$2.c() ? Optional.empty() : Optional.of(new ck.b($$0, $$1, $$2));
+      }
+
+      public boolean a(double $$0, double $$1, double $$2) {
+         return this.b.d($$0) && this.c.d($$1) && this.d.d($$2);
+      }
+
+      public cm.c a() {
+         return this.b;
+      }
+
+      public cm.c b() {
+         return this.c;
+      }
+
+      public cm.c c() {
+         return this.d;
       }
    }
 }

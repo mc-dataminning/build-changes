@@ -1,49 +1,43 @@
-import java.util.function.Supplier;
-import org.apache.commons.lang3.ObjectUtils;
+import com.google.common.collect.Interner;
+import com.google.common.collect.Interners;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
 
-public record auo(auo.a a, String b) {
-   public static auo a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
-      String $$4 = $$1.get();
-      if (!$$0.equals($$4)) {
-         return new auo(auo.a.c, $$2 + " brand changed to '" + $$4 + "'");
-      } else {
-         return $$3.getSigners() == null
-            ? new auo(auo.a.b, $$2 + " jar signature invalidated")
-            : new auo(auo.a.a, $$2 + " jar signature and brand is untouched");
-      }
+public record auo<T>(aix<? extends iv<T>> a, aiy b) {
+   private static final Interner<auo<?>> c = Interners.newWeakInterner();
+
+   @Deprecated
+   public auo(aix<? extends iv<T>> a, aiy b) {
+      this.a = a;
+      this.b = b;
    }
 
-   public boolean a() {
-      return this.a.e;
+   public static <T> Codec<auo<T>> a(aix<? extends iv<T>> $$0) {
+      return aiy.a.xmap($$1 -> a($$0, $$1), auo::b);
    }
 
-   public auo a(auo $$0) {
-      return new auo((auo.a)ObjectUtils.max(new auo.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
+   public static <T> Codec<auo<T>> b(aix<? extends iv<T>> $$0) {
+      return Codec.STRING
+         .comapFlatMap(
+            $$1 -> $$1.startsWith("#") ? aiy.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
+         );
    }
 
-   public String b() {
-      return this.a.d + " " + this.b;
+   public static <T> auo<T> a(aix<? extends iv<T>> $$0, aiy $$1) {
+      return (auo<T>)c.intern(new auo<>($$0, $$1));
    }
 
-   public auo.a c() {
-      return this.a;
+   public boolean c(aix<? extends iv<?>> $$0) {
+      return this.a == $$0;
    }
 
-   public String d() {
-      return this.b;
+   public <E> Optional<auo<E>> d(aix<? extends iv<E>> $$0) {
+      return this.c($$0) ? Optional.of((auo<E>)this) : Optional.empty();
    }
 
-   public static enum a {
-      a("Probably not.", false),
-      b("Very likely;", true),
-      c("Definitely;", true);
-
-      final String d;
-      final boolean e;
-
-      private a(String $$0, boolean $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   @Override
+   public String toString() {
+      return "TagKey[" + this.a.a() + " / " + this.b + "]";
    }
 }

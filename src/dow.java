@@ -1,22 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-public class dow {
-   public static final Codec<dow> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               duh.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
-               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dow::new)
-   );
-   public final double b;
-   public final double c;
-   public final int d;
+public interface dow {
+   int aj();
 
-   public dow(double $$0, double $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+   UUID cw();
+
+   hz dm();
+
+   enn cH();
+
+   void a(dox var1);
+
+   Stream<? extends dow> cR();
+
+   Stream<? extends dow> cS();
+
+   void b(bno.c var1);
+
+   boolean dK();
+
+   boolean dL();
 }

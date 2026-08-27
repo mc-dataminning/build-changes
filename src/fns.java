@@ -1,44 +1,37 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+public class fns extends fmx {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final fpc e;
+   private final fpc f;
+   private final fpc g;
 
-public class fns {
-   private final List<fnm> a;
-   private final fnl b;
-   private final Map<String, fns> c = Maps.newHashMap();
-
-   fns(List<fnm> $$0, fnl $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fns(fpc $$0) {
+      super(fvu::c);
+      this.e = $$0;
+      this.f = $$0.b("plate");
+      this.g = $$0.b("handle");
    }
 
-   public fns a(String $$0, fno $$1, fnl $$2) {
-      fns $$3 = new fns($$1.b(), $$2);
-      fns $$4 = this.c.put($$0, $$3);
-      if ($$4 != null) {
-         $$3.c.putAll($$4.c);
-      }
-
-      return $$3;
+   public static fpi a() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      $$1.a("plate", fph.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fpe.a);
+      $$1.a("handle", fph.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fpe.a);
+      return fpi.a($$0, 64, 64);
    }
 
-   public fnj a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, fnj> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fns)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<fnj.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
-      fnj $$4 = new fnj($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
+   public fpc b() {
+      return this.f;
    }
 
-   public fns a(String $$0) {
-      return this.c.get($$0);
+   public fpc c() {
+      return this.g;
+   }
+
+   @Override
+   public void a(esa $$0, ese $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

@@ -1,47 +1,61 @@
+import com.google.common.annotations.VisibleForTesting;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public abstract class of<T> extends ok<T> {
-   private final Function<T, ahg<T>> d;
+public class of extends om<dpp> {
+   @VisibleForTesting
+   static final List<aix<dpp>> d = List.of(
+      dpp.b.h(),
+      dpp.c.h(),
+      dpp.d.h(),
+      dpp.f.h(),
+      dpp.g.h(),
+      dpp.h.h(),
+      dpp.i.h(),
+      dpp.a.h(),
+      dpp.e.h(),
+      dpp.j.h(),
+      dpp.k.h(),
+      dpp.l.h(),
+      dpp.m.h(),
+      dpp.n.h(),
+      dpp.o.h(),
+      dpp.p.h(),
+      dpp.q.h(),
+      dpp.r.h(),
+      dpp.s.h(),
+      dpp.t.h(),
+      dpp.u.h(),
+      dpp.v.h(),
+      dpp.w.h(),
+      dpp.y.h(),
+      dpp.z.h(),
+      dpp.A.h(),
+      dpp.B.h(),
+      dpp.C.h(),
+      dpp.G.h(),
+      dpp.H.h(),
+      dpp.I.h(),
+      dpp.J.h(),
+      dpp.K.h(),
+      dpp.M.h(),
+      dpp.O.h(),
+      dpp.P.h(),
+      dpp.Q.h(),
+      dpp.R.h(),
+      dpp.S.h()
+   );
 
-   public of(km $$0, ahg<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, Function<T, ahg<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+   public of(ko $$0, CompletableFuture<il.b> $$1) {
+      super($$0, kg.B, $$1);
    }
 
-   public of(km $$0, ahg<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, CompletableFuture<ok.c<T>> $$3, Function<T, ahg<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
-   }
-
-   protected of.a<T> a(asx<T> $$0) {
-      asu $$1 = this.c($$0);
-      return new of.a<>($$1, this.d);
-   }
-
-   protected static class a<T> extends ok.b<T> {
-      private final Function<T, ahg<T>> a;
-
-      a(asu $$0, Function<T, ahg<T>> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public of.a<T> a(asx<T> $$0) {
-         super.b($$0);
-         return this;
-      }
-
-      public final of.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
-
-      @SafeVarargs
-      public final of.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
-      }
+   @Override
+   protected void a(il.b $$0) {
+      this.b(auf.a).a(d).a(dpy.e_).a(dpp.x.h());
+      this.b(auf.c).a(dpp.L.h());
+      this.b(auf.b).a(d).a(dpy.e_).a(dpp.N.h()).b(auf.c);
+      this.b(auf.d).a(dpp.A.h(), dpp.K.h(), dpp.P.h(), dpp.Q.h(), dpp.D.h(), dpp.C.h());
+      this.b(auf.e).a(dpp.H.h());
    }
 }

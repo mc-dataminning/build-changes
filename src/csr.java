@@ -1,15 +1,22 @@
-public class csr extends crr {
-   public csr(crr.a $$0, bmd... $$1) {
-      super($$0, crs.e, $$1);
+public interface csr extends csb<bln> {
+   @Override
+   default csg<?> e() {
+      return csg.g;
    }
 
    @Override
-   public int a(int $$0) {
-      return 1;
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 40;
+   default coz g() {
+      return new coz(cyq.ob);
    }
+
+   boolean a(coz var1);
+
+   boolean b(coz var1);
+
+   boolean c(coz var1);
 }

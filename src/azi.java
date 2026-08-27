@@ -1,48 +1,86 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.shorts.ShortArrayList;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class azi extends DataFix {
-   private final String a;
-   private final Set<String> b;
+   private static final int a = 16;
 
-   public azi(Schema $$0, String $$1, Set<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   public azi(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bbw.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   public TypeRewriteRule makeRule() {
+      return this.writeFixAndRead(
+         "ChunkToProtoChunkFix", this.getInputSchema().getType(bdn.c), this.getOutputSchema().getType(bdn.c), $$0 -> $$0.update("Level", azi::a)
+      );
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      List<Dynamic<T>> $$1 = $$0.get("removed_features").asStream().collect(Collectors.toCollection(ArrayList::new));
-      Dynamic<T> $$2 = $$0.update("enabled_features", $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asStreamOpt().result().map($$2xx -> $$2xx.filter($$2xxx -> {
-               Optional<String> $$3 = $$2xxx.asString().result();
-               if ($$3.isEmpty()) {
-                  return true;
-               } else {
-                  boolean $$4 = this.b.contains($$3.get());
-                  if ($$4) {
-                     $$1.add($$0.createString($$3.get()));
-                  }
-
-                  return !$$4;
-               }
-            })).map($$0::createList), $$2x));
-      if (!$$1.isEmpty()) {
-         $$2 = $$2.set("removed_features", $$0.createList($$1.stream()));
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("TerrainPopulated").asBoolean(false);
+      boolean $$2 = $$0.get("LightPopulated").asNumber().result().isEmpty() || $$0.get("LightPopulated").asBoolean(false);
+      String $$3;
+      if ($$1) {
+         if ($$2) {
+            $$3 = "mobs_spawned";
+         } else {
+            $$3 = "decorated";
+         }
+      } else {
+         $$3 = "carved";
       }
 
-      return $$2;
+      return c(b($$0)).set("Status", $$0.createString($$3)).set("hasLegacyStructureData", $$0.createBoolean(true));
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return $$0.update("Biomes", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asByteBufferOpt().result().map($$1x -> {
+            int[] $$2 = new int[256];
+
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               if ($$3 < $$1x.capacity()) {
+                  $$2[$$3] = $$1x.get($$3) & 255;
+               }
+            }
+
+            return $$0.createIntList(Arrays.stream($$2));
+         }), $$1));
+   }
+
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse(
+         $$0.get("TileTicks")
+            .asStreamOpt()
+            .result()
+            .map(
+               $$1 -> {
+                  List<ShortList> $$2 = IntStream.range(0, 16).mapToObj($$0xx -> new ShortArrayList()).collect(Collectors.toList());
+                  $$1.forEach($$1x -> {
+                     int $$2x = $$1x.get("x").asInt(0);
+                     int $$3 = $$1x.get("y").asInt(0);
+                     int $$4 = $$1x.get("z").asInt(0);
+                     short $$5 = a($$2x, $$3, $$4);
+                     $$2.get($$3 >> 4).add($$5);
+                  });
+                  return $$0.remove("TileTicks")
+                     .set(
+                        "ToBeTicked",
+                        $$0.createList($$2.stream().map($$1x -> $$0.createList($$1x.intStream().mapToObj($$1xx -> $$0.createShort((short)$$1xx)))))
+                     );
+               }
+            ),
+         $$0
+      );
+   }
+
+   private static short a(int $$0, int $$1, int $$2) {
+      return (short)($$0 & 15 | ($$1 & 15) << 4 | ($$2 & 15) << 8);
    }
 }

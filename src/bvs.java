@@ -1,60 +1,49 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.EnumSet;
 
-public class bvs {
-   private static final bvs a = new bvs();
-   private final List<bmo> b;
-   private final Predicate<bmo> c;
+public class bvs extends bvb {
+   private static final byu b = byu.b().a(6.0);
+   public static final int a = 400;
+   private final caf c;
+   private cgu d;
+   private int e;
 
-   private bvs() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+   public bvs(caf $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bvb.a.a, bvb.a.b));
    }
 
-   public bvs(bmo $$0, List<bmo> $$1) {
-      this.b = $$1;
-      Object2BooleanOpenHashMap<bmo> $$2 = new Object2BooleanOpenHashMap($$1.size());
-      Predicate<bmo> $$3 = $$1x -> bww.b($$0, $$1x);
-      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
-   }
-
-   public static bvs a() {
-      return a;
-   }
-
-   public Optional<bmo> a(Predicate<bmo> $$0) {
-      for (bmo $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
-         }
+   @Override
+   public boolean a() {
+      if (!this.c.dM().P()) {
+         return false;
+      } else if (this.c.eh().a(8000) != 0) {
+         return false;
+      } else {
+         this.d = this.c.dM().a(cgu.class, b, this.c, this.c.dr(), this.c.dt(), this.c.dx(), this.c.cH().c(6.0, 2.0, 6.0));
+         return this.d != null;
       }
-
-      return Optional.empty();
    }
 
-   public Iterable<bmo> b(Predicate<bmo> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   @Override
+   public boolean b() {
+      return this.e > 0;
    }
 
-   public Stream<bmo> c(Predicate<bmo> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   @Override
+   public void c() {
+      this.e = this.a(400);
+      this.c.w(true);
    }
 
-   public boolean a(bmo $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
+   @Override
+   public void d() {
+      this.c.w(false);
+      this.d = null;
    }
 
-   public boolean d(Predicate<bmo> $$0) {
-      for (bmo $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public void e() {
+      this.c.I().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

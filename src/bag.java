@@ -1,35 +1,36 @@
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
 
-public class bag extends awc {
-   public bag(Schema $$0) {
-      super($$0, bbw.t);
+public class bag extends bcn {
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("donkeykong", "donkey_kong");
+      $$0.put("burningskull", "burning_skull");
+      $$0.put("skullandroses", "skull_and_roses");
+   });
+
+   public bag(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityPaintingMotiveFix", bdn.y, "minecraft:painting");
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bbw.A.typeName(), bde.a()));
-      return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.a), $$1 -> {
-         OpticFinder<?> $$2 = $$1.getType().findField("tag");
-         return $$1.updateTyped($$2, $$2x -> $$2x.update(DSL.remainderFinder(), $$2xx -> {
-               $$2xx = this.b($$2xx);
-               if ($$1.getOptional($$0).map($$0xxxx -> "minecraft:player_head".equals($$0xxxx.getSecond())).orElse(false)) {
-                  $$2xx = this.c($$2xx);
-               }
-
-               return $$2xx;
-            }));
-      });
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Motive").asString().result();
+      if ($$1.isPresent()) {
+         String $$2 = $$1.get().toLowerCase(Locale.ROOT);
+         return $$0.set("Motive", $$0.createString(new aiy(a.getOrDefault($$2, $$2)).toString()));
+      } else {
+         return $$0;
+      }
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("AttributeModifiers", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)c($$0xx, "UUID", "UUID").orElse($$0xx))));
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.update("SkullOwner", $$0x -> a($$0x, "Id", "Id").orElse($$0x));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

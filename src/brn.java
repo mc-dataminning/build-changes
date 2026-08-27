@@ -1,40 +1,29 @@
 import com.google.common.collect.ImmutableMap;
 
-public class brn extends bof<cfd> {
-   public brn() {
-      super(ImmutableMap.of());
-   }
+public class brn extends bpw<boi> {
+   private final bkz c;
+   private final float d;
+   private final float e;
+   private final float f;
 
-   protected boolean a(ane $$0, cfd $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
-
-   protected void b(ane $$0, cfd $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bno<?> $$3 = $$1.dN();
-         if (!$$3.c(chc.g)) {
-            $$3.b(bvq.t);
-            $$3.b(bvq.m);
-            $$3.b(bvq.n);
-            $$3.b(bvq.r);
-            $$3.b(bvq.q);
-         }
-
-         $$3.a(chc.g);
+   public brn(bkz $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(bxh.n, bxi.b, bxh.Q, bxi.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
       }
    }
 
-   protected void c(ane $$0, cfd $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bmo $$0) {
-      return $$0.dN().a(bvq.A);
-   }
-
-   public static boolean c(bmo $$0) {
-      return $$0.dN().a(bvq.x);
+   protected void a(aov $$0, boi $$1, long $$2) {
+      awo $$3 = $$1.eh();
+      float $$4 = awh.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = awh.g($$1.dC() + 2.0F * $$3.i() * this.d - this.d);
+      ens $$6 = ens.a($$4, $$5);
+      $$1.dO().a(bxh.n, new bpz($$1.br().e($$6)));
+      $$1.dO().a(bxh.Q, this.c.a($$3));
    }
 }

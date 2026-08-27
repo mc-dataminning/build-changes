@@ -1,49 +1,41 @@
-public class fqd extends fsh {
-   fqd(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class fqd {
+   private final fuo a;
+   private final fpx b;
+   private final fvk c;
+   private fqd.a d = fqd.a.a;
+
+   public fqd(fuo $$0, fpx $$1, fvk $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(hx.a(this.g, this.h, this.i)).a(asn.a)) {
-            this.k();
-         }
+      switch (this.d) {
+         case b:
+            hz $$0 = this.a.dm();
+            boolean $$1 = this.b.d($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.P_() || !this.a.bx()) {
+               this.d = fqd.a.c;
+            }
+         case a:
+         case c:
       }
    }
 
-   @Override
-   public frl b() {
-      return frl.b;
+   public boolean b() {
+      return this.d == fqd.a.c;
    }
 
-   public static class a implements frk<ka> {
-      private final fsc a;
-
-      public a(fsc $$0) {
-         this.a = $$0;
+   public void c() {
+      if (this.d == fqd.a.a) {
+         this.d = fqd.a.b;
       }
+   }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqd $$8 = new fqd($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

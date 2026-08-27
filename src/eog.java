@@ -1,32 +1,53 @@
-import org.lwjgl.openal.AL10;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class eog {
-   private float a = 1.0F;
-   private eoh b = eoh.a;
+public class eog extends AbstractDoubleList implements eoe {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   public void a(eoh $$0) {
-      this.b = $$0;
-      emc $$1 = $$0.b();
-      emc $$2 = $$0.c();
-      emc $$3 = $$0.d();
-      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
-      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
-   }
-
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
+   protected eog(DoubleList $$0, DoubleList $$1, boolean $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public float a() {
-      return this.a;
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
    }
 
-   public void b() {
-      this.a(eoh.a);
+   @Override
+   public boolean a(eoe.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
    }
 
-   public eoh c() {
-      return this.b;
+   private boolean b(eoe.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
+      }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   }
+
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

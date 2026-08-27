@@ -1,88 +1,51 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public abstract class dcl extends cwy {
-   private static final ic[] a = ic.values();
-   public static final dkg b = dkf.L;
-   public static final dkg c = dkf.M;
-   public static final dkg d = dkf.N;
-   public static final dkg e = dkf.O;
-   public static final dkg f = dkf.J;
-   public static final dkg g = dkf.K;
-   public static final Map<ic, dkg> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(ic.class), $$0 -> {
-      $$0.put(ic.c, b);
-      $$0.put(ic.f, c);
-      $$0.put(ic.d, d);
-      $$0.put(ic.e, e);
-      $$0.put(ic.b, f);
-      $$0.put(ic.a, g);
-   }));
-   protected final emv[] i;
+public class dcl extends dce {
+   public static final MapCodec<dcl> e = b(dcl::new);
 
-   protected dcl(float $$0, djo.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
+   @Override
+   public MapCodec<? extends dcl> a() {
+      return e;
+   }
+
+   public dcl(dle.d $$0) {
+      super($$0);
+   }
+
+   public static dlf b() {
+      return cyq.G.o();
    }
 
    @Override
-   protected abstract MapCodec<? extends dcl> a();
-
-   private emv[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      emv $$3 = cwy.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      emv[] $$4 = new emv[a.length];
-
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         ic $$6 = a[$$5];
-         $$4[$$5] = ems.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
-      }
-
-      emv[] $$7 = new emv[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         emv $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = ems.a($$9, $$4[$$10]);
-            }
+   public void a(cvn $$0, chh $$1, hz $$2, dlf $$3, @Nullable dit $$4, coz $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (ctj.a(ctl.v, $$5) == 0) {
+         if ($$0.E_().i()) {
+            $$0.a($$2, false);
+            return;
          }
 
-         $$7[$$8] = $$9;
-      }
-
-      return $$7;
-   }
-
-   @Override
-   public boolean a_(djp $$0, ctd $$1, hx $$2) {
-      return false;
-   }
-
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return this.i[this.h($$0)];
-   }
-
-   protected int h(djp $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
+         dlf $$6 = $$0.a_($$2.d());
+         if ($$6.d() || $$6.k()) {
+            $$0.b($$2, b());
          }
       }
+   }
 
-      return $$1;
+   @Override
+   protected void b(dlf $$0, aov $$1, hz $$2, awo $$3) {
+      if ($$1.a(cvw.b, $$2) > 11 - $$0.b($$1, $$2)) {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   protected void d(dlf $$0, cvn $$1, hz $$2) {
+      if ($$1.E_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.a($$2, b().b(), $$2);
+      }
    }
 }

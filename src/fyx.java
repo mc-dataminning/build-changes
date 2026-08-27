@@ -1,15 +1,177 @@
-public class fyx extends gag<ccn, fki<ccn>> {
-   private static final ahh a = new ahh("textures/entity/endermite.png");
+import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-   public fyx(fza.a $$0) {
-      super($$0, new fki<>($$0.a(fni.U)), 0.3F);
+public class fyx {
+   public final fzf a = new fzf();
+   public final fyx.a b;
+   public final fyx.a c;
+   public final fyx.a d;
+   public final fyx.a e;
+   public final fyx.a f;
+   public final fyx.a g;
+   public final fzi h;
+   public final fyx.a i;
+   public final fyx.a j;
+   public final fyx.a k;
+   public final fyx.a l;
+   public final fys m;
+   public final fzk n;
+   public final fyr o;
+   public final fzg p;
+   public final fza q;
+   public final fyz r;
+   public final fyy s;
+   public final fzd t;
+   public final fyt u;
+   private boolean v;
+
+   public fyx(exh $$0) {
+      this.b = new fzl($$0);
+      this.c = new fyu($$0);
+      this.d = new fzb($$0);
+      this.e = new fyw($$0);
+      this.f = new fzj($$0);
+      this.g = new fze($$0);
+      this.h = new fzi($$0);
+      this.i = new fzc($$0);
+      this.j = new fzm();
+      this.k = new fzh($$0);
+      this.l = new fyv($$0);
+      this.m = new fys($$0);
+      this.n = new fzk();
+      this.o = new fyr($$0);
+      this.p = new fzg($$0);
+      this.q = new fza($$0);
+      this.r = new fyz();
+      this.s = new fyy($$0);
+      this.t = new fzd($$0, cvw.a);
+      this.u = new fyt($$0);
    }
 
-   protected float a(ccn $$0) {
-      return 180.0F;
+   public void a() {
+      this.a.a();
+      this.b.a();
+      this.c.a();
+      this.d.a();
+      this.e.a();
+      this.f.a();
+      this.g.a();
+      this.h.a();
+      this.i.a();
+      this.j.a();
+      this.k.a();
+      this.l.a();
+      this.m.a();
+      this.n.a();
+      this.o.a();
+      this.p.a();
+      this.q.a();
+      this.r.a();
+      this.s.a();
+      this.t.a();
+      this.u.a();
    }
 
-   public ahh b(ccn $$0) {
-      return a;
+   public boolean b() {
+      this.v = !this.v;
+      return this.v;
+   }
+
+   public void a(esa $$0, fvm.a $$1, double $$2, double $$3, double $$4) {
+      if (this.v && !exh.O().ax()) {
+         this.c.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      this.r.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static Optional<bno> a(@Nullable bno $$0, int $$1) {
+      if ($$0 == null) {
+         return Optional.empty();
+      } else {
+         ens $$2 = $$0.br();
+         ens $$3 = $$0.f(1.0F).a((double)$$1);
+         ens $$4 = $$2.e($$3);
+         enn $$5 = $$0.cH().b($$3).g(1.0);
+         int $$6 = $$1 * $$1;
+         Predicate<bno> $$7 = $$0x -> !$$0x.P_() && $$0x.bt();
+         enp $$8 = cib.a($$0, $$2, $$4, $$5, $$7, (double)$$6);
+         if ($$8 == null) {
+            return Optional.empty();
+         } else {
+            return $$2.g($$8.e()) > (double)$$6 ? Optional.empty() : Optional.of($$8.a());
+         }
+      }
+   }
+
+   public static void a(esa $$0, fvm $$1, hz $$2, float $$3, float $$4, float $$5, float $$6) {
+      a($$0, $$1, $$2, $$2.b(1, 1, 1), $$3, $$4, $$5, $$6);
+   }
+
+   public static void a(esa $$0, fvm $$1, hz $$2, hz $$3, float $$4, float $$5, float $$6, float $$7) {
+      ews $$8 = exh.O().j.m();
+      if ($$8.h()) {
+         ens $$9 = $$8.b().e();
+         enn $$10 = enn.a($$2, $$3).c($$9);
+         a($$0, $$1, $$10, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   public static void a(esa $$0, fvm $$1, hz $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      ews $$8 = exh.O().j.m();
+      if ($$8.h()) {
+         ens $$9 = $$8.b().e();
+         enn $$10 = new enn($$2).c($$9).g((double)$$3);
+         a($$0, $$1, $$10, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   public static void a(esa $$0, fvm $$1, enn $$2, float $$3, float $$4, float $$5, float $$6) {
+      a($$0, $$1, $$2.a, $$2.b, $$2.c, $$2.d, $$2.e, $$2.f, $$3, $$4, $$5, $$6);
+   }
+
+   public static void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
+      ese $$12 = $$1.getBuffer(fvu.y());
+      fvk.b($$0, $$12, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11);
+   }
+
+   public static void a(esa $$0, fvm $$1, String $$2, int $$3, int $$4, int $$5, int $$6) {
+      a($$0, $$1, $$2, (double)$$3 + 0.5, (double)$$4 + 0.5, (double)$$5 + 0.5, $$6);
+   }
+
+   public static void a(esa $$0, fvm $$1, String $$2, double $$3, double $$4, double $$5, int $$6) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0.02F);
+   }
+
+   public static void a(esa $$0, fvm $$1, String $$2, double $$3, double $$4, double $$5, int $$6, float $$7) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, true, 0.0F, false);
+   }
+
+   public static void a(esa $$0, fvm $$1, String $$2, double $$3, double $$4, double $$5, int $$6, float $$7, boolean $$8, float $$9, boolean $$10) {
+      exh $$11 = exh.O();
+      ews $$12 = $$11.j.m();
+      if ($$12.h() && $$11.ao().d != null) {
+         eys $$13 = $$11.h;
+         double $$14 = $$12.b().c;
+         double $$15 = $$12.b().d;
+         double $$16 = $$12.b().e;
+         $$0.a();
+         $$0.a((float)($$3 - $$14), (float)($$4 - $$15) + 0.07F, (float)($$5 - $$16));
+         $$0.a(new Matrix4f().rotation($$12.f()));
+         $$0.b(-$$7, -$$7, $$7);
+         float $$17 = $$8 ? (float)(-$$13.b($$2)) / 2.0F : 0.0F;
+         $$17 -= $$9 / $$7;
+         $$13.a($$2, $$17, 0.0F, $$6, false, $$0.c().a(), $$1, $$10 ? eys.a.b : eys.a.a, 0, 15728880);
+         $$0.b();
+      }
+   }
+
+   public interface a {
+      void a(esa var1, fvm var2, double var3, double var5, double var7);
+
+      default void a() {
+      }
    }
 }

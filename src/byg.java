@@ -1,39 +1,29 @@
-public record byg(ahh l) {
-   public static final ahg<byg> a = a("tabby");
-   public static final ahg<byg> b = a("black");
-   public static final ahg<byg> c = a("red");
-   public static final ahg<byg> d = a("siamese");
-   public static final ahg<byg> e = a("british_shorthair");
-   public static final ahg<byg> f = a("calico");
-   public static final ahg<byg> g = a("persian");
-   public static final ahg<byg> h = a("ragdoll");
-   public static final ahg<byg> i = a("white");
-   public static final ahg<byg> j = a("jellie");
-   public static final ahg<byg> k = a("all_black");
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 
-   private static ahg<byg> a(String $$0) {
-      return ahg.a(ke.l, new ahh($$0));
+public class byg<T extends bog> extends byn<T> {
+   @Override
+   protected void a(aov $$0, T $$1) {
+      enn $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<bog> $$3 = $$0.a(bog.class, $$2, $$1x -> $$1x != $$1 && $$1x.bx());
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      bpf<?> $$4 = $$1.dO();
+      $$4.a(bxh.g, $$3);
+      $$4.a(bxh.h, new bxj($$1, $$3));
    }
 
-   public static byg a(it<byg> $$0) {
-      a($$0, a, "textures/entity/cat/tabby.png");
-      a($$0, b, "textures/entity/cat/black.png");
-      a($$0, c, "textures/entity/cat/red.png");
-      a($$0, d, "textures/entity/cat/siamese.png");
-      a($$0, e, "textures/entity/cat/british_shorthair.png");
-      a($$0, f, "textures/entity/cat/calico.png");
-      a($$0, g, "textures/entity/cat/persian.png");
-      a($$0, h, "textures/entity/cat/ragdoll.png");
-      a($$0, i, "textures/entity/cat/white.png");
-      a($$0, j, "textures/entity/cat/jellie.png");
-      return a($$0, k, "textures/entity/cat/all_black.png");
+   protected int b() {
+      return 16;
    }
 
-   private static byg a(it<byg> $$0, ahg<byg> $$1, String $$2) {
-      return it.a($$0, $$1, new byg(new ahh($$2)));
+   protected int c() {
+      return 16;
    }
 
-   public ahh a() {
-      return this.l;
+   @Override
+   public Set<bxh<?>> a() {
+      return ImmutableSet.of(bxh.g, bxh.h);
    }
 }

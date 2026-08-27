@@ -1,106 +1,201 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class ehe {
-   private static final Codec<ehe> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atx.a(ela.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), atx.a(ela.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
-            .apply($$0, ehe::new)
-   );
-   public static final Codec<ehe> a = Codec.either(Codec.INT, b).xmap($$0 -> (ehe)$$0.map(ehe::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
+   private final List<ehc> a;
    @Nullable
-   private final ekz c;
-   @Nullable
-   private final ekz d;
-   private final ehe.b e;
-   private final ehe.a f;
+   private ehe.a b;
+   private int c;
+   private final hz d;
+   private final float e;
+   private final boolean f;
 
-   public Set<ejn<?>> a() {
-      Builder<ejn<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
-   }
-
-   private ehe(Optional<ekz> $$0, Optional<ekz> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
-   }
-
-   private ehe(@Nullable ekz $$0, @Nullable ekz $$1) {
-      this.c = $$0;
+   public ehe(List<ehc> $$0, hz $$1, boolean $$2) {
+      this.a = $$0;
       this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
-         }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> aup.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
+   }
+
+   public void a() {
+      this.c++;
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public boolean c() {
+      return this.c >= this.a.size();
+   }
+
+   @Nullable
+   public ehc d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   }
+
+   public ehc a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
       }
    }
 
-   public static ehe a(int $$0) {
-      ekx $$1 = ekx.a((float)$$0);
-      return new ehe(Optional.of($$1), Optional.of($$1));
+   public void a(int $$0, ehc $$1) {
+      this.a.set($$0, $$1);
    }
 
-   public static ehe a(int $$0, int $$1) {
-      return new ehe(Optional.of(ekx.a((float)$$0)), Optional.of(ekx.a((float)$$1)));
+   public int e() {
+      return this.a.size();
    }
 
-   public static ehe b(int $$0) {
-      return new ehe(Optional.of(ekx.a((float)$$0)), Optional.empty());
+   public int f() {
+      return this.c;
    }
 
-   public static ehe c(int $$0) {
-      return new ehe(Optional.empty(), Optional.of(ekx.a((float)$$0)));
+   public void c(int $$0) {
+      this.c = $$0;
    }
 
-   public int a(ehf $$0, int $$1) {
-      return this.e.apply($$0, $$1);
+   public ens a(bno $$0, int $$1) {
+      ehc $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.dg() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dg() + 1.0F)) * 0.5;
+      return new ens($$3, $$4, $$5);
    }
 
-   public boolean b(ehf $$0, int $$1) {
-      return this.f.test($$0, $$1);
+   public hz d(int $$0) {
+      return this.a.get($$0).a();
    }
 
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof ekx $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
+   public ens a(bno $$0) {
+      return this.a($$0, this.c);
    }
 
-   @FunctionalInterface
-   interface a {
-      boolean test(ehf var1, int var2);
+   public hz g() {
+      return this.a.get(this.c).a();
    }
 
-   @FunctionalInterface
-   interface b {
-      int apply(ehf var1, int var2);
+   public ehc h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public ehc i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable ehe $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            ehc $$2 = this.a.get($$1);
+            ehc $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @axl
+   void a(ehc[] $$0, ehc[] $$1, Set<ehi> $$2) {
+      this.b = new ehe.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public ehe.a k() {
+      return this.b;
+   }
+
+   public void a(uq $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.p(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
+   }
+
+   public static ehe b(uq $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      hz $$3 = $$0.e();
+      List<ehc> $$4 = $$0.a(ehc::b);
+      ehe.a $$5 = ehe.a.b($$0);
+      ehe $$6 = new ehe($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
+   }
+
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public hz l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static ehc[] c(uq $$0) {
+      ehc[] $$1 = new ehc[$$0.n()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = ehc.b($$0);
+      }
+
+      return $$1;
+   }
+
+   static void a(uq $$0, ehc[] $$1) {
+      $$0.c($$1.length);
+
+      for (ehc $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public ehe n() {
+      ehe $$0 = new ehe(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(ehc[] a, ehc[] b, Set<ehi> c) {
+
+      public void a(uq $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         ehe.a($$0, this.a);
+         ehe.a($$0, this.b);
+      }
+
+      public static ehe.a b(uq $$0) {
+         HashSet<ehi> $$1 = $$0.a(HashSet::new, ehi::c);
+         ehc[] $$2 = ehe.c($$0);
+         ehc[] $$3 = ehe.c($$0);
+         return new ehe.a($$2, $$3, $$1);
+      }
    }
 }

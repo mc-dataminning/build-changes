@@ -1,26 +1,27 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bqq {
-   private static final float a = 0.3F;
+   public static bpx<bog> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
+   }
 
-   public static bpq<bmo> a() {
-      return brs.a(
-         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$0 -> $$0.group($$0.a(bvq.m), $$0.a(bvq.n), $$0.b(bvq.e), $$0.b(bvq.h), $$0.c(bvq.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     ig $$9 = $$0.b($$3);
-                     bvs $$10 = $$0.b($$4);
-                     if ($$6.F_().a(100) == 0 && $$6.ae() == $$9.a() && $$9.b().a($$7.dj(), 4.0) && $$10.d($$0xxx -> bmc.bh.equals($$0xxx.ai()))) {
-                        $$10.a($$1xx -> bmc.bh.equals($$1xx.ai()) && $$1xx.f((blw)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new boq($$3xx, true));
-                           $$1.a(new bvt(new boq($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public static <E extends bog> bpx<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return btj.a((Function<btj.b<E>, ? extends App<btj.c<E>, btm<E>>>)($$4 -> {
+         btj<E, ? extends btk<? extends K1, bxk>> $$5 = $$2 ? $$4.a(bxh.m) : $$4.c(bxh.m);
+         return $$4.group($$4.a(bxh.n), $$5, $$4.b(bxh.L), $$4.a(bxh.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               cds $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dM().D_().a($$11.dm())) {
+                  bxk $$12 = new bxk(new bqh($$11, false), $$1, 0);
+                  $$4x.a(new bqh($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

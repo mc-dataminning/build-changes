@@ -1,67 +1,67 @@
-import java.util.List;
-import java.util.Locale;
+import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface gix<T> {
-   static <T> gix<T> a() {
-      return $$0 -> List.of();
+public class gix {
+   public static final Comparator<gix> a = Comparator.<gix, aiy>comparing(gix::a).thenComparing(gix::b);
+   private final aiy b;
+   private final aiy c;
+   @Nullable
+   private fvu d;
+
+   public gix(aiy $$0, aiy $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static <T> gix<T> a(List<T> $$0, Function<T, Stream<String>> $$1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: invokeinterface java/util/List.isEmpty ()Z 1
-      // 06: ifeq 0d
-      // 09: invokestatic gix.a ()Lgix;
-      // 0c: areturn
-      // 0d: new gjc
-      // 10: dup
-      // 11: invokespecial gjc.<init> ()V
-      // 14: astore 2
-      // 15: aload 0
-      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
-      // 1b: astore 3
-      // 1c: aload 3
-      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
-      // 22: ifeq 48
-      // 25: aload 3
-      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-      // 2b: astore 4
-      // 2d: aload 1
-      // 2e: aload 4
-      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
-      // 35: checkcast java/util/stream/Stream
-      // 38: aload 2
-      // 39: aload 4
-      // 3b: invokedynamic accept (Lgjc;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, gix.a (Lgjc;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
-      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
-      // 45: goto 1c
-      // 48: aload 2
-      // 49: invokevirtual gjc.a ()V
-      // 4c: aload 2
-      // 4d: dup
-      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 51: pop
-      // 52: invokedynamic search (Lgjc;)Lgix; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, gjc.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
-      // 57: areturn
+   public aiy a() {
+      return this.b;
    }
 
-   List<T> search(String var1);
+   public aiy b() {
+      return this.c;
+   }
+
+   public ggu c() {
+      return exh.O().a(this.a()).apply(this.b());
+   }
+
+   public fvu a(Function<aiy, fvu> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
+      }
+
+      return this.d;
+   }
+
+   public ese a(fvm $$0, Function<aiy, fvu> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
+
+   public ese a(fvm $$0, Function<aiy, fvu> $$1, boolean $$2) {
+      return this.c().a(gbr.c($$0, this.a($$1), true, $$2));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         gix $$1 = (gix)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
+
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   }
 }

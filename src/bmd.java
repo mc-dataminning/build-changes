@@ -1,74 +1,235 @@
-public enum bmd implements avl {
-   a(bmd.a.a, 0, 0, "mainhand"),
-   b(bmd.a.a, 1, 5, "offhand"),
-   c(bmd.a.b, 0, 1, "feet"),
-   d(bmd.a.b, 1, 2, "legs"),
-   e(bmd.a.b, 2, 3, "chest"),
-   f(bmd.a.b, 3, 4, "head");
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public static final avl.a<bmd> g = avl.a(bmd::values);
-   private final bmd.a h;
-   private final int i;
-   private final int j;
-   private final String k;
+public class bmd implements bln, clz {
+   private final int c;
+   private final is<coz> d;
+   @Nullable
+   private List<blp> e;
 
-   private bmd(bmd.a $$0, int $$1, int $$2, String $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.k = $$3;
+   public bmd(int $$0) {
+      this.c = $$0;
+      this.d = is.a($$0, coz.h);
    }
 
-   public bmd.a a() {
-      return this.h;
+   public bmd(coz... $$0) {
+      this.c = $$0.length;
+      this.d = is.a(coz.h, $$0);
    }
 
-   public int b() {
-      return this.i;
+   public void a(blp $$0) {
+      if (this.e == null) {
+         this.e = Lists.newArrayList();
+      }
+
+      this.e.add($$0);
    }
 
-   public int a(int $$0) {
-      return $$0 + this.i;
-   }
-
-   public int d() {
-      return this.j;
-   }
-
-   public String e() {
-      return this.k;
-   }
-
-   public boolean f() {
-      return this.h == bmd.a.b;
+   public void b(blp $$0) {
+      if (this.e != null) {
+         this.e.remove($$0);
+      }
    }
 
    @Override
-   public String c() {
-      return this.k;
+   public coz a(int $$0) {
+      return $$0 >= 0 && $$0 < this.d.size() ? this.d.get($$0) : coz.h;
    }
 
-   public static bmd a(String $$0) {
-      bmd $$1 = g.a($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+   public List<coz> f() {
+      List<coz> $$0 = this.d.stream().filter($$0x -> !$$0x.b()).collect(Collectors.toList());
+      this.a();
+      return $$0;
+   }
+
+   @Override
+   public coz a(int $$0, int $$1) {
+      coz $$2 = blo.a(this.d, $$0, $$1);
+      if (!$$2.b()) {
+         this.e();
       }
+
+      return $$2;
    }
 
-   public static bmd a(bmd.a $$0, int $$1) {
-      for (bmd $$2 : values()) {
-         if ($$2.a() == $$0 && $$2.b() == $$1) {
-            return $$2;
+   public coz a(cou $$0, int $$1) {
+      coz $$2 = new coz($$0, 0);
+
+      for (int $$3 = this.c - 1; $$3 >= 0; $$3--) {
+         coz $$4 = this.a($$3);
+         if ($$4.d().equals($$0)) {
+            int $$5 = $$1 - $$2.M();
+            coz $$6 = $$4.a($$5);
+            $$2.g($$6.M());
+            if ($$2.M() == $$1) {
+               break;
+            }
          }
       }
 
-      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
+      if (!$$2.b()) {
+         this.e();
+      }
+
+      return $$2;
    }
 
-   public static enum a {
-      a,
-      b;
+   public coz a(coz $$0) {
+      if ($$0.b()) {
+         return coz.h;
+      } else {
+         coz $$1 = $$0.q();
+         this.d($$1);
+         if ($$1.b()) {
+            return coz.h;
+         } else {
+            this.c($$1);
+            return $$1.b() ? coz.h : $$1;
+         }
+      }
+   }
+
+   public boolean b(coz $$0) {
+      boolean $$1 = false;
+
+      for (coz $$2 : this.d) {
+         if ($$2.b() || coz.c($$2, $$0) && $$2.M() < $$2.g()) {
+            $$1 = true;
+            break;
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public coz b(int $$0) {
+      coz $$1 = this.d.get($$0);
+      if ($$1.b()) {
+         return coz.h;
+      } else {
+         this.d.set($$0, coz.h);
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(int $$0, coz $$1) {
+      this.d.set($$0, $$1);
+      if (!$$1.b() && $$1.M() > this.al_()) {
+         $$1.f(this.al_());
+      }
+
+      this.e();
+   }
+
+   @Override
+   public int b() {
+      return this.c;
+   }
+
+   @Override
+   public boolean aj_() {
+      for (coz $$0 : this.d) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.e != null) {
+         for (blp $$0 : this.e) {
+            $$0.a(this);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(chh $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+      this.e();
+   }
+
+   @Override
+   public void a(chl $$0) {
+      for (coz $$1 : this.d) {
+         $$0.b($$1);
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.d.stream().filter($$0 -> !$$0.b()).collect(Collectors.toList()).toString();
+   }
+
+   private void c(coz $$0) {
+      for (int $$1 = 0; $$1 < this.c; $$1++) {
+         coz $$2 = this.a($$1);
+         if ($$2.b()) {
+            this.a($$1, $$0.c());
+            return;
+         }
+      }
+   }
+
+   private void d(coz $$0) {
+      for (int $$1 = 0; $$1 < this.c; $$1++) {
+         coz $$2 = this.a($$1);
+         if (coz.c($$2, $$0)) {
+            this.a($$0, $$2);
+            if ($$0.b()) {
+               return;
+            }
+         }
+      }
+   }
+
+   private void a(coz $$0, coz $$1) {
+      int $$2 = Math.min(this.al_(), $$1.g());
+      int $$3 = Math.min($$0.M(), $$2 - $$1.M());
+      if ($$3 > 0) {
+         $$1.g($$3);
+         $$0.h($$3);
+         this.e();
+      }
+   }
+
+   public void a(tc $$0) {
+      this.a();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         coz $$2 = coz.a($$0.a($$1));
+         if (!$$2.b()) {
+            this.a($$2);
+         }
+      }
+   }
+
+   public tc g() {
+      tc $$0 = new tc();
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         coz $$2 = this.a($$1);
+         if (!$$2.b()) {
+            $$0.add($$2.b(new sw()));
+         }
+      }
+
+      return $$0;
+   }
+
+   public is<coz> h() {
+      return this.d;
    }
 }

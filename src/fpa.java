@@ -1,47 +1,37 @@
-import javax.annotation.Nullable;
+public final class fpa {
+   private final aiy a;
+   private final String b;
 
-public enum fpa {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
-
-   private final vg n;
-
-   private fpa(String $$0) {
-      this.n = vg.c("gui.banned.reason." + $$0);
+   public fpa(aiy $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public vg a() {
-      return this.n;
+   public aiy a() {
+      return this.a;
    }
 
-   @Nullable
-   public static fpa a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
-         default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
-      };
+   public String b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fpa $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.a + "#" + this.b;
    }
 }

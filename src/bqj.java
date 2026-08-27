@@ -1,48 +1,73 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class bqj {
-   public static bog<bmx> a(bvq<hx> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, emc::c);
+public class bqj extends bpw<boo> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<bog, Float> f;
+   private final Function<bog, Double> g;
+
+   public bqj(Function<bog, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   public static bpq<bmx> b(bvq<? extends blw> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, blw::dj);
+   public bqj(Function<bog, Float> $$0, Function<bog, Double> $$1) {
+      super(ac.a(() -> {
+         Builder<bxh<?>, bxi> $$0x = ImmutableMap.builder();
+         $$0x.put(bxh.n, bxi.c);
+         $$0x.put(bxh.m, bxi.c);
+         $$0x.put(bxh.P, bxi.b);
+         $$0x.put(bxh.R, bxi.c);
+         $$0x.put(bxh.O, bxi.a);
+         $$0x.put(bxh.r, bxi.b);
+         $$0x.put(bxh.Z, bxi.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   private static <T> bpq<bmx> a(bvq<T> $$0, float $$1, int $$2, boolean $$3, Function<T, emc> $$4) {
-      return brs.a(
-         (Function<brs.b<bmx>, ? extends App<brs.c<bmx>, brv<bmx>>>)($$5 -> $$5.group($$5.a(bvq.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<bvt> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     emc $$11 = $$8.dj();
-                     emc $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((ir)$$12, (double)$$2)) {
-                        return false;
-                     } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           emc $$13 = $$10.get().a().a().d($$11);
-                           emc $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
+   protected float a(boo $$0) {
+      return this.f.apply($$0);
+   }
 
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           emc $$16 = bxk.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new bvt($$16, $$1, 0));
-                              break;
-                           }
-                        }
+   private Optional<chh> b(boo $$0) {
+      return $$0.dO().c(bxh.O);
+   }
 
-                        return true;
-                     }
-                  }
-               }))
-      );
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected boolean a(aov $$0, boo $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.dO().a(bxh.r) && !$$1.dO().a(bxh.Z);
+   }
+
+   protected void b(aov $$0, boo $$1, long $$2) {
+      $$1.dO().a(bxh.R, true);
+   }
+
+   protected void c(aov $$0, boo $$1, long $$2) {
+      bpf<?> $$3 = $$1.dO();
+      $$3.a(bxh.P, 100);
+      $$3.a(bxh.R, false);
+      $$3.b(bxh.m);
+      $$3.b(bxh.n);
+   }
+
+   protected void d(aov $$0, boo $$1, long $$2) {
+      chh $$3 = this.b($$1).get();
+      bpf<?> $$4 = $$1.dO();
+      $$4.a(bxh.n, new bqh($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.f($$3) < awh.k($$5)) {
+         $$4.b(bxh.m);
+      } else {
+         $$4.a(bxh.m, new bxk(new bqh($$3, false), this.a($$1), 2));
+      }
    }
 }

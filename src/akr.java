@@ -2,14 +2,18 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class akr {
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("say").requires($$0x -> $$0x.c(2))).then(dt.a("message", ej.a()).executes($$0x -> {
-         ej.a($$0x, "message", $$1 -> {
-            ds $$2 = (ds)$$0x.getSource();
-            aqw $$3 = $$2.l().ae();
-            $$3.a($$1, $$2, vc.a(vc.d, $$2));
-         });
-         return 1;
-      })));
+   public static void a(CommandDispatcher<du> $$0) {
+      LiteralArgumentBuilder<du> $$1 = (LiteralArgumentBuilder<du>)dv.a("debugmobspawning").requires($$0x -> $$0x.c(2));
+
+      for (boj $$2 : boj.values()) {
+         $$1.then(dv.a($$2.a()).then(dv.a("at", fo.a()).executes($$1x -> a((du)$$1x.getSource(), $$2, fo.a($$1x, "at")))));
+      }
+
+      $$0.register($$1);
+   }
+
+   private static int a(du $$0, boj $$1, hz $$2) {
+      cvy.a($$1, $$0.e(), $$2);
+      return 1;
    }
 }

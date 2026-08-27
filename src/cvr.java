@@ -1,76 +1,78 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Dynamic;
 
-public abstract class cvr extends cwy {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final emv h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final emv b = ems.a(
-      ems.b(), ems.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), emg.e
-   );
-   protected final jd.a c;
+public final class cvr {
+   private final String a;
+   private final cvk b;
+   private final boolean c;
+   private final blr d;
+   private final boolean e;
+   private final cvj f;
+   private final cwh g;
 
-   @Override
-   protected abstract MapCodec<? extends cvr> a();
-
-   public cvr(djo.d $$0, jd.a $$1) {
-      super($$0);
-      this.c = $$1;
+   public cvr(String $$0, cvk $$1, boolean $$2, blr $$3, boolean $$4, cvj $$5, cwh $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   protected double b(djp $$0) {
-      return 0.0;
+   public static cvr a(Dynamic<?> $$0, cwh $$1) {
+      cvk $$2 = cvk.a($$0.get("GameType").asInt(0));
+      return new cvr(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> blr.a($$0x.byteValue())).result().orElse(blr.c),
+         $$0.get("allowCommands").asBoolean($$2 == cvk.b),
+         new cvj($$0.get("GameRules")),
+         $$1
+      );
    }
 
-   protected boolean a(djp $$0, hx $$1, blw $$2) {
-      return $$2.ds() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
+   public String a() {
+      return this.a;
    }
 
-   @Override
-   public bke a(cng $$0, djp $$1, ctx $$2, hx $$3, cfq $$4, bkb $$5, ely $$6) {
-      jd $$7 = this.c.b().get($$0.d());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
+   public cvk b() {
+      return this.b;
    }
 
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return b;
+   public boolean c() {
+      return this.c;
    }
 
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2) {
-      return h;
+   public blr d() {
+      return this.d;
    }
 
-   @Override
-   public boolean d_(djp $$0) {
-      return true;
+   public boolean e() {
+      return this.e;
    }
 
-   @Override
-   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
-      return false;
+   public cvj f() {
+      return this.f;
    }
 
-   public abstract boolean d(djp var1);
-
-   @Override
-   public void a(djp $$0, ane $$1, hx $$2, auw $$3) {
-      hx $$4 = dcp.a((ctx)$$1, $$2);
-      if ($$4 != null) {
-         eey $$5 = dcp.a($$1, $$4);
-         if ($$5 != efa.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
-      }
+   public cwh g() {
+      return this.g;
    }
 
-   protected boolean a(eey $$0) {
-      return false;
+   public cvr a(cvk $$0) {
+      return new cvr(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
    }
 
-   protected void a(djp $$0, ctx $$1, hx $$2, eey $$3) {
+   public cvr a(blr $$0) {
+      return new cvr(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   }
+
+   public cvr a(cwh $$0) {
+      return new cvr(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
+
+   public cvr h() {
+      return new cvr(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
    }
 }

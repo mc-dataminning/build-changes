@@ -1,135 +1,192 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class cam extends cah {
-   private int bV = 47999;
-
-   public cam(bmc<? extends cam> $$0, ctx $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public boolean go() {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   protected cah gt() {
-      return bmc.bc.a(this.dL());
-   }
-
-   @Override
-   public void b(so $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.bV);
-   }
-
-   @Override
-   public void a(so $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.bV = $$0.h("DespawnDelay");
+public class cam extends bzq {
+   private static final aie<Integer> e = aih.a(cam.class, aig.b);
+   int bT;
+   int bU;
+   private static final Predicate<bog> bV = $$0 -> {
+      if ($$0 instanceof chh $$1 && $$1.f()) {
+         return false;
       }
+
+      return !$$0.ai().a(auc.A);
+   };
+   static final byu bW = byu.b().e().d().a(bV);
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+
+   public cam(bnu<? extends cam> $$0, cvn $$1) {
+      super($$0, $$1);
+      this.k_();
+   }
+
+   @Override
+   protected void c_() {
+      super.c_();
+      this.am.a(e, 0);
+   }
+
+   public int gi() {
+      return this.am.b(e);
+   }
+
+   public void c(int $$0) {
+      this.am.b(e, $$0);
+   }
+
+   @Override
+   public void a(aie<?> $$0) {
+      if (e.equals($$0)) {
+         this.k_();
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public void b(sw $$0) {
+      super.b($$0);
+      $$0.a("PuffState", this.gi());
+   }
+
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      this.c(Math.min($$0.h("PuffState"), 2));
+   }
+
+   @Override
+   public coz b() {
+      return new coz(cpc.qE);
    }
 
    @Override
    protected void B() {
       super.B();
-      this.bP.a(1, new bud(this, 2.0));
-      this.bQ.a(1, new cam.a(this));
+      this.bO.a(1, new cam.a(this));
    }
 
    @Override
-   public void w(int $$0) {
-      this.bV = $$0;
-   }
+   public void l() {
+      if (!this.dM().B && this.bx() && this.cY()) {
+         if (this.bT > 0) {
+            if (this.gi() == 0) {
+               this.b(atk.uj);
+               this.c(1);
+            } else if (this.bT > 40 && this.gi() == 1) {
+               this.b(atk.uj);
+               this.c(2);
+            }
 
-   @Override
-   protected void f(cfq $$0) {
-      blw $$1 = this.fU();
-      if (!($$1 instanceof cfj)) {
-         super.f($$0);
+            this.bT++;
+         } else if (this.gi() != 0) {
+            if (this.bU > 60 && this.gi() == 2) {
+               this.b(atk.ui);
+               this.c(1);
+            } else if (this.bU > 100 && this.gi() == 1) {
+               this.b(atk.ui);
+               this.c(0);
+            }
+
+            this.bU++;
+         }
       }
+
+      super.l();
    }
 
    @Override
    public void d_() {
       super.d_();
-      if (!this.dL().B) {
-         this.gW();
-      }
-   }
-
-   private void gW() {
-      if (this.gX()) {
-         this.bV = this.gY() ? ((cfj)this.fU()).go() - 1 : this.bV - 1;
-         if (this.bV <= 0) {
-            this.a(true, false);
-            this.am();
+      if (this.bx() && this.gi() > 0) {
+         for (boi $$1 : this.dM().a(boi.class, this.cH().g(0.3), $$0 -> bW.a(this, $$0))) {
+            if ($$1.bx()) {
+               this.a($$1);
+            }
          }
       }
    }
 
-   private boolean gX() {
-      return !this.gu() && !this.gZ() && !this.cV();
+   private void a(boi $$0) {
+      int $$1 = this.gi();
+      if ($$0.a(this.dN().b((bog)this), (float)(1 + $$1))) {
+         $$0.b(new bnb(bnd.s, 60 * $$1, 0), this);
+         this.a(atk.un, 1.0F, 1.0F);
+      }
    }
 
-   private boolean gY() {
-      return this.fU() instanceof cfj;
-   }
-
-   private boolean gZ() {
-      return this.fT() && !this.gY();
-   }
-
-   @Nullable
    @Override
-   public bnh a(cum $$0, bka $$1, bms $$2, @Nullable bnh $$3, @Nullable so $$4) {
-      if ($$2 == bms.h) {
-         this.c_(0);
-      }
+   public void b_(chh $$0) {
+      int $$1 = this.gi();
+      if ($$0 instanceof aow && $$1 > 0 && $$0.a(this.dN().b((bog)this), (float)(1 + $$1))) {
+         if (!this.aU()) {
+            ((aow)$$0).d.b(new abm(abm.k, 0.0F));
+         }
 
-      if ($$3 == null) {
-         $$3 = new blr.a(false);
+         $$0.b(new bnb(bnd.s, 60 * $$1, 0), this);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   protected static class a extends bvk {
-      private final cah a;
-      private bmo b;
-      private int c;
+   @Override
+   protected atj y() {
+      return atk.uh;
+   }
 
-      public a(cah $$0) {
-         super($$0, false);
+   @Override
+   protected atj n_() {
+      return atk.uk;
+   }
+
+   @Override
+   protected atj d(bmn $$0) {
+      return atk.um;
+   }
+
+   @Override
+   protected atj gh() {
+      return atk.ul;
+   }
+
+   @Override
+   public bnr e(bor $$0) {
+      return super.e($$0).a(t(this.gi()));
+   }
+
+   private static float t(int $$0) {
+      switch ($$0) {
+         case 0:
+            return 0.5F;
+         case 1:
+            return 0.7F;
+         default:
+            return 1.0F;
+      }
+   }
+
+   static class a extends bvb {
+      private final cam a;
+
+      public a(cam $$0) {
          this.a = $$0;
-         this.a(EnumSet.of(btk.a.d));
       }
 
       @Override
       public boolean a() {
-         if (!this.a.fT()) {
-            return false;
-         } else if (!(this.a.fU() instanceof cfj $$1)) {
-            return false;
-         } else {
-            this.b = $$1.eh();
-            int $$2 = $$1.ei();
-            return $$2 != this.c && this.a(this.b, bxd.a);
-         }
+         List<bog> $$0 = this.a.dM().a(bog.class, this.a.cH().g(2.0), $$0x -> cam.bW.a(this.a, $$0x));
+         return !$$0.isEmpty();
       }
 
       @Override
       public void c() {
-         this.e.h(this.b);
-         blw $$0 = this.a.fU();
-         if ($$0 instanceof cfj) {
-            this.c = ((cfj)$$0).ei();
-         }
+         this.a.bT = 1;
+         this.a.bU = 0;
+      }
 
-         super.c();
+      @Override
+      public void d() {
+         this.a.bT = 0;
       }
    }
 }

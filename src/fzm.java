@@ -1,16 +1,45 @@
-public class fzm extends gbh<bmg> {
-   private static final ahh a = new ahh("textures/entity/squid/glow_squid.png");
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public fzm(fza.a $$0, fml<bmg> $$1) {
-      super($$0, $$1);
+public class fzm implements fyx.a {
+   private final List<hz> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(hz $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
-   public ahh a(bmg $$0) {
-      return a;
-   }
+   @Override
+   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
+      ese $$5 = $$1.getBuffer(fvu.y());
 
-   protected int a(bmg $$0, hx $$1) {
-      int $$2 = (int)aup.b(0.0F, 15.0F, 1.0F - (float)$$0.A() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         hz $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         fvk.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
+      }
    }
 }

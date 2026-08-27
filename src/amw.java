@@ -1,501 +1,61 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2IntMap;
-import it.unimi.dsi.fastutil.longs.Long2IntMaps;
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
-public abstract class amw {
-   static final Logger a = LogUtils.getLogger();
-   static final int b = amn.a(amx.d);
-   private static final int c = 4;
-   final Long2ObjectMap<ObjectSet<anf>> d = new Long2ObjectOpenHashMap();
-   final Long2ObjectOpenHashMap<avi<ani<?>>> e = new Long2ObjectOpenHashMap();
-   private final amw.a f = new amw.a();
-   private final amw.b g = new amw.b(8);
-   private final ank h = new ank();
-   private final amw.c i = new amw.c(32);
-   final Set<amm> j = Sets.newHashSet();
-   final amq k;
-   final biu<amq.a<Runnable>> l;
-   final biu<amq.b> m;
-   final LongSet n = new LongOpenHashSet();
-   final Executor o;
-   private long p;
-   private int q = 10;
+public class amw {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vq.c("commands.summon.invalidPosition"));
 
-   protected amw(Executor $$0, Executor $$1) {
-      biu<Runnable> $$2 = biu.a("player ticket throttler", $$1::execute);
-      amq $$3 = new amq(ImmutableList.of($$2), $$0, 4);
-      this.k = $$3;
-      this.l = $$3.a($$2, true);
-      this.m = $$3.a($$2);
-      this.o = $$1;
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("summon").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("entity", et.a($$1, kg.u))
+                     .suggests(hp.d)
+                     .executes($$0x -> b((du)$$0x.getSource(), et.e($$0x, "entity"), ((du)$$0x.getSource()).d(), new sw(), true)))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("pos", fv.a())
+                           .executes($$0x -> b((du)$$0x.getSource(), et.e($$0x, "entity"), fv.a($$0x, "pos"), new sw(), true)))
+                        .then(dv.a("nbt", ee.a()).executes($$0x -> b((du)$$0x.getSource(), et.e($$0x, "entity"), fv.a($$0x, "pos"), ee.a($$0x, "nbt"), false)))
+                  )
+            )
+      );
    }
 
-   protected void a() {
-      this.p++;
-      ObjectIterator<Entry<avi<ani<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
-
-      while ($$0.hasNext()) {
-         Entry<avi<ani<?>>> $$1 = (Entry<avi<ani<?>>>)$$0.next();
-         Iterator<ani<?>> $$2 = ((avi)$$1.getValue()).iterator();
-         boolean $$3 = false;
-
-         while ($$2.hasNext()) {
-            ani<?> $$4 = $$2.next();
-            if ($$4.b(this.p)) {
-               $$2.remove();
-               $$3 = true;
-               this.h.b($$1.getLongKey(), $$4);
-            }
-         }
-
-         if ($$3) {
-            this.f.b($$1.getLongKey(), a((avi<ani<?>>)$$1.getValue()), false);
-         }
-
-         if (((avi)$$1.getValue()).isEmpty()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   private static int a(avi<ani<?>> $$0) {
-      return !$$0.isEmpty() ? $$0.b().b() : amn.a + 1;
-   }
-
-   protected abstract boolean a(long var1);
-
-   @Nullable
-   protected abstract amm b(long var1);
-
-   @Nullable
-   protected abstract amm a(long var1, int var3, @Nullable amm var4, int var5);
-
-   public boolean a(amo $$0) {
-      this.g.a();
-      this.h.a();
-      this.i.a();
-      int $$1 = Integer.MAX_VALUE - this.f.a(Integer.MAX_VALUE);
-      boolean $$2 = $$1 != 0;
-      if ($$2) {
-      }
-
-      if (!this.j.isEmpty()) {
-         this.j.forEach($$1x -> $$1x.a($$0, this.o));
-         this.j.clear();
-         return true;
+   public static bno a(du $$0, ij.c<bnu<?>> $$1, ens $$2, sw $$3, boolean $$4) throws CommandSyntaxException {
+      hz $$5 = hz.a($$2);
+      if (!cvn.l($$5)) {
+         throw c.create();
       } else {
-         if (!this.n.isEmpty()) {
-            LongIterator $$3 = this.n.iterator();
-
-            while ($$3.hasNext()) {
-               long $$4 = $$3.nextLong();
-               if (this.g($$4).stream().anyMatch($$0x -> $$0x.a() == anj.c)) {
-                  amm $$5 = $$0.a($$4);
-                  if ($$5 == null) {
-                     throw new IllegalStateException();
-                  }
-
-                  CompletableFuture<Either<dlw, amm.a>> $$6 = $$5.b();
-                  $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(amq.a(() -> {
-                        }, $$4, false))));
-               }
-            }
-
-            this.n.clear();
-         }
-
-         return $$2;
-      }
-   }
-
-   void a(long $$0, ani<?> $$1) {
-      avi<ani<?>> $$2 = this.g($$0);
-      int $$3 = a($$2);
-      ani<?> $$4 = $$2.a($$1);
-      $$4.a(this.p);
-      if ($$1.b() < $$3) {
-         this.f.b($$0, $$1.b(), true);
-      }
-   }
-
-   void b(long $$0, ani<?> $$1) {
-      avi<ani<?>> $$2 = this.g($$0);
-      if ($$2.remove($$1)) {
-      }
-
-      if ($$2.isEmpty()) {
-         this.e.remove($$0);
-      }
-
-      this.f.b($$0, a($$2), false);
-   }
-
-   public <T> void a(anj<T> $$0, cte $$1, int $$2, T $$3) {
-      this.a($$1.a(), new ani<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(anj<T> $$0, cte $$1, int $$2, T $$3) {
-      ani<T> $$4 = new ani<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public <T> void c(anj<T> $$0, cte $$1, int $$2, T $$3) {
-      ani<T> $$4 = new ani<>($$0, amn.a(amx.b) - $$2, $$3);
-      long $$5 = $$1.a();
-      this.a($$5, $$4);
-      this.h.a($$5, $$4);
-   }
-
-   public <T> void d(anj<T> $$0, cte $$1, int $$2, T $$3) {
-      ani<T> $$4 = new ani<>($$0, amn.a(amx.b) - $$2, $$3);
-      long $$5 = $$1.a();
-      this.b($$5, $$4);
-      this.h.b($$5, $$4);
-   }
-
-   private avi<ani<?>> g(long $$0) {
-      return (avi<ani<?>>)this.e.computeIfAbsent($$0, $$0x -> avi.a(4));
-   }
-
-   protected void a(cte $$0, boolean $$1) {
-      ani<cte> $$2 = new ani<>(anj.d, amo.c, $$0);
-      long $$3 = $$0.a();
-      if ($$1) {
-         this.a($$3, $$2);
-         this.h.a($$3, $$2);
-      } else {
-         this.b($$3, $$2);
-         this.h.b($$3, $$2);
-      }
-   }
-
-   public void a(iz $$0, anf $$1) {
-      cte $$2 = $$0.r();
-      long $$3 = $$2.a();
-      ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
-      this.g.b($$3, 0, true);
-      this.i.b($$3, 0, true);
-      this.h.a(anj.c, $$2, this.g(), $$2);
-   }
-
-   public void b(iz $$0, anf $$1) {
-      cte $$2 = $$0.r();
-      long $$3 = $$2.a();
-      ObjectSet<anf> $$4 = (ObjectSet<anf>)this.d.get($$3);
-      $$4.remove($$1);
-      if ($$4.isEmpty()) {
-         this.d.remove($$3);
-         this.g.b($$3, Integer.MAX_VALUE, false);
-         this.i.b($$3, Integer.MAX_VALUE, false);
-         this.h.b(anj.c, $$2, this.g(), $$2);
-      }
-   }
-
-   private int g() {
-      return Math.max(0, amn.a(amx.d) - this.q);
-   }
-
-   public boolean c(long $$0) {
-      return amn.c(this.h.c($$0));
-   }
-
-   public boolean d(long $$0) {
-      return amn.d(this.h.c($$0));
-   }
-
-   protected String e(long $$0) {
-      avi<ani<?>> $$1 = (avi<ani<?>>)this.e.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
-   }
-
-   protected void a(int $$0) {
-      this.i.a($$0);
-   }
-
-   public void b(int $$0) {
-      if ($$0 != this.q) {
-         this.q = $$0;
-         this.h.a(this.g());
-      }
-   }
-
-   public int b() {
-      this.g.a();
-      return this.g.a.size();
-   }
-
-   public boolean f(long $$0) {
-      this.g.a();
-      return this.g.a.containsKey($$0);
-   }
-
-   public String c() {
-      return this.k.b();
-   }
-
-   private void a(String $$0) {
-      try (FileOutputStream $$1 = new FileOutputStream(new File($$0))) {
-         ObjectIterator var3 = this.e.long2ObjectEntrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<avi<ani<?>>> $$2 = (Entry<avi<ani<?>>>)var3.next();
-            cte $$3 = new cte($$2.getLongKey());
-
-            for (ani<?> $$4 : (avi)$$2.getValue()) {
-               $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
-            }
-         }
-      } catch (IOException var10) {
-         a.error("Failed to dump tickets to {}", $$0, var10);
-      }
-   }
-
-   @VisibleForTesting
-   ank d() {
-      return this.h;
-   }
-
-   public void e() {
-      ImmutableSet<anj<?>> $$0 = ImmutableSet.of(anj.h, anj.g, anj.e);
-      ObjectIterator<Entry<avi<ani<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
-
-      while ($$1.hasNext()) {
-         Entry<avi<ani<?>>> $$2 = (Entry<avi<ani<?>>>)$$1.next();
-         Iterator<ani<?>> $$3 = ((avi)$$2.getValue()).iterator();
-         boolean $$4 = false;
-
-         while ($$3.hasNext()) {
-            ani<?> $$5 = $$3.next();
-            if (!$$0.contains($$5.a())) {
-               $$3.remove();
-               $$4 = true;
-               this.h.b($$2.getLongKey(), $$5);
-            }
-         }
-
-         if ($$4) {
-            this.f.b($$2.getLongKey(), a((avi<ani<?>>)$$2.getValue()), false);
-         }
-
-         if (((avi)$$2.getValue()).isEmpty()) {
-            $$1.remove();
-         }
-      }
-   }
-
-   public boolean f() {
-      return !this.e.isEmpty();
-   }
-
-   class a extends amr {
-      private static final int b = amn.a + 1;
-
-      public a() {
-         super(b + 1, 16, 256);
-      }
-
-      @Override
-      protected int b(long $$0) {
-         avi<ani<?>> $$1 = (avi<ani<?>>)amw.this.e.get($$0);
-         if ($$1 == null) {
-            return Integer.MAX_VALUE;
+         sw $$6 = $$3.h();
+         $$6.a("id", $$1.h().a().toString());
+         aov $$7 = $$0.e();
+         bno $$8 = bnu.a($$6, $$7, $$1x -> {
+            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dC(), $$1x.dE());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
          } else {
-            return $$1.isEmpty() ? Integer.MAX_VALUE : $$1.b().b();
-         }
-      }
-
-      @Override
-      protected int c(long $$0) {
-         if (!amw.this.a($$0)) {
-            amm $$1 = amw.this.b($$0);
-            if ($$1 != null) {
-               return $$1.m();
+            if ($$4 && $$8 instanceof boi) {
+               ((boi)$$8).a($$0.e(), $$0.e().d_($$8.dm()), bok.n, null, null);
             }
-         }
 
-         return b;
-      }
-
-      @Override
-      protected void a(long $$0, int $$1) {
-         amm $$2 = amw.this.b($$0);
-         int $$3 = $$2 == null ? b : $$2.m();
-         if ($$3 != $$1) {
-            $$2 = amw.this.a($$0, $$1, $$2, $$3);
-            if ($$2 != null) {
-               amw.this.j.add($$2);
-            }
-         }
-      }
-
-      public int a(int $$0) {
-         return this.b($$0);
-      }
-   }
-
-   class b extends amr {
-      protected final Long2ByteMap a = new Long2ByteOpenHashMap();
-      protected final int b;
-
-      protected b(int $$0) {
-         super($$0 + 2, 16, 256);
-         this.b = $$0;
-         this.a.defaultReturnValue((byte)($$0 + 2));
-      }
-
-      @Override
-      protected int c(long $$0) {
-         return this.a.get($$0);
-      }
-
-      @Override
-      protected void a(long $$0, int $$1) {
-         byte $$2;
-         if ($$1 > this.b) {
-            $$2 = this.a.remove($$0);
-         } else {
-            $$2 = this.a.put($$0, (byte)$$1);
-         }
-
-         this.a($$0, $$2, $$1);
-      }
-
-      protected void a(long $$0, int $$1, int $$2) {
-      }
-
-      @Override
-      protected int b(long $$0) {
-         return this.d($$0) ? 0 : Integer.MAX_VALUE;
-      }
-
-      private boolean d(long $$0) {
-         ObjectSet<anf> $$1 = (ObjectSet<anf>)amw.this.d.get($$0);
-         return $$1 != null && !$$1.isEmpty();
-      }
-
-      public void a() {
-         this.b(Integer.MAX_VALUE);
-      }
-
-      private void a(String $$0) {
-         try (FileOutputStream $$1 = new FileOutputStream(new File($$0))) {
-            ObjectIterator var3 = this.a.long2ByteEntrySet().iterator();
-
-            while (var3.hasNext()) {
-               it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
-               cte $$3 = new cte($$2.getLongKey());
-               String $$4 = Byte.toString($$2.getByteValue());
-               $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
-            }
-         } catch (IOException var9) {
-            amw.a.error("Failed to dump chunks to {}", $$0, var9);
-         }
-      }
-   }
-
-   class c extends amw.b {
-      private int g;
-      private final Long2IntMap h = Long2IntMaps.synchronize(new Long2IntOpenHashMap());
-      private final LongSet i = new LongOpenHashSet();
-
-      protected c(int $$0) {
-         super($$0);
-         this.g = 0;
-         this.h.defaultReturnValue($$0 + 2);
-      }
-
-      @Override
-      protected void a(long $$0, int $$1, int $$2) {
-         this.i.add($$0);
-      }
-
-      public void a(int $$0) {
-         ObjectIterator var2 = this.a.long2ByteEntrySet().iterator();
-
-         while (var2.hasNext()) {
-            it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$1 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var2.next();
-            byte $$2 = $$1.getByteValue();
-            long $$3 = $$1.getLongKey();
-            this.a($$3, $$2, this.c($$2), $$2 <= $$0);
-         }
-
-         this.g = $$0;
-      }
-
-      private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
-         if ($$2 != $$3) {
-            ani<?> $$4 = new ani<>(anj.c, amw.b, new cte($$0));
-            if ($$3) {
-               amw.this.l.a(amq.a(() -> amw.this.o.execute(() -> {
-                     if (this.c(this.c($$0))) {
-                        amw.this.a($$0, $$4);
-                        amw.this.n.add($$0);
-                     } else {
-                        amw.this.m.a(amq.a(() -> {
-                        }, $$0, false));
-                     }
-                  }), $$0, () -> $$1));
+            if (!$$7.e($$8)) {
+               throw b.create();
             } else {
-               amw.this.m.a(amq.a(() -> amw.this.o.execute(() -> amw.this.b($$0, $$4)), $$0, true));
+               return $$8;
             }
          }
       }
+   }
 
-      @Override
-      public void a() {
-         super.a();
-         if (!this.i.isEmpty()) {
-            LongIterator $$0 = this.i.iterator();
-
-            while ($$0.hasNext()) {
-               long $$1 = $$0.nextLong();
-               int $$2 = this.h.get($$1);
-               int $$3 = this.c($$1);
-               if ($$2 != $$3) {
-                  amw.this.k.onLevelChange(new cte($$1), () -> this.h.get($$1), $$3, $$1x -> {
-                     if ($$1x >= this.h.defaultReturnValue()) {
-                        this.h.remove($$1);
-                     } else {
-                        this.h.put($$1, $$1x);
-                     }
-                  });
-                  this.a($$1, $$3, this.c($$2), this.c($$3));
-               }
-            }
-
-            this.i.clear();
-         }
-      }
-
-      private boolean c(int $$0) {
-         return $$0 <= this.g;
-      }
+   private static int b(du $$0, ij.c<bnu<?>> $$1, ens $$2, sw $$3, boolean $$4) throws CommandSyntaxException {
+      bno $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> vq.a("commands.summon.success", $$5.Q_()), true);
+      return 1;
    }
 }

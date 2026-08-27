@@ -1,88 +1,144 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
+import javax.annotation.Nullable;
 
-public class fjq extends flb<chk> implements fmw {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "water_patch";
-   private static final String g = "bottom";
-   private static final String h = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
-   private final fnj l;
-   private final fnj m;
-   private final fnj n;
-   private final ImmutableList<fnj> o;
+public class fjq extends ezb {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final vq e = vq.c("telemetry_info.property_title").a(n.t);
+   private final eys f;
+   private fjq.a m;
+   @Nullable
+   private DoubleConsumer n;
 
-   public fjq(fnj $$0) {
-      this.l = $$0.b("left_paddle");
-      this.m = $$0.b("right_paddle");
-      this.n = $$0.b("water_patch");
-      this.o = this.a($$0).build();
+   public fjq(int $$0, int $$1, int $$2, int $$3, eys $$4) {
+      super($$0, $$1, $$2, $$3, vq.i());
+      this.f = $$4;
+      this.m = this.c(exh.O().A());
    }
 
-   protected Builder<fnj> a(fnj $$0) {
-      Builder<fnj> $$1 = new Builder();
-      $$1.add(new fnj[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
-      return $$1;
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
    }
 
-   public static void a(fns $$0) {
-      int $$1 = 32;
-      int $$2 = 6;
-      int $$3 = 20;
-      int $$4 = 4;
-      int $$5 = 28;
-      $$0.a("bottom", fno.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fnl.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", fno.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), fnl.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", fno.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), fnl.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", fno.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fnl.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", fno.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fnl.a(0.0F, 4.0F, 9.0F));
-      int $$6 = 20;
-      int $$7 = 7;
-      int $$8 = 6;
-      float $$9 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fno.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fnl.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         fno.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fnl.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-      $$0.a("water_patch", fno.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fnl.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+   private fjq.a c(boolean $$0) {
+      fjq.b $$1 = new fjq.b(this.j());
+      List<glu> $$2 = new ArrayList<>(glu.g());
+      $$2.sort(Comparator.comparing(glu::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         glu $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
    }
 
-   public static fnp a() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      a($$1);
-      return fnp.a($$0, 128, 64);
-   }
-
-   public void a(chk $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.l, $$1);
-      a($$0, 1, this.m, $$1);
-   }
-
-   public ImmutableList<fnj> b() {
-      return this.o;
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
    }
 
    @Override
-   public fnj c() {
-      return this.n;
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
+      }
    }
 
-   private static void a(chk $$0, int $$1, fnj $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = aup.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (aup.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = aup.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (aup.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
+   @Override
+   protected int g() {
+      return this.m.a().u();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(eyu $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.C() + this.a();
+      int $$5 = this.B() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fdc $$0) {
+      $$0.a(fdb.a, this.m.b());
+   }
+
+   private vq a(vq $$0, boolean $$1) {
+      return (vq)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(fjq.b $$0, glu $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(vq.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(glu $$0, fjq.b $$1, boolean $$2) {
+      for (glw<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int j() {
+      return this.g - this.b();
+   }
+
+   static record a(fcu a, vq b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fcx b;
+      private final we c = vq.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fcx.d();
+         this.b.c().a();
+         this.b.a(fcy.a($$0));
+      }
+
+      public void a(eys $$0, vq $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(eys $$0, vq $$1, int $$2) {
+         this.b.a(new fab($$1, $$0).c(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(eys $$0, vq $$1) {
+         this.b.a(new fab($$1, $$0).c(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fcy.b($$0));
+      }
+
+      public fjq.a a() {
+         this.b.a();
+         return new fjq.a(this.b, this.c);
       }
    }
 }

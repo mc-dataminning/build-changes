@@ -1,7 +1,9 @@
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+public class ghr extends ghw {
+   public ghr(ggv $$0) {
+      super($$0, new aiy("textures/atlas/mob_effects.png"), new aiy("mob_effects"));
+   }
 
-public interface ghr {
-   void a(Map<UUID, aot.c> var1, Consumer<aot.b> var2);
+   public ggu a(ij<bmz> $$0) {
+      return this.a($$0.e().map(aix::a).orElseGet(ggk::b));
+   }
 }

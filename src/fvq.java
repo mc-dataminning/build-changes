@@ -1,53 +1,88 @@
-public class fvq implements fvt<dgz> {
-   private final fnj a;
-   private final fnj b;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.util.List;
+import java.util.function.IntSupplier;
+import org.joml.Matrix4f;
 
-   public fvq(fvu.a $$0) {
-      this.a = $$0.a(fni.j);
-      this.b = $$0.a(fni.i);
+public class fvq implements AutoCloseable {
+   private final fvc c;
+   public final eqm a;
+   public final eqm b;
+   private final List<IntSupplier> d = Lists.newArrayList();
+   private final List<String> e = Lists.newArrayList();
+   private final List<Integer> f = Lists.newArrayList();
+   private final List<Integer> g = Lists.newArrayList();
+   private Matrix4f h;
+
+   public fvq(asa $$0, String $$1, eqm $$2, eqm $$3) throws IOException {
+      this.c = new fvc($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   public static fnp b() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      $$1.a("main", fno.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fnl.a);
-      $$1.a("left_leg", fno.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fnl.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fno.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fnl.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fnp.a($$0, 64, 64);
+   @Override
+   public void close() {
+      this.c.close();
    }
 
-   public static fnp c() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      $$1.a("main", fno.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fnl.a);
-      $$1.a("left_leg", fno.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fnl.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fno.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fnl.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fnp.a($$0, 64, 64);
+   public final String a() {
+      return this.c.h();
    }
 
-   public void a(dgz $$0, float $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
-      ghe $$6 = fui.p[$$0.d().a()];
-      ctx $$7 = $$0.i();
-      if ($$7 != null) {
-         djp $$8 = $$0.r();
-         czf.c<? extends dgz> $$9 = czf.a(dhf.y, cwr::h, cwr::g, cyb.c, $$8, $$7, $$0.aE_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new fvw<>()).get($$4);
-         this.a($$2, $$3, $$8.c(cwr.b) == dkc.a ? this.a : this.b, $$8.c(cwr.aE), $$6, $$10, $$5, false);
-      } else {
-         this.a($$2, $$3, this.a, ic.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, ic.d, $$6, $$4, $$5, true);
+   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
+      this.e.add(this.e.size(), $$0);
+      this.d.add(this.d.size(), $$1);
+      this.f.add(this.f.size(), $$2);
+      this.g.add(this.g.size(), $$3);
+   }
+
+   public void a(Matrix4f $$0) {
+      this.h = $$0;
+   }
+
+   public void a(float $$0) {
+      this.a.e();
+      float $$1 = (float)this.b.c;
+      float $$2 = (float)this.b.d;
+      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
+      this.c.a("DiffuseSampler", this.a::f);
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.c.a(this.e.get($$3), this.d.get($$3));
+         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
+      }
+
+      this.c.b("ProjMat").a(this.h);
+      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
+      this.c.b("OutSize").a($$1, $$2);
+      this.c.b("Time").a($$0);
+      exh $$4 = exh.O();
+      this.c.b("ScreenSize").a((float)$$4.aM().k(), (float)$$4.aM().l());
+      this.c.g();
+      this.b.b(exh.a);
+      this.b.a(false);
+      RenderSystem.depthFunc(519);
+      erv $$5 = esc.b().d();
+      $$5.a(esf.b.h, ery.m);
+      $$5.a(0.0, 0.0, 500.0).e();
+      $$5.a((double)$$1, 0.0, 500.0).e();
+      $$5.a((double)$$1, (double)$$2, 500.0).e();
+      $$5.a(0.0, (double)$$2, 500.0).e();
+      erw.b($$5.d());
+      RenderSystem.depthFunc(515);
+      this.c.f();
+      this.b.e();
+      this.a.d();
+
+      for (Object $$6 : this.d) {
+         if ($$6 instanceof eqm) {
+            ((eqm)$$6).d();
+         }
       }
    }
 
-   private void a(eqk $$0, ftt $$1, fnj $$2, ic $$3, ghe $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      eqo $$8 = $$4.a($$1, fub::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   public fvc b() {
+      return this.c;
    }
 }

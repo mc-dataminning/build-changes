@@ -1,58 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public enum ddk implements avl {
+public enum ddk implements axc {
    a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   public static final Codec<ddk> e = avl.a(ddk::values);
-   private final String f;
+   public static final Codec<ddk> d = axc.a(ddk::values);
+   private final String e;
+   private final vq f;
    private final h g;
 
    private ddk(String $$0, h $$1) {
-      this.f = $$0;
+      this.e = $$0;
+      this.f = vq.c("mirror." + $$0);
       this.g = $$1;
    }
 
-   public ddk a(ddk $$0) {
-      switch ($$0) {
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
          case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
+            return ($$1 - $$3) % $$1;
          case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
+            return ($$2 - $$3 + $$1) % $$1;
          default:
-            return this;
+            return $$0;
+      }
+   }
+
+   public dfa a(ie $$0) {
+      ie.a $$1 = $$0.o();
+      return (this != b || $$1 != ie.a.c) && (this != c || $$1 != ie.a.a) ? dfa.a : dfa.c;
+   }
+
+   public ie b(ie $$0) {
+      if (this == c && $$0.o() == ie.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == ie.a.c ? $$0.g() : $$0;
       }
    }
 
@@ -60,46 +46,12 @@ public enum ddk implements avl {
       return this.g;
    }
 
-   public ic a(ic $$0) {
-      if ($$0.o() == ic.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static ddk a(auw $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<ddk> b(auw $$0) {
-      return ac.b(values(), $$0);
+   public vq b() {
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.e;
    }
 }

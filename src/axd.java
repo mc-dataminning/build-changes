@@ -1,26 +1,59 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class axd extends DataFix {
-   public axd(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class axd {
+   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
+   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
+   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
+
+   public static String a(int $$0, float $$1) {
+      int $$2 = awh.d((float)$$0 / $$1);
+      int $$3 = $$2 / 60;
+      $$2 %= 60;
+      int $$4 = $$3 / 60;
+      $$3 %= 60;
+      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
-         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
-      } else {
+   public static String a(String $$0) {
+      return a.matcher($$0).replaceAll("");
+   }
+
+   public static boolean b(@Nullable String $$0) {
+      return StringUtils.isEmpty($$0);
+   }
+
+   public static String a(String $$0, int $$1, boolean $$2) {
+      if ($$0.length() <= $$1) {
          return $$0;
+      } else {
+         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
       }
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bbw.u), $$0 -> $$0.update(DSL.remainderFinder(), axd::a));
+   public static int c(String $$0) {
+      if ($$0.isEmpty()) {
+         return 0;
+      } else {
+         Matcher $$1 = b.matcher($$0);
+         int $$2 = 1;
+
+         while ($$1.find()) {
+            $$2++;
+         }
+
+         return $$2;
+      }
+   }
+
+   public static boolean d(String $$0) {
+      return c.matcher($$0).find();
+   }
+
+   public static String e(String $$0) {
+      return a($$0, 256, false);
    }
 }

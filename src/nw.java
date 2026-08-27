@@ -1,54 +1,24 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class nw extends ok<dgu> {
-   public nw(km $$0, CompletableFuture<ij.b> $$1) {
-      super($$0, ke.d, $$1);
-   }
+public class nw implements nv.a {
+   private static final Logger a = LogUtils.getLogger();
 
    @Override
-   protected void a(ij.b $$0) {
-      this.b(asg.a)
-         .a(
-            dgv.b,
-            dgv.c,
-            dgv.d,
-            dgv.e,
-            dgv.f,
-            dgv.g,
-            dgv.h,
-            dgv.i,
-            dgv.j,
-            dgv.k,
-            dgv.l,
-            dgv.m,
-            dgv.n,
-            dgv.o,
-            dgv.p,
-            dgv.q,
-            dgv.r,
-            dgv.s,
-            dgv.t,
-            dgv.u,
-            dgv.v,
-            dgv.w,
-            dgv.x,
-            dgv.y,
-            dgv.z,
-            dgv.A,
-            dgv.B,
-            dgv.C,
-            dgv.D,
-            dgv.E,
-            dgv.F,
-            dgv.G,
-            dgv.H,
-            dgv.I
-         );
-      this.b(asg.b).a(dgv.M);
-      this.b(asg.c).a(dgv.K);
-      this.b(asg.d).a(dgv.L);
-      this.b(asg.e).a(dgv.N);
-      this.b(asg.f).a(dgv.J);
-      this.b(asg.g).a(dgv.O);
+   public sw apply(String $$0, sw $$1) {
+      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
+   }
+
+   public static sw a(String $$0, sw $$1) {
+      efe $$2 = new efe();
+      int $$3 = tl.b($$1, 500);
+      int $$4 = 3798;
+      if ($$3 < 3798) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3798, $$0});
+      }
+
+      sw $$5 = axo.f.a(axp.a(), $$1, $$3);
+      $$2.a(kf.e.p(), $$5);
+      return $$2.a(new sw());
    }
 }

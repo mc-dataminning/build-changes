@@ -1,237 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fob<T extends bno> extends fmk<T> {
+   private static final String a = "upper_body";
+   private final fpc b;
+   private final fpc f;
+   private final fpc g;
+   private final fpc h;
+   private final fpc i;
 
-public abstract class fob implements xj {
-   private static final vg g = vg.c("disconnect.lost");
-   private static final Logger h = LogUtils.getLogger();
-   protected final evr a;
-   protected final uh b;
-   @Nullable
-   protected final fop c;
-   @Nullable
-   protected String d;
-   protected final gkf e;
-   @Nullable
-   protected final fdm f;
-   private final List<fob.a> i = new ArrayList<>();
+   public fob(fpc $$0) {
+      this.b = $$0;
+      this.g = $$0.b("head");
+      this.h = $$0.b("left_arm");
+      this.i = $$0.b("right_arm");
+      this.f = $$0.b("upper_body");
+   }
 
-   protected fob(evr $$0, uh $$1, foi $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
+   public static fpi b() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      float $$2 = 4.0F;
+      fpg $$3 = new fpg(-0.5F);
+      $$1.a("head", fph.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fpe.a(0.0F, 4.0F, 0.0F));
+      fph $$4 = fph.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, fpe.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, fpe.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", fph.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fpe.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", fph.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fpe.a(0.0F, 24.0F, 0.0F));
+      return fpi.a($$0, 64, 64);
    }
 
    @Override
-   public void a(xm $$0) {
-      this.a(new xu($$0.a()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
+      float $$6 = awh.a(this.f.f);
+      float $$7 = awh.b(this.f.f);
+      this.h.f = this.f.f;
+      this.i.f = this.f.f + (float) Math.PI;
+      this.h.b = $$7 * 5.0F;
+      this.h.d = -$$6 * 5.0F;
+      this.i.b = -$$7 * 5.0F;
+      this.i.d = $$6 * 5.0F;
    }
 
    @Override
-   public void a(xn $$0) {
-      xi.a($$0, this, this.a);
-      this.b(new xv($$0.a()));
+   public fpc a() {
+      return this.b;
    }
 
-   @Override
-   public void a(xk $$0) {
-      yb $$1 = $$0.a();
-      if (!($$1 instanceof yc)) {
-         xi.a($$0, this, this.a);
-         if ($$1 instanceof xz $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
-         } else {
-            this.a($$1);
-         }
-      }
-   }
-
-   protected abstract void a(yb var1);
-
-   protected abstract iu.b f();
-
-   @Override
-   public void a(xp $$0) {
-      xi.a($$0, this, this.a);
-      UUID $$1 = $$0.a();
-      URL $$2 = a($$0.d());
-      if ($$2 == null) {
-         this.b.a(new xw($$1, xw.a.f));
-      } else {
-         String $$3 = $$0.e();
-         boolean $$4 = $$0.f();
-         fop.a $$5 = this.c != null ? this.c.b() : fop.a.c;
-         if ($$5 != fop.a.c && (!$$4 || $$5 != fop.a.b)) {
-            this.a.ac().a($$1, $$2, $$3);
-         } else {
-            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.g()));
-         }
-      }
-   }
-
-   @Override
-   public void a(xo $$0) {
-      xi.a($$0, this, this.a);
-      $$0.a().ifPresentOrElse($$0x -> this.a.ac().a($$0x), () -> this.a.ac().e());
-   }
-
-   static vg a(vg $$0, @Nullable vg $$1) {
-      return (vg)($$1 == null ? $$0 : vg.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
-   }
-
-   @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
-         return null;
-      }
-   }
-
-   @Override
-   public void a(xq $$0) {
-      xi.a($$0, this, this.a);
-      $$0.a().forEach(this::a);
-   }
-
-   private <T> void a(ahg<? extends it<? extends T>> $$0, ata.a $$1) {
-      if (!$$1.a()) {
-         it<T> $$2 = this.f().c($$0).orElseThrow(() -> new IllegalStateException("Unknown registry " + $$0));
-         Map<asx<T>, List<ih<T>>> $$4 = new HashMap<>();
-         ata.a($$0, $$2, $$1, $$4::put);
-         $$2.a($$4);
-      }
-   }
-
-   @Override
-   public void a(xl $$0) {
-      this.b.a($$0.a());
-   }
-
-   protected void g() {
-      Iterator<fob.a> $$0 = this.i.iterator();
-
-      while ($$0.hasNext()) {
-         fob.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ac.b()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   public void b(xg<?> $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   public void a(vg $$0) {
-      this.e.c();
-      this.a.b(this.b($$0));
-      h.warn("Client disconnected with reason: {}", $$0.getString());
-   }
-
-   @Override
-   public void a(p $$0) {
-      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
-      $$0.a("Server brand", () -> this.d);
-   }
-
-   protected fdm b(vg $$0) {
-      fdm $$1 = Objects.requireNonNullElseGet(this.f, () -> new fgk(new fdr()));
-      return (fdm)(this.c != null && this.c.e() ? new gkz($$1, g, $$0) : new fco($$1, g, $$0));
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   private void a(xg<? extends ut> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
-      } else {
-         this.i.add(new fob.a($$0, $$1, ac.b() + $$2.toMillis()));
-      }
-   }
-
-   private fdm a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable vg $$4) {
-      fdm $$5 = this.a.y;
-      return $$5 instanceof fob.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new fob.b(this.a, $$5, List.of(new fob.b.a($$0, $$1, $$2)), $$3, $$4);
-   }
-
-   static record a(xg<? extends ut> a, BooleanSupplier b, long c) {
-   }
-
-   class b extends fcf {
-      private final List<fob.b.a> l;
-      @Nullable
-      private final fdm m;
-
-      b(evr $$0, @Nullable fdm $$1, List<fob.b.a> $$2, boolean $$3, @Nullable vg $$4) {
-         super(
-            $$5 -> {
-               $$0.a($$1);
-               ghq $$6 = $$0.ac();
-               if ($$5) {
-                  if (fob.this.c != null) {
-                     fob.this.c.a(fop.a.a);
-                  }
-
-                  $$6.g();
-               } else {
-                  $$6.h();
-                  if ($$3) {
-                     fob.this.b.a(vg.c("multiplayer.requiredTexturePrompt.disconnect"));
-                  } else if (fob.this.c != null) {
-                     fob.this.c.a(fop.a.b);
-                  }
-               }
-
-               for (fob.b.a $$7 : $$2) {
-                  $$6.a($$7.a, $$7.b, $$7.c);
-               }
-
-               if (fob.this.c != null) {
-                  foq.b(fob.this.c);
-               }
-            },
-            $$3 ? vg.c("multiplayer.requiredTexturePrompt.line1") : vg.c("multiplayer.texturePrompt.line1"),
-            fob.a($$3 ? vg.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : vg.c("multiplayer.texturePrompt.line2"), $$4),
-            $$3 ? vf.i : vf.f,
-            $$3 ? vf.p : vf.g
-         );
-         this.l = $$2;
-         this.m = $$1;
-      }
-
-      public fob.b a(evr $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable vg $$5) {
-         List<fob.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.l.size() + 1).addAll(this.l).add(new fob.b.a($$1, $$2, $$3)).build();
-         return fob.this.new b($$0, this.m, $$6, $$4, $$5);
-      }
-
-      static record a(UUID a, URL b, String c) {
-      }
+   public fpc c() {
+      return this.g;
    }
 }

@@ -1,24 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cvv extends cwy {
-   public static final MapCodec<cvv> a = b(cvv::new);
+public interface cvv {
+   boolean a(hz var1, dlf var2, int var3, int var4);
 
-   @Override
-   public MapCodec<cvv> a() {
-      return a;
+   default boolean a(hz $$0, dlf $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   public cvv(djo.d $$0) {
-      super($$0);
+   boolean a(hz var1, boolean var2);
+
+   default boolean b(hz $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   @Override
-   public ddd b_(djp $$0) {
-      return ddd.a;
+   default boolean a(hz $$0, boolean $$1, @Nullable bno $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return ems.a();
+   boolean a(hz var1, boolean var2, @Nullable bno var3, int var4);
+
+   default boolean b(bno $$0) {
+      return false;
    }
 }

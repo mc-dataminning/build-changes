@@ -1,56 +1,27 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public abstract class eur implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class eur extends gmw {
+   protected BooleanConsumer a;
+   private final vq b;
+   private final vq c;
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
+   public eur(BooleanConsumer $$0, vq $$1, vq $$2) {
+      super(ewz.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static void a(fdm $$0) {
-      evr $$1 = evr.O();
-      $$1.execute(() -> $$1.a($$0));
+   @Override
+   public void aQ_() {
+      this.d(ezh.a(vp.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, g(9), 100, 20).a());
+      this.d(ezh.a(vp.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, g(9), 100, 20).a());
    }
 
-   protected void a(vg $$0) {
-      this.b();
-      evr $$1 = evr.O();
-      $$1.execute(() -> $$1.a(new ete($$0, new eqv(new fdr()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof esn $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(vg.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(esn $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract vg a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.b, this.g / 2, g(3), -1);
+      $$0.a(this.i, this.c, this.g / 2, g(5), -1);
    }
 }

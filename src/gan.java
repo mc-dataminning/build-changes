@@ -1,24 +1,88 @@
-public class gan extends gag<ccy, flk<ccy>> {
-   private static final ahh a = new ahh("textures/entity/phantom.png");
+import org.joml.Quaternionf;
 
-   public gan(fza.a $$0) {
-      super($$0, new flk<>($$0.a(fni.aD)), 0.75F);
-      this.a(new gdj<>(this));
+public class gan extends gas<ccl> {
+   private static final aiy a = new aiy("textures/entity/end_crystal/end_crystal.png");
+   private static final fvu f = fvu.e(a);
+   private static final float g = (float)Math.sin(Math.PI / 4);
+   private static final String h = "glass";
+   private static final String i = "base";
+   private final fpc j;
+   private final fpc k;
+   private final fpc l;
+
+   public gan(gat.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      fpc $$1 = $$0.a(fpb.W);
+      this.k = $$1.b("glass");
+      this.j = $$1.b("cube");
+      this.l = $$1.b("base");
    }
 
-   public ahh a(ccy $$0) {
+   public static fpi a() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      $$1.a("glass", fph.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fpe.a);
+      $$1.a("cube", fph.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fpe.a);
+      $$1.a("base", fph.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), fpe.a);
+      return fpi.a($$0, 64, 32);
+   }
+
+   public void a(ccl $$0, float $$1, float $$2, esa $$3, fvm $$4, int $$5) {
+      $$3.a();
+      float $$6 = a($$0, $$2);
+      float $$7 = ((float)$$0.b + $$2) * 3.0F;
+      ese $$8 = $$4.getBuffer(f);
+      $$3.a();
+      $$3.b(2.0F, 2.0F, 2.0F);
+      $$3.a(0.0F, -0.5F, 0.0F);
+      int $$9 = ggl.d;
+      if ($$0.s()) {
+         this.l.a($$3, $$8, $$5, $$9);
+      }
+
+      $$3.a(a.d.rotationDegrees($$7));
+      $$3.a(0.0F, 1.5F + $$6 / 2.0F, 0.0F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      this.k.a($$3, $$8, $$5, $$9);
+      float $$10 = 0.875F;
+      $$3.b(0.875F, 0.875F, 0.875F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      $$3.a(a.d.rotationDegrees($$7));
+      this.k.a($$3, $$8, $$5, $$9);
+      $$3.b(0.875F, 0.875F, 0.875F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      $$3.a(a.d.rotationDegrees($$7));
+      this.j.a($$3, $$8, $$5, $$9);
+      $$3.b();
+      $$3.b();
+      hz $$11 = $$0.q();
+      if ($$11 != null) {
+         float $$12 = (float)$$11.u() + 0.5F;
+         float $$13 = (float)$$11.v() + 0.5F;
+         float $$14 = (float)$$11.w() + 0.5F;
+         float $$15 = (float)((double)$$12 - $$0.dr());
+         float $$16 = (float)((double)$$13 - $$0.dt());
+         float $$17 = (float)((double)$$14 - $$0.dx());
+         $$3.a($$15, $$16, $$17);
+         gao.a(-$$15, -$$16 + $$6, -$$17, $$2, $$0.b, $$3, $$4, $$5);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public static float a(ccl $$0, float $$1) {
+      float $$2 = (float)$$0.b + $$1;
+      float $$3 = awh.a($$2 * 0.2F) / 2.0F + 0.5F;
+      $$3 = ($$3 * $$3 + $$3) * 0.4F;
+      return $$3 - 1.4F;
+   }
+
+   public aiy a(ccl $$0) {
       return a;
    }
 
-   protected void a(ccy $$0, eqk $$1, float $$2) {
-      int $$3 = $$0.u();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(ccy $$0, eqk $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      $$1.a(a.b.rotationDegrees($$0.dD()));
+   public boolean a(ccl $$0, fyp $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.q() != null;
    }
 }

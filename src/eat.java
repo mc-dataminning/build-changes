@@ -1,81 +1,42 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Optional;
 
-public class eat extends eav {
-   public static final Codec<eat> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eav.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, eat::new)
+public class eat {
+   public static final Codec<eat> a = avp.a(
+      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(aix.a(kg.aN), dop.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, eat::new)),
+      eat::a
    );
-   private final List<eav> b;
+   public static final Codec<ij<eat>> b = aiu.a(kg.aK, a);
+   private final Map<aix<dop>, dop> c;
 
-   public eat(List<eav> $$0, eax.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+   public eat(Map<aix<dop>, dop> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public jb a(edp $$0, ddk $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (eav $$5 : this.b) {
-         jb $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new jb($$2, $$3, $$4);
-   }
-
-   @Override
-   public List<edo.c> a(edp $$0, hx $$1, ddk $$2, auw $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public dzg a(edp $$0, hx $$1, ddk $$2) {
-      Stream<dzg> $$3 = this.b.stream().filter($$0x -> $$0x != eao.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return dzg.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
-
-   @Override
-   public boolean a(edp $$0, cus $$1, cuq $$2, dlm $$3, hx $$4, hx $$5, ddk $$6, dzg $$7, auw $$8, boolean $$9) {
-      for (eav $$10 : this.b) {
-         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
-            return false;
+   private iv<dop> c() {
+      je<dop> $$0 = new ir<>(kg.aN, Lifecycle.experimental());
+      drj.a(this.c.keySet().stream()).forEach($$1 -> {
+         dop $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.a((aix<dop>)$$1, $$2, Lifecycle.stable());
          }
-      }
-
-      return true;
+      });
+      return $$0.l();
    }
 
-   @Override
-   public eaw<?> a() {
-      return eaw.b;
+   public drj a() {
+      return new drj(this.c());
    }
 
-   @Override
-   public eav a(eax.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
+   public Optional<dop> b() {
+      return Optional.ofNullable(this.c.get(dop.b));
    }
 
-   @Override
-   public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
-   }
-
-   private void b(eax.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+   private static DataResult<eat> a(eat $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

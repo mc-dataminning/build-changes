@@ -1,60 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
+import java.util.function.BiFunction;
 
-public record ekm(Optional<Long> b, ehe c) implements eke {
+public class ekm implements eki {
    public static final Codec<ekm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atx.a(Codec.LONG, "period").forGetter(ekm::c), ehe.a.fieldOf("value").forGetter(ekm::d)).apply($$0, ekm::new)
+      $$0 -> $$0.group(ekk.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, ekm::new)
    );
+   public static final Codec<ekm> b = ekk.b.listOf().xmap(ekm::new, $$0 -> $$0.c);
+   private final List<eki> c;
+   private final BiFunction<coz, eiv, coz> d;
 
-   @Override
-   public ekf b() {
-      return ekg.r;
+   private ekm(List<eki> $$0) {
+      this.c = $$0;
+      this.d = ekk.a($$0);
+   }
+
+   public static ekm a(List<eki> $$0) {
+      return new ekm(List.copyOf($$0));
+   }
+
+   public coz a(coz $$0, eiv $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public Set<ejn<?>> a() {
-      return this.c.a();
-   }
+   public void a(eje $$0) {
+      eki.super.a($$0);
 
-   public boolean a(ehf $$0) {
-      ane $$1 = $$0.d();
-      long $$2 = $$1.Y();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
       }
-
-      return this.c.b($$0, (int)$$2);
    }
 
-   public static ekm.a a(ehe $$0) {
-      return new ekm.a($$0);
-   }
-
-   public Optional<Long> c() {
-      return this.b;
-   }
-
-   public ehe d() {
-      return this.c;
-   }
-
-   public static class a implements eke.a {
-      private Optional<Long> a = Optional.empty();
-      private final ehe b;
-
-      public a(ehe $$0) {
-         this.b = $$0;
-      }
-
-      public ekm.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public ekm a() {
-         return new ekm(this.a, this.b);
-      }
+   @Override
+   public ekj b() {
+      return ekk.C;
    }
 }

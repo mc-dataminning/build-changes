@@ -1,22 +1,52 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
-
 public class gkk {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+   public static class a extends gjq {
+      private final fuo n;
 
-   public gkk(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+      protected a(fuo $$0, atj $$1) {
+         super($$1, atl.i, gkh.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (this.n.dH() || !this.n.be()) {
+            this.n();
+         }
+      }
    }
 
-   public void a(gka $$0) {
-      if (this.b != null) {
-         $$0.send(gkb.d, $$0x -> {
-            $$0x.a(gkd.x, (int)this.b.toMillis());
-            $$0x.a(gkd.y, this.a);
-         });
+   public static class b extends gjq {
+      public static final int n = 40;
+      private final fuo o;
+      private int p;
+
+      public b(fuo $$0) {
+         super(atk.z, atl.i, gkh.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (!this.o.dH() && this.p >= 0) {
+            if (this.o.be()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
+
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
       }
    }
 }

@@ -1,148 +1,60 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Objects;
 
-public class aoz extends aop {
-   private static final Logger c = LogUtils.getLogger();
-   private static final Joiner d = Joiner.on("/");
-   private final Path e;
+public final class aoz<T> implements Comparable<aoz<?>> {
+   private final apa<T> a;
+   private final int b;
+   private final T c;
+   private long d;
 
-   public aoz(String $$0, Path $$1, boolean $$2) {
-      super($$0, $$2);
-      this.e = $$1;
+   protected aoz(apa<T> $$0, int $$1, T $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Nullable
-   @Override
-   public aqb<InputStream> a(String... $$0) {
-      v.a($$0);
-      Path $$1 = v.a(this.e, List.of($$0));
-      return Files.exists($$1) ? aqb.create($$1) : null;
-   }
-
-   public static boolean a(Path $$0) {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public aqb<InputStream> a(aoy $$0, ahh $$1) {
-      Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
-      return a($$1, $$2);
-   }
-
-   public static aqb<InputStream> a(ahh $$0, Path $$1) {
-      return (aqb<InputStream>)v.c($$0.a()).get().map($$1x -> {
-         Path $$2 = v.a($$1, $$1x);
-         return b($$2);
-      }, $$1x -> {
-         c.error("Invalid path {}: {}", $$0, $$1x.message());
-         return null;
-      });
-   }
-
-   @Nullable
-   private static aqb<InputStream> b(Path $$0) {
-      return Files.exists($$0) && a($$0) ? aqb.create($$0) : null;
-   }
-
-   @Override
-   public void a(aoy $$0, String $$1, String $$2, aox.a $$3) {
-      v.c($$2).get().ifLeft($$3x -> {
-         Path $$4 = this.e.resolve($$0.a()).resolve($$1);
-         a($$1, $$4, $$3x, $$3);
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
-   }
-
-   public static void a(String $$0, Path $$1, List<String> $$2, aox.a $$3) {
-      Path $$4 = v.a($$1, $$2);
-
-      try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-         $$5.forEach($$3x -> {
-            String $$4x = d.join($$1.relativize($$3x));
-            ahh $$5x = ahh.a($$0, $$4x);
-            if ($$5x == null) {
-               ac.a(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
-            } else {
-               $$3.accept($$5x, aqb.create($$3x));
-            }
-         });
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$4, var11);
+   public int a(aoz<?> $$0) {
+      int $$1 = Integer.compare(this.b, $$0.b);
+      if ($$1 != 0) {
+         return $$1;
+      } else {
+         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
+         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
       }
    }
 
    @Override
-   public Set<String> a(aoy $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-      Path $$2 = this.e.resolve($$0.a());
-
-      try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
-         for (Path $$4 : $$3) {
-            String $$5 = $$4.getFileName().toString();
-            if (ahh.h($$5)) {
-               $$1.add($$5);
-            } else {
-               c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);
-            }
-         }
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         c.error("Failed to list path {}", $$2, var11);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof aoz<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
       }
-
-      return $$1;
    }
 
    @Override
-   public void close() {
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c);
    }
 
-   public static class a implements apr.c {
-      private final Path a;
-      private final boolean b;
+   @Override
+   public String toString() {
+      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+   }
 
-      public a(Path $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public apa<T> a() {
+      return this.a;
+   }
 
-      @Override
-      public aox a(String $$0) {
-         return new aoz($$0, this.a, this.b);
-      }
+   public int b() {
+      return this.b;
+   }
 
-      @Override
-      public aox a(String $$0, apr.a $$1) {
-         aox $$2 = this.a($$0);
-         List<String> $$3 = $$1.d();
-         if ($$3.isEmpty()) {
-            return $$2;
-         } else {
-            List<aox> $$4 = new ArrayList<>($$3.size());
+   protected void a(long $$0) {
+      this.d = $$0;
+   }
 
-            for (String $$5 : $$3) {
-               Path $$6 = this.a.resolve($$5);
-               $$4.add(new aoz($$0, $$6, this.b));
-            }
-
-            return new aor($$2, $$4);
-         }
-      }
+   protected boolean b(long $$0) {
+      long $$1 = this.a.b();
+      return $$1 != 0L && $$0 - this.d > $$1;
    }
 }

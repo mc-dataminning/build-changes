@@ -1,32 +1,37 @@
-public class aed implements xg<adk> {
-   private final int a;
-   private final int b;
+public class aed implements xx<aag> {
+   public static final xo<uq, aed> a = xx.a(aed::a, aed::new);
+   private final vq b;
+   private final vq c;
 
-   public aed(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aed(vq $$0, vq $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public aed(uj $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
+   private aed(uq $$0) {
+      this.b = $$0.m();
+      this.c = $$0.m();
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
+   public xz<aed> a() {
+      return aeq.aV;
    }
 
-   public void a(adk $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public vq b() {
+      return this.b;
    }
 
-   public int d() {
-      return this.b;
+   public vq e() {
+      return this.c;
    }
 }

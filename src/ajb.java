@@ -1,34 +1,79 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.google.common.collect.Lists;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class ajb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.b("Source is not a mob"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.b("Path not found"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vg.b("Target not reached"));
+public class ajb extends IOException {
+   private final List<ajb.a> a = Lists.newArrayList();
+   private final String b;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("debugpath").requires($$0x -> $$0x.c(2)))
-            .then(dt.a("to", fm.a()).executes($$0x -> a((ds)$$0x.getSource(), fm.a($$0x, "to"))))
-      );
+   public ajb(String $$0) {
+      this.a.add(new ajb.a());
+      this.b = $$0;
    }
 
-   private static int a(ds $$0, hx $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bmq $$3)) {
-         throw a.create();
+   public ajb(String $$0, Throwable $$1) {
+      super($$1);
+      this.a.add(new ajb.a());
+      this.b = $$0;
+   }
+
+   public void a(String $$0) {
+      this.a.get(0).a($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.get(0).a = $$0;
+      this.a.add(0, new ajb.a());
+   }
+
+   @Override
+   public String getMessage() {
+      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
+   }
+
+   public static ajb a(Exception $$0) {
+      if ($$0 instanceof ajb) {
+         return (ajb)$$0;
       } else {
-         bvy $$4 = new bvx($$3, $$0.e());
-         efo $$5 = $$4.a($$1, 0);
-         adj.a($$0.e(), $$3, $$5, $$4.q());
-         if ($$5 == null) {
-            throw b.create();
-         } else if (!$$5.j()) {
-            throw c.create();
+         String $$1 = $$0.getMessage();
+         if ($$0 instanceof FileNotFoundException) {
+            $$1 = "File not found";
+         }
+
+         return new ajb($$1, $$0);
+      }
+   }
+
+   public static class a {
+      @Nullable
+      String a;
+      private final List<String> b = Lists.newArrayList();
+
+      a() {
+      }
+
+      void a(String $$0) {
+         this.b.add(0, $$0);
+      }
+
+      @Nullable
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return StringUtils.join(this.b, "->");
+      }
+
+      @Override
+      public String toString() {
+         if (this.a != null) {
+            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
          } else {
-            $$0.a(() -> vg.b("Made path"), true);
-            return 1;
+            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
          }
       }
    }

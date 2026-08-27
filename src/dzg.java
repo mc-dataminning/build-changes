@@ -1,259 +1,112 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.Iterator;
-import java.util.Objects;
+import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class dzg {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<dzg> a = Codec.INT_STREAM
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 6).map($$0x -> new dzg($$0x[0], $$0x[1], $$0x[2], $$0x[3], $$0x[4], $$0x[5])),
-         $$0 -> IntStream.of($$0.c, $$0.d, $$0.e, $$0.f, $$0.g, $$0.h)
-      )
-      .stable();
-   private int c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+   public static final aix<dzf> a = a("classic_flat");
+   public static final aix<dzf> b = a("tunnelers_dream");
+   public static final aix<dzf> c = a("water_world");
+   public static final aix<dzf> d = a("overworld");
+   public static final aix<dzf> e = a("snowy_kingdom");
+   public static final aix<dzf> f = a("bottomless_pit");
+   public static final aix<dzf> g = a("desert");
+   public static final aix<dzf> h = a("redstone_ready");
+   public static final aix<dzf> i = a("the_void");
 
-   public dzg(hx $$0) {
-      this($$0.u(), $$0.v(), $$0.w(), $$0.u(), $$0.v(), $$0.w());
+   public static void a(ph<dzf> $$0) {
+      new dzg.a($$0).a();
    }
 
-   public dzg(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      if ($$3 < $$0 || $$4 < $$1 || $$5 < $$2) {
-         String $$6 = "Invalid bounding box data, inverted bounds for: " + this;
-         if (aa.aW) {
-            throw new IllegalStateException($$6);
+   private static aix<dzf> a(String $$0) {
+      return aix.a(kg.az, new aiy($$0));
+   }
+
+   static class a {
+      private final ph<dzf> a;
+
+      a(ph<dzf> $$0) {
+         this.a = $$0;
+      }
+
+      private void a(aix<dzf> $$0, cvm $$1, aix<cwm> $$2, Set<aix<ebk>> $$3, boolean $$4, boolean $$5, dze... $$6) {
+         ik<ebk> $$7 = this.a.a(kg.aF);
+         ik<eai> $$8 = this.a.a(kg.aC);
+         ik<cwm> $$9 = this.a.a(kg.at);
+         in.a<ebk> $$10 = in.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         dzh $$11 = new dzh(Optional.of($$10), $$9.b($$2), dzh.b($$8));
+         if ($$4) {
+            $$11.a();
          }
 
-         b.error($$6);
-         this.c = Math.min($$0, $$3);
-         this.d = Math.min($$1, $$4);
-         this.e = Math.min($$2, $$5);
-         this.f = Math.max($$0, $$3);
-         this.g = Math.max($$1, $$4);
-         this.h = Math.max($$2, $$5);
+         if ($$5) {
+            $$11.b();
+         }
+
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
+         }
+
+         this.a.a($$0, new dzf($$1.j().i(), $$11));
       }
-   }
 
-   public static dzg a(jb $$0, jb $$1) {
-      return new dzg(
-         Math.min($$0.u(), $$1.u()),
-         Math.min($$0.v(), $$1.v()),
-         Math.min($$0.w(), $$1.w()),
-         Math.max($$0.u(), $$1.u()),
-         Math.max($$0.v(), $$1.v()),
-         Math.max($$0.w(), $$1.w())
-      );
-   }
-
-   public static dzg a() {
-      return new dzg(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
-   }
-
-   public static dzg a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, ic $$9) {
-      switch ($$9) {
-         case d:
-         default:
-            return new dzg($$0 + $$3, $$1 + $$4, $$2 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$8 - 1 + $$5);
-         case c:
-            return new dzg($$0 + $$3, $$1 + $$4, $$2 - $$8 + 1 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$5);
-         case e:
-            return new dzg($$0 - $$8 + 1 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
-         case f:
-            return new dzg($$0 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$8 - 1 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+      public void a() {
+         this.a(dzg.a, cyq.i, cwt.b, ImmutableSet.of(eax.a), false, false, new dze(1, cyq.i), new dze(2, cyq.j), new dze(1, cyq.F));
+         this.a(dzg.b, cyq.b, cwt.t, ImmutableSet.of(eax.j, eax.r), true, false, new dze(1, cyq.i), new dze(5, cyq.j), new dze(230, cyq.b), new dze(1, cyq.F));
+         this.a(
+            dzg.c,
+            cpc.qy,
+            cwt.T,
+            ImmutableSet.of(eax.m, eax.l, eax.g),
+            false,
+            false,
+            new dze(90, cyq.G),
+            new dze(5, cyq.L),
+            new dze(5, cyq.j),
+            new dze(5, cyq.b),
+            new dze(64, cyq.sJ),
+            new dze(1, cyq.F)
+         );
+         this.a(
+            dzg.d,
+            cyq.bt,
+            cwt.b,
+            ImmutableSet.of(eax.a, eax.j, eax.f, eax.k, eax.r),
+            true,
+            true,
+            new dze(1, cyq.i),
+            new dze(3, cyq.j),
+            new dze(59, cyq.b),
+            new dze(1, cyq.F)
+         );
+         this.a(
+            dzg.e,
+            cyq.dN,
+            cwt.d,
+            ImmutableSet.of(eax.a, eax.c),
+            false,
+            false,
+            new dze(1, cyq.dN),
+            new dze(1, cyq.i),
+            new dze(3, cyq.j),
+            new dze(59, cyq.b),
+            new dze(1, cyq.F)
+         );
+         this.a(dzg.f, cpc.ps, cwt.b, ImmutableSet.of(eax.a), false, false, new dze(1, cyq.i), new dze(3, cyq.j), new dze(2, cyq.m));
+         this.a(
+            dzg.g,
+            cyq.I,
+            cwt.f,
+            ImmutableSet.of(eax.a, eax.b, eax.j, eax.r),
+            true,
+            false,
+            new dze(8, cyq.I),
+            new dze(52, cyq.aV),
+            new dze(3, cyq.b),
+            new dze(1, cyq.F)
+         );
+         this.a(dzg.h, cpc.lG, cwt.f, ImmutableSet.of(), false, false, new dze(116, cyq.aV), new dze(3, cyq.b), new dze(1, cyq.F));
+         this.a(dzg.i, cyq.hW, cwt.a, ImmutableSet.of(), true, false, new dze(1, cyq.a));
       }
-   }
-
-   public Stream<cte> b() {
-      int $$0 = iz.a(this.h());
-      int $$1 = iz.a(this.j());
-      int $$2 = iz.a(this.k());
-      int $$3 = iz.a(this.m());
-      return cte.a(new cte($$0, $$1), new cte($$2, $$3));
-   }
-
-   public boolean a(dzg $$0) {
-      return this.f >= $$0.c && this.c <= $$0.f && this.h >= $$0.e && this.e <= $$0.h && this.g >= $$0.d && this.d <= $$0.g;
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, int $$3) {
-      return this.f >= $$0 && this.c <= $$2 && this.h >= $$1 && this.e <= $$3;
-   }
-
-   public static Optional<dzg> a(Iterable<hx> $$0) {
-      Iterator<hx> $$1 = $$0.iterator();
-      if (!$$1.hasNext()) {
-         return Optional.empty();
-      } else {
-         dzg $$2 = new dzg($$1.next());
-         $$1.forEachRemaining($$2::a);
-         return Optional.of($$2);
-      }
-   }
-
-   public static Optional<dzg> b(Iterable<dzg> $$0) {
-      Iterator<dzg> $$1 = $$0.iterator();
-      if (!$$1.hasNext()) {
-         return Optional.empty();
-      } else {
-         dzg $$2 = $$1.next();
-         dzg $$3 = new dzg($$2.c, $$2.d, $$2.e, $$2.f, $$2.g, $$2.h);
-         $$1.forEachRemaining($$3::b);
-         return Optional.of($$3);
-      }
-   }
-
-   @Deprecated
-   public dzg b(dzg $$0) {
-      this.c = Math.min(this.c, $$0.c);
-      this.d = Math.min(this.d, $$0.d);
-      this.e = Math.min(this.e, $$0.e);
-      this.f = Math.max(this.f, $$0.f);
-      this.g = Math.max(this.g, $$0.g);
-      this.h = Math.max(this.h, $$0.h);
-      return this;
-   }
-
-   @Deprecated
-   public dzg a(hx $$0) {
-      this.c = Math.min(this.c, $$0.u());
-      this.d = Math.min(this.d, $$0.v());
-      this.e = Math.min(this.e, $$0.w());
-      this.f = Math.max(this.f, $$0.u());
-      this.g = Math.max(this.g, $$0.v());
-      this.h = Math.max(this.h, $$0.w());
-      return this;
-   }
-
-   @Deprecated
-   public dzg a(int $$0, int $$1, int $$2) {
-      this.c += $$0;
-      this.d += $$1;
-      this.e += $$2;
-      this.f += $$0;
-      this.g += $$1;
-      this.h += $$2;
-      return this;
-   }
-
-   @Deprecated
-   public dzg a(jb $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
-   }
-
-   public dzg b(int $$0, int $$1, int $$2) {
-      return new dzg(this.c + $$0, this.d + $$1, this.e + $$2, this.f + $$0, this.g + $$1, this.h + $$2);
-   }
-
-   public dzg a(int $$0) {
-      return new dzg(this.h() - $$0, this.i() - $$0, this.j() - $$0, this.k() + $$0, this.l() + $$0, this.m() + $$0);
-   }
-
-   public boolean b(jb $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
-   }
-
-   public boolean c(int $$0, int $$1, int $$2) {
-      return $$0 >= this.c && $$0 <= this.f && $$2 >= this.e && $$2 <= this.h && $$1 >= this.d && $$1 <= this.g;
-   }
-
-   public jb c() {
-      return new jb(this.f - this.c, this.g - this.d, this.h - this.e);
-   }
-
-   public int d() {
-      return this.f - this.c + 1;
-   }
-
-   public int e() {
-      return this.g - this.d + 1;
-   }
-
-   public int f() {
-      return this.h - this.e + 1;
-   }
-
-   public hx g() {
-      return new hx(this.c + (this.f - this.c + 1) / 2, this.d + (this.g - this.d + 1) / 2, this.e + (this.h - this.e + 1) / 2);
-   }
-
-   public void a(Consumer<hx> $$0) {
-      hx.a $$1 = new hx.a();
-      $$0.accept($$1.d(this.f, this.g, this.h));
-      $$0.accept($$1.d(this.c, this.g, this.h));
-      $$0.accept($$1.d(this.f, this.d, this.h));
-      $$0.accept($$1.d(this.c, this.d, this.h));
-      $$0.accept($$1.d(this.f, this.g, this.e));
-      $$0.accept($$1.d(this.c, this.g, this.e));
-      $$0.accept($$1.d(this.f, this.d, this.e));
-      $$0.accept($$1.d(this.c, this.d, this.e));
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("minX", this.c)
-         .add("minY", this.d)
-         .add("minZ", this.e)
-         .add("maxX", this.f)
-         .add("maxY", this.g)
-         .add("maxZ", this.h)
-         .toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dzg $$1)
-            ? false
-            : this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f && this.g == $$1.g && this.h == $$1.h;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.d, this.e, this.f, this.g, this.h);
-   }
-
-   public int h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.d;
-   }
-
-   public int j() {
-      return this.e;
-   }
-
-   public int k() {
-      return this.f;
-   }
-
-   public int l() {
-      return this.g;
-   }
-
-   public int m() {
-      return this.h;
    }
 }

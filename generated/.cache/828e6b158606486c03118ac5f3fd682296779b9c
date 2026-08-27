@@ -1,4 +1,4 @@
-// 23w51b	2026-08-28T01:22:11.330594	vanilla/Loot Tables
+// 24w03a	2026-08-28T01:24:19.0431287	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -845,8 +845,8 @@ dc71b50d90dd060d1146c204e1a922341f4a4220 data\minecraft\loot_tables\entities\par
 b01c18c933492c1dc33292bc446cb21bdafa818f data\minecraft\loot_tables\blocks\magenta_concrete.json
 0b2dd5a0d26459bc5333889a34c10e52893e902f data\minecraft\loot_tables\blocks\brewing_stand.json
 3af3c1e95ec02c5475922fb4f8a0b3c29f482872 data\minecraft\loot_tables\entities\cave_spider.json
-953d74aa04f5fdb6f0d0b09df403630334930f83 data\minecraft\loot_tables\chests\village\village_snowy_house.json
 90a1242dd7f394a8751bae7375c57a379b9f86b1 data\minecraft\loot_tables\blocks\black_wool.json
+953d74aa04f5fdb6f0d0b09df403630334930f83 data\minecraft\loot_tables\chests\village\village_snowy_house.json
 e67874f8a84cc41fd149007dd0d59a5e1838280c data\minecraft\loot_tables\blocks\netherite_block.json
 ad89351cd61f129f54d7e2a1acb0b37ce44d7887 data\minecraft\loot_tables\entities\zombie.json
 ac024a50f38e4ff8b3be31806c7566d8f8a18b21 data\minecraft\loot_tables\blocks\dead_fire_coral.json

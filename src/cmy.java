@@ -1,23 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cmy(ih<ars> b, int c, float d) {
-   public static final Codec<cmy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ars.b.fieldOf("sound_event").forGetter(cmy::a), atx.j.fieldOf("use_duration").forGetter(cmy::b), atx.k.fieldOf("range").forGetter(cmy::c)
-            )
-            .apply($$0, cmy::new)
-   );
-
-   public ih<ars> a() {
-      return this.b;
+public class cmy extends cou {
+   public cmy(cou.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
+   @Override
+   public coz a(coz $$0, cvn $$1, bog $$2) {
+      coz $$3 = super.a($$0, $$1, $$2);
+      return $$2 instanceof chh && ((chh)$$2).fU().d ? $$3 : new coz(cpc.pp);
    }
 }

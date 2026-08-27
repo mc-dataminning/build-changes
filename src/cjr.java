@@ -1,138 +1,107 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class cjr implements bjv {
-   private final csu c;
-   private final iq<cng> d = iq.a(3, cng.f);
-   @Nullable
-   private csv e;
-   private int f;
-   private int g;
+public class cjr {
+   private static final Logger a = LogUtils.getLogger();
+   private final cjt b;
+   private final Map<aiy, cjq> c;
+   private final cjs d;
 
-   public cjr(csu $$0) {
-      this.c = $$0;
+   cjr(cjt $$0, cjs $$1, Map<aiy, cjq> $$2) {
+      this.b = $$0;
+      this.c = $$2;
+      this.d = $$1;
    }
 
-   @Override
-   public int b() {
-      return this.d.size();
+   public boolean a(cjs $$0) {
+      return $$0.a(this.d);
    }
 
-   @Override
-   public boolean aj_() {
-      for (cng $$0 : this.d) {
-         if (!$$0.b()) {
-            return false;
+   public cjs a() {
+      return this.d;
+   }
+
+   public cjs a(Iterable<aiy> $$0) {
+      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
+   }
+
+   public cjs a(cjq... $$0) {
+      return cjs.a(this.b, Arrays.asList($$0));
+   }
+
+   public cjs a(Iterable<aiy> $$0, Consumer<aiy> $$1) {
+      Set<cjq> $$2 = Sets.newIdentityHashSet();
+
+      for (aiy $$3 : $$0) {
+         cjq $$4 = this.c.get($$3);
+         if ($$4 == null) {
+            $$1.accept($$3);
+         } else {
+            $$2.add($$4);
          }
       }
 
-      return true;
+      return cjs.a(this.b, $$2);
    }
 
-   @Override
-   public cng a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public cng a(int $$0, int $$1) {
-      cng $$2 = this.d.get($$0);
-      if ($$0 == 2 && !$$2.b()) {
-         return bjw.a(this.d, $$0, $$2.L());
-      } else {
-         cng $$3 = bjw.a(this.d, $$0, $$1);
-         if (!$$3.b() && this.d($$0)) {
-            this.f();
+   public Set<aiy> b(cjs $$0) {
+      Set<aiy> $$1 = new HashSet<>();
+      this.c.forEach(($$2, $$3) -> {
+         if ($$0.b($$3)) {
+            $$1.add($$2);
          }
-
-         return $$3;
-      }
+      });
+      return $$1;
    }
 
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
+   public Codec<cjs> b() {
+      return aiy.a.listOf().comapFlatMap($$0 -> {
+         Set<aiy> $$1 = new HashSet<>();
+         cjs $$2 = this.a($$0, $$1::add);
+         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
+      }, $$0 -> List.copyOf(this.b($$0)));
    }
 
-   @Override
-   public cng b(int $$0) {
-      return bjw.a(this.d, $$0);
-   }
+   public static class a {
+      private final cjt a;
+      private int b;
+      private final Map<aiy, cjq> c = new LinkedHashMap<>();
 
-   @Override
-   public void a(int $$0, cng $$1) {
-      this.d.set($$0, $$1);
-      if (!$$1.b() && $$1.L() > this.al_()) {
-         $$1.f(this.al_());
-      }
-
-      if (this.d($$0)) {
-         this.f();
-      }
-   }
-
-   @Override
-   public boolean a(cfq $$0) {
-      return this.c.gf() == $$0;
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.e = null;
-      cng $$0;
-      cng $$1;
-      if (this.d.get(0).b()) {
-         $$0 = this.d.get(1);
-         $$1 = cng.f;
-      } else {
-         $$0 = this.d.get(0);
-         $$1 = this.d.get(1);
+      public a(String $$0) {
+         this.a = new cjt($$0);
       }
 
-      if ($$0.b()) {
-         this.a(2, cng.f);
-         this.g = 0;
-      } else {
-         csw $$4 = this.c.gh();
-         if (!$$4.isEmpty()) {
-            csv $$5 = $$4.a($$0, $$1, this.f);
-            if ($$5 == null || $$5.p()) {
-               this.e = $$5;
-               $$5 = $$4.a($$1, $$0, this.f);
-            }
+      public cjq a(String $$0) {
+         return this.a(new aiy("minecraft", $$0));
+      }
 
-            if ($$5 != null && !$$5.p()) {
-               this.e = $$5;
-               this.a(2, $$5.f());
-               this.g = $$5.o();
+      public cjq a(aiy $$0) {
+         if (this.b >= 64) {
+            throw new IllegalStateException("Too many feature flags");
+         } else {
+            cjq $$1 = new cjq(this.a, this.b++);
+            cjq $$2 = this.c.put($$0, $$1);
+            if ($$2 != null) {
+               throw new IllegalStateException("Duplicate feature flag " + $$0);
             } else {
-               this.a(2, cng.f);
-               this.g = 0;
+               return $$1;
             }
          }
-
-         this.c.l(this.a(2));
       }
-   }
 
-   @Nullable
-   public csv g() {
-      return this.e;
-   }
-
-   public void c(int $$0) {
-      this.f = $$0;
-      this.f();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   public int h() {
-      return this.g;
+      public cjr a() {
+         cjs $$0 = cjs.a(this.a, this.c.values());
+         return new cjr(this.a, $$0, Map.copyOf(this.c));
+      }
    }
 }

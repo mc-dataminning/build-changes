@@ -1,46 +1,60 @@
-public abstract class bmf extends bmq {
-   protected bmf(bmc<? extends bmf> $$0, ctx $$1) {
-      super($$0, $$1);
+public class bmf {
+   public static final float a = 1.0F;
+   protected float b = 20.0F;
+   protected long c = axh.a / 20L;
+   protected int d = 0;
+   protected boolean e = true;
+   protected boolean f = false;
+
+   public void a(float $$0) {
+      this.b = Math.max($$0, 1.0F);
+      this.c = (long)((double)axh.a / (double)this.b);
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, djp $$2, hx $$3) {
+   public float f() {
+      return this.b;
    }
 
-   @Override
-   public void a(emc $$0) {
-      if (this.cX()) {
-         if (this.aZ()) {
-            this.a(0.02F, $$0);
-            this.a(bmu.a, this.do());
-            this.g(this.do().a(0.8F));
-         } else if (this.bn()) {
-            this.a(0.02F, $$0);
-            this.a(bmu.a, this.do());
-            this.g(this.do().a(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aC()) {
-               $$1 = this.dL().a_(this.aI()).b().i() * 0.91F;
-            }
+   public float g() {
+      return (float)this.c / (float)axh.b;
+   }
 
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aC()) {
-               $$1 = this.dL().a_(this.aI()).b().i() * 0.91F;
-            }
+   public long h() {
+      return this.c;
+   }
 
-            this.a(this.aC() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bmu.a, this.do());
-            this.g(this.do().a((double)$$1));
-         }
+   public boolean i() {
+      return this.e;
+   }
+
+   public boolean j() {
+      return this.d > 0;
+   }
+
+   public void c(int $$0) {
+      this.d = $$0;
+   }
+
+   public int k() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean l() {
+      return this.f;
+   }
+
+   public void m() {
+      this.e = !this.f || this.d > 0;
+      if (this.d > 0) {
+         this.d--;
       }
-
-      this.q(false);
    }
 
-   @Override
-   public boolean e_() {
-      return false;
+   public boolean a(bno $$0) {
+      return !this.i() && !($$0 instanceof chh) && $$0.cU() <= 0;
    }
 }

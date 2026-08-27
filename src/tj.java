@@ -1,148 +1,202 @@
+import java.io.BufferedOutputStream;
 import java.io.DataInput;
+import java.io.DataInputStream;
 import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.Objects;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UTFDataFormatException;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import javax.annotation.Nullable;
 
-public class tj implements tl {
-   private static final int b = 36;
-   public static final tn<tj> a = new tn.b<tj>() {
-      public tj a(DataInput $$0, sx $$1) throws IOException {
-         return tj.a(d($$0, $$1));
-      }
-
-      @Override
-      public ti.b a(DataInput $$0, ti $$1, sx $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static String d(DataInput $$0, sx $$1) throws IOException {
-         $$1.b(36L);
-         String $$2 = $$0.readUTF();
-         $$1.a(2L, (long)$$2.length());
-         return $$2;
-      }
-
-      @Override
-      public void b(DataInput $$0, sx $$1) throws IOException {
-         tj.a($$0);
-      }
-
-      @Override
-      public String a() {
-         return "STRING";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_String";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
+public class tj {
+   private static final OpenOption[] a = new OpenOption[]{
+      StandardOpenOption.SYNC, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING
    };
-   private static final tj c = new tj("");
-   private static final char w = '"';
-   private static final char x = '\'';
-   private static final char y = '\\';
-   private static final char z = '\u0000';
-   private final String A;
 
-   public static void a(DataInput $$0) throws IOException {
-      $$0.skipBytes($$0.readUnsignedShort());
+   public static sw a(Path $$0, tf $$1) throws IOException {
+      sw var3;
+      try (InputStream $$2 = Files.newInputStream($$0)) {
+         var3 = a($$2, $$1);
+      }
+
+      return var3;
    }
 
-   private tj(String $$0) {
-      Objects.requireNonNull($$0, "Null string not allowed");
-      this.A = $$0;
+   private static DataInputStream a(InputStream $$0) throws IOException {
+      return new DataInputStream(new avq(new GZIPInputStream($$0)));
    }
 
-   public static tj a(String $$0) {
-      return $$0.isEmpty() ? c : new tj($$0);
+   private static DataOutputStream a(OutputStream $$0) throws IOException {
+      return new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream($$0)));
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeUTF(this.A);
+   public static sw a(InputStream $$0, tf $$1) throws IOException {
+      sw var3;
+      try (DataInputStream $$2 = a($$0)) {
+         var3 = a((DataInput)$$2, $$1);
+      }
+
+      return var3;
    }
 
-   @Override
-   public int a() {
-      return 36 + 2 * this.A.length();
+   public static void a(Path $$0, tq $$1, tf $$2) throws IOException {
+      try (InputStream $$3 = Files.newInputStream($$0)) {
+         a($$3, $$1, $$2);
+      }
    }
 
-   @Override
-   public byte b() {
-      return 8;
+   public static void a(InputStream $$0, tq $$1, tf $$2) throws IOException {
+      try (DataInputStream $$3 = a($$0)) {
+         a((DataInput)$$3, $$1, $$2);
+      }
    }
 
-   @Override
-   public tn<tj> c() {
-      return a;
+   public static void a(sw $$0, Path $$1) throws IOException {
+      try (
+         OutputStream $$2 = Files.newOutputStream($$1, a);
+         OutputStream $$3 = new BufferedOutputStream($$2);
+      ) {
+         a($$0, $$3);
+      }
    }
 
-   @Override
-   public String toString() {
-      return tl.super.t_();
+   public static void a(sw $$0, OutputStream $$1) throws IOException {
+      try (DataOutputStream $$2 = a($$1)) {
+         a($$0, (DataOutput)$$2);
+      }
    }
 
-   public tj e() {
-      return this;
+   public static void b(sw $$0, Path $$1) throws IOException {
+      try (
+         OutputStream $$2 = Files.newOutputStream($$1, a);
+         OutputStream $$3 = new BufferedOutputStream($$2);
+         DataOutputStream $$4 = new DataOutputStream($$3);
+      ) {
+         a($$0, (DataOutput)$$4);
+      }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tj && Objects.equals(this.A, ((tj)$$0).A);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.A.hashCode();
-   }
-
-   @Override
-   public String t_() {
-      return this.A;
-   }
-
-   @Override
-   public void a(tp $$0) {
-      $$0.a(this);
-   }
-
-   public static String b(String $$0) {
-      StringBuilder $$1 = new StringBuilder(" ");
-      char $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
-         char $$4 = $$0.charAt($$3);
-         if ($$4 == '\\') {
-            $$1.append('\\');
-         } else if ($$4 == '"' || $$4 == '\'') {
-            if ($$2 == 0) {
-               $$2 = (char)($$4 == '"' ? 39 : 34);
-            }
-
-            if ($$2 == $$4) {
-               $$1.append('\\');
-            }
+   @Nullable
+   public static sw a(Path $$0) throws IOException {
+      if (!Files.exists($$0)) {
+         return null;
+      } else {
+         sw var3;
+         try (
+            InputStream $$1 = Files.newInputStream($$0);
+            DataInputStream $$2 = new DataInputStream($$1);
+         ) {
+            var3 = a((DataInput)$$2, tf.a());
          }
 
-         $$1.append($$4);
+         return var3;
       }
-
-      if ($$2 == 0) {
-         $$2 = '"';
-      }
-
-      $$1.setCharAt(0, $$2);
-      $$1.append($$2);
-      return $$1.toString();
    }
 
-   @Override
-   public ti.b a(ti $$0) {
-      return $$0.a(this.A);
+   public static sw a(DataInput $$0) throws IOException {
+      return a($$0, tf.a());
+   }
+
+   public static sw a(DataInput $$0, tf $$1) throws IOException {
+      tt $$2 = c($$0, $$1);
+      if ($$2 instanceof sw) {
+         return (sw)$$2;
+      } else {
+         throw new IOException("Root tag must be a named compound tag");
+      }
+   }
+
+   public static void a(sw $$0, DataOutput $$1) throws IOException {
+      c($$0, $$1);
+   }
+
+   public static void a(DataInput $$0, tq $$1, tf $$2) throws IOException {
+      tv<?> $$3 = tw.a($$0.readByte());
+      if ($$3 == sy.a) {
+         if ($$1.b(sy.a) == tq.b.a) {
+            $$1.a();
+         }
+      } else {
+         switch ($$1.b($$3)) {
+            case c:
+            default:
+               break;
+            case b:
+               tr.a($$0);
+               $$3.b($$0, $$2);
+               break;
+            case a:
+               tr.a($$0);
+               $$3.a($$0, $$1, $$2);
+         }
+      }
+   }
+
+   public static tt b(DataInput $$0, tf $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      return (tt)($$2 == 0 ? sy.b : a($$0, $$1, $$2));
+   }
+
+   public static void a(tt $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$0.a($$1);
+      }
+   }
+
+   public static void b(tt $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$1.writeUTF("");
+         $$0.a($$1);
+      }
+   }
+
+   public static void c(tt $$0, DataOutput $$1) throws IOException {
+      b($$0, new tj.a($$1));
+   }
+
+   private static tt c(DataInput $$0, tf $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      if ($$2 == 0) {
+         return sy.b;
+      } else {
+         tr.a($$0);
+         return a($$0, $$1, $$2);
+      }
+   }
+
+   private static tt a(DataInput $$0, tf $$1, byte $$2) {
+      try {
+         return tw.a($$2).c($$0, $$1);
+      } catch (IOException var6) {
+         o $$4 = o.a(var6, "Loading NBT data");
+         p $$5 = $$4.a("NBT Tag");
+         $$5.a("Tag type", $$2);
+         throw new tn($$4);
+      }
+   }
+
+   public static class a extends avl {
+      public a(DataOutput $$0) {
+         super($$0);
+      }
+
+      @Override
+      public void writeUTF(String $$0) throws IOException {
+         try {
+            super.writeUTF($$0);
+         } catch (UTFDataFormatException var3) {
+            ac.a("Failed to write NBT String", var3);
+            super.writeUTF("");
+         }
+      }
    }
 }

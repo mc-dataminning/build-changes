@@ -1,18 +1,30 @@
-public class cnt extends cla {
-   public cnt(cwy $$0, cnb.a $$1) {
-      super($$0, $$1);
+public class cnt extends cou implements coa {
+   public cnt(cou.a $$0) {
+      super($$0);
+      dat.a(this, cmj.a);
+   }
+
+   public static boolean d(coz $$0) {
+      return $$0.l() < $$0.m() - 1;
    }
 
    @Override
-   public bkc a(cpr $$0) {
-      return bkc.d;
+   public boolean a(coz $$0, coz $$1) {
+      return $$1.a(cpc.vM);
    }
 
    @Override
-   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
-      ely $$3 = a($$0, $$1, ctg.b.b);
-      ely $$4 = $$3.a($$3.a().c());
-      bkc $$5 = super.a(new cpr($$1, $$2, $$4));
-      return new bkd<>($$5, $$1.b($$2));
+   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
+
+   @Override
+   public atj au_() {
+      return atk.ao;
+   }
+
+   @Override
+   public bnv g() {
+      return bnv.e;
    }
 }

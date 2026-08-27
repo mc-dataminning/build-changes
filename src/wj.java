@@ -1,74 +1,71 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
+import java.time.Instant;
+import java.util.Optional;
 
-public record wj(String d, @Nullable ge e) implements wi {
-   public static final MapCodec<wj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(wj::b)).apply($$0, wj::new));
-   public static final wi.a<wj> b = new wi.a<>(a, "entity");
+public record wj(String b, Instant c, long d, vx e) {
+   public static final MapCodec<wj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(wj::a),
+               avp.m.fieldOf("time_stamp").forGetter(wj::b),
+               Codec.LONG.fieldOf("salt").forGetter(wj::c),
+               vx.a.optionalFieldOf("last_seen", vx.b).forGetter(wj::d)
+            )
+            .apply($$0, wj::new)
+   );
 
-   public wj(String $$0) {
-      this($$0, a($$0));
+   public static wj a(String $$0) {
+      return new wj($$0, Instant.now(), 0L, vx.b);
    }
 
-   @Nullable
-   private static ge a(String $$0) {
-      try {
-         gf $$1 = new gf(new StringReader($$0));
-         return $$1.t();
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   public void a(awt.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   @Override
-   public Stream<so> a(ds $$0) throws CommandSyntaxException {
-      if (this.e != null) {
-         List<? extends blw> $$1 = this.e.b($$0);
-         return $$1.stream().map(cm::b);
-      } else {
-         return Stream.empty();
-      }
+   public wj.a a(wd $$0) {
+      return new wj.a(this.b, this.c, this.d, this.e.a($$0));
    }
 
-   @Override
-   public wi.a<?> a() {
-      return b;
+   public String a() {
+      return this.b;
    }
 
-   @Override
-   public String toString() {
-      return "entity=" + this.d;
+   public Instant b() {
+      return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof wj $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public String b() {
+   public long c() {
       return this.d;
    }
 
-   @Nullable
-   public ge c() {
+   public vx d() {
       return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, vx.a d) {
+      public a(uq $$0) {
+         this($$0.d(256), $$0.v(), $$0.readLong(), new vx.a($$0));
+      }
+
+      public void a(uq $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
+      }
+
+      public Optional<wj> a(wd $$0) {
+         return this.d.a($$0).map($$0x -> new wj(this.a, this.b, this.c, $$0x));
+      }
    }
 }

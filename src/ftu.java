@@ -1,125 +1,25 @@
-import java.util.Optional;
-
-public class ftu implements ftt {
-   private final ftt.a a;
-   private final ftt.a b = ftt.a(new eqf(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
-
-   public ftu(ftt.a $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public eqo getBuffer(fub $$0) {
-      if ($$0.K()) {
-         eqo $$1 = this.b.getBuffer($$0);
-         return new ftu.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         eqo $$2 = this.a.getBuffer($$0);
-         Optional<fub> $$3 = $$0.J();
-         if ($$3.isPresent()) {
-            eqo $$4 = this.b.getBuffer($$3.get());
-            ftu.a $$5 = new ftu.a($$4, this.c, this.d, this.e, this.f);
-            return eqr.a($$5, $$2);
-         } else {
-            return $$2;
-         }
+public class ftu extends fuh {
+   ftu(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.04F;
+      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
+         this.j = $$4;
+         this.k = 0.1;
+         this.l = $$6;
       }
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+   public static class a implements ftd<kc> {
+      private final ftv a;
 
-   public void a() {
-      this.b.b();
-   }
-
-   static class a extends eqj {
-      private final eqo f;
-      private double g;
-      private double h;
-      private double i;
-      private float j;
-      private float k;
-
-      a(eqo $$0, int $$1, int $$2, int $$3, int $$4) {
-         this.f = $$0;
-         super.b($$1, $$2, $$3, $$4);
+      public a(ftv $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-      }
-
-      @Override
-      public void l() {
-      }
-
-      @Override
-      public eqo a(double $$0, double $$1, double $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      @Override
-      public eqo a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public eqo a(float $$0, float $$1) {
-         this.j = $$0;
-         this.k = $$1;
-         return this;
-      }
-
-      @Override
-      public eqo a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public eqo b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public eqo a(float $$0, float $$1, float $$2) {
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
-      }
-
-      @Override
-      public void e() {
-         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ftu $$8 = new ftu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

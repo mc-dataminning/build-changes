@@ -1,54 +1,29 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aba implements xx<aag> {
+   public static final xo<uq, aba> a = xx.a(aba::a, aba::new);
+   private final int b;
 
-public record aba(UUID a, int b, @Nullable vs c, vz.a d, @Nullable vg e, vk f, vc.b g) implements xg<zb> {
-   public aba(uj $$0) {
-      this($$0.p(), $$0.n(), $$0.c(vs::a), new vz.a($$0), $$0.c(uj::m), vk.a($$0), new vc.b($$0));
+   public aba(int $$0) {
+      this.b = $$0;
+   }
+
+   private aba(uq $$0) {
+      this.b = $$0.readUnsignedByte();
+   }
+
+   private void a(uq $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c, vs::a);
-      this.d.a($$0);
-      $$0.a(this.e, uj::a);
-      vk.a($$0, this.f);
-      this.g.a($$0);
+   public xz<aba> a() {
+      return aeq.t;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   public int d() {
+   public int b() {
       return this.b;
-   }
-
-   @Nullable
-   public vs e() {
-      return this.c;
-   }
-
-   public vz.a f() {
-      return this.d;
-   }
-
-   @Nullable
-   public vg g() {
-      return this.e;
-   }
-
-   public vk h() {
-      return this.f;
-   }
-
-   public vc.b i() {
-      return this.g;
    }
 }

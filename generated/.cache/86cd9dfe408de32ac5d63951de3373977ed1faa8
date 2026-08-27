@@ -1,6 +1,6 @@
-// 23w51b	2026-08-28T01:22:11.343988	vanilla/Tags for minecraft:block
-882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
+// 24w03a	2026-08-28T01:24:19.0553729	vanilla/Tags for minecraft:block
 84150f9be2fa26f9202962b031c722718dd23ca0 data\minecraft\tags\blocks\stone_ore_replaceables.json
+882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data\minecraft\tags\blocks\frogs_spawnable_on.json
 fe67f656c64c8654f29be025478ff7af10c3cfac data\minecraft\tags\blocks\rabbits_spawnable_on.json
 031ce19c9707a4d8e85bc799d69543917c962fad data\minecraft\tags\blocks\pressure_plates.json
@@ -45,8 +45,8 @@ d89ad094b9c42adca9e4e2addfcde9c9e6b76c08 data\minecraft\tags\blocks\bamboo_plant
 31c793313c9b85d3bd3d53198d21098ea2adaf78 data\minecraft\tags\blocks\camel_sand_step_sound_blocks.json
 a5350542ad1610ab7b06a994e138612b780495e3 data\minecraft\tags\blocks\base_stone_nether.json
 51d8bf3885db56e8d2baea74147e7db3db031d51 data\minecraft\tags\blocks\maintains_farmland.json
-e85d473045cf55c6f706798af73a74b69875c186 data\minecraft\tags\blocks\smelts_to_glass.json
 45aac43b276cae0f4b4ca7dccad68ee2cf4f1ca9 data\minecraft\tags\blocks\sand.json
+e85d473045cf55c6f706798af73a74b69875c186 data\minecraft\tags\blocks\smelts_to_glass.json
 47430d117fba512dfb622420bab8681888a6f36b data\minecraft\tags\blocks\sniffer_diggable_block.json
 dcfcde0b3716705215c339c3ed7bb1fe6da2cdb2 data\minecraft\tags\blocks\vibration_resonators.json
 2f6f453e3ae95b8921ba5b843b704a77117e01a7 data\minecraft\tags\blocks\climbable.json
@@ -57,6 +57,7 @@ f90b8e6674252583fae1583255b371b3c95c36d5 data\minecraft\tags\blocks\mooshrooms_s
 af26b6f8afbcb74c6e990850cb8baf45137075f4 data\minecraft\tags\blocks\dirt.json
 9cf89cc089a03f7415393823473c106253d62661 data\minecraft\tags\blocks\wall_corals.json
 11016ca20eef8807f79a3d6958510957c0501d65 data\minecraft\tags\blocks\iron_ores.json
+68c3f1710803eed08ada39abe7d3fff027f7ab23 data\minecraft\tags\blocks\armadillo_spawnable_on.json
 c8ec59201ede7ff6cb74a70bd44fb6be642a3f40 data\minecraft\tags\blocks\stone_pressure_plates.json
 afd862ebc333a8df53174530faee5f54c15a71a7 data\minecraft\tags\blocks\nether_carver_replaceables.json
 c3344f6e568a707914a420dacbf9b082a8ff1787 data\minecraft\tags\blocks\stone_bricks.json
@@ -151,8 +152,8 @@ f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\blocks\diamond_ores
 7ff1531dc7f287a36682c786f864934ac10ba0dc data\minecraft\tags\blocks\portals.json
 51ce2bcc8e2afb893169c1f8562e87206632ea5a data\minecraft\tags\blocks\sword_efficient.json
 3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\blocks\flowers.json
-88e03262431177ee3001a61830532ea6b37dfcce data\minecraft\tags\blocks\wall_signs.json
 76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\blocks\standing_signs.json
+88e03262431177ee3001a61830532ea6b37dfcce data\minecraft\tags\blocks\wall_signs.json
 5b7a16c4ba8e702114347cf2a688167b9789cd58 data\minecraft\tags\blocks\wall_post_override.json
 74f68e22bf93a751191e1ec35390adcf191a2880 data\minecraft\tags\blocks\fences.json
 19f48b0aa7f4f0432b1625d6afe2e73994b2e6ca data\minecraft\tags\blocks\mangrove_logs.json
@@ -166,8 +167,8 @@ c0373adadbd97eced4b1af5cf94d7644a303fc3c data\minecraft\tags\blocks\wolves_spawn
 d772e288e7520c6974ec3238c6aa3ecd2b8e686b data\minecraft\tags\blocks\trail_ruins_replaceable.json
 2d97a7b26d2a65b8dab30789033841371c7361d4 data\minecraft\tags\blocks\enchantment_power_transmitter.json
 a50dcf5915e98c7c6616f3b34f657c2f14d6d173 data\minecraft\tags\blocks\lush_ground_replaceable.json
-864b82c0176addd3a0a560b4bfb7cfd232de8a9e data\minecraft\tags\blocks\hoglin_repellents.json
 486861a8a01410d404ee129446a439a712b98156 data\minecraft\tags\blocks\fire.json
+864b82c0176addd3a0a560b4bfb7cfd232de8a9e data\minecraft\tags\blocks\hoglin_repellents.json
 24082f1b5e075495c4f6c4d1b68587d4a9cac869 data\minecraft\tags\blocks\wooden_slabs.json
 a07a167420e56e46bebdbfdefc864f20a69a3190 data\minecraft\tags\blocks\mineable\pickaxe.json
 642497f10f9b4cd17f0596ccd068a662779a5143 data\minecraft\tags\blocks\logs_that_burn.json

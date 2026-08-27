@@ -1,20 +1,15 @@
-import java.util.UUID;
+public class ghs extends ghw {
+   private static final aiy a = new aiy("back");
 
-public interface ghs {
-   void a(UUID var1, ghs.b var2);
-
-   void a(UUID var1, ghs.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public ghs(ggv $$0) {
+      super($$0, new aiy("textures/atlas/paintings.png"), new aiy("paintings"));
    }
 
-   public static enum b {
-      a,
-      b;
+   public ggu a(cdo $$0) {
+      return this.a(kf.l.b($$0));
+   }
+
+   public ggu a() {
+      return this.a(a);
    }
 }

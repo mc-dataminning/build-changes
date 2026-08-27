@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ggq extends AutoCloseable {
+   void a(int var1, int var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ggq {
+   @Override
+   void close();
 }

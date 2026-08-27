@@ -1,24 +1,23 @@
-public class aea implements xg<adk> {
-   private final int a;
+import io.netty.buffer.ByteBuf;
 
-   public aea(int $$0) {
-      this.a = $$0;
-   }
+public class aea implements xx<aag> {
+   public static final aea a = new aea();
+   public static final xo<ByteBuf, aea> b = xo.a(a);
 
-   public void a(adk $$0) {
-      $$0.a(this);
-   }
-
-   public aea(uj $$0) {
-      this.a = $$0.readByte();
+   private aea() {
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.k(this.a);
+   public xz<aea> a() {
+      return aeq.aS;
    }
 
-   public int a() {
-      return this.a;
+   public void a(aag $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

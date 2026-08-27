@@ -1,10 +1,17 @@
-public class cne extends cms {
-   public cne(bmc<? extends cbt> $$0, cnb.a $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public class cne extends cou {
+   public cne(cou.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(cfq $$0, ic $$1, cng $$2, hx $$3) {
-      return !$$0.dL().s($$3) && $$0.a($$3, $$1, $$2);
+   public boolean am_() {
+      return true;
+   }
+
+   @Nullable
+   public xx<?> a(coz $$0, cvn $$1, chh $$2) {
+      return null;
    }
 }

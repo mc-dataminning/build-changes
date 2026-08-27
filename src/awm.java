@@ -1,25 +1,49 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class awm extends DataFix {
-   public awm(Schema $$0) {
-      super($$0, false);
-   }
+public interface awm {
+   awm a(String var1);
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bbw.c);
-      return this.fixTypeEverywhereTyped(
-         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
-      );
-   }
+   void b(String var1);
 
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      return $$2 ? $$0 : $$0.remove("blending_data");
+   public static class a implements awm {
+      private final Multimap<String, String> a;
+      private final Supplier<String> b;
+      @Nullable
+      private String c;
+
+      public a() {
+         this(HashMultimap.create(), () -> "");
+      }
+
+      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private String b() {
+         if (this.c == null) {
+            this.c = this.b.get();
+         }
+
+         return this.c;
+      }
+
+      @Override
+      public awm a(String $$0) {
+         return new awm.a(this.a, () -> this.b() + $$0);
+      }
+
+      @Override
+      public void b(String $$0) {
+         this.a.put(this.b(), $$0);
+      }
+
+      public Multimap<String, String> a() {
+         return ImmutableMultimap.copyOf(this.a);
+      }
    }
 }

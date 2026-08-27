@@ -1,55 +1,47 @@
-public interface ctz {
-   int K_();
+import java.util.Map.Entry;
 
-   int J_();
+public class ctz extends cti {
+   private static final float b = 0.15F;
 
-   default int al() {
-      return this.J_() + this.K_();
+   public ctz(cti.a $$0, bnv... $$1) {
+      super($$0, auh.be, $$1);
    }
 
-   default int am() {
-      return this.ao() - this.an();
+   @Override
+   public int a(int $$0) {
+      return 10 + 20 * ($$0 - 1);
    }
 
-   default int an() {
-      return iz.a(this.J_());
+   @Override
+   public int b(int $$0) {
+      return super.a($$0) + 50;
    }
 
-   default int ao() {
-      return iz.a(this.al() - 1) + 1;
+   @Override
+   public int a() {
+      return 3;
    }
 
-   default boolean s(hx $$0) {
-      return this.d($$0.v());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 < this.J_() || $$0 >= this.al();
-   }
-
-   default int e(int $$0) {
-      return this.f(iz.a($$0));
-   }
-
-   default int f(int $$0) {
-      return $$0 - this.an();
-   }
-
-   default int g(int $$0) {
-      return $$0 + this.an();
-   }
-
-   static ctz e(final int $$0, final int $$1) {
-      return new ctz() {
-         @Override
-         public int K_() {
-            return $$1;
+   @Override
+   public void b(bog $$0, bno $$1, int $$2) {
+      awo $$3 = $$0.eh();
+      Entry<bnv, coz> $$4 = ctj.b(ctl.h, $$0);
+      if (a($$2, $$3)) {
+         if ($$1 != null) {
+            $$1.a($$0.dN().d($$0), (float)b($$2, $$3));
          }
 
-         @Override
-         public int J_() {
-            return $$0;
+         if ($$4 != null) {
+            $$4.getValue().a(2, $$0, $$4.getKey());
          }
-      };
+      }
+   }
+
+   public static boolean a(int $$0, awo $$1) {
+      return $$0 <= 0 ? false : $$1.i() < 0.15F * (float)$$0;
+   }
+
+   public static int b(int $$0, awo $$1) {
+      return $$0 > 10 ? $$0 - 10 : 1 + $$1.a(4);
    }
 }

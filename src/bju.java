@@ -1,86 +1,141 @@
-public class bju implements bjv {
-   private final bjv c;
-   private final bjv d;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
 
-   public bju(bjv $$0, bjv $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class bju implements bjw {
+   public static final int a = 10;
+   @Nullable
+   private static Consumer<Path> b = null;
+   private final Map<bjp, List<bkb>> c = new Object2ObjectOpenHashMap();
+   private final bif d;
+   private final Executor e;
+   private final bka f;
+   private final Consumer<bik> g;
+   private final Consumer<Path> h;
+   private final bjr i;
+   private final LongSupplier j;
+   private final long k;
+   private int l;
+   private bij m;
+   private volatile boolean n;
+   private Set<bjp> o = ImmutableSet.of();
+
+   private bju(bjr $$0, LongSupplier $$1, Executor $$2, bka $$3, Consumer<bik> $$4, Consumer<Path> $$5) {
+      this.i = $$0;
+      this.j = $$1;
+      this.d = new bif($$1, () -> this.l);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = b == null ? $$5 : $$5.andThen(b);
+      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
+      this.m = new bie(this.j, () -> this.l, false);
+      this.d.c();
+   }
+
+   public static bju a(bjr $$0, LongSupplier $$1, Executor $$2, bka $$3, Consumer<bik> $$4, Consumer<Path> $$5) {
+      return new bju($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int b() {
-      return this.c.b() + this.d.b();
-   }
-
-   @Override
-   public boolean aj_() {
-      return this.c.aj_() && this.d.aj_();
-   }
-
-   public boolean a(bjv $$0) {
-      return this.c == $$0 || this.d == $$0;
-   }
-
-   @Override
-   public cng a(int $$0) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
-   }
-
-   @Override
-   public cng a(int $$0, int $$1) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
-   }
-
-   @Override
-   public cng b(int $$0) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cng $$1) {
-      if ($$0 >= this.c.b()) {
-         this.d.a($$0 - this.c.b(), $$1);
-      } else {
-         this.c.a($$0, $$1);
+   public synchronized void a() {
+      if (this.e()) {
+         this.n = true;
       }
    }
 
    @Override
-   public int al_() {
-      return this.c.al_();
+   public synchronized void b() {
+      if (this.e()) {
+         this.m = bii.a;
+         this.g.accept(big.a);
+         this.a(this.o);
+      }
    }
 
    @Override
-   public void e() {
-      this.c.e();
-      this.d.e();
+   public void c() {
+      this.g();
+      this.o = this.i.a(() -> this.m);
+
+      for (bjp $$0 : this.o) {
+         $$0.a();
+      }
+
+      this.l++;
    }
 
    @Override
-   public boolean a(cfq $$0) {
-      return this.c.a($$0) && this.d.a($$0);
+   public void d() {
+      this.g();
+      if (this.l != 0) {
+         for (bjp $$0 : this.o) {
+            $$0.a(this.l);
+            if ($$0.g()) {
+               bkb $$1 = new bkb(Instant.now(), this.l, this.m.d());
+               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+            }
+         }
+
+         if (!this.n && this.j.getAsLong() <= this.k) {
+            this.m = new bie(this.j, () -> this.l, false);
+         } else {
+            this.n = false;
+            bik $$2 = this.d.e();
+            this.m = bii.a;
+            this.g.accept($$2);
+            this.a($$2);
+         }
+      }
    }
 
    @Override
-   public void d_(cfq $$0) {
-      this.c.d_($$0);
-      this.d.d_($$0);
+   public boolean e() {
+      return this.d.a();
    }
 
    @Override
-   public void c(cfq $$0) {
-      this.c.c($$0);
-      this.d.c($$0);
+   public bil f() {
+      return bil.a(this.d.d(), this.m);
    }
 
-   @Override
-   public boolean b(int $$0, cng $$1) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
+   private void g() {
+      if (!this.e()) {
+         throw new IllegalStateException("Not started!");
+      }
    }
 
-   @Override
-   public void a() {
-      this.c.a();
-      this.d.a();
+   private void a(bik $$0) {
+      HashSet<bjp> $$1 = new HashSet<>(this.o);
+      this.e.execute(() -> {
+         Path $$2 = this.f.a($$1, this.c, $$0);
+         this.a($$1);
+         this.h.accept($$2);
+      });
+   }
+
+   private void a(Collection<bjp> $$0) {
+      for (bjp $$1 : $$0) {
+         $$1.b();
+      }
+
+      this.c.clear();
+      this.d.b();
+   }
+
+   public static void a(Consumer<Path> $$0) {
+      b = $$0;
    }
 }

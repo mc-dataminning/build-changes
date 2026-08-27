@@ -1,73 +1,233 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class ajp {
-   public static final int a = 100;
+public class ajp extends eow {
+   private final MinecraftServer b;
+   private final Set<eoo> c = Sets.newHashSet();
+   private final List<Runnable> d = Lists.newArrayList();
 
-   public static void a(CommandDispatcher<ds> $$0, dn $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("give").requires($$0x -> $$0x.c(2)))
-            .then(
-               dt.a("targets", ef.d())
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("item", fy.a($$1)).executes($$0x -> a((ds)$$0x.getSource(), fy.a($$0x, "item"), ef.f($$0x, "targets"), 1)))
-                        .then(
-                           dt.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((ds)$$0x.getSource(), fy.a($$0x, "item"), ef.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
-                  )
-            )
-      );
+   public ajp(MinecraftServer $$0) {
+      this.b = $$0;
    }
 
-   private static int a(ds $$0, fz $$1, Collection<anf> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = $$1.a().k();
-      int $$5 = $$4 * 100;
-      cng $$6 = $$1.a($$3, false);
-      if ($$3 > $$5) {
-         $$0.b(vg.a("commands.give.failed.toomanyitems", $$5, $$6.J()));
-         return 0;
-      } else {
-         for (anf $$7 : $$2) {
-            int $$8 = $$3;
-
-            while ($$8 > 0) {
-               int $$9 = Math.min($$4, $$8);
-               $$8 -= $$9;
-               cng $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.fS().e($$10);
-               if ($$11 && $$10.b()) {
-                  $$10.f(1);
-                  ccb $$13 = $$7.a($$10, false);
-                  if ($$13 != null) {
-                     $$13.C();
-                  }
-
-                  $$7.dL().a(null, $$7.dq(), $$7.ds(), $$7.dw(), art.nd, aru.h, 0.2F, (($$7.eg().i() - $$7.eg().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.bW.d();
-               } else {
-                  ccb $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.x();
-                     $$12.b($$7.cw());
-                  }
-               }
-            }
-         }
-
-         if ($$2.size() == 1) {
-            $$0.a(() -> vg.a("commands.give.success.single", $$3, $$6.J(), $$2.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vg.a("commands.give.success.single", $$3, $$6.J(), $$2.size()), true);
-         }
-
-         return $$2.size();
+   @Override
+   protected void a(eov $$0, eoo $$1, eot $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.c.contains($$1)) {
+         this.b.ae().a(new ads($$0.cy(), $$1.b(), $$2.a(), $$2.d(), Optional.ofNullable($$2.c())));
       }
+
+      this.a();
+   }
+
+   @Override
+   protected void a(eov $$0, eoo $$1) {
+      super.a($$0, $$1);
+      this.a();
+   }
+
+   @Override
+   public void a(eov $$0) {
+      super.a($$0);
+      this.b.ae().a(new acr($$0.cy(), null));
+      this.a();
+   }
+
+   @Override
+   public void b(eov $$0, eoo $$1) {
+      super.b($$0, $$1);
+      if (this.c.contains($$1)) {
+         this.b.ae().a(new acr($$0.cy(), $$1.b()));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(eon $$0, @Nullable eoo $$1) {
+      eoo $$2 = this.a($$0);
+      super.a($$0, $$1);
+      if ($$2 != $$1 && $$2 != null) {
+         if (this.h($$2) > 0) {
+            this.b.ae().a(new adi($$0, $$1));
+         } else {
+            this.g($$2);
+         }
+      }
+
+      if ($$1 != null) {
+         if (this.c.contains($$1)) {
+            this.b.ae().a(new adi($$0, $$1));
+         } else {
+            this.e($$1);
+         }
+      }
+
+      this.a();
+   }
+
+   @Override
+   public boolean a(String $$0, eor $$1) {
+      if (super.a($$0, $$1)) {
+         this.b.ae().a(adr.a($$1, $$0, adr.a.a));
+         this.a();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void b(String $$0, eor $$1) {
+      super.b($$0, $$1);
+      this.b.ae().a(adr.a($$1, $$0, adr.a.b));
+      this.a();
+   }
+
+   @Override
+   public void a(eoo $$0) {
+      super.a($$0);
+      this.a();
+   }
+
+   @Override
+   public void b(eoo $$0) {
+      super.b($$0);
+      if (this.c.contains($$0)) {
+         this.b.ae().a(new adp($$0, 2));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void c(eoo $$0) {
+      super.c($$0);
+      if (this.c.contains($$0)) {
+         this.g($$0);
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(eor $$0) {
+      super.a($$0);
+      this.b.ae().a(adr.a($$0, true));
+      this.a();
+   }
+
+   @Override
+   public void b(eor $$0) {
+      super.b($$0);
+      this.b.ae().a(adr.a($$0, false));
+      this.a();
+   }
+
+   @Override
+   public void c(eor $$0) {
+      super.c($$0);
+      this.b.ae().a(adr.a($$0));
+      this.a();
+   }
+
+   public void a(Runnable $$0) {
+      this.d.add($$0);
+   }
+
+   protected void a() {
+      for (Runnable $$0 : this.d) {
+         $$0.run();
+      }
+   }
+
+   public List<xx<?>> d(eoo $$0) {
+      List<xx<?>> $$1 = Lists.newArrayList();
+      $$1.add(new adp($$0, 0));
+
+      for (eon $$2 : eon.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new adi($$2, $$0));
+         }
+      }
+
+      for (eop $$3 : this.i($$0)) {
+         $$1.add(new ads($$3.c(), $$0.b(), $$3.d(), $$3.e(), Optional.ofNullable($$3.f())));
+      }
+
+      return $$1;
+   }
+
+   public void e(eoo $$0) {
+      List<xx<?>> $$1 = this.d($$0);
+
+      for (aow $$2 : this.b.ae().t()) {
+         for (xx<?> $$3 : $$1) {
+            $$2.d.b($$3);
+         }
+      }
+
+      this.c.add($$0);
+   }
+
+   public List<xx<?>> f(eoo $$0) {
+      List<xx<?>> $$1 = Lists.newArrayList();
+      $$1.add(new adp($$0, 1));
+
+      for (eon $$2 : eon.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new adi($$2, $$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public void g(eoo $$0) {
+      List<xx<?>> $$1 = this.f($$0);
+
+      for (aow $$2 : this.b.ae().t()) {
+         for (xx<?> $$3 : $$1) {
+            $$2.d.b($$3);
+         }
+      }
+
+      this.c.remove($$0);
+   }
+
+   public int h(eoo $$0) {
+      int $$1 = 0;
+
+      for (eon $$2 : eon.values()) {
+         if (this.a($$2) == $$0) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   public ehu.a<eox> b() {
+      return new ehu.a<>(this::i, this::a, axo.n);
+   }
+
+   private eox i() {
+      eox $$0 = new eox(this);
+      this.a($$0::c);
+      return $$0;
+   }
+
+   private eox a(sw $$0) {
+      return this.i().b($$0);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

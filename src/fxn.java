@@ -1,45 +1,50 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+@FunctionalInterface
+public interface fxn<T extends dit> {
+   fxm<T> create(fxn.a var1);
 
-public class fxn implements fxe.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final evr c;
-   private Collection<hx> d = Lists.newArrayList();
+   public static class a {
+      private final fxl a;
+      private final fwg b;
+      private final gbr c;
+      private final gar d;
+      private final foy e;
+      private final eys f;
 
-   public fxn(evr $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<hx> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
-      hx $$5 = this.b().c();
-
-      for (hx $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
-         }
+      public a(fxl $$0, fwg $$1, gbr $$2, gar $$3, foy $$4, eys $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
       }
-   }
 
-   private static void a(eqk $$0, ftt $$1, hx $$2) {
-      fxe.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
+      public fxl a() {
+         return this.a;
+      }
 
-   private static void a(eqk $$0, ftt $$1, String $$2, hx $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      fxe.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
+      public fwg b() {
+         return this.b;
+      }
 
-   private evc b() {
-      return this.c.j.m();
+      public gar c() {
+         return this.d;
+      }
+
+      public gbr d() {
+         return this.c;
+      }
+
+      public foy e() {
+         return this.e;
+      }
+
+      public fpc a(fpa $$0) {
+         return this.e.a($$0);
+      }
+
+      public eys f() {
+         return this.f;
+      }
    }
 }

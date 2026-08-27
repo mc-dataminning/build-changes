@@ -1,28 +1,15 @@
-public enum dkl implements avl {
-   a(ic.a),
-   b(ic.b);
-
-   private final ic c;
-
-   private dkl(ic $$0) {
-      this.c = $$0;
-   }
-
-   public ic a() {
-      return this.c;
+public class dkl extends dja {
+   public dkl(hz $$0, dlf $$1) {
+      super(div.c, $$0, $$1);
    }
 
    @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dkl b() {
-      return this == a ? b : a;
+   protected void a(cvn $$0, hz $$1, dlf $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$3 != $$4) {
+         cyo $$5 = $$2.b();
+         $$0.a($$1, $$5);
+         $$0.a($$1.d(), $$5);
+      }
    }
 }

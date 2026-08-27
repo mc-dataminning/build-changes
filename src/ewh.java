@@ -1,37 +1,56 @@
-import org.joml.Vector3f;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record ewh(ewh.c a, ewj... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, ewj[] var3, int var4, int var5, float var6);
+public abstract class ewh implements Runnable {
+   protected static final int a = 25;
+   private static final Logger b = LogUtils.getLogger();
+   private boolean c = false;
+
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
+      }
    }
 
-   public static class b {
-      public static final ewh.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final ewh.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            aup.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            aup.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            aup.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
+   public static void a(ffe $$0) {
+      exh $$1 = exh.O();
+      $$1.execute(() -> $$1.a($$0));
    }
 
-   public interface c {
-      void apply(fnj var1, Vector3f var2);
+   protected void a(vq $$0) {
+      this.b();
+      exh $$1 = exh.O();
+      $$1.execute(() -> $$1.a(new euu($$0, new esl(new ffj()))));
    }
 
-   public static class d {
-      public static final ewh.c a = fnj::a;
-      public static final ewh.c b = fnj::b;
-      public static final ewh.c c = fnj::c;
+   protected void a(Exception $$0) {
+      if ($$0 instanceof eud $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(vq.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(eud $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract vq a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

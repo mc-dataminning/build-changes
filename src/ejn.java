@@ -1,16 +1,7 @@
-public class ejn<T> {
-   private final ahh a;
+import java.util.function.Consumer;
 
-   public ejn(ahh $$0) {
-      this.a = $$0;
-   }
+public interface ejn {
+   int a(float var1);
 
-   public ahh a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<parameter " + this.a + ">";
-   }
+   void a(Consumer<coz> var1, eiv var2);
 }

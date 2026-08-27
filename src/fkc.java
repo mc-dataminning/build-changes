@@ -1,37 +1,59 @@
-public class fkc<T extends blw> extends flt<T> {
-   public fkc(fnj $$0) {
-      super($$0, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
+
+public record fkc(drm a, iv<dop> b, drj c, iq<ajh> d, aji e, cwh f) {
+   public fkc(drk $$0, iq<ajh> $$1, aji $$2, cwh $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   public static fnp c() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      int $$2 = 12;
-      $$1.a(
-         "head",
-         fno.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-            .a(22, 0)
-            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
-            .a(22, 0)
-            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
-         fnl.a(0.0F, 4.0F, -8.0F)
-      );
-      $$1.a(
-         "body",
-         fno.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
-         fnl.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      fno $$3 = fno.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      $$1.a("right_hind_leg", $$3, fnl.a(-4.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$3, fnl.a(4.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$3, fnl.a(-4.0F, 12.0F, -6.0F));
-      $$1.a("left_front_leg", $$3, fnl.a(4.0F, 12.0F, -6.0F));
-      return fnp.a($$0, 64, 32);
+   public fkc(drm $$0, drj $$1, iq<ajh> $$2, aji $$3, cwh $$4) {
+      this($$0, $$2.a(ajh.c).d(kg.aN), $$1, $$2.a(ajh.c), $$3, $$4);
    }
 
-   public fnj d() {
+   public fkc a(drm $$0, drj $$1) {
+      return new fkc($$0, this.b, $$1, this.d, this.e, this.f);
+   }
+
+   public fkc a(fkc.b $$0) {
+      return new fkc($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public fkc a(fkc.a $$0) {
+      return new fkc(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   }
+
+   public iw.b a() {
+      return this.d.a();
+   }
+
+   public drm b() {
       return this.a;
+   }
+
+   public iv<dop> c() {
+      return this.b;
+   }
+
+   public drj d() {
+      return this.c;
+   }
+
+   public iq<ajh> e() {
+      return this.d;
+   }
+
+   public aji f() {
+      return this.e;
+   }
+
+   public cwh g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<iw.b, drj, drj> {
+   }
+
+   public interface b extends UnaryOperator<drm> {
    }
 }

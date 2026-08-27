@@ -1,28 +1,32 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
 
-public class bek extends bde {
-   public bek(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bek extends bcn {
+   private static final double a = 16.0;
+   private static final double b = 48.0;
+
+   public bek(Schema $$0) {
+      super($$0, false, "Villager Follow Range Fix", bdn.y, "minecraft:villager");
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> bdf.a($$0));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bek::a);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:bee");
-      a($$0, $$1, "minecraft:bee_stinger");
-      return $$1;
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:beehive", () -> DSL.optionalFields("Bees", DSL.list(DSL.optionalFields("EntityData", bbw.x.in($$0)))));
-      return $$1;
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update(
+         "Attributes",
+         $$1 -> $$0.createList(
+               $$1.asStream()
+                  .map(
+                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
+                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
+                           : $$0xx
+                  )
+            )
+      );
    }
 }

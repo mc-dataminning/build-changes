@@ -1,42 +1,44 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class dyx extends dyv {
-   public static final Codec<dyx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bjh.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bjh.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, dyx::new)
-   );
-   private final bjh c;
-   private final bjh d;
+public class dyx extends dza {
+   public static final Codec<dyx> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dyx::new));
 
-   public static dyx a(bjh $$0, bjh $$1) {
-      return new dyx($$0, $$1);
-   }
-
-   public static dyx a(bjh $$0) {
-      return new dyx(bje.a(0), $$0);
-   }
-
-   public static dyx b(bjh $$0) {
-      return new dyx($$0, bje.a(0));
-   }
-
-   private dyx(bjh $$0, bjh $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public dyx(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<hx> a_(dyt $$0, auw $$1, hx $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new hx($$3, $$4, $$5));
+   protected dzb<?> a() {
+      return dzb.c;
    }
 
    @Override
-   public dyw<?> b() {
-      return dyw.n;
+   public List<dxi.a> a(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, int $$3, hz $$4, dws $$5) {
+      hz $$6 = $$4.d();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.h(), $$5);
+      a($$0, $$1, $$2, $$6.f(), $$5);
+      a($$0, $$1, $$2, $$6.f().h(), $$5);
+      hz.a $$7 = new hz.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+         }
+      }
+
+      return ImmutableList.of(new dxi.a($$4.b($$3), 0, true));
+   }
+
+   private void a(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, hz.a $$3, dws $$4, hz $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

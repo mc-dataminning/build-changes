@@ -1,50 +1,69 @@
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.function.Function;
+public class avr {
+   public static class a {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-public interface avr<C> {
-   avr<Float> a = a($$0 -> $$0);
+      public static int b(int $$0) {
+         return $$0 & 0xFF;
+      }
 
-   float a(C var1);
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
 
-   float b();
+      public static int d(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
 
-   float c();
+      public static int e(int $$0) {
+         return $$0 & 16777215;
+      }
 
-   static avr<Float> a(final Float2FloatFunction $$0) {
-      return new avr<Float>() {
-         public float a(Float $$0x) {
-            return (Float)$$0.apply($$0);
-         }
+      public static int f(int $$0) {
+         return $$0 | 0xFF000000;
+      }
 
-         @Override
-         public float b() {
-            return Float.NEGATIVE_INFINITY;
-         }
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
 
-         @Override
-         public float c() {
-            return Float.POSITIVE_INFINITY;
-         }
-      };
+      public static int a(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
+      }
    }
 
-   default <C2> avr<C2> a(final Function<C2, C> $$0) {
-      final avr<C> $$1 = this;
-      return new avr<C2>() {
-         @Override
-         public float a(C2 $$0x) {
-            return $$1.a($$0.apply($$0));
-         }
+   public static class b {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-         @Override
-         public float b() {
-            return $$1.b();
-         }
+      public static int b(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
 
-         @Override
-         public float c() {
-            return $$1.c();
-         }
-      };
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 & 0xFF;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+      }
+
+      public static int a(float $$0, int $$1, int $$2) {
+         int $$3 = awh.a($$0, a($$1), a($$2));
+         int $$4 = awh.a($$0, b($$1), b($$2));
+         int $$5 = awh.a($$0, c($$1), c($$2));
+         int $$6 = awh.a($$0, d($$1), d($$2));
+         return a($$3, $$4, $$5, $$6);
+      }
    }
 }

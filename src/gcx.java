@@ -1,13 +1,12 @@
-public abstract class gcx<T extends blw, M extends fkj<T>> extends gdl<T, M> {
-   public gcx(gav<T, M> $$0) {
-      super($$0);
+public class gcx extends gbz<car, fob<car>> {
+   private static final aiy a = new aiy("textures/entity/snow_golem.png");
+
+   public gcx(gat.a $$0) {
+      super($$0, new fob<>($$0.a(fpb.br)), 0.5F);
+      this.a(new gfj(this, $$0.c(), $$0.b()));
    }
 
-   @Override
-   public void a(eqk $$0, ftt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      eqo $$10 = $$1.getBuffer(this.a());
-      this.c().a($$0, $$10, 15728640, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public aiy a(car $$0) {
+      return a;
    }
-
-   public abstract fub a();
 }

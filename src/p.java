@@ -12,15 +12,15 @@ public class p {
       this.a = $$0;
    }
 
-   public static String a(ctz $$0, double $$1, double $$2, double $$3) {
-      return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, hx.a($$1, $$2, $$3)));
+   public static String a(cvp $$0, double $$1, double $$2, double $$3) {
+      return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, hz.a($$1, $$2, $$3)));
    }
 
-   public static String a(ctz $$0, hx $$1) {
+   public static String a(cvp $$0, hz $$1) {
       return a($$0, $$1.u(), $$1.v(), $$1.w());
    }
 
-   public static String a(ctz $$0, int $$1, int $$2, int $$3) {
+   public static String a(cvp $$0, int $$1, int $$2, int $$3) {
       StringBuilder $$4 = new StringBuilder();
 
       try {
@@ -32,18 +32,18 @@ public class p {
       $$4.append(", ");
 
       try {
-         int $$6 = iz.a($$1);
-         int $$7 = iz.a($$2);
-         int $$8 = iz.a($$3);
+         int $$6 = jb.a($$1);
+         int $$7 = jb.a($$2);
+         int $$8 = jb.a($$3);
          int $$9 = $$1 & 15;
          int $$10 = $$2 & 15;
          int $$11 = $$3 & 15;
-         int $$12 = iz.c($$6);
+         int $$12 = jb.c($$6);
          int $$13 = $$0.J_();
-         int $$14 = iz.c($$8);
-         int $$15 = iz.c($$6 + 1) - 1;
+         int $$14 = jb.c($$8);
+         int $$15 = jb.c($$6 + 1) - 1;
          int $$16 = $$0.al() - 1;
-         int $$17 = iz.c($$8 + 1) - 1;
+         int $$17 = jb.c($$8 + 1) - 1;
          $$4.append(
             String.format(
                Locale.ROOT,
@@ -190,7 +190,7 @@ public class p {
       return this.c;
    }
 
-   public static void a(p $$0, ctz $$1, hx $$2, @Nullable djp $$3) {
+   public static void a(p $$0, cvp $$1, hz $$2, @Nullable dlf $$3) {
       if ($$3 != null) {
          $$0.a("Block", $$3::toString);
       }

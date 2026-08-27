@@ -1,62 +1,106 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class eiu {
-   public static final BiFunction<cng, ehf, cng> a = ($$0, $$1) -> $$0;
-   private static final Codec<eis> D = kd.G.q().dispatch("function", eis::b, eit::a);
-   public static final Codec<eis> b = atx.a((Supplier<Codec<eis>>)(() -> atx.e(D, eiw.b)));
-   public static final eit c = a("set_count", ejd.a);
-   public static final eit d = a("enchant_with_levels", eil.a);
-   public static final eit e = a("enchant_randomly", eik.a);
-   public static final eit f = a("set_enchantments", ejb.a);
-   public static final eit g = a("set_nbt", ejh.a);
-   public static final eit h = a("furnace_smelt", ejk.a);
-   public static final eit i = a("looting_enchant", eiv.b);
-   public static final eit j = a("set_damage", eje.a);
-   public static final eit k = a("set_attributes", eix.a);
-   public static final eit l = a("set_name", ejg.a);
-   public static final eit m = a("exploration_map", eim.f);
-   public static final eit n = a("set_stew_effect", ejj.a);
-   public static final eit o = a("copy_name", eii.a);
-   public static final eit p = a("set_contents", eiz.a);
-   public static final eit q = a("limit_count", eiq.a);
-   public static final eit r = a("apply_bonus", eif.a);
-   public static final eit s = a("set_loot_table", eja.a);
-   public static final eit t = a("explosion_decay", eig.a);
-   public static final eit u = a("set_lore", ejf.a);
-   public static final eit v = a("fill_player_head", ein.a);
-   public static final eit w = a("copy_nbt", eij.a);
-   public static final eit x = a("copy_state", eih.a);
-   public static final eit y = a("set_banner_pattern", eiy.a);
-   public static final eit z = a("set_potion", eji.a);
-   public static final eit A = a("set_instrument", ejc.a);
-   public static final eit B = a("reference", eio.a);
-   public static final eit C = a("sequence", eiw.a);
+   private static final Codec<eiu> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avp.a(emq.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), avp.a(emq.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
+            .apply($$0, eiu::new)
+   );
+   public static final Codec<eiu> a = Codec.either(Codec.INT, b).xmap($$0 -> (eiu)$$0.map(eiu::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final emp c;
+   @Nullable
+   private final emp d;
+   private final eiu.b e;
+   private final eiu.a f;
 
-   private static eit a(String $$0, Codec<? extends eis> $$1) {
-      return it.a(kd.G, new ahh($$0), new eit($$1));
+   public Set<eld<?>> a() {
+      Builder<eld<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   public static BiFunction<cng, ehf, cng> a(List<? extends BiFunction<cng, ehf, cng>> $$0) {
-      List<BiFunction<cng, ehf, cng>> $$1 = List.copyOf($$0);
+   private eiu(Optional<emp> $$0, Optional<emp> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<cng, ehf, cng> $$2 = $$1.get(0);
-            BiFunction<cng, ehf, cng> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
+   private eiu(@Nullable emp $$0, @Nullable emp $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<cng, ehf, cng> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
-         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> awh.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+      }
+   }
 
-         return $$1x;
-      };
-      };
+   public static eiu a(int $$0) {
+      emn $$1 = emn.a((float)$$0);
+      return new eiu(Optional.of($$1), Optional.of($$1));
+   }
+
+   public static eiu a(int $$0, int $$1) {
+      return new eiu(Optional.of(emn.a((float)$$0)), Optional.of(emn.a((float)$$1)));
+   }
+
+   public static eiu b(int $$0) {
+      return new eiu(Optional.of(emn.a((float)$$0)), Optional.empty());
+   }
+
+   public static eiu c(int $$0) {
+      return new eiu(Optional.empty(), Optional.of(emn.a((float)$$0)));
+   }
+
+   public int a(eiv $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(eiv $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof emn $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(eiv var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(eiv var1, int var2);
    }
 }

@@ -1,30 +1,44 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dtj extends dsc<duy> {
-   public dtj(Codec<duy> $$0) {
+public class dtj extends dth {
+   public dtj(Codec<dwd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dse<duy> $$0) {
-      duy $$1 = $$0.f();
-      cus $$2 = $$0.b();
-      hx $$3 = $$0.e();
-      djp $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof czg) {
-            if (!$$2.u($$3.c())) {
-               return false;
-            }
+   protected boolean a(cvo $$0, awo $$1, hz $$2, dlf $$3) {
+      hz.a $$4 = $$2.j();
+      int $$5 = $$1.a(3) + 1;
 
-            czg.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
          }
 
-         return true;
-      } else {
-         return false;
+         $$4.c(ie.b);
       }
+
+      hz $$7 = $$4.i();
+      int $$8 = $$1.a(3) + 2;
+      List<ie> $$9 = ie.c.a.c($$1);
+
+      for (ie $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ie.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
+            }
+         }
+      }
+
+      return true;
    }
 }

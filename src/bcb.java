@@ -1,44 +1,35 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 public class bcb extends DataFix {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("down", "down_south")
+      .put("up", "up_north")
+      .put("north", "north_up")
+      .put("south", "south_up")
+      .put("west", "west_up")
+      .put("east", "east_up")
+      .build();
+
    public bcb(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bbw.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bbw.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI reorganization", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bcb::a));
-      }
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      return $$1.equals(Optional.of("minecraft:jigsaw")) ? $$0.update("Properties", $$0x -> {
+         String $$1x = $$0x.get("facing").asString("north");
+         return $$0x.remove("facing").set("orientation", $$0x.createString(a.getOrDefault($$1x, $$1x)));
+      }) : $$0;
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Map<Dynamic<T>, Dynamic<T>> $$1 = Maps.newHashMap();
-
-      for (int $$2 = 0; $$2 < 16; $$2++) {
-         String $$3 = String.valueOf($$2);
-         Optional<Dynamic<T>> $$4 = $$0.get($$3).result();
-         if ($$4.isPresent()) {
-            Dynamic<T> $$5 = $$4.get();
-            Dynamic<T> $$6 = $$0.createMap(ImmutableMap.of($$0.createString("Records"), $$5));
-            $$1.put($$0.createInt($$2), $$6);
-            $$0 = $$0.remove($$3);
-         }
-      }
-
-      return $$0.set("Sections", $$0.createMap($$1));
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(bdn.u), $$0 -> $$0.update(DSL.remainderFinder(), bcb::a));
    }
 }

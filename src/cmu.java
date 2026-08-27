@@ -1,73 +1,127 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cmu extends clr {
-   protected static final Map<cwy, Pair<Predicate<cpr>, Consumer<cpr>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         cxa.i,
-         Pair.of(cmu::b, b(cxa.cC.o())),
-         cxa.kE,
-         Pair.of(cmu::b, b(cxa.cC.o())),
-         cxa.j,
-         Pair.of(cmu::b, b(cxa.cC.o())),
-         cxa.k,
-         Pair.of(cmu::b, b(cxa.j.o())),
-         cxa.sH,
-         Pair.of((Predicate<cpr>)$$0 -> true, a(cxa.j.o(), cnj.dN))
-      )
-   );
+public class cmu extends cou {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
 
-   protected cmu(cou $$0, int $$1, float $$2, cnb.a $$3) {
-      super((float)$$1, $$2, $$0, asi.bA, $$3);
+   public cmu(cou.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bkc a(cpr $$0) {
-      ctx $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      Pair<Predicate<cpr>, Consumer<cpr>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return bkc.d;
+   public blu a(cri $$0) {
+      cvn $$1 = $$0.q();
+      hz $$2 = $$0.a();
+      hz $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.B) {
+            $$0.o().b(dpp.C);
+            $$1.c(1505, $$2, 15);
+         }
+
+         return blu.a($$1.B);
       } else {
-         Predicate<cpr> $$4 = (Predicate<cpr>)$$3.getFirst();
-         Consumer<cpr> $$5 = (Consumer<cpr>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            cfq $$6 = $$0.o();
-            $$1.a($$6, $$2, art.lO, aru.e, 1.0F, 1.0F);
+         dlf $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.d($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
             if (!$$1.B) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, $$1x -> $$1x.d($$0.p()));
-               }
+               $$0.o().b(dpp.C);
+               $$1.c(1505, $$3, 15);
             }
 
-            return bkc.a($$1.B);
+            return blu.a($$1.B);
          } else {
-            return bkc.d;
+            return blu.d;
          }
       }
    }
 
-   public static Consumer<cpr> b(djp $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(dnz.c, $$1.a(), dnz.a.a($$1.o(), $$0));
-      };
+   public static boolean a(coz $$0, cvn $$1, hz $$2) {
+      dlf $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof cyr $$4 && $$4.b($$1, $$2, $$3)) {
+         if ($$1 instanceof aov) {
+            if ($$4.a($$1, $$1.z, $$2, $$3)) {
+               $$4.a((aov)$$1, $$1.z, $$2, $$3);
+            }
+
+            $$0.h(1);
+         }
+
+         return true;
+      }
+
+      return false;
    }
 
-   public static Consumer<cpr> a(djp $$0, ctw $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(dnz.c, $$2.a(), dnz.a.a($$2.o(), $$0));
-         cwy.a($$2.q(), $$2.a(), $$2.k(), new cng($$1));
-      };
+   public static boolean a(coz $$0, cvn $$1, hz $$2, @Nullable ie $$3) {
+      if ($$1.a_($$2).a(cyq.G) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof aov)) {
+            return true;
+         } else {
+            awo $$4 = $$1.F_();
+
+            label78:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               hz $$6 = $$2;
+               dlf $$7 = cyq.bw.o();
+
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).r($$1, $$6)) {
+                     continue label78;
+                  }
+               }
+
+               ij<cwm> $$9 = $$1.t($$6);
+               if ($$9.a(aty.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = kf.e.a(atz.aq, $$1.z).map($$0x -> ((cyo)$$0x.a()).o()).orElse($$7);
+                     if ($$7.b(cxz.c)) {
+                        $$7 = $$7.a(cxz.c, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = kf.e.a(atz.ao, $$1.z).map($$0x -> ((cyo)$$0x.a()).o()).orElse($$7);
+                  }
+               }
+
+               if ($$7.a(atz.aq, $$0x -> $$0x.b(cxz.c))) {
+                  for (int $$10 = 0; !$$7.a((cvq)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.a(cxz.c, ie.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((cvq)$$1, $$6)) {
+                  dlf $$11 = $$1.a_($$6);
+                  if ($$11.a(cyq.G) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(cyq.bw) && $$4.a(10) == 0) {
+                     ((cyr)cyq.bw).a((aov)$$1, $$4, $$6, $$11);
+                  }
+               }
+            }
+
+            $$0.h(1);
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
-   public static boolean b(cpr $$0) {
-      return $$0.k() != ic.a && $$0.q().a_($$0.a().c()).i();
+   public static void a(cvo $$0, hz $$1, int $$2) {
+      dlf $$3 = $$0.a_($$1);
+      if ($$3.b() instanceof cyr $$4) {
+         hz $$5 = $$4.a($$1);
+         switch ($$4.av_()) {
+            case a:
+               awk.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, jz.M);
+               break;
+            case b:
+               awk.a($$0, $$5, $$2, jz.M);
+         }
+      } else if ($$3.a(cyq.G)) {
+         awk.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, jz.M);
+      }
    }
 }

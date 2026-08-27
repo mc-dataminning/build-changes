@@ -1,77 +1,64 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public abstract class eek<M extends eek<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final dlr[] d = new dlr[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<dlr> a;
+public class eek extends efb {
+   public static final Codec<eek> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(efd.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bkz.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, eek::new)
+   );
+   private final efb b;
+   private final bkz c;
 
-   protected eek(Long2ObjectOpenHashMap<dlr> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
+   public eek(efb $$0, bkz $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public abstract M b();
-
-   public dlr a(long $$0) {
-      dlr $$1 = ((dlr)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
+   @Override
+   protected efd<?> a() {
+      return efd.o;
    }
 
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
-   }
+   @Override
+   public final List<efe.c> a(cwc $$0, hz $$1, hz $$2, List<efe.c> $$3, List<efe.c> $$4, efa $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            ac.a(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
+            return $$4;
+         } else {
+            awo $$6 = awo.a($$0.E().C()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
 
-   @Nullable
-   public dlr c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  efe.c $$12 = $$3.get($$11);
+                  efe.c $$13 = $$4.get($$11);
+                  efe.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
+
+               return $$4;
             }
          }
-      }
-
-      dlr $$2 = (dlr)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
       } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
-            }
-
-            this.c[0] = $$0;
-            this.d[0] = $$2;
-         }
-
-         return $$2;
+         return $$4;
       }
-   }
-
-   @Nullable
-   public dlr d(long $$0) {
-      return (dlr)this.a.remove($$0);
-   }
-
-   public void a(long $$0, dlr $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
-      }
-   }
-
-   public void d() {
-      this.e = false;
    }
 }

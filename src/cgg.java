@@ -1,49 +1,32 @@
-public class cgg extends cgc {
-   private int e = 1;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-   public cgg(bmc<? extends cgg> $$0, ctx $$1) {
-      super($$0, $$1);
-   }
+public class cgg {
+   public static bpx<bog> a(int $$0, int $$1) {
+      return btj.a(
+         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$2 -> $$2.group($$2.b(bxh.ad), $$2.b(bxh.L), $$2.a(bxh.ae), $$2.a(bxh.af))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     if (!$$7.eU().b()) {
+                        return false;
+                     } else {
+                        Optional<Integer> $$9 = $$2.a($$5);
+                        if ($$9.isEmpty()) {
+                           $$5.a(0);
+                        } else {
+                           int $$10 = $$9.get();
+                           if ($$10 > $$0) {
+                              $$3.b();
+                              $$5.b();
+                              $$6.a(true, (long)$$1);
+                           } else {
+                              $$5.a($$10 + 1);
+                           }
+                        }
 
-   public cgg(ctx $$0, bmo $$1, double $$2, double $$3, double $$4, int $$5) {
-      super(bmc.ai, $$1, $$2, $$3, $$4, $$0);
-      this.e = $$5;
-   }
-
-   @Override
-   protected void a(ema $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         boolean $$1 = this.dL().Z().b(ctt.c);
-         this.dL().a(this, this.dq(), this.ds(), this.dw(), (float)this.e, $$1, ctx.a.c);
-         this.am();
-      }
-   }
-
-   @Override
-   protected void a(elz $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         blw $$1 = $$0.a();
-         blw $$2 = this.w();
-         $$1.a(this.dM().a((cgc)this, $$2), 6.0F);
-         if ($$2 instanceof bmo) {
-            this.a((bmo)$$2, $$1);
-         }
-      }
-   }
-
-   @Override
-   public void b(so $$0) {
-      super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.e);
-   }
-
-   @Override
-   public void a(so $$0) {
-      super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.e = $$0.f("ExplosionPower");
-      }
+                        return true;
+                     }
+                  }))
+      );
    }
 }

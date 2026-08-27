@@ -1,59 +1,78 @@
-public class ava {
-   private final int a;
-   private final int b;
-   private final float c;
-   private final float d;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.AbstractCollection;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-   public ava(int $$0) {
-      if ($$0 < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if ($$0 > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
+public class ava<T> extends AbstractCollection<T> {
+   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
+   private final Class<T> b;
+   private final List<T> c = Lists.newArrayList();
+
+   public ava(Class<T> $$0) {
+      this.b = $$0;
+      this.a.put($$0, this.c);
+   }
+
+   @Override
+   public boolean add(T $$0) {
+      boolean $$1 = false;
+
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            $$1 |= $$2.getValue().add($$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean remove(Object $$0) {
+      boolean $$1 = false;
+
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            List<T> $$3 = $$2.getValue();
+            $$1 |= $$3.remove($$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean contains(Object $$0) {
+      return this.a($$0.getClass()).contains($$0);
+   }
+
+   public <S> Collection<S> a(Class<S> $$0) {
+      if (!this.b.isAssignableFrom($$0)) {
+         throw new IllegalArgumentException("Don't know how to search for " + $$0);
       } else {
-         int $$1 = 1 << $$0;
-         this.a = $$1 - 1;
-         this.b = $$0;
-         this.c = (float)$$1 / 360.0F;
-         this.d = 360.0F / (float)$$1;
+         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(Collectors.toList()));
+         return (Collection<S>)Collections.unmodifiableCollection($$1);
       }
    }
 
-   public boolean a(int $$0, int $$1) {
-      int $$2 = this.a() >> 1;
-      return ($$0 & $$2) == ($$1 & $$2);
+   @Override
+   public Iterator<T> iterator() {
+      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
    }
 
-   public int a(ic $$0) {
-      if ($$0.o().b()) {
-         return 0;
-      } else {
-         int $$1 = $$0.e();
-         return $$1 << this.b - 2;
-      }
+   public List<T> a() {
+      return ImmutableList.copyOf(this.c);
    }
 
-   public int a(float $$0) {
-      return Math.round($$0 * this.c);
-   }
-
-   public int b(float $$0) {
-      return this.c(this.a($$0));
-   }
-
-   public float a(int $$0) {
-      return (float)$$0 * this.d;
-   }
-
-   public float b(int $$0) {
-      float $$1 = this.a(this.c($$0));
-      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
-   }
-
-   public int c(int $$0) {
-      return $$0 & this.a;
-   }
-
-   public int a() {
-      return this.a;
+   @Override
+   public int size() {
+      return this.c.size();
    }
 }

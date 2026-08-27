@@ -1,60 +1,32 @@
-import javax.annotation.Nullable;
+public class gkj implements gjr {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final fuo e;
+   private final gll f;
+   private int g = 0;
 
-public class gkj {
-   private boolean a;
-   @Nullable
-   private gkd.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
-
-   public gkj(@Nullable String $$0) {
-      this.d = $$0;
+   public gkj(fuo $$0, gll $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public void a(gke.a $$0) {
-      if (this.c != null) {
-         $$0.a(gkd.j, !this.c.equals("vanilla"));
+   @Override
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.be()) {
+         float $$0 = this.e.dM().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((gkh)(new gkk.a(this.e, atk.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((gkh)(new gkk.a(this.e, atk.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((gkh)(new gkk.a(this.e, atk.A)));
+         }
       }
-
-      $$0.a(gkd.k, this.a());
-   }
-
-   private gkd.c a() {
-      fop $$0 = evr.O().Q();
-      if ($$0 != null && $$0.e()) {
-         return gkd.c.a;
-      } else {
-         return evr.O().S() ? gkd.c.b : gkd.c.c;
-      }
-   }
-
-   public boolean a(gka $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(gkb.b, $$0x -> {
-            $$0x.a(gkd.n, this.b);
-            if (this.d != null) {
-               $$0x.a(gkd.o, this.d);
-            }
-         });
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(ctu $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? gkd.b.e : gkd.b.a;
-         case b -> gkd.b.b;
-         case c -> gkd.b.c;
-         case d -> gkd.b.d;
-      };
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
    }
 }

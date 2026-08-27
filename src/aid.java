@@ -1,6 +1,8 @@
-public record aid(apz a, ahr b, io<ahq> c, ehb d) implements AutoCloseable {
-   @Override
-   public void close() {
-      this.a.close();
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aid {
 }

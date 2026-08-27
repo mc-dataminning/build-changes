@@ -1,69 +1,55 @@
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eja extends eir {
-   public static final Codec<eja> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ahh.a.fieldOf("name").forGetter($$0x -> $$0x.b),
-                  atx.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
-                  kd.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, eja::new)
-   );
-   private final ahh b;
-   private final long c;
-   private final ih<dhf<?>> d;
+public class eja<T> {
+   private static final Logger d = LogUtils.getLogger();
+   public static final eja<elu> a = new eja<>(elw.a, "predicates", c());
+   public static final eja<eki> b = new eja<>(ekk.b, "item_modifiers", c());
+   public static final eja<ejd> c = new eja<>(ejd.c, "loot_tables", d());
+   private final Codec<T> e;
+   private final String f;
+   private final eja.a<T> g;
 
-   private eja(List<eke> $$0, ahh $$1, long $$2, ih<dhf<?>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private eja(Codec<T> $$0, String $$1, eja.a<T> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public eit b() {
-      return eiu.s;
+   public String a() {
+      return this.f;
    }
 
-   @Override
-   public cng a(cng $$0, ehf $$1) {
-      if ($$0.b()) {
-         return $$0;
-      } else {
-         so $$2 = cla.a($$0);
-         if ($$2 == null) {
-            $$2 = new so();
-         }
-
-         $$2.a("LootTable", this.b.toString());
-         if (this.c != 0L) {
-            $$2.a("LootTableSeed", this.c);
-         }
-
-         cla.a($$0, this.d.a(), $$2);
-         return $$0;
-      }
+   public void a(eje $$0, eix<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(eho $$0) {
-      super.a($$0);
-      ehh<ehn> $$1 = new ehh<>(ehk.c, this.b);
-      if ($$0.a().getElementOptional($$1).isEmpty()) {
-         $$0.b("Missing loot table used for container: " + this.b);
-      }
+   public Optional<T> a(aiy $$0, JsonElement $$1) {
+      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
+      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$2.result();
    }
 
-   public static eir.a<?> a(dhf<?> $$0, ahh $$1) {
-      return a($$2 -> new eja($$2, $$1, 0L, $$0.a()));
+   public static Stream<eja<?>> b() {
+      return Stream.of(a, b, c);
    }
 
-   public static eir.a<?> a(dhf<?> $$0, ahh $$1, long $$2) {
-      return a($$3 -> new eja($$3, $$1, $$2, $$0.a()));
+   private static <T extends eiw> eja.a<T> c() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
+
+   private static eja.a<ejd> d() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void run(eje var1, eix<T> var2, T var3);
    }
 }

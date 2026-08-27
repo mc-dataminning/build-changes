@@ -1,17 +1,24 @@
-public class gcg extends fzr<cdq, fnc<cdq>> {
-   private static final ahh a = new ahh("textures/entity/zombie_villager/zombie_villager.png");
+public class gcg extends gbz<cep, fnc<cep>> {
+   private static final aiy a = new aiy("textures/entity/phantom.png");
 
-   public gcg(fza.a $$0) {
-      super($$0, new fnc<>($$0.a(fni.cg)), 0.5F);
-      this.a(new gdb<>(this, new fnc($$0.a(fni.ch)), new fnc($$0.a(fni.ci)), $$0.g()));
-      this.a(new gdw<>(this, $$0.e(), "zombie_villager"));
+   public gcg(gat.a $$0) {
+      super($$0, new fnc<>($$0.a(fpb.aD)), 0.75F);
+      this.a(new gfc<>(this));
    }
 
-   public ahh a(cdq $$0) {
+   public aiy a(cep $$0) {
       return a;
    }
 
-   protected boolean b(cdq $$0) {
-      return super.a($$0) || $$0.gp();
+   protected void a(cep $$0, esa $$1, float $$2) {
+      int $$3 = $$0.u();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(cep $$0, esa $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dE()));
    }
 }

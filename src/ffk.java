@@ -1,47 +1,77 @@
-public class ffk extends fel<cjj> {
-   private static final ahh x = new ahh("container/horse/chest_slots");
-   private static final ahh y = new ahh("container/horse/saddle_slot");
-   private static final ahh z = new ahh("container/horse/llama_armor_slot");
-   private static final ahh A = new ahh("container/horse/armor_slot");
-   private static final ahh B = new ahh("textures/gui/container/horse.png");
-   private final cae C;
-   private float D;
-   private float E;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
 
-   public ffk(cjj $$0, cfp $$1, cae $$2) {
-      super($$0, $$1, $$2.Q_());
-      this.C = $$2;
+public class ffk extends ffe {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final vq k;
+   private final vv l;
+   private final ImmutableList<ffk.a> m;
+   private faa n = faa.a;
+   private int o;
+   private int p;
+
+   protected ffk(vq $$0, List<vq> $$1, ImmutableList<ffk.a> $$2) {
+      super($$0);
+      this.l = vv.a($$1);
+      this.k = vp.a($$0, vt.a($$1, vp.a));
+      this.m = $$2;
    }
 
    @Override
-   protected void a(exe $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(B, $$4, $$5, 0, 0, this.c, this.k);
-      if (this.C instanceof cad $$6 && $$6.w()) {
-         $$0.a(x, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gn() * 18, 54);
-      }
-
-      if (this.C.g()) {
-         $$0.a(y, $$4 + 7, $$5 + 35 - 18, 18, 18);
-      }
-
-      if (this.C.gO()) {
-         if (this.C instanceof cah) {
-            $$0.a(z, $$4 + 7, $$5 + 35, 18, 18);
-         } else {
-            $$0.a(A, $$4 + 7, $$5 + 35, 18, 18);
-         }
-      }
-
-      ffl.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.D, this.E, this.C);
+   public vq i() {
+      return this.k;
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      this.D = (float)$$1;
-      this.E = (float)$$2;
+   public void aQ_() {
+      UnmodifiableIterator $$1 = this.m.iterator();
+
+      while ($$1.hasNext()) {
+         ffk.a $$0 = (ffk.a)$$1.next();
+         this.p = Math.max(this.p, 20 + this.i.a($$0.a) + 20);
+      }
+
+      int $$1x = 5 + this.p + 5;
+      int $$2 = $$1x * this.m.size();
+      this.n = faa.a(this.i, this.l, $$2);
+      int $$3 = this.n.a() * 9;
+      this.o = (int)((double)this.h / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.o + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.g / 2.0 - (double)$$2 / 2.0);
+
+      for (UnmodifiableIterator var6 = this.m.iterator(); var6.hasNext(); $$5 += $$1x) {
+         ffk.a $$6 = (ffk.a)var6.next();
+         this.d(ezh.a($$6.a, $$6.b).a($$5, $$4, this.p, 20).a());
+      }
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      $$0.a(this.i, this.e, this.g / 2, this.o - 9 * 2, -1);
+      this.n.a($$0, this.g / 2, this.o);
+   }
+
+   @Override
+   public void b(eyu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public boolean aO_() {
+      return false;
+   }
+
+   public static final class a {
+      final vq a;
+      final ezh.c b;
+
+      public a(vq $$0, ezh.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

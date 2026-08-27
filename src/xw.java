@@ -1,36 +1,56 @@
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record xw(UUID a, xw.a b) implements xg<xr> {
-   public xw(uj $$0) {
-      this($$0.p(), $$0.b(xw.a.class));
+public interface xw {
+   int a = 4096;
+
+   static <T extends uw, P extends xv<? super T>> xw a(final xz<P> $$0, final Function<Iterable<xx<? super T>>, P> $$1, final xu<? super T> $$2) {
+      return new xw() {
+         @Override
+         public void a(xx<?> $$0x, Consumer<xx<?>> $$1x) {
+            if ($$0.a() == $$0) {
+               P $$2 = (P)$$0;
+               $$1.accept($$2);
+               $$2.b().forEach($$1);
+               $$1.accept($$2);
+            } else {
+               $$1.accept($$0);
+            }
+         }
+
+         @Nullable
+         @Override
+         public xw.a a(xx<?> $$0x) {
+            return $$0 == $$2 ? new xw.a() {
+               private final List<xx<? super T>> b = new ArrayList<>();
+
+               @Nullable
+               @Override
+               public xx<?> a(xx<?> $$0x) {
+                  if ($$0 == $$2) {
+                     return $$1.apply(this.b);
+                  } else if (this.b.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  } else {
+                     this.b.add((xx<? super T>)$$0);
+                     return null;
+                  }
+               }
+            } : null;
+         }
+      };
    }
 
-   @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-   }
+   void a(xx<?> var1, Consumer<xx<?>> var2);
 
-   public void a(xr $$0) {
-      $$0.a(this);
-   }
+   @Nullable
+   xw.a a(xx<?> var1);
 
-   public xw.a d() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public interface a {
+      @Nullable
+      xx<?> a(xx<?> var1);
    }
 }

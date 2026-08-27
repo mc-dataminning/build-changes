@@ -1,115 +1,173 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dst extends dsc<dun> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bmc<?>[] b = new bmc[]{bmc.aL, bmc.bs, bmc.bs, bmc.aU};
-   private static final djp c = cxa.nc.o();
+public abstract class dst<C extends dsm> {
+   public static final dst<dsp> a = a("cave", new dsq(dsp.a));
+   public static final dst<dsp> b = a("nether_cave", new dss(dsp.a));
+   public static final dst<dsk> c = a("canyon", new dsl(dsk.a));
+   protected static final dlf d = cyq.a.o();
+   protected static final dlf e = cyq.nc.o();
+   protected static final egp f = egq.c.g();
+   protected static final egp g = egq.e.g();
+   protected Set<ego> h = ImmutableSet.of(egq.c);
+   private final Codec<dsr<C>> i;
 
-   public dst(Codec<dun> $$0) {
-      super($$0);
+   private static <C extends dsm, F extends dst<C>> F a(String $$0, F $$1) {
+      return iv.a(kf.P, $$0, $$1);
    }
 
-   @Override
-   public boolean a(dse<dun> $$0) {
-      Predicate<djp> $$1 = dsc.a(asi.bH);
-      hx $$2 = $$0.e();
-      auw $$3 = $$0.d();
-      cus $$4 = $$0.b();
-      int $$5 = 3;
-      int $$6 = $$3.a(2) + 2;
-      int $$7 = -$$6 - 1;
-      int $$8 = $$6 + 1;
-      int $$9 = -1;
-      int $$10 = 4;
-      int $$11 = $$3.a(2) + 2;
-      int $$12 = -$$11 - 1;
-      int $$13 = $$11 + 1;
-      int $$14 = 0;
+   public dst(Codec<C> $$0) {
+      this.i = $$0.fieldOf("config").xmap(this::a, dsr::b).codec();
+   }
 
-      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
-         for (int $$16 = -1; $$16 <= 4; $$16++) {
-            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
-               hx $$18 = $$2.b($$15, $$16, $$17);
-               boolean $$19 = $$4.a_($$18).e();
-               if ($$16 == -1 && !$$19) {
-                  return false;
-               }
+   public dsr<C> a(C $$0) {
+      return new dsr<>(this, $$0);
+   }
 
-               if ($$16 == 4 && !$$19) {
-                  return false;
-               }
+   public Codec<dsr<C>> c() {
+      return this.i;
+   }
 
-               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.c())) {
-                  $$14++;
-               }
-            }
-         }
-      }
+   public int d() {
+      return 4;
+   }
 
-      if ($$14 >= 1 && $$14 <= 5) {
-         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
-            for (int $$21 = 3; $$21 >= -1; $$21--) {
-               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
-                  hx $$23 = $$2.b($$20, $$21, $$22);
-                  djp $$24 = $$4.a_($$23);
-                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
-                     if ($$23.v() >= $$4.J_() && !$$4.a_($$23.d()).e()) {
-                        $$4.a($$23, c, 2);
-                     } else if ($$24.e() && !$$24.a(cxa.cv)) {
-                        if ($$21 == -1 && $$3.a(4) != 0) {
-                           this.a($$4, $$23, cxa.cn.o(), $$1);
-                        } else {
-                           this.a($$4, $$23, cxa.m.o(), $$1);
-                        }
-                     }
-                  } else if (!$$24.a(cxa.cv) && !$$24.a(cxa.ct)) {
-                     this.a($$4, $$23, c, $$1);
-                  }
-               }
-            }
-         }
+   protected boolean a(
+      dso $$0, C $$1, dnb $$2, Function<hz, ij<cwm>> $$3, dqa $$4, double $$5, double $$6, double $$7, double $$8, double $$9, dna $$10, dst.a $$11
+   ) {
+      cuu $$12 = $$2.f();
+      double $$13 = (double)$$12.b();
+      double $$14 = (double)$$12.c();
+      double $$15 = 16.0 + $$8 * 2.0;
+      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
+         int $$16 = $$12.d();
+         int $$17 = $$12.e();
+         int $$18 = Math.max(awh.a($$5 - $$8) - $$16 - 1, 0);
+         int $$19 = Math.min(awh.a($$5 + $$8) - $$16, 15);
+         int $$20 = Math.max(awh.a($$6 - $$9) - 1, $$0.a() + 1);
+         int $$21 = $$2.y() ? 0 : 7;
+         int $$22 = Math.min(awh.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
+         int $$23 = Math.max(awh.a($$7 - $$8) - $$17 - 1, 0);
+         int $$24 = Math.min(awh.a($$7 + $$8) - $$17, 15);
+         boolean $$25 = false;
+         hz.a $$26 = new hz.a();
+         hz.a $$27 = new hz.a();
 
-         for (int $$25 = 0; $$25 < 2; $$25++) {
-            for (int $$26 = 0; $$26 < 3; $$26++) {
-               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
-               int $$28 = $$2.v();
-               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
-               hx $$30 = new hx($$27, $$28, $$29);
-               if ($$4.u($$30)) {
-                  int $$31 = 0;
+         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
+            int $$29 = $$12.a($$28);
+            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
 
-                  for (ic $$32 : ic.c.a) {
-                     if ($$4.a_($$30.a($$32)).e()) {
-                        $$31++;
+            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
+               int $$32 = $$12.b($$31);
+               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
+               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
+                  MutableBoolean $$34 = new MutableBoolean(false);
+
+                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
+                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
+                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
+                        $$10.a($$28, $$35, $$31);
+                        $$26.d($$29, $$35, $$32);
+                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
                      }
                   }
-
-                  if ($$31 == 1) {
-                     this.a($$4, $$30, dzs.a($$4, $$30, cxa.cv.o()), $$1);
-                     bkk.a($$4, $$3, $$30, ehd.d);
-                     break;
-                  }
                }
             }
          }
 
-         this.a($$4, $$2, cxa.ct.o(), $$1);
-         if ($$4.c_($$2) instanceof diq $$34) {
-            $$34.a(this.a($$3), $$3);
-         } else {
-            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
-         }
-
-         return true;
+         return $$25;
       } else {
          return false;
       }
    }
 
-   private bmc<?> a(auw $$0) {
-      return ac.a(b, $$0);
+   protected boolean a(dso $$0, C $$1, dnb $$2, Function<hz, ij<cwm>> $$3, dna $$4, hz.a $$5, hz.a $$6, dqa $$7, MutableBoolean $$8) {
+      dlf $$9 = $$2.a_($$5);
+      if ($$9.a(cyq.i) || $$9.a(cyq.fl)) {
+         $$8.setTrue();
+      }
+
+      if (!this.a($$1, $$9) && !b($$1)) {
+         return false;
+      } else {
+         dlf $$10 = this.a($$0, $$1, $$5, $$7);
+         if ($$10 == null) {
+            return false;
+         } else {
+            $$2.a($$5, $$10, false);
+            if ($$7.a() && !$$10.u().c()) {
+               $$2.e($$5);
+            }
+
+            if ($$8.isTrue()) {
+               $$6.a($$5, ie.a);
+               if ($$2.a_($$6).a(cyq.j)) {
+                  $$0.a($$3, $$2, $$6, !$$10.u().c()).ifPresent($$2x -> {
+                     $$2.a($$6, $$2x, false);
+                     if (!$$2x.u().c()) {
+                        $$2.e($$6);
+                     }
+                  });
+               }
+            }
+
+            return true;
+         }
+      }
+   }
+
+   @Nullable
+   private dlf a(dso $$0, C $$1, hz $$2, dqa $$3) {
+      if ($$2.v() <= $$1.g.a($$0)) {
+         return g.g();
+      } else {
+         dlf $$4 = $$3.a(new dqh.e($$2.u(), $$2.v(), $$2.w()), 0.0);
+         if ($$4 == null) {
+            return b($$1) ? $$1.h.e() : null;
+         } else {
+            return b($$1) ? b($$1, $$4) : $$4;
+         }
+      }
+   }
+
+   private static dlf b(dsm $$0, dlf $$1) {
+      if ($$1.a(cyq.a)) {
+         return $$0.h.b();
+      } else if ($$1.a(cyq.G)) {
+         dlf $$2 = $$0.h.c();
+         return $$2.b(dlv.C) ? $$2.a(dlv.C, Boolean.valueOf(true)) : $$2;
+      } else {
+         return $$1.a(cyq.H) ? $$0.h.d() : $$1;
+      }
+   }
+
+   public abstract boolean a(dso var1, C var2, dnb var3, Function<hz, ij<cwm>> var4, awo var5, dqa var6, cuu var7, dna var8);
+
+   public abstract boolean a(C var1, awo var2);
+
+   protected boolean a(C $$0, dlf $$1) {
+      return $$1.a($$0.i);
+   }
+
+   protected static boolean a(cuu $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
+      double $$6 = (double)$$0.b();
+      double $$7 = (double)$$0.c();
+      double $$8 = $$1 - $$6;
+      double $$9 = $$2 - $$7;
+      double $$10 = (double)($$4 - $$3);
+      double $$11 = (double)($$5 + 2.0F + 16.0F);
+      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
+   }
+
+   private static boolean b(dsm $$0) {
+      return $$0.h.a();
+   }
+
+   public interface a {
+      boolean shouldSkip(dso var1, double var2, double var4, double var6, int var8);
    }
 }

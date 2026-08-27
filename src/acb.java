@@ -1,32 +1,29 @@
-public class acb implements xg<zb> {
-   private final hx a;
-   private final float b;
+public class acb implements xx<aag> {
+   public static final xo<uq, acb> a = xx.a(acb::a, acb::new);
+   private final blt b;
 
-   public acb(hx $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public acb(blt $$0) {
+      this.b = $$0;
    }
 
-   public acb(uj $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readFloat();
+   private acb(uq $$0) {
+      this.b = $$0.b(blt.class);
    }
 
-   @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
+   private void a(uq $$0) {
       $$0.a(this.b);
    }
 
-   public void a(zb $$0) {
+   @Override
+   public xz<acb> a() {
+      return aeq.U;
+   }
+
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
-      return this.a;
-   }
-
-   public float d() {
+   public blt b() {
       return this.b;
    }
 }

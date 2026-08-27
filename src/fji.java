@@ -1,80 +1,155 @@
-public class fji extends fje<bzj> {
-   private static final float a = 16.02F;
-   private static final float b = 32.5F;
-   private static final float f = 25.0F;
-   private static final float g = 22.5F;
-   private static final float h = 16.5F;
-   private static final float i = 2.5F;
-   private static final String j = "head_cube";
-   private static final String k = "right_ear_cube";
-   private static final String l = "left_ear_cube";
-   private final fnj m;
-   private final fnj n;
-   private final fnj o;
-   private final fnj p;
-   private final fnj q;
-   private final fnj r;
-   private final fnj s;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public fji(fnj $$0) {
-      super(0.6F, 16.02F);
-      this.m = $$0;
-      this.n = $$0.b("body");
-      this.o = $$0.b("right_hind_leg");
-      this.p = $$0.b("left_hind_leg");
-      this.r = this.n.b("head");
-      this.s = this.n.b("tail");
-      this.q = $$0.b("cube");
-   }
+public class fji extends ffe {
+   private static final vq a = vq.c("gui.abuseReport.reason.title");
+   private static final vq b = vq.c("gui.abuseReport.reason.description");
+   private static final vq c = vq.c("gui.abuseReport.read_info");
+   private static final int k = 95;
+   private static final int l = 150;
+   private static final int m = 20;
+   private static final int n = 320;
+   private static final int o = 4;
+   @Nullable
+   private final ffe p;
+   @Nullable
+   private fji.a q;
+   @Nullable
+   fqz r;
+   private final Consumer<fqz> t;
 
-   public static fnp b() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      fns $$2 = $$1.a(
-         "body",
-         fno.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fnn(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fnn(0.0F)),
-         fnl.a(0.0F, 21.0F, 4.0F)
-      );
-      $$2.a("tail", fno.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new fnn(0.0F)), fnl.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
-      fns $$3 = $$2.a("head", fno.c(), fnl.a(0.0F, -2.0F, -11.0F));
-      $$3.a("head_cube", fno.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fnn(0.0F)), fnl.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
-      fns $$4 = $$3.a("right_ear", fno.c(), fnl.a(-1.0F, -1.0F, 0.0F));
-      $$4.a("right_ear_cube", fno.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fnn(0.0F)), fnl.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
-      fns $$5 = $$3.a("left_ear", fno.c(), fnl.a(1.0F, -2.0F, 0.0F));
-      $$5.a("left_ear_cube", fno.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fnn(0.0F)), fnl.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
-      $$1.a("right_hind_leg", fno.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fnn(0.0F)), fnl.a(-2.0F, 21.0F, 4.0F));
-      $$1.a("left_hind_leg", fno.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fnn(0.0F)), fnl.a(2.0F, 21.0F, 4.0F));
-      $$1.a("right_front_leg", fno.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fnn(0.0F)), fnl.a(-2.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", fno.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fnn(0.0F)), fnl.a(2.0F, 21.0F, -4.0F));
-      $$1.a("cube", fno.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new fnn(0.0F)), fnl.a(0.0F, 24.0F, 0.0F));
-      return fnp.a($$0, 64, 64);
+   public fji(@Nullable ffe $$0, @Nullable fqz $$1, Consumer<fqz> $$2) {
+      super(a);
+      this.p = $$0;
+      this.r = $$1;
+      this.t = $$2;
    }
 
    @Override
-   public fnj a() {
-      return this.m;
+   protected void aQ_() {
+      this.q = this.d(new fji.a(this.f));
+      fji.a.a $$0 = x.a(this.r, this.q::a);
+      this.q.a($$0);
+      int $$1 = this.g / 2 - 150 - 5;
+      this.d(ezh.a(c, fdw.b(this, "https://aka.ms/aboutjavareporting")).a($$1, this.o(), 150, 20).a());
+      int $$2 = this.g / 2 + 5;
+      this.d(ezh.a(vp.d, $$0x -> {
+         fji.a.a $$1x = this.q.i();
+         if ($$1x != null) {
+            this.t.accept($$1x.b());
+         }
+
+         this.f.a(this.p);
+      }).a($$2, this.o(), 150, 20).a());
+      super.aQ_();
    }
 
-   public void a(bzj $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fnj::c);
-      if ($$0.A()) {
-         this.n.l = true;
-         this.p.k = false;
-         this.o.k = false;
-         this.s.k = false;
-         this.q.k = true;
-      } else {
-         this.n.l = false;
-         this.p.k = true;
-         this.o.k = true;
-         this.s.k = true;
-         this.q.k = false;
-         this.r.e = aup.a($$5, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
-         this.r.f = aup.a($$4, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.E(), this.I(), this.H(), this.J(), 2130706432);
+      $$0.b(this.i, b, this.E() + 4, this.I() + 4, -8421505);
+      fji.a.a $$4 = this.q.i();
+      if ($$4 != null) {
+         int $$5 = this.E() + 4 + 16;
+         int $$6 = this.H() - 4;
+         int $$7 = this.I() + 4 + 9 + 2;
+         int $$8 = this.J() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.i.b($$4.b.c(), $$9);
+         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+      }
+   }
+
+   @Override
+   public void b(eyu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   private int o() {
+      return this.h - 20 - 4;
+   }
+
+   private int E() {
+      return (this.g - 320) / 2;
+   }
+
+   private int H() {
+      return (this.g + 320) / 2;
+   }
+
+   private int I() {
+      return this.h - 95 + 4;
+   }
+
+   private int J() {
+      return this.o() - 4;
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.p);
+   }
+
+   public class a extends fad<fji.a.a> {
+      public a(exh $$1) {
+         super($$1, fji.this.g, fji.this.h - 95 - 40, 40, 18);
+
+         for (fqz $$2 : fqz.values()) {
+            this.b(new fji.a.a($$2));
+         }
       }
 
-      this.a(ewl.b, $$1, $$2, 16.5F, 2.5F);
-      this.a($$0.bX, ewl.c, $$3, 1.0F);
-      this.a($$0.bY, ewl.a, $$3, 1.0F);
+      @Nullable
+      public fji.a.a a(fqz $$0) {
+         return this.l().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      }
+
+      @Override
+      public int b() {
+         return 320;
+      }
+
+      @Override
+      protected int c() {
+         return this.r() - 2;
+      }
+
+      public void a(@Nullable fji.a.a $$0) {
+         super.a($$0);
+         fji.this.r = $$0 != null ? $$0.b() : null;
+      }
+
+      public class a extends fad.a<fji.a.a> {
+         final fqz b;
+
+         public a(fqz $$1) {
+            this.b = $$1;
+         }
+
+         @Override
+         public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fji.this.i, this.b.b(), $$10, $$11, -1);
+         }
+
+         @Override
+         public vq a() {
+            return vq.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
+
+         public fqz b() {
+            return this.b;
+         }
+      }
    }
 }

@@ -1,93 +1,94 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class eql extends eqj {
-   private final eqo f;
-   private final Matrix4f g;
-   private final Matrix3f h;
-   private final float i;
-   private float j;
-   private float k;
-   private float l;
-   private int m;
-   private int n;
-   private int o;
-   private float p;
-   private float q;
-   private float r;
+public class eql {
+   private final List<ConcurrentLinkedQueue<eqk>> a = ImmutableList.of(
+      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
+   );
+   private volatile boolean b;
+   private volatile int c;
+   private volatile boolean d;
+   private volatile int e;
+   private volatile int f;
 
-   public eql(eqo $$0, Matrix4f $$1, Matrix3f $$2, float $$3) {
-      this.f = $$0;
-      this.g = new Matrix4f($$1).invert();
-      this.h = new Matrix3f($$2).invert();
-      this.i = $$3;
-      this.a();
+   public eql() {
+      this.c = this.e = this.f + 1;
    }
 
-   private void a() {
-      this.j = 0.0F;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.m = 0;
-      this.n = 10;
-      this.o = 15728880;
-      this.p = 0.0F;
-      this.q = 1.0F;
-      this.r = 0.0F;
+   public boolean a() {
+      return !this.b && this.c == this.e;
    }
 
-   @Override
-   public void e() {
-      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
-      ic $$1 = ic.a($$0.x(), $$0.y(), $$0.z());
-      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
-      $$2.rotateY((float) Math.PI);
-      $$2.rotateX((float) (-Math.PI / 2));
-      $$2.rotate($$1.b());
-      float $$3 = -$$2.x() * this.i;
-      float $$4 = -$$2.y() * this.i;
-      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
-      this.a();
+   public boolean b() {
+      if (this.b) {
+         throw new RuntimeException("ALREADY RECORDING !!!");
+      } else if (this.a()) {
+         this.c = (this.e + 1) % this.a.size();
+         this.b = true;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public eqo a(double $$0, double $$1, double $$2) {
-      this.j = (float)$$0;
-      this.k = (float)$$1;
-      this.l = (float)$$2;
-      return this;
+   public void a(eqk $$0) {
+      if (!this.b) {
+         throw new RuntimeException("NOT RECORDING !!!");
+      } else {
+         ConcurrentLinkedQueue<eqk> $$1 = this.i();
+         $$1.add($$0);
+      }
    }
 
-   @Override
-   public eqo a(int $$0, int $$1, int $$2, int $$3) {
-      return this;
+   public void c() {
+      if (this.b) {
+         this.b = false;
+      } else {
+         throw new RuntimeException("NOT RECORDING !!!");
+      }
    }
 
-   @Override
-   public eqo a(float $$0, float $$1) {
-      return this;
+   public boolean d() {
+      return !this.d && this.c != this.e;
    }
 
-   @Override
-   public eqo a(int $$0, int $$1) {
-      this.m = $$0;
-      this.n = $$1;
-      return this;
+   public boolean e() {
+      if (this.d) {
+         throw new RuntimeException("ALREADY PROCESSING !!!");
+      } else if (this.d()) {
+         this.d = true;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public eqo b(int $$0, int $$1) {
-      this.o = $$0 | $$1 << 16;
-      return this;
+   public void f() {
+      if (!this.d) {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
    }
 
-   @Override
-   public eqo a(float $$0, float $$1, float $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      return this;
+   public void g() {
+      if (this.d) {
+         this.d = false;
+         this.f = this.e;
+         this.e = this.c;
+      } else {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public ConcurrentLinkedQueue<eqk> h() {
+      return this.a.get(this.f);
+   }
+
+   public ConcurrentLinkedQueue<eqk> i() {
+      return this.a.get(this.c);
+   }
+
+   public ConcurrentLinkedQueue<eqk> j() {
+      return this.a.get(this.e);
    }
 }

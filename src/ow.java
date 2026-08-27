@@ -1,26 +1,13 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.concurrent.CompletableFuture;
 
-public class ow {
-   public static final ahg<eax> a = pm.a("ancient_city/city_center");
+public class ow extends om<eat> {
+   public ow(ko $$0, CompletableFuture<il.b> $$1) {
+      super($$0, kg.aK, $$1);
+   }
 
-   public static void a(pf<eax> $$0) {
-      ii<edm> $$1 = $$0.a(ke.aE);
-      ih<edm> $$2 = $$1.b(pn.G);
-      ii<eax> $$3 = $$0.a(ke.aG);
-      ih<eax> $$4 = $$3.b(pm.a);
-      $$0.a(
-         a,
-         new eax(
-            $$4,
-            ImmutableList.of(
-               Pair.of(eav.b("ancient_city/city_center/city_center_1", $$2), 1),
-               Pair.of(eav.b("ancient_city/city_center/city_center_2", $$2), 1),
-               Pair.of(eav.b("ancient_city/city_center/city_center_3", $$2), 1)
-            ),
-            eax.a.b
-         )
-      );
-      ox.a($$0);
+   @Override
+   protected void a(il.b $$0) {
+      this.b(aus.a).a(eau.a).a(eau.b).a(eau.c).a(eau.d).a(eau.e);
+      this.b(aus.b).b(aus.a).a(eau.f);
    }
 }

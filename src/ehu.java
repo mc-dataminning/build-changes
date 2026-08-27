@@ -1,70 +1,44 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public class ehu extends ehr {
-   public static final Codec<ehu> a = a(ehu::new);
+public abstract class ehu {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
 
-   ehu(List<ehy> $$0, List<eke> $$1) {
-      super($$0, $$1);
+   public abstract sw a(sw var1);
+
+   public void c() {
+      this.a(true);
    }
 
-   @Override
-   public ehz a() {
-      return ehw.i;
+   public void a(boolean $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected ehq a(List<? extends ehq> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ehq)$$0.get(0);
-         case 2 -> {
-            ehq $$1 = $$0.get(0);
-            ehq $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
+   public boolean d() {
+      return this.b;
+   }
+
+   public void a(File $$0) {
+      if (this.d()) {
+         sw $$1 = new sw();
+         $$1.a("data", this.a(new sw()));
+         tl.g($$1);
+
+         try {
+            tj.a($$1, $$0.toPath());
+         } catch (IOException var4) {
+            a.error("Could not save data {}", this, var4);
          }
-         default -> ($$1x, $$2x) -> {
-         for (ehq $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
 
-         return true;
-      };
-      };
+         this.a(false);
+      }
    }
 
-   public static ehu.a a(ehy.a<?>... $$0) {
-      return new ehu.a($$0);
-   }
-
-   public static class a extends ehy.a<ehu.a> {
-      private final Builder<ehy> a = ImmutableList.builder();
-
-      public a(ehy.a<?>... $$0) {
-         for (ehy.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected ehu.a a() {
-         return this;
-      }
-
-      @Override
-      public ehu.a b(ehy.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ehy b() {
-         return new ehu(this.a.build(), this.f());
-      }
+   public static record a<T extends ehu>(Supplier<T> a, Function<sw, T> b, axo c) {
    }
 }

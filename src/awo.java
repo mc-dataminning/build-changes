@@ -1,33 +1,65 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import io.netty.util.internal.ThreadLocalRandom;
 
-public class awo extends baw {
-   public awo(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBlockStateFix", bbw.s, "minecraft:piston");
+public interface awo {
+   @Deprecated
+   double a = 2.297;
+
+   static awo a() {
+      return a(drd.a());
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bbw.s, "minecraft:piston");
-      Type<?> $$2 = $$1.findFieldType("blockState");
-      OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
-      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      int $$5 = $$4.get("blockId").asInt(0);
-      $$4 = $$4.remove("blockId");
-      int $$6 = $$4.get("blockData").asInt(0) & 15;
-      $$4 = $$4.remove("blockData");
-      Dynamic<?> $$7 = axa.b($$5 << 4 | $$6);
-      Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
-      return $$8.set(DSL.remainderFinder(), $$4)
-         .set(
-            $$3,
-            (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
-               .getFirst()
-         );
+   @Deprecated
+   static awo b() {
+      return new drh(drd.a());
+   }
+
+   static awo a(long $$0) {
+      return new dqp($$0);
+   }
+
+   static awo c() {
+      return new dre(ThreadLocalRandom.current().nextLong());
+   }
+
+   awo d();
+
+   drb e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
+   }
+
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
+   }
+
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
+      }
+   }
+
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
+      } else {
+         return $$0 + this.a($$1 - $$0);
+      }
    }
 }

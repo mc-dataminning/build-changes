@@ -1,59 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.EnumSet;
 
-public class bvp<T> {
-   private final T a;
-   private long b;
+public class bvp extends bvb {
+   private final boo a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public bvp(T $$0, long $$1) {
+   public bvp(boo $$0, double $$1) {
       this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> bvp<T> a(T $$0) {
-      return new bvp<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> bvp<T> a(T $$0, long $$1) {
-      return new bvp<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+      this.e = $$1;
+      this.a(EnumSet.of(bvb.a.a));
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean a() {
+      if (this.a.fO()) {
+         return false;
+      } else {
+         ens $$0 = byy.a(this.a, 16, 7, ens.c(this.a.fP()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            return true;
+         }
+      }
    }
 
-   @avu
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   @Override
+   public boolean b() {
+      return !this.a.N().l();
    }
 
-   public static <T> Codec<bvp<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new bvp<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void c() {
+      this.a.N().a(this.b, this.c, this.d, this.e);
    }
 }

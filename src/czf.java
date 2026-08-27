@@ -1,88 +1,30 @@
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
 
-public class czf {
-   public static <S extends dhd> czf.c<S> a(
-      dhf<S> $$0, Function<djp, czf.a> $$1, Function<djp, ic> $$2, dkj $$3, djp $$4, cty $$5, hx $$6, BiPredicate<cty, hx> $$7
-   ) {
-      S $$8 = $$0.a($$5, $$6);
-      if ($$8 == null) {
-         return czf.b::b;
-      } else if ($$7.test($$5, $$6)) {
-         return czf.b::b;
-      } else {
-         czf.a $$9 = $$1.apply($$4);
-         boolean $$10 = $$9 == czf.a.a;
-         boolean $$11 = $$9 == czf.a.b;
-         if ($$10) {
-            return new czf.c.b<>($$8);
-         } else {
-            hx $$12 = $$6.a($$2.apply($$4));
-            djp $$13 = $$5.a_($$12);
-            if ($$13.a($$4.b())) {
-               czf.a $$14 = $$1.apply($$13);
-               if ($$14 != czf.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
-                  if ($$7.test($$5, $$12)) {
-                     return czf.b::b;
-                  }
+public class czf extends cyo {
+   public static final MapCodec<czf> a = b(czf::new);
+   protected static final eol b = cyo.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
-                  S $$15 = $$0.a($$5, $$12);
-                  if ($$15 != null) {
-                     S $$16 = $$11 ? $$8 : $$15;
-                     S $$17 = $$11 ? $$15 : $$8;
-                     return new czf.c.a<>($$16, $$17);
-                  }
-               }
-            }
-
-            return new czf.c.b<>($$8);
-         }
-      }
+   @Override
+   public MapCodec<? extends czf> a() {
+      return a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public czf(dle.d $$0) {
+      super($$0);
    }
 
-   public interface b<S, T> {
-      T a(S var1, S var2);
-
-      T a(S var1);
-
-      T b();
+   @Override
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return b;
    }
 
-   public interface c<S> {
-      <T> T apply(czf.b<? super S, T> var1);
+   @Override
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      return !$$0.a($$3, $$4) ? cyq.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      public static final class a<S> implements czf.c<S> {
-         private final S a;
-         private final S b;
-
-         public a(S $$0, S $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-
-         @Override
-         public <T> T apply(czf.b<? super S, T> $$0) {
-            return $$0.a(this.a, this.b);
-         }
-      }
-
-      public static final class b<S> implements czf.c<S> {
-         private final S a;
-
-         public b(S $$0) {
-            this.a = $$0;
-         }
-
-         @Override
-         public <T> T apply(czf.b<? super S, T> $$0) {
-            return $$0.a(this.a);
-         }
-      }
+   @Override
+   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
+      return !$$1.u($$2.d());
    }
 }

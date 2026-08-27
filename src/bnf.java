@@ -1,5 +1,20 @@
-public interface bnf {
-   void a(aru var1);
+class bnf extends bmz {
+   protected bnf(bna $$0, int $$1) {
+      super($$0, $$1);
+   }
 
-   boolean a();
+   @Override
+   public boolean a(bog $$0, int $$1) {
+      if ($$0.ew() < $$0.eN()) {
+         $$0.c(1.0F);
+      }
+
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 50 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   }
 }

@@ -1,13 +1,4 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.serialization.Codec;
 
-interface emo {
-   DoubleList a();
-
-   boolean a(emo.a var1);
-
-   int size();
-
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
-   }
+public record emo(Codec<? extends emp> a) {
 }

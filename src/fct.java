@@ -1,82 +1,122 @@
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fct extends fdm {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final vg k;
-   private final vg l;
-   private final Runnable m;
-   @Nullable
-   private eyk n;
-   private exr o;
-   private int p;
+public class fct implements fcu {
+   public static final int a = 36;
+   private static final int b = 30;
+   private final fcr c = new fcr();
+   private final fcr d = new fcr();
+   private final fcr e = new fcr();
+   private final ffe f;
+   private int g;
+   private int h;
 
-   public static fct a(vg $$0, vg $$1, Runnable $$2) {
-      return new fct($$0, null, $$1, $$2, 0);
+   public fct(ffe $$0) {
+      this($$0, 36);
    }
 
-   public static fct a(vg $$0, vg $$1, vg $$2, Runnable $$3) {
-      return new fct($$0, $$1, $$2, $$3, 20);
+   public fct(ffe $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   protected fct(vg $$0, @Nullable vg $$1, vg $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.k = $$1;
-      this.l = $$2;
-      this.m = $$3;
-      this.p = $$4;
+   public fct(ffe $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      if (this.k != null) {
-         this.n = eyk.a(this.i, this.k, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.n != null ? this.n.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.h - 40);
-      this.o = this.d(exr.a(this.l, $$0x -> this.d()).a((this.g - 150) / 2, $$4, 150, 20).a());
+   public void m(int $$0) {
    }
 
    @Override
-   public void e() {
-      if (this.p > 0) {
-         this.p--;
-      }
-
-      this.o.j = this.p == 0;
+   public void n(int $$0) {
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
-      if (this.n == null) {
-         String $$4 = fcx.a(ac.b());
-         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
-      } else {
-         this.n.a($$0, this.g / 2, 120);
-      }
+   public int B() {
+      return 0;
    }
 
    @Override
-   public boolean aN_() {
-      return this.n != null && this.o.j;
+   public int C() {
+      return 0;
    }
 
    @Override
-   public void d() {
-      this.m.run();
+   public int w() {
+      return this.f.g;
    }
 
    @Override
-   public vg i() {
-      return vf.a(this.e, this.k != null ? this.k : vf.a);
+   public int u() {
+      return this.f.h;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   @Override
+   public void b(Consumer<fcv> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.g);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.g);
+      this.d.a($$1);
+      this.d.a();
+      this.d.n(this.f.h - $$1);
+      this.e.b(this.f.g);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.h - $$1 - this.e.u();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends fcv> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends fcv> T a(T $$0, Consumer<fcw> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public <T extends fcv> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends fcv> T b(T $$0, Consumer<fcw> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends fcv> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends fcv> T c(T $$0, Consumer<fcw> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

@@ -1,48 +1,34 @@
-public class afc implements xg<adk> {
-   private static final int a = 384;
-   private final hx b;
-   private final String[] c;
-   private final boolean d;
+public class afc implements xx<aes> {
+   public static final xo<uq, afc> a = xx.a(afc::a, afc::new);
+   private final afc.a b;
 
-   public afc(hx $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+   public afc(afc.a $$0) {
       this.b = $$0;
-      this.d = $$1;
-      this.c = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   public afc(uj $$0) {
-      this.b = $$0.e();
-      this.d = $$0.readBoolean();
-      this.c = new String[4];
+   private afc(uq $$0) {
+      this.b = $$0.b(afc.a.class);
+   }
 
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.c[$$1] = $$0.d(384);
-      }
+   private void a(uq $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.b);
-      $$0.a(this.d);
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         $$0.a(this.c[$$1]);
-      }
+   public xz<afc> a() {
+      return aeq.bl;
    }
 
-   public void a(adk $$0) {
+   public void a(aes $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
+   public afc.a b() {
       return this.b;
    }
 
-   public boolean d() {
-      return this.d;
-   }
-
-   public String[] e() {
-      return this.c;
+   public static enum a {
+      a,
+      b;
    }
 }

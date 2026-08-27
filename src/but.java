@@ -1,40 +1,72 @@
 import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class but extends btk {
-   private final cey a;
+public class but extends bvb {
+   private static final int a = 40;
+   private static final Predicate<dlf> b = dlo.a(cyq.bt);
+   private final boi c;
+   private final cvn d;
+   private int e;
 
-   public but(cey $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(btk.a.c, btk.a.a));
+   public but(boi $$0) {
+      this.c = $$0;
+      this.d = $$0.dM();
+      this.a(EnumSet.of(bvb.a.a, bvb.a.b, bvb.a.c));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.bx()) {
-         return false;
-      } else if (this.a.aZ()) {
-         return false;
-      } else if (!this.a.aC()) {
-         return false;
-      } else if (this.a.T) {
+      if (this.c.eh().a(this.c.o_() ? 50 : 1000) != 0) {
          return false;
       } else {
-         cfq $$0 = this.a.gf();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.f($$0) > 16.0 ? false : $$0.bW != null;
-         }
+         hz $$0 = this.c.dm();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(cyq.i);
       }
    }
 
    @Override
    public void c() {
-      this.a.N().n();
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.N().n();
    }
 
    @Override
    public void d() {
-      this.a.f(null);
+      this.e = 0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.e > 0;
+   }
+
+   public int h() {
+      return this.e;
+   }
+
+   @Override
+   public void e() {
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         hz $$0 = this.c.dm();
+         if (b.test(this.d.a_($$0))) {
+            if (this.d.Z().b(cvj.c)) {
+               this.d.b($$0, false);
+            }
+
+            this.c.P();
+         } else {
+            hz $$1 = $$0.d();
+            if (this.d.a_($$1).a(cyq.i)) {
+               if (this.d.Z().b(cvj.c)) {
+                  this.d.c(2001, $$1, cyo.i(cyq.i.o()));
+                  this.d.a($$1, cyq.j.o(), 2);
+               }
+
+               this.c.P();
+            }
+         }
+      }
    }
 }

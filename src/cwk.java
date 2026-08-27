@@ -1,35 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class cwk extends cwy implements czq {
-   protected cwk(djo.d $$0) {
-      super($$0);
+public class cwk {
+   public static final Codec<cwk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atj.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, cwk::new)
+   );
+   public static final cwk b = new cwk(atk.h, 6000, 8, 2.0);
+   private final ij<atj> c;
+   private final int d;
+   private final int e;
+   private final double f;
+
+   public cwk(ij<atj> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   protected abstract MapCodec<? extends cwk> a();
-
-   @Override
-   public ddd b_(djp $$0) {
-      return ddd.a;
+   public ij<atj> a() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(djp $$0, ctx $$1, hx $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dhd $$5 = $$1.c_($$2);
-      return $$5 == null ? false : $$5.a_($$3, $$4);
+   public int b() {
+      return this.d;
    }
 
-   @Nullable
-   @Override
-   public bkg b(djp $$0, ctx $$1, hx $$2) {
-      dhd $$3 = $$1.c_($$2);
-      return $$3 instanceof bkg ? (bkg)$$3 : null;
+   public int c() {
+      return this.e;
    }
 
-   @Nullable
-   protected static <E extends dhd, A extends dhd> dhe<A> a(dhf<A> $$0, dhf<E> $$1, dhe<? super E> $$2) {
-      return $$1 == $$0 ? $$2 : null;
+   public double d() {
+      return this.f;
    }
 }

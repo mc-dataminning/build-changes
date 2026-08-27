@@ -1,84 +1,95 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class bsr<T extends bmo> extends btk {
-   protected final bmx a;
-   private final double i;
-   private final double j;
-   @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected efo d;
-   protected final bvy e;
-   protected final Class<T> f;
-   protected final Predicate<bmo> g;
-   protected final Predicate<bmo> h;
-   private final bxd k;
+public class bsr extends bpw<cgu> {
+   private Set<cou> c = ImmutableSet.of();
 
-   public bsr(bmx $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bmb.e::test);
+   public bsr() {
+      super(ImmutableMap.of(bxh.q, bxi.a, bxh.h, bxi.a));
    }
 
-   public bsr(bmx $$0, Class<T> $$1, Predicate<bmo> $$2, float $$3, double $$4, double $$5, Predicate<bmo> $$6) {
-      this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.N();
-      this.a(EnumSet.of(btk.a.a));
-      this.k = bxd.a().a((double)$$3).a($$6.and($$2));
+   protected boolean a(aov $$0, cgu $$1) {
+      return bpy.a($$1.dO(), bxh.q, bnu.bh);
    }
 
-   public bsr(bmx $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bmo> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
+   protected boolean a(aov $$0, cgu $$1, long $$2) {
+      return this.a($$0, $$1);
    }
 
-   @Override
-   public boolean a() {
-      this.b = this.a
-         .dL()
-         .a(this.a.dL().a(this.f, this.a.cH().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dq(), this.a.ds(), this.a.dw());
-      if (this.b == null) {
-         return false;
-      } else {
-         emc $$0 = bxh.a(this.a, 16, 7, this.b.dj());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.f(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
-            return this.d != null;
+   protected void b(aov $$0, cgu $$1, long $$2) {
+      cgu $$3 = (cgu)$$1.dO().c(bxh.q).get();
+      bpy.a($$1, $$3, 0.5F, 2);
+      this.c = a($$1, $$3);
+   }
+
+   protected void c(aov $$0, cgu $$1, long $$2) {
+      cgu $$3 = (cgu)$$1.dO().c(bxh.q).get();
+      if (!($$1.f($$3) > 5.0)) {
+         bpy.a($$1, $$3, 0.5F, 2);
+         $$1.a($$0, $$3, $$2);
+         if ($$1.gy() && ($$1.gr().b() == cgx.g || $$3.gz())) {
+            a($$1, cgu.bW.keySet(), $$3);
+         }
+
+         if ($$3.gr().b() == cgx.g && $$1.A().a_(cpc.pv) > cpc.pv.k() / 2) {
+            a($$1, ImmutableSet.of(cpc.pv), $$3);
+         }
+
+         if (!this.c.isEmpty() && $$1.A().a(this.c)) {
+            a($$1, this.c, $$3);
          }
       }
    }
 
-   @Override
-   public boolean b() {
-      return !this.e.l();
+   protected void d(aov $$0, cgu $$1, long $$2) {
+      $$1.dO().b(bxh.q);
    }
 
-   @Override
-   public void c() {
-      this.e.a(this.d, this.i);
+   private static Set<cou> a(cgu $$0, cgu $$1) {
+      ImmutableSet<cou> $$2 = $$1.gr().b().d();
+      ImmutableSet<cou> $$3 = $$0.gr().b().d();
+      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
    }
 
-   @Override
-   public void d() {
-      this.b = null;
-   }
+   private static void a(cgu $$0, Set<cou> $$1, bog $$2) {
+      bmd $$3 = $$0.A();
+      coz $$4 = coz.h;
+      int $$5 = 0;
 
-   @Override
-   public void e() {
-      if (this.a.f((blw)this.b) < 49.0) {
-         this.a.N().a(this.j);
-      } else {
-         this.a.N().a(this.i);
+      while ($$5 < $$3.b()) {
+         coz $$6;
+         cou $$7;
+         int $$8;
+         label28: {
+            $$6 = $$3.a($$5);
+            if (!$$6.b()) {
+               $$7 = $$6.d();
+               if ($$1.contains($$7)) {
+                  if ($$6.M() > $$6.g() / 2) {
+                     $$8 = $$6.M() / 2;
+                     break label28;
+                  }
+
+                  if ($$6.M() > 24) {
+                     $$8 = $$6.M() - 24;
+                     break label28;
+                  }
+               }
+            }
+
+            $$5++;
+            continue;
+         }
+
+         $$6.h($$8);
+         $$4 = new coz($$7, $$8);
+         break;
+      }
+
+      if (!$$4.b()) {
+         bpy.a($$0, $$4, $$2.dk());
       }
    }
 }

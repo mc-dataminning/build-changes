@@ -1,80 +1,128 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ebm {
-   public static final int a = 90;
-   static final ahh b = new ahh("igloo/top");
-   private static final ahh c = new ahh("igloo/middle");
-   private static final ahh d = new ahh("igloo/bottom");
-   static final Map<ahh, hx> e = ImmutableMap.of(b, new hx(3, 5, 5), c, new hx(1, 3, 1), d, new hx(3, 6, 7));
-   static final Map<ahh, hx> f = ImmutableMap.of(b, hx.b, c, new hx(2, -3, 4), d, new hx(0, -3, -2));
+public final class ebm {
+   public static final String a = "INVALID";
+   public static final ebm b = new ebm(null, new cuu(0, 0), 0, new ebt(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final ebe d;
+   private final ebt e;
+   private final cuu f;
+   private int g;
+   @Nullable
+   private volatile eaw h;
 
-   public static void a(edp $$0, hx $$1, ddk $$2, dzt $$3, auw $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new ebm.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new ebm.a($$0, c, $$1, $$2, $$6 * 3));
-         }
-      }
-
-      $$3.a(new ebm.a($$0, b, $$1, $$2, 0));
+   public ebm(ebe $$0, cuu $$1, int $$2, ebt $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   public static class a extends dzy {
-      public a(edp $$0, ahh $$1, hx $$2, ddk $$3, int $$4) {
-         super(eaf.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
-      }
+   @Nullable
+   public static ebm a(ebu $$0, sw $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         iv<ebe> $$4 = $$0.b().d(kg.aD);
+         ebe $$5 = $$4.a(new aiy($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
+         } else {
+            cuu $$6 = new cuu($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            tc $$8 = $$1.c("Children", 10);
 
-      public a(edp $$0, so $$1) {
-         super(eaf.I, $$1, $$0, $$1x -> a(ddk.valueOf($$1.l("Rot")), $$1x));
-      }
+            try {
+               ebt $$9 = ebt.a($$8, $$0);
+               if ($$5 instanceof edo) {
+                  $$9 = edo.a($$6, $$2, $$9);
+               }
 
-      private static edk a(ddk $$0, ahh $$1) {
-         return new edk().a($$0).a(dbu.a).a(ebm.e.get($$1)).a(ecq.b);
-      }
-
-      private static hx a(ahh $$0, hx $$1, int $$2) {
-         return $$1.a(ebm.f.get($$0)).c($$2);
-      }
-
-      @Override
-      protected void a(eae $$0, so $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      @Override
-      protected void a(String $$0, hx $$1, cum $$2, auw $$3, dzg $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, cxa.a.o(), 3);
-            dhd $$5 = $$2.c_($$1.d());
-            if ($$5 instanceof dhk) {
-               ((dhk)$$5).a(ehd.C, $$3.g());
+               return new ebm($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
             }
          }
       }
+   }
 
-      @Override
-      public void a(cus $$0, cuq $$1, dlm $$2, auw $$3, dzg $$4, cte $$5, hx $$6) {
-         ahh $$7 = new ahh(this.a);
-         edk $$8 = a(this.c.d(), $$7);
-         hx $$9 = ebm.f.get($$7);
-         hx $$10 = this.d.a((jb)edo.a($$8, new hx(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(doy.a.a, $$10.u(), $$10.w());
-         hx $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(ebm.b)) {
-            hx $$13 = this.d.a((jb)edo.a($$8, new hx(3, 0, 5)));
-            djp $$14 = $$0.a_($$13.d());
-            if (!$$14.i() && !$$14.a(cxa.cO)) {
-               $$0.a($$13, cxa.dP.o(), 3);
+   public eaw a() {
+      eaw $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
+
+      return $$0;
+   }
+
+   public void a(cwi $$0, cwg $$1, dnc $$2, awo $$3, eaw $$4, cuu $$5) {
+      List<ebi> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         eaw $$7 = $$6.get(0).f;
+         hz $$8 = $$7.g();
+         hz $$9 = new hz($$8.u(), $$7.i(), $$8.w());
+
+         for (ebi $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
             }
          }
 
-         this.d = $$12;
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
       }
+   }
+
+   public sw a(ebu $$0, cuu $$1) {
+      sw $$2 = new sw();
+      if (this.b()) {
+         $$2.a("id", $$0.b().d(kg.aD).b(this.d).toString());
+         $$2.a("ChunkX", $$1.e);
+         $$2.a("ChunkZ", $$1.f);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
+   }
+
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public cuu c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public ebe h() {
+      return this.d;
+   }
+
+   public List<ebi> i() {
+      return this.e.c();
    }
 }

@@ -1,46 +1,163 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.ListBuilder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.ListBuilder.Builder;
+import com.mojang.serialization.RecordBuilder.MapBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class aiq {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.ban.failed"));
+public abstract class aiq<T> implements DynamicOps<T> {
+   protected final DynamicOps<T> a;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("ban").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)dt.a("targets", eh.a()).executes($$0x -> a((ds)$$0x.getSource(), eh.a($$0x, "targets"), null)))
-                  .then(dt.a("reason", ej.a()).executes($$0x -> a((ds)$$0x.getSource(), eh.a($$0x, "targets"), ej.a($$0x, "reason"))))
-            )
-      );
+   protected aiq(DynamicOps<T> $$0) {
+      this.a = $$0;
    }
 
-   private static int a(ds $$0, Collection<GameProfile> $$1, @Nullable vg $$2) throws CommandSyntaxException {
-      arc $$3 = $$0.l().ae().f();
-      int $$4 = 0;
+   public T empty() {
+      return (T)this.a.empty();
+   }
 
-      for (GameProfile $$5 : $$1) {
-         if (!$$3.a($$5)) {
-            ard $$6 = new ard($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-            $$3.a($$6);
-            $$4++;
-            $$0.a(() -> vg.a("commands.ban.success", vg.b($$5.getName()), $$6.d()), true);
-            anf $$7 = $$0.l().ae().a($$5.getId());
-            if ($$7 != null) {
-               $$7.c.b(vg.c("multiplayer.disconnect.banned"));
-            }
-         }
-      }
+   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
+      return (U)this.a.convertTo($$0, $$1);
+   }
 
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         return $$4;
-      }
+   public DataResult<Number> getNumberValue(T $$0) {
+      return this.a.getNumberValue($$0);
+   }
+
+   public T createNumeric(Number $$0) {
+      return (T)this.a.createNumeric($$0);
+   }
+
+   public T createByte(byte $$0) {
+      return (T)this.a.createByte($$0);
+   }
+
+   public T createShort(short $$0) {
+      return (T)this.a.createShort($$0);
+   }
+
+   public T createInt(int $$0) {
+      return (T)this.a.createInt($$0);
+   }
+
+   public T createLong(long $$0) {
+      return (T)this.a.createLong($$0);
+   }
+
+   public T createFloat(float $$0) {
+      return (T)this.a.createFloat($$0);
+   }
+
+   public T createDouble(double $$0) {
+      return (T)this.a.createDouble($$0);
+   }
+
+   public DataResult<Boolean> getBooleanValue(T $$0) {
+      return this.a.getBooleanValue($$0);
+   }
+
+   public T createBoolean(boolean $$0) {
+      return (T)this.a.createBoolean($$0);
+   }
+
+   public DataResult<String> getStringValue(T $$0) {
+      return this.a.getStringValue($$0);
+   }
+
+   public T createString(String $$0) {
+      return (T)this.a.createString($$0);
+   }
+
+   public DataResult<T> mergeToList(T $$0, T $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
+      return this.a.mergeToMap($$0, $$1, $$2);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
+      return this.a.getMapValues($$0);
+   }
+
+   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
+      return this.a.getMapEntries($$0);
+   }
+
+   public T createMap(Stream<Pair<T, T>> $$0) {
+      return (T)this.a.createMap($$0);
+   }
+
+   public DataResult<MapLike<T>> getMap(T $$0) {
+      return this.a.getMap($$0);
+   }
+
+   public DataResult<Stream<T>> getStream(T $$0) {
+      return this.a.getStream($$0);
+   }
+
+   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
+      return this.a.getList($$0);
+   }
+
+   public T createList(Stream<T> $$0) {
+      return (T)this.a.createList($$0);
+   }
+
+   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
+      return this.a.getByteBuffer($$0);
+   }
+
+   public T createByteList(ByteBuffer $$0) {
+      return (T)this.a.createByteList($$0);
+   }
+
+   public DataResult<IntStream> getIntStream(T $$0) {
+      return this.a.getIntStream($$0);
+   }
+
+   public T createIntList(IntStream $$0) {
+      return (T)this.a.createIntList($$0);
+   }
+
+   public DataResult<LongStream> getLongStream(T $$0) {
+      return this.a.getLongStream($$0);
+   }
+
+   public T createLongList(LongStream $$0) {
+      return (T)this.a.createLongList($$0);
+   }
+
+   public T remove(T $$0, String $$1) {
+      return (T)this.a.remove($$0, $$1);
+   }
+
+   public boolean compressMaps() {
+      return this.a.compressMaps();
+   }
+
+   public ListBuilder<T> listBuilder() {
+      return new Builder(this);
+   }
+
+   public RecordBuilder<T> mapBuilder() {
+      return new MapBuilder(this);
    }
 }

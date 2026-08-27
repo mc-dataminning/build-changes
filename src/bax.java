@@ -1,32 +1,39 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
-public abstract class bax extends DataFix {
-   private final String a;
-   private final String b;
-   private final TypeReference c;
+public class bax extends bcn {
+   private static final int a = 6;
+   private static final awo b = awo.a();
 
-   public bax(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.c = $$3;
-      this.b = $$4;
+   public bax(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityZombieVillagerTypeFix", bdn.y, "Zombie");
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(this.c);
-      Type<?> $$1 = this.getInputSchema().getChoiceType(this.c, this.b);
-      Type<?> $$2 = this.getOutputSchema().getType(this.c);
-      Type<?> $$3 = this.getOutputSchema().getChoiceType(this.c, this.b);
-      OpticFinder<?> $$4 = DSL.namedChoice(this.b, $$1);
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$2, $$2x -> $$2x.updateTyped($$4, $$3, $$1xx -> ac.a($$1xx, $$3, this::a)));
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("IsVillager").asBoolean(false)) {
+         if ($$0.get("ZombieType").result().isEmpty()) {
+            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
+            if ($$1 == -1) {
+               $$1 = this.a(b.a(6));
+            }
+
+            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
+         }
+
+         $$0 = $$0.remove("IsVillager");
+      }
+
+      return $$0;
    }
 
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
+   private int a(int $$0) {
+      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
 }

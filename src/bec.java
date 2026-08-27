@@ -1,16 +1,19 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
 
-public class bec extends bde {
-   public bec(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bec extends bcn {
+   public bec(Schema $$0, boolean $$1) {
+      super($$0, $$1, "StriderGravityFix", bdn.y, "minecraft:strider");
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:illager_beast", () -> bdf.a($$0));
-      return $$1;
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("NoGravity").asBoolean(false) ? $$0.set("NoGravity", $$0.createBoolean(false)) : $$0;
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

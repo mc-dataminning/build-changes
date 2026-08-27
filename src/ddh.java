@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddh extends cwy implements cxb {
+public class ddh extends dcx implements cyr {
    public static final MapCodec<ddh> a = b(ddh::new);
 
    @Override
@@ -8,27 +8,27 @@ public class ddh extends cwy implements cxb {
       return a;
    }
 
-   public ddh(djo.d $$0) {
+   public ddh(dle.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(cua $$0, hx $$1, djp $$2) {
+   public boolean b(cvq $$0, hz $$1, dlf $$2) {
       return $$0.a_($$1.d()).i();
    }
 
    @Override
-   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
+   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
       return true;
    }
 
    @Override
-   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
-      $$0.b($$2.d(), cxa.sG.o());
+   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
+      $$0.a($$2.d(), ddi.c(), 2);
    }
 
    @Override
-   public hx a(hx $$0) {
+   public hz a(hz $$0) {
       return $$0.d();
    }
 }

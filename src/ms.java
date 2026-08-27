@@ -1,87 +1,350 @@
-import com.google.gson.JsonElement;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
 public class ms {
-   public static final ms.a a = a(mq::a, mp.c);
-   public static final ms.a b = a(mq::a, mp.d);
-   public static final ms.a c = a(mq::a, mp.e);
-   public static final ms.a d = a(mq::k, mp.j);
-   public static final ms.a e = a(mq::k, mp.k);
-   public static final ms.a f = a(mq::q, mp.n);
-   public static final ms.a g = a(mq::l, mp.m);
-   public static final ms.a h = a(mq::B, mp.p);
-   public static final ms.a i = a(mq::A, mp.q);
-   public static final ms.a j = a(mq::f, mp.aw);
-   public static final ms.a k = a(mq::g, mp.ax);
-   public static final ms.a l = a(mq::g, mp.ay);
-   public static final ms.a m = a(mq::g, mp.az);
-   public static final ms.a n = a(mq::g, mp.aA);
-   public static final ms.a o = a(mq::i, mp.aD);
-   public static final ms.a p = a(mq::j, mp.aB);
-   public static final ms.a q = a(mq::u, mp.aa);
-   public static final ms.a r = a(mq::D, mp.aS);
-   public static final ms.a s = a(mq::a, mp.ad);
-   public static final ms.a t = a(mq::x, mp.bd);
-   public static final ms.a u = a(mq::x, mp.be);
-   public static final ms.a v = a(mq::b, mp.bk);
-   public static final ms.a w = a(mq::n, mp.j);
-   public static final ms.a x = a(mq::n, mp.k);
-   public static final ms.a y = a(mq::r, mp.n);
-   public static final ms.a z = a(mq::s, mp.j);
-   private final mq A;
-   private final mo B;
+   private final Map<mt, aiy> a = Maps.newHashMap();
+   private final Set<mt> b = Sets.newHashSet();
 
-   private ms(mq $$0, mo $$1) {
-      this.A = $$0;
-      this.B = $$1;
-   }
-
-   public mo a() {
-      return this.B;
-   }
-
-   public mq b() {
-      return this.A;
-   }
-
-   public ms a(Consumer<mq> $$0) {
-      $$0.accept(this.A);
+   public ms a(mt $$0, aiy $$1) {
+      this.a.put($$0, $$1);
       return this;
    }
 
-   public ahh a(cwy $$0, BiConsumer<ahh, Supplier<JsonElement>> $$1) {
-      return this.B.a($$0, this.A, $$1);
+   public ms b(mt $$0, aiy $$1) {
+      this.a.put($$0, $$1);
+      this.b.add($$0);
+      return this;
    }
 
-   public ahh a(cwy $$0, String $$1, BiConsumer<ahh, Supplier<JsonElement>> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
+   public Stream<mt> a() {
+      return this.b.stream();
    }
 
-   private static ms.a a(Function<cwy, mq> $$0, mo $$1) {
-      return $$2 -> new ms($$0.apply($$2), $$1);
+   public ms a(mt $$0, mt $$1) {
+      this.a.put($$1, this.a.get($$0));
+      return this;
    }
 
-   public static ms a(ahh $$0) {
-      return new ms(mq.b($$0), mp.c);
+   public ms b(mt $$0, mt $$1) {
+      this.a.put($$1, this.a.get($$0));
+      this.b.add($$1);
+      return this;
    }
 
-   @FunctionalInterface
-   public interface a {
-      ms get(cwy var1);
-
-      default ahh create(cwy $$0, BiConsumer<ahh, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
+   public aiy a(mt $$0) {
+      for (mt $$1 = $$0; $$1 != null; $$1 = $$1.b()) {
+         aiy $$2 = this.a.get($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
       }
 
-      default ahh createWithSuffix(cwy $$0, String $$1, BiConsumer<ahh, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
+      throw new IllegalStateException("Can't find texture for slot " + $$0);
+   }
 
-      default ms.a updateTexture(Consumer<mq> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   public ms c(mt $$0, aiy $$1) {
+      ms $$2 = new ms();
+      $$2.a.putAll(this.a);
+      $$2.b.addAll(this.b);
+      $$2.a($$0, $$1);
+      return $$2;
+   }
+
+   public static ms a(cyo $$0) {
+      aiy $$1 = G($$0);
+      return b($$1);
+   }
+
+   public static ms b(cyo $$0) {
+      aiy $$1 = G($$0);
+      return a($$1);
+   }
+
+   public static ms a(aiy $$0) {
+      return new ms().a(mt.b, $$0);
+   }
+
+   public static ms b(aiy $$0) {
+      return new ms().a(mt.a, $$0);
+   }
+
+   public static ms c(cyo $$0) {
+      return d(mt.p, G($$0));
+   }
+
+   public static ms c(aiy $$0) {
+      return d(mt.p, $$0);
+   }
+
+   public static ms d(cyo $$0) {
+      return d(mt.q, G($$0));
+   }
+
+   public static ms d(aiy $$0) {
+      return d(mt.q, $$0);
+   }
+
+   public static ms e(cyo $$0) {
+      return d(mt.s, G($$0));
+   }
+
+   public static ms e(aiy $$0) {
+      return d(mt.s, $$0);
+   }
+
+   public static ms f(cyo $$0) {
+      return d(mt.t, G($$0));
+   }
+
+   public static ms g(cyo $$0) {
+      return new ms().a(mt.P, G($$0)).a(mt.y, a($$0, "_stem"));
+   }
+
+   public static ms f(aiy $$0) {
+      return d(mt.t, $$0);
+   }
+
+   public static ms h(cyo $$0) {
+      return d(mt.y, G($$0));
+   }
+
+   public static ms a(cyo $$0, cyo $$1) {
+      return new ms().a(mt.y, G($$0)).a(mt.z, G($$1));
+   }
+
+   public static ms i(cyo $$0) {
+      return d(mt.u, G($$0));
+   }
+
+   public static ms j(cyo $$0) {
+      return d(mt.x, G($$0));
+   }
+
+   public static ms g(aiy $$0) {
+      return d(mt.A, $$0);
+   }
+
+   public static ms b(cyo $$0, cyo $$1) {
+      return new ms().a(mt.v, G($$0)).a(mt.w, a($$1, "_top"));
+   }
+
+   public static ms d(mt $$0, aiy $$1) {
+      return new ms().a($$0, $$1);
+   }
+
+   public static ms k(cyo $$0) {
+      return new ms().a(mt.i, a($$0, "_side")).a(mt.d, a($$0, "_top"));
+   }
+
+   public static ms l(cyo $$0) {
+      return new ms().a(mt.i, a($$0, "_side")).a(mt.f, a($$0, "_top"));
+   }
+
+   public static ms m(cyo $$0) {
+      return new ms().a(mt.q, a($$0, "_plant")).a(mt.i, a($$0, "_side")).a(mt.f, a($$0, "_top"));
+   }
+
+   public static ms n(cyo $$0) {
+      return new ms().a(mt.i, G($$0)).a(mt.d, a($$0, "_top")).a(mt.c, G($$0));
+   }
+
+   public static ms a(aiy $$0, aiy $$1) {
+      return new ms().a(mt.i, $$0).a(mt.d, $$1);
+   }
+
+   public static ms o(cyo $$0) {
+      return new ms().a(mt.b, G($$0)).a(mt.i, a($$0, "_side")).a(mt.f, a($$0, "_top"));
+   }
+
+   public static ms p(cyo $$0) {
+      return new ms().a(mt.b, G($$0)).a(mt.c, a($$0, "_particle"));
+   }
+
+   public static ms q(cyo $$0) {
+      return new ms().a(mt.i, a($$0, "_side")).a(mt.f, a($$0, "_top")).a(mt.e, a($$0, "_bottom"));
+   }
+
+   public static ms r(cyo $$0) {
+      aiy $$1 = G($$0);
+      return new ms().a(mt.r, $$1).a(mt.i, $$1).a(mt.f, a($$0, "_top")).a(mt.e, a($$0, "_bottom"));
+   }
+
+   public static ms s(cyo $$0) {
+      aiy $$1 = G($$0);
+      return new ms().a(mt.b, $$1).a(mt.r, $$1).a(mt.i, $$1).a(mt.d, a($$0, "_top"));
+   }
+
+   public static ms b(aiy $$0, aiy $$1) {
+      return new ms().a(mt.f, $$0).a(mt.e, $$1);
+   }
+
+   public static ms t(cyo $$0) {
+      return new ms().a(mt.f, a($$0, "_top")).a(mt.e, a($$0, "_bottom"));
+   }
+
+   public static ms u(cyo $$0) {
+      return new ms().a(mt.c, G($$0));
+   }
+
+   public static ms h(aiy $$0) {
+      return new ms().a(mt.c, $$0);
+   }
+
+   public static ms v(cyo $$0) {
+      return new ms().a(mt.C, a($$0, "_0"));
+   }
+
+   public static ms w(cyo $$0) {
+      return new ms().a(mt.C, a($$0, "_1"));
+   }
+
+   public static ms x(cyo $$0) {
+      return new ms().a(mt.D, G($$0));
+   }
+
+   public static ms y(cyo $$0) {
+      return new ms().a(mt.G, G($$0));
+   }
+
+   public static ms i(aiy $$0) {
+      return new ms().a(mt.G, $$0);
+   }
+
+   public static ms a(cyo $$0, String $$1, String $$2) {
+      return new ms().a(mt.i, a($$0, $$1)).a(mt.f, a($$0, $$2)).a(mt.e, a($$0, "_bottom"));
+   }
+
+   public static ms a(cou $$0) {
+      return new ms().a(mt.c, c($$0));
+   }
+
+   public static ms z(cyo $$0) {
+      return new ms().a(mt.i, a($$0, "_side")).a(mt.g, a($$0, "_front")).a(mt.h, a($$0, "_back"));
+   }
+
+   public static ms A(cyo $$0) {
+      return new ms().a(mt.i, a($$0, "_side")).a(mt.g, a($$0, "_front")).a(mt.f, a($$0, "_top")).a(mt.e, a($$0, "_bottom"));
+   }
+
+   public static ms B(cyo $$0) {
+      return new ms().a(mt.i, a($$0, "_side")).a(mt.g, a($$0, "_front")).a(mt.f, a($$0, "_top"));
+   }
+
+   public static ms C(cyo $$0) {
+      return new ms().a(mt.i, a($$0, "_side")).a(mt.g, a($$0, "_front")).a(mt.d, a($$0, "_end"));
+   }
+
+   public static ms D(cyo $$0) {
+      return new ms().a(mt.f, a($$0, "_top"));
+   }
+
+   public static ms c(cyo $$0, cyo $$1) {
+      return new ms()
+         .a(mt.c, a($$0, "_front"))
+         .a(mt.o, G($$1))
+         .a(mt.n, a($$0, "_top"))
+         .a(mt.j, a($$0, "_front"))
+         .a(mt.l, a($$0, "_side"))
+         .a(mt.k, a($$0, "_side"))
+         .a(mt.m, a($$0, "_front"));
+   }
+
+   public static ms d(cyo $$0, cyo $$1) {
+      return new ms()
+         .a(mt.c, a($$0, "_front"))
+         .a(mt.o, G($$1))
+         .a(mt.n, a($$0, "_top"))
+         .a(mt.j, a($$0, "_front"))
+         .a(mt.k, a($$0, "_front"))
+         .a(mt.l, a($$0, "_side"))
+         .a(mt.m, a($$0, "_side"));
+   }
+
+   public static ms a(String $$0) {
+      return new ms()
+         .a(mt.c, a(cyq.mg, $$0 + "_north"))
+         .a(mt.e, a(cyq.mg, $$0 + "_bottom"))
+         .a(mt.f, a(cyq.mg, $$0 + "_top"))
+         .a(mt.j, a(cyq.mg, $$0 + "_north"))
+         .a(mt.k, a(cyq.mg, $$0 + "_south"))
+         .a(mt.l, a(cyq.mg, $$0 + "_east"))
+         .a(mt.m, a(cyq.mg, $$0 + "_west"));
+   }
+
+   public static ms E(cyo $$0) {
+      return new ms().a(mt.K, a($$0, "_log_lit")).a(mt.C, a($$0, "_fire"));
+   }
+
+   public static ms a(cyo $$0, boolean $$1) {
+      return new ms()
+         .a(mt.c, a(cyq.eg, "_side"))
+         .a(mt.e, a(cyq.eg, "_bottom"))
+         .a(mt.f, a(cyq.eg, "_top"))
+         .a(mt.i, a(cyq.eg, "_side"))
+         .a(mt.L, a($$0, $$1 ? "_lit" : ""));
+   }
+
+   public static ms j(aiy $$0) {
+      return new ms()
+         .a(mt.c, a(cyq.ft, "_side"))
+         .a(mt.i, a(cyq.ft, "_side"))
+         .a(mt.f, a(cyq.ft, "_top"))
+         .a(mt.e, a(cyq.ft, "_bottom"))
+         .a(mt.M, a(cyq.ft, "_inner"))
+         .a(mt.N, $$0);
+   }
+
+   public static ms a(boolean $$0) {
+      String $$1 = $$0 ? "_can_summon" : "";
+      return new ms()
+         .a(mt.c, a(cyq.qV, "_bottom"))
+         .a(mt.i, a(cyq.qV, "_side"))
+         .a(mt.f, a(cyq.qV, "_top"))
+         .a(mt.O, a(cyq.qV, $$1 + "_inner_top"))
+         .a(mt.e, a(cyq.qV, "_bottom"));
+   }
+
+   public static ms b(cou $$0) {
+      return new ms().a(mt.H, c($$0));
+   }
+
+   public static ms F(cyo $$0) {
+      return new ms().a(mt.H, G($$0));
+   }
+
+   public static ms k(aiy $$0) {
+      return new ms().a(mt.H, $$0);
+   }
+
+   public static ms c(aiy $$0, aiy $$1) {
+      return new ms().a(mt.H, $$0).a(mt.I, $$1);
+   }
+
+   public static ms a(aiy $$0, aiy $$1, aiy $$2) {
+      return new ms().a(mt.H, $$0).a(mt.I, $$1).a(mt.J, $$2);
+   }
+
+   public static aiy G(cyo $$0) {
+      aiy $$1 = kf.e.b($$0);
+      return $$1.d("block/");
+   }
+
+   public static aiy a(cyo $$0, String $$1) {
+      aiy $$2 = kf.e.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   }
+
+   public static aiy c(cou $$0) {
+      aiy $$1 = kf.h.b($$0);
+      return $$1.d("item/");
+   }
+
+   public static aiy a(cou $$0, String $$1) {
+      aiy $$2 = kf.h.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

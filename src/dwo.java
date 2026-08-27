@@ -1,21 +1,10 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwo extends dwh {
-   public static final Codec<dwo> b = djp.b.fieldOf("state").xmap(djo.a::b, cwy::o).xmap(dwo::new, $$0 -> $$0.c).codec();
-   private final cwy c;
+public record dwo(dxx b) implements dvw {
+   public static final Codec<dwo> a = RecordCodecBuilder.create($$0 -> $$0.group(dxx.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, dwo::new));
 
-   public dwo(cwy $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   protected dwi<?> a() {
-      return dwi.f;
-   }
-
-   @Override
-   public djp a(auw $$0, hx $$1) {
-      ic.a $$2 = ic.a.a($$0);
-      return this.c.o().a(ddj.i, $$2);
+   public dxx a() {
+      return this.b;
    }
 }

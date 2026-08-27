@@ -1,42 +1,64 @@
-public class flq<T extends blw> extends fks<T> {
-   private final fnj a;
-   private final fnj b;
-   private final fnj f;
+import com.google.common.collect.ImmutableList;
 
-   public flq(fnj $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+public class flq<T extends bno> extends fkx<T> {
+   public static final String a = "red_thing";
+   private final fpc b;
+   private final fpc f;
+   private final fpc g;
+   private final fpc h;
+   private final fpc i;
+   private final fpc j;
+   private final fpc k;
+   private final fpc l;
+
+   public flq(fpc $$0) {
+      this.b = $$0.b("head");
+      this.k = $$0.b("beak");
+      this.l = $$0.b("red_thing");
+      this.f = $$0.b("body");
+      this.g = $$0.b("right_leg");
+      this.h = $$0.b("left_leg");
+      this.i = $$0.b("right_wing");
+      this.j = $$0.b("left_wing");
    }
 
-   public static fnp b() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", fno.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fnl.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fno.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fnl.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", fno.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fnl.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", fno.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fnl.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", fno.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fnl.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", fno.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fnl.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fno.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fnl.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fno.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fnl.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", fno.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fnl.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", fno.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fnl.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", fno.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fnl.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", fno.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fnl.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fno.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fnl.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return fnp.a($$0, 32, 32);
+   public static fpi c() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      int $$2 = 16;
+      $$1.a("head", fph.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fpe.a(0.0F, 15.0F, -4.0F));
+      $$1.a("beak", fph.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fpe.a(0.0F, 15.0F, -4.0F));
+      $$1.a("red_thing", fph.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fpe.a(0.0F, 15.0F, -4.0F));
+      $$1.a("body", fph.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fpe.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fph $$3 = fph.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
+      $$1.a("right_leg", $$3, fpe.a(-2.0F, 19.0F, 1.0F));
+      $$1.a("left_leg", $$3, fpe.a(1.0F, 19.0F, 1.0F));
+      $$1.a("right_wing", fph.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fpe.a(-4.0F, 13.0F, 0.0F));
+      $$1.a("left_wing", fph.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fpe.a(4.0F, 13.0F, 0.0F));
+      return fpi.a($$0, 64, 32);
    }
 
    @Override
-   public fnj a() {
-      return this.a;
+   protected Iterable<fpc> a() {
+      return ImmutableList.of(this.b, this.k, this.l);
+   }
+
+   @Override
+   protected Iterable<fpc> b() {
+      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * aup.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * aup.a($$3 * 0.2F);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.k.e = this.b.e;
+      this.k.f = this.b.f;
+      this.l.e = this.b.e;
+      this.l.f = this.b.f;
+      this.g.e = awh.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.h.e = awh.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.g = $$3;
+      this.j.g = -$$3;
    }
 }

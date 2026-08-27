@@ -1,135 +1,55 @@
-import javax.annotation.Nullable;
+public class cli<T extends ckb> implements cjp {
+   public static final cli<cki> a = a("generic_9x1", cki::a);
+   public static final cli<cki> b = a("generic_9x2", cki::b);
+   public static final cli<cki> c = a("generic_9x3", cki::c);
+   public static final cli<cki> d = a("generic_9x4", cki::d);
+   public static final cli<cki> e = a("generic_9x5", cki::e);
+   public static final cli<cki> f = a("generic_9x6", cki::f);
+   public static final cli<cku> g = a("generic_3x3", cku::new);
+   public static final cli<ckp> h = a("crafter_3x3", ckp::new);
+   public static final cli<ckd> i = a("anvil", ckd::new);
+   public static final cli<cke> j = a("beacon", cke::new);
+   public static final cli<ckf> k = a("blast_furnace", ckf::new);
+   public static final cli<ckg> l = a("brewing_stand", ckg::new);
+   public static final cli<cks> m = a("crafting", cks::new);
+   public static final cli<ckv> n = a("enchantment", ckv::new);
+   public static final cli<ckx> o = a("furnace", ckx::new);
+   public static final cli<ckz> p = a("grindstone", ckz::new);
+   public static final cli<cla> q = a("hopper", cla::new);
+   public static final cli<clf> r = a("lectern", ($$0, $$1) -> new clf($$0));
+   public static final cli<clg> s = a("loom", clg::new);
+   public static final cli<clk> t = a("merchant", clk::new);
+   public static final cli<clt> u = a("shulker_box", clt::new);
+   public static final cli<clx> v = a("smithing", clx::new);
+   public static final cli<cly> w = a("smoker", cly::new);
+   public static final cli<ckh> x = a("cartography_table", ckh::new);
+   public static final cli<cma> y = a("stonecutter", cma::new);
+   private final cjs z;
+   private final cli.a<T> A;
 
-public class cli extends cnb implements clt {
-   private final eey a;
+   private static <T extends ckb> cli<T> a(String $$0, cli.a<T> $$1) {
+      return iv.a(kf.r, $$0, new cli<>($$1, cju.g));
+   }
 
-   public cli(eey $$0, cnb.a $$1) {
-      super($$1);
-      this.a = $$0;
+   private static <T extends ckb> cli<T> a(String $$0, cli.a<T> $$1, cjq... $$2) {
+      return iv.a(kf.r, $$0, new cli<>($$1, cju.e.a($$2)));
+   }
+
+   private cli(cli.a<T> $$0, cjs $$1) {
+      this.A = $$0;
+      this.z = $$1;
+   }
+
+   public T a(int $$0, chg $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   public bkd<cng> a(ctx $$0, cfq $$1, bkb $$2) {
-      cng $$3 = $$1.b($$2);
-      ely $$4 = a($$0, $$1, this.a == efa.a ? ctg.b.b : ctg.b.a);
-      if ($$4.c() == ema.a.a) {
-         return bkd.c($$3);
-      } else if ($$4.c() != ema.a.b) {
-         return bkd.c($$3);
-      } else {
-         hx $$5 = $$4.a();
-         ic $$6 = $$4.b();
-         hx $$7 = $$5.a($$6);
-         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
-            return bkd.d($$3);
-         } else if (this.a == efa.a) {
-            djp $$8 = $$0.a_($$5);
-            if ($$8.b() instanceof cxf $$9) {
-               cng $$10 = $$9.a($$1, $$0, $$5, $$8);
-               if (!$$10.b()) {
-                  $$1.b(asd.c.b(this));
-                  $$9.ax_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
-                  $$0.a($$1, dnz.y, $$5);
-                  cng $$11 = cni.a($$3, $$1, $$10);
-                  if (!$$0.B) {
-                     am.k.a((anf)$$1, $$10);
-                  }
-
-                  return bkd.a($$11, $$0.y_());
-               }
-            }
-
-            return bkd.d($$3);
-         } else {
-            djp $$12 = $$0.a_($$5);
-            hx $$13 = $$12.b() instanceof dbo && this.a == efa.c ? $$5 : $$7;
-            if (this.a($$1, $$0, $$13, $$4)) {
-               this.a($$1, $$0, $$3, $$13);
-               if ($$1 instanceof anf) {
-                  am.z.a((anf)$$1, $$13, $$3);
-               }
-
-               $$1.b(asd.c.b(this));
-               return bkd.a(a($$3, $$1), $$0.y_());
-            } else {
-               return bkd.d($$3);
-            }
-         }
-      }
+   public cjs m() {
+      return this.z;
    }
 
-   public static cng a(cng $$0, cfq $$1) {
-      return !$$1.fT().d ? new cng(cnj.qx) : $$0;
-   }
-
-   @Override
-   public void a(@Nullable cfq $$0, ctx $$1, cng $$2, hx $$3) {
-   }
-
-   @Override
-   public boolean a(@Nullable cfq $$0, ctx $$1, hx $$2, @Nullable ely $$3) {
-      if (!(this.a instanceof eex $$4)) {
-         return false;
-      } else {
-         cwy $$7;
-         boolean $$8;
-         djp $$6;
-         boolean var10000;
-         label82: {
-            $$6 = $$1.a_($$2);
-            $$7 = $$6.b();
-            $$8 = $$6.a(this.a);
-            label70:
-            if (!$$6.i() && !$$8) {
-               if ($$7 instanceof dbo $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
-                  break label70;
-               }
-
-               var10000 = false;
-               break label82;
-            }
-
-            var10000 = true;
-         }
-
-         boolean $$10 = var10000;
-         if (!$$10) {
-            return $$3 != null && this.a($$0, $$1, $$3.a().a($$3.b()), null);
-         } else if ($$1.E_().i() && this.a.a(asn.a)) {
-            int $$11 = $$2.u();
-            int $$12 = $$2.v();
-            int $$13 = $$2.w();
-            $$1.a($$0, $$2, art.iF, aru.e, 0.5F, 2.6F + ($$1.z.i() - $$1.z.i()) * 0.8F);
-
-            for (int $$14 = 0; $$14 < 8; $$14++) {
-               $$1.a(jx.U, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
-            }
-
-            return true;
-         } else {
-            if ($$7 instanceof dbo $$15 && this.a == efa.c) {
-               $$15.a($$1, $$2, $$6, $$4.a(false));
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-
-            if (!$$1.B && $$8 && !$$6.k()) {
-               $$1.b($$2, true);
-            }
-
-            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.u().b()) {
-               return false;
-            } else {
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-         }
-      }
-   }
-
-   protected void a(@Nullable cfq $$0, cty $$1, hx $$2) {
-      ars $$3 = this.a.a(asn.b) ? art.cW : art.cT;
-      $$1.a($$0, $$2, $$3, aru.e, 1.0F, 1.0F);
-      $$1.a($$0, dnz.z, $$2);
+   interface a<T extends ckb> {
+      T create(int var1, chg var2);
    }
 }

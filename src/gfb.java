@@ -1,121 +1,25 @@
-import javax.annotation.Nullable;
+public class gfb<T extends chh> extends gfe<T, fng<T>> {
+   private final fnb a;
 
-public class gfb {
-   private final ahh a;
-   private final gev b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-
-   protected gfb(ahh $$0, gev $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
+   public gfb(gco<T, fng<T>> $$0, foy $$1) {
+      super($$0);
+      this.a = new fnb($$1.a(fpb.aC));
    }
 
-   public int a() {
-      return this.c;
+   public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public gev e() {
-      return this.b;
-   }
-
-   @Nullable
-   public gfb.a f() {
-      final gex $$0 = this.b.e();
-      return $$0 != null ? new gfb.a() {
-         @Override
-         public void a() {
-            $$0.a(gfb.this.c, gfb.this.d);
-         }
-
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
-   }
-
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public ahh i() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
-   }
-
-   public void j() {
-      this.b.a(this.c, this.d);
-   }
-
-   private float l() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
-   }
-
-   public float k() {
-      return 4.0F / this.l();
-   }
-
-   public eqo a(eqo $$0) {
-      return new fuj($$0, this);
-   }
-
-   public interface a extends AutoCloseable {
-      void a();
-
-      @Override
-      void close();
+   private void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      sw $$9 = $$8 ? $$3.gk() : $$3.gl();
+      bnu.a($$9.l("id")).filter($$0x -> $$0x == bnu.av).ifPresent($$10 -> {
+         $$0.a();
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
+         caj.b $$11 = caj.b.a($$9.h("Variant"));
+         ese $$12 = $$1.getBuffer(this.a.a(gcf.a($$11)));
+         this.a.a($$0, $$12, $$2, ggl.d, $$4, $$5, $$6, $$7, $$3.ag);
+         $$0.b();
+      });
    }
 }

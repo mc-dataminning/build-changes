@@ -1,18 +1,18 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public final class emj extends emv {
-   protected emj(eml $$0) {
-      super($$0);
-   }
+public class emj {
+   private static final Codec<emi> d = kf.J.q().dispatch(emi::a, emh::a);
+   public static final Codec<emi> a = avp.a(
+      (Supplier<Codec<emi>>)(() -> Codec.either(emg.c, d)
+            .xmap($$0 -> (emi)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof emg $$1 ? Either.left($$1) : Either.right($$0)))
+   );
+   public static final emh b = a("storage", emk.a);
+   public static final emh c = a("context", emg.b);
 
-   @Override
-   protected DoubleList a(ic.a $$0) {
-      return new emi(this.a.c($$0));
-   }
-
-   @Override
-   protected int a(ic.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return aup.a(aup.a($$1 * (double)$$2, -1.0, (double)$$2));
+   private static emh a(String $$0, Codec<? extends emi> $$1) {
+      return iv.a(kf.J, new aiy($$0), new emh($$1));
    }
 }

@@ -1,92 +1,37 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class ecp extends edl {
-   public static final Codec<ecp> a = Codec.FLOAT.fieldOf("mossiness").xmap(ecp::new, $$0 -> $$0.f).codec();
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final djp[] e = new djp[]{cxa.jD.o(), cxa.jK.o()};
-   private final float f;
+public interface ecp {
+   Codec<ecp> b = kf.aj.q().dispatch(ecp::b, Function.identity());
 
-   public ecp(float $$0) {
-      this.f = $$0;
+   void a(awo var1, BiConsumer<aix<ecn>, aix<ecn>> var2);
+
+   Stream<aix<ecn>> a();
+
+   static eco a(String $$0, String $$1) {
+      return a(po.a($$0), po.a($$1));
    }
 
-   @Nullable
-   @Override
-   public edo.c a(cua $$0, hx $$1, hx $$2, edo.c $$3, edo.c $$4, edk $$5) {
-      auw $$6 = $$5.b($$4.a());
-      djp $$7 = $$4.b();
-      hx $$8 = $$4.a();
-      djp $$9 = null;
-      if ($$7.a(cxa.eH) || $$7.a(cxa.b) || $$7.a(cxa.eK)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(asi.J)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(asi.K)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(asi.L)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(cxa.co)) {
-         $$9 = this.d($$6);
-      }
-
-      return $$9 != null ? new edo.c($$8, $$9, $$4.c()) : $$4;
+   static eco a(aix<ecn> $$0, aix<ecn> $$1) {
+      return new eco($$0, $$1);
    }
 
-   @Nullable
-   private djp a(auw $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         djp[] $$1 = new djp[]{cxa.eJ.o(), a($$0, cxa.fj)};
-         djp[] $$2 = new djp[]{cxa.eI.o(), a($$0, cxa.ng)};
-         return this.a($$0, $$1, $$2);
-      }
+   static ecs a(String $$0, bke<String> $$1) {
+      bke.a<aix<ecn>> $$2 = bke.a();
+      $$1.e().forEach($$1x -> $$2.a(po.a((String)$$1x.b()), $$1x.a().a()));
+      return a(po.a($$0), $$2.a());
    }
 
-   @Nullable
-   private djp a(auw $$0, djp $$1) {
-      ic $$2 = $$1.c(der.b);
-      dko $$3 = $$1.c(der.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         djp[] $$4 = new djp[]{cxa.ng.o().a(der.b, $$2).a(der.c, $$3), cxa.nu.o()};
-         return this.a($$0, e, $$4);
-      }
+   static ecs a(aix<ecn> $$0, bke<aix<ecn>> $$1) {
+      return new ecs($$0, $$1);
    }
 
-   @Nullable
-   private djp b(auw $$0) {
-      return $$0.i() < this.f ? cxa.nu.o() : null;
+   static ect a(bke<List<ecp>> $$0) {
+      return new ect($$0);
    }
 
-   @Nullable
-   private djp c(auw $$0) {
-      return $$0.i() < this.f ? cxa.nI.o() : null;
-   }
-
-   @Nullable
-   private djp d(auw $$0) {
-      return $$0.i() < 0.15F ? cxa.pk.o() : null;
-   }
-
-   private static djp a(auw $$0, cwy $$1) {
-      return $$1.o().a(der.b, ic.c.a.a($$0)).a(der.c, ac.a(dko.values(), $$0));
-   }
-
-   private djp a(auw $$0, djp[] $$1, djp[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static djp a(auw $$0, djp[] $$1) {
-      return $$1[$$0.a($$1.length)];
-   }
-
-   @Override
-   protected edn<?> a() {
-      return edn.k;
-   }
+   Codec<? extends ecp> b();
 }

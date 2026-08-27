@@ -1,37 +1,38 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
 import java.util.Optional;
 
-public class bt extends cv<bt.a> {
-   @Override
-   public Codec<bt.a> a() {
-      return bt.a.a;
-   }
-
-   public void a(anf $$0, cng $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
-
-   public static record a(Optional<bb> b, Optional<ca> c) implements cv.a {
-      public static final Codec<bt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(bt.a::a), atx.a(ca.a, "item").forGetter(bt.a::b)).apply($$0, bt.a::new)
+public record bt(in<bnu<?>> b) {
+   public static final Codec<bt> a = Codec.either(auo.b(kg.u), kf.g.r())
+      .flatComapMap(
+         $$0 -> (bt)$$0.map($$0x -> new bt(kf.g.a($$0x)), $$0x -> new bt(in.a($$0x))),
+         $$0 -> {
+            in<bnu<?>> $$1 = $$0.a();
+            Optional<auo<bnu<?>>> $$2 = $$1.d();
+            if ($$2.isPresent()) {
+               return DataResult.success(Either.left($$2.get()));
+            } else {
+               return $$1.b() == 1
+                  ? DataResult.success(Either.right($$1.a(0)))
+                  : DataResult.error(() -> "Entity type set must have a single element, but got " + $$1.b());
+            }
+         }
       );
 
-      public static an<bt.a> a(ca.a $$0) {
-         return am.k.a(new bt.a(Optional.empty(), Optional.of($$0.b())));
-      }
+   public static bt a(bnu<?> $$0) {
+      return new bt(in.a($$0.r()));
+   }
 
-      public boolean a(cng $$0) {
-         return !this.c.isPresent() || this.c.get().a($$0);
-      }
+   public static bt a(auo<bnu<?>> $$0) {
+      return new bt(kf.g.a($$0));
+   }
 
-      @Override
-      public Optional<bb> a() {
-         return this.b;
-      }
+   public boolean b(bnu<?> $$0) {
+      return $$0.a(this.b);
+   }
 
-      public Optional<ca> b() {
-         return this.c;
-      }
+   public in<bnu<?>> a() {
+      return this.b;
    }
 }

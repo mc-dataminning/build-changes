@@ -1,73 +1,104 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public enum fam implements eom {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
+public abstract class fam extends ezh {
+   protected final aiy a;
+   protected final int b;
+   protected final int c;
 
-   final epl c;
+   fam(int $$0, int $$1, vq $$2, int $$3, int $$4, aiy $$5, ezh.c $$6) {
+      super(0, 0, $$0, $$1, $$2, $$6, p);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
+   }
 
-   private static epl a(int $$0, int $$1, fam.a $$2) {
-      epl $$3 = new epl(epl.a.a, $$0, $$1, false);
+   public static fam.a a(vq $$0, ezh.c $$1, boolean $$2) {
+      return new fam.a($$0, $$1, $$2);
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
-         }
+   public static class a {
+      private final vq a;
+      private final ezh.c b;
+      private final boolean c;
+      private int d = 150;
+      private int e = 20;
+      @Nullable
+      private aiy f;
+      private int g;
+      private int h;
+
+      public a(vq $$0, ezh.c $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      $$3.i();
-      return $$3;
+      public fam.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fam.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public fam.a a(aiy $$0, int $$1, int $$2) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h = $$2;
+         return this;
+      }
+
+      public fam a() {
+         if (this.f == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (fam)(this.c
+               ? new fam.b(this.d, this.e, this.a, this.g, this.h, this.f, this.b)
+               : new fam.c(this.d, this.e, this.a, this.g, this.h, this.f, this.b));
+         }
+      }
    }
 
-   private fam(Supplier<epl> $$0) {
-      this.c = $$0.get();
+   public static class b extends fam {
+      protected b(int $$0, int $$1, vq $$2, int $$3, int $$4, aiy $$5, ezh.c $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+
+      @Override
+      public void b(eyu $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.B() + this.w() / 2 - this.b / 2;
+         int $$5 = this.C() + this.u() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(eyu $$0, eys $$1, int $$2) {
+      }
    }
 
-   @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
-   }
+   public static class c extends fam {
+      protected c(int $$0, int $$1, vq $$2, int $$3, int $$4, aiy $$5, ezh.c $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
 
-   @Override
-   public fak bake(Function<eoo, fak> $$0) {
-      return $$0.apply(new eoo() {
-         @Override
-         public int a() {
-            return fam.this.c.a();
-         }
+      @Override
+      public void b(eyu $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.B() + this.w() - this.b - 2;
+         int $$5 = this.C() + this.u() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
 
-         @Override
-         public int b() {
-            return fam.this.c.b();
-         }
-
-         @Override
-         public float d() {
-            return 1.0F;
-         }
-
-         @Override
-         public void a(int $$0, int $$1) {
-            fam.this.c.a(0, $$0, $$1, false);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-      });
-   }
-
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
+      @Override
+      public void a(eyu $$0, eys $$1, int $$2) {
+         int $$3 = this.B() + 2;
+         int $$4 = this.B() + this.w() - this.b - 4;
+         int $$5 = this.B() + this.w() / 2;
+         a($$0, $$1, this.x(), $$5, $$3, this.C(), $$4, this.C() + this.u(), $$2);
+      }
    }
 }

@@ -1,29 +1,101 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class bpw extends bof<bmq> {
-   private final bjh c;
-   private final float d;
-   private final float e;
-   private final float f;
+public abstract class bpw<E extends bog> implements bpx<E> {
+   public static final int a = 60;
+   protected final Map<bxh<?>, bxi> b;
+   private bpw.a c = bpw.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-   public bpw(bjh $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(bvq.n, bvr.b, bvq.Q, bvr.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+   public bpw(Map<bxh<?>, bxi> $$0) {
+      this($$0, 60);
+   }
+
+   public bpw(Map<bxh<?>, bxi> $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bpw(Map<bxh<?>, bxi> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
+   }
+
+   @Override
+   public bpw.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(aov $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bpw.a.b;
+         int $$3 = this.e + $$0.F_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
       } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
+         return false;
       }
    }
 
-   protected void a(ane $$0, bmq $$1, long $$2) {
-      auw $$3 = $$1.eg();
-      float $$4 = aup.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = aup.g($$1.dB() + 2.0F * $$3.i() * this.d - this.d);
-      emc $$6 = emc.a($$4, $$5);
-      $$1.dN().a(bvq.n, new boi($$1.br().e($$6)));
-      $$1.dN().a(bvq.Q, this.c.a($$3));
+   protected void d(aov $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void f(aov $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(aov $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(aov $$0, E $$1, long $$2) {
+      this.c = bpw.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(aov $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(aov $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(aov $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<bxh<?>, bxi> $$1 : this.b.entrySet()) {
+         bxh<?> $$2 = $$1.getKey();
+         bxi $$3 = $$1.getValue();
+         if (!$$0.dO().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

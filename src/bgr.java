@@ -1,12 +1,22 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public interface bgr extends bgt {
-   bgs d();
+public class bgr extends bew {
+   public bgr(int $$0, Schema $$1) {
+      super($$0, $$1);
+   }
 
-   @Nullable
-   bgm.a c(String var1);
-
-   Set<Pair<String, bhw>> e();
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         true,
+         bdn.C,
+         () -> DSL.optionalFields(
+               "SpawnPotentials", DSL.list(DSL.fields("data", DSL.fields("entity", bdn.x.in($$0)))), "SpawnData", DSL.fields("entity", bdn.x.in($$0))
+            )
+      );
+   }
 }

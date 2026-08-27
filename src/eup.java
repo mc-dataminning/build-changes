@@ -1,70 +1,43 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class eup extends gmw {
+   private static final vq a = vq.c("mco.client.incompatible.title");
+   private static final vq[] b = new vq[]{
+      vq.c("mco.client.incompatible.msg.line1"), vq.c("mco.client.incompatible.msg.line2"), vq.c("mco.client.incompatible.msg.line3")
+   };
+   private static final vq[] c = new vq[]{vq.c("mco.client.incompatible.msg.line1"), vq.c("mco.client.incompatible.msg.line2")};
+   private final ffe v;
 
-public class eup extends eur {
-   private static final Logger b = LogUtils.getLogger();
-   private static final vg c = vg.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fdm f;
-   private final String g;
-
-   public eup(long $$0, int $$1, String $$2, fdm $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public eup(ffe $$0) {
+      super(a);
+      this.v = $$0;
    }
 
    @Override
-   public void run() {
-      era $$0 = era.a();
-      int $$1 = 0;
+   public void aQ_() {
+      this.d(ezh.a(vp.k, $$0 -> this.f.a(this.v)).a(this.g / 2 - 100, g(12), 200, 20).a());
+   }
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, g(3), -65536);
+      vq[] $$4 = this.E();
 
-            esh $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new etd(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (eso var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (esn var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new ete(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
-         }
+      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+         $$0.a(this.i, $$4[$$5], this.g / 2, g(5) + $$5 * 12, -1);
       }
    }
 
+   private vq[] E() {
+      return aa.b().g() ? c : b;
+   }
+
    @Override
-   public vg a() {
-      return c;
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.f.a(this.v);
+         return true;
+      }
    }
 }

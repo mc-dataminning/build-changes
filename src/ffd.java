@@ -1,108 +1,132 @@
-import com.google.common.collect.Ordering;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Instant;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class ffd<T extends cij> extends fel<T> {
-   private static final ahh x = new ahh("container/inventory/effect_background_large");
-   private static final ahh y = new ahh("container/inventory/effect_background_small");
+public class ffd extends ffe {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final vq c = vq.c("recover_world.title").a(n.r);
+   private static final vq k = vq.c("recover_world.bug_tracker");
+   private static final vq l = vq.c("recover_world.restore");
+   private static final vq m = vq.c("recover_world.no_fallback");
+   private static final vq n = vq.c("recover_world.done.title");
+   private static final vq o = vq.c("recover_world.done.success");
+   private static final vq p = vq.c("recover_world.done.failed");
+   private static final vq q = vq.c("recover_world.issue.none").a(n.k);
+   private static final vq r = vq.c("recover_world.issue.missing_file").a(n.m);
+   private final BooleanConsumer t;
+   private final fcx u = fcx.d().a(10);
+   private final vq v;
+   private final fab w;
+   private final fab x;
+   private final eil.c y;
 
-   public ffd(T $$0, cfp $$1, vg $$2) {
-      super($$0, $$1, $$2);
+   public ffd(exh $$0, BooleanConsumer $$1, eil.c $$2) {
+      super(c);
+      this.t = $$1;
+      this.v = vq.a("recover_world.message", vq.b($$2.d()).a(n.h));
+      this.w = new fab(this.v, $$0.h);
+      this.y = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      vq $$5 = vq.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.x = new fab($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.u.c().b();
+      this.u.a(new fao(this.e, $$0.h));
+      this.u.a(this.w.b(true));
+      this.u.a(this.x);
+      fcx $$7 = fcx.e().a(5);
+      $$7.a(ezh.a(k, fdw.b(this, "https://aka.ms/snapshotbugs?ref=game")).b(120, 20).a());
+      $$7.a(ezh.a(l, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fas.a(m)).a()).j = $$6;
+      this.u.a($$7);
+      this.u.a(ezh.a(vp.k, $$0x -> this.d()).b(120, 20).a());
+      this.u.a(this::d);
+   }
+
+   private void a(exh $$0) {
+      Exception $$1 = this.a(this.y, false);
+      Exception $$2 = this.a(this.y, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fek(vq.c("recover_world.restoring")));
+         fjw.a(this.y);
+         if (this.y.l()) {
+            $$0.a(new fdx(this.t, n, o, vp.j, vp.k));
+         } else {
+            $$0.a(new fdr(() -> this.t.accept(false), n, p));
+         }
+      } else {
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fdr(() -> this.t.accept(false), n, p));
+      }
+   }
+
+   private vq a(eil.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return vq.i();
+      } else {
+         we $$3 = vq.i();
+         Instant $$4 = $$0.a($$1);
+         we $$5 = $$4 != null ? vq.b(fkf.a.format($$4)) : vq.c("recover_world.state_entry.unknown");
+         $$3.b(vq.a("recover_world.state_entry", $$5.a(n.h)));
+         if ($$2 == null) {
+            $$3.b(q);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(r);
+         } else if ($$2 instanceof tn) {
+            $$3.b(vq.b($$2.getCause().toString()).a(n.m));
+         } else {
+            $$3.b(vq.b($$2.toString()).a(n.m));
+         }
+
+         return $$3;
+      }
+   }
+
+   @Nullable
+   private Exception a(eil.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.f());
+         } else {
+            $$0.a($$0.g());
+         }
+
+         return null;
+      } catch (th | tn | IOException var4) {
+         return var4;
+      }
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2);
+   protected void aQ_() {
+      super.aQ_();
+      this.c();
    }
 
-   public boolean K() {
-      int $$0 = this.t + this.c + 2;
-      int $$1 = this.g - $$0;
-      return $$1 >= 32;
+   @Override
+   protected void c() {
+      this.x.c(this.g - 50);
+      this.w.c(this.g - 50);
+      this.u.a();
+      fcr.a(this.u, this.F());
    }
 
-   private void c(exe $$0, int $$1, int $$2) {
-      int $$3 = this.t + this.c + 2;
-      int $$4 = this.g - $$3;
-      Collection<blj> $$5 = this.f.s.es();
-      if (!$$5.isEmpty() && $$4 >= 32) {
-         boolean $$6 = $$4 >= 120;
-         int $$7 = 33;
-         if ($$5.size() > 5) {
-            $$7 = 132 / ($$5.size() - 1);
-         }
-
-         Iterable<blj> $$8 = Ordering.natural().sortedCopy($$5);
-         this.a($$0, $$3, $$7, $$8, $$6);
-         this.b($$0, $$3, $$7, $$8, $$6);
-         if ($$6) {
-            this.a($$0, $$3, $$7, $$8);
-         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
-            int $$9 = this.u;
-            blj $$10 = null;
-
-            for (blj $$11 : $$8) {
-               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
-                  $$10 = $$11;
-               }
-
-               $$9 += $$7;
-            }
-
-            if ($$10 != null) {
-               List<vg> $$12 = List.of(this.a($$10), blk.a($$10, 1.0F, this.f.r.s().f()));
-               $$0.a(this.i, $$12, Optional.empty(), $$1, $$2);
-            }
-         }
-      }
+   @Override
+   public vq i() {
+      return vp.a(super.i(), this.v);
    }
 
-   private void a(exe $$0, int $$1, int $$2, Iterable<blj> $$3, boolean $$4) {
-      int $$5 = this.u;
-
-      for (blj $$6 : $$3) {
-         if ($$4) {
-            $$0.a(x, $$1, $$5, 120, 32);
-         } else {
-            $$0.a(y, $$1, $$5, 32, 32);
-         }
-
-         $$5 += $$2;
-      }
-   }
-
-   private void b(exe $$0, int $$1, int $$2, Iterable<blj> $$3, boolean $$4) {
-      gfy $$5 = this.f.aE();
-      int $$6 = this.u;
-
-      for (blj $$7 : $$3) {
-         ih<blh> $$8 = $$7.b();
-         gfb $$9 = $$5.a($$8);
-         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
-         $$6 += $$2;
-      }
-   }
-
-   private void a(exe $$0, int $$1, int $$2, Iterable<blj> $$3) {
-      int $$4 = this.u;
-
-      for (blj $$5 : $$3) {
-         vg $$6 = this.a($$5);
-         $$0.b(this.i, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
-         vg $$7 = blk.a($$5, 1.0F, this.f.r.s().f());
-         $$0.b(this.i, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
-         $$4 += $$2;
-      }
-   }
-
-   private vg a(blj $$0) {
-      vu $$1 = $$0.b().a().e().f();
-      if ($$0.d() >= 1 && $$0.d() <= 9) {
-         $$1.b(vf.u).b(vg.c("enchantment.level." + ($$0.d() + 1)));
-      }
-
-      return $$1;
+   @Override
+   public void d() {
+      this.t.accept(false);
    }
 }

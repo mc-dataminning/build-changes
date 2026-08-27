@@ -1,39 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
 public class dvk extends dvh {
-   public static final Codec<dvk> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
-            )
-            .apply($$0, dvk::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
-
-   public dvk(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
-   }
-
-   public dvk(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public dvk(Codec<dwv> $$0) {
+      super($$0);
    }
 
    @Override
-   protected dvi<?> b() {
-      return dvi.a;
+   protected Set<hz> a(cwi $$0, dwv $$1, awo $$2, hz $$3, Predicate<dlf> $$4, int $$5, int $$6) {
+      Set<hz> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<hz> $$8 = new HashSet<>();
+      hz.a $$9 = new hz.a();
+
+      for (hz $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (hz $$11 : $$8) {
+         $$0.a($$11, cyq.G.o(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(cwi $$0, Set<hz> $$1, hz $$2, hz.a $$3) {
+      return a($$0, $$2, $$3, ie.c) || a($$0, $$2, $$3, ie.f) || a($$0, $$2, $$3, ie.d) || a($$0, $$2, $$3, ie.e) || a($$0, $$2, $$3, ie.a);
+   }
+
+   private static boolean a(cwi $$0, hz $$1, hz.a $$2, ie $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
    }
 
    @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   protected boolean a(cwi $$0, dwv $$1, dnc $$2, awo $$3, hz $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         dlf $$5 = $$0.a_($$4);
+         if ($$5.b(dlv.C) && !$$5.c(dlv.C)) {
+            $$0.a($$4, $$5.a(dlv.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

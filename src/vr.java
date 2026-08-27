@@ -1,23 +1,27 @@
-import java.util.UUID;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record vr(UUID a, cfs b) {
-   public static vr a(cfs $$0) {
-      return new vr(UUID.randomUUID(), $$0);
+public interface vr {
+   default <T> Optional<T> a(vv.b<T> $$0, wn $$1) {
+      return Optional.empty();
    }
 
-   public wa.c a(UUID $$0) {
-      return new wa($$0, this.a).a(ave.a(this.b.b(), "SHA256withRSA"));
+   default <T> Optional<T> a(vv.a<T> $$0) {
+      return Optional.empty();
    }
 
-   public vx a() {
-      return new vx(this.a, this.b.c());
+   default we a(@Nullable du $$0, @Nullable bno $$1, int $$2) throws CommandSyntaxException {
+      return we.a(this);
    }
 
-   public UUID b() {
-      return this.a;
-   }
+   vr.a<?> a();
 
-   public cfs c() {
-      return this.b;
+   public static record a<T extends vr>(MapCodec<T> a, String b) implements axc {
+      @Override
+      public String c() {
+         return this.b;
+      }
    }
 }

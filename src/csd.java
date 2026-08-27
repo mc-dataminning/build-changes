@@ -1,20 +1,34 @@
-public class csd extends crr {
-   public csd(crr.a $$0, bmd... $$1) {
-      super($$0, crs.e, $$1);
+public record csd<T extends csb<?>>(aiy b, T c) {
+   public static final xo<vb, csd<?>> a = xo.a(aiy.b, csd::a, csb.i, csd::b, csd::new);
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof csd<?> $$1 && this.b.equals($$1.b)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
    @Override
-   public int a(int $$0) {
-      return 10 * $$0;
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 30;
+   public String toString() {
+      return this.b.toString();
    }
 
-   @Override
-   public int a() {
-      return 3;
+   public aiy a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

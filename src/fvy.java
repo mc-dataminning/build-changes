@@ -1,30 +1,64 @@
-public class fvy implements fvt<dhj> {
-   private static final float a = 0.375F;
-   private final fzy b;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fvy(fvu.a $$0) {
-      this.b = $$0.d();
+public class fvy {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 4;
+   private final Queue<fvx> c;
+   private volatile int d;
+
+   private fvy(List<fvx> $$0) {
+      this.c = Queues.newArrayDeque($$0);
+      this.d = this.c.size();
    }
 
-   public void a(dhj $$0, float $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
-      ic $$6 = $$0.r().c(cxm.f);
-      iq<cng> $$7 = $$0.c();
-      int $$8 = (int)$$0.aE_().a();
+   public static fvy a(int $$0) {
+      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / fvx.a);
+      int $$2 = Math.max(1, Math.min($$0, $$1));
+      List<fvx> $$3 = new ArrayList<>($$2);
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cng $$10 = $$7.get($$9);
-         if ($$10 != cng.f) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            ic $$11 = ic.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cnd.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
+      try {
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(new fvx());
+         }
+      } catch (OutOfMemoryError var7) {
+         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
+         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$3.remove($$3.size() - 1).close();
          }
       }
+
+      return new fvy($$3);
+   }
+
+   @Nullable
+   public fvx a() {
+      fvx $$0 = this.c.poll();
+      if ($$0 != null) {
+         this.d = this.c.size();
+         return $$0;
+      } else {
+         return null;
+      }
+   }
+
+   public void a(fvx $$0) {
+      this.c.add($$0);
+      this.d = this.c.size();
+   }
+
+   public boolean b() {
+      return this.c.isEmpty();
+   }
+
+   public int c() {
+      return this.d;
    }
 }

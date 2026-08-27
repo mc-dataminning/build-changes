@@ -1,70 +1,40 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class equ {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<equ.a> b;
+public enum equ {
+   a("icons"),
+   b("icons", "snapshot");
 
-   public static CompletableFuture<equ.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
+   private final String[] c;
 
-      return b;
+   private equ(String... $$0) {
+      this.c = $$0;
    }
 
-   private static boolean a(CompletableFuture<equ.a> $$0) {
-      equ.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   public List<ars<InputStream>> a(aqo $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
    }
 
-   private static CompletableFuture<equ.a> b() {
-      return CompletableFuture.supplyAsync(() -> {
-         era $$0 = era.a();
-
-         try {
-            if ($$0.g() != era.a.a) {
-               return new equ.a(equ.b.b);
-            } else {
-               return !$$0.f() ? new equ.a(equ.b.c) : new equ.a(equ.b.a);
-            }
-         } catch (esn var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new equ.a(equ.b.d) : new equ.a(var2);
-         }
-      }, ac.g());
+   public ars<InputStream> b(aqo $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
    }
 
-   public static record a(equ.b a, @Nullable esn b) {
-      public a(equ.b $$0) {
-         this($$0, null);
+   private ars<InputStream> a(aqo $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      ars<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
+      } else {
+         return $$3;
       }
-
-      public a(esn $$0) {
-         this(equ.b.e, $$0);
-      }
-
-      @Nullable
-      public fdm a(fdm $$0) {
-         return (fdm)(switch (this.a) {
-            case a -> null;
-            case b -> new esz($$0);
-            case c -> new etk($$0);
-            case d -> new ete(vg.c("mco.error.invalid.session.title"), vg.c("mco.error.invalid.session.message"), $$0);
-            case e -> new ete(Objects.requireNonNull(this.b), $$0);
-         });
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
    }
 }

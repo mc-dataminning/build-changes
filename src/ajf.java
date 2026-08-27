@@ -1,15 +1,29 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.logging.LogUtils;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ajf {
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register((LiteralArgumentBuilder)dt.a("me").then(dt.a("action", ej.a()).executes($$0x -> {
-         ej.a($$0x, "action", $$1 -> {
-            ds $$2 = (ds)$$0x.getSource();
-            aqw $$3 = $$2.l().ae();
-            $$3.a($$1, $$2, vc.a(vc.i, $$2));
-         });
-         return 1;
-      })));
+public class ajf extends PrintStream {
+   private static final Logger b = LogUtils.getLogger();
+   protected final String a;
+
+   public ajf(String $$0, OutputStream $$1) {
+      super($$1);
+      this.a = $$0;
+   }
+
+   @Override
+   public void println(@Nullable String $$0) {
+      this.a($$0);
+   }
+
+   @Override
+   public void println(Object $$0) {
+      this.a(String.valueOf($$0));
+   }
+
+   protected void a(@Nullable String $$0) {
+      b.info("[{}]: {}", this.a, $$0);
    }
 }

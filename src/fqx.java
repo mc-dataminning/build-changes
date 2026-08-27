@@ -1,26 +1,89 @@
-public class fqx extends frf {
-   fqx(foe $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 7;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+
+public abstract class fqx {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected fqz e;
+
+   public fqx(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 3; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(jx.y, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
+   }
+
+   public abstract fqx b();
+
+   public abstract ffe a(ffe var1, frb var2);
+
+   public abstract static class a<R extends fqx> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      if (this.s++ == this.t) {
-         this.k();
+      public R e() {
+         return this.a;
+      }
+
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public fqz h() {
+         return this.a.e;
+      }
+
+      public void a(fqz $$0) {
+         this.a.e = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public abstract fqx.b c();
+
+      public abstract Either<fqx.c, fqx.b> a(frb var1);
+   }
+
+   public static record b(vq e) {
+      public static final fqx.b a = new fqx.b(vq.c("gui.abuseReport.send.no_reason"));
+      public static final fqx.b b = new fqx.b(vq.c("gui.chatReport.send.no_reported_messages"));
+      public static final fqx.b c = new fqx.b(vq.c("gui.chatReport.send.too_many_messages"));
+      public static final fqx.b d = new fqx.b(vq.c("gui.abuseReport.send.comment_too_long"));
+
+      public fas a() {
+         return fas.a(this.e);
+      }
+
+      public vq b() {
+         return this.e;
       }
    }
 
-   public static class a implements frk<ka> {
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqx($$1, $$2, $$3, $$4);
-      }
+   public static record c(UUID a, fra b, AbuseReport c) {
    }
 }

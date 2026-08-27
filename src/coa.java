@@ -1,60 +1,44 @@
 import javax.annotation.Nullable;
 
-public class coa extends cla {
-   public coa(cwy $$0, cnb.a $$1) {
-      super($$0, $$1);
+public interface coa {
+   bnv g();
+
+   default atj au_() {
+      return atk.ap;
+   }
+
+   default blv<coz> a(cou $$0, cvn $$1, chh $$2, blt $$3) {
+      coz $$4 = $$2.b($$3);
+      bnv $$5 = boi.h($$4);
+      coz $$6 = $$2.c($$5);
+      if ((!ctj.d($$6) || $$2.f()) && !coz.a($$4, $$6)) {
+         if (!$$1.y_()) {
+            $$2.b(atu.c.b($$0));
+         }
+
+         coz $$7 = $$6.b() ? $$4 : $$6.c();
+         coz $$8 = $$2.f() ? $$4.q() : $$4.c();
+         $$2.a($$5, $$8);
+         return blv.a($$7, $$1.y_());
+      } else {
+         return blv.d($$4);
+      }
    }
 
    @Nullable
-   @Override
-   public cpp b(cpp $$0) {
-      hx $$1 = $$0.a();
-      ctx $$2 = $$0.q();
-      djp $$3 = $$2.a_($$1);
-      cwy $$4 = this.e();
-      if (!$$3.a($$4)) {
-         return ddm.a($$2, $$1) == 7 ? null : $$0;
+   static coa c_(coz $$0) {
+      cou $$3 = $$0.d();
+      if ($$3 instanceof coa) {
+         return (coa)$$3;
       } else {
-         ic $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == ic.b ? $$0.g() : ic.b;
-         }
-
-         int $$7 = 0;
-         hx.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.k($$8)) {
-               cfq $$9 = $$0.o();
-               int $$10 = $$2.al();
-               if ($$9 instanceof anf && $$8.v() >= $$10) {
-                  ((anf)$$9).b(vg.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.e())) {
-               if ($$3.a($$0)) {
-                  return cpp.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
+         if ($$0.d() instanceof cms $$2) {
+            cyo var6 = $$2.e();
+            if (var6 instanceof coa) {
+               return (coa)var6;
             }
          }
 
          return null;
       }
-   }
-
-   @Override
-   protected boolean d() {
-      return false;
    }
 }

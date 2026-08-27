@@ -1,181 +1,232 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.file.Path;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import java.util.OptionalLong;
 
-public abstract class doo {
-   public static doo.b a(int $$0, int $$1) {
-      return new doo.b($$0 - 1, $$1 + 1);
-   }
+public record doo(
+   OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, auo<cyo> v, aiy w, float x, doo.a y
+) {
+   public static final int a = hz.d;
+   public static final int b = 16;
+   public static final int c = (1 << a) - 32;
+   public static final int d = (c >> 1) - 1;
+   public static final int e = d - c + 1;
+   public static final int f = d << 4;
+   public static final int g = e << 4;
+   public static final Codec<doo> h = avp.c(
+      RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  avp.a(Codec.LONG.optionalFieldOf("fixed_time")).forGetter(doo::f),
+                  Codec.BOOL.fieldOf("has_skylight").forGetter(doo::g),
+                  Codec.BOOL.fieldOf("has_ceiling").forGetter(doo::h),
+                  Codec.BOOL.fieldOf("ultrawarm").forGetter(doo::i),
+                  Codec.BOOL.fieldOf("natural").forGetter(doo::j),
+                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(doo::k),
+                  Codec.BOOL.fieldOf("bed_works").forGetter(doo::l),
+                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(doo::m),
+                  Codec.intRange(e, d).fieldOf("min_y").forGetter(doo::n),
+                  Codec.intRange(16, c).fieldOf("height").forGetter(doo::o),
+                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(doo::p),
+                  auo.b(kg.f).fieldOf("infiniburn").forGetter(doo::q),
+                  aiy.a.fieldOf("effects").orElse(dom.e).forGetter(doo::r),
+                  Codec.FLOAT.fieldOf("ambient_light").forGetter(doo::s),
+                  doo.a.a.forGetter(doo::t)
+               )
+               .apply($$0, doo::new)
+      )
+   );
+   private static final int z = 8;
+   public static final float[] i = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
+   public static final Codec<ij<doo>> j = aiu.a(kg.ay, h);
 
-   public static doo.b b(int $$0, int $$1) {
-      return new doo.b($$0, $$1);
-   }
-
-   public static doo a(int $$0) {
-      return new doo.c($$0, false);
-   }
-
-   public static doo b(int $$0) {
-      return new doo.c($$0 + 1, false);
-   }
-
-   public static doo c(int $$0) {
-      return new doo.c($$0, true);
-   }
-
-   public static doo d(int $$0) {
-      return new doo.c($$0 - 1, true);
-   }
-
-   public static doo a() {
-      return doo.a.a;
-   }
-
-   public static doo a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
+   public doo(
+      OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, auo<cyo> v, aiy w, float x, doo.a y
+   ) {
+      if (t < 16) {
+         throw new IllegalStateException("height has to be at least 16");
+      } else if (s + t > d + 1) {
+         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
+      } else if (u > t) {
+         throw new IllegalStateException("logical_height cannot be higher than height");
+      } else if (t % 16 != 0) {
+         throw new IllegalStateException("height has to be multiple of 16");
+      } else if (s % 16 != 0) {
+         throw new IllegalStateException("min_y has to be a multiple of 16");
       } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+         this.k = k;
+         this.l = l;
+         this.m = m;
+         this.n = n;
+         this.o = o;
+         this.p = p;
+         this.q = q;
+         this.r = r;
+         this.s = s;
+         this.t = t;
+         this.u = u;
+         this.v = v;
+         this.w = w;
+         this.x = x;
+         this.y = y;
       }
    }
 
-   public abstract OptionalInt b();
+   @Deprecated
+   public static DataResult<aix<cvn>> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.asNumber().result();
+      if ($$1.isPresent()) {
+         int $$2 = $$1.get().intValue();
+         if ($$2 == -1) {
+            return DataResult.success(cvn.i);
+         }
 
-   public abstract OptionalInt c();
+         if ($$2 == 0) {
+            return DataResult.success(cvn.h);
+         }
 
-   public abstract OptionalInt d();
-
-   public doo a(OptionalInt $$0) {
-      return a($$0, this.b());
-   }
-
-   public doo b(OptionalInt $$0) {
-      return a(this.c(), $$0);
-   }
-
-   public static Optional<doo> a(cud $$0, hx $$1, int $$2, Predicate<djp> $$3, Predicate<djp> $$4) {
-      hx.a $$5 = $$1.j();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ic.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ic.a);
-         return Optional.of(a($$8, $$7));
-      }
-   }
-
-   private static OptionalInt a(cud $$0, int $$1, Predicate<djp> $$2, Predicate<djp> $$3, hx.a $$4, int $$5, ic $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
-   }
-
-   public static final class a extends doo {
-      static final doo.a a = new doo.a();
-
-      private a() {
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
-   }
-
-   public static final class b extends doo {
-      private final int a;
-      private final int b;
-
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
+         if ($$2 == 1) {
+            return DataResult.success(cvn.j);
          }
       }
 
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
+      return cvn.g.parse($$0);
+   }
 
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
+   public static double a(doo $$0, doo $$1) {
+      double $$2 = $$0.k();
+      double $$3 = $$1.k();
+      return $$2 / $$3;
+   }
 
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
+   public static Path a(aix<cvn> $$0, Path $$1) {
+      if ($$0 == cvn.h) {
+         return $$1;
+      } else if ($$0 == cvn.j) {
+         return $$1.resolve("DIM1");
+      } else {
+         return $$0 == cvn.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
       }
    }
 
-   public static final class c extends doo {
-      private final int a;
-      private final boolean b;
+   public boolean a() {
+      return this.k.isPresent();
+   }
 
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public float a(long $$0) {
+      double $$1 = awh.e((double)this.k.orElse($$0) / 24000.0 - 0.25);
+      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
+      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   }
+
+   public int b(long $$0) {
+      return (int)($$0 / 24000L % 8L + 8L) % 8;
+   }
+
+   public boolean b() {
+      return this.y.a();
+   }
+
+   public boolean c() {
+      return this.y.b();
+   }
+
+   public bkz d() {
+      return this.y.c();
+   }
+
+   public int e() {
+      return this.y.d();
+   }
+
+   public OptionalLong f() {
+      return this.k;
+   }
+
+   public boolean g() {
+      return this.l;
+   }
+
+   public boolean h() {
+      return this.m;
+   }
+
+   public boolean i() {
+      return this.n;
+   }
+
+   public boolean j() {
+      return this.o;
+   }
+
+   public double k() {
+      return this.p;
+   }
+
+   public boolean l() {
+      return this.q;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public int n() {
+      return this.s;
+   }
+
+   public int o() {
+      return this.t;
+   }
+
+   public int p() {
+      return this.u;
+   }
+
+   public auo<cyo> q() {
+      return this.v;
+   }
+
+   public aiy r() {
+      return this.w;
+   }
+
+   public float s() {
+      return this.x;
+   }
+
+   public doo.a t() {
+      return this.y;
+   }
+
+   public static record a(boolean b, boolean c, bkz d, int e) {
+      public static final MapCodec<doo.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("piglin_safe").forGetter(doo.a::a),
+                  Codec.BOOL.fieldOf("has_raids").forGetter(doo.a::b),
+                  bkz.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(doo.a::c),
+                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(doo.a::d)
+               )
+               .apply($$0, doo.a::new)
+      );
+
+      public boolean a() {
+         return this.b;
       }
 
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      public boolean b() {
+         return this.c;
       }
 
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      public bkz c() {
+         return this.d;
       }
 
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      public int d() {
+         return this.e;
       }
    }
 }

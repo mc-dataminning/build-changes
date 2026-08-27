@@ -2,43 +2,52 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
 
-public class ea implements ArgumentType<n> {
-   private static final Collection<String> b = Arrays.asList("red", "green");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vg.b("argument.color.invalid", $$0));
-
-   private ea() {
-   }
+public class ea implements ArgumentType<ea.a> {
+   private static final Collection<String> c = Arrays.asList("0", "~", "~-5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("argument.angle.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("argument.angle.invalid"));
 
    public static ea a() {
       return new ea();
    }
 
-   public static n a(CommandContext<ds> $$0, String $$1) {
-      return (n)$$0.getArgument($$1, n.class);
+   public static float a(CommandContext<du> $$0, String $$1) {
+      return ((ea.a)$$0.getArgument($$1, ea.a.class)).a((du)$$0.getSource());
    }
 
-   public n a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      n $$2 = n.b($$1);
-      if ($$2 != null && !$$2.d()) {
-         return $$2;
+   public ea.a a(StringReader $$0) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
       } else {
-         throw a.create($$1);
+         boolean $$1 = fw.b($$0);
+         float $$2 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readFloat() : 0.0F;
+         if (!Float.isNaN($$2) && !Float.isInfinite($$2)) {
+            return new ea.a($$2, $$1);
+         } else {
+            throw b.createWithContext($$0);
+         }
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dx.b(n.a(true, false), $$1);
+   public Collection<String> getExamples() {
+      return c;
    }
 
-   public Collection<String> getExamples() {
-      return b;
+   public static final class a {
+      private final float a;
+      private final boolean b;
+
+      a(float $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public float a(du $$0) {
+         return awh.g(this.b ? this.a + $$0.k().j : this.a);
+      }
    }
 }

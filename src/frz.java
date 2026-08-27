@@ -1,115 +1,62 @@
-public class frz extends fsh {
-   private static final auw a = auw.a();
-   private final fsc b;
+public class frz extends fua {
+   private static final float a = 0.0025F;
+   private static final int b = 300;
+   private static final int F = 300;
+   private static final float G = 0.25F;
+   private static final float H = 2.0F;
+   private float I;
+   private final float J;
+   private final float K;
 
-   frz(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fsc $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
-
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
+   protected frz(fpx $$0, double $$1, double $$2, double $$3, ftv $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$4.a(this.r.a(12), 12));
+      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
+      this.J = this.r.i();
+      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
+      this.t = 300;
+      this.u = 7.5E-4F;
+      float $$5 = this.r.h() ? 0.05F : 0.075F;
+      this.D = $$5;
+      this.b($$5, $$5);
+      this.B = 1.0F;
    }
 
    @Override
-   public frl b() {
-      return frl.c;
+   public fte b() {
+      return fte.b;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.e(0.0F);
-      } else {
-         this.e(aup.i(0.05F, this.y, 1.0F));
-      }
-   }
-
-   private boolean g() {
-      evr $$0 = evr.O();
-      fsv $$1 = $$0.s;
-      return $$1 != null && $$1.br().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ax().a() && $$1.gq();
-   }
-
-   public static class a implements frk<ka> {
-      private final fsc a;
-
-      public a(fsc $$0) {
-         this.a = $$0;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frh $$8 = new frz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(0.15F);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
+      if (!this.o) {
+         float $$0 = (float)(300 - this.t);
+         float $$1 = Math.min($$0 / 300.0F, 1.0F);
+         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         this.j += $$2 * 0.0025F;
+         this.l += $$3 * 0.0025F;
+         this.k = this.k - (double)this.u;
+         this.I = this.I + this.K / 20.0F;
+         this.A = this.z;
+         this.z = this.z + this.I / 20.0F;
+         this.a(this.j, this.k, this.l);
+         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
+            this.k();
+         }
 
-   public static class b implements frk<ka> {
-      private final fsc a;
-
-      public b(fsc $$0) {
-         this.a = $$0;
-      }
-
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new frz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class c implements frk<ka> {
-      private final fsc a;
-
-      public c(fsc $$0) {
-         this.a = $$0;
-      }
-
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frh $$8 = new frz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class d implements frk<ka> {
-      private final fsc a;
-
-      public d(fsc $$0) {
-         this.a = $$0;
-      }
-
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new frz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class e implements frk<ka> {
-      private final fsc a;
-
-      public e(fsc $$0) {
-         this.a = $$0;
-      }
-
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frz $$8 = new frz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.z.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
-         return $$8;
+         if (!this.o) {
+            this.j = this.j * (double)this.B;
+            this.k = this.k * (double)this.B;
+            this.l = this.l * (double)this.B;
+         }
       }
    }
 }

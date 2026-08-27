@@ -1,25 +1,25 @@
-import javax.annotation.Nullable;
-
-public interface cuf {
-   boolean a(hx var1, djp var2, int var3, int var4);
-
-   default boolean a(hx $$0, djp $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+public class cuf extends cti {
+   public cuf(cti.a $$0, bnv... $$1) {
+      super($$0, auh.bp, $$1);
    }
 
-   boolean a(hx var1, boolean var2);
-
-   default boolean b(hx $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   @Override
+   public int a(int $$0) {
+      return 25;
    }
 
-   default boolean a(hx $$0, boolean $$1, @Nullable blw $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   @Override
+   public int b(int $$0) {
+      return 50;
    }
 
-   boolean a(hx var1, boolean var2, @Nullable blw var3, int var4);
+   @Override
+   public boolean b() {
+      return true;
+   }
 
-   default boolean b(blw $$0) {
-      return false;
+   @Override
+   public boolean c() {
+      return true;
    }
 }

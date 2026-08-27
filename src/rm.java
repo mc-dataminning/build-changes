@@ -1,20 +1,33 @@
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.function.Consumer;
 
-class rm {
-   @Nullable
-   public final Long a;
-   public final Runnable b;
+public record rm(String b, Collection<rs> c, Consumer<aov> d, Consumer<aov> e) {
+   public static final String a = "defaultBatch";
 
-   private rm(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public rm(String b, Collection<rs> c, Consumer<aov> d, Consumer<aov> e) {
+      if (c.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
+      } else {
+         this.b = b;
+         this.c = c;
+         this.d = d;
+         this.e = e;
+      }
    }
 
-   static rm a(Runnable $$0) {
-      return new rm(null, $$0);
+   public String a() {
+      return this.b;
    }
 
-   static rm a(long $$0, Runnable $$1) {
-      return new rm($$0, $$1);
+   public Collection<rs> b() {
+      return this.c;
+   }
+
+   public Consumer<aov> c() {
+      return this.d;
+   }
+
+   public Consumer<aov> d() {
+      return this.e;
    }
 }

@@ -1,176 +1,91 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-public class fdt extends fde {
-   private static final vg c = vg.c("options.graphics.fabulous").a(n.u);
-   private static final vg k = vg.a("options.graphics.warning.message", c, c);
-   private static final vg l = vg.c("options.graphics.warning.title").a(n.m);
-   private static final vg m = vg.c("options.graphics.warning.accept");
-   private static final vg n = vg.c("options.graphics.warning.cancel");
-   private eyo o;
-   private final ftn p;
-   private final int q;
+public class fdt {
+   private static final vq b = vq.c("gui.banned.title.temporary").a(n.r);
+   private static final vq c = vq.c("gui.banned.title.permanent").a(n.r);
+   public static final vq a = vq.c("gui.banned.name.title").a(n.r);
+   private static final vq d = vq.c("gui.banned.skin.title").a(n.r);
+   private static final vq e = vq.a("gui.banned.skin.description", vq.b("https://aka.ms/mcjavamoderation"));
 
-   private static evu<?>[] a(evv $$0) {
-      return new evu[]{
-         $$0.j(),
-         $$0.e(),
-         $$0.l(),
-         $$0.f(),
-         $$0.k(),
-         $$0.h(),
-         $$0.L(),
-         $$0.Y(),
-         $$0.an(),
-         $$0.B(),
-         $$0.am(),
-         $$0.i(),
-         $$0.X(),
-         $$0.ao(),
-         $$0.A(),
-         $$0.M(),
-         $$0.ag(),
-         $$0.g(),
-         $$0.ah(),
-         $$0.ac(),
-         $$0.aj(),
-         $$0.ak()
-      };
+   public static fdw a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fdw($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", vp.m, true);
    }
 
-   public fdt(fdm $$0, evv $$1) {
-      super($$0, $$1, vg.c("options.videoTitle"));
-      this.p = $$0.f.ah();
-      this.p.i();
-      if ($$1.j().c() == evk.c) {
-         this.p.e();
-      }
+   public static fdw a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new fdw($$1x -> {
+         if ($$1x) {
+            ac.j().a("https://aka.ms/mcjavamoderation");
+         }
 
-      this.q = $$1.A().c();
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", vp.m, true);
    }
 
-   @Override
-   protected void aP_() {
-      this.o = this.d(new eyo(this.f, this.g, this.h - 64, 32, 25));
-      int $$0 = -1;
-      epo $$1 = this.f.aM();
-      epj $$2 = $$1.t();
-      int $$3;
-      if ($$2 == null) {
-         $$3 = -1;
-      } else {
-         Optional<epn> $$4 = $$1.f();
-         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
-      }
+   public static fdw a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new fdw($$1x -> {
+         if ($$1x) {
+            ac.j().a("https://aka.ms/mcjavamoderation");
+         }
 
-      evu<Integer> $$6 = new evu<>("options.fullscreen.resolution", evu.a(), ($$1x, $$2x) -> {
-         if ($$2 == null) {
-            return vg.c("options.fullscreen.unavailable");
-         } else if ($$2x == -1) {
-            return evv.a($$1x, vg.c("options.fullscreen.current"));
+         $$1.run();
+      }, a, vq.a("gui.banned.name.description", vq.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", vp.m, true);
+   }
+
+   private static vq a(BanDetails $$0) {
+      return f($$0) ? b : c;
+   }
+
+   private static vq b(BanDetails $$0) {
+      return vq.a("gui.banned.description", c($$0), d($$0), vq.b("https://aka.ms/mcjavamoderation"));
+   }
+
+   private static vq c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fqt $$4 = fqt.a($$3);
+         vq $$5;
+         if ($$4 != null) {
+            $$5 = vt.a($$4.a().f(), wn.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = vq.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
          } else {
-            epn $$3x = $$2.a($$2x);
-            return evv.a($$1x, vg.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
-         }
-      }, new evu.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
-         if ($$2 != null) {
-            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
-         }
-      });
-      this.o.a($$6);
-      this.o.a(this.b.C());
-      this.o.a(a(this.b));
-      this.d(exr.a(vf.d, $$1x -> {
-         this.f.m.as();
-         $$1.g();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
-   }
-
-   @Override
-   public void k() {
-      if (this.b.A().c() != this.q) {
-         this.f.b(this.b.A().c());
-         this.f.P();
-      }
-
-      super.k();
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      int $$3 = this.b.an().c();
-      if (super.a($$0, $$1, $$2)) {
-         if (this.b.an().c() != $$3) {
-            this.f.a();
+            $$5 = vq.a("gui.banned.description.reason_id", $$3).a(n.r);
          }
 
-         if (this.p.g()) {
-            List<vg> $$4 = Lists.newArrayList(new vg[]{k, vf.r});
-            String $$5 = this.p.j();
-            if ($$5 != null) {
-               $$4.add(vf.r);
-               $$4.add(vg.a("options.graphics.warning.renderer", $$5).a(n.h));
-            }
-
-            String $$6 = this.p.l();
-            if ($$6 != null) {
-               $$4.add(vf.r);
-               $$4.add(vg.a("options.graphics.warning.vendor", $$6).a(n.h));
-            }
-
-            String $$7 = this.p.k();
-            if ($$7 != null) {
-               $$4.add(vf.r);
-               $$4.add(vg.a("options.graphics.warning.version", $$7).a(n.h));
-            }
-
-            this.f.a(new fds(l, $$4, ImmutableList.of(new fds.a(m, $$0x -> {
-               this.b.j().a(evk.c);
-               evr.O().f.f();
-               this.p.e();
-               this.f.a(this);
-            }), new fds.a(n, $$0x -> {
-               this.p.f();
-               this.f.a(this);
-            }))));
-         }
-
-         return true;
+         return vq.a("gui.banned.description.reason", $$5);
       } else {
-         return false;
+         return vq.c("gui.banned.description.unknownreason");
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (fdm.t()) {
-         evu<Integer> $$4 = this.b.an();
-         int $$5 = $$4.c() + (int)Math.signum($$3);
-         if ($$5 != 0) {
-            $$4.a($$5);
-            if ($$4.c() == $$5) {
-               this.f.a();
-               return true;
-            }
-         }
-
-         return false;
+   private static vq d(BanDetails $$0) {
+      if (f($$0)) {
+         vq $$1 = e($$0);
+         return vq.a("gui.banned.description.temporary", vq.a("gui.banned.description.temporary.duration", $$1).a(n.r));
       } else {
-         return super.a($$0, $$1, $$2, $$3);
+         return vq.c("gui.banned.description.permanent").a(n.r);
       }
    }
 
-   @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+   private static vq e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return vp.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? vp.c($$1.toMinutes()) : vp.b($$1.toHours());
+      }
    }
 
-   @Override
-   public void b(exe $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

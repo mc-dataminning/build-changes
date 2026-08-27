@@ -1,23 +1,8 @@
-public enum bkc {
-   a,
-   b,
-   c,
-   d,
-   e;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public boolean a() {
-      return this == a || this == b || this == c;
-   }
-
-   public boolean b() {
-      return this == a;
-   }
-
-   public boolean c() {
-      return this == a || this == b;
-   }
-
-   public static bkc a(boolean $$0) {
-      return $$0 ? a : b;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bkc {
 }

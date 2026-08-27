@@ -1,127 +1,158 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class exn extends exp {
-   private static final ahh a = new ahh("widget/slider");
-   private static final ahh d = new ahh("widget/slider_highlighted");
-   private static final ahh e = new ahh("widget/slider_handle");
-   private static final ahh f = new ahh("widget/slider_handle_highlighted");
-   protected static final int b = 2;
-   private static final int m = 8;
-   private static final int n = 4;
-   protected double c;
-   private boolean o;
+public class exn extends asf<Map<String, List<exn.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<exn.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(exn.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(exn.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(exn.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(exn.a::d)
+                  )
+                  .apply($$0, exn.a::new)
+         )
+         .listOf()
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final aiy c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private exn.b f;
 
-   public exn(int $$0, int $$1, int $$2, int $$3, vg $$4, double $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
+   public exn(aiy $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private ahh d() {
-      return this.aK_() && !this.o ? d : a;
+   protected Map<String, List<exn.a>> a(asa $$0, bil $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+         }
+
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
+      }
    }
 
-   private ahh e() {
-      return !this.i && !this.o ? e : f;
-   }
+   protected void a(Map<String, List<exn.a>> $$0, asa $$1, bil $$2) {
+      List<exn.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
+      } else {
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
 
-   @Override
-   protected vu aM_() {
-      return vg.a("gui.narrate.slider", this.x());
-   }
-
-   @Override
-   public void a(fbk $$0) {
-      $$0.a(fbj.a, this.aM_());
-      if (this.j) {
-         if (this.aK_()) {
-            $$0.a(fbj.d, vg.c("narration.slider.usage.focused"));
+         if (this.f == null) {
+            this.f = new exn.b($$3, $$4, $$5);
          } else {
-            $$0.a(fbj.d, vg.c("narration.slider.usage.hovered"));
+            this.f = this.f.a($$3, $$5);
          }
+
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
       }
    }
 
    @Override
-   public void b(exe $$0, int $$1, int $$2, float $$3) {
-      evr $$4 = evr.O();
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.enableDepthTest();
-      $$0.a(this.d(), this.B(), this.C(), this.w(), this.u());
-      $$0.a(this.e(), this.B() + (int)(this.c * (double)(this.g - 8)), this.C(), 8, this.u());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, 2, $$5 | aup.f(this.l * 255.0F) << 24);
+   public void close() {
+      this.a();
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      this.a($$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (!$$0) {
-         this.o = false;
-      } else {
-         evo $$1 = evr.O().aV();
-         if ($$1 == evo.b || $$1 == evo.d) {
-            this.o = true;
-         }
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fbp.a($$0)) {
-         this.o = !this.o;
-         return true;
-      } else {
-         if (this.o) {
-            boolean $$3 = $$0 == 263;
-            if ($$3 || $$0 == 262) {
-               float $$4 = $$3 ? -1.0F : 1.0F;
-               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
-               return true;
+   private long a(List<exn.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
+
+   private long a(List<exn.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
+
+   public static record a(long a, long b, String c, String d) {
+
+      public a(long a, long b, String c, String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
+   }
+
+   static class b extends TimerTask {
+      private final exh a = exh.O();
+      private final List<exn.a> b;
+      private final long c;
+      private final AtomicLong d;
+
+      public b(List<exn.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
+      }
+
+      public exn.b a(List<exn.a> $$0, long $$1) {
+         this.cancel();
+         return new exn.b($$0, this.d.get(), $$1);
+      }
+
+      @Override
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
+
+         for (exn.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> fbp.a(exh.O().ay(), fbp.a.f, vq.a($$2.c, $$3), vq.a($$2.d, $$3)));
+                  return;
+               }
             }
          }
-
-         return false;
       }
    }
-
-   private void a(double $$0) {
-      this.b(($$0 - (double)(this.B() + 4)) / (double)(this.g - 8));
-   }
-
-   private void b(double $$0) {
-      double $$1 = this.c;
-      this.c = aup.a($$0, 0.0, 1.0);
-      if ($$1 != this.c) {
-         this.a();
-      }
-
-      this.b();
-   }
-
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.a($$0);
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(gjs $$0) {
-   }
-
-   @Override
-   public void a_(double $$0, double $$1) {
-      super.a(evr.O().ai());
-   }
-
-   protected abstract void b();
-
-   protected abstract void a();
 }

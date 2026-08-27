@@ -1,46 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsk extends drf {
-   public dsk(Codec<dui> $$0) {
-      super($$0);
+public class dsk extends dsm {
+   public static final Codec<dsk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dsm.d.forGetter($$0x -> $$0x), bkx.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dsk.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dsk::new)
+   );
+   public final bkx b;
+   public final dsk.a c;
+
+   public dsk(float $$0, dzl $$1, bkx $$2, dri $$3, dsn $$4, in<cyo> $$5, bkx $$6, dsk.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   @Override
-   protected void a(cty $$0, auw $$1, hx $$2, int $$3, hx.a $$4, dui $$5) {
-      int $$6 = $$5.d;
+   public dsk(dsm $$0, bkx $$1, dsk.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   }
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  djp $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(dau.e) && $$19.b(dau.c) && $$19.b(dau.b) && $$19.b(dau.d)) {
-                     $$19 = $$19.a(dau.e, Boolean.valueOf($$15))
-                        .a(dau.c, Boolean.valueOf($$16))
-                        .a(dau.b, Boolean.valueOf($$17))
-                        .a(dau.d, Boolean.valueOf($$18));
-                  }
+   public static class a {
+      public static final Codec<dsk.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bkx.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bkx.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  avp.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bkx.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, dsk.a::new)
+      );
+      public final bkx b;
+      public final bkx c;
+      public final int d;
+      public final bkx e;
+      public final float f;
+      public final float g;
 
-                  this.a($$0, $$4, $$19);
-               }
-            }
-         }
+      public a(bkx $$0, bkx $$1, int $$2, bkx $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
-   }
-
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
    }
 }

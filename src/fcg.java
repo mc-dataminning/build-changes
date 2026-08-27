@@ -1,174 +1,242 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fcg extends fdm {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   static final Logger k = LogUtils.getLogger();
-   private static final long l = 2000L;
-   public static final vg a = vg.c("connect.aborted");
-   public static final vg b = vg.a("disconnect.genericReason", vg.c("disconnect.unknownHost"));
-   @Nullable
-   volatile uh m;
-   @Nullable
-   ChannelFuture n;
-   volatile boolean o;
-   final fdm p;
-   private vg q = vg.c("connect.connecting");
-   private long r = -1L;
-   final vg t;
+public class fcg implements eqd {
+   static final Logger b = LogUtils.getLogger();
+   private final erb c;
+   private final fbv<fcg.b> d;
 
-   private fcg(fdm $$0, vg $$1) {
-      super(evj.a);
-      this.p = $$0;
-      this.t = $$1;
-   }
-
-   public static void a(fdm $$0, evr $$1, fpr $$2, fop $$3, boolean $$4) {
-      if ($$1.y instanceof fcg) {
-         k.error("Attempt to connect while already connecting");
-      } else {
-         fcg $$5 = new fcg($$0, $$4 ? ftc.a : vf.q);
-         $$1.y();
-         $$1.aR();
-         $$1.a(fpf.a($$3 != null ? $$3.b : $$2.a()));
-         $$1.ba().a(ftd.c.b, $$3.b, $$3.a);
-         $$1.a($$5);
-         $$5.a($$1, $$2, $$3);
-      }
-   }
-
-   private void a(final evr $$0, final fpr $$1, @Nullable final fop $$2) {
-      k.info("Connecting to {}, {}", $$1.a(), $$1.b());
-      Thread $$3 = new Thread("Server Connector #" + c.incrementAndGet()) {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               if (fcg.this.o) {
-                  return;
-               }
-
-               Optional<InetSocketAddress> $$1 = fpt.a.a($$1).map(fpq::d);
-               if (fcg.this.o) {
-                  return;
-               }
-
-               if ($$1.isEmpty()) {
-                  $$0.execute(() -> $$0.a(new fco(fcg.this.p, fcg.this.t, fcg.b)));
-                  return;
-               }
-
-               $$0 = $$1.get();
-               uh $$2;
-               synchronized (fcg.this) {
-                  if (fcg.this.o) {
-                     return;
-                  }
-
-                  $$2 = new uh(xh.b);
-                  $$2.a($$0.aN().l());
-                  fcg.this.n = uh.a($$0, $$0.m.aw(), $$2);
-               }
-
-               fcg.this.n.syncUninterruptibly();
-               synchronized (fcg.this) {
-                  if (fcg.this.o) {
-                     $$2.a(fcg.a);
-                     return;
-                  }
-
-                  fcg.this.m = $$2;
-                  $$0.ac().a($$2, $$2 != null ? a($$2.b()) : ghu.c.a);
-               }
-
-               fcg.this.m.a($$0.getHostName(), $$0.getPort(), new fod(fcg.this.m, $$0, $$2, fcg.this.p, false, null, fcg.this::a));
-               fcg.this.m.a(new afv($$0.V().c(), $$0.V().b()));
-            } catch (Exception var9) {
-               if (fcg.this.o) {
-                  return;
-               }
-
-               Exception $$6;
-               if (var9.getCause() instanceof Exception $$5) {
-                  $$6 = $$5;
-               } else {
-                  $$6 = var9;
-               }
-
-               fcg.k.error("Couldn't connect to server", var9);
-               String $$8 = $$0 == null
-                  ? $$6.getMessage()
-                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
-               $$0.execute(() -> $$0.a(new fco(fcg.this.p, fcg.this.t, vg.a("disconnect.genericReason", $$8))));
-            }
-         }
-
-         private static ghu.c a(fop.a $$0x) {
-            return switch ($$0) {
-               case a -> ghu.c.b;
-               case b -> ghu.c.c;
-               case c -> ghu.c.a;
-            };
-         }
-      };
-      $$3.setUncaughtExceptionHandler(new r(k));
-      $$3.start();
-   }
-
-   private void a(vg $$0) {
-      this.q = $$0;
+   fcg(erb $$0, fbv<fcg.b> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void e() {
-      if (this.m != null) {
-         if (this.m.k()) {
-            this.m.d();
+   public void close() {
+      this.c.close();
+   }
+
+   @Nullable
+   @Override
+   public eqc a(int $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.d.b());
+   }
+
+   public static record a(aiy c, int d, int e, int[][] f) implements fci {
+      private static final Codec<int[][]> g = avp.a(Codec.STRING.listOf().xmap($$0 -> {
+         int $$1 = $$0.size();
+         int[][] $$2 = new int[$$1][];
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
+         }
+
+         return $$2;
+      }, $$0 -> {
+         List<String> $$1 = new ArrayList<>($$0.length);
+
+         for (int[] $$2 : $$0) {
+            $$1.add(new String($$2, 0, $$2.length));
+         }
+
+         return $$1;
+      }), fcg.a::a);
+      public static final MapCodec<fcg.a> a = avp.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     aiy.a.fieldOf("file").forGetter(fcg.a::c),
+                     Codec.INT.optionalFieldOf("height", 8).forGetter(fcg.a::d),
+                     Codec.INT.fieldOf("ascent").forGetter(fcg.a::e),
+                     g.fieldOf("chars").forGetter(fcg.a::f)
+                  )
+                  .apply($$0, fcg.a::new)
+         ),
+         fcg.a::a
+      );
+
+      private static DataResult<int[][]> a(int[][] $$0) {
+         int $$1 = $$0.length;
+         if ($$1 == 0) {
+            return DataResult.error(() -> "Expected to find data in codepoint grid");
          } else {
-            this.m.p();
+            int[] $$2 = $$0[0];
+            int $$3 = $$2.length;
+            if ($$3 == 0) {
+               return DataResult.error(() -> "Expected to find data in codepoint grid");
+            } else {
+               for (int $$4 = 1; $$4 < $$1; $$4++) {
+                  int[] $$5 = $$0[$$4];
+                  if ($$5.length != $$3) {
+                     return DataResult.error(
+                        () -> "Lines in codepoint grid have to be the same length (found: "
+                              + $$5.length
+                              + " codepoints, expected: "
+                              + $$3
+                              + "), pad with \\u0000"
+                     );
+                  }
+               }
+
+               return DataResult.success($$0);
+            }
          }
+      }
+
+      private static DataResult<fcg.a> a(fcg.a $$0) {
+         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
+      }
+
+      @Override
+      public fcj a() {
+         return fcj.a;
+      }
+
+      @Override
+      public Either<fci.a, fci.b> b() {
+         return Either.left(this::a);
+      }
+
+      private eqd a(asa $$0) throws IOException {
+         aiy $$1 = this.c.d("textures/");
+
+         fcg var22;
+         try (InputStream $$2 = $$0.open($$1)) {
+            erb $$3 = erb.a(erb.a.a, $$2);
+            int $$4 = $$3.a();
+            int $$5 = $$3.b();
+            int $$6 = $$4 / this.f[0].length;
+            int $$7 = $$5 / this.f.length;
+            float $$8 = (float)this.d / (float)$$7;
+            fbv<fcg.b> $$9 = new fbv<>(fcg.b[]::new, fcg.b[][]::new);
+
+            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
+               int $$11 = 0;
+
+               for (int $$12 : this.f[$$10]) {
+                  int $$13 = $$11++;
+                  if ($$12 != 0) {
+                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
+                     fcg.b $$15 = $$9.a($$12, new fcg.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
+                     if ($$15 != null) {
+                        fcg.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
+                     }
+                  }
+               }
+            }
+
+            var22 = new fcg($$3, $$9);
+         }
+
+         return var22;
+      }
+
+      private int a(erb $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5;
+         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
+            int $$6 = $$3 * $$1 + $$5;
+
+            for (int $$7 = 0; $$7 < $$2; $$7++) {
+               int $$8 = $$4 * $$2 + $$7;
+               if ($$0.e($$6, $$8) != 0) {
+                  return $$5 + 1;
+               }
+            }
+         }
+
+         return $$5 + 1;
       }
    }
 
-   @Override
-   public boolean aN_() {
-      return false;
-   }
+   static record b(float a, erb b, int c, int d, int e, int f, int g, int h) implements eqc {
 
-   @Override
-   protected void aP_() {
-      this.d(exr.a(vf.e, $$0 -> {
-         synchronized (this) {
-            this.o = true;
-            if (this.n != null) {
-               this.n.cancel(true);
-               this.n = null;
-            }
-
-            if (this.m != null) {
-               this.m.a(a);
-            }
-         }
-
-         this.f.a(this.p);
-      }).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
-   }
-
-   @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.b();
-      if ($$4 - this.r > 2000L) {
-         this.r = $$4;
-         this.f.aW().c(vg.c("narrator.joining"));
+      @Override
+      public float getAdvance() {
+         return (float)this.g;
       }
 
-      $$0.a(this.i, this.q, this.g / 2, this.h / 2 - 50, 16777215);
+      @Override
+      public fcb bake(Function<eqe, fcb> $$0) {
+         return $$0.apply(new eqe() {
+            @Override
+            public float d() {
+               return 1.0F / b.this.a;
+            }
+
+            @Override
+            public int a() {
+               return b.this.e;
+            }
+
+            @Override
+            public int b() {
+               return b.this.f;
+            }
+
+            @Override
+            public float j() {
+               return (float)b.this.h;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
+            }
+
+            @Override
+            public boolean c() {
+               return b.this.b.c().a() > 1;
+            }
+         });
+      }
+
+      public float c() {
+         return this.a;
+      }
+
+      public erb d() {
+         return this.b;
+      }
+
+      public int e() {
+         return this.c;
+      }
+
+      public int f() {
+         return this.d;
+      }
+
+      public int g() {
+         return this.e;
+      }
+
+      public int h() {
+         return this.f;
+      }
+
+      public int i() {
+         return this.g;
+      }
+
+      public int j() {
+         return this.h;
+      }
    }
 }

@@ -1,54 +1,43 @@
-public class fsd extends frt {
-   fsd(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, fsc $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)atz.b.b($$7), (float)atz.b.c($$7), (float)atz.b.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+import org.joml.Vector3f;
+
+public class fsd extends fsf<js> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected fsd(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, js $$7, ftv $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.c(), $$9);
+      this.b = this.a($$7.d(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(hx.a(this.g, this.h, this.i)).i()) {
-            this.k -= 0.0074F;
-         }
-      }
+   public void a(ese $$0, ews $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   public static class a implements frk<ka> {
-      private final fsc a;
+   public static class a implements ftd<js> {
+      private final ftv a;
 
-      public a(fsc $$0) {
+      public a(ftv $$0) {
          this.a = $$0;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fsd($$1, $$2, $$3, $$4, $$5, $$6, $$7, atz.b.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements frk<ka> {
-      private final fsc a;
-
-      public b(fsc $$0) {
-         this.a = $$0;
-      }
-
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fsd($$1, $$2, $$3, $$4, $$5, $$6, $$7, atz.b.a(255, 255, 255, 255), this.a);
+      public fta a(js $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fsd($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

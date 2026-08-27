@@ -1,55 +1,42 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class cmm extends cnb {
-   public cmm(cnb.a $$0) {
+public class cmm extends cou {
+   public cmm(cou.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cng $$0, @Nullable ctx $$1, List<vg> $$2, coy $$3) {
-      so $$4 = $$0.b("Explosion");
-      if ($$4 != null) {
-         a($$4, $$2);
-      }
-   }
+   public blu a(cri $$0) {
+      ie $$1 = $$0.k();
+      if ($$1 == ie.a) {
+         return blu.e;
+      } else {
+         cvn $$2 = $$0.q();
+         crg $$3 = new crg($$0);
+         hz $$4 = $$3.a();
+         coz $$5 = $$0.n();
+         ens $$6 = ens.c($$4);
+         enn $$7 = bnu.e.n().a($$6.a(), $$6.b(), $$6.c());
+         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
+            if ($$2 instanceof aov $$8) {
+               Consumer<cdi> $$9 = bnu.a($$8, $$5, $$0.o());
+               cdi $$10 = bnu.e.b($$8, $$5.w(), $$9, $$4, bok.m, true, true);
+               if ($$10 == null) {
+                  return blu.e;
+               }
 
-   public static void a(so $$0, List<vg> $$1) {
-      cml.a $$2 = cml.a.a($$0.f("Type"));
-      $$1.add(vg.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
-      int[] $$3 = $$0.n("Colors");
-      if ($$3.length > 0) {
-         $$1.add(a(vg.i().a(n.h), $$3));
-      }
+               float $$11 = (float)awh.d((awh.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
+               $$10.b($$10.dr(), $$10.dt(), $$10.dx(), $$11, 0.0F);
+               $$8.a_($$10);
+               $$2.a(null, $$10.dr(), $$10.dt(), $$10.dx(), atk.aA, atl.e, 0.75F, 0.8F);
+               $$10.a(dpp.t, $$0.o());
+            }
 
-      int[] $$4 = $$0.n("FadeColors");
-      if ($$4.length > 0) {
-         $$1.add(a(vg.c("item.minecraft.firework_star.fade_to").b(vf.u).a(n.h), $$4));
-      }
-
-      if ($$0.q("Trail")) {
-         $$1.add(vg.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if ($$0.q("Flicker")) {
-         $$1.add(vg.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
-   }
-
-   private static vg a(vu $$0, int[] $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+            $$5.h(1);
+            return blu.a($$2.B);
+         } else {
+            return blu.e;
          }
-
-         $$0.b(a($$1[$$2]));
       }
-
-      return $$0;
-   }
-
-   private static vg a(int $$0) {
-      clv $$1 = clv.b($$0);
-      return $$1 == null ? vg.c("item.minecraft.firework_star.custom_color") : vg.c("item.minecraft.firework_star." + $$1.b());
    }
 }

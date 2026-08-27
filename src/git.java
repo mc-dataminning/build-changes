@@ -1,37 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class git<T> extends giu<T> {
-   private final List<T> c;
-   private final Function<T, Stream<String>> d;
-   private gix<T> e = gix.a();
+public class git implements AutoCloseable {
+   private final Map<aiy, git.a> a;
 
-   public git(Function<T, Stream<String>> $$0, Function<T, Stream<ahh>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = $$2;
-      this.d = $$0;
+   public git(Map<aiy, aiy> $$0, ggv $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         ggt $$2 = new ggt((aiy)$$1x.getKey());
+         $$1.a((aiy)$$1x.getKey(), $$2);
+         return new git.a($$2, (aiy)$$1x.getValue());
+      }));
+   }
+
+   public ggt a(aiy $$0) {
+      return this.a.get($$0).a();
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.e = gix.a(this.c, this.d);
+   public void close() {
+      this.a.values().forEach(git.a::close);
+      this.a.clear();
    }
 
-   @Override
-   protected List<T> a(String $$0) {
-      return this.e.search($$0);
+   public Map<aiy, CompletableFuture<git.b>> a(asa $$0, int $$1, Executor $$2) {
+      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
+         git.a $$4 = $$3.getValue();
+         return ggp.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new git.b($$4.a, $$1xx));
+      }));
    }
 
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.e.search($$1);
-      Iterator<T> $$5 = new giw<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new giv<T>($$2.iterator(), $$5, this.a));
+   static record a(ggt a, aiy b) implements AutoCloseable {
+
+      @Override
+      public void close() {
+         this.a.f();
+      }
+   }
+
+   public static class b {
+      private final ggt a;
+      private final ggp.a b;
+
+      public b(ggt $$0, ggp.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Nullable
+      public ggu a(aiy $$0) {
+         return this.b.f().get($$0);
+      }
+
+      public ggu a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
+      }
    }
 }

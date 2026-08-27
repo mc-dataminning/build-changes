@@ -1,15 +1,7 @@
-public interface dno<T> {
-   void g(T var1);
+import java.util.function.BiConsumer;
 
-   void f(T var1);
+public interface dno extends cut {
+   void a(BiConsumer<hz, dlf> var1);
 
-   void e(T var1);
-
-   void d(T var1);
-
-   void c(T var1);
-
-   void b(T var1);
-
-   void a(T var1);
+   efz B();
 }

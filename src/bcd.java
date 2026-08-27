@@ -1,44 +1,24 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import com.mojang.serialization.OptionalDynamic;
 
-public class bcd extends awc {
-   private static final Logger b = LogUtils.getLogger();
-
+public class bcd extends DataFix {
    public bcd(Schema $$0) {
-      super($$0, bbw.l);
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "SavedDataUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> $$0x.update(
-                     "data",
-                     $$0xx -> $$0xx.update(
-                           "Raids",
-                           $$0xxx -> $$0xxx.createList(
-                                 $$0xxx.asStream()
-                                    .map(
-                                       $$0xxxx -> $$0xxxx.update(
-                                             "HeroesOfTheVillage",
-                                             $$0xxxxx -> $$0xxxxx.createList(
-                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
-                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
-                                                         return $$0xxxxxx;
-                                                      }))
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bdn.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
+            if ($$1.result().isPresent()) {
+               return $$0x;
+            } else {
+               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
+               return $$0x.set("DragonFight", $$2);
+            }
+         }));
    }
 }

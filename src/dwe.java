@@ -1,61 +1,53 @@
-import com.mojang.datafixers.Products.P3;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class dwe {
-   public static final Codec<dwe> d = kd.Y.q().dispatch(dwe::a, dwf::a);
-   protected final bjh e;
-   protected final dwh f;
-   protected final Optional<dwb> g;
+public class dwe implements dvw {
+   public static final Codec<dwe> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(dwe.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dwe::new)
+   );
+   public final List<dwe.a> b;
+   public final int c;
+   public final float d;
 
-   protected static <P extends dwe> P3<Mu<P>, bjh, dwh, Optional<dwb>> a(Instance<P> $$0) {
-      return $$0.group(
-         bjh.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         dwh.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         dwb.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+   public dwe(List<dwe.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
+   }
+
+   public dwe(List<dwe.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
+   }
+
+   public dwe(eey $$0, dlf $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new dwe.a($$0, $$1)), $$2, $$3);
+   }
+
+   public dwe(eey $$0, dlf $$1, int $$2) {
+      this(ImmutableList.of(new dwe.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static dwe.a a(eey $$0, dlf $$1) {
+      return new dwe.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<dwe.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eey.c.fieldOf("target").forGetter($$0x -> $$0x.b), dlf.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, dwe.a::new)
       );
-   }
+      public final eey b;
+      public final dlf c;
 
-   public dwe(bjh $$0, dwh $$1, Optional<dwb> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   protected abstract dwf<?> a();
-
-   public abstract boolean a(cud var1, BiConsumer<hx, djp> var2, auw var3, hx var4, hx var5, dvc var6);
-
-   protected boolean a(cud $$0, hx $$1) {
-      return dto.c($$0, $$1);
-   }
-
-   protected void a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, hx $$3, dvc $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            dwb $$5 = this.g.get();
-            hx $$6 = $$3.c();
-            if ($$2.i() < $$5.b() && $$0.a($$6, djo.a::i)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
+      a(eey $$0, dlf $$1) {
+         this.b = $$0;
+         this.c = $$1;
       }
-   }
-
-   protected djp a(cud $$0, hx $$1, djp $$2) {
-      if ($$2.b(dkf.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(asn.a));
-         return $$2.a(dkf.C, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
-   }
-
-   public hx a(hx $$0, auw $$1) {
-      return $$0.b(this.e.a($$1));
    }
 }

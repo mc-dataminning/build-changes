@@ -1,19 +1,16 @@
-public class gck extends gdl<cds, fjs<cds>> {
-   private static final ahh a = new ahh("textures/entity/breeze/breeze_wind.png");
-   private static final fjs<cds> b = new fjs<>(fjs.a(128, 128).a());
+public class gck extends gbz<cal, fnh<cal>> {
+   private static final aiy a = new aiy("textures/entity/bear/polarbear.png");
 
-   public gck(gav<cds, fjs<cds>> $$0) {
-      super($$0);
+   public gck(gat.a $$0) {
+      super($$0, new fnh<>($$0.a(fpb.aW)), 0.9F);
    }
 
-   public void a(eqk $$0, ftt $$1, int $$2, cds $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ah + $$6;
-      eqo $$11 = $$1.getBuffer(fub.a(a, this.a($$10) % 1.0F, 0.0F));
-      b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      fyg.a(b, b.e()).a($$0, $$11, $$2, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public aiy a(cal $$0) {
+      return a;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   protected void a(cal $$0, esa $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

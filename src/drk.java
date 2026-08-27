@@ -1,66 +1,26 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drk extends dsc<dtx> {
-   public drk(Codec<dtx> $$0) {
-      super($$0);
+public record drk(drm b, drj c) {
+   public static final Codec<drk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(drm.a.forGetter(drk::a), drj.a.forGetter(drk::b)).apply($$0, $$0.stable(drk::new))
+   );
+
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, drm $$1, drj $$2) {
+      return a.encodeStart($$0, new drk($$1, $$2));
    }
 
-   @Override
-   public boolean a(dse<dtx> $$0) {
-      cus $$1 = $$0.b();
-      dtx $$2 = $$0.f();
-      auw $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
-
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
-         return false;
-      } else {
-         hx.a $$8 = $$0.e().j();
-         hx.a $$9 = $$8.j().c($$2.b());
-
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
-
-            $$9.c($$2.b());
-         }
-
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               dtx.a $$13 = $$2.a().get($$11);
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
-               }
-            }
-         }
-
-         return true;
-      }
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, drm $$1, iw $$2) {
+      return a($$0, $$1, new drj($$2.d(kg.aN)));
    }
 
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
+   public drm a() {
+      return this.b;
+   }
 
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
-      }
+   public drj b() {
+      return this.c;
    }
 }

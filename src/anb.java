@@ -1,127 +1,20 @@
-import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class anb extends bjs {
-   private final Set<anf> h = Sets.newHashSet();
-   private final Set<anf> i = Collections.unmodifiableSet(this.h);
-   private boolean j = true;
+public class anb {
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tellraw").requires($$0x -> $$0x.c(2)))
+            .then(dv.a("targets", eh.d()).then(dv.a("message", ed.a()).executes($$0x -> {
+               int $$1 = 0;
 
-   public anb(vg $$0, bjs.a $$1, bjs.b $$2) {
-      super(aup.a(), $$0, $$1, $$2);
-   }
+               for (aow $$2 : eh.f($$0x, "targets")) {
+                  $$2.b(vt.a((du)$$0x.getSource(), ed.a($$0x, "message"), $$2, 0), false);
+                  $$1++;
+               }
 
-   @Override
-   public void a(float $$0) {
-      if ($$0 != this.b) {
-         super.a($$0);
-         this.a(zl::b);
-      }
-   }
-
-   @Override
-   public void a(bjs.a $$0) {
-      if ($$0 != this.c) {
-         super.a($$0);
-         this.a(zl::d);
-      }
-   }
-
-   @Override
-   public void a(bjs.b $$0) {
-      if ($$0 != this.d) {
-         super.a($$0);
-         this.a(zl::d);
-      }
-   }
-
-   @Override
-   public bjs a(boolean $$0) {
-      if ($$0 != this.e) {
-         super.a($$0);
-         this.a(zl::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public bjs b(boolean $$0) {
-      if ($$0 != this.f) {
-         super.b($$0);
-         this.a(zl::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public bjs c(boolean $$0) {
-      if ($$0 != this.g) {
-         super.c($$0);
-         this.a(zl::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void a(vg $$0) {
-      if (!Objects.equal($$0, this.a)) {
-         super.a($$0);
-         this.a(zl::c);
-      }
-   }
-
-   private void a(Function<bjs, zl> $$0) {
-      if (this.j) {
-         zl $$1 = $$0.apply(this);
-
-         for (anf $$2 : this.h) {
-            $$2.c.b($$1);
-         }
-      }
-   }
-
-   public void a(anf $$0) {
-      if (this.h.add($$0) && this.j) {
-         $$0.c.b(zl.a(this));
-      }
-   }
-
-   public void b(anf $$0) {
-      if (this.h.remove($$0) && this.j) {
-         $$0.c.b(zl.a(this.i()));
-      }
-   }
-
-   public void b() {
-      if (!this.h.isEmpty()) {
-         for (anf $$0 : Lists.newArrayList(this.h)) {
-            this.b($$0);
-         }
-      }
-   }
-
-   public boolean g() {
-      return this.j;
-   }
-
-   public void d(boolean $$0) {
-      if ($$0 != this.j) {
-         this.j = $$0;
-
-         for (anf $$1 : this.h) {
-            $$1.c.b($$0 ? zl.a(this) : zl.a(this.i()));
-         }
-      }
-   }
-
-   public Collection<anf> h() {
-      return this.i;
+               return $$1;
+            })))
+      );
    }
 }

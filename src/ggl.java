@@ -1,58 +1,59 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class ggl {
-   public static final ggm a = new ggm();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final ggl e = new ggl(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public ggn a(int $$0, int $$1) {
-         return new ggn($$0, $$1);
+public class ggl implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final ggh f = new ggh(16, 16, false);
+
+   public ggl() {
+      erb $$0 = this.f.e();
+
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1308622593);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, $$3 << 24 | 16777215);
+            }
+         }
       }
-   };
-   private final List<ggk> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
 
-   public ggl(List<ggk> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
    }
 
-   public ggn a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new ggn(this.g, this.h) : new ggn(this.g, $$1);
-      } else if (this.h != -1) {
-         return new ggn($$0, this.h);
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new ggn($$2, $$2);
-      }
+   @Override
+   public void close() {
+      this.f.close();
    }
 
-   public int a() {
-      return this.i;
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f::a, 16);
    }
 
-   public boolean b() {
-      return this.j;
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
    }
 
-   public void a(ggl.a $$0) {
-      for (ggk $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
-      }
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
    }
 
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
+
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
+
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

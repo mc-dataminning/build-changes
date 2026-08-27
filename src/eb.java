@@ -1,36 +1,59 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class eb implements ArgumentType<vg> {
-   private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vg.b("argument.component.invalid", $$0));
+public record eb(List<eb.a> b) {
+   public static final eb a = new eb(List.of());
+   private static final int c = 8;
+   private static final int d = 16;
 
-   private eb() {
+   public eb(uq $$0) {
+      this($$0.a(uq.a(ArrayList::new, 8), eb.a::new));
    }
 
-   public static vg a(CommandContext<ds> $$0, String $$1) {
-      return (vg)$$0.getArgument($$1, vg.class);
+   @Nullable
+   public wc a(String $$0) {
+      for (eb.a $$1 : this.b) {
+         if ($$1.a.equals($$0)) {
+            return $$1.b;
+         }
+      }
+
+      return null;
    }
 
-   public static eb a() {
-      return new eb();
+   public void a(uq $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public vg a(StringReader $$0) throws CommandSyntaxException {
-      try {
-         return dw.a($$0, vi.a);
-      } catch (Exception var4) {
-         String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
-         throw a.createWithContext($$0, $$2);
+   public static eb a(wi<?> $$0, eb.b $$1) {
+      List<eb.a> $$2 = $$0.a().stream().map($$1x -> {
+         wc $$2x = $$1.sign($$1x.c());
+         return $$2x != null ? new eb.a($$1x.a(), $$2x) : null;
+      }).filter(Objects::nonNull).toList();
+      return new eb($$2);
+   }
+
+   public List<eb.a> a() {
+      return this.b;
+   }
+
+   public static record a(String a, wc b) {
+
+      public a(uq $$0) {
+         this($$0.d(16), wc.a($$0));
+      }
+
+      public void a(uq $$0) {
+         $$0.a(this.a, 16);
+         wc.a($$0, this.b);
       }
    }
 
-   public Collection<String> getExamples() {
-      return b;
+   @FunctionalInterface
+   public interface b {
+      @Nullable
+      wc sign(String var1);
    }
 }

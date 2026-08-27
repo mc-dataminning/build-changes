@@ -1,35 +1,30 @@
-public class cnu extends coq {
-   public static final String c = "SkullOwner";
-
-   public cnu(cwy $$0, cwy $$1, cnb.a $$2) {
-      super($$0, $$1, $$2, ic.a);
+public class cnu extends cne {
+   public cnu(cou.a $$0) {
+      super($$0);
    }
 
    @Override
-   public vg m(cng $$0) {
-      if ($$0.a(cnj.uj) && $$0.u()) {
-         String $$1 = null;
-         so $$2 = $$0.v();
-         if ($$2.b("SkullOwner", 8)) {
-            $$1 = $$2.l("SkullOwner");
-         } else if ($$2.b("SkullOwner", 10)) {
-            so $$3 = $$2.p("SkullOwner");
-            if ($$3.b("Name", 8)) {
-               $$1 = $$3.l("Name");
-            }
+   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
+      coz $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return blv.a($$3);
+      } else {
+         if (!$$1.fU().d) {
+            $$3.h(1);
          }
 
-         if ($$1 != null) {
-            return vg.a(this.a() + ".named", $$1);
+         $$1.b(atu.c.b(this));
+         $$1.dM().a(null, $$1, atk.zM, $$1.db(), 1.0F, 1.0F);
+         coz $$4 = cpg.a($$0, $$1.dq(), $$1.dw(), (byte)0, true, false);
+         if ($$3.b()) {
+            return blv.b($$4);
+         } else {
+            if (!$$1.fT().e($$4.q())) {
+               $$1.a($$4, false);
+            }
+
+            return blv.b($$3);
          }
       }
-
-      return super.m($$0);
-   }
-
-   @Override
-   public void b(so $$0) {
-      super.b($$0);
-      dio.e($$0);
    }
 }

@@ -1,55 +1,85 @@
-import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.util.Attribute;
-import io.netty.util.AttributeKey;
-import java.io.IOException;
+import io.netty.handler.codec.DecoderException;
+import java.nio.ByteBuffer;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.zip.DataFormatException;
+import java.util.zip.Inflater;
 
-public class um extends ByteToMessageDecoder implements ur {
-   private static final Logger a = LogUtils.getLogger();
-   private final AttributeKey<ui.a<?>> b;
+public class um extends ByteToMessageDecoder {
+   public static final int a = 2097152;
+   public static final int b = 8388608;
+   private final Inflater c;
+   private int d;
+   private boolean e;
 
-   public um(AttributeKey<ui.a<?>> $$0) {
-      this.b = $$0;
+   public um(int $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.c = new Inflater();
    }
 
    protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      int $$3 = $$1.readableBytes();
-      if ($$3 != 0) {
-         Attribute<ui.a<?>> $$4 = $$0.channel().attr(this.b);
-         ui.a<?> $$5 = (ui.a<?>)$$4.get();
-         uj $$6 = new uj($$1);
-         int $$7 = $$6.n();
-         xg<?> $$8 = $$5.a($$7, $$6);
-         if ($$8 == null) {
-            throw new IOException("Bad packet id " + $$7);
+      if ($$1.readableBytes() != 0) {
+         int $$3 = vh.a($$1);
+         if ($$3 == 0) {
+            $$2.add($$1.readBytes($$1.readableBytes()));
          } else {
-            bgz.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
-            if ($$6.readableBytes() > 0) {
-               throw new IOException(
-                  "Packet "
-                     + $$5.a().a()
-                     + "/"
-                     + $$7
-                     + " ("
-                     + $$8.getClass().getSimpleName()
-                     + ") was larger than I expected, found "
-                     + $$6.readableBytes()
-                     + " bytes extra whilst reading packet "
-                     + $$7
-               );
-            } else {
-               $$2.add($$8);
-               if (a.isDebugEnabled()) {
-                  a.debug(uh.c, " IN: [{}:{}] {}", new Object[]{$$5.a().a(), $$7, $$8.getClass().getName()});
+            if (this.e) {
+               if ($$3 < this.d) {
+                  throw new DecoderException("Badly compressed packet - size of " + $$3 + " is below server threshold of " + this.d);
                }
 
-               ur.a($$4, $$8);
+               if ($$3 > 8388608) {
+                  throw new DecoderException("Badly compressed packet - size of " + $$3 + " is larger than protocol maximum of 8388608");
+               }
             }
+
+            this.a($$1);
+            ByteBuf $$4 = this.a($$0, $$3);
+            this.c.reset();
+            $$2.add($$4);
          }
       }
+   }
+
+   private void a(ByteBuf $$0) {
+      ByteBuffer $$1;
+      if ($$0.nioBufferCount() > 0) {
+         $$1 = $$0.nioBuffer();
+         $$0.skipBytes($$0.readableBytes());
+      } else {
+         $$1 = ByteBuffer.allocateDirect($$0.readableBytes());
+         $$0.readBytes($$1);
+         $$1.flip();
+      }
+
+      this.c.setInput($$1);
+   }
+
+   private ByteBuf a(ChannelHandlerContext $$0, int $$1) throws DataFormatException {
+      ByteBuf $$2 = $$0.alloc().directBuffer($$1);
+
+      try {
+         ByteBuffer $$3 = $$2.internalNioBuffer(0, $$1);
+         int $$4 = $$3.position();
+         this.c.inflate($$3);
+         int $$5 = $$3.position() - $$4;
+         if ($$5 != $$1) {
+            throw new DecoderException("Badly compressed packet - actual length of uncompressed payload " + $$5 + " is does not match declared size " + $$1);
+         } else {
+            $$2.writerIndex($$2.writerIndex() + $$5);
+            return $$2;
+         }
+      } catch (Exception var7) {
+         $$2.release();
+         throw var7;
+      }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 }

@@ -1,110 +1,98 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fae<T> {
-   private static final int a = 8;
-   private static final int b = 256;
-   private static final int c = 255;
-   private static final int d = 4351;
-   private static final int e = 4352;
-   private final T[] f;
-   private final T[][] g;
-   private final IntFunction<T[]> h;
-
-   public fae(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
-      this.f = (T[])((Object[])$$0.apply(256));
-      this.g = (T[][])((Object[][])$$1.apply(4352));
-      Arrays.fill(this.g, this.f);
-      this.h = $$0;
+public class fae extends ezn<fae.a> {
+   public fae(exh $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.e = false;
    }
 
-   public void a() {
-      Arrays.fill(this.g, this.f);
+   public int a(exk<?> $$0) {
+      return this.b(fae.a.a(this.c.m, this.g, $$0));
    }
 
-   @Nullable
-   public T a(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      return this.g[$$1][$$2];
+   public void a(exk<?> $$0, @Nullable exk<?> $$1) {
+      this.b(fae.a.a(this.c.m, this.g, $$0, $$1));
    }
 
-   @Nullable
-   public T a(int $$0, T $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      if ($$4 == this.f) {
-         $$4 = (T[])((Object[])this.h.apply(256));
-         this.g[$$2] = $$4;
-         $$4[$$3] = $$1;
-         return null;
-      } else {
-         T $$5 = $$4[$$3];
-         $$4[$$3] = $$1;
-         return $$5;
+   public void a(exk<?>[] $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         this.a($$0[$$1], $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null);
       }
    }
 
-   public T a(int $$0, IntFunction<T> $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      T $$5 = $$4[$$3];
-      if ($$5 != null) {
-         return $$5;
-      } else {
-         if ($$4 == this.f) {
-            $$4 = (T[])((Object[])this.h.apply(256));
-            this.g[$$2] = $$4;
+   @Override
+   public int b() {
+      return 400;
+   }
+
+   @Override
+   protected int c() {
+      return super.c() + 32;
+   }
+
+   @Nullable
+   public ezf b(exk<?> $$0) {
+      for (fae.a $$1 : this.l()) {
+         ezf $$2 = $$1.a.get($$0);
+         if ($$2 != null) {
+            return $$2;
          }
-
-         T $$6 = $$1.apply($$0);
-         $$4[$$3] = $$6;
-         return $$6;
       }
+
+      return null;
    }
 
-   @Nullable
-   public T b(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      T[] $$3 = this.g[$$1];
-      if ($$3 == this.f) {
-         return null;
-      } else {
-         T $$4 = $$3[$$2];
-         $$3[$$2] = null;
-         return $$4;
-      }
-   }
-
-   public void a(fae.a<T> $$0) {
-      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
-         T[] $$2 = this.g[$$1];
-         if ($$2 != this.f) {
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               T $$4 = $$2[$$3];
-               if ($$4 != null) {
-                  int $$5 = $$1 << 8 | $$3;
-                  $$0.accept($$5, $$4);
-               }
+   public Optional<ezf> e(double $$0, double $$1) {
+      for (fae.a $$2 : this.l()) {
+         for (ezf $$3 : $$2.b) {
+            if ($$3.c($$0, $$1)) {
+               return Optional.of($$3);
             }
          }
       }
+
+      return Optional.empty();
    }
 
-   public IntSet b() {
-      IntOpenHashSet $$0 = new IntOpenHashSet();
-      this.a(($$1, $$2) -> $$0.add($$1));
-      return $$0;
-   }
+   protected static class a extends ezn.a<fae.a> {
+      final Map<exk<?>, ezf> a;
+      final List<ezf> b;
 
-   @FunctionalInterface
-   public interface a<T> {
-      void accept(int var1, T var2);
+      private a(Map<exk<?>, ezf> $$0) {
+         this.a = $$0;
+         this.b = ImmutableList.copyOf($$0.values());
+      }
+
+      public static fae.a a(exl $$0, int $$1, exk<?> $$2) {
+         return new fae.a(ImmutableMap.of($$2, $$2.a($$0, $$1 / 2 - 155, 0, 310)));
+      }
+
+      public static fae.a a(exl $$0, int $$1, exk<?> $$2, @Nullable exk<?> $$3) {
+         ezf $$4 = $$2.a($$0, $$1 / 2 - 155, 0, 150);
+         return $$3 == null ? new fae.a(ImmutableMap.of($$2, $$4)) : new fae.a(ImmutableMap.of($$2, $$4, $$3, $$3.a($$0, $$1 / 2 - 155 + 160, 0, 150)));
+      }
+
+      @Override
+      public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.b.forEach($$5x -> {
+            $$5x.n($$2);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
+      }
+
+      @Override
+      public List<? extends fbd> l() {
+         return this.b;
+      }
+
+      @Override
+      public List<? extends fda> a() {
+         return this.b;
+      }
    }
 }

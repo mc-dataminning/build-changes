@@ -1,36 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class deh extends cwy {
-   public static final MapCodec<deh> b = b(deh::new);
-   public static final dkg c = dkf.z;
+public class deh extends cyo implements cyv {
+   public static final MapCodec<deh> a = b(deh::new);
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final eol f = eoi.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
-   protected MapCodec<? extends deh> a() {
-      return b;
+   public MapCodec<deh> a() {
+      return a;
    }
 
-   protected deh(djo.d $$0) {
+   public deh(dle.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      return $$1 == ic.b ? $$0.a(c, Boolean.valueOf(h($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean a(dlf $$0, dlf $$1, ie $$2) {
+      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
    }
 
    @Override
-   public djp a(cpp $$0) {
-      djp $$1 = $$0.q().a_($$0.a().c());
-      return this.o().a(c, Boolean.valueOf(h($$1)));
-   }
-
-   private static boolean h(djp $$0) {
-      return $$0.a(asi.by);
+   protected eol f(dlf $$0, cut $$1, hz $$2) {
+      return eoi.a();
    }
 
    @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(c);
+   protected void a(dlf $$0, cvn $$1, hz $$2, bno $$3) {
+      if (!($$3 instanceof bog) || $$3.dn().a(this)) {
+         $$3.a($$0, new ens(0.9F, 1.5, 0.9F));
+         if ($$1.B) {
+            awo $$4 = $$1.F_();
+            boolean $$5 = $$3.ab != $$3.dr() || $$3.ad != $$3.dx();
+            if ($$5 && $$4.h()) {
+               $$1.a(
+                  jz.aH,
+                  $$3.dr(),
+                  (double)($$2.v() + 1),
+                  $$3.dx(),
+                  (double)(awh.b($$4, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(awh.b($$4, -1.0F, 1.0F) * 0.083333336F)
+               );
+            }
+         }
+      }
+
+      $$3.o(true);
+      if (!$$1.B) {
+         if ($$3.bN() && ($$1.Z().b(cvj.c) || $$3 instanceof chh) && $$3.a($$1, $$2)) {
+            $$1.b($$2, false);
+         }
+
+         $$3.a_(false);
+      }
+   }
+
+   @Override
+   public void a(cvn $$0, dlf $$1, hz $$2, bno $$3, float $$4) {
+      if (!((double)$$4 < 4.0) && $$3 instanceof bog $$5) {
+         bog.a $$7 = $$5.eH();
+         atj $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
+      }
+   }
+
+   @Override
+   protected eol b(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      if ($$3 instanceof eoc $$4) {
+         bno $$5 = $$4.c();
+         if ($$5 != null) {
+            if ($$5.aa > 2.5F) {
+               return f;
+            }
+
+            boolean $$6 = $$5 instanceof cdr;
+            if ($$6 || a($$5) && $$3.a(eoi.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
+            }
+         }
+      }
+
+      return eoi.a();
+   }
+
+   @Override
+   protected eol c(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return eoi.a();
+   }
+
+   public static boolean a(bno $$0) {
+      if ($$0.ai().a(auc.h)) {
+         return true;
+      } else {
+         return $$0 instanceof bog ? ((bog)$$0).c(bnv.c).a(cpc.pA) : false;
+      }
+   }
+
+   @Override
+   public coz a(@Nullable chh $$0, cvo $$1, hz $$2, dlf $$3) {
+      $$1.a($$2, cyq.a.o(), 11);
+      if (!$$1.y_()) {
+         $$1.c(2001, $$2, cyo.i($$3));
+      }
+
+      return new coz(cpc.qA);
+   }
+
+   @Override
+   public Optional<atj> ax_() {
+      return Optional.of(atk.dd);
+   }
+
+   @Override
+   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
+      return true;
    }
 }

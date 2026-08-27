@@ -1,75 +1,74 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Arrays;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 
-public class ayq extends DataFix {
-   public ayq(Schema $$0) {
+public abstract class ayq extends DataFix {
+   private final String a;
+
+   public ayq(Schema $$0, String $$1) {
       super($$0, false);
+      this.a = $$1;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(bbw.y), this::a);
-   }
-
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:egg", this::d);
-      $$0 = this.a($$0, "minecraft:ender_pearl", this::d);
-      $$0 = this.a($$0, "minecraft:experience_bottle", this::d);
-      $$0 = this.a($$0, "minecraft:snowball", this::d);
-      $$0 = this.a($$0, "minecraft:potion", this::d);
-      $$0 = this.a($$0, "minecraft:potion", this::c);
-      $$0 = this.a($$0, "minecraft:llama_spit", this::b);
-      $$0 = this.a($$0, "minecraft:arrow", this::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", this::a);
-      return this.a($$0, "minecraft:trident", this::a);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bdn.z);
+      Type<Pair<String, String>> $$1 = DSL.named(bdn.z.typeName(), bew.a());
+      if (!Objects.equals($$0, $$1)) {
+         throw new IllegalStateException("block type is not what was expected.");
+      } else {
+         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
+            this.a + " for block_state", this.getInputSchema().getType(bdn.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
+         );
+         TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
+            this.a + " for flat_block_state",
+            this.getInputSchema().getType(bdn.v),
+            $$0x -> $$0x.update(
+                  DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
+               )
+         );
+         return TypeRewriteRule.seq($$2, new TypeRewriteRule[]{$$3, $$4});
+      }
    }
 
    private Dynamic<?> a(Dynamic<?> $$0) {
-      long $$1 = $$0.get("OwnerUUIDMost").asLong(0L);
-      long $$2 = $$0.get("OwnerUUIDLeast").asLong(0L);
-      return this.a($$0, $$1, $$2).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      return $$1.isPresent() ? $$0.set("Name", $$0.createString(this.a($$1.get()))) : $$0;
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      OptionalDynamic<?> $$1 = $$0.get("Owner");
-      long $$2 = $$1.get("OwnerUUIDMost").asLong(0L);
-      long $$3 = $$1.get("OwnerUUIDLeast").asLong(0L);
-      return this.a($$0, $$2, $$3).remove("Owner");
+   private String b(String $$0) {
+      int $$1 = $$0.indexOf(91);
+      int $$2 = $$0.indexOf(123);
+      int $$3 = $$0.length();
+      if ($$1 > 0) {
+         $$3 = $$1;
+      }
+
+      if ($$2 > 0) {
+         $$3 = Math.min($$3, $$2);
+      }
+
+      String $$4 = $$0.substring(0, $$3);
+      String $$5 = this.a($$4);
+      return $$5 + $$0.substring($$3);
    }
 
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      OptionalDynamic<?> $$1 = $$0.get("Potion");
-      return $$0.set("Item", $$1.orElseEmptyMap()).remove("Potion");
-   }
+   protected abstract String a(String var1);
 
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      String $$1 = "owner";
-      OptionalDynamic<?> $$2 = $$0.get("owner");
-      long $$3 = $$2.get("M").asLong(0L);
-      long $$4 = $$2.get("L").asLong(0L);
-      return this.a($$0, $$3, $$4).remove("owner");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, long $$1, long $$2) {
-      String $$3 = "OwnerUUID";
-      return $$1 != 0L && $$2 != 0L ? $$0.set("OwnerUUID", $$0.createIntList(Arrays.stream(a($$1, $$2)))) : $$0;
-   }
-
-   private static int[] a(long $$0, long $$1) {
-      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
-   }
-
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bbw.y, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bbw.y, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new ayq($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

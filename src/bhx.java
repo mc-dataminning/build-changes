@@ -1,209 +1,271 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import it.unimi.dsi.fastutil.ints.Int2DoubleMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleOpenHashMap;
-import java.util.Locale;
-import java.util.function.Consumer;
-import java.util.function.DoubleSupplier;
-import java.util.function.ToDoubleFunction;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bhx {
-   private final String b;
-   private final bhw c;
-   private final DoubleSupplier d;
-   private final ByteBuf e;
-   private final ByteBuf f;
-   private volatile boolean g;
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 4096;
+   private static final String c = ".gz";
+   private final Path d;
+   private final String e;
+
+   private bhx(Path $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   public static bhx a(Path $$0, String $$1) throws IOException {
+      Files.createDirectories($$0);
+      return new bhx($$0, $$1);
+   }
+
+   public bhx.d a() throws IOException {
+      bhx.d var2;
+      try (Stream<Path> $$0 = Files.list(this.d)) {
+         var2 = new bhx.d($$0.filter($$0x -> Files.isRegularFile($$0x)).map(this::a).filter(Objects::nonNull).toList());
+      }
+
+      return var2;
+   }
+
    @Nullable
-   private final Runnable h;
-   @Nullable
-   final bhx.c a;
-   private double i;
-
-   protected bhx(String $$0, bhw $$1, DoubleSupplier $$2, @Nullable Runnable $$3, @Nullable bhx.c $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.h = $$3;
-      this.d = $$2;
-      this.a = $$4;
-      this.f = ByteBufAllocator.DEFAULT.buffer();
-      this.e = ByteBufAllocator.DEFAULT.buffer();
-      this.g = true;
-   }
-
-   public static bhx a(String $$0, bhw $$1, DoubleSupplier $$2) {
-      return new bhx($$0, $$1, $$2, null, null);
-   }
-
-   public static <T> bhx a(String $$0, bhw $$1, T $$2, ToDoubleFunction<T> $$3) {
-      return a($$0, $$1, $$3, $$2).a();
-   }
-
-   public static <T> bhx.a<T> a(String $$0, bhw $$1, ToDoubleFunction<T> $$2, T $$3) {
-      return new bhx.a<>($$0, $$1, $$2, $$3);
-   }
-
-   public void a() {
-      if (!this.g) {
-         throw new IllegalStateException("Not running");
+   private bhx.b a(Path $$0) {
+      String $$1 = $$0.getFileName().toString();
+      int $$2 = $$1.indexOf(46);
+      if ($$2 == -1) {
+         return null;
       } else {
-         if (this.h != null) {
-            this.h.run();
+         bhx.c $$3 = bhx.c.a($$1.substring(0, $$2));
+         if ($$3 != null) {
+            String $$4 = $$1.substring($$2);
+            if ($$4.equals(this.e)) {
+               return new bhx.e($$0, $$3);
+            }
+
+            if ($$4.equals(this.e + ".gz")) {
+               return new bhx.a($$0, $$3);
+            }
+         }
+
+         return null;
+      }
+   }
+
+   static void a(Path $$0, Path $$1) throws IOException {
+      if (Files.exists($$1)) {
+         throw new IOException("Compressed target file already exists: " + $$1);
+      } else {
+         try (FileChannel $$2 = FileChannel.open($$0, StandardOpenOption.WRITE, StandardOpenOption.READ)) {
+            FileLock $$3 = $$2.tryLock();
+            if ($$3 == null) {
+               throw new IOException("Raw log file is already locked, cannot compress: " + $$0);
+            }
+
+            a($$2, $$1);
+            $$2.truncate(0L);
+         }
+
+         Files.delete($$0);
+      }
+   }
+
+   private static void a(ReadableByteChannel $$0, Path $$1) throws IOException {
+      try (OutputStream $$2 = new GZIPOutputStream(Files.newOutputStream($$1))) {
+         byte[] $$3 = new byte[4096];
+         ByteBuffer $$4 = ByteBuffer.wrap($$3);
+
+         while ($$0.read($$4) >= 0) {
+            $$4.flip();
+            $$2.write($$3, 0, $$4.limit());
+            $$4.clear();
          }
       }
    }
 
-   public void a(int $$0) {
-      this.h();
-      this.i = this.d.getAsDouble();
-      this.f.writeDouble(this.i);
-      this.e.writeInt($$0);
+   public bhx.e a(LocalDate $$0) throws IOException {
+      int $$1 = 1;
+      Set<bhx.c> $$2 = this.a().c();
+
+      bhx.c $$3;
+      do {
+         $$3 = new bhx.c($$0, $$1++);
+      } while ($$2.contains($$3));
+
+      bhx.e $$4 = new bhx.e(this.d.resolve($$3.b(this.e)), $$3);
+      Files.createFile($$4.c());
+      return $$4;
    }
 
-   public void b() {
-      this.h();
-      this.f.release();
-      this.e.release();
-      this.g = false;
-   }
-
-   private void h() {
-      if (!this.g) {
-         throw new IllegalStateException(String.format(Locale.ROOT, "Sampler for metric %s not started!", this.b));
-      }
-   }
-
-   DoubleSupplier c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public bhw e() {
-      return this.c;
-   }
-
-   public bhx.b f() {
-      Int2DoubleMap $$0 = new Int2DoubleOpenHashMap();
-      int $$1 = Integer.MIN_VALUE;
-      int $$2 = Integer.MIN_VALUE;
-
-      while (this.f.isReadable(8)) {
-         int $$3 = this.e.readInt();
-         if ($$1 == Integer.MIN_VALUE) {
-            $$1 = $$3;
-         }
-
-         $$0.put($$3, this.f.readDouble());
-         $$2 = $$3;
-      }
-
-      return new bhx.b($$1, $$2, $$0);
-   }
-
-   public boolean g() {
-      return this.a != null && this.a.test(this.i);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         bhx $$1 = (bhx)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static class a<T> {
-      private final String a;
-      private final bhw b;
-      private final DoubleSupplier c;
-      private final T d;
+   public static record a(Path a, bhx.c b) implements bhx.b {
       @Nullable
-      private Runnable e;
-      @Nullable
-      private bhx.c f;
-
-      public a(String $$0, bhw $$1, ToDoubleFunction<T> $$2, T $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = () -> $$2.applyAsDouble($$3);
-         this.d = $$3;
-      }
-
-      public bhx.a<T> a(Consumer<T> $$0) {
-         this.e = () -> $$0.accept(this.d);
-         return this;
-      }
-
-      public bhx.a<T> a(bhx.c $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public bhx a() {
-         return new bhx(this.a, this.b, this.c, this.e, this.f);
-      }
-   }
-
-   public static class b {
-      private final Int2DoubleMap a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, Int2DoubleMap $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
-      }
-
-      public double a(int $$0) {
-         return this.a.get($$0);
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   public interface c {
-      boolean test(double var1);
-   }
-
-   public static class d implements bhx.c {
-      private final float a;
-      private double b = Double.MIN_VALUE;
-
-      public d(float $$0) {
-         this.a = $$0;
+      @Override
+      public Reader a() throws IOException {
+         return !Files.exists(this.a) ? null : new BufferedReader(new InputStreamReader(new GZIPInputStream(Files.newInputStream(this.a))));
       }
 
       @Override
-      public boolean test(double $$0) {
-         boolean $$2;
-         if (this.b != Double.MIN_VALUE && !($$0 <= this.b)) {
-            $$2 = ($$0 - this.b) / this.b >= (double)this.a;
+      public bhx.a b() {
+         return this;
+      }
+
+      @Override
+      public Path c() {
+         return this.a;
+      }
+
+      @Override
+      public bhx.c d() {
+         return this.b;
+      }
+   }
+
+   public interface b {
+      Path c();
+
+      bhx.c d();
+
+      @Nullable
+      Reader a() throws IOException;
+
+      bhx.a b() throws IOException;
+   }
+
+   public static record c(LocalDate a, int b) {
+      private static final DateTimeFormatter c = DateTimeFormatter.BASIC_ISO_DATE;
+
+      @Nullable
+      public static bhx.c a(String $$0) {
+         int $$1 = $$0.indexOf("-");
+         if ($$1 == -1) {
+            return null;
          } else {
-            $$2 = false;
+            String $$2 = $$0.substring(0, $$1);
+            String $$3 = $$0.substring($$1 + 1);
+
+            try {
+               return new bhx.c(LocalDate.parse($$2, c), Integer.parseInt($$3));
+            } catch (DateTimeParseException | NumberFormatException var5) {
+               return null;
+            }
+         }
+      }
+
+      @Override
+      public String toString() {
+         return c.format(this.a) + "-" + this.b;
+      }
+
+      public String b(String $$0) {
+         return this + $$0;
+      }
+   }
+
+   public static class d implements Iterable<bhx.b> {
+      private final List<bhx.b> a;
+
+      d(List<bhx.b> $$0) {
+         this.a = new ArrayList<>($$0);
+      }
+
+      public bhx.d a(LocalDate $$0, int $$1) {
+         this.a.removeIf($$2 -> {
+            bhx.c $$3 = $$2.d();
+            LocalDate $$4 = $$3.a().plusDays((long)$$1);
+            if (!$$0.isBefore($$4)) {
+               try {
+                  Files.delete($$2.c());
+                  return true;
+               } catch (IOException var6) {
+                  bhx.a.warn("Failed to delete expired event log file: {}", $$2.c(), var6);
+               }
+            }
+
+            return false;
+         });
+         return this;
+      }
+
+      public bhx.d a() {
+         ListIterator<bhx.b> $$0 = this.a.listIterator();
+
+         while ($$0.hasNext()) {
+            bhx.b $$1 = $$0.next();
+
+            try {
+               $$0.set($$1.b());
+            } catch (IOException var4) {
+               bhx.a.warn("Failed to compress event log file: {}", $$1.c(), var4);
+            }
          }
 
-         this.b = $$0;
-         return $$2;
+         return this;
+      }
+
+      @Override
+      public Iterator<bhx.b> iterator() {
+         return this.a.iterator();
+      }
+
+      public Stream<bhx.b> b() {
+         return this.a.stream();
+      }
+
+      public Set<bhx.c> c() {
+         return this.a.stream().map(bhx.b::d).collect(Collectors.toSet());
+      }
+   }
+
+   public static record e(Path a, bhx.c b) implements bhx.b {
+      public FileChannel e() throws IOException {
+         return FileChannel.open(this.a, StandardOpenOption.WRITE, StandardOpenOption.READ);
+      }
+
+      @Nullable
+      @Override
+      public Reader a() throws IOException {
+         return Files.exists(this.a) ? Files.newBufferedReader(this.a) : null;
+      }
+
+      @Override
+      public bhx.a b() throws IOException {
+         Path $$0 = this.a.resolveSibling(this.a.getFileName().toString() + ".gz");
+         bhx.a(this.a, $$0);
+         return new bhx.a($$0, this.b);
+      }
+
+      @Override
+      public Path c() {
+         return this.a;
+      }
+
+      @Override
+      public bhx.c d() {
+         return this.b;
       }
    }
 }

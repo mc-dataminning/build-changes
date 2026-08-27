@@ -1,32 +1,130 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public enum bvn implements avl {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class bvn extends bvb {
+   protected final boo a;
+   private final double b;
+   @Nullable
+   private ehe c;
+   private hz d;
+   private final boolean e;
+   private final List<hz> f = Lists.newArrayList();
+   private final int g;
+   private final BooleanSupplier h;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<bvn> n = avl.a(bvn::values);
-
-   private bvn(String $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public bvn(boo $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.e = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.a(EnumSet.of(bvb.a.a));
+      if (!byz.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
+      }
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean a() {
+      if (!byz.a(this.a)) {
+         return false;
+      } else {
+         this.h();
+         if (this.e && this.a.dM().P()) {
+            return false;
+         } else {
+            aov $$0 = (aov)this.a.dM();
+            hz $$1 = this.a.dm();
+            if (!$$0.a($$1, 6)) {
+               return false;
+            } else {
+               ens $$2 = bzb.a(this.a, 15, 7, $$2x -> {
+                  if (!$$0.c($$2x)) {
+                     return Double.NEGATIVE_INFINITY;
+                  } else {
+                     Optional<hz> $$3x = $$0.y().d($$0xx -> $$0xx.a(auj.b), this::a, $$2x, 10, bzh.b.b);
+                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
+                  }
+               });
+               if ($$2 == null) {
+                  return false;
+               } else {
+                  Optional<hz> $$3 = $$0.y().d($$0x -> $$0x.a(auj.b), this::a, hz.a($$2), 10, bzh.b.b);
+                  if ($$3.isEmpty()) {
+                     return false;
+                  } else {
+                     this.d = $$3.get().i();
+                     bxo $$4 = (bxo)this.a.N();
+                     boolean $$5 = $$4.f();
+                     $$4.b(this.h.getAsBoolean());
+                     this.c = $$4.a(this.d, 0);
+                     $$4.b($$5);
+                     if (this.c == null) {
+                        ens $$6 = byy.a(this.a, 10, 7, ens.c(this.d), (float) (Math.PI / 2));
+                        if ($$6 == null) {
+                           return false;
+                        }
+
+                        $$4.b(this.h.getAsBoolean());
+                        this.c = this.a.N().a($$6.c, $$6.d, $$6.e, 0);
+                        $$4.b($$5);
+                        if (this.c == null) {
+                           return false;
+                        }
+                     }
+
+                     for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
+                        ehc $$8 = this.c.a($$7);
+                        hz $$9 = new hz($$8.a, $$8.b + 1, $$8.c);
+                        if (dau.a(this.a.dM(), $$9)) {
+                           this.c = this.a.N().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
+                           break;
+                        }
+                     }
+
+                     return this.c != null;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.N().l() ? false : !this.d.a(this.a.dk(), (double)(this.a.dg() + (float)this.g));
+   }
+
+   @Override
+   public void c() {
+      this.a.N().a(this.c, this.b);
+   }
+
+   @Override
+   public void d() {
+      if (this.a.N().l() || this.d.a(this.a.dk(), (double)this.g)) {
+         this.f.add(this.d);
+      }
+   }
+
+   private boolean a(hz $$0) {
+      for (hz $$1 : this.f) {
+         if (Objects.equals($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private void h() {
+      if (this.f.size() > 15) {
+         this.f.remove(0);
+      }
    }
 }

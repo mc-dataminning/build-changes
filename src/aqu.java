@@ -1,34 +1,65 @@
-import com.google.gson.JsonObject;
-import java.util.Date;
+import java.io.IOException;
+import java.nio.file.FileStore;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.FileAttributeView;
+import java.nio.file.attribute.FileStoreAttributeView;
 import javax.annotation.Nullable;
 
-public class aqu extends aqr<String> {
+class aqu extends FileStore {
+   private final String a;
+
    public aqu(String $$0) {
-      this($$0, null, null, null, null);
-   }
-
-   public aqu(String $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public vg e() {
-      return vg.b(String.valueOf(this.g()));
-   }
-
-   public aqu(JsonObject $$0) {
-      super(b($$0), $$0);
-   }
-
-   private static String b(JsonObject $$0) {
-      return $$0.has("ip") ? $$0.get("ip").getAsString() : null;
+   public String name() {
+      return this.a;
    }
 
    @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("ip", this.g());
-         super.a($$0);
-      }
+   public String type() {
+      return "index";
+   }
+
+   @Override
+   public boolean isReadOnly() {
+      return true;
+   }
+
+   @Override
+   public long getTotalSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUsableSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUnallocatedSpace() {
+      return 0L;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
+      return $$0 == BasicFileAttributeView.class;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(String $$0) {
+      return "basic".equals($$0);
+   }
+
+   @Nullable
+   @Override
+   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
+      return null;
+   }
+
+   @Override
+   public Object getAttribute(String $$0) throws IOException {
+      throw new UnsupportedOperationException();
    }
 }

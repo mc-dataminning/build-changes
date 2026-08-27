@@ -1,56 +1,37 @@
-import java.util.function.Supplier;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public enum cow implements cou {
-   a(0, 59, 2.0F, 0.0F, 15, () -> cqh.a(asq.b)),
-   b(1, 131, 4.0F, 1.0F, 5, () -> cqh.a(asq.ax)),
-   c(2, 250, 6.0F, 2.0F, 14, () -> cqh.a(cnj.oD)),
-   d(3, 1561, 8.0F, 3.0F, 10, () -> cqh.a(cnj.ox)),
-   e(0, 32, 12.0F, 0.0F, 22, () -> cqh.a(cnj.oH)),
-   f(4, 2031, 9.0F, 4.0F, 15, () -> cqh.a(cnj.oI));
+public enum cow implements axc {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
 
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final auk<cqh> l;
+   public static final Codec<cow> j = axc.a(cow::values);
+   public static final IntFunction<cow> k = auz.a(cow::a, values(), auz.a.a);
+   private final byte l;
+   private final String m;
 
-   private cow(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cqh> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = new auk<>($$5);
+   private cow(int $$0, String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
    @Override
-   public int a() {
-      return this.h;
+   public String c() {
+      return this.m;
    }
 
-   @Override
-   public float b() {
-      return this.i;
+   public byte a() {
+      return this.l;
    }
 
-   @Override
-   public float c() {
-      return this.j;
-   }
-
-   @Override
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public int e() {
-      return this.k;
-   }
-
-   @Override
-   public cqh f() {
-      return this.l.a();
+   public boolean b() {
+      return this == d || this == e;
    }
 }

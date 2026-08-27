@@ -1,121 +1,43 @@
-import com.google.common.collect.Multimap;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class bnr {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<ih<bnp>, bnq> b = new Object2ObjectOpenHashMap();
-   private final Set<bnq> c = new ObjectOpenHashSet();
-   private final bnt d;
-
-   public bnr(bnt $$0) {
-      this.d = $$0;
+public record bnr(float a, float b, float c, bnq d, boolean e) {
+   private bnr(float $$0, float $$1, boolean $$2) {
+      this($$0, $$1, c($$1), bnq.a($$0, $$1), $$2);
    }
 
-   private void a(bnq $$0) {
-      if ($$0.a().a().b()) {
-         this.c.add($$0);
-      }
+   private static float c(float $$0) {
+      return $$0 * 0.85F;
    }
 
-   public Set<bnq> a() {
-      return this.c;
+   public enn a(ens $$0) {
+      return this.a($$0.c, $$0.d, $$0.e);
    }
 
-   public Collection<bnq> b() {
-      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
+   public enn a(double $$0, double $$1, double $$2) {
+      float $$3 = this.a / 2.0F;
+      float $$4 = this.b;
+      return new enn($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
    }
 
-   @Nullable
-   public bnq a(ih<bnp> $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
+   public bnr a(float $$0) {
+      return this.a($$0, $$0);
    }
 
-   public boolean b(ih<bnp> $$0) {
-      return this.b.get($$0) != null || this.d.c($$0);
+   public bnr a(float $$0, float $$1) {
+      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new bnr(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
    }
 
-   public boolean a(ih<bnp> $$0, UUID $$1) {
-      bnq $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
+   public static bnr b(float $$0, float $$1) {
+      return new bnr($$0, $$1, false);
    }
 
-   public double c(ih<bnp> $$0) {
-      bnq $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.f() : this.d.a($$0);
+   public static bnr c(float $$0, float $$1) {
+      return new bnr($$0, $$1, true);
    }
 
-   public double d(ih<bnp> $$0) {
-      bnq $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.b() : this.d.b($$0);
+   public bnr b(float $$0) {
+      return new bnr(this.a, this.b, $$0, this.d, this.e);
    }
 
-   public double b(ih<bnp> $$0, UUID $$1) {
-      bnq $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1).c() : this.d.a($$0, $$1);
-   }
-
-   public void a(Multimap<ih<bnp>, bns> $$0) {
-      $$0.asMap().forEach(($$0x, $$1) -> {
-         bnq $$2 = this.b.get($$0x);
-         if ($$2 != null) {
-            $$1.forEach($$1x -> $$2.b($$1x.a()));
-         }
-      });
-   }
-
-   public void b(Multimap<ih<bnp>, bns> $$0) {
-      $$0.forEach(($$0x, $$1) -> {
-         bnq $$2 = this.a($$0x);
-         if ($$2 != null) {
-            $$2.b($$1.a());
-            $$2.c($$1);
-         }
-      });
-   }
-
-   public void a(bnr $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bnq $$1 = this.a($$0x.a());
-         if ($$1 != null) {
-            $$1.a($$0x);
-         }
-      });
-   }
-
-   public su c() {
-      su $$0 = new su();
-
-      for (bnq $$1 : this.b.values()) {
-         $$0.add($$1.g());
-      }
-
-      return $$0;
-   }
-
-   public void a(su $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         so $$2 = $$0.a($$1);
-         String $$3 = $$2.l("Name");
-         ahh $$4 = ahh.a($$3);
-         if ($$4 != null) {
-            ac.a(kd.u.c($$4), $$1x -> {
-               bnq $$2x = this.a($$1x);
-               if ($$2x != null) {
-                  $$2x.a($$2);
-               }
-            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
-         } else {
-            a.warn("Ignoring malformed attribute '{}'", $$3);
-         }
-      }
+   public bnr a(bnq.a $$0) {
+      return new bnr(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
    }
 }

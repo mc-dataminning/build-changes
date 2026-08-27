@@ -1,118 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class drh extends dsc<dua> {
-   private static final ImmutableList<cwy> a = ImmutableList.of(cxa.H, cxa.F, cxa.kJ, cxa.dW, cxa.fn, cxa.fo, cxa.fp, cxa.fq, cxa.cv, cxa.ct);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int an = 15;
+@Deprecated
+public class drh implements dqd {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dqq i = new dqq(this);
 
-   public drh(Codec<dua> $$0) {
-      super($$0);
+   public drh(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public boolean a(dse<dua> $$0) {
-      int $$1 = $$0.c().e();
-      hx $$2 = $$0.e();
-      cus $$3 = $$0.b();
-      auw $$4 = $$0.d();
-      dua $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.j())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
-
-         for (hx $$11 : hx.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
-            }
-         }
-
-         return $$10;
-      }
+   public awo d() {
+      return new drh(this.g());
    }
 
-   private boolean a(cty $$0, int $$1, hx $$2, int $$3, int $$4) {
-      boolean $$5 = false;
-
-      for (hx $$6 : hx.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         hx $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
-
-            for (hx.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (hx)$$10)) {
-                  this.a($$0, $$10, cxa.dY.o());
-                  $$10.c(ic.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(cxa.dY)) {
-                     break;
-                  }
-
-                  $$10.c(ic.b);
-               }
-            }
-         }
-      }
-
-      return $$5;
+   @Override
+   public drb e() {
+      return new dqp.a(this.g());
    }
 
-   @Nullable
-   private static hx a(cty $$0, int $$1, hx.a $$2, int $$3) {
-      while ($$2.v() > $$0.J_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.c(ic.a);
-      }
-
-      return null;
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
    }
 
-   private static boolean a(cty $$0, int $$1, hx.a $$2) {
-      if (!a($$0, $$1, (hx)$$2)) {
-         return false;
-      } else {
-         djp $$3 = $$0.a_($$2.c(ic.a));
-         $$2.c(ic.b);
-         return !$$3.i() && !a.contains($$3.b());
-      }
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
    }
 
-   @Nullable
-   private static hx a(cty $$0, hx.a $$1, int $$2) {
-      while ($$1.v() < $$0.al() && $$2 > 0) {
-         $$2--;
-         djp $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
-
-         if ($$3.i()) {
-            return $$1;
-         }
-
-         $$1.c(ic.b);
-      }
-
-      return null;
-   }
-
-   private static boolean a(cty $$0, int $$1, hx $$2) {
-      djp $$3 = $$0.a_($$2);
-      return $$3.i() || $$3.a(cxa.H) && $$2.v() <= $$1;
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

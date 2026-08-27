@@ -1,148 +1,52 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class tt implements ti {
-   private String a = "";
-   @Nullable
-   private tl b;
-   private final Deque<Consumer<tl>> c = new ArrayDeque<>();
+public interface tt {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
 
-   @Nullable
-   public tl d() {
-      return this.b;
-   }
-
-   protected int e() {
-      return this.c.size();
-   }
-
-   private void a(tl $$0) {
-      this.c.getLast().accept($$0);
-   }
-
-   @Override
-   public ti.b a() {
-      this.a(sq.b);
-      return ti.b.a;
-   }
+   void a(DataOutput var1) throws IOException;
 
    @Override
-   public ti.b a(String $$0) {
-      this.a(tj.a($$0));
-      return ti.b.a;
+   String toString();
+
+   byte b();
+
+   tv<?> c();
+
+   tt d();
+
+   int a();
+
+   default String t_() {
+      return new ts().a(this);
    }
 
-   @Override
-   public ti.b a(byte $$0) {
-      this.a(sm.a($$0));
-      return ti.b.a;
-   }
+   void a(tx var1);
 
-   @Override
-   public ti.b a(short $$0) {
-      this.a(tg.a($$0));
-      return ti.b.a;
-   }
+   tq.b a(tq var1);
 
-   @Override
-   public ti.b a(int $$0) {
-      this.a(st.a($$0));
-      return ti.b.a;
-   }
-
-   @Override
-   public ti.b a(long $$0) {
-      this.a(sw.a($$0));
-      return ti.b.a;
-   }
-
-   @Override
-   public ti.b a(float $$0) {
-      this.a(sr.a($$0));
-      return ti.b.a;
-   }
-
-   @Override
-   public ti.b a(double $$0) {
-      this.a(sp.a($$0));
-      return ti.b.a;
-   }
-
-   @Override
-   public ti.b a(byte[] $$0) {
-      this.a(new sl($$0));
-      return ti.b.a;
-   }
-
-   @Override
-   public ti.b a(int[] $$0) {
-      this.a(new ss($$0));
-      return ti.b.a;
-   }
-
-   @Override
-   public ti.b a(long[] $$0) {
-      this.a(new sv($$0));
-      return ti.b.a;
-   }
-
-   @Override
-   public ti.b a(tn<?> $$0, int $$1) {
-      return ti.b.a;
-   }
-
-   @Override
-   public ti.a b(tn<?> $$0, int $$1) {
-      this.c($$0);
-      return ti.a.a;
-   }
-
-   @Override
-   public ti.a a(tn<?> $$0) {
-      return ti.a.a;
-   }
-
-   @Override
-   public ti.a a(tn<?> $$0, String $$1) {
-      this.a = $$1;
-      this.c($$0);
-      return ti.a.a;
-   }
-
-   private void c(tn<?> $$0) {
-      if ($$0 == su.a) {
-         su $$1 = new su();
-         this.a($$1);
-         this.c.addLast($$1::add);
-      } else if ($$0 == so.b) {
-         so $$2 = new so();
-         this.a($$2);
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+   default void b(tq $$0) {
+      tq.b $$1 = $$0.b(this.c());
+      if ($$1 == tq.b.a) {
+         this.a($$0);
       }
-   }
-
-   @Override
-   public ti.b b() {
-      this.c.removeLast();
-      return ti.b.a;
-   }
-
-   @Override
-   public ti.b b(tn<?> $$0) {
-      if ($$0 == su.a) {
-         su $$1 = new su();
-         this.b = $$1;
-         this.c.addLast($$1::add);
-      } else if ($$0 == so.b) {
-         so $$2 = new so();
-         this.b = $$2;
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
-      } else {
-         this.c.addLast($$0x -> this.b = $$0x);
-      }
-
-      return ti.b.a;
    }
 }

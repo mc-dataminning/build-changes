@@ -1,70 +1,59 @@
-public class fjh {
-   public static void a(fnj $$0, fnj $$1, fnj $$2, boolean $$3) {
-      fnj $$4 = $$3 ? $$0 : $$1;
-      fnj $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+public class fjh extends ffe {
+   private static final vq a = vq.c("gui.abuseReport.title");
+   private static final vq b = vq.c("gui.abuseReport.message");
+   private static final vq c = vq.c("gui.abuseReport.type.chat");
+   private static final vq k = vq.c("gui.abuseReport.type.skin");
+   private static final vq l = vq.c("gui.abuseReport.type.name");
+   private static final int m = 6;
+   private final ffe n;
+   private final frb o;
+   private final fjl p;
+   private final fcx q = fcx.d().a(6);
+
+   public fjh(ffe $$0, frb $$1, fjl $$2) {
+      super(a);
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
    }
 
-   public static void a(fnj $$0, fnj $$1, bmo $$2, boolean $$3) {
-      fnj $$4 = $$3 ? $$0 : $$1;
-      fnj $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)clp.k($$2.fp());
-      float $$7 = aup.a((float)$$2.fr(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = aup.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = aup.i($$8, $$5.e, (float) (-Math.PI / 2));
+   @Override
+   public vq i() {
+      return vp.a(super.i(), b);
    }
 
-   public static <T extends bmq> void a(fnj $$0, fnj $$1, T $$2, float $$3, float $$4) {
-      float $$5 = aup.a($$3 * (float) Math.PI);
-      float $$6 = aup.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fm() == bmi.b) {
-         $$0.e = -1.8849558F + aup.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + aup.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + aup.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + aup.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+   @Override
+   protected void aQ_() {
+      this.q.c().b();
+      this.q.a(new fao(this.e, this.i), this.q.b().e(6));
+      this.q.a(new fab(b, this.i).b(true), this.q.b().e(6));
+      ezh $$0 = this.q.a(ezh.a(c, $$0x -> this.f.a(new fjd(this.n, this.o, this.p.c()))).a());
+      if (!this.p.j()) {
+         $$0.j = false;
+         $$0.a(fas.a(vq.c("gui.socialInteractions.tooltip.report.not_reportable")));
+      } else if (!this.p.i()) {
+         $$0.j = false;
+         $$0.a(fas.a(vq.a("gui.socialInteractions.tooltip.report.no_messages", this.p.b())));
       }
 
-      a($$0, $$1, $$4);
+      this.q.a(ezh.a(k, $$0x -> this.f.a(new fjj(this.n, this.o, this.p.c(), this.p.d()))).a());
+      this.q.a(ezh.a(l, $$0x -> this.f.a(new fjg(this.n, this.o, this.p.c(), this.p.b()))).a());
+      this.q.a(fcy.b(20));
+      this.q.a(ezh.a(vp.e, $$0x -> this.d()).a());
+      this.q.a($$1 -> {
+         ezf var10000 = this.d($$1);
+      });
+      this.c();
    }
 
-   public static void a(fnj $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (aup.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * aup.a($$1 * 0.067F) * 0.05F;
+   @Override
+   protected void c() {
+      this.q.a();
+      fcr.a(this.q, this.F());
    }
 
-   public static void a(fnj $$0, fnj $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(fnj $$0, fnj $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = aup.a($$3 * (float) Math.PI);
-      float $$6 = aup.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+   @Override
+   public void d() {
+      this.f.a(this.n);
    }
 }

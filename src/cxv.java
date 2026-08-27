@@ -1,72 +1,67 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cxv extends dan implements cxb, cxu {
-   public static final MapCodec<cxv> c = b(cxv::new);
-   private static final float g = 0.11F;
+public class cxv extends cyo implements dfo {
+   public static final MapCodec<cxv> a = b(cxv::new);
+   public static final dlw b = dlv.C;
 
    @Override
    public MapCodec<cxv> a() {
-      return c;
+      return a;
    }
 
-   public cxv(djo.d $$0) {
-      super($$0, ic.a, t_, false, 0.1);
-      this.k(this.E.b().a(e, Integer.valueOf(0)).a(u_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected int a(auw $$0) {
-      return 1;
+   protected cxv(dle.d $$0) {
+      super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g(djp $$0) {
-      return $$0.i();
-   }
-
-   @Override
-   protected cwy b() {
-      return cxa.sw;
-   }
-
-   @Override
-   protected djp a(djp $$0, djp $$1) {
-      return $$1.a(u_, $$0.c(u_));
-   }
-
-   @Override
-   protected djp a(djp $$0, auw $$1) {
-      return super.a($$0, $$1).a(u_, Boolean.valueOf($$1.i() < 0.11F));
-   }
-
-   @Override
-   public cng a(cua $$0, hx $$1, djp $$2) {
-      return new cng(cnj.wm);
-   }
-
-   @Override
-   public bkc a(djp $$0, ctx $$1, hx $$2, cfq $$3, ely $$4) {
-      return cxu.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      super.a($$0);
-      $$0.a(u_);
-   }
-
-   @Override
-   public boolean b(cua $$0, hx $$1, djp $$2) {
-      return !$$2.c(u_);
-   }
-
-   @Override
-   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
+   protected boolean a_(dlf $$0, cut $$1, hz $$2) {
       return true;
    }
 
    @Override
-   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
-      $$0.a($$2, $$3.a(u_, Boolean.valueOf(true)), 2);
+   protected det b_(dlf $$0) {
+      return det.a;
+   }
+
+   @Override
+   protected float d(dlf $$0, cut $$1, hz $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, egq.c, egq.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected egp c_(dlf $$0) {
+      return $$0.c(b) ? egq.c.a(false) : super.c_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dlf a(crg $$0) {
+      return this.o().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == egq.c));
+   }
+
+   @Override
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public coz a(@Nullable chh $$0, cvo $$1, hz $$2, dlf $$3) {
+      return $$0 != null && $$0.f() ? dfo.super.a($$0, $$1, $$2, $$3) : coz.h;
+   }
+
+   @Override
+   public boolean a(@Nullable chh $$0, cut $$1, hz $$2, dlf $$3, ego $$4) {
+      return $$0 != null && $$0.f() ? dfo.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

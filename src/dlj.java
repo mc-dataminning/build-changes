@@ -1,59 +1,49 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dlj implements AutoCloseable {
-   private final cty a;
-   private final Long2ObjectMap<dlx> b = new Long2ObjectOpenHashMap();
+public class dlj {
+   private final cvq a;
+   private final hz b;
+   private final boolean c;
    @Nullable
-   private dlx c;
-   private long d;
+   private dlf d;
+   @Nullable
+   private dit e;
+   private boolean f;
 
-   public dlj(cty $$0) {
+   public dlj(cvq $$0, hz $$1, boolean $$2) {
       this.a = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
+   }
+
+   public dlf a() {
+      if (this.d == null && (this.c || this.a.B(this.b))) {
+         this.d = this.a.a_(this.b);
+      }
+
+      return this.d;
    }
 
    @Nullable
-   public dlx a(hx $$0) {
-      int $$1 = this.a.e($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.am()) {
-         long $$2 = iz.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (dlx)this.b.computeIfAbsent($$2, $$2x -> {
-               dll $$3 = this.a.a(iz.a($$0.u()), iz.a($$0.w()));
-               dlx $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
-         }
-
-         return this.c;
-      } else {
-         return null;
+   public dit b() {
+      if (this.e == null && !this.f) {
+         this.e = this.a.c_(this.b);
+         this.f = true;
       }
+
+      return this.e;
    }
 
-   public djp b(hx $$0) {
-      dlx $$1 = this.a($$0);
-      if ($$1 == null) {
-         return cxa.a.o();
-      } else {
-         int $$2 = iz.b($$0.u());
-         int $$3 = iz.b($$0.v());
-         int $$4 = iz.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
-      }
+   public cvq c() {
+      return this.a;
    }
 
-   @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+   public hz d() {
+      return this.b;
+   }
 
-      while (var1.hasNext()) {
-         dlx $$0 = (dlx)var1.next();
-         $$0.b();
-      }
+   public static Predicate<dlj> a(Predicate<dlf> $$0) {
+      return $$1 -> $$1 != null && $$0.test($$1.a());
    }
 }

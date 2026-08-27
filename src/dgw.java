@@ -1,108 +1,110 @@
-public class dgw extends dih {
-   private iq<cng> e = iq.a(27, cng.f);
-   private final dhq f = new dhq() {
-      @Override
-      protected void a(ctx $$0, hx $$1, djp $$2) {
-         dgw.this.a($$2, art.bw);
-         dgw.this.a($$2, true);
-      }
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-      @Override
-      protected void b(ctx $$0, hx $$1, djp $$2) {
-         dgw.this.a($$2, art.bv);
-         dgw.this.a($$2, false);
-      }
+public class dgw extends cyo {
+   public static final MapCodec<dgw> a = b(dgw::new);
+   public static final dlw b = dlv.B;
 
-      @Override
-      protected void a(ctx $$0, hx $$1, djp $$2, int $$3, int $$4) {
-      }
+   @Override
+   public MapCodec<dgw> a() {
+      return a;
+   }
 
-      @Override
-      protected boolean a(cfq $$0) {
-         if ($$0.bW instanceof ciq) {
-            bjv $$1 = ((ciq)$$0.bW).l();
-            return $$1 == dgw.this;
-         } else {
-            return false;
+   public dgw(dle.d $$0) {
+      super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected void b(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         if ($$1.C($$2)) {
+            a($$1, $$2);
+            $$1.a($$2, false);
          }
       }
-   };
-
-   public dgw(hx $$0, djp $$1) {
-      super(dhf.A, $$0, $$1);
    }
 
    @Override
-   protected void b(so $$0) {
-      super.b($$0);
-      if (!this.d_($$0)) {
-         bjw.a($$0, this.e);
+   protected void a(dlf $$0, cvn $$1, hz $$2, cyo $$3, hz $$4, boolean $$5) {
+      if ($$1.C($$2)) {
+         a($$1, $$2);
+         $$1.a($$2, false);
       }
    }
 
    @Override
-   public void a(so $$0) {
-      super.a($$0);
-      this.e = iq.a(this.b(), cng.f);
-      if (!this.c_($$0)) {
-         bjw.b($$0, this.e);
+   public dlf a(cvn $$0, hz $$1, dlf $$2, chh $$3) {
+      if (!$$0.y_() && !$$3.f() && $$2.c(b)) {
+         a($$0, $$1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(cvn $$0, hz $$1, cvf $$2) {
+      if (!$$0.B) {
+         cdt $$3 = new cdt($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.f());
+         int $$4 = $$3.s();
+         $$3.b((short)($$0.z.a($$4 / 4) + $$4 / 8));
+         $$0.b($$3);
+      }
+   }
+
+   public static void a(cvn $$0, hz $$1) {
+      a($$0, $$1, null);
+   }
+
+   private static void a(cvn $$0, hz $$1, @Nullable bog $$2) {
+      if (!$$0.B) {
+         cdt $$3 = new cdt($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
+         $$0.b($$3);
+         $$0.a(null, $$3.dr(), $$3.dt(), $$3.dx(), atk.yQ, atl.e, 1.0F, 1.0F);
+         $$0.a($$2, dpp.I, $$1);
       }
    }
 
    @Override
-   public int b() {
-      return 27;
-   }
+   protected blw a(coz $$0, dlf $$1, cvn $$2, hz $$3, chh $$4, blt $$5, eno $$6) {
+      if (!$$0.a(cpc.or) && !$$0.a(cpc.tV)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else {
+         a($$2, $$3, $$4);
+         $$2.a($$3, cyq.a.o(), 11);
+         cou $$7 = $$0.d();
+         if (!$$4.f()) {
+            if ($$0.a(cpc.or)) {
+               $$0.a(1, $$4, bog.d($$5));
+            } else {
+               $$0.h(1);
+            }
+         }
 
-   @Override
-   protected iq<cng> k() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(iq<cng> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected vg l() {
-      return vg.c("container.barrel");
-   }
-
-   @Override
-   protected cij a(int $$0, cfp $$1) {
-      return ciq.a($$0, $$1, this);
-   }
-
-   @Override
-   public void d_(cfq $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.f.a($$0, this.i(), this.aE_(), this.r());
+         $$4.b(atu.c.b($$7));
+         return blw.a($$2.B);
       }
    }
 
    @Override
-   public void c(cfq $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.f.b($$0, this.i(), this.aE_(), this.r());
+   protected void a(cvn $$0, dlf $$1, eno $$2, chz $$3) {
+      if (!$$0.B) {
+         hz $$4 = $$2.a();
+         bno $$5 = $$3.w();
+         if ($$3.bN() && $$3.a($$0, $$4)) {
+            a($$0, $$4, $$5 instanceof bog ? (bog)$$5 : null);
+            $$0.a($$4, false);
+         }
       }
    }
 
-   public void m() {
-      if (!this.q) {
-         this.f.c(this.i(), this.aE_(), this.r());
-      }
+   @Override
+   public boolean a(cvf $$0) {
+      return false;
    }
 
-   void a(djp $$0, boolean $$1) {
-      this.o.a(this.aE_(), $$0.a(cwe.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(djp $$0, ars $$1) {
-      jb $$2 = $$0.c(cwe.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, aru.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
+   @Override
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(b);
    }
 }

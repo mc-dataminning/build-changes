@@ -1,43 +1,99 @@
-import java.util.Locale;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class ezh extends ezf {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 30;
-   private static final double j = 33.333333333333336;
+public class ezh extends eyy {
+   public static final int f = 120;
+   public static final int m = 150;
+   public static final int n = 20;
+   public static final int o = 8;
+   protected static final ezh.b p = $$0 -> $$0.get();
+   protected final ezh.c q;
+   protected final ezh.b r;
 
-   public ezh(exc $$0, auz $$1) {
-      super($$0, $$1);
+   public static ezh.a a(vq $$0, ezh.c $$1) {
+      return new ezh.a($$0, $$1);
+   }
+
+   protected ezh(int $$0, int $$1, int $$2, int $$3, vq $$4, ezh.c $$5, ezh.b $$6) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.q = $$5;
+      this.r = $$6;
    }
 
    @Override
-   protected void a(exe $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(fub.C(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = evr.O().m.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(fub.C(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+   public void b() {
+      this.q.onPress(this);
+   }
+
+   @Override
+   protected we aN_() {
+      return this.r.createNarrationMessage(() -> super.aN_());
+   }
+
+   @Override
+   public void a(fdc $$0) {
+      this.c($$0);
+   }
+
+   public static class a {
+      private final vq a;
+      private final ezh.c b;
+      @Nullable
+      private fas c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private ezh.b h = ezh.p;
+
+      public a(vq $$0, ezh.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public ezh.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public ezh.a a(int $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public ezh.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
+      }
+
+      public ezh.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
+      }
+
+      public ezh.a a(@Nullable fas $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public ezh.a a(ezh.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public ezh a() {
+         ezh $$0 = new ezh(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
       }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public interface b {
+      we createNarrationMessage(Supplier<we> var1);
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
-   }
-
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   public interface c {
+      void onPress(ezh var1);
    }
 }

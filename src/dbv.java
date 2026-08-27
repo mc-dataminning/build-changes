@@ -1,34 +1,57 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dbv extends cwy implements cxb {
-   public static final MapCodec<dbv> a = b(dbv::new);
+public class dbv extends cxj {
+   public static final MapCodec<dbv> c = b(dbv::new);
 
    @Override
    public MapCodec<dbv> a() {
-      return a;
+      return c;
    }
 
-   public dbv(djo.d $$0) {
+   protected dbv(dle.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(cua $$0, hx $$1, djp $$2) {
-      return $$0.a_($$1.c()).i();
+   public dit a(hz $$0, dlf $$1) {
+      return new djp($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dit> diu<T> a(cvn $$0, dlf $$1, div<T> $$2) {
+      return a($$0, $$2, div.a);
    }
 
    @Override
-   public boolean a(ctx $$0, auw $$1, hx $$2, djp $$3) {
-      return true;
+   protected void a(cvn $$0, hz $$1, chh $$2) {
+      dit $$3 = $$0.c_($$1);
+      if ($$3 instanceof djp) {
+         $$2.a((bly)$$3);
+         $$2.a(atu.am);
+      }
    }
 
    @Override
-   public void a(ane $$0, auw $$1, hx $$2, djp $$3) {
-      $$0.I_().c(ke.aw).flatMap($$0x -> $$0x.b(qi.n)).ifPresent($$3x -> ((drp)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
-   }
+   public void a(dlf $$0, cvn $$1, hz $$2, awo $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, atk.jJ, atl.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   public cxb.a av_() {
-      return cxb.a.a;
+         ie $$7 = $$0.c(a);
+         ie.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ie.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ie.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(jz.ab, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(jz.E, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

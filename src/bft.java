@@ -4,27 +4,15 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bft extends bde {
+public class bft extends bew {
    public bft(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:breeze", () -> bdf.a($$0));
-      $$0.registerSimple($$1, "minecraft:wind_charge");
-      return $$1;
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register(
-         $$1,
-         "minecraft:trial_spawner",
-         () -> DSL.optionalFields(
-               "spawn_potentials", DSL.list(DSL.fields("data", DSL.fields("entity", bbw.x.in($$0)))), "spawn_data", DSL.fields("entity", bbw.x.in($$0))
-            )
-      );
+      $$0.register($$1, "minecraft:panda", () -> bex.a($$0));
+      $$0.register($$1, "minecraft:pillager", $$1x -> DSL.optionalFields("Inventory", DSL.list(bdn.t.in($$0)), bex.a($$0)));
       return $$1;
    }
 }

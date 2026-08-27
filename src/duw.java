@@ -1,52 +1,60 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duw implements dug {
-   public static final Codec<duw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dys.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               asx.b(ke.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               dwh.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               dwh.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               dqf.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
-            )
-            .apply($$0, duw::new)
-   );
-   public final ih<dys> b;
-   public final int c;
-   public final int d;
-   public final asx<cwy> e;
-   public final dwh f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final dwh k;
-   public final int l;
-   public final int n;
-   public final dqf o;
+public class duw extends dts<dwn> {
+   public duw(Codec<dwn> $$0) {
+      super($$0);
+   }
 
-   public duw(ih<dys> $$0, int $$1, int $$2, asx<cwy> $$3, dwh $$4, int $$5, int $$6, int $$7, int $$8, dwh $$9, int $$10, int $$11, dqf $$12) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+   @Override
+   public boolean a(dtu<dwn> $$0) {
+      cwi $$1 = $$0.b();
+      hz $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         dwn $$3 = $$0.f();
+         awo $$4 = $$0.d();
+         dfi $$5 = dfi.b();
+         int $$6 = $$3.f() + $$3.d();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         hz $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, cyq.qU.o(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            hz $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ie.b)) {
+               $$1.a($$14, cyq.qV.o().a(dfh.d, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(cvo $$0, hz $$1) {
+      dlf $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dfd) {
+         return true;
+      } else {
+         return !$$2.i() && (!$$2.a(cyq.G) || !$$2.u().b()) ? false : ie.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+      }
    }
 }

@@ -1,46 +1,18 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
 public class evz {
-   private static final Logger a = LogUtils.getLogger();
-   private final evr b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   public evz(evr $$0) {
-      this.b = $$0;
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   public void a(fdm $$0) {
-      if (!this.b.af() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new fgl($$0));
-         this.d = true;
-      }
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
-      }
-
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
-      }
-   }
-
-   private boolean b() {
-      try {
-         return era.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (esn var2) {
-         return false;
-      }
+   public static void a(long $$0, String $$1) {
+      a.put($$0, $$1);
    }
 }

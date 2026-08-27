@@ -1,64 +1,55 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fuf extends fua {
+   private final ftv a;
 
-public class fuf {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 4;
-   private final Queue<fue> c;
-   private volatile int d;
-
-   private fuf(List<fue> $$0) {
-      this.c = Queues.newArrayDeque($$0);
-      this.d = this.c.size();
+   fuf(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftv $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$7;
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.b($$7);
+      this.u = 0.0F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
-   public static fuf a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / fue.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<fue> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new fue());
-         }
-      } catch (OutOfMemoryError var7) {
-         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
-      }
-
-      return new fuf($$3);
+   @Override
+   public fte b() {
+      return fte.b;
    }
 
-   @Nullable
-   public fue a() {
-      fue $$0 = this.c.poll();
-      if ($$0 != null) {
-         this.d = this.c.size();
-         return $$0;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      int $$0 = 60 - this.t;
+      if (this.t-- <= 0) {
+         this.k();
       } else {
-         return null;
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         float $$1 = (float)$$0 * 0.001F;
+         this.b($$1, $$1);
+         this.a(this.a.a($$0 % 4, 4));
       }
    }
 
-   public void a(fue $$0) {
-      this.c.add($$0);
-      this.d = this.c.size();
-   }
+   public static class a implements ftd<kc> {
+      private final ftv a;
 
-   public boolean b() {
-      return this.c.isEmpty();
-   }
+      public a(ftv $$0) {
+         this.a = $$0;
+      }
 
-   public int c() {
-      return this.d;
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fuf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

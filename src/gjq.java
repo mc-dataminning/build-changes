@@ -1,59 +1,17 @@
-import java.util.concurrent.locks.LockSupport;
+public abstract class gjq extends gjp implements gki {
+   private boolean n;
 
-public class gjq extends bis<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
-
-   public gjq() {
-      super("Sound executor");
-   }
-
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
+   protected gjq(atj $$0, atl $$1, awo $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected Runnable f(Runnable $$0) {
-      return $$0;
+   public boolean m() {
+      return this.n;
    }
 
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
-
-   @Override
-   protected Thread aw() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.c(() -> this.b);
-      }
-   }
-
-   @Override
-   protected void bv() {
-      LockSupport.park("waiting for tasks");
-   }
-
-   public void a() {
-      this.b = true;
-      this.a.interrupt();
-
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
-      }
-
-      this.bt();
-      this.b = false;
-      this.a = this.b();
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

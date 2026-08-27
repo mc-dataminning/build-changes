@@ -1,241 +1,46 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.Arrays;
+import javax.crypto.SecretKey;
 
-public class ahh implements Comparable<ahh> {
-   public static final Codec<ahh> a = Codec.STRING.comapFlatMap(ahh::b, ahh::toString).stable();
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vg.c("argument.id.invalid"));
-   public static final char b = ':';
-   public static final String c = "minecraft";
-   public static final String d = "realms";
-   private final String f;
-   private final String g;
+public class ahh implements xx<ahe> {
+   public static final xo<uq, ahh> a = xx.a(ahh::a, ahh::new);
+   private final byte[] b;
+   private final byte[] c;
 
-   protected ahh(String $$0, String $$1, @Nullable ahh.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
+   public ahh(SecretKey $$0, PublicKey $$1, byte[] $$2) throws avg {
+      this.b = avf.a($$1, $$0.getEncoded());
+      this.c = avf.a($$1, $$2);
    }
 
-   public ahh(String $$0, String $$1) {
-      this(c($$0, $$1), d($$0, $$1), null);
+   private ahh(uq $$0) {
+      this.b = $$0.b();
+      this.c = $$0.b();
    }
 
-   private ahh(String[] $$0) {
-      this($$0[0], $$0[1]);
-   }
-
-   public ahh(String $$0) {
-      this(b($$0, ':'));
-   }
-
-   public static ahh a(String $$0, char $$1) {
-      return new ahh(b($$0, $$1));
-   }
-
-   @Nullable
-   public static ahh a(String $$0) {
-      try {
-         return new ahh($$0);
-      } catch (z var2) {
-         return null;
-      }
-   }
-
-   @Nullable
-   public static ahh a(String $$0, String $$1) {
-      try {
-         return new ahh($$0, $$1);
-      } catch (z var3) {
-         return null;
-      }
-   }
-
-   protected static String[] b(String $$0, char $$1) {
-      String[] $$2 = new String[]{"minecraft", $$0};
-      int $$3 = $$0.indexOf($$1);
-      if ($$3 >= 0) {
-         $$2[1] = $$0.substring($$3 + 1);
-         if ($$3 >= 1) {
-            $$2[0] = $$0.substring(0, $$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   public static DataResult<ahh> b(String $$0) {
-      try {
-         return DataResult.success(new ahh($$0));
-      } catch (z var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
-      }
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.f;
-   }
-
-   public ahh c(String $$0) {
-      return new ahh(this.f, d(this.f, $$0), null);
-   }
-
-   public ahh a(UnaryOperator<String> $$0) {
-      return this.c($$0.apply(this.g));
-   }
-
-   public ahh d(String $$0) {
-      return this.c($$0 + this.g);
-   }
-
-   public ahh e(String $$0) {
-      return this.c(this.g + $$0);
+   private void a(uq $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public String toString() {
-      return this.f + ":" + this.g;
+   public xz<ahh> a() {
+      return ahc.h;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof ahh $$1) ? false : this.f.equals($$1.f) && this.g.equals($$1.g);
-      }
+   public void a(ahe $$0) {
+      $$0.a(this);
    }
 
-   @Override
-   public int hashCode() {
-      return 31 * this.f.hashCode() + this.g.hashCode();
+   public SecretKey a(PrivateKey $$0) throws avg {
+      return avf.a($$0, this.b);
    }
 
-   public int a(ahh $$0) {
-      int $$1 = this.g.compareTo($$0.g);
-      if ($$1 == 0) {
-         $$1 = this.f.compareTo($$0.f);
-      }
-
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.f + "." + this.g;
-   }
-
-   public String e() {
-      return this.f.equals("minecraft") ? this.g : this.d();
-   }
-
-   public String f(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String b(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   public static ahh a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-
+   public boolean a(byte[] $$0, PrivateKey $$1) {
       try {
-         return new ahh($$2);
-      } catch (z var4) {
-         $$0.setCursor($$1);
-         throw e.createWithContext($$0);
-      }
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean g(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean h(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static String c(String $$0, String $$1) {
-      if (!h($$0)) {
-         throw new z("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
-      }
-   }
-
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
-   }
-
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
-   }
-
-   public static boolean i(String $$0) {
-      String[] $$1 = b($$0, ':');
-      return h(StringUtils.isEmpty($$1[0]) ? "minecraft" : $$1[0]) && g($$1[1]);
-   }
-
-   private static String d(String $$0, String $$1) {
-      if (!g($$1)) {
-         throw new z("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
-      }
-   }
-
-   protected interface a {
-   }
-
-   public static class b implements JsonDeserializer<ahh>, JsonSerializer<ahh> {
-      public ahh a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new ahh(auf.a($$0, "location"));
-      }
-
-      public JsonElement a(ahh $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
+         return Arrays.equals($$0, avf.b($$1, this.c));
+      } catch (avg var4) {
+         return false;
       }
    }
 }

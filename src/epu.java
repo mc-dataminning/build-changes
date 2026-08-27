@@ -1,140 +1,166 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
+import org.slf4j.Logger;
 
 public class epu {
-   @Nullable
-   private static epu a;
-   private final int b;
-   private final int c;
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 4;
+   public static final int a = 1;
    private final int d;
-   private final int e;
-   private final int f;
-   private final boolean g;
-   private final boolean h;
+   private final AtomicBoolean e = new AtomicBoolean(true);
+   private int f = 16384;
+   @Nullable
+   private gld g;
 
-   private epu(boolean $$0, boolean $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.g = $$0;
-      this.b = $$2;
-      this.d = $$3;
-      this.c = $$4;
-      this.e = $$5;
-      this.h = $$1;
-      this.f = $$6;
+   @Nullable
+   static epu a() {
+      int[] $$0 = new int[1];
+      AL10.alGenSources($$0);
+      return epz.a("Allocate new source") ? null : new epu($$0[0]);
    }
 
-   public epu() {
-      this(false, true, 1, 0, 1, 0, 32774);
+   private epu(int $$0) {
+      this.d = $$0;
    }
 
-   public epu(int $$0, int $$1, int $$2) {
-      this(false, false, $$0, $$1, $$0, $$1, $$2);
-   }
-
-   public epu(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      this(true, false, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void a() {
-      if (!this.equals(a)) {
-         if (a == null || this.h != a.b()) {
-            a = this;
-            if (this.h) {
-               RenderSystem.disableBlend();
-               return;
+   public void b() {
+      if (this.e.compareAndSet(true, false)) {
+         AL10.alSourceStop(this.d);
+         epz.a("Stop");
+         if (this.g != null) {
+            try {
+               this.g.close();
+            } catch (IOException var2) {
+               b.error("Failed to close audio stream", var2);
             }
 
-            RenderSystem.enableBlend();
+            this.l();
+            this.g = null;
          }
 
-         RenderSystem.blendEquation(this.f);
-         if (this.g) {
-            RenderSystem.blendFuncSeparate(this.b, this.d, this.c, this.e);
-         } else {
-            RenderSystem.blendFunc(this.b, this.d);
+         AL10.alDeleteSources(new int[]{this.d});
+         epz.a("Cleanup");
+      }
+   }
+
+   public void c() {
+      AL10.alSourcePlay(this.d);
+   }
+
+   private int k() {
+      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
+   }
+
+   public void d() {
+      if (this.k() == 4114) {
+         AL10.alSourcePause(this.d);
+      }
+   }
+
+   public void e() {
+      if (this.k() == 4115) {
+         AL10.alSourcePlay(this.d);
+      }
+   }
+
+   public void f() {
+      if (this.e.get()) {
+         AL10.alSourceStop(this.d);
+         epz.a("Stop");
+      }
+   }
+
+   public boolean g() {
+      return this.k() == 4114;
+   }
+
+   public boolean h() {
+      return this.k() == 4116;
+   }
+
+   public void a(ens $$0) {
+      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.c, (float)$$0.d, (float)$$0.e});
+   }
+
+   public void a(float $$0) {
+      AL10.alSourcef(this.d, 4099, $$0);
+   }
+
+   public void a(boolean $$0) {
+      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
+   }
+
+   public void b(float $$0) {
+      AL10.alSourcef(this.d, 4106, $$0);
+   }
+
+   public void i() {
+      AL10.alSourcei(this.d, 53248, 0);
+   }
+
+   public void c(float $$0) {
+      AL10.alSourcei(this.d, 53248, 53251);
+      AL10.alSourcef(this.d, 4131, $$0);
+      AL10.alSourcef(this.d, 4129, 1.0F);
+      AL10.alSourcef(this.d, 4128, 0.0F);
+   }
+
+   public void b(boolean $$0) {
+      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
+   }
+
+   public void a(eqa $$0) {
+      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
+   }
+
+   public void a(gld $$0) {
+      this.g = $$0;
+      AudioFormat $$1 = $$0.a();
+      this.f = a($$1, 1);
+      this.a(4);
+   }
+
+   private static int a(AudioFormat $$0, int $$1) {
+      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
+   }
+
+   private void a(int $$0) {
+      if (this.g != null) {
+         try {
+            for (int $$1 = 0; $$1 < $$0; $$1++) {
+               ByteBuffer $$2 = this.g.a(this.f);
+               if ($$2 != null) {
+                  new eqa($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
+               }
+            }
+         } catch (IOException var4) {
+            b.error("Failed to read from audio stream", var4);
          }
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof epu $$1)) {
-         return false;
-      } else if (this.f != $$1.f) {
-         return false;
-      } else if (this.e != $$1.e) {
-         return false;
-      } else if (this.d != $$1.d) {
-         return false;
-      } else if (this.h != $$1.h) {
-         return false;
-      } else if (this.g != $$1.g) {
-         return false;
-      } else {
-         return this.c != $$1.c ? false : this.b == $$1.b;
+   public void j() {
+      if (this.g != null) {
+         int $$0 = this.l();
+         this.a($$0);
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b;
-      $$0 = 31 * $$0 + this.c;
-      $$0 = 31 * $$0 + this.d;
-      $$0 = 31 * $$0 + this.e;
-      $$0 = 31 * $$0 + this.f;
-      $$0 = 31 * $$0 + (this.g ? 1 : 0);
-      return 31 * $$0 + (this.h ? 1 : 0);
-   }
-
-   public boolean b() {
-      return this.h;
-   }
-
-   public static int a(String $$0) {
-      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
-      if ("add".equals($$1)) {
-         return 32774;
-      } else if ("subtract".equals($$1)) {
-         return 32778;
-      } else if ("reversesubtract".equals($$1)) {
-         return 32779;
-      } else if ("reverse_subtract".equals($$1)) {
-         return 32779;
-      } else if ("min".equals($$1)) {
-         return 32775;
-      } else {
-         return "max".equals($$1) ? 32776 : 32774;
+   private int l() {
+      int $$0 = AL10.alGetSourcei(this.d, 4118);
+      if ($$0 > 0) {
+         int[] $$1 = new int[$$0];
+         AL10.alSourceUnqueueBuffers(this.d, $$1);
+         epz.a("Unqueue buffers");
+         AL10.alDeleteBuffers($$1);
+         epz.a("Remove processed buffers");
       }
-   }
 
-   public static int b(String $$0) {
-      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
-      $$1 = $$1.replaceAll("_", "");
-      $$1 = $$1.replaceAll("one", "1");
-      $$1 = $$1.replaceAll("zero", "0");
-      $$1 = $$1.replaceAll("minus", "-");
-      if ("0".equals($$1)) {
-         return 0;
-      } else if ("1".equals($$1)) {
-         return 1;
-      } else if ("srccolor".equals($$1)) {
-         return 768;
-      } else if ("1-srccolor".equals($$1)) {
-         return 769;
-      } else if ("dstcolor".equals($$1)) {
-         return 774;
-      } else if ("1-dstcolor".equals($$1)) {
-         return 775;
-      } else if ("srcalpha".equals($$1)) {
-         return 770;
-      } else if ("1-srcalpha".equals($$1)) {
-         return 771;
-      } else if ("dstalpha".equals($$1)) {
-         return 772;
-      } else {
-         return "1-dstalpha".equals($$1) ? 773 : -1;
-      }
+      return $$0;
    }
 }

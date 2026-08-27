@@ -1,62 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cxt extends cvr {
-   public static final MapCodec<cxt> d = b(cxt::new);
-   private static final float e = 0.05F;
-   private static final float f = 0.1F;
+public class cxt extends cxf {
+   public static final MapCodec<cxt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cnn.q.fieldOf("color").forGetter(cxf::b), u()).apply($$0, cxt::new));
+   public static final dmf b = dlv.ba;
+   private static final Map<cnn, cyo> c = Maps.newHashMap();
+   private static final eol d = cyo.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<cxt> a() {
+      return a;
+   }
+
+   public cxt(cnn $$0, dle.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
+   }
+
+   @Override
+   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
+      return $$1.a_($$2.d()).e();
+   }
+
+   @Override
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
       return d;
    }
 
-   public cxt(djo.d $$0) {
-      super($$0, jd.c);
+   @Override
+   public dlf a(crg $$0) {
+      return this.o().a(b, Integer.valueOf(dml.a($$0.i() + 180.0F)));
    }
 
    @Override
-   public boolean d(djp $$0) {
-      return false;
-   }
-
-   protected static boolean a(ctx $$0, cuw.c $$1) {
-      if ($$1 == cuw.c.b) {
-         return $$0.F_().i() < 0.05F;
-      } else {
-         return $$1 == cuw.c.c ? $$0.F_().i() < 0.1F : false;
-      }
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      return $$1 == ie.a && !$$0.a($$3, $$4) ? cyq.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(djp $$0, ctx $$1, hx $$2, cuw.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == cuw.c.b) {
-            $$1.b($$2, cxa.fu.o());
-            $$1.a(null, dnz.c, $$2);
-         } else if ($$3 == cuw.c.c) {
-            $$1.b($$2, cxa.fw.o());
-            $$1.a(null, dnz.c, $$2);
-         }
-      }
+   protected dlf a(dlf $$0, dfa $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected boolean a(eey $$0) {
-      return true;
+   protected dlf a(dlf $$0, ddk $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected void a(djp $$0, ctx $$1, hx $$2, eey $$3) {
-      if ($$3 == efa.c) {
-         djp $$4 = cxa.fu.o();
-         $$1.b($$2, $$4);
-         $$1.a(dnz.c, $$2, dnz.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == efa.e) {
-         djp $$5 = cxa.fv.o();
-         $$1.b($$2, $$5);
-         $$1.a(dnz.c, $$2, dnz.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(b);
+   }
+
+   public static cyo a(cnn $$0) {
+      return c.getOrDefault($$0, cyq.iJ);
    }
 }

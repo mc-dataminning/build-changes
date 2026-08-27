@@ -1,60 +1,32 @@
-public class emb {
-   public static final emb a = new emb(0.0F, 0.0F);
-   public static final emb b = new emb(1.0F, 1.0F);
-   public static final emb c = new emb(1.0F, 0.0F);
-   public static final emb d = new emb(-1.0F, 0.0F);
-   public static final emb e = new emb(0.0F, 1.0F);
-   public static final emb f = new emb(0.0F, -1.0F);
-   public static final emb g = new emb(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final emb h = new emb(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-   public emb(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
+public record emb(Optional<cc> b) implements elu {
+   public static final Codec<emb> a = RecordCodecBuilder.create($$0 -> $$0.group(avp.a(cc.a, "predicate").forGetter(emb::c)).apply($$0, emb::new));
+
+   @Override
+   public elv b() {
+      return elw.k;
    }
 
-   public emb a(float $$0) {
-      return new emb(this.i * $$0, this.j * $$0);
+   @Override
+   public Set<eld<?>> a() {
+      return ImmutableSet.of(elg.i);
    }
 
-   public float a(emb $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
+   public boolean a(eiv $$0) {
+      coz $$1 = $$0.c(elg.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
    }
 
-   public emb b(emb $$0) {
-      return new emb(this.i + $$0.i, this.j + $$0.j);
+   public static elu.a a(cc.a $$0) {
+      return () -> new emb(Optional.of($$0.b()));
    }
 
-   public emb b(float $$0) {
-      return new emb(this.i + $$0, this.j + $$0);
-   }
-
-   public boolean c(emb $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
-   }
-
-   public emb a() {
-      float $$0 = aup.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new emb(this.i / $$0, this.j / $$0);
-   }
-
-   public float b() {
-      return aup.c(this.i * this.i + this.j * this.j);
-   }
-
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(emb $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public emb d() {
-      return new emb(-this.i, -this.j);
+   public Optional<cc> c() {
+      return this.b;
    }
 }

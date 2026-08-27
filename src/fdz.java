@@ -1,133 +1,106 @@
-enum fdz {
-   a(
-      new fdz.a(
-         new ahh("advancements/tab_above_left_selected"), new ahh("advancements/tab_above_middle_selected"), new ahh("advancements/tab_above_right_selected")
-      ),
-      new fdz.a(new ahh("advancements/tab_above_left"), new ahh("advancements/tab_above_middle"), new ahh("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fdz.a(
-         new ahh("advancements/tab_below_left_selected"), new ahh("advancements/tab_below_middle_selected"), new ahh("advancements/tab_below_right_selected")
-      ),
-      new fdz.a(new ahh("advancements/tab_below_left"), new ahh("advancements/tab_below_middle"), new ahh("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fdz.a(
-         new ahh("advancements/tab_left_top_selected"), new ahh("advancements/tab_left_middle_selected"), new ahh("advancements/tab_left_bottom_selected")
-      ),
-      new fdz.a(new ahh("advancements/tab_left_top"), new ahh("advancements/tab_left_middle"), new ahh("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fdz.a(
-         new ahh("advancements/tab_right_top_selected"), new ahh("advancements/tab_right_middle_selected"), new ahh("advancements/tab_right_bottom_selected")
-      ),
-      new fdz.a(new ahh("advancements/tab_right_top"), new ahh("advancements/tab_right_middle"), new ahh("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import com.ibm.icu.text.Collator;
+import java.util.Comparator;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   private final fdz.a e;
-   private final fdz.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fdz extends ffe {
+   private static final vq a = vq.c("createWorld.customize.buffet.biome");
+   private final ffe b;
+   private final Consumer<ij<cwm>> c;
+   final iv<cwm> k;
+   private fdz.a l;
+   ij<cwm> m;
+   private ezh n;
 
-   private fdz(fdz.a $$0, fdz.a $$1, int $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fdz(ffe $$0, fkc $$1, Consumer<ij<cwm>> $$2) {
+      super(vq.c("createWorld.customize.buffet.title"));
+      this.b = $$0;
+      this.c = $$2;
+      this.k = $$1.a().d(kg.at);
+      ij<cwm> $$3 = this.k.b(cwt.b).or(() -> this.k.h().findAny()).orElseThrow();
+      this.m = $$1.d().a().c().c().stream().findFirst().orElse($$3);
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   public void d() {
+      this.f.a(this.b);
    }
 
-   public void a(exe $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fdz.a $$5 = $$3 ? this.e : this.f;
-      ahh $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
-      } else {
-         $$6 = $$5.b();
+   @Override
+   protected void aQ_() {
+      this.l = this.d(new fdz.a());
+      this.n = this.d(ezh.a(vp.d, $$0 -> {
+         this.c.accept(this.m);
+         this.f.a(this.b);
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
+      this.d(ezh.a(vp.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.l.a(this.l.l().stream().filter($$0 -> Objects.equals($$0.b, this.m)).findFirst().orElse(null));
+   }
+
+   void o() {
+      this.n.j = this.l.i() != null;
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      $$0.a(this.i, a, this.g / 2, 28, 10526880);
+   }
+
+   @Override
+   public void b(eyu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   class a extends fad<fdz.a.a> {
+      a() {
+         super(fdz.this.f, fdz.this.g, fdz.this.h - 77, 40, 16);
+         Collator $$0 = Collator.getInstance(Locale.getDefault());
+         fdz.this.k.h().map($$0x -> new fdz.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
       }
 
-      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
+      public void a(@Nullable fdz.a.a $$0) {
+         super.a($$0);
+         if ($$0 != null) {
+            fdz.this.m = $$0.b;
+         }
 
-   public void a(exe $$0, int $$1, int $$2, int $$3, cng $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
+         fdz.this.o();
       }
 
-      $$0.b($$4, $$5, $$6);
-   }
+      class a extends fad.a<fdz.a.a> {
+         final ij.c<cwm> b;
+         final vq c;
 
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+         public a(ij.c<cwm> $$0) {
+            this.b = $$0;
+            aiy $$1 = $$0.h().a();
+            String $$2 = $$1.f("biome");
+            if (sr.a().b($$2)) {
+               this.c = vq.c($$2);
+            } else {
+               this.c = vq.b($$1.toString());
+            }
+         }
+
+         @Override
+         public vq a() {
+            return vq.a("narrator.select", this.c);
+         }
+
+         @Override
+         public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(fdz.this.i, this.c, $$3 + 5, $$2 + 2, 16777215);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
       }
-   }
-
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
-      }
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
-   }
-
-   static record a(ahh a, ahh b, ahh c) {
    }
 }

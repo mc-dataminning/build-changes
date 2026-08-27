@@ -1,35 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class eiq extends eir {
-   public static final Codec<eiq> a = RecordCodecBuilder.create($$0 -> a($$0).and(ehe.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, eiq::new));
-   private final ehe b;
+public interface eiq extends eis {
+   @Override
+   String e();
 
-   private eiq(List<eke> $$0, ehe $$1) {
-      super($$0);
-      this.b = $$1;
-   }
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
 
    @Override
-   public eit b() {
-      return eiu.q;
+   default void a(p $$0, cvp $$1) {
+      eis.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   @Override
-   public Set<ejn<?>> a() {
-      return this.b.a();
-   }
+   int f();
 
-   @Override
-   public cng a(cng $$0, ehf $$1) {
-      int $$2 = this.b.a($$1, $$0.L());
-      $$0.f($$2);
-      return $$0;
-   }
+   void a(int var1);
 
-   public static eir.a<?> a(ehe $$0) {
-      return a($$1 -> new eiq($$1, $$0));
-   }
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
+
+   @Nullable
+   UUID v();
+
+   void a(UUID var1);
+
+   cvk k();
+
+   void a(dmw.c var1);
+
+   dmw.c p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(cvk var1);
+
+   enf<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
 }

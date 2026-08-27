@@ -1,28 +1,58 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class akq {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.save.alreadyOn"));
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(dv.a("config").then(dv.a("target", eh.c()).executes($$0x -> a((du)$$0x.getSource(), eh.e($$0x, "target"))))))
+            .then(
+               dv.a("unconfig")
+                  .then(
+                     dv.a("target", fi.a())
+                        .suggests(($$0x, $$1) -> dz.b(a(((du)$$0x.getSource()).l()), $$1))
+                        .executes($$0x -> a((du)$$0x.getSource(), fi.a($$0x, "target")))
+                  )
+            )
+      );
+   }
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
-         ds $$1 = (ds)$$0x.getSource();
-         boolean $$2 = false;
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
 
-         for (ane $$3 : $$1.l().H()) {
-            if ($$3 != null && $$3.e) {
-               $$3.e = false;
-               $$2 = true;
+      for (uo $$2 : $$0.af().e()) {
+         if ($$2.k() instanceof aps $$3) {
+            $$1.add($$3.k().getId().toString());
+         }
+      }
+
+      return $$1;
+   }
+
+   private static int a(du $$0, aow $$1) {
+      GameProfile $$2 = $$1.fS();
+      $$1.d.o();
+      $$0.a(() -> vq.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      return 1;
+   }
+
+   private static int a(du $$0, UUID $$1) {
+      for (uo $$2 : $$0.l().af().e()) {
+         uw var5 = $$2.k();
+         if (var5 instanceof aps) {
+            aps $$3 = (aps)var5;
+            if ($$3.k().getId().equals($$1)) {
+               $$3.n();
             }
          }
+      }
 
-         if (!$$2) {
-            throw a.create();
-         } else {
-            $$1.a(() -> vg.c("commands.save.enabled"), true);
-            return 1;
-         }
-      }));
+      $$0.b(vq.b("Can't find player to unconfig"));
+      return 0;
    }
 }

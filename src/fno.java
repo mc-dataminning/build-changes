@@ -1,83 +1,99 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+public class fno extends fmk<ces> {
+   private final fpc a;
+   private final fpc b;
+   private final fpc f;
+   private final fpc g;
+   private final fpc h;
+   private final fpc i;
+   private final fpc j;
+   private final fpc k;
 
-public class fno {
-   private static final Set<ic> a = EnumSet.allOf(ic.class);
-   private final List<fnm> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
-
-   public fno a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   public fno(fpc $$0) {
+      this.a = $$0;
+      this.k = $$0.b("neck");
+      this.b = this.k.b("head");
+      this.f = this.b.b("mouth");
+      this.g = $$0.b("right_hind_leg");
+      this.h = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_front_leg");
+      this.j = $$0.b("left_front_leg");
    }
 
-   public fno a() {
-      return this.a(true);
+   public static fpi b() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      int $$2 = 16;
+      fpl $$3 = $$1.a("neck", fph.c().a(68, 73).a(-5.0F, -1.0F, -18.0F, 10.0F, 10.0F, 18.0F), fpe.a(0.0F, -7.0F, 5.5F));
+      fpl $$4 = $$3.a(
+         "head", fph.c().a(0, 0).a(-8.0F, -20.0F, -14.0F, 16.0F, 20.0F, 16.0F).a(0, 0).a(-2.0F, -6.0F, -18.0F, 4.0F, 8.0F, 4.0F), fpe.a(0.0F, 16.0F, -17.0F)
+      );
+      $$4.a("right_horn", fph.c().a(74, 55).a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), fpe.a(-10.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
+      $$4.a("left_horn", fph.c().a(74, 55).a().a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), fpe.a(8.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
+      $$4.a("mouth", fph.c().a(0, 36).a(-8.0F, 0.0F, -16.0F, 16.0F, 3.0F, 16.0F), fpe.a(0.0F, -2.0F, 2.0F));
+      $$1.a(
+         "body",
+         fph.c().a(0, 55).a(-7.0F, -10.0F, -7.0F, 14.0F, 16.0F, 20.0F).a(0, 91).a(-6.0F, 6.0F, -7.0F, 12.0F, 13.0F, 18.0F),
+         fpe.a(0.0F, 1.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("right_hind_leg", fph.c().a(96, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fpe.a(-8.0F, -13.0F, 18.0F));
+      $$1.a("left_hind_leg", fph.c().a(96, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fpe.a(8.0F, -13.0F, 18.0F));
+      $$1.a("right_front_leg", fph.c().a(64, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fpe.a(-8.0F, -13.0F, -5.0F));
+      $$1.a("left_front_leg", fph.c().a(64, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fpe.a(8.0F, -13.0F, -5.0F));
+      return fpi.a($$0, 128, 128);
    }
 
-   public fno a(boolean $$0) {
-      this.e = $$0;
-      return this;
+   @Override
+   public fpc a() {
+      return this.a;
    }
 
-   public fno a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fnn $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new fnm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
+   public void a(ces $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      float $$6 = 0.4F * $$2;
+      this.g.e = awh.b($$1 * 0.6662F) * $$6;
+      this.h.e = awh.b($$1 * 0.6662F + (float) Math.PI) * $$6;
+      this.i.e = awh.b($$1 * 0.6662F + (float) Math.PI) * $$6;
+      this.j.e = awh.b($$1 * 0.6662F) * $$6;
    }
 
-   public fno a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new fnm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fnn.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fno a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new fnm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fnn.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fno a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ic> $$6) {
-      this.b.add(new fnm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fnn.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public fno a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new fnm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fnn.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fno a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fnn $$7) {
-      this.b.add(new fnm($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fno a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new fnm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fnn.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fno a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fnn $$6, float $$7, float $$8) {
-      this.b.add(new fnm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public fno a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fnn $$6) {
-      this.b.add(new fnm(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<fnm> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static fno c() {
-      return new fno();
+   public void a(ces $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = $$0.gg();
+      int $$5 = $$0.gq();
+      int $$6 = 20;
+      int $$7 = $$0.w();
+      int $$8 = 10;
+      if ($$7 > 0) {
+         float $$9 = awh.e((float)$$7 - $$3, 10.0F);
+         float $$10 = (1.0F + $$9) * 0.5F;
+         float $$11 = $$10 * $$10 * $$10 * 12.0F;
+         float $$12 = $$11 * awh.a(this.k.e);
+         this.k.d = -6.5F + $$11;
+         this.k.c = -7.0F - $$12;
+         float $$13 = awh.a(((float)$$7 - $$3) / 10.0F * (float) Math.PI * 0.25F);
+         this.f.e = (float) (Math.PI / 2) * $$13;
+         if ($$7 > 5) {
+            this.f.e = awh.a(((float)(-4 + $$7) - $$3) / 4.0F) * (float) Math.PI * 0.4F;
+         } else {
+            this.f.e = (float) (Math.PI / 20) * awh.a((float) Math.PI * ((float)$$7 - $$3) / 10.0F);
+         }
+      } else {
+         float $$14 = -1.0F;
+         float $$15 = -1.0F * awh.a(this.k.e);
+         this.k.b = 0.0F;
+         this.k.c = -7.0F - $$15;
+         this.k.d = 5.5F;
+         boolean $$16 = $$4 > 0;
+         this.k.e = $$16 ? 0.21991149F : 0.0F;
+         this.f.e = (float) Math.PI * ($$16 ? 0.05F : 0.01F);
+         if ($$16) {
+            double $$17 = (double)$$4 / 40.0;
+            this.k.b = (float)Math.sin($$17 * 10.0) * 3.0F;
+         } else if ($$5 > 0) {
+            float $$18 = awh.a(((float)(20 - $$5) - $$3) / 20.0F * (float) Math.PI * 0.25F);
+            this.f.e = (float) (Math.PI / 2) * $$18;
+         }
+      }
    }
 }

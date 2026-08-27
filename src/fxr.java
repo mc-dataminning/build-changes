@@ -1,37 +1,30 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+public class fxr implements fxm<diz> {
+   private static final float a = 0.375F;
+   private final gbr b;
 
-public class fxr implements fxe.a {
-   private static final int a = 60;
-   private final Set<iz> b = Sets.newHashSet();
-
-   fxr() {
+   public fxr(fxn.a $$0) {
+      this.b = $$0.d();
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(diz $$0, float $$1, esa $$2, fvm $$3, int $$4, int $$5) {
+      ie $$6 = $$0.r().c(czc.f);
+      is<coz> $$7 = $$0.c();
+      int $$8 = (int)$$0.aE_().a();
 
-   public void a(iz $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(iz $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
-      hx $$5 = hx.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.q(), 60.0)) {
-            a($$0, $$1, $$3x);
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         coz $$10 = $$7.get($$9);
+         if ($$10 != coz.h) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            ie $$11 = ie.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, cow.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
+            $$2.b();
          }
-      });
-   }
-
-   private static void a(eqk $$0, ftt $$1, iz $$2) {
-      fxe.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
+      }
    }
 }

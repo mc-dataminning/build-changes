@@ -1,24 +1,9 @@
-public class xu implements xg<xr> {
-   private final long a;
-
-   public xu(long $$0) {
-      this.a = $$0;
-   }
-
-   public void a(xr $$0) {
-      $$0.a(this);
-   }
-
-   public xu(uj $$0) {
-      this.a = $$0.readLong();
+public abstract class xu<T extends uw> implements xx<T> {
+   @Override
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.b(this.a);
-   }
-
-   public long a() {
-      return this.a;
-   }
+   public abstract xz<? extends xu<T>> a();
 }

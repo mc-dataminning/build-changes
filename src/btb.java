@@ -1,95 +1,22 @@
-public abstract class btb extends btk {
-   protected bmq d;
-   protected hx e = hx.b;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public btb(bmq $$0) {
-      this.d = $$0;
-      if (!bxi.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
-   }
+public class btb {
+   private static final int a = 36;
 
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         djp $$0 = this.d.dL().a_(this.e);
-         if (!($$0.b() instanceof cze)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(cze.c);
-         }
-      }
-   }
+   public static bpx<bog> a() {
+      return btj.a(
+         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$0 -> $$0.group($$0.a(bxh.x), $$0.a(bxh.y), $$0.a(bxh.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bog>a($$2).filter($$1xx -> $$1xx.f((bno)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dO().a($$4.Y(), $$4.X());
+                     }
 
-   protected void a(boolean $$0) {
-      if (this.f) {
-         djp $$1 = this.d.dL().a_(this.e);
-         if ($$1.b() instanceof cze) {
-            ((cze)$$1.b()).a(this.d, this.d.dL(), $$1, this.e, $$0);
-         }
-      }
-   }
-
-   @Override
-   public boolean a() {
-      if (!bxi.a(this.d)) {
-         return false;
-      } else if (!this.d.P) {
-         return false;
-      } else {
-         bvx $$0 = (bvx)this.d.N();
-         efo $$1 = $$0.j();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               efm $$3 = $$1.a($$2);
-               this.e = new hx($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.ds(), (double)this.e.w()) > 2.25)) {
-                  this.f = cze.a(this.d.dL(), this.e);
-                  if (this.f) {
                      return true;
-                  }
-               }
-            }
-
-            this.e = this.d.dl().c();
-            this.f = cze.a(this.d.dL(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a;
-   }
-
-   @Override
-   public void c() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dq());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dw());
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dq());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dw());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
-      }
+                  }))
+      );
    }
 }

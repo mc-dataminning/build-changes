@@ -1,40 +1,104 @@
-public class dpo implements don {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final dpa i = new dpa(this);
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-   public dpo(long $$0) {
-      this.b($$0);
+public class dpo implements dps {
+   private final List<dpr> b = Lists.newArrayList();
+   private final Set<dpr> c = Sets.newHashSet();
+   private final List<dpr> d = Lists.newArrayList();
+   private boolean e;
+   private final aov f;
+   private final int g;
+   private final dpo.a h;
+
+   public dpo(aov $$0, int $$1, dpo.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
    @Override
-   public auw d() {
-      return new dpo(this.g());
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
    @Override
-   public dpl e() {
-      return new doz.a(this.g());
+   public void a(dpr $$0) {
+      if (this.e) {
+         this.d.add($$0);
+      } else {
+         this.b.add($$0);
+      }
+
+      aep.a(this.f, $$0);
    }
 
    @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
+   public void b(dpr $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
+      }
+
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
+      }
    }
 
    @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
+   public boolean a(ij<dpp> $$0, ens $$1, dpp.a $$2, dps.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
+
+      try {
+         Iterator<dpr> $$5 = this.b.iterator();
+
+         while ($$5.hasNext()) {
+            dpr $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<ens> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
+               }
+            }
+         }
+      } finally {
+         this.e = false;
+      }
+
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
+      }
+
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
+      }
+
+      return $$4;
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   private static Optional<ens> a(aov $$0, ens $$1, dpr $$2) {
+      Optional<ens> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
+      } else {
+         double $$4 = hz.a($$3.get()).j(hz.a($$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void apply(int var1);
    }
 }

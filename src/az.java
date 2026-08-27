@@ -1,37 +1,62 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class az extends cv<az.a> {
+public class az extends cx<az.a> {
    @Override
    public Codec<az.a> a() {
       return az.a.a;
    }
 
-   public void a(anf $$0, int $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(aow $$0, Collection<? extends bno> $$1) {
+      List<eiv> $$2 = $$1.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bb> b, ck.d c) implements cv.a {
+   public static record a(Optional<bc> b, List<bc> c) implements cx.a {
       public static final Codec<az.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(az.a::a), atx.a(ck.d.d, "level", ck.d.c).forGetter(az.a::c)).apply($$0, az.a::new)
+         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(az.a::a), avp.a(br.b.listOf(), "victims", List.of()).forGetter(az.a::b)).apply($$0, az.a::new)
       );
 
-      public static an<az.a> b() {
-         return am.m.a(new az.a(Optional.empty(), ck.d.c));
+      public static an<az.a> a(br.a... $$0) {
+         return am.F.a(new az.a(Optional.empty(), br.a($$0)));
       }
 
-      public static an<az.a> a(ck.d $$0) {
-         return am.m.a(new az.a(Optional.empty(), $$0));
-      }
+      public boolean a(Collection<? extends eiv> $$0) {
+         for (bc $$1 : this.c) {
+            boolean $$2 = false;
 
-      public boolean a(int $$0) {
-         return this.c.d($$0);
+            for (eiv $$3 : $$0) {
+               if ($$1.a($$3)) {
+                  $$2 = true;
+                  break;
+               }
+            }
+
+            if (!$$2) {
+               return false;
+            }
+         }
+
+         return true;
       }
 
       @Override
-      public Optional<bb> a() {
+      public void a(bd $$0) {
+         cx.a.super.a($$0);
+         $$0.a(this.c, ".victims");
+      }
+
+      @Override
+      public Optional<bc> a() {
          return this.b;
+      }
+
+      public List<bc> b() {
+         return this.c;
       }
    }
 }

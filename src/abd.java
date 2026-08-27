@@ -1,37 +1,55 @@
-public class abd implements xg<zb> {
-   private final int a;
-   private final vg b;
+public class abd implements xx<aag> {
+   public static final xo<vb, abd> a = xx.a(abd::a, abd::new);
+   public static final int b = -1;
+   public static final int c = -2;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final coz g;
 
-   public abd(int $$0, vg $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public abd(int $$0, int $$1, int $$2, coz $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3.q();
    }
 
-   public abd(uj $$0) {
-      this.a = $$0.n();
-      this.b = $$0.m();
+   private abd(vb $$0) {
+      this.d = $$0.readByte();
+      this.e = $$0.n();
+      this.f = $$0.readShort();
+      this.g = coz.f.decode($$0);
+   }
+
+   private void a(vb $$0) {
+      $$0.k(this.d);
+      $$0.c(this.e);
+      $$0.l(this.f);
+      coz.f.encode($$0, this.g);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public xz<abd> a() {
+      return aeq.w;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public int b() {
+      return this.d;
    }
 
-   public int a() {
-      return this.a;
+   public int e() {
+      return this.f;
    }
 
-   public vg d() {
-      return this.b;
+   public coz f() {
+      return this.g;
+   }
+
+   public int g() {
+      return this.e;
    }
 }

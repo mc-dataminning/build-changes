@@ -1,91 +1,24 @@
-public class dgv {
-   public static final ahg<dgu> a = a("base");
-   public static final ahg<dgu> b = a("square_bottom_left");
-   public static final ahg<dgu> c = a("square_bottom_right");
-   public static final ahg<dgu> d = a("square_top_left");
-   public static final ahg<dgu> e = a("square_top_right");
-   public static final ahg<dgu> f = a("stripe_bottom");
-   public static final ahg<dgu> g = a("stripe_top");
-   public static final ahg<dgu> h = a("stripe_left");
-   public static final ahg<dgu> i = a("stripe_right");
-   public static final ahg<dgu> j = a("stripe_center");
-   public static final ahg<dgu> k = a("stripe_middle");
-   public static final ahg<dgu> l = a("stripe_downright");
-   public static final ahg<dgu> m = a("stripe_downleft");
-   public static final ahg<dgu> n = a("small_stripes");
-   public static final ahg<dgu> o = a("cross");
-   public static final ahg<dgu> p = a("straight_cross");
-   public static final ahg<dgu> q = a("triangle_bottom");
-   public static final ahg<dgu> r = a("triangle_top");
-   public static final ahg<dgu> s = a("triangles_bottom");
-   public static final ahg<dgu> t = a("triangles_top");
-   public static final ahg<dgu> u = a("diagonal_left");
-   public static final ahg<dgu> v = a("diagonal_up_right");
-   public static final ahg<dgu> w = a("diagonal_up_left");
-   public static final ahg<dgu> x = a("diagonal_right");
-   public static final ahg<dgu> y = a("circle");
-   public static final ahg<dgu> z = a("rhombus");
-   public static final ahg<dgu> A = a("half_vertical");
-   public static final ahg<dgu> B = a("half_horizontal");
-   public static final ahg<dgu> C = a("half_vertical_right");
-   public static final ahg<dgu> D = a("half_horizontal_bottom");
-   public static final ahg<dgu> E = a("border");
-   public static final ahg<dgu> F = a("curly_border");
-   public static final ahg<dgu> G = a("gradient");
-   public static final ahg<dgu> H = a("gradient_up");
-   public static final ahg<dgu> I = a("bricks");
-   public static final ahg<dgu> J = a("globe");
-   public static final ahg<dgu> K = a("creeper");
-   public static final ahg<dgu> L = a("skull");
-   public static final ahg<dgu> M = a("flower");
-   public static final ahg<dgu> N = a("mojang");
-   public static final ahg<dgu> O = a("piglin");
+import com.mojang.serialization.MapCodec;
 
-   private static ahg<dgu> a(String $$0) {
-      return ahg.a(ke.d, new ahh($$0));
+public class dgv extends dgz {
+   public static final MapCodec<dgv> a = b(dgv::new);
+
+   @Override
+   public MapCodec<dgv> a() {
+      return a;
    }
 
-   public static dgu a(it<dgu> $$0) {
-      it.a($$0, a, new dgu("b"));
-      it.a($$0, b, new dgu("bl"));
-      it.a($$0, c, new dgu("br"));
-      it.a($$0, d, new dgu("tl"));
-      it.a($$0, e, new dgu("tr"));
-      it.a($$0, f, new dgu("bs"));
-      it.a($$0, g, new dgu("ts"));
-      it.a($$0, h, new dgu("ls"));
-      it.a($$0, i, new dgu("rs"));
-      it.a($$0, j, new dgu("cs"));
-      it.a($$0, k, new dgu("ms"));
-      it.a($$0, l, new dgu("drs"));
-      it.a($$0, m, new dgu("dls"));
-      it.a($$0, n, new dgu("ss"));
-      it.a($$0, o, new dgu("cr"));
-      it.a($$0, p, new dgu("sc"));
-      it.a($$0, q, new dgu("bt"));
-      it.a($$0, r, new dgu("tt"));
-      it.a($$0, s, new dgu("bts"));
-      it.a($$0, t, new dgu("tts"));
-      it.a($$0, u, new dgu("ld"));
-      it.a($$0, v, new dgu("rd"));
-      it.a($$0, w, new dgu("lud"));
-      it.a($$0, x, new dgu("rud"));
-      it.a($$0, y, new dgu("mc"));
-      it.a($$0, z, new dgu("mr"));
-      it.a($$0, A, new dgu("vh"));
-      it.a($$0, B, new dgu("hh"));
-      it.a($$0, C, new dgu("vhr"));
-      it.a($$0, D, new dgu("hhb"));
-      it.a($$0, E, new dgu("bo"));
-      it.a($$0, F, new dgu("cbo"));
-      it.a($$0, G, new dgu("gra"));
-      it.a($$0, H, new dgu("gru"));
-      it.a($$0, I, new dgu("bri"));
-      it.a($$0, J, new dgu("glb"));
-      it.a($$0, K, new dgu("cre"));
-      it.a($$0, L, new dgu("sku"));
-      it.a($$0, M, new dgu("flo"));
-      it.a($$0, N, new dgu("moj"));
-      return it.a($$0, O, new dgu("pig"));
+   public dgv(dle.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected boolean a_(dlf $$0, cut $$1, hz $$2) {
+      return false;
+   }
+
+   @Override
+   protected int g(dlf $$0, cut $$1, hz $$2) {
+      return $$1.O();
    }
 }

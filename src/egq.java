@@ -1,22 +1,24 @@
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.SignStyle;
-import java.time.temporal.ChronoField;
+import com.google.common.collect.UnmodifiableIterator;
 
 public class egq {
-   public static DateTimeFormatter a() {
-      return new DateTimeFormatterBuilder()
-         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
-         .appendLiteral('-')
-         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.DAY_OF_MONTH, 2)
-         .appendLiteral('_')
-         .appendValue(ChronoField.HOUR_OF_DAY, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
-         .toFormatter();
+   public static final ego a = a("empty", new egm());
+   public static final egn b = a("flowing_water", new egv.a());
+   public static final egn c = a("water", new egv.b());
+   public static final egn d = a("flowing_lava", new egs.a());
+   public static final egn e = a("lava", new egs.b());
+
+   private static <T extends ego> T a(String $$0, T $$1) {
+      return iv.a(kf.c, $$0, $$1);
+   }
+
+   static {
+      for (ego $$0 : kf.c) {
+         UnmodifiableIterator var2 = $$0.f().a().iterator();
+
+         while (var2.hasNext()) {
+            egp $$1 = (egp)var2.next();
+            ego.c.b($$1);
+         }
+      }
    }
 }

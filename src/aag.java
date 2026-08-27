@@ -1,64 +1,220 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-
-public class aag implements xg<zb> {
-   public static final aag.a a = new aag.a(0);
-   public static final aag.a b = new aag.a(1);
-   public static final aag.a c = new aag.a(2);
-   public static final aag.a d = new aag.a(3);
-   public static final aag.a e = new aag.a(4);
-   public static final aag.a f = new aag.a(5);
-   public static final aag.a g = new aag.a(6);
-   public static final aag.a h = new aag.a(7);
-   public static final aag.a i = new aag.a(8);
-   public static final aag.a j = new aag.a(9);
-   public static final aag.a k = new aag.a(10);
-   public static final aag.a l = new aag.a(11);
-   public static final aag.a m = new aag.a(12);
-   public static final aag.a n = new aag.a(13);
-   public static final int o = 0;
-   public static final int p = 101;
-   public static final int q = 102;
-   public static final int r = 103;
-   public static final int s = 104;
-   private final aag.a t;
-   private final float u;
-
-   public aag(aag.a $$0, float $$1) {
-      this.t = $$0;
-      this.u = $$1;
-   }
-
-   public aag(uj $$0) {
-      this.t = (aag.a)aag.a.a.get($$0.readUnsignedByte());
-      this.u = $$0.readFloat();
-   }
-
+public interface aag extends ahq, yd {
    @Override
-   public void a(uj $$0) {
-      $$0.k(this.t.b);
-      $$0.a(this.u);
+   default up b() {
+      return up.b;
    }
 
-   public void a(zb $$0) {
-      $$0.a(this);
-   }
+   void a(aah var1);
 
-   public aag.a a() {
-      return this.t;
-   }
+   void a(aai var1);
 
-   public float d() {
-      return this.u;
-   }
+   void a(adp var1);
 
-   public static class a {
-      static final Int2ObjectMap<aag.a> a = new Int2ObjectOpenHashMap();
-      final int b;
+   void a(aaj var1);
 
-      public a(int $$0) {
-         this.b = $$0;
-         a.put($$0, this);
-      }
-   }
+   void a(abo var1);
+
+   void a(aak var1);
+
+   void a(aco var1);
+
+   void a(aam var1);
+
+   void a(acd var1);
+
+   void a(aan var1);
+
+   void a(aao var1);
+
+   void a(aap var1);
+
+   void a(aec var1);
+
+   void a(acg var1);
+
+   void a(abi var1);
+
+   void a(abh var1);
+
+   void a(acu var1);
+
+   void a(abx var1);
+
+   void a(aba var1);
+
+   void a(abb var1);
+
+   void a(abn var1);
+
+   void a(abc var1);
+
+   void a(abd var1);
+
+   void a(abj var1);
+
+   void a(adk var1);
+
+   void a(adq var1);
+
+   void a(abk var1);
+
+   void a(abm var1);
+
+   void a(abr var1);
+
+   void a(aaw var1);
+
+   void a(abl var1);
+
+   void a(abs var1);
+
+   void a(abw var1);
+
+   void a(abz var1);
+
+   void a(acn var1);
+
+   void a(abt var1);
+
+   void a(acf var1);
+
+   void a(ack var1);
+
+   void a(acl var1);
+
+   void a(acp var1);
+
+   void a(acq var1);
+
+   void a(acs var1);
+
+   void a(act var1);
+
+   void a(ade var1);
+
+   void a(adi var1);
+
+   void a(adj var1);
+
+   void a(adl var1);
+
+   void a(adm var1);
+
+   void a(adn var1);
+
+   void a(ado var1);
+
+   void a(adr var1);
+
+   void a(ads var1);
+
+   void a(acr var1);
+
+   void a(adh var1);
+
+   void a(adv var1);
+
+   void a(adz var1);
+
+   void a(ady var1);
+
+   void a(aef var1);
+
+   void a(aeg var1);
+
+   void a(aeh var1);
+
+   void a(aei var1);
+
+   void a(aek var1);
+
+   void a(ael var1);
+
+   void a(ach var1);
+
+   void a(aci var1);
+
+   void a(acj var1);
+
+   void a(aat var1);
+
+   void a(add var1);
+
+   void a(abp var1);
+
+   void a(acz var1);
+
+   void a(ada var1);
+
+   void a(adb var1);
+
+   void a(adc var1);
+
+   void a(acy var1);
+
+   void a(aed var1);
+
+   void a(aaq var1);
+
+   void a(abe var1);
+
+   void a(aca var1);
+
+   void a(aej var1);
+
+   void a(acv var1);
+
+   void a(ace var1);
+
+   void a(aaz var1);
+
+   void a(aeb var1);
+
+   void a(aay var1);
+
+   void a(aem var1);
+
+   void a(acm var1);
+
+   void a(aee var1);
+
+   void a(abu var1);
+
+   void a(acb var1);
+
+   void a(acc var1);
+
+   void a(aby var1);
+
+   void a(adg var1);
+
+   void a(adt var1);
+
+   void a(adf var1);
+
+   void a(aal var1);
+
+   void a(acx var1);
+
+   void a(adu var1);
+
+   void a(adw var1);
+
+   void a(adx var1);
+
+   void a(aax var1);
+
+   void a(acw var1);
+
+   void a(abf var1);
+
+   void a(aas var1);
+
+   void a(abg var1);
+
+   void a(aea var1);
+
+   void a(aav var1);
+
+   void a(aau var1);
 }

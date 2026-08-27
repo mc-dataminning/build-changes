@@ -1,55 +1,60 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class acg implements xg<zb> {
-   private static final byte a = -128;
-   private final int b;
-   private final List<Pair<bmd, cng>> c;
+public record acg(UUID b, int c, @Nullable wc d, wj.a e, @Nullable vq f, vu g, vm.b h) implements xx<aag> {
+   public static final xo<uq, acg> a = xx.a(acg::a, acg::new);
 
-   public acg(int $$0, List<Pair<bmd, cng>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private acg(uq $$0) {
+      this($$0.p(), $$0.n(), $$0.c(wc::a), new wj.a($$0), $$0.c(uq::m), vu.a($$0), new vm.b($$0));
    }
 
-   public acg(uj $$0) {
-      this.b = $$0.n();
-      bmd[] $$1 = bmd.values();
-      this.c = Lists.newArrayList();
-
-      int $$2;
-      do {
-         $$2 = $$0.readByte();
-         bmd $$3 = $$1[$$2 & 127];
-         cng $$4 = $$0.r();
-         this.c.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
+   private void a(uq $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, wc::a);
+      this.e.a($$0);
+      $$0.a(this.f, uq::a);
+      vu.a($$0, this.g);
+      this.h.a($$0);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.b);
-      int $$1 = this.c.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bmd, cng> $$3 = this.c.get($$2);
-         bmd $$4 = (bmd)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.k($$5 ? $$6 | -128 : $$6);
-         $$0.a((cng)$$3.getSecond());
-      }
+   public xz<acg> a() {
+      return aeq.Z;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public List<Pair<bmd, cng>> d() {
+   public int e() {
       return this.c;
+   }
+
+   @Nullable
+   public wc f() {
+      return this.d;
+   }
+
+   public wj.a g() {
+      return this.e;
+   }
+
+   @Nullable
+   public vq h() {
+      return this.f;
+   }
+
+   public vu i() {
+      return this.g;
+   }
+
+   public vm.b j() {
+      return this.h;
    }
 }

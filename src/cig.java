@@ -1,88 +1,54 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+public abstract class cig extends cih implements chw {
+   private static final aie<coz> b = aih.a(cig.class, aig.h);
 
-public class cig {
-   private final int a;
-   private final float b;
-   private final boolean c;
-   private final boolean d;
-   private final boolean e;
-   private final List<Pair<blj, Float>> f;
-
-   cig(int $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, List<Pair<blj, Float>> $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public cig(bnu<? extends cig> $$0, cvn $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.a;
+   public cig(bnu<? extends cig> $$0, double $$1, double $$2, double $$3, cvn $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public float b() {
-      return this.b;
+   public cig(bnu<? extends cig> $$0, bog $$1, cvn $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean c() {
-      return this.c;
+   public void a(coz $$0) {
+      if (!$$0.a(this.s()) || $$0.v()) {
+         this.an().b(b, $$0.c(1));
+      }
    }
 
-   public boolean d() {
-      return this.d;
+   protected abstract cou s();
+
+   protected coz u() {
+      return this.an().b(b);
    }
 
-   public boolean e() {
-      return this.e;
+   @Override
+   public coz q() {
+      coz $$0 = this.u();
+      return $$0.b() ? new coz(this.s()) : $$0;
    }
 
-   public List<Pair<blj, Float>> f() {
-      return this.f;
+   @Override
+   protected void c_() {
+      this.an().a(b, coz.h);
    }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-      private boolean d;
-      private boolean e;
-      private final List<Pair<blj, Float>> f = Lists.newArrayList();
-
-      public cig.a a(int $$0) {
-         this.a = $$0;
-         return this;
+   @Override
+   public void b(sw $$0) {
+      super.b($$0);
+      coz $$1 = this.u();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new sw()));
       }
+   }
 
-      public cig.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public cig.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public cig.a b() {
-         this.d = true;
-         return this;
-      }
-
-      public cig.a c() {
-         this.e = true;
-         return this;
-      }
-
-      public cig.a a(blj $$0, float $$1) {
-         this.f.add(Pair.of($$0, $$1));
-         return this;
-      }
-
-      public cig d() {
-         return new cig(this.a, this.b, this.c, this.d, this.e, this.f);
-      }
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      coz $$1 = coz.a($$0.p("Item"));
+      this.a($$1);
    }
 }

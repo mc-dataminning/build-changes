@@ -1,70 +1,96 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import java.time.Instant;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class wk implements vh {
-   public static final MapCodec<wk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, wk::new)
-   );
-   public static final vh.a<wk> b = new vh.a<>(a, "keybind");
-   private final String c;
+public class wk {
+   private static final Logger a = LogUtils.getLogger();
    @Nullable
-   private Supplier<vg> d;
+   private wl b;
+   private Instant c = Instant.EPOCH;
 
-   public wk(String $$0) {
-      this.c = $$0;
+   public wk(UUID $$0, UUID $$1) {
+      this.b = wl.a($$0, $$1);
    }
 
-   private vg c() {
-      if (this.d == null) {
-         this.d = wl.a.apply(this.c);
-      }
-
-      return this.d.get();
+   public wk.c a(awv $$0) {
+      return $$1 -> {
+         wl $$2 = this.a();
+         return $$2 == null ? null : new wc($$0.sign($$2x -> wg.a($$2x, $$2, $$1)));
+      };
    }
 
-   @Override
-   public <T> Optional<T> a(vl.a<T> $$0) {
-      return this.c().a($$0);
-   }
+   public wk.b a(chk $$0) {
+      awu $$1 = $$0.a();
+      return ($$2, $$3) -> {
+         wl $$4 = this.a();
+         if ($$4 == null) {
+            throw new wk.a(vq.c("chat.disabled.chain_broken"), false);
+         } else if ($$0.b().a()) {
+            throw new wk.a(vq.c("chat.disabled.expiredProfileKey"), false);
+         } else if ($$3.b().isBefore(this.c)) {
+            throw new wk.a(vq.c("multiplayer.disconnect.out_of_order_chat"), true);
+         } else {
+            this.c = $$3.b();
+            wg $$5 = new wg($$4, $$2, $$3, null, vu.c);
+            if (!$$5.a($$1)) {
+               throw new wk.a(vq.c("multiplayer.disconnect.unsigned_chat"), true);
+            } else {
+               if ($$5.a(Instant.now())) {
+                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
+               }
 
-   @Override
-   public <T> Optional<T> a(vl.b<T> $$0, wd $$1) {
-      return this.c().a($$0, $$1);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof wk $$1 && this.c.equals($$1.c)) {
-            return true;
+               return $$5;
+            }
          }
+      };
+   }
 
-         return false;
+   @Nullable
+   private wl a() {
+      wl $$0 = this.b;
+      if ($$0 != null) {
+         this.b = $$0.a();
+      }
+
+      return $$0;
+   }
+
+   public static class a extends wq {
+      private final boolean a;
+
+      public a(vq $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public boolean a() {
+         return this.a;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
+   @FunctionalInterface
+   public interface b {
+      static wk.b unsigned(UUID $$0, BooleanSupplier $$1) {
+         return ($$2, $$3) -> {
+            if ($$1.getAsBoolean()) {
+               throw new wk.a(vq.c("chat.disabled.missingProfileKey"), false);
+            } else {
+               return wg.a($$0, $$3.a());
+            }
+         };
+      }
+
+      wg unpack(@Nullable wc var1, wj var2) throws wk.a;
    }
 
-   @Override
-   public String toString() {
-      return "keybind{" + this.c + "}";
-   }
+   @FunctionalInterface
+   public interface c {
+      wk.c a = $$0 -> null;
 
-   public String b() {
-      return this.c;
-   }
-
-   @Override
-   public vh.a<?> a() {
-      return b;
+      @Nullable
+      wc pack(wj var1);
    }
 }

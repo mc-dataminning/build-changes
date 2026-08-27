@@ -1,35 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record ekx(float c) implements ekz {
-   public static final Codec<ekx> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(ekx::c)).apply($$0, ekx::new));
-   public static final Codec<ekx> b = Codec.FLOAT.xmap(ekx::new, ekx::c);
+public class ekx extends ekh {
+   public static final Codec<ekx> a = RecordCodecBuilder.create($$0 -> a($$0).and(tu.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, ekx::new));
+   private final sw b;
 
-   @Override
-   public eky b() {
-      return ela.b;
+   private ekx(List<elu> $$0, sw $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public float b(ehf $$0) {
-      return this.c;
-   }
-
-   public static ekx a(float $$0) {
-      return new ekx($$0);
+   public ekj b() {
+      return ekk.g;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((ekx)$$0).c, this.c) == 0 : false;
-      }
+   public coz a(coz $$0, eiv $$1) {
+      $$0.x().a(this.b);
+      return $$0;
    }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   @Deprecated
+   public static ekh.a<?> a(sw $$0) {
+      return a($$1 -> new ekx($$1, $$0));
    }
 }

@@ -1,25 +1,21 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+public class gff<T extends bno & bov, M extends fmb<T>> extends gfe<T, M> {
+   private final aiy a;
+   private final M b;
 
-public interface gff {
-   aha a = new aha("textures", ".png");
-
-   void a(aqj var1, gff.a var2);
-
-   gfh a();
-
-   public interface a {
-      default void a(ahh $$0, aqh $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
-
-      void a(ahh var1, gff.b var2);
-
-      void a(Predicate<ahh> var1);
+   public gff(gco<T, M> $$0, M $$1, aiy $$2) {
+      super($$0);
+      this.b = $$1;
+      this.a = $$2;
    }
 
-   public interface b extends Function<gfe, gev> {
-      default void a() {
+   @Override
+   public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.i()) {
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$6);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         ese $$10 = $$1.getBuffer(fvu.e(this.a));
+         this.b.a($$0, $$10, $$2, ggl.d, 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

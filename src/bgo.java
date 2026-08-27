@@ -1,45 +1,18 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bgo implements bgs {
-   public static final bgo a = new bgo();
-
-   private bgo() {
+public class bgo extends bew {
+   public bgo(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public List<bgv> a(String $$0) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:glow_squid", () -> bex.a($$0));
+      $$0.register($$1, "minecraft:glow_item_frame", $$1x -> DSL.optionalFields("Item", bdn.t.in($$0)));
+      return $$1;
    }
 }

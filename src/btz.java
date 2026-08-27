@@ -1,55 +1,59 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class btz implements bua {
+   private final boi a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-public class btz extends btk {
-   private final bmx a;
-   @Nullable
-   private bmo b;
-   private double c;
-   private double d;
-   private double e;
-   private final double f;
-   private final float g;
-
-   public btz(bmx $$0, double $$1, float $$2) {
+   public btz(boi $$0) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(btk.a.a));
    }
 
-   @Override
-   public boolean a() {
-      this.b = this.a.q();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
-         return false;
+   public void a() {
+      if (this.f()) {
+         this.a.aU = this.a.dC();
+         this.c();
+         this.f = this.a.aW;
+         this.e = 0;
       } else {
-         emc $$0 = bxh.a(this.a, 16, 7, this.b.dj(), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
+         if (this.e()) {
+            if (Math.abs(this.a.aW - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aW;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
          }
       }
    }
 
-   @Override
-   public boolean b() {
-      return !this.a.N().l() && this.b.bx() && this.b.f(this.a) < (double)(this.g * this.g);
+   private void b() {
+      this.a.aU = awh.c(this.a.aU, this.a.aW, (float)this.a.fH());
    }
 
-   @Override
-   public void d() {
-      this.b = null;
+   private void c() {
+      this.a.aW = awh.c(this.a.aW, this.a.aU, (float)this.a.fH());
    }
 
-   @Override
-   public void c() {
-      this.a.N().a(this.c, this.d, this.e, this.f);
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = awh.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.fH() * (1.0F - $$1);
+      this.a.aU = awh.c(this.a.aU, this.a.aW, $$2);
+   }
+
+   private boolean e() {
+      return !(this.a.cQ() instanceof boi);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.dr() - this.a.J;
+      double $$1 = this.a.dx() - this.a.L;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

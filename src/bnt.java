@@ -1,96 +1,71 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bnt {
-   private final Map<ih<bnp>, bnq> a;
+public final class bnt {
+   public static final Predicate<bno> a = bno::bx;
+   public static final Predicate<bno> b = $$0 -> $$0.bx() && $$0 instanceof bog;
+   public static final Predicate<bno> c = $$0 -> $$0.bx() && !$$0.bP() && !$$0.bO();
+   public static final Predicate<bno> d = $$0 -> $$0 instanceof bln && $$0.bx();
+   public static final Predicate<bno> e = $$0 -> !($$0 instanceof chh) || !$$0.P_() && !((chh)$$0).f();
+   public static final Predicate<bno> f = $$0 -> !$$0.P_();
+   public static final Predicate<bno> g = f.and(bno::bz);
 
-   bnt(Map<ih<bnp>, bnq> $$0) {
-      this.a = $$0;
+   private bnt() {
    }
 
-   private bnq d(ih<bnp> $$0) {
-      bnq $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
-      } else {
-         return $$1;
-      }
+   public static Predicate<bno> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   public double a(ih<bnp> $$0) {
-      return this.d($$0).f();
-   }
-
-   public double b(ih<bnp> $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(ih<bnp> $$0, UUID $$1) {
-      bns $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.c();
-      }
-   }
-
-   @Nullable
-   public bnq a(Consumer<bnq> $$0, ih<bnp> $$1) {
-      bnq $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         bnq $$3 = new bnq($$1, $$0);
-         $$3.a($$2);
-         return $$3;
-      }
-   }
-
-   public static bnt.a a() {
-      return new bnt.a();
-   }
-
-   public boolean c(ih<bnp> $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   public boolean b(ih<bnp> $$0, UUID $$1) {
-      bnq $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
-
-   public static class a {
-      private final Builder<ih<bnp>, bnq> a = ImmutableMap.builder();
-      private boolean b;
-
-      private bnq b(ih<bnp> $$0) {
-         bnq $$1 = new bnq($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
+   public static Predicate<bno> a(bno $$0) {
+      eoy $$1 = $$0.cg();
+      eoy.a $$2 = $$1 == null ? eoy.a.a : $$1.l();
+      return (Predicate<bno>)($$2 == eoy.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bu()) {
+            return false;
+         } else if (!$$0.dM().B || $$3 instanceof chh && ((chh)$$3).g()) {
+            eoy $$4 = $$3.cg();
+            eoy.a $$5 = $$4 == null ? eoy.a.a : $$4.l();
+            if ($$5 == eoy.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == eoy.a.d || $$5 == eoy.a.d) && $$6 ? false : $$2 != eoy.a.c && $$5 != eoy.a.c || $$6;
             }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+         } else {
+            return false;
+         }
+      }));
+   }
+
+   public static Predicate<bno> b(bno $$0) {
+      return $$1 -> {
+         while ($$1.bO()) {
+            $$1 = $$1.cZ();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+   }
+
+   public static class a implements Predicate<bno> {
+      private final coz a;
+
+      public a(coz $$0) {
+         this.a = $$0;
       }
 
-      public bnt.a a(ih<bnp> $$0) {
-         this.b($$0);
-         return this;
-      }
-
-      public bnt.a a(ih<bnp> $$0, double $$1) {
-         bnq $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public bnt a() {
-         this.b = true;
-         return new bnt(this.a.buildKeepingLast());
+      public boolean a(@Nullable bno $$0) {
+         if (!$$0.bx()) {
+            return false;
+         } else {
+            return !($$0 instanceof bog $$1) ? false : $$1.f(this.a);
+         }
       }
    }
 }

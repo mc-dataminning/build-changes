@@ -1,232 +1,100 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.Optional;
 
-public class ahy extends eng {
-   private final MinecraftServer b;
-   private final Set<emy> c = Sets.newHashSet();
-   private final List<Runnable> d = Lists.newArrayList();
+public record ahy(vq b, Optional<ahy.b> c, Optional<ahy.c> d, Optional<ahy.a> e, boolean f) {
+   public static final Codec<ahy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               vs.a.optionalFieldOf("description", vp.a).forGetter(ahy::a),
+               ahy.b.a.optionalFieldOf("players").forGetter(ahy::b),
+               ahy.c.a.optionalFieldOf("version").forGetter(ahy::c),
+               ahy.a.a.optionalFieldOf("favicon").forGetter(ahy::d),
+               Codec.BOOL.optionalFieldOf("enforcesSecureChat", false).forGetter(ahy::e)
+            )
+            .apply($$0, ahy::new)
+   );
 
-   public ahy(MinecraftServer $$0) {
-      this.b = $$0;
+   public vq a() {
+      return this.b;
    }
 
-   @Override
-   protected void a(enf $$0, emy $$1, end $$2) {
-      super.a($$0, $$1, $$2);
-      if (this.c.contains($$1)) {
-         this.b.ae().a(new acm($$0.cy(), $$1.b(), $$2.a(), $$2.d(), $$2.c()));
-      }
-
-      this.a();
+   public Optional<ahy.b> b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(enf $$0, emy $$1) {
-      super.a($$0, $$1);
-      this.a();
+   public Optional<ahy.c> c() {
+      return this.d;
    }
 
-   @Override
-   public void a(enf $$0) {
-      super.a($$0);
-      this.b.ae().a(new abl($$0.cy(), null));
-      this.a();
+   public Optional<ahy.a> d() {
+      return this.e;
    }
 
-   @Override
-   public void b(enf $$0, emy $$1) {
-      super.b($$0, $$1);
-      if (this.c.contains($$1)) {
-         this.b.ae().a(new abl($$0.cy(), $$1.b()));
-      }
-
-      this.a();
+   public boolean e() {
+      return this.f;
    }
 
-   @Override
-   public void a(emx $$0, @Nullable emy $$1) {
-      emy $$2 = this.a($$0);
-      super.a($$0, $$1);
-      if ($$2 != $$1 && $$2 != null) {
-         if (this.h($$2) > 0) {
-            this.b.ae().a(new acc($$0, $$1));
+   public static record a(byte[] b) {
+      private static final String c = "data:image/png;base64,";
+      public static final Codec<ahy.a> a = Codec.STRING.comapFlatMap($$0 -> {
+         if (!$$0.startsWith("data:image/png;base64,")) {
+            return DataResult.error(() -> "Unknown format");
          } else {
-            this.g($$2);
+            try {
+               String $$1 = $$0.substring("data:image/png;base64,".length()).replaceAll("\n", "");
+               byte[] $$2 = Base64.getDecoder().decode($$1.getBytes(StandardCharsets.UTF_8));
+               return DataResult.success(new ahy.a($$2));
+            } catch (IllegalArgumentException var3) {
+               return DataResult.error(() -> "Malformed base64 server icon");
+            }
          }
-      }
+      }, $$0 -> "data:image/png;base64," + new String(Base64.getEncoder().encode($$0.b), StandardCharsets.UTF_8));
 
-      if ($$1 != null) {
-         if (this.c.contains($$1)) {
-            this.b.ae().a(new acc($$0, $$1));
-         } else {
-            this.e($$1);
-         }
-      }
-
-      this.a();
-   }
-
-   @Override
-   public boolean a(String $$0, enb $$1) {
-      if (super.a($$0, $$1)) {
-         this.b.ae().a(acl.a($$1, $$0, acl.a.a));
-         this.a();
-         return true;
-      } else {
-         return false;
+      public byte[] a() {
+         return this.b;
       }
    }
 
-   @Override
-   public void b(String $$0, enb $$1) {
-      super.b($$0, $$1);
-      this.b.ae().a(acl.a($$1, $$0, acl.a.b));
-      this.a();
-   }
+   public static record b(int b, int c, List<GameProfile> d) {
+      private static final Codec<GameProfile> e = RecordCodecBuilder.create(
+         $$0 -> $$0.group(jc.c.fieldOf("id").forGetter(GameProfile::getId), Codec.STRING.fieldOf("name").forGetter(GameProfile::getName))
+               .apply($$0, GameProfile::new)
+      );
+      public static final Codec<ahy.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.INT.fieldOf("max").forGetter(ahy.b::a),
+                  Codec.INT.fieldOf("online").forGetter(ahy.b::b),
+                  e.listOf().optionalFieldOf("sample", List.of()).forGetter(ahy.b::c)
+               )
+               .apply($$0, ahy.b::new)
+      );
 
-   @Override
-   public void a(emy $$0) {
-      super.a($$0);
-      this.a();
-   }
-
-   @Override
-   public void b(emy $$0) {
-      super.b($$0);
-      if (this.c.contains($$0)) {
-         this.b.ae().a(new acj($$0, 2));
+      public int a() {
+         return this.b;
       }
 
-      this.a();
-   }
-
-   @Override
-   public void c(emy $$0) {
-      super.c($$0);
-      if (this.c.contains($$0)) {
-         this.g($$0);
+      public int b() {
+         return this.c;
       }
 
-      this.a();
-   }
-
-   @Override
-   public void a(enb $$0) {
-      super.a($$0);
-      this.b.ae().a(acl.a($$0, true));
-      this.a();
-   }
-
-   @Override
-   public void b(enb $$0) {
-      super.b($$0);
-      this.b.ae().a(acl.a($$0, false));
-      this.a();
-   }
-
-   @Override
-   public void c(enb $$0) {
-      super.c($$0);
-      this.b.ae().a(acl.a($$0));
-      this.a();
-   }
-
-   public void a(Runnable $$0) {
-      this.d.add($$0);
-   }
-
-   protected void a() {
-      for (Runnable $$0 : this.d) {
-         $$0.run();
+      public List<GameProfile> c() {
+         return this.d;
       }
    }
 
-   public List<xg<?>> d(emy $$0) {
-      List<xg<?>> $$1 = Lists.newArrayList();
-      $$1.add(new acj($$0, 0));
+   public static record c(String b, int c) {
+      public static final Codec<ahy.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ahy.c::b), Codec.INT.fieldOf("protocol").forGetter(ahy.c::c)).apply($$0, ahy.c::new)
+      );
 
-      for (emx $$2 : emx.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new acc($$2, $$0));
-         }
+      public static ahy.c a() {
+         ad $$0 = aa.b();
+         return new ahy.c($$0.c(), $$0.e());
       }
-
-      for (emz $$3 : this.i($$0)) {
-         $$1.add(new acm($$3.c(), $$0.b(), $$3.d(), $$3.e(), $$3.f()));
-      }
-
-      return $$1;
-   }
-
-   public void e(emy $$0) {
-      List<xg<?>> $$1 = this.d($$0);
-
-      for (anf $$2 : this.b.ae().t()) {
-         for (xg<?> $$3 : $$1) {
-            $$2.c.b($$3);
-         }
-      }
-
-      this.c.add($$0);
-   }
-
-   public List<xg<?>> f(emy $$0) {
-      List<xg<?>> $$1 = Lists.newArrayList();
-      $$1.add(new acj($$0, 1));
-
-      for (emx $$2 : emx.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new acc($$2, $$0));
-         }
-      }
-
-      return $$1;
-   }
-
-   public void g(emy $$0) {
-      List<xg<?>> $$1 = this.f($$0);
-
-      for (anf $$2 : this.b.ae().t()) {
-         for (xg<?> $$3 : $$1) {
-            $$2.c.b($$3);
-         }
-      }
-
-      this.c.remove($$0);
-   }
-
-   public int h(emy $$0) {
-      int $$1 = 0;
-
-      for (emx $$2 : emx.values()) {
-         if (this.a($$2) == $$0) {
-            $$1++;
-         }
-      }
-
-      return $$1;
-   }
-
-   public ege.a<enh> b() {
-      return new ege.a<>(this::i, this::a, avx.n);
-   }
-
-   private enh i() {
-      enh $$0 = new enh(this);
-      this.a($$0::c);
-      return $$0;
-   }
-
-   private enh a(so $$0) {
-      return this.i().b($$0);
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

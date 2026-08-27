@@ -1,20 +1,86 @@
-class blm extends blh {
-   protected blm(bli $$0, int $$1) {
-      super($$0, $$1);
+public class blm implements bln {
+   private final bln c;
+   private final bln d;
+
+   public blm(bln $$0, bln $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public boolean a(bmo $$0, int $$1) {
-      if ($$0.ev() > 1.0F) {
-         $$0.a($$0.dM().o(), 1.0F);
+   public int b() {
+      return this.c.b() + this.d.b();
+   }
+
+   @Override
+   public boolean aj_() {
+      return this.c.aj_() && this.d.aj_();
+   }
+
+   public boolean a(bln $$0) {
+      return this.c == $$0 || this.d == $$0;
+   }
+
+   @Override
+   public coz a(int $$0) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
+   }
+
+   @Override
+   public coz a(int $$0, int $$1) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
+   }
+
+   @Override
+   public coz b(int $$0) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, coz $$1) {
+      if ($$0 >= this.c.b()) {
+         this.d.a($$0 - this.c.b(), $$1);
+      } else {
+         this.c.a($$0, $$1);
       }
-
-      return true;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 25 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public int al_() {
+      return this.c.al_();
+   }
+
+   @Override
+   public void e() {
+      this.c.e();
+      this.d.e();
+   }
+
+   @Override
+   public boolean a(chh $$0) {
+      return this.c.a($$0) && this.d.a($$0);
+   }
+
+   @Override
+   public void d_(chh $$0) {
+      this.c.d_($$0);
+      this.d.d_($$0);
+   }
+
+   @Override
+   public void c(chh $$0) {
+      this.c.c($$0);
+      this.d.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, coz $$1) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.c.a();
+      this.d.a();
    }
 }

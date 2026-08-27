@@ -1,50 +1,52 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class asa<T> extends enj {
-   private final asb n;
-   private final T o;
-   private final asc<T> p;
+public interface asa extends asd {
+   Set<String> a();
 
-   protected asa(asc<T> $$0, T $$1, asb $$2) {
-      super(a($$0, $$1));
-      this.p = $$0;
-      this.n = $$2;
-      this.o = $$1;
-   }
+   List<ary> a(aiy var1);
 
-   public static <T> String a(asc<T> $$0, T $$1) {
-      return a(kd.x.b($$0)) + ":" + a($$0.a().b($$1));
-   }
+   Map<aiy, ary> b(String var1, Predicate<aiy> var2);
 
-   private static <T> String a(@Nullable ahh $$0) {
-      return $$0.toString().replace(':', '.');
-   }
+   Map<aiy, List<ary>> c(String var1, Predicate<aiy> var2);
 
-   public asc<T> a() {
-      return this.p;
-   }
+   Stream<aqo> b();
 
-   public T b() {
-      return this.o;
-   }
+   public static enum a implements asa {
+      a;
 
-   public String a(int $$0) {
-      return this.n.format($$0);
-   }
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof asa && Objects.equals(this.d(), ((asa)$$0).d());
-   }
+      @Override
+      public Optional<ary> getResource(aiy $$0) {
+         return Optional.empty();
+      }
 
-   @Override
-   public int hashCode() {
-      return this.d().hashCode();
-   }
+      @Override
+      public List<ary> a(aiy $$0) {
+         return List.of();
+      }
 
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.d() + ", formatter=" + this.n + "}";
+      @Override
+      public Map<aiy, ary> b(String $$0, Predicate<aiy> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<aiy, List<ary>> c(String $$0, Predicate<aiy> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<aqo> b() {
+         return Stream.of();
+      }
    }
 }

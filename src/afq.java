@@ -1,42 +1,37 @@
-import java.security.PublicKey;
+public class afq implements xx<aes> {
+   public static final xo<uq, afq> a = xx.a(afq::a, afq::new);
+   private final boolean b;
+   private final boolean c;
 
-public class afq implements xg<afn> {
-   private final String a;
-   private final byte[] b;
-   private final byte[] c;
-
-   public afq(String $$0, byte[] $$1, byte[] $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public afq(boolean $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public afq(uj $$0) {
-      this.a = $$0.d(20);
-      this.b = $$0.b();
-      this.c = $$0.b();
+   private afq(uq $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
-   @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
+   private void a(uq $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
    }
 
-   public void a(afn $$0) {
+   public void a(aes $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.a;
+   @Override
+   public xz<afq> a() {
+      return aeq.bC;
    }
 
-   public PublicKey d() throws ato {
-      return atn.a(this.b);
+   public boolean b() {
+      return this.b;
    }
 
-   public byte[] e() {
+   public boolean e() {
       return this.c;
    }
 }

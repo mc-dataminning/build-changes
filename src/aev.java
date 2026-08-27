@@ -1,21 +1,37 @@
-import java.util.Optional;
+public class aev implements xx<aes> {
+   public static final xo<uq, aev> a = xx.a(aev::a, aev::new);
+   private final int b;
+   private final hz c;
 
-public record aev(Optional<ih<blh>> a, Optional<ih<blh>> b) implements xg<adk> {
-   public aev(uj $$0) {
-      this($$0.b((uj.a<ih<blh>>)($$0x -> $$0x.a(kd.d.t()))), $$0.b((uj.a<ih<blh>>)($$0x -> $$0x.a(kd.d.t()))));
+   public aev(int $$0, hz $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private aev(uq $$0) {
+      this.b = $$0.n();
+      this.c = $$0.e();
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(kd.d.t(), $$1));
-      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(kd.d.t(), $$1));
+   public xz<aev> a() {
+      return aeq.be;
    }
 
-   public void a(adk $$0) {
+   public void a(aes $$0) {
       $$0.a(this);
    }
 
-   public Optional<ih<blh>> d() {
+   public int b() {
       return this.b;
+   }
+
+   public hz e() {
+      return this.c;
    }
 }

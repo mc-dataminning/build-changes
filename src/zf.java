@@ -1,40 +1,35 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+public record zf(zf.a c) implements yy {
+   public static final xo<uq, zf> a = yy.a(zf::a, zf::new);
+   public static final yy.b<zf> b = yy.a("debug/hive");
 
-public class zf implements xg<zb> {
-   private final Object2IntMap<asa<?>> a;
-
-   public zf(Object2IntMap<asa<?>> $$0) {
-      this.a = $$0;
+   private zf(uq $$0) {
+      this(new zf.a($$0));
    }
 
-   public zf(uj $$0) {
-      this.a = $$0.a(Object2IntOpenHashMap::new, $$1 -> {
-         asc<?> $$2 = $$1.a(kd.x);
-         return a($$0, $$2);
-      }, uj::n);
-   }
-
-   private static <T> asa<T> a(uj $$0, asc<T> $$1) {
-      return $$1.b($$0.a($$1.a()));
-   }
-
-   public void a(zb $$0) {
-      $$0.a(this);
+   private void a(uq $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a, zf::a, uj::c);
+   public yy.b<zf> a() {
+      return b;
    }
 
-   private static <T> void a(uj $$0, asa<T> $$1) {
-      $$0.a(kd.x, $$1.a());
-      $$0.a($$1.a().a(), $$1.b());
+   public zf.a b() {
+      return this.c;
    }
 
-   public Map<asa<?>, Integer> a() {
-      return this.a;
+   public static record a(hz a, String b, int c, int d, boolean e) {
+      public a(uq $$0) {
+         this($$0.e(), $$0.r(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(uq $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.p(this.c);
+         $$0.p(this.d);
+         $$0.a(this.e);
+      }
    }
 }

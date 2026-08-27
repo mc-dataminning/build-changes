@@ -1,174 +1,172 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dju {
-   private final Predicate<djt>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+public class dju extends dit implements bll, epd {
+   private static final int c = 20;
+   private coz d = coz.h;
+   private int e;
+   private long f;
+   private long g;
+   private boolean h;
 
-   public dju(Predicate<djt>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
-         }
-      } else {
-         this.c = 0;
-         this.d = 0;
+   public dju(hz $$0, dlf $$1) {
+      super(div.e, $$0, $$1);
+   }
+
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      if ($$0.b("RecordItem", 10)) {
+         this.d = coz.a($$0.p("RecordItem"));
+      }
+
+      this.h = $$0.q("IsPlaying");
+      this.g = $$0.i("RecordStartTick");
+      this.f = $$0.i("TickCount");
+   }
+
+   @Override
+   protected void b(sw $$0) {
+      super.b($$0);
+      if (!this.x().b()) {
+         $$0.a("RecordItem", this.x().b(new sw()));
+      }
+
+      $$0.a("IsPlaying", this.h);
+      $$0.a("RecordStartTick", this.g);
+      $$0.a("TickCount", this.f);
+   }
+
+   public boolean f() {
+      return !this.x().b() && this.h;
+   }
+
+   private void a(@Nullable bno $$0, boolean $$1) {
+      if (this.o.a_(this.aE_()) == this.r()) {
+         this.o.a(this.aE_(), this.r().a(dcq.b, Boolean.valueOf($$1)), 2);
+         this.o.a(dpp.c, this.aE_(), dpp.a.a($$0, this.r()));
       }
    }
 
-   public int a() {
-      return this.b;
+   @VisibleForTesting
+   public void g() {
+      this.g = this.f;
+      this.h = true;
+      this.o.a(this.aE_(), this.r().b());
+      this.o.a(null, 1010, this.aE_(), cou.a(this.x().d()));
+      this.e();
    }
 
-   public int b() {
-      return this.c;
+   private void l() {
+      this.h = false;
+      this.o.a(dpp.F, this.aE_(), dpp.a.a(this.r()));
+      this.o.a(this.aE_(), this.r().b());
+      this.o.c(1011, this.aE_(), 0);
+      this.e();
    }
 
-   public int c() {
+   private void b(cvn $$0, hz $$1, dlf $$2) {
+      this.e++;
+      if (this.f() && this.x().d() instanceof cpr $$3) {
+         if (this.a($$3)) {
+            this.l();
+         } else if (this.m()) {
+            this.e = 0;
+            $$0.a(dpp.E, $$1, dpp.a.a($$2));
+            this.a($$0, $$1);
+         }
+      }
+
+      this.f++;
+   }
+
+   private boolean a(cpr $$0) {
+      return this.f >= this.g + (long)$$0.y() + 20L;
+   }
+
+   private boolean m() {
+      return this.e >= 20;
+   }
+
+   @Override
+   public coz x() {
       return this.d;
    }
 
-   @VisibleForTesting
-   public Predicate<djt>[][][] d() {
-      return this.a;
+   @Override
+   public coz c(int $$0) {
+      coz $$1 = this.d;
+      this.d = coz.h;
+      if (!$$1.b()) {
+         this.a(null, false);
+         this.l();
+      }
+
+      return $$1;
    }
 
-   @Nullable
-   @VisibleForTesting
-   public dju.b a(cua $$0, hx $$1, ic $$2, ic $$3) {
-      LoadingCache<hx, djt> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
+   @Override
+   public void b(coz $$0) {
+      if ($$0.a(auh.aq) && this.o != null) {
+         this.d = $$0;
+         this.a(null, true);
+         this.g();
+      } else if ($$0.b()) {
+         this.c(1);
+      }
    }
 
-   @Nullable
-   private dju.b a(hx $$0, ic $$1, ic $$2, LoadingCache<hx, djt> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((djt)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
+   @Override
+   public int al_() {
+      return 1;
+   }
+
+   @Override
+   public dit y() {
+      return this;
+   }
+
+   @Override
+   public boolean b(int $$0, coz $$1) {
+      return $$1.a(auh.aq) && this.a($$0).b();
+   }
+
+   @Override
+   public boolean a(bln $$0, int $$1, coz $$2) {
+      return $$0.a_(coz::b);
+   }
+
+   private void a(cvn $$0, hz $$1) {
+      if ($$0 instanceof aov $$2) {
+         ens $$3 = ens.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.F_().a(4) / 24.0F;
+         $$2.a(jz.X, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   public void k() {
+      if (this.o != null && !this.o.B) {
+         hz $$0 = this.aE_();
+         coz $$1 = this.x();
+         if (!$$1.b()) {
+            this.h();
+            ens $$2 = ens.a($$0, 0.5, 1.01, 0.5).a(this.o.z, 0.7F);
+            coz $$3 = $$1.q();
+            cds $$4 = new cds(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.u();
+            this.o.b($$4);
          }
       }
-
-      return new dju.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
    }
 
-   @Nullable
-   public dju.b a(cua $$0, hx $$1) {
-      LoadingCache<hx, djt> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
-
-      for (hx $$4 : hx.a($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (ic $$5 : ic.values()) {
-            for (ic $$6 : ic.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dju.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
-                  }
-               }
-            }
-         }
-      }
-
-      return null;
+   public static void a(cvn $$0, hz $$1, dlf $$2, dju $$3) {
+      $$3.b($$0, $$1, $$2);
    }
 
-   public static LoadingCache<hx, djt> a(cua $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dju.a($$0, $$1));
-   }
-
-   protected static hx a(hx $$0, ic $$1, ic $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         jb $$6 = new jb($$1.j(), $$1.k(), $$1.l());
-         jb $$7 = new jb($$2.j(), $$2.k(), $$2.l());
-         jb $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
-      }
-   }
-
-   static class a extends CacheLoader<hx, djt> {
-      private final cua a;
-      private final boolean b;
-
-      public a(cua $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public djt a(hx $$0) {
-         return new djt(this.a, $$0, this.b);
-      }
-   }
-
-   public static class b {
-      private final hx a;
-      private final ic b;
-      private final ic c;
-      private final LoadingCache<hx, djt> d;
-      private final int e;
-      private final int f;
-      private final int g;
-
-      public b(hx $$0, ic $$1, ic $$2, LoadingCache<hx, djt> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      public hx a() {
-         return this.a;
-      }
-
-      public ic b() {
-         return this.b;
-      }
-
-      public ic c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public djt a(int $$0, int $$1, int $$2) {
-         return (djt)this.d.getUnchecked(dju.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+   @VisibleForTesting
+   public void a(coz $$0) {
+      this.d = $$0;
+      this.o.a(this.aE_(), this.r().b());
+      this.e();
    }
 }

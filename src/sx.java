@@ -1,60 +1,132 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class sx {
-   private static final int a = 512;
-   private final long b;
-   private long c;
-   private final int d;
-   private int e;
-
-   public sx(long $$0, int $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
-
-   public static sx a(long $$0) {
-      return new sx($$0, 512);
-   }
-
-   public static sx a() {
-      return new sx(Long.MAX_VALUE, 512);
-   }
-
-   public void a(long $$0, long $$1) {
-      this.b($$0 * $$1);
-   }
-
-   public void b(long $$0) {
-      if (this.c + $$0 > this.b) {
-         throw new sy("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
-      } else {
-         this.c += $$0;
+public class sx extends tm {
+   private static final int c = 16;
+   public static final sx a = new sx(0.0);
+   public static final tv<sx> b = new tv.a<sx>() {
+      public sx a(DataInput $$0, tf $$1) throws IOException {
+         return sx.a(d($$0, $$1));
       }
-   }
 
-   public void b() {
-      if (this.e >= this.d) {
-         throw new sy("Tried to read NBT tag with too high complexity, depth > " + this.d);
-      } else {
-         this.e++;
+      @Override
+      public tq.b a(DataInput $$0, tq $$1, tf $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
       }
-   }
 
-   public void c() {
-      if (this.e <= 0) {
-         throw new sy("NBT-Accounter tried to pop stack-depth at top-level");
-      } else {
-         this.e--;
+      private static double d(DataInput $$0, tf $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
       }
+
+      @Override
+      public int c() {
+         return 8;
+      }
+
+      @Override
+      public String a() {
+         return "DOUBLE";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Double";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final double w;
+
+   private sx(double $$0) {
+      this.w = $$0;
    }
 
-   @VisibleForTesting
-   public long d() {
-      return this.c;
+   public static sx a(double $$0) {
+      return $$0 == 0.0 ? a : new sx($$0);
    }
 
-   @VisibleForTesting
-   public int e() {
-      return this.e;
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeDouble(this.w);
+   }
+
+   @Override
+   public int a() {
+      return 16;
+   }
+
+   @Override
+   public byte b() {
+      return 6;
+   }
+
+   @Override
+   public tv<sx> c() {
+      return b;
+   }
+
+   public sx e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof sx && this.w == ((sx)$$0).w;
+   }
+
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.w);
+      return (int)($$0 ^ $$0 >>> 32);
+   }
+
+   @Override
+   public void a(tx $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)Math.floor(this.w);
+   }
+
+   @Override
+   public int g() {
+      return awh.a(this.w);
+   }
+
+   @Override
+   public short h() {
+      return (short)(awh.a(this.w) & 65535);
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(awh.a(this.w) & 0xFF);
+   }
+
+   @Override
+   public double j() {
+      return this.w;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.w;
+   }
+
+   @Override
+   public Number l() {
+      return this.w;
+   }
+
+   @Override
+   public tq.b a(tq $$0) {
+      return $$0.a(this.w);
    }
 }

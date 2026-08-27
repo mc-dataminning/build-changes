@@ -1,164 +1,121 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.Multimap;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bpi<E extends bmq> extends bof<E> {
-   protected static final int c = 20;
-   private static final int m = 40;
-   protected static final int d = 8;
-   private static final int n = 200;
-   private static final List<Integer> o = Lists.newArrayList(new Integer[]{65, 70, 75, 80});
-   private final bjn p;
-   protected final int e;
-   protected final int f;
-   protected final float g;
-   protected List<bpi.a> h = Lists.newArrayList();
-   protected Optional<emc> i = Optional.empty();
+public class bpi {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<ij<bpg>, bph> b = new Object2ObjectOpenHashMap();
+   private final Set<bph> c = new ObjectOpenHashSet();
+   private final bpk d;
+
+   public bpi(bpk $$0) {
+      this.d = $$0;
+   }
+
+   private void a(bph $$0) {
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
+      }
+   }
+
+   public Set<bph> a() {
+      return this.c;
+   }
+
+   public Collection<bph> b() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
+   }
+
    @Nullable
-   protected emc j;
-   protected int k;
-   protected long l;
-   private final Function<E, ars> q;
-   private final BiPredicate<E, hx> r;
-
-   public bpi(bjn $$0, int $$1, int $$2, float $$3, Function<E, ars> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, bpi::a);
+   public bph a(ij<bpg> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
    }
 
-   public static <E extends bmq> boolean a(E $$0, hx $$1) {
-      ctx $$2 = $$0.dL();
-      hx $$3 = $$1.d();
-      return $$2.a_($$3).i($$2, $$3) && $$0.a(eft.a($$2, $$1.j())) == 0.0F;
+   public boolean b(ij<bpg> $$0) {
+      return this.b.get($$0) != null || this.d.c($$0);
    }
 
-   public bpi(bjn $$0, int $$1, int $$2, float $$3, Function<E, ars> $$4, BiPredicate<E, hx> $$5) {
-      super(ImmutableMap.of(bvq.n, bvr.c, bvq.S, bvr.b, bvq.T, bvr.b), 200);
-      this.p = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.q = $$4;
-      this.r = $$5;
+   public boolean a(ij<bpg> $$0, UUID $$1) {
+      bph $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
    }
 
-   protected boolean a(ane $$0, bmq $$1) {
-      boolean $$2 = $$1.aC() && !$$1.aZ() && !$$1.bn() && !$$0.a_($$1.dl()).a(cxa.pg);
-      if (!$$2) {
-         $$1.dN().a(bvq.S, this.p.a($$0.z) / 2);
-      }
-
-      return $$2;
+   public double c(ij<bpg> $$0) {
+      bph $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.f() : this.d.a($$0);
    }
 
-   protected boolean b(ane $$0, bmq $$1, long $$2) {
-      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.dj()) && this.k > 0 && !$$1.bc() && (this.j != null || !this.h.isEmpty());
-      if (!$$3 && $$1.dN().c(bvq.T).isEmpty()) {
-         $$1.dN().a(bvq.S, this.p.a($$0.z) / 2);
-         $$1.dN().b(bvq.n);
-      }
-
-      return $$3;
+   public double d(ij<bpg> $$0) {
+      bph $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.d.b($$0);
    }
 
-   protected void a(ane $$0, E $$1, long $$2) {
-      this.j = null;
-      this.k = 20;
-      this.i = Optional.of($$1.dj());
-      hx $$3 = $$1.dl();
-      int $$4 = $$3.u();
-      int $$5 = $$3.v();
-      int $$6 = $$3.w();
-      this.h = hx.a($$4 - this.f, $$5 - this.e, $$6 - this.f, $$4 + this.f, $$5 + this.e, $$6 + this.f)
-         .filter($$1x -> !$$1x.equals($$3))
-         .map($$1x -> new bpi.a($$1x.i(), aup.c($$3.j($$1x))))
-         .collect(Collectors.toCollection(Lists::newArrayList));
+   public double b(ij<bpg> $$0, UUID $$1) {
+      bph $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).c() : this.d.a($$0, $$1);
    }
 
-   protected void c(ane $$0, E $$1, long $$2) {
-      if (this.j != null) {
-         if ($$2 - this.l >= 40L) {
-            $$1.r($$1.aU);
-            $$1.p(true);
-            double $$3 = this.j.f();
-            double $$4 = $$3 + (double)$$1.fa();
-            $$1.g(this.j.a($$4 / $$3));
-            $$1.dN().a(bvq.T, true);
-            $$0.a(null, $$1, this.q.apply($$1), aru.g, 1.0F, 1.0F);
+   public void a(Multimap<ij<bpg>, bpj> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bph $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.b($$1x.a()));
          }
-      } else {
-         this.k--;
-         this.d($$0, $$1, $$2);
-      }
+      });
    }
 
-   protected void d(ane $$0, E $$1, long $$2) {
-      while (!this.h.isEmpty()) {
-         Optional<bpi.a> $$3 = this.a($$0);
-         if (!$$3.isEmpty()) {
-            bpi.a $$4 = $$3.get();
-            hx $$5 = $$4.b();
-            if (this.a($$0, $$1, $$5)) {
-               emc $$6 = emc.b($$5);
-               emc $$7 = this.a($$1, $$6);
-               if ($$7 != null) {
-                  $$1.dN().a(bvq.n, new boi($$5));
-                  bvy $$8 = $$1.N();
-                  efo $$9 = $$8.a($$5, 0, 8);
-                  if ($$9 == null || !$$9.j()) {
-                     this.j = $$7;
-                     this.l = $$2;
-                     return;
-                  }
+   public void b(Multimap<ij<bpg>, bpj> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bph $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.b($$1.a());
+            $$2.c($$1);
+         }
+      });
+   }
+
+   public void a(bpi $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bph $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public tc c() {
+      tc $$0 = new tc();
+
+      for (bph $$1 : this.b.values()) {
+         $$0.add($$1.g());
+      }
+
+      return $$0;
+   }
+
+   public void a(tc $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         sw $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         aiy $$4 = aiy.a($$3);
+         if ($$4 != null) {
+            ac.a(kf.u.c($$4), $$1x -> {
+               bph $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
                }
-            }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
          }
-      }
-   }
-
-   protected Optional<bpi.a> a(ane $$0) {
-      Optional<bpi.a> $$1 = bip.a($$0.z, this.h);
-      $$1.ifPresent(this.h::remove);
-      return $$1;
-   }
-
-   private boolean a(ane $$0, E $$1, hx $$2) {
-      hx $$3 = $$1.dl();
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      return $$4 == $$2.u() && $$5 == $$2.w() ? false : this.r.test($$1, $$2);
-   }
-
-   @Nullable
-   protected emc a(bmq $$0, emc $$1) {
-      List<Integer> $$2 = Lists.newArrayList(o);
-      Collections.shuffle($$2);
-
-      for (int $$3 : $$2) {
-         Optional<emc> $$4 = bpj.a($$0, $$1, this.g, $$3, true);
-         if ($$4.isPresent()) {
-            return $$4.get();
-         }
-      }
-
-      return null;
-   }
-
-   public static class a extends bio.a {
-      private final hx a;
-
-      public a(hx $$0, int $$1) {
-         super($$1);
-         this.a = $$0;
-      }
-
-      public hx b() {
-         return this.a;
       }
    }
 }

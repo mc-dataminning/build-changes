@@ -1,16 +1,12 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
-public class bdr extends bde {
-   public bdr(int $$0, Schema $$1) {
-      super($$0, $$1);
-   }
-
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, bbw.z, () -> DSL.constType(a()));
-   }
+public class bdr {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
+      .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
+      .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
+      .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
+      .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
+      .build();
 }

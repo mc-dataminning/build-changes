@@ -1,98 +1,41 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bqo<U> implements Iterable<U> {
-   protected final List<bqo.a<U>> a;
-   private final auw b = auw.a();
+public class bqo extends bpw<cgu> {
+   private static final int d = 1200;
+   final float c;
 
-   public bqo() {
-      this.a = Lists.newArrayList();
+   public bqo(float $$0) {
+      super(ImmutableMap.of(bxh.d, bxi.a), 1200);
+      this.c = $$0;
    }
 
-   private bqo(List<bqo.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   protected boolean a(aov $$0, cgu $$1) {
+      return $$1.dO().g().map($$0x -> $$0x == ciu.b || $$0x == ciu.c || $$0x == ciu.d).orElse(true);
    }
 
-   public static <U> Codec<bqo<U>> a(Codec<U> $$0) {
-      return bqo.a.a($$0).listOf().xmap(bqo::new, $$0x -> $$0x.a);
+   protected boolean a(aov $$0, cgu $$1, long $$2) {
+      return $$1.dO().a(bxh.d);
    }
 
-   public bqo<U> a(U $$0, int $$1) {
-      this.a.add(new bqo.a<>($$0, $$1));
-      return this;
+   protected void b(aov $$0, cgu $$1, long $$2) {
+      bpy.a($$1, $$1.dO().c(bxh.d).get().b(), this.c, 1);
    }
 
-   public bqo<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(bqo.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(bqo.a::a);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), bqo.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
-      }
-
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<bqo.a<E>> a(final Codec<E> $$0) {
-         return new Codec<bqo.a<E>>() {
-            public <T> DataResult<Pair<bqo.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bqo.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+   protected void c(aov $$0, cgu $$1, long $$2) {
+      Optional<ii> $$3 = $$1.dO().c(bxh.d);
+      $$3.ifPresent($$1x -> {
+         hz $$2x = $$1x.b();
+         aov $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            bzh $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
             }
 
-            public <T> DataResult<T> a(bqo.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
-      }
+            aep.c($$0, $$2x);
+         }
+      });
+      $$1.dO().b(bxh.d);
    }
 }

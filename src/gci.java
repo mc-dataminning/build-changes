@@ -1,49 +1,41 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class gci<T extends bmo, M extends flo<T>> extends gdu<T, M> {
-   private static final ahh a = new ahh("textures/entity/bee/bee_stinger.png");
+public class gci extends gbk<boi, fnf<boi>> {
+   private static final Map<bnu<?>, aiy> a = ImmutableMap.of(
+      bnu.ay,
+      new aiy("textures/entity/piglin/piglin.png"),
+      bnu.bv,
+      new aiy("textures/entity/piglin/zombified_piglin.png"),
+      bnu.az,
+      new aiy("textures/entity/piglin/piglin_brute.png")
+   );
+   private static final float i = 1.0019531F;
 
-   public gci(gab<T, M> $$0) {
-      super($$0);
+   public gci(gat.a $$0, fpa $$1, fpa $$2, fpa $$3, boolean $$4) {
+      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
+      this.a(new geu<>(this, new fmn($$0.a($$2)), new fmn($$0.a($$3)), $$0.g()));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eP();
+   private static fnf<boi> a(foy $$0, fpa $$1, boolean $$2) {
+      fnf<boi> $$3 = new fnf<>($$0.a($$1));
+      if ($$2) {
+         $$3.a.k = false;
+      }
+
+      return $$3;
    }
 
-   @Override
-   protected void a(eqk $$0, ftt $$1, int $$2, blw $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = aup.c($$4 * $$4 + $$6 * $$6);
-      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
-      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
-      $$0.a(0.0F, 0.0F, 0.0F);
-      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
-      $$0.a(a.f.rotationDegrees($$10));
-      float $$11 = 0.0F;
-      float $$12 = 0.125F;
-      float $$13 = 0.0F;
-      float $$14 = 0.0625F;
-      float $$15 = 0.03125F;
-      $$0.a(a.b.rotationDegrees(45.0F));
-      $$0.b(0.03125F, 0.03125F, 0.03125F);
-      $$0.a(2.5F, 0.0F, 0.0F);
-      eqo $$16 = $$1.getBuffer(fub.e(a));
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         $$0.a(a.b.rotationDegrees(90.0F));
-         eqk.a $$18 = $$0.c();
-         Matrix4f $$19 = $$18.a();
-         Matrix3f $$20 = $$18.b();
-         a($$16, $$19, $$20, -4.5F, -1, 0.0F, 0.0F, $$2);
-         a($$16, $$19, $$20, 4.5F, -1, 0.125F, 0.0F, $$2);
-         a($$16, $$19, $$20, 4.5F, 1, 0.125F, 0.0625F, $$2);
-         a($$16, $$19, $$20, -4.5F, 1, 0.0F, 0.0625F, $$2);
+   public aiy c(boi $$0) {
+      aiy $$1 = a.get($$0.ai());
+      if ($$1 == null) {
+         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ai());
+      } else {
+         return $$1;
       }
    }
 
-   private static void a(eqo $$0, Matrix4f $$1, Matrix3f $$2, float $$3, int $$4, float $$5, float $$6, int $$7) {
-      $$0.a($$1, $$3, (float)$$4, 0.0F).a(255, 255, 255, 255).a($$5, $$6).c(ges.d).b($$7).a($$2, 0.0F, 1.0F, 0.0F).e();
+   protected boolean d(boi $$0) {
+      return super.a($$0) || $$0 instanceof cfw && ((cfw)$$0).gg();
    }
 }

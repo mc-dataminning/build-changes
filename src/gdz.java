@@ -1,24 +1,17 @@
-public class gdz extends gcw<cbp, fmz<cbp>> {
-   private static final ahh a = new ahh("textures/entity/wither/wither_armor.png");
-   private final fmz<cbp> b;
+public class gdz extends gbk<cfh, fov<cfh>> {
+   private static final aiy a = new aiy("textures/entity/zombie_villager/zombie_villager.png");
 
-   public gdz(gav<cbp, fmz<cbp>> $$0, fnf $$1) {
-      super($$0);
-      this.b = new fmz<>($$1.a(fni.bS));
+   public gdz(gat.a $$0) {
+      super($$0, new fov<>($$0.a(fpb.cg)), 0.5F);
+      this.a(new geu<>(this, new fov($$0.a(fpb.ch)), new fov($$0.a(fpb.ci)), $$0.g()));
+      this.a(new gfp<>(this, $$0.e(), "zombie_villager"));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return aup.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected ahh a() {
+   public aiy a(cfh $$0) {
       return a;
    }
 
-   @Override
-   protected fkj<cbp> b() {
-      return this.b;
+   protected boolean b(cfh $$0) {
+      return super.a($$0) || $$0.gq();
    }
 }

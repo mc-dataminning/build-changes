@@ -1,31 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
+import java.util.Map;
 import java.util.Objects;
-import java.util.function.UnaryOperator;
 
-public class bay extends DataFix {
-   private final String a;
-   private final TypeReference b;
-   private final UnaryOperator<String> c;
+public class bay extends bdy {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
 
-   public bay(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+   public bay(Schema $$0) {
+      super("EntityZombifiedPiglinRenameFix", $$0, true);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bde.a());
-      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
-         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
-      }
+   @Override
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
    }
 }

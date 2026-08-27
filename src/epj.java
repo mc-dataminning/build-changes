@@ -1,93 +1,69 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
+import javax.annotation.Nullable;
 
-public final class epj {
-   private final long a;
-   private final List<epn> b;
-   private epn c;
-   private int d;
-   private int e;
-
-   public epj(long $$0) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-      this.a();
-   }
-
-   public void a() {
-      RenderSystem.assertInInitPhase();
-      this.b.clear();
-      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
-
-      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
-         $$0.position($$1);
-         epn $$2 = new epn($$0);
-         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
-            this.b.add($$2);
-         }
+public record epj<T>(T d, hz e, long f, epn g, long h) {
+   public static final Comparator<epj<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
+      } else {
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+      }
+   };
+   public static final Comparator<epj<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<epj<?>> c = new Strategy<epj<?>>() {
+      public int a(epj<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
       }
 
-      int[] $$3 = new int[1];
-      int[] $$4 = new int[1];
-      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
-      this.d = $$3[0];
-      this.e = $$4[0];
-      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
-      this.c = new epn($$5);
-   }
-
-   public epn a(Optional<epn> $$0) {
-      RenderSystem.assertInInitPhase();
-      if ($$0.isPresent()) {
-         epn $$1 = $$0.get();
-
-         for (epn $$2 : this.b) {
-            if ($$2.equals($$1)) {
-               return $$2;
-            }
+      public boolean a(@Nullable epj<?> $$0, @Nullable epj<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
          }
       }
+   };
 
-      return this.b();
+   public epj(T $$0, hz $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, epn.d, $$3);
    }
 
-   public int a(epn $$0) {
-      RenderSystem.assertInInitPhase();
-      return this.b.indexOf($$0);
+   public epj(T d, hz e, long f, epn g, long h) {
+      e = e.i();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
    }
 
-   public epn b() {
-      return this.c;
+   public static <T> epj<T> a(T $$0, hz $$1) {
+      return new epj<>($$0, $$1, 0L, epn.d, 0L);
    }
 
-   public int c() {
+   public T a() {
       return this.d;
    }
 
-   public int d() {
+   public hz b() {
       return this.e;
    }
 
-   public epn a(int $$0) {
-      return this.b.get($$0);
+   public long c() {
+      return this.f;
    }
 
-   public int e() {
-      return this.b.size();
+   public epn d() {
+      return this.g;
    }
 
-   public long f() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
+   public long e() {
+      return this.h;
    }
 }

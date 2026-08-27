@@ -1,4 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record bkq(bkv a, float b, @Nullable bla c, float d) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bkq {
 }

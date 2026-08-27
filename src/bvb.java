@@ -1,42 +1,57 @@
 import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class bvb extends bvk {
-   private final byo a;
-   @Nullable
-   private bmo b;
-   private final bxd c = bxd.a().a(64.0);
+public abstract class bvb {
+   private final EnumSet<bvb.a> a = EnumSet.noneOf(bvb.a.class);
 
-   public bvb(byo $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(btk.a.d));
+   public abstract boolean a();
+
+   public boolean b() {
+      return this.a();
    }
 
-   @Override
-   public boolean a() {
-      elx $$0 = this.a.cH().c(10.0, 8.0, 10.0);
-      List<? extends bmo> $$1 = this.a.dL().a(cfd.class, this.c, this.a, $$0);
-      List<cfq> $$2 = this.a.dL().a(this.c, this.a, $$0);
-
-      for (bmo $$3 : $$1) {
-         cfd $$4 = (cfd)$$3;
-
-         for (cfq $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
-            }
-         }
-      }
-
-      return this.b == null ? false : !(this.b instanceof cfq) || !this.b.P_() && !((cfq)this.b).f();
+   public boolean S_() {
+      return true;
    }
 
-   @Override
    public void c() {
-      this.a.h(this.b);
-      super.c();
+   }
+
+   public void d() {
+   }
+
+   public boolean T_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bvb.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<bvb.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.T_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return awh.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

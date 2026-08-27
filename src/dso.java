@@ -1,89 +1,31 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dso extends dsc<dun> {
-   public dso(Codec<dun> $$0) {
-      super($$0);
+public class dso extends drl {
+   private final iw a;
+   private final dqs b;
+   private final drc c;
+   private final drf.o d;
+
+   public dso(dqr $$0, iw $$1, cvp $$2, dqs $$3, drc $$4, drf.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   public boolean a(dse<dun> $$0) {
-      hx $$1 = $$0.e();
-      auw $$2 = $$0.d();
-      cus $$3 = $$0.b();
+   @Deprecated
+   public Optional<dlf> a(Function<hz, ij<cwm>> $$0, dnb $$1, hz $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   }
 
-      while ($$3.u($$1) && $$1.v() > $$3.J_() + 2) {
-         $$1 = $$1.d();
-      }
+   @Deprecated
+   public iw c() {
+      return this.a;
+   }
 
-      if (!$$3.a_($$1).a(cxa.dP)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
-
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = aup.f($$7);
-
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)aup.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)aup.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     djp $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(cxa.dP) || $$13.a(cxa.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), cxa.iC.o());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(cxa.dP) || $$13.a(cxa.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), cxa.iC.o());
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               hx $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  djp $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(cxa.dP) && !$$19.a(cxa.dO) && !$$19.a(cxa.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, cxa.iC.o());
-                  $$17 = $$17.d();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+   public drc d() {
+      return this.c;
    }
 }

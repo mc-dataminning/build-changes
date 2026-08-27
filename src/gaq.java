@@ -1,12 +1,15 @@
-public class gaq extends fzt<ccz> {
-   private static final ahh a = new ahh("textures/entity/illager/pillager.png");
+public class gaq extends gbz<cee, fma<cee>> {
+   private static final aiy a = new aiy("textures/entity/endermite.png");
 
-   public gaq(fza.a $$0) {
-      super($$0, new fkx<>($$0.a(fni.aN)), 0.5F);
-      this.a(new gde<>(this, $$0.d()));
+   public gaq(gat.a $$0) {
+      super($$0, new fma<>($$0.a(fpb.U)), 0.3F);
    }
 
-   public ahh a(ccz $$0) {
+   protected float a(cee $$0) {
+      return 180.0F;
+   }
+
+   public aiy b(cee $$0) {
       return a;
    }
 }

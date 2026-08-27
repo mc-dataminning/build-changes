@@ -1,34 +1,37 @@
-import javax.annotation.Nullable;
-
-public class ace implements xg<zb> {
-   private final int a;
+public class ace implements xx<aag> {
+   public static final xo<uq, ace> a = xx.a(ace::a, ace::new);
    private final int b;
+   private final aiy c;
 
-   public ace(blw $$0, @Nullable blw $$1) {
-      this.a = $$0.aj();
-      this.b = $$1 != null ? $$1.aj() : 0;
+   public ace(int $$0, csd<?> $$1) {
+      this.b = $$0;
+      this.c = $$1.a();
    }
 
-   public ace(uj $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
+   private ace(uq $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.s();
+   }
+
+   private void a(uq $$0) {
+      $$0.k(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
+   public xz<ace> a() {
+      return aeq.X;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public aiy b() {
+      return this.c;
    }
 
-   public int d() {
+   public int e() {
       return this.b;
    }
 }

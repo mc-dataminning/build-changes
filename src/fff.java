@@ -1,210 +1,91 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fff extends fel<cjd> {
-   private static final ahh[] E = new ahh[]{
-      new ahh("container/enchanting_table/level_1"), new ahh("container/enchanting_table/level_2"), new ahh("container/enchanting_table/level_3")
-   };
-   private static final ahh[] F = new ahh[]{
-      new ahh("container/enchanting_table/level_1_disabled"),
-      new ahh("container/enchanting_table/level_2_disabled"),
-      new ahh("container/enchanting_table/level_3_disabled")
-   };
-   private static final ahh G = new ahh("container/enchanting_table/enchantment_slot_disabled");
-   private static final ahh H = new ahh("container/enchanting_table/enchantment_slot_highlighted");
-   private static final ahh I = new ahh("container/enchanting_table/enchantment_slot");
-   private static final ahh J = new ahh("textures/gui/container/enchanting_table.png");
-   private static final ahh K = new ahh("textures/entity/enchanting_table_book.png");
-   private final auw L = auw.a();
-   private fjr M;
-   public int x;
-   public float y;
-   public float z;
-   public float A;
-   public float B;
-   public float C;
-   public float D;
-   private cng N = cng.f;
+public class fff extends ffe {
+   private static final int a = 1024;
+   private static final int b = 65535;
+   private static final vq c = vq.c("selectWorld.allowCommands");
+   private static final vq k = vq.c("selectWorld.gameMode");
+   private static final vq l = vq.c("lanServer.otherPlayers");
+   private static final vq m = vq.c("lanServer.port");
+   private static final vq n = vq.a("lanServer.port.unavailable.new", 1024, 65535);
+   private static final vq o = vq.a("lanServer.port.invalid.new", 1024, 65535);
+   private static final int p = 16733525;
+   private final ffe q;
+   private cvk r = cvk.a;
+   private boolean t;
+   private int u = avy.a();
+   @Nullable
+   private ezq v;
 
-   public fff(cjd $$0, cfp $$1, vg $$2) {
-      super($$0, $$1, $$2);
+   public fff(ffe $$0) {
+      super(vq.c("lanServer.title"));
+      this.q = $$0;
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.M = new fjr(this.f.aP().a(fni.n));
-   }
-
-   @Override
-   public void E() {
-      super.E();
-      this.I();
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      int $$3 = (this.g - this.c) / 2;
-      int $$4 = (this.h - this.k) / 2;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         double $$6 = $$0 - (double)($$3 + 60);
-         double $$7 = $$1 - (double)($$4 + 14 + 19 * $$5);
-         if ($$6 >= 0.0 && $$7 >= 0.0 && $$6 < 108.0 && $$7 < 19.0 && this.p.b(this.f.s, $$5)) {
-            this.f.q.a(this.p.j, $$5);
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(exe $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(J, $$4, $$5, 0, 0, this.c, this.k);
-      this.d($$0, $$4, $$5, $$1);
-      ffe.a().a((long)this.p.m());
-      int $$6 = this.p.l();
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         int $$8 = $$4 + 60;
-         int $$9 = $$8 + 20;
-         int $$10 = this.p.k[$$7];
-         if ($$10 == 0) {
-            $$0.a(G, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+   protected void aQ_() {
+      gky $$0 = this.f.T();
+      this.r = $$0.v_();
+      this.t = $$0.aY().m();
+      this.d(ezo.a(cvk::e).a(cvk.a, cvk.d, cvk.b, cvk.c).a(this.r).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.r = $$1x));
+      this.d(ezo.b(this.t).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.t = $$1x));
+      ezh $$1 = ezh.a(vq.c("lanServer.start"), $$1x -> {
+         this.f.a(null);
+         vq $$2;
+         if ($$0.a(this.r, this.t, this.u)) {
+            $$2 = alx.a(this.u);
          } else {
-            String $$11 = $$10 + "";
-            int $$12 = 86 - this.i.b($$11);
-            vl $$13 = ffe.a().a(this.i, $$12);
-            int $$14 = 6839882;
-            if (($$6 < $$7 + 1 || this.f.s.cj < $$10) && !this.f.s.fT().d) {
-               $$0.a(G, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-               $$0.a(F[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
-               $$0.a(this.i, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, ($$14 & 16711422) >> 1);
-               $$14 = 4226832;
-            } else {
-               int $$15 = $$2 - ($$4 + 60);
-               int $$16 = $$3 - ($$5 + 14 + 19 * $$7);
-               if ($$15 >= 0 && $$16 >= 0 && $$15 < 108 && $$16 < 19) {
-                  $$0.a(H, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-                  $$14 = 16777088;
-               } else {
-                  $$0.a(I, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-               }
-
-               $$0.a(E[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
-               $$0.a(this.i, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, $$14);
-               $$14 = 8453920;
-            }
-
-            $$0.b(this.i, $$11, $$9 + 86 - this.i.b($$11), $$5 + 16 + 19 * $$7 + 7, $$14);
+            $$2 = vq.c("commands.publish.failed");
          }
-      }
+
+         this.f.l.d().a($$2);
+         this.f.d();
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
+      this.v = new ezq(this.i, this.g / 2 - 75, 160, 150, 20, vq.c("lanServer.port"));
+      this.v.b($$1x -> {
+         vq $$2 = this.a($$1x);
+         this.v.c(vq.b(this.u + "").a(n.i));
+         if ($$2 == null) {
+            this.v.g(14737632);
+            this.v.a(null);
+            $$1.j = true;
+         } else {
+            this.v.g(16733525);
+            this.v.a(fas.a($$2));
+            $$1.j = false;
+         }
+      });
+      this.v.c(vq.b(this.u + "").a(n.i));
+      this.d(this.v);
+      this.d($$1);
+      this.d(ezh.a(vp.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
    }
 
-   private void d(exe $$0, int $$1, int $$2, float $$3) {
-      float $$4 = aup.i($$3, this.D, this.C);
-      float $$5 = aup.i($$3, this.z, this.y);
-      epg.c();
-      $$0.c().a();
-      $$0.c().a((float)$$1 + 33.0F, (float)$$2 + 31.0F, 100.0F);
-      float $$6 = 40.0F;
-      $$0.c().b(-40.0F, 40.0F, 40.0F);
-      $$0.c().a(a.b.rotationDegrees(25.0F));
-      $$0.c().a((1.0F - $$4) * 0.2F, (1.0F - $$4) * 0.1F, (1.0F - $$4) * 0.25F);
-      float $$7 = -(1.0F - $$4) * 90.0F - 90.0F;
-      $$0.c().a(a.d.rotationDegrees($$7));
-      $$0.c().a(a.b.rotationDegrees(180.0F));
-      float $$8 = aup.a(aup.h($$5 + 0.25F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      float $$9 = aup.a(aup.h($$5 + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      this.M.a(0.0F, $$8, $$9, $$4);
-      eqo $$10 = $$0.d().getBuffer(this.M.a(K));
-      this.M.a($$0.c(), $$10, 15728880, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.e();
-      $$0.c().b();
-      epg.b();
+   @Nullable
+   private vq a(String $$0) {
+      if ($$0.isBlank()) {
+         this.u = avy.a();
+         return null;
+      } else {
+         try {
+            this.u = Integer.parseInt($$0);
+            if (this.u < 1024 || this.u > 65535) {
+               return o;
+            } else {
+               return !avy.a(this.u) ? n : null;
+            }
+         } catch (NumberFormatException var3) {
+            this.u = avy.a();
+            return o;
+         }
+      }
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      $$3 = this.f.as();
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-      boolean $$4 = this.f.s.fT().d;
-      int $$5 = this.p.l();
-
-      for (int $$6 = 0; $$6 < 3; $$6++) {
-         int $$7 = this.p.k[$$6];
-         crr $$8 = crr.c(this.p.l[$$6]);
-         int $$9 = this.p.m[$$6];
-         int $$10 = $$6 + 1;
-         if (this.a(60, 14 + 19 * $$6, 108, 17, (double)$$1, (double)$$2) && $$7 > 0 && $$9 >= 0 && $$8 != null) {
-            List<vg> $$11 = Lists.newArrayList();
-            $$11.add(vg.a("container.enchant.clue", $$8.d($$9)).a(n.p));
-            if (!$$4) {
-               $$11.add(vf.a);
-               if (this.f.s.cj < $$7) {
-                  $$11.add(vg.a("container.enchant.level.requirement", this.p.k[$$6]).a(n.m));
-               } else {
-                  vu $$12;
-                  if ($$10 == 1) {
-                     $$12 = vg.c("container.enchant.lapis.one");
-                  } else {
-                     $$12 = vg.a("container.enchant.lapis.many", $$10);
-                  }
-
-                  $$11.add($$12.a($$5 >= $$10 ? n.h : n.m));
-                  vu $$14;
-                  if ($$10 == 1) {
-                     $$14 = vg.c("container.enchant.level.one");
-                  } else {
-                     $$14 = vg.a("container.enchant.level.many", $$10);
-                  }
-
-                  $$11.add($$14.a(n.h));
-               }
-            }
-
-            $$0.a(this.i, $$11, $$1, $$2);
-            break;
-         }
-      }
-   }
-
-   public void I() {
-      cng $$0 = this.p.b(0).g();
-      if (!cng.a($$0, this.N)) {
-         this.N = $$0;
-
-         do {
-            this.A = this.A + (float)(this.L.a(4) - this.L.a(4));
-         } while (this.y <= this.A + 1.0F && this.y >= this.A - 1.0F);
-      }
-
-      this.x++;
-      this.z = this.y;
-      this.D = this.C;
-      boolean $$1 = false;
-
-      for (int $$2 = 0; $$2 < 3; $$2++) {
-         if (this.p.k[$$2] != 0) {
-            $$1 = true;
-         }
-      }
-
-      if ($$1) {
-         this.C += 0.2F;
-      } else {
-         this.C -= 0.2F;
-      }
-
-      this.C = aup.a(this.C, 0.0F, 1.0F);
-      float $$3 = (this.A - this.y) * 0.4F;
-      float $$4 = 0.2F;
-      $$3 = aup.a($$3, -0.2F, 0.2F);
-      this.B = this.B + ($$3 - this.B) * 0.9F;
-      this.y = this.y + this.B;
+      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
+      $$0.a(this.i, l, this.g / 2, 82, 16777215);
+      $$0.a(this.i, m, this.g / 2, 142, 16777215);
    }
 }

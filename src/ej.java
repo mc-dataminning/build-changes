@@ -1,186 +1,102 @@
 import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public class ej implements ey<ej.a> {
-   private static final Collection<String> a = Arrays.asList("Hello world!", "foo", "@e", "Hello @p :)");
+public class ej implements ArgumentType<ej.a> {
+   private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("argument.player.unknown"));
+
+   public static Collection<GameProfile> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return ((ej.a)$$0.getArgument($$1, ej.a.class)).getNames((du)$$0.getSource());
+   }
 
    public static ej a() {
       return new ej();
    }
 
-   public static vg a(CommandContext<ds> $$0, String $$1) throws CommandSyntaxException {
-      ej.a $$2 = (ej.a)$$0.getArgument($$1, ej.a.class);
-      return $$2.a((ds)$$0.getSource());
-   }
-
-   public static void a(CommandContext<ds> $$0, String $$1, Consumer<vw> $$2) throws CommandSyntaxException {
-      ej.a $$3 = (ej.a)$$0.getArgument($$1, ej.a.class);
-      ds $$4 = (ds)$$0.getSource();
-      vg $$5 = $$3.a($$4);
-      dq $$6 = $$4.n();
-      vw $$7 = $$6.a($$1);
-      if ($$7 != null) {
-         a($$2, $$4, $$7.a($$5));
+   public ej.a a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '@') {
+         gh $$1 = new gh($$0);
+         gg $$2 = $$1.t();
+         if ($$2.b()) {
+            throw eh.c.create();
+         } else {
+            return new ej.b($$2);
+         }
       } else {
-         b($$2, $$4, vw.a($$3.a).a($$5));
+         int $$3 = $$0.getCursor();
+
+         while ($$0.canRead() && $$0.peek() != ' ') {
+            $$0.skip();
+         }
+
+         String $$4 = $$0.getString().substring($$3, $$0.getCursor());
+         return $$1 -> {
+            Optional<GameProfile> $$2 = $$1.l().ar().a($$4);
+            return Collections.singleton($$2.orElseThrow(a::create));
+         };
       }
    }
 
-   private static void a(Consumer<vw> $$0, ds $$1, vw $$2) {
-      MinecraftServer $$3 = $$1.l();
-      CompletableFuture<anv> $$4 = a($$1, $$2);
-      vg $$5 = $$3.bi().decorate($$1.i(), $$2.d());
-      $$1.o().append($$4, $$3x -> {
-         vw $$4x = $$2.a($$5).a($$3x.e());
-         $$0.accept($$4x);
-      });
-   }
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if ($$0.getSource() instanceof dz) {
+         StringReader $$2 = new StringReader($$1.getInput());
+         $$2.setCursor($$1.getStart());
+         gh $$3 = new gh($$2);
 
-   private static void b(Consumer<vw> $$0, ds $$1, vw $$2) {
-      vb $$3 = $$1.l().bi();
-      vg $$4 = $$3.decorate($$1.i(), $$2.d());
-      $$0.accept($$2.a($$4));
-   }
+         try {
+            $$3.t();
+         } catch (CommandSyntaxException var6) {
+         }
 
-   private static CompletableFuture<anv> a(ds $$0, vw $$1) {
-      anf $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(anv.a($$1.c()));
-   }
-
-   public ej.a a(StringReader $$0) throws CommandSyntaxException {
-      return ej.a.a($$0, true);
+         return $$3.a($$1, $$1x -> dz.b(((dz)$$0.getSource()).q(), $$1x));
+      } else {
+         return Suggestions.empty();
+      }
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 
-   public static class a {
-      final String a;
-      private final ej.b[] b;
+   @FunctionalInterface
+   public interface a {
+      Collection<GameProfile> getNames(du var1) throws CommandSyntaxException;
+   }
 
-      public a(String $$0, ej.b[] $$1) {
+   public static class b implements ej.a {
+      private final gg a;
+
+      public b(gg $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
 
-      public String a() {
-         return this.a;
-      }
+      @Override
+      public Collection<GameProfile> getNames(du $$0) throws CommandSyntaxException {
+         List<aow> $$1 = this.a.d($$0);
+         if ($$1.isEmpty()) {
+            throw eh.e.create();
+         } else {
+            List<GameProfile> $$2 = Lists.newArrayList();
 
-      public ej.b[] b() {
-         return this.b;
-      }
-
-      vg a(ds $$0) throws CommandSyntaxException {
-         return this.a($$0, $$0.c(2));
-      }
-
-      public vg a(ds $$0, boolean $$1) throws CommandSyntaxException {
-         if (this.b.length != 0 && $$1) {
-            vu $$2 = vg.b(this.a.substring(0, this.b[0].a()));
-            int $$3 = this.b[0].a();
-
-            for (ej.b $$4 : this.b) {
-               vg $$5 = $$4.a($$0);
-               if ($$3 < $$4.a()) {
-                  $$2.f(this.a.substring($$3, $$4.a()));
-               }
-
-               if ($$5 != null) {
-                  $$2.b($$5);
-               }
-
-               $$3 = $$4.b();
-            }
-
-            if ($$3 < this.a.length()) {
-               $$2.f(this.a.substring($$3));
+            for (aow $$3 : $$1) {
+               $$2.add($$3.fS());
             }
 
             return $$2;
-         } else {
-            return vg.b(this.a);
          }
-      }
-
-      public static ej.a a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-         String $$2 = $$0.getString().substring($$0.getCursor(), $$0.getTotalLength());
-         if (!$$1) {
-            $$0.setCursor($$0.getTotalLength());
-            return new ej.a($$2, new ej.b[0]);
-         } else {
-            List<ej.b> $$3 = Lists.newArrayList();
-            int $$4 = $$0.getCursor();
-
-            while (true) {
-               int $$5;
-               ge $$7;
-               while (true) {
-                  if (!$$0.canRead()) {
-                     return new ej.a($$2, $$3.toArray(new ej.b[0]));
-                  }
-
-                  if ($$0.peek() == '@') {
-                     $$5 = $$0.getCursor();
-
-                     try {
-                        gf $$6 = new gf($$0);
-                        $$7 = $$6.t();
-                        break;
-                     } catch (CommandSyntaxException var8) {
-                        if (var8.getType() != gf.h && var8.getType() != gf.f) {
-                           throw var8;
-                        }
-
-                        $$0.setCursor($$5 + 1);
-                     }
-                  } else {
-                     $$0.skip();
-                  }
-               }
-
-               $$3.add(new ej.b($$5 - $$4, $$0.getCursor() - $$4, $$7));
-            }
-         }
-      }
-   }
-
-   public static class b {
-      private final int a;
-      private final int b;
-      private final ge c;
-
-      public b(int $$0, int $$1, ge $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public ge c() {
-         return this.c;
-      }
-
-      @Nullable
-      public vg a(ds $$0) throws CommandSyntaxException {
-         return ge.a(this.c.b($$0));
       }
    }
 }

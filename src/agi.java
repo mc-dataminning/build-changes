@@ -1,100 +1,156 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
+public class agi implements xx<aes> {
+   public static final xo<uq, agi> a = xx.a(agi::a, agi::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private final hz e;
+   private final dkh.a f;
+   private final dmp g;
+   private final String h;
+   private final hz i;
+   private final jd j;
+   private final ddk k;
+   private final dfa l;
+   private final String m;
+   private final boolean n;
+   private final boolean o;
+   private final boolean p;
+   private final float q;
+   private final long r;
 
-public record agi(vg b, Optional<agi.b> c, Optional<agi.c> d, Optional<agi.a> e, boolean f) {
-   public static final Codec<agi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               vi.a.optionalFieldOf("description", vf.a).forGetter(agi::a),
-               agi.b.a.optionalFieldOf("players").forGetter(agi::b),
-               agi.c.a.optionalFieldOf("version").forGetter(agi::c),
-               agi.a.a.optionalFieldOf("favicon").forGetter(agi::d),
-               Codec.BOOL.optionalFieldOf("enforcesSecureChat", false).forGetter(agi::e)
-            )
-            .apply($$0, agi::new)
-   );
-
-   public vg a() {
-      return this.b;
+   public agi(
+      hz $$0, dkh.a $$1, dmp $$2, String $$3, hz $$4, jd $$5, ddk $$6, dfa $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+   ) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = $$6;
+      this.l = $$7;
+      this.m = $$8;
+      this.n = $$9;
+      this.o = $$10;
+      this.p = $$11;
+      this.q = $$12;
+      this.r = $$13;
    }
 
-   public Optional<agi.b> b() {
-      return this.c;
+   private agi(uq $$0) {
+      this.e = $$0.e();
+      this.f = $$0.b(dkh.a.class);
+      this.g = $$0.b(dmp.class);
+      this.h = $$0.r();
+      int $$1 = 48;
+      this.i = new hz(awh.a($$0.readByte(), -48, 48), awh.a($$0.readByte(), -48, 48), awh.a($$0.readByte(), -48, 48));
+      int $$2 = 48;
+      this.j = new jd(awh.a($$0.readByte(), 0, 48), awh.a($$0.readByte(), 0, 48), awh.a($$0.readByte(), 0, 48));
+      this.k = $$0.b(ddk.class);
+      this.l = $$0.b(dfa.class);
+      this.m = $$0.d(128);
+      this.q = awh.a($$0.readFloat(), 0.0F, 1.0F);
+      this.r = $$0.o();
+      int $$3 = $$0.readByte();
+      this.n = ($$3 & 1) != 0;
+      this.o = ($$3 & 2) != 0;
+      this.p = ($$3 & 4) != 0;
    }
 
-   public Optional<agi.c> c() {
-      return this.d;
+   private void a(uq $$0) {
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.k(this.i.u());
+      $$0.k(this.i.v());
+      $$0.k(this.i.w());
+      $$0.k(this.j.u());
+      $$0.k(this.j.v());
+      $$0.k(this.j.w());
+      $$0.a(this.k);
+      $$0.a(this.l);
+      $$0.a(this.m);
+      $$0.a(this.q);
+      $$0.a(this.r);
+      int $$1 = 0;
+      if (this.n) {
+         $$1 |= 1;
+      }
+
+      if (this.o) {
+         $$1 |= 2;
+      }
+
+      if (this.p) {
+         $$1 |= 4;
+      }
+
+      $$0.k($$1);
    }
 
-   public Optional<agi.a> d() {
+   @Override
+   public xz<agi> a() {
+      return aeq.bU;
+   }
+
+   public void a(aes $$0) {
+      $$0.a(this);
+   }
+
+   public hz b() {
       return this.e;
    }
 
-   public boolean e() {
+   public dkh.a e() {
       return this.f;
    }
 
-   public static record a(byte[] b) {
-      private static final String c = "data:image/png;base64,";
-      public static final Codec<agi.a> a = Codec.STRING.comapFlatMap($$0 -> {
-         if (!$$0.startsWith("data:image/png;base64,")) {
-            return DataResult.error(() -> "Unknown format");
-         } else {
-            try {
-               String $$1 = $$0.substring("data:image/png;base64,".length()).replaceAll("\n", "");
-               byte[] $$2 = Base64.getDecoder().decode($$1.getBytes(StandardCharsets.UTF_8));
-               return DataResult.success(new agi.a($$2));
-            } catch (IllegalArgumentException var3) {
-               return DataResult.error(() -> "Malformed base64 server icon");
-            }
-         }
-      }, $$0 -> "data:image/png;base64," + new String(Base64.getEncoder().encode($$0.b), StandardCharsets.UTF_8));
-
-      public byte[] a() {
-         return this.b;
-      }
+   public dmp f() {
+      return this.g;
    }
 
-   public static record b(int b, int c, List<GameProfile> d) {
-      private static final Codec<GameProfile> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ja.c.fieldOf("id").forGetter(GameProfile::getId), Codec.STRING.fieldOf("name").forGetter(GameProfile::getName))
-               .apply($$0, GameProfile::new)
-      );
-      public static final Codec<agi.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("max").forGetter(agi.b::a),
-                  Codec.INT.fieldOf("online").forGetter(agi.b::b),
-                  e.listOf().optionalFieldOf("sample", List.of()).forGetter(agi.b::c)
-               )
-               .apply($$0, agi.b::new)
-      );
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public List<GameProfile> c() {
-         return this.d;
-      }
+   public String g() {
+      return this.h;
    }
 
-   public static record c(String b, int c) {
-      public static final Codec<agi.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(agi.c::b), Codec.INT.fieldOf("protocol").forGetter(agi.c::c)).apply($$0, agi.c::new)
-      );
+   public hz h() {
+      return this.i;
+   }
 
-      public static agi.c a() {
-         ad $$0 = aa.b();
-         return new agi.c($$0.c(), $$0.e());
-      }
+   public jd i() {
+      return this.j;
+   }
+
+   public ddk j() {
+      return this.k;
+   }
+
+   public dfa k() {
+      return this.l;
+   }
+
+   public String l() {
+      return this.m;
+   }
+
+   public boolean m() {
+      return this.n;
+   }
+
+   public boolean n() {
+      return this.o;
+   }
+
+   public boolean o() {
+      return this.p;
+   }
+
+   public float p() {
+      return this.q;
+   }
+
+   public long q() {
+      return this.r;
    }
 }

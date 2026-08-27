@@ -1,49 +1,87 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dbt extends cwy implements ddy {
+public class dbt extends dcl {
    public static final MapCodec<dbt> a = b(dbt::new);
-   public static final dkg b = dkf.C;
+   public static final int b = 3;
+   public static final dmf c = dlv.as;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
    public MapCodec<dbt> a() {
       return a;
    }
 
-   protected dbt(djo.d $$0) {
+   public dbt(dle.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean a(djp $$0, djp $$1, ic $$2) {
-      return $$1.a(cxa.ac) && $$2.o() == ic.a.b;
-   }
-
-   @Nullable
-   @Override
-   public djp a(cpp $$0) {
-      eez $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == efa.c;
-      return super.a($$0).a(b, Boolean.valueOf($$2));
+   protected void b(dlf $$0, aov $$1, hz $$2, awo $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, efa.c, efa.c.a($$3));
+   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         hz.a $$4 = new hz.a();
+
+         for (ie $$5 : ie.values()) {
+            $$4.a($$2, $$5);
+            dlf $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, awh.a($$3, 20, 40));
+            }
+         }
+      } else {
+         $$1.a($$2, this, awh.a($$3, 20, 40));
+      }
+   }
+
+   private boolean e(dlf $$0, cvn $$1, hz $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
+      }
+   }
+
+   @Override
+   protected void a(dlf $$0, cvn $$1, hz $$2, cyo $$3, hz $$4, boolean $$5) {
+      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(cut $$0, hz $$1, int $$2) {
+      int $$3 = 0;
+      hz.a $$4 = new hz.a();
+
+      for (ie $$5 : ie.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public eez c_(djp $$0) {
-      return $$0.c(b) ? efa.c.a(false) : super.c_($$0);
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(b);
+   public coz a(cvq $$0, hz $$1, dlf $$2) {
+      return coz.h;
    }
 }

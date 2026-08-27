@@ -1,33 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+public abstract class aoi extends egb {
+   protected aoi(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
 
-public interface aoi {
-   aoi a = new aoi() {
-      @Override
-      public void a() {
+   @Override
+   protected boolean a(long $$0) {
+      return $$0 == cuu.a;
+   }
+
+   @Override
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         cuu $$3 = new cuu($$0);
+         int $$4 = $$3.e;
+         int $$5 = $$3.f;
+
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               long $$8 = cuu.c($$4 + $$6, $$5 + $$7);
+               if ($$8 != $$0) {
+                  this.b($$0, $$8, $$1, $$2);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+      cuu $$4 = new cuu($$0);
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
+
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            long $$9 = cuu.c($$5 + $$7, $$6 + $$8);
+            if ($$9 == $$0) {
+               $$9 = cuu.a;
+            }
+
+            if ($$9 != $$1) {
+               int $$10 = this.b($$9, $$0, this.c($$9));
+               if ($$3 > $$10) {
+                  $$3 = $$10;
+               }
+
+               if ($$3 == 0) {
+                  return $$3;
+               }
+            }
+         }
       }
 
-      @Override
-      public void b() {
-      }
+      return $$3;
+   }
 
-      @Override
-      public CompletableFuture<anv> a(String $$0) {
-         return CompletableFuture.completedFuture(anv.a($$0));
-      }
+   @Override
+   protected int b(long $$0, long $$1, int $$2) {
+      return $$0 == cuu.a ? this.b($$1) : $$2 + 1;
+   }
 
-      @Override
-      public CompletableFuture<List<anv>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(anv::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
+   protected abstract int b(long var1);
 
-   void a();
-
-   void b();
-
-   CompletableFuture<anv> a(String var1);
-
-   CompletableFuture<List<anv>> a(List<String> var1);
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(cuu.a, $$0, $$1, $$2);
+   }
 }

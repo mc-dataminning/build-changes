@@ -1,140 +1,51 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class eet extends een<eet.a> {
-   protected eet(dlz $$0) {
-      super(cug.a, $$0, new eet.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public class eet {
+   public static final efl a = efl.a;
+   public static final Codec<eet> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eey.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               eey.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               eer.c.optionalFieldOf("position_predicate", eeq.b).forGetter($$0x -> $$0x.e),
+               dlf.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               efm.c.optionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eet::new)
+   );
+   private final eey c;
+   private final eey d;
+   private final eer e;
+   private final dlf f;
+   private final efm g;
+
+   public eet(eey $$0, eey $$1, dlf $$2) {
+      this($$0, $$1, eeq.b, $$2);
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
+   public eet(eey $$0, eey $$1, eer $$2, dlf $$3) {
+      this($$0, $$1, $$2, $$3, a);
    }
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = iz.e($$0);
-      int $$3 = iz.c($$2);
-      eet.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(iz.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         dlr $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = hx.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
-               }
-
-               $$2 = iz.a($$2, ic.b);
-            }
-         }
-
-         return $$6.a(iz.b(hx.a($$0)), iz.b(hx.b($$0)), iz.b(hx.c($$0)));
-      } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
-      }
+   public eet(eey $$0, eey $$1, eer $$2, dlf $$3, efm $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   @Override
-   protected void h(long $$0) {
-      int $$1 = iz.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
-
-      long $$2 = iz.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
+   public boolean a(dlf $$0, dlf $$1, hz $$2, hz $$3, hz $$4, awo $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected void i(long $$0) {
-      long $$1 = iz.f($$0);
-      int $$2 = iz.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = iz.a($$3, ic.a)) {
-            $$2--;
-         }
-
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
-         } else {
-            this.d.c.remove($$1);
-         }
-      }
+   public dlf a() {
+      return this.f;
    }
 
-   @Override
-   protected dlr g(long $$0) {
-      dlr $$1 = (dlr)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(iz.f($$0));
-         if ($$2 != this.d.b && iz.c($$0) < $$2) {
-            long $$3 = iz.a($$0, ic.b);
-
-            dlr $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = iz.a($$3, ic.b);
-            }
-
-            return a($$4);
-         } else {
-            return this.j($$0) ? new dlr(15) : new dlr();
-         }
-      }
-   }
-
-   private static dlr a(dlr $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
-
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
-         }
-
-         return new dlr($$2);
-      }
-   }
-
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
-   }
-
-   protected boolean l(long $$0) {
-      long $$1 = iz.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || iz.c($$0) >= $$2;
-   }
-
-   protected int m(long $$0) {
-      return this.d.c.get($$0);
-   }
-
-   protected int c() {
-      return this.d.b;
-   }
-
-   protected static final class a extends eek<eet.a> {
-      int b;
-      final Long2IntOpenHashMap c;
-
-      public a(Long2ObjectOpenHashMap<dlr> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
-      }
-
-      public eet.a a() {
-         return new eet.a(this.a.clone(), this.c.clone(), this.b);
-      }
+   @Nullable
+   public sw a(awo $$0, @Nullable sw $$1) {
+      return this.g.a($$0, $$1);
    }
 }

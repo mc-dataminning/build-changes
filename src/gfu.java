@@ -1,17 +1,15 @@
-import java.io.IOException;
+public class gfu extends gfe<caw, fot<caw>> {
+   private static final aiy a = new aiy("textures/entity/wolf/wolf_collar.png");
 
-public class gfu extends aqo<int[]> {
-   private static final ahh a = new ahh("textures/colormap/foliage.png");
-
-   protected int[] a(aqj $$0, bgt $$1) {
-      try {
-         return gfx.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
-      }
+   public gfu(gco<caw, fot<caw>> $$0) {
+      super($$0);
    }
 
-   protected void a(int[] $$0, aqj $$1, bgt $$2) {
-      ctr.a($$0);
+   public void a(esa $$0, fvm $$1, int $$2, caw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.u() && !$$3.ce()) {
+         float[] $$10 = $$3.gp().d();
+         ese $$11 = $$1.getBuffer(fvu.e(a));
+         this.c().a($$0, $$11, $$2, ggl.d, $$10[0], $$10[1], $$10[2], 1.0F);
+      }
    }
 }

@@ -1,85 +1,44 @@
-public class amv extends ang {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-   public amv(anf $$0) {
-      super($$0);
+public class amv {
+   public static void a(CommandDispatcher<du> $$0) {
+      RequiredArgumentBuilder<du, gg> $$1 = (RequiredArgumentBuilder<du, gg>)((RequiredArgumentBuilder)dv.a("targets", eh.d())
+            .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), null, null)))
+         .then(dv.a("*").then(dv.a("sound", ev.a()).suggests(hp.c).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), null, ev.e($$0x, "sound")))));
+
+      for (atl $$2 : atl.values()) {
+         $$1.then(
+            ((LiteralArgumentBuilder)dv.a($$2.a()).executes($$1x -> a((du)$$1x.getSource(), eh.f($$1x, "targets"), $$2, null)))
+               .then(dv.a("sound", ev.a()).suggests(hp.c).executes($$1x -> a((du)$$1x.getSource(), eh.f($$1x, "targets"), $$2, ev.e($$1x, "sound"))))
+         );
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.X();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.c.b(new aag(aag.f, 0.0F));
+   private static int a(du $$0, Collection<aow> $$1, @Nullable atl $$2, @Nullable aiy $$3) {
+      aeb $$4 = new aeb($$3, $$2);
+
+      for (aow $$5 : $$1) {
+         $$5.d.b($$4);
       }
 
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
-      }
-
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.c.b(new aag(aag.f, 104.0F));
-            } else {
-               this.d.a(vg.c("demo.day." + $$1));
-            }
+      if ($$2 != null) {
+         if ($$3 != null) {
+            $$0.a(() -> vq.a("commands.stopsound.success.source.sound", vq.a($$3), $$2.a()), true);
+         } else {
+            $$0.a(() -> vq.a("commands.stopsound.success.source.any", $$2.a()), true);
          }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.c.b(new aag(aag.f, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.c.b(new aag(aag.f, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.c.b(new aag(aag.f, 103.0F));
-         }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(vg.c("demo.day.warning"));
-      }
-   }
-
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(vg.c("demo.reminder"));
-         this.g = 0;
-      }
-   }
-
-   @Override
-   public void a(hx $$0, aen.a $$1, ic $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
+      } else if ($$3 != null) {
+         $$0.a(() -> vq.a("commands.stopsound.success.sourceless.sound", vq.a($$3)), true);
       } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
+         $$0.a(() -> vq.c("commands.stopsound.success.sourceless.any"), true);
       }
-   }
 
-   @Override
-   public bkc a(anf $$0, ctx $$1, cng $$2, bkb $$3) {
-      if (this.f) {
-         this.f();
-         return bkc.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public bkc a(anf $$0, ctx $$1, cng $$2, bkb $$3, ely $$4) {
-      if (this.f) {
-         this.f();
-         return bkc.d;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+      return $$1.size();
    }
 }

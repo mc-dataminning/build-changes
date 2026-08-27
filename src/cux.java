@@ -1,111 +1,123 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Iterables;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public class cux {
-   private static final Logger c = LogUtils.getLogger();
-   public static final cux a = new cux(ImmutableMap.of(), ImmutableList.of());
-   public static final MapCodec<cux> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.simpleMap(dou.a.c, drb.c.promotePartial(ac.a("Carver: ", c::error)), avl.a(dou.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
-               dys.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, cux::new)
-   );
-   private final Map<dou.a, il<drb<?>>> d;
-   private final List<il<dys>> e;
-   private final Supplier<List<drp<?, ?>>> f;
-   private final Supplier<Set<dys>> g;
+public interface cux extends cut {
+   dmw D_();
 
-   cux(Map<dou.a, il<drb<?>>> $$0, List<il<dys>> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = Suppliers.memoize(
-         () -> $$1.stream().flatMap(il::a).map(ih::a).flatMap(dys::a).filter($$0xx -> $$0xx.b() == dsc.g).collect(ImmutableList.toImmutableList())
-      );
-      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(il::a).map(ih::a).collect(Collectors.toSet()));
+   @Nullable
+   cut c(int var1, int var2);
+
+   default boolean a(@Nullable bno $$0, eol $$1) {
+      return true;
    }
 
-   public Iterable<ih<drb<?>>> a(dou.a $$0) {
-      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
+   default boolean a(dlf $$0, hz $$1, enx $$2) {
+      eol $$3 = $$0.b(this, $$1, $$2);
+      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
    }
 
-   public List<drp<?, ?>> a() {
-      return this.f.get();
+   default boolean f(bno $$0) {
+      return this.a($$0, eoi.a($$0.cH()));
    }
 
-   public List<il<dys>> b() {
-      return this.e;
+   default boolean b(enn $$0) {
+      return this.a(null, $$0);
    }
 
-   public boolean a(dys $$0) {
-      return this.g.get().contains($$0);
+   default boolean g(bno $$0) {
+      return this.a($$0, $$0.cH());
    }
 
-   public static class a extends cux.b {
-      private final ii<dys> a;
-      private final ii<drb<?>> b;
-
-      public a(ii<dys> $$0, ii<drb<?>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public cux.a a(dou.b $$0, ahg<dys> $$1) {
-         this.a($$0.ordinal(), this.a.b($$1));
-         return this;
-      }
-
-      public cux.a a(dou.a $$0, ahg<drb<?>> $$1) {
-         this.a($$0, this.b.b($$1));
-         return this;
-      }
-   }
-
-   public static class b {
-      private final Map<dou.a, List<ih<drb<?>>>> a = Maps.newLinkedHashMap();
-      private final List<List<ih<dys>>> b = Lists.newArrayList();
-
-      public cux.b a(dou.b $$0, ih<dys> $$1) {
-         return this.a($$0.ordinal(), $$1);
-      }
-
-      public cux.b a(int $$0, ih<dys> $$1) {
-         this.a($$0);
-         this.b.get($$0).add($$1);
-         return this;
-      }
-
-      public cux.b a(dou.a $$0, ih<drb<?>> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
-      }
-
-      private void a(int $$0) {
-         while (this.b.size() <= $$0) {
-            this.b.add(Lists.newArrayList());
+   default boolean a(@Nullable bno $$0, enn $$1) {
+      for (eol $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
          }
       }
 
-      public cux a() {
-         return new cux(
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> il.a((List)$$0.getValue()))),
-            this.b.stream().map(il::a).collect(ImmutableList.toImmutableList())
-         );
+      if (!this.c($$0, $$1).isEmpty()) {
+         return false;
+      } else if ($$0 == null) {
+         return true;
+      } else {
+         eol $$3 = this.h($$0, $$1);
+         return $$3 == null || !eoi.c($$3, eoi.a($$1), enw.i);
+      }
+   }
+
+   default boolean b(@Nullable bno $$0, enn $$1) {
+      for (eol $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   List<eol> c(@Nullable bno var1, enn var2);
+
+   default Iterable<eol> d(@Nullable bno $$0, enn $$1) {
+      List<eol> $$2 = this.c($$0, $$1);
+      Iterable<eol> $$3 = this.e($$0, $$1);
+      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
+   }
+
+   default Iterable<eol> e(@Nullable bno $$0, enn $$1) {
+      return () -> new cur<eol>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   }
+
+   @Nullable
+   private eol h(bno $$0, enn $$1) {
+      dmw $$2 = this.D_();
+      return $$2.a($$0, $$1) ? $$2.c() : null;
+   }
+
+   default boolean f(@Nullable bno $$0, enn $$1) {
+      cur<eol> $$2 = new cur<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
+
+      while ($$2.hasNext()) {
+         if (!((eol)$$2.next()).c()) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   default Optional<hz> g(bno $$0, enn $$1) {
+      hz $$2 = null;
+      double $$3 = Double.MAX_VALUE;
+      cur<hz> $$4 = new cur<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
+
+      while ($$4.hasNext()) {
+         hz $$5 = (hz)$$4.next();
+         double $$6 = $$5.b($$0.dk());
+         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
+            $$2 = $$5.i();
+            $$3 = $$6;
+         }
+      }
+
+      return Optional.ofNullable($$2);
+   }
+
+   default Optional<ens> a(@Nullable bno $$0, eol $$1, ens $$2, double $$3, double $$4, double $$5) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         enn $$6 = $$1.a().c($$3, $$4, $$5);
+         eol $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
+            .filter($$0x -> this.D_() == null || this.D_().a($$0x.a()))
+            .flatMap($$0x -> $$0x.e().stream())
+            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
+            .map(eoi::a)
+            .reduce(eoi.a(), eoi::a);
+         eol $$8 = eoi.a($$1, $$7, enw.e);
+         return $$8.a($$2);
       }
    }
 }

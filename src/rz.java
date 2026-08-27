@@ -1,20 +1,5 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
-
-public class rz implements sh {
-   private static final Logger a = LogUtils.getLogger();
-
-   @Override
-   public void a(rp $$0) {
-      String $$1 = $$0.d().x();
-      if ($$0.s()) {
-         a.error("{} failed at {}! {}", new Object[]{$$0.c(), $$1, ac.c($$0.o())});
-      } else {
-         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.c(), $$1, ac.c($$0.o())});
-      }
-   }
-
-   @Override
-   public void b(rp $$0) {
+public class rz extends RuntimeException {
+   public rz(String $$0) {
+      super($$0);
    }
 }

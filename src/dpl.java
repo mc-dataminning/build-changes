@@ -1,18 +1,35 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface dpl {
-   default auw a(hx $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
+public class dpl implements dpt {
+   public static final Codec<dpl> a = RecordCodecBuilder.create($$0 -> $$0.group(hz.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, dpl::new));
+   public static final xo<vb, dpl> b = xo.a(hz.b, $$0 -> $$0.e, dpl::new);
+   private final hz e;
+
+   public dpl(hz $$0) {
+      this.e = $$0;
    }
 
-   default auw a(ahh $$0) {
-      return this.a($$0.toString());
+   @Override
+   public Optional<ens> a(cvn $$0) {
+      return Optional.of(ens.b(this.e));
    }
 
-   auw a(String var1);
+   @Override
+   public dpu<dpl> a() {
+      return dpu.a;
+   }
 
-   auw a(int var1, int var2, int var3);
+   public static class a implements dpu<dpl> {
+      @Override
+      public Codec<dpl> a() {
+         return dpl.a;
+      }
 
-   @VisibleForTesting
-   void a(StringBuilder var1);
+      @Override
+      public xo<vb, dpl> b() {
+         return dpl.b;
+      }
+   }
 }

@@ -1,9 +1,6 @@
-public class qb {
-   public static void a(pf<eax> $$0) {
-      pl.a($$0);
-      pp.a($$0);
-      po.a($$0);
-      ph.a($$0);
-      pt.a($$0);
+public interface qb {
+   static void a(ph<ebk> $$0) {
+      ik<ebe> $$1 = $$0.a(kg.aD);
+      $$0.a(eax.t, new ebk($$1.b(eay.H), new ebz(32, 8, eca.a, 94251327)));
    }
 }

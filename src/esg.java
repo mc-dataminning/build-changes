@@ -1,32 +1,182 @@
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import com.mojang.blaze3d.platform.GlStateManager;
 
-public abstract class esg {
+public class esg {
+   private final esg.a a;
+   private final esg.b b;
+   private final int c;
+   private final int d;
+   private final int e;
+
+   public esg(int $$0, esg.a $$1, esg.b $$2, int $$3) {
+      if (this.a($$0, $$2)) {
+         this.b = $$2;
+         this.a = $$1;
+         this.c = $$0;
+         this.d = $$3;
+         this.e = $$1.a() * this.d;
+      } else {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+      }
+   }
+
+   private boolean a(int $$0, esg.b $$1) {
+      return $$0 == 0 || $$1 == esg.b.d;
+   }
+
+   public final esg.a a() {
+      return this.a;
+   }
+
+   public final esg.b b() {
+      return this.b;
+   }
+
+   public final int c() {
+      return this.d;
+   }
+
+   public final int d() {
+      return this.c;
+   }
+
    @Override
    public String toString() {
-      StringBuilder $$0 = new StringBuilder("{");
+      return this.d + "," + this.b.a() + "," + this.a.b();
+   }
 
-      for (Field $$1 : this.getClass().getFields()) {
-         if (!b($$1)) {
-            try {
-               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
-            }
+   public final int e() {
+      return this.e;
+   }
+
+   public final boolean f() {
+      return this.b == esg.b.a;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         esg $$1 = (esg)$$0;
+         if (this.d != $$1.d) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.a != $$1.a ? false : this.b == $$1.b;
          }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + this.c;
+      return 31 * $$0 + this.d;
+   }
+
+   public void a(int $$0, long $$1, int $$2) {
+      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
+   }
+
+   public void a(int $$0) {
+      this.b.a(this.c, $$0);
+   }
+
+   public static enum a {
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
+
+      private final int h;
+      private final String i;
+      private final int j;
+
+      private a(int $$0, String $$1, int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
       }
 
-      $$0.deleteCharAt($$0.length() - 1);
-      $$0.append('}');
-      return $$0.toString();
+      public int a() {
+         return this.h;
+      }
+
+      public String b() {
+         return this.i;
+      }
+
+      public int c() {
+         return this.j;
+      }
    }
 
-   private static String a(Field $$0) {
-      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
-      return $$1 != null ? $$1.value() : $$0.getName();
-   }
+   public static enum b {
+      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+         } else {
+            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
+         }
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+      }, ($$0, $$1) -> {
+      }),
+      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
 
-   private static boolean b(Field $$0) {
-      return Modifier.isStatic($$0.getModifiers());
+      private final String g;
+      private final esg.b.b h;
+      private final esg.b.a i;
+
+      private b(String $$0, esg.b.b $$1, esg.b.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+      }
+
+      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
+         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      public void a(int $$0, int $$1) {
+         this.i.clearBufferState($$0, $$1);
+      }
+
+      public String a() {
+         return this.g;
+      }
+
+      @FunctionalInterface
+      interface a {
+         void clearBufferState(int var1, int var2);
+      }
+
+      @FunctionalInterface
+      interface b {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
+      }
    }
 }

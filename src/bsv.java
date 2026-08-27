@@ -1,62 +1,53 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bsv extends btk {
-   private final bmx a;
+public class bsv {
+   public static bpx<boo> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return btj.a(
+         (Function<btj.b<boo>, ? extends App<btj.c<boo>, btm<boo>>>)($$3 -> $$3.group($$3.c(bxh.o), $$3.c(bxh.m), $$3.a(bxh.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if ($$5x.b_($$6.dm()).a(aue.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 20L + 2L);
+                        return true;
+                     } else {
+                        hz $$8 = null;
+                        hz $$9 = null;
+                        hz $$10 = $$6.dm();
 
-   public bsv(bmx $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(btk.a.a, btk.a.b));
-   }
+                        for (hz $$12 : hz.a($$10, $$0, $$0, $$0)) {
+                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
+                              dlf $$13 = $$6.dM().a_($$12.c());
+                              dlf $$14 = $$6.dM().a_($$12);
+                              if ($$14.a(cyq.G)) {
+                                 if ($$13.i()) {
+                                    $$8 = $$12.i();
+                                    break;
+                                 }
 
-   @Override
-   public boolean a() {
-      return this.a.ci() < 140;
-   }
+                                 if ($$9 == null && !$$12.a($$6.dk(), 1.5)) {
+                                    $$9 = $$12.i();
+                                 }
+                              }
+                           }
+                        }
 
-   @Override
-   public boolean b() {
-      return this.a();
-   }
+                        if ($$8 == null) {
+                           $$8 = $$9;
+                        }
 
-   @Override
-   public boolean S_() {
-      return false;
-   }
+                        if ($$8 != null) {
+                           $$5.a(new bpz($$8));
+                           $$4.a(new bxk(new bpz($$8), $$1, 0));
+                        }
 
-   @Override
-   public void c() {
-      this.h();
-   }
-
-   private void h() {
-      Iterable<hx> $$0 = hx.b(
-         aup.a(this.a.dq() - 1.0), this.a.dr(), aup.a(this.a.dw() - 1.0), aup.a(this.a.dq() + 1.0), aup.a(this.a.ds() + 8.0), aup.a(this.a.dw() + 1.0)
+                        $$2.setValue($$7 + 40L);
+                        return true;
+                     }
+                  }))
       );
-      hx $$1 = null;
-
-      for (hx $$2 : $$0) {
-         if (this.a(this.a.dL(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = hx.a(this.a.dq(), this.a.ds() + 8.0, this.a.dw());
-      }
-
-      this.a.N().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
-   }
-
-   @Override
-   public void e() {
-      this.h();
-      this.a.a(0.02F, new emc((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
-      this.a.a(bmu.a, this.a.do());
-   }
-
-   private boolean a(cua $$0, hx $$1) {
-      djp $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(cxa.nd)) && $$2.a($$0, $$1, efp.a);
    }
 }

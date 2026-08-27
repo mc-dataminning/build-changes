@@ -1,27 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public record apl(vg c, int d, Optional<auh<Integer>> e) {
-   public static final Codec<apl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               vi.a.fieldOf("description").forGetter(apl::a),
-               Codec.INT.fieldOf("pack_format").forGetter(apl::b),
-               auh.a(Codec.INT).optionalFieldOf("supported_formats").forGetter(apl::c)
-            )
-            .apply($$0, apl::new)
-   );
-   public static final apk<apl> b = apk.a("pack", a);
+public interface apl {
+   void a(Consumer<xx<?>> var1);
 
-   public vg a() {
-      return this.c;
-   }
+   apl.a a();
 
-   public int b() {
-      return this.d;
-   }
-
-   public Optional<auh<Integer>> c() {
-      return this.e;
+   public static record a(String a) {
+      @Override
+      public String toString() {
+         return this.a;
+      }
    }
 }

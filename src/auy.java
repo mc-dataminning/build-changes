@@ -1,37 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
 
-public class auy {
-   public static final Codec<auy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atx.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), atx.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, auy::new)
+public record auy(int d, int e) {
+   public static final Codec<Integer> a = avp.a(0, 15);
+   public static final Codec<auy> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a.fieldOf("block").forGetter(auy::b), a.fieldOf("sky").forGetter(auy::c)).apply($$0, auy::new)
    );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<ahh> f;
+   public static auy c = new auy(15, 15);
 
-   private auy(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+   public int a() {
+      return this.d << 4 | this.e << 20;
    }
 
-   public Predicate<String> a() {
-      return this.c;
+   public static auy a(int $$0) {
+      int $$1 = $$0 >> 4 & 65535;
+      int $$2 = $$0 >> 20 & 65535;
+      return new auy($$1, $$2);
    }
 
-   public Predicate<String> b() {
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
       return this.e;
-   }
-
-   public Predicate<ahh> c() {
-      return this.f;
    }
 }

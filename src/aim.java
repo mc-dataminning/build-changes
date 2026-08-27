@@ -1,336 +1,188 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.Iterator;
 import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aim {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> (vg)$$0);
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> vg.a("commands.advancement.criterionNotFound", $$0, $$1)
-   );
-   private static final SuggestionProvider<ds> c = ($$0, $$1) -> {
-      Collection<af> $$2 = ((ds)$$0.getSource()).l().aB().b();
-      return dx.a($$2.stream().map(af::a), $$1);
-   };
+public class aim<C extends bln> implements ail<Integer> {
+   private static final Logger d = LogUtils.getLogger();
+   protected final chl a = new chl();
+   protected chg b;
+   protected clo<C> c;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("advancement").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dt.a("grant")
-                     .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("targets", ef.d())
-                                       .then(
-                                          dt.a("only")
-                                             .then(
-                                                ((RequiredArgumentBuilder)dt.a("advancement", et.a())
-                                                      .suggests(c)
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ds)$$0x.getSource(),
-                                                               ef.f($$0x, "targets"),
-                                                               aim.a.a,
-                                                               a($$0x, et.a($$0x, "advancement"), aim.b.a)
-                                                            )
-                                                      ))
-                                                   .then(
-                                                      dt.a("criterion", StringArgumentType.greedyString())
-                                                         .suggests(($$0x, $$1) -> dx.b(et.a($$0x, "advancement").b().e().keySet(), $$1))
-                                                         .executes(
-                                                            $$0x -> a(
-                                                                  (ds)$$0x.getSource(),
-                                                                  ef.f($$0x, "targets"),
-                                                                  aim.a.a,
-                                                                  et.a($$0x, "advancement"),
-                                                                  StringArgumentType.getString($$0x, "criterion")
-                                                               )
-                                                         )
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       dt.a("from")
-                                          .then(
-                                             dt.a("advancement", et.a())
-                                                .suggests(c)
-                                                .executes(
-                                                   $$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), aim.a.a, a($$0x, et.a($$0x, "advancement"), aim.b.c))
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    dt.a("until")
-                                       .then(
-                                          dt.a("advancement", et.a())
-                                             .suggests(c)
-                                             .executes(
-                                                $$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), aim.a.a, a($$0x, et.a($$0x, "advancement"), aim.b.d))
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 dt.a("through")
-                                    .then(
-                                       dt.a("advancement", et.a())
-                                          .suggests(c)
-                                          .executes(
-                                             $$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), aim.a.a, a($$0x, et.a($$0x, "advancement"), aim.b.b))
-                                          )
-                                    )
-                              ))
-                           .then(
-                              dt.a("everything").executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), aim.a.a, ((ds)$$0x.getSource()).l().aB().b()))
-                           )
-                     )
-               ))
-            .then(
-               dt.a("revoke")
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("targets", ef.d())
-                                    .then(
-                                       dt.a("only")
-                                          .then(
-                                             ((RequiredArgumentBuilder)dt.a("advancement", et.a())
-                                                   .suggests(c)
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ds)$$0x.getSource(), ef.f($$0x, "targets"), aim.a.b, a($$0x, et.a($$0x, "advancement"), aim.b.a)
-                                                         )
-                                                   ))
-                                                .then(
-                                                   dt.a("criterion", StringArgumentType.greedyString())
-                                                      .suggests(($$0x, $$1) -> dx.b(et.a($$0x, "advancement").b().e().keySet(), $$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ds)$$0x.getSource(),
-                                                               ef.f($$0x, "targets"),
-                                                               aim.a.b,
-                                                               et.a($$0x, "advancement"),
-                                                               StringArgumentType.getString($$0x, "criterion")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    dt.a("from")
-                                       .then(
-                                          dt.a("advancement", et.a())
-                                             .suggests(c)
-                                             .executes(
-                                                $$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), aim.a.b, a($$0x, et.a($$0x, "advancement"), aim.b.c))
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 dt.a("until")
-                                    .then(
-                                       dt.a("advancement", et.a())
-                                          .suggests(c)
-                                          .executes(
-                                             $$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), aim.a.b, a($$0x, et.a($$0x, "advancement"), aim.b.d))
-                                          )
-                                    )
-                              ))
-                           .then(
-                              dt.a("through")
-                                 .then(
-                                    dt.a("advancement", et.a())
-                                       .suggests(c)
-                                       .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), aim.a.b, a($$0x, et.a($$0x, "advancement"), aim.b.b)))
-                                 )
-                           ))
-                        .then(dt.a("everything").executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), aim.a.b, ((ds)$$0x.getSource()).l().aB().b())))
-                  )
-            )
-      );
+   public aim(clo<C> $$0) {
+      this.c = $$0;
    }
 
-   private static int a(ds $$0, Collection<anf> $$1, aim.a $$2, Collection<af> $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (anf $$5 : $$1) {
-         $$4 += $$2.a($$5, $$3);
-      }
-
-      if ($$4 == 0) {
-         if ($$3.size() == 1) {
-            if ($$1.size() == 1) {
-               throw a.create(vg.a($$2.a() + ".one.to.one.failure", ae.a($$3.iterator().next()), $$1.iterator().next().Q_()));
+   public void a(aow $$0, @Nullable csd<? extends csb<C>> $$1, boolean $$2) {
+      if ($$1 != null && $$0.I().b($$1)) {
+         this.b = $$0.fT();
+         if (this.b() || $$0.f()) {
+            this.a.a();
+            $$0.fT().a(this.a);
+            this.c.a(this.a);
+            if (this.a.a((csb<?>)$$1.b(), null)) {
+               this.a($$1, $$2);
             } else {
-               throw a.create(vg.a($$2.a() + ".one.to.many.failure", ae.a($$3.iterator().next()), $$1.size()));
-            }
-         } else if ($$1.size() == 1) {
-            throw a.create(vg.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().Q_()));
-         } else {
-            throw a.create(vg.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
-         }
-      } else {
-         if ($$3.size() == 1) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> vg.a($$2.a() + ".one.to.one.success", ae.a($$3.iterator().next()), $$1.iterator().next().Q_()), true);
-            } else {
-               $$0.a(() -> vg.a($$2.a() + ".one.to.many.success", ae.a($$3.iterator().next()), $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> vg.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vg.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
-         }
-
-         return $$4;
-      }
-   }
-
-   private static int a(ds $$0, Collection<anf> $$1, aim.a $$2, af $$3, String $$4) throws CommandSyntaxException {
-      int $$5 = 0;
-      ae $$6 = $$3.b();
-      if (!$$6.e().containsKey($$4)) {
-         throw b.create(ae.a($$3), $$4);
-      } else {
-         for (anf $$7 : $$1) {
-            if ($$2.a($$7, $$3, $$4)) {
-               $$5++;
-            }
-         }
-
-         if ($$5 == 0) {
-            if ($$1.size() == 1) {
-               throw a.create(vg.a($$2.a() + ".criterion.to.one.failure", $$4, ae.a($$3), $$1.iterator().next().Q_()));
-            } else {
-               throw a.create(vg.a($$2.a() + ".criterion.to.many.failure", $$4, ae.a($$3), $$1.size()));
-            }
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> vg.a($$2.a() + ".criterion.to.one.success", $$4, ae.a($$3), $$1.iterator().next().Q_()), true);
-            } else {
-               $$0.a(() -> vg.a($$2.a() + ".criterion.to.many.success", $$4, ae.a($$3), $$1.size()), true);
+               this.a();
+               $$0.d.b(new ace($$0.bW.j, $$1));
             }
 
-            return $$5;
+            $$0.fT().e();
          }
       }
    }
 
-   private static List<af> a(CommandContext<ds> $$0, af $$1, aim.b $$2) {
-      ak $$3 = ((ds)$$0.getSource()).l().aB().a();
-      ag $$4 = $$3.a($$1);
-      if ($$4 == null) {
-         return List.of($$1);
-      } else {
-         List<af> $$5 = new ArrayList<>();
-         if ($$2.f) {
-            for (ag $$6 = $$4.c(); $$6 != null; $$6 = $$6.c()) {
-               $$5.add($$6.b());
-            }
+   protected void a() {
+      for (int $$0 = 0; $$0 < this.c.p(); $$0++) {
+         if (this.c.e($$0)) {
+            coz $$1 = this.c.b($$0).g().q();
+            this.b.a($$1, false);
+            this.c.b($$0).f($$1);
          }
-
-         $$5.add($$1);
-         if ($$2.g) {
-            a($$4, $$5);
-         }
-
-         return $$5;
       }
+
+      this.c.l();
    }
 
-   private static void a(ag $$0, List<af> $$1) {
-      for (ag $$2 : $$0.e()) {
-         $$1.add($$2.b());
-         a($$2, $$1);
-      }
-   }
-
-   static enum a {
-      a("grant") {
-         @Override
-         protected boolean a(anf $$0, af $$1) {
-            ah $$2 = $$0.Q().b($$1);
-            if ($$2.a()) {
-               return false;
-            } else {
-               for (String $$3 : $$2.e()) {
-                  $$0.Q().a($$1, $$3);
+   protected void a(csd<? extends csb<C>> $$0, boolean $$1) {
+      boolean $$2 = this.c.a($$0);
+      int $$3 = this.a.a($$0, null);
+      if ($$2) {
+         for (int $$4 = 0; $$4 < this.c.o() * this.c.n() + 1; $$4++) {
+            if ($$4 != this.c.m()) {
+               coz $$5 = this.c.b($$4).g();
+               if (!$$5.b() && Math.min($$3, $$5.g()) < $$5.M() + 1) {
+                  return;
                }
-
-               return true;
             }
          }
-
-         @Override
-         protected boolean a(anf $$0, af $$1, String $$2) {
-            return $$0.Q().a($$1, $$2);
-         }
-      },
-      b("revoke") {
-         @Override
-         protected boolean a(anf $$0, af $$1) {
-            ah $$2 = $$0.Q().b($$1);
-            if (!$$2.b()) {
-               return false;
-            } else {
-               for (String $$3 : $$2.f()) {
-                  $$0.Q().b($$1, $$3);
-               }
-
-               return true;
-            }
-         }
-
-         @Override
-         protected boolean a(anf $$0, af $$1, String $$2) {
-            return $$0.Q().b($$1, $$2);
-         }
-      };
-
-      private final String c;
-
-      a(String $$0) {
-         this.c = "commands.advancement." + $$0;
       }
 
-      public int a(anf $$0, Iterable<af> $$1) {
-         int $$2 = 0;
+      int $$6 = this.a($$1, $$3, $$2);
+      IntList $$7 = new IntArrayList();
+      if (this.a.a((csb<?>)$$0.b(), $$7, $$6)) {
+         int $$8 = $$6;
+         IntListIterator var8 = $$7.iterator();
 
-         for (af $$3 : $$1) {
-            if (this.a($$0, $$3)) {
-               $$2++;
+         while (var8.hasNext()) {
+            int $$9 = (Integer)var8.next();
+            int $$10 = chl.a($$9).g();
+            if ($$10 < $$8) {
+               $$8 = $$10;
             }
          }
 
-         return $$2;
-      }
-
-      protected abstract boolean a(anf var1, af var2);
-
-      protected abstract boolean a(anf var1, af var2, String var3);
-
-      protected String a() {
-         return this.c;
+         if (this.a.a((csb<?>)$$0.b(), $$7, $$8)) {
+            this.a();
+            this.a(this.c.n(), this.c.o(), this.c.m(), $$0, $$7.iterator(), $$8);
+         }
       }
    }
 
-   static enum b {
-      a(false, false),
-      b(true, true),
-      c(false, true),
-      d(true, false),
-      e(true, true);
-
-      final boolean f;
-      final boolean g;
-
-      private b(boolean $$0, boolean $$1) {
-         this.f = $$0;
-         this.g = $$1;
+   @Override
+   public void a(Iterator<Integer> $$0, int $$1, int $$2, int $$3, int $$4) {
+      clw $$5 = this.c.b($$1);
+      coz $$6 = chl.a($$0.next());
+      if (!$$6.b()) {
+         for (int $$7 = 0; $$7 < $$2; $$7++) {
+            this.a($$5, $$6);
+         }
       }
+   }
+
+   protected int a(boolean $$0, int $$1, boolean $$2) {
+      int $$3 = 1;
+      if ($$0) {
+         $$3 = $$1;
+      } else if ($$2) {
+         $$3 = 64;
+
+         for (int $$4 = 0; $$4 < this.c.n() * this.c.o() + 1; $$4++) {
+            if ($$4 != this.c.m()) {
+               coz $$5 = this.c.b($$4).g();
+               if (!$$5.b() && $$3 > $$5.M()) {
+                  $$3 = $$5.M();
+               }
+            }
+         }
+
+         if ($$3 < 64) {
+            $$3++;
+         }
+      }
+
+      return $$3;
+   }
+
+   protected void a(clw $$0, coz $$1) {
+      int $$2 = this.b.c($$1);
+      if ($$2 != -1) {
+         coz $$3 = this.b.a($$2);
+         if (!$$3.b()) {
+            if ($$3.M() > 1) {
+               this.b.a($$2, 1);
+            } else {
+               this.b.b($$2);
+            }
+
+            if ($$0.g().b()) {
+               $$0.f($$3.c(1));
+            } else {
+               $$0.g().g(1);
+            }
+         }
+      }
+   }
+
+   private boolean b() {
+      List<coz> $$0 = Lists.newArrayList();
+      int $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < this.c.n() * this.c.o() + 1; $$2++) {
+         if ($$2 != this.c.m()) {
+            coz $$3 = this.c.b($$2).g().q();
+            if (!$$3.b()) {
+               int $$4 = this.b.d($$3);
+               if ($$4 == -1 && $$0.size() <= $$1) {
+                  for (coz $$5 : $$0) {
+                     if (coz.b($$5, $$3) && $$5.M() != $$5.g() && $$5.M() + $$3.M() <= $$5.g()) {
+                        $$5.g($$3.M());
+                        $$3.f(0);
+                        break;
+                     }
+                  }
+
+                  if (!$$3.b()) {
+                     if ($$0.size() >= $$1) {
+                        return false;
+                     }
+
+                     $$0.add($$3);
+                  }
+               } else if ($$4 == -1) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      return true;
+   }
+
+   private int c() {
+      int $$0 = 0;
+
+      for (coz $$1 : this.b.i) {
+         if ($$1.b()) {
+            $$0++;
+         }
+      }
+
+      return $$0;
    }
 }

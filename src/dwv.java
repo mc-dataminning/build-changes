@@ -1,49 +1,43 @@
 import com.mojang.serialization.Codec;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwv extends dwy {
-   public static final Codec<dwv> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dwv::new, $$0 -> $$0.d).codec();
-   private static final ic b = ic.d;
-   private static final ic[] c = ic.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ic[]::new);
-   private final float d;
+public class dwv implements dvw {
+   public static final Codec<dwv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               auo.b(kg.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               dxx.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               eai.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               dzz.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bkz.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bkz.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, dwv::new)
+   );
+   public final auo<cyo> b;
+   public final dxx c;
+   public final ij<eai> d;
+   public final dzz e;
+   public final bkz f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bkz j;
+   public final float k;
 
-   public dwv(float $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   protected dwz<?> a() {
-      return dwz.d;
-   }
-
-   @Override
-   public void a(dwy.a $$0) {
-      auw $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<hx> $$2 = $$0.d();
-         List<hx> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<hx> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<hx> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), cxa.pe.o().a(cws.b, b));
-               $$0.a().a($$6.get(), dhf.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
-
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     so $$4x = new so();
-                     $$4x.a("id", kd.g.b(bmc.i).toString());
-                     $$1x.a($$4x, $$1.a(599), false);
-                  }
-               });
-            }
-         }
-      }
+   public dwv(auo<cyo> $$0, dxx $$1, ij<eai> $$2, dzz $$3, bkz $$4, float $$5, int $$6, float $$7, bkz $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

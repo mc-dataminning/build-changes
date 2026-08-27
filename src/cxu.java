@@ -1,29 +1,99 @@
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface cxu {
-   emv t_ = cwy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dkg u_ = dkf.D;
+public class cxu extends cya {
+   public static final MapCodec<cxu> a = b(cxu::new);
+   public static final dlz b = dlv.P;
+   public static final dlw c = dlv.u;
 
-   static bkc a(@Nullable blw $$0, djp $$1, ctx $$2, hx $$3) {
-      if ($$1.c(u_)) {
-         cwy.a($$2, $$3, new cng(cnj.wm, 1));
-         float $$4 = aup.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, art.dV, aru.e, 1.0F, $$4);
-         djp $$5 = $$1.a(u_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dnz.c, $$3, dnz.a.a($$0, $$5));
-         return bkc.a($$2.B);
+   @Override
+   public MapCodec<cxu> a() {
+      return a;
+   }
+
+   public cxu(dle.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ie.c).a(c, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
+      if ($$1.B) {
+         return blu.a;
       } else {
-         return bkc.d;
+         dit $$5 = $$1.c_($$2);
+         if ($$5 instanceof dim) {
+            $$3.a((dim)$$5);
+            $$3.a(atu.ar);
+            cfy.a($$3, true);
+         }
+
+         return blu.b;
       }
    }
 
-   static boolean h_(djp $$0) {
-      return $$0.b(u_) && $$0.c(u_);
+   @Override
+   protected void a(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
+      blq.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   static ToIntFunction<djp> h_(int $$0) {
-      return $$1 -> $$1.c(dkf.D) ? $$0 : 0;
+   @Override
+   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
+      dit $$4 = $$1.c_($$2);
+      if ($$4 instanceof dim) {
+         ((dim)$$4).m();
+      }
+   }
+
+   @Nullable
+   @Override
+   public dit a(hz $$0, dlf $$1) {
+      return new dim($$0, $$1);
+   }
+
+   @Override
+   protected det b_(dlf $$0) {
+      return det.c;
+   }
+
+   @Override
+   public void a(cvn $$0, hz $$1, dlf $$2, @Nullable bog $$3, coz $$4) {
+      if ($$4.B()) {
+         dit $$5 = $$0.c_($$1);
+         if ($$5 instanceof dim) {
+            ((dim)$$5).a($$4.z());
+         }
+      }
+   }
+
+   @Override
+   protected boolean d_(dlf $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dlf $$0, cvn $$1, hz $$2) {
+      return ckb.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dlf a(dlf $$0, dfa $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dlf a(dlf $$0, ddk $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public dlf a(crg $$0) {
+      return this.o().a(b, $$0.d().g());
    }
 }

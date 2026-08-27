@@ -1,46 +1,34 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.regex.Pattern;
 
-public abstract class aqn extends aqo<Map<ahh, JsonElement>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Gson b;
-   private final String c;
+public record aqn(List<aqn.a> b) {
+   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
+   private static final Codec<aqn> d = RecordCodecBuilder.create($$0 -> $$0.group(aqn.a.c.listOf().fieldOf("entries").forGetter(aqn::a)).apply($$0, aqn::new));
+   public static final arb<aqn> a = arb.a("overlays", d);
 
-   public aqn(Gson $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private static DataResult<String> a(String $$0) {
+      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
    }
 
-   protected Map<ahh, JsonElement> a(aqj $$0, bgt $$1) {
-      Map<ahh, JsonElement> $$2 = new HashMap<>();
-      a($$0, this.c, this.b, $$2);
-      return $$2;
+   public List<String> a(int $$0) {
+      return this.b.stream().filter($$1 -> $$1.a($$0)).map(aqn.a::b).toList();
    }
 
-   public static void a(aqj $$0, String $$1, Gson $$2, Map<ahh, JsonElement> $$3) {
-      aha $$4 = aha.a($$1);
+   public List<aqn.a> a() {
+      return this.b;
+   }
 
-      for (Entry<ahh, aqh> $$5 : $$4.a($$0).entrySet()) {
-         ahh $$6 = $$5.getKey();
-         ahh $$7 = $$4.b($$6);
+   public static record a(avz<Integer> a, String b) {
+      static final Codec<aqn.a> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(avz.a(Codec.INT).fieldOf("formats").forGetter(aqn.a::a), avp.<String>a(Codec.STRING, aqn::a).fieldOf("directory").forGetter(aqn.a::b))
+               .apply($$0, aqn.a::new)
+      );
 
-         try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = auf.a($$2, $$8, JsonElement.class);
-            JsonElement $$10 = $$3.put($$7, $$9);
-            if ($$10 != null) {
-               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
-            }
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
-         }
+      public boolean a(int $$0) {
+         return this.a.a($$0);
       }
    }
 }

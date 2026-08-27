@@ -1,23 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
-public class bco extends DataFix {
-   public bco(Schema $$0, boolean $$1) {
+public abstract class bco extends DataFix {
+   private final String a;
+   private final String b;
+   private final TypeReference c;
+
+   public bco(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
       super($$0, $$1);
+      this.a = $$2;
+      this.c = $$3;
+      this.b = $$4;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bbw.F.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bbw.F))) {
-         throw new IllegalStateException("Team type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", avw::a)));
-      }
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(this.c);
+      Type<?> $$1 = this.getInputSchema().getChoiceType(this.c, this.b);
+      Type<?> $$2 = this.getOutputSchema().getType(this.c);
+      Type<?> $$3 = this.getOutputSchema().getChoiceType(this.c, this.b);
+      OpticFinder<?> $$4 = DSL.namedChoice(this.b, $$1);
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$2, $$2x -> $$2x.updateTyped($$4, $$3, $$1xx -> ac.a($$1xx, $$3, this::a)));
    }
+
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

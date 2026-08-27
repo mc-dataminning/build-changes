@@ -1,68 +1,28 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.function.Function;
 
-public class bss extends btk {
-   private final bzf a;
-   @Nullable
-   private cfq b;
-   private final ctx c;
-   private final float d;
-   private int e;
-   private final bxd f;
-
-   public bss(bzf $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$0.dL();
-      this.d = $$1;
-      this.f = bxd.b().a((double)$$1);
-      this.a(EnumSet.of(btk.a.b));
+public class bss {
+   public static <E extends bog> brh<E> a(List<Pair<? extends btm<? super E>, Integer>> $$0) {
+      return a($$0, bqk.a.b, bqk.b.a);
    }
 
-   @Override
-   public boolean a() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
-   }
+   public static <E extends bog> brh<E> a(List<Pair<? extends btm<? super E>, Integer>> $$0, bqk.a $$1, bqk.b $$2) {
+      bsf<btm<? super E>> $$3 = new bsf<>();
+      $$0.forEach($$1x -> $$3.a((btm<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return btj.a((Function<btj.b<E>, ? extends App<btj.c<E>, btm<E>>>)($$3x -> $$3x.a((btm<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == bqk.a.b) {
+               $$3.a();
+            }
 
-   @Override
-   public boolean b() {
-      if (!this.b.bx()) {
-         return false;
-      } else {
-         return this.a.f((blw)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
-      }
-   }
+            for (btm<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bqk.b.a) {
+                  break;
+               }
+            }
 
-   @Override
-   public void c() {
-      this.a.B(true);
-      this.e = this.a(40 + this.a.eg().a(40));
-   }
-
-   @Override
-   public void d() {
-      this.a.B(false);
-      this.b = null;
-   }
-
-   @Override
-   public void e() {
-      this.a.I().a(this.b.dq(), this.b.du(), this.b.dw(), 10.0F, (float)this.a.ab());
-      this.e--;
-   }
-
-   private boolean a(cfq $$0) {
-      for (bkb $$1 : bkb.values()) {
-         cng $$2 = $$0.b($$1);
-         if (this.a.u() && $$2.a(cnj.ry)) {
             return true;
-         }
-
-         if (this.a.m($$2)) {
-            return true;
-         }
-      }
-
-      return false;
+         }))));
    }
 }

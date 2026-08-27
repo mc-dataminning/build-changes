@@ -1,27 +1,30 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public class bpn extends bpg {
+   private final double b;
+   private final double c;
 
-public class bpn {
-   private static final int a = 1;
+   public bpn(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+      }
+   }
 
-   public static bog<bmo> a(float $$0) {
-      return brs.a(
-         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$1 -> $$1.group($$1.a(bvq.n), $$1.c(bvq.m), $$1.b(bvq.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bO()) {
-                        return false;
-                     } else {
-                        blw $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.m($$8);
-                        } else {
-                           $$2.a(new boq($$8, true));
-                           $$3.a(new bvt(new boq($$8, false), $$0, 1));
-                        }
+   public double d() {
+      return this.b;
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   public double e() {
+      return this.c;
+   }
+
+   @Override
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.b : awh.a($$0, this.b, this.c);
    }
 }

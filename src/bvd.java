@@ -1,64 +1,86 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class bvd<T extends bmo> extends bvk {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
+public class bvd extends bvy {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
+
+   public bvd(boo $$0, double $$1) {
+      super($$0, $$1, 240, false);
+   }
+
    @Nullable
-   protected bmo c;
-   protected bxd d;
-
-   public bvd(bmq $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public bvd(bmq $$0, Class<T> $$1, boolean $$2, Predicate<bmo> $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public bvd(bmq $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public bvd(bmq $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bmo> $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(btk.a.d));
-      this.d = bxd.a().a(this.l()).a($$5);
-   }
-
    @Override
-   public boolean a() {
-      if (this.b > 0 && this.e.eg().a(this.b) != 0) {
-         return false;
+   protected ens h() {
+      float $$0 = this.b.dM().z.i();
+      if (this.b.dM().z.i() < 0.3F) {
+         return this.k();
       } else {
-         this.h();
-         return this.c != null;
+         ens $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
+         } else {
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
+            }
+         }
+
+         return $$1 == null ? this.k() : $$1;
       }
    }
 
-   protected elx a(double $$0) {
-      return this.e.cH().c($$0, 4.0, $$0);
+   @Nullable
+   private ens k() {
+      return bzb.a(this.b, 10, 7);
    }
 
-   protected void h() {
-      if (this.a != cfq.class && this.a != anf.class) {
-         this.c = this.e.dL().a(this.e.dL().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.dq(), this.e.du(), this.e.dw());
+   @Nullable
+   private ens l() {
+      aov $$0 = (aov)this.b.dM();
+      List<cgu> $$1 = $$0.a(bnu.bh, this.b.cH().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         this.c = this.e.dL().a(this.d, this.e, this.e.dq(), this.e.du(), this.e.dw());
+         cgu $$2 = $$1.get(this.b.dM().z.a($$1.size()));
+         ens $$3 = $$2.dk();
+         return bzb.a(this.b, 10, 7, $$3);
       }
    }
 
-   @Override
-   public void c() {
-      this.e.h(this.c);
-      super.c();
+   @Nullable
+   private ens m() {
+      jb $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         hz $$1 = this.a($$0);
+         return $$1 == null ? null : bzb.a(this.b, 10, 7, ens.c($$1));
+      }
    }
 
-   public void a(@Nullable bmo $$0) {
-      this.c = $$0;
+   @Nullable
+   private jb n() {
+      aov $$0 = (aov)this.b.dM();
+      List<jb> $$1 = jb.a(jb.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
+   }
+
+   @Nullable
+   private hz a(jb $$0) {
+      aov $$1 = (aov)this.b.dM();
+      bzh $$2 = $$1.y();
+      List<hz> $$3 = $$2.c($$0x -> true, $$0.q(), 8, bzh.b.b).map(bzi::f).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
+   }
+
+   private boolean a(cgu $$0) {
+      return $$0.a(this.b.dM().X());
    }
 }

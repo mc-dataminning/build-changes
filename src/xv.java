@@ -1,24 +1,14 @@
-public class xv implements xg<xr> {
-   private final int a;
+public abstract class xv<T extends uw> implements xx<T> {
+   private final Iterable<xx<? super T>> a;
 
-   public xv(int $$0) {
+   protected xv(Iterable<xx<? super T>> $$0) {
       this.a = $$0;
    }
 
-   public xv(uj $$0) {
-      this.a = $$0.readInt();
+   public final Iterable<xx<? super T>> b() {
+      return this.a;
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.p(this.a);
-   }
-
-   public void a(xr $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
+   public abstract xz<? extends xv<T>> a();
 }

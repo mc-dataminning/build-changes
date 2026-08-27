@@ -1,147 +1,120 @@
-public class fqu extends fsh {
-   static final auw a = auw.a();
-   private final fsc b;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportChatMessage;
+import com.mojang.authlib.minecraft.report.ReportEvidence;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-   fqu(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fsc $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.b = $$7;
-      this.D *= 0.75F;
-      this.n = false;
-      this.b($$7);
+public class fqu extends fqx {
+   final IntSet f = new IntOpenHashSet();
+
+   fqu(UUID $$0, Instant $$1, UUID $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(int $$0, AbuseReportLimits $$1) {
+      if (this.f.contains($$0)) {
+         this.f.remove($$0);
+      } else if (this.f.size() < $$1.maxReportedMessageCount()) {
+         this.f.add($$0);
+      }
+   }
+
+   public fqu a() {
+      fqu $$0 = new fqu(this.a, this.b, this.c);
+      $$0.f.addAll(this.f);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      return $$0;
    }
 
    @Override
-   public frl b() {
-      return frl.c;
+   public ffe a(ffe $$0, frb $$1) {
+      return new fjd($$0, $$1, this);
    }
 
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = aup.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
+   public static class a extends fqx.a<fqu> {
+      public a(fqu $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      return $$3 | $$4 << 16;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements frk<ka> {
-      private final double a = 0.25;
-      private final fsc b;
-
-      public a(fsc $$0) {
-         this.b = $$0;
+      public a(UUID $$0, AbuseReportLimits $$1) {
+         super(new fqu(UUID.randomUUID(), Instant.now(), $$0), $$1);
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqu $$8 = new fqu($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
-         int $$9 = 2;
-         int $$10 = 4;
-         $$8.a($$1.z.a(2) + 2);
-         return $$8;
-      }
-   }
-
-   public static class b implements frk<ka> {
-      private final fsc a;
-
-      public b(fsc $$0) {
-         this.a = $$0;
+      public IntSet a() {
+         return this.a.f;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqu $$8 = new fqu($$1, $$2, $$3, $$4, 0.5 - fqu.a.j(), $$6, 0.5 - fqu.a.j(), this.a);
-         if ($$1.z.h()) {
-            $$8.a(0.6F, 1.0F, 0.8F);
+      public void a(int $$0) {
+         this.a.a($$0, this.b);
+      }
+
+      public boolean b(int $$0) {
+         return this.a.f.contains($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.h() != null;
+      }
+
+      @Nullable
+      @Override
+      public fqx.b c() {
+         if (this.a.f.isEmpty()) {
+            return fqx.b.b;
+         } else if (this.a.f.size() > this.b.maxReportedMessageCount()) {
+            return fqx.b.c;
+         } else if (this.a.e == null) {
+            return fqx.b.a;
          } else {
-            $$8.a(0.08F, 0.4F, 0.4F);
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fqx.b.d : null;
          }
-
-         $$8.k *= 0.2F;
-         if ($$5 == 0.0 && $$7 == 0.0) {
-            $$8.j *= 0.1F;
-            $$8.l *= 0.1F;
-         }
-
-         $$8.a((int)(8.0 / ($$1.z.j() * 0.8 + 0.2)));
-         return $$8;
-      }
-   }
-
-   public static class c implements frk<ka> {
-      private final double a = 0.01;
-      private final fsc b;
-
-      public c(fsc $$0) {
-         this.b = $$0;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqu $$8 = new fqu($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         if ($$1.z.h()) {
-            $$8.a(0.29F, 0.58F, 0.51F);
+      @Override
+      public Either<fqx.c, fqx.b> a(frb $$0) {
+         fqx.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
          } else {
-            $$8.a(0.43F, 0.77F, 0.62F);
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportEvidence $$3 = this.b($$0);
+            ReportedEntity $$4 = new ReportedEntity(this.a.c);
+            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
+            return Either.left(new fqx.c(this.a.a, fra.a, $$5));
          }
-
-         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class d implements frk<ka> {
-      private final double a = 0.01;
-      private final fsc b;
-
-      public d(fsc $$0) {
-         this.b = $$0;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqu $$8 = new fqu($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class e implements frk<ka> {
-      private final double a = 0.01;
-      private final fsc b;
-
-      public e(fsc $$0) {
-         this.b = $$0;
+      private ReportEvidence b(frb $$0) {
+         List<ReportChatMessage> $$1 = new ArrayList<>();
+         fqv $$2 = new fqv(this.b.leadingContextMessageCount());
+         $$2.a($$0.b(), this.a.f, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
+         return new ReportEvidence(Lists.reverse($$1));
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqu $$8 = new fqu($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(0.91F, 0.55F, 0.08F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
+      private ReportChatMessage a(fqq.a $$0, boolean $$1) {
+         wl $$2 = $$0.g().k();
+         wj $$3 = $$0.g().m();
+         List<ByteBuffer> $$4 = $$3.d().a().stream().map(wc::a).toList();
+         ByteBuffer $$5 = x.a($$0.g().l(), wc::a);
+         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
+      }
+
+      public fqu.a d() {
+         return new fqu.a(this.a.a(), this.b);
       }
    }
 }

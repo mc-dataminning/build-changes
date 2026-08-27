@@ -1,45 +1,39 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class dxa extends dwy {
-   public static final Codec<dxa> a = Codec.unit(() -> dxa.b);
-   public static final dxa b = new dxa();
+public class dxa extends dwx {
+   public static final Codec<dxa> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, dxa::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   @Override
-   protected dwz<?> a() {
-      return dwz.a;
+   public dxa(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
+   }
+
+   public dxa(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public void a(dwy.a $$0) {
-      auw $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            hx $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dfs.d);
-            }
-         }
+   protected dwy<?> b() {
+      return dwy.a;
+   }
 
-         if ($$1.a(3) > 0) {
-            hx $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dfs.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            hx $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dfs.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            hx $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dfs.c);
-            }
-         }
-      });
+   @Override
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

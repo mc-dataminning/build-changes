@@ -1,16 +1,26 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface czq {
-   @Nullable
-   dhd a(hx var1, djp var2);
+public class czq extends dcx {
+   public static final MapCodec<czq> a = b(czq::new);
 
-   @Nullable
-   default <T extends dhd> dhe<T> a(ctx $$0, djp $$1, dhf<T> $$2) {
-      return null;
+   @Override
+   public MapCodec<czq> a() {
+      return a;
    }
 
-   @Nullable
-   default <T extends dhd> dob a(ane $$0, T $$1) {
-      return $$1 instanceof dob.b<?> $$2 ? $$2.d() : null;
+   public czq(dle.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public void a(dlf $$0, cvn $$1, hz $$2, awo $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         hz $$4 = $$2.d();
+         dlf $$5 = $$1.a_($$4);
+         if (!a($$5.k($$1, $$4), ie.b)) {
+            awk.a($$1, $$2, $$3, jz.F);
+         }
+      }
    }
 }

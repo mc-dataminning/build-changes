@@ -1,57 +1,35 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.Optional;
 
-public abstract class btk {
-   private final EnumSet<btk.a> a = EnumSet.noneOf(btk.a.class);
+public final class btk<F extends K1, Value> {
+   private final bpf<?> a;
+   private final bxh<Value> b;
+   private final App<F, Value> c;
 
-   public abstract boolean a();
-
-   public boolean b() {
-      return this.a();
+   public btk(bpf<?> $$0, bxh<Value> $$1, App<F, Value> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public boolean S_() {
-      return true;
+   public App<F, Value> a() {
+      return this.c;
    }
 
-   public void c() {
+   public void a(Value $$0) {
+      this.a.a(this.b, Optional.of($$0));
    }
 
-   public void d() {
+   public void a(Optional<Value> $$0) {
+      this.a.a(this.b, $$0);
    }
 
-   public boolean T_() {
-      return false;
+   public void a(Value $$0, long $$1) {
+      this.a.a(this.b, $$0, $$1);
    }
 
-   public void e() {
-   }
-
-   public void a(EnumSet<btk.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
-   }
-
-   public EnumSet<btk.a> j() {
-      return this.a;
-   }
-
-   protected int a(int $$0) {
-      return this.T_() ? $$0 : b($$0);
-   }
-
-   protected static int b(int $$0) {
-      return aup.e($$0, 2);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public void b() {
+      this.a.b(this.b);
    }
 }

@@ -1,164 +1,54 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import org.slf4j.Logger;
 
 public class eww {
-   private static final int a = 256;
-   private final ThreadLocal<eww.b> b = ThreadLocal.withInitial(eww.b::new);
-   private final Long2ObjectLinkedOpenHashMap<eww.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<hx> e;
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final auv<String> e = new auv<>(50);
 
-   public eww(ToIntFunction<hx> $$0) {
-      this.e = $$0;
-   }
-
-   public int a(hx $$0) {
-      int $$1 = iz.a($$0.u());
-      int $$2 = iz.a($$0.w());
-      eww.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
-      }
-
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
-      } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
-      }
-   }
-
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
-
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = cte.c($$0 + $$2, $$1 + $$3);
-               eww.a $$5 = (eww.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
-               }
-            }
+   public eww(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
+         } catch (Exception var7) {
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
          }
-      } finally {
-         this.d.writeLock().unlock();
       }
    }
 
-   public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(eww.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   private eww.a b(int $$0, int $$1) {
-      long $$2 = cte.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         eww.a $$3 = (eww.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
-      }
-
-      this.d.writeLock().lock();
-
-      eww.a $$5;
-      try {
-         eww.a $$4 = (eww.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new eww.a();
-            if (this.c.size() >= 256) {
-               eww.a $$6 = (eww.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
-            }
-
-            this.c.put($$2, $$5);
-            return $$5;
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
          }
 
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
-      }
-
-      return $$5;
-   }
-
-   static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = aup.h(16);
-      private volatile boolean d;
-
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
-         }
-
-         this.b.writeLock().lock();
-
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
-         }
-
-         return var12;
-      }
-
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
+         this.e.addLast($$0);
+         this.b();
       }
    }
 
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
-      @Nullable
-      eww.a c;
-
-      private b() {
+   private void b() {
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
+         }
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
       }
+   }
+
+   public Collection<String> a() {
+      return this.e;
    }
 }

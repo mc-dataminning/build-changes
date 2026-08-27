@@ -1,54 +1,33 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.util.UndashedUuid;
+import java.util.UUID;
 
-public interface avd {
-   avd a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
+public class avd {
+   public static final String a = "https://aka.ms/MinecraftGDPR";
+   public static final String b = "https://aka.ms/MinecraftEULA";
+   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
+   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
+   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
+   public static final String f = "https://aka.ms/BuyMinecraftJava";
+   public static final String g = "https://aka.ms/JavaAccountSettings";
+   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
+   public static final String i = "https://aka.ms/javafeedback?ref=game";
+   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
+   public static final String k = "https://aka.ms/Minecraft-Support";
+   public static final String l = "https://aka.ms/MinecraftJavaAccessibility";
+   public static final String m = "https://aka.ms/aboutjavareporting";
+   public static final String n = "https://aka.ms/mcjavamoderation";
+   public static final String o = "https://aka.ms/javablocking";
+   public static final String p = "https://aka.ms/MinecraftSymLinks";
+   public static final String q = "https://aka.ms/startjavarealmstrial";
+   public static final String r = "https://aka.ms/BuyJavaRealms";
+   public static final String s = "https://aka.ms/MinecraftRealmsTerms";
+   public static final String t = "https://aka.ms/MinecraftRealmsContentCreator";
 
-   boolean validate(avc var1, byte[] var2);
-
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
+   public static String a(String $$0, UUID $$1, boolean $$2) {
+      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   private static boolean a(avc $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
-   }
-
-   static avd a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
-         }
-      };
-   }
-
-   @Nullable
-   static avd a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
-
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+   public static String a(String $$0, UUID $$1) {
+      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

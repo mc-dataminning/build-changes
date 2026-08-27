@@ -1,86 +1,196 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import org.slf4j.Logger;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 public class kj {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final km c;
-   final Set<String> d = new HashSet<>();
-   final Map<String, kk> e = new LinkedHashMap<>();
-   private final ad f;
-   private final boolean g;
+   private final cyo a;
+   final Map<kj.b, cyo> b = Maps.newHashMap();
+   boolean c = true;
+   boolean d = true;
+   @Nullable
+   String e;
+   @Nullable
+   String f;
 
-   public kj(Path $$0, ad $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = new km(this.b);
-      this.f = $$1;
-      this.g = $$2;
+   kj(cyo $$0) {
+      this.a = $$0;
    }
 
-   public void a() throws IOException {
-      kl $$0 = new kl(this.b, this.d, this.f);
-      Stopwatch $$1 = Stopwatch.createStarted();
-      Stopwatch $$2 = Stopwatch.createUnstarted();
-      this.e.forEach(($$2x, $$3) -> {
-         if (!this.g && !$$0.a($$2x)) {
-            a.debug("Generator {} already run for version {}", $$2x, this.f.c());
-         } else {
-            a.info("Starting provider: {}", $$2x);
-            $$2.start();
-            $$0.a($$0.a($$2x, $$3::a).join());
-            $$2.stop();
-            a.info("{} finished after {} ms", $$2x, $$2.elapsed(TimeUnit.MILLISECONDS));
-            $$2.reset();
-         }
-      });
-      a.info("All providers took: {} ms", $$1.elapsed(TimeUnit.MILLISECONDS));
-      $$0.a();
+   public cyo a() {
+      return this.a;
    }
 
-   public kj.a a(boolean $$0) {
-      return new kj.a($$0, "vanilla", this.c);
+   public Map<kj.b, cyo> b() {
+      return this.b;
    }
 
-   public kj.a a(boolean $$0, String $$1) {
-      Path $$2 = this.c.a(km.b.a).resolve("minecraft").resolve("datapacks").resolve($$1);
-      return new kj.a($$0, $$1, new km($$2));
+   public cyo a(kj.b $$0) {
+      return this.b.get($$0);
    }
 
-   static {
-      ahj.a();
+   public boolean c() {
+      return this.c;
    }
 
-   public class a {
-      private final boolean b;
-      private final String c;
-      private final km d;
+   public boolean d() {
+      return this.d;
+   }
 
-      a(boolean $$1, String $$2, km $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public Optional<String> e() {
+      return ac.b(this.e) ? Optional.empty() : Optional.of(this.e);
+   }
+
+   public Optional<String> f() {
+      return ac.b(this.f) ? Optional.empty() : Optional.of(this.f);
+   }
+
+   public static class a {
+      private final kj a;
+
+      public a(cyo $$0) {
+         this.a = new kj($$0);
       }
 
-      public <T extends kk> T a(kk.a<T> $$0) {
-         T $$1 = $$0.create(this.d);
-         String $$2 = this.c + "/" + $$1.a();
-         if (!kj.this.d.add($$2)) {
-            throw new IllegalStateException("Duplicate provider: " + $$2);
-         } else {
-            if (this.b) {
-               kj.this.e.put($$2, $$1);
-            }
+      public kj a() {
+         return this.a;
+      }
 
-            return $$1;
-         }
+      public kj.a a(cyo $$0) {
+         this.a.b.put(kj.b.a, $$0);
+         return this;
+      }
+
+      public kj.a b(cyo $$0) {
+         this.a.b.put(kj.b.b, $$0);
+         return this;
+      }
+
+      public kj.a c(cyo $$0) {
+         this.a.b.put(kj.b.j, $$0);
+         return this;
+      }
+
+      public kj.a d(cyo $$0) {
+         this.a.b.put(kj.b.c, $$0);
+         return this;
+      }
+
+      public kj.a e(cyo $$0) {
+         this.a.b.put(kj.b.d, $$0);
+         return this;
+      }
+
+      public kj.a f(cyo $$0) {
+         this.a.b.put(kj.b.e, $$0);
+         return this;
+      }
+
+      public kj.a g(cyo $$0) {
+         this.a.b.put(kj.b.f, $$0);
+         return this;
+      }
+
+      public kj.a h(cyo $$0) {
+         this.a.b.put(kj.b.g, $$0);
+         return this;
+      }
+
+      public kj.a i(cyo $$0) {
+         this.a.b.put(kj.b.h, $$0);
+         return this;
+      }
+
+      public kj.a j(cyo $$0) {
+         this.a.b.put(kj.b.i, $$0);
+         return this;
+      }
+
+      public kj.a a(cyo $$0, cyo $$1) {
+         this.a.b.put(kj.b.k, $$0);
+         this.a.b.put(kj.b.r, $$1);
+         return this;
+      }
+
+      public kj.a k(cyo $$0) {
+         this.a.b.put(kj.b.l, $$0);
+         return this;
+      }
+
+      public kj.a l(cyo $$0) {
+         this.a.b.put(kj.b.m, $$0);
+         return this;
+      }
+
+      public kj.a m(cyo $$0) {
+         this.a.b.put(kj.b.n, $$0);
+         return this;
+      }
+
+      public kj.a n(cyo $$0) {
+         this.a.b.put(kj.b.o, $$0);
+         return this;
+      }
+
+      public kj.a o(cyo $$0) {
+         this.a.b.put(kj.b.p, $$0);
+         return this;
+      }
+
+      public kj.a p(cyo $$0) {
+         this.a.b.put(kj.b.q, $$0);
+         return this;
+      }
+
+      public kj.a b() {
+         this.a.c = false;
+         return this;
+      }
+
+      public kj.a c() {
+         this.a.d = false;
+         return this;
+      }
+
+      public kj.a a(String $$0) {
+         this.a.e = $$0;
+         return this;
+      }
+
+      public kj.a b(String $$0) {
+         this.a.f = $$0;
+         return this;
+      }
+   }
+
+   public static enum b {
+      a("button"),
+      b("chiseled"),
+      c("cracked"),
+      d("cut"),
+      e("door"),
+      f("fence"),
+      g("fence"),
+      h("fence_gate"),
+      i("fence_gate"),
+      j("mosaic"),
+      k("sign"),
+      l("slab"),
+      m("stairs"),
+      n("pressure_plate"),
+      o("polished"),
+      p("trapdoor"),
+      q("wall"),
+      r("wall_sign");
+
+      private final String s;
+
+      private b(String $$0) {
+         this.s = $$0;
+      }
+
+      public String a() {
+         return this.s;
       }
    }
 }

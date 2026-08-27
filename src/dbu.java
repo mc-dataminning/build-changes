@@ -1,57 +1,55 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public enum dbu implements avl {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class dbu extends cyx implements cyr {
+   public static final MapCodec<dbu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aix.a(kg.aw).fieldOf("feature").forGetter($$0x -> $$0x.e), kf.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dbu::new)
+   );
+   protected static final eol b = cyo.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final cyo d;
+   private final aix<dtf<?, ?>> e;
 
-   public static final Codec<dbu> d = avl.a(dbu::values);
-   private final String e;
-   private final vg f;
-   private final h g;
+   @Override
+   public MapCodec<dbu> a() {
+      return a;
+   }
 
-   private dbu(String $$0, h $$1) {
+   protected dbu(aix<dtf<?, ?>> $$0, cyo $$1, dle.d $$2) {
+      super($$2);
       this.e = $$0;
-      this.f = vg.c("mirror." + $$0);
-      this.g = $$1;
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case c:
-            return ($$1 - $$3) % $$1;
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public ddk a(ic $$0) {
-      ic.a $$1 = $$0.o();
-      return (this != b || $$1 != ic.a.c) && (this != c || $$1 != ic.a.a) ? ddk.a : ddk.c;
-   }
-
-   public ic b(ic $$0) {
-      if (this == c && $$0.o() == ic.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == ic.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public vg b() {
-      return this.f;
+      this.d = $$1;
    }
 
    @Override
-   public String c() {
-      return this.e;
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(dlf $$0, cut $$1, hz $$2) {
+      return $$0.a(atz.aK) || $$0.a(cyq.fl) || $$0.a(cyq.dX) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends ij<dtf<?, ?>>> a(cvq $$0) {
+      return $$0.I_().d(kg.aw).b(this.e);
+   }
+
+   @Override
+   public boolean b(cvq $$0, hz $$1, dlf $$2) {
+      dlf $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
+   }
+
+   @Override
+   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
+      this.a($$0).ifPresent($$3x -> ((dtf)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
    }
 }

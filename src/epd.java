@@ -1,31 +1,55 @@
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
+public interface epd extends bln {
+   coz x();
 
-public class epd {
-   public static ByteBuffer a(int $$0) {
-      return MemoryUtil.memAlloc($$0);
+   coz c(int var1);
+
+   void b(coz var1);
+
+   dit y();
+
+   default coz h() {
+      return this.c(this.al_());
    }
 
-   public static void a(Buffer $$0) {
-      MemoryUtil.memFree($$0);
+   @Override
+   default int b() {
+      return 1;
    }
 
-   public static String a() {
-      return GlStateManager._getString(7936);
+   @Override
+   default boolean aj_() {
+      return this.x().b();
    }
 
-   public static String b() {
-      return GLX._getCpuInfo();
+   @Override
+   default void a() {
+      this.h();
    }
 
-   public static String c() {
-      return GlStateManager._getString(7937);
+   @Override
+   default coz b(int $$0) {
+      return this.a($$0, this.al_());
    }
 
-   public static String d() {
-      return GlStateManager._getString(7938);
+   @Override
+   default coz a(int $$0) {
+      return $$0 == 0 ? this.x() : coz.h;
+   }
+
+   @Override
+   default coz a(int $$0, int $$1) {
+      return $$0 != 0 ? coz.h : this.c($$1);
+   }
+
+   @Override
+   default void a(int $$0, coz $$1) {
+      if ($$0 == 0) {
+         this.b($$1);
+      }
+   }
+
+   @Override
+   default boolean a(chh $$0) {
+      return bln.a(this.y(), $$0);
    }
 }

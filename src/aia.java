@@ -1,43 +1,18 @@
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import java.io.File;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
 
-public record aia(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, aqs d) {
-   private static final String e = "usercache.json";
+public class aia implements xx<ahz> {
+   public static final aia a = new aia();
+   public static final xo<ByteBuf, aia> b = xo.a(a);
 
-   public static aia a(YggdrasilAuthenticationService $$0, File $$1) {
-      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
-      GameProfileRepository $$3 = $$0.createProfileRepository();
-      aqs $$4 = new aqs($$3, new File($$1, "usercache.json"));
-      return new aia($$2, $$0.getServicesKeySet(), $$3, $$4);
+   private aia() {
    }
 
-   @Nullable
-   public avd a() {
-      return avd.a(this.b, ServicesKeyType.PROFILE_KEY);
+   @Override
+   public xz<aia> a() {
+      return aib.b;
    }
 
-   public boolean b() {
-      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
-   }
-
-   public MinecraftSessionService c() {
-      return this.a;
-   }
-
-   public ServicesKeySet d() {
-      return this.b;
-   }
-
-   public GameProfileRepository e() {
-      return this.c;
-   }
-
-   public aqs f() {
-      return this.d;
+   public void a(ahz $$0) {
+      $$0.a(this);
    }
 }

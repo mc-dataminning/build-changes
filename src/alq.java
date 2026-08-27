@@ -1,47 +1,38 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class alq {
-   private static final int a = -1;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.op.failed"));
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("weather").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)dt.a("clear").executes($$0x -> a((ds)$$0x.getSource(), -1)))
-                        .then(dt.a("duration", ff.a(1)).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)dt.a("rain").executes($$0x -> b((ds)$$0x.getSource(), -1)))
-                     .then(dt.a("duration", ff.a(1)).executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)dt.a("thunder").executes($$0x -> c((ds)$$0x.getSource(), -1)))
-                  .then(dt.a("duration", ff.a(1)).executes($$0x -> c((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("op").requires($$0x -> $$0x.c(3))).then(dv.a("targets", ej.a()).suggests(($$0x, $$1) -> {
+            asn $$2 = ((du)$$0x.getSource()).l().ae();
+            return dz.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fS())).map($$0xx -> $$0xx.fS().getName()), $$1);
+         }).executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets"))))
       );
    }
 
-   private static int a(ds $$0, int $$1, bjh $$2) {
-      return $$1 == -1 ? $$2.a($$0.e().F_()) : $$1;
-   }
+   private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      asn $$2 = $$0.l().ae();
+      int $$3 = 0;
 
-   private static int a(ds $$0, int $$1) {
-      $$0.e().a(a($$0, $$1, ane.b), 0, false, false);
-      $$0.a(() -> vg.c("commands.weather.set.clear"), true);
-      return $$1;
-   }
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.f($$4)) {
+            $$2.a($$4);
+            $$3++;
+            $$0.a(() -> vq.a("commands.op.success", $$1.iterator().next().getName()), true);
+         }
+      }
 
-   private static int b(ds $$0, int $$1) {
-      $$0.e().a(0, a($$0, $$1, ane.c), true, false);
-      $$0.a(() -> vg.c("commands.weather.set.rain"), true);
-      return $$1;
-   }
-
-   private static int c(ds $$0, int $$1) {
-      $$0.e().a(0, a($$0, $$1, ane.d), true, true);
-      $$0.a(() -> vg.c("commands.weather.set.thunder"), true);
-      return $$1;
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         return $$3;
+      }
    }
 }

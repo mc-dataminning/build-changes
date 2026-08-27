@@ -1,29 +1,15 @@
-public class crp extends crr {
-   protected crp(crr.a $$0, bmd... $$1) {
-      super($$0, crs.j, $$1);
+public class crp extends crk {
+   public crp(String $$0, crq $$1, cry $$2, coz $$3, float $$4, int $$5) {
+      super(csg.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 5 + ($$0 - 1) * 8;
+   public coz g() {
+      return new coz(cyq.og);
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cng $$0) {
-      return $$0.i() ? true : super.a($$0);
-   }
-
-   public static boolean a(cng $$0, int $$1, auw $$2) {
-      return $$0.d() instanceof ckr && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
+   public csf<?> at_() {
+      return csf.s;
    }
 }

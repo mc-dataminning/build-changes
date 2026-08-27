@@ -1,41 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.SignStyle;
+import java.time.temporal.ChronoField;
 
-public class eig extends eir {
-   public static final Codec<eig> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eig::new));
-
-   private eig(List<eke> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public eit b() {
-      return eiu.t;
-   }
-
-   @Override
-   public cng a(cng $$0, ehf $$1) {
-      Float $$2 = $$1.c(ejq.j);
-      if ($$2 != null) {
-         auw $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.L();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.f($$6);
-      }
-
-      return $$0;
-   }
-
-   public static eir.a<?> c() {
-      return a(eig::new);
+public class eig {
+   public static DateTimeFormatter a() {
+      return new DateTimeFormatterBuilder()
+         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.DAY_OF_MONTH, 2)
+         .appendLiteral('_')
+         .appendValue(ChronoField.HOUR_OF_DAY, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
+         .toFormatter();
    }
 }

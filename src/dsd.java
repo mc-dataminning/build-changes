@@ -1,80 +1,20 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<ane, dsd.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<ane, dsd.b>() {
-         public dsd.b a(ane $$0) {
-            return new dsd.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
+class dsd implements drv {
+   public static final Codec<dsd> a = RecordCodecBuilder.create($$0 -> $$0.group(drv.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dsd::new));
+   private final drv e;
 
-   public static void a(ane $$0) {
-      try {
-         ((dsd.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
+   public dsd(drv $$0) {
+      this.e = $$0;
    }
 
-   public static void a(ane $$0, drp<?, ?> $$1, Optional<dys> $$2) {
-      try {
-         ((dsd.b)b.get($$0)).a().computeInt(new dsd.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
+   public boolean a(cwi $$0, hz $$1) {
+      return !this.e.test($$0, $$1);
    }
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ae().a().toString();
-               boolean $$3 = $$0.o().v();
-               it<dys> $$4 = $$0.I_().d(ke.aC);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::c).<ahh>map(ahg::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
-            }
-         );
-   }
-
-   static record a(drp<?, ?> a, Optional<dys> b) {
-   }
-
-   static record b(Object2IntMap<dsd.a> a, MutableInt b) {
+   @Override
+   public drw<?> a() {
+      return drw.k;
    }
 }

@@ -1,41 +1,83 @@
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.function.IntFunction;
+import java.util.function.ToIntFunction;
+
 public class auz {
-   public static final int a = 240;
-   private final long[] b = new long[240];
-   private int c;
-   private int d;
-
-   public void a(long $$0) {
-      int $$1 = this.b(this.c + this.d);
-      this.b[$$1] = $$0;
-      if (this.d < 240) {
-         this.d++;
+   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
+      if ($$1.length == 0) {
+         throw new IllegalArgumentException("Empty value list");
       } else {
-         this.c = this.b(this.c + 1);
+         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
+
+         for (T $$3 : $$1) {
+            int $$4 = $$0.applyAsInt($$3);
+            T $$5 = (T)$$2.put($$4, $$3);
+            if ($$5 != null) {
+               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
+            }
+         }
+
+         return $$2;
       }
    }
 
-   public int a() {
-      return this.b.length;
+   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
+      IntFunction<T> $$3 = a($$0, $$1);
+      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public long a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.d) {
-         return this.b[this.b(this.c + $$0)];
+   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
+      int $$2 = $$1.length;
+      if ($$2 == 0) {
+         throw new IllegalArgumentException("Empty value list");
       } else {
-         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.d);
+         T[] $$3 = (T[])$$1.clone();
+         Arrays.fill($$3, null);
+
+         for (T $$4 : $$1) {
+            int $$5 = $$0.applyAsInt($$4);
+            if ($$5 < 0 || $$5 >= $$2) {
+               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
+            }
+
+            T $$6 = $$3[$$5];
+            if ($$6 != null) {
+               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
+            }
+
+            $$3[$$5] = $$4;
+         }
+
+         for (int $$7 = 0; $$7 < $$2; $$7++) {
+            if ($$3[$$7] == null) {
+               throw new IllegalArgumentException("Missing value at index: " + $$7);
+            }
+         }
+
+         return $$3;
       }
    }
 
-   private int b(int $$0) {
-      return $$0 % 240;
+   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, auz.a $$2) {
+      T[] $$3 = b($$0, $$1);
+      int $$4 = $$3.length;
+
+      return switch ($$2) {
+         case a -> {
+            T $$5 = $$3[0];
+            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
+         }
+         case b -> $$2x -> $$3[awh.b($$2x, $$4)];
+         case c -> $$2x -> $$3[awh.a($$2x, 0, $$4 - 1)];
+      };
    }
 
-   public void c() {
-      this.c = 0;
-      this.d = 0;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

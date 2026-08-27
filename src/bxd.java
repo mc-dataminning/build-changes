@@ -1,89 +1,235 @@
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.DoublePredicate;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
 public class bxd {
-   public static final bxd a = a();
-   private static final double b = 2.0;
-   private final boolean c;
-   private double d = -1.0;
-   private boolean e = true;
-   private boolean f = true;
-   @Nullable
-   private Predicate<bmo> g;
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 2;
+   private final Map<UUID, bxd.a> c = Maps.newHashMap();
 
-   private bxd(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public static bxd a() {
-      return new bxd(true);
-   }
-
-   public static bxd b() {
-      return new bxd(false);
-   }
-
-   public bxd c() {
-      bxd $$0 = this.c ? a() : b();
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
+   @axl
+   public Map<UUID, Object2IntMap<bxe>> a() {
+      Map<UUID, Object2IntMap<bxe>> $$0 = Maps.newHashMap();
+      this.c.keySet().forEach($$1 -> {
+         bxd.a $$2 = this.c.get($$1);
+         $$0.put($$1, $$2.a);
+      });
       return $$0;
    }
 
-   public bxd a(double $$0) {
-      this.d = $$0;
-      return this;
+   public void b() {
+      Iterator<bxd.a> $$0 = this.c.values().iterator();
+
+      while ($$0.hasNext()) {
+         bxd.a $$1 = $$0.next();
+         $$1.a();
+         if ($$1.b()) {
+            $$0.remove();
+         }
+      }
    }
 
-   public bxd d() {
-      this.e = false;
-      return this;
+   private Stream<bxd.b> c() {
+      return this.c.entrySet().stream().flatMap($$0 -> $$0.getValue().a($$0.getKey()));
    }
 
-   public bxd e() {
-      this.f = false;
-      return this;
-   }
-
-   public bxd a(@Nullable Predicate<bmo> $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean a(@Nullable bmo $$0, bmo $$1) {
-      if ($$0 == $$1) {
-         return false;
-      } else if (!$$1.ep()) {
-         return false;
-      } else if (this.g != null && !this.g.test($$1)) {
-         return false;
+   private Collection<bxd.b> a(awo $$0, int $$1) {
+      List<bxd.b> $$2 = this.c().toList();
+      if ($$2.isEmpty()) {
+         return Collections.emptyList();
       } else {
-         if ($$0 == null) {
-            if (this.c && (!$$1.eo() || $$1.dL().ak() == bjz.a)) {
-               return false;
-            }
-         } else {
-            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ai()) || $$0.r($$1))) {
-               return false;
-            }
+         int[] $$3 = new int[$$2.size()];
+         int $$4 = 0;
 
-            if (this.d > 0.0) {
-               double $$2 = this.f ? $$1.A($$0) : 1.0;
-               double $$3 = Math.max(this.d * $$2, 2.0);
-               double $$4 = $$0.i($$1.dq(), $$1.ds(), $$1.dw());
-               if ($$4 > $$3 * $$3) {
-                  return false;
-               }
-            }
-
-            if (this.e && $$0 instanceof bmq $$5 && !$$5.O().a($$1)) {
-               return false;
-            }
+         for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
+            bxd.b $$6 = $$2.get($$5);
+            $$4 += Math.abs($$6.a());
+            $$3[$$5] = $$4 - 1;
          }
 
-         return true;
+         Set<bxd.b> $$7 = Sets.newIdentityHashSet();
+
+         for (int $$8 = 0; $$8 < $$1; $$8++) {
+            int $$9 = $$0.a($$4);
+            int $$10 = Arrays.binarySearch($$3, $$9);
+            $$7.add($$2.get($$10 < 0 ? -$$10 - 1 : $$10));
+         }
+
+         return $$7;
+      }
+   }
+
+   private bxd.a a(UUID $$0) {
+      return this.c.computeIfAbsent($$0, $$0x -> new bxd.a());
+   }
+
+   public void a(bxd $$0, awo $$1, int $$2) {
+      Collection<bxd.b> $$3 = $$0.a($$1, $$2);
+      $$3.forEach($$0x -> {
+         int $$1x = $$0x.e - $$0x.d.m;
+         if ($$1x >= 2) {
+            this.a($$0x.c).a.mergeInt($$0x.d, $$1x, bxd::a);
+         }
+      });
+   }
+
+   public int a(UUID $$0, Predicate<bxe> $$1) {
+      bxd.a $$2 = this.c.get($$0);
+      return $$2 != null ? $$2.a($$1) : 0;
+   }
+
+   public long a(bxe $$0, DoublePredicate $$1) {
+      return this.c.values().stream().filter($$2 -> $$1.test((double)($$2.a.getOrDefault($$0, 0) * $$0.j))).count();
+   }
+
+   public void a(UUID $$0, bxe $$1, int $$2) {
+      bxd.a $$3 = this.a($$0);
+      $$3.a.mergeInt($$1, $$2, ($$1x, $$2x) -> this.a($$1, $$1x, $$2x));
+      $$3.a($$1);
+      if ($$3.b()) {
+         this.c.remove($$0);
+      }
+   }
+
+   public void b(UUID $$0, bxe $$1, int $$2) {
+      this.a($$0, $$1, -$$2);
+   }
+
+   public void a(UUID $$0, bxe $$1) {
+      bxd.a $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.b($$1);
+         if ($$2.b()) {
+            this.c.remove($$0);
+         }
+      }
+   }
+
+   public void a(bxe $$0) {
+      Iterator<bxd.a> $$1 = this.c.values().iterator();
+
+      while ($$1.hasNext()) {
+         bxd.a $$2 = $$1.next();
+         $$2.b($$0);
+         if ($$2.b()) {
+            $$1.remove();
+         }
+      }
+   }
+
+   public <T> T a(DynamicOps<T> $$0) {
+      return (T)bxd.b.b.encodeStart($$0, this.c().toList()).resultOrPartial($$0x -> b.warn("Failed to serialize gossips: {}", $$0x)).orElseGet($$0::emptyList);
+   }
+
+   public void a(Dynamic<?> $$0) {
+      bxd.b.b
+         .decode($$0)
+         .resultOrPartial($$0x -> b.warn("Failed to deserialize gossips: {}", $$0x))
+         .stream()
+         .flatMap($$0x -> ((List)$$0x.getFirst()).stream())
+         .forEach($$0x -> this.a($$0x.c).a.put($$0x.d, $$0x.e));
+   }
+
+   private static int a(int $$0, int $$1) {
+      return Math.max($$0, $$1);
+   }
+
+   private int a(bxe $$0, int $$1, int $$2) {
+      int $$3 = $$1 + $$2;
+      return $$3 > $$0.k ? Math.max($$0.k, $$1) : $$3;
+   }
+
+   static class a {
+      final Object2IntMap<bxe> a = new Object2IntOpenHashMap();
+
+      public int a(Predicate<bxe> $$0) {
+         return this.a
+            .object2IntEntrySet()
+            .stream()
+            .filter($$1 -> $$0.test((bxe)$$1.getKey()))
+            .mapToInt($$0x -> $$0x.getIntValue() * ((bxe)$$0x.getKey()).j)
+            .sum();
+      }
+
+      public Stream<bxd.b> a(UUID $$0) {
+         return this.a.object2IntEntrySet().stream().map($$1 -> new bxd.b($$0, (bxe)$$1.getKey(), $$1.getIntValue()));
+      }
+
+      public void a() {
+         ObjectIterator<Entry<bxe>> $$0 = this.a.object2IntEntrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<bxe> $$1 = (Entry<bxe>)$$0.next();
+            int $$2 = $$1.getIntValue() - ((bxe)$$1.getKey()).l;
+            if ($$2 < 2) {
+               $$0.remove();
+            } else {
+               $$1.setValue($$2);
+            }
+         }
+      }
+
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      public void a(bxe $$0) {
+         int $$1 = this.a.getInt($$0);
+         if ($$1 > $$0.k) {
+            this.a.put($$0, $$0.k);
+         }
+
+         if ($$1 < 2) {
+            this.b($$0);
+         }
+      }
+
+      public void b(bxe $$0) {
+         this.a.removeInt($$0);
+      }
+   }
+
+   static record b(UUID c, bxe d, int e) {
+      public static final Codec<bxd.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(jc.a.fieldOf("Target").forGetter(bxd.b::b), bxe.n.fieldOf("Type").forGetter(bxd.b::c), avp.j.fieldOf("Value").forGetter(bxd.b::d))
+               .apply($$0, bxd.b::new)
+      );
+      public static final Codec<List<bxd.b>> b = a.listOf();
+
+      public int a() {
+         return this.e * this.d.j;
+      }
+
+      public UUID b() {
+         return this.c;
+      }
+
+      public bxe c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
       }
    }
 }

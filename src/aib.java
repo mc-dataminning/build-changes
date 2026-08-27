@@ -1,18 +1,12 @@
-public class aib implements Runnable {
-   private final int a;
-   private final Runnable b;
+public class aib {
+   public static final xz<ahx> a = a("status_response");
+   public static final xz<aia> b = b("status_request");
 
-   public aib(int $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private static <T extends xx<ahw>> xz<T> a(String $$0) {
+      return new xz<>(xy.b, new aiy($$0));
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   @Override
-   public void run() {
-      this.b.run();
+   private static <T extends xx<ahz>> xz<T> b(String $$0) {
+      return new xz<>(xy.a, new aiy($$0));
    }
 }

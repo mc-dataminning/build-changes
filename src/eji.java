@@ -1,28 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class eji extends eir {
-   public static final Codec<eji> a = RecordCodecBuilder.create($$0 -> a($$0).and(kd.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eji::new));
-   private final ih<cpe> b;
+public class eji extends ejq {
+   public static final Codec<eji> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aiy.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eji::new)
+   );
+   private final aiy j;
 
-   private eji(List<eke> $$0, ih<cpe> $$1) {
-      super($$0);
-      this.b = $$1;
+   private eji(aiy $$0, int $$1, int $$2, List<elu> $$3, List<eki> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public eit b() {
-      return eiu.z;
+   public ejp a() {
+      return ejm.e;
    }
 
    @Override
-   public cng a(cng $$0, ehf $$1) {
-      cpg.a($$0, this.b);
-      return $$0;
+   public void a(Consumer<coz> $$0, eiv $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public static eir.a<?> a(ih<cpe> $$0) {
-      return a($$1 -> new eji($$1, $$0));
+   public static ejq.a<?> a(aiy $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eji($$0, $$1, $$2, $$3, $$4));
    }
 }

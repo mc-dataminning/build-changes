@@ -1,22 +1,101 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bqv {
-   public static bog<bmo> a() {
-      return brs.a(
-         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$0 -> $$0.group($$0.b(bvq.ab))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof bmo $$1xx ? $$1xx : null)
-                           .filter(bmo::ew)
-                           .filter($$1xx -> $$1xx.ai() != bmc.bw || $$2.Z().b(ctt.N))
-                           .ifPresent($$1xx -> $$1.b());
-                        return true;
-                     }
-               ))
-      );
+public class bqv extends bpw<boi> {
+   private static final int c = 100;
+   private static final int d = 3;
+   private static final int e = 6;
+   private static final int f = 5;
+   private final float g;
+   @Nullable
+   private hz h;
+   private int i;
+   private int j;
+   private int k;
+
+   public bqv(float $$0) {
+      super(ImmutableMap.of(bxh.w, bxi.a, bxh.m, bxi.b));
+      this.g = $$0;
+   }
+
+   protected boolean a(aov $$0, boi $$1) {
+      return $$1.o_() && this.b($$0, $$1);
+   }
+
+   protected void a(aov $$0, boi $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.a($$1).ifPresent($$2x -> {
+         this.h = $$2x;
+         this.i = 100;
+         this.j = 3 + $$0.z.a(4);
+         this.k = 0;
+         this.a($$1, $$2x);
+      });
+   }
+
+   protected void b(aov $$0, boi $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      this.h = null;
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   protected boolean c(aov $$0, boi $$1, long $$2) {
+      return $$1.o_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected void d(aov $$0, boi $$1, long $$2) {
+      if (!this.c($$0, $$1)) {
+         this.i--;
+      } else if (this.k > 0) {
+         this.k--;
+      } else {
+         if (this.d($$0, $$1)) {
+            $$1.M().a();
+            this.j--;
+            this.k = 5;
+         }
+      }
+   }
+
+   private void a(boi $$0, hz $$1) {
+      $$0.dO().a(bxh.m, new bxk($$1, this.g, 0));
+   }
+
+   private boolean b(aov $$0, boi $$1) {
+      return this.c($$0, $$1) || this.a($$1).isPresent();
+   }
+
+   private boolean c(aov $$0, boi $$1) {
+      hz $$2 = $$1.dm();
+      hz $$3 = $$2.d();
+      return this.a($$0, $$2) || this.a($$0, $$3);
+   }
+
+   private boolean d(aov $$0, boi $$1) {
+      return this.a($$0, $$1.dm());
+   }
+
+   private boolean a(aov $$0, hz $$1) {
+      return $$0.a_($$1).a(atz.R);
+   }
+
+   private Optional<hz> a(boi $$0) {
+      return $$0.dO().c(bxh.w);
+   }
+
+   private boolean e(aov $$0, boi $$1) {
+      return !this.c($$0, $$1) && this.i <= 0;
+   }
+
+   private boolean f(aov $$0, boi $$1) {
+      return this.c($$0, $$1) && this.j <= 0;
    }
 }

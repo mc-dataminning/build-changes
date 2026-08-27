@@ -1,63 +1,43 @@
-public class cct extends cdp {
-   public cct(bmc<? extends cct> $$0, ctx $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public static boolean a(bmc<cct> $$0, cum $$1, bms $$2, hx $$3, auw $$4) {
-      return b($$0, $$1, $$2, $$3, $$4) && (bms.a($$2) || $$1.h($$3));
-   }
+public class cct extends cco {
+   @Nullable
+   private ens b;
 
-   @Override
-   protected boolean af_() {
-      return false;
+   public cct(ccm $$0) {
+      super($$0);
    }
 
    @Override
-   protected ars y() {
-      return art.mA;
-   }
-
-   @Override
-   protected ars d(bkv $$0) {
-      return art.mD;
-   }
-
-   @Override
-   protected ars n_() {
-      return art.mC;
-   }
-
-   @Override
-   protected ars gf() {
-      return art.mE;
-   }
-
-   @Override
-   public boolean B(blw $$0) {
-      boolean $$1 = super.B($$0);
-      if ($$1 && this.eT().b() && $$0 instanceof bmo) {
-         float $$2 = this.dL().d_(this.dl()).b();
-         ((bmo)$$0).b(new blj(bll.q, 140 * (int)$$2), this);
+   public void c() {
+      if (this.b == null) {
+         this.b = this.a.dk();
       }
-
-      return $$1;
    }
 
    @Override
-   protected boolean gh() {
+   public boolean a() {
       return true;
    }
 
    @Override
-   protected void ae_() {
-      this.b(bmc.bs);
-      if (!this.aU()) {
-         this.dL().a(null, 1041, this.dl(), 0);
-      }
+   public void d() {
+      this.b = null;
    }
 
    @Override
-   protected cng gg() {
-      return cng.f;
+   public float f() {
+      return 1.0F;
+   }
+
+   @Nullable
+   @Override
+   public ens g() {
+      return this.b;
+   }
+
+   @Override
+   public cdc<cct> i() {
+      return cdc.k;
    }
 }

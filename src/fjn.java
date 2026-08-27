@@ -1,56 +1,160 @@
-public class fjn extends fks<bxx> {
-   private final fnj a;
-   private final fnj b;
-   private final fnj f;
-   private final fnj g;
-   private final fnj h;
-   private final fnj i;
-   private final fnj j;
-   private final fnj k;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public fjn(fnj $$0) {
-      super(fub::d);
+public class fjn extends ezn<fjl> {
+   private final fjo a;
+   private final List<fjl> m = Lists.newArrayList();
+   @Nullable
+   private String n;
+
+   public fjn(fjo $$0, exh $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
       this.a = $$0;
-      this.f = $$0.b("body");
-      this.b = $$0.b("head");
-      this.g = this.f.b("right_wing");
-      this.i = this.g.b("right_wing_tip");
-      this.h = this.f.b("left_wing");
-      this.j = this.h.b("left_wing_tip");
-      this.k = this.f.b("feet");
-   }
-
-   public static fnp b() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      fns $$2 = $$1.a("body", fno.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), fnl.a(0.0F, 17.0F, 0.0F));
-      fns $$3 = $$1.a("head", fno.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), fnl.a(0.0F, 17.0F, 0.0F));
-      $$3.a("right_ear", fno.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), fnl.a(-1.5F, -2.0F, 0.0F));
-      $$3.a("left_ear", fno.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), fnl.a(1.1F, -3.0F, 0.0F));
-      fns $$4 = $$2.a("right_wing", fno.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fnl.a(-1.5F, 0.0F, 0.0F));
-      $$4.a("right_wing_tip", fno.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fnl.a(-2.0F, 0.0F, 0.0F));
-      fns $$5 = $$2.a("left_wing", fno.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fnl.a(1.5F, 0.0F, 0.0F));
-      $$5.a("left_wing_tip", fno.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fnl.a(2.0F, 0.0F, 0.0F));
-      $$2.a("feet", fno.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), fnl.a(0.0F, 5.0F, 0.0F));
-      return fnp.a($$0, 32, 32);
+      this.c(false);
    }
 
    @Override
-   public fnj a() {
-      return this.a;
+   protected void a(eyu $$0) {
+      $$0.c(this.B(), this.C() + 4, this.D(), this.E());
    }
 
-   public void a(bxx $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fnj::c);
-      if ($$0.w()) {
-         this.a($$4);
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fjl> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
+   }
+
+   private void a(Collection<UUID> $$0, Map<UUID, fjl> $$1) {
+      fpy $$2 = this.c.s.cq;
+
+      for (UUID $$3 : $$0) {
+         fqg $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fjl(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
+         }
+      }
+   }
+
+   private void a(Map<UUID, fjl> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.aY().b())) {
+         fjl $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fjl $$2 = new fjl(this.c, this.a, $$3.getId(), $$3.getName(), this.c.al().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
+         }
+
+         $$4.d(true);
+      }
+   }
+
+   private static Collection<GameProfile> a(fqn $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         fqp $$3 = $$0.b($$2);
+         if ($$3 instanceof fqq.a) {
+            fqq.a $$4 = (fqq.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
+            }
+         }
       }
 
-      this.a($$0.d, ewm.b, $$3, 1.0F);
-      this.a($$0.e, ewm.a, $$3, 1.0F);
+      return $$1;
    }
 
-   private void a(float $$0) {
-      this.b.f = $$0 * (float) (Math.PI / 180.0);
+   private void e() {
+      this.m.sort(Comparator.<fjl, Integer>comparing($$0 -> {
+         if (this.c.b($$0.c())) {
+            return 0;
+         } else if (this.c.aY().a($$0.c())) {
+            return 1;
+         } else if ($$0.c().version() == 2) {
+            return 4;
+         } else {
+            return $$0.i() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.b().isBlank()) {
+            int $$1 = $$0.b().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(fjl::b, String::compareToIgnoreCase));
+   }
+
+   private void a(Collection<fjl> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.e();
+      this.H();
+      this.a(this.m);
+      this.a($$1);
+   }
+
+   private void H() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.b().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean d() {
+      return this.m.isEmpty();
+   }
+
+   public void a(fqg $$0, fjo.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (fjl $$3 : this.m) {
+         if ($$3.c().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == fjo.a.a || this.c.aK().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fjl $$5 = new fjl(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b($$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fjl $$1 : this.m) {
+         if ($$1.c().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
+      }
    }
 }

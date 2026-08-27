@@ -1,32 +1,29 @@
-public class aax implements xg<zb> {
-   private final hx a;
+public class aax implements xx<aag> {
+   public static final xo<uq, aax> a = xx.a(aax::a, aax::new);
    private final boolean b;
 
-   public aax(hx $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aax(boolean $$0) {
+      this.b = $$0;
    }
 
-   public aax(uj $$0) {
-      this.a = $$0.e();
+   private aax(uq $$0) {
       this.b = $$0.readBoolean();
    }
 
-   @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
+   private void a(uq $$0) {
       $$0.a(this.b);
    }
 
-   public void a(zb $$0) {
+   @Override
+   public xz<aax> a() {
+      return aeq.q;
+   }
+
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
-      return this.a;
-   }
-
-   public boolean d() {
+   public boolean b() {
       return this.b;
    }
 }

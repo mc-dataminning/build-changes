@@ -1,51 +1,27 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-public record bkx(String b, bku c, float d, bkt e, bkz f) {
-   public static final Codec<bkx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(bkx::a),
-               bku.d.fieldOf("scaling").forGetter(bkx::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(bkx::c),
-               bkt.g.optionalFieldOf("effects", bkt.a).forGetter(bkx::d),
-               bkz.d.optionalFieldOf("death_message_type", bkz.a).forGetter(bkx::e)
-            )
-            .apply($$0, bkx::new)
+public abstract class bkx implements blc {
+   private static final Codec<Either<Float, bkx>> a = Codec.either(Codec.FLOAT, kf.L.q().dispatch(bkx::c, bky::codec));
+   public static final Codec<bkx> c = a.xmap(
+      $$0 -> (bkx)$$0.map(bkv::a, $$0x -> $$0x), $$0 -> $$0.c() == bky.a ? Either.left(((bkv)$$0).d()) : Either.right($$0)
    );
 
-   public bkx(String $$0, bku $$1, float $$2) {
-      this($$0, $$1, $$2, bkt.a, bkz.a);
+   public static Codec<bkx> a(float $$0, float $$1) {
+      return avp.a(c, (Function<bkx, DataResult<bkx>>)($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      }));
    }
 
-   public bkx(String $$0, bku $$1, float $$2, bkt $$3) {
-      this($$0, $$1, $$2, $$3, bkz.a);
-   }
+   public abstract float a();
 
-   public bkx(String $$0, float $$1, bkt $$2) {
-      this($$0, bku.b, $$1, $$2);
-   }
+   public abstract float b();
 
-   public bkx(String $$0, float $$1) {
-      this($$0, bku.b, $$1);
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public bku b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public bkt d() {
-      return this.e;
-   }
-
-   public bkz e() {
-      return this.f;
-   }
+   public abstract bky<?> c();
 }

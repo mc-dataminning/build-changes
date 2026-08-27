@@ -1,40 +1,38 @@
-public class flr<T extends blw> extends fks<T> {
-   private final fnj a;
-   private final fnj b;
-   private final fnj f;
+public class flr<T extends bno> extends fmk<T> {
+   private final fpc a;
+   private final fpc b;
 
-   public flr(fnj $$0) {
+   public flr(fpc $$0) {
       this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.f = $$0.b("right_blue_fin");
+      this.b = $$0.b("tail_fin");
    }
 
-   public static fnp b() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
+   public static fpi b() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
       int $$2 = 22;
-      $$1.a("body", fno.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), fnl.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", fno.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fnl.a(-2.5F, 17.0F, -1.5F));
-      $$1.a("left_blue_fin", fno.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fnl.a(2.5F, 17.0F, -1.5F));
-      $$1.a("top_front_fin", fno.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), fnl.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_back_fin", fno.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), fnl.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", fno.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fnl.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("right_back_fin", fno.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fnl.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", fno.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fnl.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", fno.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fnl.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_back_fin", fno.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), fnl.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_front_fin", fno.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), fnl.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      return fnp.a($$0, 32, 32);
+      $$1.a("body", fph.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), fpe.a(0.0F, 22.0F, 0.0F));
+      $$1.a("head", fph.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fpe.a(0.0F, 22.0F, 0.0F));
+      $$1.a("nose", fph.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), fpe.a(0.0F, 22.0F, -3.0F));
+      $$1.a("right_fin", fph.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), fpe.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", fph.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), fpe.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      $$1.a("tail_fin", fph.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), fpe.a(0.0F, 22.0F, 7.0F));
+      $$1.a("top_fin", fph.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), fpe.a(0.0F, 20.0F, 0.0F));
+      return fpi.a($$0, 32, 32);
    }
 
    @Override
-   public fnj a() {
+   public fpc a() {
       return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * aup.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * aup.a($$3 * 0.2F);
+      float $$6 = 1.0F;
+      if (!$$0.aZ()) {
+         $$6 = 1.5F;
+      }
+
+      this.b.f = -$$6 * 0.45F * awh.a(0.6F * $$3);
    }
 }

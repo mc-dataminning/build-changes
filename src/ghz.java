@@ -1,16 +1,26 @@
-public class ghz extends gib {
-   public ghz(byd $$0) {
-      super($$0, art.bN, aru.g);
-      this.j = 0;
+import java.util.IllegalFormatException;
+
+public class ghz {
+   private static volatile sr a = sr.a();
+
+   private ghz() {
    }
 
-   @Override
-   protected ghx o() {
-      return new gia(this.n);
+   static void a(sr $$0) {
+      a = $$0;
    }
 
-   @Override
-   protected boolean p() {
-      return !this.n.aa_();
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

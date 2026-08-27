@@ -1,43 +1,94 @@
-public class bwa extends bvy {
-   private boolean p;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public bwa(bmq $$0, ctx $$1) {
-      super($$0, $$1);
+public class bwa extends bvb {
+   private final boi a;
+   private final cer b;
+   @Nullable
+   private bog c;
+   private int d = -1;
+   private final double e;
+   private int f;
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+
+   public bwa(cer $$0, double $$1, int $$2, float $$3) {
+      this($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public bwa(cer $$0, double $$1, int $$2, int $$3, float $$4) {
+      if (!($$0 instanceof bog)) {
+         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+      } else {
+         this.b = $$0;
+         this.a = (boi)$$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+         this.j = $$4 * $$4;
+         this.a(EnumSet.of(bvb.a.a, bvb.a.b));
+      }
    }
 
    @Override
-   protected efq a(int $$0) {
-      this.p = this.a.ai() == bmc.x;
-      this.o = new efr(this.p);
-      return new efq(this.o, $$0);
+   public boolean a() {
+      bog $$0 = this.a.q();
+      if ($$0 != null && $$0.bx()) {
+         this.c = $$0;
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   protected boolean a() {
-      return this.p || this.a.bd();
+   public boolean b() {
+      return this.a() || this.c.bx() && !this.a.N().l();
    }
 
    @Override
-   protected emc b() {
-      return new emc(this.a.dq(), this.a.e(0.5), this.a.dw());
+   public void d() {
+      this.c = null;
+      this.f = 0;
+      this.d = -1;
    }
 
    @Override
-   protected double a(emc $$0) {
-      return $$0.d;
+   public boolean T_() {
+      return true;
    }
 
    @Override
-   protected boolean a(emc $$0, emc $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
+   public void e() {
+      double $$0 = this.a.i(this.c.dr(), this.c.dt(), this.c.dx());
+      boolean $$1 = this.a.O().a(this.c);
+      if ($$1) {
+         this.f++;
+      } else {
+         this.f = 0;
+      }
 
-   @Override
-   public boolean a(hx $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
+      if (!($$0 > (double)this.j) && this.f >= 5) {
+         this.a.N().n();
+      } else {
+         this.a.N().a(this.c, this.e);
+      }
 
-   @Override
-   public void a(boolean $$0) {
+      this.a.I().a(this.c, 30.0F, 30.0F);
+      if (--this.d == 0) {
+         if (!$$1) {
+            return;
+         }
+
+         float $$2 = (float)Math.sqrt($$0) / this.i;
+         float $$3 = awh.a($$2, 0.1F, 1.0F);
+         this.b.a(this.c, $$3);
+         this.d = awh.d($$2 * (float)(this.h - this.g) + (float)this.g);
+      } else if (this.d < 0) {
+         this.d = awh.a(awh.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
+      }
    }
 }

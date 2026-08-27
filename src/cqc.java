@@ -1,22 +1,24 @@
-public abstract class cqc implements cqb {
-   private final cqa a;
-
-   public cqc(cqa $$0) {
-      this.a = $$0;
+public class cqc extends cou {
+   public cqc(cou.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean as_() {
-      return true;
-   }
+   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
+      coz $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), atk.xS, atl.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cie $$4 = new cie($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   @Override
-   public cng a(iu $$0) {
-      return cng.f;
-   }
+      $$1.b(atu.c.b(this));
+      if (!$$1.fU().d) {
+         $$3.h(1);
+      }
 
-   @Override
-   public cqa d() {
-      return this.a;
+      return blv.a($$3, $$0.y_());
    }
 }

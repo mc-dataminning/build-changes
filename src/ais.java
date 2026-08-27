@@ -1,132 +1,81 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-public class ais {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, ahg<ctx>> a = ImmutableBiMap.of("o", ctx.h, "n", ctx.i, "e", ctx.j);
-   @Nullable
-   private static aik g;
-   @Nullable
-   private static aij h;
+public class ais<E> implements Codec<in<E>> {
+   private final aix<? extends iv<E>> a;
+   private final Codec<ij<E>> b;
+   private final Codec<List<ij<E>>> c;
+   private final Codec<Either<auo<E>, List<ij<E>>>> d;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)dt.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)dt.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    dt.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (ds)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((ds)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)dt.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)dt.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 dt.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ds)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((ds)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(dt.a("stop").executes($$0x -> a((ds)$$0x.getSource())))
-      );
+   private static <E> Codec<List<ij<E>>> a(Codec<ij<E>> $$0, boolean $$1) {
+      Codec<List<ij<E>>> $$2 = avp.a($$0.listOf(), avp.b(ij::f));
+      return $$1
+         ? $$2
+         : Codec.either($$2, $$0)
+            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((ij)$$0x.get(0)) : Either.left($$0x));
    }
 
-   private static int a(ds $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> vg.b("You have now stopped chasing"), false);
-         h = null;
-      }
-
-      if (g != null) {
-         g.b();
-         $$0.a(() -> vg.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
+   public static <E> Codec<in<E>> a(aix<? extends iv<E>> $$0, Codec<ij<E>> $$1, boolean $$2) {
+      return new ais<>($$0, $$1, $$2);
    }
 
-   private static boolean b(ds $$0) {
-      if (g != null) {
-         $$0.b(vg.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(vg.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
-      } else {
-         return false;
-      }
+   private ais(aix<? extends iv<E>> $$0, Codec<ij<E>> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = a($$1, $$2);
+      this.d = Codec.either(auo.b($$0), this.c);
    }
 
-   private static int a(ds $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         g = new aik($$1, $$2, $$0.l().ae(), 100);
+   public <T> DataResult<Pair<in<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof aiw<T> $$2) {
+         Optional<ik<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            ik<E> $$4 = $$3.get();
+            return this.d.decode($$0, $$1).map($$1x -> $$1x.mapFirst($$1xx -> (in)$$1xx.map($$4::b, in::a)));
+         }
+      }
 
-         try {
-            g.a();
-            $$0.a(() -> vg.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(vg.b("Failed to start chase server on port " + $$2));
-            g = null;
+      return this.a($$0, $$1);
+   }
+
+   public <T> DataResult<T> a(in<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof aiw<T> $$3) {
+         Optional<im<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+            }
+
+            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
+         }
+      }
+
+      return this.b($$0, $$1, $$2);
+   }
+
+   private <T> DataResult<Pair<in<E>, T>> a(DynamicOps<T> $$0, T $$1) {
+      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
+         List<ij.a<E>> $$1x = new ArrayList<>();
+
+         for (ij<E> $$2 : (List)$$0x.getFirst()) {
+            if (!($$2 instanceof ij.a<E> $$3)) {
+               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
+            }
+
+            $$1x.add($$3);
          }
 
-         return 0;
-      }
+         return DataResult.success(new Pair(in.a($$1x), $$0x.getSecond()));
+      });
    }
 
-   private static int b(ds $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         h = new aij($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> vg.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
-      }
+   private <T> DataResult<T> b(in<E> $$0, DynamicOps<T> $$1, T $$2) {
+      return this.c.encode($$0.a().toList(), $$1, $$2);
    }
 }

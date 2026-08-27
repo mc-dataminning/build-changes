@@ -1,62 +1,17 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class dxx extends dxv {
-   public static final Codec<dxx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dps.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dps.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dxx::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dps d;
-   private final dps e;
-   private final int f;
+public abstract class dxx {
+   public static final Codec<dxx> a = kf.V.q().dispatch(dxx::a, dxy::a);
 
-   private dxx(dps $$0, dps $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static dyg a(dlf $$0) {
+      return new dyg($$0);
    }
 
-   public static dxx a(dps $$0, dps $$1, int $$2) {
-      return new dxx($$0, $$1, $$2);
+   public static dyg a(cyo $$0) {
+      return new dyg($$0.o());
    }
 
-   public static dxx a(dps $$0, dps $$1) {
-      return a($$0, $$1, 0);
-   }
+   protected abstract dxy<?> a();
 
-   @Override
-   public int a(auw $$0, dpv $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return aup.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + aup.b($$0, 0, $$6) + aup.b($$0, 0, $$5);
-         }
-      }
-   }
-
-   @Override
-   public dxw<?> a() {
-      return dxw.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
-   }
+   public abstract dlf a(awo var1, hz var2);
 }

@@ -1,27 +1,88 @@
-public class fdf extends fdm {
-   private eyk a;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public fdf() {
-      super(vg.c("outOfMemory.title"));
-      this.a = eyk.a;
+public class fdf {
+   int a;
+   final Map<fdf.a, fdf.b> b = Maps.newTreeMap(Comparator.<fdf.a, fdb>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<fdc> $$0) {
+      this.a++;
+      $$0.accept(new fdf.c(0));
    }
 
-   @Override
-   protected void aP_() {
-      this.d(exr.a(vf.l, $$0 -> this.f.a(new fdr())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
-      this.d(exr.a(vg.c("menu.quit"), $$0 -> this.f.p()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
-      this.a = eyk.a(this.i, vg.c("outOfMemory.message"), 295);
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean c = true;
+
+         public void a(String $$0) {
+            if (!this.c) {
+               $$1.append(". ");
+            }
+
+            this.c = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   public boolean aN_() {
-      return false;
+   static class a {
+      final fdb a;
+      final int b;
+
+      a(fdb $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
-      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
+   static class b {
+      fde<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fde.a;
+         this.b = -1;
+      }
+
+      public fdf.b a(int $$0, fde<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
+   }
+
+   class c implements fdc {
+      private final int b;
+
+      c(int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fdb $$0, fde<?> $$1) {
+         fdf.this.b.computeIfAbsent(new fdf.a($$0, this.b), $$0x -> new fdf.b()).a(fdf.this.a, $$1);
+      }
+
+      @Override
+      public fdc a() {
+         return fdf.this.new c(this.b + 1);
+      }
    }
 }

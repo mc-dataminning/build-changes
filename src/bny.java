@@ -1,125 +1,83 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
+public class bny extends cas {
+   private static final aie<Integer> bX = aih.a(bny.class, aig.b);
 
-public class bny {
-   public static final int a = 48;
-
-   public static bog<bmx> a(Predicate<ih<bxt>> $$0, bvq<ig> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   public bny(bnu<? extends bny> $$0, cvn $$1) {
+      super($$0, $$1);
    }
 
-   public static bog<bmx> a(Predicate<ih<bxt>> $$0, bvq<ig> $$1, bvq<ig> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bny.a> $$8 = new Long2ObjectOpenHashMap();
-      bpq<bmx> $$9 = brs.a(
-         (Function<brs.b<bmx>, ? extends App<brs.c<bmx>, brv<bmx>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.o_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.X() + (long)$$6xx.z.a(20));
-                     return false;
-                  } else if ($$6xx.X() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.F_().a(20));
-                     bxq $$9x = $$6xx.y();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bny.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<hx> $$10 = $$2xxxx -> {
-                        bny.a $$3xxxx = (bny.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<ih<bxt>, hx>> $$11 = $$9x.c($$0, $$10, $$7x.dl(), 48, bxq.b.a).limit(5L).collect(Collectors.toSet());
-                     efo $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        hx $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(ig.a($$6xx.ae(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           adj.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<ih<bxt>, hx> $$14 : $$11) {
-                           $$8.computeIfAbsent(((hx)$$14.getSecond()).a(), $$2xxxx -> new bny.a($$6xx.z, $$8x));
-                        }
-                     }
-
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : brs.a((Function<brs.b<bmx>, ? extends App<brs.c<bmx>, brv<bmx>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   @Override
+   protected jx u() {
+      return jz.aM;
    }
 
-   @Nullable
-   public static efo a(bmq $$0, Set<Pair<ih<bxt>, hx>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         Set<hx> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<ih<bxt>, hx> $$4 : $$1) {
-            $$3 = Math.max($$3, ((bxt)((ih)$$4.getFirst()).a()).c());
-            $$2.add((hx)$$4.getSecond());
-         }
-
-         return $$0.N().a($$2, $$3);
-      }
+   @Override
+   protected void c_() {
+      super.c_();
+      this.am.a(bX, 0);
    }
 
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final auw d;
-      private long e;
-      private long f;
-      private int g;
+   @Override
+   protected atj w() {
+      return atk.ku;
+   }
 
-      a(auw $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
+   @Override
+   protected atj y() {
+      return atk.kr;
+   }
+
+   @Override
+   protected atj d(bmn $$0) {
+      return atk.kt;
+   }
+
+   @Override
+   protected atj n_() {
+      return atk.ks;
+   }
+
+   @Override
+   public void b(sw $$0) {
+      super.b($$0);
+      $$0.a("DarkTicksRemaining", this.A());
+   }
+
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      this.c($$0.h("DarkTicksRemaining"));
+   }
+
+   @Override
+   public void d_() {
+      super.d_();
+      int $$0 = this.A();
+      if ($$0 > 0) {
+         this.c($$0 - 1);
       }
 
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
+      this.dM().a(jz.aN, this.d(0.6), this.du(), this.g(0.6), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public boolean a(bmn $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if ($$2) {
+         this.c(100);
       }
 
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
+      return $$2;
+   }
 
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
+   private void c(int $$0) {
+      this.am.b(bX, $$0);
+   }
 
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
-      }
+   public int A() {
+      return this.am.b(bX);
+   }
+
+   public static boolean a(bnu<? extends bog> $$0, cwc $$1, bok $$2, hz $$3, awo $$4) {
+      return $$3.v() <= $$1.A_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(cyq.G);
    }
 }

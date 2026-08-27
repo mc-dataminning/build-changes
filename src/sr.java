@@ -1,131 +1,96 @@
-import java.io.DataInput;
-import java.io.DataOutput;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class sr extends te {
-   private static final int c = 12;
-   public static final sr a = new sr(0.0F);
-   public static final tn<sr> b = new tn.a<sr>() {
-      public sr a(DataInput $$0, sx $$1) throws IOException {
-         return sr.a(d($$0, $$1));
+public abstract class sr {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new Gson();
+   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
+   public static final String a = "en_us";
+   private static volatile sr e = c();
+
+   private static sr c() {
+      Builder<String, String> $$0 = ImmutableMap.builder();
+      BiConsumer<String, String> $$1 = $$0::put;
+      a($$1, "/assets/minecraft/lang/en_us.json");
+      final Map<String, String> $$2 = $$0.build();
+      return new sr() {
+         @Override
+         public String a(String $$0, String $$1) {
+            return $$2.getOrDefault($$0, $$1);
+         }
+
+         @Override
+         public boolean b(String $$0) {
+            return $$2.containsKey($$0);
+         }
+
+         @Override
+         public boolean b() {
+            return false;
+         }
+
+         @Override
+         public avt a(vv $$0) {
+            return $$1 -> $$0.a(($$1x, $$2xxx) -> axb.c($$2xxx, $$1x, $$1) ? Optional.empty() : vv.a, wn.a).isPresent();
+         }
+      };
+   }
+
+   private static void a(BiConsumer<String, String> $$0, String $$1) {
+      try (InputStream $$2 = sr.class.getResourceAsStream($$1)) {
+         a($$2, $$0);
+      } catch (JsonParseException | IOException var7) {
+         b.error("Couldn't read strings from {}", $$1, var7);
       }
+   }
 
-      @Override
-      public ti.b a(DataInput $$0, ti $$1, sx $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
+   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
+      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
+
+      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+         String $$4 = d.matcher(avx.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         $$1.accept($$3.getKey(), $$4);
       }
-
-      private static float d(DataInput $$0, sx $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
-      }
-
-      @Override
-      public int c() {
-         return 4;
-      }
-
-      @Override
-      public String a() {
-         return "FLOAT";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Float";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final float w;
-
-   private sr(float $$0) {
-      this.w = $$0;
    }
 
-   public static sr a(float $$0) {
-      return $$0 == 0.0F ? a : new sr($$0);
+   public static sr a() {
+      return e;
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
+   public static void a(sr $$0) {
+      e = $$0;
    }
 
-   @Override
-   public int a() {
-      return 12;
+   public String a(String $$0) {
+      return this.a($$0, $$0);
    }
 
-   @Override
-   public byte b() {
-      return 5;
-   }
+   public abstract String a(String var1, String var2);
 
-   @Override
-   public tn<sr> c() {
-      return b;
-   }
+   public abstract boolean b(String var1);
 
-   public sr e() {
-      return this;
-   }
+   public abstract boolean b();
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof sr && this.w == ((sr)$$0).w;
-   }
+   public abstract avt a(vv var1);
 
-   @Override
-   public int hashCode() {
-      return Float.floatToIntBits(this.w);
-   }
-
-   @Override
-   public void a(tp $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.w;
-   }
-
-   @Override
-   public int g() {
-      return aup.d(this.w);
-   }
-
-   @Override
-   public short h() {
-      return (short)(aup.d(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(aup.d(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.w;
-   }
-
-   @Override
-   public float k() {
-      return this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public ti.b a(ti $$0) {
-      return $$0.a(this.w);
+   public List<avt> a(List<vv> $$0) {
+      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

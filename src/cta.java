@@ -1,19 +1,15 @@
-public interface cta extends ctd {
-   float a(ic var1, boolean var2);
-
-   eeo z_();
-
-   int a(hx var1, cti var2);
-
-   default int a(cug $$0, hx $$1) {
-      return this.z_().a($$0).b($$1);
+public class cta extends cti {
+   public cta(cti.a $$0, bnv... $$1) {
+      super($$0, auh.bm, $$1);
    }
 
-   default int b(hx $$0, int $$1) {
-      return this.z_().a($$0, $$1);
+   @Override
+   public int a(int $$0) {
+      return 20;
    }
 
-   default boolean h(hx $$0) {
-      return this.a(cug.a, $$0) >= this.O();
+   @Override
+   public int b(int $$0) {
+      return 50;
    }
 }

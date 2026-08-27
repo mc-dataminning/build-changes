@@ -1,46 +1,36 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class esi extends esg {
-   private static final Logger j = LogUtils.getLogger();
-   public String a = "";
-   public String b = "";
-   public String c = "";
-   public String d = "";
-   public String e = "";
-   @Nullable
-   public String f;
-   public String g = "";
-   public String h = "";
-   public esi.a i = esi.a.a;
+public interface esi {
+   esi a = a(0.0F, 0.0F, 0.0F);
+   esi b = a((esi.a)($$0 -> -$$0.z()));
 
-   public static esi a(JsonObject $$0) {
-      esi $$1 = new esi();
-
-      try {
-         $$1.a = eud.b("id", $$0, "");
-         $$1.b = eud.b("name", $$0, "");
-         $$1.c = eud.b("version", $$0, "");
-         $$1.d = eud.b("author", $$0, "");
-         $$1.e = eud.b("link", $$0, "");
-         $$1.f = eud.b("image", $$0, null);
-         $$1.g = eud.b("trailer", $$0, "");
-         $$1.h = eud.b("recommendedPlayers", $$0, "");
-         $$1.i = esi.a.valueOf(eud.b("type", $$0, esi.a.a.name()));
-      } catch (Exception var3) {
-         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
-      }
-
-      return $$1;
+   static esi a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   static esi a(Vector3f $$0) {
+      return a($$0::distanceSquared);
+   }
+
+   static esi a(esi.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
+         }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
+   }
+
+   int[] sort(Vector3f[] var1);
+
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

@@ -1,54 +1,24 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dou {
-   public static enum a implements avl {
-      a("air"),
-      b("liquid");
+public class dou<T> {
+   private final cuu a;
+   private final List<T> b;
 
-      public static final Codec<dou.a> c = avl.a(dou.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public dou(cuu $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static enum b implements avl {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
+   public cuu a() {
+      return this.a;
+   }
 
-      public static final Codec<dou.b> l = avl.a(dou.b::values);
-      private final String m;
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-      private b(String $$0) {
-         this.m = $$0;
-      }
-
-      public String a() {
-         return this.m;
-      }
-
-      @Override
-      public String c() {
-         return this.m;
-      }
+   public boolean c() {
+      return this.b.isEmpty();
    }
 }

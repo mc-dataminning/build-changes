@@ -1,57 +1,59 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class fze extends fyz<bme> {
-   private static final ahh a = new ahh("textures/entity/experience_orb.png");
-   private static final fub f = fub.g(a);
+public class fze implements fyx.a {
+   private final exh a;
+   private final Map<Long, Map<hz, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
 
-   public fze(fza.a $$0) {
-      super($$0);
-      this.d = 0.15F;
-      this.e = 0.75F;
+   fze(exh $$0) {
+      this.a = $$0;
    }
 
-   protected int a(bme $$0, hx $$1) {
-      return aup.a(super.a($$0, $$1) + 7, 0, 15);
+   public void a(long $$0, hz $$1) {
+      Map<hz, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   public void a(bme $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
-      $$3.a();
-      int $$6 = $$0.s();
-      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
-      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
-      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
-      float $$11 = 1.0F;
-      float $$12 = 0.5F;
-      float $$13 = 0.25F;
-      float $$14 = 255.0F;
-      float $$15 = ((float)$$0.ah + $$2) / 2.0F;
-      int $$16 = (int)((aup.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$17 = 255;
-      int $$18 = (int)((aup.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$3.a(0.0F, 0.1F, 0.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      float $$19 = 0.3F;
-      $$3.b(0.3F, 0.3F, 0.3F);
-      eqo $$20 = $$4.getBuffer(f);
-      eqk.a $$21 = $$3.c();
-      Matrix4f $$22 = $$21.a();
-      Matrix3f $$23 = $$21.b();
-      a($$20, $$22, $$23, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
-      a($$20, $$22, $$23, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
-      a($$20, $$22, $$23, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
-      a($$20, $$22, $$23, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   @Override
+   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.r.X();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<hz> $$8 = Sets.newHashSet();
+      Map<hz, Integer> $$9 = Maps.newHashMap();
+      ese $$10 = $$1.getBuffer(fvu.w());
+      Iterator<Entry<Long, Map<hz, Integer>>> $$11 = this.b.entrySet().iterator();
 
-   private static void a(eqo $$0, Matrix4f $$1, Matrix3f $$2, float $$3, float $$4, int $$5, int $$6, int $$7, float $$8, float $$9, int $$10) {
-      $$0.a($$1, $$3, $$4, 0.0F).a($$5, $$6, $$7, 128).a($$8, $$9).c(ges.d).b($$10).a($$2, 0.0F, 1.0F, 0.0F).e();
-   }
+      while ($$11.hasNext()) {
+         Entry<Long, Map<hz, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<hz, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<hz, Integer> $$16 : $$14.entrySet()) {
+               hz $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  enn $$19 = new enn(hz.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  fvk.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
+      }
 
-   public ahh a(bme $$0) {
-      return a;
+      for (Entry<hz, Integer> $$20 : $$9.entrySet()) {
+         hz $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         fyx.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

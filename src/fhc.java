@@ -1,89 +1,47 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+public class fhc extends fgd<clb> {
+   private static final aiy x = new aiy("container/horse/chest_slots");
+   private static final aiy y = new aiy("container/horse/saddle_slot");
+   private static final aiy z = new aiy("container/horse/llama_armor_slot");
+   private static final aiy A = new aiy("container/horse/armor_slot");
+   private static final aiy B = new aiy("textures/gui/container/horse.png");
+   private final cbv C;
+   private float D;
+   private float E;
 
-public class fhc extends eyx {
-   private static final eze c = new eze(new ahh("recipe_book/tab"), new ahh("recipe_book/tab_selected"));
-   private final ewa d;
-   private static final float e = 15.0F;
-   private float f;
-
-   public fhc(ewa $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
-   }
-
-   public void a(evr $$0) {
-      eve $$1 = $$0.s.m();
-      List<fhe> $$2 = $$1.a(this.d);
-      if ($$0.s.bW instanceof cjw) {
-         for (fhe $$3 : $$2) {
-            for (cqm<?> $$4 : $$3.a($$1.a((cjw<?>)$$0.s.bW))) {
-               if ($$1.d($$4)) {
-                  this.f = 15.0F;
-                  return;
-               }
-            }
-         }
-      }
+   public fhc(clb $$0, chg $$1, cbv $$2) {
+      super($$0, $$1, $$2.Q_());
+      this.C = $$2;
    }
 
    @Override
-   public void b(exe $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.f > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.B() + 8), (float)(this.C() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.B() + 8)), (float)(-(this.C() + 12)), 0.0F);
-         }
-
-         evr $$5 = evr.O();
-         RenderSystem.disableDepthTest();
-         ahh $$6 = this.a.a(true, this.b);
-         int $$7 = this.B();
-         if (this.b) {
-            $$7 -= 2;
-         }
-
-         $$0.a($$6, $$7, this.C(), this.g, this.h);
-         RenderSystem.enableDepthTest();
-         this.a($$0, $$5.aq());
-         if (this.f > 0.0F) {
-            $$0.c().b();
-            this.f -= $$3;
-         }
+   protected void a(eyu $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(B, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.C instanceof cbu $$6 && $$6.w()) {
+         $$0.a(x, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.go() * 18, 54);
       }
-   }
 
-   private void a(exe $$0, fzy $$1) {
-      List<cng> $$2 = this.d.a();
-      int $$3 = this.b ? -2 : 0;
-      if ($$2.size() == 1) {
-         $$0.b($$2.get(0), this.B() + 9 + $$3, this.C() + 5);
-      } else if ($$2.size() == 2) {
-         $$0.b($$2.get(0), this.B() + 3 + $$3, this.C() + 5);
-         $$0.b($$2.get(1), this.B() + 14 + $$3, this.C() + 5);
+      if (this.C.g()) {
+         $$0.a(y, $$4 + 7, $$5 + 35 - 18, 18, 18);
       }
-   }
 
-   public ewa b() {
-      return this.d;
-   }
-
-   public boolean a(eve $$0) {
-      List<fhe> $$1 = $$0.a(this.d);
-      this.k = false;
-      if ($$1 != null) {
-         for (fhe $$2 : $$1) {
-            if ($$2.b() && $$2.d()) {
-               this.k = true;
-               break;
-            }
+      if (this.C.gP()) {
+         if (this.C instanceof cby) {
+            $$0.a(z, $$4 + 7, $$5 + 35, 18, 18);
+         } else {
+            $$0.a(A, $$4 + 7, $$5 + 35, 18, 18);
          }
       }
 
-      return this.k;
+      fhd.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.D, this.E, this.C);
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      this.D = (float)$$1;
+      this.E = (float)$$2;
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 }

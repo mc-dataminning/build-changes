@@ -1,14 +1,25 @@
-import com.google.gson.JsonObject;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class ggy implements apj<ggx> {
-   public ggx b(JsonObject $$0) {
-      boolean $$1 = auf.a($$0, "blur", false);
-      boolean $$2 = auf.a($$0, "clamp", false);
-      return new ggx($$1, $$2);
+public interface ggy {
+   air a = new air("textures", ".png");
+
+   void a(asa var1, ggy.a var2);
+
+   gha a();
+
+   public interface a {
+      default void a(aiy $$0, ary $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(aiy var1, ggy.b var2);
+
+      void a(Predicate<aiy> var1);
    }
 
-   @Override
-   public String a() {
-      return "texture";
+   public interface b extends Function<ggx, ggo> {
+      default void a() {
+      }
    }
 }

@@ -1,262 +1,131 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public class dlv extends dmg {
-   private final dlw n;
-   private final boolean o;
-
-   public dlv(dlw $$0, boolean $$1) {
-      super($$0.f(), dmj.a, $$0.l, $$0.F().I_().d(ke.at), $$0.t());
-      this.n = $$0;
-      this.o = $$1;
-   }
-
-   @Nullable
-   @Override
-   public dhd c_(hx $$0) {
-      return this.n.c_($$0);
-   }
-
-   @Override
-   public djp a_(hx $$0) {
-      return this.n.a_($$0);
-   }
-
-   @Override
-   public eez b_(hx $$0) {
-      return this.n.b_($$0);
-   }
-
-   @Override
-   public int O() {
-      return this.n.O();
-   }
-
-   @Override
-   public dlx b(int $$0) {
-      return this.o ? this.n.b($$0) : super.b($$0);
-   }
-
-   @Nullable
-   @Override
-   public djp a(hx $$0, djp $$1, boolean $$2) {
-      return this.o ? this.n.a($$0, $$1, $$2) : null;
-   }
-
-   @Override
-   public void a(dhd $$0) {
-      if (this.o) {
-         this.n.a($$0);
-      }
-   }
-
-   @Override
-   public void a(blw $$0) {
-      if (this.o) {
-         this.n.a($$0);
-      }
-   }
-
-   @Override
-   public void a(dlq $$0) {
-      if (this.o) {
-         super.a($$0);
-      }
-   }
-
-   @Override
-   public dlx[] d() {
-      return this.n.d();
-   }
-
-   @Override
-   public void a(doy.a $$0, long[] $$1) {
-   }
-
-   private doy.a c(doy.a $$0) {
-      if ($$0 == doy.a.a) {
-         return doy.a.b;
-      } else {
-         return $$0 == doy.a.c ? doy.a.d : $$0;
-      }
-   }
-
-   @Override
-   public doy a(doy.a $$0) {
-      return this.n.a($$0);
-   }
-
-   @Override
-   public int a(doy.a $$0, int $$1, int $$2) {
-      return this.n.a(this.c($$0), $$1, $$2);
-   }
-
-   @Override
-   public ih<cuw> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n.getNoiseBiome($$0, $$1, $$2);
-   }
-
-   @Override
-   public cte f() {
-      return this.n.f();
-   }
-
-   @Nullable
-   @Override
-   public dzw a(dzo $$0) {
-      return this.n.a($$0);
-   }
-
-   @Override
-   public void a(dzo $$0, dzw $$1) {
-   }
-
-   @Override
-   public Map<dzo, dzw> g() {
-      return this.n.g();
-   }
-
-   @Override
-   public void a(Map<dzo, dzw> $$0) {
-   }
-
-   @Override
-   public LongSet b(dzo $$0) {
-      return this.n.b($$0);
-   }
-
-   @Override
-   public void a(dzo $$0, long $$1) {
-   }
-
-   @Override
-   public Map<dzo, LongSet> h() {
-      return this.n.h();
-   }
-
-   @Override
-   public void b(Map<dzo, LongSet> $$0) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.n.a($$0);
-   }
-
-   @Override
-   public boolean i() {
-      return false;
-   }
-
-   @Override
-   public dlq j() {
-      return this.n.j();
-   }
-
-   @Override
-   public void d(hx $$0) {
-   }
-
-   @Override
-   public void e(hx $$0) {
-   }
-
-   @Override
-   public void a(so $$0) {
-   }
-
-   @Nullable
-   @Override
-   public so f(hx $$0) {
-      return this.n.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public so g(hx $$0) {
-      return this.n.g($$0);
-   }
-
-   @Override
-   public void a(Predicate<djp> $$0, BiConsumer<hx, djp> $$1) {
-      this.n.a($$0, $$1);
-   }
-
-   @Override
-   public enw<cwy> o() {
-      return this.o ? this.n.o() : enm.a();
-   }
-
-   @Override
-   public enw<eey> p() {
-      return this.o ? this.n.p() : enm.a();
-   }
-
-   @Override
-   public dll.a q() {
-      return this.n.q();
-   }
-
-   @Nullable
-   @Override
-   public dqb t() {
-      return this.n.t();
-   }
-
-   @Override
-   public void a(dqb $$0) {
-      this.n.a($$0);
-   }
-
-   @Override
-   public dlk a(dou.a $$0) {
-      if (this.o) {
-         return super.a($$0);
-      } else {
-         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
-      }
-   }
-
-   @Override
-   public dlk b(dou.a $$0) {
-      if (this.o) {
-         return super.b($$0);
-      } else {
-         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
-      }
-   }
-
-   public dlw C() {
-      return this.n;
-   }
-
-   @Override
-   public boolean v() {
-      return this.n.v();
-   }
-
-   @Override
-   public void b(boolean $$0) {
-      this.n.b($$0);
-   }
-
-   @Override
-   public void a(cuz $$0, cvf.f $$1) {
-      if (this.o) {
-         this.n.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void A() {
-      this.n.A();
-   }
-
-   @Override
-   public eej B() {
-      return this.n.B();
-   }
+public class dlv {
+   public static final dlw a = dlw.a("attached");
+   public static final dlw b = dlw.a("bottom");
+   public static final dlw c = dlw.a("conditional");
+   public static final dlw d = dlw.a("disarmed");
+   public static final dlw e = dlw.a("drag");
+   public static final dlw f = dlw.a("enabled");
+   public static final dlw g = dlw.a("extended");
+   public static final dlw h = dlw.a("eye");
+   public static final dlw i = dlw.a("falling");
+   public static final dlw j = dlw.a("hanging");
+   public static final dlw k = dlw.a("has_bottle_0");
+   public static final dlw l = dlw.a("has_bottle_1");
+   public static final dlw m = dlw.a("has_bottle_2");
+   public static final dlw n = dlw.a("has_record");
+   public static final dlw o = dlw.a("has_book");
+   public static final dlw p = dlw.a("inverted");
+   public static final dlw q = dlw.a("in_wall");
+   public static final dlw r = dlw.a("lit");
+   public static final dlw s = dlw.a("locked");
+   public static final dlw t = dlw.a("occupied");
+   public static final dlw u = dlw.a("open");
+   public static final dlw v = dlw.a("persistent");
+   public static final dlw w = dlw.a("powered");
+   public static final dlw x = dlw.a("short");
+   public static final dlw y = dlw.a("signal_fire");
+   public static final dlw z = dlw.a("snowy");
+   public static final dlw A = dlw.a("triggered");
+   public static final dlw B = dlw.a("unstable");
+   public static final dlw C = dlw.a("waterlogged");
+   public static final dlw D = dlw.a("berries");
+   public static final dlw E = dlw.a("bloom");
+   public static final dlw F = dlw.a("shrieking");
+   public static final dlw G = dlw.a("can_summon");
+   public static final dmd<ie.a> H = dmd.a("axis", ie.a.class, ie.a.a, ie.a.c);
+   public static final dmd<ie.a> I = dmd.a("axis", ie.a.class);
+   public static final dlw J = dlw.a("up");
+   public static final dlw K = dlw.a("down");
+   public static final dlw L = dlw.a("north");
+   public static final dlw M = dlw.a("east");
+   public static final dlw N = dlw.a("south");
+   public static final dlw O = dlw.a("west");
+   public static final dlz P = dlz.a("facing", ie.c, ie.f, ie.d, ie.e, ie.b, ie.a);
+   public static final dlz Q = dlz.a("facing", $$0 -> $$0 != ie.b);
+   public static final dlz R = dlz.a("facing", ie.c.a);
+   public static final dmf S = dmf.a("flower_amount", 1, 4);
+   public static final dmd<ih> T = dmd.a("orientation", ih.class);
+   public static final dmd<dlq> U = dmd.a("face", dlq.class);
+   public static final dmd<dlt> V = dmd.a("attachment", dlt.class);
+   public static final dmd<dmr> W = dmd.a("east", dmr.class);
+   public static final dmd<dmr> X = dmd.a("north", dmr.class);
+   public static final dmd<dmr> Y = dmd.a("south", dmr.class);
+   public static final dmd<dmr> Z = dmd.a("west", dmr.class);
+   public static final dmd<dmk> aa = dmd.a("east", dmk.class);
+   public static final dmd<dmk> ab = dmd.a("north", dmk.class);
+   public static final dmd<dmk> ac = dmd.a("south", dmk.class);
+   public static final dmd<dmk> ad = dmd.a("west", dmk.class);
+   public static final dmd<dmb> ae = dmd.a("half", dmb.class);
+   public static final dmd<dme> af = dmd.a("half", dme.class);
+   public static final dmd<dmj> ag = dmd.a("shape", dmj.class);
+   public static final dmd<dmj> ah = dmd.a("shape", dmj.class, $$0 -> $$0 != dmj.j && $$0 != dmj.i && $$0 != dmj.g && $$0 != dmj.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dmf aq = dmf.a("age", 0, 1);
+   public static final dmf ar = dmf.a("age", 0, 2);
+   public static final dmf as = dmf.a("age", 0, 3);
+   public static final dmf at = dmf.a("age", 0, 4);
+   public static final dmf au = dmf.a("age", 0, 5);
+   public static final dmf av = dmf.a("age", 0, 7);
+   public static final dmf aw = dmf.a("age", 0, 15);
+   public static final dmf ax = dmf.a("age", 0, 25);
+   public static final dmf ay = dmf.a("bites", 0, 6);
+   public static final dmf az = dmf.a("candles", 1, 4);
+   public static final dmf aA = dmf.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dmf aC = dmf.a("distance", 1, 7);
+   public static final dmf aD = dmf.a("eggs", 1, 4);
+   public static final dmf aE = dmf.a("hatch", 0, 2);
+   public static final dmf aF = dmf.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dmf aK = dmf.a("level", 1, 3);
+   public static final dmf aL = dmf.a("level", 0, 8);
+   public static final dmf aM = dmf.a("level", 1, 8);
+   public static final dmf aN = dmf.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dmf aP = dmf.a("level", 0, 15);
+   public static final dmf aQ = dmf.a("moisture", 0, 7);
+   public static final dmf aR = dmf.a("note", 0, 24);
+   public static final dmf aS = dmf.a("pickles", 1, 4);
+   public static final dmf aT = dmf.a("power", 0, 15);
+   public static final dmf aU = dmf.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dmf aW = dmf.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dmf aZ = dmf.a("charges", 0, 4);
+   public static final dmf ba = dmf.a("rotation", 0, dml.a());
+   public static final dmd<dls> bb = dmd.a("part", dls.class);
+   public static final dmd<dlx> bc = dmd.a("type", dlx.class);
+   public static final dmd<dly> bd = dmd.a("mode", dly.class);
+   public static final dmd<dma> be = dmd.a("hinge", dma.class);
+   public static final dmd<dmg> bf = dmd.a("instrument", dmg.class);
+   public static final dmd<dmh> bg = dmd.a("type", dmh.class);
+   public static final dmd<dmn> bh = dmd.a("type", dmn.class);
+   public static final dmd<dmo> bi = dmd.a("shape", dmo.class);
+   public static final dmd<dmp> bj = dmd.a("mode", dmp.class);
+   public static final dmd<dlr> bk = dmd.a("leaves", dlr.class);
+   public static final dmd<dmq> bl = dmd.a("tilt", dmq.class);
+   public static final dlz bm = dlz.a("vertical_direction", ie.b, ie.a);
+   public static final dmd<dmc> bn = dmd.a("thickness", dmc.class);
+   public static final dmd<dmm> bo = dmd.a("sculk_sensor_phase", dmm.class);
+   public static final dlw bp = dlw.a("slot_0_occupied");
+   public static final dlw bq = dlw.a("slot_1_occupied");
+   public static final dlw br = dlw.a("slot_2_occupied");
+   public static final dlw bs = dlw.a("slot_3_occupied");
+   public static final dlw bt = dlw.a("slot_4_occupied");
+   public static final dlw bu = dlw.a("slot_5_occupied");
+   public static final dmf bv = dmf.a("dusted", 0, 3);
+   public static final dlw bw = dlw.a("cracked");
+   public static final dlw bx = dlw.a("crafting");
+   public static final dmd<dks> by = dmd.a("trial_spawner_state", dks.class);
 }

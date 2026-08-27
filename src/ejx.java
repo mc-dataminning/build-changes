@@ -1,17 +1,102 @@
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public interface ejx<T extends ejx<T>> {
-   T b(eke.a var1);
+public class ejx extends ekh {
+   public static final Codec<ejx> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  kf.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dmi::f).toList())
+               )
+            )
+            .apply($$0, ejx::new)
+   );
+   private final ij<cyo> b;
+   private final Set<dmi<?>> c;
 
-   default <E> T a_(Iterable<E> $$0, Function<E, eke.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   ejx(List<elu> $$0, ij<cyo> $$1, Set<dmi<?>> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   T d();
+   private ejx(List<elu> $$0, ij<cyo> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().n()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   }
+
+   @Override
+   public ekj b() {
+      return ekk.x;
+   }
+
+   @Override
+   public Set<eld<?>> a() {
+      return ImmutableSet.of(elg.g);
+   }
+
+   @Override
+   protected coz a(coz $$0, eiv $$1) {
+      dlf $$2 = $$1.c(elg.g);
+      if ($$2 != null) {
+         sw $$3 = $$0.x();
+         sw $$4;
+         if ($$3.b("BlockStateTag", 10)) {
+            $$4 = $$3.p("BlockStateTag");
+         } else {
+            $$4 = new sw();
+            $$3.a("BlockStateTag", $$4);
+         }
+
+         for (dmi<?> $$6 : this.c) {
+            if ($$2.b($$6)) {
+               $$4.a($$6.f(), a($$2, $$6));
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   public static ejx.a a(cyo $$0) {
+      return new ejx.a($$0);
+   }
+
+   private static <T extends Comparable<T>> String a(dlf $$0, dmi<T> $$1) {
+      T $$2 = $$0.c($$1);
+      return $$1.a($$2);
+   }
+
+   public static class a extends ekh.a<ejx.a> {
+      private final ij<cyo> a;
+      private final Builder<dmi<?>> b = ImmutableSet.builder();
+
+      a(cyo $$0) {
+         this.a = $$0.r();
+      }
+
+      public ejx.a a(dmi<?> $$0) {
+         if (!this.a.a().n().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      protected ejx.a a() {
+         return this;
+      }
+
+      @Override
+      public eki b() {
+         return new ejx(this.g(), this.a, this.b.build());
+      }
+   }
 }

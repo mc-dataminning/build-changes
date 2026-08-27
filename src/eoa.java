@@ -1,21 +1,38 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class eoa {
-   public static void a(eov $$0, float $$1) {
-      ConcurrentLinkedQueue<eou> $$2 = $$0.i();
+public final class eoa implements eoe {
+   private final eny a;
+   private final int b;
+   private final int c;
+
+   eoa(int $$0, int $$1) {
+      this.a = new eny((int)eoi.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
-   public static void b(eov $$0, float $$1) {
-      ConcurrentLinkedQueue<eou> $$2 = $$0.j();
+   @Override
+   public boolean a(eoe.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
+   @Override
+   public int size() {
+      return this.a.size();
    }
 
-   public static double b() {
-      return GLFW.glfwGetTime();
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

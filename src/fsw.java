@@ -1,87 +1,57 @@
-import com.mojang.authlib.GameProfile;
-
-public class fsw extends fss {
-   private emc cq = emc.b;
-   private int cr;
-
-   public fsw(foe $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.af = true;
+public class fsw extends fua {
+   fsw(fpx $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
+   public fte b() {
+      return fte.b;
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(jz.ab, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+   }
+
+   public static class a implements ftd<kc> {
+      private final ftv a;
+
+      public a(ftv $$0) {
+         this.a = $$0;
       }
 
-      $$1 *= 64.0 * cA();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean a(bkv $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.q(false);
-   }
-
-   @Override
-   public void d_() {
-      if (this.bn > 0) {
-         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
-         this.bn--;
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsw $$8 = new fsw($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
-
-      if (this.bu > 0) {
-         this.a(this.bu, this.bt);
-         this.bu--;
-      }
-
-      if (this.cr > 0) {
-         this.h(new emc((this.cq.c - this.do().c) / (double)this.cr, (this.cq.d - this.do().d) / (double)this.cr, (this.cq.e - this.do().e) / (double)this.cr));
-         this.cr--;
-      }
-
-      this.bZ = this.ca;
-      this.eQ();
-      float $$1;
-      if (this.aC() && !this.ew()) {
-         $$1 = (float)Math.min(0.1, this.do().h());
-      } else {
-         $$1 = 0.0F;
-      }
-
-      this.ca = this.ca + ($$1 - this.ca) * 0.4F;
-      this.dL().af().a("push");
-      this.M_();
-      this.dL().af().c();
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.cq = new emc($$0, $$1, $$2);
-      this.cr = this.ai().p() + 1;
-   }
-
-   @Override
-   protected void fM() {
-   }
-
-   @Override
-   public void a(vg $$0) {
-      evr $$1 = evr.O();
-      $$1.l.d().a($$0);
-   }
-
-   @Override
-   public void a(zc $$0) {
-      super.a($$0);
-      this.bp();
    }
 }

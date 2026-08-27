@@ -1,45 +1,65 @@
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
 public class amn {
-   private static final int b = 33;
-   private static final int c = 32;
-   private static final int d = 31;
-   public static final int a = 33 + dlq.b();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.setblock.failed"));
 
-   public static dlq a(int $$0) {
-      return $$0 < 33 ? dlq.n : dlq.a($$0 - 33);
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("setblock").requires($$0x -> $$0x.c(2)))
+            .then(
+               dv.a("pos", fo.a())
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("block", fl.a($$1))
+                                 .executes($$0x -> a((du)$$0x.getSource(), fo.a($$0x, "pos"), fl.a($$0x, "block"), amn.b.a, null)))
+                              .then(dv.a("destroy").executes($$0x -> a((du)$$0x.getSource(), fo.a($$0x, "pos"), fl.a($$0x, "block"), amn.b.b, null))))
+                           .then(
+                              dv.a("keep")
+                                 .executes($$0x -> a((du)$$0x.getSource(), fo.a($$0x, "pos"), fl.a($$0x, "block"), amn.b.a, $$0xx -> $$0xx.c().u($$0xx.d())))
+                           ))
+                        .then(dv.a("replace").executes($$0x -> a((du)$$0x.getSource(), fo.a($$0x, "pos"), fl.a($$0x, "block"), amn.b.a, null)))
+                  )
+            )
+      );
    }
 
-   public static int a(dlq $$0) {
-      return 33 + dlq.a($$0);
-   }
-
-   public static amx b(int $$0) {
-      if ($$0 <= 31) {
-         return amx.d;
-      } else if ($$0 <= 32) {
-         return amx.c;
+   private static int a(du $$0, hz $$1, fj $$2, amn.b $$3, @Nullable Predicate<dlj> $$4) throws CommandSyntaxException {
+      aov $$5 = $$0.e();
+      if ($$4 != null && !$$4.test(new dlj($$5, $$1, true))) {
+         throw a.create();
       } else {
-         return $$0 <= 33 ? amx.b : amx.a;
+         boolean $$6;
+         if ($$3 == amn.b.b) {
+            $$5.b($$1, true);
+            $$6 = !$$2.a().i() || !$$5.a_($$1).i();
+         } else {
+            dit $$7 = $$5.c_($$1);
+            bll.a_($$7);
+            $$6 = true;
+         }
+
+         if ($$6 && !$$2.a($$5, $$1, 2)) {
+            throw a.create();
+         } else {
+            $$5.b($$1, $$2.a().b());
+            $$0.a(() -> vq.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
+            return 1;
+         }
       }
    }
 
-   public static int a(amx $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
-      };
+   public interface a {
+      @Nullable
+      fj filter(eaw var1, hz var2, fj var3, aov var4);
    }
 
-   public static boolean c(int $$0) {
-      return $$0 <= 31;
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 <= 32;
-   }
-
-   public static boolean e(int $$0) {
-      return $$0 <= a;
+   public static enum b {
+      a,
+      b;
    }
 }

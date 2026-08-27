@@ -2,54 +2,52 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cr extends cv<cr.a> {
+public class cr extends cx<cr.a> {
    @Override
    public Codec<cr.a> a() {
       return cr.a.a;
    }
 
-   public void a(anf $$0) {
-      this.a($$0, $$0x -> true);
+   public void a(aow $$0, coz $$1, bno $$2) {
+      eiv $$3 = br.b($$0, $$2);
+      this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
-   public static record a(Optional<bb> b) implements cv.a {
-      public static final Codec<cr.a> a = RecordCodecBuilder.create($$0 -> $$0.group(atx.a(bp.b, "player").forGetter(cr.a::a)).apply($$0, cr.a::new));
+   public static record a(Optional<bc> b, Optional<cc> c, Optional<bc> d) implements cx.a {
+      public static final Codec<cr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(cr.a::a), avp.a(cc.a, "item").forGetter(cr.a::b), avp.a(br.b, "entity").forGetter(cr.a::c))
+               .apply($$0, cr.a::new)
+      );
 
-      public static an<cr.a> a(ci.a $$0) {
-         return am.q.a(new cr.a(Optional.of(bp.a(bp.a.a().a($$0)))));
+      public static an<cr.a> a(Optional<bc> $$0, cc.a $$1, Optional<bc> $$2) {
+         return am.T.a(new cr.a($$0, Optional.of($$1.b()), $$2));
       }
 
-      public static an<cr.a> a(bp.a $$0) {
-         return am.q.a(new cr.a(Optional.of(bp.a($$0.b()))));
+      public static an<cr.a> a(cc.a $$0, Optional<bc> $$1) {
+         return a(Optional.empty(), $$0, $$1);
       }
 
-      public static an<cr.a> a(Optional<bp> $$0) {
-         return am.q.a(new cr.a(bp.a($$0)));
-      }
-
-      public static an<cr.a> b() {
-         return am.r.a(new cr.a(Optional.empty()));
-      }
-
-      public static an<cr.a> c() {
-         return am.I.a(new cr.a(Optional.empty()));
-      }
-
-      public static an<cr.a> d() {
-         return am.Z.a(new cr.a(Optional.empty()));
-      }
-
-      public static an<cr.a> e() {
-         return am.x.a(new cr.a(Optional.empty()));
-      }
-
-      public static an<cr.a> a(cwy $$0, cnb $$1) {
-         return a(bp.a.a().a(bm.a.a().d(ca.a.a().a($$1))).b(ci.a.a().a(au.a.a().a($$0))));
+      public boolean a(coz $$0, eiv $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 
       @Override
-      public Optional<bb> a() {
+      public void a(bd $$0) {
+         cx.a.super.a($$0);
+         $$0.a(this.d, ".entity");
+      }
+
+      @Override
+      public Optional<bc> a() {
          return this.b;
+      }
+
+      public Optional<cc> b() {
+         return this.c;
+      }
+
+      public Optional<bc> c() {
+         return this.d;
       }
    }
 }

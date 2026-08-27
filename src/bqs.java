@@ -1,29 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class bqs {
-   public static bog<bmo> a(int $$0, BiPredicate<bmo, bmo> $$1) {
-      return brs.a(
-         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$2 -> $$2.group($$2.b(bvq.o), $$2.a(bvq.ab), $$2.c(bvq.ai), $$2.a(bvq.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bmo $$10 = $$2.b($$3);
-                     if (!$$10.ew()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
+   public static bpx<boo> a(float $$0) {
+      return btj.a(
+         (Function<btj.b<boo>, ? extends App<btj.c<boo>, btm<boo>>>)($$1 -> $$1.group($$1.c(bxh.m))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dm())) {
+                           return false;
+                        } else {
+                           hz $$5 = $$3.dm();
+                           List<hz> $$6 = hz.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(hz::i).collect(Collectors.toList());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new bxk($$2x, $$0, 0)));
+                           return true;
                         }
-
-                        $$5.a($$10.dl(), (long)$$0);
-                        if ($$10.ai() != bmc.bw || $$7.Z().b(ctt.N)) {
-                           $$3.b();
-                           $$4.b();
-                        }
-
-                        return true;
                      }
-                  }))
+               ))
       );
    }
 }

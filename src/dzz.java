@@ -1,16 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public enum dzz implements avl {
-   a("none"),
-   b("bury"),
-   c("beard_thin"),
-   d("beard_box");
+public enum dzz implements axc {
+   a(ie.b, 1, "ceiling"),
+   b(ie.a, -1, "floor");
 
-   public static final Codec<dzz> e = avl.a(dzz::values);
+   public static final Codec<dzz> c = axc.a(dzz::values);
+   private final ie d;
+   private final int e;
    private final String f;
 
-   private dzz(String $$0) {
-      this.f = $$0;
+   private dzz(ie $$0, int $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public ie a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
    }
 
    @Override

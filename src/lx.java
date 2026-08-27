@@ -1,41 +1,33 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.util.function.BiConsumer;
 
-public class lx implements kk {
-   private final km d;
-   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
-
-   public lx(km $$0) {
-      this.d = $$0;
-   }
-
-   public <T> lx a(apk<T> $$0, T $$1) {
-      this.e.put($$0.a(), () -> $$0.a($$1));
-      return this;
-   }
-
+public class lx implements lj {
    @Override
-   public CompletableFuture<?> a(ki $$0) {
-      JsonObject $$1 = new JsonObject();
-      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
-      return kk.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
-   }
-
-   @Override
-   public final String a() {
-      return "Pack Metadata";
-   }
-
-   public static lx a(km $$0, vg $$1) {
-      return new lx($$0).a(apl.b, new apl($$1, t.a.a(aoy.b), Optional.empty()));
-   }
-
-   public static lx a(km $$0, vg $$1, cia $$2) {
-      return a($$0, $$1).a(aou.a, new aou($$2));
+   public void generate(BiConsumer<aiy, ejd.a> $$0) {
+      $$0.accept(
+         eit.aL,
+         ejd.b()
+            .a(
+               ejc.a()
+                  .a(emn.a(1.0F))
+                  .a(ejl.a(cpc.qO).a(5).a(new eka.a().a(ctl.l)))
+                  .a(ejl.a(cpc.pI).a(8).a(new eka.a().a(ctl.l)))
+                  .a(ejl.a(cpc.sj).a(8).a(eky.a(cqy.n)))
+                  .a(ejl.a(cpc.vk).a(8).a(eky.a(cqy.n)))
+                  .a(ejl.a(cpc.sj).a(10).a(eky.a(cqy.c)))
+                  .a(ejl.a(cpc.vr).a(10).a(ekt.a(ems.a(10.0F, 36.0F))))
+                  .a(ejl.a(cpc.se).a(10).a(ekt.a(ems.a(2.0F, 4.0F))))
+                  .a(ejl.a(cpc.pr).a(20).a(ekt.a(ems.a(3.0F, 9.0F))))
+                  .a(ejl.a(cpc.oA).a(20).a(ekt.a(ems.a(5.0F, 12.0F))))
+                  .a(ejl.a(cpc.eD).a(40))
+                  .a(ejl.a(cpc.ww).a(40).a(ekt.a(ems.a(1.0F, 3.0F))))
+                  .a(ejl.a(cpc.tV).a(40))
+                  .a(ejl.a(cpc.qC).a(40).a(ekt.a(ems.a(2.0F, 4.0F))))
+                  .a(ejl.a(cpc.fn).a(40).a(ekt.a(ems.a(2.0F, 8.0F))))
+                  .a(ejl.a(cpc.ut).a(40).a(ekt.a(ems.a(2.0F, 8.0F))))
+                  .a(ejl.a(cpc.vl).a(40).a(ekt.a(ems.a(6.0F, 12.0F))))
+                  .a(ejl.a(cpc.aj).a(40).a(ekt.a(ems.a(8.0F, 16.0F))))
+                  .a(ejl.a(cpc.wx).a(40).a(ekt.a(ems.a(8.0F, 16.0F))))
+            )
+      );
    }
 }

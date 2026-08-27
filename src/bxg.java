@@ -1,13 +1,59 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class bxg {
-   @Nullable
-   public static emc a(bmx $$0, int $$1, int $$2, int $$3, emc $$4, double $$5) {
-      emc $$6 = $$4.a($$0.dq(), $$0.ds(), $$0.dw());
-      boolean $$7 = bxi.a($$0, $$1);
-      return bxl.a($$0, () -> {
-         hx $$7x = bxf.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !bxi.a($$0, $$7x) ? $$7x : null;
-      });
+public class bxg<T> {
+   private final T a;
+   private long b;
+
+   public bxg(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
+   }
+
+   public static <T> bxg<T> a(T $$0) {
+      return new bxg<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> bxg<T> a(T $$0, long $$1) {
+      return new bxg<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
+   @Override
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @axl
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<bxg<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new bxg<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

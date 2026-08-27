@@ -1,61 +1,92 @@
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+public interface cwd extends cut {
+   ie[] C = ie.values();
 
-public class cwd extends cvp {
-   public static final MapCodec<cwd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(clv.q.fieldOf("color").forGetter(cvp::b), u()).apply($$0, cwd::new));
-   public static final dkp b = dkf.ba;
-   private static final Map<clv, cwy> c = Maps.newHashMap();
-   private static final emv d = cwy.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
-
-   @Override
-   public MapCodec<cwd> a() {
-      return a;
+   default int a(hz $$0, ie $$1) {
+      return this.a_($$0).c(this, $$0, $$1);
    }
 
-   public cwd(clv $$0, djo.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
-      c.put($$0, this);
+   default int e_(hz $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.d(), ie.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.c(), ie.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.e(), ie.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.f(), ie.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.g(), ie.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.h(), ie.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public boolean a(djp $$0, cua $$1, hx $$2) {
-      return $$1.a_($$2.d()).e();
+   default int a(hz $$0, ie $$1, boolean $$2) {
+      dlf $$3 = this.a_($$0);
+      if ($$2) {
+         return daq.m($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(cyq.ha)) {
+         return 15;
+      } else if ($$3.a(cyq.cw)) {
+         return $$3.c(dep.f);
+      } else {
+         return $$3.m() ? this.a($$0, $$1) : 0;
+      }
    }
 
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return d;
+   default boolean b(hz $$0, ie $$1) {
+      return this.c($$0, $$1) > 0;
    }
 
-   @Override
-   public djp a(cpp $$0) {
-      return this.o().a(b, Integer.valueOf(dkv.a($$0.i() + 180.0F)));
+   default int c(hz $$0, ie $$1) {
+      dlf $$2 = this.a_($$0);
+      int $$3 = $$2.b(this, $$0, $$1);
+      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
    }
 
-   @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      return $$1 == ic.a && !$$0.a($$3, $$4) ? cxa.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   default boolean C(hz $$0) {
+      if (this.c($$0.d(), ie.a) > 0) {
+         return true;
+      } else if (this.c($$0.c(), ie.b) > 0) {
+         return true;
+      } else if (this.c($$0.e(), ie.c) > 0) {
+         return true;
+      } else if (this.c($$0.f(), ie.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.g(), ie.e) > 0 ? true : this.c($$0.h(), ie.f) > 0;
+      }
    }
 
-   @Override
-   public djp a(djp $$0, ddk $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
+   default int D(hz $$0) {
+      int $$1 = 0;
 
-   @Override
-   public djp a(djp $$0, dbu $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
+      for (ie $$2 : C) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
 
-   @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(b);
-   }
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
 
-   public static cwy a(clv $$0) {
-      return c.getOrDefault($$0, cxa.iJ);
+      return $$1;
    }
 }

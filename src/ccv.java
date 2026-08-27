@@ -1,98 +1,69 @@
-public class ccv extends cdf {
-   public ccv(bmc<? extends ccv> $$0, ctx $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public static bnt.a u() {
-      return ccw.gl().a(bnu.o, 0.2F);
-   }
+public class ccv extends cco {
+   @Nullable
+   private ens b;
 
-   public static boolean b(bmc<ccv> $$0, cty $$1, bms $$2, hx $$3, auw $$4) {
-      return $$1.ak() != bjz.a;
+   public ccv(ccm $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(cua $$0) {
-      return $$0.f(this) && !$$0.d(this.cH());
-   }
+   public void b() {
+      ens $$0 = this.a.D(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.e.dr();
+      double $$2 = this.a.e.e(0.5);
+      double $$3 = this.a.e.dx();
 
-   @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.f(bnu.a).a((double)($$0 * 3));
-   }
-
-   @Override
-   public float bo() {
-      return 1.0F;
-   }
-
-   @Override
-   protected jv w() {
-      return jx.E;
-   }
-
-   @Override
-   public boolean bN() {
-      return false;
-   }
-
-   @Override
-   protected int A() {
-      return super.A() * 4;
-   }
-
-   @Override
-   protected void gb() {
-      this.d *= 0.9F;
-   }
-
-   @Override
-   protected void fb() {
-      emc $$0 = this.do();
-      float $$1 = (float)this.gg() * 0.1F;
-      this.o($$0.c, (double)(this.eZ() + $$1), $$0.e);
-      this.au = true;
-   }
-
-   @Override
-   protected void c(asx<eey> $$0) {
-      if ($$0 == asn.b) {
-         emc $$1 = this.do();
-         this.o($$1.c, (double)(0.22F + (float)this.gg() * 0.05F), $$1.e);
-         this.au = true;
-      } else {
-         super.c($$0);
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         awo $$5 = this.a.eh();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         ens $$9 = this.a.dp();
+         this.a.dM().a(jz.i, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
+         $$0.b((float) (Math.PI / 16));
       }
    }
 
    @Override
-   protected boolean gc() {
-      return this.cY();
+   public void c() {
+      if (this.b == null) {
+         this.b = ens.c(this.a.dM().a(dqo.a.f, dtr.a(this.a.u())));
+      }
+
+      if (this.b.c(this.a.dr(), this.a.dt(), this.a.dx()) < 1.0) {
+         this.a.gd().b(cdc.f).j();
+         this.a.gd().a(cdc.g);
+      }
    }
 
    @Override
-   protected float gd() {
-      return super.gd() + 2.0F;
+   public float f() {
+      return 1.5F;
    }
 
    @Override
-   protected ars d(bkv $$0) {
-      return this.gh() ? art.nR : art.nQ;
+   public float h() {
+      float $$0 = (float)this.a.dp().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
    }
 
    @Override
-   protected ars n_() {
-      return this.gh() ? art.nI : art.nP;
+   public void d() {
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public ens g() {
+      return this.b;
    }
 
    @Override
-   protected ars ge() {
-      return this.gh() ? art.nU : art.nT;
-   }
-
-   @Override
-   protected ars gf() {
-      return art.nS;
+   public cdc<ccv> i() {
+      return cdc.d;
    }
 }

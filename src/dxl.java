@@ -1,26 +1,49 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxl<P extends dxk> {
-   public static final dxl<dxj> a = a("straight_trunk_placer", dxj.a);
-   public static final dxl<dxg> b = a("forking_trunk_placer", dxg.a);
-   public static final dxl<dxh> c = a("giant_trunk_placer", dxh.a);
-   public static final dxl<dxi> d = a("mega_jungle_trunk_placer", dxi.b);
-   public static final dxl<dxe> e = a("dark_oak_trunk_placer", dxe.a);
-   public static final dxl<dxf> f = a("fancy_trunk_placer", dxf.a);
-   public static final dxl<dxc> g = a("bending_trunk_placer", dxc.a);
-   public static final dxl<dxm> h = a("upwards_branching_trunk_placer", dxm.a);
-   public static final dxl<dxd> i = a("cherry_trunk_placer", dxd.a);
-   private final Codec<P> j;
+public class dxl extends dxi {
+   public static final Codec<dxl> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bkz.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, dxl::new)
+   );
+   private final bkz b;
 
-   private static <P extends dxk> dxl<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.X, $$0, new dxl<>($$1));
+   public dxl(bkz $$0, bkz $$1, bkz $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   private dxl(Codec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected dxj<?> a() {
+      return dxj.h;
    }
 
-   public Codec<P> a() {
-      return this.j;
+   @Override
+   protected void a(cvt $$0, dxi.b $$1, awo $$2, dws $$3, int $$4, dxi.a $$5, int $$6, int $$7, int $$8) {
+      hz $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + awh.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
+         }
+
+         this.a($$0, $$1, $$2, $$3, new hz($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
+      }
+   }
+
+   @Override
+   public int a(awo $$0, int $$1, dws $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(awo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

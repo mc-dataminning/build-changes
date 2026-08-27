@@ -1,68 +1,114 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class dnq<T extends dng> implements dnp<T> {
-   private final dni<T> a;
-   private final dnl<T> b;
+public class dnq<T> implements dns<T> {
+   private final io<T> a;
+   private final T[] b;
+   private final dnt<T> c;
+   private final int d;
+   private int e;
 
-   public dnq(dni<T> $$0, dnl<T> $$1) {
+   private dnq(io<T> $$0, int $$1, dnt<T> $$2, List<T> $$3) {
+      this.a = $$0;
+      this.b = (T[])(new Object[1 << $$1]);
+      this.d = $$1;
+      this.c = $$2;
+      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
+
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         this.b[$$4] = $$3.get($$4);
+      }
+
+      this.e = $$3.size();
+   }
+
+   private dnq(io<T> $$0, T[] $$1, dnt<T> $$2, int $$3, int $$4) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   @Nullable
+   public static <A> dns<A> a(int $$0, io<A> $$1, dnt<A> $$2, List<A> $$3) {
+      return new dnq<>($$1, $$0, $$2, $$3);
+   }
+
+   @Override
+   public int a(T $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if (this.b[$$1] == $$0) {
+            return $$1;
+         }
+      }
+
+      int $$2 = this.e;
+      if ($$2 < this.b.length) {
+         this.b[$$2] = $$0;
+         this.e++;
+         return $$2;
+      } else {
+         return this.c.onResize(this.d + 1, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if ($$0.test(this.b[$$1])) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
    @Override
    public T a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
+      if ($$0 >= 0 && $$0 < this.e) {
+         return this.b[$$0];
+      } else {
+         throw new dnr($$0);
+      }
    }
 
    @Override
-   public <U extends T> void a(dnn<T, U> $$0, atd<U> $$1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.util.ConcurrentModificationException
-      //   at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1695)
-      //   at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:147)
-      //   at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:588)
-      //   at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:574)
-      //   at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-      //   at java.base/java.util.stream.MatchOps$MatchOp.evaluateSequential(MatchOps.java:230)
-      //   at java.base/java.util.stream.MatchOps$MatchOp.evaluateSequential(MatchOps.java:196)
-      //   at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-      //   at java.base/java.util.stream.ReferencePipeline.allMatch(ReferencePipeline.java:673)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.isMappingInBounds(InvocationExprent.java:1648)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.putGenericMapping(InvocationExprent.java:1548)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.processGenericMapping(InvocationExprent.java:1520)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.lambda$getInferredExprType$14(InvocationExprent.java:553)
-      //
-      // Bytecode:
-      // 0: aload 0
-      // 1: getfield dnq.a Ldni;
-      // 4: aload 1
-      // 5: aload 2
-      // 6: invokevirtual dni.a (Ldnn;Latd;)V
-      // 9: return
+   public void a(uq $$0) {
+      this.e = $$0.n();
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         this.b[$$1] = this.a.b($$0.n());
+      }
    }
 
    @Override
-   public void a(elx $$0, Consumer<T> $$1) {
-      this.b.b($$0, atd.forConsumer($$1));
+   public void b(uq $$0) {
+      $$0.c(this.e);
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         $$0.c(this.a.a(this.b[$$1]));
+      }
    }
 
    @Override
-   public <U extends T> void a(dnn<T, U> $$0, elx $$1, atd<U> $$2) {
-      this.b.a($$0, $$1, $$2);
+   public int a() {
+      int $$0 = vh.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += vh.a(this.a.a(this.b[$$1]));
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public dns<T> c() {
+      return new dnq<>(this.a, (T[])((Object[])this.b.clone()), this.c, this.d, this.e);
    }
 }

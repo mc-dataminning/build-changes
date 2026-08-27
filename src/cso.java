@@ -1,20 +1,29 @@
-public class cso extends crr {
-   protected cso(crr.a $$0, bmd... $$1) {
-      super($$0, crs.g, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class cso<T extends crs> implements csf<T> {
+   private final cso.a<T> x;
+   private final Codec<T> y;
+   private final xo<vb, T> z;
+
+   public cso(cso.a<T> $$0) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create($$1 -> $$1.group(crr.e.fieldOf("category").orElse(crr.d).forGetter(crs::d)).apply($$1, $$0::create));
+      this.z = xo.a(crr.g, crs::d, $$0::create);
    }
 
    @Override
-   public int a(int $$0) {
-      return 15;
+   public Codec<T> a() {
+      return this.y;
    }
 
    @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
+   public xo<vb, T> b() {
+      return this.z;
    }
 
-   @Override
-   public boolean a(crr $$0) {
-      return super.a($$0) && $$0 != crv.x;
+   @FunctionalInterface
+   public interface a<T extends crs> {
+      T create(crr var1);
    }
 }

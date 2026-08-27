@@ -1,24 +1,29 @@
-public class aew implements xg<adk> {
-   private final int a;
+public class aew implements xx<aes> {
+   public static final xo<uq, aew> a = xx.a(aew::a, aew::new);
+   private final blr b;
 
-   public aew(int $$0) {
-      this.a = $$0;
+   public aew(blr $$0) {
+      this.b = $$0;
    }
 
-   public aew(uj $$0) {
-      this.a = $$0.readShort();
+   private aew(uq $$0) {
+      this.b = blr.a($$0.readUnsignedByte());
+   }
+
+   private void a(uq $$0) {
+      $$0.k(this.b.a());
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.l(this.a);
+   public xz<aew> a() {
+      return aeq.bf;
    }
 
-   public void a(adk $$0) {
+   public void a(aes $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public blr b() {
+      return this.b;
    }
 }

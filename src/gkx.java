@@ -1,36 +1,34 @@
-import java.util.function.Function;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 
-public enum gkx {
-   a("movement", gks::new),
-   b("find_tree", gkr::new),
-   c("punch_tree", gku::new),
-   d("open_inventory", gkt::new),
-   e("craft_planks", gkq::new),
-   f("none", gkp::new);
+public class gkx extends asn {
+   private sw a;
 
-   private final String g;
-   private final Function<gkv, ? extends gkw> h;
-
-   private <T extends gkw> gkx(String $$0, Function<gkv, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public gkx(gky $$0, iq<ajh> $$1, eio $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
-   public gkw a(gkv $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static gkx a(String $$0) {
-      for (gkx $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   @Override
+   protected void b(aow $$0) {
+      if (this.b().a($$0.fS())) {
+         this.a = $$0.f(new sw());
       }
 
-      return f;
+      super.b($$0);
+   }
+
+   @Override
+   public vq a(SocketAddress $$0, GameProfile $$1) {
+      return (vq)(this.b().a($$1) && this.a($$1.getName()) != null ? vq.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
+   }
+
+   public gky b() {
+      return (gky)super.c();
+   }
+
+   @Override
+   public sw r() {
+      return this.a;
    }
 }

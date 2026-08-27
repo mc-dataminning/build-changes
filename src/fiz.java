@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fiz {
+public class fiz extends fio {
+   private static final vq i = vq.c("gui.recipebook.toggleRecipes.smeltable");
+
+   @Override
+   protected vq c() {
+      return i;
+   }
+
+   @Override
+   protected Set<cou> b() {
+      return dii.g().keySet();
+   }
 }

@@ -1,46 +1,316 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import org.lwjgl.glfw.GLFWDropCallback;
 
-public abstract class exi extends exp {
-   protected static final int e = 2;
-   private static final eze a = new eze(new ahh("widget/button"), new ahh("widget/button_disabled"), new ahh("widget/button_highlighted"));
+public class exi {
+   private final exh a;
+   private boolean b;
+   private boolean c;
+   private boolean d;
+   private double e;
+   private double f;
+   private int g;
+   private int h = -1;
+   private boolean i = true;
+   private int j;
+   private double k;
+   private final awy l = new awy();
+   private final awy m = new awy();
+   private double n;
+   private double o;
+   private double p;
+   private double q;
+   private double r = Double.MIN_VALUE;
+   private boolean s;
 
-   public exi(int $$0, int $$1, int $$2, int $$3, vg $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public exi(exh $$0) {
+      this.a = $$0;
    }
 
-   public abstract void b();
+   private void a(long $$0, int $$1, int $$2, int $$3) {
+      if ($$0 == this.a.aM().i()) {
+         if (this.a.y != null) {
+            this.a.a(exe.b);
+         }
 
-   @Override
-   protected void b(exe $$0, int $$1, int $$2, float $$3) {
-      evr $$4 = evr.O();
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      $$0.a(a.a(this.j, this.z()), this.B(), this.C(), this.w(), this.u());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | aup.f(this.l * 255.0F) << 24);
-   }
+         boolean $$4 = $$2 == 1;
+         if (exh.a && $$1 == 0) {
+            if ($$4) {
+               if (($$3 & 2) == 2) {
+                  $$1 = 1;
+                  this.g++;
+               }
+            } else if (this.g > 0) {
+               $$1 = 1;
+               this.g--;
+            }
+         }
 
-   public void a(exe $$0, exc $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
-   }
+         int $$5 = $$1;
+         if ($$4) {
+            if (this.a.m.W().c() && this.j++ > 0) {
+               return;
+            }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      this.b();
-   }
+            this.h = $$5;
+            this.k = epq.b();
+         } else if (this.h != -1) {
+            if (this.a.m.W().c() && --this.j > 0) {
+               return;
+            }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (fbp.a($$0)) {
-         this.a(evr.O().ai());
-         this.b();
-         return true;
-      } else {
-         return false;
+            this.h = -1;
+         }
+
+         boolean[] $$6 = new boolean[]{false};
+         if (this.a.aJ() == null) {
+            if (this.a.y == null) {
+               if (!this.s && $$4) {
+                  this.i();
+               }
+            } else {
+               double $$7 = this.e * (double)this.a.aM().o() / (double)this.a.aM().m();
+               double $$8 = this.f * (double)this.a.aM().p() / (double)this.a.aM().n();
+               ffe $$9 = this.a.y;
+               if ($$4) {
+                  $$9.y();
+                  ffe.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
+               } else {
+                  ffe.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
+               }
+            }
+         }
+
+         if (!$$6[0] && this.a.y == null && this.a.aJ() == null) {
+            if ($$5 == 0) {
+               this.b = $$4;
+            } else if ($$5 == 2) {
+               this.c = $$4;
+            } else if ($$5 == 1) {
+               this.d = $$4;
+            }
+
+            exf.a(eqv.b.c.a($$5), $$4);
+            if ($$4) {
+               if (this.a.s.P_() && $$5 == 2) {
+                  this.a.l.g().b();
+               } else {
+                  exf.a(eqv.b.c.a($$5));
+               }
+            }
+         }
       }
+   }
+
+   private void a(long $$0, double $$1, double $$2) {
+      if ($$0 == exh.O().aM().i()) {
+         boolean $$3 = this.a.m.P().c();
+         double $$4 = this.a.m.D().c();
+         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
+         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
+         if (this.a.aJ() == null) {
+            if (this.a.y != null) {
+               double $$7 = this.e * (double)this.a.aM().o() / (double)this.a.aM().m();
+               double $$8 = this.f * (double)this.a.aM().p() / (double)this.a.aM().n();
+               this.a.y.a($$7, $$8, $$5, $$6);
+               this.a.y.y();
+            } else if (this.a.s != null) {
+               if (this.p != 0.0 && Math.signum($$5) != Math.signum(this.p)) {
+                  this.p = 0.0;
+               }
+
+               if (this.q != 0.0 && Math.signum($$6) != Math.signum(this.q)) {
+                  this.q = 0.0;
+               }
+
+               this.p += $$5;
+               this.q += $$6;
+               int $$9 = (int)this.p;
+               int $$10 = (int)this.q;
+               if ($$9 == 0 && $$10 == 0) {
+                  return;
+               }
+
+               this.p -= (double)$$9;
+               this.q -= (double)$$10;
+               int $$11 = $$10 == 0 ? -$$9 : $$10;
+               if (this.a.s.P_()) {
+                  if (this.a.l.g().a()) {
+                     this.a.l.g().b(-$$11);
+                  } else {
+                     float $$12 = awh.a(this.a.s.fU().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
+                     this.a.s.fU().a($$12);
+                  }
+               } else {
+                  this.a.s.fT().a((double)$$11);
+               }
+            }
+         }
+      }
+   }
+
+   private void a(long $$0, List<Path> $$1) {
+      if (this.a.y != null) {
+         this.a.y.a($$1);
+      }
+   }
+
+   public void a(long $$0) {
+      eqv.a(
+         $$0,
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.b($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2, $$3) -> this.a.execute(() -> this.a($$0x, $$1, $$2, $$3)),
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.a($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2) -> {
+            Path[] $$3 = new Path[$$1];
+
+            for (int $$4 = 0; $$4 < $$1; $$4++) {
+               $$3[$$4] = Paths.get(GLFWDropCallback.getName($$2, $$4));
+            }
+
+            this.a.execute(() -> this.a($$0x, Arrays.asList($$3)));
+         }
+      );
+   }
+
+   private void b(long $$0, double $$1, double $$2) {
+      if ($$0 == exh.O().aM().i()) {
+         if (this.i) {
+            this.e = $$1;
+            this.f = $$2;
+            this.i = false;
+         } else {
+            if (this.a.aA()) {
+               this.n = this.n + ($$1 - this.e);
+               this.o = this.o + ($$2 - this.f);
+            }
+
+            this.e = $$1;
+            this.f = $$2;
+         }
+      }
+   }
+
+   public void a() {
+      double $$0 = epq.b();
+      double $$1 = $$0 - this.r;
+      this.r = $$0;
+      if (this.a.aA()) {
+         ffe $$2 = this.a.y;
+         if ($$2 != null && this.a.aJ() == null && (this.n != 0.0 || this.o != 0.0)) {
+            double $$3 = this.e * (double)this.a.aM().o() / (double)this.a.aM().m();
+            double $$4 = this.f * (double)this.a.aM().p() / (double)this.a.aM().n();
+            ffe.a(() -> $$2.f($$3, $$4), "mouseMoved event handler", $$2.getClass().getCanonicalName());
+            if (this.h != -1 && this.k > 0.0) {
+               double $$5 = this.n * (double)this.a.aM().o() / (double)this.a.aM().m();
+               double $$6 = this.o * (double)this.a.aM().p() / (double)this.a.aM().n();
+               ffe.a(() -> $$2.a($$3, $$4, this.h, $$5, $$6), "mouseDragged event handler", $$2.getClass().getCanonicalName());
+            }
+
+            $$2.x();
+         }
+
+         if (this.h() && this.a.s != null) {
+            this.a($$1);
+         }
+      }
+
+      this.n = 0.0;
+      this.o = 0.0;
+   }
+
+   private void a(double $$0) {
+      double $$1 = this.a.m.d().c() * 0.6F + 0.2F;
+      double $$2 = $$1 * $$1 * $$1;
+      double $$3 = $$2 * 8.0;
+      double $$6;
+      double $$7;
+      if (this.a.m.ab) {
+         double $$4 = this.l.a(this.n * $$3, $$0 * $$3);
+         double $$5 = this.m.a(this.o * $$3, $$0 * $$3);
+         $$6 = $$4;
+         $$7 = $$5;
+      } else if (this.a.m.ax().a() && this.a.s.gr()) {
+         this.l.a();
+         this.m.a();
+         $$6 = this.n * $$2;
+         $$7 = this.o * $$2;
+      } else {
+         this.l.a();
+         this.m.a();
+         $$6 = this.n * $$3;
+         $$7 = this.o * $$3;
+      }
+
+      int $$12 = 1;
+      if (this.a.m.O().c()) {
+         $$12 = -1;
+      }
+
+      this.a.az().a($$6, $$7);
+      if (this.a.s != null) {
+         this.a.s.b($$6, $$7 * (double)$$12);
+      }
+   }
+
+   public boolean b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public void g() {
+      this.i = true;
+   }
+
+   public boolean h() {
+      return this.s;
+   }
+
+   public void i() {
+      if (this.a.aA()) {
+         if (!this.s) {
+            if (!exh.a) {
+               exf.a();
+            }
+
+            this.s = true;
+            this.e = (double)(this.a.aM().m() / 2);
+            this.f = (double)(this.a.aM().n() / 2);
+            eqv.a(this.a.aM().i(), 212995, this.e, this.f);
+            this.a.a(null);
+            this.a.w = 10000;
+            this.i = true;
+         }
+      }
+   }
+
+   public void j() {
+      if (this.s) {
+         this.s = false;
+         this.e = (double)(this.a.aM().m() / 2);
+         this.f = (double)(this.a.aM().n() / 2);
+         eqv.a(this.a.aM().i(), 212993, this.e, this.f);
+      }
+   }
+
+   public void k() {
+      this.i = true;
    }
 }

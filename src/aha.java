@@ -1,33 +1,29 @@
-import java.util.List;
-import java.util.Map;
+public class aha implements xx<agw> {
+   public static final xo<uq, aha> a = xx.a(aha::a, aha::new);
+   private final int b;
 
-public class aha {
-   private final String a;
-   private final String b;
-
-   public aha(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aha(int $$0) {
+      this.b = $$0;
    }
 
-   public static aha a(String $$0) {
-      return new aha($$0, ".json");
+   private aha(uq $$0) {
+      this.b = $$0.n();
    }
 
-   public ahh a(ahh $$0) {
-      return $$0.c(this.a + "/" + $$0.a() + this.b);
+   private void a(uq $$0) {
+      $$0.c(this.b);
    }
 
-   public ahh b(ahh $$0) {
-      String $$1 = $$0.a();
-      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
+   @Override
+   public xz<aha> a() {
+      return ahc.d;
    }
 
-   public Map<ahh, aqh> a(aqj $$0) {
-      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   public void a(agw $$0) {
+      $$0.a(this);
    }
 
-   public Map<ahh, List<aqh>> b(aqj $$0) {
-      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   public int b() {
+      return this.b;
    }
 }

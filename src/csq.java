@@ -1,25 +1,15 @@
-public class csq extends crr {
-   public csq(crr.a $$0, bmd... $$1) {
-      super($$0, crs.b, $$1);
+public class csq extends crk {
+   public csq(String $$0, crq $$1, cry $$2, coz $$3, float $$4, int $$5) {
+      super(csg.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return $$0 * 10;
+   public coz g() {
+      return new coz(cyq.cD);
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(crr $$0) {
-      return super.a($$0) && $$0 != crv.j;
+   public csf<?> at_() {
+      return csf.p;
    }
 }

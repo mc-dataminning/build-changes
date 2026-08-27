@@ -1,26 +1,30 @@
-public abstract class exo extends exp {
-   private final exc a;
-   private int b = 16777215;
+import java.util.function.IntFunction;
 
-   public exo(int $$0, int $$1, int $$2, int $$3, vg $$4, exc $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
+public enum exo implements awj {
+   a(0, "options.prioritizeChunkUpdates.none"),
+   b(1, "options.prioritizeChunkUpdates.byPlayer"),
+   c(2, "options.prioritizeChunkUpdates.nearby");
+
+   private static final IntFunction<exo> d = auz.a(exo::a, values(), auz.a.b);
+   private final int e;
+   private final String f;
+
+   private exo(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   protected void a(fbk $$0) {
+   public int a() {
+      return this.e;
    }
 
-   public exo a(int $$0) {
-      this.b = $$0;
-      return this;
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   protected final exc a() {
-      return this.a;
-   }
-
-   protected final int b() {
-      return this.b;
+   public static exo a(int $$0) {
+      return d.apply($$0);
    }
 }

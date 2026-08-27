@@ -1,26 +1,53 @@
-public class ffc extends fel<cjc> {
-   private static final ahh x = new ahh("textures/gui/container/dispenser.png");
+import java.util.function.BooleanSupplier;
 
-   public ffc(cjc $$0, cfp $$1, vg $$2) {
-      super($$0, $$1, $$2);
+public class ffc extends ffe {
+   private static final vq a = vq.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private final long c;
+   private final BooleanSupplier k;
+
+   public ffc(BooleanSupplier $$0) {
+      super(ewz.a);
+      this.k = $$0;
+      this.c = System.currentTimeMillis();
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+   public boolean aO_() {
+      return false;
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
+   protected boolean aP_() {
+      return false;
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
    }
 
    @Override
-   protected void a(exe $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   public void b(eyu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public void e() {
+      if (this.k.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
+         this.d();
+      }
+   }
+
+   @Override
+   public void d() {
+      this.f.aW().c(vq.c("narrator.ready_to_play"));
+      super.d();
+   }
+
+   @Override
+   public boolean m() {
+      return false;
    }
 }

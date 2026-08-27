@@ -1,25 +1,107 @@
-import org.joml.Matrix4f;
+public abstract class fge<T extends ckc> extends fgd<T> implements fiy {
+   public final fio x;
+   private boolean y;
+   private final aiy z;
+   private final aiy A;
+   private final aiy B;
 
-public interface fge {
-   static fge a(aub $$0) {
-      return new fgd($$0);
+   public fge(T $$0, fio $$1, chg $$2, vq $$3, aiy $$4, aiy $$5, aiy $$6) {
+      super($$0, $$2, $$3);
+      this.x = $$1;
+      this.z = $$4;
+      this.A = $$5;
+      this.B = $$6;
    }
 
-   static fge a(ckm $$0) {
-      if ($$0 instanceof ckl) {
-         return new fgc((ckl)$$0);
+   @Override
+   public void aQ_() {
+      super.aQ_();
+      this.y = this.g < 379;
+      this.x.a(this.g, this.h, this.f, this.y, this.p);
+      this.t = this.x.a(this.g, this.c);
+      this.d(new ezt(this.t + 20, this.h / 2 - 49, 20, 18, fis.a, $$0 -> {
+         this.x.e();
+         this.t = this.x.a(this.g, this.c);
+         $$0.c(this.t + 20, this.h / 2 - 49);
+      }));
+      this.l = (this.c - this.i.a(this.e)) / 2;
+   }
+
+   @Override
+   public void E() {
+      super.E();
+      this.x.g();
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      if (this.x.f() && this.y) {
+         this.b($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
       } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
+         super.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, this.t, this.u, true, $$3);
+      }
+
+      this.a($$0, $$1, $$2);
+      this.x.a($$0, this.t, this.u, $$1, $$2);
+   }
+
+   @Override
+   protected void a(eyu $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.p.s()) {
+         int $$6 = 14;
+         int $$7 = awh.f(this.p.r() * 13.0F) + 1;
+         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+      }
+
+      int $$8 = 24;
+      int $$9 = awh.f(this.p.q() * 24.0F);
+      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.y && this.x.f() ? true : super.a($$0, $$1, $$2);
       }
    }
 
-   int a();
-
-   int a(exc var1);
-
-   default void a(exc $$0, int $$1, int $$2, Matrix4f $$3, ftt.a $$4) {
+   @Override
+   protected void a(clw $$0, int $$1, int $$2, ckk $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.x.a($$0);
    }
 
-   default void a(exc $$0, int $$1, int $$2, exe $$3) {
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
+      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public void I() {
+      this.x.i();
+   }
+
+   @Override
+   public fis J() {
+      return this.x;
    }
 }

@@ -1,59 +1,34 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class ges extends gfe<cbx, fmm<cbx>> {
+   private final fmm<cbx> a;
 
-public class ges implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final geo f = new geo(16, 16, false);
+   public ges(gco<cbx, fmm<cbx>> $$0, foy $$1) {
+      super($$0);
+      this.a = new fmm<>($$1.a(fpb.am));
+   }
 
-   public ges() {
-      epl $$0 = this.f.e();
-
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1308622593);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, $$3 << 24 | 16777215);
-            }
+   public void a(esa $$0, fvm $$1, int $$2, cbx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      coz $$10 = $$3.u();
+      if ($$10.d() instanceof cmi $$11 && $$11.d() == cmi.a.a) {
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$15;
+         float $$16;
+         float $$14;
+         if ($$11 instanceof cnp) {
+            int $$13 = ((cnp)$$11).e_($$10);
+            $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+            $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+            $$16 = (float)($$13 & 0xFF) / 255.0F;
+         } else {
+            $$14 = 1.0F;
+            $$15 = 1.0F;
+            $$16 = 1.0F;
          }
+
+         ese $$20 = $$1.getBuffer(fvu.e($$11.b()));
+         this.a.a($$0, $$20, $$2, ggl.d, $$14, $$15, $$16, 1.0F);
+         return;
       }
-
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
-      RenderSystem.activeTexture(33984);
-   }
-
-   @Override
-   public void close() {
-      this.f.close();
-   }
-
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f::a, 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
    }
 }

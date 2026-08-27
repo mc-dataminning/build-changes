@@ -1,26 +1,17 @@
-@FunctionalInterface
-public interface eln<T> {
-   void handle(T var1, elp<T> var2, long var3);
+import java.util.function.Function;
 
-   public abstract static class a<T, C extends eln<T>> {
-      private final ahh a;
-      private final Class<?> b;
+public interface eln<T extends eln<T>> {
+   T b(elu.a var1);
 
-      public a(ahh $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   default <E> T a_(Iterable<E> $$0, Function<E, elu.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
       }
 
-      public ahh a() {
-         return this.a;
-      }
-
-      public Class<?> b() {
-         return this.b;
-      }
-
-      public abstract void a(so var1, C var2);
-
-      public abstract C b(so var1);
+      return $$2;
    }
+
+   T d();
 }

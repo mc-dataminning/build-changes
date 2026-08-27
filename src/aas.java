@@ -1,64 +1,14 @@
-public class aas implements xg<zb> {
-   private final int a;
-   private final csw b;
-   private final int c;
-   private final int d;
-   private final boolean e;
-   private final boolean f;
-
-   public aas(int $$0, csw $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1.b();
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public aas(uj $$0) {
-      this.a = $$0.n();
-      this.b = csw.b($$0);
-      this.c = $$0.n();
-      this.d = $$0.n();
-      this.e = $$0.readBoolean();
-      this.f = $$0.readBoolean();
+public class aas extends xv<aag> {
+   public aas(Iterable<xx<? super aag>> $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      this.b.a($$0);
-      $$0.c(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   public xz<aas> a() {
+      return aeq.a;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public csw d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.f;
    }
 }

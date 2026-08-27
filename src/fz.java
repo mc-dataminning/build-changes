@@ -1,50 +1,98 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
-public class fz implements Predicate<cng> {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vg.b("arguments.item.overstacked", $$0, $$1));
-   private final ih<cnb> b;
-   @Nullable
-   private final so c;
+public class fz implements ArgumentType<fz.a> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "#foo");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vq.b("arguments.function.tag.unknown", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vq.b("arguments.function.unknown", $$0));
 
-   public fz(ih<cnb> $$0, @Nullable so $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static fz a() {
+      return new fz();
    }
 
-   public cnb a() {
-      return this.b.a();
-   }
+   public fz.a a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '#') {
+         $$0.skip();
+         final aiy $$1 = aiy.a($$0);
+         return new fz.a() {
+            @Override
+            public Collection<hd<du>> a(CommandContext<du> $$0) throws CommandSyntaxException {
+               return fz.b($$0, $$1);
+            }
 
-   public boolean a(cng $$0) {
-      return $$0.a(this.b) && td.a(this.c, $$0.v(), true);
-   }
+            @Override
+            public Pair<aiy, Either<hd<du>, Collection<hd<du>>>> b(CommandContext<du> $$0) throws CommandSyntaxException {
+               return Pair.of($$1, Either.right(fz.b($$0, $$1)));
+            }
 
-   public cng a(int $$0, boolean $$1) throws CommandSyntaxException {
-      cng $$2 = new cng(this.b, $$0);
-      if (this.c != null) {
-         $$2.c(this.c);
+            @Override
+            public Pair<aiy, Collection<hd<du>>> c(CommandContext<du> $$0) throws CommandSyntaxException {
+               return Pair.of($$1, fz.b($$0, $$1));
+            }
+         };
+      } else {
+         final aiy $$2 = aiy.a($$0);
+         return new fz.a() {
+            @Override
+            public Collection<hd<du>> a(CommandContext<du> $$0) throws CommandSyntaxException {
+               return Collections.singleton(fz.a($$0, $$2));
+            }
+
+            @Override
+            public Pair<aiy, Either<hd<du>, Collection<hd<du>>>> b(CommandContext<du> $$0) throws CommandSyntaxException {
+               return Pair.of($$2, Either.left(fz.a($$0, $$2)));
+            }
+
+            @Override
+            public Pair<aiy, Collection<hd<du>>> c(CommandContext<du> $$0) throws CommandSyntaxException {
+               return Pair.of($$2, Collections.singleton(fz.a($$0, $$2)));
+            }
+         };
       }
+   }
 
-      if ($$1 && $$0 > $$2.g()) {
-         throw a.create(this.c(), $$2.g());
+   static hd<du> a(CommandContext<du> $$0, aiy $$1) throws CommandSyntaxException {
+      return ((du)$$0.getSource()).l().aC().a($$1).orElseThrow(() -> c.create($$1.toString()));
+   }
+
+   static Collection<hd<du>> b(CommandContext<du> $$0, aiy $$1) throws CommandSyntaxException {
+      Collection<hd<du>> $$2 = ((du)$$0.getSource()).l().aC().b($$1);
+      if ($$2 == null) {
+         throw b.create($$1.toString());
       } else {
          return $$2;
       }
    }
 
-   public String b() {
-      StringBuilder $$0 = new StringBuilder(this.c());
-      if (this.c != null) {
-         $$0.append(this.c);
-      }
-
-      return $$0.toString();
+   public static Collection<hd<du>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return ((fz.a)$$0.getArgument($$1, fz.a.class)).a($$0);
    }
 
-   private String c() {
-      return this.b.e().map(ahg::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
+   public static Pair<aiy, Either<hd<du>, Collection<hd<du>>>> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return ((fz.a)$$0.getArgument($$1, fz.a.class)).b($$0);
+   }
+
+   public static Pair<aiy, Collection<hd<du>>> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return ((fz.a)$$0.getArgument($$1, fz.a.class)).c($$0);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   public interface a {
+      Collection<hd<du>> a(CommandContext<du> var1) throws CommandSyntaxException;
+
+      Pair<aiy, Either<hd<du>, Collection<hd<du>>>> b(CommandContext<du> var1) throws CommandSyntaxException;
+
+      Pair<aiy, Collection<hd<du>>> c(CommandContext<du> var1) throws CommandSyntaxException;
    }
 }

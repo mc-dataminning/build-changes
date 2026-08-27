@@ -1,31 +1,22 @@
-public class gid implements ghy {
-   private final fsv a;
-   private boolean b;
-   private boolean c = true;
+public class gid {
+   public static final int a = -1;
+   private final int b;
+   private final int c;
 
-   public gid(fsv $$0) {
-      this.a = $$0;
+   public gid(int $$0) {
+      this($$0, -1);
    }
 
-   @Override
-   public void a() {
-      ctx $$0 = this.a.dL();
-      djp $$1 = $$0.c(this.a.cH().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(cxa.nd)).findFirst().orElse(null);
-      if ($$1 != null) {
-         if (!this.b && !this.c && $$1.a(cxa.nd) && !this.a.P_()) {
-            boolean $$2 = $$1.c(cxe.b);
-            if ($$2) {
-               this.a.a(art.cS, 1.0F, 1.0F);
-            } else {
-               this.a.a(art.cQ, 1.0F, 1.0F);
-            }
-         }
+   public gid(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-         this.b = true;
-      } else {
-         this.b = false;
-      }
+   public int a(int $$0) {
+      return this.c == -1 ? $$0 : this.c;
+   }
 
-      this.c = false;
+   public int a() {
+      return this.b;
    }
 }

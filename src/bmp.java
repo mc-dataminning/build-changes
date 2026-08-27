@@ -1,57 +1,51 @@
-public class bmp extends blw {
-   private static final String b = "data";
-   private so c = new so();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public bmp(bmc<?> $$0, ctx $$1) {
-      super($$0, $$1);
-      this.af = true;
+public record bmp(String b, bmm c, float d, bml e, bmr f) {
+   public static final Codec<bmp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bmp::a),
+               bmm.d.fieldOf("scaling").forGetter(bmp::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bmp::c),
+               bml.g.optionalFieldOf("effects", bml.a).forGetter(bmp::d),
+               bmr.d.optionalFieldOf("death_message_type", bmr.a).forGetter(bmp::e)
+            )
+            .apply($$0, bmp::new)
+   );
+
+   public bmp(String $$0, bmm $$1, float $$2) {
+      this($$0, $$1, $$2, bml.a, bmr.a);
    }
 
-   @Override
-   public void l() {
+   public bmp(String $$0, bmm $$1, float $$2, bml $$3) {
+      this($$0, $$1, $$2, $$3, bmr.a);
    }
 
-   @Override
-   protected void c_() {
+   public bmp(String $$0, float $$1, bml $$2) {
+      this($$0, bmm.b, $$1, $$2);
    }
 
-   @Override
-   protected void a(so $$0) {
-      this.c = $$0.p("data");
+   public bmp(String $$0, float $$1) {
+      this($$0, bmm.b, $$1);
    }
 
-   @Override
-   protected void b(so $$0) {
-      $$0.a("data", this.c.h());
+   public String a() {
+      return this.b;
    }
 
-   @Override
-   public xg<zb> di() {
-      throw new IllegalStateException("Markers should never be sent");
+   public bmm b() {
+      return this.c;
    }
 
-   @Override
-   protected boolean q(blw $$0) {
-      return false;
+   public float c() {
+      return this.d;
    }
 
-   @Override
-   protected boolean bD() {
-      return false;
+   public bml d() {
+      return this.e;
    }
 
-   @Override
-   protected void o(blw $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public efe s_() {
-      return efe.d;
-   }
-
-   @Override
-   public boolean r_() {
-      return true;
+   public bmr e() {
+      return this.f;
    }
 }

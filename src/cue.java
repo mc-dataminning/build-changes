@@ -1,15 +1,20 @@
-public interface cue extends cua {
-   long aj();
-
-   default float ap() {
-      return dmy.i[this.E_().b(this.aj())];
+public class cue extends cti {
+   protected cue(cti.a $$0, bnv... $$1) {
+      super($$0, auh.bi, $$1);
    }
 
-   default float f(float $$0) {
-      return this.E_().a(this.aj());
+   @Override
+   public int a(int $$0) {
+      return 15;
    }
 
-   default int aq() {
-      return this.E_().b(this.aj());
+   @Override
+   public int b(int $$0) {
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public boolean a(cti $$0) {
+      return super.a($$0) && $$0 != ctl.x;
    }
 }

@@ -1,22 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import java.util.concurrent.TimeUnit;
 
-public class axh extends DataFix {
-   public axh(Schema $$0) {
-      super($$0, true);
-   }
+public class axh {
+   public static final long a = TimeUnit.SECONDS.toNanos(1L);
+   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
+   public static final long c = TimeUnit.SECONDS.toMillis(1L);
+   public static final long d = TimeUnit.HOURS.toSeconds(1L);
+   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.c);
-      OpticFinder<?> $$1 = $$0.findField("sections");
-      return this.fixTypeEverywhereTyped("ChunkDeleteIgnoredLightDataFix", $$0, $$1x -> {
-         boolean $$2 = ((Dynamic)$$1x.get(DSL.remainderFinder())).get("isLightOn").asBoolean(false);
-         return !$$2 ? $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight"))) : $$1x;
-      });
+   public static blf a(int $$0, int $$1) {
+      return blf.a($$0 * 20, $$1 * 20);
    }
 }

@@ -1,44 +1,42 @@
-import javax.annotation.Nullable;
+import java.time.Instant;
 
-public class aey implements xg<adk> {
-   private final int a;
-   private final String b;
-   private final boolean c;
+public record aey(String b, Instant c, long d, eb e, vx.b f) implements xx<aes> {
+   public static final xo<uq, aey> a = xx.a(aey::a, aey::new);
 
-   public aey(int $$0, String $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private aey(uq $$0) {
+      this($$0.d(256), $$0.v(), $$0.readLong(), new eb($$0), new vx.b($$0));
    }
 
-   public aey(uj $$0) {
-      this.a = $$0.n();
-      this.b = $$0.s();
-      this.c = $$0.readBoolean();
+   private void a(uq $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      this.e.a($$0);
+      this.f.a($$0);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public xz<aey> a() {
+      return aeq.bh;
    }
 
-   public void a(adk $$0) {
+   public void a(aes $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public csy a(ctx $$0) {
-      blw $$1 = $$0.a(this.a);
-      return $$1 instanceof chq ? ((chq)$$1).C() : null;
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public boolean d() {
+   public Instant e() {
       return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   public eb g() {
+      return this.e;
+   }
+
+   public vx.b h() {
+      return this.f;
    }
 }

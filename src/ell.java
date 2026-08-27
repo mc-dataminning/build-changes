@@ -1,29 +1,59 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class ell implements eln<MinecraftServer> {
-   final ahh a;
+public abstract class ell implements elu {
+   protected final List<elu> c;
+   private final Predicate<eiv> a;
 
-   public ell(ahh $$0) {
-      this.a = $$0;
+   protected ell(List<elu> $$0, Predicate<eiv> $$1) {
+      this.c = $$0;
+      this.a = $$1;
    }
 
-   public void a(MinecraftServer $$0, elp<MinecraftServer> $$1, long $$2) {
-      ahv $$3 = $$0.aC();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   protected static <T extends ell> Codec<T> a(Function<List<elu>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(elw.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
    }
 
-   public static class a extends eln.a<MinecraftServer, ell> {
-      public a() {
-         super(new ahh("function"), ell.class);
+   protected static <T extends ell> Codec<T> b(Function<List<elu>, T> $$0) {
+      return elw.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(eiv $$0) {
+      return this.a.test($$0);
+   }
+
+   @Override
+   public void a(eje $$0) {
+      elu.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
+   }
+
+   public abstract static class a implements elu.a {
+      private final Builder<elu> a = ImmutableList.builder();
+
+      protected a(elu.a... $$0) {
+         for (elu.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
       }
 
-      public void a(so $$0, ell $$1) {
-         $$0.a("Name", $$1.a.toString());
+      public void a(elu.a $$0) {
+         this.a.add($$0.build());
       }
 
-      public ell a(so $$0) {
-         ahh $$1 = new ahh($$0.l("Name"));
-         return new ell($$1);
+      @Override
+      public elu build() {
+         return this.a(this.a.build());
       }
+
+      protected abstract elu a(List<elu> var1);
    }
 }

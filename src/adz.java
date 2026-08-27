@@ -1,79 +1,86 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.function.IntFunction;
-
-public class adz implements xg<adk> {
-   private static final int a = 128;
-   private final int b;
-   private final int c;
-   private final int d;
+public class adz implements xx<aag> {
+   public static final xo<vb, adz> a = xx.a(adz::a, adz::new);
+   public static final float b = 8.0F;
+   private final ij<atj> c;
+   private final atl d;
    private final int e;
-   private final cis f;
-   private final cng g;
-   private final Int2ObjectMap<cng> h;
+   private final int f;
+   private final int g;
+   private final float h;
+   private final float i;
+   private final long j;
 
-   public adz(int $$0, int $$1, int $$2, int $$3, cis $$4, cng $$5, Int2ObjectMap<cng> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = Int2ObjectMaps.unmodifiable($$6);
+   public adz(ij<atj> $$0, atl $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = (int)($$2 * 8.0);
+      this.f = (int)($$3 * 8.0);
+      this.g = (int)($$4 * 8.0);
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
    }
 
-   public adz(uj $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.n();
-      this.d = $$0.readShort();
-      this.e = $$0.readByte();
-      this.f = $$0.b(cis.class);
-      IntFunction<Int2ObjectOpenHashMap<cng>> $$1 = uj.a(Int2ObjectOpenHashMap::new, 128);
-      this.h = Int2ObjectMaps.unmodifiable($$0.a($$1, $$0x -> Integer.valueOf($$0x.readShort()), uj::r));
-      this.g = $$0.r();
+   private adz(vb $$0) {
+      this.c = atj.d.decode($$0);
+      this.d = $$0.b(atl.class);
+      this.e = $$0.readInt();
+      this.f = $$0.readInt();
+      this.g = $$0.readInt();
+      this.h = $$0.readFloat();
+      this.i = $$0.readFloat();
+      this.j = $$0.readLong();
+   }
+
+   private void a(vb $$0) {
+      atj.d.encode($$0, this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
+      $$0.p(this.f);
+      $$0.p(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.b(this.j);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.k(this.b);
-      $$0.c(this.c);
-      $$0.l(this.d);
-      $$0.k(this.e);
-      $$0.a(this.f);
-      $$0.a(this.h, uj::l, uj::a);
-      $$0.a(this.g);
+   public xz<adz> a() {
+      return aeq.aR;
    }
 
-   public void a(adk $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.b;
+   public ij<atj> b() {
+      return this.c;
    }
 
-   public int d() {
+   public atl e() {
       return this.d;
    }
 
-   public int e() {
-      return this.e;
+   public double f() {
+      return (double)((float)this.e / 8.0F);
    }
 
-   public cng f() {
-      return this.g;
+   public double g() {
+      return (double)((float)this.f / 8.0F);
    }
 
-   public Int2ObjectMap<cng> g() {
+   public double h() {
+      return (double)((float)this.g / 8.0F);
+   }
+
+   public float i() {
       return this.h;
    }
 
-   public cis h() {
-      return this.f;
+   public float j() {
+      return this.i;
    }
 
-   public int i() {
-      return this.c;
+   public long k() {
+      return this.j;
    }
 }

@@ -1,10 +1,22 @@
-public class asr {
-   public static final asx<cbx> a = a("placeable");
+import com.google.gson.JsonObject;
+import javax.annotation.Nullable;
 
-   private asr() {
+public abstract class asr<T> {
+   @Nullable
+   private final T a;
+
+   public asr(@Nullable T $$0) {
+      this.a = $$0;
    }
 
-   private static asx<cbx> a(String $$0) {
-      return asx.a(ke.R, new ahh($$0));
+   @Nullable
+   T g() {
+      return this.a;
    }
+
+   boolean f() {
+      return false;
+   }
+
+   protected abstract void a(JsonObject var1);
 }

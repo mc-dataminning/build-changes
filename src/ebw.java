@@ -1,48 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ebw extends dzo {
-   public static final Codec<ebw> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), dxv.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, ebw::new)
-   );
-   public final dxv e;
-
-   public ebw(dzo.c $$0, dxv $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+public class ebw implements ebj {
+   private final List<ebi> a = Lists.newArrayList();
 
    @Override
-   public Optional<dzo.b> a(dzo.a $$0) {
-      dpx $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      dpv $$5 = new dpv($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      cuj $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      hx.a $$8 = new hx.a($$2, $$6, $$3);
+   public void a(ebi $$0) {
+      this.a.add($$0);
+   }
 
-      while ($$6 > $$4) {
-         djp $$9 = $$7.a($$6);
-         djp $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(cxa.dW) || $$10.d(ctm.a, $$8.q($$6), ic.b))) {
-            break;
-         }
+   @Nullable
+   @Override
+   public ebi a(eaw $$0) {
+      return ebi.a(this.a, $$0);
+   }
+
+   @Deprecated
+   public void a(int $$0) {
+      for (ebi $$1 : this.a) {
+         $$1.a(0, $$0, 0);
+      }
+   }
+
+   @Deprecated
+   public int a(int $$0, int $$1, awo $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      eaw $$5 = this.d();
+      int $$6 = $$5.e() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
       }
 
-      if ($$6 <= $$4) {
-         return Optional.empty();
+      int $$7 = $$6 - $$5.l();
+      this.a($$7);
+      return $$7;
+   }
+
+   /** @deprecated */
+   public void a(awo $$0, int $$1, int $$2) {
+      eaw $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.e();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
       } else {
-         hx $$11 = new hx($$2, $$6, $$3);
-         return Optional.of(new dzo.b($$11, (Consumer<eag>)($$3x -> ebv.a($$0.e(), $$3x, $$1, $$11))));
+         $$5 = $$1;
       }
+
+      int $$7 = $$5 - $$3.i();
+      this.a($$7);
    }
 
-   @Override
-   public dzx<?> e() {
-      return dzx.i;
+   public ebt a() {
+      return new ebt(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public eaw d() {
+      return ebi.a(this.a.stream());
    }
 }

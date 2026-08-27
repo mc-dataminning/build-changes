@@ -1,23 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Predicate;
 
 public class cuv {
-   public static final Codec<cuv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jx.aX.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, cuv::new)
-   );
-   private final jv b;
-   private final float c;
+   private final ens a;
+   private final ens b;
+   private final Predicate<dlf> c;
 
-   public cuv(jv $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cuv(ens $$0, ens $$1, Predicate<dlf> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public jv a() {
+   public ens a() {
       return this.b;
    }
 
-   public boolean a(auw $$0) {
-      return $$0.i() <= this.c;
+   public ens b() {
+      return this.a;
+   }
+
+   public Predicate<dlf> c() {
+      return this.c;
    }
 }

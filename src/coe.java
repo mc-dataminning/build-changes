@@ -1,59 +1,55 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class coe extends clr {
-   protected static final Map<cwy, djp> a = Maps.newHashMap(
-      new Builder()
-         .put(cxa.i, cxa.kE.o())
-         .put(cxa.j, cxa.kE.o())
-         .put(cxa.l, cxa.kE.o())
-         .put(cxa.k, cxa.kE.o())
-         .put(cxa.fl, cxa.kE.o())
-         .put(cxa.sH, cxa.kE.o())
-         .build()
-   );
-
-   public coe(cou $$0, float $$1, float $$2, cnb.a $$3) {
-      super($$1, $$2, $$0, asi.bC, $$3);
+public class coe extends cou {
+   public coe(cou.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bkc a(cpr $$0) {
-      ctx $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      djp $$3 = $$1.a_($$2);
-      if ($$0.k() == ic.a) {
-         return bkc.d;
-      } else {
-         cfq $$4 = $$0.o();
-         djp $$5 = a.get($$3.b());
-         djp $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, art.wc, aru.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof cxm && $$3.c(cxm.c)) {
-            if (!$$1.y_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
-
-            cxm.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(cxm.c, Boolean.valueOf(false));
-         }
-
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(dnz.c, $$2, dnz.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, $$1x -> $$1x.d($$0.p()));
-               }
-            }
-
-            return bkc.a($$1.B);
-         } else {
-            return bkc.d;
-         }
+   public void a(coz $$0, @Nullable cvn $$1, List<vq> $$2, cqq $$3) {
+      sw $$4 = $$0.b("Explosion");
+      if ($$4 != null) {
+         a($$4, $$2);
       }
+   }
+
+   public static void a(sw $$0, List<vq> $$1) {
+      cod.a $$2 = cod.a.a($$0.f("Type"));
+      $$1.add(vq.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
+      int[] $$3 = $$0.n("Colors");
+      if ($$3.length > 0) {
+         $$1.add(a(vq.i().a(n.h), $$3));
+      }
+
+      int[] $$4 = $$0.n("FadeColors");
+      if ($$4.length > 0) {
+         $$1.add(a(vq.c("item.minecraft.firework_star.fade_to").b(vp.v).a(n.h), $$4));
+      }
+
+      if ($$0.q("Trail")) {
+         $$1.add(vq.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if ($$0.q("Flicker")) {
+         $$1.add(vq.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
+   }
+
+   private static vq a(we $$0, int[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
+         }
+
+         $$0.b(a($$1[$$2]));
+      }
+
+      return $$0;
+   }
+
+   private static vq a(int $$0) {
+      cnn $$1 = cnn.b($$0);
+      return $$1 == null ? vq.c("item.minecraft.firework_star.custom_color") : vq.c("item.minecraft.firework_star." + $$1.b());
    }
 }

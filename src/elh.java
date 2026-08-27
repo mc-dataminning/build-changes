@@ -1,11 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface elh {
-   @Nullable
-   enf a(ehf var1);
-
-   elg a();
-
-   Set<ejn<?>> b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface elh {
 }

@@ -1,14 +1,17 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class aun {
-   @Nullable
-   private static byte[] a = null;
+public record aun(List<aum> b, boolean c) {
+   public static final Codec<aun> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aum.a.listOf().fieldOf("values").forGetter(aun::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(aun::b)).apply($$0, aun::new)
+   );
 
-   public static void a() {
-      a = new byte[10485760];
+   public List<aum> a() {
+      return this.b;
    }
 
-   public static void b() {
-      a = new byte[0];
+   public boolean b() {
+      return this.c;
    }
 }

@@ -1,40 +1,32 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
+import org.lwjgl.openal.AL10;
 
-public class epw extends epy {
-   private static final epr a = new epr() {
-      @Override
-      public String a(boolean $$0, String $$1) {
-         return "#error Import statement not supported";
-      }
-   };
-   private int b;
+public class epw {
+   private float a = 1.0F;
+   private epx b = epx.a;
 
-   private epw(epy.a $$0, int $$1, String $$2) {
-      super($$0, $$1, $$2);
+   public void a(epx $$0) {
+      this.b = $$0;
+      ens $$1 = $$0.b();
+      ens $$2 = $$0.c();
+      ens $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
    }
 
-   public void a(epv $$0) {
-      RenderSystem.assertOnRenderThread();
-      this.b++;
-      this.a($$0);
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
    }
 
-   @Override
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      this.b--;
-      if (this.b <= 0) {
-         super.a();
-      }
+   public float a() {
+      return this.a;
    }
 
-   public static epw a(epy.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$4 = b($$0, $$1, $$2, $$3, a);
-      epw $$5 = new epw($$0, $$4, $$1);
-      $$0.c().put($$1, $$5);
-      return $$5;
+   public void b() {
+      this.a(epx.a);
+   }
+
+   public epx c() {
+      return this.b;
    }
 }

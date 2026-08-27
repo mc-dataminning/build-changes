@@ -1,76 +1,81 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class deu extends cwy {
+public class deu extends daq {
    public static final MapCodec<deu> a = b(deu::new);
-   private static final vg d = vg.c("container.stonecutter");
-   public static final dkj b = dat.aE;
-   protected static final emv c = cwy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   public static final dlw b = dlv.s;
+   public static final dmf e = dlv.aA;
 
    @Override
    public MapCodec<deu> a() {
       return a;
    }
 
-   public deu(djo.d $$0) {
+   protected deu(dle.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ic.c));
+      this.k(this.E.b().a(aE, ie.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public djp a(cpp $$0) {
-      return this.o().a(b, $$0.g().g());
-   }
-
-   @Override
-   public bkc a(djp $$0, ctx $$1, hx $$2, cfq $$3, ely $$4) {
-      if ($$1.B) {
-         return bkc.a;
+   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
+      if (!$$3.fU().e) {
+         return blu.d;
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(asd.ay);
-         return bkc.b;
+         $$1.a($$2, $$0.a(e), 3);
+         return blu.a($$1.B);
       }
    }
 
-   @Nullable
    @Override
-   public bkg b(djp $$0, ctx $$1, hx $$2) {
-      return new bkm(($$2x, $$3, $$4) -> new cki($$2x, $$3, ciu.a($$1, $$2)), d);
+   protected int g(dlf $$0) {
+      return $$0.c(e) * 2;
    }
 
    @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return c;
+   public dlf a(crg $$0) {
+      dlf $$1 = super.a($$0);
+      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
    }
 
    @Override
-   public boolean g_(djp $$0) {
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      if ($$1 == ie.a && !this.b($$3, $$5, $$2)) {
+         return cyq.a.o();
+      } else {
+         return !$$3.y_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public boolean c(cvq $$0, hz $$1, dlf $$2) {
+      return this.a((cwd)$$0, $$1, $$2) > 0;
+   }
+
+   @Override
+   protected boolean b() {
       return true;
    }
 
    @Override
-   public ddd b_(djp $$0) {
-      return ddd.c;
+   public void a(dlf $$0, cvn $$1, hz $$2, awo $$3) {
+      if ($$0.c(d)) {
+         ie $$4 = $$0.c(aE);
+         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
+         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         float $$8 = -5.0F;
+         if ($$3.h()) {
+            $$8 = (float)($$0.c(e) * 2 - 1);
+         }
+
+         $$8 /= 16.0F;
+         double $$9 = (double)($$8 * (float)$$4.j());
+         double $$10 = (double)($$8 * (float)$$4.l());
+         $$1.a(jt.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
-   public djp a(djp $$0, ddk $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public djp a(djp $$0, dbu $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
-      return false;
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(aE, e, b, d);
    }
 }

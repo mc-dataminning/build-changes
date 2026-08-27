@@ -1,50 +1,61 @@
-public class fwf implements fvt<djl> {
-   private final fun a;
+import java.util.Map;
+import java.util.Map.Entry;
 
-   public fwf(fvu.a $$0) {
-      this.a = $$0.b();
+public class fwf {
+   private Map<dlf, giu> a = Map.of();
+   private final gja b;
+
+   public fwf(gja $$0) {
+      this.b = $$0;
    }
 
-   public void a(djl $$0, float $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
-      ctx $$6 = $$0.i();
-      if ($$6 != null) {
-         hx $$7 = $$0.aE_().a($$0.g().g());
-         djp $$8 = $$0.k();
-         if (!$$8.i()) {
-            fup.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(cxa.bz) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.a(djj.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.f() && !$$0.c()) {
-               dkr $$9 = $$8.a(cxa.br) ? dkr.b : dkr.a;
-               djp $$10 = cxa.bz.o().a(djj.c, $$9).a(djj.a, $$8.c(dji.a));
-               $$10 = $$10.a(djj.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               hx $$11 = $$7.a($$0.g());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.a(dji.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            }
+   public ggu a(dlf $$0) {
+      return this.b($$0).e();
+   }
 
-            $$2.b();
-            fup.b();
-         }
+   public giu b(dlf $$0) {
+      giu $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
       }
+
+      return $$1;
    }
 
-   private void a(hx $$0, djp $$1, eqk $$2, ftt $$3, ctx $$4, boolean $$5, int $$6) {
-      fub $$7 = fto.b($$1);
-      eqo $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, auw.a(), $$1.a($$0), $$6);
+   public gja a() {
+      return this.b;
    }
 
-   @Override
-   public int aS_() {
-      return 68;
+   public void a(Map<dlf, giu> $$0) {
+      this.a = $$0;
+   }
+
+   public static gjb c(dlf $$0) {
+      return a(kf.e.b($$0.b()), $$0);
+   }
+
+   public static gjb a(aiy $$0, dlf $$1) {
+      return new gjb($$0, b($$1.C()));
+   }
+
+   public static String b(Map<dmi<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<dmi<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
+         }
+
+         dmi<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
+      }
+
+      return $$1.toString();
+   }
+
+   private static <T extends Comparable<T>> String a(dmi<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
    }
 }

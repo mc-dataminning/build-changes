@@ -1,15 +1,11 @@
-public class gfz extends ggd {
-   private static final ahh a = new ahh("back");
+import javax.annotation.Nullable;
 
-   public gfz(gfc $$0) {
-      super($$0, new ahh("textures/atlas/paintings.png"), new ahh("paintings"));
+public interface gfz extends ggc {
+   @Deprecated
+   @Override
+   default float call(coz $$0, @Nullable fpx $$1, @Nullable bog $$2, int $$3) {
+      return awh.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
    }
 
-   public gfb a(cbx $$0) {
-      return this.a(kd.l.b($$0));
-   }
-
-   public gfb a() {
-      return this.a(a);
-   }
+   float unclampedCall(coz var1, @Nullable fpx var2, @Nullable bog var3, int var4);
 }

@@ -1,117 +1,45 @@
-public class cif {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+public class cif extends chn {
+   private static final coz f = new coz(cpc.vl);
+   private int g = 200;
 
-   public cif() {
-      this.b = 5.0F;
+   public cif(bnu<? extends cif> $$0, cvn $$1) {
+      super($$0, $$1, f);
    }
 
-   public void a(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
+   public cif(cvn $$0, bog $$1, coz $$2) {
+      super(bnu.aT, $$1, $$0, $$2);
    }
 
-   public void a(cnb $$0, cng $$1) {
-      if ($$0.t()) {
-         cig $$2 = $$0.u();
-         this.a($$2.a(), $$2.b());
+   public cif(cvn $$0, double $$1, double $$2, double $$3, coz $$4) {
+      super(bnu.aT, $$1, $$2, $$3, $$0, $$4);
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.dM().B && !this.b) {
+         this.dM().a(jz.P, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
       }
    }
 
-   public void a(cfq $$0) {
-      bjz $$1 = $$0.dL().ak();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bjz.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
+   @Override
+   protected void a(bog $$0) {
+      super.a($$0);
+      bnb $$1 = new bnb(bnd.x, this.g, 0);
+      $$0.b($$1, this.I());
+   }
 
-      boolean $$2 = $$0.dL().Z().b(ctt.k);
-      if ($$2 && this.b > 0.0F && $$0.gd() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.b($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gd()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.b(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.ev() > 10.0F || $$1 == bjz.d || $$0.ev() > 1.0F && $$1 == bjz.c) {
-               $$0.a($$0.dM().i(), 1.0F);
-            }
-
-            this.d = 0;
-         }
-      } else {
-         this.d = 0;
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.g = $$0.h("Duration");
       }
    }
 
-   public void a(so $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
-      }
-   }
-
-   public void b(so $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(float $$0) {
-      this.b = $$0;
-   }
-
-   public void c(float $$0) {
-      this.c = $$0;
+   @Override
+   public void b(sw $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.g);
    }
 }

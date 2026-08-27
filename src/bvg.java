@@ -1,21 +1,36 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bvg extends bvb {
+   private final caq a;
+   private aow b;
+   private boolean c;
 
-public class bvg<T extends bmo> extends bvd<T> {
-   private final bnj i;
-
-   public bvg(bnj $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bmo> $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+   public bvg(caq $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      return !this.i.u() && super.a();
+      aow $$0 = (aow)this.a.R_();
+      boolean $$1 = $$0 != null && !$$0.P_() && !$$0.fU().b && !$$0.aZ() && !$$0.az;
+      return !this.a.gg() && $$1 && this.a.gp();
    }
 
    @Override
-   public boolean b() {
-      return this.d != null ? this.d.a(this.e, this.c) : super.b();
+   public boolean S_() {
+      return !this.c;
+   }
+
+   @Override
+   public void c() {
+      this.b = (aow)this.a.R_();
+      this.c = false;
+   }
+
+   @Override
+   public void e() {
+      if (!this.c && !this.a.A() && !this.a.fU()) {
+         if (this.a.cH().c(this.b.cH())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

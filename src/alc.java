@@ -1,312 +1,135 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.base.Joiner;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic4CommandExceptionType;
-import java.util.Collection;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
 public class alc {
-   private static final int a = 10000;
-   private static final Dynamic4CommandExceptionType b = new Dynamic4CommandExceptionType(
-      ($$0, $$1, $$2, $$3) -> vg.b("commands.spreadplayers.failed.teams", $$0, $$1, $$2, $$3)
-   );
-   private static final Dynamic4CommandExceptionType c = new Dynamic4CommandExceptionType(
-      ($$0, $$1, $$2, $$3) -> vg.b("commands.spreadplayers.failed.entities", $$0, $$1, $$2, $$3)
-   );
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> vg.b("commands.spreadplayers.failed.invalid.height", $$0, $$1)
-   );
+   private static final int a = 256;
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("commands.forceload.toobig", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("commands.forceload.query.failure", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vq.c("commands.forceload.added.failure"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vq.c("commands.forceload.removed.failure"));
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("spreadplayers").requires($$0x -> $$0x.c(2)))
-            .then(
-               dt.a("center", fs.a())
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("forceload").requires($$0x -> $$0x.c(2)))
                   .then(
-                     dt.a("spreadDistance", FloatArgumentType.floatArg(0.0F))
+                     dv.a("add")
                         .then(
-                           ((RequiredArgumentBuilder)dt.a("maxRange", FloatArgumentType.floatArg(1.0F))
-                                 .then(
-                                    dt.a("respectTeams", BoolArgumentType.bool())
-                                       .then(
-                                          dt.a("targets", ef.b())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ds)$$0x.getSource(),
-                                                      fs.a($$0x, "center"),
-                                                      FloatArgumentType.getFloat($$0x, "spreadDistance"),
-                                                      FloatArgumentType.getFloat($$0x, "maxRange"),
-                                                      ((ds)$$0x.getSource()).e().al(),
-                                                      BoolArgumentType.getBool($$0x, "respectTeams"),
-                                                      ef.b($$0x, "targets")
-                                                   )
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 dt.a("under")
-                                    .then(
-                                       dt.a("maxHeight", IntegerArgumentType.integer())
-                                          .then(
-                                             dt.a("respectTeams", BoolArgumentType.bool())
-                                                .then(
-                                                   dt.a("targets", ef.b())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ds)$$0x.getSource(),
-                                                               fs.a($$0x, "center"),
-                                                               FloatArgumentType.getFloat($$0x, "spreadDistance"),
-                                                               FloatArgumentType.getFloat($$0x, "maxRange"),
-                                                               IntegerArgumentType.getInteger($$0x, "maxHeight"),
-                                                               BoolArgumentType.getBool($$0x, "respectTeams"),
-                                                               ef.b($$0x, "targets")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
+                           ((RequiredArgumentBuilder)dv.a("from", fp.a())
+                                 .executes($$0x -> a((du)$$0x.getSource(), fp.a($$0x, "from"), fp.a($$0x, "from"), true)))
+                              .then(dv.a("to", fp.a()).executes($$0x -> a((du)$$0x.getSource(), fp.a($$0x, "from"), fp.a($$0x, "to"), true)))
                         )
-                  )
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)dv.a("remove")
+                        .then(
+                           ((RequiredArgumentBuilder)dv.a("from", fp.a())
+                                 .executes($$0x -> a((du)$$0x.getSource(), fp.a($$0x, "from"), fp.a($$0x, "from"), false)))
+                              .then(dv.a("to", fp.a()).executes($$0x -> a((du)$$0x.getSource(), fp.a($$0x, "from"), fp.a($$0x, "to"), false)))
+                        ))
+                     .then(dv.a("all").executes($$0x -> b((du)$$0x.getSource())))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)dv.a("query").executes($$0x -> a((du)$$0x.getSource())))
+                  .then(dv.a("pos", fp.a()).executes($$0x -> a((du)$$0x.getSource(), fp.a($$0x, "pos"))))
             )
       );
    }
 
-   private static int a(ds $$0, emb $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends blw> $$6) throws CommandSyntaxException {
-      ane $$7 = $$0.e();
-      int $$8 = $$7.J_();
-      if ($$4 < $$8) {
-         throw d.create($$4, $$8);
+   private static int a(du $$0, aol $$1) throws CommandSyntaxException {
+      cuu $$2 = $$1.a();
+      aov $$3 = $$0.e();
+      aix<cvn> $$4 = $$3.ae();
+      boolean $$5 = $$3.w().contains($$2.a());
+      if ($$5) {
+         $$0.a(() -> vq.a("commands.forceload.query.success", vq.a($$2), vq.a($$4.a())), false);
+         return 1;
       } else {
-         auw $$9 = auw.a();
-         double $$10 = (double)($$1.i - $$3);
-         double $$11 = (double)($$1.j - $$3);
-         double $$12 = (double)($$1.i + $$3);
-         double $$13 = (double)($$1.j + $$3);
-         alc.a[] $$14 = a($$9, $$5 ? a($$6) : $$6.size(), $$10, $$11, $$12, $$13);
-         a($$1, (double)$$2, $$7, $$9, $$10, $$11, $$12, $$13, $$4, $$14, $$5);
-         double $$15 = a($$6, $$7, $$14, $$4, $$5);
-         $$0.a(
-            () -> vg.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.i, $$1.j, String.format(Locale.ROOT, "%.2f", $$15)),
-            true
-         );
-         return $$14.length;
+         throw c.create($$2, $$4.a());
       }
    }
 
-   private static int a(Collection<? extends blw> $$0) {
-      Set<eni> $$1 = Sets.newHashSet();
-
-      for (blw $$2 : $$0) {
-         if ($$2 instanceof cfq) {
-            $$1.add($$2.cg());
+   private static int a(du $$0) {
+      aov $$1 = $$0.e();
+      aix<cvn> $$2 = $$1.ae();
+      LongSet $$3 = $$1.w();
+      int $$4 = $$3.size();
+      if ($$4 > 0) {
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(cuu::new).map(cuu::toString).iterator());
+         if ($$4 == 1) {
+            $$0.a(() -> vq.a("commands.forceload.list.single", vq.a($$2.a()), $$5), false);
          } else {
-            $$1.add(null);
+            $$0.a(() -> vq.a("commands.forceload.list.multiple", $$4, vq.a($$2.a()), $$5), false);
          }
+      } else {
+         $$0.b(vq.a("commands.forceload.added.none", vq.a($$2.a())));
       }
 
-      return $$1.size();
+      return $$4;
    }
 
-   private static void a(emb $$0, double $$1, ane $$2, auw $$3, double $$4, double $$5, double $$6, double $$7, int $$8, alc.a[] $$9, boolean $$10) throws CommandSyntaxException {
-      boolean $$11 = true;
-      double $$12 = Float.MAX_VALUE;
+   private static int b(du $$0) {
+      aov $$1 = $$0.e();
+      aix<cvn> $$2 = $$1.ae();
+      LongSet $$3 = $$1.w();
+      $$3.forEach($$1x -> $$1.a(cuu.a($$1x), cuu.b($$1x), false));
+      $$0.a(() -> vq.a("commands.forceload.removed.all", vq.a($$2.a())), true);
+      return 0;
+   }
 
-      int $$13;
-      for ($$13 = 0; $$13 < 10000 && $$11; $$13++) {
-         $$11 = false;
-         $$12 = Float.MAX_VALUE;
-
-         for (int $$14 = 0; $$14 < $$9.length; $$14++) {
-            alc.a $$15 = $$9[$$14];
+   private static int a(du $$0, aol $$1, aol $$2, boolean $$3) throws CommandSyntaxException {
+      int $$4 = Math.min($$1.c(), $$2.c());
+      int $$5 = Math.min($$1.d(), $$2.d());
+      int $$6 = Math.max($$1.c(), $$2.c());
+      int $$7 = Math.max($$1.d(), $$2.d());
+      if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
+         int $$8 = jb.a($$4);
+         int $$9 = jb.a($$5);
+         int $$10 = jb.a($$6);
+         int $$11 = jb.a($$7);
+         long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
+         if ($$12 > 256L) {
+            throw b.create(256, $$12);
+         } else {
+            aov $$13 = $$0.e();
+            aix<cvn> $$14 = $$13.ae();
+            cuu $$15 = null;
             int $$16 = 0;
-            alc.a $$17 = new alc.a();
 
-            for (int $$18 = 0; $$18 < $$9.length; $$18++) {
-               if ($$14 != $$18) {
-                  alc.a $$19 = $$9[$$18];
-                  double $$20 = $$15.a($$19);
-                  $$12 = Math.min($$20, $$12);
-                  if ($$20 < $$1) {
+            for (int $$17 = $$8; $$17 <= $$10; $$17++) {
+               for (int $$18 = $$9; $$18 <= $$11; $$18++) {
+                  boolean $$19 = $$13.a($$17, $$18, $$3);
+                  if ($$19) {
                      $$16++;
-                     $$17.a = $$17.a + ($$19.a - $$15.a);
-                     $$17.b = $$17.b + ($$19.b - $$15.b);
+                     if ($$15 == null) {
+                        $$15 = new cuu($$17, $$18);
+                     }
                   }
                }
             }
 
-            if ($$16 > 0) {
-               $$17.a /= (double)$$16;
-               $$17.b /= (double)$$16;
-               double $$21 = $$17.b();
-               if ($$21 > 0.0) {
-                  $$17.a();
-                  $$15.b($$17);
+            cuu $$20 = $$15;
+            if ($$16 == 0) {
+               throw ($$3 ? d : e).create();
+            } else {
+               if ($$16 == 1) {
+                  $$0.a(() -> vq.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", vq.a($$20), vq.a($$14.a())), true);
                } else {
-                  $$15.a($$3, $$4, $$5, $$6, $$7);
+                  cuu $$21 = new cuu($$8, $$9);
+                  cuu $$22 = new cuu($$10, $$11);
+                  $$0.a(() -> vq.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", vq.a($$20), vq.a($$14.a()), vq.a($$21), vq.a($$22)), true);
                }
 
-               $$11 = true;
-            }
-
-            if ($$15.a($$4, $$5, $$6, $$7)) {
-               $$11 = true;
+               return $$16;
             }
          }
-
-         if (!$$11) {
-            for (alc.a $$22 : $$9) {
-               if (!$$22.b($$2, $$8)) {
-                  $$22.a($$3, $$4, $$5, $$6, $$7);
-                  $$11 = true;
-               }
-            }
-         }
-      }
-
-      if ($$12 == Float.MAX_VALUE) {
-         $$12 = 0.0;
-      }
-
-      if ($$13 >= 10000) {
-         if ($$10) {
-            throw b.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
-         } else {
-            throw c.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
-         }
-      }
-   }
-
-   private static double a(Collection<? extends blw> $$0, ane $$1, alc.a[] $$2, int $$3, boolean $$4) {
-      double $$5 = 0.0;
-      int $$6 = 0;
-      Map<eni, alc.a> $$7 = Maps.newHashMap();
-
-      for (blw $$8 : $$0) {
-         alc.a $$10;
-         if ($$4) {
-            eni $$9 = $$8 instanceof cfq ? $$8.cg() : null;
-            if (!$$7.containsKey($$9)) {
-               $$7.put($$9, $$2[$$6++]);
-            }
-
-            $$10 = $$7.get($$9);
-         } else {
-            $$10 = $$2[$$6++];
-         }
-
-         $$8.a($$1, (double)aup.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)aup.a($$10.b) + 0.5, Set.of(), $$8.dB(), $$8.dD());
-         double $$12 = Double.MAX_VALUE;
-
-         for (alc.a $$13 : $$2) {
-            if ($$10 != $$13) {
-               double $$14 = $$10.a($$13);
-               $$12 = Math.min($$14, $$12);
-            }
-         }
-
-         $$5 += $$12;
-      }
-
-      return $$0.size() < 2 ? 0.0 : $$5 / (double)$$0.size();
-   }
-
-   private static alc.a[] a(auw $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
-      alc.a[] $$6 = new alc.a[$$1];
-
-      for (int $$7 = 0; $$7 < $$6.length; $$7++) {
-         alc.a $$8 = new alc.a();
-         $$8.a($$0, $$2, $$3, $$4, $$5);
-         $$6[$$7] = $$8;
-      }
-
-      return $$6;
-   }
-
-   static class a {
-      double a;
-      double b;
-
-      double a(alc.a $$0) {
-         double $$1 = this.a - $$0.a;
-         double $$2 = this.b - $$0.b;
-         return Math.sqrt($$1 * $$1 + $$2 * $$2);
-      }
-
-      void a() {
-         double $$0 = this.b();
-         this.a /= $$0;
-         this.b /= $$0;
-      }
-
-      double b() {
-         return Math.sqrt(this.a * this.a + this.b * this.b);
-      }
-
-      public void b(alc.a $$0) {
-         this.a = this.a - $$0.a;
-         this.b = this.b - $$0.b;
-      }
-
-      public boolean a(double $$0, double $$1, double $$2, double $$3) {
-         boolean $$4 = false;
-         if (this.a < $$0) {
-            this.a = $$0;
-            $$4 = true;
-         } else if (this.a > $$2) {
-            this.a = $$2;
-            $$4 = true;
-         }
-
-         if (this.b < $$1) {
-            this.b = $$1;
-            $$4 = true;
-         } else if (this.b > $$3) {
-            this.b = $$3;
-            $$4 = true;
-         }
-
-         return $$4;
-      }
-
-      public int a(ctd $$0, int $$1) {
-         hx.a $$2 = new hx.a(this.a, (double)($$1 + 1), this.b);
-         boolean $$3 = $$0.a_($$2).i();
-         $$2.c(ic.a);
-         boolean $$4 = $$0.a_($$2).i();
-
-         while ($$2.v() > $$0.J_()) {
-            $$2.c(ic.a);
-            boolean $$5 = $$0.a_($$2).i();
-            if (!$$5 && $$4 && $$3) {
-               return $$2.v() + 1;
-            }
-
-            $$3 = $$4;
-            $$4 = $$5;
-         }
-
-         return $$1 + 1;
-      }
-
-      public boolean b(ctd $$0, int $$1) {
-         hx $$2 = hx.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         djp $$3 = $$0.a_($$2);
-         return $$2.v() < $$1 && !$$3.k() && !$$3.a(asi.aJ);
-      }
-
-      public void a(auw $$0, double $$1, double $$2, double $$3, double $$4) {
-         this.a = aup.a($$0, $$1, $$3);
-         this.b = aup.a($$0, $$2, $$4);
+      } else {
+         throw fo.b.create();
       }
    }
 }

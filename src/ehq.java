@@ -1,20 +1,23 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+public class ehq implements ehr {
+   private final cvn b;
 
-@FunctionalInterface
-interface ehq {
-   ehq b = ($$0, $$1) -> false;
-   ehq c = ($$0, $$1) -> true;
-
-   boolean expand(ehf var1, Consumer<ehx> var2);
-
-   default ehq and(ehq $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   public ehq(cvn $$0) {
+      this.b = $$0;
    }
 
-   default ehq or(ehq $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   @Override
+   public void a(ie $$0, dlf $$1, hz $$2, hz $$3, int $$4, int $$5) {
+      ehr.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   }
+
+   @Override
+   public void a(hz $$0, cyo $$1, hz $$2) {
+      dlf $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
+   }
+
+   @Override
+   public void a(dlf $$0, hz $$1, cyo $$2, hz $$3, boolean $$4) {
+      ehr.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

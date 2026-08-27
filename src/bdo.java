@@ -1,32 +1,34 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class bdo extends bde {
-   public bdo(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bdo extends DataFix {
+   private final String a;
+   private final UnaryOperator<String> b;
+
+   public bdo(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bbw.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(bbw.x.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(bbw.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", bbw.z.in($$0))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(bbw.u.in($$0))))
-               )
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         this.getInputSchema().getType(bdn.c),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
             )
       );
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bew::a).map(this.b).map($$0::createString);
+      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
    }
 }

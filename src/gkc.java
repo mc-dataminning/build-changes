@@ -1,59 +1,58 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class gkc implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bgf d;
-   @Nullable
-   private CompletableFuture<Optional<gjy>> e;
-
-   private gkc(bgf $$0) {
-      this.d = $$0;
+public class gkc extends gjp {
+   public gkc(atj $$0, atl $$1, float $$2, float $$3, awo $$4, hz $$5) {
+      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
    }
 
-   public static CompletableFuture<Optional<gkc>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bgf $$1 = bgf.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new gkc($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
-         }
-      }, ac.f());
+   public static gkc a(atj $$0, float $$1) {
+      return a($$0, $$1, 0.25F);
    }
 
-   public CompletableFuture<Optional<gjz>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bgf.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new gjy($$1, ac.f()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ac.f());
-      }
-
-      return this.e.thenApply($$0 -> $$0.map(gjy::a));
+   public static gkc a(ij<atj> $$0, float $$1) {
+      return a($$0.a(), $$1);
    }
 
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(gjy::close));
-      }
+   public static gkc a(atj $$0, float $$1, float $$2) {
+      return new gkc($$0.a(), atl.a, $$2, $$1, gkh.t(), false, 0, gkh.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gkc a(atj $$0) {
+      return new gkc($$0.a(), atl.b, 1.0F, 1.0F, gkh.t(), false, 0, gkh.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gkc a(atj $$0, ens $$1) {
+      return new gkc($$0, atl.c, 4.0F, 1.0F, gkh.t(), false, 0, gkh.a.b, $$1.c, $$1.d, $$1.e);
+   }
+
+   public static gkc b(atj $$0, float $$1, float $$2) {
+      return new gkc($$0.a(), atl.i, $$2, $$1, gkh.t(), false, 0, gkh.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gkc b(atj $$0) {
+      return b($$0, 1.0F, 1.0F);
+   }
+
+   public static gkc a(atj $$0, awo $$1, double $$2, double $$3, double $$4) {
+      return new gkc($$0, atl.i, 1.0F, 1.0F, $$1, false, 0, gkh.a.b, $$2, $$3, $$4);
+   }
+
+   public gkc(atj $$0, atl $$1, float $$2, float $$3, awo $$4, double $$5, double $$6, double $$7) {
+      this($$0, $$1, $$2, $$3, $$4, false, 0, gkh.a.b, $$5, $$6, $$7);
+   }
+
+   private gkc(atj $$0, atl $$1, float $$2, float $$3, awo $$4, boolean $$5, int $$6, gkh.a $$7, double $$8, double $$9, double $$10) {
+      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   }
+
+   public gkc(aiy $$0, atl $$1, float $$2, float $$3, awo $$4, boolean $$5, int $$6, gkh.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
+      super($$0, $$1, $$4);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$8;
+      this.g = $$9;
+      this.h = $$10;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$11;
    }
 }

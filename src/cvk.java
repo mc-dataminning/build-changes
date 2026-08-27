@@ -1,89 +1,103 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class cvk {
-   public static final Codec<cvk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cvk.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ahf.c(ke.at)).apply($$0, cvk::new)
-   );
-   public static final Codec<ih<cvk>> b = ahd.a(ke.aL, a);
-   private final cvk.a c;
-   private final cvf.c<ih<cuw>> d;
+public enum cvk implements axc {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   public cvk(cvk.a $$0, ii<cuw> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
+   public static final cvk e = a;
+   public static final axc.a<cvk> f = axc.a(cvk::values);
+   private static final IntFunction<cvk> g = auz.a(cvk::a, values(), auz.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final vq k;
+   private final vq l;
+
+   private cvk(int $$0, String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = vq.c("selectWorld.gameMode." + $$1);
+      this.l = vq.c("gameMode." + $$1);
    }
 
-   public cvf.c<ih<cuw>> a() {
-      return this.d;
+   public int a() {
+      return this.i;
    }
 
-   public static Map<cvk.a, cvf.c<ahg<cuw>>> b() {
-      return cvk.a.f.values().stream().collect(Collectors.toMap($$0 -> (cvk.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
+   public String b() {
+      return this.j;
    }
 
-   public static record a(ahh d, cvk.a.a e) {
-      public static final cvk.a a = new cvk.a(
-         new ahh("nether"),
-         new cvk.a.a() {
-            @Override
-            public <T> cvf.c<T> apply(Function<ahg<cuw>, T> $$0) {
-               return new cvf.c<>(
-                  List.of(
-                     Pair.of(cvf.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cvd.ac)),
-                     Pair.of(cvf.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cvd.af)),
-                     Pair.of(cvf.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cvd.ae)),
-                     Pair.of(cvf.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cvd.ad)),
-                     Pair.of(cvf.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cvd.ag))
-                  )
-               );
-            }
-         }
-      );
-      public static final cvk.a b = new cvk.a(new ahh("overworld"), new cvk.a.a() {
-         @Override
-         public <T> cvf.c<T> apply(Function<ahg<cuw>, T> $$0) {
-            return cvk.a.a($$0);
-         }
-      });
-      static final Map<ahh, cvk.a> f = Stream.of(a, b).collect(Collectors.toMap(cvk.a::b, $$0 -> (cvk.a)$$0));
-      public static final Codec<cvk.a> c = ahh.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
-         );
+   @Override
+   public String c() {
+      return this.j;
+   }
 
-      static <T> cvf.c<T> a(Function<ahg<cuw>, T> $$0) {
-         Builder<Pair<cvf.d, T>> $$1 = ImmutableList.builder();
-         new cvm().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new cvf.c<>($$1.build());
+   public vq d() {
+      return this.l;
+   }
+
+   public vq e() {
+      return this.k;
+   }
+
+   public void a(che $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
       }
 
-      public Stream<ahg<cuw>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<ahg<cuw>>map(Pair::getSecond).distinct();
-      }
+      $$0.e = !this.f();
+   }
 
-      public ahh b() {
-         return this.d;
-      }
+   public boolean f() {
+      return this == c || this == d;
+   }
 
-      public cvk.a.a c() {
-         return this.e;
-      }
+   public boolean g() {
+      return this == b;
+   }
 
-      @FunctionalInterface
-      interface a {
-         <T> cvf.c<T> apply(Function<ahg<cuw>, T> var1);
-      }
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static cvk a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static cvk a(String $$0) {
+      return a($$0, a);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static cvk a(String $$0, @Nullable cvk $$1) {
+      cvk $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable cvk $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static cvk b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

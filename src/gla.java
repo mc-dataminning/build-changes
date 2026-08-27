@@ -1,94 +1,100 @@
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class gla {
-   static final Logger a = LogUtils.getLogger();
-   final fdm b;
-   volatile boolean c;
-   @Nullable
-   uh d;
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   public gla(fdm $$0) {
-      this.b = $$0;
-   }
+   public static class a extends Thread {
+      private final gla.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   public void a(final err $$0, fpr $$1) {
-      final evr $$2 = evr.O();
-      $$2.aR();
-      $$2.aW().c(vg.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
+      public a(gla.b $$0) throws IOException {
+         super("LanServerDetector #" + gla.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(gla.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
+      }
+
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
+
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
 
             try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (gla.this.c) {
-                  return;
-               }
-
-               gla.this.d = uh.a($$0, $$2.m.aw(), $$2.aN().l());
-               if (gla.this.c) {
-                  return;
-               }
-
-               fod $$1 = new fod(gla.this.d, $$2, $$0.e($$3), gla.this.b, false, null, $$0xx -> {
-               });
-               if ($$0.m == err.d.b) {
-                  $$1.a($$0.o);
-               }
-
-               if (gla.this.c) {
-                  return;
-               }
-
-               gla.this.d.a($$3, $$4, $$1);
-               if (gla.this.c) {
-                  return;
-               }
-
-               gla.this.d.a(new afv($$2.V().c(), $$2.V().b()));
-               $$2.a(fpf.a($$0));
-               $$2.ba().a(ftd.c.c, String.valueOf($$0.a), $$0.c);
-               $$2.ac().a(gla.this.d, ghu.c.b);
-            } catch (Exception var5) {
-               $$2.ac().i();
-               if (gla.this.c) {
-                  return;
-               }
-
-               gla.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               gkz $$5 = new gkz(gla.this.b, vf.q, vg.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               gla.b.error("Couldn't ping server", var6);
+               break;
             }
-         }
-      }).start();
-   }
 
-   public void a() {
-      this.c = true;
-      if (this.d != null && this.d.k()) {
-         this.d.a(vg.c("disconnect.genericReason"));
-         this.d.p();
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            gla.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
+         }
+
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
       }
    }
 
-   public void b() {
-      if (this.d != null) {
-         if (this.d.k()) {
-            this.d.d();
+   public static class b {
+      private final List<gkz> a = Lists.newArrayList();
+      private boolean b;
+
+      @Nullable
+      public synchronized List<gkz> a() {
+         if (this.b) {
+            List<gkz> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
          } else {
-            this.d.p();
+            return null;
+         }
+      }
+
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = glb.a($$0);
+         String $$3 = glb.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
+
+            for (gkz $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
+            }
+
+            if (!$$4) {
+               this.a.add(new gkz($$2, $$3));
+               this.b = true;
+            }
          }
       }
    }

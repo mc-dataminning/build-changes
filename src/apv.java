@@ -1,33 +1,68 @@
-import java.util.function.UnaryOperator;
+import net.minecraft.server.MinecraftServer;
 
-public interface apv {
-   UnaryOperator<vg> a = UnaryOperator.identity();
-   apv b = a(a, true);
-   apv c = a(a("pack.source.builtin"), true);
-   apv d = a(a("pack.source.feature"), false);
-   apv e = a(a("pack.source.world"), true);
-   apv f = a(a("pack.source.server"), true);
+public class apv implements agu {
+   private static final vq a = vq.c("disconnect.ignoring_status_request");
+   private final MinecraftServer b;
+   private final uo c;
 
-   vg a(vg var1);
-
-   boolean a();
-
-   static apv a(final UnaryOperator<vg> $$0, final boolean $$1) {
-      return new apv() {
-         @Override
-         public vg a(vg $$0x) {
-            return $$0.apply($$0);
-         }
-
-         @Override
-         public boolean a() {
-            return $$1;
-         }
-      };
+   public apv(MinecraftServer $$0, uo $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static UnaryOperator<vg> a(String $$0) {
-      vg $$1 = vg.c($$0);
-      return $$1x -> vg.a("pack.nameAndSource", $$1x, $$1).a(n.h);
+   @Override
+   public void a(agr $$0) {
+      switch ($$0.g()) {
+         case b:
+            this.a($$0, false);
+            break;
+         case a:
+            ahy $$1 = this.b.as();
+            this.c.a(aic.b);
+            if (this.b.ak() && $$1 != null) {
+               this.c.a(aic.a, new apy($$1, this.c));
+            } else {
+               this.c.a(a);
+            }
+            break;
+         case c:
+            if (!this.b.bk()) {
+               this.c.a(ahd.b);
+               vq $$2 = vq.c("multiplayer.disconnect.transfers_disabled");
+               this.c.a(new ahb($$2));
+               this.c.a($$2);
+            } else {
+               this.a($$0, true);
+            }
+            break;
+         default:
+            throw new UnsupportedOperationException("Invalid intention " + $$0.g());
+      }
+   }
+
+   private void a(agr $$0, boolean $$1) {
+      this.c.a(ahd.b);
+      if ($$0.b() != aa.b().e()) {
+         vq $$2;
+         if ($$0.b() < 754) {
+            $$2 = vq.a("multiplayer.disconnect.outdated_client", aa.b().c());
+         } else {
+            $$2 = vq.a("multiplayer.disconnect.incompatible", aa.b().c());
+         }
+
+         this.c.a(new ahb($$2));
+         this.c.a($$2);
+      } else {
+         this.c.a(ahd.a, new apw(this.b, this.c, $$1));
+      }
+   }
+
+   @Override
+   public void a(vq $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.i();
    }
 }

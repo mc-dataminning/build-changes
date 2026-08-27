@@ -1,58 +1,25 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public interface ezm extends ezb {
-   long s = 250L;
+public class ezm {
+   private static final avt a = avt.codepoint(32, wn.a);
 
-   default void f(double $$0, double $$1) {
+   private static String a(String $$0) {
+      return exh.O().m.I().c() ? $$0 : n.a($$0);
    }
 
-   default boolean a(double $$0, double $$1, int $$2) {
-      return false;
-   }
-
-   default boolean b(double $$0, double $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return false;
-   }
-
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return false;
-   }
-
-   default boolean a(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean b(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(char $$0, int $$1) {
-      return false;
-   }
-
-   @Nullable
-   default exb a(fbq $$0) {
-      return null;
-   }
-
-   default boolean c(double $$0, double $$1) {
-      return false;
-   }
-
-   void a(boolean var1);
-
-   boolean aK_();
-
-   @Nullable
-   default exb aL_() {
-      return this.aK_() ? exb.a(this) : null;
-   }
-
-   default fbu F() {
-      return fbu.a();
+   public static List<avt> a(vv $$0, int $$1, eys $$2) {
+      ewx $$3 = new ewx();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(vv.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, wn.a);
+      List<avt> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, wn.a, ($$1x, $$2x) -> {
+         avt $$3x = sr.a().a($$1x);
+         $$4.add($$2x ? avt.composite(a, $$3x) : $$3x);
+      });
+      return (List<avt>)($$4.isEmpty() ? Lists.newArrayList(new avt[]{avt.a}) : $$4);
    }
 }

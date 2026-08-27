@@ -1,50 +1,71 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ffb {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<ahh> e = List.of();
-   private int f;
-   private int g;
+public class ffb extends ffe implements awn {
+   @Nullable
+   private vq a;
+   @Nullable
+   private vq b;
+   private int c;
+   private boolean k;
+   private final boolean l;
 
-   public ffb(int $$0) {
-      this.d = $$0;
+   public ffb(boolean $$0) {
+      super(ewz.a);
+      this.l = $$0;
    }
 
-   public void a(List<ahh> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
-
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
-      }
+   @Override
+   public boolean aO_() {
+      return false;
    }
 
-   public void a(cij $$0, exe $$1, float $$2, int $$3, int $$4) {
-      cke $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+   @Override
+   protected boolean aP_() {
+      return false;
+   }
+
+   @Override
+   public void a(vq $$0) {
+      this.b($$0);
+   }
+
+   @Override
+   public void b(vq $$0) {
+      this.a = $$0;
+      this.c(vq.c("menu.working"));
+   }
+
+   @Override
+   public void c(vq $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.k = true;
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (this.l) {
+            this.f.a(null);
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
          }
 
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.i, vq.i().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
+         }
       }
-   }
-
-   private void a(cke $$0, ahh $$1, float $$2, exe $$3, int $$4, int $$5) {
-      gfb $$6 = evr.O().a(gfa.e).apply($$1);
-      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
-   }
-
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

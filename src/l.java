@@ -6,12 +6,12 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public class l {
-   public static l.a a(hx $$0, ic.a $$1, int $$2, ic.a $$3, int $$4, Predicate<hx> $$5) {
-      hx.a $$6 = $$0.j();
-      ic $$7 = ic.a(ic.b.b, $$1);
-      ic $$8 = $$7.g();
-      ic $$9 = ic.a(ic.b.b, $$3);
-      ic $$10 = $$9.g();
+   public static l.a a(hz $$0, ie.a $$1, int $$2, ie.a $$3, int $$4, Predicate<hz> $$5) {
+      hz.a $$6 = $$0.j();
+      ie $$7 = ie.a(ie.b.b, $$1);
+      ie $$8 = $$7.g();
+      ie $$9 = ie.a(ie.b.b, $$3);
+      ie $$10 = $$9.g();
       int $$11 = a($$5, $$6.g($$0), $$7, $$2);
       int $$12 = a($$5, $$6.g($$0), $$8, $$2);
       int $$13 = $$11;
@@ -58,7 +58,7 @@ public class l {
       return new l.a($$0.a($$1, $$20 - $$13).a($$3, $$21 - $$15), $$22, $$23);
    }
 
-   private static int a(Predicate<hx> $$0, hx.a $$1, ic $$2, int $$3) {
+   private static int a(Predicate<hz> $$0, hz.a $$1, ie $$2, int $$3) {
       int $$4 = 0;
 
       while ($$4 < $$3 && $$0.test($$1.c($$2))) {
@@ -103,10 +103,10 @@ public class l {
       return new Pair(new l.b($$1, $$2 - 1), $$3);
    }
 
-   public static Optional<hx> a(ctd $$0, hx $$1, cwy $$2, ic $$3, cwy $$4) {
-      hx.a $$5 = $$1.j();
+   public static Optional<hz> a(cut $$0, hz $$1, cyo $$2, ie $$3, cyo $$4) {
+      hz.a $$5 = $$1.j();
 
-      djp $$6;
+      dlf $$6;
       do {
          $$5.c($$3);
          $$6 = $$0.a_($$5);
@@ -116,11 +116,11 @@ public class l {
    }
 
    public static class a {
-      public final hx a;
+      public final hz a;
       public final int b;
       public final int c;
 
-      public a(hx $$0, int $$1, int $$2) {
+      public a(hz $$0, int $$1, int $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

@@ -1,75 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+public class gfg extends gfe<cap, fnr<cap>> {
+   private static final aiy a = new aiy("textures/entity/sheep/sheep_fur.png");
+   private final fnq<cap> b;
 
-public class gfg {
-   private static final Logger a = LogUtils.getLogger();
-   private static final aha b = new aha("atlases", ".json");
-   private final List<gff> c;
-
-   private gfg(List<gff> $$0) {
-      this.c = $$0;
+   public gfg(gco<cap, fnr<cap>> $$0, foy $$1) {
+      super($$0);
+      this.b = new fnq<>($$1.a(fpb.be));
    }
 
-   public List<Function<gfe, gev>> a(aqj $$0) {
-      final Map<ahh, gff.b> $$1 = new HashMap<>();
-      gff.a $$2 = new gff.a() {
-         @Override
-         public void a(ahh $$0, gff.b $$1x) {
-            gff.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
+   public void a(esa $$0, fvm $$1, int $$2, cap $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.A()) {
+         if ($$3.ce()) {
+            exh $$10 = exh.O();
+            boolean $$11 = $$10.b($$3);
+            if ($$11) {
+               this.c().a(this.b);
+               this.b.a($$3, $$4, $$5, $$6);
+               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+               ese $$12 = $$1.getBuffer(fvu.r(a));
+               this.b.a($$0, $$12, $$2, gbu.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
             }
-         }
-
-         @Override
-         public void a(Predicate<ahh> $$0) {
-            Iterator<Entry<ahh, gff.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<ahh, gff.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
+         } else {
+            float $$21;
+            float $$22;
+            float $$23;
+            if ($$3.ae() && "jeb_".equals($$3.ad().getString())) {
+               int $$13 = 25;
+               int $$14 = $$3.ag / 25 + $$3.aj();
+               int $$15 = cnn.values().length;
+               int $$16 = $$14 % $$15;
+               int $$17 = ($$14 + 1) % $$15;
+               float $$18 = ((float)($$3.ag % 25) + $$6) / 25.0F;
+               float[] $$19 = cap.a(cnn.a($$16));
+               float[] $$20 = cap.a(cnn.a($$17));
+               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
+               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
+               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
+            } else {
+               float[] $$24 = cap.a($$3.w());
+               $$21 = $$24[0];
+               $$22 = $$24[1];
+               $$23 = $$24[2];
             }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<gfe, gev>> $$3 = ImmutableList.builder();
-      $$3.add((Function<gfe, gev>)$$0x -> ger.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
-   }
 
-   public static gfg a(aqj $$0, ahh $$1) {
-      ahh $$2 = b.a($$1);
-      List<gff> $$3 = new ArrayList<>();
-
-      for (aqh $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends gff>)gfi.h.parse($$6).getOrThrow(false, a::error));
-         } catch (Exception var11) {
-            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
          }
       }
-
-      return new gfg($$3);
    }
 }

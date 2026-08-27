@@ -1,54 +1,58 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class dtc extends dsc<duv> {
-   public dtc(Codec<duv> $$0) {
+public class dtc extends dts<dwd> {
+   public dtc(Codec<dwd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dse<duv> $$0) {
-      duv $$1 = $$0.f();
-      cus $$2 = $$0.b();
-      auw $$3 = $$0.d();
-      cwy $$4 = $$1.b.b();
-      hx $$5 = a($$2, $$0.e().j().a(ic.a.b, $$2.J_() + 1, $$2.al() - 1), $$4);
-      if ($$5 == null) {
+   public boolean a(dtu<dwd> $$0) {
+      hz $$1 = $$0.e();
+      cwi $$2 = $$0.b();
+      awo $$3 = $$0.d();
+      if ($$1.v() > $$2.A_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(cyq.G) && !$$2.a_($$1.d()).a(cyq.G)) {
          return false;
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+         boolean $$4 = false;
 
-         for (hx $$11 : hx.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
+         for (ie $$5 : ie.values()) {
+            if ($$5 != ie.a && $$2.a_($$1.a($$5)).a(cyq.iC)) {
+               $$4 = true;
                break;
             }
+         }
 
-            djp $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, cyq.mW.o(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  hz $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dlf $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(cyq.G) || $$10.a(cyq.iC) || $$10.a(cyq.dO)) {
+                     for (ie $$11 : ie.values()) {
+                        dlf $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(cyq.mW)) {
+                           $$2.a($$9, cyq.mW.o(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
             }
+
+            return true;
          }
-
-         return $$10;
       }
-   }
-
-   @Nullable
-   private static hx a(cty $$0, hx.a $$1, cwy $$2) {
-      while ($$1.v() > $$0.J_() + 1) {
-         djp $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(ic.a);
-      }
-
-      return null;
    }
 }

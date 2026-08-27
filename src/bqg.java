@@ -1,33 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
+public class bqg implements bpx<bog> {
+   private final int a;
+   private final int b;
+   private bpw.a c = bpw.a.a;
+   private long d;
 
-public class bqg {
-   private static final int a = 300;
+   public bqg(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   public static bog<bmo> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return brs.a(
-         (Function<brs.b<bmo>, ? extends App<brs.c<bmo>, brv<bmo>>>)($$3x -> $$3x.group($$3x.b(bvq.C), $$3x.b(bvq.D))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        hx $$11 = $$3x.<ig>b($$4).b();
-                        if ($$11.a($$7.dl(), (double)$$1)) {
-                           $$3.increment();
-                        }
+   @Override
+   public bpw.a a() {
+      return this.c;
+   }
 
-                        return true;
-                     } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.dN().a($$6.Y(), $$6.X());
-                        $$3.setValue(0);
-                        return true;
-                     }
-                  }))
-      );
+   @Override
+   public final boolean e(aov $$0, bog $$1, long $$2) {
+      this.c = bpw.a.b;
+      int $$3 = this.a + $$0.F_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
+   }
+
+   @Override
+   public final void f(aov $$0, bog $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(aov $$0, bog $$1, long $$2) {
+      this.c = bpw.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

@@ -1,166 +1,167 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class evp implements Comparable<evp> {
-   private static final Map<String, evp> h = Maps.newHashMap();
-   private static final Map<epf.a, evp> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final epf.a m;
-   private final String n;
-   private epf.a o;
-   private boolean p;
-   private int q;
+public class evp {
+   static final Logger a = LogUtils.getLogger();
+   final Executor b;
+   final TimeUnit c;
+   final axg d;
 
-   public static void a(epf.a $$0) {
-      evp $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public evp(Executor $$0, TimeUnit $$1, axg $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static void a(epf.a $$0, boolean $$1) {
-      evp $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   public static void a() {
-      for (evp $$0 : h.values()) {
-         if ($$0.o.a() == epf.b.a && $$0.o.b() != epf.bv.b()) {
-            $$0.a(epf.a(evr.O().aM().i(), $$0.o.b()));
-         }
-      }
-   }
-
-   public static void b() {
-      for (evp $$0 : h.values()) {
-         $$0.n();
-      }
-   }
-
-   public static void c() {
-      for (evp $$0 : h.values()) {
-         if ($$0 instanceof ewf $$1) {
-            $$1.n();
-         }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (evp $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public evp(String $$0, int $$1, String $$2) {
-      this($$0, epf.b.a, $$1, $$2);
-   }
-
-   public evp(String $$0, epf.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
+   public <T> evp.e<T> a(String $$0, Callable<T> $$1, Duration $$2, evq $$3) {
+      long $$4 = this.c.convert($$2);
+      if ($$4 == 0L) {
+         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
       } else {
-         this.q--;
-         return true;
+         return new evp.e<>($$0, $$1, $$4, $$3);
       }
    }
 
-   private void n() {
-      this.q = 0;
-      this.a(false);
+   public evp.c a() {
+      return new evp.c();
    }
 
-   public String h() {
-      return this.l;
+   static record a<T>(Either<T, Exception> a, long b) {
    }
 
-   public epf.a i() {
-      return this.m;
+   class b<T> {
+      private final evp.e<T> b;
+      private final Consumer<T> c;
+      private long d = -1L;
+
+      b(evp.e<T> $$0, Consumer<T> $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      void a(long $$0) {
+         this.b.a($$0);
+         this.a();
+      }
+
+      void a() {
+         evp.d<T> $$0 = this.b.g;
+         if ($$0 != null && this.d < $$0.b) {
+            this.c.accept($$0.a);
+            this.d = $$0.b;
+         }
+      }
+
+      void b() {
+         evp.d<T> $$0 = this.b.g;
+         if ($$0 != null) {
+            this.c.accept($$0.a);
+            this.d = $$0.b;
+         }
+      }
+
+      void c() {
+         this.b.a();
+         this.d = -1L;
+      }
    }
 
-   public void b(epf.a $$0) {
-      this.o = $$0;
+   public class c {
+      private final List<evp.b<?>> b = new ArrayList<>();
+
+      public <T> void a(evp.e<T> $$0, Consumer<T> $$1) {
+         evp.b<T> $$2 = evp.this.new b<>($$0, $$1);
+         this.b.add($$2);
+         $$2.a();
+      }
+
+      public void a() {
+         for (evp.b<?> $$0 : this.b) {
+            $$0.b();
+         }
+      }
+
+      public void b() {
+         for (evp.b<?> $$0 : this.b) {
+            $$0.a(evp.this.d.get(evp.this.c));
+         }
+      }
+
+      public void c() {
+         for (evp.b<?> $$0 : this.b) {
+            $$0.c();
+         }
+      }
    }
 
-   public int a(evp $$0) {
-      return this.n.equals($$0.n) ? ggg.a(this.l).compareTo(ggg.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   static record d<T>(T a, long b) {
    }
 
-   public static Supplier<vg> a(String $$0) {
-      evp $$1 = h.get($$0);
-      return $$1 == null ? () -> vg.c($$0) : $$1::k;
-   }
+   public class e<T> {
+      private final String b;
+      private final Callable<T> c;
+      private final long d;
+      private final evq e;
+      @Nullable
+      private CompletableFuture<evp.a<T>> f;
+      @Nullable
+      evp.d<T> g;
+      private long h = -1L;
 
-   public boolean b(evp $$0) {
-      return this.o.equals($$0.o);
-   }
+      e(String $$1, Callable<T> $$2, long $$3, evq $$4) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
 
-   public boolean j() {
-      return this.o.equals(epf.bv);
-   }
+      void a(long $$0) {
+         if (this.f != null) {
+            evp.a<T> $$1 = this.f.getNow(null);
+            if ($$1 == null) {
+               return;
+            }
 
-   public boolean a(int $$0, int $$1) {
-      return $$0 == epf.bv.b() ? this.o.a() == epf.b.b && this.o.b() == $$1 : this.o.a() == epf.b.a && this.o.b() == $$0;
-   }
+            this.f = null;
+            long $$2 = $$1.b;
+            $$1.a().ifLeft($$1x -> {
+               this.g = new evp.d<>((T)$$1x, $$2);
+               this.h = $$2 + this.d * this.e.a();
+            }).ifRight($$1x -> {
+               long $$2x = this.e.b();
+               evp.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
+               this.h = $$2 + this.d * $$2x;
+            });
+         }
 
-   public boolean a(int $$0) {
-      return this.o.a() == epf.b.c && this.o.b() == $$0;
-   }
+         if (this.h <= $$0) {
+            this.f = CompletableFuture.supplyAsync(() -> {
+               try {
+                  T $$0x = this.c.call();
+                  long $$1x = evp.this.d.get(evp.this.c);
+                  return new evp.a<>(Either.left($$0x), $$1x);
+               } catch (Exception var4x) {
+                  long $$3 = evp.this.d.get(evp.this.c);
+                  return new evp.a<>(Either.right(var4x), $$3);
+               }
+            }, evp.this.b);
+         }
+      }
 
-   public vg k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
+      public void a() {
+         this.f = null;
+         this.g = null;
+         this.h = -1L;
+      }
    }
 }

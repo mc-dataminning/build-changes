@@ -1,28 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+public class wq extends Exception {
+   private final vq a;
 
-public record wq(ahh d) implements wi {
-   public static final MapCodec<wq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ahh.a.fieldOf("storage").forGetter(wq::b)).apply($$0, wq::new));
-   public static final wi.a<wq> b = new wi.a<>(a, "storage");
-
-   @Override
-   public Stream<so> a(ds $$0) {
-      so $$1 = $$0.l().aI().a(this.d);
-      return Stream.of($$1);
+   public wq(vq $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   @Override
-   public wi.a<?> a() {
-      return b;
+   public wq(vq $$0, Throwable $$1) {
+      super($$0.getString(), $$1);
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return "storage=" + this.d;
-   }
-
-   public ahh b() {
-      return this.d;
+   public vq b() {
+      return this.a;
    }
 }

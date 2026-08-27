@@ -1,81 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bqp extends bof<bmo> {
-   public static final int c = 100;
-   private long d;
-
-   public bqp() {
-      super(ImmutableMap.of(bvq.b, bvr.a, bvq.I, bvr.c));
+public class bqp {
+   private static hz a(boi $$0, hz $$1) {
+      awo $$2 = $$0.dM().z;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   @Override
-   protected boolean a(ane $$0, bmo $$1) {
-      if ($$1.bO()) {
-         return false;
-      } else {
-         bno<?> $$2 = $$1.dN();
-         ig $$3 = $$2.c(bvq.b).get();
-         if ($$0.ae() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(bvq.I);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.X() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
-
-            djp $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.dj(), 2.0) && $$6.a(asi.R) && !$$6.c(cwr.c);
-         }
-      }
+   private static int a(awo $$0) {
+      return $$0.a(3) - 1;
    }
 
-   @Override
-   protected boolean a(ane $$0, bmo $$1, long $$2) {
-      Optional<ig> $$3 = $$1.dN().c(bvq.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         hx $$4 = $$3.get().b();
-         return $$1.dN().c(chc.e) && $$1.ds() > (double)$$4.v() + 0.4 && $$4.a($$1.dj(), 1.14);
-      }
-   }
+   public static <E extends boi> brh<E> a(bxh<hz> $$0, int $$1, float $$2) {
+      return btj.a(
+         (Function<btj.b<E>, ? extends App<btj.c<E>, btm<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(bxh.o), $$3.c(bxh.m), $$3.a(bxh.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     hz $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dm(), (double)$$1);
+                     if (!$$8) {
+                        bpy.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
 
-   @Override
-   protected void d(ane $$0, bmo $$1, long $$2) {
-      if ($$2 > this.d) {
-         bno<?> $$3 = $$1.dN();
-         if ($$3.a(bvq.v)) {
-            Set<ig> $$4 = $$3.c(bvq.v).get();
-            Optional<List<bmo>> $$5;
-            if ($$3.a(bvq.g)) {
-               $$5 = $$3.c(bvq.g);
-            } else {
-               $$5 = Optional.empty();
-            }
-
-            bpd.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.dN().c(bvq.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(ane $$0, bmo $$1, long $$2) {
-      if ($$1.fD()) {
-         $$1.fE();
-         this.d = $$2 + 40L;
-      }
+                     return true;
+                  }))
+      );
    }
 }

@@ -1,44 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.Collections;
 
 public class ale {
-   public static void a(CommandDispatcher<ds> $$0) {
-      RequiredArgumentBuilder<ds, ge> $$1 = (RequiredArgumentBuilder<ds, ge>)((RequiredArgumentBuilder)dt.a("targets", ef.d())
-            .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), null, null)))
-         .then(dt.a("*").then(dt.a("sound", et.a()).suggests(hn.c).executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), null, et.e($$0x, "sound")))));
+   public static final int a = 2;
 
-      for (aru $$2 : aru.values()) {
-         $$1.then(
-            ((LiteralArgumentBuilder)dt.a($$2.a()).executes($$1x -> a((ds)$$1x.getSource(), ef.f($$1x, "targets"), $$2, null)))
-               .then(dt.a("sound", et.a()).suggests(hn.c).executes($$1x -> a((ds)$$1x.getSource(), ef.f($$1x, "targets"), $$2, et.e($$1x, "sound"))))
-         );
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("gamemode", ei.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((du)$$0x.getSource()).h()), ei.a($$0x, "gamemode"))))
+                  .then(dv.a("target", eh.d()).executes($$0x -> a($$0x, eh.f($$0x, "target"), ei.a($$0x, "gamemode"))))
+            )
+      );
    }
 
-   private static int a(ds $$0, Collection<anf> $$1, @Nullable aru $$2, @Nullable ahh $$3) {
-      acv $$4 = new acv($$3, $$2);
-
-      for (anf $$5 : $$1) {
-         $$5.c.b($$4);
-      }
-
-      if ($$2 != null) {
-         if ($$3 != null) {
-            $$0.a(() -> vg.a("commands.stopsound.success.source.sound", vg.a($$3), $$2.a()), true);
-         } else {
-            $$0.a(() -> vg.a("commands.stopsound.success.source.any", $$2.a()), true);
-         }
-      } else if ($$3 != null) {
-         $$0.a(() -> vg.a("commands.stopsound.success.sourceless.sound", vg.a($$3)), true);
+   private static void a(du $$0, aow $$1, cvk $$2) {
+      vq $$3 = vq.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> vq.a("commands.gamemode.success.self", $$3), true);
       } else {
-         $$0.a(() -> vg.c("commands.stopsound.success.sourceless.any"), true);
+         if ($$0.e().Z().b(cvj.p)) {
+            $$1.a(vq.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> vq.a("commands.gamemode.success.other", $$1.Q_(), $$3), true);
+      }
+   }
+
+   private static int a(CommandContext<du> $$0, Collection<aow> $$1, cvk $$2) {
+      int $$3 = 0;
+
+      for (aow $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((du)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
       }
 
-      return $$1.size();
+      return $$3;
    }
 }

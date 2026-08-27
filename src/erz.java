@@ -1,23 +1,21 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Set;
+public abstract class erz implements ese {
+   protected boolean a;
+   protected int b = 255;
+   protected int c = 255;
+   protected int d = 255;
+   protected int e = 255;
 
-public class erz extends esg implements esa {
-   @SerializedName("seed")
-   private final String a;
-   @SerializedName("worldTemplateId")
-   private final long b;
-   @SerializedName("levelType")
-   private final int c;
-   @SerializedName("generateStructures")
-   private final boolean d;
-   @SerializedName("experiments")
-   private final Set<String> e;
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.a = true;
+   }
 
-   public erz(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   @Override
+   public void l() {
+      this.a = false;
    }
 }

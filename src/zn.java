@@ -1,32 +1,29 @@
-public class zn implements xg<zb> {
-   private final bjz a;
-   private final boolean b;
+import java.util.HashSet;
+import java.util.Set;
 
-   public zn(bjz $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public record zn(Set<jb> c, Set<jb> d) implements yy {
+   public static final xo<uq, zn> a = yy.a(zn::a, zn::new);
+   public static final yy.b<zn> b = yy.a("debug/village_sections");
+
+   private zn(uq $$0) {
+      this($$0.a(HashSet::new, uq::g), $$0.a(HashSet::new, uq::g));
    }
 
-   public zn(uj $$0) {
-      this.a = bjz.a($$0.readUnsignedByte());
-      this.b = $$0.readBoolean();
+   private void a(uq $$0) {
+      $$0.a(this.c, uq::a);
+      $$0.a(this.d, uq::a);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.k(this.a.a());
-      $$0.a(this.b);
+   public yy.b<zn> a() {
+      return b;
    }
 
-   public void a(zb $$0) {
-      $$0.a(this);
+   public Set<jb> b() {
+      return this.c;
    }
 
-   public boolean a() {
-      return this.b;
-   }
-
-   public bjz d() {
-      return this.a;
+   public Set<jb> c() {
+      return this.d;
    }
 }

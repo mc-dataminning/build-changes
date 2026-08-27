@@ -1,43 +1,28 @@
-public class esz extends gld {
-   private static final vg a = vg.c("mco.client.incompatible.title");
-   private static final vg[] b = new vg[]{
-      vg.c("mco.client.incompatible.msg.line1"), vg.c("mco.client.incompatible.msg.line2"), vg.c("mco.client.incompatible.msg.line3")
-   };
-   private static final vg[] c = new vg[]{vg.c("mco.client.incompatible.msg.line1"), vg.c("mco.client.incompatible.msg.line2")};
-   private final fdm v;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.Set;
 
-   public esz(fdm $$0) {
-      super(a);
-      this.v = $$0;
-   }
+public class esz extends etw {
+   public Set<String> a = Sets.newHashSet();
 
-   @Override
-   public void aP_() {
-      this.d(exr.a(vf.k, $$0 -> this.f.a(this.v)).a(this.g / 2 - 100, g(12), 200, 20).a());
-   }
+   public static esz a(String $$0) {
+      esz $$1 = new esz();
+      JsonParser $$2 = new JsonParser();
 
-   @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, g(3), -65536);
-      vg[] $$4 = this.E();
-
-      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-         $$0.a(this.i, $$4[$$5], this.g / 2, g(5) + $$5 * 12, -1);
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         JsonElement $$5 = $$4.get("ops");
+         if ($$5.isJsonArray()) {
+            for (JsonElement $$6 : $$5.getAsJsonArray()) {
+               $$1.a.add($$6.getAsString());
+            }
+         }
+      } catch (Exception var8) {
       }
-   }
 
-   private vg[] E() {
-      return aa.b().g() ? c : b;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.f.a(this.v);
-         return true;
-      }
+      return $$1;
    }
 }

@@ -1,28 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class ebn extends dzo {
-   public static final Codec<ebn> d = a(ebn::new);
+public interface ebn<S extends ebe> {
+   ebn<ecx> a = a("buried_treasure", ecx.d);
+   ebn<ecz> b = a("desert_pyramid", ecz.d);
+   ebn<edb> c = a("end_city", edb.d);
+   ebn<edk> d = a("fortress", edk.e);
+   ebn<edd> e = a("igloo", edd.d);
+   ebn<ede> f = a("jigsaw", ede.f);
+   ebn<edg> g = a("jungle_temple", edg.d);
+   ebn<edi> h = a("mineshaft", edi.d);
+   ebn<edm> i = a("nether_fossil", edm.d);
+   ebn<edo> j = a("ocean_monument", edo.d);
+   ebn<edq> k = a("ocean_ruin", edq.d);
+   ebn<eds> l = a("ruined_portal", eds.d);
+   ebn<edu> m = a("shipwreck", edu.d);
+   ebn<edw> n = a("stronghold", edw.d);
+   ebn<edy> o = a("swamp_hut", edy.d);
+   ebn<eea> p = a("woodland_mansion", eea.d);
 
-   public ebn(dzo.c $$0) {
-      super($$0);
-   }
+   Codec<S> codec();
 
-   @Override
-   public Optional<dzo.b> a(dzo.a $$0) {
-      return a($$0, doy.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(eag $$0, dzo.a $$1) {
-      cte $$2 = $$1.h();
-      dpx $$3 = $$1.f();
-      hx $$4 = new hx($$2.d(), 90, $$2.e());
-      ddk $$5 = ddk.a($$3);
-      ebm.a($$1.e(), $$4, $$5, $$0, $$3);
-   }
-
-   @Override
-   public dzx<?> e() {
-      return dzx.e;
+   private static <S extends ebe> ebn<S> a(String $$0, Codec<S> $$1) {
+      return iv.a(kf.T, $$0, () -> $$1);
    }
 }

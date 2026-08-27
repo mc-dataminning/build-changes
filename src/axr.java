@@ -1,86 +1,40 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.function.Function;
 
 public class axr extends DataFix {
-   private static final int a = 16;
-
-   public axr(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public axr(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "ChunkToProtoChunkFix", this.getInputSchema().getType(bbw.c), this.getOutputSchema().getType(bbw.c), $$0 -> $$0.update("Level", axr::a)
-      );
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(bdn.y), this::a);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("TerrainPopulated").asBoolean(false);
-      boolean $$2 = $$0.get("LightPopulated").asNumber().result().isEmpty() || $$0.get("LightPopulated").asBoolean(false);
-      String $$3;
-      if ($$1) {
-         if ($$2) {
-            $$3 = "mobs_spawned";
-         } else {
-            $$3 = "decorated";
-         }
+   private Typed<?> a(Typed<?> $$0) {
+      $$0 = this.a($$0, "minecraft:arrow", axr::a);
+      $$0 = this.a($$0, "minecraft:spectral_arrow", axr::a);
+      return this.a($$0, "minecraft:trident", axr::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("pickup").result().isPresent()) {
+         return $$0;
       } else {
-         $$3 = "carved";
+         boolean $$1 = $$0.get("player").asBoolean(true);
+         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
       }
-
-      return c(b($$0)).set("Status", $$0.createString($$3)).set("hasLegacyStructureData", $$0.createBoolean(true));
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.update("Biomes", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asByteBufferOpt().result().map($$1x -> {
-            int[] $$2 = new int[256];
-
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               if ($$3 < $$1x.capacity()) {
-                  $$2[$$3] = $$1x.get($$3) & 255;
-               }
-            }
-
-            return $$0.createIntList(Arrays.stream($$2));
-         }), $$1));
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse(
-         $$0.get("TileTicks")
-            .asStreamOpt()
-            .result()
-            .map(
-               $$1 -> {
-                  List<ShortList> $$2 = IntStream.range(0, 16).mapToObj($$0xx -> new ShortArrayList()).collect(Collectors.toList());
-                  $$1.forEach($$1x -> {
-                     int $$2x = $$1x.get("x").asInt(0);
-                     int $$3 = $$1x.get("y").asInt(0);
-                     int $$4 = $$1x.get("z").asInt(0);
-                     short $$5 = a($$2x, $$3, $$4);
-                     $$2.get($$3 >> 4).add($$5);
-                  });
-                  return $$0.remove("TileTicks")
-                     .set(
-                        "ToBeTicked",
-                        $$0.createList($$2.stream().map($$1x -> $$0.createList($$1x.intStream().mapToObj($$1xx -> $$0.createShort((short)$$1xx)))))
-                     );
-               }
-            ),
-         $$0
-      );
-   }
-
-   private static short a(int $$0, int $$1, int $$2) {
-      return (short)($$0 & 15 | ($$1 & 15) << 4 | ($$2 & 15) << 8);
+   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bdn.y, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(bdn.y, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

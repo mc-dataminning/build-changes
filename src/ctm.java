@@ -1,31 +1,20 @@
-import javax.annotation.Nullable;
-
-public enum ctm implements ctd {
-   a;
-
-   @Nullable
-   @Override
-   public dhd c_(hx $$0) {
-      return null;
+public class ctm extends cti {
+   protected ctm(cti.a $$0, bnv... $$1) {
+      super($$0, auh.bf, $$1);
    }
 
    @Override
-   public djp a_(hx $$0) {
-      return cxa.a.o();
+   public int a(int $$0) {
+      return 10 + 20 * ($$0 - 1);
    }
 
    @Override
-   public eez b_(hx $$0) {
-      return efa.a.g();
+   public int b(int $$0) {
+      return super.a($$0) + 50;
    }
 
    @Override
-   public int J_() {
-      return 0;
-   }
-
-   @Override
-   public int K_() {
-      return 0;
+   public int a() {
+      return 2;
    }
 }

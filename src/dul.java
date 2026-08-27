@@ -1,62 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 
-public class dul implements dug {
-   public static final Codec<dul> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kd.e.q().fieldOf("block").flatXmap(dul::a, DataResult::success).orElse((dbx)cxa.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               iv.a(ke.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, dul::new)
-   );
-   public final dbx b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final il<cwy> h;
-   private final ObjectArrayList<ic> i;
-
-   private static DataResult<dbx> a(cwy $$0) {
-      return $$0 instanceof dbx $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+public class dul extends dts<dwc> {
+   public dul(Codec<dwc> $$0) {
+      super($$0);
    }
 
-   public dul(dbx $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, il<cwy> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(ic.b);
+   @Override
+   public boolean a(dtu<dwc> $$0) {
+      cwi $$1 = $$0.b();
+      hz $$2 = $$0.e();
+      dlf $$3 = $$1.a_($$2.d());
+      dwc $$4 = $$0.f();
+      awo $$5 = $$0.d();
+      if (!$$3.a(atz.aK)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.J_() + 1 && $$6 + 1 < $$1.al()) {
+            int $$7 = 0;
+
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               hz $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dlf $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.J_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
+
+            return $$7 > 0;
+         } else {
+            return false;
+         }
       }
-
-      if ($$2) {
-         this.i.add(ic.a);
-      }
-
-      if ($$4) {
-         ic.c.a.forEach(this.i::add);
-      }
-   }
-
-   public List<ic> a(auw $$0, ic $$1) {
-      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
-   }
-
-   public List<ic> a(auw $$0) {
-      return ac.a(this.i, $$0);
    }
 }

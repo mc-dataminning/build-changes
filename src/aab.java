@@ -1,14 +1,20 @@
-public record aab(vs.a a) implements xg<zb> {
-   public aab(uj $$0) {
-      this(vs.a.a($$0));
+public record aab(aiy b) implements xx<aaa> {
+   public static final xo<uq, aab> a = xx.a(aab::a, aab::new);
+
+   private aab(uq $$0) {
+      this($$0.s());
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      vs.a.a($$0, this.a);
+   public xz<aab> a() {
+      return aac.a;
    }
 
-   public void a(zb $$0) {
+   public void a(aaa $$0) {
       $$0.a(this);
    }
 }

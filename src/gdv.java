@@ -1,48 +1,37 @@
-public class gdv extends gdl<bzc, fkb<bzc>> {
-   private static final ahh a = new ahh("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final ahh b = new ahh("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final ahh c = new ahh("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final ahh d = new ahh("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final ahh e = new ahh("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final ahh f = new ahh("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final ahh g = new ahh("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final ahh h = new ahh("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final ahh i = new ahh("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final ahh j = new ahh("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final ahh k = new ahh("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final ahh l = new ahh("textures/entity/fish/tropical_b_pattern_6.png");
-   private final fmp<bzc> m;
-   private final fmq<bzc> n;
+public class gdv extends gas<cio> {
+   private static final aiy a = new aiy("textures/entity/wither/wither_invulnerable.png");
+   private static final aiy f = new aiy("textures/entity/wither/wither.png");
+   private final fnx g;
 
-   public gdv(gav<bzc, fkb<bzc>> $$0, fnf $$1) {
+   public gdv(gat.a $$0) {
       super($$0);
-      this.m = new fmp<>($$1.a(fni.bI));
-      this.n = new fmq<>($$1.a(fni.bG));
+      this.g = new fnx($$0.a(fpb.bX));
    }
 
-   public void a(eqk $$0, ftt $$1, int $$2, bzc $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      bzc.b $$10 = $$3.gq();
+   public static fpi a() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      $$1.a("head", fph.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fpe.a);
+      return fpi.a($$0, 64, 64);
+   }
 
-      fkj<bzc> $$11 = (fkj<bzc>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
+   protected int a(cio $$0, hz $$1) {
+      return 15;
+   }
 
-      ahh $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      float[] $$13 = $$3.gp().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
+   public void a(cio $$0, float $$1, float $$2, esa $$3, fvm $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      float $$6 = awh.j($$2, $$0.M, $$0.dC());
+      float $$7 = awh.i($$2, $$0.N, $$0.dE());
+      ese $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
+      this.g.a(0.0F, $$6, $$7);
+      this.g.a($$3, $$8, $$5, ggl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public aiy a(cio $$0) {
+      return $$0.z() ? a : f;
    }
 }

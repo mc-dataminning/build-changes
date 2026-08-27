@@ -1,69 +1,75 @@
-public class cgq extends cgo {
-   public cgq(bmc<? extends cgq> $$0, ctx $$1) {
-      super($$0, $$1);
-   }
+import java.util.List;
 
-   public cgq(ctx $$0, bmo $$1) {
-      super(bmc.B, $$1, $$0);
-   }
-
-   public cgq(ctx $$0, double $$1, double $$2, double $$3) {
-      super(bmc.B, $$1, $$2, $$3, $$0);
-   }
+public class cgq implements cva {
+   private static final int a = 1200;
+   private int b;
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
+   public int a(aov $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.Z().b(cvj.e)) {
+         this.b--;
+         if (this.b > 0) {
+            return 0;
+         } else {
+            this.b = 1200;
+            chh $$3 = $$0.j();
+            if ($$3 == null) {
+               return 0;
+            } else {
+               awo $$4 = $$0.z;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               hz $$7 = $$3.dm().b($$5, 0, $$6);
+               int $$8 = 10;
+               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  return 0;
+               } else {
+                  if (cvy.a(boz.c.a, $$0, $$7, bnu.o)) {
+                     if ($$0.a($$7, 2)) {
+                        return this.a($$0, $$7);
+                     }
 
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dL()
-               .a(
-                  new jt(jx.Q, this.q()),
-                  this.dq(),
-                  this.ds(),
-                  this.dw(),
-                  ((double)this.ag.i() - 0.5) * 0.08,
-                  ((double)this.ag.i() - 0.5) * 0.08,
-                  ((double)this.ag.i() - 0.5) * 0.08
-               );
-         }
-      }
-   }
+                     if ($$0.a().a($$7, auk.m).b()) {
+                        return this.b($$0, $$7);
+                     }
+                  }
 
-   @Override
-   protected void a(elz $$0) {
-      super.a($$0);
-      $$0.a().a(this.dM().b(this, this.w()), 0.0F);
-   }
-
-   @Override
-   protected void a(ema $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         if (this.ag.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ag.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               byh $$3 = bmc.s.a(this.dL());
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dq(), this.ds(), this.dw(), this.dB(), 0.0F);
-                  this.dL().b($$3);
+                  return 0;
                }
             }
          }
-
-         this.dL().a(this, (byte)3);
-         this.am();
+      } else {
+         return 0;
       }
    }
 
-   @Override
-   protected cnb s() {
-      return cnj.qQ;
+   private int a(aov $$0, hz $$1) {
+      int $$2 = 48;
+      if ($$0.y().a($$0x -> $$0x.a(bzl.n), $$1, 48, bzh.b.b) > 4L) {
+         List<bzw> $$3 = $$0.a(bzw.class, new enn($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            return this.a($$1, $$0);
+         }
+      }
+
+      return 0;
+   }
+
+   private int b(aov $$0, hz $$1) {
+      int $$2 = 16;
+      List<bzw> $$3 = $$0.a(bzw.class, new enn($$1).c(16.0, 8.0, 16.0));
+      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
+   }
+
+   private int a(hz $$0, aov $$1) {
+      bzw $$2 = bnu.o.a((cvn)$$1);
+      if ($$2 == null) {
+         return 0;
+      } else {
+         $$2.a($$1, $$1.d_($$0), bok.a, null, null);
+         $$2.a($$0, 0.0F, 0.0F);
+         $$1.a_($$2);
+         return 1;
+      }
    }
 }

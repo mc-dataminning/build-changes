@@ -1,8 +1,25 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dmk implements axc {
+   a("up"),
+   b("side"),
+   c("none");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dmk {
+   private final String d;
+
+   private dmk(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
+   }
 }

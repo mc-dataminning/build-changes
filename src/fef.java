@@ -1,184 +1,79 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.ArrayUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fef extends exx<fef.b> {
-   final feg a;
-   int m;
+public class fef extends ffe {
+   private static final vq a = vq.c("addServer.enterIp");
+   private ezh b;
+   private final fqi c;
+   private ezq k;
+   private final BooleanConsumer l;
+   private final ffe m;
 
-   public fef(feg $$0, evr $$1) {
-      super($$1, $$0.g + 45, $$0.h - 52, 20, 20);
-      this.a = $$0;
-      evp[] $$2 = (evp[])ArrayUtils.clone($$1.m.X);
-      Arrays.sort((Object[])$$2);
-      String $$3 = null;
+   public fef(ffe $$0, BooleanConsumer $$1, fqi $$2) {
+      super(vq.c("selectServer.direct"));
+      this.m = $$0;
+      this.c = $$2;
+      this.l = $$1;
+   }
 
-      for (evp $$4 : $$2) {
-         String $$5 = $$4.f();
-         if (!$$5.equals($$3)) {
-            $$3 = $$5;
-            this.b(new fef.a(vg.c($$5)));
-         }
-
-         vg $$6 = vg.c($$4.h());
-         int $$7 = $$1.h.a($$6);
-         if ($$7 > this.m) {
-            this.m = $$7;
-         }
-
-         this.b(new fef.c($$4, $$6));
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aK_() != this.k || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.o();
+         return true;
       }
    }
 
+   @Override
+   protected void aQ_() {
+      this.k = new ezq(this.i, this.g / 2 - 100, 116, 200, 20, vq.c("addServer.enterIp"));
+      this.k.f(128);
+      this.k.a(this.f.m.aa);
+      this.k.b($$0 -> this.E());
+      this.e(this.k);
+      this.b = this.d(ezh.a(vq.c("selectServer.select"), $$0 -> this.o()).a(this.g / 2 - 100, this.h / 4 + 96 + 12, 200, 20).a());
+      this.d(ezh.a(vp.e, $$0 -> this.l.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
+      this.E();
+   }
+
+   @Override
+   protected void aH_() {
+      this.c(this.k);
+   }
+
+   @Override
+   public void a(exh $$0, int $$1, int $$2) {
+      String $$3 = this.k.a();
+      this.b($$0, $$1, $$2);
+      this.k.a($$3);
+   }
+
+   private void o() {
+      this.c.b = this.k.a();
+      this.l.accept(true);
+   }
+
+   @Override
    public void d() {
-      evp.d();
-      this.e();
-   }
-
-   public void e() {
-      this.l().forEach(fef.b::b);
+      this.f.a(this.m);
    }
 
    @Override
-   protected int c() {
-      return super.c() + 15;
+   public void k() {
+      this.f.m.aa = this.k.a();
+      this.f.m.as();
+   }
+
+   private void E() {
+      this.b.j = frk.b(this.k.a());
    }
 
    @Override
-   public int b() {
-      return super.b() + 32;
-   }
-
-   public class a extends fef.b {
-      final vg b;
-      private final int c;
-
-      public a(vg $$1) {
-         this.b = $$1;
-         this.c = fef.this.c.h.a(this.b);
-      }
-
-      @Override
-      public void a(exe $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(fef.this.c.h, this.b, fef.this.c.y.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, 16777215, false);
-      }
-
-      @Nullable
-      @Override
-      public exb a(fbq $$0) {
-         return null;
-      }
-
-      @Override
-      public List<? extends ezm> l() {
-         return Collections.emptyList();
-      }
-
-      @Override
-      public List<? extends fbi> a() {
-         return ImmutableList.of(new fbi() {
-            @Override
-            public fbi.a s() {
-               return fbi.a.b;
-            }
-
-            @Override
-            public void b(fbk $$0) {
-               $$0.a(fbj.a, a.this.b);
-            }
-         });
-      }
-
-      @Override
-      protected void b() {
-      }
-   }
-
-   public abstract static class b extends exx.a<fef.b> {
-      abstract void b();
-   }
-
-   public class c extends fef.b {
-      private final evp b;
-      private final vg c;
-      private final exr d;
-      private final exr e;
-      private boolean f = false;
-
-      c(evp $$1, vg $$2) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = exr.a($$2, $$1x -> {
-            fef.this.a.c = $$1;
-            fef.this.d();
-         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? vg.a("narrator.controls.unbound", $$2) : vg.a("narrator.controls.bound", $$2, $$2x.get())).a();
-         this.e = exr.a(vg.c("controls.reset"), $$1x -> {
-            fef.this.c.m.a($$1, $$1.i());
-            fef.this.d();
-         }).a(0, 0, 50, 20).a($$1x -> vg.a("narrator.controls.reset", $$2)).a();
-         this.b();
-      }
-
-      @Override
-      public void a(exe $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int var10003 = $$3 + 90 - fef.this.m;
-         $$0.a(fef.this.c.h, this.c, var10003, $$2 + $$5 / 2 - 9 / 2, 16777215, false);
-         this.e.n($$3 + 190);
-         this.e.o($$2);
-         this.e.a($$0, $$6, $$7, $$9);
-         this.d.n($$3 + 105);
-         this.d.o($$2);
-         if (this.f) {
-            int $$10 = 3;
-            int $$11 = this.d.B() - 6;
-            $$0.a($$11, $$2 + 2, $$11 + 3, $$2 + $$5 + 2, n.m.f() | 0xFF000000);
-         }
-
-         this.d.a($$0, $$6, $$7, $$9);
-      }
-
-      @Override
-      public List<? extends ezm> l() {
-         return ImmutableList.of(this.d, this.e);
-      }
-
-      @Override
-      public List<? extends fbi> a() {
-         return ImmutableList.of(this.d, this.e);
-      }
-
-      @Override
-      protected void b() {
-         this.d.b(this.b.k());
-         this.e.j = !this.b.l();
-         this.f = false;
-         vu $$0 = vg.i();
-         if (!this.b.j()) {
-            for (evp $$1 : fef.this.c.m.X) {
-               if ($$1 != this.b && this.b.b($$1)) {
-                  if (this.f) {
-                     $$0.f(", ");
-                  }
-
-                  this.f = true;
-                  $$0.b(vg.c($$1.h()));
-               }
-            }
-         }
-
-         if (this.f) {
-            this.d.b(vg.b("[ ").b(this.d.x().f().a(n.p)).f(" ]").a(n.m));
-            this.d.a(ezc.a(vg.a("controls.keybinds.duplicateKeybinds", $$0)));
-         } else {
-            this.d.a(null);
-         }
-
-         if (fef.this.a.c == this.b) {
-            this.d.b(vg.b("> ").b(this.d.x().f().a(n.p, n.t)).f(" <").a(n.o));
-         }
-      }
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      $$0.b(this.i, a, this.g / 2 - 100 + 1, 100, 10526880);
+      this.k.a($$0, $$1, $$2, $$3);
    }
 }

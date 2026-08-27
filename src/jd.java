@@ -1,225 +1,225 @@
+import com.google.common.base.MoreObjects;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.function.Predicate;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
+import java.util.stream.IntStream;
+import javax.annotation.concurrent.Immutable;
 
-public interface jd {
-   Map<String, jd.a> a = new Object2ObjectArrayMap();
-   Codec<jd.a> b = atx.a(jd.a::a, a::get);
-   jd.a c = a("empty");
-   jd.a d = a("water");
-   jd.a e = a("lava");
-   jd.a f = a("powder_snow");
-   jd g = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cxa.fu.o().a(dbg.g, Integer.valueOf(3)), art.cT);
-   jd h = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cxa.fv.o(), art.cW);
-   jd i = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, cxa.fw.o().a(dbg.g, Integer.valueOf(3)), art.cX);
-   jd j = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      cwy $$6 = cwy.a($$5.d());
-      if (!($$6 instanceof ddw)) {
-         return bke.d;
+@Immutable
+public class jd implements Comparable<jd> {
+   public static final Codec<jd> f = Codec.INT_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new jd($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()));
+   public static final jd g = new jd(0, 0, 0);
+   private int a;
+   private int b;
+   private int c;
+
+   public static Codec<jd> v(int $$0) {
+      return avp.a(
+         f,
+         (Function<jd, DataResult<jd>>)($$1 -> Math.abs($$1.u()) < $$0 && Math.abs($$1.v()) < $$0 && Math.abs($$1.w()) < $$0
+               ? DataResult.success($$1)
+               : DataResult.error(() -> "Position out of range, expected at most " + $$0 + ": " + $$1))
+      );
+   }
+
+   public jd(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof jd $$1)) {
+         return false;
+      } else if (this.u() != $$1.u()) {
+         return false;
       } else {
-         if (!$$1.B) {
-            cng $$7 = new cng(cxa.kP);
-            if ($$5.u()) {
-               $$7.c($$5.v().h());
-            }
-
-            $$3.a($$4, $$7);
-            $$3.a(asd.Z);
-            dbg.d($$0, $$1, $$2);
-         }
-
-         return bke.a($$1.B);
+         return this.v() != $$1.v() ? false : this.w() == $$1.w();
       }
-   };
-   jd k = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      if (dgt.c($$5) <= 0) {
-         return bke.d;
+   }
+
+   @Override
+   public int hashCode() {
+      return (this.v() + this.w() * 31) * 31 + this.u();
+   }
+
+   public int i(jd $$0) {
+      if (this.v() == $$0.v()) {
+         return this.w() == $$0.w() ? this.u() - $$0.u() : this.w() - $$0.w();
       } else {
-         if (!$$1.B) {
-            cng $$6 = $$5.c(1);
-            dgt.d($$6);
-            if (!$$3.fT().d) {
-               $$5.h(1);
-            }
-
-            if ($$5.b()) {
-               $$3.a($$4, $$6);
-            } else if ($$3.fS().e($$6)) {
-               $$3.bV.b();
-            } else {
-               $$3.a($$6, false);
-            }
-
-            $$3.a(asd.Y);
-            dbg.d($$0, $$1, $$2);
-         }
-
-         return bke.a($$1.B);
+         return this.v() - $$0.v();
       }
-   };
-   jd l = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      if (!($$5.d() instanceof clz $$7)) {
-         return bke.d;
-      } else if (!$$7.a($$5)) {
-         return bke.d;
+   }
+
+   public int u() {
+      return this.a;
+   }
+
+   public int v() {
+      return this.b;
+   }
+
+   public int w() {
+      return this.c;
+   }
+
+   protected jd u(int $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   protected jd t(int $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   protected jd s(int $$0) {
+      this.c = $$0;
+      return this;
+   }
+
+   public jd c(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new jd(this.u() + $$0, this.v() + $$1, this.w() + $$2);
+   }
+
+   public jd f(jd $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public jd e(jd $$0) {
+      return this.c(-$$0.u(), -$$0.v(), -$$0.w());
+   }
+
+   public jd o(int $$0) {
+      if ($$0 == 1) {
+         return this;
       } else {
-         if (!$$1.B) {
-            $$7.f_($$5);
-            $$3.a(asd.X);
-            dbg.d($$0, $$1, $$2);
-         }
-
-         return bke.a($$1.B);
+         return $$0 == 0 ? g : new jd(this.u() * $$0, this.v() * $$0, this.w() * $$0);
       }
-   };
-
-   static jd.a a(String $$0) {
-      Object2ObjectOpenHashMap<cnb, jd> $$1 = new Object2ObjectOpenHashMap();
-      $$1.defaultReturnValue((jd)($$0x, $$1x, $$2x, $$3, $$4, $$5) -> bke.d);
-      jd.a $$2 = new jd.a($$0, $$1);
-      a.put($$0, $$2);
-      return $$2;
    }
 
-   bke interact(djp var1, ctx var2, hx var3, cfq var4, bkb var5, cng var6);
-
-   static void a() {
-      Map<cnb, jd> $$0 = c.b();
-      a($$0);
-      $$0.put(cnj.sj, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if (!cpg.d($$5).a(cph.c)) {
-            return bke.d;
-         } else {
-            if (!$$1x.B) {
-               cnb $$6 = $$5.d();
-               $$3x.a($$4, cni.a($$5, $$3x, new cng(cnj.sk)));
-               $$3x.a(asd.W);
-               $$3x.b(asd.c.b($$6));
-               $$1x.b($$2x, cxa.fu.o());
-               $$1x.a(null, $$2x, art.ct, aru.e, 1.0F, 1.0F);
-               $$1x.a(null, dnz.z, $$2x);
-            }
-
-            return bke.a($$1x.B);
-         }
-      });
-      Map<cnb, jd> $$1 = d.b();
-      a($$1);
-      $$1.put(cnj.qx, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cng(cnj.qy), $$0xx -> $$0xx.c(dbg.g) == 3, art.cZ));
-      $$1.put(cnj.sk, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if (!$$1x.B) {
-            cnb $$6 = $$5.d();
-            $$3x.a($$4, cni.a($$5, $$3x, cpg.a(new cng(cnj.sj), cph.c)));
-            $$3x.a(asd.W);
-            $$3x.b(asd.c.b($$6));
-            dbg.d($$0x, $$1x, $$2x);
-            $$1x.a(null, $$2x, art.cu, aru.e, 1.0F, 1.0F);
-            $$1x.a(null, dnz.y, $$2x);
-         }
-
-         return bke.a($$1x.B);
-      });
-      $$1.put(cnj.sj, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if ($$0x.c(dbg.g) != 3 && cpg.d($$5).a(cph.c)) {
-            if (!$$1x.B) {
-               $$3x.a($$4, cni.a($$5, $$3x, new cng(cnj.sk)));
-               $$3x.a(asd.W);
-               $$3x.b(asd.c.b($$5.d()));
-               $$1x.b($$2x, $$0x.a(dbg.g));
-               $$1x.a(null, $$2x, art.ct, aru.e, 1.0F, 1.0F);
-               $$1x.a(null, dnz.z, $$2x);
-            }
-
-            return bke.a($$1x.B);
-         } else {
-            return bke.d;
-         }
-      });
-      $$1.put(cnj.pA, l);
-      $$1.put(cnj.pz, l);
-      $$1.put(cnj.py, l);
-      $$1.put(cnj.px, l);
-      $$1.put(cnj.uF, l);
-      $$1.put(cnj.uL, k);
-      $$1.put(cnj.uS, k);
-      $$1.put(cnj.va, k);
-      $$1.put(cnj.uW, k);
-      $$1.put(cnj.uX, k);
-      $$1.put(cnj.uU, k);
-      $$1.put(cnj.uY, k);
-      $$1.put(cnj.uO, k);
-      $$1.put(cnj.uT, k);
-      $$1.put(cnj.uQ, k);
-      $$1.put(cnj.uN, k);
-      $$1.put(cnj.uM, k);
-      $$1.put(cnj.uR, k);
-      $$1.put(cnj.uV, k);
-      $$1.put(cnj.uZ, k);
-      $$1.put(cnj.uP, k);
-      $$1.put(cnj.jc, j);
-      $$1.put(cnj.jj, j);
-      $$1.put(cnj.jr, j);
-      $$1.put(cnj.jn, j);
-      $$1.put(cnj.jo, j);
-      $$1.put(cnj.jl, j);
-      $$1.put(cnj.jp, j);
-      $$1.put(cnj.jf, j);
-      $$1.put(cnj.jk, j);
-      $$1.put(cnj.jh, j);
-      $$1.put(cnj.je, j);
-      $$1.put(cnj.jd, j);
-      $$1.put(cnj.ji, j);
-      $$1.put(cnj.jm, j);
-      $$1.put(cnj.jq, j);
-      $$1.put(cnj.jg, j);
-      Map<cnb, jd> $$2 = e.b();
-      $$2.put(cnj.qx, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cng(cnj.qz), $$0xx -> true, art.dc));
-      a($$2);
-      Map<cnb, jd> $$3 = f.b();
-      $$3.put(cnj.qx, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cng(cnj.qA), $$0xx -> $$0xx.c(dbg.g) == 3, art.dd));
-      a($$3);
+   public jd p() {
+      return this.n(1);
    }
 
-   static void a(Map<cnb, jd> $$0) {
-      $$0.put(cnj.qz, h);
-      $$0.put(cnj.qy, g);
-      $$0.put(cnj.qA, i);
+   public jd n(int $$0) {
+      return this.b(ie.b, $$0);
    }
 
-   static bke a(djp $$0, ctx $$1, hx $$2, cfq $$3, bkb $$4, cng $$5, cng $$6, Predicate<djp> $$7, ars $$8) {
-      if (!$$7.test($$0)) {
-         return bke.d;
+   public jd o() {
+      return this.m(1);
+   }
+
+   public jd m(int $$0) {
+      return this.b(ie.a, $$0);
+   }
+
+   public jd n() {
+      return this.l(1);
+   }
+
+   public jd l(int $$0) {
+      return this.b(ie.c, $$0);
+   }
+
+   public jd m() {
+      return this.k(1);
+   }
+
+   public jd k(int $$0) {
+      return this.b(ie.d, $$0);
+   }
+
+   public jd l() {
+      return this.j(1);
+   }
+
+   public jd j(int $$0) {
+      return this.b(ie.e, $$0);
+   }
+
+   public jd k() {
+      return this.i(1);
+   }
+
+   public jd i(int $$0) {
+      return this.b(ie.f, $$0);
+   }
+
+   public jd b(ie $$0) {
+      return this.b($$0, 1);
+   }
+
+   public jd b(ie $$0, int $$1) {
+      return $$1 == 0 ? this : new jd(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
+   }
+
+   public jd b(ie.a $$0, int $$1) {
+      if ($$1 == 0) {
+         return this;
       } else {
-         if (!$$1.B) {
-            cnb $$9 = $$5.d();
-            $$3.a($$4, cni.a($$5, $$3, $$6));
-            $$3.a(asd.W);
-            $$3.b(asd.c.b($$9));
-            $$1.b($$2, cxa.ft.o());
-            $$1.a(null, $$2, $$8, aru.e, 1.0F, 1.0F);
-            $$1.a(null, dnz.y, $$2);
-         }
-
-         return bke.a($$1.B);
+         int $$2 = $$0 == ie.a.a ? $$1 : 0;
+         int $$3 = $$0 == ie.a.b ? $$1 : 0;
+         int $$4 = $$0 == ie.a.c ? $$1 : 0;
+         return new jd(this.u() + $$2, this.v() + $$3, this.w() + $$4);
       }
    }
 
-   static bke a(ctx $$0, hx $$1, cfq $$2, bkb $$3, cng $$4, djp $$5, ars $$6) {
-      if (!$$0.B) {
-         cnb $$7 = $$4.d();
-         $$2.a($$3, cni.a($$4, $$2, new cng(cnj.qx)));
-         $$2.a(asd.V);
-         $$2.b(asd.c.b($$7));
-         $$0.b($$1, $$5);
-         $$0.a(null, $$1, $$6, aru.e, 1.0F, 1.0F);
-         $$0.a(null, dnz.z, $$1);
-      }
-
-      return bke.a($$0.B);
+   public jd d(jd $$0) {
+      return new jd(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
    }
 
-   public static record a(String a, Map<cnb, jd> b) {
+   public boolean a(jd $$0, double $$1) {
+      return this.j($$0) < awh.k($$1);
+   }
+
+   public boolean a(it $$0, double $$1) {
+      return this.b($$0) < awh.k($$1);
+   }
+
+   public double j(jd $$0) {
+      return this.d((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+   }
+
+   public double b(it $$0) {
+      return this.c($$0.a(), $$0.b(), $$0.c());
+   }
+
+   public double c(double $$0, double $$1, double $$2) {
+      double $$3 = (double)this.u() + 0.5 - $$0;
+      double $$4 = (double)this.v() + 0.5 - $$1;
+      double $$5 = (double)this.w() + 0.5 - $$2;
+      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
+   }
+
+   public double d(double $$0, double $$1, double $$2) {
+      double $$3 = (double)this.u() - $$0;
+      double $$4 = (double)this.v() - $$1;
+      double $$5 = (double)this.w() - $$2;
+      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
+   }
+
+   public int k(jd $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.u());
+      float $$2 = (float)Math.abs($$0.v() - this.v());
+      float $$3 = (float)Math.abs($$0.w() - this.w());
+      return (int)($$1 + $$2 + $$3);
+   }
+
+   public int a(ie.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("x", this.u()).add("y", this.v()).add("z", this.w()).toString();
+   }
+
+   public String x() {
+      return this.u() + ", " + this.v() + ", " + this.w();
    }
 }

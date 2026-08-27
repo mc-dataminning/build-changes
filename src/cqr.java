@@ -1,114 +1,130 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public class cqr implements cqb {
-   final cqs a;
-   final cng b;
-   final String c;
-   final cqa d;
-   final boolean e;
+public class cqr extends cou {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
+   private final Multimap<ij<bpg>, bpj> d;
 
-   public cqr(String $$0, cqa $$1, cqs $$2, cng $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
-   }
-
-   public cqr(String $$0, cqa $$1, cqs $$2, cng $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public cqr(cou.a $$0) {
+      super($$0);
+      Builder<ij<bpg>, bpj> $$1 = ImmutableMultimap.builder();
+      $$1.put(bpl.c, new bpj(m, "Tool modifier", 8.0, bpj.a.a));
+      $$1.put(bpl.e, new bpj(n, "Tool modifier", -2.9F, bpj.a.a));
+      this.d = $$1.build();
    }
 
    @Override
-   public cqo<?> at_() {
-      return cqo.a;
+   public boolean a(dlf $$0, cvn $$1, hz $$2, chh $$3) {
+      return !$$3.f();
    }
 
    @Override
-   public String c() {
-      return this.c;
+   public cqs c(coz $$0) {
+      return cqs.f;
    }
 
    @Override
-   public cqa d() {
-      return this.d;
+   public int b(coz $$0) {
+      return 72000;
    }
 
    @Override
-   public cng a(iu $$0) {
-      return this.b;
+   public void a(coz $$0, cvn $$1, bog $$2, int $$3) {
+      if ($$2 instanceof chh $$4) {
+         int $$5 = this.b($$0) - $$3;
+         if ($$5 >= 10) {
+            int $$6 = ctj.h($$0);
+            if ($$6 <= 0 || $$4.ba()) {
+               if (!$$1.B) {
+                  $$0.a(1, $$4, bog.d($$2.fo()));
+                  if ($$6 == 0) {
+                     cim $$7 = new cim($$1, $$4, $$0);
+                     $$7.a($$4, $$4.dE(), $$4.dC(), 0.0F, 2.5F + (float)$$6 * 0.5F, 1.0F);
+                     if ($$4.fU().d) {
+                        $$7.d = chn.a.c;
+                     }
+
+                     $$1.b($$7);
+                     $$1.a(null, $$7, atk.yY, atl.h, 1.0F, 1.0F);
+                     if (!$$4.fU().d) {
+                        $$4.fT().g($$0);
+                     }
+                  }
+               }
+
+               $$4.b(atu.c.b(this));
+               if ($$6 > 0) {
+                  float $$8 = $$4.dC();
+                  float $$9 = $$4.dE();
+                  float $$10 = -awh.a($$8 * (float) (Math.PI / 180.0)) * awh.b($$9 * (float) (Math.PI / 180.0));
+                  float $$11 = -awh.a($$9 * (float) (Math.PI / 180.0));
+                  float $$12 = awh.b($$8 * (float) (Math.PI / 180.0)) * awh.b($$9 * (float) (Math.PI / 180.0));
+                  float $$13 = awh.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+                  float $$14 = 3.0F * ((1.0F + (float)$$6) / 4.0F);
+                  $$10 *= $$14 / $$13;
+                  $$11 *= $$14 / $$13;
+                  $$12 *= $$14 / $$13;
+                  $$4.j((double)$$10, (double)$$11, (double)$$12);
+                  $$4.u(20);
+                  if ($$4.aC()) {
+                     float $$15 = 1.1999999F;
+                     $$4.a(bol.a, new ens(0.0, 1.1999999F, 0.0));
+                  }
+
+                  atj $$16;
+                  if ($$6 >= 3) {
+                     $$16 = atk.yX;
+                  } else if ($$6 == 2) {
+                     $$16 = atk.yW;
+                  } else {
+                     $$16 = atk.yV;
+                  }
+
+                  $$1.a(null, $$4, $$16, atl.h, 1.0F, 1.0F);
+               }
+            }
+         }
+      }
    }
 
    @Override
-   public iq<cqh> a() {
-      return this.a.c();
+   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
+      coz $$3 = $$1.b($$2);
+      if ($$3.l() >= $$3.m() - 1) {
+         return blv.d($$3);
+      } else if (ctj.h($$3) > 0 && !$$1.ba()) {
+         return blv.d($$3);
+      } else {
+         $$1.c($$2);
+         return blv.b($$3);
+      }
    }
 
    @Override
-   public boolean h() {
-      return this.e;
+   public boolean a(coz $$0, bog $$1, bog $$2) {
+      $$0.a(1, $$2, bnv.a);
+      return true;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(ciz $$0, ctx $$1) {
-      return this.a.a($$0);
-   }
-
-   public cng a(ciz $$0, iu $$1) {
-      return this.a($$1).p();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean i() {
-      iq<cqh> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements cqo<cqr> {
-      public static final Codec<cqr> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  atx.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.c),
-                  cqa.e.fieldOf("category").orElse(cqa.d).forGetter($$0x -> $$0x.d),
-                  cqs.a.forGetter($$0x -> $$0x.a),
-                  cng.c.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  atx.a(Codec.BOOL, "show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cqr::new)
-      );
-
-      @Override
-      public Codec<cqr> a() {
-         return x;
+   public boolean a(coz $$0, cvn $$1, dlf $$2, hz $$3, bog $$4) {
+      if ((double)$$2.h($$1, $$3) != 0.0) {
+         $$0.a(2, $$4, bnv.a);
       }
 
-      public cqr b(uj $$0) {
-         String $$1 = $$0.s();
-         cqa $$2 = $$0.b(cqa.class);
-         cqs $$3 = cqs.b($$0);
-         cng $$4 = $$0.r();
-         boolean $$5 = $$0.readBoolean();
-         return new cqr($$1, $$2, $$3, $$4, $$5);
-      }
+      return true;
+   }
 
-      public void a(uj $$0, cqr $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         $$1.a.a($$0);
-         $$0.a($$1.b);
-         $$0.a($$1.e);
-      }
+   @Override
+   public Multimap<ij<bpg>, bpj> a(bnv $$0) {
+      return $$0 == bnv.a ? this.d : super.a($$0);
+   }
+
+   @Override
+   public int an_() {
+      return 1;
    }
 }

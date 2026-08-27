@@ -1,36 +1,63 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
 
-public record ekb(eke b) implements eke {
-   public static final Codec<ekb> a = RecordCodecBuilder.create($$0 -> $$0.group(ekg.a.fieldOf("term").forGetter(ekb::c)).apply($$0, ekb::new));
+public class ekb extends ekh {
+   public static final Codec<ekb> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(emq.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, ekb::new)
+   );
+   private final emp b;
+   private final boolean c;
 
-   @Override
-   public ekf b() {
-      return ekg.b;
+   ekb(List<elu> $$0, emp $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public boolean a(ehf $$0) {
-      return !this.b.test($$0);
+   @Override
+   public ekj b() {
+      return ekk.d;
    }
 
    @Override
-   public Set<ejn<?>> a() {
+   public Set<eld<?>> a() {
       return this.b.a();
    }
 
    @Override
-   public void a(eho $$0) {
-      eke.super.a($$0);
-      this.b.a($$0);
+   public coz a(coz $$0, eiv $$1) {
+      awo $$2 = $$1.b();
+      return ctj.a($$2, $$0, this.b.a($$1), this.c);
    }
 
-   public static eke.a a(eke.a $$0) {
-      ekb $$1 = new ekb($$0.build());
-      return () -> $$1;
+   public static ekb.a a(emp $$0) {
+      return new ekb.a($$0);
    }
 
-   public eke c() {
-      return this.b;
+   public static class a extends ekh.a<ekb.a> {
+      private final emp a;
+      private boolean b;
+
+      public a(emp $$0) {
+         this.a = $$0;
+      }
+
+      protected ekb.a a() {
+         return this;
+      }
+
+      public ekb.a e() {
+         this.b = true;
+         return this;
+      }
+
+      @Override
+      public eki b() {
+         return new ekb(this.g(), this.a, this.b);
+      }
    }
 }

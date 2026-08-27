@@ -1,74 +1,47 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class gkh {
-   public static final gkh a = new gkh(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<gkd<gkh.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public interface gkh {
+   aiy a();
 
-   protected gkh(Ticker $$0) {
-      this.c = $$0;
+   @Nullable
+   glm a(gll var1);
+
+   gke b();
+
+   atl c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   gkh.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   public synchronized void a(gkd<gkh.a> $$0) {
-      this.a($$0, (Function<gkd<gkh.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   default boolean s() {
+      return true;
    }
 
-   public synchronized void a(gkd<gkh.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<gkd<gkh.a>, Stopwatch>)($$1x -> $$1));
+   static awo t() {
+      return awo.a();
    }
 
-   private synchronized void a(gkd<gkh.a> $$0, Function<gkd<gkh.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(gkd<gkh.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
-      }
-   }
-
-   public void a(gka $$0) {
-      $$0.send(gkb.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((gkd<gkh.a>)$$1, new gkh.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gkb.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(gkd.B, new gkh.a((int)$$1)));
-            this.d.clear();
-         }
-      });
-   }
-
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<gkh.a> a = Codec.INT.xmap(gkh.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
-      }
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,111 +1,110 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Predicate;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class bzs {
-   private static final float a = 4.0F;
-   private static final float b = 2.0F;
-   private static final float c = 2.5F;
-   private static final float d = 2.5F;
-   private static final float e = 1.0F;
-   private static final bjn f = bjn.a(5, 16);
-   private static final ImmutableList<bwx<? extends bww<? super bzr>>> g = ImmutableList.of(bwx.c, bwx.f, bwx.t, bwx.o);
-   private static final ImmutableList<bvq<?>> h = ImmutableList.of(
-      bvq.Z, bvq.x, bvq.y, bvq.m, bvq.n, bvq.E, bvq.t, bvq.h, bvq.O, bvq.P, bvq.Q, bvq.R, new bvq[]{bvq.r, bvq.K}
-   );
+public abstract class bzs extends bzq {
+   @Nullable
+   private bzs b;
+   private int c = 1;
 
-   protected static void a(bzr $$0, auw $$1) {
+   public bzs(bnu<? extends bzs> $$0, cvn $$1) {
+      super($$0, $$1);
    }
 
-   public static bno.b<bzr> a() {
-      return bno.a(h, g);
+   @Override
+   protected void B() {
+      super.B();
+      this.bO.a(5, new bux(this));
    }
 
-   protected static bno<?> a(bno<bzr> $$0) {
-      b($$0);
-      c($$0);
-      $$0.a(ImmutableSet.of(chc.a));
-      $$0.b(chc.b);
-      $$0.f();
+   @Override
+   public int fK() {
+      return this.gi();
+   }
+
+   public int gi() {
+      return super.fK();
+   }
+
+   @Override
+   protected boolean gg() {
+      return !this.gj();
+   }
+
+   public boolean gj() {
+      return this.b != null && this.b.bx();
+   }
+
+   public bzs a(bzs $$0) {
+      this.b = $$0;
+      $$0.gp();
       return $$0;
    }
 
-   private static void b(bno<bzr> $$0) {
-      $$0.a(chc.a, 0, ImmutableList.of(new bqz(0.8F), new bzs.a(4.0F), new bpl(45, 90), new bpp(), new bol(bvq.P), new bol(bvq.Q)));
+   public void gk() {
+      this.b.gq();
+      this.b = null;
    }
 
-   private static void c(bno<bzr> $$0) {
-      $$0.a(
-         chc.b,
-         ImmutableList.of(
-            Pair.of(0, bqf.a(bmc.bw, 6.0F, bjn.a(30, 60))),
-            Pair.of(1, new bnz(bmc.n, 1.0F)),
-            Pair.of(
-               2,
-               new bqc(
-                  ImmutableList.of(Pair.of(new bos($$0x -> 2.5F, $$0x -> $$0x.o_() ? 2.5 : 3.5), 1), Pair.of(brs.a(Predicate.not(bzr::w), boc.a(f, 2.5F)), 1))
-               )
-            ),
-            Pair.of(3, new bpw(bjn.a(150, 250), 30.0F, 0.0F, 0.0F)),
-            Pair.of(
-               4,
-               new bqc(
-                  ImmutableMap.of(bvq.m, bvr.b),
-                  ImmutableList.of(
-                     Pair.of(brs.a(Predicate.not(bzr::w), bpx.a(2.0F)), 1),
-                     Pair.of(brs.a(Predicate.not(bzr::w), bqm.a(2.0F, 3)), 1),
-                     Pair.of(new bzs.b(20), 1),
-                     Pair.of(new bop(30, 60), 1)
-                  )
-               )
-            )
-         )
-      );
+   private void gp() {
+      this.c++;
    }
 
-   public static void a(bzr $$0) {
-      $$0.dN().a(ImmutableList.of(chc.b));
+   private void gq() {
+      this.c--;
    }
 
-   public static cqh b() {
-      return bzr.bU;
+   public boolean gl() {
+      return this.gm() && this.c < this.gi();
    }
 
-   public static class a extends boa {
-      public a(float $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected void b(ane $$0, bmx $$1, long $$2) {
-         if ($$1 instanceof bzr $$3) {
-            $$3.gs();
+   @Override
+   public void l() {
+      super.l();
+      if (this.gm() && this.dM().z.a(200) == 1) {
+         List<? extends bzq> $$0 = this.dM().a((Class<? extends bzq>)this.getClass(), this.cH().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.c = 1;
          }
-
-         super.b($$0, $$1, $$2);
       }
    }
 
-   public static class b extends bof<bzr> {
-      private final int c;
+   public boolean gm() {
+      return this.c > 1;
+   }
 
-      public b(int $$0) {
-         super(ImmutableMap.of());
-         this.c = $$0 * 20;
+   public boolean gn() {
+      return this.f(this.b) <= 121.0;
+   }
+
+   public void go() {
+      if (this.gj()) {
+         this.N().a(this.b, 1.0);
+      }
+   }
+
+   public void a(Stream<? extends bzs> $$0) {
+      $$0.limit((long)(this.gi() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   }
+
+   @Nullable
+   @Override
+   public boy a(cwc $$0, bls $$1, bok $$2, @Nullable boy $$3, @Nullable sw $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$3 == null) {
+         $$3 = new bzs.a(this);
+      } else {
+         this.a(((bzs.a)$$3).a);
       }
 
-      protected boolean a(ane $$0, bzr $$1) {
-         return !$$1.aZ() && $$1.gt() >= (long)this.c && !$$1.fT() && $$1.aC() && !$$1.cO() && $$1.gf();
-      }
+      return $$3;
+   }
 
-      protected void a(ane $$0, bzr $$1, long $$2) {
-         if ($$1.gn()) {
-            $$1.gr();
-         } else if (!$$1.gc()) {
-            $$1.gq();
-         }
+   public static class a implements boy {
+      public final bzs a;
+
+      public a(bzs $$0) {
+         this.a = $$0;
       }
    }
 }

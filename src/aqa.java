@@ -1,343 +1,353 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aqa implements aqj {
-   static final Logger b = LogUtils.getLogger();
-   protected final List<aqa.d> a = Lists.newArrayList();
-   private final aoy c;
-   private final String d;
+public class aqa implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final AtomicInteger b = new AtomicInteger(1);
+   private static final ThreadFactory c = $$0 -> {
+      Thread $$1 = new Thread($$0);
+      $$1.setName("Chat-Filter-Worker-" + b.getAndIncrement());
+      return $$1;
+   };
+   private static final String d = "v1/chat";
+   private final URL e;
+   private final aqa.c f;
+   final URL g;
+   final aqa.b h;
+   final URL i;
+   final aqa.b j;
+   private final String k;
+   final aqa.a l;
+   final ExecutorService m;
 
-   public aqa(aoy $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   private aqa(URL $$0, aqa.c $$1, URL $$2, aqa.b $$3, URL $$4, aqa.b $$5, String $$6, aqa.a $$7, int $$8) {
+      this.k = $$6;
+      this.l = $$7;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.m = Executors.newFixedThreadPool($$8, c);
    }
 
-   public void a(aox $$0) {
-      this.a($$0.a(), $$0, null);
+   private static URL a(URI $$0, @Nullable JsonObject $$1, String $$2, String $$3) throws MalformedURLException {
+      String $$4 = a($$1, $$2, $$3);
+      return $$0.resolve("/" + $$4).toURL();
    }
 
-   public void a(aox $$0, Predicate<ahh> $$1) {
-      this.a($$0.a(), $$0, $$1);
+   private static String a(@Nullable JsonObject $$0, String $$1, String $$2) {
+      return $$0 != null ? avx.a($$0, $$1, $$2) : $$2;
    }
 
-   public void a(String $$0, Predicate<ahh> $$1) {
-      this.a($$0, null, $$1);
-   }
-
-   private void a(String $$0, @Nullable aox $$1, @Nullable Predicate<ahh> $$2) {
-      this.a.add(new aqa.d($$0, $$1, $$2));
-   }
-
-   @Override
-   public Set<String> a() {
-      return ImmutableSet.of(this.d);
-   }
-
-   @Override
-   public Optional<aqh> getResource(ahh $$0) {
-      for (int $$1 = this.a.size() - 1; $$1 >= 0; $$1--) {
-         aqa.d $$2 = this.a.get($$1);
-         aox $$3 = $$2.b;
-         if ($$3 != null) {
-            aqb<InputStream> $$4 = $$3.a(this.c, $$0);
-            if ($$4 != null) {
-               aqb<aql> $$5 = this.a($$0, $$1);
-               return Optional.of(a($$3, $$0, $$4, $$5));
-            }
-         }
-
-         if ($$2.a($$0)) {
-            b.warn("Resource {} not found, but was filtered by pack {}", $$0, $$2.a);
-            return Optional.empty();
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   private static aqh a(aox $$0, ahh $$1, aqb<InputStream> $$2, aqb<aql> $$3) {
-      return new aqh($$0, a($$1, $$0, $$2), $$3);
-   }
-
-   private static aqb<InputStream> a(ahh $$0, aox $$1, aqb<InputStream> $$2) {
-      return b.isDebugEnabled() ? () -> new aqa.c($$2.get(), $$0, $$1.a()) : $$2;
-   }
-
-   @Override
-   public List<aqh> a(ahh $$0) {
-      ahh $$1 = d($$0);
-      List<aqh> $$2 = new ArrayList<>();
-      boolean $$3 = false;
-      String $$4 = null;
-
-      for (int $$5 = this.a.size() - 1; $$5 >= 0; $$5--) {
-         aqa.d $$6 = this.a.get($$5);
-         aox $$7 = $$6.b;
-         if ($$7 != null) {
-            aqb<InputStream> $$8 = $$7.a(this.c, $$0);
-            if ($$8 != null) {
-               aqb<aql> $$9;
-               if ($$3) {
-                  $$9 = aql.b;
+   @Nullable
+   public static aqa a(String $$0) {
+      if (Strings.isNullOrEmpty($$0)) {
+         return null;
+      } else {
+         try {
+            JsonObject $$1 = avx.a($$0);
+            URI $$2 = new URI(avx.i($$1, "apiServer"));
+            String $$3 = avx.i($$1, "apiKey");
+            if ($$3.isEmpty()) {
+               throw new IllegalArgumentException("Missing API key");
+            } else {
+               int $$4 = avx.a($$1, "ruleId", 1);
+               String $$5 = avx.a($$1, "serverId", "");
+               String $$6 = avx.a($$1, "roomId", "Java:Chat");
+               int $$7 = avx.a($$1, "hashesToDrop", -1);
+               int $$8 = avx.a($$1, "maxConcurrentRequests", 7);
+               JsonObject $$9 = avx.a($$1, "endpoints", null);
+               String $$10 = a($$9, "chat", "v1/chat");
+               boolean $$11 = $$10.equals("v1/chat");
+               URL $$12 = $$2.resolve("/" + $$10).toURL();
+               URL $$13 = a($$2, $$9, "join", "v1/join");
+               URL $$14 = a($$2, $$9, "leave", "v1/leave");
+               aqa.b $$15 = $$2x -> {
+                  JsonObject $$3x = new JsonObject();
+                  $$3x.addProperty("server", $$5);
+                  $$3x.addProperty("room", $$6);
+                  $$3x.addProperty("user_id", $$2x.getId().toString());
+                  $$3x.addProperty("user_display_name", $$2x.getName());
+                  return $$3x;
+               };
+               aqa.c $$16;
+               if ($$11) {
+                  $$16 = ($$3x, $$4x) -> {
+                     JsonObject $$5x = new JsonObject();
+                     $$5x.addProperty("rule", $$4);
+                     $$5x.addProperty("server", $$5);
+                     $$5x.addProperty("room", $$6);
+                     $$5x.addProperty("player", $$3x.getId().toString());
+                     $$5x.addProperty("player_display_name", $$3x.getName());
+                     $$5x.addProperty("text", $$4x);
+                     $$5x.addProperty("language", "*");
+                     return $$5x;
+                  };
                } else {
-                  $$9 = () -> {
-                     aqb<InputStream> $$2x = $$7.a(this.c, $$1);
-                     return $$2x != null ? b($$2x) : aql.a;
+                  String $$17 = String.valueOf($$4);
+                  $$16 = ($$3x, $$4x) -> {
+                     JsonObject $$5x = new JsonObject();
+                     $$5x.addProperty("rule_id", $$17);
+                     $$5x.addProperty("category", $$5);
+                     $$5x.addProperty("subcategory", $$6);
+                     $$5x.addProperty("user_id", $$3x.getId().toString());
+                     $$5x.addProperty("user_display_name", $$3x.getName());
+                     $$5x.addProperty("text", $$4x);
+                     $$5x.addProperty("language", "*");
+                     return $$5x;
                   };
                }
 
-               $$2.add(new aqh($$7, $$8, $$9));
+               aqa.a $$19 = aqa.a.select($$7);
+               String $$20 = Base64.getEncoder().encodeToString($$3.getBytes(StandardCharsets.US_ASCII));
+               return new aqa($$12, $$16, $$13, $$15, $$14, $$15, $$20, $$19, $$8);
             }
-         }
-
-         if ($$6.a($$0)) {
-            $$4 = $$6.a;
-            break;
-         }
-
-         if ($$6.a($$1)) {
-            $$3 = true;
+         } catch (Exception var19) {
+            a.warn("Failed to parse chat filter config {}", $$0, var19);
+            return null;
          }
       }
-
-      if ($$2.isEmpty() && $$4 != null) {
-         b.warn("Resource {} not found, but was filtered by pack {}", $$0, $$4);
-      }
-
-      return Lists.reverse($$2);
    }
 
-   private static boolean b(ahh $$0) {
-      return $$0.a().endsWith(".mcmeta");
-   }
+   void a(GameProfile $$0, URL $$1, aqa.b $$2, Executor $$3) {
+      $$3.execute(() -> {
+         JsonObject $$3x = $$2.encode($$0);
 
-   private static ahh c(ahh $$0) {
-      String $$1 = $$0.a().substring(0, $$0.a().length() - ".mcmeta".length());
-      return $$0.c($$1);
-   }
-
-   static ahh d(ahh $$0) {
-      return $$0.c($$0.a() + ".mcmeta");
-   }
-
-   @Override
-   public Map<ahh, aqh> b(String $$0, Predicate<ahh> $$1) {
-      record a(aox a, aqb<InputStream> b, int c) {
-      }
-
-      Map<ahh, a> $$2 = new HashMap<>();
-      Map<ahh, a> $$3 = new HashMap<>();
-      int $$4 = this.a.size();
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         aqa.d $$6 = this.a.get($$5);
-         $$6.a($$2.keySet());
-         $$6.a($$3.keySet());
-         aox $$7 = $$6.b;
-         if ($$7 != null) {
-            int $$8 = $$5;
-            $$7.a(this.c, this.d, $$0, ($$5x, $$6x) -> {
-               if (b($$5x)) {
-                  if ($$1.test(c($$5x))) {
-                     $$3.put($$5x, new a($$7, $$6x, $$8));
-                  }
-               } else if ($$1.test($$5x)) {
-                  $$2.put($$5x, new a($$7, $$6x, $$8));
-               }
-            });
+         try {
+            this.b($$3x, $$1);
+         } catch (Exception var6) {
+            a.warn("Failed to send join/leave packet to {} for player {}", new Object[]{$$1, $$0, var6});
          }
-      }
-
-      Map<ahh, aqh> $$9 = Maps.newTreeMap();
-      $$2.forEach(($$2x, $$3x) -> {
-         ahh $$4x = d($$2x);
-         a $$5x = $$3.get($$4x);
-         aqb<aql> $$6x;
-         if ($$5x != null && $$5x.c >= $$3x.c) {
-            $$6x = a($$5x.b);
-         } else {
-            $$6x = aql.b;
-         }
-
-         $$9.put($$2x, a($$3x.a, $$2x, $$3x.b, $$6x));
       });
-      return $$9;
    }
 
-   private aqb<aql> a(ahh $$0, int $$1) {
-      return () -> {
-         ahh $$2 = d($$0);
+   CompletableFuture<apm> a(GameProfile $$0, String $$1, aqa.a $$2, Executor $$3) {
+      return $$1.isEmpty() ? CompletableFuture.completedFuture(apm.a) : CompletableFuture.supplyAsync(() -> {
+         JsonObject $$3x = this.f.encode($$0, $$1);
 
-         for (int $$3 = this.a.size() - 1; $$3 >= $$1; $$3--) {
-            aqa.d $$4 = this.a.get($$3);
-            aox $$5 = $$4.b;
-            if ($$5 != null) {
-               aqb<InputStream> $$6 = $$5.a(this.c, $$2);
-               if ($$6 != null) {
-                  return b($$6);
-               }
-            }
-
-            if ($$4.a($$2)) {
-               break;
-            }
-         }
-
-         return aql.a;
-      };
-   }
-
-   private static aqb<aql> a(aqb<InputStream> $$0) {
-      return () -> b($$0);
-   }
-
-   private static aql b(aqb<InputStream> $$0) throws IOException {
-      aql var2;
-      try (InputStream $$1 = $$0.get()) {
-         var2 = aql.a($$1);
-      }
-
-      return var2;
-   }
-
-   private static void a(aqa.d $$0, Map<ahh, aqa.b> $$1) {
-      for (aqa.b $$2 : $$1.values()) {
-         if ($$0.a($$2.a)) {
-            $$2.c.clear();
-         } else if ($$0.a($$2.b())) {
-            $$2.d.clear();
-         }
-      }
-   }
-
-   private void a(aqa.d $$0, String $$1, Predicate<ahh> $$2, Map<ahh, aqa.b> $$3) {
-      aox $$4 = $$0.b;
-      if ($$4 != null) {
-         $$4.a(this.c, this.d, $$1, ($$3x, $$4x) -> {
-            if (b($$3x)) {
-               ahh $$5 = c($$3x);
-               if (!$$2.test($$5)) {
-                  return;
-               }
-
-               $$3.computeIfAbsent($$5, aqa.b::new).d.put($$4, $$4x);
+         try {
+            JsonObject $$4 = this.a($$3x, this.e);
+            boolean $$5 = avx.a($$4, "response", false);
+            if ($$5) {
+               return apm.a($$1);
             } else {
-               if (!$$2.test($$3x)) {
-                  return;
+               String $$6 = avx.a($$4, "hashed", null);
+               if ($$6 == null) {
+                  return apm.b($$1);
+               } else {
+                  JsonArray $$7 = avx.v($$4, "hashes");
+                  vu $$8 = this.a($$1, $$7, $$2);
+                  return new apm($$1, $$8);
                }
-
-               $$3.computeIfAbsent($$3x, aqa.b::new).c.add(new aqa.e($$4, $$4x));
             }
-         });
+         } catch (Exception var10) {
+            a.warn("Failed to validate message '{}'", $$1, var10);
+            return apm.b($$1);
+         }
+      }, $$3);
+   }
+
+   private vu a(String $$0, JsonArray $$1, aqa.a $$2) {
+      if ($$1.isEmpty()) {
+         return vu.c;
+      } else if ($$2.shouldIgnore($$0, $$1.size())) {
+         return vu.b;
+      } else {
+         vu $$3 = new vu($$0.length());
+
+         for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+            $$3.a($$1.get($$4).getAsInt());
+         }
+
+         return $$3;
       }
    }
 
    @Override
-   public Map<ahh, List<aqh>> c(String $$0, Predicate<ahh> $$1) {
-      Map<ahh, aqa.b> $$2 = Maps.newHashMap();
+   public void close() {
+      this.m.shutdownNow();
+   }
 
-      for (aqa.d $$3 : this.a) {
-         a($$3, $$2);
-         this.a($$3, $$0, $$1, $$2);
+   private void a(InputStream $$0) throws IOException {
+      byte[] $$1 = new byte[1024];
+
+      while ($$0.read($$1) != -1) {
       }
+   }
 
-      TreeMap<ahh, List<aqh>> $$4 = Maps.newTreeMap();
+   private JsonObject a(JsonObject $$0, URL $$1) throws IOException {
+      HttpURLConnection $$2 = this.c($$0, $$1);
 
-      for (aqa.b $$5 : $$2.values()) {
-         if (!$$5.c.isEmpty()) {
-            List<aqh> $$6 = new ArrayList<>();
+      JsonObject var5;
+      try (InputStream $$3 = $$2.getInputStream()) {
+         if ($$2.getResponseCode() == 204) {
+            return new JsonObject();
+         }
 
-            for (aqa.e $$7 : $$5.c) {
-               aox $$8 = $$7.a;
-               aqb<InputStream> $$9 = $$5.d.get($$8);
-               aqb<aql> $$10 = $$9 != null ? a($$9) : aql.b;
-               $$6.add(a($$8, $$5.a, $$7.b, $$10));
-            }
-
-            $$4.put($$5.a, $$6);
+         try {
+            var5 = Streams.parse(new JsonReader(new InputStreamReader($$3, StandardCharsets.UTF_8))).getAsJsonObject();
+         } finally {
+            this.a($$3);
          }
       }
 
-      return $$4;
+      return var5;
    }
 
-   @Override
-   public Stream<aox> b() {
-      return this.a.stream().map($$0 -> $$0.b).filter(Objects::nonNull);
-   }
+   private void b(JsonObject $$0, URL $$1) throws IOException {
+      HttpURLConnection $$2 = this.c($$0, $$1);
 
-   static record b(ahh a, ahh b, List<aqa.e> c, Map<aox, aqb<InputStream>> d) {
-
-      b(ahh $$0) {
-         this($$0, aqa.d($$0), new ArrayList<>(), new Object2ObjectArrayMap());
+      try (InputStream $$3 = $$2.getInputStream()) {
+         this.a($$3);
       }
    }
 
-   static class c extends FilterInputStream {
-      private final Supplier<String> a;
-      private boolean b;
+   private HttpURLConnection c(JsonObject $$0, URL $$1) throws IOException {
+      HttpURLConnection $$2 = (HttpURLConnection)$$1.openConnection();
+      $$2.setConnectTimeout(15000);
+      $$2.setReadTimeout(2000);
+      $$2.setUseCaches(false);
+      $$2.setDoOutput(true);
+      $$2.setDoInput(true);
+      $$2.setRequestMethod("POST");
+      $$2.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+      $$2.setRequestProperty("Accept", "application/json");
+      $$2.setRequestProperty("Authorization", "Basic " + this.k);
+      $$2.setRequestProperty("User-Agent", "Minecraft server" + aa.b().c());
+      OutputStreamWriter $$3 = new OutputStreamWriter($$2.getOutputStream(), StandardCharsets.UTF_8);
 
-      public c(InputStream $$0, ahh $$1, String $$2) {
-         super($$0);
-         Exception $$3 = new Exception("Stacktrace");
-         this.a = () -> {
-            StringWriter $$3x = new StringWriter();
-            $$3.printStackTrace(new PrintWriter($$3x));
-            return "Leaked resource: '" + $$1 + "' loaded from pack: '" + $$2 + "'\n" + $$3x;
+      try {
+         JsonWriter $$4 = new JsonWriter($$3);
+
+         try {
+            Streams.write($$0, $$4);
+         } catch (Throwable var10) {
+            try {
+               $$4.close();
+            } catch (Throwable var9) {
+               var10.addSuppressed(var9);
+            }
+
+            throw var10;
+         }
+
+         $$4.close();
+      } catch (Throwable var11) {
+         try {
+            $$3.close();
+         } catch (Throwable var8) {
+            var11.addSuppressed(var8);
+         }
+
+         throw var11;
+      }
+
+      $$3.close();
+      int $$5 = $$2.getResponseCode();
+      if ($$5 >= 200 && $$5 < 300) {
+         return $$2;
+      } else {
+         throw new aqa.e($$5 + " " + $$2.getResponseMessage());
+      }
+   }
+
+   public apz a(GameProfile $$0) {
+      return new aqa.d($$0);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      aqa.a a = ($$0, $$1) -> false;
+      aqa.a b = ($$0, $$1) -> $$0.length() == $$1;
+
+      static aqa.a ignoreOverThreshold(int $$0) {
+         return ($$1, $$2) -> $$2 >= $$0;
+      }
+
+      static aqa.a select(int $$0) {
+         return switch ($$0) {
+            case -1 -> a;
+            case 0 -> b;
+            default -> ignoreOverThreshold($$0);
          };
       }
 
-      @Override
-      public void close() throws IOException {
-         super.close();
-         this.b = true;
+      boolean shouldIgnore(String var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      JsonObject encode(GameProfile var1);
+   }
+
+   @FunctionalInterface
+   interface c {
+      JsonObject encode(GameProfile var1, String var2);
+   }
+
+   class d implements apz {
+      private final GameProfile c;
+      private final Executor d;
+
+      d(GameProfile $$0) {
+         this.c = $$0;
+         bkn<Runnable> $$1 = bkn.a(aqa.this.m, "chat stream for " + $$0.getName());
+         this.d = $$1::a;
       }
 
       @Override
-      protected void finalize() throws Throwable {
-         if (!this.b) {
-            aqa.b.warn("{}", this.a.get());
-         }
+      public void a() {
+         aqa.this.a(this.c, aqa.this.g, aqa.this.h, this.d);
+      }
 
-         super.finalize();
+      @Override
+      public void b() {
+         aqa.this.a(this.c, aqa.this.i, aqa.this.j, this.d);
+      }
+
+      @Override
+      public CompletableFuture<List<apm>> a(List<String> $$0) {
+         List<CompletableFuture<apm>> $$1 = $$0.stream().map($$0x -> aqa.this.a(this.c, $$0x, aqa.this.l, this.d)).collect(ImmutableList.toImmutableList());
+         return ac.c($$1).exceptionally($$0x -> ImmutableList.of());
+      }
+
+      @Override
+      public CompletableFuture<apm> a(String $$0) {
+         return aqa.this.a(this.c, $$0, aqa.this.l, this.d);
       }
    }
 
-   static record d(String a, @Nullable aox b, @Nullable Predicate<ahh> c) {
-
-      public void a(Collection<ahh> $$0) {
-         if (this.c != null) {
-            $$0.removeIf(this.c);
-         }
+   public static class e extends RuntimeException {
+      e(String $$0) {
+         super($$0);
       }
-
-      public boolean a(ahh $$0) {
-         return this.c != null && this.c.test($$0);
-      }
-   }
-
-   static record e(aox a, aqb<InputStream> b) {
    }
 }

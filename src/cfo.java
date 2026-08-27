@@ -1,30 +1,19 @@
-import java.util.function.IntFunction;
+import java.util.Map;
 
-public enum cfo implements aur {
-   a(0, "options.chat.visibility.full"),
-   b(1, "options.chat.visibility.system"),
-   c(2, "options.chat.visibility.hidden");
-
-   private static final IntFunction<cfo> d = ath.a(cfo::a, values(), ath.a.b);
-   private final int e;
-   private final String f;
-
-   private cfo(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public class cfo extends bpw<cfj> {
+   public cfo() {
+      super(Map.of(bxh.o, bxi.a, bxh.aZ, bxi.b, bxh.ba, bxi.b, bxh.m, bxi.b, bxh.aV, bxi.b));
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   protected boolean a(aov $$0, cfj $$1) {
+      return $$1.bO() || $$1.aZ() || $$1.c(bnd.y) != null;
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   protected boolean a(aov $$0, cfj $$1, long $$2) {
+      return false;
    }
 
-   public static cfo a(int $$0) {
-      return d.apply($$0);
+   protected void b(aov $$0, cfj $$1, long $$2) {
+      $$1.dO().a(bxh.aV, axk.a, 60L);
    }
 }

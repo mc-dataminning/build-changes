@@ -1,77 +1,34 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bsw extends btk {
-   private static final bxd d = bxd.b().a(8.0).d();
-   protected final byc a;
-   private final Class<? extends byc> e;
-   protected final ctx b;
-   @Nullable
-   protected byc c;
-   private int f;
-   private final double g;
+public class bsw {
+   public static bpx<bog> a(cyo $$0) {
+      return btj.a(
+         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$1 -> $$1.group($$1.c(bxh.o), $$1.b(bxh.m), $$1.b(bxh.Y))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.aZ() && $$3x.aC()) {
+                        hz $$5 = $$3x.dm().d();
 
-   public bsw(byc $$0, double $$1) {
-      this($$0, $$1, (Class<? extends byc>)$$0.getClass());
-   }
+                        for (ie $$6 : ie.c.a) {
+                           hz $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).k($$2x, $$7).a(ie.b).c() && $$2x.b_($$7).b(egq.c)) {
+                              hz $$8 = $$7.c();
+                              if ($$2x.a_($$8).i()) {
+                                 dlf $$9 = $$0.o();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(dpp.i, $$8, dpp.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, atk.jA, atl.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   public bsw(byc $$0, double $$1, Class<? extends byc> $$2) {
-      this.a = $$0;
-      this.b = $$0.dL();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(btk.a.a, btk.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      if (!this.a.gj()) {
-         return false;
-      } else {
-         this.c = this.h();
-         return this.c != null;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.bx() && this.c.gj() && this.f < 60 && !this.c.gc();
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-      this.f = 0;
-   }
-
-   @Override
-   public void e() {
-      this.a.I().a(this.c, 10.0F, (float)this.a.ab());
-      this.a.N().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
-         this.g();
-      }
-   }
-
-   @Nullable
-   private byc h() {
-      List<? extends byc> $$0 = this.b.a(this.e, d, this.a, this.a.cH().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      byc $$2 = null;
-
-      for (byc $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gc() && this.a.f($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.f($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a((ane)this.b, this.c);
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

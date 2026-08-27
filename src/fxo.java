@@ -1,84 +1,50 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class fxo implements fxe.a {
-   private final evr a;
+public class fxo {
+   private static final Map<div<?>, fxn<?>> a = Maps.newHashMap();
 
-   public fxo(evr $$0) {
-      this.a = $$0;
+   private static <T extends dit> void a(div<? extends T> $$0, fxn<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   @Override
-   public void a(eqk $$0, ftt $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      ctd $$6 = this.a.s.dL();
-      hx $$7 = hx.a($$2, $$3, $$4);
-
-      for (hx $$8 : hx.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         djp $$9 = $$6.a_($$8);
-         if (!$$9.a(cxa.a)) {
-            emv $$10 = $$9.j($$6, $$8);
-
-            for (elx $$11 : $$10.e()) {
-               elx $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               float $$19 = 1.0F;
-               float $$20 = 0.0F;
-               float $$21 = 0.0F;
-               float $$22 = 0.5F;
-               if ($$9.d($$6, $$8, ic.e)) {
-                  eqo $$23 = $$1.getBuffer(fub.y());
-                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ic.d)) {
-                  eqo $$24 = $$1.getBuffer(fub.y());
-                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ic.f)) {
-                  eqo $$25 = $$1.getBuffer(fub.y());
-                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ic.c)) {
-                  eqo $$26 = $$1.getBuffer(fub.y());
-                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ic.a)) {
-                  eqo $$27 = $$1.getBuffer(fub.y());
-                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-
-               if ($$9.d($$6, $$8, ic.b)) {
-                  eqo $$28 = $$1.getBuffer(fub.y());
-                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-            }
+   public static Map<div<?>, fxm<?>> a(fxn.a $$0) {
+      Builder<div<?>, fxm<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + kf.k.b((div<?>)$$2), var5);
          }
-      }
+      });
+      return $$1.build();
+   }
+
+   static {
+      a(div.h, fya::new);
+      a(div.i, fxw::new);
+      a(div.j, fyc::new);
+      a(div.k, fxy::new);
+      a(div.b, fxs::new);
+      a(div.d, fxs::new);
+      a(div.c, fxs::new);
+      a(div.m, fxv::new);
+      a(div.D, fxx::new);
+      a(div.n, fyf::new);
+      a(div.v, fye::new);
+      a(div.o, fxi::new);
+      a(div.p, fyb::new);
+      a(div.t, fxh::new);
+      a(div.u, fyd::new);
+      a(div.x, fxz::new);
+      a(div.y, fxj::new);
+      a(div.z, fxt::new);
+      a(div.E, fxk::new);
+      a(div.G, fxr::new);
+      a(div.N, fxq::new);
+      a(div.O, fxu::new);
+      a(div.Q, fyg::new);
    }
 }

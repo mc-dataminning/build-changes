@@ -1,20 +1,32 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.LongStream;
 
-public class dro extends dsc<dun> {
-   public dro(Codec<dun> $$0) {
-      super($$0);
+public class dro {
+   private long b;
+   private long c;
+   public static final Codec<dro> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dro($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+
+   public dro(drd.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   @Override
-   public boolean a(dse<dun> $$0) {
-      cus $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      auw $$3 = $$0.d();
-      if ($$1.u($$2) && $$1.a_($$2.d()).a(cxa.fz)) {
-         cyd.a($$1, $$2, $$3, 8);
-         return true;
-      } else {
-         return false;
+   public dro(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
       }
+   }
+
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

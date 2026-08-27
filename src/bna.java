@@ -1,20 +1,15 @@
 public enum bna {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g,
-   h,
-   i,
-   j,
-   k,
-   l,
-   m,
-   n,
-   o,
-   p,
-   q,
-   r;
+   a(n.j),
+   b(n.m),
+   c(n.j);
+
+   private final n d;
+
+   private bna(n $$0) {
+      this.d = $$0;
+   }
+
+   public n a() {
+      return this.d;
+   }
 }

@@ -1,93 +1,45 @@
-import java.util.UUID;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class adi {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
+public class adi implements xx<aag> {
+   public static final xo<uq, adi> a = xx.a(adi::a, adi::new);
+   private final eon b;
+   private final String c;
 
-   public static String a(blw $$0) {
-      if ($$0 instanceof cfq) {
-         return $$0.ad().getString();
+   public adi(eon $$0, @Nullable eoo $$1) {
+      this.b = $$0;
+      if ($$1 == null) {
+         this.c = "";
       } else {
-         vg $$1 = $$0.af();
-         return $$1 != null ? $$1.getString() : a($$0.cw());
+         this.c = $$1.b();
       }
    }
 
-   public static String a(UUID $$0) {
-      auw $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   private adi(uq $$0) {
+      this.b = $$0.a(eon.u);
+      this.c = $$0.r();
    }
 
-   private static String a(auw $$0, String[] $$1) {
-      return ac.a($$1, $$0);
+   private void a(uq $$0) {
+      $$0.a(eon::a, this.b);
+      $$0.a(this.c);
    }
 
-   private static auw b(UUID $$0) {
-      return auw.a((long)($$0.hashCode() >> 2));
+   @Override
+   public xz<adi> a() {
+      return aeq.aA;
+   }
+
+   public void a(aag $$0) {
+      $$0.a(this);
+   }
+
+   public eon b() {
+      return this.b;
+   }
+
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

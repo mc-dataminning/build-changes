@@ -1,33 +1,21 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.datafixers.types.Type;
 
 public class ayz extends DataFix {
-   public ayz(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public ayz(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityStringUuidFix",
-         this.getInputSchema().getType(bbw.y),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> {
-                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
-                  if ($$1.isPresent()) {
-                     UUID $$2 = UUID.fromString($$1.get());
-                     return $$0x.remove("UUID")
-                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
-                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
-                  } else {
-                     return $$0x;
-                  }
-               }
-            )
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bdn.c);
+      OpticFinder<?> $$1 = $$0.findField("sections");
+      return this.fixTypeEverywhereTyped("ChunkDeleteLightFix for " + this.getOutputSchema().getVersionKey(), $$0, $$1x -> {
+         $$1x = $$1x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("isLightOn"));
+         return $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight")));
+      });
    }
 }

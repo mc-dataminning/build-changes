@@ -1,20 +1,25 @@
-public class dip extends dgs {
-   public dip(hx $$0, djp $$1) {
-      super(dhf.B, $$0, $$1, cqp.d);
+public class dip extends dit {
+   private cnn a;
+
+   public dip(hz $$0, dlf $$1) {
+      super(div.y, $$0, $$1);
+      this.a = ((cyh)$$1.b()).b();
    }
 
-   @Override
-   protected vg l() {
-      return vg.c("container.smoker");
+   public dip(hz $$0, dlf $$1, cnn $$2) {
+      super(div.y, $$0, $$1);
+      this.a = $$2;
    }
 
-   @Override
-   protected int a(cng $$0) {
-      return super.a($$0) / 2;
+   public aan c() {
+      return aan.a(this);
    }
 
-   @Override
-   protected cij a(int $$0, cfp $$1) {
-      return new ckg($$0, $$1, this, this.n);
+   public cnn d() {
+      return this.a;
+   }
+
+   public void a(cnn $$0) {
+      this.a = $$0;
    }
 }

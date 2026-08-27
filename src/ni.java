@@ -1,10 +1,21 @@
-public class ni extends mz {
-   public ni(km $$0) {
-      super($$0);
+import java.util.function.Function;
+
+public class ni {
+   private final Function<crr, csb<?>> a;
+
+   public ni(Function<crr, csb<?>> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void a(my $$0) {
-      na.a(mx.e, cnj.qT).a('#', cnj.uA).a('-', cnj.pr).b("-#-").b("# #").b("###").b("has_string", a(cnj.pr)).a($$0);
+   public static ni a(Function<crr, csb<?>> $$0) {
+      return new ni($$0);
+   }
+
+   public void a(na $$0, String $$1) {
+      this.a($$0, new aiy($$1));
+   }
+
+   public void a(na $$0, aiy $$1) {
+      $$0.a($$1, this.a.apply(crr.d), null);
    }
 }

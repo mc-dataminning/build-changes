@@ -1,17 +1,20 @@
-public interface ahx extends ahw {
-   amc a();
+public record ahx(ahy b) implements xx<ahw> {
+   public static final xo<uq, ahx> a = xx.a(ahx::a, ahx::new);
 
-   String b();
+   private ahx(uq $$0) {
+      this($$0.a(ahy.a));
+   }
 
-   int d();
+   private void a(uq $$0) {
+      $$0.a(ahy.a, this.b);
+   }
 
-   String f();
+   @Override
+   public xz<ahx> a() {
+      return aib.a;
+   }
 
-   String[] L();
-
-   String q();
-
-   String s();
-
-   String a(String var1);
+   public void a(ahw $$0) {
+      $$0.a(this);
+   }
 }

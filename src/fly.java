@@ -1,31 +1,80 @@
-public class fly<T extends byy> extends flt<T> {
-   private float j;
+import com.google.common.collect.ImmutableList;
 
-   public fly(fnj $$0) {
-      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
+public class fly<T extends bog> extends fkx<T> {
+   private final fpc a;
+   private final fpc b;
+
+   public fly(fpc $$0) {
+      this.b = $$0.b("left_wing");
+      this.a = $$0.b("right_wing");
    }
 
-   public static fnp c() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      $$1.a("head", fno.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fnn(0.6F)), fnl.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fno.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fnn(1.75F)), fnl.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fno $$2 = fno.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fnn(0.5F));
-      $$1.a("right_hind_leg", $$2, fnl.a(-3.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$2, fnl.a(3.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$2, fnl.a(-3.0F, 12.0F, -5.0F));
-      $$1.a("left_front_leg", $$2, fnl.a(3.0F, 12.0F, -5.0F));
-      return fnp.a($$0, 64, 32);
+   public static fpi c() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      fpg $$2 = new fpg(1.0F);
+      $$1.a(
+         "left_wing",
+         fph.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         fpe.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
+      );
+      $$1.a(
+         "right_wing",
+         fph.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         fpe.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      );
+      return fpi.a($$0, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.c = 6.0F + $$0.D($$3) * 9.0F;
-      this.j = $$0.E($$3);
+   @Override
+   protected Iterable<fpc> a() {
+      return ImmutableList.of();
+   }
+
+   @Override
+   protected Iterable<fpc> b() {
+      return ImmutableList.of(this.b, this.a);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.e = this.j;
+      float $$6 = (float) (Math.PI / 12);
+      float $$7 = (float) (-Math.PI / 12);
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      if ($$0.fw()) {
+         float $$10 = 1.0F;
+         ens $$11 = $$0.dp();
+         if ($$11.d < 0.0) {
+            ens $$12 = $$11.d();
+            $$10 = 1.0F - (float)Math.pow(-$$12.d, 1.5);
+         }
+
+         $$6 = $$10 * (float) (Math.PI / 9) + (1.0F - $$10) * $$6;
+         $$7 = $$10 * (float) (-Math.PI / 2) + (1.0F - $$10) * $$7;
+      } else if ($$0.bX()) {
+         $$6 = (float) (Math.PI * 2.0 / 9.0);
+         $$7 = (float) (-Math.PI / 4);
+         $$8 = 3.0F;
+         $$9 = 0.08726646F;
+      }
+
+      this.b.c = $$8;
+      if ($$0 instanceof ful $$13) {
+         $$13.c = $$13.c + ($$6 - $$13.c) * 0.1F;
+         $$13.d = $$13.d + ($$9 - $$13.d) * 0.1F;
+         $$13.e = $$13.e + ($$7 - $$13.e) * 0.1F;
+         this.b.e = $$13.c;
+         this.b.f = $$13.d;
+         this.b.g = $$13.e;
+      } else {
+         this.b.e = $$6;
+         this.b.g = $$7;
+         this.b.f = $$9;
+      }
+
+      this.a.f = -this.b.f;
+      this.a.c = this.b.c;
+      this.a.e = this.b.e;
+      this.a.g = -this.b.g;
    }
 }

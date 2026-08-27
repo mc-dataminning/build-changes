@@ -1,53 +1,57 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public class duo implements dug {
-   public static final Codec<duo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.list(duo.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, duo::new)
-   );
-   public final List<duo.a> b;
-   public final int c;
-   public final float d;
-
-   public duo(List<duo.a> $$0, int $$1, float $$2) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = $$2;
+public class duo extends dts<dwf> {
+   public duo(Codec<dwf> $$0) {
+      super($$0);
    }
 
-   public duo(List<duo.a> $$0, int $$1) {
-      this($$0, $$1, 0.0F);
+   @Override
+   public boolean a(dtu<dwf> $$0) {
+      cvo $$1 = $$0.b();
+      hz $$2 = $$0.e();
+      awo $$3 = $$0.d();
+      dwf $$4 = $$0.f();
+      Optional<ie> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         hz $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && dto.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         dto.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
+      }
    }
 
-   public duo(edi $$0, djp $$1, int $$2, float $$3) {
-      this(ImmutableList.of(new duo.a($$0, $$1)), $$2, $$3);
+   private static Optional<ie> a(cvo $$0, hz $$1, awo $$2) {
+      boolean $$3 = dto.b($$0.a_($$1.c()));
+      boolean $$4 = dto.b($$0.a_($$1.d()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? ie.a : ie.b);
+      } else if ($$3) {
+         return Optional.of(ie.a);
+      } else {
+         return $$4 ? Optional.of(ie.b) : Optional.empty();
+      }
    }
 
-   public duo(edi $$0, djp $$1, int $$2) {
-      this(ImmutableList.of(new duo.a($$0, $$1)), $$2, 0.0F);
-   }
+   private static void a(cvo $$0, awo $$1, hz $$2, dwf $$3) {
+      dto.c($$0, $$2);
 
-   public static duo.a a(edi $$0, djp $$1) {
-      return new duo.a($$0, $$1);
-   }
-
-   public static class a {
-      public static final Codec<duo.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(edi.c.fieldOf("target").forGetter($$0x -> $$0x.b), djp.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, duo.a::new)
-      );
-      public final edi b;
-      public final djp c;
-
-      a(edi $$0, djp $$1) {
-         this.b = $$0;
-         this.c = $$1;
+      for (ie $$4 : ie.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            hz $$5 = $$2.a($$4);
+            dto.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               hz $$6 = $$5.a(ie.b($$1));
+               dto.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  hz $$7 = $$6.a(ie.b($$1));
+                  dto.c($$0, $$7);
+               }
+            }
+         }
       }
    }
 }

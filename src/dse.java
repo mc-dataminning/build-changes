@@ -1,43 +1,20 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dse<FC extends dug> {
-   private final Optional<drp<?, ?>> a;
-   private final cus b;
-   private final dlm c;
-   private final auw d;
-   private final hx e;
-   private final FC f;
+class dse extends dsg {
+   public static final Codec<dse> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dse::new));
 
-   public dse(Optional<drp<?, ?>> $$0, cus $$1, dlm $$2, auw $$3, hx $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public dse(jd $$0) {
+      super($$0);
    }
 
-   public Optional<drp<?, ?>> a() {
-      return this.a;
+   @Override
+   protected boolean a(dlf $$0) {
+      return $$0.r();
    }
 
-   public cus b() {
-      return this.b;
-   }
-
-   public dlm c() {
-      return this.c;
-   }
-
-   public auw d() {
-      return this.d;
-   }
-
-   public hx e() {
-      return this.e;
-   }
-
-   public FC f() {
-      return this.f;
+   @Override
+   public drw<?> a() {
+      return drw.f;
    }
 }

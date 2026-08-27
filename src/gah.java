@@ -1,18 +1,28 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gah extends gbz<cdz, flv<cdz>> {
+   private static final aiy a = new aiy("textures/entity/creeper/creeper.png");
 
-public class gah extends gag<byp, fkc<byp>> {
-   private static final Map<byp.a, ahh> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(byp.a.b, new ahh("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(byp.a.a, new ahh("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public gah(fza.a $$0) {
-      super($$0, new fkc<>($$0.a(fni.ay)), 0.7F);
-      this.a(new gdg<>(this, $$0.c()));
+   public gah(gat.a $$0) {
+      super($$0, new flv<>($$0.a(fpb.D)), 0.5F);
+      this.a(new geh(this, $$0.f()));
    }
 
-   public ahh a(byp $$0) {
-      return a.get($$0.w());
+   protected void a(cdz $$0, esa $$1, float $$2) {
+      float $$3 = $$0.E($$2);
+      float $$4 = 1.0F + awh.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = awh.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
+   }
+
+   protected float a(cdz $$0, float $$1) {
+      float $$2 = $$0.E($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : awh.a($$2, 0.5F, 1.0F);
+   }
+
+   public aiy a(cdz $$0) {
+      return a;
    }
 }

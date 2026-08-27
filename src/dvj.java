@@ -1,45 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class dvj extends dvh {
-   public static final Codec<dvj> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
-            )
-            .apply($$0, dvj::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class dvj extends dts<dwd> {
+   private static final hz a = new hz(8, 3, 8);
+   private static final cuu b = new cuu(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   public dvj(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public dvj(Codec<dwd> $$0) {
+      super($$0);
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
    }
 
    @Override
-   protected dvi<?> b() {
-      return dvi.b;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
+   public boolean a(dtu<dwd> $$0) {
+      cwi $$1 = $$0.b();
+      cuu $$2 = new cuu($$0.e());
+      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
+         return true;
       } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
+         hz $$3 = a.h($$0.e().v() + a.v());
+         hz.a $$4 = new hz.a();
+
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, cyq.m.o(), 2);
+                  } else {
+                     $$1.a($$4, cyq.b.o(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
       }
    }
 }

@@ -1,44 +1,45 @@
-import java.util.EnumSet;
+public class bup extends bvo {
+   private final bzw g;
 
-public class bup extends btk {
-   private final bnj a;
-
-   public bup(bnj $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(btk.a.c, btk.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.gf();
+   public bup(bzw $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean a() {
-      if (!this.a.u()) {
-         return false;
-      } else if (this.a.bc()) {
-         return false;
-      } else if (!this.a.aC()) {
-         return false;
-      } else {
-         bmo $$0 = this.a.R_();
-         if ($$0 == null) {
-            return true;
-         } else {
-            return this.a.f($$0) < 144.0 && $$0.eh() != null ? false : this.a.gf();
-         }
-      }
+      return this.g.u() && !this.g.gg() && super.a();
    }
 
    @Override
    public void c() {
-      this.a.N().n();
-      this.a.y(true);
+      super.c();
+      this.g.y(false);
    }
 
    @Override
    public void d() {
-      this.a.y(false);
+      super.d();
+      this.g.y(false);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.g.y(this.m());
+   }
+
+   @Override
+   protected boolean a(cvq $$0, hz $$1) {
+      if (!$$0.u($$1.c())) {
+         return false;
+      } else {
+         dlf $$2 = $$0.a_($$1);
+         if ($$2.a(cyq.cv)) {
+            return dja.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(cyq.cD) && $$2.c(dbv.b) ? true : $$2.a(atz.R, $$0x -> $$0x.d(cyh.b).map($$0xx -> $$0xx != dls.a).orElse(true));
+         }
+      }
    }
 }

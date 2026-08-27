@@ -1,22 +1,37 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
-public class bbp extends awb {
-   private final Predicate<String> a;
+public abstract class bbp extends DataFix {
+   private final String a;
 
-   public bbp(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, $$1);
-      this.a = $$2.negate();
+   public bbp(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.filter(this::a);
+   public TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = DSL.named(bdn.A.typeName(), bew.a());
+      if (!Objects.equals(this.getInputSchema().getType(bdn.A), $$0)) {
+         throw new IllegalStateException("item name type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
    }
 
-   private <T> boolean a(Dynamic<T> $$0) {
-      return $$0.get("type").asString().result().filter(this.a).isPresent();
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new bbp($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

@@ -1,42 +1,70 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class ejk extends eir {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<ejk> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ejk::new));
+public class ejk extends ejh {
+   public static final Codec<ejk> a = a(ejk::new);
 
-   private ejk(List<eke> $$0) {
-      super($$0);
+   ejk(List<ejo> $$0, List<elu> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eit b() {
-      return eiu.h;
+   public ejp a() {
+      return ejm.i;
    }
 
    @Override
-   public cng a(cng $$0, ehf $$1) {
-      if ($$0.b()) {
-         return $$0;
-      } else {
-         Optional<cqm<cqz>> $$2 = $$1.d().r().a(cqp.b, new bkl($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cng $$3 = $$2.get().b().a($$1.d().I_());
-            if (!$$3.b()) {
-               return $$3.c($$0.L());
-            }
+   protected ejg a(List<? extends ejg> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ejg)$$0.get(0);
+         case 2 -> {
+            ejg $$1 = $$0.get(0);
+            ejg $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (ejg $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
          }
 
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
+         return true;
+      };
+      };
    }
 
-   public static eir.a<?> c() {
-      return a(ejk::new);
+   public static ejk.a a(ejo.a<?>... $$0) {
+      return new ejk.a($$0);
+   }
+
+   public static class a extends ejo.a<ejk.a> {
+      private final Builder<ejo> a = ImmutableList.builder();
+
+      public a(ejo.a<?>... $$0) {
+         for (ejo.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected ejk.a a() {
+         return this;
+      }
+
+      @Override
+      public ejk.a b(ejo.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ejo b() {
+         return new ejk(this.a.build(), this.f());
+      }
    }
 }

@@ -1,147 +1,72 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
+import com.mojang.logging.LogUtils;
 import java.util.Collection;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.ToIntFunction;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 public class aji {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.experience.set.points.invalid"));
+   private static final Logger a = LogUtils.getLogger();
+   private static final CompletableFuture<axk> b = CompletableFuture.completedFuture(axk.a);
+   private final dq.a c;
+   private final dv d;
+   private final cse e = new cse();
+   private final auq f;
+   private final eiy g = new eiy();
+   private final ajk h = new ajk(this.g);
+   private final ajl i;
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      LiteralCommandNode<ds> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("experience").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     dt.a("add")
-                        .then(
-                           dt.a("targets", ef.d())
-                              .then(
-                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("amount", IntegerArgumentType.integer())
-                                          .executes(
-                                             $$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aji.a.a)
-                                          ))
-                                       .then(
-                                          dt.a("points")
-                                             .executes(
-                                                $$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aji.a.a)
-                                             )
-                                       ))
-                                    .then(
-                                       dt.a("levels")
-                                          .executes(
-                                             $$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aji.a.b)
-                                          )
-                                    )
-                              )
-                        )
-                  ))
-               .then(
-                  dt.a("set")
-                     .then(
-                        dt.a("targets", ef.d())
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("amount", IntegerArgumentType.integer(0))
-                                       .executes(
-                                          $$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aji.a.a)
-                                       ))
-                                    .then(
-                                       dt.a("points")
-                                          .executes(
-                                             $$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aji.a.a)
-                                          )
-                                    ))
-                                 .then(
-                                    dt.a("levels")
-                                       .executes(
-                                          $$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "amount"), aji.a.b)
-                                       )
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               dt.a("query")
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("targets", ef.c())
-                           .then(dt.a("points").executes($$0x -> a((ds)$$0x.getSource(), ef.e($$0x, "targets"), aji.a.a))))
-                        .then(dt.a("levels").executes($$0x -> a((ds)$$0x.getSource(), ef.e($$0x, "targets"), aji.a.b)))
-                  )
-            )
-      );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
+   public aji(iw.b $$0, cjs $$1, dv.a $$2, int $$3) {
+      this.f = new auq($$0);
+      this.c = dq.a((iw)$$0, $$1);
+      this.d = new dv($$2, this.c);
+      this.c.a(dq.b.a);
+      this.i = new ajl($$3, this.d.a());
    }
 
-   private static int a(ds $$0, anf $$1, aji.a $$2) {
-      int $$3 = $$2.f.applyAsInt($$1);
-      $$0.a(() -> vg.a("commands.experience.query." + $$2.e, $$1.Q_(), $$3), false);
-      return $$3;
+   public ajl a() {
+      return this.i;
    }
 
-   private static int a(ds $$0, Collection<? extends anf> $$1, int $$2, aji.a $$3) {
-      for (anf $$4 : $$1) {
-         $$3.c.accept($$4, $$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> vg.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().Q_()), true);
-      } else {
-         $$0.a(() -> vg.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-      }
-
-      return $$1.size();
+   public eiy b() {
+      return this.g;
    }
 
-   private static int b(ds $$0, Collection<? extends anf> $$1, int $$2, aji.a $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (anf $$5 : $$1) {
-         if ($$3.d.test($$5, $$2)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vg.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vg.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$1.size();
-      }
+   public cse c() {
+      return this.e;
    }
 
-   static enum a {
-      a("points", cfq::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.gb()) {
-            return false;
-         } else {
-            $$0.a($$1);
-            return true;
-         }
-      }, $$0 -> aup.d($$0.cl * (float)$$0.gb())),
-      b("levels", anf::c, ($$0, $$1) -> {
-         $$0.b($$1);
-         return true;
-      }, $$0 -> $$0.cj);
+   public dv d() {
+      return this.d;
+   }
 
-      public final BiConsumer<anf, Integer> c;
-      public final BiPredicate<anf, Integer> d;
-      public final String e;
-      final ToIntFunction<anf> f;
+   public ajk e() {
+      return this.h;
+   }
 
-      private a(String $$0, BiConsumer<anf, Integer> $$1, BiPredicate<anf, Integer> $$2, ToIntFunction<anf> $$3) {
-         this.c = $$1;
-         this.e = $$0;
-         this.d = $$2;
-         this.f = $$3;
-      }
+   public List<aru> f() {
+      return List.of(this.f, this.g, this.e, this.i, this.h);
+   }
+
+   public static CompletableFuture<aji> a(asa $$0, iw.b $$1, cjs $$2, dv.a $$3, int $$4, Executor $$5, Executor $$6) {
+      aji $$7 = new aji($$1, $$2, $$3, $$4);
+      return asg.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1x, $$2x) -> $$7.c.a(dq.b.b)).thenApply($$1x -> $$7);
+   }
+
+   public void a(iw $$0) {
+      this.f.a().forEach($$1 -> a($$0, (auq.a<?>)$$1));
+      dii.f();
+      cyq.a();
+   }
+
+   private static <T> void a(iw $$0, auq.a<T> $$1) {
+      aix<? extends iv<T>> $$2 = $$1.a();
+      Map<auo<T>, List<ij<T>>> $$3 = $$1.b()
+         .entrySet()
+         .stream()
+         .collect(Collectors.toUnmodifiableMap($$1x -> auo.a($$2, (aiy)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends ij<T>>)$$0x.getValue())));
+      $$0.d($$2).a($$3);
    }
 }

@@ -1,47 +1,66 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.logging.LogUtils;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.Collections;
+import java.util.function.Predicate;
 
 public class akk {
-   private static final Logger a = LogUtils.getLogger();
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vq.b("clear.failed.single", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vq.b("clear.failed.multiple", $$0));
 
-   public static void a(Collection<String> $$0, ds $$1) {
-      $$1.l().a($$0).exceptionally($$1x -> {
-         a.warn("Failed to execute reload", $$1x);
-         $$1.b(vg.c("commands.reload.failure"));
-         return null;
-      });
+   public static void a(CommandDispatcher<du> $$0, dq $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("clear").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((du)$$0x.getSource(), Collections.singleton(((du)$$0x.getSource()).h()), $$0xx -> true, -1)))
+            .then(
+               ((RequiredArgumentBuilder)dv.a("targets", eh.d()).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), $$0xx -> true, -1)))
+                  .then(
+                     ((RequiredArgumentBuilder)dv.a("item", gd.a($$1)).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), gd.a($$0x, "item"), -1)))
+                        .then(
+                           dv.a("maxCount", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), gd.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   private static Collection<String> a(apu $$0, ehb $$1, Collection<String> $$2) {
-      $$0.a();
-      Collection<String> $$3 = Lists.newArrayList($$2);
-      Collection<String> $$4 = $$1.F().a().b();
+   private static int a(du $$0, Collection<aow> $$1, Predicate<coz> $$2, int $$3) throws CommandSyntaxException {
+      int $$4 = 0;
 
-      for (String $$5 : $$0.b()) {
-         if (!$$4.contains($$5) && !$$3.contains($$5)) {
-            $$3.add($$5);
-         }
+      for (aow $$5 : $$1) {
+         $$4 += $$5.fT().a($$2, $$3, $$5.bV.q());
+         $$5.bW.d();
+         $$5.bV.a($$5.fT());
       }
 
-      return $$3;
-   }
+      if ($$4 == 0) {
+         if ($$1.size() == 1) {
+            throw a.create($$1.iterator().next().ad());
+         } else {
+            throw b.create($$1.size());
+         }
+      } else {
+         int $$6 = $$4;
+         if ($$3 == 0) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> vq.a("commands.clear.test.single", $$6, $$1.iterator().next().Q_()), true);
+            } else {
+               $$0.a(() -> vq.a("commands.clear.test.multiple", $$6, $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> vq.a("commands.clear.success.single", $$6, $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> vq.a("commands.clear.success.multiple", $$6, $$1.size()), true);
+         }
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         ds $$1 = (ds)$$0x.getSource();
-         MinecraftServer $$2 = $$1.l();
-         apu $$3 = $$2.aD();
-         ehb $$4 = $$2.aY();
-         Collection<String> $$5 = $$3.d();
-         Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> vg.c("commands.reload.success"), true);
-         a($$6, $$1);
-         return 0;
-      }));
+         return $$4;
+      }
    }
 }

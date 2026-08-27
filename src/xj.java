@@ -1,15 +1,36 @@
-public interface xj extends ue {
-   void a(xm var1);
+import com.mojang.serialization.MapCodec;
 
-   void a(xn var1);
+public class xj implements xg {
+   public static final xh<xj> a = new xh<xj>() {
+      private static final MapCodec<xj> a = wn.b.a.xmap(xj::new, $$0 -> $$0.e);
+      private static final xo<vb, xj> b = xo.a(wn.b.c, $$0 -> $$0.e, xj::new);
 
-   void a(xk var1);
+      @Override
+      public MapCodec<xj> a() {
+         return a;
+      }
 
-   void a(xl var1);
+      @Override
+      public xo<vb, xj> b() {
+         return b;
+      }
+   };
+   public static final xj b = new xj(wn.a);
+   public static final xj c = new xj(wn.a.a(n.m));
+   public static final xj d = new xj(wn.a.a(n.o));
+   final wn e;
 
-   void a(xp var1);
+   public xj(wn $$0) {
+      this.e = $$0;
+   }
 
-   void a(xo var1);
+   @Override
+   public we a(int $$0) {
+      return vq.b(Integer.toString($$0)).c(this.e);
+   }
 
-   void a(xq var1);
+   @Override
+   public xh<xj> a() {
+      return a;
+   }
 }

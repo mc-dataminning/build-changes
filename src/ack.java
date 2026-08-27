@@ -1,39 +1,23 @@
 import java.util.List;
+import java.util.UUID;
 
-public class ack implements xg<zb> {
-   private final int a;
-   private final int[] b;
+public record ack(List<UUID> b) implements xx<aag> {
+   public static final xo<uq, ack> a = xx.a(ack::a, ack::new);
 
-   public ack(blw $$0) {
-      this.a = $$0.aj();
-      List<blw> $$1 = $$0.cP();
-      this.b = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.b[$$2] = $$1.get($$2).aj();
-      }
+   private ack(uq $$0) {
+      this($$0.a(jc.f));
    }
 
-   public ack(uj $$0) {
-      this.a = $$0.n();
-      this.b = $$0.c();
+   private void a(uq $$0) {
+      $$0.a(this.b, jc.f);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public xz<ack> a() {
+      return aeq.ad;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
-   }
-
-   public int[] a() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.a;
    }
 }

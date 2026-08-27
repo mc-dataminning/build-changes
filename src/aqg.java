@@ -1,70 +1,68 @@
-import com.google.common.collect.Lists;
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aqg implements aqj, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private apz b;
-   private final List<aqd> c = Lists.newArrayList();
-   private final aoy d;
+public abstract class aqg implements aqo {
+   private static final Logger c = LogUtils.getLogger();
+   private final String d;
+   private final boolean e;
 
-   public aqg(aoy $$0) {
+   protected aqg(String $$0, boolean $$1) {
       this.d = $$0;
-      this.b = new aqc($$0, List.of());
+      this.e = $$1;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(ara<T> $$0) throws IOException {
+      ars<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
+      } else {
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
+         }
+
+         return (T)var4;
+      }
+   }
+
+   @Nullable
+   public static <T> T a(ara<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = avx.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
+      }
+
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
+         try {
+            return $$0.a(avx.u($$3, $$0.a()));
+         } catch (Exception var7) {
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
+         }
+      }
    }
 
    @Override
-   public void close() {
-      this.b.close();
-   }
-
-   public void a(aqd $$0) {
-      this.c.add($$0);
-   }
-
-   public aqf a(Executor $$0, Executor $$1, CompletableFuture<avt> $$2, List<aox> $$3) {
-      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(aox::a).collect(Collectors.joining(", "))));
-      this.b.close();
-      this.b = new aqc(this.d, $$3);
-      return aqp.a(this.b, this.c, $$0, $$1, $$2, a.isDebugEnabled());
+   public String a() {
+      return this.d;
    }
 
    @Override
-   public Optional<aqh> getResource(ahh $$0) {
-      return this.b.getResource($$0);
-   }
-
-   @Override
-   public Set<String> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public List<aqh> a(ahh $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public Map<ahh, aqh> b(String $$0, Predicate<ahh> $$1) {
-      return this.b.b($$0, $$1);
-   }
-
-   @Override
-   public Map<ahh, List<aqh>> c(String $$0, Predicate<ahh> $$1) {
-      return this.b.c($$0, $$1);
-   }
-
-   @Override
-   public Stream<aox> b() {
-      return this.b.b();
+   public boolean b() {
+      return this.e;
    }
 }

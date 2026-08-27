@@ -1,18 +1,29 @@
-public record adc(int a) implements xg<zb> {
-   public adc(uj $$0) {
-      this($$0.n());
+public class adc implements xx<aag> {
+   public static final xo<uq, adc> a = xx.a(adc::a, adc::new);
+   private final int b;
+
+   public adc(dmw $$0) {
+      this.b = $$0.r();
    }
 
-   public static adc a(bkn $$0) {
-      return new adc($$0.k());
+   private adc(uq $$0) {
+      this.b = $$0.n();
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
+   public xz<adc> a() {
+      return aeq.au;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

@@ -1,43 +1,80 @@
-import com.mojang.serialization.Codec;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class dtt extends dsc<dun> {
-   private static final hx a = new hx(8, 3, 8);
-   private static final cte b = new cte(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public dtt(Codec<dun> $$0) {
-      super($$0);
-   }
-
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
-   @Override
-   public boolean a(dse<dun> $$0) {
-      cus $$1 = $$0.b();
-      cte $$2 = new cte($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
-      } else {
-         hx $$3 = a.h($$0.e().v() + a.v());
-         hx.a $$4 = new hx.a();
-
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, cxa.m.o(), 2);
-                  } else {
-                     $$1.a($$4, cxa.b.o(), 2);
-                  }
-               }
-            }
+public class dtt {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<aov, dtt.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<aov, dtt.b>() {
+         public dtt.b a(aov $$0) {
+            return new dtt.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
          }
+      });
 
-         return true;
+   public static void a(aov $$0) {
+      try {
+         ((dtt.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
       }
+   }
+
+   public static void a(aov $$0, dtf<?, ?> $$1, Optional<eai> $$2) {
+      try {
+         ((dtt.b)b.get($$0)).a().computeInt(new dtt.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
+      }
+   }
+
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
+
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ae().a().toString();
+               boolean $$3 = $$0.o().v();
+               iv<eai> $$4 = $$0.I_().d(kg.aC);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::d).<aiy>map(aix::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
+            }
+         );
+   }
+
+   static record a(dtf<?, ?> a, Optional<eai> b) {
+   }
+
+   static record b(Object2IntMap<dtt.a> a, MutableInt b) {
    }
 }

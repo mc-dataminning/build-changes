@@ -1,154 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-@Deprecated
-public class dsr extends dsc<dsr.a> {
-   private static final djp a = cxa.nc.o();
+public record dsr<WC extends dsm>(dst<WC> d, WC e) {
+   public static final Codec<dsr<?>> a = kf.P.q().dispatch($$0 -> $$0.d, dst::c);
+   public static final Codec<ij<dsr<?>>> b = aiu.a(kg.av, a);
+   public static final Codec<in<dsr<?>>> c = ix.a(kg.av, a);
 
-   public dsr(Codec<dsr.a> $$0) {
-      super($$0);
+   public boolean a(awo $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(dse<dsr.a> $$0) {
-      hx $$1 = $$0.e();
-      cus $$2 = $$0.b();
-      auw $$3 = $$0.d();
-      dsr.a $$4 = $$0.f();
-      if ($$1.v() <= $$2.J_() + 4) {
-         return false;
-      } else {
-         $$1 = $$1.c(4);
-         boolean[] $$5 = new boolean[2048];
-         int $$6 = $$3.a(4) + 4;
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            double $$8 = $$3.j() * 6.0 + 3.0;
-            double $$9 = $$3.j() * 4.0 + 2.0;
-            double $$10 = $$3.j() * 6.0 + 3.0;
-            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
-            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
-            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
-
-            for (int $$14 = 1; $$14 < 15; $$14++) {
-               for (int $$15 = 1; $$15 < 15; $$15++) {
-                  for (int $$16 = 1; $$16 < 7; $$16++) {
-                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
-                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
-                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
-                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
-                     if ($$20 < 1.0) {
-                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
-                     }
-                  }
-               }
-            }
-         }
-
-         djp $$21 = $$4.a().a($$3, $$1);
-
-         for (int $$22 = 0; $$22 < 16; $$22++) {
-            for (int $$23 = 0; $$23 < 16; $$23++) {
-               for (int $$24 = 0; $$24 < 8; $$24++) {
-                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
-                     && (
-                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
-                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
-                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
-                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
-                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
-                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
-                     );
-                  if ($$25) {
-                     djp $$26 = $$2.a_($$1.b($$22, $$24, $$23));
-                     if ($$24 >= 4 && $$26.k()) {
-                        return false;
-                     }
-
-                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
-                        return false;
-                     }
-                  }
-               }
-            }
-         }
-
-         for (int $$27 = 0; $$27 < 16; $$27++) {
-            for (int $$28 = 0; $$28 < 16; $$28++) {
-               for (int $$29 = 0; $$29 < 8; $$29++) {
-                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
-                     hx $$30 = $$1.b($$27, $$29, $$28);
-                     if (this.c($$2.a_($$30))) {
-                        boolean $$31 = $$29 >= 4;
-                        $$2.a($$30, $$31 ? a : $$21, 2);
-                        if ($$31) {
-                           $$2.a($$30, a.b(), 0);
-                           this.a($$2, $$30);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         djp $$32 = $$4.b().a($$3, $$1);
-         if (!$$32.i()) {
-            for (int $$33 = 0; $$33 < 16; $$33++) {
-               for (int $$34 = 0; $$34 < 16; $$34++) {
-                  for (int $$35 = 0; $$35 < 8; $$35++) {
-                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
-                        && (
-                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
-                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
-                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
-                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
-                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
-                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
-                        );
-                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
-                        djp $$37 = $$2.a_($$1.b($$33, $$35, $$34));
-                        if ($$37.e() && !$$37.a(asi.bI)) {
-                           hx $$38 = $$1.b($$33, $$35, $$34);
-                           $$2.a($$38, $$32, 2);
-                           this.a($$2, $$38);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         if ($$21.u().a(asn.a)) {
-            for (int $$39 = 0; $$39 < 16; $$39++) {
-               for (int $$40 = 0; $$40 < 16; $$40++) {
-                  int $$41 = 4;
-                  hx $$42 = $$1.b($$39, 4, $$40);
-                  if ($$2.t($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
-                     $$2.a($$42, cxa.dO.o(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+   public boolean a(dso $$0, dnb $$1, Function<hz, ij<cwm>> $$2, awo $$3, dqa $$4, cuu $$5, dna $$6) {
+      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   private boolean c(djp $$0) {
-      return !$$0.a(asi.bH);
+   public dst<WC> a() {
+      return this.d;
    }
 
-   public static record a(dwh b, dwh c) implements dug {
-      public static final Codec<dsr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dwh.a.fieldOf("fluid").forGetter(dsr.a::a), dwh.a.fieldOf("barrier").forGetter(dsr.a::b)).apply($$0, dsr.a::new)
-      );
-
-      public dwh a() {
-         return this.b;
-      }
-
-      public dwh b() {
-         return this.c;
-      }
+   public WC b() {
+      return this.e;
    }
 }

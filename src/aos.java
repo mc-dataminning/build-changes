@@ -1,121 +1,127 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import java.util.ArrayList;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
-public class aos {
-   private static final Logger a = LogUtils.getLogger();
+public class aos extends blk {
+   private final Set<aow> h = Sets.newHashSet();
+   private final Set<aow> i = Collections.unmodifiableSet(this.h);
+   private boolean j = true;
 
-   public static void a(Path $$0, int $$1) {
-      try {
-         List<aos.b> $$2 = a($$0);
-         int $$3 = $$2.size() - $$1;
-         if ($$3 <= 0) {
-            return;
+   public aos(vq $$0, blk.a $$1, blk.b $$2) {
+      super(awh.a(), $$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(float $$0) {
+      if ($$0 != this.b) {
+         super.a($$0);
+         this.a(aaq::b);
+      }
+   }
+
+   @Override
+   public void a(blk.a $$0) {
+      if ($$0 != this.c) {
+         super.a($$0);
+         this.a(aaq::d);
+      }
+   }
+
+   @Override
+   public void a(blk.b $$0) {
+      if ($$0 != this.d) {
+         super.a($$0);
+         this.a(aaq::d);
+      }
+   }
+
+   @Override
+   public blk a(boolean $$0) {
+      if ($$0 != this.e) {
+         super.a($$0);
+         this.a(aaq::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public blk b(boolean $$0) {
+      if ($$0 != this.f) {
+         super.b($$0);
+         this.a(aaq::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public blk c(boolean $$0) {
+      if ($$0 != this.g) {
+         super.c($$0);
+         this.a(aaq::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void a(vq $$0) {
+      if (!Objects.equal($$0, this.a)) {
+         super.a($$0);
+         this.a(aaq::c);
+      }
+   }
+
+   private void a(Function<blk, aaq> $$0) {
+      if (this.j) {
+         aaq $$1 = $$0.apply(this);
+
+         for (aow $$2 : this.h) {
+            $$2.d.b($$1);
          }
+      }
+   }
 
-         $$2.sort(aos.b.a);
-         List<aos.a> $$4 = a($$2);
-         Collections.reverse($$4);
-         $$4.sort(aos.a.a);
-         Set<Path> $$5 = new HashSet<>();
+   public void a(aow $$0) {
+      if (this.h.add($$0) && this.j) {
+         $$0.d.b(aaq.a(this));
+      }
+   }
 
-         for (int $$6 = 0; $$6 < $$3; $$6++) {
-            aos.a $$7 = $$4.get($$6);
-            Path $$8 = $$7.b;
+   public void b(aow $$0) {
+      if (this.h.remove($$0) && this.j) {
+         $$0.d.b(aaq.a(this.i()));
+      }
+   }
 
-            try {
-               Files.delete($$8);
-               if ($$7.c == 0) {
-                  $$5.add($$8.getParent());
-               }
-            } catch (IOException var12) {
-               a.warn("Failed to delete cache file {}", $$8, var12);
-            }
+   public void b() {
+      if (!this.h.isEmpty()) {
+         for (aow $$0 : Lists.newArrayList(this.h)) {
+            this.b($$0);
          }
+      }
+   }
 
-         $$5.remove($$0);
+   public boolean g() {
+      return this.j;
+   }
 
-         for (Path $$10 : $$5) {
-            try {
-               Files.delete($$10);
-            } catch (DirectoryNotEmptyException var10) {
-            } catch (IOException var11) {
-               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
-            }
+   public void d(boolean $$0) {
+      if ($$0 != this.j) {
+         this.j = $$0;
+
+         for (aow $$1 : this.h) {
+            $$1.d.b($$0 ? aaq.a(this) : aaq.a(this.i()));
          }
-      } catch (UncheckedIOException | IOException var13) {
-         a.error("Failed to vacuum cache dir {}", $$0, var13);
       }
    }
 
-   private static List<aos.b> a(final Path $$0) throws IOException {
-      try {
-         final List<aos.b> $$1 = new ArrayList<>();
-         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
-               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
-                  FileTime $$2 = $$1.lastModifiedTime();
-                  $$1.add(new aos.b($$0, $$2));
-               }
-
-               return FileVisitResult.CONTINUE;
-            }
-         });
-         return $$1;
-      } catch (NoSuchFileException var2) {
-         return List.of();
-      }
-   }
-
-   private static List<aos.a> a(List<aos.b> $$0) {
-      List<aos.a> $$1 = new ArrayList<>();
-      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
-
-      for (aos.b $$3 : $$0) {
-         int $$4 = $$2.addTo($$3.b.getParent(), 1);
-         $$1.add(new aos.a($$3.b, $$4));
-      }
-
-      return $$1;
-   }
-
-   static record a(Path b, int c) {
-      public static final Comparator<aos.a> a = Comparator.comparing(aos.a::b).reversed();
-
-      public Path a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   static record b(Path b, FileTime c) {
-      public static final Comparator<aos.b> a = Comparator.comparing(aos.b::b).reversed();
-
-      public Path a() {
-         return this.b;
-      }
-
-      public FileTime b() {
-         return this.c;
-      }
+   public Collection<aow> h() {
+      return this.i;
    }
 }

@@ -1,111 +1,89 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.BiFunction;
 
-public class dea extends cwy implements ddy {
+public class dea extends cyx implements cyr {
    public static final MapCodec<dea> a = b(dea::new);
-   public static final dkn<dkx> b = dkf.bh;
-   public static final dkg c = dkf.C;
-   protected static final emv d = cwy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final emv e = cwy.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dlz d = dlv.R;
+   public static final dmf e = dlv.S;
+   private static final BiFunction<ie, Integer, eol> f = ac.a(
+      ($$0, $$1) -> {
+         eol[] $$2 = new eol[]{
+            cyo.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            cyo.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            cyo.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            cyo.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         eol $$3 = eoi.a();
+
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = eoi.a($$3, $$2[$$5]);
+         }
+
+         return $$3.b();
+      }
+   );
 
    @Override
-   public MapCodec<? extends dea> a() {
+   public MapCodec<dea> a() {
       return a;
    }
 
-   public dea(djo.d $$0) {
+   protected dea(dle.d $$0) {
       super($$0);
-      this.k(this.o().a(b, dkx.b).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(d, ie.c).a(e, Integer.valueOf(1)));
    }
 
    @Override
-   public boolean g_(djp $$0) {
-      return $$0.c(b) != dkx.c;
+   public dlf a(dlf $$0, dfa $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(b, c);
+   public dlf a(dlf $$0, ddk $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      dkx $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return ems.b();
-         case a:
-            return e;
-         default:
-            return d;
-      }
+   public boolean a(dlf $$0, crg $$1) {
+      return !$$1.h() && $$1.n().a(this.j()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
    }
 
-   @Nullable
    @Override
-   public djp a(cpp $$0) {
-      hx $$1 = $$0.a();
-      djp $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.a(b, dkx.c).a(c, Boolean.valueOf(false));
+   public eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
+   }
+
+   @Override
+   public dlf a(crg $$0) {
+      dlf $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.a(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.o().a(d, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(cvq $$0, hz $$1, dlf $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.a(e, Integer.valueOf($$4 + 1)), 2);
       } else {
-         eez $$3 = $$0.q().b_($$1);
-         djp $$4 = this.o().a(b, dkx.b).a(c, Boolean.valueOf($$3.a() == efa.c));
-         ic $$5 = $$0.k();
-         return $$5 != ic.a && ($$5 == ic.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, dkx.a);
-      }
-   }
-
-   @Override
-   public boolean a(djp $$0, cpp $$1) {
-      cng $$2 = $$1.n();
-      dkx $$3 = $$0.c(b);
-      if ($$3 == dkx.c || !$$2.a(this.j())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
-         ic $$5 = $$1.k();
-         return $$3 == dkx.b ? $$5 == ic.b || $$4 && $$5.o().d() : $$5 == ic.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
-   }
-
-   @Override
-   public eez c_(djp $$0) {
-      return $$0.c(c) ? efa.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(cty $$0, hx $$1, djp $$2, eez $$3) {
-      return $$2.c(b) != dkx.c ? ddy.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable cfq $$0, ctd $$1, hx $$2, djp $$3, eey $$4) {
-      return $$3.c(b) != dkx.c ? ddy.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, efa.c, efa.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
-      switch ($$3) {
-         case a:
-            return false;
-         case b:
-            return $$1.b_($$2).a(asn.a);
-         case c:
-            return false;
-         default:
-            return false;
+         a($$0, $$2, new coz(this));
       }
    }
 }

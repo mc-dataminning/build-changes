@@ -1,70 +1,24 @@
-public abstract class qc {
-   public static void a(pf<cuw> $$0) {
-      ii<dys> $$1 = $$0.a(ke.aC);
-      ii<drb<?>> $$2 = $$0.a(ke.av);
-      $$0.a(cvd.a, qf.j($$1, $$2));
-      $$0.a(cvd.b, qf.a($$1, $$2, false, false, false));
-      $$0.a(cvd.c, qf.a($$1, $$2, true, false, false));
-      $$0.a(cvd.d, qf.a($$1, $$2, false, true, false));
-      $$0.a(cvd.e, qf.a($$1, $$2, false, true, true));
-      $$0.a(cvd.f, qf.d($$1, $$2));
-      $$0.a(cvd.g, qf.h($$1, $$2));
-      $$0.a(cvd.h, qf.i($$1, $$2));
-      $$0.a(cvd.i, qf.b($$1, $$2, false, false, false));
-      $$0.a(cvd.j, qf.b($$1, $$2, false, false, true));
-      $$0.a(cvd.k, qf.b($$1, $$2, true, false, false));
-      $$0.a(cvd.l, qf.g($$1, $$2));
-      $$0.a(cvd.m, qf.b($$1, $$2, true, true, false));
-      $$0.a(cvd.n, qf.a($$1, $$2, false));
-      $$0.a(cvd.o, qf.a($$1, $$2, true));
-      $$0.a(cvd.p, qf.h($$1, $$2, false));
-      $$0.a(cvd.q, qf.h($$1, $$2, true));
-      $$0.a(cvd.r, qf.a($$1, $$2, false, false));
-      $$0.a(cvd.s, qf.a($$1, $$2, false, true));
-      $$0.a(cvd.t, qf.b($$1, $$2, false));
-      $$0.a(cvd.u, qf.b($$1, $$2, false));
-      $$0.a(cvd.v, qf.b($$1, $$2, true));
-      $$0.a(cvd.w, qf.a($$1, $$2, true, false));
-      $$0.a(cvd.x, qf.b($$1, $$2));
-      $$0.a(cvd.y, qf.a($$1, $$2));
-      $$0.a(cvd.z, qf.c($$1, $$2));
-      $$0.a(cvd.A, qf.c($$1, $$2, false));
-      $$0.a(cvd.B, qf.c($$1, $$2, false));
-      $$0.a(cvd.C, qf.c($$1, $$2, true));
-      $$0.a(cvd.D, qf.j($$1, $$2, false));
-      $$0.a(cvd.E, qf.j($$1, $$2, true));
-      $$0.a(cvd.F, qf.o($$1, $$2));
-      $$0.a(cvd.G, qf.n($$1, $$2));
-      $$0.a(cvd.H, qf.k($$1, $$2));
-      $$0.a(cvd.I, qf.l($$1, $$2));
-      $$0.a(cvd.J, qf.m($$1, $$2));
-      $$0.a(cvd.K, qf.i($$1, $$2, false));
-      $$0.a(cvd.L, qf.i($$1, $$2, true));
-      $$0.a(cvd.M, qf.b($$1, $$2, false, false));
-      $$0.a(cvd.N, qf.b($$1, $$2, true, false));
-      $$0.a(cvd.O, qf.b($$1, $$2, false, true));
-      $$0.a(cvd.P, qf.f($$1, $$2));
-      $$0.a(cvd.Q, qf.f($$1, $$2, false));
-      $$0.a(cvd.R, qf.f($$1, $$2, true));
-      $$0.a(cvd.S, qf.e($$1, $$2, false));
-      $$0.a(cvd.T, qf.e($$1, $$2, true));
-      $$0.a(cvd.U, qf.d($$1, $$2, false));
-      $$0.a(cvd.V, qf.d($$1, $$2, true));
-      $$0.a(cvd.W, qf.g($$1, $$2, false));
-      $$0.a(cvd.X, qf.g($$1, $$2, true));
-      $$0.a(cvd.Y, qf.e($$1, $$2));
-      $$0.a(cvd.Z, qf.q($$1, $$2));
-      $$0.a(cvd.aa, qf.p($$1, $$2));
-      $$0.a(cvd.ab, qf.r($$1, $$2));
-      $$0.a(cvd.ac, qe.a($$1, $$2));
-      $$0.a(cvd.ad, qe.e($$1, $$2));
-      $$0.a(cvd.ae, qe.d($$1, $$2));
-      $$0.a(cvd.af, qe.b($$1, $$2));
-      $$0.a(cvd.ag, qe.c($$1, $$2));
-      $$0.a(cvd.ah, qd.b($$1, $$2));
-      $$0.a(cvd.ai, qd.d($$1, $$2));
-      $$0.a(cvd.aj, qd.c($$1, $$2));
-      $$0.a(cvd.ak, qd.e($$1, $$2));
-      $$0.a(cvd.al, qd.a($$1, $$2));
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class qc {
+   public static void a(ph<ebe> $$0) {
+      ik<cwm> $$1 = $$0.a(kg.at);
+      ik<ecn> $$2 = $$0.a(kg.aG);
+      $$0.a(
+         eay.H,
+         new ede(
+            pt.a($$1.b(aty.I), Arrays.stream(boj.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new ebl(ebl.a.a, bki.c()))), dqk.b.d, ebp.b),
+            $$2.b(py.a),
+            Optional.empty(),
+            20,
+            dzo.a(dri.a(-40), dri.a(-20)),
+            false,
+            Optional.empty(),
+            116,
+            py.d
+         )
+      );
    }
 }

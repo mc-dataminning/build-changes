@@ -1,51 +1,28 @@
-public class bsk extends bsn {
-   private final int l;
-   private final boolean m;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-   public bsk(bmq $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
-   }
-
-   @Override
-   public void a() {
-      if (this.k == bsn.a.b) {
-         this.k = bsn.a.a;
-         this.d.e(true);
-         double $$0 = this.e - this.d.dq();
-         double $$1 = this.f - this.d.ds();
-         double $$2 = this.g - this.d.dw();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.A(0.0F);
-            this.d.z(0.0F);
-            return;
-         }
-
-         float $$4 = (float)(aup.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.r(this.a(this.d.dB(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aC()) {
-            $$5 = (float)(this.h * this.d.g(bnu.o));
-         } else {
-            $$5 = (float)(this.h * this.d.g(bnu.h));
-         }
-
-         this.d.v($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(aup.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.s(this.a(this.d.dD(), $$8, (float)this.l));
-            this.d.A($$1 > 0.0 ? $$5 : -$$5);
-         }
-      } else {
-         if (!this.m) {
-            this.d.e(false);
-         }
-
-         this.d.A(0.0F);
-         this.d.z(0.0F);
-      }
+public class bsk {
+   public static bpx<bog> a(Function<bog, Optional<brk>> $$0, Predicate<bog> $$1, int $$2, int $$3, float $$4) {
+      return btj.a(
+         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$5 -> $$5.group($$5.a(bxh.n), $$5.a(bxh.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<brk> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        brk $$11 = $$10.get();
+                        if ($$8.dk().a((it)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           brk $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new bxk($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

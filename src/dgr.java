@@ -1,21 +1,29 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgr extends cxp {
-   public static final MapCodec<dgr> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(clv.q.fieldOf("color").forGetter(dgr::b), u()).apply($$0, dgr::new));
-   private final clv d;
+public class dgr extends daw implements cyr {
+   public static final MapCodec<dgr> c = b(dgr::new);
 
    @Override
    public MapCodec<dgr> a() {
       return c;
    }
 
-   protected dgr(clv $$0, djo.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dgr(dle.d $$0) {
+      super($$0);
    }
 
-   public clv b() {
-      return this.d;
+   @Override
+   public boolean b(cvq $$0, hz $$1, dlf $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
+      a($$0, $$2, new coz(this));
    }
 }

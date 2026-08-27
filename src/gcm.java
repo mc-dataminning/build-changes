@@ -1,24 +1,31 @@
-public class gcm extends gdl<ccm, fkh<ccm>> {
-   private final fun a;
+public class gcm extends gbz<can, fnm<can>> {
+   private static final aiy a = new aiy("textures/entity/rabbit/brown.png");
+   private static final aiy i = new aiy("textures/entity/rabbit/white.png");
+   private static final aiy j = new aiy("textures/entity/rabbit/black.png");
+   private static final aiy k = new aiy("textures/entity/rabbit/gold.png");
+   private static final aiy l = new aiy("textures/entity/rabbit/salt.png");
+   private static final aiy m = new aiy("textures/entity/rabbit/white_splotched.png");
+   private static final aiy n = new aiy("textures/entity/rabbit/toast.png");
+   private static final aiy o = new aiy("textures/entity/rabbit/caerbannog.png");
 
-   public gcm(gav<ccm, fkh<ccm>> $$0, fun $$1) {
-      super($$0);
-      this.a = $$1;
+   public gcm(gat.a $$0) {
+      super($$0, new fnm<>($$0.a(fpb.ba)), 0.3F);
    }
 
-   public void a(eqk $$0, ftt $$1, int $$2, ccm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      djp $$10 = $$3.gf();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, ges.d);
-         $$0.b();
+   public aiy a(can $$0) {
+      String $$1 = n.a($$0.ad().getString());
+      if ("Toast".equals($$1)) {
+         return n;
+      } else {
+         return switch ($$0.gg()) {
+            case a -> a;
+            case b -> i;
+            case c -> j;
+            case e -> k;
+            case f -> l;
+            case d -> m;
+            case g -> o;
+         };
       }
    }
 }

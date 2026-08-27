@@ -1,37 +1,45 @@
-public class ze implements xg<zb> {
-   public static final int a = 0;
-   public static final int b = 2;
-   public static final int c = 3;
-   public static final int d = 4;
-   public static final int e = 5;
-   private final int f;
-   private final int g;
+import java.util.List;
 
-   public ze(blw $$0, int $$1) {
-      this.f = $$0.aj();
-      this.g = $$1;
+public record ze(int c, hz d, List<ze.a> e) implements yy {
+   public static final xo<uq, ze> a = yy.a(ze::a, ze::new);
+   public static final yy.b<ze> b = yy.a("debug/goal_selector");
+
+   private ze(uq $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(ze.a::new));
    }
 
-   public ze(uj $$0) {
-      this.f = $$0.n();
-      this.g = $$0.readUnsignedByte();
+   private void a(uq $$0) {
+      $$0.p(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.f);
-      $$0.k(this.g);
+   public yy.b<ze> a() {
+      return b;
    }
 
-   public void a(zb $$0) {
-      $$0.a(this);
+   public int b() {
+      return this.c;
    }
 
-   public int a() {
-      return this.f;
+   public hz c() {
+      return this.d;
    }
 
-   public int d() {
-      return this.g;
+   public List<ze.a> d() {
+      return this.e;
+   }
+
+   public static record a(int a, boolean b, String c) {
+      public a(uq $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+      }
+
+      public void a(uq $$0) {
+         $$0.p(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+      }
    }
 }

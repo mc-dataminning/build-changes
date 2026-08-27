@@ -1,71 +1,89 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class dnx implements dod {
-   public static final Codec<dnx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ja.a.fieldOf("source_entity").forGetter(dnx::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.d))
-            .apply($$0, ($$0x, $$1) -> new dnx(Either.right(Either.left($$0x)), $$1))
-   );
-   private Either<blw, Either<UUID, Integer>> c;
-   final float d;
+public class dnx<T> implements dns<T> {
+   private final io<T> a;
+   @Nullable
+   private T b;
+   private final dnt<T> c;
 
-   public dnx(blw $$0, float $$1) {
-      this(Either.left($$0), $$1);
+   public dnx(io<T> $$0, dnt<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
+      }
    }
 
-   dnx(Either<blw, Either<UUID, Integer>> $$0, float $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public static <A> dns<A> a(int $$0, io<A> $$1, dnt<A> $$2, List<A> $$3) {
+      return new dnx<>($$1, $$2, $$3);
    }
 
    @Override
-   public Optional<emc> a(ctx $$0) {
-      if (this.c.left().isEmpty()) {
-         this.b($$0);
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
       }
-
-      return this.c.left().map($$0x -> $$0x.dj().b(0.0, (double)this.d, 0.0));
-   }
-
-   private void b(ctx $$0) {
-      ((Optional)this.c.map(Optional::of, $$1 -> Optional.ofNullable((blw)$$1.map($$1x -> $$0 instanceof ane $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.c = Either.left($$0x));
-   }
-
-   private UUID b() {
-      return (UUID)this.c.map(blw::cw, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
-   }
-
-   int c() {
-      return (Integer)this.c.map(blw::aj, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
    }
 
    @Override
-   public doe<?> a() {
-      return doe.b;
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
    }
 
-   public static class a implements doe<dnx> {
-      public dnx a(uj $$0) {
-         return new dnx(Either.right(Either.right($$0.n())), $$0.readFloat());
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
       }
+   }
 
-      public void a(uj $$0, dnx $$1) {
-         $$0.c($$1.c());
-         $$0.a($$1.d);
+   @Override
+   public void a(uq $$0) {
+      this.b = this.a.b($$0.n());
+   }
+
+   @Override
+   public void b(uq $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
       }
+   }
 
-      @Override
-      public Codec<dnx> a() {
-         return dnx.a;
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return vh.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public dns<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
       }
    }
 }

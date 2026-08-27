@@ -1,40 +1,71 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class daa extends cxh implements dez {
-   protected static final MapCodec<List<dez.a>> a = dez.a.b.fieldOf("suspicious_stew_effects");
-   public static final MapCodec<daa> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(daa::b), u()).apply($$0, daa::new));
-   protected static final float c = 3.0F;
-   protected static final emv d = cwy.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
-   private final List<dez.a> e;
+public class daa extends dbk {
+   public static final MapCodec<daa> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kf.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), u()).apply($$0, daa::new)
+   );
+   private final cyo b;
 
    @Override
-   public MapCodec<? extends daa> a() {
-      return b;
+   public MapCodec<daa> a() {
+      return a;
    }
 
-   public daa(ih<blh> $$0, int $$1, djo.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public daa(List<dez.a> $$0, djo.d $$1) {
+   public daa(cyo $$0, dle.d $$1) {
       super($$1);
-      this.e = $$0;
-   }
-
-   protected static List<dez.a> a(ih<blh> $$0, int $$1) {
-      return List.of(new dez.a($$0, $$1 * 20));
+      this.b = $$0;
    }
 
    @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      emc $$4 = $$0.n($$1, $$2);
-      return d.a($$4.c, $$4.d, $$4.e);
+   public void a(cvn $$0, hz $$1, dlf $$2, dlf $$3, cdr $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.o(), 3);
+      }
    }
 
    @Override
-   public List<dez.a> b() {
-      return this.e;
+   public dlf a(crg $$0) {
+      cut $$1 = $$0.q();
+      hz $$2 = $$0.a();
+      dlf $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.o() : super.a($$0);
+   }
+
+   private static boolean a(cut $$0, hz $$1, dlf $$2) {
+      return n($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(cut $$0, hz $$1) {
+      boolean $$2 = false;
+      hz.a $$3 = $$1.j();
+
+      for (ie $$4 : ie.values()) {
+         dlf $$5 = $$0.a_($$3);
+         if ($$4 != ie.a || n($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   private static boolean n(dlf $$0) {
+      return $$0.u().a(aue.a);
+   }
+
+   @Override
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      return a($$3, $$4) ? this.b.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public int b(dlf $$0, cut $$1, hz $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

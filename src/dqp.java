@@ -1,21 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-@Deprecated
-public class dqp extends dqq {
-   public static final Codec<dqp> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dqp::new));
+public class dqp implements dqd {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dqq i = new dqq(this);
 
-   public dqp(jb $$0) {
-      super($$0);
+   public dqp(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   protected boolean a(djp $$0) {
-      return $$0.e();
+   public awo d() {
+      return new dqp(this.g());
    }
 
    @Override
-   public dqg<?> a() {
-      return dqg.e;
+   public drb e() {
+      return new dqp.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw axf.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw axf.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
+
+   public static class a implements drb {
+      private final long a;
+
+      public a(long $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public awo a(int $$0, int $$1, int $$2) {
+         long $$3 = awh.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dqp($$4);
+      }
+
+      @Override
+      public awo a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new dqp((long)$$1 ^ this.a);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

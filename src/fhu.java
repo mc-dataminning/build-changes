@@ -1,78 +1,90 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+public class fhu implements fhw {
+   private static final aiy a = new aiy("container/bundle/background");
+   private static final int b = 4;
+   private static final int c = 1;
+   private static final int d = 18;
+   private static final int e = 20;
+   private final is<coz> f;
+   private final int g;
 
-public class fhu {
-   private final evr a;
-   private final Set<UUID> b = Sets.newHashSet();
-   private final UserApiService c;
-   private final Map<String, UUID> d = Maps.newHashMap();
-   private boolean e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
-
-   public fhu(evr $$0, UserApiService $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   public fhu(cmd $$0) {
+      this.f = $$0.a();
+      this.g = $$0.b();
    }
 
-   public void a(UUID $$0) {
-      this.b.add($$0);
+   @Override
+   public int a() {
+      return this.c() + 4;
    }
 
-   public void b(UUID $$0) {
-      this.b.remove($$0);
+   @Override
+   public int a(eys $$0) {
+      return this.b();
    }
 
-   public boolean c(UUID $$0) {
-      return this.d($$0) || this.e($$0);
+   private int b() {
+      return this.d() * 18 + 2;
    }
 
-   public boolean d(UUID $$0) {
-      return this.b.contains($$0);
+   private int c() {
+      return this.e() * 20 + 2;
    }
 
-   public void a() {
-      this.e = true;
-      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
+   @Override
+   public void a(eys $$0, int $$1, int $$2, eyu $$3) {
+      int $$4 = this.d();
+      int $$5 = this.e();
+      $$3.a(a, $$1, $$2, this.b(), this.c());
+      boolean $$6 = this.g >= 64;
+      int $$7 = 0;
+
+      for (int $$8 = 0; $$8 < $$5; $$8++) {
+         for (int $$9 = 0; $$9 < $$4; $$9++) {
+            int $$10 = $$1 + $$9 * 18 + 1;
+            int $$11 = $$2 + $$8 * 20 + 1;
+            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
+         }
+      }
    }
 
-   public void b() {
-      this.e = false;
-   }
-
-   public boolean e(UUID $$0) {
-      if (!this.e) {
-         return false;
+   private void a(int $$0, int $$1, int $$2, boolean $$3, eyu $$4, eys $$5) {
+      if ($$2 >= this.f.size()) {
+         this.a($$4, $$0, $$1, $$3 ? fhu.a.a : fhu.a.b);
       } else {
-         this.f.join();
-         return this.c.isBlockedPlayer($$0);
+         coz $$6 = this.f.get($$2);
+         this.a($$4, $$0, $$1, fhu.a.b);
+         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
+         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
+         if ($$2 == 0) {
+            fgd.a($$4, $$0 + 1, $$1 + 1, 0);
+         }
       }
    }
 
-   public Set<UUID> c() {
-      return this.b;
+   private void a(eyu $$0, int $$1, int $$2, fhu.a $$3) {
+      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
    }
 
-   public UUID a(String $$0) {
-      return this.d.getOrDefault($$0, ac.d);
+   private int d() {
+      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.size() + 1.0)));
    }
 
-   public void a(fon $$0) {
-      GameProfile $$1 = $$0.a();
-      this.d.put($$1.getName(), $$1.getId());
-      if (this.a.y instanceof fhw $$2) {
-         $$2.a($$0);
-      }
+   private int e() {
+      return (int)Math.ceil(((double)this.f.size() + 1.0) / (double)this.d());
    }
 
-   public void f(UUID $$0) {
-      if (this.a.y instanceof fhw $$1) {
-         $$1.a($$0);
+   static enum a {
+      a(new aiy("container/bundle/blocked_slot"), 18, 20),
+      b(new aiy("container/bundle/slot"), 18, 20);
+
+      public final aiy c;
+      public final int d;
+      public final int e;
+
+      private a(aiy $$0, int $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
    }
 }

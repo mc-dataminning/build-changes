@@ -1,20 +1,24 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class ect extends edi {
-   public static final Codec<ect> a = djp.b.fieldOf("block_state").xmap(ect::new, $$0 -> $$0.b).codec();
-   private final djp b;
+record ect(bke<List<ecp>> c) implements ecp {
+   static Codec<ect> a = RecordCodecBuilder.create($$0 -> $$0.group(bke.b(Codec.list(ecp.b)).fieldOf("groups").forGetter(ect::c)).apply($$0, ect::new));
 
-   public ect(djp $$0) {
-      this.b = $$0;
+   @Override
+   public void a(awo $$0, BiConsumer<aix<ecn>, aix<ecn>> $$1) {
+      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
    }
 
    @Override
-   public boolean a(djp $$0, auw $$1) {
-      return $$0 == this.b;
+   public Stream<aix<ecn>> a() {
+      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(ecp::a);
    }
 
    @Override
-   protected edj<?> a() {
-      return edj.c;
+   public Codec<ect> b() {
+      return a;
    }
 }

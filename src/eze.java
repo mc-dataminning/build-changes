@@ -1,17 +1,26 @@
-public record eze(ahh a, ahh b, ahh c, ahh d) {
-   public eze(ahh $$0, ahh $$1) {
-      this($$0, $$0, $$1, $$1);
+public abstract class eze extends ezf {
+   private final eys a;
+   private int b = 16777215;
+
+   public eze(int $$0, int $$1, int $$2, int $$3, vq $$4, eys $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
    }
 
-   public eze(ahh $$0, ahh $$1, ahh $$2) {
-      this($$0, $$1, $$2, $$1);
+   @Override
+   protected void a(fdc $$0) {
    }
 
-   public ahh a(boolean $$0, boolean $$1) {
-      if ($$0) {
-         return $$1 ? this.c : this.a;
-      } else {
-         return $$1 ? this.d : this.b;
-      }
+   public eze a(int $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   protected final eys a() {
+      return this.a;
+   }
+
+   protected final int b() {
+      return this.b;
    }
 }

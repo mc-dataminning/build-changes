@@ -1,37 +1,48 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class bki {
-   public static final Codec<bki> a = RecordCodecBuilder.create($$0 -> $$0.group(dpz.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bki::new));
-   private final dpz b;
+public class bki<E extends bkg> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   public bki(dpz $$0) {
-      this.b = $$0;
+   bki(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bkh.a($$0);
    }
 
-   public bki(long $$0, ahh $$1) {
-      this(a($$0, Optional.of($$1)));
+   public static <E extends bkg> bki<E> c() {
+      return new bki<>(ImmutableList.of());
    }
 
-   public bki(long $$0, Optional<ahh> $$1) {
-      this(a($$0, $$1));
+   @SafeVarargs
+   public static <E extends bkg> bki<E> a(E... $$0) {
+      return new bki<>(ImmutableList.copyOf($$0));
    }
 
-   private static dpz a(long $$0, Optional<ahh> $$1) {
-      dpn.a $$2 = dpn.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   public static <E extends bkg> bki<E> a(List<E> $$0) {
+      return new bki<>($$0);
+   }
+
+   public boolean d() {
+      return this.b.isEmpty();
+   }
+
+   public Optional<E> b(awo $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return bkh.a(this.b, $$1);
       }
-
-      return new dpz($$2.a());
    }
 
-   public static dpn.a a(ahh $$0) {
-      return dpn.a($$0.toString());
-   }
-
-   public auw a() {
+   public List<E> e() {
       return this.b;
+   }
+
+   public static <E extends bkg> Codec<bki<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bki::a, bki::e);
    }
 }

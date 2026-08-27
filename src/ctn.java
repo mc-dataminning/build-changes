@@ -1,19 +1,20 @@
-import java.util.Optional;
-
-public class ctn extends ctq {
-   private final blw a;
-
-   public ctn(blw $$0) {
-      this.a = $$0;
+public class ctn extends cti {
+   protected ctn(cti.a $$0, auo<cou> $$1, bnv... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Optional<Float> a(ctp $$0, ctd $$1, hx $$2, djp $$3, eez $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public int a(int $$0) {
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
-   public boolean a(ctp $$0, ctd $$1, hx $$2, djp $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public int b(int $$0) {
+      return super.a($$0) + 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

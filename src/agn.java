@@ -1,39 +1,37 @@
-public class agn<T> {
-   private final int a;
-   private final ago<T> b;
+public class agn implements xx<aes> {
+   public static final xo<uq, agn> a = xx.a(agn::a, agn::new);
+   private final blt b;
+   private final int c;
 
-   public agn(int $$0, ago<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public agn(blt $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int a() {
-      return this.a;
+   private agn(uq $$0) {
+      this.b = $$0.b(blt.class);
+      this.c = $$0.n();
    }
 
-   public ago<T> b() {
+   private void a(uq $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+   }
+
+   @Override
+   public xz<agn> a() {
+      return aeq.bZ;
+   }
+
+   public void a(aes $$0) {
+      $$0.a(this);
+   }
+
+   public blt b() {
       return this.b;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         agn<?> $$1 = (agn<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
+   public int e() {
+      return this.c;
    }
 }

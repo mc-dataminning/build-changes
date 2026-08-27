@@ -1,48 +1,38 @@
-import io.netty.buffer.ByteBuf;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class ux {
-   private static final int a = 5;
-   private static final int b = 127;
-   private static final int c = 128;
-   private static final int d = 7;
-
-   public static int a(int $$0) {
-      for (int $$1 = 1; $$1 < 5; $$1++) {
-         if (($$0 & -1 << $$1 * 7) == 0) {
-            return $$1;
+public interface ux {
+   static ux a(final Runnable $$0) {
+      return new ux() {
+         @Override
+         public void a() {
+            $$0.run();
          }
-      }
 
-      return 5;
-   }
-
-   public static boolean a(byte $$0) {
-      return ($$0 & 128) == 128;
-   }
-
-   public static int a(ByteBuf $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-
-      byte $$3;
-      do {
-         $$3 = $$0.readByte();
-         $$1 |= ($$3 & 127) << $$2++ * 7;
-         if ($$2 > 5) {
-            throw new RuntimeException("VarInt too big");
+         @Nullable
+         @Override
+         public xx<?> b() {
+            $$0.run();
+            return null;
          }
-      } while (a($$3));
-
-      return $$1;
+      };
    }
 
-   public static ByteBuf a(ByteBuf $$0, int $$1) {
-      while (($$1 & -128) != 0) {
-         $$0.writeByte($$1 & 127 | 128);
-         $$1 >>>= 7;
-      }
+   static ux a(final Supplier<xx<?>> $$0) {
+      return new ux() {
+         @Nullable
+         @Override
+         public xx<?> b() {
+            return $$0.get();
+         }
+      };
+   }
 
-      $$0.writeByte($$1);
-      return $$0;
+   default void a() {
+   }
+
+   @Nullable
+   default xx<?> b() {
+      return null;
    }
 }

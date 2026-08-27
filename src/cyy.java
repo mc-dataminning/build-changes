@@ -1,187 +1,180 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class cyy extends cwk implements ddy {
-   public static final MapCodec<cyy> a = b(cyy::new);
-   public static final ahh b = new ahh("sherds");
-   private static final emv d = cwy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   private static final dkj e = dkf.R;
-   public static final dkg c = dkf.bw;
-   private static final dkg f = dkf.C;
+public class cyy extends dbi {
+   public static final MapCodec<cyy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dlu.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.N),
+               Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter($$0x -> $$0x.O),
+               u()
+            )
+            .apply($$0, cyy::new)
+   );
+   public static final dlw b = dlv.w;
+   private static final int L = 1;
+   private static final int M = 2;
+   protected static final int c = 2;
+   protected static final int d = 3;
+   protected static final eol e = cyo.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final eol f = cyo.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final eol g = cyo.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
+   protected static final eol h = cyo.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
+   protected static final eol i = cyo.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
+   protected static final eol j = cyo.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
+   protected static final eol k = cyo.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final eol l = cyo.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
+   protected static final eol m = cyo.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final eol n = cyo.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final eol o = cyo.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
+   protected static final eol F = cyo.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
+   protected static final eol G = cyo.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
+   protected static final eol H = cyo.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
+   protected static final eol I = cyo.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final eol J = cyo.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
+   private final dlu N;
+   private final int O;
 
    @Override
    public MapCodec<cyy> a() {
       return a;
    }
 
-   protected cyy(djo.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(e, ic.c).a(f, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   protected cyy(dlu $$0, int $$1, dle.d $$2) {
+      super($$2.a($$0.g()));
+      this.N = $$0;
+      this.k(this.E.b().a(aE, ie.c).a(b, Boolean.valueOf(false)).a(K, dlq.b));
+      this.O = $$1;
    }
 
    @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, efa.c, efa.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public djp a(cpp $$0) {
-      eez $$1 = $$0.q().b_($$0.a());
-      return this.o().a(e, $$0.g()).a(f, Boolean.valueOf($$1.a() == efa.c)).a(c, Boolean.valueOf(false));
-   }
-
-   @Override
-   public bke a(cng $$0, djp $$1, ctx $$2, hx $$3, cfq $$4, bkb $$5, ely $$6) {
-      if ($$2.c_($$3) instanceof dht $$7) {
-         if ($$2.B) {
-            return bke.b;
-         } else {
-            cng $$9 = $$7.x();
-            if (!$$0.b() && ($$9.b() || cng.c($$9, $$0) && $$9.L() < $$9.g())) {
-               $$7.a(dht.b.a);
-               $$4.b(asd.c.b($$0.d()));
-               cng $$10 = $$4.f() ? $$0.c(1) : $$0.a(1);
-               float $$11;
-               if ($$7.aj_()) {
-                  $$7.b($$10);
-                  $$11 = (float)$$10.L() / (float)$$10.g();
-               } else {
-                  $$9.g(1);
-                  $$11 = (float)$$9.L() / (float)$$9.g();
-               }
-
-               $$2.a(null, $$3, art.gk, aru.e, 1.0F, 0.7F + 0.5F * $$11);
-               if ($$2 instanceof ane $$13) {
-                  $$13.a(jx.aU, (double)$$3.u() + 0.5, (double)$$3.v() + 1.2, (double)$$3.w() + 0.5, 7, 0.0, 0.0, 0.0, 0.0);
-               }
-
-               $$7.e();
-               $$2.a($$4, dnz.c, $$3);
-               return bke.e;
-            } else {
-               return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      ie $$4 = $$0.c(aE);
+      boolean $$5 = $$0.c(b);
+      switch ((dlq)$$0.c(K)) {
+         case a:
+            if ($$4.o() == ie.a.a) {
+               return $$5 ? o : g;
             }
-         }
+
+            return $$5 ? F : h;
+         case b:
+            return switch ($$4) {
+               case f -> $$5 ? J : l;
+               case e -> $$5 ? I : k;
+               case d -> $$5 ? H : j;
+               case c, b, a -> $$5 ? G : i;
+            };
+         case c:
+         default:
+            if ($$4.o() == ie.a.a) {
+               return $$5 ? m : e;
+            } else {
+               return $$5 ? n : f;
+            }
+      }
+   }
+
+   @Override
+   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
+      if ($$0.c(b)) {
+         return blu.b;
       } else {
-         return bke.e;
+         this.d($$0, $$1, $$2);
+         this.a($$3, $$1, $$2, true);
+         $$1.a($$3, dpp.a, $$2);
+         return blu.a($$1.B);
       }
    }
 
    @Override
-   public bkc a(djp $$0, ctx $$1, hx $$2, cfq $$3, ely $$4) {
-      if ($$1.c_($$2) instanceof dht $$5) {
-         $$1.a(null, $$2, art.gl, aru.e, 1.0F, 1.0F);
-         $$5.a(dht.b.b);
-         $$1.a($$3, dnz.c, $$2);
-         return bkc.a;
-      } else {
-         return bkc.d;
+   protected void a(dlf $$0, cvn $$1, hz $$2, cvf $$3, BiConsumer<coz, hz> $$4) {
+      if ($$3.j() == cvf.a.d && !$$1.y_() && !$$0.c(b)) {
+         this.d($$0, $$1, $$2);
       }
-   }
 
-   @Override
-   public void a(ctx $$0, hx $$1, djp $$2, @Nullable bmo $$3, cng $$4) {
-      if ($$0.B) {
-         $$0.a($$1, dhf.O).ifPresent($$1x -> $$1x.a($$4));
-      }
-   }
-
-   @Override
-   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
-      return false;
-   }
-
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return d;
-   }
-
-   @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(e, f, c);
-   }
-
-   @Nullable
-   @Override
-   public dhd a(hx $$0, djp $$1) {
-      return new dht($$0, $$1);
-   }
-
-   @Override
-   public void a(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
-      bjy.a($$0, $$3, $$1, $$2);
       super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public List<cng> a(djp $$0, ehl.a $$1) {
-      dhd $$2 = $$1.b(ejq.h);
-      if ($$2 instanceof dht $$3) {
-         $$1.a(b, $$1x -> $$3.m().a().map(cnb::ao_).forEach($$1x));
-      }
+   public void d(dlf $$0, cvn $$1, hz $$2) {
+      $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
+      this.f($$0, $$1, $$2);
+      $$1.a($$2, this, this.O);
+   }
 
-      return super.a($$0, $$1);
+   protected void a(@Nullable chh $$0, cvo $$1, hz $$2, boolean $$3) {
+      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), atl.e);
+   }
+
+   protected atj a(boolean $$0) {
+      return $$0 ? this.N.o() : this.N.n();
    }
 
    @Override
-   public djp a(ctx $$0, hx $$1, djp $$2, cfq $$3) {
-      cng $$4 = $$3.eT();
-      djp $$5 = $$2;
-      if ($$4.a(asq.aT) && !crt.f($$4)) {
-         $$5 = $$2.a(c, Boolean.valueOf(true));
-         $$0.a($$1, $$5, 4);
-      }
+   protected void a(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(b)) {
+            this.f($$0, $$1, $$2);
+         }
 
-      return super.a($$0, $$1, $$5, $$3);
-   }
-
-   @Override
-   public eez c_(djp $$0) {
-      return $$0.c(f) ? efa.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public dek m(djp $$0) {
-      return $$0.c(c) ? dek.bc : dek.bb;
-   }
-
-   @Override
-   public void a(cng $$0, @Nullable ctd $$1, List<vg> $$2, coy $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dht.a $$4 = dht.a.b(cla.a($$0));
-      if (!$$4.equals(dht.a.a)) {
-         $$2.add(vf.a);
-         Stream.of($$4.e(), $$4.c(), $$4.d(), $$4.b()).forEach($$1x -> $$2.add(new cng($$1x, 1).y().e().a(n.h)));
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   public void a(ctx $$0, djp $$1, ely $$2, cgi $$3) {
-      hx $$4 = $$2.a();
-      if (!$$0.B && $$3.a($$0, $$4) && $$3.b($$0)) {
-         $$0.a($$4, $$1.a(c, Boolean.valueOf(true)), 4);
-         $$0.a($$4, true, $$3);
-      }
+   protected int a(dlf $$0, cut $$1, hz $$2, ie $$3) {
+      return $$0.c(b) ? 15 : 0;
    }
 
    @Override
-   public cng a(cua $$0, hx $$1, djp $$2) {
-      return $$0.c_($$1) instanceof dht $$3 ? $$3.w() : super.a($$0, $$1, $$2);
+   protected int b(dlf $$0, cut $$1, hz $$2, ie $$3) {
+      return $$0.c(b) && m($$0) == $$3 ? 15 : 0;
    }
 
    @Override
-   public boolean d_(djp $$0) {
+   protected boolean f_(dlf $$0) {
       return true;
    }
 
    @Override
-   public int a(djp $$0, ctx $$1, hx $$2) {
-      return cij.a($$1.c_($$2));
+   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
+      if ($$0.c(b)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a(dlf $$0, cvn $$1, hz $$2, bno $$3) {
+      if (!$$1.B && this.N.e() && !$$0.c(b)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   protected void e(dlf $$0, cvn $$1, hz $$2) {
+      chn $$3 = this.N.e() ? $$1.a(chn.class, $$0.j($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
+      boolean $$4 = $$3 != null;
+      boolean $$5 = $$0.c(b);
+      if ($$4 != $$5) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf($$4)), 3);
+         this.f($$0, $$1, $$2);
+         this.a(null, $$1, $$2, $$4);
+         $$1.a($$3, $$4 ? dpp.a : dpp.e, $$2);
+      }
+
+      if ($$4) {
+         $$1.a(new hz($$2), this, this.O);
+      }
+   }
+
+   private void f(dlf $$0, cvn $$1, hz $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(m($$0).g()), this);
+   }
+
+   @Override
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(aE, b, K);
    }
 }

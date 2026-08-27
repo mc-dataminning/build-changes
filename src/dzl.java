@@ -1,7 +1,13 @@
-@FunctionalInterface
-public interface dzl {
-   dzl a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
-   };
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 
-   void afterPlace(cus var1, cuq var2, dlm var3, auw var4, dzg var5, cte var6, ead var7);
+public abstract class dzl {
+   private static final Codec<Either<dri, dzl>> a = Codec.either(dri.a, kf.N.q().dispatch(dzl::a, dzm::codec));
+   public static final Codec<dzl> c = a.xmap(
+      $$0 -> (dzl)$$0.map(dzk::a, $$0x -> $$0x), $$0 -> $$0.a() == dzm.a ? Either.left(((dzk)$$0).b()) : Either.right($$0)
+   );
+
+   public abstract int a(awo var1, drl var2);
+
+   public abstract dzm<?> a();
 }

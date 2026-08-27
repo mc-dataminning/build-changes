@@ -1,102 +1,95 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public abstract class bus extends bvb {
+   protected boi d;
+   protected hz e = hz.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class bus extends btk {
-   private static final bxd c = bxd.b().a(10.0).d();
-   private final bxd d;
-   protected final bmx a;
-   private final double e;
-   private double f;
-   private double g;
-   private double h;
-   private double i;
-   private double j;
-   @Nullable
-   protected cfq b;
-   private int k;
-   private boolean l;
-   private final cqh m;
-   private final boolean n;
+   public bus(boi $$0) {
+      this.d = $$0;
+      if (!byz.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
+   }
 
-   public bus(bmx $$0, double $$1, cqh $$2, boolean $$3) {
-      this.a = $$0;
-      this.e = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.a(EnumSet.of(btk.a.a, btk.a.b));
-      this.d = c.c().a(this::a);
+   protected boolean h() {
+      if (!this.f) {
+         return false;
+      } else {
+         dlf $$0 = this.d.dM().a_(this.e);
+         if (!($$0.b() instanceof dau)) {
+            this.f = false;
+            return false;
+         } else {
+            return $$0.c(dau.c);
+         }
+      }
+   }
+
+   protected void a(boolean $$0) {
+      if (this.f) {
+         dlf $$1 = this.d.dM().a_(this.e);
+         if ($$1.b() instanceof dau) {
+            ((dau)$$1.b()).a(this.d, this.d.dM(), $$1, this.e, $$0);
+         }
+      }
    }
 
    @Override
    public boolean a() {
-      if (this.k > 0) {
-         this.k--;
+      if (!byz.a(this.d)) {
+         return false;
+      } else if (!this.d.O) {
          return false;
       } else {
-         this.b = this.a.dL().a(this.d, this.a);
-         return this.b != null;
-      }
-   }
+         bxo $$0 = (bxo)this.d.N();
+         ehe $$1 = $$0.j();
+         if ($$1 != null && !$$1.c() && $$0.f()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               ehc $$3 = $$1.a($$2);
+               this.e = new hz($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.i((double)this.e.u(), this.d.dt(), (double)this.e.w()) > 2.25)) {
+                  this.f = dau.a(this.d.dM(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
 
-   private boolean a(bmo $$0) {
-      return this.m.a($$0.eT()) || this.m.a($$0.eU());
+            this.e = this.d.dm().c();
+            this.f = dau.a(this.d.dM(), this.e);
+            return this.f;
+         } else {
+            return false;
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      if (this.h()) {
-         if (this.a.f(this.b) < 36.0) {
-            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
-               return false;
-            }
-
-            if (Math.abs((double)this.b.dD() - this.i) > 5.0 || Math.abs((double)this.b.dB() - this.j) > 5.0) {
-               return false;
-            }
-         } else {
-            this.f = this.b.dq();
-            this.g = this.b.ds();
-            this.h = this.b.dw();
-         }
-
-         this.i = (double)this.b.dD();
-         this.j = (double)this.b.dB();
-      }
-
-      return this.a();
-   }
-
-   protected boolean h() {
-      return this.n;
+      return !this.a;
    }
 
    @Override
    public void c() {
-      this.f = this.b.dq();
-      this.g = this.b.ds();
-      this.h = this.b.dw();
-      this.l = true;
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dr());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dx());
    }
 
    @Override
-   public void d() {
-      this.b = null;
-      this.a.N().n();
-      this.k = b(100);
-      this.l = false;
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void e() {
-      this.a.I().a(this.b, (float)(this.a.fH() + 20), (float)this.a.ab());
-      if (this.a.f(this.b) < 6.25) {
-         this.a.N().n();
-      } else {
-         this.a.N().a(this.b, this.e);
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dr());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dx());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
-   }
-
-   public boolean i() {
-      return this.l;
    }
 }

@@ -1,65 +1,210 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Keyable;
 import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public class iv {
-   private static <T> MapCodec<iv.a<T>> a(ahg<? extends it<T>> $$0, MapCodec<T> $$1) {
-      return RecordCodecBuilder.mapCodec(
-         $$2 -> $$2.group(ahg.a($$0).fieldOf("name").forGetter(iv.a::a), Codec.INT.fieldOf("id").forGetter(iv.a::b), $$1.forGetter(iv.a::c))
-               .apply($$2, iv.a::new)
-      );
+public interface iv<T> extends Keyable, io<T> {
+   aix<? extends iv<T>> c();
+
+   default Codec<T> q() {
+      Codec<T> $$0 = aiy.a
+         .flatXmap(
+            $$0x -> Optional.ofNullable(this.a($$0x))
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
+            $$0x -> this.d((T)$$0x)
+                  .map(aix::a)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
+         );
+      Codec<T> $$1 = avp.a($$0x -> this.d((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
+      return avp.a(avp.b($$0, $$1), this::f, this::f);
    }
 
-   public static <T> Codec<it<T>> a(ahg<? extends it<T>> $$0, Lifecycle $$1, Codec<T> $$2) {
-      return a($$0, $$2.fieldOf("element")).codec().listOf().xmap($$2x -> {
-         ip<T> $$3 = new ip<>($$0, $$1);
+   default Codec<ij<T>> r() {
+      Codec<ij<T>> $$0 = aiy.a
+         .flatXmap(
+            $$0x -> this.c($$0x)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
+            $$0x -> $$0x.e()
+                  .map(aix::a)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
+         );
+      return avp.a($$0, (Function<ij<T>, Lifecycle>)($$0x -> this.f((T)$$0x.a())), $$0x -> this.f((T)$$0x.a()));
+   }
 
-         for (iv.a<T> $$4 : $$2x) {
-            $$3.a($$4.b(), $$4.a(), $$4.c(), $$1);
+   default <U> Stream<U> keys(DynamicOps<U> $$0) {
+      return this.e().stream().map($$1 -> (U)$$0.createString($$1.toString()));
+   }
+
+   @Nullable
+   aiy b(T var1);
+
+   Optional<aix<T>> d(T var1);
+
+   @Override
+   int a(@Nullable T var1);
+
+   @Nullable
+   T a(@Nullable aix<T> var1);
+
+   @Nullable
+   T a(@Nullable aiy var1);
+
+   Lifecycle f(T var1);
+
+   Lifecycle d();
+
+   default Optional<T> b(@Nullable aiy $$0) {
+      return Optional.ofNullable(this.a($$0));
+   }
+
+   default Optional<T> d(@Nullable aix<T> $$0) {
+      return Optional.ofNullable(this.a($$0));
+   }
+
+   default T e(aix<T> $$0) {
+      T $$1 = this.a($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
+      } else {
+         return $$1;
+      }
+   }
+
+   Set<aiy> e();
+
+   Set<Entry<aix<T>, T>> g();
+
+   Set<aix<T>> f();
+
+   Optional<ij.c<T>> a(awo var1);
+
+   default Stream<T> s() {
+      return StreamSupport.stream(this.spliterator(), false);
+   }
+
+   boolean d(aiy var1);
+
+   boolean c(aix<T> var1);
+
+   static <T> T a(iv<? super T> $$0, String $$1, T $$2) {
+      return a($$0, new aiy($$1), $$2);
+   }
+
+   static <V, T extends V> T a(iv<V> $$0, aiy $$1, T $$2) {
+      return a($$0, aix.a($$0.c(), $$1), $$2);
+   }
+
+   static <V, T extends V> T a(iv<V> $$0, aix<V> $$1, T $$2) {
+      ((je)$$0).a($$1, (V)$$2, Lifecycle.stable());
+      return $$2;
+   }
+
+   static <T> ij.c<T> b(iv<T> $$0, aix<T> $$1, T $$2) {
+      return ((je)$$0).a($$1, $$2, Lifecycle.stable());
+   }
+
+   static <T> ij.c<T> b(iv<T> $$0, aiy $$1, T $$2) {
+      return b($$0, aix.a($$0.c(), $$1), $$2);
+   }
+
+   iv<T> l();
+
+   ij.c<T> g(T var1);
+
+   Optional<ij.c<T>> c(int var1);
+
+   Optional<ij.c<T>> c(aiy var1);
+
+   Optional<ij.c<T>> b(aix<T> var1);
+
+   ij<T> e(T var1);
+
+   default ij.c<T> f(aix<T> $$0) {
+      return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
+   }
+
+   Stream<ij.c<T>> h();
+
+   Optional<in.c<T>> b(auo<T> var1);
+
+   default Iterable<ij<T>> c(auo<T> $$0) {
+      return (Iterable<ij<T>>)DataFixUtils.orElse(this.b($$0), List.of());
+   }
+
+   default Optional<ij<T>> a(auo<T> $$0, awo $$1) {
+      return this.b($$0).flatMap($$1x -> $$1x.a($$1));
+   }
+
+   in.c<T> a(auo<T> var1);
+
+   Stream<Pair<auo<T>, in.c<T>>> i();
+
+   Stream<auo<T>> j();
+
+   void m();
+
+   void a(Map<auo<T>, List<ij<T>>> var1);
+
+   default io<ij<T>> t() {
+      return new io<ij<T>>() {
+         public int a(ij<T> $$0) {
+            return iv.this.a($$0.a());
          }
 
-         return $$3;
-      }, $$0x -> {
-         Builder<iv.a<T>> $$1x = ImmutableList.builder();
-
-         for (T $$2x : $$0x) {
-            $$1x.add(new iv.a((ahg<T>)$$0x.c($$2x).get(), $$0x.a($$2x), $$2x));
+         @Nullable
+         public ij<T> c(int $$0) {
+            return (ij<T>)iv.this.c($$0).orElse(null);
          }
 
-         return $$1x.build();
-      });
+         @Override
+         public int b() {
+            return iv.this.b();
+         }
+
+         @Override
+         public Iterator<ij<T>> iterator() {
+            return iv.this.h().map($$0 -> (ij<T>)$$0).iterator();
+         }
+      };
    }
 
-   public static <E> Codec<it<E>> b(ahg<? extends it<E>> $$0, Lifecycle $$1, Codec<E> $$2) {
-      Codec<Map<ahg<E>, E>> $$3 = Codec.unboundedMap(ahg.a($$0), $$2);
-      return $$3.xmap($$2x -> {
-         jc<E> $$3x = new ip<>($$0, $$1);
-         $$2x.forEach(($$2xx, $$3xx) -> $$3x.a($$2xx, (E)$$3xx, $$1));
-         return $$3x.l();
-      }, $$0x -> ImmutableMap.copyOf($$0x.g()));
-   }
+   im<T> o();
 
-   public static <E> Codec<il<E>> a(ahg<? extends it<E>> $$0, Codec<E> $$1) {
-      return a($$0, $$1, false);
-   }
+   il.c<T> p();
 
-   public static <E> Codec<il<E>> a(ahg<? extends it<E>> $$0, Codec<E> $$1, boolean $$2) {
-      return ahb.a($$0, ahd.a($$0, $$1), $$2);
-   }
+   default il.c<T> u() {
+      return new il.c.a<T>() {
+         @Override
+         protected il.c<T> a() {
+            return iv.this.p();
+         }
 
-   public static <E> Codec<il<E>> a(ahg<? extends it<E>> $$0) {
-      return a($$0, false);
-   }
+         @Override
+         public Optional<in.c<T>> a(auo<T> $$0) {
+            return Optional.of(this.b($$0));
+         }
 
-   public static <E> Codec<il<E>> a(ahg<? extends it<E>> $$0, boolean $$1) {
-      return ahb.a($$0, ahe.a($$0), $$1);
-   }
-
-   static record a<T>(ahg<T> a, int b, T c) {
+         @Override
+         public in.c<T> b(auo<T> $$0) {
+            return iv.this.a($$0);
+         }
+      };
    }
 }

@@ -1,71 +1,42 @@
-import javax.annotation.Nullable;
+public class acj implements xx<aag> {
+   public static final xo<uq, acj> a = xx.a(acj::a, acj::new);
+   private final int b;
+   private final vq c;
 
-public class acj implements xg<zb> {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   private final String d;
-   private final vg e;
-   private final enj.a f;
-   @Nullable
-   private final ww g;
-   private final int h;
-
-   public acj(emy $$0, int $$1) {
-      this.d = $$0.b();
-      this.e = $$0.d();
-      this.f = $$0.h();
-      this.g = $$0.f();
-      this.h = $$1;
+   public acj(int $$0, vq $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public acj(uj $$0) {
-      this.d = $$0.s();
-      this.h = $$0.readByte();
-      if (this.h != 0 && this.h != 2) {
-         this.e = vf.a;
-         this.f = enj.a.a;
-         this.g = null;
-      } else {
-         this.e = $$0.m();
-         this.f = $$0.b(enj.a.class);
-         this.g = $$0.c(wy::a);
-      }
+   private acj(uq $$0) {
+      this.b = $$0.n();
+      this.c = $$0.m();
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.d);
-      $$0.k(this.h);
-      if (this.h == 0 || this.h == 2) {
-         $$0.a(this.e);
-         $$0.a(this.f);
-         $$0.a(this.g, wy::a);
-      }
+   public xz<acj> a() {
+      return aeq.ac;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.d;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public vg d() {
-      return this.e;
+   public int b() {
+      return this.b;
    }
 
-   public int e() {
-      return this.h;
-   }
-
-   public enj.a f() {
-      return this.f;
-   }
-
-   @Nullable
-   public ww g() {
-      return this.g;
+   public vq e() {
+      return this.c;
    }
 }

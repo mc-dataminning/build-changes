@@ -1,31 +1,20 @@
-public class ctr {
-   private static int[] a = new int[65536];
-
-   public static void a(int[] $$0) {
-      a = $$0;
+public class ctr extends cti {
+   public ctr(cti.a $$0, bnv... $$1) {
+      super($$0, auh.bl, $$1);
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? c() : a[$$4];
+   @Override
+   public int a(int $$0) {
+      return $$0 * 25;
    }
 
-   public static int a() {
-      return 6396257;
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + 50;
    }
 
-   public static int b() {
-      return 8431445;
-   }
-
-   public static int c() {
-      return 4764952;
-   }
-
-   public static int d() {
-      return 9619016;
+   @Override
+   public boolean b() {
+      return true;
    }
 }

@@ -1,166 +1,44 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class foq<T extends bno> extends fom<T> {
+   private boolean b;
 
-public class foq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final biv<Runnable> b = biv.a(ac.f(), "server-list-io");
-   private static final int c = 16;
-   private final evr d;
-   private final List<fop> e = Lists.newArrayList();
-   private final List<fop> f = Lists.newArrayList();
-
-   public foq(evr $$0) {
-      this.d = $$0;
+   public foq(fpc $$0) {
+      super($$0);
    }
 
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         so $$0 = tb.a(this.d.p.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
+   public static fpi c() {
+      fpk $$0 = fom.b();
+      fpl $$1 = $$0.a();
+      fpl $$2 = $$1.a("head", fph.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fpe.a);
+      fpl $$3 = $$2.a("hat", fph.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), fpe.a(-5.0F, -10.03125F, -5.0F));
+      fpl $$4 = $$3.a("hat2", fph.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), fpe.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
+      fpl $$5 = $$4.a("hat3", fph.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), fpe.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
+      $$5.a(
+         "hat4", fph.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new fpg(0.25F)), fpe.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
+      );
+      fpl $$6 = $$2.a("nose");
+      $$6.a("mole", fph.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new fpg(-0.25F)), fpe.a(0.0F, -2.0F, 0.0F));
+      return fpi.a($$0, 64, 128);
+   }
 
-         su $$1 = $$0.c("servers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            so $$3 = $$1.a($$2);
-            fop $$4 = fop.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
-            }
-         }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.a(0.0F, -2.0F, 0.0F);
+      float $$6 = 0.01F * (float)($$0.aj() % 10);
+      this.a.e = awh.a((float)$$0.ag * $$6) * 4.5F * (float) (Math.PI / 180.0);
+      this.a.f = 0.0F;
+      this.a.g = awh.b((float)$$0.ag * $$6) * 2.5F * (float) (Math.PI / 180.0);
+      if (this.b) {
+         this.a.a(0.0F, 1.0F, -1.5F);
+         this.a.e = -0.9F;
       }
    }
 
-   public void b() {
-      try {
-         su $$0 = new su();
-
-         for (fop $$1 : this.e) {
-            so $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (fop $$3 : this.f) {
-            so $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         so $$5 = new so();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.p.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         tb.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         ac.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
-      }
+   public fpc e() {
+      return this.a;
    }
 
-   public fop a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Nullable
-   public fop a(String $$0) {
-      for (fop $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      for (fop $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   public fop b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         fop $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   public void a(fop $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
-   }
-
-   public void a(fop $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
-      } else {
-         this.e.add($$0);
-      }
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public void a(int $$0, int $$1) {
-      fop $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
-   }
-
-   public void a(int $$0, fop $$1) {
-      this.e.set($$0, $$1);
-   }
-
-   private static boolean a(fop $$0, List<fop> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         fop $$3 = $$1.get($$2);
-         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static void b(fop $$0) {
-      b.a(() -> {
-         foq $$1 = new foq(evr.O());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
-
-         $$1.b();
-      });
+   public void b(boolean $$0) {
+      this.b = $$0;
    }
 }

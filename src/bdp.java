@@ -1,17 +1,19 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
 
-public class bdp extends bde {
-   public bdp(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bdp extends bcn {
+   public bdp(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Remove Golem Gossip Fix", bdn.y, "minecraft:villager");
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:piston", $$1x -> DSL.optionalFields("blockState", bbw.u.in($$0)));
-      return $$1;
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bdp::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
    }
 }

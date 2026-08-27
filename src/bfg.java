@@ -4,29 +4,29 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bfg extends bde {
+public class bfg extends bew {
    public bfg(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register(
-         $$1,
-         $$2,
-         () -> DSL.optionalFields(
-               "ArmorItems",
-               DSL.list(bbw.t.in($$0)),
-               "HandItems",
-               DSL.list(bbw.t.in($$0)),
-               "listener",
-               DSL.optionalFields("event", DSL.optionalFields("game_event", bbw.B.in($$0)))
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bdn.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(bdn.x.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(bdn.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", bdn.z.in($$0))),
+                  "Sections",
+                  DSL.list(DSL.optionalFields("Palette", DSL.list(bdn.u.in($$0))))
+               )
             )
       );
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:allay");
-      return $$1;
    }
 }

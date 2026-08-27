@@ -2,33 +2,54 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bj extends cv<bj.a> {
+public class bj extends cx<bj.a> {
    @Override
    public Codec<bj.a> a() {
       return bj.a.a;
    }
 
-   public void a(anf $$0, cng $$1, int $$2) {
-      this.a($$0, $$2x -> $$2x.a($$1, $$2));
+   public void a(aow $$0, ens $$1) {
+      ens $$2 = $$0.dk();
+      this.a($$0, $$3 -> $$3.a($$0.z(), $$1, $$2));
    }
 
-   public static record a(Optional<bb> b, Optional<ca> c, ck.d d) implements cv.a {
+   public static record a(Optional<bc> b, Optional<ck> c, Optional<bi> d) implements cx.a {
       public static final Codec<bj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(bj.a::a), atx.a(ca.a, "item").forGetter(bj.a::c), atx.a(ck.d.d, "levels", ck.d.c).forGetter(bj.a::d))
+         $$0 -> $$0.group(
+                  avp.a(br.b, "player").forGetter(bj.a::a), avp.a(ck.a, "start_position").forGetter(bj.a::b), avp.a(bi.a, "distance").forGetter(bj.a::c)
+               )
                .apply($$0, bj.a::new)
       );
 
-      public static an<bj.a> b() {
-         return am.j.a(new bj.a(Optional.empty(), Optional.empty(), ck.d.c));
+      public static an<bj.a> a(br.a $$0, bi $$1, ck.a $$2) {
+         return am.X.a(new bj.a(Optional.of(br.a($$0)), Optional.of($$2.b()), Optional.of($$1)));
       }
 
-      public boolean a(cng $$0, int $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
+      public static an<bj.a> a(br.a $$0, bi $$1) {
+         return am.Y.a(new bj.a(Optional.of(br.a($$0)), Optional.empty(), Optional.of($$1)));
+      }
+
+      public static an<bj.a> a(bi $$0) {
+         return am.D.a(new bj.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
+      }
+
+      public boolean a(aov $$0, ens $$1, ens $$2) {
+         return this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)
+            ? false
+            : !this.d.isPresent() || this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);
       }
 
       @Override
-      public Optional<bb> a() {
+      public Optional<bc> a() {
          return this.b;
+      }
+
+      public Optional<ck> b() {
+         return this.c;
+      }
+
+      public Optional<bi> c() {
+         return this.d;
       }
    }
 }

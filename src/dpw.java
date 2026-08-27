@@ -1,83 +1,70 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dpw {
-   public static final MapCodec<dpw> a = RecordCodecBuilder.mapCodec(
+public record dpw(ij<dpp> b, float c, ens d, @Nullable UUID e, @Nullable UUID f, @Nullable bno g) {
+   public static final Codec<dpw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(dpw::b),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dpw::c),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dpw::d),
-               Codec.STRING.optionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+               kf.a.r().fieldOf("game_event").forGetter(dpw::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dpw::b),
+               ens.a.fieldOf("pos").forGetter(dpw::c),
+               jc.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               jc.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
             )
-            .apply($$0, $$0.stable(dpw::new))
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dpw($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
    );
-   public static final dpw b = new dpw((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
 
-   public dpw(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
+   public dpw(ij<dpp> $$0, float $$1, ens $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   public static dpw a() {
-      return new dpw(f(), true, false);
+   public dpw(ij<dpp> $$0, float $$1, ens $$2, @Nullable bno $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
    }
 
-   private dpw(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   @Nullable
+   private static UUID a(@Nullable bno $$0) {
+      if ($$0 instanceof chz $$1 && $$1.w() != null) {
+         return $$1.w().cw();
+      }
+
+      return null;
    }
 
-   public long b() {
+   public Optional<bno> a(aov $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   }
+
+   public Optional<bno> b(aov $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof chz).map($$0x -> (chz)$$0x).map(chz::w).or(() -> Optional.ofNullable(this.f).map($$0::a));
+   }
+
+   public ij<dpp> a() {
+      return this.b;
+   }
+
+   public float b() {
       return this.c;
    }
 
-   public boolean c() {
+   public ens c() {
       return this.d;
    }
 
-   public boolean d() {
+   @Nullable
+   public UUID d() {
       return this.e;
    }
 
-   public boolean e() {
-      return this.f.isPresent();
+   @Nullable
+   public UUID e() {
+      return this.f;
    }
 
-   public dpw a(boolean $$0) {
-      return new dpw(this.c, this.d, $$0, this.f);
-   }
-
-   public dpw b(boolean $$0) {
-      return new dpw(this.c, $$0, this.e, this.f);
-   }
-
-   public dpw a(OptionalLong $$0) {
-      return new dpw($$0.orElse(f()), this.d, this.e, this.f);
-   }
-
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
-      } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
-         }
-      }
-   }
-
-   public static long f() {
-      return auw.a().g();
+   @Nullable
+   public bno f() {
+      return this.g;
    }
 }

@@ -1,39 +1,55 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
 public class che {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final che c = a("empty").a(0, chc.b).a();
-   public static final che d = a("simple").a(5000, chc.c).a(11000, chc.e).a();
-   public static final che e = a("villager_baby").a(10, chc.b).a(3000, chc.d).a(6000, chc.b).a(10000, chc.d).a(12000, chc.e).a();
-   public static final che f = a("villager_default").a(10, chc.b).a(2000, chc.c).a(9000, chc.f).a(11000, chc.b).a(12000, chc.e).a();
-   private final Map<chc, chg> g = Maps.newHashMap();
+   public boolean a;
+   public boolean b;
+   public boolean c;
+   public boolean d;
+   public boolean e = true;
+   private float f = 0.05F;
+   private float g = 0.1F;
 
-   protected static chf a(String $$0) {
-      che $$1 = it.a(kd.D, $$0, new che());
-      return new chf($$1);
+   public void a(sw $$0) {
+      sw $$1 = new sw();
+      $$1.a("invulnerable", this.a);
+      $$1.a("flying", this.b);
+      $$1.a("mayfly", this.c);
+      $$1.a("instabuild", this.d);
+      $$1.a("mayBuild", this.e);
+      $$1.a("flySpeed", this.f);
+      $$1.a("walkSpeed", this.g);
+      $$0.a("abilities", $$1);
    }
 
-   protected void a(chc $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new chg());
+   public void b(sw $$0) {
+      if ($$0.b("abilities", 10)) {
+         sw $$1 = $$0.p("abilities");
+         this.a = $$1.q("invulnerable");
+         this.b = $$1.q("flying");
+         this.c = $$1.q("mayfly");
+         this.d = $$1.q("instabuild");
+         if ($$1.b("flySpeed", 99)) {
+            this.f = $$1.j("flySpeed");
+            this.g = $$1.j("walkSpeed");
+         }
+
+         if ($$1.b("mayBuild", 1)) {
+            this.e = $$1.q("mayBuild");
+         }
       }
    }
 
-   protected chg b(chc $$0) {
-      return this.g.get($$0);
+   public float a() {
+      return this.f;
    }
 
-   protected List<chg> c(chc $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   public void a(float $$0) {
+      this.f = $$0;
    }
 
-   public chc a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(chc.b);
+   public float b() {
+      return this.g;
+   }
+
+   public void b(float $$0) {
+      this.g = $$0;
    }
 }

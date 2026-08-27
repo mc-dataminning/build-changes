@@ -2,93 +2,42 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record be(ck.c b, ck.c c, Optional<bp> d, Optional<Boolean> e, Optional<bf> f) {
-   public static final Codec<be> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               atx.a(ck.c.d, "dealt", ck.c.c).forGetter(be::a),
-               atx.a(ck.c.d, "taken", ck.c.c).forGetter(be::b),
-               atx.a(bp.a, "source_entity").forGetter(be::c),
-               atx.a(Codec.BOOL, "blocked").forGetter(be::d),
-               atx.a(bf.a, "type").forGetter(be::e)
-            )
-            .apply($$0, be::new)
-   );
-
-   public boolean a(anf $$0, bkv $$1, float $$2, float $$3, boolean $$4) {
-      if (!this.b.d((double)$$2)) {
-         return false;
-      } else if (!this.c.d((double)$$3)) {
-         return false;
-      } else if (this.d.isPresent() && !this.d.get().a($$0, $$1.d())) {
-         return false;
-      } else {
-         return this.e.isPresent() && this.e.get() != $$4 ? false : !this.f.isPresent() || this.f.get().a($$0, $$1);
-      }
+public class be extends cx<be.a> {
+   @Override
+   public Codec<be.a> a() {
+      return be.a.a;
    }
 
-   public ck.c a() {
-      return this.b;
+   public void a(aow $$0, cfg $$1, cgu $$2) {
+      eiv $$3 = br.b($$0, $$1);
+      eiv $$4 = br.b($$0, $$2);
+      this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
-   public ck.c b() {
-      return this.c;
-   }
+   public static record a(Optional<bc> b, Optional<bc> c, Optional<bc> d) implements cx.a {
+      public static final Codec<be.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(be.a::a), avp.a(br.b, "zombie").forGetter(be.a::c), avp.a(br.b, "villager").forGetter(be.a::d))
+               .apply($$0, be.a::new)
+      );
 
-   public Optional<bp> c() {
-      return this.d;
-   }
-
-   public Optional<Boolean> d() {
-      return this.e;
-   }
-
-   public Optional<bf> e() {
-      return this.f;
-   }
-
-   public static class a {
-      private ck.c a = ck.c.c;
-      private ck.c b = ck.c.c;
-      private Optional<bp> c = Optional.empty();
-      private Optional<Boolean> d = Optional.empty();
-      private Optional<bf> e = Optional.empty();
-
-      public static be.a a() {
-         return new be.a();
+      public static an<be.a> b() {
+         return am.s.a(new be.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public be.a a(ck.c $$0) {
-         this.a = $$0;
-         return this;
+      public boolean a(eiv $$0, eiv $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 
-      public be.a b(ck.c $$0) {
-         this.b = $$0;
-         return this;
+      @Override
+      public void a(bd $$0) {
+         cx.a.super.a($$0);
+         $$0.a(this.c, ".zombie");
+         $$0.a(this.d, ".villager");
       }
 
-      public be.a a(bp $$0) {
-         this.c = Optional.of($$0);
-         return this;
-      }
-
-      public be.a a(Boolean $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public be.a a(bf $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public be.a a(bf.a $$0) {
-         this.e = Optional.of($$0.b());
-         return this;
-      }
-
-      public be b() {
-         return new be(this.a, this.b, this.c, this.d, this.e);
+      @Override
+      public Optional<bc> a() {
+         return this.b;
       }
    }
 }

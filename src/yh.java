@@ -1,33 +1,29 @@
-import java.util.List;
+public class yh implements xx<yd> {
+   public static final xo<uq, yh> a = xx.a(yh::a, yh::new);
+   private final int b;
 
-public record yh(int b, hx c, List<yh.a> d) implements yb {
-   public static final ahh a = new ahh("debug/goal_selector");
-
-   public yh(uj $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(yh.a::new));
+   public yh(int $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void a(uj $$0) {
+   private yh(uq $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(uq $$0) {
       $$0.p(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public ahh a() {
-      return a;
+   public xz<yh> a() {
+      return yn.d;
    }
 
-   public static record a(int a, boolean b, String c) {
-      public a(uj $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
-      }
+   public void a(yd $$0) {
+      $$0.a(this);
+   }
 
-      public void a(uj $$0) {
-         $$0.p(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-      }
+   public int b() {
+      return this.b;
    }
 }

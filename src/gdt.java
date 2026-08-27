@@ -1,13 +1,28 @@
-public class gdt<T extends bmq & cda, M extends fkj<T>> extends gdl<T, M> {
-   private static final ahh a = new ahh("textures/entity/skeleton/stray_overlay.png");
-   private final fme<T> b;
+public class gdt extends gbz<cdg, fos<cdg>> {
+   private static final aiy a = new aiy("textures/entity/wither/wither_invulnerable.png");
+   private static final aiy i = new aiy("textures/entity/wither/wither.png");
 
-   public gdt(gav<T, M> $$0, fnf $$1) {
-      super($$0);
-      this.b = new fme<>($$1.a(fni.by));
+   public gdt(gat.a $$0) {
+      super($$0, new fos<>($$0.a(fpb.bR)), 1.0F);
+      this.a(new gfs(this, $$0.f()));
    }
 
-   public void a(eqk $$0, ftt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   protected int a(cdg $$0, hz $$1) {
+      return 15;
+   }
+
+   public aiy a(cdg $$0) {
+      int $$1 = $$0.A();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(cdg $$0, esa $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.A();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+      }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

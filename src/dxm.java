@@ -1,95 +1,48 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dxm extends dxk {
+public class dxm extends dxi {
    public static final Codec<dxm> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  bjh.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
-                  bjh.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
-                  iv.a(ke.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
-               )
-            )
-            .apply($$0, dxm::new)
+      $$0 -> b($$0).and(bkz.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dxm::new)
    );
-   private final bjh b;
-   private final float h;
-   private final bjh i;
-   private final il<cwy> j;
+   private final bkz b;
 
-   public dxm(int $$0, int $$1, int $$2, bjh $$3, float $$4, bjh $$5, il<cwy> $$6) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+   public dxm(bkz $$0, bkz $$1, bkz $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected dxl<?> a() {
-      return dxl.h;
+   protected dxj<?> a() {
+      return dxj.c;
    }
 
    @Override
-   public List<dvs.a> a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, int $$3, hx $$4, dvc $$5) {
-      List<dvs.a> $$6 = Lists.newArrayList();
-      hx.a $$7 = new hx.a();
+   protected void a(cvt $$0, dxi.b $$1, awo $$2, dws $$3, int $$4, dxi.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         int $$9 = $$4.v() + $$8;
-         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
-            ic $$10 = ic.c.a.a($$2);
-            int $$11 = this.i.a($$2);
-            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
-            int $$13 = this.b.a($$2);
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
          }
-
-         if ($$8 == $$3 - 1) {
-            $$6.add(new dvs.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
-         }
-      }
-
-      return $$6;
-   }
-
-   private void a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, int $$3, dvc $$4, List<dvs.a> $$5, hx.a $$6, int $$7, ic $$8, int $$9, int $$10) {
-      int $$11 = $$7 + $$9;
-      int $$12 = $$6.u();
-      int $$13 = $$6.w();
-      int $$14 = $$9;
-
-      while ($$14 < $$3 && $$10 > 0) {
-         if ($$14 >= 1) {
-            int $$15 = $$7 + $$14;
-            $$12 += $$8.j();
-            $$13 += $$8.l();
-            $$11 = $$15;
-            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
-               $$11 = $$15 + 1;
-            }
-
-            $$5.add(new dvs.a($$6.i(), 0, false));
-         }
-
-         $$14++;
-         $$10--;
-      }
-
-      if ($$11 - $$7 > 1) {
-         hx $$16 = new hx($$12, $$11, $$13);
-         $$5.add(new dvs.a($$16, 0, false));
-         $$5.add(new dvs.a($$16.c(2), 0, false));
       }
    }
 
    @Override
-   protected boolean a(cud $$0, hx $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
+   public int a(awo $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(awo $$0, int $$1, dws $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(awo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

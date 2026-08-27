@@ -1,27 +1,33 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class etb extends gld {
-   protected BooleanConsumer a;
-   private final vg b;
-   private final vg c;
+public class etb extends etw {
+   private static final Logger b = LogUtils.getLogger();
+   public List<eta> a = Lists.newArrayList();
 
-   public etb(BooleanConsumer $$0, vg $$1, vg $$2) {
-      super(evj.a);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   public static etb a(String $$0) {
+      etb $$1 = new etb();
 
-   @Override
-   public void aP_() {
-      this.d(exr.a(vf.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, g(9), 100, 20).a());
-      this.d(exr.a(vf.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, g(9), 100, 20).a());
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("invites").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
 
-   @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.b, this.g / 2, g(3), -1);
-      $$0.a(this.i, this.c, this.g / 2, g(5), -1);
+            while ($$4.hasNext()) {
+               $$1.a.add(eta.a($$4.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
+      }
+
+      return $$1;
    }
 }

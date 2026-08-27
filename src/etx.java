@@ -1,31 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class etx {
-   public final int a;
-   @Nullable
-   public final String b;
+public class etx extends etw {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   etx(int $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static etx a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      etx $$3 = new etx();
 
-   public static class a {
-      private int a = -1;
-      private String b;
-
-      public etx.a a(int $$0) {
-         this.a = $$0;
-         return this;
+      try {
+         $$3.a = evt.b("downloadLink", $$2, "");
+         $$3.b = evt.b("resourcePackUrl", $$2, "");
+         $$3.c = evt.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
 
-      public etx.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public etx a() {
-         return new etx(this.a, this.b);
-      }
+      return $$3;
    }
 }

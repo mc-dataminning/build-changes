@@ -1,33 +1,29 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+public class gjy extends gjq {
+   private final bno n;
 
-public class gjy implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bgg<gjx> b;
-   private final biv<Runnable> c;
-
-   public gjy(FileChannel $$0, Executor $$1) {
-      this.b = new bgg<>(gjx.a, $$0);
-      this.c = biv.a($$1, "telemetry-event-log");
-   }
-
-   public gjz a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
+   public gjy(atj $$0, atl $$1, float $$2, float $$3, bno $$4, long $$5) {
+      super($$0, $$1, awo.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dr());
+      this.g = (double)((float)this.n.dt());
+      this.h = (double)((float)this.n.dx());
    }
 
    @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+   public boolean s() {
+      return !this.n.aU();
+   }
+
+   @Override
+   public void q() {
+      if (this.n.dH()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.dr());
+         this.g = (double)((float)this.n.dt());
+         this.h = (double)((float)this.n.dx());
+      }
    }
 }

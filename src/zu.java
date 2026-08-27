@@ -1,24 +1,23 @@
-public class zu implements xg<zb> {
-   private final int a;
+import java.util.HashSet;
+import java.util.Set;
 
-   public zu(int $$0) {
-      this.a = $$0;
+public record zu(Set<aiy> b) implements xx<zr> {
+   public static final xo<uq, zu> a = xx.a(zu::a, zu::new);
+
+   private zu(uq $$0) {
+      this($$0.a(HashSet::new, uq::s));
    }
 
-   public zu(uj $$0) {
-      this.a = $$0.readUnsignedByte();
+   private void a(uq $$0) {
+      $$0.a(this.b, uq::a);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.k(this.a);
+   public xz<zu> a() {
+      return zv.c;
    }
 
-   public void a(zb $$0) {
+   public void a(zr $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
    }
 }

@@ -1,41 +1,61 @@
-public interface cec {
-   int n_ = 10;
+import java.util.List;
 
-   int gf();
+public class cec extends cej {
+   public static final float b = bnu.C.k() / bnu.X.k();
+   private static final int e = 1200;
+   private static final int bT = 50;
+   private static final int bU = 6000;
+   private static final int bV = 2;
+   private static final int bW = 1200;
 
-   static boolean a(bmo $$0, bmo $$1) {
-      float $$2 = (float)$$0.g(bnu.c);
-      float $$3;
-      if (!$$0.o_() && (int)$$2 > 0) {
-         $$3 = $$2 / 2.0F + (float)$$0.dL().z.a((int)$$2);
-      } else {
-         $$3 = $$2;
+   public cec(bnu<? extends cec> $$0, cvn $$1) {
+      super($$0, $$1);
+      this.fL();
+      if (this.d != null) {
+         this.d.c(400);
       }
-
-      boolean $$5 = $$1.a($$0.dM().b($$0), $$3);
-      if ($$5) {
-         $$0.a($$0, $$1);
-         if (!$$0.o_()) {
-            b($$0, $$1);
-         }
-      }
-
-      return $$5;
    }
 
-   static void b(bmo $$0, bmo $$1) {
-      double $$2 = $$0.g(bnu.d);
-      double $$3 = $$1.g(bnu.k);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.dq() - $$0.dq();
-         double $$6 = $$1.dw() - $$0.dw();
-         float $$7 = (float)($$0.dL().z.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dL().z.i() * 0.5F + 0.2F);
-         emc $$9 = new emc($$5, 0.0, $$6).d().a($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dL().z.i() * 0.5;
-         $$1.j($$9.c, $$10, $$9.e);
-         $$1.T = true;
+   public static bpk.a u() {
+      return cej.gg().a(bpl.o, 0.3F).a(bpl.c, 8.0).a(bpl.n, 80.0);
+   }
+
+   @Override
+   public int w() {
+      return 60;
+   }
+
+   @Override
+   protected atj y() {
+      return this.bc() ? atk.hz : atk.hA;
+   }
+
+   @Override
+   protected atj d(bmn $$0) {
+      return this.bc() ? atk.hF : atk.hG;
+   }
+
+   @Override
+   protected atj n_() {
+      return this.bc() ? atk.hC : atk.hD;
+   }
+
+   @Override
+   protected atj A() {
+      return atk.hE;
+   }
+
+   @Override
+   protected void aa() {
+      super.aa();
+      if ((this.ag + this.aj()) % 1200 == 0) {
+         bnb $$0 = new bnb(bnd.d, 6000, 2);
+         List<aow> $$1 = bnc.a((aov)this.dM(), this, this.dk(), 50.0, $$0, 1200);
+         $$1.forEach($$0x -> $$0x.d.b(new abm(abm.l, this.aU() ? 0.0F : 1.0F)));
+      }
+
+      if (!this.fS()) {
+         this.a(this.dm(), 16);
       }
    }
 }

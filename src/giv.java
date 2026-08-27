@@ -1,35 +1,63 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class giv<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
+public enum giv implements gjc {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public giv(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   private static final int q = 360;
+   private static final Map<Integer, giv> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (giv)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   private giv(int $$0, int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
 
-         if ($$0 < 0) {
-            this.a.next();
-         } else {
-            this.b.next();
-         }
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
 
-      return (T)this.endOfData();
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
+      }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
+   }
+
+   @Override
+   public j b() {
+      return this.s;
+   }
+
+   public static giv a(int $$0, int $$1) {
+      return r.get(b(awh.b($$0, 360), awh.b($$1, 360)));
+   }
+
+   public h a() {
+      return this.t;
    }
 }

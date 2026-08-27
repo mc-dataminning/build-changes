@@ -1,40 +1,47 @@
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class oh extends ok<cbx> {
-   public oh(km $$0, CompletableFuture<ij.b> $$1) {
-      super($$0, ke.R, $$1);
+public abstract class oh<T> extends om<T> {
+   private final Function<T, aix<T>> d;
+
+   public oh(ko $$0, aix<? extends iv<T>> $$1, CompletableFuture<il.b> $$2, Function<T, aix<T>> $$3) {
+      super($$0, $$1, $$2);
+      this.d = $$3;
    }
 
-   @Override
-   protected void a(ij.b $$0) {
-      this.b(asr.a)
-         .a(
-            cby.a,
-            cby.b,
-            cby.c,
-            cby.d,
-            cby.e,
-            cby.f,
-            cby.g,
-            cby.h,
-            cby.i,
-            cby.j,
-            cby.k,
-            cby.l,
-            cby.m,
-            cby.n,
-            cby.o,
-            cby.p,
-            cby.q,
-            cby.r,
-            cby.s,
-            cby.t,
-            cby.u,
-            cby.v,
-            cby.w,
-            cby.x,
-            cby.y,
-            cby.z
-         );
+   public oh(ko $$0, aix<? extends iv<T>> $$1, CompletableFuture<il.b> $$2, CompletableFuture<om.c<T>> $$3, Function<T, aix<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
+   }
+
+   protected oh.a<T> a(auo<T> $$0) {
+      aul $$1 = this.c($$0);
+      return new oh.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends om.b<T> {
+      private final Function<T, aix<T>> a;
+
+      a(aul $$0, Function<T, aix<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public oh.a<T> a(auo<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final oh.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final oh.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

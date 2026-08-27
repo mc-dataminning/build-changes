@@ -1,54 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class bja extends bjh {
-   public static final Codec<bja> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bjh.c.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, bja::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.g < $$0.f
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final bjh b;
-   private final int f;
-   private final int g;
-
-   public static bja a(bjh $$0, int $$1, int $$2) {
-      return new bja($$0, $$1, $$2);
+public record bja(
+   Instant a, Instant b, Duration c, @Nullable Duration d, List<bjk> e, List<bjf> f, bjh.a g, bjj.a h, bji i, bji j, bjg.a k, bjg.a l, List<bje> m
+) {
+   public List<Pair<dng, bjm<bje>>> a() {
+      Map<dng, List<bje>> $$0 = this.m.stream().collect(Collectors.groupingBy(bje::d));
+      return $$0.entrySet()
+         .stream()
+         .map($$0x -> Pair.of((dng)$$0x.getKey(), bjm.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<dng, bjm<bje>>, Duration>comparing($$0x -> ((bjm)$$0x.getSecond()).f()).reversed())
+         .toList();
    }
 
-   public bja(bjh $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public String b() {
+      return new bjc().a(this);
    }
 
-   @Override
-   public int a(auw $$0) {
-      return aup.a(this.b.a($$0), this.f, this.g);
+   public Instant c() {
+      return this.a;
    }
 
-   @Override
-   public int a() {
-      return Math.max(this.f, this.b.a());
+   public Instant d() {
+      return this.b;
    }
 
-   @Override
-   public int b() {
-      return Math.min(this.g, this.b.b());
+   public Duration e() {
+      return this.c;
    }
 
-   @Override
-   public bji<?> c() {
-      return bji.d;
+   @Nullable
+   public Duration f() {
+      return this.d;
+   }
+
+   public List<bjk> g() {
+      return this.e;
+   }
+
+   public List<bjf> h() {
+      return this.f;
+   }
+
+   public bjh.a i() {
+      return this.g;
+   }
+
+   public bjj.a j() {
+      return this.h;
+   }
+
+   public bji k() {
+      return this.i;
+   }
+
+   public bji l() {
+      return this.j;
+   }
+
+   public bjg.a m() {
+      return this.k;
+   }
+
+   public bjg.a n() {
+      return this.l;
+   }
+
+   public List<bje> o() {
+      return this.m;
    }
 }

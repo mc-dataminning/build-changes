@@ -1,82 +1,132 @@
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class akj {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vg.c("commands.recipe.take.failed"));
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "localhost";
+   private static final String d = "0.0.0.0";
+   private static final int e = 10000;
+   private static final int f = 100;
+   public static BiMap<String, aix<cvn>> a = ImmutableBiMap.of("o", cvn.h, "n", cvn.i, "e", cvn.j);
+   @Nullable
+   private static akb g;
+   @Nullable
+   private static aka h;
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dt.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)dt.a("targets", ef.d())
-                              .then(
-                                 dt.a("recipe", et.a())
-                                    .suggests(hn.b)
-                                    .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), Collections.singleton(et.b($$0x, "recipe"))))
-                              ))
-                           .then(dt.a("*").executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aG().b())))
-                     )
-               ))
-            .then(
-               dt.a("take")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("chase")
                   .then(
-                     ((RequiredArgumentBuilder)dt.a("targets", ef.d())
+                     ((LiteralArgumentBuilder)dv.a("follow")
                            .then(
-                              dt.a("recipe", et.a())
-                                 .suggests(hn.b)
-                                 .executes($$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), Collections.singleton(et.b($$0x, "recipe"))))
+                              ((RequiredArgumentBuilder)dv.a("host", StringArgumentType.string())
+                                    .executes($$0x -> b((du)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
+                                 .then(
+                                    dv.a("port", IntegerArgumentType.integer(1, 65535))
+                                       .executes(
+                                          $$0x -> b(
+                                                (du)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
+                                             )
+                                       )
+                                 )
                            ))
-                        .then(dt.a("*").executes($$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aG().b())))
-                  )
-            )
+                        .executes($$0x -> b((du)$$0x.getSource(), "localhost", 10000))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)dv.a("lead")
+                        .then(
+                           ((RequiredArgumentBuilder)dv.a("bind_address", StringArgumentType.string())
+                                 .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
+                              .then(
+                                 dv.a("port", IntegerArgumentType.integer(1024, 65535))
+                                    .executes(
+                                       $$0x -> a(
+                                             (du)$$0x.getSource(),
+                                             StringArgumentType.getString($$0x, "bind_address"),
+                                             IntegerArgumentType.getInteger($$0x, "port")
+                                          )
+                                    )
+                              )
+                        ))
+                     .executes($$0x -> a((du)$$0x.getSource(), "0.0.0.0", 10000))
+               ))
+            .then(dv.a("stop").executes($$0x -> a((du)$$0x.getSource())))
       );
    }
 
-   private static int a(ds $$0, Collection<anf> $$1, Collection<cqm<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (anf $$4 : $$1) {
-         $$3 += $$4.a($$2);
+   private static int a(du $$0) {
+      if (h != null) {
+         h.b();
+         $$0.a(() -> vq.b("You have now stopped chasing"), false);
+         h = null;
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vg.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vg.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
-         }
+      if (g != null) {
+         g.b();
+         $$0.a(() -> vq.b("You are no longer being chased"), false);
+         g = null;
+      }
 
-         return $$3;
+      return 0;
+   }
+
+   private static boolean b(du $$0) {
+      if (g != null) {
+         $$0.b(vq.b("Chase server is already running. Stop it using /chase stop"));
+         return true;
+      } else if (h != null) {
+         $$0.b(vq.b("You are already chasing someone. Stop it using /chase stop"));
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private static int b(ds $$0, Collection<anf> $$1, Collection<cqm<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (anf $$4 : $$1) {
-         $$3 += $$4.b($$2);
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
+   private static int a(du $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vg.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vg.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         g = new akb($$1, $$2, $$0.l().ae(), 100);
+
+         try {
+            g.a();
+            $$0.a(() -> vq.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
+         } catch (IOException var4) {
+            b.error("Failed to start chase server", var4);
+            $$0.b(vq.b("Failed to start chase server on port " + $$2));
+            g = null;
          }
 
-         return $$3;
+         return 0;
+      }
+   }
+
+   private static int b(du $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         h = new aka($$1, $$2, $$0.l());
+         h.a();
+         $$0.a(
+            () -> vq.b(
+                  "You are now chasing "
+                     + $$1
+                     + ":"
+                     + $$2
+                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
+               ),
+            false
+         );
+         return 0;
       }
    }
 }

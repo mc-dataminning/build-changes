@@ -1,20 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dqn implements dqf {
-   public static final Codec<dqn> a = RecordCodecBuilder.create($$0 -> $$0.group(dqf.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dqn::new));
-   private final dqf e;
+public class dqn {
+   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
+   public static final Codec<dqn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
+               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
+               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
+               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dqn::new)
+   );
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
 
-   public dqn(dqf $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(cus $$0, hx $$1) {
-      return !this.e.test($$0, $$1);
-   }
-
-   @Override
-   public dqg<?> a() {
-      return dqg.k;
+   public dqn(double $$0, double $$1, double $$2, double $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

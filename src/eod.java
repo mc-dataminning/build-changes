@@ -1,11 +1,32 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.Nonnull;
-import javax.annotation.meta.TypeQualifierDefault;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-@Nonnull
-@TypeQualifierDefault({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface eod {
+public class eod implements eoe {
+   private final DoubleList a;
+
+   public eod(DoubleList $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a(eoe.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
+   }
 }

@@ -1,40 +1,45 @@
-public class aef implements xg<adk> {
-   private final hx a;
+public class aef implements xx<aag> {
+   public static final xo<uq, aef> a = xx.a(aef::a, aef::new);
    private final int b;
-   private final boolean c;
+   private final int c;
+   private final int d;
 
-   public aef(hx $$0, int $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public aef(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public aef(uj $$0) {
-      this.a = $$0.e();
+   private aef(uq $$0) {
       this.b = $$0.n();
-      this.c = $$0.readBoolean();
+      this.c = $$0.n();
+      this.d = $$0.n();
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public xz<aef> a() {
+      return aeq.aX;
    }
 
-   public void a(adk $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
-      return this.a;
-   }
-
-   public int d() {
+   public int b() {
       return this.b;
    }
 
-   public boolean e() {
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

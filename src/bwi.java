@@ -1,41 +1,48 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bwi extends bww<bmo> {
-   private static final int a = 200;
-   private static final int c = 599;
+public class bwi extends bvb {
+   private final cdz a;
+   @Nullable
+   private bog b;
 
-   public bwi() {
-      this(200);
-   }
-
-   public bwi(int $$0) {
-      super($$0);
+   public bwi(cdz $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bvb.a.a));
    }
 
    @Override
-   protected void a(ane $$0, bmo $$1) {
-      a($$1);
+   public boolean a() {
+      bog $$0 = this.a.q();
+      return this.a.w() > 0 || $$0 != null && this.a.f((bno)$$0) < 9.0;
    }
 
    @Override
-   public Set<bvq<?>> a() {
-      return ImmutableSet.of(bvq.g);
+   public void c() {
+      this.a.N().n();
+      this.b = this.a.q();
    }
 
-   public static void a(bmo $$0) {
-      Optional<List<bmo>> $$1 = $$0.dN().c(bvq.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(bmc.ae));
-         if ($$2) {
-            b($$0);
-         }
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.f((bno)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.O().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
-   }
-
-   public static void b(bmo $$0) {
-      $$0.dN().a(bvq.F, true, 599L);
    }
 }

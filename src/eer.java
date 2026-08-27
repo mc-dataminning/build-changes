@@ -1,17 +1,9 @@
-public interface eer {
-   void a(hx var1);
+import com.mojang.serialization.Codec;
 
-   boolean L_();
+public abstract class eer {
+   public static final Codec<eer> c = kf.q.q().dispatch("predicate_type", eer::a, ees::codec);
 
-   int a();
+   public abstract boolean a(hz var1, hz var2, hz var3, awo var4);
 
-   default void a(hx $$0, boolean $$1) {
-      this.a(iz.a($$0), $$1);
-   }
-
-   void a(iz var1, boolean var2);
-
-   void a(cte var1, boolean var2);
-
-   void b(cte var1);
+   protected abstract ees<?> a();
 }

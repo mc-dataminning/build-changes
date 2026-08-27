@@ -1,25 +1,36 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class elr extends Exception {
-   private final Path a;
-   private final List<elt> b;
+public record elr(elu b) implements elu {
+   public static final Codec<elr> a = RecordCodecBuilder.create($$0 -> $$0.group(elw.a.fieldOf("term").forGetter(elr::c)).apply($$0, elr::new));
 
-   public elr(Path $$0, List<elt> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Override
+   public elv b() {
+      return elw.b;
+   }
+
+   public boolean a(eiv $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public String getMessage() {
-      return a(this.a, this.b);
+   public Set<eld<?>> a() {
+      return this.b.a();
    }
 
-   public static String a(Path $$0, List<elt> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   @Override
+   public void a(eje $$0) {
+      elu.super.a($$0);
+      this.b.a($$0);
+   }
+
+   public static elu.a a(elu.a $$0) {
+      elr $$1 = new elr($$0.build());
+      return () -> $$1;
+   }
+
+   public elu c() {
+      return this.b;
    }
 }

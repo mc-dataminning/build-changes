@@ -1,176 +1,375 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.DataResult;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class bcc extends DataFix {
-   private static final Pattern a = Pattern.compile("\\[(\\d+)\\]");
-   private static final Set<String> b = Sets.newHashSet(
-      new String[]{"minecraft:jigsaw", "minecraft:nvi", "minecraft:pcp", "minecraft:bastionremnant", "minecraft:runtime"}
+   private static final int a = 128;
+   private static final int b = 64;
+   private static final int c = 32;
+   private static final int d = 16;
+   private static final int e = 8;
+   private static final int f = 4;
+   private static final int g = 2;
+   private static final int h = 1;
+   private static final int[][] i = new int[][]{{-1, 0, 0}, {1, 0, 0}, {0, -1, 0}, {0, 1, 0}, {0, 0, -1}, {0, 0, 1}};
+   private static final int j = 7;
+   private static final int k = 12;
+   private static final int l = 4096;
+   static final Object2IntMap<String> m = (Object2IntMap<String>)DataFixUtils.make(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.put("minecraft:acacia_leaves", 0);
+      $$0.put("minecraft:birch_leaves", 1);
+      $$0.put("minecraft:dark_oak_leaves", 2);
+      $$0.put("minecraft:jungle_leaves", 3);
+      $$0.put("minecraft:oak_leaves", 4);
+      $$0.put("minecraft:spruce_leaves", 5);
+   });
+   static final Set<String> n = ImmutableSet.of(
+      "minecraft:acacia_bark",
+      "minecraft:birch_bark",
+      "minecraft:dark_oak_bark",
+      "minecraft:jungle_bark",
+      "minecraft:oak_bark",
+      "minecraft:spruce_bark",
+      new String[]{
+         "minecraft:acacia_log",
+         "minecraft:birch_log",
+         "minecraft:dark_oak_log",
+         "minecraft:jungle_log",
+         "minecraft:oak_log",
+         "minecraft:spruce_log",
+         "minecraft:stripped_acacia_log",
+         "minecraft:stripped_birch_log",
+         "minecraft:stripped_dark_oak_log",
+         "minecraft:stripped_jungle_log",
+         "minecraft:stripped_oak_log",
+         "minecraft:stripped_spruce_log"
+      }
    );
-   private static final Set<String> c = Sets.newHashSet(new String[]{"minecraft:tree", "minecraft:flower", "minecraft:block_pile", "minecraft:random_patch"});
 
-   public bcc(Schema $$0) {
-      super($$0, false);
+   public bcc(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead("SavedDataFeaturePoolElementFix", this.getInputSchema().getType(bbw.D), this.getOutputSchema().getType(bbw.D), bcc::b);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.update("Children", bcc::c);
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return $$0.asStreamOpt().map(bcc::a).map($$0::createList).result().orElse($$0);
-   }
-
-   private static Stream<? extends Dynamic<?>> a(Stream<? extends Dynamic<?>> $$0) {
-      return $$0.map(
-         $$0x -> {
-            String $$1 = $$0x.get("id").asString("");
-            if (!b.contains($$1)) {
-               return $$0x;
-            } else {
-               OptionalDynamic<?> $$2 = $$0x.get("pool_element");
-               return !$$2.get("element_type").asString("").equals("minecraft:feature_pool_element")
-                  ? $$0x
-                  : $$0x.update("pool_element", $$0xx -> $$0xx.update("feature", bcc::a));
-            }
-         }
-      );
-   }
-
-   private static <T> OptionalDynamic<T> a(Dynamic<T> $$0, String... $$1) {
-      if ($$1.length == 0) {
-         throw new IllegalArgumentException("Missing path");
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bdn.c);
+      OpticFinder<?> $$1 = $$0.findField("Level");
+      OpticFinder<?> $$2 = $$1.type().findField("Sections");
+      Type<?> $$3 = $$2.type();
+      if (!($$3 instanceof ListType)) {
+         throw new IllegalStateException("Expecting sections to be a list.");
       } else {
-         OptionalDynamic<T> $$2 = $$0.get($$1[0]);
+         Type<?> $$4 = ((ListType)$$3).getElement();
+         OpticFinder<?> $$5 = DSL.typeFinder($$4);
+         return this.fixTypeEverywhereTyped(
+            "Leaves fix",
+            $$0,
+            $$3x -> $$3x.updateTyped(
+                  $$1,
+                  $$2xx -> {
+                     int[] $$3xx = new int[]{0};
+                     Typed<?> $$4x = $$2xx.updateTyped(
+                        $$2,
+                        $$2xxx -> {
+                           Int2ObjectMap<bcc.a> $$3xxx = new Int2ObjectOpenHashMap(
+                              $$2xxx.getAllTyped($$5)
+                                 .stream()
+                                 .map($$0xxxx -> new bcc.a($$0xxxx, this.getInputSchema()))
+                                 .collect(Collectors.toMap(bcc.b::c, $$0xxxx -> $$0xxxx))
+                           );
+                           if ($$3xxx.values().stream().allMatch(bcc.b::b)) {
+                              return $$2xxx;
+                           } else {
+                              List<IntSet> $$4xx = Lists.newArrayList();
 
-         for (int $$3 = 1; $$3 < $$1.length; $$3++) {
-            String $$4 = $$1[$$3];
-            Matcher $$5 = a.matcher($$4);
-            if ($$5.matches()) {
-               int $$6 = Integer.parseInt($$5.group(1));
-               List<? extends Dynamic<T>> $$7 = $$2.asList(Function.identity());
-               if ($$6 >= 0 && $$6 < $$7.size()) {
-                  $$2 = new OptionalDynamic($$0.getOps(), DataResult.success($$7.get($$6)));
-               } else {
-                  $$2 = new OptionalDynamic($$0.getOps(), DataResult.error(() -> "Missing id:" + $$6));
-               }
-            } else {
-               $$2 = $$2.get($$4);
-            }
-         }
+                              for (int $$5x = 0; $$5x < 7; $$5x++) {
+                                 $$4xx.add(new IntOpenHashSet());
+                              }
 
-         return $$2;
+                              ObjectIterator var25 = $$3xxx.values().iterator();
+
+                              while (var25.hasNext()) {
+                                 bcc.a $$6 = (bcc.a)var25.next();
+                                 if (!$$6.b()) {
+                                    for (int $$7 = 0; $$7 < 4096; $$7++) {
+                                       int $$8 = $$6.c($$7);
+                                       if ($$6.a($$8)) {
+                                          $$4xx.get(0).add($$6.c() << 12 | $$7);
+                                       } else if ($$6.b($$8)) {
+                                          int $$9 = this.a($$7);
+                                          int $$10 = this.c($$7);
+                                          $$3xx[0] |= a($$9 == 0, $$9 == 15, $$10 == 0, $$10 == 15);
+                                       }
+                                    }
+                                 }
+                              }
+
+                              for (int $$11 = 1; $$11 < 7; $$11++) {
+                                 IntSet $$12 = $$4xx.get($$11 - 1);
+                                 IntSet $$13 = $$4xx.get($$11);
+                                 IntIterator $$14 = $$12.iterator();
+
+                                 while ($$14.hasNext()) {
+                                    int $$15 = $$14.nextInt();
+                                    int $$16 = this.a($$15);
+                                    int $$17 = this.b($$15);
+                                    int $$18 = this.c($$15);
+
+                                    for (int[] $$19 : i) {
+                                       int $$20 = $$16 + $$19[0];
+                                       int $$21 = $$17 + $$19[1];
+                                       int $$22 = $$18 + $$19[2];
+                                       if ($$20 >= 0 && $$20 <= 15 && $$22 >= 0 && $$22 <= 15 && $$21 >= 0 && $$21 <= 255) {
+                                          bcc.a $$23 = (bcc.a)$$3xxx.get($$21 >> 4);
+                                          if ($$23 != null && !$$23.b()) {
+                                             int $$24 = a($$20, $$21 & 15, $$22);
+                                             int $$25 = $$23.c($$24);
+                                             if ($$23.b($$25)) {
+                                                int $$26 = $$23.d($$25);
+                                                if ($$26 > $$11) {
+                                                   $$23.a($$24, $$25, $$11);
+                                                   $$13.add(a($$20, $$21, $$22));
+                                                }
+                                             }
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+
+                              return $$2xxx.updateTyped(
+                                 $$5, $$1xxxx -> ((bcc.a)$$3xxx.get(((Dynamic)$$1xxxx.get(DSL.remainderFinder())).get("Y").asInt(0))).a($$1xxxx)
+                              );
+                           }
+                        }
+                     );
+                     if ($$3xx[0] != 0) {
+                        $$4x = $$4x.update(DSL.remainderFinder(), $$1xxx -> {
+                           Dynamic<?> $$2xxx = (Dynamic<?>)DataFixUtils.orElse($$1xxx.get("UpgradeData").result(), $$1xxx.emptyMap());
+                           return $$1xxx.set("UpgradeData", $$2xxx.set("Sides", $$1xxx.createByte((byte)($$2xxx.get("Sides").asByte((byte)0) | $$3xx[0]))));
+                        });
+                     }
+
+                     return $$4x;
+                  }
+               )
+         );
       }
    }
 
-   @VisibleForTesting
-   protected static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = a(
-         a($$0, "type").asString(""),
-         a($$0, "name").asString(""),
-         a($$0, "config", "state_provider", "type").asString(""),
-         a($$0, "config", "state_provider", "state", "Name").asString(""),
-         a($$0, "config", "state_provider", "entries", "[0]", "data", "Name").asString(""),
-         a($$0, "config", "foliage_placer", "type").asString(""),
-         a($$0, "config", "leaves_provider", "state", "Name").asString("")
-      );
-      return $$1.isPresent() ? $$0.createString($$1.get()) : $$0;
+   public static int a(int $$0, int $$1, int $$2) {
+      return $$1 << 8 | $$2 << 4 | $$0;
    }
 
-   private static Optional<String> a(String $$0, String $$1, String $$2, String $$3, String $$4, String $$5, String $$6) {
-      String $$7;
-      if (!$$0.isEmpty()) {
-         $$7 = $$0;
-      } else {
-         if ($$1.isEmpty()) {
-            return Optional.empty();
+   private int a(int $$0) {
+      return $$0 & 15;
+   }
+
+   private int b(int $$0) {
+      return $$0 >> 8 & 0xFF;
+   }
+
+   private int c(int $$0) {
+      return $$0 >> 4 & 15;
+   }
+
+   public static int a(boolean $$0, boolean $$1, boolean $$2, boolean $$3) {
+      int $$4 = 0;
+      if ($$2) {
+         if ($$1) {
+            $$4 |= 2;
+         } else if ($$0) {
+            $$4 |= 128;
+         } else {
+            $$4 |= 1;
+         }
+      } else if ($$3) {
+         if ($$0) {
+            $$4 |= 32;
+         } else if ($$1) {
+            $$4 |= 8;
+         } else {
+            $$4 |= 16;
+         }
+      } else if ($$1) {
+         $$4 |= 4;
+      } else if ($$0) {
+         $$4 |= 64;
+      }
+
+      return $$4;
+   }
+
+   public static final class a extends bcc.b {
+      private static final String h = "persistent";
+      private static final String i = "decayable";
+      private static final String j = "distance";
+      @Nullable
+      private IntSet k;
+      @Nullable
+      private IntSet l;
+      @Nullable
+      private Int2IntMap m;
+
+      public a(Typed<?> $$0, Schema $$1) {
+         super($$0, $$1);
+      }
+
+      @Override
+      protected boolean a() {
+         this.k = new IntOpenHashSet();
+         this.l = new IntOpenHashSet();
+         this.m = new Int2IntOpenHashMap();
+
+         for (int $$0 = 0; $$0 < this.e.size(); $$0++) {
+            Dynamic<?> $$1 = this.e.get($$0);
+            String $$2 = $$1.get("Name").asString("");
+            if (bcc.m.containsKey($$2)) {
+               boolean $$3 = Objects.equals($$1.get("Properties").get("decayable").asString(""), "false");
+               this.k.add($$0);
+               this.m.put(this.a($$2, $$3, 7), $$0);
+               this.e.set($$0, this.a($$1, $$2, $$3, 7));
+            }
+
+            if (bcc.n.contains($$2)) {
+               this.l.add($$0);
+            }
          }
 
-         if ("minecraft:normal_tree".equals($$1)) {
-            $$7 = "minecraft:tree";
+         return this.k.isEmpty() && this.l.isEmpty();
+      }
+
+      private Dynamic<?> a(Dynamic<?> $$0, String $$1, boolean $$2, int $$3) {
+         Dynamic<?> $$4 = $$0.emptyMap();
+         $$4 = $$4.set("persistent", $$4.createString($$2 ? "true" : "false"));
+         $$4 = $$4.set("distance", $$4.createString(Integer.toString($$3)));
+         Dynamic<?> $$5 = $$0.emptyMap();
+         $$5 = $$5.set("Properties", $$4);
+         return $$5.set("Name", $$5.createString($$1));
+      }
+
+      public boolean a(int $$0) {
+         return this.l.contains($$0);
+      }
+
+      public boolean b(int $$0) {
+         return this.k.contains($$0);
+      }
+
+      int d(int $$0) {
+         return this.a($$0) ? 0 : Integer.parseInt(this.e.get($$0).get("Properties").get("distance").asString(""));
+      }
+
+      void a(int $$0, int $$1, int $$2) {
+         Dynamic<?> $$3 = this.e.get($$1);
+         String $$4 = $$3.get("Name").asString("");
+         boolean $$5 = Objects.equals($$3.get("Properties").get("persistent").asString(""), "true");
+         int $$6 = this.a($$4, $$5, $$2);
+         if (!this.m.containsKey($$6)) {
+            int $$7 = this.e.size();
+            this.k.add($$7);
+            this.m.put($$6, $$7);
+            this.e.add(this.a($$3, $$4, $$5, $$2));
+         }
+
+         int $$8 = this.m.get($$6);
+         if (1 << this.g.b() <= $$8) {
+            axq $$9 = new axq(this.g.b() + 1, 4096);
+
+            for (int $$10 = 0; $$10 < 4096; $$10++) {
+               $$9.a($$10, this.g.a($$10));
+            }
+
+            this.g = $$9;
+         }
+
+         this.g.a($$0, $$8);
+      }
+   }
+
+   public abstract static class b {
+      protected static final String a = "BlockStates";
+      protected static final String b = "Name";
+      protected static final String c = "Properties";
+      private final Type<Pair<String, Dynamic<?>>> h = DSL.named(bdn.u.typeName(), DSL.remainderType());
+      protected final OpticFinder<List<Pair<String, Dynamic<?>>>> d = DSL.fieldFinder("Palette", DSL.list(this.h));
+      protected final List<Dynamic<?>> e;
+      protected final int f;
+      @Nullable
+      protected axq g;
+
+      public b(Typed<?> $$0, Schema $$1) {
+         if (!Objects.equals($$1.getType(bdn.u), this.h)) {
+            throw new IllegalStateException("Block state type is not what was expected.");
          } else {
-            $$7 = $$1;
+            Optional<List<Pair<String, Dynamic<?>>>> $$2 = $$0.getOptional(this.d);
+            this.e = $$2.<List<Dynamic<?>>>map($$0x -> $$0x.stream().<Dynamic<?>>map(Pair::getSecond).collect(Collectors.toList())).orElse(ImmutableList.of());
+            Dynamic<?> $$3 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+            this.f = $$3.get("Y").asInt(0);
+            this.a($$3);
          }
       }
 
-      if (c.contains($$7)) {
-         if ("minecraft:random_patch".equals($$7)) {
-            if ("minecraft:simple_state_provider".equals($$2)) {
-               if ("minecraft:sweet_berry_bush".equals($$3)) {
-                  return Optional.of("minecraft:patch_berry_bush");
-               }
-
-               if ("minecraft:cactus".equals($$3)) {
-                  return Optional.of("minecraft:patch_cactus");
-               }
-            } else if ("minecraft:weighted_state_provider".equals($$2) && ("minecraft:grass".equals($$4) || "minecraft:fern".equals($$4))) {
-               return Optional.of("minecraft:patch_taiga_grass");
-            }
-         } else if ("minecraft:block_pile".equals($$7)) {
-            if (!"minecraft:simple_state_provider".equals($$2) && !"minecraft:rotated_block_provider".equals($$2)) {
-               if ("minecraft:weighted_state_provider".equals($$2)) {
-                  if ("minecraft:packed_ice".equals($$4) || "minecraft:blue_ice".equals($$4)) {
-                     return Optional.of("minecraft:pile_ice");
-                  }
-
-                  if ("minecraft:jack_o_lantern".equals($$4) || "minecraft:pumpkin".equals($$4)) {
-                     return Optional.of("minecraft:pile_pumpkin");
-                  }
-               }
-            } else {
-               if ("minecraft:hay_block".equals($$3)) {
-                  return Optional.of("minecraft:pile_hay");
-               }
-
-               if ("minecraft:melon".equals($$3)) {
-                  return Optional.of("minecraft:pile_melon");
-               }
-
-               if ("minecraft:snow".equals($$3)) {
-                  return Optional.of("minecraft:pile_snow");
-               }
-            }
+      protected void a(Dynamic<?> $$0) {
+         if (this.a()) {
+            this.g = null;
          } else {
-            if ("minecraft:flower".equals($$7)) {
-               return Optional.of("minecraft:flower_plain");
-            }
-
-            if ("minecraft:tree".equals($$7)) {
-               if ("minecraft:acacia_foliage_placer".equals($$5)) {
-                  return Optional.of("minecraft:acacia");
-               }
-
-               if ("minecraft:blob_foliage_placer".equals($$5) && "minecraft:oak_leaves".equals($$6)) {
-                  return Optional.of("minecraft:oak");
-               }
-
-               if ("minecraft:pine_foliage_placer".equals($$5)) {
-                  return Optional.of("minecraft:pine");
-               }
-
-               if ("minecraft:spruce_foliage_placer".equals($$5)) {
-                  return Optional.of("minecraft:spruce");
-               }
-            }
+            long[] $$1 = $$0.get("BlockStates").asLongStream().toArray();
+            int $$2 = Math.max(4, DataFixUtils.ceillog2(this.e.size()));
+            this.g = new axq($$2, 4096, $$1);
          }
       }
 
-      return Optional.empty();
+      public Typed<?> a(Typed<?> $$0) {
+         return this.b()
+            ? $$0
+            : $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("BlockStates", $$0x.createLongList(Arrays.stream(this.g.a()))))
+               .set(this.d, this.e.stream().map($$0x -> Pair.of(bdn.u.typeName(), $$0x)).collect(Collectors.toList()));
+      }
+
+      public boolean b() {
+         return this.g == null;
+      }
+
+      public int c(int $$0) {
+         return this.g.a($$0);
+      }
+
+      protected int a(String $$0, boolean $$1, int $$2) {
+         return bcc.m.get($$0) << 5 | ($$1 ? 16 : 0) | $$2;
+      }
+
+      int c() {
+         return this.f;
+      }
+
+      protected abstract boolean a();
    }
 }

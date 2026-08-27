@@ -1,21 +1,8 @@
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class nn {
-   public static CompletableFuture<iw.e> a(CompletableFuture<ij.b> $$0, iw $$1) {
-      return $$0.thenApply($$1x -> {
-         iu.b $$2 = iu.a(kd.as);
-         hy.a $$3 = new hy.a();
-         ahc.a.forEach($$1xx -> $$1xx.a($$3::a));
-         iw.e $$4 = $$1.a($$2, $$1x, $$3);
-         ij.b $$5 = $$4.a();
-         Optional<ij.c<cuw>> $$6 = $$5.a(ke.at);
-         Optional<ij.c<dys>> $$7 = $$5.a(ke.aC);
-         if ($$6.isPresent() || $$7.isPresent()) {
-            np.a($$7.orElseGet(() -> $$1x.b(ke.aC)), $$6.orElseGet(() -> $$1x.b(ke.at)));
-         }
-
-         return $$4;
-      });
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface nn {
 }

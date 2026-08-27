@@ -1,14 +1,10 @@
-public class clu extends cla {
-   public clu(cwy $$0, cnb.a $$1) {
-      super($$0, $$1);
+public class clu extends clw {
+   public clu(bln $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean a(cpp $$0, djp $$1) {
-      ctx $$2 = $$0.q();
-      hx $$3 = $$0.a().c();
-      djp $$4 = $$2.z($$3) ? cxa.G.o() : cxa.a.o();
-      $$2.a($$3, $$4, 27);
-      return super.a($$0, $$1);
+   public boolean a(coz $$0) {
+      return $$0.d().ar_();
    }
 }

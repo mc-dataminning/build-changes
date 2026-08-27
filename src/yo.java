@@ -1,19 +1,11 @@
-import java.util.List;
+public interface yo extends aad, aet {
+   void a(yr var1);
 
-public record yo(List<hx> b) implements yb {
-   public static final ahh a = new ahh("debug/raids");
+   void a(ys var1);
 
-   public yo(uj $$0) {
-      this($$0.a(uj::e));
-   }
+   void a(yq var1);
 
-   @Override
-   public void a(uj $$0) {
-      $$0.a(this.b, uj::a);
-   }
+   void a(yt var1);
 
-   @Override
-   public ahh a() {
-      return a;
-   }
+   void a(yp var1);
 }

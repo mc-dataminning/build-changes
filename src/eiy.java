@@ -1,82 +1,82 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eiy extends eir {
-   private static final Codec<Pair<ih<dgu>, clv>> b = Codec.mapPair(kd.am.r().fieldOf("pattern"), clv.q.fieldOf("color")).codec();
-   public static final Codec<eiy> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
-            .apply($$0, eiy::new)
-   );
-   private final List<Pair<ih<dgu>, clv>> c;
-   private final boolean d;
-
-   eiy(List<eke> $$0, List<Pair<ih<dgu>, clv>> $$1, boolean $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   @Override
-   protected cng a(cng $$0, ehf $$1) {
-      so $$2 = cla.a($$0);
-      if ($$2 == null) {
-         $$2 = new so();
-      }
-
-      dgu.a $$3 = new dgu.a();
-      this.c.forEach($$3::a);
-      su $$4 = $$3.a();
-      su $$5;
-      if (this.d) {
-         $$5 = $$2.c("Patterns", 10).e();
-         $$5.addAll($$4);
-      } else {
-         $$5 = $$4;
-      }
-
-      $$2.a("Patterns", $$5);
-      cla.a($$0, dhf.t, $$2);
-      return $$0;
-   }
+public class eiy implements aru, eiz {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   public static final eix<ejd> a = new eix<>(eja.c, eit.a);
+   private Map<eix<?>, ?> d = Map.of();
+   private Multimap<eja<?>, aiy> e = ImmutableMultimap.of();
 
    @Override
-   public eit b() {
-      return eiu.y;
+   public final CompletableFuture<Void> a(aru.a $$0, asa $$1, bil $$2, bil $$3, Executor $$4, Executor $$5) {
+      Map<eja<?>, Map<aiy, ?>> $$6 = new HashMap<>();
+      CompletableFuture<?>[] $$7 = eja.b().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
+      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
    }
 
-   public static eiy.a a(boolean $$0) {
-      return new eiy.a($$0);
+   private static <T> CompletableFuture<?> a(eja<T> $$0, asa $$1, Executor $$2, Map<eja<?>, Map<aiy, ?>> $$3) {
+      Map<aiy, T> $$4 = new HashMap<>();
+      $$3.put($$0, $$4);
+      return CompletableFuture.runAsync(() -> {
+         Map<aiy, JsonElement> $$3x = new HashMap<>();
+         ase.a($$1, $$0.a(), c, $$3x);
+         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
+      }, $$2);
    }
 
-   public static class a extends eir.a<eiy.a> {
-      private final Builder<Pair<ih<dgu>, clv>> a = ImmutableList.builder();
-      private final boolean b;
-
-      a(boolean $$0) {
-         this.b = $$0;
+   private void a(Map<eja<?>, Map<aiy, ?>> $$0) {
+      Object $$1 = $$0.get(eja.c).remove(eit.a);
+      if ($$1 != null) {
+         b.warn("Datapack tried to redefine {} loot table, ignoring", eit.a);
       }
 
-      protected eiy.a a() {
-         return this;
-      }
+      Builder<eix<?>, Object> $$2 = ImmutableMap.builder();
+      com.google.common.collect.ImmutableMultimap.Builder<eja<?>, aiy> $$3 = ImmutableMultimap.builder();
+      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
+            $$2.put(new eix($$2x, $$3xx), $$4x);
+            $$3.put($$2x, $$3xx);
+         }));
+      $$2.put(a, ejd.a);
+      awm.a $$4 = new awm.a();
+      final Map<eix<?>, ?> $$5 = $$2.build();
+      eje $$6 = new eje($$4, elf.o, new eiz() {
+         @Nullable
+         @Override
+         public <T> T getElement(eix<T> $$0) {
+            return (T)$$5.get($$0);
+         }
+      });
+      $$5.forEach(($$1x, $$2x) -> a($$6, $$1x, $$2x));
+      $$4.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+      this.d = $$5;
+      this.e = $$3.build();
+   }
 
-      @Override
-      public eis b() {
-         return new eiy(this.g(), this.a.build(), this.b);
-      }
+   private static <T> void a(eje $$0, eix<T> $$1, Object $$2) {
+      $$1.a().a($$0, $$1, (T)$$2);
+   }
 
-      public eiy.a a(ahg<dgu> $$0, clv $$1) {
-         return this.a(kd.am.f($$0), $$1);
-      }
+   @Nullable
+   @Override
+   public <T> T getElement(eix<T> $$0) {
+      return (T)this.d.get($$0);
+   }
 
-      public eiy.a a(ih<dgu> $$0, clv $$1) {
-         this.a.add(Pair.of($$0, $$1));
-         return this;
-      }
+   public Collection<aiy> a(eja<?> $$0) {
+      return this.e.get($$0);
    }
 }

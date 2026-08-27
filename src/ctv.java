@@ -1,19 +1,20 @@
-public class ctv {
-   private static int[] a = new int[65536];
-
-   public static void a(int[] $$0) {
-      a = $$0;
+public class ctv extends cti {
+   public ctv(cti.a $$0, bnv... $$1) {
+      super($$0, auh.bo, $$1);
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? -65281 : a[$$4];
+   @Override
+   public int a(int $$0) {
+      return 12 + ($$0 - 1) * 20;
    }
 
-   public static int a() {
-      return a(0.5, 1.0);
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

@@ -1,40 +1,44 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import org.slf4j.Logger;
 
-public class bdv extends bde {
-   public bdv(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bdv extends axt {
+   private static final Logger b = LogUtils.getLogger();
+
+   public bdv(Schema $$0) {
+      super($$0, bdn.l);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bbw.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(bbw.x.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(bbw.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", bbw.z.in($$0))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(bbw.u.in($$0)))),
-                  "Structures",
-                  DSL.optionalFields("Starts", DSL.compoundList(bbw.D.in($$0)))
-               )
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "SavedDataUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> $$0x.update(
+                     "data",
+                     $$0xx -> $$0xx.update(
+                           "Raids",
+                           $$0xxx -> $$0xxx.createList(
+                                 $$0xxx.asStream()
+                                    .map(
+                                       $$0xxxx -> $$0xxxx.update(
+                                             "HeroesOfTheVillage",
+                                             $$0xxxxx -> $$0xxxxx.createList(
+                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
+                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
+                                                         return $$0xxxxxx;
+                                                      }))
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
             )
       );
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$1.put("DUMMY", DSL::remainder);
-      return $$1;
    }
 }

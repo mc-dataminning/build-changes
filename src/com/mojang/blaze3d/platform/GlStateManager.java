@@ -24,7 +24,7 @@ import org.lwjgl.opengl.GL32C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-@eob
+@epr
 public class GlStateManager {
    private static final boolean ON_LINUX = ac.j() == ac.a.a;
    public static final int TEXTURE_COUNT = 12;
@@ -574,7 +574,7 @@ public class GlStateManager {
       GL11.glTexSubImage2D($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   public static void upload(int $$0, int $$1, int $$2, int $$3, int $$4, epl.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
+   public static void upload(int $$0, int $$1, int $$2, int $$3, int $$4, erb.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
       if (!RenderSystem.isOnRenderThreadOrInit()) {
          RenderSystem.recordRenderCall(() -> _upload($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       } else {
@@ -582,7 +582,7 @@ public class GlStateManager {
       }
    }
 
-   private static void _upload(int $$0, int $$1, int $$2, int $$3, int $$4, epl.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
+   private static void _upload(int $$0, int $$1, int $$2, int $$3, int $$4, erb.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
       try {
          RenderSystem.assertOnRenderThreadOrInit();
          _pixelStore(3314, $$3);
@@ -731,7 +731,7 @@ public class GlStateManager {
       return GL11.glGetInteger($$0);
    }
 
-   @eob
+   @epr
    public static enum DestFactor {
       CONSTANT_ALPHA(32771),
       CONSTANT_COLOR(32769),
@@ -755,7 +755,7 @@ public class GlStateManager {
       }
    }
 
-   @eob
+   @epr
    public static enum SourceFactor {
       CONSTANT_ALPHA(32771),
       CONSTANT_COLOR(32769),

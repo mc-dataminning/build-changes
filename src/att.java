@@ -1,80 +1,45 @@
-import java.io.DataOutput;
-import java.io.IOException;
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-public class att implements DataOutput {
-   private final DataOutput a;
+public class att<T> implements Iterable<atr<T>> {
+   private final iv<T> a;
+   private final Map<T, atr<T>> b = new IdentityHashMap<>();
+   private final vq c;
+   private final xo<vb, atr<T>> d;
 
-   public att(DataOutput $$0) {
+   public att(iv<T> $$0, vq $$1) {
       this.a = $$0;
+      this.c = $$1;
+      this.d = xm.a($$0.c()).a(this::b, atr::b);
+   }
+
+   public xo<vb, atr<T>> a() {
+      return this.d;
+   }
+
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public atr<T> a(T $$0, ats $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new atr<>(this, (T)$$1x, $$1));
+   }
+
+   public iv<T> b() {
+      return this.a;
    }
 
    @Override
-   public void write(int $$0) throws IOException {
-      this.a.write($$0);
+   public Iterator<atr<T>> iterator() {
+      return this.b.values().iterator();
    }
 
-   @Override
-   public void write(byte[] $$0) throws IOException {
-      this.a.write($$0);
+   public atr<T> b(T $$0) {
+      return this.a($$0, ats.b);
    }
 
-   @Override
-   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
-      this.a.write($$0, $$1, $$2);
-   }
-
-   @Override
-   public void writeBoolean(boolean $$0) throws IOException {
-      this.a.writeBoolean($$0);
-   }
-
-   @Override
-   public void writeByte(int $$0) throws IOException {
-      this.a.writeByte($$0);
-   }
-
-   @Override
-   public void writeShort(int $$0) throws IOException {
-      this.a.writeShort($$0);
-   }
-
-   @Override
-   public void writeChar(int $$0) throws IOException {
-      this.a.writeChar($$0);
-   }
-
-   @Override
-   public void writeInt(int $$0) throws IOException {
-      this.a.writeInt($$0);
-   }
-
-   @Override
-   public void writeLong(long $$0) throws IOException {
-      this.a.writeLong($$0);
-   }
-
-   @Override
-   public void writeFloat(float $$0) throws IOException {
-      this.a.writeFloat($$0);
-   }
-
-   @Override
-   public void writeDouble(double $$0) throws IOException {
-      this.a.writeDouble($$0);
-   }
-
-   @Override
-   public void writeBytes(String $$0) throws IOException {
-      this.a.writeBytes($$0);
-   }
-
-   @Override
-   public void writeChars(String $$0) throws IOException {
-      this.a.writeChars($$0);
-   }
-
-   @Override
-   public void writeUTF(String $$0) throws IOException {
-      this.a.writeUTF($$0);
+   public vq c() {
+      return this.c;
    }
 }

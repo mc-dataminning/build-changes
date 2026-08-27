@@ -1,19 +1,25 @@
-public record yl(hx b, String c, int d) implements yb {
-   public static final ahh a = new ahh("debug/poi_added");
+public record yl(String b, int c) implements xx<yd> {
+   public static final xo<uq, yl> a = xx.a(yl::a, yl::new);
 
-   public yl(uj $$0) {
-      this($$0.e(), $$0.s(), $$0.readInt());
+   private yl(uq $$0) {
+      this($$0.r(), $$0.n());
    }
 
-   @Override
-   public void a(uj $$0) {
+   private void a(uq $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.p(this.d);
+      $$0.c(this.c);
    }
 
    @Override
-   public ahh a() {
-      return a;
+   public xz<yl> a() {
+      return yn.h;
+   }
+
+   public void a(yd $$0) {
+      $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
    }
 }

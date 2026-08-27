@@ -1,37 +1,56 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Supplier;
 
-public interface cqo<T extends cqk<?>> {
-   cqo<cqr> a = a("crafting_shaped", new cqr.a());
-   cqo<cqt> b = a("crafting_shapeless", new cqt.a());
-   cqo<cpu> c = a("crafting_special_armordye", new cqx<>(cpu::new));
-   cqo<cpx> d = a("crafting_special_bookcloning", new cqx<>(cpx::new));
-   cqo<cqi> e = a("crafting_special_mapcloning", new cqx<>(cqi::new));
-   cqo<cqj> f = a("crafting_special_mapextending", new cqx<>(cqj::new));
-   cqo<cqe> g = a("crafting_special_firework_rocket", new cqx<>(cqe::new));
-   cqo<cqg> h = a("crafting_special_firework_star", new cqx<>(cqg::new));
-   cqo<cqf> i = a("crafting_special_firework_star_fade", new cqx<>(cqf::new));
-   cqo<crg> j = a("crafting_special_tippedarrow", new cqx<>(crg::new));
-   cqo<cpv> k = a("crafting_special_bannerduplicate", new cqx<>(cpv::new));
-   cqo<cqu> l = a("crafting_special_shielddecoration", new cqx<>(cqu::new));
-   cqo<cqv> m = a("crafting_special_shulkerboxcoloring", new cqx<>(cqv::new));
-   cqo<crf> n = a("crafting_special_suspiciousstew", new cqx<>(crf::new));
-   cqo<cqq> o = a("crafting_special_repairitem", new cqx<>(cqq::new));
-   cqo<cqz> p = a("smelting", new cqw<>(cqz::new, 200));
-   cqo<cpw> q = a("blasting", new cqw<>(cpw::new, 100));
-   cqo<crd> r = a("smoking", new cqw<>(crd::new, 100));
-   cqo<cpy> s = a("campfire_cooking", new cqw<>(cpy::new, 100));
-   cqo<cre> t = a("stonecutting", new cqy.b<>(cre::new));
-   cqo<crb> u = a("smithing_transform", new crb.a());
-   cqo<crc> v = a("smithing_trim", new crc.a());
-   cqo<cqd> w = a("crafting_decorated_pot", new cqx<>(cqd::new));
+public enum cqo implements cqm {
+   a(0, 59, 2.0F, 0.0F, 15, () -> cry.a(auh.b)),
+   b(1, 131, 4.0F, 1.0F, 5, () -> cry.a(auh.ax)),
+   c(2, 250, 6.0F, 2.0F, 14, () -> cry.a(cpc.oD)),
+   d(3, 1561, 8.0F, 3.0F, 10, () -> cry.a(cpc.ox)),
+   e(0, 32, 12.0F, 0.0F, 22, () -> cry.a(cpc.oH)),
+   f(4, 2031, 9.0F, 4.0F, 15, () -> cry.a(cpc.oI));
 
-   Codec<T> a();
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final awc<cry> l;
 
-   T a(uj var1);
+   private cqo(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cry> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = new awc<>($$5);
+   }
 
-   void a(uj var1, T var2);
+   @Override
+   public int a() {
+      return this.h;
+   }
 
-   static <S extends cqo<T>, T extends cqk<?>> S a(String $$0, S $$1) {
-      return it.a(kd.t, $$0, $$1);
+   @Override
+   public float b() {
+      return this.i;
+   }
+
+   @Override
+   public float c() {
+      return this.j;
+   }
+
+   @Override
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public int e() {
+      return this.k;
+   }
+
+   @Override
+   public cry f() {
+      return this.l.a();
    }
 }

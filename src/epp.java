@@ -1,7 +1,8 @@
-public interface epp {
-   void a(boolean var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a();
-
-   void b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface epp {
 }

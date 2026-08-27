@@ -1,29 +1,8 @@
-public class bid implements bie {
-   public static final bie a = new bid();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bgt f() {
-      return bgq.a;
-   }
-
-   @Override
-   public void d() {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bid {
 }

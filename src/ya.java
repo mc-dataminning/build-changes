@@ -1,57 +1,38 @@
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record ya(ya.a b) implements yb {
-   public static final ahh a = new ahh("debug/breeze");
+public class ya {
+   private static final Logger a = LogUtils.getLogger();
 
-   public ya(uj $$0) {
-      this(new ya.a($$0));
+   public static <T extends uw> void a(xx<T> $$0, T $$1, aov $$2) throws ajj {
+      a($$0, $$1, $$2.o());
    }
 
-   @Override
-   public void a(uj $$0) {
-      this.b.a($$0);
-   }
+   public static <T extends uw> void a(xx<T> $$0, T $$1, bkk<?> $$2) throws ajj {
+      if (!$$2.br()) {
+         $$2.c(() -> {
+            if ($$1.a($$0)) {
+               try {
+                  $$0.a($$1);
+               } catch (Exception var6) {
+                  if (var6 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
+                     if (var6 instanceof y $$4) {
+                        $$1.a($$4.a());
+                        throw var6;
+                     }
 
-   @Override
-   public ahh a() {
-      return a;
-   }
+                     o $$5 = o.a(var6, "Main thread packet handler");
+                     $$1.a($$5);
+                     throw new y($$5);
+                  }
 
-   public static record a(UUID a, int b, Integer c, hx d) {
-      public a(uj $$0) {
-         this($$0.p(), $$0.readInt(), $$0.c(uj::readInt), $$0.c(uj::e));
-      }
-
-      public void a(uj $$0) {
-         $$0.a(this.a);
-         $$0.p(this.b);
-         $$0.a(this.c, uj::p);
-         $$0.a(this.d, uj::a);
-      }
-
-      public String a() {
-         return adi.a(this.a);
-      }
-
-      @Override
-      public String toString() {
-         return this.a();
-      }
-
-      public UUID b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public Integer d() {
-         return this.c;
-      }
-
-      public hx e() {
-         return this.d;
+                  a.error("Failed to handle packet {}, suppressing error", $$0, var6);
+               }
+            } else {
+               a.debug("Ignoring packet due to disconnection: {}", $$0);
+            }
+         });
+         throw ajj.a;
       }
    }
 }

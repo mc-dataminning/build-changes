@@ -1,33 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dux(int b, int c, int d, int e, int f, bjh g, float h) implements dug {
-   public static final Codec<dux> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dux::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dux::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dux::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dux::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dux::f),
-               bjh.c.fieldOf("extra_rare_growths").forGetter(dux::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dux::h)
-            )
-            .apply($$0, dux::new)
-   );
-
-   public int a() {
-      return this.b;
+public class dux extends dts<dvr> {
+   public dux(Codec<dvr> $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(dtu<dvr> $$0) {
+      int $$1 = 0;
+      awo $$2 = $$0.d();
+      cwi $$3 = $$0.b();
+      hz $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-   public int c() {
-      return this.d;
-   }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dqo.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         hz $$10 = new hz($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dlf $$11 = cyq.mV.o().a(dfk.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(cyq.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
+      }
 
-   public int d() {
-      return this.e;
+      return $$1 > 0;
    }
 }

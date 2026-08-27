@@ -1,61 +1,80 @@
-import com.mojang.datafixers.DataFixUtils;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Optional;
 
-public class btg extends btk {
-   private static final int a = 200;
-   private final byb b;
-   private int c;
-   private int d;
-
-   public btg(byb $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(byb $$0) {
-      return b(200 + $$0.eg().a(200) % 20);
-   }
+public class btg extends bth {
+   private static final List<cou> c = ImmutableList.of(cpc.pu, cpc.vh);
 
    @Override
-   public boolean a() {
-      if (this.b.gl()) {
-         return false;
-      } else if (this.b.gi()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         this.d = this.a(this.b);
-         Predicate<byb> $$0 = $$0x -> $$0x.gk() || !$$0x.gi();
-         List<? extends byb> $$1 = this.b.dL().a((Class<? extends byb>)this.b.getClass(), this.b.cH().c(8.0, 8.0, 8.0), $$0);
-         byb $$2 = (byb)DataFixUtils.orElse($$1.stream().filter(byb::gk).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gi()));
-         return this.b.gi();
+   protected void a(aov $$0, cgu $$1) {
+      Optional<ii> $$2 = $$1.dO().c(bxh.c);
+      if (!$$2.isEmpty()) {
+         ii $$3 = $$2.get();
+         dlf $$4 = $$0.a_($$3.b());
+         if ($$4.a(cyq.pc)) {
+            this.a($$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
       }
    }
 
-   @Override
-   public boolean b() {
-      return this.b.gi() && this.b.gm();
+   private void a(aov $$0, cgu $$1, ii $$2, dlf $$3) {
+      hz $$4 = $$2.b();
+      if ($$3.c(czz.e) == 8) {
+         $$3 = czz.a($$1, $$3, (cvn)$$0, $$4);
+      }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      bmd $$8 = $$1.A();
+      int $$9 = $$8.b();
+      dlf $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         coz $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.d());
+         if ($$13 != -1) {
+            int $$14 = $$12.M();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = czz.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(czz.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   @Override
-   public void c() {
-      this.c = 0;
+   private void a(aov $$0, dlf $$1, hz $$2, dlf $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
    }
 
-   @Override
-   public void d() {
-      this.b.gj();
-   }
-
-   @Override
-   public void e() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gn();
+   private void a(cgu $$0) {
+      bmd $$1 = $$0.A();
+      if ($$1.a_(cpc.pw) <= 36) {
+         int $$2 = $$1.a_(cpc.pv);
+         int $$3 = 3;
+         int $$4 = 3;
+         int $$5 = Math.min(3, $$2 / 3);
+         if ($$5 != 0) {
+            int $$6 = $$5 * 3;
+            $$1.a(cpc.pv, $$6);
+            coz $$7 = $$1.a(new coz(cpc.pw, $$5));
+            if (!$$7.b()) {
+               $$0.a($$7, 0.5F);
+            }
+         }
       }
    }
 }

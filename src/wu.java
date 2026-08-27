@@ -1,30 +1,70 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class wu implements ww {
-   public static final wu a = new wu();
-   public static final wx<wu> b = new wx<wu>() {
-      private static final MapCodec<wu> a = MapCodec.unit(wu.a);
+public class wu implements vr {
+   public static final MapCodec<wu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, wu::new)
+   );
+   public static final vr.a<wu> b = new vr.a<>(a, "keybind");
+   private final String c;
+   @Nullable
+   private Supplier<vq> d;
 
-      @Override
-      public MapCodec<wu> a() {
-         return a;
+   public wu(String $$0) {
+      this.c = $$0;
+   }
+
+   private vq c() {
+      if (this.d == null) {
+         this.d = wv.a.apply(this.c);
       }
 
-      public void a(uj $$0, wu $$1) {
-      }
-
-      public wu a(uj $$0) {
-         return wu.a;
-      }
-   };
-
-   @Override
-   public vu a(int $$0) {
-      return vg.i();
+      return this.d.get();
    }
 
    @Override
-   public wx<wu> a() {
+   public <T> Optional<T> a(vv.a<T> $$0) {
+      return this.c().a($$0);
+   }
+
+   @Override
+   public <T> Optional<T> a(vv.b<T> $$0, wn $$1) {
+      return this.c().a($$0, $$1);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof wu $$1 && this.c.equals($$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "keybind{" + this.c + "}";
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   @Override
+   public vr.a<?> a() {
       return b;
    }
 }

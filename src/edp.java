@@ -1,287 +1,252 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
 
 public class edp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "structures";
-   private static final String c = ".nbt";
-   private static final String d = ".snbt";
-   private final Map<ahh, Optional<edo>> e = Maps.newConcurrentMap();
-   private final DataFixer f;
-   private aqj g;
-   private final Path h;
-   private final List<edp.b> i;
-   private final ii<cwy> j;
-   private static final aha k = new aha("structures", ".nbt");
+   static final efb a = a(cyq.I, cyq.J, eit.aS);
+   static final efb b = a(cyq.L, cyq.M, eit.aT);
+   private static final aiy[] c = new aiy[]{
+      new aiy("underwater_ruin/warm_1"),
+      new aiy("underwater_ruin/warm_2"),
+      new aiy("underwater_ruin/warm_3"),
+      new aiy("underwater_ruin/warm_4"),
+      new aiy("underwater_ruin/warm_5"),
+      new aiy("underwater_ruin/warm_6"),
+      new aiy("underwater_ruin/warm_7"),
+      new aiy("underwater_ruin/warm_8")
+   };
+   private static final aiy[] d = new aiy[]{
+      new aiy("underwater_ruin/brick_1"),
+      new aiy("underwater_ruin/brick_2"),
+      new aiy("underwater_ruin/brick_3"),
+      new aiy("underwater_ruin/brick_4"),
+      new aiy("underwater_ruin/brick_5"),
+      new aiy("underwater_ruin/brick_6"),
+      new aiy("underwater_ruin/brick_7"),
+      new aiy("underwater_ruin/brick_8")
+   };
+   private static final aiy[] e = new aiy[]{
+      new aiy("underwater_ruin/cracked_1"),
+      new aiy("underwater_ruin/cracked_2"),
+      new aiy("underwater_ruin/cracked_3"),
+      new aiy("underwater_ruin/cracked_4"),
+      new aiy("underwater_ruin/cracked_5"),
+      new aiy("underwater_ruin/cracked_6"),
+      new aiy("underwater_ruin/cracked_7"),
+      new aiy("underwater_ruin/cracked_8")
+   };
+   private static final aiy[] f = new aiy[]{
+      new aiy("underwater_ruin/mossy_1"),
+      new aiy("underwater_ruin/mossy_2"),
+      new aiy("underwater_ruin/mossy_3"),
+      new aiy("underwater_ruin/mossy_4"),
+      new aiy("underwater_ruin/mossy_5"),
+      new aiy("underwater_ruin/mossy_6"),
+      new aiy("underwater_ruin/mossy_7"),
+      new aiy("underwater_ruin/mossy_8")
+   };
+   private static final aiy[] g = new aiy[]{
+      new aiy("underwater_ruin/big_brick_1"),
+      new aiy("underwater_ruin/big_brick_2"),
+      new aiy("underwater_ruin/big_brick_3"),
+      new aiy("underwater_ruin/big_brick_8")
+   };
+   private static final aiy[] h = new aiy[]{
+      new aiy("underwater_ruin/big_mossy_1"),
+      new aiy("underwater_ruin/big_mossy_2"),
+      new aiy("underwater_ruin/big_mossy_3"),
+      new aiy("underwater_ruin/big_mossy_8")
+   };
+   private static final aiy[] i = new aiy[]{
+      new aiy("underwater_ruin/big_cracked_1"),
+      new aiy("underwater_ruin/big_cracked_2"),
+      new aiy("underwater_ruin/big_cracked_3"),
+      new aiy("underwater_ruin/big_cracked_8")
+   };
+   private static final aiy[] j = new aiy[]{
+      new aiy("underwater_ruin/big_warm_4"),
+      new aiy("underwater_ruin/big_warm_5"),
+      new aiy("underwater_ruin/big_warm_6"),
+      new aiy("underwater_ruin/big_warm_7")
+   };
 
-   public edp(aqj $$0, egv.c $$1, DataFixer $$2, ii<cwy> $$3) {
-      this.g = $$0;
-      this.f = $$2;
-      this.h = $$1.a(egt.i).normalize();
-      this.j = $$3;
-      Builder<edp.b> $$4 = ImmutableList.builder();
-      $$4.add(new edp.b(this::h, this::d));
-      if (aa.aW) {
-         $$4.add(new edp.b(this::g, this::c));
+   private static efb a(cyo $$0, cyo $$1, aiy $$2) {
+      return new eek(new eex(List.of(new eet(new eeh($$0), eec.b, eeq.b, $$1.o(), new efi($$2)))), bkw.a(5));
+   }
+
+   private static aiy a(awo $$0) {
+      return ac.a(c, $$0);
+   }
+
+   private static aiy b(awo $$0) {
+      return ac.a(j, $$0);
+   }
+
+   public static void a(eff $$0, hz $$1, dfa $$2, ebj $$3, awo $$4, edq $$5) {
+      boolean $$6 = $$4.i() <= $$5.f;
+      float $$7 = $$6 ? 0.9F : 0.8F;
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$6 && $$4.i() <= $$5.g) {
+         a($$0, $$4, $$2, $$1, $$5, $$3);
       }
-
-      $$4.add(new edp.b(this::f, this::b));
-      this.i = $$4.build();
    }
 
-   public edo a(ahh $$0) {
-      Optional<edo> $$1 = this.b($$0);
-      if ($$1.isPresent()) {
-         return $$1.get();
-      } else {
-         edo $$2 = new edo();
-         this.e.put($$0, Optional.of($$2));
-         return $$2;
-      }
-   }
+   private static void a(eff $$0, awo $$1, dfa $$2, hz $$3, edq $$4, ebj $$5) {
+      hz $$6 = new hz($$3.u(), 90, $$3.w());
+      hz $$7 = efe.a(new hz(15, 0, 15), ddk.a, $$2, hz.c).a((jd)$$6);
+      eaw $$8 = eaw.a($$6, $$7);
+      hz $$9 = new hz(Math.min($$6.u(), $$7.u()), $$6.v(), Math.min($$6.w(), $$7.w()));
+      List<hz> $$10 = a($$1, $$9);
+      int $$11 = awh.a($$1, 4, 8);
 
-   public Optional<edo> b(ahh $$0) {
-      return this.e.computeIfAbsent($$0, this::e);
-   }
-
-   public Stream<ahh> a() {
-      return this.i.stream().flatMap($$0 -> $$0.b().get()).distinct();
-   }
-
-   private Optional<edo> e(ahh $$0) {
-      for (edp.b $$1 : this.i) {
-         try {
-            Optional<edo> $$2 = $$1.a().apply($$0);
-            if ($$2.isPresent()) {
-               return $$2;
+      for (int $$12 = 0; $$12 < $$11; $$12++) {
+         if (!$$10.isEmpty()) {
+            int $$13 = $$1.a($$10.size());
+            hz $$14 = $$10.remove($$13);
+            dfa $$15 = dfa.a($$1);
+            hz $$16 = efe.a(new hz(5, 0, 6), ddk.a, $$15, hz.c).a((jd)$$14);
+            eaw $$17 = eaw.a($$14, $$16);
+            if (!$$17.a($$8)) {
+               a($$0, $$14, $$15, $$5, $$1, $$4, false, 0.8F);
             }
-         } catch (Exception var5) {
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public void a(aqj $$0) {
-      this.g = $$0;
-      this.e.clear();
-   }
-
-   private Optional<edo> f(ahh $$0) {
-      ahh $$1 = k.a($$0);
-      return this.a(() -> this.g.open($$1), $$1x -> a.error("Couldn't load structure {}", $$0, $$1x));
-   }
-
-   private Stream<ahh> b() {
-      return k.a(this.g).keySet().stream().map(k::b);
-   }
-
-   private Optional<edo> g(ahh $$0) {
-      return this.a($$0, Paths.get(sc.b));
-   }
-
-   private Stream<ahh> c() {
-      return this.a(Paths.get(sc.b), "minecraft", ".snbt");
-   }
-
-   private Optional<edo> h(ahh $$0) {
-      if (!Files.isDirectory(this.h)) {
-         return Optional.empty();
-      } else {
-         Path $$1 = b(this.h, $$0, ".nbt");
-         return this.a(() -> new FileInputStream($$1.toFile()), $$1x -> a.error("Couldn't load structure from {}", $$1, $$1x));
-      }
-   }
-
-   private Stream<ahh> d() {
-      if (!Files.isDirectory(this.h)) {
-         return Stream.empty();
-      } else {
-         try {
-            return Files.list(this.h).filter($$0 -> Files.isDirectory($$0)).flatMap($$0 -> this.a($$0));
-         } catch (IOException var2) {
-            return Stream.empty();
          }
       }
    }
 
-   private Stream<ahh> a(Path $$0) {
-      Path $$1 = $$0.resolve("structures");
-      return this.a($$1, $$0.getFileName().toString(), ".nbt");
+   private static List<hz> a(awo $$0, hz $$1) {
+      List<hz> $$2 = Lists.newArrayList();
+      $$2.add($$1.b(-16 + awh.a($$0, 1, 8), 0, 16 + awh.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + awh.a($$0, 1, 8), 0, awh.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + awh.a($$0, 1, 8), 0, -16 + awh.a($$0, 4, 8)));
+      $$2.add($$1.b(awh.a($$0, 1, 7), 0, 16 + awh.a($$0, 1, 7)));
+      $$2.add($$1.b(awh.a($$0, 1, 7), 0, -16 + awh.a($$0, 4, 6)));
+      $$2.add($$1.b(16 + awh.a($$0, 1, 7), 0, 16 + awh.a($$0, 3, 8)));
+      $$2.add($$1.b(16 + awh.a($$0, 1, 7), 0, awh.a($$0, 1, 7)));
+      $$2.add($$1.b(16 + awh.a($$0, 1, 7), 0, -16 + awh.a($$0, 4, 8)));
+      return $$2;
    }
 
-   private Stream<ahh> a(Path $$0, String $$1, String $$2) {
-      if (!Files.isDirectory($$0)) {
-         return Stream.empty();
-      } else {
-         int $$3 = $$2.length();
-         Function<String, String> $$4 = $$1x -> $$1x.substring(0, $$1x.length() - $$3);
+   private static void a(eff $$0, hz $$1, dfa $$2, ebj $$3, awo $$4, edq $$5, boolean $$6, float $$7) {
+      switch ($$5.e) {
+         case a:
+         default:
+            aiy $$8 = $$6 ? b($$4) : a($$4);
+            $$3.a(new edp.a($$0, $$8, $$1, $$2, $$7, $$5.e, $$6));
+            break;
+         case b:
+            aiy[] $$9 = $$6 ? g : d;
+            aiy[] $$10 = $$6 ? i : e;
+            aiy[] $$11 = $$6 ? h : f;
+            int $$12 = $$4.a($$9.length);
+            $$3.a(new edp.a($$0, $$9[$$12], $$1, $$2, $$7, $$5.e, $$6));
+            $$3.a(new edp.a($$0, $$10[$$12], $$1, $$2, 0.7F, $$5.e, $$6));
+            $$3.a(new edp.a($$0, $$11[$$12], $$1, $$2, 0.5F, $$5.e, $$6));
+      }
+   }
 
-         try {
-            return Files.walk($$0).filter($$1x -> $$1x.toString().endsWith($$2)).mapMulti(($$3x, $$4x) -> {
-               try {
-                  $$4x.accept(new ahh($$1, $$4.apply(this.a($$0, $$3x))));
-               } catch (z var7x) {
-                  a.error("Invalid location while listing pack contents", var7x);
+   public static class a extends ebo {
+      private final edq.a h;
+      private final float i;
+      private final boolean j;
+
+      public a(eff $$0, aiy $$1, hz $$2, dfa $$3, float $$4, edq.a $$5, boolean $$6) {
+         super(ebv.H, 0, $$0, $$1, $$1.toString(), a($$3, $$4, $$5), $$2);
+         this.i = $$4;
+         this.h = $$5;
+         this.j = $$6;
+      }
+
+      private a(eff $$0, sw $$1, dfa $$2, float $$3, edq.a $$4, boolean $$5) {
+         super(ebv.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
+         this.i = $$3;
+         this.h = $$4;
+         this.j = $$5;
+      }
+
+      private static efa a(dfa $$0, float $$1, edq.a $$2) {
+         efb $$3 = $$2 == edq.a.b ? edp.b : edp.a;
+         return new efa().a($$0).a(ddk.a).a(new eei($$1)).a(eeg.d).a($$3);
+      }
+
+      public static edp.a a(eff $$0, sw $$1) {
+         dfa $$2 = dfa.valueOf($$1.l("Rot"));
+         float $$3 = $$1.j("Integrity");
+         edq.a $$4 = edq.a.valueOf($$1.l("BiomeType"));
+         boolean $$5 = $$1.q("IsLarge");
+         return new edp.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void a(ebu $$0, sw $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("Integrity", this.i);
+         $$1.a("BiomeType", this.h.toString());
+         $$1.a("IsLarge", this.j);
+      }
+
+      @Override
+      protected void a(String $$0, hz $$1, cwc $$2, awo $$3, eaw $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, cyq.cv.o().a(czr.e, Boolean.valueOf($$2.b_($$1).a(aue.a))), 2);
+            dit $$5 = $$2.c_($$1);
+            if ($$5 instanceof dja) {
+               ((dja)$$5).a(this.j ? eit.F : eit.E, $$3.g());
+            }
+         } else if ("drowned".equals($$0)) {
+            ceb $$6 = bnu.A.a((cvn)$$2.E());
+            if ($$6 != null) {
+               $$6.fL();
+               $$6.a($$1, 0.0F, 0.0F);
+               $$6.a($$2, $$2.d_($$1), bok.d, null, null);
+               $$2.a_($$6);
+               if ($$1.v() > $$2.A_()) {
+                  $$2.a($$1, cyq.a.o(), 2);
+               } else {
+                  $$2.a($$1, cyq.G.o(), 2);
                }
-            });
-         } catch (IOException var7) {
-            a.error("Failed to list folder contents", var7);
-            return Stream.empty();
-         }
-      }
-   }
-
-   private String a(Path $$0, Path $$1) {
-      return $$0.relativize($$1).toString().replace(File.separator, "/");
-   }
-
-   private Optional<edo> a(ahh $$0, Path $$1) {
-      if (!Files.isDirectory($$1)) {
-         return Optional.empty();
-      } else {
-         Path $$2 = v.b($$1, $$0.a(), ".snbt");
-
-         try {
-            Optional var6;
-            try (BufferedReader $$3 = Files.newBufferedReader($$2)) {
-               String $$4 = IOUtils.toString($$3);
-               var6 = Optional.of(this.a(td.a($$4)));
-            }
-
-            return var6;
-         } catch (NoSuchFileException var9) {
-            return Optional.empty();
-         } catch (CommandSyntaxException | IOException var10) {
-            a.error("Couldn't load structure from {}", $$2, var10);
-            return Optional.empty();
-         }
-      }
-   }
-
-   private Optional<edo> a(edp.a $$0, Consumer<Throwable> $$1) {
-      try {
-         Optional var4;
-         try (InputStream $$2 = $$0.open()) {
-            var4 = Optional.of(this.a($$2));
-         }
-
-         return var4;
-      } catch (FileNotFoundException var8) {
-         return Optional.empty();
-      } catch (Throwable var9) {
-         $$1.accept(var9);
-         return Optional.empty();
-      }
-   }
-
-   private edo a(InputStream $$0) throws IOException {
-      so $$1 = tb.a($$0, sx.a());
-      return this.a($$1);
-   }
-
-   public edo a(so $$0) {
-      edo $$1 = new edo();
-      int $$2 = td.b($$0, 500);
-      $$1.a(this.j, avx.f.a(this.f, $$0, $$2));
-      return $$1;
-   }
-
-   public boolean c(ahh $$0) {
-      Optional<edo> $$1 = this.e.get($$0);
-      if ($$1.isEmpty()) {
-         return false;
-      } else {
-         edo $$2 = $$1.get();
-         Path $$3 = b(this.h, $$0, ".nbt");
-         Path $$4 = $$3.getParent();
-         if ($$4 == null) {
-            return false;
-         } else {
-            try {
-               Files.createDirectories(Files.exists($$4) ? $$4.toRealPath() : $$4);
-            } catch (IOException var13) {
-               a.error("Failed to create parent directory: {}", $$4);
-               return false;
-            }
-
-            so $$6 = $$2.a(new so());
-
-            try {
-               try (OutputStream $$7 = new FileOutputStream($$3.toFile())) {
-                  tb.a($$6, $$7);
-               }
-
-               return true;
-            } catch (Throwable var12) {
-               return false;
             }
          }
       }
-   }
 
-   public Path a(ahh $$0, String $$1) {
-      return a(this.h, $$0, $$1);
-   }
-
-   public static Path a(Path $$0, ahh $$1, String $$2) {
-      try {
-         Path $$3 = $$0.resolve($$1.b());
-         Path $$4 = $$3.resolve("structures");
-         return v.b($$4, $$1.a(), $$2);
-      } catch (InvalidPathException var5) {
-         throw new z("Invalid resource path: " + $$1, var5);
+      @Override
+      public void a(cwi $$0, cwg $$1, dnc $$2, awo $$3, eaw $$4, cuu $$5, hz $$6) {
+         int $$7 = $$0.a(dqo.a.c, this.d.u(), this.d.w());
+         this.d = new hz(this.d.u(), $$7, this.d.w());
+         hz $$8 = efe.a(new hz(this.b.a().u() - 1, 0, this.b.a().w() - 1), ddk.a, this.c.d(), hz.c).a((jd)this.d);
+         this.d = new hz(this.d.u(), this.a(this.d, $$0, $$8), this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
-   }
 
-   private static Path b(Path $$0, ahh $$1, String $$2) {
-      if ($$1.a().contains("//")) {
-         throw new z("Invalid resource path: " + $$1);
-      } else {
-         Path $$3 = a($$0, $$1, $$2);
-         if ($$3.startsWith($$0) && v.a($$3) && v.b($$3)) {
-            return $$3;
-         } else {
-            throw new z("Invalid resource path: " + $$3);
+      private int a(hz $$0, cut $$1, hz $$2) {
+         int $$3 = $$0.v();
+         int $$4 = 512;
+         int $$5 = $$3 - 1;
+         int $$6 = 0;
+
+         for (hz $$7 : hz.a($$0, $$2)) {
+            int $$8 = $$7.u();
+            int $$9 = $$7.w();
+            int $$10 = $$0.v() - 1;
+            hz.a $$11 = new hz.a($$8, $$10, $$9);
+            dlf $$12 = $$1.a_($$11);
+
+            for (egp $$13 = $$1.b_($$11); ($$12.i() || $$13.a(aue.a) || $$12.a(atz.al)) && $$10 > $$1.J_() + 1; $$13 = $$1.b_($$11)) {
+               $$11.d($$8, --$$10, $$9);
+               $$12 = $$1.a_($$11);
+            }
+
+            $$4 = Math.min($$4, $$10);
+            if ($$10 < $$5 - 2) {
+               $$6++;
+            }
          }
+
+         int $$14 = Math.abs($$0.u() - $$2.u());
+         if ($$5 - $$4 > 2 && $$6 > $$14 - 2) {
+            $$3 = $$4 + 1;
+         }
+
+         return $$3;
       }
-   }
-
-   public void d(ahh $$0) {
-      this.e.remove($$0);
-   }
-
-   @FunctionalInterface
-   interface a {
-      InputStream open() throws IOException;
-   }
-
-   static record b(Function<ahh, Optional<edo>> a, Supplier<Stream<ahh>> b) {
    }
 }

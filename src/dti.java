@@ -1,40 +1,34 @@
 import com.mojang.serialization.Codec;
 
-public class dti extends dsc<duq> {
-   public dti(Codec<duq> $$0) {
+public class dti extends dth {
+   public dti(Codec<dwd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dse<duq> $$0) {
-      boolean $$1 = false;
-      auw $$2 = $$0.d();
-      cus $$3 = $$0.b();
-      hx $$4 = $$0.e();
-      duq $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(doy.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      hx $$9 = new hx($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(cxa.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         djp $$11 = $$10 ? cxa.bx.o() : cxa.bw.o();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               djp $$12 = $$11.a(dfd.d, dkl.a);
-               hx $$13 = $$9.c();
-               if ($$3.a_($$13).a(cxa.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
+   protected boolean a(cvo $$0, awo $$1, hz $$2, dlf $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      hz.a $$8 = $$2.j();
 
-            $$1 = true;
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(ie.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
+               }
+            }
          }
       }
 
-      return $$1;
+      return true;
    }
 }

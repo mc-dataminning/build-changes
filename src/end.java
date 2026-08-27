@@ -1,81 +1,26 @@
-import javax.annotation.Nullable;
+@FunctionalInterface
+public interface end<T> {
+   void handle(T var1, enf<T> var2, long var3);
 
-public class end implements enc {
-   private static final String a = "Score";
-   private static final String b = "Locked";
-   private static final String c = "display";
-   private static final String d = "format";
-   private int e;
-   private boolean f = true;
-   @Nullable
-   private vg g;
-   @Nullable
-   private ww h;
+   public abstract static class a<T, C extends end<T>> {
+      private final aiy a;
+      private final Class<?> b;
 
-   @Override
-   public int a() {
-      return this.e;
-   }
-
-   public void a(int $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   public vg d() {
-      return this.g;
-   }
-
-   public void a(@Nullable vg $$0) {
-      this.g = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ww c() {
-      return this.h;
-   }
-
-   public void b(@Nullable ww $$0) {
-      this.h = $$0;
-   }
-
-   public so e() {
-      so $$0 = new so();
-      $$0.a("Score", this.e);
-      $$0.a("Locked", this.f);
-      if (this.g != null) {
-         $$0.a("display", vg.a.a(this.g));
+      public a(aiy $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      if (this.h != null) {
-         wy.b.encodeStart(tc.a, this.h).result().ifPresent($$1 -> $$0.a("format", $$1));
+      public aiy a() {
+         return this.a;
       }
 
-      return $$0;
-   }
-
-   public static end a(so $$0) {
-      end $$1 = new end();
-      $$1.e = $$0.h("Score");
-      $$1.f = $$0.q("Locked");
-      if ($$0.b("display", 8)) {
-         $$1.g = vg.a.a($$0.l("display"));
+      public Class<?> b() {
+         return this.b;
       }
 
-      if ($$0.b("format", 10)) {
-         wy.b.parse(tc.a, $$0.c("format")).result().ifPresent($$1x -> $$1.h = $$1x);
-      }
+      public abstract void a(sw var1, C var2);
 
-      return $$1;
+      public abstract C b(sw var1);
    }
 }

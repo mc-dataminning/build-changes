@@ -1,19 +1,44 @@
-public class fzl extends gag<ccr, fkw<ccr>> {
-   private static final ahh a = new ahh("textures/entity/zombie/zombie.png");
-   private final float i;
+public class fzl implements fyx.a {
+   private final exh a;
 
-   public fzl(fza.a $$0, float $$1) {
-      super($$0, new fko($$0.a(fni.ad)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new gde<>(this, $$0.d()));
-      this.a(new gdb<>(this, new fko($$0.a(fni.ae)), new fko($$0.a(fni.af)), $$0.g()));
+   public fzl(exh $$0) {
+      this.a = $$0;
    }
 
-   protected void a(ccr $$0, eqk $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
-   }
+   @Override
+   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
+      hz $$5 = this.a.s.dm();
+      cvq $$6 = this.a.s.dM();
 
-   public ahh a(ccr $$0) {
-      return a;
+      for (hz $$7 : hz.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         egp $$8 = $$6.b_($$7);
+         if ($$8.a(aue.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            fyx.a(
+               $$0,
+               $$1,
+               new enn(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
+
+      for (hz $$10 : hz.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         egp $$11 = $$6.b_($$10);
+         if ($$11.a(aue.a)) {
+            fyx.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
+      }
    }
 }

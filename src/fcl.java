@@ -1,147 +1,104 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.util.List;
-import javax.annotation.Nullable;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fcl extends fdm {
-   private static final ahh a = new ahh("icon/draft_report");
-   private int b;
-   private final vg c;
-   private final boolean k;
-   private vg l;
-   private final List<exr> m = Lists.newArrayList();
-   @Nullable
-   private exr n;
+public record fcl(aiy c, float d, float e, fcl.a f, String g) implements fci {
+   private static final Codec<String> h = avp.a(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fcl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               aiy.a.fieldOf("file").forGetter(fcl::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fcl::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fcl::e),
+               fcl.a.b.optionalFieldOf("shift", fcl.a.a).forGetter(fcl::f),
+               h.optionalFieldOf("skip", "").forGetter(fcl::g)
+            )
+            .apply($$0, fcl::new)
+   );
 
-   public fcl(@Nullable vg $$0, boolean $$1) {
-      super(vg.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.c = $$0;
-      this.k = $$1;
+   @Override
+   public fcj a() {
+      return fcj.b;
    }
 
    @Override
-   protected void aP_() {
-      this.b = 0;
-      this.m.clear();
-      vg $$0 = this.k ? vg.c("deathScreen.spectate") : vg.c("deathScreen.respawn");
-      this.m.add(this.d(exr.a($$0, $$0x -> {
-         this.f.s.fQ();
-         $$0x.j = false;
-      }).a(this.g / 2 - 100, this.h / 4 + 72, 200, 20).a()));
-      this.n = this.d(
-         exr.a(vg.c("deathScreen.titleScreen"), $$0x -> this.f.aY().a(this.f, this, this::o, true)).a(this.g / 2 - 100, this.h / 4 + 96, 200, 20).a()
-      );
-      this.m.add(this.n);
-      this.c(false);
-      this.l = vg.a("deathScreen.score.value", vg.b(Integer.toString(this.f.s.fN())).a(n.o));
+   public Either<fci.a, fci.b> b() {
+      return Either.left(this::a);
    }
 
-   @Override
-   public boolean aN_() {
-      return false;
-   }
+   private eqd a(asa $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
 
-   private void o() {
-      if (this.k) {
-         this.E();
-      } else {
-         fcf $$0 = new fcl.a($$0x -> {
-            if ($$0x) {
-               this.E();
-            } else {
-               this.f.s.fQ();
-               this.f.a(null);
+      try {
+         eqg var14;
+         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            MemoryStack $$4 = MemoryStack.stackPush();
+
+            try {
+               PointerBuffer $$5 = $$4.mallocPointer(1);
+               fch.a(FreeType.FT_New_Memory_Face(fch.a(), $$2, 0L, $$5), "Initializing font face");
+               $$1 = FT_Face.create($$5.get());
+            } catch (Throwable var10) {
+               if ($$4 != null) {
+                  try {
+                     $$4.close();
+                  } catch (Throwable var9) {
+                     var10.addSuppressed(var9);
+                  }
+               }
+
+               throw var10;
             }
-         }, vg.c("deathScreen.quit.confirm"), vf.a, vg.c("deathScreen.titleScreen"), vg.c("deathScreen.respawn"));
-         this.f.a($$0);
-         $$0.b(20);
-      }
-   }
 
-   private void E() {
-      if (this.f.r != null) {
-         this.f.r.W();
-      }
+            if ($$4 != null) {
+               $$4.close();
+            }
 
-      this.f.b(new fcs(vg.c("menu.savingLevel")));
-      this.f.a(new fdr());
-   }
+            String $$6 = FreeType.FT_Get_Font_Format($$1);
+            if (!"TrueType".equals($$6)) {
+               throw new IOException("Font is not in TTF format, was " + $$6);
+            }
 
-   @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.i, this.e, this.g / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.i, this.c, this.g / 2, 85, 16777215);
-      }
-
-      $$0.a(this.i, this.l, this.g / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         wd $$4 = this.a($$1);
-         $$0.a(this.i, $$4, $$1, $$2);
-      }
-
-      if (this.n != null && this.f.aY().c()) {
-         $$0.a(a, this.n.B() + this.n.w() - 17, this.n.C() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(exe $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, 1615855616, -1602211792);
-   }
-
-   @Nullable
-   private wd a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.f.h.a(this.c);
-         int $$2 = this.g / 2 - $$1 / 2;
-         int $$3 = this.g / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.f.h.b().a(this.c, $$0 - $$2) : null;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         wd $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == ve.a.a) {
-            this.a($$3);
-            return false;
+            fch.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+            var14 = new eqg($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
          }
-      }
 
-      return super.a($$0, $$1, $$2);
-   }
+         return var14;
+      } catch (Exception var12) {
+         if ($$1 != null) {
+            FreeType.FT_Done_Face($$1);
+         }
 
-   @Override
-   public boolean m() {
-      return false;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
+         MemoryUtil.memFree($$2);
+         throw var12;
       }
    }
 
-   private void c(boolean $$0) {
-      for (exr $$1 : this.m) {
-         $$1.j = $$0;
-      }
-   }
+   public static record a(float c, float d) {
+      public static final fcl.a a = new fcl.a(0.0F, 0.0F);
+      public static final Codec<fcl.a> b = Codec.FLOAT
+         .listOf()
+         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new fcl.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
 
-   public static class a extends fcf {
-      public a(BooleanConsumer $$0, vg $$1, vg $$2, vg $$3, vg $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
+      public float a() {
+         return this.c;
+      }
+
+      public float b() {
+         return this.d;
       }
    }
 }

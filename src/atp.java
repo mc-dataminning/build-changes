@@ -1,54 +1,106 @@
 import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.Writer;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringEscapeUtils;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class atp {
-   private static final String a = "\r\n";
-   private static final String b = ",";
-   private final Writer c;
-   private final int d;
+public class atp extends atn {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
 
-   atp(Writer $$0, List<String> $$1) throws IOException {
-      this.c = $$0;
-      this.d = $$1.size();
-      this.a($$1.stream());
+   public int a(Collection<csd<?>> $$0, aow $$1) {
+      List<aiy> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (csd<?> $$4 : $$0) {
+         aiy $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().as_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            am.g.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(aco.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   public static atp.a a() {
-      return new atp.a();
+   public int b(Collection<csd<?>> $$0, aow $$1) {
+      List<aiy> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (csd<?> $$4 : $$0) {
+         aiy $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(aco.a.c, $$1, $$2);
+      return $$3;
    }
 
-   public void a(Object... $$0) throws IOException {
-      if ($$0.length != this.d) {
-         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
-      } else {
-         this.a(Stream.of($$0));
+   private void a(aco.a $$0, aow $$1, List<aiy> $$2) {
+      $$1.d.b(new aco($$0, $$2, Collections.emptyList(), this.a()));
+   }
+
+   public sw b() {
+      sw $$0 = new sw();
+      this.a().b($$0);
+      tc $$1 = new tc();
+
+      for (aiy $$2 : this.a) {
+         $$1.add(tr.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      tc $$3 = new tc();
+
+      for (aiy $$4 : this.b) {
+         $$3.add(tr.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
+   }
+
+   public void a(sw $$0, cse $$1) {
+      this.a(ato.a($$0));
+      tc $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      tc $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
+   }
+
+   private void a(tc $$0, Consumer<csd<?>> $$1, cse $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            aiy $$5 = new aiy($$4);
+            Optional<csd<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
       }
    }
 
-   private void a(Stream<?> $$0) throws IOException {
-      this.c.write($$0.<CharSequence>map(atp::a).collect(Collectors.joining(",")) + "\r\n");
-   }
-
-   private static String a(@Nullable Object $$0) {
-      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
-   }
-
-   public static class a {
-      private final List<String> a = Lists.newArrayList();
-
-      public atp.a a(String $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public atp a(Writer $$0) throws IOException {
-         return new atp($$0, this.a);
-      }
+   public void a(aow $$0) {
+      $$0.d.b(new aco(aco.a.a, this.a, this.b, this.a()));
    }
 }

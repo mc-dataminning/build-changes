@@ -1,18 +1,37 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public interface ght {
-   void scheduleReload(ght.a var1);
+public record ght(aiy a, @Nullable String b, @Nullable aiy c, @Nullable aiy d, ght.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public interface a {
-      void a();
+      private final String c;
 
-      void a(boolean var1);
+      private a(String $$0) {
+         this.c = $$0;
+      }
 
-      List<ght.b> b();
-   }
+      public static ght.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
 
-   public static record b(UUID a, Path b) {
+      public String a() {
+         return this.c;
+      }
    }
 }

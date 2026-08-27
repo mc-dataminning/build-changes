@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ckn {
+   void a(ckb var1, int var2, coz var3);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@u
-@w
-interface ckn {
+   void a(ckb var1, int var2, int var3);
 }

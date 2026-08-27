@@ -1,30 +1,23 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dut(int b, int c, int d, ih<dys> e) implements dug {
-   public static final Codec<dut> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               atx.j.fieldOf("tries").orElse(128).forGetter(dut::a),
-               atx.i.fieldOf("xz_spread").orElse(7).forGetter(dut::b),
-               atx.i.fieldOf("y_spread").orElse(3).forGetter(dut::c),
-               dys.b.fieldOf("feature").forGetter(dut::d)
-            )
-            .apply($$0, dut::new)
-   );
-
-   public int a() {
-      return this.b;
+public class dut extends dts<dwk> {
+   public dut(Codec<dwk> $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(dtu<dwk> $$0) {
+      cwi $$1 = $$0.b();
+      hz $$2 = $$0.e();
+      dwk $$3 = $$0.f();
 
-   public int c() {
-      return this.d;
-   }
+      for (dwe.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
+         }
+      }
 
-   public ih<dys> d() {
-      return this.e;
+      return true;
    }
 }

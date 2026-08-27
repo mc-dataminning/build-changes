@@ -1,58 +1,35 @@
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
-
 public class bxk {
-   @Nullable
-   public static emc a(bmx $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::d);
+   private final brk a;
+   private final float b;
+   private final int c;
+
+   public bxk(hz $$0, float $$1, int $$2) {
+      this(new bpz($$0), $$1, $$2);
    }
 
-   @Nullable
-   public static emc a(bmx $$0, int $$1, int $$2, ToDoubleFunction<hx> $$3) {
-      boolean $$4 = bxi.a($$0, $$1);
-      return bxl.a(() -> {
-         hx $$4x = bxl.a($$0.eg(), $$1, $$2);
-         hx $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
+   public bxk(ens $$0, float $$1, int $$2) {
+      this(new bpz(hz.a($$0)), $$1, $$2);
    }
 
-   @Nullable
-   public static emc a(bmx $$0, int $$1, int $$2, emc $$3) {
-      emc $$4 = $$3.a($$0.dq(), $$0.ds(), $$0.dw());
-      boolean $$5 = bxi.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   public bxk(bno $$0, float $$1, int $$2) {
+      this(new bqh($$0, false), $$1, $$2);
    }
 
-   @Nullable
-   public static emc b(bmx $$0, int $$1, int $$2, emc $$3) {
-      emc $$4 = $$0.dj().d($$3);
-      boolean $$5 = bxi.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   public bxk(brk $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Nullable
-   private static emc a(bmx $$0, int $$1, int $$2, emc $$3, boolean $$4) {
-      return bxl.a($$0, () -> {
-         hx $$5 = bxl.a($$0.eg(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            hx $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
-         }
-      });
+   public brk a() {
+      return this.a;
    }
 
-   @Nullable
-   public static hx a(bmx $$0, hx $$1) {
-      $$1 = bxl.a($$1, $$0.dL().al(), $$1x -> bxi.c($$0, $$1x));
-      return !bxi.a($$0, $$1) && !bxi.b($$0, $$1) ? $$1 : null;
+   public float b() {
+      return this.b;
    }
 
-   @Nullable
-   public static hx a(bmx $$0, int $$1, boolean $$2, hx $$3) {
-      hx $$4 = bxl.a($$0, $$1, $$0.eg(), $$3);
-      return !bxi.a($$4, $$0) && !bxi.a($$2, $$0, $$4) && !bxi.a($$0.N(), $$4) ? $$4 : null;
+   public int c() {
+      return this.c;
    }
 }

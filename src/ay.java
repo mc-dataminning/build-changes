@@ -1,62 +1,48 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class ay extends cv<ay.a> {
+public class ay extends cx<ay.a> {
    @Override
    public Codec<ay.a> a() {
       return ay.a.a;
    }
 
-   public void a(anf $$0, Collection<? extends blw> $$1) {
-      List<ehf> $$2 = $$1.stream().map($$1x -> bp.b($$0, $$1x)).collect(Collectors.toList());
-      this.a($$0, $$1x -> $$1x.a($$2));
+   public void a(aow $$0, aix<cvn> $$1, aix<cvn> $$2) {
+      this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bb> b, List<bb> c) implements cv.a {
+   public static record a(Optional<bc> b, Optional<aix<cvn>> c, Optional<aix<cvn>> d) implements cx.a {
       public static final Codec<ay.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(ay.a::a), atx.a(bp.b.listOf(), "victims", List.of()).forGetter(ay.a::b)).apply($$0, ay.a::new)
+         $$0 -> $$0.group(
+                  avp.a(br.b, "player").forGetter(ay.a::a), avp.a(aix.a(kg.aM), "from").forGetter(ay.a::c), avp.a(aix.a(kg.aM), "to").forGetter(ay.a::d)
+               )
+               .apply($$0, ay.a::new)
       );
 
-      public static an<ay.a> a(bp.a... $$0) {
-         return am.F.a(new ay.a(Optional.empty(), bp.a($$0)));
+      public static an<ay.a> b() {
+         return am.w.a(new ay.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(Collection<? extends ehf> $$0) {
-         for (bb $$1 : this.c) {
-            boolean $$2 = false;
+      public static an<ay.a> a(aix<cvn> $$0, aix<cvn> $$1) {
+         return am.w.a(new ay.a(Optional.empty(), Optional.of($$0), Optional.of($$1)));
+      }
 
-            for (ehf $$3 : $$0) {
-               if ($$1.a($$3)) {
-                  $$2 = true;
-                  break;
-               }
-            }
+      public static an<ay.a> a(aix<cvn> $$0) {
+         return am.w.a(new ay.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
+      }
 
-            if (!$$2) {
-               return false;
-            }
-         }
+      public static an<ay.a> b(aix<cvn> $$0) {
+         return am.w.a(new ay.a(Optional.empty(), Optional.of($$0), Optional.empty()));
+      }
 
-         return true;
+      public boolean b(aix<cvn> $$0, aix<cvn> $$1) {
+         return this.c.isPresent() && this.c.get() != $$0 ? false : !this.d.isPresent() || this.d.get() == $$1;
       }
 
       @Override
-      public void a(bc $$0) {
-         cv.a.super.a($$0);
-         $$0.a(this.c, ".victims");
-      }
-
-      @Override
-      public Optional<bb> a() {
+      public Optional<bc> a() {
          return this.b;
-      }
-
-      public List<bb> b() {
-         return this.c;
       }
    }
 }

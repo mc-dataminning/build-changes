@@ -1,57 +1,33 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class eug {
-   private static final Map<String, eug.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final ahh c = new ahh("textures/gui/presets/isles.png");
+   public final evp a = new evp(ac.g(), TimeUnit.MILLISECONDS, ac.b);
+   private final List<evp.e<?>> h;
+   public final evp.e<List<etg>> b;
+   public final evp.e<eug.a> c;
+   public final evp.e<Integer> d;
+   public final evp.e<Boolean> e;
+   public final evp.e<etf> f;
+   public final euh g = new euh(new evv());
 
-   public static ahh a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
+   public eug(esq $$0) {
+      this.c = this.a.a("server list", () -> {
+         etj $$1 = $$0.b();
+         return esl.b() ? new eug.a($$1.a, $$0.c()) : new eug.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), evq.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), evq.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), evq.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), evq.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), evq.a);
+      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
    }
 
-   private static ahh b(String $$0, String $$1) {
-      eug.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         epl $$3 = a($$1);
-         if ($$3 == null) {
-            ahh $$4 = ger.b();
-            a.put($$0, new eug.a($$1, $$4));
-            return $$4;
-         } else {
-            ahh $$5 = new ahh("realms", "dynamic/" + $$0);
-            evr.O().Y().a($$5, new geo($$3));
-            a.put($$0, new eug.a($$1, $$5));
-            return $$5;
-         }
-      }
+   public List<evp.e<?>> a() {
+      return this.h;
    }
 
-   @Nullable
-   private static epl a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
-
-      try {
-         return epl.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
-   }
-
-   public static record a(String a, ahh b) {
+   public static record a(List<eth> a, List<eth> b) {
    }
 }

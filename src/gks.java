@@ -1,110 +1,54 @@
-public class gks implements gkw {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final vg f = vg.a("tutorial.move.title", gkv.a("forward"), gkv.a("left"), gkv.a("back"), gkv.a("right"));
-   private static final vg g = vg.a("tutorial.move.description", gkv.a("jump"));
-   private static final vg h = vg.c("tutorial.look.title");
-   private static final vg i = vg.c("tutorial.look.description");
-   private final gkv j;
-   private fab k;
-   private fab l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-   public gks(gkv $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
-
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
-
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
+public interface gks<T> {
+   static <T> gks<T> a() {
+      return new gks<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
          }
 
-         this.r = this.m;
-      }
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
+   }
 
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
+   static <T> gks<T> a(List<T> $$0, Function<T, Stream<aiy>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final gkv<T> $$2 = new gkv<>();
+         final gkv<T> $$3 = new gkv<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
          }
 
-         this.s = this.m;
-      }
+         $$2.a();
+         $$3.a();
+         return new gks<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
 
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(gkx.b);
-         } else {
-            this.j.a(gkx.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new fab(fab.a.a, f, g, true);
-            this.j.e().ay().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fab(fab.a.b, h, i, true);
-            this.j.e().ay().a(this.l);
-         }
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
 
-   @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
+   List<T> a(String var1);
 
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
-      }
-   }
-
-   @Override
-   public void a(fst $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
-      }
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
-      }
-   }
+   List<T> b(String var1);
 }

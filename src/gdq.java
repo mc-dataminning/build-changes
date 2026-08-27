@@ -1,36 +1,20 @@
-public class gdq extends gdl<bza, fmj<bza>> {
-   private final fun a;
-   private final fzy b;
+public class gdq extends gbz<cgl, fon<cgl>> {
+   private static final aiy a = new aiy("textures/entity/warden/warden.png");
+   private static final aiy i = new aiy("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final aiy j = new aiy("textures/entity/warden/warden_heart.png");
+   private static final aiy k = new aiy("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final aiy l = new aiy("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public gdq(gav<bza, fmj<bza>> $$0, fun $$1, fzy $$2) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
+   public gdq(gat.a $$0) {
+      super($$0, new fon<>($$0.a(fpb.bN)), 0.9F);
+      this.a(new gfq<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fon::e));
+      this.a(new gfq<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, awh.b($$2 * 0.045F) * 0.25F), fon::f));
+      this.a(new gfq<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, awh.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fon::f));
+      this.a(new gfq<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fon::c));
+      this.a(new gfq<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fon::d));
    }
 
-   public void a(eqk $$0, ftt $$1, int $$2, bza $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.w()) {
-         boolean $$10 = evr.O().b($$3) && $$3.ce();
-         if (!$$3.ce() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            cng $$12 = new cng(cxa.ee);
-            if ($$10) {
-               djp $$13 = cxa.ee.o();
-               ghb $$14 = this.a.a($$13);
-               int $$15 = gab.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(fub.r(gfa.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
-            } else {
-               this.b.a($$3, $$12, cnd.f, false, $$0, $$1, $$3.dL(), $$2, gab.c($$3, 0.0F), $$3.aj());
-            }
-
-            $$0.b();
-         }
-      }
+   public aiy a(cgl $$0) {
+      return a;
    }
 }

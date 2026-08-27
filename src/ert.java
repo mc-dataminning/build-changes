@@ -1,36 +1,90 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
-public class ert extends esg {
-   private static final Logger b = LogUtils.getLogger();
-   public List<err> a;
+public class ert {
+   private int a;
 
-   public static ert a(String $$0) {
-      ert $$1 = new ert();
-      $$1.a = Lists.newArrayList();
+   public static Optional<ert> a() {
+      return ert.b.a;
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("servers").isJsonArray()) {
-            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
+      } else {
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
+      }
+   }
 
-            while ($$5.hasNext()) {
-               $$1.a.add(err.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse McoServerList: {}", var6.getMessage());
+   public ert.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         ert.a $$0 = new ert.a(this.a);
+         this.a = 0;
+         return $$0;
+      }
+   }
+
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
+
+      a(int $$0) {
+         this.c = $$0;
       }
 
-      return $$1;
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
+      }
+   }
+
+   static class b {
+      static final Optional<ert> a = Optional.ofNullable(a());
+
+      private b() {
+      }
+
+      @Nullable
+      private static ert a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new ert();
+      }
    }
 }

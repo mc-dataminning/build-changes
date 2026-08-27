@@ -1,11 +1,12 @@
-public class gaj extends gag<byq, flh<byq>> {
-   private static final ahh a = new ahh("textures/entity/cat/ocelot.png");
+public class gaj extends gbz<cab, flw<cab>> {
+   private static final aiy a = new aiy("textures/entity/dolphin.png");
 
-   public gaj(fza.a $$0) {
-      super($$0, new flh<>($$0.a(fni.aA)), 0.4F);
+   public gaj(gat.a $$0) {
+      super($$0, new flw<>($$0.a(fpb.I)), 0.7F);
+      this.a(new gel(this, $$0.d()));
    }
 
-   public ahh a(byq $$0) {
+   public aiy a(cab $$0) {
       return a;
    }
 }

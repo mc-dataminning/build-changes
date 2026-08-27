@@ -1,14 +1,29 @@
-public record adu(float a) implements xg<adk> {
-   public adu(uj $$0) {
-      this($$0.readFloat());
+public class adu implements xx<aag> {
+   public static final xo<uq, adu> a = xx.a(adu::a, adu::new);
+   private final vq b;
+
+   public adu(vq $$0) {
+      this.b = $$0;
+   }
+
+   private adu(uq $$0) {
+      this.b = $$0.m();
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
+   public xz<adu> a() {
+      return aeq.aM;
    }
 
-   public void a(adk $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
+   }
+
+   public vq b() {
+      return this.b;
    }
 }

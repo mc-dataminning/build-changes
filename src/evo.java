@@ -1,14 +1,8 @@
-public enum evo {
-   a,
-   b,
-   c,
-   d;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public boolean a() {
-      return this == b;
-   }
-
-   public boolean b() {
-      return this == c || this == d;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface evo {
 }

@@ -1,38 +1,29 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public final class emk implements emo {
-   private final emi a;
-   private final int b;
-   private final int c;
+public record emk(aiy b) implements emi {
+   public static final Codec<emk> a = RecordCodecBuilder.create($$0 -> $$0.group(aiy.a.fieldOf("source").forGetter(emk::c)).apply($$0, emk::new));
 
-   emk(int $$0, int $$1) {
-      this.a = new emi((int)ems.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   @Override
+   public emh a() {
+      return emj.b;
+   }
+
+   @Nullable
+   @Override
+   public tt a(eiv $$0) {
+      return $$0.d().o().aI().a(this.b);
    }
 
    @Override
-   public boolean a(emo.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public Set<eld<?>> b() {
+      return ImmutableSet.of();
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public aiy c() {
+      return this.b;
    }
 }

@@ -1,46 +1,48 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dez {
-   List<dez.a> b();
+public class dez extends cyo {
+   public static final MapCodec<dez> h = b(dez::new);
+   public static final dmd<ie.a> i = dlv.I;
 
-   static List<dez> c() {
-      return kd.h.s().map(dez::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<? extends dez> a() {
+      return h;
    }
 
-   @Nullable
-   static dez a(ctw $$0) {
-      if ($$0.j() instanceof cla $$1) {
-         cwy var6 = $$1.e();
-         if (var6 instanceof dez) {
-            return (dez)var6;
-         }
-      }
-
-      cnb $$2 = $$0.j();
-      return $$2 instanceof dez ? (dez)$$2 : null;
+   public dez(dle.d $$0) {
+      super($$0);
+      this.k(this.o().a(i, ie.a.b));
    }
 
-   public static record a(ih<blh> c, int d) {
-      public static final Codec<dez.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(kd.d.r().fieldOf("id").forGetter(dez.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(dez.a::c)).apply($$0, dez.a::new)
-      );
-      public static final Codec<List<dez.a>> b = a.listOf();
+   @Override
+   protected dlf a(dlf $$0, dfa $$1) {
+      return b($$0, $$1);
+   }
 
-      public blj a() {
-         return new blj(this.c, this.d);
+   public static dlf b(dlf $$0, dfa $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((ie.a)$$0.c(i)) {
+               case a:
+                  return $$0.a(i, ie.a.c);
+               case c:
+                  return $$0.a(i, ie.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
       }
+   }
 
-      public ih<blh> b() {
-         return this.c;
-      }
+   @Override
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(i);
+   }
 
-      public int c() {
-         return this.d;
-      }
+   @Override
+   public dlf a(crg $$0) {
+      return this.o().a(i, $$0.k().o());
    }
 }

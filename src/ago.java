@@ -1,46 +1,51 @@
-import java.util.Optional;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public interface ago<T> {
-   void a(uj var1, T var2);
+public class ago {
+   private static final double a = 4096.0;
+   private ens b;
 
-   T a(uj var1);
-
-   default agn<T> a(int $$0) {
-      return new agn<>($$0, this);
+   public ago() {
+      this.b = ens.b;
    }
 
-   T a(T var1);
-
-   static <T> ago<T> a(final uj.b<T> $$0, final uj.a<T> $$1) {
-      return new ago.a<T>() {
-         @Override
-         public void a(uj $$0x, T $$1x) {
-            $$0.accept($$0, $$1);
-         }
-
-         @Override
-         public T a(uj $$0x) {
-            return $$1.apply($$0);
-         }
-      };
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   static <T> ago<Optional<T>> b(uj.b<T> $$0, uj.a<T> $$1) {
-      return a($$0.asOptional(), $$1.asOptional());
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
    }
 
-   static <T extends Enum<T>> ago<T> a(Class<T> $$0) {
-      return a(uj::a, $$1 -> $$1.b($$0));
-   }
-
-   static <T> ago<T> a(im<T> $$0) {
-      return a(($$1, $$2) -> $$1.a($$0, (T)$$2), $$1 -> $$1.a($$0));
-   }
-
-   public interface a<T> extends ago<T> {
-      @Override
-      default T a(T $$0) {
-         return $$0;
+   public ens a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
+         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
+         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
+         return new ens($$3, $$4, $$5);
       }
+   }
+
+   public long a(ens $$0) {
+      return a($$0.c) - a(this.b.c);
+   }
+
+   public long b(ens $$0) {
+      return a($$0.d) - a(this.b.d);
+   }
+
+   public long c(ens $$0) {
+      return a($$0.e) - a(this.b.e);
+   }
+
+   public ens d(ens $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(ens $$0) {
+      this.b = $$0;
    }
 }

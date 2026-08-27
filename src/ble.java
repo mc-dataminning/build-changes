@@ -1,36 +1,57 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-class ble extends blg {
-   private final boolean a;
+public class ble extends bkx {
+   public static final Codec<ble> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, ble::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final float b;
+   private final float d;
 
-   public ble(bli $$0, int $$1, boolean $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   private ble(float $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public static ble b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
+      } else {
+         return new ble($$0, $$1);
+      }
    }
 
    @Override
-   public boolean a(bmo $$0, int $$1) {
-      if (this.a == $$0.eu()) {
-         $$0.b((float)Math.max(4 << $$1, 0));
-      } else {
-         $$0.a($$0.dM().o(), (float)(6 << $$1));
-      }
-
-      return true;
+   public float a(awo $$0) {
+      return awh.b($$0, this.b, this.d);
    }
 
    @Override
-   public void a(@Nullable blw $$0, @Nullable blw $$1, bmo $$2, int $$3, double $$4) {
-      if (this.a == $$2.eu()) {
-         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
-         $$2.b((float)$$5);
-      } else {
-         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
-         if ($$0 == null) {
-            $$2.a($$2.dM().o(), (float)$$6);
-         } else {
-            $$2.a($$2.dM().c($$0, $$1), (float)$$6);
-         }
-      }
+   public float a() {
+      return this.b;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bky<?> c() {
+      return bky.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

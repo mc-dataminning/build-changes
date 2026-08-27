@@ -1,57 +1,44 @@
-import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
-import io.netty.util.Attribute;
-import io.netty.util.AttributeKey;
-import java.io.IOException;
-import org.slf4j.Logger;
+import java.util.zip.Deflater;
 
-public class un extends MessageToByteEncoder<xg<?>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final AttributeKey<ui.a<?>> b;
+public class un extends MessageToByteEncoder<ByteBuf> {
+   private final byte[] a = new byte[8192];
+   private final Deflater b;
+   private int c;
 
-   public un(AttributeKey<ui.a<?>> $$0) {
-      this.b = $$0;
+   public un(int $$0) {
+      this.c = $$0;
+      this.b = new Deflater();
    }
 
-   protected void a(ChannelHandlerContext $$0, xg<?> $$1, ByteBuf $$2) throws Exception {
-      Attribute<ui.a<?>> $$3 = $$0.channel().attr(this.b);
-      ui.a<?> $$4 = (ui.a<?>)$$3.get();
-      if ($$4 == null) {
-         throw new RuntimeException("ConnectionProtocol unknown: " + $$1);
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      if ($$3 < this.c) {
+         vh.a($$2, 0);
+         $$2.writeBytes($$1);
       } else {
-         int $$5 = $$4.a($$1);
-         if (a.isDebugEnabled()) {
-            a.debug(uh.d, "OUT: [{}:{}] {}", new Object[]{$$4.a().a(), $$5, $$1.getClass().getName()});
+         byte[] $$4 = new byte[$$3];
+         $$1.readBytes($$4);
+         vh.a($$2, $$4.length);
+         this.b.setInput($$4, 0, $$3);
+         this.b.finish();
+
+         while (!this.b.finished()) {
+            int $$5 = this.b.deflate(this.a);
+            $$2.writeBytes(this.a, 0, $$5);
          }
 
-         if ($$5 == -1) {
-            throw new IOException("Can't serialize unregistered packet");
-         } else {
-            uj $$6 = new uj($$2);
-            $$6.c($$5);
-
-            try {
-               int $$7 = $$6.writerIndex();
-               $$1.a($$6);
-               int $$8 = $$6.writerIndex() - $$7;
-               if ($$8 > 8388608) {
-                  throw new IllegalArgumentException("Packet too big (is " + $$8 + ", should be less than 8388608): " + $$1);
-               }
-
-               bgz.e.b($$4.a(), $$5, $$0.channel().remoteAddress(), $$8);
-            } catch (Throwable var13) {
-               a.error("Error receiving packet {}", $$5, var13);
-               if ($$1.b()) {
-                  throw new uu(var13);
-               }
-
-               throw var13;
-            } finally {
-               ur.a($$3, $$1);
-            }
-         }
+         this.b.reset();
       }
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public void a(int $$0) {
+      this.c = $$0;
    }
 }

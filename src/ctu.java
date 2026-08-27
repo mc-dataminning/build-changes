@@ -1,103 +1,91 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+public class ctu extends cti {
+   public final ctu.a b;
 
-public enum ctu implements avl {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
-
-   public static final ctu e = a;
-   public static final avl.a<ctu> f = avl.a(ctu::values);
-   private static final IntFunction<ctu> g = ath.a(ctu::a, values(), ath.a.a);
-   private static final int h = -1;
-   private final int i;
-   private final String j;
-   private final vg k;
-   private final vg l;
-
-   private ctu(int $$0, String $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = vg.c("selectWorld.gameMode." + $$1);
-      this.l = vg.c("gameMode." + $$1);
-   }
-
-   public int a() {
-      return this.i;
-   }
-
-   public String b() {
-      return this.j;
+   public ctu(cti.a $$0, ctu.a $$1, bnv... $$2) {
+      super($$0, $$1 == ctu.a.c ? auh.ba : auh.be, $$2);
+      this.b = $$1;
    }
 
    @Override
-   public String c() {
-      return this.j;
+   public int a(int $$0) {
+      return this.b.a() + ($$0 - 1) * this.b.b();
    }
 
-   public vg d() {
-      return this.l;
+   @Override
+   public int b(int $$0) {
+      return this.a($$0) + this.b.b();
    }
 
-   public vg e() {
-      return this.k;
+   @Override
+   public int a() {
+      return 4;
    }
 
-   public void a(cfn $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
+   @Override
+   public int a(int $$0, bmn $$1) {
+      if ($$1.a(aub.e)) {
+         return 0;
+      } else if (this.b == ctu.a.a) {
+         return $$0;
+      } else if (this.b == ctu.a.b && $$1.a(aub.j)) {
+         return $$0 * 2;
+      } else if (this.b == ctu.a.c && $$1.a(aub.n)) {
+         return $$0 * 3;
+      } else if (this.b == ctu.a.d && $$1.a(aub.m)) {
+         return $$0 * 2;
       } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
+         return this.b == ctu.a.e && $$1.a(aub.k) ? $$0 * 2 : 0;
+      }
+   }
+
+   @Override
+   public boolean a(cti $$0) {
+      if ($$0 instanceof ctu $$1) {
+         return this.b == $$1.b ? false : this.b == ctu.a.c || $$1.b == ctu.a.c;
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   public static int a(bog $$0, int $$1) {
+      int $$2 = ctj.a(ctl.b, $$0);
+      if ($$2 > 0) {
+         $$1 -= awh.d((float)$$1 * (float)$$2 * 0.15F);
       }
 
-      $$0.e = !this.f();
+      return $$1;
    }
 
-   public boolean f() {
-      return this == c || this == d;
+   public static double a(bog $$0, double $$1) {
+      int $$2 = ctj.a(ctl.d, $$0);
+      if ($$2 > 0) {
+         $$1 *= awh.a(1.0 - (double)$$2 * 0.15, 0.0, 1.0);
+      }
+
+      return $$1;
    }
 
-   public boolean g() {
-      return this == b;
-   }
+   public static enum a {
+      a(1, 11),
+      b(10, 8),
+      c(5, 6),
+      d(5, 8),
+      e(3, 6);
 
-   public boolean h() {
-      return this == a || this == c;
-   }
+      private final int f;
+      private final int g;
 
-   public static ctu a(int $$0) {
-      return g.apply($$0);
-   }
+      private a(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
 
-   public static ctu a(String $$0) {
-      return a($$0, a);
-   }
+      public int a() {
+         return this.f;
+      }
 
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static ctu a(String $$0, @Nullable ctu $$1) {
-      ctu $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   public static int a(@Nullable ctu $$0) {
-      return $$0 != null ? $$0.i : -1;
-   }
-
-   @Nullable
-   public static ctu b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
+      public int b() {
+         return this.g;
+      }
    }
 }

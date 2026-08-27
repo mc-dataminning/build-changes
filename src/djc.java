@@ -1,185 +1,120 @@
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public enum djc implements avl {
-   a("inactive", 0, djc.b.a, -1.0, false),
-   b("waiting_for_players", 4, djc.b.b, 200.0, true),
-   c("active", 8, djc.b.c, 1000.0, true),
-   d("waiting_for_reward_ejection", 8, djc.b.b, -1.0, false),
-   e("ejecting_reward", 8, djc.b.b, -1.0, false),
-   f("cooldown", 0, djc.b.d, -1.0, false);
+public class djc extends dit implements bln {
+   public static final int c = 6;
+   private static final Logger d = LogUtils.getLogger();
+   private final is<coz> e = is.a(6, coz.h);
+   private int f = -1;
 
-   private static final float g = 40.0F;
-   private static final int h = aup.d(30.0F);
-   private final String i;
-   private final int j;
-   private final double k;
-   private final djc.b l;
-   private final boolean m;
-
-   private djc(String $$0, int $$1, djc.b $$2, double $$3, boolean $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.l = $$2;
-      this.k = $$3;
-      this.m = $$4;
+   public djc(hz $$0, dlf $$1) {
+      super(div.M, $$0, $$1);
    }
 
-   djc a(hx $$0, diz $$1, ane $$2) {
-      djb $$3 = $$1.c();
-      dja $$4 = $$1.b();
-      diy $$5 = $$1.f();
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.f = $$0;
+         dlf $$1 = this.r();
 
-      return switch (this) {
-         case a -> $$3.a($$1, $$2, b) == null ? this : b;
-         case b -> {
-            if (!$$3.b()) {
-               yield a;
-            } else {
-               $$3.a($$2, $$0, $$5, $$4.a());
-               yield $$3.c.isEmpty() ? this : c;
-            }
+         for (int $$2 = 0; $$2 < czs.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).b();
+            dlw $$4 = czs.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
          }
-         case c -> {
-            if (!$$3.b()) {
-               yield a;
-            } else {
-               int $$6 = $$3.a($$0);
-               $$3.a($$2, $$0, $$5, $$4.a());
-               if ($$3.a($$4, $$6)) {
-                  if ($$3.c()) {
-                     $$3.e = $$2.X() + (long)$$4.h();
-                     $$3.g = 0;
-                     $$3.f = 0L;
-                     yield d;
-                  }
-               } else if ($$3.a($$2, $$4, $$6)) {
-                  $$1.a($$2, $$0).ifPresent($$4x -> {
-                     $$3.d.add($$4x);
-                     $$3.g++;
-                     $$3.f = $$2.X() + (long)$$4.g();
-                     $$3.j.b($$2.F_()).ifPresent($$2xx -> {
-                        $$3.h = Optional.of((cuo)$$2xx.b());
-                        $$1.e();
-                     });
-                  });
-               }
 
-               yield this;
-            }
-         }
-         case d -> {
-            if ($$3.a($$2, $$4, 40.0F)) {
-               $$2.a(null, $$0, art.lL, aru.e);
-               yield e;
-            } else {
-               yield this;
-            }
-         }
-         case e -> {
-            if (!$$3.b($$2, $$4, (float)h)) {
-               yield this;
-            } else if ($$3.c.isEmpty()) {
-               $$2.a(null, $$0, art.lM, aru.e);
-               $$3.i = Optional.empty();
-               yield f;
-            } else {
-               if ($$3.i.isEmpty()) {
-                  $$3.i = $$4.j().a($$2.F_());
-               }
-
-               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
-               $$3.c.remove($$3.c.iterator().next());
-               yield this;
-            }
-         }
-         case f -> {
-            if ($$3.a($$2)) {
-               $$3.e = 0L;
-               yield b;
-            } else {
-               yield this;
-            }
-         }
-      };
-   }
-
-   public int a() {
-      return this.j;
-   }
-
-   public double b() {
-      return this.k;
-   }
-
-   public boolean d() {
-      return this.k >= 0.0;
-   }
-
-   public boolean e() {
-      return this.m;
-   }
-
-   public void a(ctx $$0, hx $$1) {
-      this.l.emit($$0, $$0.F_(), $$1);
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(dpp.c, this.p, dpp.a.a($$1));
+      } else {
+         d.error("Expected slot 0-5, got {}", $$0);
+      }
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public void a(sw $$0) {
+      this.e.clear();
+      blo.b($$0, this.e);
+      this.f = $$0.h("last_interacted_slot");
    }
 
-   static class a {
-      private static final int a = 0;
-      private static final int b = 4;
-      private static final int c = 8;
+   @Override
+   protected void b(sw $$0) {
+      blo.a($$0, this.e, true);
+      $$0.a("last_interacted_slot", this.f);
+   }
 
-      private a() {
+   public int f() {
+      return (int)this.e.stream().filter(Predicate.not(coz::b)).count();
+   }
+
+   @Override
+   public void a() {
+      this.e.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean aj_() {
+      return this.e.stream().allMatch(coz::b);
+   }
+
+   @Override
+   public coz a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Override
+   public coz a(int $$0, int $$1) {
+      coz $$2 = Objects.requireNonNullElse(this.e.get($$0), coz.h);
+      this.e.set($$0, coz.h);
+      if (!$$2.b()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public coz b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, coz $$1) {
+      if ($$1.a(auh.av)) {
+         this.e.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.b()) {
+         this.a($$0, 1);
       }
    }
 
-   interface b {
-      djc.b a = ($$0, $$1, $$2) -> {
-      };
-      djc.b b = ($$0, $$1, $$2) -> {
-         if ($$1.a(2) == 0) {
-            emc $$3 = $$2.b().a($$1, 0.9F);
-            a(jx.aG, $$3, $$0);
-         }
-      };
-      djc.b c = ($$0, $$1, $$2) -> {
-         emc $$3 = $$2.b().a($$1, 1.0F);
-         a(jx.ab, $$3, $$0);
-         a(jx.E, $$3, $$0);
-      };
-      djc.b d = ($$0, $$1, $$2) -> {
-         emc $$3 = $$2.b().a($$1, 0.9F);
-         if ($$1.a(3) == 0) {
-            a(jx.ab, $$3, $$0);
-         }
-
-         if ($$0.X() % 20L == 0L) {
-            emc $$4 = $$2.b().b(0.0, 0.5, 0.0);
-            int $$5 = $$0.F_().a(4) + 20;
-
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               a(jx.ab, $$4, $$0);
-            }
-         }
-      };
-
-      private static void a(ka $$0, emc $$1, ctx $$2) {
-         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
-      }
-
-      void emit(ctx var1, auw var2, hx var3);
+   @Override
+   public boolean a(bln $$0, int $$1, coz $$2) {
+      return $$0.a_($$2x -> $$2x.b() ? true : coz.c($$2, $$2x) && $$2x.M() + $$2.M() <= Math.min($$2x.g(), $$0.al_()));
    }
 
-   static class c {
-      private static final double a = -1.0;
-      private static final double b = 200.0;
-      private static final double c = 1000.0;
+   @Override
+   public int al_() {
+      return 1;
+   }
 
-      private c() {
-      }
+   @Override
+   public boolean a(chh $$0) {
+      return bln.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, coz $$1) {
+      return $$1.a(auh.av) && this.a($$0).b() && $$1.M() == this.al_();
+   }
+
+   public int g() {
+      return this.f;
    }
 }

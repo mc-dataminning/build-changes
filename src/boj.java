@@ -1,66 +1,57 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class boj extends bof<cfd> {
-   @Nullable
-   private cgy c;
+public enum boj implements axc {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
 
-   public boj(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
+   public static final Codec<boj> i = axc.a(boj::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
+
+   private boj(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
    }
 
-   protected boolean a(ane $$0, cfd $$1) {
-      hx $$2 = $$1.dl();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && bpo.a($$0, $$1, $$2);
+   public String a() {
+      return this.m;
    }
 
-   protected boolean a(ane $$0, cfd $$1, long $$2) {
-      return this.c != null && !this.c.d();
+   @Override
+   public String c() {
+      return this.m;
    }
 
-   protected void b(ane $$0, cfd $$1, long $$2) {
-      this.c = null;
-      $$1.dN().a($$0.Y(), $$0.X());
+   public int b() {
+      return this.j;
    }
 
-   protected void c(ane $$0, cfd $$1, long $$2) {
-      auw $$3 = $$1.eg();
-      if ($$3.a(100) == 0) {
-         $$1.gk();
-      }
-
-      if ($$3.a(200) == 0 && bpo.a($$0, $$1, $$1.dl())) {
-         clv $$4 = ac.a(clv.values(), $$3);
-         int $$5 = $$3.a(3);
-         cng $$6 = this.a($$4, $$5);
-         cgd $$7 = new cgd($$1.dL(), $$1, $$1.dq(), $$1.du(), $$1.dw(), $$6);
-         $$1.dL().b($$7);
-      }
+   public boolean d() {
+      return this.k;
    }
 
-   private cng a(clv $$0, int $$1) {
-      cng $$2 = new cng(cnj.uq, 1);
-      cng $$3 = new cng(cnj.ur);
-      so $$4 = $$3.a("Explosion");
-      List<Integer> $$5 = Lists.newArrayList();
-      $$5.add($$0.f());
-      $$4.b("Colors", $$5);
-      $$4.a("Type", (byte)cml.a.e.a());
-      so $$6 = $$2.a("Fireworks");
-      su $$7 = new su();
-      so $$8 = $$3.b("Explosion");
-      if ($$8 != null) {
-         $$7.add($$8);
-      }
+   public boolean e() {
+      return this.l;
+   }
 
-      $$6.a("Flight", (byte)$$1);
-      if (!$$7.isEmpty()) {
-         $$6.a("Explosions", $$7);
-      }
+   public int f() {
+      return this.o;
+   }
 
-      return $$2;
+   public int g() {
+      return 32;
    }
 }

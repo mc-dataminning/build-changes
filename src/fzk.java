@@ -1,19 +1,37 @@
-public class fzk extends gag<ccq, fkn<ccq>> {
-   private static final ahh a = new ahh("textures/entity/ghast/ghast.png");
-   private static final ahh i = new ahh("textures/entity/ghast/ghast_shooting.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public fzk(fza.a $$0) {
-      super($$0, new fkn<>($$0.a(fni.ac)), 1.5F);
+public class fzk implements fyx.a {
+   private static final int a = 60;
+   private final Set<jb> b = Sets.newHashSet();
+
+   fzk() {
    }
 
-   public ahh a(ccq $$0) {
-      return $$0.u() ? i : a;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   protected void a(ccq $$0, eqk $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public void a(jb $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(jb $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
+      hz $$5 = hz.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(esa $$0, fvm $$1, jb $$2) {
+      fyx.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

@@ -1,31 +1,58 @@
 import com.mojang.logging.LogUtils;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public class bit implements ThreadFactory {
+public class bit {
    private static final Logger a = LogUtils.getLogger();
-   private final ThreadGroup b;
-   private final AtomicInteger c = new AtomicInteger(1);
-   private final String d;
+   private final Runnable b;
 
-   public bit(String $$0) {
-      SecurityManager $$1 = System.getSecurityManager();
-      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
-      this.d = $$0 + "-";
+   protected bit(Runnable $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public Thread newThread(Runnable $$0) {
-      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
-      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
-         a.error("Caught exception in thread {} from {}", $$1x, $$0);
-         a.error("", $$2);
-      });
-      if ($$1.getPriority() != 5) {
-         $$1.setPriority(5);
-      }
+   public void a(@Nullable Path $$0) {
+      if ($$0 != null) {
+         this.b.run();
+         a(() -> "Dumped flight recorder profiling to " + $$0);
 
-      return $$1;
+         bja $$1;
+         try {
+            $$1 = biz.a($$0);
+         } catch (Throwable var5) {
+            a(() -> "Failed to parse JFR recording", var5);
+            return;
+         }
+
+         try {
+            a($$1::b);
+            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
+            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
+            a(() -> "Dumped recording summary to " + $$4);
+         } catch (Throwable var4) {
+            a(() -> "Failed to output JFR report", var4);
+         }
+      }
+   }
+
+   private static void a(Supplier<String> $$0) {
+      if (LogUtils.isLoggerActive()) {
+         a.info($$0.get());
+      } else {
+         aja.a($$0.get());
+      }
+   }
+
+   private static void a(Supplier<String> $$0, Throwable $$1) {
+      if (LogUtils.isLoggerActive()) {
+         a.warn($$0.get(), $$1);
+      } else {
+         aja.a($$0.get());
+         $$1.printStackTrace(aja.a);
+      }
    }
 }

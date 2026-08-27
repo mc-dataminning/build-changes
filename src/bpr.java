@@ -1,85 +1,79 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bpr {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
+public class bpr extends bpw<boo> {
+   private static final int c = 100;
+   private static final int d = 120;
    private static final int e = 5;
-   private static final int f = 10;
+   private static final int f = 4;
+   private static final Predicate<boo> g = $$0 -> $$0.ei() != null || $$0.dB() || $$0.bN();
+   private final float h;
+   private final Predicate<boo> i;
 
-   public static bog<bmx> a() {
-      return brs.a(
-         (Function<brs.b<bmx>, ? extends App<brs.c<bmx>, brv<bmx>>>)($$0 -> $$0.group($$0.b(bvq.i), $$0.c(bvq.m), $$0.a(bvq.n), $$0.a(bvq.q))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.F_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<bmo> $$8 = $$0.b($$1);
-                        Optional<bmo> $$9 = $$8.stream().filter($$1xx -> a((bmo)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<bmo> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              emc $$11 = bxk.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(hx.a($$11))) {
-                                 $$2.a(new bvt($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
-
-                           return true;
-                        }
-                     }
-                  }))
-      );
+   public bpr(float $$0) {
+      this($$0, g);
    }
 
-   private static void a(brt<?, bmo> $$0, brt<?, bpt> $$1, brt<?, bvt> $$2, bmo $$3) {
-      $$0.a($$3);
-      $$1.a(new boq($$3, true));
-      $$2.a(new bvt(new boq($$3, false), 0.6F, 1));
+   public bpr(float $$0, Predicate<boo> $$1) {
+      super(ImmutableMap.of(bxh.Z, bxi.c, bxh.x, bxi.c), 100, 120);
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   private static Optional<bmo> a(List<bmo> $$0) {
-      Map<bmo, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
+   protected boolean a(aov $$0, boo $$1) {
+      return this.i.test($$1) && ($$1.dO().a(bxh.x) || $$1.dO().a(bxh.Z));
    }
 
-   private static Map<bmo, Integer> b(List<bmo> $$0) {
-      Map<bmo, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bpr::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
+   protected boolean a(aov $$0, boo $$1, long $$2) {
+      return true;
    }
 
-   private static bmo a(bmo $$0) {
-      return $$0.dN().c(bvq.q).get();
+   protected void b(aov $$0, boo $$1, long $$2) {
+      $$1.dO().a(bxh.Z, true);
+      $$1.dO().b(bxh.m);
    }
 
-   private static boolean b(bmo $$0) {
-      return $$0.dN().c(bvq.q).isPresent();
+   protected void c(aov $$0, boo $$1, long $$2) {
+      bpf<?> $$3 = $$1.dO();
+      $$3.b(bxh.Z);
    }
 
-   private static boolean a(bmo $$0, bmo $$1) {
-      return $$1.dN().c(bvq.q).filter($$1x -> $$1x == $$0).isPresent();
+   protected void d(aov $$0, boo $$1, long $$2) {
+      if ($$1.N().l()) {
+         ens $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.dO().a(bxh.m, new bxk($$3, this.h, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private ens a(boo $$0, aov $$1) {
+      if ($$0.bN()) {
+         Optional<ens> $$2 = this.a((cut)$$1, (bno)$$0).map(ens::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
+         }
+      }
+
+      return bzb.a($$0, 5, 4);
+   }
+
+   private Optional<hz> a(cut $$0, bno $$1) {
+      hz $$2 = $$1.dm();
+      if (!$$0.a_($$2).k($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<hz> $$3;
+         if (awh.f($$1.dg()) == 2) {
+            $$3 = $$1x -> hz.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(aue.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(aue.a);
+         }
+
+         return hz.a($$2, 5, 1, $$3);
+      }
    }
 }

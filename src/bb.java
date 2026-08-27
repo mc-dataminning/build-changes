@@ -1,29 +1,41 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class bb {
-   public static final Codec<bb> a = ekg.a.listOf().xmap(bb::new, $$0 -> $$0.b);
-   private final List<eke> b;
-   private final Predicate<ehf> c;
-
-   bb(List<eke> $$0) {
-      this.b = $$0;
-      this.c = ekg.a($$0);
+public class bb extends cx<bb.a> {
+   @Override
+   public Codec<bb.a> a() {
+      return bb.a.a;
    }
 
-   public static bb a(eke... $$0) {
-      return new bb(List.of($$0));
+   public void a(aow $$0, coz $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public boolean a(ehf $$0) {
-      return this.c.test($$0);
-   }
+   public static record a(Optional<bc> b, Optional<cc> c) implements cx.a {
+      public static final Codec<bb.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(bb.a::a), avp.a(cc.a, "item").forGetter(bb.a::c)).apply($$0, bb.a::new)
+      );
 
-   public void a(eho $$0) {
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         eke $$2 = this.b.get($$1);
-         $$2.a($$0.a("[" + $$1 + "]"));
+      public static an<bb.a> b() {
+         return am.A.a(new bb.a(Optional.empty(), Optional.empty()));
+      }
+
+      public static an<bb.a> a(cvm $$0) {
+         return a(cc.a.a().a($$0.j()));
+      }
+
+      public static an<bb.a> a(cc.a $$0) {
+         return am.A.a(new bb.a(Optional.empty(), Optional.of($$0.b())));
+      }
+
+      public boolean a(coz $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
+      }
+
+      @Override
+      public Optional<bc> a() {
+         return this.b;
       }
    }
 }

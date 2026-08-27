@@ -1,24 +1,29 @@
-public class aeu implements xg<adk> {
-   private final int a;
+public class aeu implements xx<aes> {
+   public static final xo<uq, aeu> a = xx.a(aeu::a, aeu::new);
+   private final int b;
 
    public aeu(int $$0) {
-      this.a = $$0;
+      this.b = $$0;
    }
 
-   public aeu(uj $$0) {
-      this.a = $$0.n();
+   private aeu(uq $$0) {
+      this.b = $$0.n();
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
+   public xz<aeu> a() {
+      return aeq.bd;
    }
 
-   public void a(adk $$0) {
+   public void a(aes $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   public int b() {
+      return this.b;
    }
 }

@@ -1,24 +1,29 @@
-public class agk implements xg<adm> {
-   private final long a;
+public class agk implements xx<aes> {
+   public static final xo<uq, agk> a = xx.a(agk::a, agk::new);
+   private final blt b;
 
-   public agk(long $$0) {
-      this.a = $$0;
+   public agk(blt $$0) {
+      this.b = $$0;
    }
 
-   public agk(uj $$0) {
-      this.a = $$0.readLong();
+   private agk(uq $$0) {
+      this.b = $$0.b(blt.class);
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.b(this.a);
+   public xz<agk> a() {
+      return aeq.bW;
    }
 
-   public void a(adm $$0) {
+   public void a(aes $$0) {
       $$0.a(this);
    }
 
-   public long a() {
-      return this.a;
+   public blt b() {
+      return this.b;
    }
 }

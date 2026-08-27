@@ -1,36 +1,66 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class erw extends esg {
-   private static final Logger b = LogUtils.getLogger();
-   public List<erv> a;
+public class erw {
+   @Nullable
+   private static esd a;
 
-   public static erw a(String $$0) {
-      erw $$1 = new erw();
-      $$1.a = Lists.newArrayList();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("lists").isJsonArray()) {
-            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
-
-            while ($$5.hasNext()) {
-               $$1.a.add(erv.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
+   public static void a() {
+      if (a != null) {
+         b();
+         esd.b();
       }
+   }
 
+   public static void b() {
+      a = null;
+   }
+
+   public static void a(erv.b $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
+      } else {
+         c($$0);
+      }
+   }
+
+   private static void c(erv.b $$0) {
+      esd $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      }
+   }
+
+   public static void b(erv.b $$0) {
+      esd $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.c();
+      }
+   }
+
+   @Nullable
+   private static esd d(erv.b $$0) {
+      RenderSystem.assertOnRenderThread();
+      if ($$0.d()) {
+         $$0.e();
+         return null;
+      } else {
+         esd $$1 = a($$0.c().g());
+         $$1.a($$0);
+         return $$1;
+      }
+   }
+
+   private static esd a(esf $$0) {
+      esd $$1 = $$0.g();
+      a($$1);
       return $$1;
+   }
+
+   private static void a(esd $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

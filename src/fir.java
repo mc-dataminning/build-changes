@@ -1,161 +1,244 @@
-import com.google.common.base.MoreObjects;
 import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class fir {
-   static final ahh b = new ahh("spectator/close");
-   static final ahh c = new ahh("spectator/scroll_left");
-   static final ahh d = new ahh("spectator/scroll_right");
-   private static final fit e = new fir.a();
-   private static final fit f = new fir.b(-1, true);
-   private static final fit g = new fir.b(1, true);
-   private static final fit h = new fir.b(1, false);
-   private static final int i = 8;
-   static final vg j = vg.c("spectatorMenu.close");
-   static final vg k = vg.c("spectatorMenu.previous_page");
-   static final vg l = vg.c("spectatorMenu.next_page");
-   public static final fit a = new fit() {
-      @Override
-      public void a(fir $$0) {
+public class fir implements fak, fbd {
+   private static final aiy b = new aiy("recipe_book/overlay_recipe");
+   static final aiy c = new aiy("recipe_book/furnace_overlay_highlighted");
+   static final aiy d = new aiy("recipe_book/furnace_overlay");
+   static final aiy e = new aiy("recipe_book/crafting_overlay_highlighted");
+   static final aiy f = new aiy("recipe_book/crafting_overlay");
+   static final aiy g = new aiy("recipe_book/furnace_overlay_disabled_highlighted");
+   static final aiy h = new aiy("recipe_book/furnace_overlay_disabled");
+   static final aiy i = new aiy("recipe_book/crafting_overlay_disabled_highlighted");
+   static final aiy j = new aiy("recipe_book/crafting_overlay_disabled");
+   private static final int k = 4;
+   private static final int l = 5;
+   private static final float m = 0.375F;
+   public static final int a = 25;
+   private final List<fir.a> n = Lists.newArrayList();
+   private boolean o;
+   private int p;
+   private int q;
+   private exh r;
+   private fiw t;
+   @Nullable
+   private csd<?> u;
+   float v;
+   boolean w;
+
+   public void a(exh $$0, fiw $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
+      this.r = $$0;
+      this.t = $$1;
+      if ($$0.s.bW instanceof ckc) {
+         this.w = true;
       }
 
-      @Override
-      public vg aQ_() {
-         return vf.a;
+      boolean $$7 = $$0.s.m().a((clo<?>)$$0.s.bW);
+      List<csd<?>> $$8 = $$1.b(true);
+      List<csd<?>> $$9 = $$7 ? Collections.emptyList() : $$1.b(false);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
+      this.p = $$2;
+      this.q = $$3;
+      float $$14 = (float)(this.p + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$4 + 50);
+      if ($$14 > $$15) {
+         this.p = (int)((float)this.p - $$6 * (float)((int)(($$14 - $$15) / $$6)));
       }
 
-      @Override
-      public void a(exe $$0, float $$1, int $$2) {
+      float $$16 = (float)(this.q + $$13 * 25);
+      float $$17 = (float)($$5 + 50);
+      if ($$16 > $$17) {
+         this.q = (int)((float)this.q - $$6 * (float)awh.f(($$16 - $$17) / $$6));
       }
 
-      @Override
-      public boolean aR_() {
-         return false;
-      }
-   };
-   private final fiu m;
-   private fis n;
-   private int o = -1;
-   int p;
-
-   public fir(fiu $$0) {
-      this.n = new fiq();
-      this.m = $$0;
-   }
-
-   public fit a(int $$0) {
-      int $$1 = $$0 + this.p * 6;
-      if (this.p > 0 && $$0 == 0) {
-         return f;
-      } else if ($$0 == 7) {
-         return $$1 < this.n.a().size() ? g : h;
-      } else if ($$0 == 8) {
-         return e;
-      } else {
-         return $$1 >= 0 && $$1 < this.n.a().size() ? (fit)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
-      }
-   }
-
-   public List<fit> a() {
-      List<fit> $$0 = Lists.newArrayList();
-
-      for (int $$1 = 0; $$1 <= 8; $$1++) {
-         $$0.add(this.a($$1));
+      float $$18 = (float)this.q;
+      float $$19 = (float)($$5 - 100);
+      if ($$18 < $$19) {
+         this.q = (int)((float)this.q - $$6 * (float)awh.f(($$18 - $$19) / $$6));
       }
 
-      return $$0;
-   }
+      this.o = true;
+      this.n.clear();
 
-   public fit b() {
-      return this.a(this.o);
-   }
-
-   public fis c() {
-      return this.n;
-   }
-
-   public void b(int $$0) {
-      fit $$1 = this.a($$0);
-      if ($$1 != a) {
-         if (this.o == $$0 && $$1.aR_()) {
-            $$1.a(this);
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         csd<?> $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.p + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.q + 5 + 25 * ($$20 / $$12);
+         if (this.w) {
+            this.n.add(new fir.b($$23, $$24, $$22, $$21));
          } else {
-            this.o = $$0;
+            this.n.add(new fir.a($$23, $$24, $$22, $$21));
          }
       }
+
+      this.u = null;
    }
 
-   public void d() {
-      this.m.a(this);
+   public fiw a() {
+      return this.t;
    }
 
-   public int e() {
+   @Nullable
+   public csd<?> b() {
+      return this.u;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 != 0) {
+         return false;
+      } else {
+         for (fir.a $$3 : this.n) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.u = $$3.c;
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      if (this.o) {
+         this.v += $$3;
+         RenderSystem.enableBlend();
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.n.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.n.size(), $$4);
+         int $$6 = awh.f((float)this.n.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(b, this.p, this.q, $$5 * 25 + 8, $$6 * 25 + 8);
+         RenderSystem.disableBlend();
+
+         for (fir.a $$8 : this.n) {
+            $$8.a($$0, $$1, $$2, $$3);
+         }
+
+         $$0.c().b();
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.o = $$0;
+   }
+
+   public boolean c() {
       return this.o;
    }
 
-   public void a(fis $$0) {
-      this.n = $$0;
-      this.o = -1;
-      this.p = 0;
+   @Override
+   public void a(boolean $$0) {
    }
 
-   public fiv f() {
-      return new fiv(this.a(), this.o);
+   @Override
+   public boolean aL_() {
+      return false;
    }
 
-   static class a implements fit {
-      @Override
-      public void a(fir $$0) {
-         $$0.d();
+   class a extends ezf implements ail<cry> {
+      final csd<?> c;
+      private final boolean d;
+      protected final List<fir.a.a> a = Lists.newArrayList();
+
+      public a(int $$0, int $$1, csd<?> $$2, boolean $$3) {
+         super($$0, $$1, 200, 20, vp.a);
+         this.g = 24;
+         this.h = 24;
+         this.c = $$2;
+         this.d = $$3;
+         this.a($$2);
+      }
+
+      protected void a(csd<?> $$0) {
+         this.a(3, 3, -1, $$0, $$0.b().a().iterator(), 0);
       }
 
       @Override
-      public vg aQ_() {
-         return fir.j;
+      public void a(fdc $$0) {
+         this.c($$0);
       }
 
       @Override
-      public void a(exe $$0, float $$1, int $$2) {
-         $$0.a(fir.b, 0, 0, 16, 16);
-      }
-
-      @Override
-      public boolean aR_() {
-         return true;
-      }
-   }
-
-   static class b implements fit {
-      private final int a;
-      private final boolean b;
-
-      public b(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(fir $$0) {
-         $$0.p = $$0.p + this.a;
-      }
-
-      @Override
-      public vg aQ_() {
-         return this.a < 0 ? fir.k : fir.l;
-      }
-
-      @Override
-      public void a(exe $$0, float $$1, int $$2) {
-         if (this.a < 0) {
-            $$0.a(fir.c, 0, 0, 16, 16);
-         } else {
-            $$0.a(fir.d, 0, 0, 16, 16);
+      public void a(Iterator<cry> $$0, int $$1, int $$2, int $$3, int $$4) {
+         coz[] $$5 = $$0.next().a();
+         if ($$5.length != 0) {
+            this.a.add(new fir.a.a(3 + $$4 * 7, 3 + $$3 * 7, $$5));
          }
       }
 
       @Override
-      public boolean aR_() {
-         return this.b;
+      public void b(eyu $$0, int $$1, int $$2, float $$3) {
+         aiy $$4;
+         if (this.d) {
+            if (fir.this.w) {
+               $$4 = this.z() ? fir.c : fir.d;
+            } else {
+               $$4 = this.z() ? fir.e : fir.f;
+            }
+         } else if (fir.this.w) {
+            $$4 = this.z() ? fir.g : fir.h;
+         } else {
+            $$4 = this.z() ? fir.i : fir.j;
+         }
+
+         $$0.a($$4, this.B(), this.C(), this.g, this.h);
+         $$0.c().a();
+         $$0.c().a((double)(this.B() + 2), (double)(this.C() + 2), 150.0);
+
+         for (fir.a.a $$8 : this.a) {
+            $$0.c().a();
+            $$0.c().a((double)$$8.b, (double)$$8.c, 0.0);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0, -8.0, 0.0);
+            if ($$8.a.length > 0) {
+               $$0.a($$8.a[awh.d(fir.this.v / 30.0F) % $$8.a.length], 0, 0);
+            }
+
+            $$0.c().b();
+         }
+
+         $$0.c().b();
+      }
+
+      protected class a {
+         public final coz[] a;
+         public final int b;
+         public final int c;
+
+         public a(int $$1, int $$2, coz[] $$3) {
+            this.b = $$1;
+            this.c = $$2;
+            this.a = $$3;
+         }
+      }
+   }
+
+   class b extends fir.a {
+      public b(int $$0, int $$1, csd<?> $$2, boolean $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      protected void a(csd<?> $$0) {
+         cry $$1 = $$0.b().a().get(0);
+         coz[] $$2 = $$1.a();
+         this.a.add(new fir.a.a(10, 10, $$2));
       }
    }
 }

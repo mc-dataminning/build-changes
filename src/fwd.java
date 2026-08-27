@@ -1,111 +1,108 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class fwd extends fwh {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final emc k = new emc(0.0, -0.32F, 0.073F);
-   private final Map<dlc, fwd.a> l;
+public class fwd {
+   protected final fvk a;
+   protected final cvn b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public fyl.b[] f;
 
-   public fwd(fvu.a $$0) {
-      super($$0);
-      this.l = dlc.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new fwd.a($$0.a(fni.b($$1)))));
+   public fwd(fyl $$0, cvn $$1, int $$2, fvk $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
    }
 
-   @Override
-   public float b() {
-      return 1.0F;
-   }
+   protected void a(fyl $$0) {
+      if (!exh.O().br()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new fyl.b[$$1];
 
-   @Override
-   public float c() {
-      return 0.9F;
-   }
-
-   @Override
-   public void a(dim $$0, float $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
-      djp $$6 = $$0.r();
-      ddx $$7 = (ddx)$$6.b();
-      dlc $$8 = ddx.a($$7);
-      fwd.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   @Override
-   void a(eqk $$0, float $$1, djp $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   void a(eqk $$0, int $$1, int $$2, flf $$3, eqo $$4) {
-      fwd.a $$5 = (fwd.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   @Override
-   ghe a(dlc $$0) {
-      return fui.b($$0);
-   }
-
-   @Override
-   emc d() {
-      return k;
-   }
-
-   public static fnp e() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      $$1.a("board", fno.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), fnl.a);
-      $$1.a("plank", fno.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), fnl.a);
-      fns $$2 = $$1.a("normalChains", fno.c(), fnl.a);
-      $$2.a("chainL1", fno.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fnl.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", fno.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fnl.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", fno.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fnl.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", fno.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), fnl.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", fno.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), fnl.a);
-      return fnp.a($$0, 64, 32);
-   }
-
-   public static final class a extends flf {
-      public final fnj a;
-      public final fnj b;
-      public final fnj c;
-      public final fnj d;
-
-      public a(fnj $$0) {
-         super(fub::e);
-         this.a = $$0;
-         this.b = $$0.b("plank");
-         this.d = $$0.b("normalChains");
-         this.c = $$0.b("vChains");
-      }
-
-      public void a(djp $$0) {
-         boolean $$1 = !($$0.b() instanceof cxx);
-         this.b.k = $$1;
-         this.c.k = false;
-         this.d.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(dkf.a);
-            this.d.k = !$$2;
-            this.c.k = $$2;
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.J_() + $$3 * 16, $$4 * 16);
+               }
+            }
          }
       }
+   }
 
-      @Override
-      public void a(eqk $$0, eqo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a() {
+      for (fyl.b $$0 : this.f) {
+         $$0.e();
+      }
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.am();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public cvp c() {
+      return this.b;
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = awh.c($$0);
+      int $$3 = awh.c($$1);
+
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
+
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
+
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.J_() + $$12 * 16;
+               fyl.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               hz $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
+            }
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.an(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      fyl.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
+
+   @Nullable
+   protected fyl.b a(hz $$0) {
+      int $$1 = awh.a($$0.v() - this.b.J_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = awh.b(awh.a($$0.u(), 16), this.d);
+         int $$3 = awh.b(awh.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
       }
    }
 }

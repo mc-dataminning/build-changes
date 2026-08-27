@@ -1,16 +1,15 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import javax.crypto.Cipher;
+import java.util.List;
 
-public class uc extends MessageToByteEncoder<ByteBuf> {
-   private final ua a;
-
-   public uc(Cipher $$0) {
-      this.a = new ua($$0);
+public record uc(List<String> a, tv<?> b, String c) {
+   public uc(tv<?> $$0, String $$1) {
+      this(List.of(), $$0, $$1);
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
-      this.a.a($$1, $$2);
+   public uc(String $$0, tv<?> $$1, String $$2) {
+      this(List.of($$0), $$1, $$2);
+   }
+
+   public uc(String $$0, String $$1, tv<?> $$2, String $$3) {
+      this(List.of($$0, $$1), $$2, $$3);
    }
 }

@@ -1,15 +1,7 @@
-public class cpy extends cpt {
-   public cpy(String $$0, cpz $$1, cqh $$2, cng $$3, float $$4, int $$5) {
-      super(cqp.e, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+public interface cpy {
+   boolean a(cvn var1, dkc var2, boolean var3, chh var4);
 
-   @Override
-   public cng g() {
-      return new cng(cxa.og);
-   }
-
-   @Override
-   public cqo<?> at_() {
-      return cqo.s;
+   default boolean a(dkd $$0, chh $$1) {
+      return $$0.a($$1);
    }
 }

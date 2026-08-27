@@ -1,26 +1,65 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-@FunctionalInterface
-public interface eac<C extends dug> {
-   Optional<eab<C>> createGenerator(eac.a<C> var1);
+public class eac extends eal {
+   private final ie c;
+   private final drv d;
+   private final drv e;
+   private final int f;
+   public static final Codec<eac> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ie.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
+               drv.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
+               drv.b.optionalFieldOf("allowed_search_condition", drv.e()).forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eac::new)
+   );
 
-   static <C extends dug> eac<C> simple(Predicate<eac.a<C>> $$0, eab<C> $$1) {
-      Optional<eab<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   private eac(ie $$0, drv $$1, drv $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   static <C extends dug> Predicate<eac.a<C>> checkForBiomeOnTop(doy.a $$0) {
-      return $$1 -> $$1.a($$0);
+   public static eac a(ie $$0, drv $$1, drv $$2, int $$3) {
+      return new eac($$0, $$1, $$2, $$3);
    }
 
-   public static record a<C extends dug>(dlm a, cva b, dpm c, long d, cte e, C f, ctz g, Predicate<ih<cuw>> h, edp i, iu j) {
-      public boolean a(doy.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         ih<cuw> $$4 = this.a.c().getNoiseBiome(is.a($$1), is.a($$3), is.a($$2), this.c.b());
-         return this.h.test($$4);
+   public static eac a(ie $$0, drv $$1, int $$2) {
+      return a($$0, $$1, drv.e(), $$2);
+   }
+
+   @Override
+   public Stream<hz> a_(eaj $$0, awo $$1, hz $$2) {
+      hz.a $$3 = $$2.j();
+      cwi $$4 = $$0.d();
+      if (!this.e.test($$4, $$3)) {
+         return Stream.of();
+      } else {
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            if (this.d.test($$4, $$3)) {
+               return Stream.of($$3);
+            }
+
+            $$3.c(this.c);
+            if ($$4.d($$3.v())) {
+               return Stream.of();
+            }
+
+            if (!this.e.test($$4, $$3)) {
+               break;
+            }
+         }
+
+         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
       }
+   }
+
+   @Override
+   public eam<?> b() {
+      return eam.j;
    }
 }

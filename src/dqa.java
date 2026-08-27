@@ -1,346 +1,420 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableDouble;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class dqa {
-   private static final dqa a = new dqa(new Long2ObjectOpenHashMap(), new Long2ObjectOpenHashMap()) {
-      @Override
-      public dqa.a a(int $$0, int $$1) {
-         return new dqa.a(1.0, 0.0);
-      }
-
-      @Override
-      public double a(dor.b $$0, double $$1) {
-         return $$1;
-      }
-
-      @Override
-      public cuz a(cuz $$0) {
-         return $$0;
-      }
-   };
-   private static final eec b = eec.b(new dpz(42L), pj.a);
-   private static final int c = is.d(7) - 1;
-   private static final int d = is.e(c + 3);
-   private static final int e = 2;
-   private static final int f = is.e(5);
-   private static final double g = 8.0;
-   private final Long2ObjectOpenHashMap<dqb> h;
-   private final Long2ObjectOpenHashMap<dqb> i;
-
-   public static dqa a() {
-      return a;
+public interface dqa {
+   static dqa a(dqs $$0, cuu $$1, dqu $$2, drb $$3, int $$4, int $$5, dqa.a $$6) {
+      return new dqa.c($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public static dqa a(@Nullable anl $$0) {
-      if ($$0 == null) {
-         return a;
-      } else {
-         cte $$1 = $$0.a();
-         if (!$$0.a($$1, d)) {
-            return a;
-         } else {
-            Long2ObjectOpenHashMap<dqb> $$2 = new Long2ObjectOpenHashMap();
-            Long2ObjectOpenHashMap<dqb> $$3 = new Long2ObjectOpenHashMap();
-            int $$4 = aup.h(d + 1);
-
-            for (int $$5 = -d; $$5 <= d; $$5++) {
-               for (int $$6 = -d; $$6 <= d; $$6++) {
-                  if ($$5 * $$5 + $$6 * $$6 <= $$4) {
-                     int $$7 = $$1.e + $$5;
-                     int $$8 = $$1.f + $$6;
-                     dqb $$9 = dqb.a($$0, $$7, $$8);
-                     if ($$9 != null) {
-                        $$2.put(cte.c($$7, $$8), $$9);
-                        if ($$5 >= -f && $$5 <= f && $$6 >= -f && $$6 <= f) {
-                           $$3.put(cte.c($$7, $$8), $$9);
-                        }
-                     }
-                  }
-               }
-            }
-
-            return $$2.isEmpty() && $$3.isEmpty() ? a : new dqa($$2, $$3);
-         }
-      }
-   }
-
-   dqa(Long2ObjectOpenHashMap<dqb> $$0, Long2ObjectOpenHashMap<dqb> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   public dqa.a a(int $$0, int $$1) {
-      int $$2 = is.a($$0);
-      int $$3 = is.a($$1);
-      double $$4 = this.a($$2, 0, $$3, dqb::a);
-      if ($$4 != Double.MAX_VALUE) {
-         return new dqa.a(0.0, a($$4));
-      } else {
-         MutableDouble $$5 = new MutableDouble(0.0);
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.h.forEach(($$5x, $$6x) -> $$6x.a(is.d(cte.a($$5x)), is.d(cte.b($$5x)), ($$5xx, $$6xx, $$7x) -> {
-               double $$8x = aup.f((double)($$2 - $$5xx), (double)($$3 - $$6xx));
-               if (!($$8x > (double)c)) {
-                  if ($$8x < $$7.doubleValue()) {
-                     $$7.setValue($$8x);
-                  }
-
-                  double $$9x = 1.0 / ($$8x * $$8x * $$8x * $$8x);
-                  $$6.add($$7x * $$9x);
-                  $$5.add($$9x);
-               }
-            }));
-         if ($$7.doubleValue() == Double.POSITIVE_INFINITY) {
-            return new dqa.a(1.0, 0.0);
-         } else {
-            double $$8 = $$6.doubleValue() / $$5.doubleValue();
-            double $$9 = aup.a($$7.doubleValue() / (double)(c + 1), 0.0, 1.0);
-            $$9 = 3.0 * $$9 * $$9 - 2.0 * $$9 * $$9 * $$9;
-            return new dqa.a($$9, a($$8));
-         }
-      }
-   }
-
-   private static double a(double $$0) {
-      double $$1 = 1.0;
-      double $$2 = $$0 + 0.5;
-      double $$3 = aup.c($$2, 8.0);
-      return 1.0 * (32.0 * ($$2 - 128.0) - 3.0 * ($$2 - 120.0) * $$3 + 3.0 * $$3 * $$3) / (128.0 * (32.0 - 3.0 * $$3));
-   }
-
-   public double a(dor.b $$0, double $$1) {
-      int $$2 = is.a($$0.a());
-      int $$3 = $$0.b() / 8;
-      int $$4 = is.a($$0.c());
-      double $$5 = this.a($$2, $$3, $$4, dqb::b);
-      if ($$5 != Double.MAX_VALUE) {
-         return $$5;
-      } else {
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(0.0);
-         MutableDouble $$8 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.i.forEach(($$6x, $$7x) -> $$7x.a(is.d(cte.a($$6x)), is.d(cte.b($$6x)), $$3 - 1, $$3 + 1, ($$6xx, $$7xx, $$8x, $$9x) -> {
-               double $$10x = aup.g((double)($$2 - $$6xx), (double)(($$3 - $$7xx) * 2), (double)($$4 - $$8x));
-               if (!($$10x > 2.0)) {
-                  if ($$10x < $$8.doubleValue()) {
-                     $$8.setValue($$10x);
-                  }
-
-                  double $$11 = 1.0 / ($$10x * $$10x * $$10x * $$10x);
-                  $$7.add($$9x * $$11);
-                  $$6.add($$11);
-               }
-            }));
-         if ($$8.doubleValue() == Double.POSITIVE_INFINITY) {
-            return $$1;
-         } else {
-            double $$9 = $$7.doubleValue() / $$6.doubleValue();
-            double $$10 = aup.a($$8.doubleValue() / 3.0, 0.0, 1.0);
-            return aup.d($$10, $$9, $$1);
-         }
-      }
-   }
-
-   private double a(int $$0, int $$1, int $$2, dqa.b $$3) {
-      int $$4 = is.e($$0);
-      int $$5 = is.e($$2);
-      boolean $$6 = ($$0 & 3) == 0;
-      boolean $$7 = ($$2 & 3) == 0;
-      double $$8 = this.a($$3, $$4, $$5, $$0, $$1, $$2);
-      if ($$8 == Double.MAX_VALUE) {
-         if ($$6 && $$7) {
-            $$8 = this.a($$3, $$4 - 1, $$5 - 1, $$0, $$1, $$2);
+   static dqa a(final dqa.a $$0) {
+      return new dqa() {
+         @Nullable
+         @Override
+         public dlf a(dqh.b $$0x, double $$1) {
+            return $$1 > 0.0 ? null : $$0.computeFluid($$0.a(), $$0.b(), $$0.c()).a($$0.b());
          }
 
-         if ($$8 == Double.MAX_VALUE) {
-            if ($$6) {
-               $$8 = this.a($$3, $$4 - 1, $$5, $$0, $$1, $$2);
-            }
-
-            if ($$8 == Double.MAX_VALUE && $$7) {
-               $$8 = this.a($$3, $$4, $$5 - 1, $$0, $$1, $$2);
-            }
+         @Override
+         public boolean a() {
+            return false;
          }
-      }
-
-      return $$8;
-   }
-
-   private double a(dqa.b $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      dqb $$6 = (dqb)this.h.get(cte.c($$1, $$2));
-      return $$6 != null ? $$0.get($$6, $$3 - is.d($$1), $$4, $$5 - is.d($$2)) : Double.MAX_VALUE;
-   }
-
-   public cuz a(cuz $$0) {
-      return ($$1, $$2, $$3, $$4) -> {
-         ih<cuw> $$5 = this.a($$1, $$2, $$3);
-         return $$5 == null ? $$0.getNoiseBiome($$1, $$2, $$3, $$4) : $$5;
       };
    }
 
    @Nullable
-   private ih<cuw> a(int $$0, int $$1, int $$2) {
-      MutableDouble $$3 = new MutableDouble(Double.POSITIVE_INFINITY);
-      MutableObject<ih<cuw>> $$4 = new MutableObject();
-      this.h.forEach(($$5x, $$6x) -> $$6x.a(is.d(cte.a($$5x)), $$1, is.d(cte.b($$5x)), ($$4xx, $$5xx, $$6xx) -> {
-            double $$7 = aup.f((double)($$0 - $$4xx), (double)($$2 - $$5xx));
-            if (!($$7 > (double)c)) {
-               if ($$7 < $$3.doubleValue()) {
-                  $$4.setValue($$6xx);
-                  $$3.setValue($$7);
-               }
-            }
-         }));
-      if ($$3.doubleValue() == Double.POSITIVE_INFINITY) {
-         return null;
-      } else {
-         double $$5 = b.a((double)$$0, 0.0, (double)$$2) * 12.0;
-         double $$6 = aup.a(($$3.doubleValue() + $$5) / (double)(c + 1), 0.0, 1.0);
-         return $$6 > 0.5 ? null : (ih)$$4.getValue();
+   dlf a(dqh.b var1, double var2);
+
+   boolean a();
+
+   public interface a {
+      dqa.b computeFluid(int var1, int var2, int var3);
+   }
+
+   public static final class b {
+      final int a;
+      final dlf b;
+
+      public b(int $$0, dlf $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dlf a(int $$0) {
+         return $$0 < this.a ? this.b : cyq.a.o();
       }
    }
 
-   public static void a(anl $$0, dll $$1) {
-      cte $$2 = $$1.f();
-      boolean $$3 = $$1.s();
-      hx.a $$4 = new hx.a();
-      hx $$5 = new hx($$2.d(), 0, $$2.e());
-      dqb $$6 = $$1.t();
-      if ($$6 != null) {
-         int $$7 = $$6.a().J_();
-         int $$8 = $$6.a().al() - 1;
-         if ($$3) {
-            for (int $$9 = 0; $$9 < 16; $$9++) {
-               for (int $$10 = 0; $$10 < 16; $$10++) {
-                  a($$1, $$4.a($$5, $$9, $$7 - 1, $$10));
-                  a($$1, $$4.a($$5, $$9, $$7, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8 + 1, $$10));
-               }
-            }
-         }
+   public static class c implements dqa {
+      private static final int a = 10;
+      private static final int b = 9;
+      private static final int c = 10;
+      private static final int d = 6;
+      private static final int e = 3;
+      private static final int f = 6;
+      private static final int g = 16;
+      private static final int h = 12;
+      private static final int i = 16;
+      private static final int j = 11;
+      private static final double k = a(awh.h(10), awh.h(12));
+      private final dqs l;
+      private final dqh m;
+      private final dqh n;
+      private final dqh o;
+      private final dqh p;
+      private final drb q;
+      private final dqa.b[] r;
+      private final long[] s;
+      private final dqa.a t;
+      private final dqh u;
+      private final dqh v;
+      private boolean w;
+      private final int x;
+      private final int y;
+      private final int z;
+      private final int A;
+      private final int B;
+      private static final int[][] C = new int[][]{
+         {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
+      };
 
-         for (ic $$11 : ic.c.a) {
-            if ($$0.a($$2.e + $$11.j(), $$2.f + $$11.l()).s() != $$3) {
-               int $$12 = $$11 == ic.f ? 15 : 0;
-               int $$13 = $$11 == ic.e ? 0 : 15;
-               int $$14 = $$11 == ic.d ? 15 : 0;
-               int $$15 = $$11 == ic.c ? 0 : 15;
+      c(dqs $$0, cuu $$1, dqu $$2, drb $$3, int $$4, int $$5, dqa.a $$6) {
+         this.l = $$0;
+         this.m = $$2.a();
+         this.n = $$2.b();
+         this.o = $$2.c();
+         this.p = $$2.d();
+         this.u = $$2.h();
+         this.v = $$2.i();
+         this.q = $$3;
+         this.x = this.a($$1.d()) - 1;
+         this.t = $$6;
+         int $$7 = this.a($$1.f()) + 1;
+         this.A = $$7 - this.x + 1;
+         this.y = this.b($$4) - 1;
+         int $$8 = this.b($$4 + $$5) + 1;
+         int $$9 = $$8 - this.y + 1;
+         this.z = this.c($$1.e()) - 1;
+         int $$10 = this.c($$1.g()) + 1;
+         this.B = $$10 - this.z + 1;
+         int $$11 = this.A * $$9 * this.B;
+         this.r = new dqa.b[$$11];
+         this.s = new long[$$11];
+         Arrays.fill(this.s, Long.MAX_VALUE);
+      }
 
-               for (int $$16 = $$12; $$16 <= $$13; $$16++) {
-                  for (int $$17 = $$14; $$17 <= $$15; $$17++) {
-                     int $$18 = Math.min($$8, $$1.a(doy.a.e, $$16, $$17)) + 1;
+      private int a(int $$0, int $$1, int $$2) {
+         int $$3 = $$0 - this.x;
+         int $$4 = $$1 - this.y;
+         int $$5 = $$2 - this.z;
+         return ($$4 * this.B + $$5) * this.A + $$3;
+      }
 
-                     for (int $$19 = $$7; $$19 < $$18; $$19++) {
-                        a($$1, $$4.a($$5, $$16, $$19, $$17));
+      @Nullable
+      @Override
+      public dlf a(dqh.b $$0, double $$1) {
+         int $$2 = $$0.a();
+         int $$3 = $$0.b();
+         int $$4 = $$0.c();
+         if ($$1 > 0.0) {
+            this.w = false;
+            return null;
+         } else {
+            dqa.b $$5 = this.t.computeFluid($$2, $$3, $$4);
+            if ($$5.a($$3).a(cyq.H)) {
+               this.w = false;
+               return cyq.H.o();
+            } else {
+               int $$6 = Math.floorDiv($$2 - 5, 16);
+               int $$7 = Math.floorDiv($$3 + 1, 12);
+               int $$8 = Math.floorDiv($$4 - 5, 16);
+               int $$9 = Integer.MAX_VALUE;
+               int $$10 = Integer.MAX_VALUE;
+               int $$11 = Integer.MAX_VALUE;
+               long $$12 = 0L;
+               long $$13 = 0L;
+               long $$14 = 0L;
+
+               for (int $$15 = 0; $$15 <= 1; $$15++) {
+                  for (int $$16 = -1; $$16 <= 1; $$16++) {
+                     for (int $$17 = 0; $$17 <= 1; $$17++) {
+                        int $$18 = $$6 + $$15;
+                        int $$19 = $$7 + $$16;
+                        int $$20 = $$8 + $$17;
+                        int $$21 = this.a($$18, $$19, $$20);
+                        long $$22 = this.s[$$21];
+                        long $$23;
+                        if ($$22 != Long.MAX_VALUE) {
+                           $$23 = $$22;
+                        } else {
+                           awo $$24 = this.q.a($$18, $$19, $$20);
+                           $$23 = hz.a($$18 * 16 + $$24.a(10), $$19 * 12 + $$24.a(9), $$20 * 16 + $$24.a(10));
+                           this.s[$$21] = $$23;
+                        }
+
+                        int $$26 = hz.a($$23) - $$2;
+                        int $$27 = hz.b($$23) - $$3;
+                        int $$28 = hz.c($$23) - $$4;
+                        int $$29 = $$26 * $$26 + $$27 * $$27 + $$28 * $$28;
+                        if ($$9 >= $$29) {
+                           $$14 = $$13;
+                           $$13 = $$12;
+                           $$12 = $$23;
+                           $$11 = $$10;
+                           $$10 = $$9;
+                           $$9 = $$29;
+                        } else if ($$10 >= $$29) {
+                           $$14 = $$13;
+                           $$13 = $$23;
+                           $$11 = $$10;
+                           $$10 = $$29;
+                        } else if ($$11 >= $$29) {
+                           $$14 = $$23;
+                           $$11 = $$29;
+                        }
                      }
+                  }
+               }
+
+               dqa.b $$30 = this.a($$12);
+               double $$31 = a($$9, $$10);
+               dlf $$32 = $$30.a($$3);
+               if ($$31 <= 0.0) {
+                  this.w = $$31 >= k;
+                  return $$32;
+               } else if ($$32.a(cyq.G) && this.t.computeFluid($$2, $$3 - 1, $$4).a($$3 - 1).a(cyq.H)) {
+                  this.w = true;
+                  return $$32;
+               } else {
+                  MutableDouble $$34 = new MutableDouble(Double.NaN);
+                  dqa.b $$35 = this.a($$13);
+                  double $$36 = $$31 * this.a($$0, $$34, $$30, $$35);
+                  if ($$1 + $$36 > 0.0) {
+                     this.w = false;
+                     return null;
+                  } else {
+                     dqa.b $$37 = this.a($$14);
+                     double $$38 = a($$9, $$11);
+                     if ($$38 > 0.0) {
+                        double $$39 = $$31 * $$38 * this.a($$0, $$34, $$30, $$37);
+                        if ($$1 + $$39 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
+                     }
+
+                     double $$40 = a($$10, $$11);
+                     if ($$40 > 0.0) {
+                        double $$41 = $$31 * $$40 * this.a($$0, $$34, $$35, $$37);
+                        if ($$1 + $$41 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
+                     }
+
+                     this.w = true;
+                     return $$32;
                   }
                }
             }
          }
       }
-   }
 
-   private static void a(dll $$0, hx $$1) {
-      djp $$2 = $$0.a_($$1);
-      if ($$2.a(asi.O)) {
-         $$0.e($$1);
+      @Override
+      public boolean a() {
+         return this.w;
       }
 
-      eez $$3 = $$0.b_($$1);
-      if (!$$3.c()) {
-         $$0.e($$1);
+      private static double a(int $$0, int $$1) {
+         double $$2 = 25.0;
+         return 1.0 - (double)Math.abs($$1 - $$0) / 25.0;
       }
-   }
 
-   public static void a(cus $$0, dmg $$1) {
-      cte $$2 = $$1.f();
-      Builder<id, dqb> $$3 = ImmutableMap.builder();
+      private double a(dqh.b $$0, MutableDouble $$1, dqa.b $$2, dqa.b $$3) {
+         int $$4 = $$0.b();
+         dlf $$5 = $$2.a($$4);
+         dlf $$6 = $$3.a($$4);
+         if ((!$$5.a(cyq.H) || !$$6.a(cyq.G)) && (!$$5.a(cyq.G) || !$$6.a(cyq.H))) {
+            int $$7 = Math.abs($$2.a - $$3.a);
+            if ($$7 == 0) {
+               return 0.0;
+            } else {
+               double $$8 = 0.5 * (double)($$2.a + $$3.a);
+               double $$9 = (double)$$4 + 0.5 - $$8;
+               double $$10 = (double)$$7 / 2.0;
+               double $$11 = 0.0;
+               double $$12 = 2.5;
+               double $$13 = 1.5;
+               double $$14 = 3.0;
+               double $$15 = 10.0;
+               double $$16 = 3.0;
+               double $$17 = $$10 - Math.abs($$9);
+               double $$19;
+               if ($$9 > 0.0) {
+                  double $$18 = 0.0 + $$17;
+                  if ($$18 > 0.0) {
+                     $$19 = $$18 / 1.5;
+                  } else {
+                     $$19 = $$18 / 2.5;
+                  }
+               } else {
+                  double $$21 = 3.0 + $$17;
+                  if ($$21 > 0.0) {
+                     $$19 = $$21 / 3.0;
+                  } else {
+                     $$19 = $$21 / 10.0;
+                  }
+               }
 
-      for (id $$4 : id.values()) {
-         int $$5 = $$2.e + $$4.b();
-         int $$6 = $$2.f + $$4.c();
-         dqb $$7 = $$0.a($$5, $$6).t();
-         if ($$7 != null) {
-            $$3.put($$4, $$7);
+               double $$24 = 2.0;
+               double $$28;
+               if (!($$19 < -2.0) && !($$19 > 2.0)) {
+                  double $$26 = $$1.getValue();
+                  if (Double.isNaN($$26)) {
+                     double $$27 = this.m.a($$0);
+                     $$1.setValue($$27);
+                     $$28 = $$27;
+                  } else {
+                     $$28 = $$26;
+                  }
+               } else {
+                  $$28 = 0.0;
+               }
+
+               return 2.0 * ($$28 + $$19);
+            }
+         } else {
+            return 2.0;
          }
       }
 
-      ImmutableMap<id, dqb> $$8 = $$3.build();
-      if ($$1.s() || !$$8.isEmpty()) {
-         dqa.c $$9 = a($$1.t(), $$8);
-         dlk.a $$10 = ($$1x, $$2x, $$3x) -> {
-            double $$4x = (double)$$1x + 0.5 + b.a((double)$$1x, (double)$$2x, (double)$$3x) * 4.0;
-            double $$5x = (double)$$2x + 0.5 + b.a((double)$$2x, (double)$$3x, (double)$$1x) * 4.0;
-            double $$6x = (double)$$3x + 0.5 + b.a((double)$$3x, (double)$$1x, (double)$$2x) * 4.0;
-            return $$9.getDistance($$4x, $$5x, $$6x) < 4.0;
-         };
-         Stream.of(dou.a.values()).map($$1::b).forEach($$1x -> $$1x.a($$10));
-      }
-   }
-
-   public static dqa.c a(@Nullable dqb $$0, Map<id, dqb> $$1) {
-      List<dqa.c> $$2 = Lists.newArrayList();
-      if ($$0 != null) {
-         $$2.add(a(null, $$0));
+      private int a(int $$0) {
+         return Math.floorDiv($$0, 16);
       }
 
-      $$1.forEach(($$1x, $$2x) -> $$2.add(a($$1x, $$2x)));
-      return ($$1x, $$2x, $$3) -> {
-         double $$4 = Double.POSITIVE_INFINITY;
+      private int b(int $$0) {
+         return Math.floorDiv($$0, 12);
+      }
 
-         for (dqa.c $$5 : $$2) {
-            double $$6 = $$5.getDistance($$1x, $$2x, $$3);
-            if ($$6 < $$4) {
-               $$4 = $$6;
+      private int c(int $$0) {
+         return Math.floorDiv($$0, 16);
+      }
+
+      private dqa.b a(long $$0) {
+         int $$1 = hz.a($$0);
+         int $$2 = hz.b($$0);
+         int $$3 = hz.c($$0);
+         int $$4 = this.a($$1);
+         int $$5 = this.b($$2);
+         int $$6 = this.c($$3);
+         int $$7 = this.a($$4, $$5, $$6);
+         dqa.b $$8 = this.r[$$7];
+         if ($$8 != null) {
+            return $$8;
+         } else {
+            dqa.b $$9 = this.b($$1, $$2, $$3);
+            this.r[$$7] = $$9;
+            return $$9;
+         }
+      }
+
+      private dqa.b b(int $$0, int $$1, int $$2) {
+         dqa.b $$3 = this.t.computeFluid($$0, $$1, $$2);
+         int $$4 = Integer.MAX_VALUE;
+         int $$5 = $$1 + 12;
+         int $$6 = $$1 - 12;
+         boolean $$7 = false;
+
+         for (int[] $$8 : C) {
+            int $$9 = $$0 + jb.c($$8[0]);
+            int $$10 = $$2 + jb.c($$8[1]);
+            int $$11 = this.l.a($$9, $$10);
+            int $$12 = $$11 + 8;
+            boolean $$13 = $$8[0] == 0 && $$8[1] == 0;
+            if ($$13 && $$6 > $$12) {
+               return $$3;
+            }
+
+            boolean $$14 = $$5 > $$12;
+            if ($$14 || $$13) {
+               dqa.b $$15 = this.t.computeFluid($$9, $$12, $$10);
+               if (!$$15.a($$12).i()) {
+                  if ($$13) {
+                     $$7 = true;
+                  }
+
+                  if ($$14) {
+                     return $$15;
+                  }
+               }
+            }
+
+            $$4 = Math.min($$4, $$11);
+         }
+
+         int $$16 = this.a($$0, $$1, $$2, $$3, $$4, $$7);
+         return new dqa.b($$16, this.a($$0, $$1, $$2, $$3, $$16));
+      }
+
+      private int a(int $$0, int $$1, int $$2, dqa.b $$3, int $$4, boolean $$5) {
+         dqh.e $$6 = new dqh.e($$0, $$1, $$2);
+         double $$7;
+         double $$8;
+         if (cxc.a(this.u, this.v, $$6)) {
+            $$7 = -1.0;
+            $$8 = -1.0;
+         } else {
+            int $$9 = $$4 + 8 - $$1;
+            int $$10 = 64;
+            double $$11 = $$5 ? awh.a((double)$$9, 0.0, 64.0, 1.0, 0.0) : 0.0;
+            double $$12 = awh.a(this.n.a($$6), -1.0, 1.0);
+            double $$13 = awh.b($$11, 1.0, 0.0, -0.3, 0.8);
+            double $$14 = awh.b($$11, 1.0, 0.0, -0.8, 0.4);
+            $$7 = $$12 - $$14;
+            $$8 = $$12 - $$13;
+         }
+
+         int $$17;
+         if ($$8 > 0.0) {
+            $$17 = $$3.a;
+         } else if ($$7 > 0.0) {
+            $$17 = this.a($$0, $$1, $$2, $$4);
+         } else {
+            $$17 = doo.g;
+         }
+
+         return $$17;
+      }
+
+      private int a(int $$0, int $$1, int $$2, int $$3) {
+         int $$4 = 16;
+         int $$5 = 40;
+         int $$6 = Math.floorDiv($$0, 16);
+         int $$7 = Math.floorDiv($$1, 40);
+         int $$8 = Math.floorDiv($$2, 16);
+         int $$9 = $$7 * 40 + 20;
+         int $$10 = 10;
+         double $$11 = this.o.a(new dqh.e($$6, $$7, $$8)) * 10.0;
+         int $$12 = awh.a($$11, 3);
+         int $$13 = $$9 + $$12;
+         return Math.min($$3, $$13);
+      }
+
+      private dlf a(int $$0, int $$1, int $$2, dqa.b $$3, int $$4) {
+         dlf $$5 = $$3.b;
+         if ($$4 <= -10 && $$4 != doo.g && $$3.b != cyq.H.o()) {
+            int $$6 = 64;
+            int $$7 = 40;
+            int $$8 = Math.floorDiv($$0, 64);
+            int $$9 = Math.floorDiv($$1, 40);
+            int $$10 = Math.floorDiv($$2, 64);
+            double $$11 = this.p.a(new dqh.e($$8, $$9, $$10));
+            if (Math.abs($$11) > 0.3) {
+               $$5 = cyq.H.o();
             }
          }
 
-         return $$4;
-      };
-   }
-
-   private static dqa.c a(@Nullable id $$0, dqb $$1) {
-      double $$2 = 0.0;
-      double $$3 = 0.0;
-      if ($$0 != null) {
-         for (ic $$4 : $$0.a()) {
-            $$2 += (double)($$4.j() * 16);
-            $$3 += (double)($$4.l() * 16);
-         }
+         return $$5;
       }
-
-      double $$5 = $$2;
-      double $$6 = $$3;
-      double $$7 = (double)$$1.a().K_() / 2.0;
-      double $$8 = (double)$$1.a().J_() + $$7;
-      return ($$4x, $$5x, $$6x) -> a($$4x - 8.0 - $$5, $$5x - $$8, $$6x - 8.0 - $$6, 8.0, $$7, 8.0);
-   }
-
-   private static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      double $$6 = Math.abs($$0) - $$3;
-      double $$7 = Math.abs($$1) - $$4;
-      double $$8 = Math.abs($$2) - $$5;
-      return aup.g(Math.max(0.0, $$6), Math.max(0.0, $$7), Math.max(0.0, $$8));
-   }
-
-   public static record a(double a, double b) {
-   }
-
-   interface b {
-      double get(dqb var1, int var2, int var3, int var4);
-   }
-
-   public interface c {
-      double getDistance(double var1, double var3, double var5);
    }
 }

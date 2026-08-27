@@ -1,141 +1,166 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class efz {
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final auw d;
+   private final hz.a e = new hz.a();
+   private final hz.a f = new hz.a();
 
-public class efz implements egb {
-   private static final Logger b = LogUtils.getLogger();
-   private final ctx c;
-   private final int d;
-   private final ArrayDeque<efz.c> e = new ArrayDeque<>();
-   private final List<efz.c> f = new ArrayList<>();
-   private int g = 0;
-
-   public efz(ctx $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public efz(cvp $$0) {
+      this.c = $$0.J_() - 1;
+      int $$1 = $$0.al();
+      int $$2 = awh.e($$1 - this.c + 1);
+      this.d = new aww($$2, 256);
    }
 
-   @Override
-   public void a(ic $$0, djp $$1, hx $$2, hx $$3, int $$4, int $$5) {
-      this.a($$2, new efz.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
+   public void a(dnb $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
+      } else {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
+            }
+         }
+      }
    }
 
-   @Override
-   public void a(hx $$0, cwy $$1, hx $$2) {
-      this.a($$0, new efz.e($$0, $$1, $$2.i()));
-   }
+   private int a(dnb $$0, int $$1, int $$2, int $$3) {
+      int $$4 = jb.c($$0.g($$1) + 1);
+      hz.a $$5 = this.e.d($$2, $$4, $$3);
+      hz.a $$6 = this.f.a($$5, ie.a);
+      dlf $$7 = cyq.a.o();
 
-   @Override
-   public void a(djp $$0, hx $$1, cwy $$2, hx $$3, boolean $$4) {
-      this.a($$1, new efz.a($$0, $$1.i(), $$2, $$3.i(), $$4));
-   }
-
-   @Override
-   public void a(hx $$0, cwy $$1, @Nullable ic $$2) {
-      this.a($$0, new efz.b($$0.i(), $$1, $$2));
-   }
-
-   private void a(hx $$0, efz.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         dnn $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = cyq.a.o();
+            int $$10 = $$0.g($$8);
+            $$5.q(jb.c($$10));
+            $$6.q($$5.v() - 1);
          } else {
-            this.e.push($$1);
-         }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
-
-      if (!$$2) {
-         this.a();
-      }
-   }
-
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
-            }
-
-            this.f.clear();
-            efz.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dlf $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$0, $$5, $$7, $$6, $$12)) {
+                  return $$5.v();
                }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(ie.a);
             }
          }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
       }
+
+      return this.c;
    }
 
-   static record a(djp a, hx b, cwy c, hx d, boolean e) implements efz.c {
-      @Override
-      public boolean a(ctx $$0) {
-         egb.a($$0, this.a, this.b, this.c, this.d, this.e);
+   public boolean a(cut $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
          return false;
+      } else {
+         hz $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dlf $$8 = $$0.a_($$7);
+         hz $$9 = this.f.d($$1, $$2, $$3);
+         dlf $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            hz $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dlf $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+         }
       }
    }
 
-   static final class b implements efz.c {
-      private final hx a;
-      private final cwy b;
-      @Nullable
-      private final ic c;
-      private int d = 0;
+   private boolean a(cut $$0, int $$1, int $$2, hz $$3, dlf $$4, hz $$5, dlf $$6) {
+      int $$7 = $$3.v();
+      if (a($$0, $$3, $$4, $$5, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
+      }
 
-      b(hx $$0, cwy $$1, @Nullable ic $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         if (egb.a[this.d] == $$2) {
-            this.d++;
+      return false;
+   }
+
+   private int a(cut $$0, hz $$1, dlf $$2) {
+      hz.a $$3 = this.e.g($$1);
+      hz.a $$4 = this.f.a($$1, ie.a);
+      dlf $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         dlf $$6 = $$0.a_($$4);
+         if (a($$0, $$3, $$5, $$4, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(ie.a);
+      }
+
+      return this.c;
+   }
+
+   private static boolean a(cut $$0, hz $$1, dlf $$2, hz $$3, dlf $$4) {
+      if ($$4.b($$0, $$3) != 0) {
+         return true;
+      } else {
+         eol $$5 = egg.a($$0, $$1, $$2, ie.a);
+         eol $$6 = egg.a($$0, $$3, $$4, ie.b);
+         return eoi.b($$5, $$6);
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
+   }
+
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
          }
       }
 
-      @Override
-      public boolean a(ctx $$0) {
-         hx $$1 = this.a.a(egb.a[this.d++]);
-         djp $$2 = $$0.a_($$1);
-         egb.a($$0, $$2, $$1, this.b, this.a, false);
-         if (this.d < egb.a.length && egb.a[this.d] == this.c) {
-            this.d++;
-         }
+      return this.c($$0 + this.c);
+   }
 
-         return this.d < egb.a.length;
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
       }
    }
 
-   interface c {
-      boolean a(ctx var1);
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
    }
 
-   static record d(ic a, djp b, hx c, hx d, int e, int f) implements efz.c {
-      @Override
-      public boolean a(ctx $$0) {
-         egb.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
-         return false;
-      }
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
    }
 
-   static record e(hx a, cwy b, hx c) implements efz.c {
-      @Override
-      public boolean a(ctx $$0) {
-         djp $$1 = $$0.a_(this.a);
-         egb.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
-      }
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

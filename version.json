@@ -164,27 +164,27 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "de83457c22691e61cd800161182eda8395049bf2",
-      "size": 24504193,
-      "url": "https://piston-data.mojang.com/v1/objects/de83457c22691e61cd800161182eda8395049bf2/client.jar"
+      "sha1": "723cca5ce4684d04a259a7860a41e75856a5c08a",
+      "size": 24673084,
+      "url": "https://piston-data.mojang.com/v1/objects/723cca5ce4684d04a259a7860a41e75856a5c08a/client.jar"
     },
     "client_mappings": {
-      "sha1": "a2ee441f4d743edfd2e2c5ab3bb216992bfd91b2",
-      "size": 8914795,
-      "url": "https://piston-data.mojang.com/v1/objects/a2ee441f4d743edfd2e2c5ab3bb216992bfd91b2/client.txt"
+      "sha1": "52babc798f62bb24156e66199193f568f0e56c53",
+      "size": 9017873,
+      "url": "https://piston-data.mojang.com/v1/objects/52babc798f62bb24156e66199193f568f0e56c53/client.txt"
     },
     "server": {
-      "sha1": "d443ec98f3f3ee2dc92e0788d6d83d74844feb4f",
-      "size": 49185414,
-      "url": "https://piston-data.mojang.com/v1/objects/d443ec98f3f3ee2dc92e0788d6d83d74844feb4f/server.jar"
+      "sha1": "730a3ef2f99f6a822aa504bfee2eb5372d826293",
+      "size": 49343264,
+      "url": "https://piston-data.mojang.com/v1/objects/730a3ef2f99f6a822aa504bfee2eb5372d826293/server.jar"
     },
     "server_mappings": {
-      "sha1": "3f5a2b6c7e018dc7fac6cb2b55abee80fc15c35c",
-      "size": 6808238,
-      "url": "https://piston-data.mojang.com/v1/objects/3f5a2b6c7e018dc7fac6cb2b55abee80fc15c35c/server.txt"
+      "sha1": "9bd7bc1702cc33db9baf44b7ff081e420d65aebf",
+      "size": 6907562,
+      "url": "https://piston-data.mojang.com/v1/objects/9bd7bc1702cc33db9baf44b7ff081e420d65aebf/server.txt"
     }
   },
-  "id": "23w51b",
+  "id": "24w03a",
   "javaVersion": {
     "component": "java-runtime-gamma",
     "majorVersion": 17
@@ -631,6 +631,131 @@
         }
       },
       "name": "org.joml:joml:1.10.5"
+    },
+    {
+      "downloads": {
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2.jar",
+          "sha1": "4432335260047128efe750f40c07514826cc4e48",
+          "size": 442372,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2.jar"
+        }
+      },
+      "name": "org.lwjgl:lwjgl-freetype:3.3.2"
+    },
+    {
+      "downloads": {
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-linux.jar",
+          "sha1": "01372c56fc041a5e7bf4b71622640c295aeae2b2",
+          "size": 1207943,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-linux.jar"
+        }
+      },
+      "name": "org.lwjgl:lwjgl-freetype:3.3.2:natives-linux",
+      "rules": [
+        {
+          "action": "allow",
+          "os": {
+            "name": "linux"
+          }
+        }
+      ]
+    },
+    {
+      "downloads": {
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-macos.jar",
+          "sha1": "02d13a949aa526b58b1c46246c8d8c4efb845e5d",
+          "size": 1133770,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-macos.jar"
+        }
+      },
+      "name": "org.lwjgl:lwjgl-freetype:3.3.2:natives-macos",
+      "rules": [
+        {
+          "action": "allow",
+          "os": {
+            "name": "osx"
+          }
+        }
+      ]
+    },
+    {
+      "downloads": {
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-macos-arm64.jar",
+          "sha1": "71872f69ad2df2ba838e462c7a2bf09f1bdfc2c5",
+          "size": 1031798,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-macos-arm64.jar"
+        }
+      },
+      "name": "org.lwjgl:lwjgl-freetype:3.3.2:natives-macos-arm64",
+      "rules": [
+        {
+          "action": "allow",
+          "os": {
+            "name": "osx"
+          }
+        }
+      ]
+    },
+    {
+      "downloads": {
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-windows.jar",
+          "sha1": "1e4acf1331dded3b4386fb7c3505c49c587f4f42",
+          "size": 1006363,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-windows.jar"
+        }
+      },
+      "name": "org.lwjgl:lwjgl-freetype:3.3.2:natives-windows",
+      "rules": [
+        {
+          "action": "allow",
+          "os": {
+            "name": "windows"
+          }
+        }
+      ]
+    },
+    {
+      "downloads": {
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-windows-arm64.jar",
+          "sha1": "be03946a18955b5ed958b509cfec78140b10bc33",
+          "size": 875694,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-windows-arm64.jar"
+        }
+      },
+      "name": "org.lwjgl:lwjgl-freetype:3.3.2:natives-windows-arm64",
+      "rules": [
+        {
+          "action": "allow",
+          "os": {
+            "name": "windows"
+          }
+        }
+      ]
+    },
+    {
+      "downloads": {
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-windows-x86.jar",
+          "sha1": "54d9c63d42dea253b27ce981ce1a7c970eb0a071",
+          "size": 868400,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-freetype/3.3.2/lwjgl-freetype-3.3.2-natives-windows-x86.jar"
+        }
+      },
+      "name": "org.lwjgl:lwjgl-freetype:3.3.2:natives-windows-x86",
+      "rules": [
+        {
+          "action": "allow",
+          "os": {
+            "name": "windows"
+          }
+        }
+      ]
     },
     {
       "downloads": {
@@ -1533,7 +1658,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2023-12-18T15:39:14+00:00",
-  "time": "2023-12-18T15:39:14+00:00",
+  "releaseTime": "2024-01-17T13:19:20+00:00",
+  "time": "2024-01-17T13:19:20+00:00",
   "type": "snapshot"
 }

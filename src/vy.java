@@ -1,64 +1,77 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.BitSet;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record vy<S>(List<vy.a<S>> a) {
-   public static <S> vy<S> a(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<vy.a<S>> $$4 = a($$1, $$2);
+public class vy {
+   private final wa[] a;
+   private int b;
+   private int c;
+   @Nullable
+   private wc d;
 
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null) {
-         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
-         if (!$$6) {
+   public vy(int $$0) {
+      this.a = new wa[$$0];
+   }
+
+   public boolean a(wc $$0, boolean $$1) {
+      if (Objects.equals($$0, this.d)) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.a($$1 ? new wa($$0, true) : null);
+         return true;
+      }
+   }
+
+   private void a(@Nullable wa $$0) {
+      int $$1 = this.b;
+      this.b = ($$1 + 1) % this.a.length;
+      this.c++;
+      this.a[$$1] = $$0;
+   }
+
+   public void a(wc $$0) {
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         wa $$2 = this.a[$$1];
+         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
+            this.a[$$1] = null;
             break;
          }
-
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
       }
-
-      return new vy<>($$4);
    }
 
-   private static <S> List<vy.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<vy.a<S>> $$2 = new ArrayList<>();
+   public int a() {
+      int $$0 = this.c;
+      this.c = 0;
+      return $$0;
+   }
 
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof ey) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new vy.a<>($$4, $$6));
-               }
-            }
+   public vy.a b() {
+      int $$0 = this.a();
+      BitSet $$1 = new BitSet(this.a.length);
+      ObjectList<wc> $$2 = new ObjectArrayList(this.a.length);
+
+      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
+         int $$4 = (this.b + $$3) % this.a.length;
+         wa $$5 = this.a[$$4];
+         if ($$5 != null) {
+            $$1.set($$3, true);
+            $$2.add($$5.b());
+            this.a[$$4] = $$5.a();
          }
       }
 
-      return $$2;
+      vx $$6 = new vx($$2);
+      vx.b $$7 = new vx.b($$0, $$1);
+      return new vy.a($$6, $$7);
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
-      }
+   public int c() {
+      return this.c;
+   }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
-      }
-
-      public String c() {
-         return this.b;
-      }
+   public static record a(vx a, vx.b b) {
    }
 }

@@ -1,32 +1,37 @@
 public interface fbq {
-   fbs a();
+   Object b = new Object();
+   int c = 32;
 
-   public static record a(fbs a) implements fbq {
-      @Override
-      public fbs a() {
-         return this.a.a() == fbr.b ? this.a : fbs.b;
-      }
+   fbq.a a(eyu var1, fbr var2, long var3);
 
-      public fbs b() {
-         return this.a;
-      }
+   default Object e() {
+      return b;
    }
 
-   public static class b implements fbq {
-      @Override
-      public fbs a() {
-         return fbs.b;
-      }
+   default int a() {
+      return 160;
    }
 
-   public static record c(boolean a) implements fbq {
-      @Override
-      public fbs a() {
-         return this.a ? fbs.b : fbs.a;
+   default int b() {
+      return 32;
+   }
+
+   default int f() {
+      return awh.e(this.b(), 32);
+   }
+
+   public static enum a {
+      a(atk.zQ),
+      b(atk.zR);
+
+      private final atj c;
+
+      private a(atj $$0) {
+         this.c = $$0;
       }
 
-      public boolean b() {
-         return this.a;
+      public void a(gll $$0) {
+         $$0.a(gkc.a(this.c, 1.0F, 1.0F));
       }
    }
 }

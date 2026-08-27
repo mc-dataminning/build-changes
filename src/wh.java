@@ -1,78 +1,44 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
+import java.util.UUID;
 
-public record wh(String d, @Nullable fo e) implements wi {
-   public static final MapCodec<wh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(wh::b)).apply($$0, wh::new));
-   public static final wi.a<wh> b = new wi.a<>(a, "block");
-
-   public wh(String $$0) {
-      this($$0, a($$0));
+public record wh(UUID a, chk b) {
+   public wm a(Duration $$0) {
+      return new wm.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   @Nullable
-   private static fo a(String $$0) {
-      try {
-         return fm.a().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   public wk.b a(UUID $$0) {
+      return new wk($$0, this.a).a(this.b);
    }
 
-   @Override
-   public Stream<so> a(ds $$0) {
-      if (this.e != null) {
-         ane $$1 = $$0.e();
-         hx $$2 = this.e.c($$0);
-         if ($$1.p($$2)) {
-            dhd $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.o());
-            }
-         }
+   public wh.a a() {
+      return new wh.a(this.a, this.b.b());
+   }
+
+   public boolean b() {
+      return this.b.b().a();
+   }
+
+   public UUID c() {
+      return this.a;
+   }
+
+   public chk d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, chk.a b) {
+      public static wh.a a(uq $$0) {
+         return new wh.a($$0.p(), new chk.a($$0));
       }
 
-      return Stream.empty();
-   }
-
-   @Override
-   public wi.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "block=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof wh $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
+      public static void a(uq $$0, wh.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public fo c() {
-      return this.e;
+      public wh a(GameProfile $$0, awu $$1) throws chk.b {
+         return new wh(this.a, chk.a($$1, $$0.getId(), this.b));
+      }
    }
 }

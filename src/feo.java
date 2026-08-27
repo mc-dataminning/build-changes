@@ -1,117 +1,103 @@
-public class feo extends ffm<cil> {
-   private static final ahh x = new ahh("container/anvil/text_field");
-   private static final ahh y = new ahh("container/anvil/text_field_disabled");
-   private static final ahh z = new ahh("container/anvil/error");
-   private static final ahh A = new ahh("textures/gui/container/anvil.png");
-   private static final vg B = vg.c("container.repair.expensive");
-   private eya C;
-   private final cfq D;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   public feo(cil $$0, cfp $$1, vg $$2) {
-      super($$0, $$1, $$2, A);
-      this.D = $$1.m;
-      this.l = 60;
+public class feo extends ffe {
+   private static final long a = 2000L;
+   private final api b;
+   private long c = -1L;
+   private boolean k;
+   private static final Object2IntMap<dng> l = ac.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dng.c, 5526612);
+      $$0.put(dng.d, 10066329);
+      $$0.put(dng.e, 6250897);
+      $$0.put(dng.f, 8434258);
+      $$0.put(dng.g, 13750737);
+      $$0.put(dng.h, 7497737);
+      $$0.put(dng.i, 3159410);
+      $$0.put(dng.j, 2213376);
+      $$0.put(dng.k, 13421772);
+      $$0.put(dng.l, 16769184);
+      $$0.put(dng.m, 15884384);
+      $$0.put(dng.n, 16777215);
+   });
+
+   public feo(api $$0) {
+      super(ewz.a);
+      this.b = $$0;
    }
 
    @Override
-   protected void I() {
-      int $$0 = (this.g - this.c) / 2;
-      int $$1 = (this.h - this.k) / 2;
-      this.C = new eya(this.i, $$0 + 62, $$1 + 24, 103, 12, vg.c("container.repair"));
-      this.C.f(false);
-      this.C.g(-1);
-      this.C.h(-1);
-      this.C.d(false);
-      this.C.f(50);
-      this.C.b(this::a);
-      this.C.a("");
-      this.e(this.C);
-      this.c(this.C);
-      this.C.e(this.p.b(0).h());
+   public boolean aO_() {
+      return false;
    }
 
    @Override
-   public void a(evr $$0, int $$1, int $$2) {
-      String $$3 = this.C.a();
-      this.b($$0, $$1, $$2);
-      this.C.a($$3);
+   protected boolean aP_() {
+      return false;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.s.r();
-      }
-
-      return !this.C.a($$0, $$1, $$2) && !this.C.d() ? super.a($$0, $$1, $$2) : true;
+   public void k() {
+      this.k = true;
+      this.d(true);
    }
 
-   private void a(String $$0) {
-      cke $$1 = this.p.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().A() && $$0.equals($$1.g().y().getString())) {
-            $$2 = "";
-         }
-
-         if (this.p.a($$2)) {
-            this.f.s.cr.b(new aes($$2));
-         }
+   @Override
+   protected void b(fdc $$0) {
+      if (this.k) {
+         $$0.a(fdb.a, vq.c("narrator.loading.done"));
+      } else {
+         $$0.a(fdb.a, this.o());
       }
    }
 
+   private vq o() {
+      return vq.a("loading.progress", awh.a(this.b.f(), 0, 100));
+   }
+
    @Override
-   protected void b(exe $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.p.n();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         vg $$5;
-         if ($$3 >= 40 && !this.f.s.fT().d) {
-            $$5 = B;
-            $$4 = 16736352;
-         } else if (!this.p.b(2).h()) {
-            $$5 = null;
-         } else {
-            $$5 = vg.a("container.repair.cost", $$3);
-            if (!this.p.b(2).a(this.D)) {
-               $$4 = 16736352;
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ac.b();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
+      }
+
+      int $$5 = this.g / 2;
+      int $$6 = this.h / 2;
+      int $$7 = 30;
+      a($$0, this.b, $$5, $$6 + 30, 2, 0);
+      $$0.a(this.i, this.o(), $$5, $$6 - 9 / 2 - 30, 16777215);
+   }
+
+   public static void a(eyu $$0, api $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      $$0.a(() -> {
+         if ($$5 != 0) {
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+         }
+
+         for (int $$11x = 0; $$11x < $$9; $$11x++) {
+            for (int $$12x = 0; $$12x < $$9; $$12x++) {
+               dng $$13x = $$1.a($$11x, $$12x);
+               int $$14x = $$11 + $$11x * $$6;
+               int $$15 = $$12 + $$12x * $$6;
+               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, l.getInt($$13x) | 0xFF000000);
             }
          }
-
-         if ($$5 != null) {
-            int $$8 = this.c - 8 - this.i.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
-            $$0.b(this.i, $$5, $$8, 69, $$4);
-         }
-      }
-   }
-
-   @Override
-   protected void a(exe $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p.b(0).h() ? x : y, this.t + 59, this.u + 20, 110, 16);
-   }
-
-   @Override
-   public void d(exe $$0, int $$1, int $$2, float $$3) {
-      this.C.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void c(exe $$0, int $$1, int $$2) {
-      if ((this.p.b(0).h() || this.p.b(1).h()) && !this.p.b(this.p.o()).h()) {
-         $$0.a(z, $$1 + 99, $$2 + 45, 28, 21);
-      }
-   }
-
-   @Override
-   public void a(cij $$0, int $$1, cng $$2) {
-      if ($$1 == 0) {
-         this.C.a($$2.b() ? "" : $$2.y().getString());
-         this.C.e(!$$2.b());
-         this.a(this.C);
-      }
+      });
    }
 }

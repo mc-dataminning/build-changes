@@ -1,140 +1,111 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public abstract class cwn extends cwy implements ddy {
-   protected static final emv a = cwy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final emv b = cwy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final dkg c = dkf.C;
-   private final boolean d;
+public class cwn {
+   private static final Logger c = LogUtils.getLogger();
+   public static final cwn a = new cwn(ImmutableMap.of(), ImmutableList.of());
+   public static final MapCodec<cwn> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.simpleMap(dqk.a.c, dsr.c.promotePartial(ac.a("Carver: ", c::error)), axc.a(dqk.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               eai.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, cwn::new)
+   );
+   private final Map<dqk.a, in<dsr<?>>> d;
+   private final List<in<eai>> e;
+   private final Supplier<List<dtf<?, ?>>> f;
+   private final Supplier<Set<eai>> g;
 
-   public static boolean a(ctx $$0, hx $$1) {
-      return g($$0.a_($$1));
-   }
-
-   public static boolean g(djp $$0) {
-      return $$0.a(asi.N) && $$0.b() instanceof cwn;
-   }
-
-   protected cwn(boolean $$0, djo.d $$1) {
-      super($$1);
+   cwn(Map<dqk.a, in<dsr<?>>> $$0, List<in<eai>> $$1) {
       this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(in::a).map(ij::a).flatMap(eai::a).filter($$0xx -> $$0xx.b() == dts.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(in::a).map(ij::a).collect(Collectors.toSet()));
    }
 
-   @Override
-   protected abstract MapCodec<? extends cwn> a();
-
-   public boolean b() {
-      return this.d;
+   public Iterable<ij<dsr<?>>> a(dqk.a $$0) {
+      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
    }
 
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      dkt $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
-      return $$4 != null && $$4.b() ? b : a;
+   public List<dtf<?, ?>> a() {
+      return this.f.get();
    }
 
-   @Override
-   public boolean a(djp $$0, cua $$1, hx $$2) {
-      return c($$1, $$2.d());
+   public List<in<eai>> b() {
+      return this.e;
    }
 
-   @Override
-   public void b(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
+   public boolean a(eai $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends cwn.b {
+      private final ik<eai> a;
+      private final ik<dsr<?>> b;
+
+      public a(ik<eai> $$0, ik<dsr<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public cwn.a a(dqk.b $$0, aix<eai> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public cwn.a a(dqk.a $$0, aix<dsr<?>> $$1) {
+         this.a($$0, this.b.b($$1));
+         return this;
       }
    }
 
-   protected djp a(djp $$0, ctx $$1, hx $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, $$2, $$3);
+   public static class b {
+      private final Map<dqk.a, List<ij<dsr<?>>>> a = Maps.newLinkedHashMap();
+      private final List<List<ij<eai>>> b = Lists.newArrayList();
+
+      public cwn.b a(dqk.b $$0, ij<eai> $$1) {
+         return this.a($$0.ordinal(), $$1);
       }
 
-      return $$0;
-   }
+      public cwn.b a(int $$0, ij<eai> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
 
-   @Override
-   public void a(djp $$0, ctx $$1, hx $$2, cwy $$3, hx $$4, boolean $$5) {
-      if (!$$1.B && $$1.a_($$2).a(this)) {
-         dkt $$6 = $$0.c(this.c());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
+      public cwn.b a(dqk.a $$0, ij<dsr<?>> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
          }
       }
-   }
 
-   private static boolean a(hx $$0, ctx $$1, dkt $$2) {
-      if (!c($$1, $$0.d())) {
-         return true;
-      } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.h());
-            case d:
-               return !c($$1, $$0.g());
-            case e:
-               return !c($$1, $$0.e());
-            case f:
-               return !c($$1, $$0.f());
-            default:
-               return false;
-         }
+      public cwn a() {
+         return new cwn(
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> in.a((List)$$0.getValue()))),
+            this.b.stream().map(in::a).collect(ImmutableList.toImmutableList())
+         );
       }
-   }
-
-   protected void a(djp $$0, ctx $$1, hx $$2, cwy $$3) {
-   }
-
-   protected djp a(ctx $$0, hx $$1, djp $$2, boolean $$3) {
-      if ($$0.B) {
-         return $$2;
-      } else {
-         dkt $$4 = $$2.c(this.c());
-         return new dcx($$0, $$1, $$2).a($$0.C($$1), $$3, $$4).c();
-      }
-   }
-
-   @Override
-   public void a(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
-      if (!$$4) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$0.c(this.c()).b()) {
-            $$1.a($$2.c(), this);
-         }
-
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.d(), this);
-         }
-      }
-   }
-
-   @Override
-   public djp a(cpp $$0) {
-      eez $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == efa.c;
-      djp $$3 = super.o();
-      ic $$4 = $$0.g();
-      boolean $$5 = $$4 == ic.f || $$4 == ic.e;
-      return $$3.a(this.c(), $$5 ? dkt.b : dkt.a).a(c, Boolean.valueOf($$2));
-   }
-
-   public abstract dks<dkt> c();
-
-   @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, efa.c, efa.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public eez c_(djp $$0) {
-      return $$0.c(c) ? efa.c.a(false) : super.c_($$0);
    }
 }

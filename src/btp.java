@@ -1,36 +1,31 @@
-public class btp extends btk {
-   private final byz a;
-   private anf b;
-   private boolean c;
+import com.google.common.collect.ImmutableMap;
 
-   public btp(byz $$0) {
-      this.a = $$0;
+public class btp<E extends cgl> extends bpw<E> {
+   public btp(int $$0) {
+      super(ImmutableMap.of(bxh.o, bxi.b, bxh.m, bxi.b), $$0);
    }
 
-   @Override
-   public boolean a() {
-      anf $$0 = (anf)this.a.R_();
-      boolean $$1 = $$0 != null && !$$0.P_() && !$$0.fT().b && !$$0.aZ() && !$$0.aA;
-      return !this.a.gf() && $$1 && this.a.go();
+   protected boolean a(aov $$0, E $$1, long $$2) {
+      return $$1.dI() == null;
    }
 
-   @Override
-   public boolean S_() {
-      return !this.c;
+   protected boolean a(aov $$0, E $$1) {
+      return $$1.aC() || $$1.aZ() || $$1.bn();
    }
 
-   @Override
-   public void c() {
-      this.b = (anf)this.a.R_();
-      this.c = false;
+   protected void b(aov $$0, E $$1, long $$2) {
+      if ($$1.aC()) {
+         $$1.b(bor.o);
+         $$1.a(atk.AP, 5.0F, 1.0F);
+      } else {
+         $$1.a(atk.AK, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public void e() {
-      if (!this.c && !this.a.A() && !this.a.fT()) {
-         if (this.a.cH().c(this.b.cH())) {
-            this.c = this.a.b(this.b);
-         }
+   protected void c(aov $$0, E $$1, long $$2) {
+      if ($$1.dI() == null) {
+         $$1.a(bno.c.b);
       }
    }
 }

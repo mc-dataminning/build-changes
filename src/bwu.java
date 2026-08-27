@@ -1,42 +1,64 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Set;
+import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bwu extends bww<cfd> {
-   private static final int a = 40;
+public class bwu<T extends bog> extends bxb {
+   private static final int i = 10;
+   protected final Class<T> a;
+   protected final int b;
+   @Nullable
+   protected bog c;
+   protected byu d;
 
-   public bwu() {
-      super(40);
+   public bwu(boi $$0, Class<T> $$1, boolean $$2) {
+      this($$0, $$1, 10, $$2, false, null);
    }
 
-   protected void a(ane $$0, cfd $$1) {
-      ahg<ctx> $$2 = $$0.ae();
-      hx $$3 = $$1.dl();
-      List<ig> $$4 = Lists.newArrayList();
-      int $$5 = 4;
+   public bwu(boi $$0, Class<T> $$1, boolean $$2, Predicate<bog> $$3) {
+      this($$0, $$1, 10, $$2, false, $$3);
+   }
 
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               hx $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gq().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(ig.a($$2, $$9));
-               }
-            }
-         }
-      }
+   public bwu(boi $$0, Class<T> $$1, boolean $$2, boolean $$3) {
+      this($$0, $$1, 10, $$2, $$3, null);
+   }
 
-      bno<?> $$10 = $$1.dN();
-      if (!$$4.isEmpty()) {
-         $$10.a(bvq.f, $$4);
+   public bwu(boi $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bog> $$5) {
+      super($$0, $$3, $$4);
+      this.a = $$1;
+      this.b = b($$2);
+      this.a(EnumSet.of(bvb.a.d));
+      this.d = byu.a().a(this.l()).a($$5);
+   }
+
+   @Override
+   public boolean a() {
+      if (this.b > 0 && this.e.eh().a(this.b) != 0) {
+         return false;
       } else {
-         $$10.b(bvq.f);
+         this.h();
+         return this.c != null;
+      }
+   }
+
+   protected enn a(double $$0) {
+      return this.e.cH().c($$0, 4.0, $$0);
+   }
+
+   protected void h() {
+      if (this.a != chh.class && this.a != aow.class) {
+         this.c = this.e.dM().a(this.e.dM().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.dr(), this.e.dv(), this.e.dx());
+      } else {
+         this.c = this.e.dM().a(this.d, this.e, this.e.dr(), this.e.dv(), this.e.dx());
       }
    }
 
    @Override
-   public Set<bvq<?>> a() {
-      return ImmutableSet.of(bvq.f);
+   public void c() {
+      this.e.h(this.c);
+      super.c();
+   }
+
+   public void a(@Nullable bog $$0) {
+      this.c = $$0;
    }
 }

@@ -1,61 +1,98 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class bsf extends bof<ceu> {
-   private static final int d = 15;
-   private static final int e = 20;
-   private static final double f = 0.5;
-   private static final double g = 2.5;
-   public static final int c = 40;
-   private static final int h = aup.c(34.0);
-   private static final int i = aup.f(60.0F);
+public class bsf<U> implements Iterable<U> {
+   protected final List<bsf.a<U>> a;
+   private final awo b = awo.a();
 
    public bsf() {
-      super(ImmutableMap.of(bvq.o, bvr.a, bvq.aJ, bvr.b, bvq.aK, bvr.c, bvq.aL, bvr.c), i);
+      this.a = Lists.newArrayList();
    }
 
-   protected boolean a(ane $$0, ceu $$1) {
-      return $$1.a($$1.dN().c(bvq.o).get(), 15.0, 20.0);
+   private bsf(List<bsf.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   protected boolean a(ane $$0, ceu $$1, long $$2) {
-      return true;
+   public static <U> Codec<bsf<U>> a(Codec<U> $$0) {
+      return bsf.a.a($$0).listOf().xmap(bsf::new, $$0x -> $$0x.a);
    }
 
-   protected void b(ane $$0, ceu $$1, long $$2) {
-      $$1.dN().a(bvq.p, true, (long)i);
-      $$1.dN().a(bvq.aL, avt.a, (long)h);
-      $$0.a($$1, (byte)62);
-      $$1.a(art.Bb, 3.0F, 1.0F);
+   public bsf<U> a(U $$0, int $$1) {
+      this.a.add(new bsf.a<>($$0, $$1));
+      return this;
    }
 
-   protected void c(ane $$0, ceu $$1, long $$2) {
-      $$1.dN().c(bvq.o).ifPresent($$1x -> $$1.I().a($$1x.dj()));
-      if (!$$1.dN().a(bvq.aL) && !$$1.dN().a(bvq.aK)) {
-         $$1.dN().a(bvq.aK, avt.a, (long)(i - h));
-         $$1.dN().c(bvq.o).filter($$1::a).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            emc $$3 = $$1.dj().b(0.0, 1.6F, 0.0);
-            emc $$4 = $$2x.br().d($$3);
-            emc $$5 = $$4.d();
+   public bsf<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(bsf.a::c));
+      return this;
+   }
 
-            for (int $$6 = 1; $$6 < aup.a($$4.f()) + 7; $$6++) {
-               emc $$7 = $$3.e($$5.a((double)$$6));
-               $$0.a(jx.A, $$7.c, $$7.d, $$7.e, 1, 0.0, 0.0, 0.0, 0.0);
+   public Stream<U> b() {
+      return this.a.stream().map(bsf.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), bsf.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<bsf.a<E>> a(final Codec<E> $$0) {
+         return new Codec<bsf.a<E>>() {
+            public <T> DataResult<Pair<bsf.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bsf.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
             }
 
-            $$1.a(art.Ba, 3.0F, 1.0F);
-            $$2x.a($$0.ai().e($$1), 10.0F);
-            double $$8 = 0.5 * (1.0 - $$2x.g(bnu.k));
-            double $$9 = 2.5 * (1.0 - $$2x.g(bnu.k));
-            $$2x.j($$5.a() * $$9, $$5.b() * $$8, $$5.c() * $$9);
-         });
+            public <T> DataResult<T> a(bsf.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
       }
-   }
-
-   protected void d(ane $$0, ceu $$1, long $$2) {
-      a($$1, 40);
-   }
-
-   public static void a(bmo $$0, int $$1) {
-      $$0.dN().a(bvq.aJ, avt.a, (long)$$1);
    }
 }

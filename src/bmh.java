@@ -1,3 +1,3 @@
 public interface bmh {
-   void b(cfq var1);
+   bmg a(dlf var1, cvo var2, hz var3);
 }

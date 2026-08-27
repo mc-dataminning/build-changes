@@ -1,12 +1,34 @@
-import java.util.List;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public interface diy {
-   diy a = ($$0, $$1, $$2) -> $$0.a($$2x -> $$2x.dl().a($$1, (double)$$2) && !$$2x.f() && !$$2x.P_()).stream().map(blw::cw).toList();
-   diy b = ($$0, $$1, $$2) -> {
-      elx $$3 = new elx($$1).g((double)$$2);
-      return $$0.a(bmc.aH, $$3, bmo::bx).stream().map(blw::cw).toList();
-   };
+public class diy extends djz {
+   public diy(hz $$0, dlf $$1) {
+      super(div.J, $$0, $$1);
+   }
 
-   List<UUID> detect(ane var1, hx var2, int var3);
+   @Override
+   public dpy.d c() {
+      return new diy.a(this.aE_());
+   }
+
+   protected class a extends djz.a {
+      public a(hz $$1) {
+         super($$1);
+      }
+
+      @Override
+      public int a() {
+         return 16;
+      }
+
+      @Override
+      public boolean a(aov $$0, hz $$1, ij<dpp> $$2, @Nullable dpp.a $$3) {
+         int $$4 = this.a($$0, this.c, diy.this.r());
+         return $$4 != 0 && dpy.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
+      }
+
+      private int a(cvn $$0, hz $$1, dlf $$2) {
+         ie $$3 = $$2.c(czb.b).g();
+         return $$0.c($$1.a($$3), $$3);
+      }
+   }
 }

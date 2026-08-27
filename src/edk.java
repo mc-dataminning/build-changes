@@ -1,157 +1,42 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class edk {
-   private dbu a;
-   private ddk b;
-   private hx c;
-   private boolean d;
-   @Nullable
-   private dzg e;
-   private boolean f;
-   @Nullable
-   private auw g;
-   private int h;
-   private final List<edl> i;
-   private boolean j;
-   private boolean k;
+public class edk extends ebe {
+   public static final bki<cwy.c> d = bki.a(
+      new cwy.c(bnu.j, 10, 2, 3), new cwy.c(bnu.bv, 5, 4, 4), new cwy.c(bnu.bo, 8, 5, 5), new cwy.c(bnu.aL, 2, 5, 5), new cwy.c(bnu.an, 3, 4, 4)
+   );
+   public static final Codec<edk> e = a(edk::new);
 
-   public edk() {
-      this.a = dbu.a;
-      this.b = ddk.a;
-      this.c = hx.b;
-      this.f = true;
-      this.i = Lists.newArrayList();
+   public edk(ebe.c $$0) {
+      super($$0);
    }
 
-   public edk a() {
-      edk $$0 = new edk();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      $$0.h = this.h;
-      $$0.i.addAll(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      return $$0;
+   @Override
+   public Optional<ebe.b> a(ebe.a $$0) {
+      cuu $$1 = $$0.h();
+      hz $$2 = new hz($$1.d(), 64, $$1.e());
+      return Optional.of(new ebe.b($$2, (Consumer<ebw>)($$1x -> a($$1x, $$0))));
    }
 
-   public edk a(dbu $$0) {
-      this.a = $$0;
-      return this;
-   }
+   private static void a(ebw $$0, ebe.a $$1) {
+      edj.q $$2 = new edj.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<ebi> $$3 = $$2.d;
 
-   public edk a(ddk $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public edk a(hx $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public edk a(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public edk a(dzg $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public edk a(@Nullable auw $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public edk b(boolean $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public edk c(boolean $$0) {
-      this.j = $$0;
-      return this;
-   }
-
-   public edk b() {
-      this.i.clear();
-      return this;
-   }
-
-   public edk a(edl $$0) {
-      this.i.add($$0);
-      return this;
-   }
-
-   public edk b(edl $$0) {
-      this.i.remove($$0);
-      return this;
-   }
-
-   public dbu c() {
-      return this.a;
-   }
-
-   public ddk d() {
-      return this.b;
-   }
-
-   public hx e() {
-      return this.c;
-   }
-
-   public auw b(@Nullable hx $$0) {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return $$0 == null ? auw.a(ac.b()) : auw.a(aup.a($$0));
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         ebi $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
+
+      $$0.a($$1.f(), 48, 70);
    }
 
-   public boolean f() {
-      return this.d;
-   }
-
-   @Nullable
-   public dzg g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public List<edl> i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   public edo.a a(List<edo.a> $$0, @Nullable hx $$1) {
-      int $$2 = $$0.size();
-      if ($$2 == 0) {
-         throw new IllegalStateException("No palettes");
-      } else {
-         return $$0.get(this.b($$1).a($$2));
-      }
-   }
-
-   public edk d(boolean $$0) {
-      this.k = $$0;
-      return this;
-   }
-
-   public boolean k() {
-      return this.k;
+   @Override
+   public ebn<?> e() {
+      return ebn.d;
    }
 }

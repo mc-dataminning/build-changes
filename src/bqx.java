@@ -1,23 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.ImmutableMap;
 
-public class bqx {
-   public static bog<bmx> a(bvq<ig> $$0, float $$1, int $$2, int $$3) {
-      MutableLong $$4 = new MutableLong(0L);
-      return brs.a(
-         (Function<brs.b<bmx>, ? extends App<brs.c<bmx>, brv<bmx>>>)($$5 -> $$5.group($$5.a(bvq.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  ig $$10 = $$5.b($$6);
-                  if ($$7.ae() != $$10.a() || !$$10.b().a($$8.dj(), (double)$$3)) {
-                     return false;
-                  } else if ($$9 <= $$4.getValue()) {
-                     return true;
-                  } else {
-                     $$5x.a(new bvt($$10.b(), $$1, $$2));
-                     $$4.setValue($$9 + 80L);
-                     return true;
-                  }
-               }))
-      );
+public class bqx extends bpw<boi> {
+   public static final int c = 100;
+   private final blf d;
+   private final atj e;
+
+   public bqx(blf $$0, atj $$1) {
+      super(ImmutableMap.of(bxh.n, bxi.c, bxh.T, bxi.a), 100);
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   protected boolean a(aov $$0, boi $$1, long $$2) {
+      return !$$1.aC();
+   }
+
+   protected void b(aov $$0, boi $$1, long $$2) {
+      $$1.p(true);
+      $$1.b(bor.g);
+   }
+
+   protected void c(aov $$0, boi $$1, long $$2) {
+      if ($$1.aC()) {
+         $$1.g($$1.dp().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, atl.g, 2.0F, 1.0F);
+      }
+
+      $$1.p(false);
+      $$1.b(bor.a);
+      $$1.dO().b(bxh.T);
+      $$1.dO().a(bxh.S, this.d.a($$0.z));
    }
 }

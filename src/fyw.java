@@ -1,31 +1,29 @@
-public class fyw extends gag<ccm, fkh<ccm>> {
-   private static final ahh a = new ahh("textures/entity/enderman/enderman.png");
-   private final auw i = auw.a();
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-   public fyw(fza.a $$0) {
-      super($$0, new fkh<>($$0.a(fni.T)), 0.5F);
-      this.a(new gcv<>(this));
-      this.a(new gcm(this, $$0.c()));
+public class fyw implements fyx.a {
+   private final exh a;
+   private double b = Double.MIN_VALUE;
+   private List<eol> c = Collections.emptyList();
+
+   public fyw(exh $$0) {
+      this.a = $$0;
    }
 
-   public void a(ccm $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
-      djp $$6 = $$0.gf();
-      fkh<ccm> $$7 = this.a();
-      $$7.a = $$6 != null;
-      $$7.b = $$0.gg();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public emc a(ccm $$0, float $$1) {
-      if ($$0.gg()) {
-         double $$2 = 0.02 * (double)$$0.dZ();
-         return new emc(this.i.k() * $$2, 0.0, this.i.k() * $$2);
-      } else {
-         return super.a($$0, $$1);
+   @Override
+   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bno $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dM().d($$6, $$6.cH().g(6.0)));
       }
-   }
 
-   public ahh a(ccm $$0) {
-      return a;
+      ese $$7 = $$1.getBuffer(fvu.w());
+
+      for (eol $$8 : this.c) {
+         fvk.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

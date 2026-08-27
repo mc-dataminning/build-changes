@@ -1,84 +1,69 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public class fab implements ezz {
-   private static final ahh g = new ahh("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final fab.a h;
-   private final vg i;
-   @Nullable
-   private final vg j;
-   private ezz.a k = ezz.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
+public class fab extends eze {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final awx<fab.a, faa> c;
+   private boolean d = false;
 
-   public fab(fab.a $$0, vg $$1, @Nullable vg $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   public fab(vq $$0, eys $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public fab(int $$0, int $$1, vq $$2, eys $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? faa.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : faa.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
+   }
+
+   public fab b(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public fab c(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fab d(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fab b(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
    @Override
-   public ezz.a a(exe $$0, faa $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+   public int w() {
+      return this.c.a(this.d()).b();
+   }
+
+   @Override
+   public int u() {
+      return this.c.a(this.d()).a() * 9;
+   }
+
+   @Override
+   public void b(eyu $$0, int $$1, int $$2, float $$3) {
+      faa $$4 = this.c.a(this.d());
+      int $$5 = this.B();
+      int $$6 = this.C();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.w() / 2, $$6, $$7, $$8);
       } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
-
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = aup.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
-         } else {
-            $$4 = -11206656;
-         }
-
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
-      }
-
-      return this.k;
    }
 
-   public void c() {
-      this.k = ezz.a.b;
+   private fab.a d() {
+      return new fab.a(this.x(), this.a.orElse(Integer.MAX_VALUE), this.b);
    }
 
-   public void a(float $$0) {
-      this.n = $$0;
-   }
-
-   public static enum a {
-      a(new ahh("toast/movement_keys")),
-      b(new ahh("toast/mouse")),
-      c(new ahh("toast/tree")),
-      d(new ahh("toast/recipe_book")),
-      e(new ahh("toast/wooden_planks")),
-      f(new ahh("toast/social_interactions")),
-      g(new ahh("toast/right_click"));
-
-      private final ahh h;
-
-      private a(ahh $$0) {
-         this.h = $$0;
-      }
-
-      public void a(exe $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
-      }
+   static record a(vq a, int b, OptionalInt c) {
    }
 }

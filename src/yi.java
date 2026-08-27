@@ -1,31 +1,23 @@
-public record yi(yi.a b) implements yb {
-   public static final ahh a = new ahh("debug/hive");
+import java.util.Optional;
+import java.util.UUID;
 
-   public yi(uj $$0) {
-      this(new yi.a($$0));
+public record yi(Optional<UUID> b) implements xx<yd> {
+   public static final xo<uq, yi> a = xx.a(yi::a, yi::new);
+
+   private yi(uq $$0) {
+      this($$0.b(jc.f));
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b, jc.f);
    }
 
    @Override
-   public void a(uj $$0) {
-      this.b.a($$0);
+   public xz<yi> a() {
+      return yn.e;
    }
 
-   @Override
-   public ahh a() {
-      return a;
-   }
-
-   public static record a(hx a, String b, int c, int d, boolean e) {
-      public a(uj $$0) {
-         this($$0.e(), $$0.s(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
-      }
-
-      public void a(uj $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
-      }
+   public void a(yd $$0) {
+      $$0.a(this);
    }
 }

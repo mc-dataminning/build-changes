@@ -1,48 +1,45 @@
-public class aam implements xg<zb> {
-   private final int a;
-   private final hx b;
-   private final int c;
-   private final boolean d;
+public class aam implements xx<aag> {
+   public static final xo<uq, aam> a = xx.a(aam::a, aam::new);
+   private final int b;
+   private final hz c;
+   private final int d;
 
-   public aam(int $$0, hx $$1, int $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
-      this.d = $$3;
+   public aam(int $$0, hz $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public aam(uj $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.e();
-      this.c = $$0.readInt();
-      this.d = $$0.readBoolean();
+   private aam(uq $$0) {
+      this.b = $$0.n();
+      this.c = $$0.e();
+      this.d = $$0.readUnsignedByte();
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.k(this.d);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.p(this.a);
-      $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
+   public xz<aam> a() {
+      return aeq.h;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 
-   public int d() {
-      return this.a;
-   }
-
-   public int e() {
+   public hz e() {
       return this.c;
    }
 
-   public hx f() {
-      return this.b;
+   public int f() {
+      return this.d;
    }
 }

@@ -1,25 +1,26 @@
-import java.util.List;
+import javax.annotation.concurrent.Immutable;
 
-public enum blx {
-   a(blx.a.c),
-   b(blx.a.b),
-   c(blx.a.c);
+@Immutable
+public class blx {
+   public static final blx a = new blx("");
+   public static final String b = "Lock";
+   private final String c;
 
-   private final blx.a d;
-
-   private blx(blx.a $$0) {
-      this.d = $$0;
+   public blx(String $$0) {
+      this.c = $$0;
    }
 
-   public List<emc> a(float $$0, float $$1) {
-      return this.d.create($$0, $$1);
+   public boolean a(coz $$0) {
+      return this.c.isEmpty() || !$$0.b() && $$0.B() && this.c.equals($$0.z().getString());
    }
 
-   public interface a {
-      List<emc> a = List.of(emc.b);
-      blx.a b = ($$0, $$1) -> a;
-      blx.a c = ($$0, $$1) -> List.of(new emc(0.0, (double)$$1, 0.0));
+   public void a(sw $$0) {
+      if (!this.c.isEmpty()) {
+         $$0.a("Lock", this.c);
+      }
+   }
 
-      List<emc> create(float var1, float var2);
+   public static blx b(sw $$0) {
+      return $$0.b("Lock", 8) ? new blx($$0.l("Lock")) : a;
    }
 }

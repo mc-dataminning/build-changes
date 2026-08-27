@@ -1,56 +1,29 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class dtq extends dsc<dve> {
-   public dtq(Codec<dve> $$0) {
+public class dtq extends dts<dwd> {
+   public dtq(Codec<dwd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dse<dve> $$0) {
-      cus $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      dve $$3 = $$0.f();
-      auw $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         hx $$6 = $$2.h($$5.getAsInt());
-         jb $$7 = new jb($$3.c, $$3.c, $$3.c);
-         dzg $$8 = dzg.a($$6.b($$7), $$6.a($$7));
-         return hx.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, cxa.kJ.o(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+   public boolean a(dtu<dwd> $$0) {
+      cwi $$1 = $$0.b();
+      awo $$2 = $$0.d();
+      hz $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-   private static OptionalInt a(cus $$0, hx $$1, dve $$2) {
-      Predicate<djp> $$3 = $$0x -> $$0x.a(cxa.G);
-      Predicate<djp> $$4 = $$0x -> !$$0x.a(cxa.G);
-      Optional<doo> $$5 = doo.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(doo::c).orElseGet(OptionalInt::empty);
-   }
-
-   private boolean b(cus $$0, hx $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
-         for (ic $$2 : ic.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = awh.d(-$$4); $$6 <= awh.f($$4); $$6++) {
+            for (int $$7 = awh.d(-$$4); $$7 <= awh.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), cyq.fz.o());
+               }
             }
          }
 
-         return true;
-      } else {
-         return false;
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
-   }
 
-   private boolean a(cty $$0, hx $$1) {
-      djp $$2 = $$0.a_($$1);
-      return $$2.a(cxa.G) || $$2.i();
+      return true;
    }
 }

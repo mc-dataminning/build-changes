@@ -1,68 +1,104 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface wc {
-   Logger a = LogUtils.getLogger();
-   wc b = vw::b;
-   wc c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
-      return null;
-   };
+public record wc(byte[] c) {
+   public static final Codec<wc> a = avp.n.xmap(wc::new, wc::b);
+   public static final int b = 256;
 
-   @Nullable
-   vw updateAndValidate(vw var1);
+   public wc(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
+   }
 
-   public static class a implements wc {
-      private final avd d;
-      private final BooleanSupplier e;
-      @Nullable
-      private vw f;
-      private boolean g = true;
+   public static wc a(uq $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new wc($$1);
+   }
 
-      public a(avd $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public static void a(uq $$0, wc $$1) {
+      $$0.c($$1.c);
+   }
 
-      private boolean a(vw $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.k().a(this.f.k())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
-            );
-            return false;
-         } else {
+   public boolean a(awu $$0, awt $$1) {
+      return $$0.validate($$1, this.c);
+   }
+
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof wc $$1 && Arrays.equals(this.c, $$1.c)) {
             return true;
          }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
+
+   public wc.a a(wd $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new wc.a($$1) : new wc.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable wc c) {
+      public static final int a = -1;
+
+      public a(wc $$0) {
+         this(-1, $$0);
       }
 
-      private boolean b(vw $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.g());
-            return false;
-         } else {
-            return this.a($$0);
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static wc.a a(uq $$0) {
+         int $$1 = $$0.n() - 1;
+         return $$1 == -1 ? new wc.a(wc.a($$0)) : new wc.a($$1);
+      }
+
+      public static void a(uq $$0, wc.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            wc.a($$0, $$1.b());
          }
+      }
+
+      public Optional<wc> a(wd $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
       }
 
       @Nullable
-      @Override
-      public vw updateAndValidate(vw $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return null;
-         } else {
-            this.f = $$0;
-            return $$0;
-         }
+      public wc b() {
+         return this.c;
       }
    }
 }

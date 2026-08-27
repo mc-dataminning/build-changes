@@ -1,49 +1,143 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Optional;
 
-public class djt {
-   private final cua a;
-   private final hx b;
-   private final boolean c;
-   @Nullable
-   private djp d;
-   @Nullable
-   private dhd e;
-   private boolean f;
+public class djt extends dit {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private aiy h = new aiy("empty");
+   private aiy i = new aiy("empty");
+   private aix<ecn> j = aix.a(kg.aG, new aiy("empty"));
+   private djt.a k = djt.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int n;
 
-   public djt(cua $$0, hx $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
+   public djt(hz $$0, dlf $$1) {
+      super(div.F, $$0, $$1);
    }
 
-   public djp a() {
-      if (this.d == null && (this.c || this.a.B(this.b))) {
-         this.d = this.a.a_(this.b);
+   public aiy c() {
+      return this.h;
+   }
+
+   public aiy d() {
+      return this.i;
+   }
+
+   public aix<ecn> f() {
+      return this.j;
+   }
+
+   public String g() {
+      return this.l;
+   }
+
+   public djt.a k() {
+      return this.k;
+   }
+
+   public int l() {
+      return this.m;
+   }
+
+   public int m() {
+      return this.n;
+   }
+
+   public void a(aiy $$0) {
+      this.h = $$0;
+   }
+
+   public void b(aiy $$0) {
+      this.i = $$0;
+   }
+
+   public void a(aix<ecn> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(djt.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   protected void b(sw $$0) {
+      super.b($$0);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.n);
+   }
+
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      this.h = new aiy($$0.l("name"));
+      this.i = new aiy($$0.l("target"));
+      this.j = aix.a(kg.aG, new aiy($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = djt.a.a($$0.l("joint")).orElseGet(() -> dcp.m(this.r()).o().d() ? djt.a.b : djt.a.a);
+      this.m = $$0.h("placement_priority");
+      this.n = $$0.h("selection_priority");
+   }
+
+   public aan w() {
+      return aan.a(this);
+   }
+
+   @Override
+   public sw aA_() {
+      return this.q();
+   }
+
+   public void a(aov $$0, int $$1, boolean $$2) {
+      hz $$3 = this.aE_().a(this.r().c(dcp.b).a());
+      iv<ecn> $$4 = $$0.I_().d(kg.aG);
+      ij<ecn> $$5 = $$4.f(this.j);
+      ech.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements axc {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
       }
 
-      return this.d;
-   }
-
-   @Nullable
-   public dhd b() {
-      if (this.e == null && !this.f) {
-         this.e = this.a.c_(this.b);
-         this.f = true;
+      @Override
+      public String c() {
+         return this.c;
       }
 
-      return this.e;
-   }
+      public static Optional<djt.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
+      }
 
-   public cua c() {
-      return this.a;
-   }
-
-   public hx d() {
-      return this.b;
-   }
-
-   public static Predicate<djt> a(Predicate<djp> $$0) {
-      return $$1 -> $$1 != null && $$0.test($$1.a());
+      public vq a() {
+         return vq.c("jigsaw_block.joint." + this.c);
+      }
    }
 }

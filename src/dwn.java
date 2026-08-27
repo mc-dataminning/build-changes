@@ -1,62 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dwn extends dwh {
-   public static final Codec<dwn> b = RecordCodecBuilder.create(
+public record dwn(int b, int c, int d, int e, int f, bkz g, float h) implements dvw {
+   public static final Codec<dwn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dwh.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bjh.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dwn::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dwn::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dwn::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dwn::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dwn::f),
+               bkz.c.fieldOf("extra_rare_growths").forGetter(dwn::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dwn::h)
             )
             .apply($$0, dwn::new)
    );
-   private final dwh c;
-   private final String d;
-   @Nullable
-   private dkp e;
-   private final bjh f;
 
-   public dwn(dwh $$0, dkp $$1, bjh $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
+   public int a() {
+      return this.b;
    }
 
-   public dwn(dwh $$0, String $$1, bjh $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected dwi<?> a() {
-      return dwi.g;
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   public djp a(auw $$0, hx $$1) {
-      djp $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
-      }
-
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
-   }
-
-   private static dkp a(djp $$0, String $$1) {
-      Collection<dks<?>> $$2 = $$0.B();
-      Optional<dkp> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dkp).map($$0x -> (dkp)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
+   public int d() {
+      return this.e;
    }
 }

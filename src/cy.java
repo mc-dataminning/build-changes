@@ -1,27 +1,54 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cy extends cv<cy.a> {
+public class cy extends cx<cy.a> {
    @Override
    public Codec<cy.a> a() {
       return cy.a.a;
    }
 
-   public void a(anf $$0) {
-      this.a($$0, $$0x -> true);
+   public void a(aow $$0, dlf $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bb> b) implements cv.a {
-      public static final Codec<cy.a> a = RecordCodecBuilder.create($$0 -> $$0.group(atx.a(bp.b, "player").forGetter(cy.a::a)).apply($$0, cy.a::new));
+   public static record a(Optional<bc> b, Optional<ij<cyo>> c, Optional<db> d) implements cx.a {
+      public static final Codec<cy.a> a = avp.a(
+         RecordCodecBuilder.create(
+            $$0 -> $$0.group(avp.a(br.b, "player").forGetter(cy.a::a), avp.a(kf.e.r(), "block").forGetter(cy.a::b), avp.a(db.a, "state").forGetter(cy.a::c))
+                  .apply($$0, cy.a::new)
+         ),
+         cy.a::a
+      );
 
-      public static an<cy.a> a(bp.a $$0) {
-         return am.S.a(new cy.a(Optional.of(bp.a($$0))));
+      private static DataResult<cy.a> a(cy.a $$0) {
+         return $$0.c
+            .<DataResult<cy.a>>flatMap(
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((cyo)$$1.a()).n())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+            )
+            .orElseGet(() -> DataResult.success($$0));
+      }
+
+      public static an<cy.a> a(cyo $$0) {
+         return am.K.a(new cy.a(Optional.empty(), Optional.of($$0.r()), Optional.empty()));
+      }
+
+      public boolean a(dlf $$0) {
+         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
       @Override
-      public Optional<bb> a() {
+      public Optional<bc> a() {
          return this.b;
+      }
+
+      public Optional<ij<cyo>> b() {
+         return this.c;
+      }
+
+      public Optional<db> c() {
+         return this.d;
       }
    }
 }

@@ -1,23 +1,37 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
-public class awp extends DataFix {
-   public awp(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class awp {
+   public static final Codec<awp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avp.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), avp.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, awp::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<aiy> f;
+
+   private awp(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bde.a());
-      return this.fixTypeEverywhereTyped(
-         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(bbw.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
-               Optional<String> $$3 = $$1.getOptional($$0);
-               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : ayd.a($$2);
-            })
-      );
+   public Predicate<String> a() {
+      return this.c;
+   }
+
+   public Predicate<String> b() {
+      return this.e;
+   }
+
+   public Predicate<aiy> c() {
+      return this.f;
    }
 }

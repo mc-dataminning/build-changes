@@ -1,40 +1,18 @@
-public class aci implements xg<zb> {
-   private final float a;
-   private final int b;
-   private final float c;
+import io.netty.buffer.ByteBuf;
 
-   public aci(float $$0, int $$1, float $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+public class aci implements xx<aag> {
+   public static final aci a = new aci();
+   public static final xo<ByteBuf, aci> b = xo.a(a);
 
-   public aci(uj $$0) {
-      this.a = $$0.readFloat();
-      this.b = $$0.n();
-      this.c = $$0.readFloat();
+   private aci() {
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public xz<aci> a() {
+      return aeq.ab;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
-   }
-
-   public float a() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

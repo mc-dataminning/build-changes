@@ -1,13 +1,2 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-
-public interface cus extends cum {
-   long C();
-
-   default boolean f_(hx $$0) {
-      return true;
-   }
-
-   default void a(@Nullable Supplier<String> $$0) {
-   }
+public record cus(hz a, cyo b, int c, int d) {
 }

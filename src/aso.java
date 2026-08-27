@@ -1,11 +1,29 @@
-public class aso {
-   public static final asx<dnz> a = a("vibrations");
-   public static final asx<dnz> b = a("warden_can_listen");
-   public static final asx<dnz> c = a("shrieker_can_listen");
-   public static final asx<dnz> d = a("ignore_vibrations_sneaking");
-   public static final asx<dnz> e = a("allay_can_listen");
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-   private static asx<dnz> a(String $$0) {
-      return asx.a(ke.B, new ahh($$0));
+public class aso extends ass<GameProfile, asp> {
+   public aso(File $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected asr<GameProfile> a(JsonObject $$0) {
+      return new asp($$0);
+   }
+
+   @Override
+   public String[] a() {
+      return this.d().stream().map(asr::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   }
+
+   public boolean a(GameProfile $$0) {
+      asp $$1 = this.b($$0);
+      return $$1 != null ? $$1.b() : false;
+   }
+
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

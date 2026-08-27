@@ -1,38 +1,28 @@
-public class gay extends fyz<cgk> {
-   private static final ahh a = new ahh("textures/entity/shulker/spark.png");
-   private static final fub f = fub.i(a);
-   private final fmb<cgk> g;
+public class gay extends gas<cdr> {
+   private final fwg a;
 
-   public gay(fza.a $$0) {
+   public gay(gat.a $$0) {
       super($$0);
-      this.g = new fmb<>($$0.a(fni.bh));
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   protected int a(cgk $$0, hx $$1) {
-      return 15;
+   public void a(cdr $$0, float $$1, float $$2, esa $$3, fvm $$4, int $$5) {
+      dlf $$6 = $$0.u();
+      if ($$6.l() == det.c) {
+         cvn $$7 = $$0.dM();
+         if ($$6 != $$7.a_($$0.dm()) && $$6.l() != det.a) {
+            $$3.a();
+            hz $$8 = hz.a($$0.dr(), $$0.cH().e, $$0.dx());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fvh.b($$6)), false, awo.a(), $$6.a($$0.q()), ggl.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
    }
 
-   public void a(cgk $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
-      $$3.a();
-      float $$6 = aup.j($$2, $$0.N, $$0.dB());
-      float $$7 = aup.i($$2, $$0.O, $$0.dD());
-      float $$8 = (float)$$0.ah + $$2;
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(aup.a($$8 * 0.1F) * 180.0F));
-      $$3.a(a.b.rotationDegrees(aup.b($$8 * 0.1F) * 180.0F));
-      $$3.a(a.f.rotationDegrees(aup.a($$8 * 0.15F) * 360.0F));
-      $$3.b(-0.5F, -0.5F, 0.5F);
-      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
-      eqo $$9 = $$4.getBuffer(this.g.a(a));
-      this.g.a($$3, $$9, $$5, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b(1.5F, 1.5F, 1.5F);
-      eqo $$10 = $$4.getBuffer(f);
-      this.g.a($$3, $$10, $$5, ges.d, 1.0F, 1.0F, 1.0F, 0.15F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public ahh a(cgk $$0) {
-      return a;
+   public aiy a(cdr $$0) {
+      return ggt.e;
    }
 }

@@ -1,31 +1,163 @@
-public class fcq extends fdm {
-   private final vg a;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-   public fcq(vg $$0, vg $$1) {
-      super($$0);
-      this.a = $$1;
+public class fcq extends fco {
+   private final fcq.b c;
+   private final List<fcq.a> d = new ArrayList<>();
+   private final fcw e = fcw.i();
+
+   public fcq(int $$0, int $$1, fcq.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
+   }
+
+   public fcq(int $$0, int $$1, int $$2, int $$3, fcq.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.d(exr.a(vf.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
+
+         for (fcq.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<fcq.a> $$5 = this.d.iterator();
+         fcq.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               fcq.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (fcq.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
+      }
    }
 
    @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 90, 16777215);
-      $$0.a(this.i, this.a, this.g / 2, 110, 16777215);
+   public void b(Consumer<fcv> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   @Override
-   public void b(exe $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, -12574688, -11530224);
+   public fcw b() {
+      return this.e.g();
    }
 
-   @Override
-   public boolean aN_() {
-      return false;
+   public fcw c() {
+      return this.e;
+   }
+
+   public <T extends fcv> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fcv> T a(T $$0, fcw $$1) {
+      this.d.add(new fcq.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends fcv> T a(T $$0, Consumer<fcw> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
+   }
+
+   static class a extends fco.a {
+      protected a(fcv $$0, fcw $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(fcv $$0) {
+         return switch (this) {
+            case a -> $$0.w();
+            case b -> $$0.u();
+         };
+      }
+
+      int a(fcq.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(fcv $$0) {
+         return switch (this) {
+            case a -> $$0.u();
+            case b -> $$0.w();
+         };
+      }
+
+      int b(fcq.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(fcq.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(fcq.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(fcv $$0) {
+         return switch (this) {
+            case a -> $$0.B();
+            case b -> $$0.C();
+         };
+      }
+
+      int d(fcv $$0) {
+         return switch (this) {
+            case a -> $$0.C();
+            case b -> $$0.B();
+         };
+      }
    }
 }

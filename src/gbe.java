@@ -1,12 +1,19 @@
-public class gbe extends gag<bza, fmj<bza>> {
-   private static final ahh a = new ahh("textures/entity/snow_golem.png");
+public class gbe extends gbz<cei, fmo<cei>> {
+   private static final aiy a = new aiy("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   public gbe(fza.a $$0) {
-      super($$0, new fmj<>($$0.a(fni.br)), 0.5F);
-      this.a(new gdq(this, $$0.c(), $$0.b()));
+   public gbe(gat.a $$0, float $$1) {
+      super($$0, new fmg($$0.a(fpb.ad)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gex<>(this, $$0.d()));
+      this.a(new geu<>(this, new fmg($$0.a(fpb.ae)), new fmg($$0.a(fpb.af)), $$0.g()));
    }
 
-   public ahh a(bza $$0) {
+   protected void a(cei $$0, esa $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public aiy a(cei $$0) {
       return a;
    }
 }

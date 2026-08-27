@@ -1,218 +1,70 @@
-import com.mojang.logging.LogUtils;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class foa<T extends cci> extends fkw<T> {
+   private static final float a = 9.0F;
+   private static final float b = 100.0F;
+   private final fpc f;
+   private final fpc g;
 
-public class foa extends dlp {
-   static final Logger a = LogUtils.getLogger();
-   private final dlw b;
-   private final eeo c;
-   volatile foa.a d;
-   final foe e;
-
-   public foa(foe $$0, int $$1) {
-      this.e = $$0;
-      this.b = new dls($$0, new cte(0, 0), $$0.I_().d(ke.at).f(cvd.b));
-      this.c = new eeo(this, true, $$0.E_().g());
-      this.d = new foa.a(b($$1));
+   public foa(fpc $$0) {
+      super(0.5F, 24.0F);
+      this.f = $$0.b("root");
+      this.g = this.f.b("bone").b("body").b("head");
    }
 
-   @Override
-   public eeo p() {
-      return this.c;
+   public static fpi b() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a().a("root", fph.c(), fpe.a(0.0F, 5.0F, 0.0F));
+      fpl $$2 = $$1.a("bone", fph.c(), fpe.a(0.0F, 0.0F, 0.0F));
+      fpl $$3 = $$2.a(
+         "body",
+         fph.c()
+            .a(62, 68)
+            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new fpg(0.0F))
+            .a(62, 0)
+            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new fpg(0.5F))
+            .a(87, 68)
+            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new fpg(0.0F)),
+         fpe.a(0.0F, 0.0F, 0.0F)
+      );
+      $$2.a("right_front_leg", fph.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpg(0.0F)), fpe.a(-7.5F, 10.0F, -15.0F));
+      $$2.a("right_mid_leg", fph.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpg(0.0F)), fpe.a(-7.5F, 10.0F, 0.0F));
+      $$2.a("right_hind_leg", fph.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpg(0.0F)), fpe.a(-7.5F, 10.0F, 15.0F));
+      $$2.a("left_front_leg", fph.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpg(0.0F)), fpe.a(7.5F, 10.0F, -15.0F));
+      $$2.a("left_mid_leg", fph.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpg(0.0F)), fpe.a(7.5F, 10.0F, 0.0F));
+      $$2.a("left_hind_leg", fph.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fpg(0.0F)), fpe.a(7.5F, 10.0F, 15.0F));
+      fpl $$4 = $$3.a(
+         "head",
+         fph.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new fpg(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new fpg(0.0F)),
+         fpe.a(0.0F, 6.5F, -19.48F)
+      );
+      $$4.a("left_ear", fph.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fpg(0.0F)), fpe.a(6.51F, -7.5F, -4.51F));
+      $$4.a("right_ear", fph.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fpg(0.0F)), fpe.a(-6.51F, -7.5F, -4.51F));
+      $$4.a("nose", fph.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new fpg(0.0F)), fpe.a(0.0F, -4.5F, -11.5F));
+      $$4.a("lower_beak", fph.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new fpg(0.0F)), fpe.a(0.0F, 2.5F, -12.5F));
+      return fpi.a($$0, 192, 192);
    }
 
-   private static boolean a(@Nullable dlw $$0, int $$1, int $$2) {
-      if ($$0 == null) {
-         return false;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fpc::c);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      if ($$0.w()) {
+         this.a(eyg.e, $$1, $$2, 9.0F, 100.0F);
       } else {
-         cte $$3 = $$0.f();
-         return $$3.e == $$1 && $$3.f == $$2;
-      }
-   }
-
-   public void a(cte $$0) {
-      if (this.d.b($$0.e, $$0.f)) {
-         int $$1 = this.d.a($$0.e, $$0.f);
-         dlw $$2 = this.d.a($$1);
-         if (a($$2, $$0.e, $$0.f)) {
-            this.d.a($$1, $$2, null);
-         }
-      }
-   }
-
-   @Nullable
-   public dlw b(int $$0, int $$1, dlq $$2, boolean $$3) {
-      if (this.d.b($$0, $$1)) {
-         dlw $$4 = this.d.a(this.d.a($$0, $$1));
-         if (a($$4, $$0, $$1)) {
-            return $$4;
-         }
+         this.a(eyg.d, $$1, $$2, 9.0F, 100.0F);
       }
 
-      return $$3 ? this.b : null;
-   }
-
-   @Override
-   public ctd q() {
-      return this.e;
-   }
-
-   public void a(int $$0, int $$1, uj $$2) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-      } else {
-         int $$3 = this.d.a($$0, $$1);
-         dlw $$4 = this.d.b.get($$3);
-         if (!a($$4, $$0, $$1)) {
-            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
-         } else {
-            $$4.a($$2);
-         }
-      }
-   }
-
-   @Nullable
-   public dlw a(int $$0, int $$1, uj $$2, so $$3, Consumer<aak.b> $$4) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-         return null;
-      } else {
-         int $$5 = this.d.a($$0, $$1);
-         dlw $$6 = this.d.b.get($$5);
-         cte $$7 = new cte($$0, $$1);
-         if (!a($$6, $$0, $$1)) {
-            $$6 = new dlw(this.e, $$7);
-            $$6.a($$2, $$3, $$4);
-            this.d.a($$5, $$6);
-         } else {
-            $$6.a($$2, $$3, $$4);
-         }
-
-         this.e.a($$7);
-         return $$6;
+      this.a($$0.bX, eyg.f, $$3);
+      this.a($$0.bW, eyg.c, $$3);
+      this.a($$0.bY, eyg.g, $$3);
+      this.a($$0.bT, eyg.i, $$3);
+      this.a($$0.bU, eyg.b, $$3);
+      if (this.e) {
+         this.a(eyg.a);
       }
    }
 
    @Override
-   public void a(BooleanSupplier $$0, boolean $$1) {
-   }
-
-   public void d(int $$0, int $$1) {
-      this.d.e = $$0;
-      this.d.f = $$1;
-   }
-
-   public void a(int $$0) {
-      int $$1 = this.d.c;
-      int $$2 = b($$0);
-      if ($$1 != $$2) {
-         foa.a $$3 = new foa.a($$2);
-         $$3.e = this.d.e;
-         $$3.f = this.d.f;
-
-         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
-            dlw $$5 = this.d.b.get($$4);
-            if ($$5 != null) {
-               cte $$6 = $$5.f();
-               if ($$3.b($$6.e, $$6.f)) {
-                  $$3.a($$3.a($$6.e, $$6.f), $$5);
-               }
-            }
-         }
-
-         this.d = $$3;
-      }
-   }
-
-   private static int b(int $$0) {
-      return Math.max(2, $$0) + 3;
-   }
-
-   @Override
-   public String e() {
-      return this.d.b.length() + ", " + this.j();
-   }
-
-   @Override
-   public int j() {
-      return this.d.g;
-   }
-
-   @Override
-   public void a(cug $$0, iz $$1) {
-      evr.O().f.b($$1.a(), $$1.b(), $$1.c());
-   }
-
-   final class a {
-      final AtomicReferenceArray<dlw> b;
-      final int c;
-      private final int d;
-      volatile int e;
-      volatile int f;
-      int g;
-
-      a(int $$0) {
-         this.c = $$0;
-         this.d = $$0 * 2 + 1;
-         this.b = new AtomicReferenceArray<>(this.d * this.d);
-      }
-
-      int a(int $$0, int $$1) {
-         return Math.floorMod($$1, this.d) * this.d + Math.floorMod($$0, this.d);
-      }
-
-      protected void a(int $$0, @Nullable dlw $$1) {
-         dlw $$2 = this.b.getAndSet($$0, $$1);
-         if ($$2 != null) {
-            this.g--;
-            foa.this.e.a($$2);
-         }
-
-         if ($$1 != null) {
-            this.g++;
-         }
-      }
-
-      protected dlw a(int $$0, dlw $$1, @Nullable dlw $$2) {
-         if (this.b.compareAndSet($$0, $$1, $$2) && $$2 == null) {
-            this.g--;
-         }
-
-         foa.this.e.a($$1);
-         return $$1;
-      }
-
-      boolean b(int $$0, int $$1) {
-         return Math.abs($$0 - this.e) <= this.c && Math.abs($$1 - this.f) <= this.c;
-      }
-
-      @Nullable
-      protected dlw a(int $$0) {
-         return this.b.get($$0);
-      }
-
-      private void a(String $$0) {
-         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
-            int $$2 = foa.this.d.c;
-
-            for (int $$3 = this.f - $$2; $$3 <= this.f + $$2; $$3++) {
-               for (int $$4 = this.e - $$2; $$4 <= this.e + $$2; $$4++) {
-                  dlw $$5 = foa.this.d.b.get(foa.this.d.a($$4, $$3));
-                  if ($$5 != null) {
-                     cte $$6 = $$5.f();
-                     $$1.write(($$6.e + "\t" + $$6.f + "\t" + $$5.C() + "\n").getBytes(StandardCharsets.UTF_8));
-                  }
-               }
-            }
-         } catch (IOException var10) {
-            foa.a.error("Failed to dump chunks to file {}", $$0, var10);
-         }
-      }
+   public fpc a() {
+      return this.f;
    }
 }

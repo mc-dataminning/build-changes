@@ -1,97 +1,136 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class ejb extends eir {
-   public static final Codec<ejb> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  atx.a(Codec.unboundedMap(kd.f.r(), ela.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, ejb::new)
-   );
-   private final Map<ih<crr>, ekz> b;
-   private final boolean c;
+public class ejb {
+   private final aov a;
+   private final Map<eld<?>, Object> b;
+   private final Map<aiy, ejb.b> c;
+   private final float d;
 
-   ejb(List<eke> $$0, Map<ih<crr>, ekz> $$1, boolean $$2) {
-      super($$0);
-      this.b = Map.copyOf($$1);
+   public ejb(aov $$0, Map<eld<?>, Object> $$1, Map<aiy, ejb.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public eit b() {
-      return eiu.f;
+   public aov a() {
+      return this.a;
    }
 
-   @Override
-   public Set<ejn<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   public boolean a(eld<?> $$0) {
+      return this.b.containsKey($$0);
    }
 
-   @Override
-   public cng a(cng $$0, ehf $$1) {
-      Object2IntMap<crr> $$2 = new Object2IntOpenHashMap();
-      this.b.forEach(($$2x, $$3) -> $$2.put((crr)$$2x.a(), $$3.a($$1)));
-      if ($$0.d() == cnj.qO) {
-         cng $$3 = new cng(cnj.us);
-         $$2.forEach(($$1x, $$2x) -> cmd.a($$3, new cru($$1x, $$2x)));
-         return $$3;
+   public <T> T b(eld<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
       } else {
-         Map<crr, Integer> $$4 = crt.a($$0);
-         if (this.c) {
-            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public <T> T c(eld<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public <T> T d(eld<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(aiy $$0, Consumer<coz> $$1) {
+      ejb.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final aov a;
+      private final Map<eld<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<aiy, ejb.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(aov $$0) {
+         this.a = $$0;
+      }
+
+      public aov a() {
+         return this.a;
+      }
+
+      public <T> ejb.a a(eld<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> ejb.a b(eld<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
          } else {
-            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
+            this.b.put($$0, $$1);
          }
 
-         crt.a($$4, $$0);
-         return $$0;
-      }
-   }
-
-   private static void a(Map<crr, Integer> $$0, crr $$1, int $$2) {
-      if ($$2 == 0) {
-         $$0.remove($$1);
-      } else {
-         $$0.put($$1, $$2);
-      }
-   }
-
-   public static class a extends eir.a<ejb.a> {
-      private final Builder<ih<crr>, ekz> a = ImmutableMap.builder();
-      private final boolean b;
-
-      public a() {
-         this(false);
-      }
-
-      public a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected ejb.a a() {
          return this;
       }
 
-      public ejb.a a(crr $$0, ekz $$1) {
-         this.a.put($$0.j(), $$1);
+      public <T> T a(eld<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
+         }
+      }
+
+      @Nullable
+      public <T> T b(eld<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public ejb.a a(aiy $$0, ejb.b $$1) {
+         ejb.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public ejb.a a(float $$0) {
+         this.d = $$0;
          return this;
       }
 
-      @Override
-      public eis b() {
-         return new ejb(this.g(), this.a.build(), this.b);
+      public ejb a(ele $$0) {
+         Set<eld<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<eld<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new ejb(this.a, this.b, this.c, this.d);
+            }
+         }
       }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<coz> var1);
    }
 }

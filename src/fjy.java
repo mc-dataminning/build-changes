@@ -1,64 +1,102 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fjy<T extends blw> extends fjf<T> {
-   public static final String a = "red_thing";
-   private final fnj b;
-   private final fnj f;
-   private final fnj g;
-   private final fnj h;
-   private final fnj i;
-   private final fnj j;
-   private final fnj k;
-   private final fnj l;
+public class fjy extends ffe {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ToIntFunction<aix<cvn>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.put(cvn.h, -13408734);
+      $$0.put(cvn.i, -10075085);
+      $$0.put(cvn.j, -8943531);
+      $$0.defaultReturnValue(-2236963);
+   });
+   private final BooleanConsumer c;
+   private final bli k;
 
-   public fjy(fnj $$0) {
-      this.b = $$0.b("head");
-      this.k = $$0.b("beak");
-      this.l = $$0.b("red_thing");
-      this.f = $$0.b("body");
-      this.g = $$0.b("right_leg");
-      this.h = $$0.b("left_leg");
-      this.i = $$0.b("right_wing");
-      this.j = $$0.b("left_wing");
+   @Nullable
+   public static fjy a(exh $$0, BooleanConsumer $$1, DataFixer $$2, eil.c $$3, boolean $$4) {
+      try {
+         fke $$5 = $$0.w();
+         arl $$6 = aro.a($$3);
+
+         fjy var10;
+         try (aju $$7 = $$5.a($$3.f(), false, $$6)) {
+            eir $$8 = $$7.d();
+            iw.b $$9 = $$7.c().a();
+            $$3.a($$9, $$8);
+            var10 = new fjy($$1, $$2, $$3, $$8.J(), $$4, $$9.d(kg.aN));
+         }
+
+         return var10;
+      } catch (Exception var13) {
+         a.warn("Failed to load datapacks, can't optimize world", var13);
+         return null;
+      }
    }
 
-   public static fnp c() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      int $$2 = 16;
-      $$1.a("head", fno.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fnl.a(0.0F, 15.0F, -4.0F));
-      $$1.a("beak", fno.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fnl.a(0.0F, 15.0F, -4.0F));
-      $$1.a("red_thing", fno.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fnl.a(0.0F, 15.0F, -4.0F));
-      $$1.a("body", fno.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fnl.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fno $$3 = fno.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$3, fnl.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$3, fnl.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", fno.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fnl.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", fno.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fnl.a(4.0F, 13.0F, 0.0F));
-      return fnp.a($$0, 64, 32);
-   }
-
-   @Override
-   protected Iterable<fnj> a() {
-      return ImmutableList.of(this.b, this.k, this.l);
-   }
-
-   @Override
-   protected Iterable<fnj> b() {
-      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
+   private fjy(BooleanConsumer $$0, DataFixer $$1, eil.c $$2, cvr $$3, boolean $$4, iv<dop> $$5) {
+      super(vq.a("optimizeWorld.title", $$3.a()));
+      this.c = $$0;
+      this.k = new bli($$2, $$1, $$5, $$4);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = this.b.e;
-      this.k.f = this.b.f;
-      this.l.e = this.b.e;
-      this.l.f = this.b.f;
-      this.g.e = aup.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.h.e = aup.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.g = $$3;
-      this.j.g = -$$3;
+   protected void aQ_() {
+      super.aQ_();
+      this.d(ezh.a(vp.e, $$0 -> {
+         this.k.a();
+         this.c.accept(false);
+      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
+   }
+
+   @Override
+   public void e() {
+      if (this.k.b()) {
+         this.c.accept(true);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.c.accept(false);
+   }
+
+   @Override
+   public void k() {
+      this.k.a();
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      int $$4 = this.g / 2 - 150;
+      int $$5 = this.g / 2 + 150;
+      int $$6 = this.h / 4 + 100;
+      int $$7 = $$6 + 10;
+      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
+      if (this.k.e() > 0) {
+         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
+         $$0.b(this.i, vq.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
+         $$0.b(this.i, vq.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
+         $$0.b(this.i, vq.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
+         int $$8 = 0;
+
+         for (aix<cvn> $$9 : this.k.c()) {
+            int $$10 = awh.d(this.k.a($$9) * (float)($$5 - $$4));
+            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
+            $$8 += $$10;
+         }
+
+         int $$11 = this.k.f() + this.k.g();
+         vq $$12 = vq.a("optimizeWorld.progress.counter", $$11, this.k.e());
+         vq $$13 = vq.a("optimizeWorld.progress.percentage", awh.d(this.k.d() * 100.0F));
+         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
+         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+      }
    }
 }

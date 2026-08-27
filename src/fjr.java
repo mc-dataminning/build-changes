@@ -1,61 +1,121 @@
-public class fjr extends flf {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final fnj e;
-   private final fnj f;
-   private final fnj g;
-   private final fnj h;
-   private final fnj i;
-   private final fnj j;
-   private final fnj k;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-   public fjr(fnj $$0) {
-      super(fub::c);
-      this.e = $$0;
-      this.f = $$0.b("left_lid");
-      this.g = $$0.b("right_lid");
-      this.h = $$0.b("left_pages");
-      this.i = $$0.b("right_pages");
-      this.j = $$0.b("flip_page1");
-      this.k = $$0.b("flip_page2");
-   }
+public class fjr extends ffe {
+   private static final int a = 8;
+   private static final vq b = vq.c("telemetry_info.screen.title");
+   private static final vq c = vq.c("telemetry_info.screen.description").a(n.h);
+   private static final vq k = vq.c("telemetry_info.button.privacy_statement");
+   private static final vq l = vq.c("telemetry_info.button.give_feedback");
+   private static final vq m = vq.c("telemetry_info.button.show_data");
+   private static final vq n = vq.c("telemetry_info.opt_in.description");
+   private final ffe o;
+   private final exl p;
+   @Nullable
+   private fjq q;
+   private double r;
 
-   public static fnp a() {
-      fnr $$0 = new fnr();
-      fns $$1 = $$0.a();
-      $$1.a("left_lid", fno.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fnl.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", fno.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fnl.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", fno.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), fnl.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", fno.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), fnl.a);
-      $$1.a("right_pages", fno.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), fnl.a);
-      fno $$2 = fno.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, fnl.a);
-      $$1.a("flip_page2", $$2, fnl.a);
-      return fnp.a($$0, 64, 32);
+   public fjr(ffe $$0, exl $$1) {
+      super(b);
+      this.o = $$0;
+      this.p = $$1;
    }
 
    @Override
-   public void a(eqk $$0, eqo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public vq i() {
+      return vp.a(super.i(), c);
    }
 
-   public void b(eqk $$0, eqo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   @Override
+   protected void aQ_() {
+      fcr $$0 = new fcr();
+      $$0.c().a(8);
+      $$0.a(this.h);
+      fcx $$1 = $$0.a(fcx.d(), $$0.b().a(0.5F, 0.0F));
+      $$1.c().b().e(8);
+      $$1.a(new fao(this.p(), this.i));
+      $$1.a(new fab(c, this.i).c(this.g - 16).b(true));
+      fcs $$2 = this.a(ezh.a(k, this::b).a(), ezh.a(l, this::c).a());
+      $$1.a($$2);
+      fcu $$3 = this.o();
+      $$0.a();
+      $$3.a();
+      int $$4 = $$2.C() + $$2.u();
+      int $$5 = $$3.u();
+      int $$6 = this.h - $$4 - $$5 - 16;
+      this.q = new fjq(0, 0, this.g - 40, $$6, this.f.h);
+      this.q.a(this.r);
+      this.q.a($$0x -> this.r = $$0x);
+      $$1.a(this.q);
+      $$1.a($$3);
+      $$0.a();
+      fcr.a($$0, 0, 0, this.g, this.h, 0.5F, 0.0F);
+      $$0.a($$1x -> {
+         ezf var10000 = this.d($$1x);
+      });
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (aup.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.f.f = (float) Math.PI + $$4;
-      this.g.f = -$$4;
-      this.h.f = $$4;
-      this.i.f = -$$4;
-      this.j.f = $$4 - $$4 * 2.0F * $$1;
-      this.k.f = $$4 - $$4 * 2.0F * $$2;
-      this.h.b = aup.a($$4);
-      this.i.b = aup.a($$4);
-      this.j.b = aup.a($$4);
-      this.k.b = aup.a($$4);
+   @Override
+   protected void aH_() {
+      this.c(this.q);
+   }
+
+   private fcu o() {
+      fcx $$0 = fcx.d();
+      $$0.c().b().e(4);
+      if (this.f.B()) {
+         $$0.a(this.E());
+      }
+
+      $$0.a(this.a(ezh.a(m, this::d).a(), ezh.a(vp.d, this::a).a()));
+      return $$0;
+   }
+
+   private ezf E() {
+      exk<Boolean> $$0 = this.p.af();
+      ezj $$1 = ezj.a(n, this.f.h).a($$0).a(this::a).a();
+      $$1.j = this.f.B();
+      return $$1;
+   }
+
+   private void a(ezf $$0, boolean $$1) {
+      if (this.q != null) {
+         this.q.b($$1);
+      }
+   }
+
+   private void a(ezh $$0) {
+      this.f.a(this.o);
+   }
+
+   private void b(ezh $$0) {
+      fdw.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
+   }
+
+   private void c(ezh $$0) {
+      fdw.a(this, "https://aka.ms/javafeedback?ref=game");
+   }
+
+   private void d(ezh $$0) {
+      Path $$1 = this.f.t().b();
+      ac.j().a($$1.toUri());
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.o);
+   }
+
+   @Override
+   public void b(eyu $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   private fcs a(ezf $$0, ezf $$1) {
+      fcs $$2 = new fcs();
+      $$2.c().b().f(4);
+      $$2.a($$0, 0, 0);
+      $$2.a($$1, 0, 1);
+      return $$2;
    }
 }

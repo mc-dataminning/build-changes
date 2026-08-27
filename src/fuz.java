@@ -1,68 +1,109 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.mojang.authlib.GameProfile;
+import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
 
-public class fuz {
-   private final ahh a;
-   private final List<fuz.b> b;
+public class fuz implements asb {
+   private static final dkb[] a = Arrays.stream(cnn.values())
+      .sorted(Comparator.comparingInt(cnn::a))
+      .map($$0 -> new dkb($$0, hz.c, cyq.kP.o()))
+      .toArray(dkb[]::new);
+   private static final dkb b = new dkb(hz.c, cyq.kP.o());
+   private final dja c = new dja(hz.c, cyq.cv.o());
+   private final dja d = new dkl(hz.c, cyq.gV.o());
+   private final djo e = new djo(hz.c, cyq.fG.o());
+   private final dij f = new dij(hz.c, cyq.iJ.o());
+   private final dip g = new dip(hz.c, cyq.bn.o());
+   private final djf h = new djf(hz.c, cyq.mX.o());
+   private final djj i = new djj(hz.c, cyq.tp.o());
+   private fns j;
+   private fog k;
+   private Map<dfp.a, fny> l;
+   private final fxl m;
+   private final foy n;
 
-   public fuz(ahh $$0, List<fuz.b> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
+   public fuz(fxl $$0, foy $$1) {
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   public ahh a() {
-      return this.a;
+   @Override
+   public void a(asa $$0) {
+      this.j = new fns(this.n.a(fpb.bf));
+      this.k = new fog(this.n.a(fpb.bE));
+      this.l = fyb.a(this.n);
    }
 
-   public Stream<fuz.b> b() {
-      return this.b.stream();
-   }
+   public void a(coz $$0, cow $$1, esa $$2, fvm $$3, int $$4, int $$5) {
+      cou $$6 = $$0.d();
+      if ($$6 instanceof cms) {
+         cyo $$7 = ((cms)$$6).e();
+         if ($$7 instanceof cxk $$8) {
+            sw $$9 = $$0.w();
+            GameProfile $$10 = $$9 != null ? dke.d($$9) : null;
+            fny $$11 = this.l.get($$8.b());
+            fvu $$12 = fyb.a($$8.b(), $$10);
+            fyb.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$11, $$12);
+         } else {
+            dlf $$13 = $$7.o();
+            dit $$14;
+            if ($$7 instanceof cxf) {
+               this.f.a($$0, ((cxf)$$7).b());
+               $$14 = this.f;
+            } else if ($$7 instanceof cyh) {
+               this.g.a(((cyh)$$7).b());
+               $$14 = this.g;
+            } else if ($$13.a(cyq.mX)) {
+               $$14 = this.h;
+            } else if ($$13.a(cyq.cv)) {
+               $$14 = this.c;
+            } else if ($$13.a(cyq.fG)) {
+               $$14 = this.e;
+            } else if ($$13.a(cyq.gV)) {
+               $$14 = this.d;
+            } else if ($$13.a(cyq.tp)) {
+               this.i.a($$0);
+               $$14 = this.i;
+            } else {
+               if (!($$7 instanceof dfm)) {
+                  return;
+               }
 
-   protected static class a implements JsonDeserializer<fuz> {
-      public fuz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ahh $$4 = new ahh(auf.i($$3, "model"));
-         List<fuz.b> $$5 = this.a($$3);
-         return new fuz($$4, $$5);
-      }
+               cnn $$21 = dfm.b($$6);
+               if ($$21 == null) {
+                  $$14 = b;
+               } else {
+                  $$14 = a[$$21.a()];
+               }
+            }
 
-      protected List<fuz.b> a(JsonObject $$0) {
-         Map<ahh, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = auf.u($$0, "predicate");
-
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(new ahh($$3.getKey()), auf.e($$3.getValue(), $$3.getKey()));
+            this.m.a($$14, $$2, $$3, $$4, $$5);
          }
+      } else {
+         if ($$0.a(cpc.vo)) {
+            boolean $$25 = cms.a($$0) != null;
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            gix $$26 = $$25 ? giz.g : giz.h;
+            ese $$27 = $$26.c().a(gbr.c($$3, this.j.a($$26.a()), true, $$0.C()));
+            this.j.c().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            if ($$25) {
+               List<Pair<ij<dik>, cnn>> $$28 = dij.a(cpw.d($$0), dij.a($$0));
+               fxh.a($$2, $$3, $$4, $$5, this.j.b(), $$26, false, $$28, $$0.C());
+            } else {
+               this.j.b().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            }
 
-         return $$1.entrySet().stream().map($$0x -> new fuz.b((ahh)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
-      }
-   }
-
-   public static class b {
-      private final ahh a;
-      private final float b;
-
-      public b(ahh $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public ahh a() {
-         return this.a;
-      }
-
-      public float b() {
-         return this.b;
+            $$2.b();
+         } else if ($$0.a(cpc.vL)) {
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            ese $$29 = gbr.c($$3, this.k.a(fog.a), false, $$0.C());
+            this.k.a($$2, $$29, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            $$2.b();
+         }
       }
    }
 }

@@ -1,43 +1,79 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
 
-public class aaw implements xg<zb> {
-   private final int a;
-   private final cjq<?> b;
-   private final vg c;
+public record aaw(List<aaw.a> b) implements xx<aag> {
+   public static final xo<uq, aaw> a = xx.a(aaw::a, aaw::new);
+   private static final int c = 2097152;
 
-   public aaw(int $$0, cjq<?> $$1, vg $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private aaw(uq $$0) {
+      this($$0.a(aaw.a::new));
    }
 
-   public aaw(uj $$0) {
-      this.a = $$0.n();
-      this.b = $$0.a(kd.r);
-      this.c = $$0.m();
+   public static aaw a(List<dnm> $$0) {
+      return new aaw($$0.stream().map(aaw.a::new).toList());
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.a(kd.r, this.b);
-      $$0.a(this.c);
+   public xz<aaw> a() {
+      return aeq.p;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
+   public static record a(cuu a, byte[] b) {
+      public a(dnm $$0) {
+         this($$0.f(), new byte[a($$0)]);
+         a(new uq(this.d()), $$0);
+      }
 
-   @Nullable
-   public cjq<?> d() {
-      return this.b;
-   }
+      public a(uq $$0) {
+         this($$0.f(), $$0.a(2097152));
+      }
 
-   public vg e() {
-      return this.c;
+      private static int a(dnm $$0) {
+         int $$1 = 0;
+
+         for (dnn $$2 : $$0.d()) {
+            $$1 += $$2.i().c();
+         }
+
+         return $$1;
+      }
+
+      public uq a() {
+         return new uq(Unpooled.wrappedBuffer(this.b));
+      }
+
+      private ByteBuf d() {
+         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
+         $$0.writerIndex(0);
+         return $$0;
+      }
+
+      public static void a(uq $$0, dnm $$1) {
+         for (dnn $$2 : $$1.d()) {
+            $$2.i().b($$0);
+         }
+      }
+
+      public void a(uq $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+      }
+
+      public cuu b() {
+         return this.a;
+      }
+
+      public byte[] c() {
+         return this.b;
+      }
    }
 }

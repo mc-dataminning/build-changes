@@ -1,66 +1,48 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public abstract class ehy implements ehq {
-   protected final List<eke> e;
-   private final Predicate<ehf> a;
+public class ehy extends ehu {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   protected ehy(List<eke> $$0) {
-      this.e = $$0;
-      this.a = ekg.a($$0);
+   public static ehu.a<ehy> a() {
+      return new ehu.a<>(ehy::new, ehy::b, axo.k);
    }
 
-   protected static <T extends ehy> P1<Mu<T>, List<eke>> a(Instance<T> $$0) {
-      return $$0.group(atx.a(ekg.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
+   public ehy() {
+      this.b.defaultReturnValue(-1);
    }
 
-   public void a(eho $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+   public static ehy b(sw $$0) {
+      ehy $$1 = new ehy();
+
+      for (String $$2 : $$0.e()) {
+         if ($$0.b($$2, 99)) {
+            $$1.b.put($$2, $$0.h($$2));
+         }
       }
+
+      return $$1;
    }
 
-   protected final boolean a(ehf $$0) {
-      return this.a.test($$0);
+   @Override
+   public sw a(sw $$0) {
+      ObjectIterator var2 = this.b.object2IntEntrySet().iterator();
+
+      while (var2.hasNext()) {
+         Entry<String> $$1 = (Entry<String>)var2.next();
+         $$0.a((String)$$1.getKey(), $$1.getIntValue());
+      }
+
+      return $$0;
    }
 
-   public abstract ehz a();
-
-   public abstract static class a<T extends ehy.a<T>> implements ejx<T> {
-      private final Builder<eke> a = ImmutableList.builder();
-
-      protected abstract T aG_();
-
-      public T a(eke.a $$0) {
-         this.a.add($$0.build());
-         return this.aG_();
-      }
-
-      public final T e() {
-         return this.aG_();
-      }
-
-      protected List<eke> f() {
-         return this.a.build();
-      }
-
-      public ehp.a a(ehy.a<?> $$0) {
-         return new ehp.a(this, $$0);
-      }
-
-      public ehu.a b(ehy.a<?> $$0) {
-         return new ehu.a(this, $$0);
-      }
-
-      public eic.a c(ehy.a<?> $$0) {
-         return new eic.a(this, $$0);
-      }
-
-      public abstract ehy b();
+   public int b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return $$0;
    }
 }

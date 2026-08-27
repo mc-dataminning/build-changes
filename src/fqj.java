@@ -1,287 +1,166 @@
-public class fqj extends fsh {
-   private final eey b;
-   protected boolean a;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   fqj(foe $$0, double $$1, double $$2, double $$3, eey $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.b = $$4;
+public class fqj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bkn<Runnable> b = bkn.a(ac.f(), "server-list-io");
+   private static final int c = 16;
+   private final exh d;
+   private final List<fqi> e = Lists.newArrayList();
+   private final List<fqi> f = Lists.newArrayList();
+
+   public fqj(exh $$0) {
+      this.d = $$0;
    }
 
-   protected eey g() {
-      return this.b;
-   }
-
-   @Override
-   public frl b() {
-      return frl.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      this.h();
-      if (!this.o) {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.i();
-         if (!this.o) {
-            this.j *= 0.98F;
-            this.k *= 0.98F;
-            this.l *= 0.98F;
-            if (this.b != efa.a) {
-               hx $$0 = hx.a(this.g, this.h, this.i);
-               eez $$1 = this.c.b_($$0);
-               if ($$1.a() == this.b && this.h < (double)((float)$$0.v() + $$1.a((ctd)this.c, $$0))) {
-                  this.k();
-               }
+      try {
+         this.e.clear();
+         this.f.clear();
+         sw $$0 = tj.a(this.d.p.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
+
+         tc $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            sw $$3 = $$1.a($$2);
+            fqi $$4 = fqi.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
             }
          }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
       }
    }
 
-   protected void h() {
-      if (this.t-- <= 0) {
-         this.k();
+   public void b() {
+      try {
+         tc $$0 = new tc();
+
+         for (fqi $$1 : this.e) {
+            sw $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (fqi $$3 : this.f) {
+            sw $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         sw $$5 = new sw();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.p.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         tj.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         ac.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
       }
    }
 
-   protected void i() {
+   public fqi a(int $$0) {
+      return this.e.get($$0);
    }
 
-   public static fsh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.b($$1, $$2, $$3, $$4, efa.c, jx.n);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fsh b(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.e($$1, $$2, $$3, $$4, efa.c, jx.aj);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fsh c(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      return new fqj.a($$1, $$2, $$3, $$4, efa.e, jx.k);
-   }
-
-   public static fsh d(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.e($$1, $$2, $$3, $$4, efa.e, jx.l);
-      $$8.a(1.0F, 0.2857143F, 0.083333336F);
-      return $$8;
-   }
-
-   public static fsh e(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.c($$1, $$2, $$3, $$4, efa.e);
-      $$8.a(1.0F, 0.2857143F, 0.083333336F);
-      return $$8;
-   }
-
-   public static fsh f(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj.b $$8 = new fqj.b($$1, $$2, $$3, $$4, efa.a, jx.at);
-      $$8.u *= 0.01F;
-      $$8.t = 100;
-      $$8.a(0.622F, 0.508F, 0.082F);
-      return $$8;
-   }
-
-   public static fsh g(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.g($$1, $$2, $$3, $$4, efa.a, jx.au);
-      $$8.u = 0.01F;
-      $$8.a(0.582F, 0.448F, 0.082F);
-      return $$8;
-   }
-
-   public static fsh h(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.c($$1, $$2, $$3, $$4, efa.a);
-      $$8.t = (int)(128.0 / (Math.random() * 0.8 + 0.2));
-      $$8.a(0.522F, 0.408F, 0.082F);
-      return $$8;
-   }
-
-   public static fsh i(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.b($$1, $$2, $$3, $$4, efa.c, jx.aL);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fsh j(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.d($$1, $$2, $$3, $$4, efa.c, jx.aj);
-      $$8.a(0.2F, 0.3F, 1.0F);
-      return $$8;
-   }
-
-   public static fsh k(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      return new fqj.a($$1, $$2, $$3, $$4, efa.e, jx.aJ);
-   }
-
-   public static fsh l(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.d($$1, $$2, $$3, $$4, efa.e, jx.l);
-      $$8.a(1.0F, 0.2857143F, 0.083333336F);
-      return $$8;
-   }
-
-   public static fsh m(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.f($$1, $$2, $$3, $$4, efa.a);
-      $$8.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      $$8.u = 0.007F;
-      $$8.a(0.92F, 0.782F, 0.72F);
-      return $$8;
-   }
-
-   public static fsh n(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      int $$8 = (int)(64.0F / aup.b($$1.F_(), 0.1F, 0.9F));
-      fqj $$9 = new fqj.f($$1, $$2, $$3, $$4, efa.a, $$8);
-      $$9.u = 0.005F;
-      $$9.a(0.32F, 0.5F, 0.22F);
-      return $$9;
-   }
-
-   public static fsh o(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj.b $$8 = new fqj.b($$1, $$2, $$3, $$4, efa.a, jx.aC);
-      $$8.a = true;
-      $$8.u *= 0.01F;
-      $$8.t = 100;
-      $$8.a(0.51171875F, 0.03125F, 0.890625F);
-      return $$8;
-   }
-
-   public static fsh p(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.e($$1, $$2, $$3, $$4, efa.a, jx.aD);
-      $$8.a = true;
-      $$8.u = 0.01F;
-      $$8.a(0.51171875F, 0.03125F, 0.890625F);
-      return $$8;
-   }
-
-   public static fsh q(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      fqj $$8 = new fqj.c($$1, $$2, $$3, $$4, efa.a);
-      $$8.a = true;
-      $$8.t = (int)(28.0 / (Math.random() * 0.8 + 0.2));
-      $$8.a(0.51171875F, 0.03125F, 0.890625F);
-      return $$8;
-   }
-
-   static class a extends fqj.b {
-      a(foe $$0, double $$1, double $$2, double $$3, eey $$4, jv $$5) {
-         super($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      @Override
-      protected void h() {
-         this.v = 1.0F;
-         this.w = 16.0F / (float)(40 - this.t + 16);
-         this.x = 4.0F / (float)(40 - this.t + 8);
-         super.h();
-      }
-   }
-
-   static class b extends fqj {
-      private final jv b;
-
-      b(foe $$0, double $$1, double $$2, double $$3, eey $$4, jv $$5) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.b = $$5;
-         this.u *= 0.02F;
-         this.t = 40;
-      }
-
-      @Override
-      protected void h() {
-         if (this.t-- <= 0) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, this.j, this.k, this.l);
+   @Nullable
+   public fqi a(String $$0) {
+      for (fqi $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
          }
       }
 
-      @Override
-      protected void i() {
-         this.j *= 0.02;
-         this.k *= 0.02;
-         this.l *= 0.02;
-      }
-   }
-
-   static class c extends fqj {
-      c(foe $$0, double $$1, double $$2, double $$3, eey $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      }
-   }
-
-   static class d extends fqj.e {
-      d(foe $$0, double $$1, double $$2, double $$3, eey $$4, jv $$5) {
-         super($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
-            ars $$0 = this.g() == efa.e ? art.hi : art.hj;
-            float $$1 = aup.b(this.r, 0.3F, 1.0F);
-            this.c.a(this.g, this.h, this.i, $$0, aru.e, $$1, 1.0F, false);
+      for (fqi $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
          }
       }
+
+      return null;
    }
 
-   static class e extends fqj.f {
-      protected final jv b;
-
-      e(foe $$0, double $$1, double $$2, double $$3, eey $$4, jv $$5) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.b = $$5;
-      }
-
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+   @Nullable
+   public fqi b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         fqi $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
          }
       }
+
+      return null;
    }
 
-   static class f extends fqj {
-      f(foe $$0, double $$1, double $$2, double $$3, eey $$4) {
-         this($$0, $$1, $$2, $$3, $$4, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
-      }
-
-      f(foe $$0, double $$1, double $$2, double $$3, eey $$4, int $$5) {
-         super($$0, $$1, $$2, $$3, $$4);
-         this.t = $$5;
-      }
-
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-         }
+   public void a(fqi $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
       }
    }
 
-   static class g extends fqj.e {
-      g(foe $$0, double $$1, double $$2, double $$3, eey $$4, jv $$5) {
-         super($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public void a(fqi $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
 
-      @Override
-      protected void i() {
-         if (this.m) {
-            this.k();
-            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
-            float $$0 = aup.b(this.r, 0.3F, 1.0F);
-            this.c.a(this.g, this.h, this.i, art.bR, aru.e, $$0, 1.0F, false);
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      fqi $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, fqi $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(fqi $$0, List<fqi> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         fqi $$3 = $$1.get($$2);
+         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
          }
       }
+
+      return false;
+   }
+
+   public static void b(fqi $$0) {
+      b.a(() -> {
+         fqj $$1 = new fqj(exh.O());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
+      });
    }
 }

@@ -1,20 +1,43 @@
-import com.google.gson.JsonObject;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class esc extends esg {
-   public String a;
-   public long b;
-   public long c;
+public class esc {
+   private static final int a = 786432;
+   private final erv b;
+   @Nullable
+   private static esc c;
 
-   public static esc a(JsonObject $$0) {
-      esc $$1 = new esc();
-
-      try {
-         $$1.a = eud.b("profileUuid", $$0, null);
-         $$1.b = eud.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = eud.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+   public static void a() {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (c != null) {
+         throw new IllegalStateException("Tesselator has already been initialized");
+      } else {
+         c = new esc();
       }
+   }
 
-      return $$1;
+   public static esc b() {
+      RenderSystem.assertOnGameThreadOrInit();
+      if (c == null) {
+         throw new IllegalStateException("Tesselator has not been initialized");
+      } else {
+         return c;
+      }
+   }
+
+   public esc(int $$0) {
+      this.b = new erv($$0);
+   }
+
+   public esc() {
+      this(786432);
+   }
+
+   public void c() {
+      erw.a(this.b.d());
+   }
+
+   public erv d() {
+      return this.b;
    }
 }

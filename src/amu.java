@@ -1,42 +1,12 @@
-public record amu(int a, int b) {
-   private static final long c = 32L;
-   private static final long d = 4294967295L;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-   public cte a() {
-      return new cte(iz.a(this.a), iz.a(this.b));
-   }
-
-   public long b() {
-      return a(this.a, this.b);
-   }
-
-   public static long a(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.a + ", " + this.b + "]";
-   }
-
-   @Override
-   public int hashCode() {
-      return cte.d(this.a, this.b);
-   }
-
-   public int c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
+public class amu {
+   public static void a(CommandDispatcher<du> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("stop").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         ((du)$$0x.getSource()).a(() -> vq.c("commands.stop.stopping"), true);
+         ((du)$$0x.getSource()).l().a(false);
+         return 1;
+      }));
    }
 }

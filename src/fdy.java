@@ -1,185 +1,188 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fdy {
-   private final evr a;
-   private final fec b;
-   private final fdz c;
-   private final int d;
-   private final ag e;
-   private final ar f;
-   private final cng g;
-   private final vg h;
-   private final fea i;
-   private final Map<af, fea> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
+public class fdy extends ffe {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger k = LogUtils.getLogger();
+   private static final long l = 2000L;
+   public static final vq a = vq.c("connect.aborted");
+   public static final vq b = vq.a("disconnect.genericReason", vq.c("disconnect.unknownHost"));
+   @Nullable
+   volatile uo m;
+   @Nullable
+   ChannelFuture n;
+   volatile boolean o;
+   final ffe p;
+   private vq q = vq.c("connect.connecting");
+   private long r = -1L;
+   final vq t;
 
-   public fdy(evr $$0, fec $$1, fdz $$2, int $$3, ag $$4, ar $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new fea(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
+   private fdy(ffe $$0, vq $$1) {
+      super(ewz.a);
+      this.p = $$0;
+      this.t = $$1;
    }
 
-   public fdz a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ag c() {
-      return this.e;
-   }
-
-   public vg d() {
-      return this.h;
-   }
-
-   public ar e() {
-      return this.f;
-   }
-
-   public void a(exe $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(exe $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(exe $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
-      }
-
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      ahh $$3 = this.f.d().orElse(gfc.a);
-      int $$4 = aup.a(this.k);
-      int $$5 = aup.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+   public static void a(ffe $$0, exh $$1, frk $$2, fqi $$3, boolean $$4, @Nullable fql $$5) {
+      if ($$1.y instanceof fdy) {
+         k.error("Attempt to connect while already connecting");
+      } else {
+         vq $$6;
+         if ($$5 != null) {
+            $$6 = vp.q;
+         } else if ($$4) {
+            $$6 = fuv.a;
+         } else {
+            $$6 = vp.r;
          }
-      }
 
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.f();
+         fdy $$9 = new fdy($$0, $$6);
+         if ($$5 != null) {
+            $$9.a(vq.c("connect.transferring"));
+         }
+
+         $$1.y();
+         $$1.aR();
+         $$1.a(fqy.a($$3.b));
+         $$1.ba().a(fuw.c.b, $$3.b, $$3.a);
+         $$1.a($$9);
+         $$9.a($$1, $$2, $$3, $$5);
+      }
    }
 
-   public void a(exe $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, aup.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = aup.a(this.k);
-      int $$7 = aup.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (fea $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
+   private void a(final exh $$0, final frk $$1, final fqi $$2, @Nullable final fql $$3) {
+      k.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (fdy.this.o) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = frm.a.a($$1).map(frj::d);
+               if (fdy.this.o) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new feg(fdy.this.p, fdy.this.t, fdy.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               uo $$2;
+               synchronized (fdy.this) {
+                  if (fdy.this.o) {
+                     return;
+                  }
+
+                  $$2 = new uo(xy.b);
+                  $$2.a($$0.aN().l());
+                  fdy.this.n = uo.a($$0, $$0.m.aw(), $$2);
+               }
+
+               fdy.this.n.syncUninterruptibly();
+               synchronized (fdy.this) {
+                  if (fdy.this.o) {
+                     $$2.a(fdy.a);
+                     return;
+                  }
+
+                  fdy.this.m = $$2;
+                  $$0.ac().a($$2, a($$2.b()));
+               }
+
+               fdy.this.m
+                  .a($$0.getHostName(), $$0.getPort(), ahd.a, ahd.b, new fpw(fdy.this.m, $$0, $$2, fdy.this.p, false, null, fdy.this::a, $$3), $$3 != null);
+               fdy.this.m.a(new ahg($$0.V().c(), $$0.V().b()));
+            } catch (Exception var9) {
+               if (fdy.this.o) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               fdy.k.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new feg(fdy.this.p, fdy.this.t, vq.a("disconnect.genericReason", $$8))));
             }
          }
-      }
 
-      $$0.c().b();
-      if ($$5) {
-         this.q = aup.a(this.q + 0.02F, 0.0F, 0.3F);
-      } else {
-         this.q = aup.a(this.q - 0.04F, 0.0F, 1.0F);
+         private static gjn.c a(fqi.a $$0x) {
+            return switch ($$0) {
+               case a -> gjn.c.b;
+               case b -> gjn.c.c;
+               case c -> gjn.c.a;
+            };
+         }
+      };
+      $$4.setUncaughtExceptionHandler(new r(k));
+      $$4.start();
+   }
+
+   private void a(vq $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   public void e() {
+      if (this.m != null) {
+         if (this.m.i()) {
+            this.m.b();
+         } else {
+            this.m.n();
+         }
       }
    }
 
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   @Override
+   public boolean aO_() {
+      return false;
    }
 
-   @Nullable
-   public static fdy a(evr $$0, fec $$1, int $$2, ag $$3) {
-      Optional<ar> $$4 = $$3.a().c();
-      if ($$4.isEmpty()) {
-         return null;
-      } else {
-         for (fdz $$5 : fdz.values()) {
-            if ($$2 < $$5.a()) {
-               return new fdy($$0, $$1, $$5, $$2, $$3, $$4.get());
+   @Override
+   protected void aQ_() {
+      this.d(ezh.a(vp.e, $$0 -> {
+         synchronized (this) {
+            this.o = true;
+            if (this.n != null) {
+               this.n.cancel(true);
+               this.n = null;
             }
 
-            $$2 -= $$5.a();
+            if (this.m != null) {
+               this.m.a(a);
+            }
          }
 
-         return null;
-      }
+         this.f.a(this.p);
+      }).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = aup.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ac.b();
+      if ($$4 - this.r > 2000L) {
+         this.r = $$4;
+         this.f.aW().c(vq.c("narrator.joining"));
       }
 
-      if (this.p - this.n > 113) {
-         this.l = aup.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
-      }
-   }
-
-   public void a(ag $$0) {
-      Optional<ar> $$1 = $$0.a().c();
-      if (!$$1.isEmpty()) {
-         fea $$2 = new fea(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
-      }
-   }
-
-   private void a(fea $$0, af $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (fea $$6 : this.j.values()) {
-         $$6.b();
-      }
-   }
-
-   @Nullable
-   public fea a(af $$0) {
-      return this.j.get($$0);
-   }
-
-   public fec f() {
-      return this.b;
+      $$0.a(this.i, this.q, this.g / 2, this.h / 2 - 50, 16777215);
    }
 }

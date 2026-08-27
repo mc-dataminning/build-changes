@@ -1,105 +1,62 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cgv extends cfx implements cgf {
-   public static final cgv.a e = new cgv.a();
+public class cgv {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] e = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cgv> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kf.y.q().fieldOf("type").orElseGet(() -> cgz.c).forGetter($$0x -> $$0x.f),
+               kf.z.q().fieldOf("profession").orElseGet(() -> cgx.b).forGetter($$0x -> $$0x.g),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cgv::new)
+   );
+   public static final xo<vb, cgv> d = xo.a(xm.a(kg.aq), $$0 -> $$0.f, xm.a(kg.ap), $$0 -> $$0.g, xm.d, $$0 -> $$0.h, cgv::new);
+   private final cgz f;
+   private final cgx g;
+   private final int h;
 
-   public cgv(bmc<? extends cgv> $$0, ctx $$1) {
-      super($$0, $$1);
+   public cgv(cgz $$0, cgx $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = Math.max(1, $$2);
    }
 
-   public cgv(bmc<? extends cgv> $$0, cds $$1, ctx $$2) {
-      super($$0, $$1.dq(), $$1.gh(), $$1.dw(), $$2);
-      this.c($$1);
+   public cgz a() {
+      return this.f;
    }
 
-   @Override
-   protected elx aq() {
-      float $$0 = this.ai().n().a() / 2.0F;
-      float $$1 = this.ai().n().b();
-      float $$2 = 0.15F;
-      return new elx(
-         this.dj().c - (double)$$0,
-         this.dj().d - 0.15F,
-         this.dj().e - (double)$$0,
-         this.dj().c + (double)$$0,
-         this.dj().d - 0.15F + (double)$$1,
-         this.dj().e + (double)$$0
-      );
+   public cgx b() {
+      return this.g;
    }
 
-   @Override
-   public boolean h(blw $$0) {
-      return $$0 instanceof cgv ? false : super.h($$0);
+   public int c() {
+      return this.h;
    }
 
-   @Override
-   protected boolean b(blw $$0) {
-      return $$0 instanceof cgv ? false : super.b($$0);
+   public cgv a(cgz $$0) {
+      return new cgv($$0, this.g, this.h);
    }
 
-   @Override
-   protected void a(elz $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         $$0.a().a(this.dM().c(this, this.w() instanceof bmo $$1 ? $$1 : null), 1.0F);
-         this.z();
-      }
+   public cgv a(cgx $$0) {
+      return new cgv(this.f, $$0, this.h);
    }
 
-   private void z() {
-      this.dL().a(this, null, e, this.dq(), this.ds(), this.dw(), (float)(3.0 + this.ag.j()), false, ctx.a.e, jx.y, jx.z, art.Bt);
+   public cgv a(int $$0) {
+      return new cgv(this.f, this.g, $$0);
    }
 
-   @Override
-   protected void a(ely $$0) {
-      super.a($$0);
-      this.z();
-      this.am();
+   public static int b(int $$0) {
+      return d($$0) ? e[$$0 - 1] : 0;
    }
 
-   @Override
-   protected void a(ema $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         this.am();
-      }
+   public static int c(int $$0) {
+      return d($$0) ? e[$$0] : 0;
    }
 
-   @Override
-   protected boolean s() {
-      return false;
-   }
-
-   @Override
-   public cng q() {
-      return cng.f;
-   }
-
-   @Override
-   protected float x() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float y() {
-      return this.x();
-   }
-
-   @Nullable
-   @Override
-   protected jv u() {
-      return null;
-   }
-
-   @Override
-   protected ctg.a ah_() {
-      return ctg.a.b;
-   }
-
-   public static final class a extends ctq {
-      @Override
-      public boolean a(ctp $$0, blw $$1) {
-         return false;
-      }
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

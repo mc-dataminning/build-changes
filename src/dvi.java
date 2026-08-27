@@ -1,19 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public class dvi<P extends dvh> {
-   public static final dvi<dvk> a = a("two_layers_feature_size", dvk.d);
-   public static final dvi<dvj> b = a("three_layers_feature_size", dvj.d);
-   private final Codec<P> c;
-
-   private static <P extends dvh> dvi<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.aa, $$0, new dvi<>($$1));
+public class dvi extends dts<dwd> {
+   public dvi(Codec<dwd> $$0) {
+      super($$0);
    }
 
-   private dvi(Codec<P> $$0) {
-      this.c = $$0;
-   }
+   @Override
+   public boolean a(dtu<dwd> $$0) {
+      cwi $$1 = $$0.b();
+      hz $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (ie $$3 : ie.values()) {
+            if ($$3 != ie.a && dhi.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, cyq.ff.o().a(dhi.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
 
-   public Codec<P> a() {
-      return this.c;
+         return false;
+      }
    }
 }

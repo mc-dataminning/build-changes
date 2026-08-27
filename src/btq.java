@@ -1,48 +1,22 @@
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
 
-public class btq extends btk {
-   private final bmq a;
-   private bmo b;
-   private final float c;
-
-   public btq(bmq $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(btk.a.c, btk.a.a));
+public class btq<E extends cgl> extends bpw<E> {
+   public btq(int $$0) {
+      super(ImmutableMap.of(bxh.aC, bxi.a, bxh.m, bxi.b, bxh.n, bxi.c), $$0);
    }
 
-   @Override
-   public boolean a() {
-      if (this.a.cO()) {
-         return false;
-      } else {
-         this.b = this.a.q();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.f(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aC() ? false : this.a.eg().a(b(5)) == 0;
-            }
-         }
+   protected boolean a(aov $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aov $$0, E $$1, long $$2) {
+      $$1.b(bor.n);
+      $$1.a(atk.AQ, 5.0F, 1.0F);
+   }
+
+   protected void c(aov $$0, E $$1, long $$2) {
+      if ($$1.c(bor.n)) {
+         $$1.b(bor.a);
       }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.aC();
-   }
-
-   @Override
-   public void c() {
-      emc $$0 = this.a.do();
-      emc $$1 = new emc(this.b.dq() - this.a.dq(), 0.0, this.b.dw() - this.a.dw());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
-      }
-
-      this.a.o($$1.c, (double)this.c, $$1.e);
    }
 }

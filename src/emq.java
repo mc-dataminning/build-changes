@@ -1,53 +1,23 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class emq extends AbstractDoubleList implements emo {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
+public class emq {
+   private static final Codec<emp> f = kf.I.q().dispatch(emp::b, emo::a);
+   public static final Codec<emp> a = avp.a(
+      (Supplier<Codec<emp>>)(() -> {
+         Codec<emp> $$0 = avp.e(f, ems.a);
+         return Codec.either(emn.b, $$0)
+            .xmap($$0x -> (emp)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof emn $$1 ? Either.left($$1) : Either.right($$0x));
+      })
+   );
+   public static final emo b = a("constant", emn.a);
+   public static final emo c = a("uniform", ems.a);
+   public static final emo d = a("binomial", emm.a);
+   public static final emo e = a("score", emr.a);
 
-   protected emq(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size() + this.b.size();
-   }
-
-   @Override
-   public boolean a(emo.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
-   }
-
-   private boolean b(emo.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
-      }
-
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
-
-   @Override
-   public DoubleList a() {
-      return this;
+   private static emo a(String $$0, Codec<? extends emp> $$1) {
+      return iv.a(kf.I, new aiy($$0), new emo($$1));
    }
 }

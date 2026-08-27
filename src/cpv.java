@@ -1,90 +1,66 @@
-public class cpv extends cqc {
-   public cpv(cqa $$0) {
+public class cpv extends cou {
+   public cpv(cou.a $$0) {
       super($$0);
    }
 
-   public boolean a(ciz $$0, ctx $$1) {
-      clv $$2 = null;
-      cng $$3 = null;
-      cng $$4 = null;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cng $$6 = $$0.a($$5);
-         if (!$$6.b()) {
-            cnb $$7 = $$6.d();
-            if (!($$7 instanceof ckx)) {
-               return false;
-            }
-
-            ckx $$8 = (ckx)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = dgt.c($$6);
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
-                  return false;
-               }
-
-               $$3 = $$6;
-            } else {
-               if ($$4 != null) {
-                  return false;
-               }
-
-               $$4 = $$6;
-            }
-         }
+   @Override
+   public boolean a(coz $$0, cvn $$1, dlf $$2, hz $$3, bog $$4) {
+      if (!$$1.B && !$$2.a(atz.aJ)) {
+         $$0.a(1, $$4, bnv.a);
       }
 
-      return $$3 != null && $$4 != null;
-   }
-
-   public cng a(ciz $$0, iu $$1) {
-      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-         cng $$3 = $$0.a($$2);
-         if (!$$3.b()) {
-            int $$4 = dgt.c($$3);
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return cng.f;
-   }
-
-   public iq<cng> a(ciz $$0) {
-      iq<cng> $$1 = iq.a($$0.b(), cng.f);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cng $$3 = $$0.a($$2);
-         if (!$$3.b()) {
-            if ($$3.d().s()) {
-               $$1.set($$2, new cng($$3.d().r()));
-            } else if ($$3.u() && dgt.c($$3) > 0) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
+      return !$$2.a(atz.O)
+            && !$$2.a(cyq.bs)
+            && !$$2.a(cyq.bt)
+            && !$$2.a(cyq.bu)
+            && !$$2.a(cyq.bv)
+            && !$$2.a(cyq.sG)
+            && !$$2.a(cyq.ff)
+            && !$$2.a(cyq.fI)
+            && !$$2.a(atz.a)
+         ? super.a($$0, $$1, $$2, $$3, $$4)
+         : true;
    }
 
    @Override
-   public cqo<?> at_() {
-      return cqo.k;
+   public boolean a_(dlf $$0) {
+      return $$0.a(cyq.bs) || $$0.a(cyq.cw) || $$0.a(cyq.fI);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public float a(coz $$0, dlf $$1) {
+      if ($$1.a(cyq.bs) || $$1.a(atz.O)) {
+         return 15.0F;
+      } else if ($$1.a(atz.a)) {
+         return 5.0F;
+      } else {
+         return !$$1.a(cyq.ff) && !$$1.a(cyq.fg) ? super.a($$0, $$1) : 2.0F;
+      }
+   }
+
+   @Override
+   public blu a(cri $$0) {
+      cvn $$1 = $$0.q();
+      hz $$2 = $$0.a();
+      dlf $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dcd $$5 && !$$5.o($$3)) {
+         chh $$6 = $$0.o();
+         coz $$7 = $$0.n();
+         if ($$6 instanceof aow) {
+            am.N.a((aow)$$6, $$2, $$7);
+         }
+
+         $$1.a($$6, $$2, atk.la, atl.e, 1.0F, 1.0F);
+         dlf $$8 = $$5.n($$3);
+         $$1.b($$2, $$8);
+         $$1.a(dpp.c, $$2, dpp.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, bog.d($$0.p()));
+         }
+
+         return blu.a($$1.B);
+      }
+
+      return super.a($$0);
    }
 }

@@ -1,56 +1,33 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
+import java.util.Collection;
 
 public class akg {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.publish.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vg.b("commands.publish.alreadyPublished", $$0));
-
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ds)$$0x.getSource(), aug.a(), false, null)))
-            .then(
-               ((RequiredArgumentBuilder)dt.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((ds)$$0x.getSource(), aug.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("gamemode", eg.a())
-                           .executes($$0x -> a((ds)$$0x.getSource(), aug.a(), BoolArgumentType.getBool($$0x, "allowCommands"), eg.a($$0x, "gamemode"))))
-                        .then(
-                           dt.a("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 $$0x -> a(
-                                       (ds)$$0x.getSource(),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       BoolArgumentType.getBool($$0x, "allowCommands"),
-                                       eg.a($$0x, "gamemode")
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("banlist").requires($$0x -> $$0x.c(3)))
+                  .executes($$0x -> {
+                     asn $$1 = ((du)$$0x.getSource()).l().ae();
+                     return a((du)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
+                  }))
+               .then(dv.a("ips").executes($$0x -> a((du)$$0x.getSource(), ((du)$$0x.getSource()).l().ae().g().d()))))
+            .then(dv.a("players").executes($$0x -> a((du)$$0x.getSource(), ((du)$$0x.getSource()).l().ae().f().d())))
       );
    }
 
-   private static int a(ds $$0, int $$1, boolean $$2, @Nullable ctu $$3) throws CommandSyntaxException {
-      if ($$0.l().p()) {
-         throw b.create($$0.l().O());
-      } else if (!$$0.l().a($$3, $$2, $$1)) {
-         throw a.create();
+   private static int a(du $$0, Collection<? extends asi<?>> $$1) {
+      if ($$1.isEmpty()) {
+         $$0.a(() -> vq.c("commands.banlist.none"), false);
       } else {
-         $$0.a(() -> a($$1), true);
-         return $$1;
-      }
-   }
+         $$0.a(() -> vq.a("commands.banlist.list", $$1.size()), false);
 
-   public static vu a(int $$0) {
-      vg $$1 = vj.a(String.valueOf($$0));
-      return vg.a("commands.publish.started", $$1);
+         for (asi<?> $$2 : $$1) {
+            $$0.a(() -> vq.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
+         }
+      }
+
+      return $$1.size();
    }
 }

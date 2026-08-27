@@ -1,15 +1,41 @@
-public class fye extends gag<ccg, fjp<ccg>> {
-   private static final ahh a = new ahh("textures/entity/blaze.png");
+public class fye extends fyf<dki> {
+   private static final aiy c = new aiy("textures/entity/end_gateway_beam.png");
 
-   public fye(fza.a $$0) {
-      super($$0, new fjp<>($$0.a(fni.m)), 0.5F);
+   public fye(fxn.a $$0) {
+      super($$0);
    }
 
-   protected int a(ccg $$0, hx $$1) {
-      return 15;
+   public void a(dki $$0, float $$1, esa $$2, fvm $$3, int $$4, int $$5) {
+      if ($$0.c() || $$0.d()) {
+         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.c() ? (double)$$0.i().al() : 50.0;
+         $$6 = awh.a($$6 * (float) Math.PI);
+         int $$8 = awh.a((double)$$6 * $$7);
+         float[] $$9 = $$0.c() ? cnn.c.d() : cnn.k.d();
+         long $$10 = $$0.i().X();
+         fxi.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ahh a(ccg $$0) {
-      return a;
+   @Override
+   protected float b() {
+      return 1.0F;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   protected fvu d() {
+      return fvu.v();
+   }
+
+   @Override
+   public int aT_() {
+      return 256;
    }
 }

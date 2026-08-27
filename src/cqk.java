@@ -1,55 +1,60 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public interface cqk<C extends bjv> {
-   Codec<cqk<?>> h = kd.t.q().dispatch(cqk::at_, cqo::a);
+public class cqk extends cqn {
+   private final float a;
+   private final Multimap<ij<bpg>, bpj> b;
 
-   boolean a(C var1, ctx var2);
+   public cqk(cqm $$0, int $$1, float $$2, cou.a $$3) {
+      super($$0, $$3);
+      this.a = (float)$$1 + $$0.c();
+      Builder<ij<bpg>, bpj> $$4 = ImmutableMultimap.builder();
+      $$4.put(bpl.c, new bpj(m, "Weapon modifier", (double)this.a, bpj.a.a));
+      $$4.put(bpl.e, new bpj(n, "Weapon modifier", (double)$$2, bpj.a.a));
+      this.b = $$4.build();
+   }
 
-   cng a(C var1, iu var2);
+   public float h() {
+      return this.a;
+   }
 
-   boolean a(int var1, int var2);
+   @Override
+   public boolean a(dlf $$0, cvn $$1, hz $$2, chh $$3) {
+      return !$$3.f();
+   }
 
-   cng a(iu var1);
-
-   default iq<cng> a(C $$0) {
-      iq<cng> $$1 = iq.a($$0.b(), cng.f);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cnb $$3 = $$0.a($$2).d();
-         if ($$3.s()) {
-            $$1.set($$2, new cng($$3.r()));
-         }
+   @Override
+   public float a(coz $$0, dlf $$1) {
+      if ($$1.a(cyq.bs)) {
+         return 15.0F;
+      } else {
+         return $$1.a(atz.bD) ? 1.5F : 1.0F;
       }
-
-      return $$1;
    }
 
-   default iq<cqh> a() {
-      return iq.a();
-   }
-
-   default boolean as_() {
-      return false;
-   }
-
-   default boolean h() {
+   @Override
+   public boolean a(coz $$0, bog $$1, bog $$2) {
+      $$0.a(1, $$2, bnv.a);
       return true;
    }
 
-   default String c() {
-      return "";
+   @Override
+   public boolean a(coz $$0, cvn $$1, dlf $$2, hz $$3, bog $$4) {
+      if ($$2.h($$1, $$3) != 0.0F) {
+         $$0.a(2, $$4, bnv.a);
+      }
+
+      return true;
    }
 
-   default cng g() {
-      return new cng(cxa.cA);
+   @Override
+   public boolean a_(dlf $$0) {
+      return $$0.a(cyq.bs);
    }
 
-   cqo<?> at_();
-
-   cqp<?> e();
-
-   default boolean i() {
-      iq<cqh> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public Multimap<ij<bpg>, bpj> a(bnv $$0) {
+      return $$0 == bnv.a ? this.b : super.a($$0);
    }
 }

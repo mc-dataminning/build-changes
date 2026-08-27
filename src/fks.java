@@ -1,45 +1,96 @@
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public abstract class fks<E extends blw> extends fkj<E> {
-   private static final Vector3f a = new Vector3f();
+public class fks {
+   public final fks.d a;
+   public final eqr b;
+   public final fks.a c;
+   public final fks.b d;
+   public final fks.c e;
 
-   public fks() {
-      this(fub::e);
+   public fks(fks.d $$0, eqr $$1, fks.a $$2, fks.b $$3, fks.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public fks(Function<ahh, fub> $$0) {
-      super($$0);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : ghp.a(this.c.toPath(), this.d);
+      }
    }
 
-   @Override
-   public void a(eqk $$0, eqo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
    }
 
-   public abstract fnj a();
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !ac.b(this.b) || !ac.b(this.c) || !ac.b(this.d);
+      }
 
-   public Optional<fnj> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
    }
 
-   protected void a(bls $$0, ewi $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
+   public static class d {
+      public final exw a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
 
-   protected void a(ewi $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      ewk.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bls $$0, ewi $$1, float $$2, float $$3) {
-      $$0.a($$2, $$3);
-      $$0.a($$1x -> ewk.a(this, $$1, $$1x.b(), 1.0F, a));
-   }
-
-   protected void a(ewi $$0) {
-      ewk.a(this, $$0, 0L, 1.0F, a);
+      public d(exw $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

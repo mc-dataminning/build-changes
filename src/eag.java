@@ -1,70 +1,37 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eag implements dzt {
-   private final List<dzs> a = Lists.newArrayList();
+public class eag extends eap {
+   public static final Codec<eag> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eag::new)
+   );
+   private final int c;
+   private final double d;
+   private final double e;
+
+   private eag(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static eag a(int $$0, double $$1, double $$2) {
+      return new eag($$0, $$1, $$2);
+   }
 
    @Override
-   public void a(dzs $$0) {
-      this.a.add($$0);
+   protected int a(awo $$0, hz $$1) {
+      double $$2 = cwm.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
-   @Nullable
    @Override
-   public dzs a(dzg $$0) {
-      return dzs.a(this.a, $$0);
-   }
-
-   @Deprecated
-   public void a(int $$0) {
-      for (dzs $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, auw $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      dzg $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(auw $$0, int $$1, int $$2) {
-      dzg $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
-   }
-
-   public ead a() {
-      return new ead(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public dzg d() {
-      return dzs.a(this.a.stream());
+   public eam<?> b() {
+      return eam.g;
    }
 }

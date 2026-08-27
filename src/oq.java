@@ -1,16 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 
-public class oq extends of<bmc<?>> {
-   public oq(km $$0, CompletableFuture<ij.b> $$1) {
-      super($$0, ke.u, $$1, $$0x -> $$0x.r().h());
+public class oq extends om<bmp> {
+   public oq(ko $$0, CompletableFuture<il.b> $$1) {
+      super($$0, kg.r, $$1);
    }
 
    @Override
-   protected void a(ij.b $$0) {
-      this.a(asl.o).a(bmc.m);
-      this.a(asl.r).a(bmc.m);
-      this.a(asl.s).a(bmc.m);
-      this.a(asl.t).a(bmc.m);
-      this.a(asl.g).a(bmc.bl);
+   protected void a(il.b $$0) {
+      this.b(aub.b).a(bmq.C, bmq.D);
+      this.b(aub.k).a(bmq.G);
+      this.b(aub.B).a(bmq.G);
    }
 }

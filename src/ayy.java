@@ -1,24 +1,22 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
-public class ayy extends bcf {
-   public ayy(Schema $$0, boolean $$1) {
-      super("EntitySkeletonSplitFix", $$0, $$1);
+public class ayy extends DataFix {
+   public ayy(Schema $$0) {
+      super($$0, true);
    }
 
-   @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      if (Objects.equals($$0, "Skeleton")) {
-         int $$2 = $$1.get("SkeletonType").asInt(0);
-         if ($$2 == 1) {
-            $$0 = "WitherSkeleton";
-         } else if ($$2 == 2) {
-            $$0 = "Stray";
-         }
-      }
-
-      return Pair.of($$0, $$1);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bdn.c);
+      OpticFinder<?> $$1 = $$0.findField("sections");
+      return this.fixTypeEverywhereTyped("ChunkDeleteIgnoredLightDataFix", $$0, $$1x -> {
+         boolean $$2 = ((Dynamic)$$1x.get(DSL.remainderFinder())).get("isLightOn").asBoolean(false);
+         return !$$2 ? $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight"))) : $$1x;
+      });
    }
 }

@@ -1,11 +1,4 @@
-public interface xr extends adl {
-   void a(xu var1);
-
-   void a(xv var1);
-
-   void a(xt var1);
-
-   void a(xw var1);
-
-   void a(xs var1);
+@FunctionalInterface
+public interface xr<O, T> {
+   void encode(T var1, O var2);
 }

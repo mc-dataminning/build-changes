@@ -1,92 +1,69 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class ekq implements eks {
-   private static final String d = "block_entity";
-   private static final ekq.a e = new ekq.a() {
-      @Override
-      public tl a(ehf $$0) {
-         dhd $$1 = $$0.c(ejq.h);
-         return $$1 != null ? $$1.o() : null;
-      }
+public class ekq extends ekh {
+   public static final Codec<ekq> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  aiy.a.fieldOf("name").forGetter($$0x -> $$0x.b),
+                  avp.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
+                  kf.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, ekq::new)
+   );
+   private final aiy b;
+   private final long c;
+   private final ij<div<?>> d;
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
+   private ekq(List<elu> $$0, aiy $$1, long $$2, ij<div<?>> $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
 
-      @Override
-      public Set<ejn<?>> b() {
-         return ImmutableSet.of(ejq.h);
-      }
-   };
-   public static final ekq a = new ekq(e);
-   private static final Codec<ekq.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
+   @Override
+   public ekj b() {
+      return ekk.s;
+   }
+
+   @Override
+   public coz a(coz $$0, eiv $$1) {
+      if ($$0.b()) {
+         return $$0;
       } else {
-         ehf.b $$1 = ehf.b.a($$0);
-         return b($$1);
+         sw $$2 = cms.a($$0);
+         if ($$2 == null) {
+            $$2 = new sw();
+         }
+
+         $$2.a("LootTable", this.b.toString());
+         if (this.c != 0L) {
+            $$2.a("LootTableSeed", this.c);
+         }
+
+         cms.a($$0, this.d.a(), $$2);
+         return $$0;
       }
-   }, ekq.a::a);
-   public static final Codec<ekq> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, ekq::new));
-   public static final Codec<ekq> c = f.xmap(ekq::new, $$0 -> $$0.g);
-   private final ekq.a g;
-
-   private static ekq.a b(final ehf.b $$0) {
-      return new ekq.a() {
-         @Nullable
-         @Override
-         public tl a(ehf $$0x) {
-            blw $$1 = $$0.c($$0.a());
-            return $$1 != null ? cm.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<ejn<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
-   }
-
-   private ekq(ekq.a $$0) {
-      this.g = $$0;
    }
 
    @Override
-   public ekr a() {
-      return ekt.c;
+   public void a(eje $$0) {
+      super.a($$0);
+      eix<ejd> $$1 = new eix<>(eja.c, this.b);
+      if ($$0.a().getElementOptional($$1).isEmpty()) {
+         $$0.b("Missing loot table used for container: " + this.b);
+      }
    }
 
-   @Nullable
-   @Override
-   public tl a(ehf $$0) {
-      return this.g.a($$0);
+   public static ekh.a<?> a(div<?> $$0, aiy $$1) {
+      return a($$2 -> new ekq($$2, $$1, 0L, $$0.a()));
    }
 
-   @Override
-   public Set<ejn<?>> b() {
-      return this.g.b();
-   }
-
-   public static eks a(ehf.b $$0) {
-      return new ekq(b($$0));
-   }
-
-   interface a {
-      @Nullable
-      tl a(ehf var1);
-
-      String a();
-
-      Set<ejn<?>> b();
+   public static ekh.a<?> a(div<?> $$0, aiy $$1, long $$2) {
+      return a($$3 -> new ekq($$3, $$1, $$2, $$0.a()));
    }
 }

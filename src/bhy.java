@@ -1,79 +1,83 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
 
-public class bhy {
-   public static final bhy a = new bhy();
-   private final WeakHashMap<bia, Void> b = new WeakHashMap<>();
+public class bhy<T> implements Closeable {
+   private static final Gson a = new Gson();
+   private final Codec<T> b;
+   final FileChannel c;
+   private final AtomicInteger d = new AtomicInteger(1);
 
-   private bhy() {
+   public bhy(Codec<T> $$0, FileChannel $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(bia $$0) {
-      this.b.put($$0, null);
+   public static <T> bhy<T> a(Codec<T> $$0, Path $$1) throws IOException {
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+      return new bhy<>($$0, $$2);
    }
 
-   public List<bhx> a() {
-      Map<String, List<bhx>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bp().stream()).collect(Collectors.groupingBy(bhx::d));
-      return a($$0);
+   public void a(T $$0) throws IOException, JsonIOException {
+      JsonElement $$1 = ac.a(this.b.encodeStart(JsonOps.INSTANCE, $$0), IOException::new);
+      this.c.position(this.c.size());
+      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
+      a.toJson($$1, $$2);
+      $$2.write(10);
+      $$2.flush();
    }
 
-   private static List<bhx> a(Map<String, List<bhx>> $$0) {
-      return $$0.entrySet().stream().map($$0x -> {
-         String $$1 = (String)$$0x.getKey();
-         List<bhx> $$2 = (List<bhx>)$$0x.getValue();
-         return (bhx)($$2.size() > 1 ? new bhy.a($$1, $$2) : $$2.get(0));
-      }).collect(Collectors.toList());
+   public bhz<T> a() throws IOException {
+      if (this.d.get() <= 0) {
+         throw new IOException("Event log has already been closed");
+      } else {
+         this.d.incrementAndGet();
+         final bhz<T> $$0 = bhz.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
+         return new bhz<T>() {
+            private volatile long c;
+
+            @Nullable
+            @Override
+            public T a() throws IOException {
+               Object var1;
+               try {
+                  bhy.this.c.position(this.c);
+                  var1 = $$0.a();
+               } finally {
+                  this.c = bhy.this.c.position();
+               }
+
+               return (T)var1;
+            }
+
+            @Override
+            public void close() throws IOException {
+               bhy.this.b();
+            }
+         };
+      }
    }
 
-   static class a extends bhx {
-      private final List<bhx> b;
+   @Override
+   public void close() throws IOException {
+      this.b();
+   }
 
-      a(String $$0, List<bhx> $$1) {
-         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
-         this.b = $$1;
-      }
-
-      private static bhx.c a(List<bhx> $$0) {
-         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
-      }
-
-      private static void b(List<bhx> $$0) {
-         for (bhx $$1 : $$0) {
-            $$1.a();
-         }
-      }
-
-      private static double c(List<bhx> $$0) {
-         double $$1 = 0.0;
-
-         for (bhx $$2 : $$0) {
-            $$1 += $$2.c().getAsDouble();
-         }
-
-         return $$1 / (double)$$0.size();
-      }
-
-      @Override
-      public boolean equals(@Nullable Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
-            return false;
-         } else if (!super.equals($$0)) {
-            return false;
-         } else {
-            bhy.a $$1 = (bhy.a)$$0;
-            return this.b.equals($$1.b);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.b);
+   void b() throws IOException {
+      if (this.d.decrementAndGet() <= 0) {
+         this.c.close();
       }
    }
 }

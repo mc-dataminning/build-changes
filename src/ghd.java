@@ -1,57 +1,29 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ghd implements ghb {
-   private final fvc a;
-   private final fva b;
-   private final gfb c;
-   private final boolean d;
+public class ghd implements ggy {
+   public static final Codec<ghd> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, ghd::new)
+   );
+   private final String c;
+   private final String d;
 
-   public ghd(fvc $$0, fva $$1, gfb $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public ghd(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public List<fuq> a(@Nullable djp $$0, @Nullable ic $$1, auw $$2) {
-      return Collections.emptyList();
+   public void a(asa $$0, ggy.a $$1) {
+      air $$2 = new air("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         aiy $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
    @Override
-   public boolean a() {
-      return false;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d;
-   }
-
-   @Override
-   public boolean d() {
-      return true;
-   }
-
-   @Override
-   public gfb e() {
-      return this.c;
-   }
-
-   @Override
-   public fvc f() {
-      return this.a;
-   }
-
-   @Override
-   public fva g() {
-      return this.b;
+   public gha a() {
+      return ghb.b;
    }
 }

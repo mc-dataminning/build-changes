@@ -1,25 +1,30 @@
-public final class bgv implements Comparable<bgv> {
-   public final double a;
-   public final double b;
-   public final long c;
-   public final String d;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   public bgv(String $$0, double $$1, double $$2, long $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class bgv extends bew {
+   public bgv(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public int a(bgv $$0) {
-      if ($$0.a < this.a) {
-         return -1;
-      } else {
-         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
-      }
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> bex.a($$0));
    }
 
-   public int a() {
-      return (this.d.hashCode() & 11184810) + 4473924;
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "minecraft:frog");
+      a($$0, $$1, "minecraft:tadpole");
+      return $$1;
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register(
+         $$1, "minecraft:sculk_shrieker", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", bdn.B.in($$0))))
+      );
+      return $$1;
    }
 }

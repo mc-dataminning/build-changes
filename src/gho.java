@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.IOException;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gho {
+public class gho extends asf<int[]> {
+   private static final aiy a = new aiy("textures/colormap/grass.png");
+
+   protected int[] a(asa $$0, bil $$1) {
+      try {
+         return ghq.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
+   }
+
+   protected void a(int[] $$0, asa $$1, bil $$2) {
+      cvl.a($$0);
+   }
 }

@@ -1,36 +1,26 @@
-public class zk implements xg<zb> {
-   private final hx a;
-   private final djp b;
+public record zk(hz c, int d) implements yy {
+   public static final xo<uq, zk> a = yy.a(zk::a, zk::new);
+   public static final yy.b<zk> b = yy.a("debug/poi_ticket_count");
 
-   public zk(hx $$0, djp $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private zk(uq $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   public zk(ctd $$0, hx $$1) {
-      this($$1, $$0.a_($$1));
-   }
-
-   public zk(uj $$0) {
-      this.a = $$0.e();
-      this.b = $$0.a(cwy.q);
+   private void a(uq $$0) {
+      $$0.a(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.a(cwy.q, this.b);
+   public yy.b<zk> a() {
+      return b;
    }
 
-   public void a(zb $$0) {
-      $$0.a(this);
+   public hz b() {
+      return this.c;
    }
 
-   public djp a() {
-      return this.b;
-   }
-
-   public hx d() {
-      return this.a;
+   public int c() {
+      return this.d;
    }
 }

@@ -1,53 +1,345 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class den extends cwy {
-   public static final MapCodec<den> a = b(den::new);
-   private static final emv b = cwy.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+public class den {
+   private final cvn a;
+   private final hz b;
+   private final cyd c;
+   private dlf d;
+   private final boolean e;
+   private final List<hz> f = Lists.newArrayList();
 
-   @Override
-   public MapCodec<den> a() {
-      return a;
+   public den(cvn $$0, hz $$1, dlf $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = (cyd)$$2.b();
+      dmj $$3 = $$2.c(this.c.c());
+      this.e = this.c.b();
+      this.a($$3);
    }
 
-   public den(djo.d $$0) {
-      super($$0);
+   public List<hz> a() {
+      return this.f;
    }
 
-   @Override
-   public boolean a(djp $$0, cua $$1, hx $$2) {
-      return cwy.a($$1, $$2.c(), ic.a) && !$$1.z($$2);
+   private void a(dmj $$0) {
+      this.f.clear();
+      switch ($$0) {
+         case a:
+            this.f.add(this.b.e());
+            this.f.add(this.b.f());
+            break;
+         case b:
+            this.f.add(this.b.g());
+            this.f.add(this.b.h());
+            break;
+         case c:
+            this.f.add(this.b.g());
+            this.f.add(this.b.h().c());
+            break;
+         case d:
+            this.f.add(this.b.g().c());
+            this.f.add(this.b.h());
+            break;
+         case e:
+            this.f.add(this.b.e().c());
+            this.f.add(this.b.f());
+            break;
+         case f:
+            this.f.add(this.b.e());
+            this.f.add(this.b.f().c());
+            break;
+         case g:
+            this.f.add(this.b.h());
+            this.f.add(this.b.f());
+            break;
+         case h:
+            this.f.add(this.b.g());
+            this.f.add(this.b.f());
+            break;
+         case i:
+            this.f.add(this.b.g());
+            this.f.add(this.b.e());
+            break;
+         case j:
+            this.f.add(this.b.h());
+            this.f.add(this.b.e());
+      }
    }
 
-   @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      return $$1 == ic.b && !this.a($$0, $$3, $$4) ? cxa.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(djp $$0, ctx $$1, hx $$2, auw $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(jx.aw, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      hx.a $$10 = new hx.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + aup.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + aup.a($$3, -10, 10));
-         djp $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(jx.aA, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+   private void d() {
+      for (int $$0 = 0; $$0 < this.f.size(); $$0++) {
+         den $$1 = this.b(this.f.get($$0));
+         if ($$1 != null && $$1.a(this)) {
+            this.f.set($$0, $$1.b);
+         } else {
+            this.f.remove($$0--);
          }
       }
    }
 
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return b;
+   private boolean a(hz $$0) {
+      return cyd.a(this.a, $$0) || cyd.a(this.a, $$0.c()) || cyd.a(this.a, $$0.d());
+   }
+
+   @Nullable
+   private den b(hz $$0) {
+      dlf $$2 = this.a.a_($$0);
+      if (cyd.g($$2)) {
+         return new den(this.a, $$0, $$2);
+      } else {
+         hz $$1 = $$0.c();
+         $$2 = this.a.a_($$1);
+         if (cyd.g($$2)) {
+            return new den(this.a, $$1, $$2);
+         } else {
+            $$1 = $$0.d();
+            $$2 = this.a.a_($$1);
+            return cyd.g($$2) ? new den(this.a, $$1, $$2) : null;
+         }
+      }
+   }
+
+   private boolean a(den $$0) {
+      return this.c($$0.b);
+   }
+
+   private boolean c(hz $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         hz $$2 = this.f.get($$1);
+         if ($$2.u() == $$0.u() && $$2.w() == $$0.w()) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   protected int b() {
+      int $$0 = 0;
+
+      for (ie $$1 : ie.c.a) {
+         if (this.a(this.b.a($$1))) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   private boolean b(den $$0) {
+      return this.a($$0) || this.f.size() != 2;
+   }
+
+   private void c(den $$0) {
+      this.f.add($$0.b);
+      hz $$1 = this.b.e();
+      hz $$2 = this.b.f();
+      hz $$3 = this.b.g();
+      hz $$4 = this.b.h();
+      boolean $$5 = this.c($$1);
+      boolean $$6 = this.c($$2);
+      boolean $$7 = this.c($$3);
+      boolean $$8 = this.c($$4);
+      dmj $$9 = null;
+      if ($$5 || $$6) {
+         $$9 = dmj.a;
+      }
+
+      if ($$7 || $$8) {
+         $$9 = dmj.b;
+      }
+
+      if (!this.e) {
+         if ($$6 && $$8 && !$$5 && !$$7) {
+            $$9 = dmj.g;
+         }
+
+         if ($$6 && $$7 && !$$5 && !$$8) {
+            $$9 = dmj.h;
+         }
+
+         if ($$5 && $$7 && !$$6 && !$$8) {
+            $$9 = dmj.i;
+         }
+
+         if ($$5 && $$8 && !$$6 && !$$7) {
+            $$9 = dmj.j;
+         }
+      }
+
+      if ($$9 == dmj.a) {
+         if (cyd.a(this.a, $$1.c())) {
+            $$9 = dmj.e;
+         }
+
+         if (cyd.a(this.a, $$2.c())) {
+            $$9 = dmj.f;
+         }
+      }
+
+      if ($$9 == dmj.b) {
+         if (cyd.a(this.a, $$4.c())) {
+            $$9 = dmj.c;
+         }
+
+         if (cyd.a(this.a, $$3.c())) {
+            $$9 = dmj.d;
+         }
+      }
+
+      if ($$9 == null) {
+         $$9 = dmj.a;
+      }
+
+      this.d = this.d.a(this.c.c(), $$9);
+      this.a.a(this.b, this.d, 3);
+   }
+
+   private boolean d(hz $$0) {
+      den $$1 = this.b($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         $$1.d();
+         return $$1.b(this);
+      }
+   }
+
+   public den a(boolean $$0, boolean $$1, dmj $$2) {
+      hz $$3 = this.b.e();
+      hz $$4 = this.b.f();
+      hz $$5 = this.b.g();
+      hz $$6 = this.b.h();
+      boolean $$7 = this.d($$3);
+      boolean $$8 = this.d($$4);
+      boolean $$9 = this.d($$5);
+      boolean $$10 = this.d($$6);
+      dmj $$11 = null;
+      boolean $$12 = $$7 || $$8;
+      boolean $$13 = $$9 || $$10;
+      if ($$12 && !$$13) {
+         $$11 = dmj.a;
+      }
+
+      if ($$13 && !$$12) {
+         $$11 = dmj.b;
+      }
+
+      boolean $$14 = $$8 && $$10;
+      boolean $$15 = $$8 && $$9;
+      boolean $$16 = $$7 && $$10;
+      boolean $$17 = $$7 && $$9;
+      if (!this.e) {
+         if ($$14 && !$$7 && !$$9) {
+            $$11 = dmj.g;
+         }
+
+         if ($$15 && !$$7 && !$$10) {
+            $$11 = dmj.h;
+         }
+
+         if ($$17 && !$$8 && !$$10) {
+            $$11 = dmj.i;
+         }
+
+         if ($$16 && !$$8 && !$$9) {
+            $$11 = dmj.j;
+         }
+      }
+
+      if ($$11 == null) {
+         if ($$12 && $$13) {
+            $$11 = $$2;
+         } else if ($$12) {
+            $$11 = dmj.a;
+         } else if ($$13) {
+            $$11 = dmj.b;
+         }
+
+         if (!this.e) {
+            if ($$0) {
+               if ($$14) {
+                  $$11 = dmj.g;
+               }
+
+               if ($$15) {
+                  $$11 = dmj.h;
+               }
+
+               if ($$16) {
+                  $$11 = dmj.j;
+               }
+
+               if ($$17) {
+                  $$11 = dmj.i;
+               }
+            } else {
+               if ($$17) {
+                  $$11 = dmj.i;
+               }
+
+               if ($$16) {
+                  $$11 = dmj.j;
+               }
+
+               if ($$15) {
+                  $$11 = dmj.h;
+               }
+
+               if ($$14) {
+                  $$11 = dmj.g;
+               }
+            }
+         }
+      }
+
+      if ($$11 == dmj.a) {
+         if (cyd.a(this.a, $$3.c())) {
+            $$11 = dmj.e;
+         }
+
+         if (cyd.a(this.a, $$4.c())) {
+            $$11 = dmj.f;
+         }
+      }
+
+      if ($$11 == dmj.b) {
+         if (cyd.a(this.a, $$6.c())) {
+            $$11 = dmj.c;
+         }
+
+         if (cyd.a(this.a, $$5.c())) {
+            $$11 = dmj.d;
+         }
+      }
+
+      if ($$11 == null) {
+         $$11 = $$2;
+      }
+
+      this.a($$11);
+      this.d = this.d.a(this.c.c(), $$11);
+      if ($$1 || this.a.a_(this.b) != this.d) {
+         this.a.a(this.b, this.d, 3);
+
+         for (int $$18 = 0; $$18 < this.f.size(); $$18++) {
+            den $$19 = this.b(this.f.get($$18));
+            if ($$19 != null) {
+               $$19.d();
+               if ($$19.b(this)) {
+                  $$19.c(this);
+               }
+            }
+         }
+      }
+
+      return this;
+   }
+
+   public dlf c() {
+      return this.d;
    }
 }

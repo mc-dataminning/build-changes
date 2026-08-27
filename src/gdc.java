@@ -1,27 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gdc extends gbz<cfa, foe<cfa>> {
+   private static final aiy a = new aiy("textures/entity/strider/strider.png");
+   private static final aiy i = new aiy("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-public class gdc extends gdl<byo, fky<byo>> {
-   private static final Map<byo.a, ahh> a = ImmutableMap.of(
-      byo.a.b,
-      new ahh("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      byo.a.c,
-      new ahh("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      byo.a.d,
-      new ahh("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public gdc(gav<byo, fky<byo>> $$0) {
-      super($$0);
+   public gdc(gat.a $$0) {
+      super($$0, new foe<>($$0.a(fpb.bz)), 0.5F);
+      this.a(new gff<>(this, new foe<>($$0.a(fpb.bA)), new aiy("textures/entity/strider/strider_saddle.png")));
    }
 
-   public void a(eqk $$0, ftt $$1, int $$2, byo $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce()) {
-         byo.a $$10 = $$3.w();
-         if ($$10 != byo.a.a) {
-            ahh $$11 = a.get($$10);
-            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         }
-      }
+   public aiy a(cfa $$0) {
+      return $$0.u() ? i : a;
+   }
+
+   protected float b(cfa $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
+   }
+
+   protected void a(cfa $$0, esa $$1, float $$2) {
+      float $$3 = $$0.dZ();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected boolean c(cfa $$0) {
+      return super.a($$0) || $$0.u();
    }
 }

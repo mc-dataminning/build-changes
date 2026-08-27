@@ -1,17 +1,62 @@
-public class fyj extends gbg<cch> {
-   private static final ahh a = new ahh("textures/entity/spider/cave_spider.png");
-   private static final float i = 0.7F;
+import javax.annotation.Nullable;
 
-   public fyj(fza.a $$0) {
-      super($$0, fni.s);
-      this.d *= 0.7F;
+public class fyj implements cuq {
+   private final int c;
+   private final int d;
+   protected final fyi[][] a;
+   protected final cvn b;
+
+   fyj(cvn $$0, int $$1, int $$2, fyi[][] $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.a = $$3;
    }
 
-   protected void a(cch $$0, eqk $$1, float $$2) {
-      $$1.b(0.7F, 0.7F, 0.7F);
+   @Override
+   public dlf a_(hz $$0) {
+      int $$1 = jb.a($$0.u()) - this.c;
+      int $$2 = jb.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0);
    }
 
-   public ahh a(cch $$0) {
-      return a;
+   @Override
+   public egp b_(hz $$0) {
+      int $$1 = jb.a($$0.u()) - this.c;
+      int $$2 = jb.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0).u();
+   }
+
+   @Override
+   public float a(ie $$0, boolean $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public ege z_() {
+      return this.b.z_();
+   }
+
+   @Nullable
+   @Override
+   public dit c_(hz $$0) {
+      int $$1 = jb.a($$0.u()) - this.c;
+      int $$2 = jb.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].a($$0);
+   }
+
+   @Override
+   public int a(hz $$0, cuy $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public int J_() {
+      return this.b.J_();
+   }
+
+   @Override
+   public int K_() {
+      return this.b.K_();
    }
 }

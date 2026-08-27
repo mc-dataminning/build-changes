@@ -1,9 +1,8 @@
-public interface ahw {
-   String ac();
+public interface ahw extends ahq, ul {
+   @Override
+   default up b() {
+      return up.c;
+   }
 
-   String I();
-
-   int J();
-
-   int K();
+   void a(ahx var1);
 }

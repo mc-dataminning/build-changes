@@ -1,33 +1,59 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
 
-public record ejy(Optional<bf> b) implements eke {
-   public static final Codec<ejy> a = RecordCodecBuilder.create($$0 -> $$0.group(atx.a(bf.a, "predicate").forGetter(ejy::c)).apply($$0, ejy::new));
+public class ejy extends ekh {
+   public static final Codec<ejy> a = RecordCodecBuilder.create($$0 -> a($$0).and(ejy.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, ejy::new));
+   private final ejy.a b;
 
-   @Override
-   public ekf b() {
-      return ekg.n;
+   private ejy(List<elu> $$0, ejy.a $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<ejn<?>> a() {
-      return ImmutableSet.of(ejq.f, ejq.c);
+   public ekj b() {
+      return ekk.o;
    }
 
-   public boolean a(ehf $$0) {
-      bkv $$1 = $$0.c(ejq.c);
-      emc $$2 = $$0.c(ejq.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   @Override
+   public Set<eld<?>> a() {
+      return ImmutableSet.of(this.b.g);
    }
 
-   public static eke.a a(bf.a $$0) {
-      return () -> new ejy(Optional.of($$0.b()));
+   @Override
+   public coz a(coz $$0, eiv $$1) {
+      if ($$1.c(this.b.g) instanceof blz $$3 && $$3.ae()) {
+         $$0.a($$3.Q_());
+      }
+
+      return $$0;
    }
 
-   public Optional<bf> c() {
-      return this.b;
+   public static ekh.a<?> a(ejy.a $$0) {
+      return a($$1 -> new ejy($$1, $$0));
+   }
+
+   public static enum a implements axc {
+      a("this", elg.a),
+      b("killer", elg.d),
+      c("killer_player", elg.b),
+      d("block_entity", elg.h);
+
+      public static final Codec<ejy.a> e = axc.a(ejy.a::values);
+      private final String f;
+      final eld<?> g;
+
+      private a(String $$0, eld<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

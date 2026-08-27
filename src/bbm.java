@@ -1,29 +1,41 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import java.util.stream.Stream;
 
 public class bbm extends DataFix {
-   private final String a;
-   private final String b;
-   private final String c;
-
-   public bbm(Schema $$0, boolean $$1, String $$2, String $$3, String $$4) {
+   public bbm(Schema $$0, boolean $$1) {
       super($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
    }
 
-   public TypeRewriteRule makeRule() {
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bdn.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
       return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(bbw.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(), $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get(this.b).result().map($$1 -> $$0x.set(this.c, $$1).remove(this.b)), $$0x)
+         "Item Lore componentize",
+         $$0,
+         $$1x -> $$1x.updateTyped(
+               $$1,
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update(
+                           "display",
+                           $$0xxxx -> $$0xxxx.update(
+                                 "Lore",
+                                 $$0xxxxx -> (Dynamic)DataFixUtils.orElse($$0xxxxx.asStreamOpt().map(bbm::a).map($$0xxxxx::createList).result(), $$0xxxxx)
+                              )
+                        )
+                  )
             )
       );
+   }
+
+   private static <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map(axn::a);
    }
 }

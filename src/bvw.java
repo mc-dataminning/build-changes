@@ -1,78 +1,42 @@
-public class bvw extends bvy {
-   public bvw(bmq $$0, ctx $$1) {
-      super($$0, $$1);
+import java.util.EnumSet;
+
+public class bvw extends bvb {
+   private final boi a;
+   private double b;
+   private double c;
+   private int d;
+
+   public bvw(boi $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bvb.a.a, bvb.a.b));
    }
 
    @Override
-   protected efq a(int $$0) {
-      this.o = new efl();
-      this.o.a(true);
-      return new efq(this.o, $$0);
+   public boolean a() {
+      return this.a.eh().i() < 0.02F;
    }
 
    @Override
-   protected boolean a(emc $$0, emc $$1) {
-      return a(this.a, $$0, $$1, true);
-   }
-
-   @Override
-   protected boolean a() {
-      return this.p() && this.a.bd() || !this.a.bO();
-   }
-
-   @Override
-   protected emc b() {
-      return this.a.dj();
-   }
-
-   @Override
-   public efo a(blw $$0, int $$1) {
-      return this.a($$0.dl(), $$1);
+   public boolean b() {
+      return this.d >= 0;
    }
 
    @Override
    public void c() {
-      this.e++;
-      if (this.m) {
-         this.i();
-      }
-
-      if (!this.l()) {
-         if (this.a()) {
-            this.k();
-         } else if (this.c != null && !this.c.c()) {
-            emc $$0 = this.c.a(this.a);
-            if (this.a.dp() == aup.a($$0.c) && this.a.dr() == aup.a($$0.d) && this.a.dv() == aup.a($$0.e)) {
-               this.c.a();
-            }
-         }
-
-         adj.a(this.b, this.a, this.c, this.l);
-         if (!this.l()) {
-            emc $$1 = this.c.a(this.a);
-            this.a.K().a($$1.c, $$1.d, $$1.e, this.d);
-         }
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean d() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
+      double $$0 = (Math.PI * 2) * this.a.eh().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.eh().a(20);
    }
 
    @Override
-   public boolean a(hx $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      this.d--;
+      this.a.I().a(this.a.dr() + this.b, this.a.dv(), this.a.dx() + this.c);
    }
 }

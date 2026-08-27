@@ -1,72 +1,60 @@
-public abstract class cpt implements cqk<bjv> {
-   protected final cqp<?> a;
-   protected final cpz b;
-   protected final String c;
-   protected final cqh d;
-   protected final cng e;
-   protected final float f;
-   protected final int g;
+import javax.annotation.Nullable;
 
-   public cpt(cqp<?> $$0, String $$1, cpz $$2, cqh $$3, cng $$4, float $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+public class cpt extends cms {
+   public cpt(cyo $$0, cou.a $$1) {
+      super($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public crg b(crg $$0) {
+      hz $$1 = $$0.a();
+      cvn $$2 = $$0.q();
+      dlf $$3 = $$2.a_($$1);
+      cyo $$4 = this.e();
+      if (!$$3.a($$4)) {
+         return dfc.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         ie $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == ie.b ? $$0.g() : ie.b;
+         }
+
+         int $$7 = 0;
+         hz.a $$8 = $$1.j().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.B && !$$2.k($$8)) {
+               chh $$9 = $$0.o();
+               int $$10 = $$2.al();
+               if ($$9 instanceof aow && $$8.v() >= $$10) {
+                  ((aow)$$9).b(vq.a("build.tooHigh", $$10 - 1).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.e())) {
+               if ($$3.a($$0)) {
+                  return crg.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
+      }
    }
 
    @Override
-   public boolean a(bjv $$0, ctx $$1) {
-      return this.d.a($$0.a(0));
-   }
-
-   @Override
-   public cng a(bjv $$0, iu $$1) {
-      return this.e.p();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public iq<cqh> a() {
-      iq<cqh> $$0 = iq.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public cng a(iu $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public cqp<?> e() {
-      return this.a;
-   }
-
-   public cpz f() {
-      return this.b;
-   }
-
-   public interface a<T extends cpt> {
-      T create(String var1, cpz var2, cqh var3, cng var4, float var5, int var6);
+   protected boolean d() {
+      return false;
    }
 }

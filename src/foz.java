@@ -1,85 +1,228 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public interface foz {
-   static foz a(fpf $$0, UserApiService $$1) {
-      return new foz.b($$0, $$1);
-   }
+public class foz {
+   private static final fpg a = new fpg(0.008F);
+   private static final fpg b = new fpg(1.0F);
+   private static final fpg c = new fpg(0.5F);
 
-   CompletableFuture<Unit> a(UUID var1, fph var2, AbuseReport var3);
+   public static Map<fpa, fpi> a() {
+      Builder<fpa, fpi> $$0 = ImmutableMap.builder();
+      fpi $$1 = fpi.a(fmo.a(fpg.a, 0.0F), 64, 64);
+      fpi $$2 = fpi.a(fmn.a(b), 64, 32);
+      fpi $$3 = fpi.a(fmn.a(new fpg(1.02F)), 64, 32);
+      fpi $$4 = fpi.a(fmn.a(c), 64, 32);
+      fpi $$5 = fmw.b();
+      fpi $$6 = fnx.c();
+      fpi $$7 = fpi.a(fmm.a(fpg.a), 64, 64);
+      fpi $$8 = fmp.b();
+      fpi $$9 = flu.c();
+      fpi $$10 = fpi.a(fmz.a(fpg.a), 64, 32);
+      fpi $$11 = fpi.a(fnf.a(fpg.a), 64, 64);
+      fpi $$12 = fpi.a(fne.a(), 64, 64);
+      fpi $$13 = fnx.b();
+      fpi $$14 = fmu.a(fpg.a);
+      fpi $$15 = foe.b();
+      fpi $$16 = fml.c();
+      fpi $$17 = fnw.c();
+      fpi $$18 = fpi.a(fom.b(), 64, 64);
+      fpi $$19 = foc.b();
+      $$0.put(fpb.a, fky.b());
+      $$0.put(fpb.b, fla.b());
+      $$0.put(fpb.c, fld.c());
+      $$0.put(fpb.d, flc.a(c));
+      $$0.put(fpb.e, flc.a(b));
+      $$0.put(fpb.f, fle.c());
+      $$0.put(fpb.g, fxh.a());
+      $$0.put(fpb.h, flf.b());
+      $$0.put(fpb.i, fxj.c());
+      $$0.put(fpb.j, fxj.b());
+      $$0.put(fpb.k, flg.c());
+      $$0.put(fpb.l, fxk.b());
+      $$0.put(fpb.m, flh.b());
+      $$0.put(fpb.n, flj.a());
+      $$0.put(fpb.o, flk.a(32, 32));
+      $$0.put(fpb.p, $$10);
+      $$0.put(fpb.q, fpi.a(fmz.a(new fpg(0.01F)), 64, 32));
+      $$0.put(fpb.r, fll.b());
+      $$0.put(fpb.s, $$19);
+      $$0.put(fpb.t, fxs.b());
+      $$0.put(fpb.u, $$5);
+      $$0.put(fpb.v, flq.c());
+      $$0.put(fpb.w, flr.b());
+      $$0.put(fpb.x, $$5);
+      $$0.put(fpb.z, fxt.b());
+      $$0.put(fpb.B, fxt.c());
+      $$0.put(fpb.A, fxt.d());
+      $$0.put(fpb.y, fxt.e());
+      $$0.put(fpb.C, $$9);
+      $$0.put(fpb.D, flv.a(fpg.a));
+      $$0.put(fpb.E, flv.a(new fpg(2.0F)));
+      $$0.put(fpb.F, $$6);
+      $$0.put(fpb.G, fxu.b());
+      $$0.put(fpb.H, fxu.c());
+      $$0.put(fpb.I, flw.b());
+      $$0.put(fpb.J, flp.c());
+      $$0.put(fpb.K, fxs.d());
+      $$0.put(fpb.L, fxs.c());
+      $$0.put(fpb.M, fow.a());
+      $$0.put(fpb.N, flx.a(fpg.a));
+      $$0.put(fpb.O, $$4);
+      $$0.put(fpb.P, $$4);
+      $$0.put(fpb.Q, flx.a(new fpg(0.25F)));
+      $$0.put(fpb.R, fmi.b());
+      $$0.put(fpb.S, fly.c());
+      $$0.put(fpb.T, flz.c());
+      $$0.put(fpb.U, fma.b());
+      $$0.put(fpb.V, gao.a());
+      $$0.put(fpb.W, gan.a());
+      $$0.put(fpb.X, $$8);
+      $$0.put(fpb.Y, fmc.b());
+      $$0.put(fpb.Z, fmd.c());
+      $$0.put(fpb.aa, fme.b());
+      $$0.put(fpb.ab, $$5);
+      $$0.put(fpb.ac, fmf.b());
+      $$0.put(fpb.ad, $$1);
+      $$0.put(fpb.ae, $$4);
+      $$0.put(fpb.af, $$2);
+      $$0.put(fpb.ag, fod.b());
+      $$0.put(fpb.ah, fmh.c());
+      $$0.put(fpb.ai, fmi.b());
+      $$0.put(fpb.aj, $$16);
+      $$0.put(fpb.ak, $$5);
+      $$0.put(fpb.al, $$7);
+      $$0.put(fpb.am, fpi.a(fmm.a(new fpg(0.1F)), 64, 64));
+      $$0.put(fpb.an, $$1);
+      $$0.put(fpb.ao, $$4);
+      $$0.put(fpb.ap, $$2);
+      $$0.put(fpb.aq, $$8);
+      $$0.put(fpb.ar, fmq.b());
+      $$0.put(fpb.as, fms.b());
+      $$0.put(fpb.at, $$14);
+      $$0.put(fpb.au, fmu.a(new fpg(0.5F)));
+      $$0.put(fpb.av, fmv.b());
+      $$0.put(fpb.aw, fmr.b());
+      $$0.put(fpb.ax, $$5);
+      $$0.put(fpb.ay, $$9);
+      $$0.put(fpb.az, flp.c());
+      $$0.put(fpb.aA, $$10);
+      $$0.put(fpb.aB, fna.c());
+      $$0.put(fpb.aC, fnb.b());
+      $$0.put(fpb.aD, fnc.b());
+      $$0.put(fpb.aE, fnd.a(fpg.a));
+      $$0.put(fpb.aM, fnd.a(new fpg(0.5F)));
+      $$0.put(fpb.aF, $$11);
+      $$0.put(fpb.aK, $$4);
+      $$0.put(fpb.aL, $$3);
+      $$0.put(fpb.aG, $$11);
+      $$0.put(fpb.aH, $$4);
+      $$0.put(fpb.aI, $$3);
+      $$0.put(fpb.aJ, $$12);
+      $$0.put(fpb.aN, $$8);
+      $$0.put(fpb.aO, fpi.a(fng.a(fpg.a, false), 64, 64));
+      $$0.put(fpb.aP, $$13);
+      $$0.put(fpb.aQ, $$4);
+      $$0.put(fpb.aR, $$2);
+      $$0.put(fpb.aS, fpi.a(fng.a(fpg.a, true), 64, 64));
+      $$0.put(fpb.aT, $$4);
+      $$0.put(fpb.aU, $$2);
+      $$0.put(fpb.aV, gfl.a());
+      $$0.put(fpb.aW, fnh.c());
+      $$0.put(fpb.aX, fni.b());
+      $$0.put(fpb.aY, fnj.b());
+      $$0.put(fpb.aZ, fnk.b());
+      $$0.put(fpb.ba, fnm.a());
+      $$0.put(fpb.bb, fno.b());
+      $$0.put(fpb.bc, fnp.b());
+      $$0.put(fpb.bd, fnr.c());
+      $$0.put(fpb.be, fnq.c());
+      $$0.put(fpb.bf, fns.a());
+      $$0.put(fpb.bg, fnu.a());
+      $$0.put(fpb.bh, fnt.b());
+      $$0.put(fpb.bi, fnv.b());
+      $$0.put(fpb.bj, $$17);
+      $$0.put(fpb.bl, $$4);
+      $$0.put(fpb.bm, $$2);
+      $$0.put(fpb.bk, $$7);
+      $$0.put(fpb.bn, $$6);
+      $$0.put(fpb.bo, fnz.c());
+      $$0.put(fpb.bp, fnz.b());
+      $$0.put(fpb.bq, foa.b());
+      $$0.put(fpb.br, fob.b());
+      $$0.put(fpb.bs, $$5);
+      $$0.put(fpb.bt, $$19);
+      $$0.put(fpb.bu, fod.b());
+      $$0.put(fpb.bv, $$17);
+      $$0.put(fpb.bw, $$4);
+      $$0.put(fpb.bx, $$2);
+      $$0.put(fpb.by, fpi.a(fmo.a(new fpg(0.25F), 0.0F), 64, 32));
+      $$0.put(fpb.bz, $$15);
+      $$0.put(fpb.bA, $$15);
+      $$0.put(fpb.bB, fof.c());
+      $$0.put(fpb.bC, $$5);
+      $$0.put(fpb.bD, $$14);
+      $$0.put(fpb.bE, fog.a());
+      $$0.put(fpb.bF, foi.a(fpg.a));
+      $$0.put(fpb.bG, foi.a(a));
+      $$0.put(fpb.bH, foh.a(fpg.a));
+      $$0.put(fpb.bI, foh.a(a));
+      $$0.put(fpb.bJ, foj.c());
+      $$0.put(fpb.bK, fok.b());
+      $$0.put(fpb.bL, $$18);
+      $$0.put(fpb.bM, $$8);
+      $$0.put(fpb.bN, fon.b());
+      $$0.put(fpb.bO, $$18);
+      $$0.put(fpb.bP, fop.b());
+      $$0.put(fpb.bQ, foq.c());
+      $$0.put(fpb.bR, fos.a(fpg.a));
+      $$0.put(fpb.bS, fos.a(c));
+      $$0.put(fpb.bX, gdv.a());
+      $$0.put(fpb.bT, $$17);
+      $$0.put(fpb.bU, $$4);
+      $$0.put(fpb.bV, $$2);
+      $$0.put(fpb.bW, $$6);
+      $$0.put(fpb.bY, fpi.a(fot.a(fpg.a), 64, 32));
+      $$0.put(fpb.bZ, fpi.a(fot.a(new fpg(0.2F)), 64, 32));
+      $$0.put(fpb.ca, $$16);
+      $$0.put(fpb.cb, $$1);
+      $$0.put(fpb.ce, $$4);
+      $$0.put(fpb.cf, $$2);
+      $$0.put(fpb.cc, $$13);
+      $$0.put(fpb.cd, $$7);
+      $$0.put(fpb.cg, fov.c());
+      $$0.put(fpb.ch, fov.a(c));
+      $$0.put(fpb.ci, fov.a(b));
+      $$0.put(fpb.cj, $$11);
+      $$0.put(fpb.ck, $$4);
+      $$0.put(fpb.cl, $$3);
+      fpi $$20 = fli.a();
+      fpi $$21 = fln.e();
+      fpi $$22 = fnn.b();
+      fpi $$23 = flo.a();
 
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
-   }
-
-   public static class a extends wg {
-      public a(vg $$0, Throwable $$1) {
-         super($$0, $$1);
+      for (cjc.b $$24 : cjc.b.values()) {
+         if ($$24 == cjc.b.i) {
+            $$0.put(fpb.c($$24), $$22);
+            $$0.put(fpb.d($$24), $$23);
+         } else {
+            $$0.put(fpb.c($$24), $$20);
+            $$0.put(fpb.d($$24), $$21);
+         }
       }
-   }
 
-   public static record b(fpf a, UserApiService b) implements foz {
-      private static final vg c = vg.c("gui.abuseReport.send.service_unavailable");
-      private static final vg d = vg.c("gui.abuseReport.send.http_error");
-      private static final vg e = vg.c("gui.abuseReport.send.json_error");
-
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, fph $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
-
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               vg $$5 = this.a(var7);
-               throw new CompletionException(new foz.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               vg $$7 = this.a(var8);
-               throw new CompletionException(new foz.a($$7, var8));
-            }
-         }, ac.g());
-      }
-
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
-
-      private vg a(MinecraftClientHttpException $$0) {
-         return vg.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
-
-      private vg a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new IncompatibleClassChangeError();
-         };
-      }
-
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
-      }
-
-      public fpf c() {
-         return this.a;
-      }
-
-      public UserApiService d() {
-         return this.b;
+      fpi $$25 = fya.f();
+      dms.a().forEach($$2x -> $$0.put(fpb.a($$2x), $$25));
+      fpi $$26 = fxw.e();
+      dms.a().forEach($$2x -> $$0.put(fpb.b($$2x), $$26));
+      ImmutableMap<fpa, fpi> $$27 = $$0.build();
+      List<fpa> $$28 = fpb.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
+      } else {
+         return $$27;
       }
    }
 }

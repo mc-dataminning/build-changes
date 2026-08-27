@@ -1,41 +1,108 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bo extends cv<bo.a> {
-   @Override
-   public Codec<bo.a> a() {
-      return bo.a.a;
+public record bo(Optional<cc> c, Optional<cc> d, Optional<cc> e, Optional<cc> f, Optional<cc> g, Optional<cc> h) {
+   public static final Codec<bo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avp.a(cc.a, "head").forGetter(bo::a),
+               avp.a(cc.a, "chest").forGetter(bo::b),
+               avp.a(cc.a, "legs").forGetter(bo::c),
+               avp.a(cc.a, "feet").forGetter(bo::d),
+               avp.a(cc.a, "mainhand").forGetter(bo::e),
+               avp.a(cc.a, "offhand").forGetter(bo::f)
+            )
+            .apply($$0, bo::new)
+   );
+   public static final bo b = bo.a.a().a(cc.a.a().a(cpc.uL).a(ciq.s().w())).b();
+
+   public boolean a(@Nullable bno $$0) {
+      if ($$0 instanceof bog $$1) {
+         if (this.c.isPresent() && !this.c.get().a($$1.c(bnv.f))) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().a($$1.c(bnv.e))) {
+            return false;
+         } else if (this.e.isPresent() && !this.e.get().a($$1.c(bnv.d))) {
+            return false;
+         } else if (this.f.isPresent() && !this.f.get().a($$1.c(bnv.c))) {
+            return false;
+         } else {
+            return this.g.isPresent() && !this.g.get().a($$1.c(bnv.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.c(bnv.b));
+         }
+      } else {
+         return false;
+      }
    }
 
-   public void a(anf $$0, bkv $$1, float $$2, float $$3, boolean $$4) {
-      this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
+   public Optional<cc> a() {
+      return this.c;
    }
 
-   public static record a(Optional<bb> b, Optional<be> c) implements cv.a {
-      public static final Codec<bo.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(bo.a::a), atx.a(be.a, "damage").forGetter(bo.a::c)).apply($$0, bo.a::new)
-      );
+   public Optional<cc> b() {
+      return this.d;
+   }
 
-      public static an<bo.a> b() {
-         return am.i.a(new bo.a(Optional.empty(), Optional.empty()));
+   public Optional<cc> c() {
+      return this.e;
+   }
+
+   public Optional<cc> d() {
+      return this.f;
+   }
+
+   public Optional<cc> e() {
+      return this.g;
+   }
+
+   public Optional<cc> f() {
+      return this.h;
+   }
+
+   public static class a {
+      private Optional<cc> a = Optional.empty();
+      private Optional<cc> b = Optional.empty();
+      private Optional<cc> c = Optional.empty();
+      private Optional<cc> d = Optional.empty();
+      private Optional<cc> e = Optional.empty();
+      private Optional<cc> f = Optional.empty();
+
+      public static bo.a a() {
+         return new bo.a();
       }
 
-      public static an<bo.a> a(be $$0) {
-         return am.i.a(new bo.a(Optional.empty(), Optional.of($$0)));
+      public bo.a a(cc.a $$0) {
+         this.a = Optional.of($$0.b());
+         return this;
       }
 
-      public static an<bo.a> a(be.a $$0) {
-         return am.i.a(new bo.a(Optional.empty(), Optional.of($$0.b())));
+      public bo.a b(cc.a $$0) {
+         this.b = Optional.of($$0.b());
+         return this;
       }
 
-      public boolean a(anf $$0, bkv $$1, float $$2, float $$3, boolean $$4) {
-         return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
+      public bo.a c(cc.a $$0) {
+         this.c = Optional.of($$0.b());
+         return this;
       }
 
-      @Override
-      public Optional<bb> a() {
-         return this.b;
+      public bo.a d(cc.a $$0) {
+         this.d = Optional.of($$0.b());
+         return this;
+      }
+
+      public bo.a e(cc.a $$0) {
+         this.e = Optional.of($$0.b());
+         return this;
+      }
+
+      public bo.a f(cc.a $$0) {
+         this.f = Optional.of($$0.b());
+         return this;
+      }
+
+      public bo b() {
+         return new bo(this.a, this.b, this.c, this.d, this.e, this.f);
       }
    }
 }

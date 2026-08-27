@@ -1,23 +1,32 @@
-public class fzz extends fyz<cbv> {
-   private static final ahh a = new ahh("textures/entity/lead_knot.png");
-   private final fla<cbv> f;
+public class fzz extends gbz<cfj, flk<cfj>> {
+   private static final aiy a = new aiy("textures/entity/breeze/breeze.png");
 
-   public fzz(fza.a $$0) {
-      super($$0);
-      this.f = new fla<>($$0.a(fni.as));
+   public fzz(gat.a $$0) {
+      super($$0, new flk<>($$0.a(fpb.o)), 0.5F);
+      this.a(new ged(this));
+      this.a(new gec(this));
    }
 
-   public void a(cbv $$0, float $$1, float $$2, eqk $$3, ftt $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      eqo $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, ges.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
+   public void a(cfj $$0, float $$1, float $$2, esa $$3, fvm $$4, int $$5) {
+      flk<cfj> $$6 = this.a();
+      a($$6, $$6.b(), $$6.d());
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ahh a(cbv $$0) {
+   public aiy a(cfj $$0) {
       return a;
+   }
+
+   public static flk<cfj> a(flk<cfj> $$0, fpc... $$1) {
+      $$0.b().k = false;
+      $$0.c().k = false;
+      $$0.d().k = false;
+      $$0.e().k = false;
+
+      for (fpc $$2 : $$1) {
+         $$2.k = true;
+      }
+
+      return $$0;
    }
 }

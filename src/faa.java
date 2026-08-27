@@ -1,151 +1,146 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class faa {
-   private static final int a = 5;
-   private static final int b = -1;
-   final evr c;
-   private final List<faa.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<ezz> f = Queues.newArrayDeque();
+public interface faa {
+   faa a = new faa() {
+      @Override
+      public int a(eyu $$0, int $$1, int $$2) {
+         return $$2;
+      }
 
-   public faa(evr $$0) {
-      this.c = $$0;
+      @Override
+      public int a(eyu $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int b(eyu $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int c(eyu $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static faa a(eys $$0, vv $$1, int $$2) {
+      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new faa.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   public void a(exe $$0) {
-      if (!this.c.m.Z) {
-         int $$1 = $$0.a();
-         this.d.removeIf($$2 -> {
-            if ($$2 != null && $$2.a($$1, $$0)) {
-               this.e.clear($$2.d, $$2.d + $$2.e);
-               return true;
-            } else {
-               return false;
+   static faa a(eys $$0, vv $$1, int $$2, int $$3) {
+      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new faa.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static faa a(eys $$0, vq... $$1) {
+      return b($$0, Arrays.stream($$1).map(vq::g).map($$1x -> new faa.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static faa a(eys $$0, List<vq> $$1) {
+      return b($$0, $$1.stream().map(vq::g).map($$1x -> new faa.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static faa b(final eys $$0, final List<faa.a> $$1) {
+      return $$1.isEmpty() ? a : new faa() {
+         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
+
+         @Override
+         public int a(eyu $$0x, int $$1x, int $$2) {
+            return this.a($$0, $$1, $$2, 9, 16777215);
+         }
+
+         @Override
+         public int a(eyu $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (faa.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
+               $$5 += $$3;
             }
-         });
-         if (!this.f.isEmpty() && this.d() > 0) {
-            this.f.removeIf($$0x -> {
-               int $$1x = $$0x.f();
-               int $$2 = this.a($$1x);
-               if ($$2 != -1) {
-                  this.d.add(new faa.a<>($$0x, $$2, $$1x));
-                  this.e.set($$2, $$2 + $$1x);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
+
+            return $$5;
          }
-      }
-   }
 
-   private int a(int $$0) {
-      if (this.d() >= $$0) {
-         int $$1 = 0;
+         @Override
+         public int b(eyu $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
 
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
+            for (faa.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int c(eyu $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (faa.a $$6 : $$1) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public void a(eyu $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
+            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
+            if ($$6 > 0) {
+               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
             }
          }
-      }
 
-      return -1;
-   }
-
-   private int d() {
-      return 5 - this.e.cardinality();
-   }
-
-   @Nullable
-   public <T extends ezz> T a(Class<? extends T> $$0, Object $$1) {
-      for (faa.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
-            return (T)$$2.a();
-         }
-      }
-
-      for (ezz $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
-            return (T)$$3;
-         }
-      }
-
-      return null;
-   }
-
-   public void a() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
-   }
-
-   public void a(ezz $$0) {
-      this.f.add($$0);
-   }
-
-   public evr b() {
-      return this.c;
-   }
-
-   public double c() {
-      return this.c.m.z().c();
-   }
-
-   class a<T extends ezz> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private ezz.a h = ezz.a.a;
-
-      a(T $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      public T a() {
-         return this.c;
-      }
-
-      private float a(long $$0) {
-         float $$1 = aup.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         return this.h == ezz.a.b ? 1.0F - $$1 : $$1;
-      }
-
-      public boolean a(int $$0, exe $$1) {
-         long $$2 = ac.b();
-         if (this.f == -1L) {
-            this.f = $$2;
-            this.h.a(faa.this.c.ai());
+         @Override
+         public int a() {
+            return $$1.size();
          }
 
-         if (this.h == ezz.a.a && $$2 - this.f <= 600L) {
-            this.g = $$2;
+         @Override
+         public int b() {
+            return this.d;
          }
+      };
+   }
 
-         $$1.c().a();
-         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
-         ezz.a $$3 = this.c.a($$1, faa.this, $$2 - this.g);
-         $$1.c().b();
-         if ($$3 != this.h) {
-            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
-            this.h = $$3;
-            this.h.a(faa.this.c.ai());
-         }
+   int a(eyu var1, int var2, int var3);
 
-         return this.h == ezz.a.b && $$2 - this.f > 600L;
+   int a(eyu var1, int var2, int var3, int var4, int var5);
+
+   int b(eyu var1, int var2, int var3, int var4, int var5);
+
+   int c(eyu var1, int var2, int var3, int var4, int var5);
+
+   void a(eyu var1, int var2, int var3, int var4, int var5, int var6);
+
+   int a();
+
+   int b();
+
+   public static class a {
+      final avt a;
+      final int b;
+
+      a(avt $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

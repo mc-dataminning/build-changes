@@ -1,20 +1,29 @@
-public record yf(hx b, int c, String d, int e) implements yb {
-   public static final ahh a = new ahh("debug/game_test_add_marker");
+public class yf implements xx<yd> {
+   public static final xo<uq, yf> a = xx.a(yf::a, yf::new);
+   private final vq b;
 
-   public yf(uj $$0) {
-      this($$0.e(), $$0.readInt(), $$0.s(), $$0.readInt());
+   public yf(vq $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void a(uj $$0) {
+   private yf(uq $$0) {
+      this.b = $$0.m();
+   }
+
+   private void a(uq $$0) {
       $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
    }
 
    @Override
-   public ahh a() {
-      return a;
+   public xz<yf> a() {
+      return yn.b;
+   }
+
+   public void a(yd $$0) {
+      $$0.a(this);
+   }
+
+   public vq b() {
+      return this.b;
    }
 }

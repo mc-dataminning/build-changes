@@ -1,44 +1,88 @@
-public class bjy {
-   public static void a(ctx $$0, hx $$1, bjv $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
-   }
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.IntStream;
+import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-   public static void a(ctx $$0, blw $$1, bjv $$2) {
-      a($$0, $$1.dq(), $$1.ds(), $$1.dw(), $$2);
-   }
+public class bjy implements bjr {
+   private static final Logger a = LogUtils.getLogger();
+   private final Set<bjp> b = new ObjectOpenHashSet();
+   private final bjx c = new bjx();
 
-   private static void a(ctx $$0, double $$1, double $$2, double $$3, bjv $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   public bjy(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
       }
    }
 
-   public static void a(ctx $$0, hx $$1, iq<cng> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
-   }
+   public static Set<bjp> a() {
+      Builder<bjp> $$0 = ImmutableSet.builder();
 
-   public static void a(ctx $$0, double $$1, double $$2, double $$3, cng $$4) {
-      double $$5 = (double)bmc.af.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.b()) {
-         ccb $$11 = new ccb($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
+      try {
+         bjy.a $$1 = new bjy.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> bjp.a("cpu#" + $$1x, bjo.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
       }
+
+      $$0.add(bjp.a("heap MiB", bjo.e, () -> (double)((float)(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576.0F)));
+      $$0.addAll(bjq.a.a());
+      return $$0.build();
    }
 
-   public static void a(djp $$0, djp $$1, ctx $$2, hx $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bjv $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
+   @Override
+   public Set<bjp> a(Supplier<bij> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
+   }
+
+   public static bjp a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
          }
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
+         }
+
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      bjp.d $$3 = new bjp.d(2.0F);
+      return bjp.a("ticktime", bjo.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
+   }
+
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
+
+      public double a(int $$0) {
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
+         }
+
+         return this.e[$$0] * 100.0;
       }
    }
 }

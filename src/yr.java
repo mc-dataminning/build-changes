@@ -1,22 +1,29 @@
-public record yr(hx b, float c, float d, float e, float f, float g) implements yb {
-   public static final ahh a = new ahh("debug/worldgen_attempt");
+public class yr implements xx<yo> {
+   public static final xo<uq, yr> a = xx.a(yr::a, yr::new);
+   private final long b;
 
-   public yr(uj $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   public yr(long $$0) {
+      this.b = $$0;
+   }
+
+   private yr(uq $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(uq $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   public xz<yr> a() {
+      return yn.l;
    }
 
-   @Override
-   public ahh a() {
-      return a;
+   public void a(yo $$0) {
+      $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

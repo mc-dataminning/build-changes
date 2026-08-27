@@ -1,29 +1,14 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class eki implements eke {
-   private static final eki b = new eki();
-   public static final Codec<eki> a = Codec.unit(b);
+public interface eki extends eiw, BiFunction<coz, eiv, coz> {
+   ekj b();
 
-   private eki() {
+   static Consumer<coz> a(BiFunction<coz, eiv, coz> $$0, Consumer<coz> $$1, eiv $$2) {
+      return $$3 -> $$1.accept($$0.apply($$3, $$2));
    }
 
-   @Override
-   public ekf b() {
-      return ekg.h;
-   }
-
-   @Override
-   public Set<ejn<?>> a() {
-      return ImmutableSet.of(ejq.b);
-   }
-
-   public boolean a(ehf $$0) {
-      return $$0.a(ejq.b);
-   }
-
-   public static eke.a c() {
-      return () -> b;
+   public interface a {
+      eki b();
    }
 }

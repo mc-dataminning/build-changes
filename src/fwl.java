@@ -1,41 +1,49 @@
-public class fwl extends fwm<dis> {
-   private static final ahh c = new ahh("textures/entity/end_gateway_beam.png");
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-   public fwl(fvu.a $$0) {
-      super($$0);
+public class fwl {
+   public static final int a = -1;
+   public final ie b;
+   public final int c;
+   public final String d;
+   public final fwn e;
+
+   public fwl(@Nullable ie $$0, int $$1, String $$2, fwn $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public void a(dis $$0, float $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
-      if ($$0.c() || $$0.d()) {
-         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.c() ? (double)$$0.i().al() : 50.0;
-         $$6 = aup.a($$6 * (float) Math.PI);
-         int $$8 = aup.a((double)$$6 * $$7);
-         float[] $$9 = $$0.c() ? clv.c.d() : clv.k.d();
-         long $$10 = $$0.i().X();
-         fvp.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   protected static class a implements JsonDeserializer<fwl> {
+      private static final int a = -1;
+
+      public fwl a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         ie $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         fwn $$7 = (fwn)$$2.deserialize($$3, fwn.class);
+         return new fwl($$4, $$5, $$6, $$7);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      protected int a(JsonObject $$0) {
+         return avx.a($$0, "tintindex", -1);
+      }
 
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
+      private String b(JsonObject $$0) {
+         return avx.i($$0, "texture");
+      }
 
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   protected fub d() {
-      return fub.v();
-   }
-
-   @Override
-   public int aS_() {
-      return 256;
+      @Nullable
+      private ie c(JsonObject $$0) {
+         String $$1 = avx.a($$0, "cullface", "");
+         return ie.a($$1);
+      }
    }
 }

@@ -1,14 +1,19 @@
 public class cvl {
-   public static final ahg<cvk> a = a("nether");
-   public static final ahg<cvk> b = a("overworld");
+   private static int[] a = new int[65536];
 
-   public static void a(pf<cvk> $$0) {
-      ii<cuw> $$1 = $$0.a(ke.at);
-      $$0.a(a, new cvk(cvk.a.a, $$1));
-      $$0.a(b, new cvk(cvk.a.b, $$1));
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   private static ahg<cvk> a(String $$0) {
-      return ahg.a(ke.aL, new ahh($$0));
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
+   }
+
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

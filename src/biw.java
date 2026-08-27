@@ -1,27 +1,49 @@
-public abstract class biw<R extends Runnable> extends bis<R> {
-   private int b;
+import java.net.SocketAddress;
+import jdk.jfr.Category;
+import jdk.jfr.DataAmount;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-   public biw(String $$0) {
-      super($$0);
+@Category({"Minecraft", "Network"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class biw extends Event {
+   @Name("protocolId")
+   @Label("Protocol Id")
+   public final String protocolId;
+   @Name("packetDirection")
+   @Label("Packet Direction")
+   public final String packetDirection;
+   @Name("packetId")
+   @Label("Packet Id")
+   public final String packetId;
+   @Name("remoteAddress")
+   @Label("Remote Address")
+   public final String remoteAddress;
+   @Name("bytes")
+   @Label("Bytes")
+   @DataAmount
+   public final int bytes;
+
+   public biw(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
+      this.protocolId = $$0;
+      this.packetDirection = $$1;
+      this.packetId = $$2;
+      this.remoteAddress = $$3.toString();
+      this.bytes = $$4;
    }
 
-   @Override
-   public boolean av() {
-      return this.bw() || super.av();
-   }
+   public static final class a {
+      public static final String a = "remoteAddress";
+      public static final String b = "protocolId";
+      public static final String c = "packetDirection";
+      public static final String d = "packetId";
+      public static final String e = "bytes";
 
-   protected boolean bw() {
-      return this.b != 0;
-   }
-
-   @Override
-   public void d(R $$0) {
-      this.b++;
-
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
+      private a() {
       }
    }
 }

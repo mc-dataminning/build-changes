@@ -1,15 +1,35 @@
-public class crd extends cpt {
-   public crd(String $$0, cpz $$1, cqh $$2, cng $$3, float $$4, int $$5) {
-      super(cqp.d, $$0, $$1, $$2, $$3, $$4, $$5);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record crd(aiy c, ij<cou> d, vq e, boolean f) {
+   public static final Codec<crd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aiy.a.fieldOf("asset_id").forGetter(crd::a),
+               aiv.a(kg.F).fieldOf("template_item").forGetter(crd::b),
+               vs.a.fieldOf("description").forGetter(crd::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(crd::d)
+            )
+            .apply($$0, crd::new)
+   );
+   public static final Codec<ij<crd>> b = aiu.a(kg.aJ, a);
+
+   public vq a(ij<crb> $$0) {
+      return this.e.f().c($$0.a().e().a());
    }
 
-   @Override
-   public cng g() {
-      return new cng(cxa.nV);
+   public aiy a() {
+      return this.c;
    }
 
-   @Override
-   public cqo<?> at_() {
-      return cqo.r;
+   public ij<cou> b() {
+      return this.d;
+   }
+
+   public vq c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
    }
 }

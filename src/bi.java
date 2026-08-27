@@ -1,54 +1,58 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class bi extends cv<bi.a> {
-   @Override
-   public Codec<bi.a> a() {
-      return bi.a.a;
+public record bi(cm.c b, cm.c c, cm.c d, cm.c e, cm.c f) {
+   public static final Codec<bi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avp.a(cm.c.d, "x", cm.c.c).forGetter(bi::a),
+               avp.a(cm.c.d, "y", cm.c.c).forGetter(bi::b),
+               avp.a(cm.c.d, "z", cm.c.c).forGetter(bi::c),
+               avp.a(cm.c.d, "horizontal", cm.c.c).forGetter(bi::d),
+               avp.a(cm.c.d, "absolute", cm.c.c).forGetter(bi::e)
+            )
+            .apply($$0, bi::new)
+   );
+
+   public static bi a(cm.c $$0) {
+      return new bi(cm.c.c, cm.c.c, cm.c.c, $$0, cm.c.c);
    }
 
-   public void a(anf $$0, @Nullable blw $$1) {
-      ehf $$2 = $$1 != null ? bp.b($$0, $$1) : null;
-      this.a($$0, $$2x -> $$2x.a($$0, $$2));
+   public static bi b(cm.c $$0) {
+      return new bi(cm.c.c, $$0, cm.c.c, cm.c.c, cm.c.c);
    }
 
-   public static record a(Optional<bb> b, Optional<cl> c, Optional<bb> d) implements cv.a {
-      public static final Codec<bi.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(bi.a::a), atx.a(cl.a, "effects").forGetter(bi.a::b), atx.a(bp.b, "source").forGetter(bi.a::c))
-               .apply($$0, bi.a::new)
-      );
+   public static bi c(cm.c $$0) {
+      return new bi(cm.c.c, cm.c.c, cm.c.c, cm.c.c, $$0);
+   }
 
-      public static an<bi.a> a(cl.a $$0) {
-         return am.B.a(new bi.a(Optional.empty(), $$0.b(), Optional.empty()));
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - $$3);
+      float $$7 = (float)($$1 - $$4);
+      float $$8 = (float)($$2 - $$5);
+      if (!this.b.d((double)awh.e($$6)) || !this.c.d((double)awh.e($$7)) || !this.d.d((double)awh.e($$8))) {
+         return false;
+      } else {
+         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
       }
+   }
 
-      public static an<bi.a> a(bp.a $$0) {
-         return am.B.a(new bi.a(Optional.empty(), Optional.empty(), Optional.of(bp.a($$0.b()))));
-      }
+   public cm.c a() {
+      return this.b;
+   }
 
-      public boolean a(anf $$0, @Nullable ehf $$1) {
-         return this.c.isPresent() && !this.c.get().a((bmo)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
-      }
+   public cm.c b() {
+      return this.c;
+   }
 
-      @Override
-      public void a(bc $$0) {
-         cv.a.super.a($$0);
-         $$0.a(this.d, ".source");
-      }
+   public cm.c c() {
+      return this.d;
+   }
 
-      @Override
-      public Optional<bb> a() {
-         return this.b;
-      }
+   public cm.c d() {
+      return this.e;
+   }
 
-      public Optional<cl> b() {
-         return this.c;
-      }
-
-      public Optional<bb> c() {
-         return this.d;
-      }
+   public cm.c e() {
+      return this.f;
    }
 }

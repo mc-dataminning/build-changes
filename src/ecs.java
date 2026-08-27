@@ -1,41 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class ecs extends edl {
-   public static final Codec<ecs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               iv.a(ke.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, ecs::new)
+record ecs(aix<ecn> c, bke<aix<ecn>> d) implements ecp {
+   static Codec<ecs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aix.a(kg.aG).fieldOf("alias").forGetter(ecs::c), bke.b(aix.a(kg.aG)).fieldOf("targets").forGetter(ecs::d)).apply($$0, ecs::new)
    );
-   private final Optional<il<cwy>> b;
-   private final float c;
 
-   public ecs(il<cwy> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public ecs(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private ecs(Optional<il<cwy>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
    @Override
-   public edo.c a(cua $$0, hx $$1, hx $$2, edo.c $$3, edo.c $$4, edk $$5) {
-      auw $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public void a(awo $$0, BiConsumer<aix<ecn>, aix<ecn>> $$1) {
+      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (aix<ecn>)$$1x.b()));
    }
 
    @Override
-   protected edn<?> a() {
-      return edn.f;
+   public Stream<aix<ecn>> a() {
+      return this.d.e().stream().map(bkg.b::b);
+   }
+
+   @Override
+   public Codec<ecs> b() {
+      return a;
    }
 }

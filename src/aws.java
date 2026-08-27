@@ -1,19 +1,28 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Queues;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Comparator;
+import java.util.Deque;
+import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class aws extends baw {
-   public aws(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityKeepPacked", bbw.s, "DUMMY");
+public final class aws<T> extends AbstractIterator<T> {
+   private final Int2ObjectMap<Deque<T>> a = new Int2ObjectOpenHashMap();
+
+   public void a(T $$0, int $$1) {
+      ((Deque)this.a.computeIfAbsent($$1, $$0x -> Queues.newArrayDeque())).addLast($$0);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("keepPacked", $$0.createBoolean(true));
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), aws::a);
+   @Nullable
+   protected T computeNext() {
+      Optional<Deque<T>> $$0 = this.a
+         .int2ObjectEntrySet()
+         .stream()
+         .filter($$0x -> !((Deque)$$0x.getValue()).isEmpty())
+         .max(Comparator.comparingInt(Entry::getKey))
+         .map(Entry::getValue);
+      return $$0.map(Deque::removeFirst).orElseGet(() -> (T)this.endOfData());
    }
 }

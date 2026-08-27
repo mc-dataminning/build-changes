@@ -1,7 +1,8 @@
-import java.util.EnumSet;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class bto extends btk {
-   public bto() {
-      this.a(EnumSet.of(btk.a.a, btk.a.c));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bto {
 }

@@ -1,44 +1,43 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class ddg extends czb {
-   protected static final float f = 6.0F;
-   protected static final float g = 10.0F;
-   protected static final emv h = cwy.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final emv i = cwy.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
-   protected static final emv j = cwy.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+public class ddg extends cyo {
+   public static final MapCodec<ddg> a = b(ddg::new);
+   private static final int b = 20;
 
-   protected ddg(djo.d $$0) {
+   @Override
+   public MapCodec<ddg> a() {
+      return a;
+   }
+
+   public ddg(dle.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends ddg> a();
-
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      switch ($$0.c(a).o()) {
-         case a:
-         default:
-            return j;
-         case c:
-            return i;
-         case b:
-            return h;
+   public void a(cvn $$0, hz $$1, dlf $$2, bno $$3) {
+      if (!$$3.bT() && $$3 instanceof bog && !ctj.j((bog)$$3)) {
+         $$3.a($$0.ai().e(), 1.0F);
       }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public djp a(djp $$0, ddk $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
+      cyu.b($$1, $$2.c(), $$0);
    }
 
    @Override
-   public djp a(djp $$0, dbu $$1) {
-      return $$0.a(a, $$1.b($$0.c(a)));
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      if ($$1 == ie.b && $$2.a(cyq.G)) {
+         $$3.a($$4, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
-      return false;
+   protected void b(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

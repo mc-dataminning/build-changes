@@ -1,30 +1,40 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import java.util.EnumSet;
 
-public class bwk extends bww<bmo> {
-   @Override
-   public Set<bvq<?>> a() {
-      return ImmutableSet.of(bvq.x, bvq.y);
+public class bwk extends bvb {
+   private final cgp a;
+
+   public bwk(cgp $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bvb.a.c, bvb.a.a));
    }
 
    @Override
-   protected void a(ane $$0, bmo $$1) {
-      bno<?> $$2 = $$1.dN();
-      bkv $$3 = $$1.ex();
-      if ($$3 != null) {
-         $$2.a(bvq.x, $$1.ex());
-         blw $$4 = $$3.d();
-         if ($$4 instanceof bmo) {
-            $$2.a(bvq.y, (bmo)$$4);
-         }
+   public boolean a() {
+      if (!this.a.bx()) {
+         return false;
+      } else if (this.a.aZ()) {
+         return false;
+      } else if (!this.a.aC()) {
+         return false;
+      } else if (this.a.S) {
+         return false;
       } else {
-         $$2.b(bvq.x);
-      }
-
-      $$2.c(bvq.y).ifPresent($$2x -> {
-         if (!$$2x.bx() || $$2x.dL() != $$0) {
-            $$2.b(bvq.y);
+         chh $$0 = this.a.gg();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.f($$0) > 16.0 ? false : $$0.bW != null;
          }
-      });
+      }
+   }
+
+   @Override
+   public void c() {
+      this.a.N().n();
+   }
+
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

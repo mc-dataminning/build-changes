@@ -35,8 +35,8 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      gkh.a.a(gkd.z, $$1);
-      gkh.a.a(gkd.A, $$2);
+      gma.a.a(glw.z, $$1);
+      gma.a.a(glw.A, $$2);
       aa.a();
       aa.d();
       OptionParser $$3 = new OptionParser();
@@ -71,7 +71,7 @@ public class Main {
       OptionSpec<String> $$26 = $$3.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$27 = $$3.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$28 = $$3.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(ewg.a.a.a(), new String[0]);
+      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(exw.a.a.a(), new String[0]);
       OptionSpec<String> $$30 = $$3.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
       OptionSpec<String> $$31 = $$3.nonOptions();
       OptionSet $$32 = $$3.parse($$0);
@@ -110,13 +110,13 @@ public class Main {
       boolean $$45 = $$32.has("disableChat");
       String $$46 = a($$32, $$21);
       Gson $$47 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-      PropertyMap $$48 = auf.a($$47, a($$32, $$26), PropertyMap.class);
-      PropertyMap $$49 = auf.a($$47, a($$32, $$27), PropertyMap.class);
+      PropertyMap $$48 = avx.a($$47, a($$32, $$26), PropertyMap.class);
+      PropertyMap $$49 = avx.a($$47, a($$32, $$27), PropertyMap.class);
       String $$50 = a($$32, $$30);
       File $$51 = a($$32, $$9);
       File $$52 = $$32.has($$10) ? a($$32, $$10) : new File($$51, "assets/");
       File $$53 = $$32.has($$11) ? a($$32, $$11) : new File($$51, "resourcepacks/");
-      UUID $$54 = $$32.has($$17) ? UndashedUuid.fromStringLenient((String)$$17.value($$32)) : ja.a((String)$$16.value($$32));
+      UUID $$54 = $$32.has($$17) ? UndashedUuid.fromStringLenient((String)$$17.value($$32)) : jc.a((String)$$16.value($$32));
       String $$55 = $$32.has($$28) ? (String)$$28.value($$32) : null;
       String $$56 = (String)$$32.valueOf($$18);
       String $$57 = (String)$$32.valueOf($$19);
@@ -125,45 +125,45 @@ public class Main {
       String $$60 = a(a($$32, $$7));
       String $$61 = a(a($$32, $$8));
       if ($$32.has($$4)) {
-         bgz.e.a(bgx.a);
+         bir.e.a(bip.a);
       }
 
       o.h();
 
       try {
-         ahj.a();
-         gkh.a.a(ahj.b.get());
-         ahj.c();
+         aja.a();
+         gma.a.a(aja.b.get());
+         aja.c();
       } catch (Throwable var84) {
          o $$63 = o.a(var84, "Bootstrap");
          p $$64 = $$63.a("Initialization");
-         auq.a($$64);
-         evr.a(null, null, $$46, null, $$63);
-         evr.a(null, $$51, $$63);
+         awi.a($$64);
+         exh.a(null, null, $$46, null, $$63);
+         exh.a(null, $$51, $$63);
          return;
       }
 
       String $$65 = (String)$$29.value($$32);
-      ewg.a $$66 = ewg.a.a($$65);
+      exw.a $$66 = exw.a.a($$65);
       if ($$66 == null) {
          a.warn("Unrecognized user type: {}", $$65);
       }
 
-      ewg $$67 = new ewg((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
-      fja $$68 = new fja(
-         new fja.d($$67, $$48, $$49, $$35),
-         new epb($$38, $$39, $$40, $$41, $$42),
-         new fja.a($$51, $$53, $$52, $$55),
-         new fja.b($$43, $$46, $$50, $$44, $$45),
-         new fja.c($$58, $$59, $$60, $$61)
+      exw $$67 = new exw((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
+      fks $$68 = new fks(
+         new fks.d($$67, $$48, $$49, $$35),
+         new eqr($$38, $$39, $$40, $$41, $$42),
+         new fks.a($$51, $$53, $$52, $$55),
+         new fks.b($$43, $$46, $$50, $$44, $$45),
+         new fks.c($$58, $$59, $$60, $$61)
       );
       ac.l();
       Thread $$69 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            evr $$0 = evr.O();
+            exh $$0 = exh.O();
             if ($$0 != null) {
-               gjf $$1 = $$0.T();
+               gky $$1 = $$0.T();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -172,28 +172,28 @@ public class Main {
       };
       $$69.setUncaughtExceptionHandler(new r(a));
       Runtime.getRuntime().addShutdownHook($$69);
-      final evr $$70 = null;
+      final exh $$70 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$70 = new evr($$68);
+         $$70 = new exh($$68);
          RenderSystem.finishInitialization();
-      } catch (fjb var82) {
+      } catch (fkt var82) {
          ac.i();
          a.warn("Failed to create window: ", var82);
          return;
       } catch (Throwable var83) {
          o $$73 = o.a(var83, "Initializing game");
          p $$74 = $$73.a("Initialization");
-         auq.a($$74);
-         evr.a($$70, null, $$68.d.b, null, $$73);
-         evr.a($$70, $$68.c.a, $$73);
+         awi.a($$74);
+         exh.a($$70, null, $$68.d.b, null, $$73);
+         exh.a($$70, $$68.c.a, $$73);
          return;
       }
 
-      evr $$75 = $$70;
+      exh $$75 = $$70;
       Thread $$76;
       if ($$70.aL()) {
          $$76 = new Thread("Game thread") {
@@ -222,7 +222,7 @@ public class Main {
          }
       }
 
-      eqg.a();
+      erw.a();
 
       try {
          $$75.p();

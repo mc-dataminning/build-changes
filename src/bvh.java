@@ -1,40 +1,48 @@
 import java.util.EnumSet;
 
-public class bvh extends bvk {
-   private final bnj a;
-   private bmo b;
-   private int c;
+public class bvh extends bvb {
+   private final boi a;
+   private bog b;
+   private final float c;
 
-   public bvh(bnj $$0) {
-      super($$0, false);
+   public bvh(boi $$0, float $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(btk.a.d));
+      this.c = $$1;
+      this.a(EnumSet.of(bvb.a.c, bvb.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.a.u() && !this.a.gf()) {
-         bmo $$0 = this.a.R_();
-         if ($$0 == null) {
+      if (this.a.cO()) {
+         return false;
+      } else {
+         this.b = this.a.q();
+         if (this.b == null) {
             return false;
          } else {
-            this.b = $$0.eh();
-            int $$1 = $$0.ei();
-            return $$1 != this.c && this.a(this.b, bxd.a) && this.a.a(this.b, $$0);
+            double $$0 = this.a.f(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aC() ? false : this.a.eh().a(b(5)) == 0;
+            }
          }
-      } else {
-         return false;
       }
    }
 
    @Override
+   public boolean b() {
+      return !this.a.aC();
+   }
+
+   @Override
    public void c() {
-      this.e.h(this.b);
-      bmo $$0 = this.a.R_();
-      if ($$0 != null) {
-         this.c = $$0.ei();
+      ens $$0 = this.a.dp();
+      ens $$1 = new ens(this.b.dr() - this.a.dr(), 0.0, this.b.dx() - this.a.dx());
+      if ($$1.g() > 1.0E-7) {
+         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
       }
 
-      super.c();
+      this.a.o($$1.c, (double)this.c, $$1.e);
    }
 }

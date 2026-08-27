@@ -1,43 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class bd extends cv<bd.a> {
-   @Override
-   public Codec<bd.a> a() {
-      return bd.a.a;
+public class bd {
+   private final awm a;
+   private final eiz b;
+
+   public bd(awm $$0, eiz $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(anf $$0, cdp $$1, cfd $$2) {
-      ehf $$3 = bp.b($$0, $$1);
-      ehf $$4 = bp.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$3, $$4));
+   public void a(Optional<bc> $$0, String $$1) {
+      $$0.ifPresent($$1x -> this.a($$1x, $$1));
    }
 
-   public static record a(Optional<bb> b, Optional<bb> c, Optional<bb> d) implements cv.a {
-      public static final Codec<bd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atx.a(bp.b, "player").forGetter(bd.a::a), atx.a(bp.b, "zombie").forGetter(bd.a::c), atx.a(bp.b, "villager").forGetter(bd.a::d))
-               .apply($$0, bd.a::new)
-      );
+   public void a(List<bc> $$0, String $$1) {
+      this.a($$0, elf.l, $$1);
+   }
 
-      public static an<bd.a> b() {
-         return am.s.a(new bd.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
+   public void a(bc $$0, String $$1) {
+      this.a($$0, elf.l, $$1);
+   }
 
-      public boolean a(ehf $$0, ehf $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
-      }
+   public void a(bc $$0, ele $$1, String $$2) {
+      $$0.a(new eje(this.a.a($$2), $$1, this.b));
+   }
 
-      @Override
-      public void a(bc $$0) {
-         cv.a.super.a($$0);
-         $$0.a(this.c, ".zombie");
-         $$0.a(this.d, ".villager");
-      }
-
-      @Override
-      public Optional<bb> a() {
-         return this.b;
+   public void a(List<bc> $$0, ele $$1, String $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         bc $$4 = $$0.get($$3);
+         $$4.a(new eje(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
       }
    }
 }

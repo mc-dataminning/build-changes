@@ -1,208 +1,98 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 public class bnq {
-   private final ih<bnp> a;
-   private final Map<bns.a, Set<bns>> b = Maps.newEnumMap(bns.a.class);
-   private final Map<UUID, bns> c = new Object2ObjectArrayMap();
-   private final Set<bns> d = new ObjectArraySet();
-   private double e;
-   private boolean f = true;
-   private double g;
-   private final Consumer<bnq> h;
+   private final Map<bnp, List<ens>> a;
 
-   public bnq(ih<bnp> $$0, Consumer<bnq> $$1) {
+   bnq(Map<bnp, List<ens>> $$0) {
       this.a = $$0;
-      this.h = $$1;
-      this.e = $$0.a().a();
    }
 
-   public ih<bnp> a() {
-      return this.a;
+   public static bnq a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   public double b() {
-      return this.e;
+   public static bnq.a a() {
+      return new bnq.a();
    }
 
-   public void a(double $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.d();
+   public bnq a(float $$0, float $$1, float $$2) {
+      Map<bnp, List<ens>> $$3 = new EnumMap<>(bnp.class);
+
+      for (Entry<bnp, List<ens>> $$4 : this.a.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
       }
+
+      return new bnq($$3);
    }
 
-   public Set<bns> a(bns.a $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
-   }
+   private static List<ens> a(List<ens> $$0, float $$1, float $$2, float $$3) {
+      List<ens> $$4 = new ArrayList<>($$0.size());
 
-   public Set<bns> c() {
-      return ImmutableSet.copyOf(this.c.values());
+      for (ens $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
    }
 
    @Nullable
-   public bns a(UUID $$0) {
-      return this.c.get($$0);
+   public ens a(bnp $$0, int $$1, float $$2) {
+      List<ens> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
    }
 
-   public boolean a(bns $$0) {
-      return this.c.get($$0.a()) != null;
-   }
-
-   private void f(bns $$0) {
-      bns $$1 = this.c.putIfAbsent($$0.a(), $$0);
-      if ($$1 != null) {
-         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+   public ens b(bnp $$0, int $$1, float $$2) {
+      ens $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
       } else {
-         this.a($$0.b()).add($$0);
-         this.d();
+         return $$3;
       }
    }
 
-   public void b(bns $$0) {
-      bns $$1 = this.c.putIfAbsent($$0.a(), $$0);
-      if ($$0 != $$1) {
-         Set<bns> $$2 = this.a($$0.b());
-         if ($$1 != null) {
-            $$2.remove($$1);
-         }
-
-         $$2.add($$0);
-         this.d();
-      }
-   }
-
-   public void c(bns $$0) {
-      this.f($$0);
-   }
-
-   public void d(bns $$0) {
-      this.f($$0);
-      this.d.add($$0);
-   }
-
-   protected void d() {
-      this.f = true;
-      this.h.accept(this);
-   }
-
-   public void e(bns $$0) {
-      this.a($$0.b()).remove($$0);
-      this.c.remove($$0.a());
-      this.d.remove($$0);
-      this.d();
-   }
-
-   public void b(UUID $$0) {
-      bns $$1 = this.a($$0);
-      if ($$1 != null) {
-         this.e($$1);
-      }
-   }
-
-   public boolean c(UUID $$0) {
-      bns $$1 = this.a($$0);
-      if ($$1 != null && this.d.contains($$1)) {
-         this.e($$1);
-         return true;
+   public ens c(bnp $$0, int $$1, float $$2) {
+      List<ens> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
       } else {
-         return false;
+         ens $$4 = $$3.get(awh.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
       }
    }
 
-   public void e() {
-      for (bns $$0 : this.c()) {
-         this.e($$0);
-      }
+   private static ens a(ens $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
    }
 
-   public double f() {
-      if (this.f) {
-         this.g = this.h();
-         this.f = false;
+   public static class a {
+      private final Map<bnp, List<ens>> a = new EnumMap<>(bnp.class);
+
+      a() {
       }
 
-      return this.g;
-   }
-
-   private double h() {
-      double $$0 = this.b();
-
-      for (bns $$1 : this.b(bns.a.a)) {
-         $$0 += $$1.c();
+      public bnq.a a(bnp $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new ens((double)$$1, (double)$$2, (double)$$3));
       }
 
-      double $$2 = $$0;
-
-      for (bns $$3 : this.b(bns.a.b)) {
-         $$2 += $$0 * $$3.c();
+      public bnq.a a(bnp $$0, ens $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
       }
 
-      for (bns $$4 : this.b(bns.a.c)) {
-         $$2 *= 1.0 + $$4.c();
-      }
+      public bnq a(float $$0, float $$1) {
+         Map<bnp, List<ens>> $$2 = new EnumMap<>(bnp.class);
 
-      return this.a.a().a($$2);
-   }
-
-   private Collection<bns> b(bns.a $$0) {
-      return this.b.getOrDefault($$0, Collections.emptySet());
-   }
-
-   public void a(bnq $$0) {
-      this.e = $$0.e;
-      this.c.clear();
-      this.c.putAll($$0.c);
-      this.d.clear();
-      this.d.addAll($$0.d);
-      this.b.clear();
-      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).addAll($$1));
-      this.d();
-   }
-
-   public so g() {
-      so $$0 = new so();
-      ahg<bnp> $$1 = this.a.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
-      $$0.a("Name", $$1.a().toString());
-      $$0.a("Base", this.e);
-      if (!this.d.isEmpty()) {
-         su $$2 = new su();
-
-         for (bns $$3 : this.d) {
-            $$2.add($$3.d());
+         for (bnp $$3 : bnp.values()) {
+            List<ens> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
          }
 
-         $$0.a("Modifiers", $$2);
+         return new bnq($$2);
       }
-
-      return $$0;
-   }
-
-   public void a(so $$0) {
-      this.e = $$0.k("Base");
-      if ($$0.b("Modifiers", 9)) {
-         su $$1 = $$0.c("Modifiers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            bns $$3 = bns.a($$1.a($$2));
-            if ($$3 != null) {
-               this.c.put($$3.a(), $$3);
-               this.a($$3.b()).add($$3);
-               this.d.add($$3);
-            }
-         }
-      }
-
-      this.d();
    }
 }

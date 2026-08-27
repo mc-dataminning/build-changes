@@ -1,39 +1,27 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
-import java.util.function.Predicate;
 
-public abstract class bae extends DataFix {
-   private final String a;
-   private final Predicate<String> b;
-
-   public bae(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+public class bae extends bcn {
+   public bae(Schema $$0) {
+      super($$0, false, "EntityPaintingFieldsRenameFix", bdn.y, "minecraft:painting");
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbw.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bbw.A.typeName(), bde.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         $$0,
-         $$2x -> {
-            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-            return $$3.isPresent() && this.b.test((String)$$3.get().getSecond())
-               ? $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
-               : $$2x;
-         }
-      );
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return this.a(this.a($$0, "Motive", "variant"), "Facing", "facing");
    }
 
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2) {
+      Optional<? extends Dynamic<?>> $$3 = $$0.get($$1).result();
+      Optional<? extends Dynamic<?>> $$4 = $$3.map($$3x -> $$0.remove($$1).set($$2, $$3x));
+      return (Dynamic<?>)DataFixUtils.orElse($$4, $$0);
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
 }

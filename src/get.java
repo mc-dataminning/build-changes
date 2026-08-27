@@ -1,39 +1,24 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class get extends geu {
-   @Nullable
-   private CompletableFuture<geu.a> f;
+public class get extends gfe<cbx, fmm<cbx>> {
+   private static final Map<cbz, aiy> a = ac.a(Maps.newEnumMap(cbz.class), $$0 -> {
+      $$0.put(cbz.a, null);
+      $$0.put(cbz.b, new aiy("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cbz.c, new aiy("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cbz.d, new aiy("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cbz.e, new aiy("textures/entity/horse/horse_markings_blackdots.png"));
+   });
 
-   public get(aqj $$0, ahh $$1, Executor $$2) {
-      super($$1);
-      this.f = CompletableFuture.supplyAsync(() -> geu.a.a($$0, $$1), $$2);
+   public get(gco<cbx, fmm<cbx>> $$0) {
+      super($$0);
    }
 
-   @Override
-   protected geu.a b(aqj $$0) {
-      if (this.f != null) {
-         geu.a $$1 = this.f.join();
-         this.f = null;
-         return $$1;
-      } else {
-         return geu.a.a($$0, this.e);
+   public void a(esa $$0, fvm $$1, int $$2, cbx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      aiy $$10 = a.get($$3.gg());
+      if ($$10 != null && !$$3.ce()) {
+         ese $$11 = $$1.getBuffer(fvu.i($$10));
+         this.c().a($$0, $$11, $$2, gbu.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
-   }
-
-   public CompletableFuture<Void> d() {
-      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
-   }
-
-   @Override
-   public void a(gfc $$0, aqj $$1, ahh $$2, Executor $$3) {
-      this.f = CompletableFuture.supplyAsync(() -> geu.a.a($$1, this.e), ac.f());
-      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
-   }
-
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

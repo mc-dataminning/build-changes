@@ -1,28 +1,27 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class arc extends arb<GameProfile, ard> {
-   public arc(File $$0) {
-      super($$0);
+public record arc(vq c, int d, Optional<avz<Integer>> e) {
+   public static final Codec<arc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               vs.a.fieldOf("description").forGetter(arc::a),
+               Codec.INT.fieldOf("pack_format").forGetter(arc::b),
+               avz.a(Codec.INT).optionalFieldOf("supported_formats").forGetter(arc::c)
+            )
+            .apply($$0, arc::new)
+   );
+   public static final arb<arc> b = arb.a("pack", a);
+
+   public vq a() {
+      return this.c;
    }
 
-   @Override
-   protected ara<GameProfile> a(JsonObject $$0) {
-      return new ard($$0);
+   public int b() {
+      return this.d;
    }
 
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
-   }
-
-   @Override
-   public String[] a() {
-      return this.d().stream().map(ara::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
-
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   public Optional<avz<Integer>> c() {
+      return this.e;
    }
 }

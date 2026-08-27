@@ -1,99 +1,99 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class exr extends exi {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 20;
-   public static final int o = 8;
-   protected static final exr.b p = $$0 -> $$0.get();
-   protected final exr.c q;
-   protected final exr.b r;
+public class exr {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private exr.c b;
+   private int c;
 
-   public static exr.a a(vg $$0, exr.c $$1) {
-      return new exr.a($$0, $$1);
+   public void a(exr.b $$0, List<aqo> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
+
+      this.b = new exr.c($$0, $$1.stream().map(aqo::a).collect(ImmutableList.toImmutableList()));
    }
 
-   protected exr(int $$0, int $$1, int $$2, int $$3, vg $$4, exr.c $$5, exr.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.q = $$5;
-      this.r = $$6;
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new exr.c(exr.b.c, ImmutableList.of());
+      }
+
+      this.b.c = new exr.a($$0);
    }
 
-   @Override
-   public void b() {
-      this.q.onPress(this);
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
+      } else {
+         this.b.d = true;
+      }
    }
 
-   @Override
-   protected vu aM_() {
-      return this.r.createNarrationMessage(() -> super.aM_());
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
    }
 
-   @Override
-   public void a(fbk $$0) {
-      this.c($$0);
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
    }
 
-   public static class a {
-      private final vg a;
-      private final exr.c b;
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final exr.b a;
+      private final List<String> b;
       @Nullable
-      private ezc c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private exr.b h = exr.p;
+      exr.a c;
+      boolean d;
 
-      public a(vg $$0, exr.c $$1) {
+      c(exr.b $$0, List<String> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
-      public exr.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
       }
-
-      public exr.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public exr.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public exr.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public exr.a a(@Nullable ezc $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public exr.a a(exr.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public exr a() {
-         exr $$0 = new exr(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
-      }
-   }
-
-   public interface b {
-      vu createNarrationMessage(Supplier<vu> var1);
-   }
-
-   public interface c {
-      void onPress(exr var1);
    }
 }

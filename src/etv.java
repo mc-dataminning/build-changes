@@ -1,76 +1,99 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class etv extends gld {
+public class etv extends etw {
    private static final Logger a = LogUtils.getLogger();
-   private static final vg b = vg.c("mco.terms.title");
-   private static final vg c = vg.c("mco.terms.sentence.1");
-   private static final vg v = vf.a().b(vg.c("mco.terms.sentence.2").c(wd.a.c(true)));
-   private final fdm w;
-   private final err x;
-   private boolean y;
+   private static final String b = "http://";
+   private static final int c = 8080;
+   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
+   private final boolean e;
+   @Nullable
+   private final String f;
+   private final URI g;
 
-   public etv(fdm $$0, err $$1) {
-      super(b);
-      this.w = $$0;
-      this.x = $$1;
+   private etv(boolean $$0, @Nullable String $$1, URI $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public void aP_() {
-      int $$0 = this.g / 4 - 2;
-      this.d(exr.a(vg.c("mco.terms.buttons.agree"), $$0x -> this.E()).a(this.g / 4, g(12), $$0, 20).a());
-      this.d(exr.a(vg.c("mco.terms.buttons.disagree"), $$0x -> this.f.a(this.w)).a(this.g / 2 + 4, g(12), $$0, 20).a());
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.w);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   @Nullable
+   public static etv a(String $$0) {
+      try {
+         JsonParser $$1 = new JsonParser();
+         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+         String $$3 = evt.b("uploadEndpoint", $$2, null);
+         if ($$3 != null) {
+            int $$4 = evt.a("port", $$2, -1);
+            URI $$5 = a($$3, $$4);
+            if ($$5 != null) {
+               boolean $$6 = evt.a("worldClosed", $$2, false);
+               String $$7 = evt.b("token", $$2, null);
+               return new etv($$6, $$7, $$5);
+            }
+         }
+      } catch (Exception var8) {
+         a.error("Could not parse UploadInfo: {}", var8.getMessage());
       }
+
+      return null;
    }
 
-   private void E() {
-      era $$0 = era.a();
+   @Nullable
+   @VisibleForTesting
+   public static URI a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      String $$3 = a($$0, $$2);
 
       try {
-         $$0.j();
-         this.f.a(new eth(this.w, new euq(this.w, this.x)));
-      } catch (esn var3) {
-         a.error("Couldn't agree to TOS", var3);
+         URI $$4 = new URI($$3);
+         int $$5 = a($$1, $$4.getPort());
+         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
+      } catch (URISyntaxException var6) {
+         a.warn("Failed to parse URI {}", $$3, var6);
+         return null;
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.y) {
-         this.f.o.a("https://aka.ms/MinecraftRealmsTerms");
-         ac.j().a("https://aka.ms/MinecraftRealmsTerms");
-         return true;
+   private static int a(int $$0, int $$1) {
+      if ($$0 != -1) {
+         return $$0;
       } else {
-         return super.a($$0, $$1, $$2);
+         return $$1 != -1 ? $$1 : 8080;
       }
    }
 
-   @Override
-   public vg i() {
-      return vf.a(super.i(), c).b(vf.u).b(v);
+   private static String a(String $$0, Matcher $$1) {
+      return $$1.find() ? $$0 : "http://" + $$0;
    }
 
-   @Override
-   public void a(exe $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      $$0.a(this.i, c, this.g / 2 - 120, g(5), -1, false);
-      int $$4 = this.i.a(c);
-      int $$5 = this.g / 2 - 121 + $$4;
-      int $$6 = g(5);
-      int $$7 = $$5 + this.i.a(v) + 1;
-      int $$8 = $$6 + 1 + 9;
-      this.y = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
-      $$0.a(this.i, v, this.g / 2 - 120 + $$4, g(5), this.y ? 7107012 : 3368635, false);
+   public static String b(@Nullable String $$0) {
+      JsonObject $$1 = new JsonObject();
+      if ($$0 != null) {
+         $$1.addProperty("token", $$0);
+      }
+
+      return $$1.toString();
+   }
+
+   @Nullable
+   public String a() {
+      return this.f;
+   }
+
+   public URI b() {
+      return this.g;
+   }
+
+   public boolean c() {
+      return this.e;
    }
 }

@@ -1,149 +1,64 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import java.util.function.Consumer;
 
-public class sm extends te {
-   private static final int w = 9;
-   public static final tn<sm> a = new tn.a<sm>() {
-      public sm a(DataInput $$0, sx $$1) throws IOException {
-         return sm.a(d($$0, $$1));
-      }
-
-      @Override
-      public ti.b a(DataInput $$0, ti $$1, sx $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static byte d(DataInput $$0, sx $$1) throws IOException {
-         $$1.b(9L);
-         return $$0.readByte();
-      }
-
-      @Override
-      public int c() {
-         return 1;
-      }
-
-      @Override
-      public String a() {
-         return "BYTE";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Byte";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   public static final sm b = a((byte)0);
-   public static final sm c = a((byte)1);
-   private final byte x;
-
-   sm(byte $$0) {
-      this.x = $$0;
+public record sm(String a, String b, String c, dfa d, int e, long f, boolean g, int h, int i, Consumer<rr> j) {
+   public sm(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<rr> $$6) {
+      this($$0, $$1, $$2, dfa.a, $$3, $$4, $$5, 1, 1, $$6);
    }
 
-   public static sm a(byte $$0) {
-      return sm.a.a[128 + $$0];
+   public sm(String $$0, String $$1, String $$2, dfa $$3, int $$4, long $$5, boolean $$6, Consumer<rr> $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 1, 1, $$7);
    }
 
-   public static sm a(boolean $$0) {
-      return $$0 ? c : b;
+   public void a(rr $$0) {
+      this.j.accept($$0);
    }
 
    @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeByte(this.x);
+   public String toString() {
+      return this.b;
    }
 
-   @Override
-   public int a() {
-      return 9;
+   public boolean a() {
+      return this.h > 1;
    }
 
-   @Override
-   public byte b() {
-      return 1;
+   public String b() {
+      return this.a;
    }
 
-   @Override
-   public tn<sm> c() {
-      return a;
+   public String c() {
+      return this.b;
    }
 
-   public sm e() {
-      return this;
+   public String d() {
+      return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof sm && this.x == ((sm)$$0).x;
+   public dfa e() {
+      return this.d;
    }
 
-   @Override
-   public int hashCode() {
-      return this.x;
+   public int f() {
+      return this.e;
    }
 
-   @Override
-   public void a(tp $$0) {
-      $$0.a(this);
+   public long g() {
+      return this.f;
    }
 
-   @Override
-   public long f() {
-      return (long)this.x;
+   public boolean h() {
+      return this.g;
    }
 
-   @Override
-   public int g() {
-      return this.x;
+   public int i() {
+      return this.h;
    }
 
-   @Override
-   public short h() {
-      return (short)this.x;
+   public int j() {
+      return this.i;
    }
 
-   @Override
-   public byte i() {
-      return this.x;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.x;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.x;
-   }
-
-   @Override
-   public Number l() {
-      return this.x;
-   }
-
-   @Override
-   public ti.b a(ti $$0) {
-      return $$0.a(this.x);
-   }
-
-   static class a {
-      static final sm[] a = new sm[256];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new sm((byte)($$0 - 128));
-         }
-      }
+   public Consumer<rr> k() {
+      return this.j;
    }
 }

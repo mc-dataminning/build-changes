@@ -1,44 +1,37 @@
-public record afk(int a, String b, int c, afj d) implements xg<afl> {
-   private static final int e = 255;
+public class afk implements xx<aes> {
+   public static final xo<uq, afk> a = xx.a(afk::a, afk::new);
+   private final int b;
+   private final int c;
 
-   @Deprecated
-   public afk(int a, String b, int c, afj d) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   public afk(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public afk(uj $$0) {
-      this($$0.n(), $$0.d(255), $$0.readUnsignedShort(), afj.a($$0.n()));
+   private afk(uq $$0) {
+      this.b = $$0.n();
+      this.c = $$0.n();
+   }
+
+   private void a(uq $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.c(this.d.a());
+   public xz<afk> a() {
+      return aeq.bt;
    }
 
-   public void a(afl $$0) {
+   public void a(aes $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public ui c() {
-      return this.d.b();
-   }
-
-   public String d() {
+   public int b() {
       return this.b;
    }
 
    public int e() {
       return this.c;
-   }
-
-   public afj f() {
-      return this.d;
    }
 }

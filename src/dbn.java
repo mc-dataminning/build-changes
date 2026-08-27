@@ -1,166 +1,169 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-public class dbn extends cwy implements cxf {
-   private static final Codec<eex> f = kd.c
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof eex $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a flowing fluid: " + $$0), $$0 -> $$0);
-   public static final MapCodec<dbn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("fluid").forGetter($$0x -> $$0x.c), u()).apply($$0, dbn::new));
-   public static final dkp b = dkf.aP;
-   protected final eex c;
-   private final List<eez> g;
-   public static final emv d = cwy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final ImmutableList<ic> e = ImmutableList.of(ic.a, ic.d, ic.c, ic.f, ic.e);
+public class dbn extends dcj {
+   public static final MapCodec<dbn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dms.a.fieldOf("wood_type").forGetter($$0x -> $$0x.G), u()).apply($$0, dbn::new)
+   );
+   public static final dlw b = dlv.u;
+   public static final dlw c = dlv.w;
+   public static final dlw d = dlv.q;
+   protected static final eol e = cyo.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final eol f = cyo.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+   protected static final eol g = cyo.a(0.0, 0.0, 6.0, 16.0, 13.0, 10.0);
+   protected static final eol h = cyo.a(6.0, 0.0, 0.0, 10.0, 13.0, 16.0);
+   protected static final eol i = cyo.a(0.0, 0.0, 6.0, 16.0, 24.0, 10.0);
+   protected static final eol j = cyo.a(6.0, 0.0, 0.0, 10.0, 24.0, 16.0);
+   protected static final eol k = cyo.a(0.0, 5.0, 6.0, 16.0, 24.0, 10.0);
+   protected static final eol l = cyo.a(6.0, 5.0, 0.0, 10.0, 24.0, 16.0);
+   protected static final eol m = eoi.a(cyo.a(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), cyo.a(14.0, 5.0, 7.0, 16.0, 16.0, 9.0));
+   protected static final eol n = eoi.a(cyo.a(7.0, 5.0, 0.0, 9.0, 16.0, 2.0), cyo.a(7.0, 5.0, 14.0, 9.0, 16.0, 16.0));
+   protected static final eol o = eoi.a(cyo.a(0.0, 2.0, 7.0, 2.0, 13.0, 9.0), cyo.a(14.0, 2.0, 7.0, 16.0, 13.0, 9.0));
+   protected static final eol F = eoi.a(cyo.a(7.0, 2.0, 0.0, 9.0, 13.0, 2.0), cyo.a(7.0, 2.0, 14.0, 9.0, 13.0, 16.0));
+   private final dms G;
 
    @Override
    public MapCodec<dbn> a() {
       return a;
    }
 
-   protected dbn(eex $$0, djo.d $$1) {
-      super($$1);
-      this.c = $$0;
-      this.g = Lists.newArrayList();
-      this.g.add($$0.a(false));
-
-      for (int $$2 = 1; $$2 < 8; $$2++) {
-         this.g.add($$0.a(8 - $$2, false));
-      }
-
-      this.g.add($$0.a(8, true));
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
+   public dbn(dms $$0, dle.d $$1) {
+      super($$1.a($$0.d()));
+      this.G = $$0;
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public emv b(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return $$3.a(d, $$2, true) && $$0.c(b) == 0 && $$3.a($$1.b_($$2.c()), $$0.u()) ? d : ems.a();
-   }
-
-   @Override
-   public boolean e_(djp $$0) {
-      return $$0.u().f();
-   }
-
-   @Override
-   public void b(djp $$0, ane $$1, hx $$2, auw $$3) {
-      $$0.u().b($$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a_(djp $$0, ctd $$1, hx $$2) {
-      return false;
-   }
-
-   @Override
-   public boolean a(djp $$0, ctd $$1, hx $$2, efp $$3) {
-      return !this.c.a(asn.b);
-   }
-
-   @Override
-   public eez c_(djp $$0) {
-      int $$1 = $$0.c(b);
-      return this.g.get(Math.min($$1, 8));
-   }
-
-   @Override
-   public boolean a(djp $$0, djp $$1, ic $$2) {
-      return $$1.u().a().a(this.c);
-   }
-
-   @Override
-   public ddd b_(djp $$0) {
-      return ddd.a;
-   }
-
-   @Override
-   public List<cng> a(djp $$0, ehl.a $$1) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public emv a(djp $$0, ctd $$1, hx $$2, emh $$3) {
-      return ems.a();
-   }
-
-   @Override
-   public void b(djp $$0, ctx $$1, hx $$2, djp $$3, boolean $$4) {
-      if (this.a($$1, $$2, $$0)) {
-         $$1.a($$2, $$0.u().a(), this.c.a((cua)$$1));
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      if ($$0.c(d)) {
+         return $$0.c(aE).o() == ie.a.a ? h : g;
+      } else {
+         return $$0.c(aE).o() == ie.a.a ? f : e;
       }
    }
 
    @Override
-   public djp a(djp $$0, ic $$1, djp $$2, cty $$3, hx $$4, hx $$5) {
-      if ($$0.u().b() || $$2.u().b()) {
-         $$3.a($$4, $$0.u().a(), this.c.a($$3));
+   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
+      ie.a $$6 = $$1.o();
+      if ($$0.c(aE).h().o() != $$6) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         boolean $$7 = this.m($$2) || this.m($$3.a_($$4.a($$1.g())));
+         return $$0.a(d, Boolean.valueOf($$7));
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(djp $$0, ctx $$1, hx $$2, cwy $$3, hx $$4, boolean $$5) {
-      if (this.a($$1, $$2, $$0)) {
-         $$1.a($$2, $$0.u().a(), this.c.a((cua)$$1));
+   protected eol b_(dlf $$0, cut $$1, hz $$2) {
+      if ($$0.c(b)) {
+         return eoi.a();
+      } else {
+         return $$0.c(aE).o() == ie.a.c ? k : l;
       }
    }
 
-   private boolean a(ctx $$0, hx $$1, djp $$2) {
-      if (this.c.a(asn.b)) {
-         boolean $$3 = $$0.a_($$1.d()).a(cxa.dX);
-         UnmodifiableIterator var5 = e.iterator();
+   @Override
+   protected eol b(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      if ($$0.c(b)) {
+         return eoi.a();
+      } else {
+         return $$0.c(aE).o() == ie.a.c ? i : j;
+      }
+   }
 
-         while (var5.hasNext()) {
-            ic $$4 = (ic)var5.next();
-            hx $$5 = $$1.a($$4.g());
-            if ($$0.b_($$5).a(asn.a)) {
-               cwy $$6 = $$0.b_($$1).b() ? cxa.co : cxa.m;
-               $$0.b($$1, $$6.o());
-               this.a($$0, $$1);
-               return false;
-            }
+   @Override
+   protected eol f(dlf $$0, cut $$1, hz $$2) {
+      if ($$0.c(d)) {
+         return $$0.c(aE).o() == ie.a.a ? F : o;
+      } else {
+         return $$0.c(aE).o() == ie.a.a ? n : m;
+      }
+   }
 
-            if ($$3 && $$0.a_($$5).a(cxa.mW)) {
-               $$0.b($$1, cxa.dY.o());
-               this.a($$0, $$1);
-               return false;
+   @Override
+   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
+      switch ($$3) {
+         case a:
+            return $$0.c(b);
+         case b:
+            return false;
+         case c:
+            return $$0.c(b);
+         default:
+            return false;
+      }
+   }
+
+   @Override
+   public dlf a(crg $$0) {
+      cvn $$1 = $$0.q();
+      hz $$2 = $$0.a();
+      boolean $$3 = $$1.C($$2);
+      ie $$4 = $$0.g();
+      ie.a $$5 = $$4.o();
+      boolean $$6 = $$5 == ie.a.c && (this.m($$1.a_($$2.g())) || this.m($$1.a_($$2.h())))
+         || $$5 == ie.a.a && (this.m($$1.a_($$2.e())) || this.m($$1.a_($$2.f())));
+      return this.o().a(aE, $$4).a(b, Boolean.valueOf($$3)).a(c, Boolean.valueOf($$3)).a(d, Boolean.valueOf($$6));
+   }
+
+   private boolean m(dlf $$0) {
+      return $$0.a(atz.L);
+   }
+
+   @Override
+   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
+      if ($$0.c(b)) {
+         $$0 = $$0.a(b, Boolean.valueOf(false));
+         $$1.a($$2, $$0, 10);
+      } else {
+         ie $$5 = $$3.cE();
+         if ($$0.c(aE) == $$5.g()) {
+            $$0 = $$0.a(aE, $$5);
+         }
+
+         $$0 = $$0.a(b, Boolean.valueOf(true));
+         $$1.a($$2, $$0, 10);
+      }
+
+      boolean $$6 = $$0.c(b);
+      $$1.a($$3, $$2, $$6 ? this.G.g() : this.G.f(), atl.e, 1.0F, $$1.F_().i() * 0.1F + 0.9F);
+      $$1.a($$3, $$6 ? dpp.h : dpp.d, $$2);
+      return blu.a($$1.B);
+   }
+
+   @Override
+   protected void a(dlf $$0, cvn $$1, hz $$2, cvf $$3, BiConsumer<coz, hz> $$4) {
+      if ($$3.j() == cvf.a.d && !$$1.y_() && !$$0.c(c)) {
+         boolean $$5 = $$0.c(b);
+         $$1.b($$2, $$0.a(b, Boolean.valueOf(!$$5)));
+         $$1.a(null, $$2, $$5 ? this.G.f() : this.G.g(), atl.e, 1.0F, $$1.F_().i() * 0.1F + 0.9F);
+         $$1.a($$5 ? dpp.d : dpp.h, $$2, dpp.a.a($$0));
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dlf $$0, cvn $$1, hz $$2, cyo $$3, hz $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.C($$2);
+         if ($$0.c(c) != $$6) {
+            $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)).a(b, Boolean.valueOf($$6)), 2);
+            if ($$0.c(b) != $$6) {
+               $$1.a(null, $$2, $$6 ? this.G.g() : this.G.f(), atl.e, 1.0F, $$1.F_().i() * 0.1F + 0.9F);
+               $$1.a(null, $$6 ? dpp.h : dpp.d, $$2);
             }
          }
       }
-
-      return true;
-   }
-
-   private void a(cty $$0, hx $$1) {
-      $$0.c(1501, $$1, 0);
    }
 
    @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(b);
+   protected void a(dlg.a<cyo, dlf> $$0) {
+      $$0.a(aE, b, c, d);
    }
 
-   @Override
-   public cng a(@Nullable cfq $$0, cty $$1, hx $$2, djp $$3) {
-      if ($$3.c(b) == 0) {
-         $$1.a($$2, cxa.a.o(), 11);
-         return new cng(this.c.a());
-      } else {
-         return cng.f;
-      }
-   }
-
-   @Override
-   public Optional<ars> ax_() {
-      return this.c.j();
+   public static boolean a(dlf $$0, ie $$1) {
+      return $$0.c(aE).o() == $$1.h().o();
    }
 }

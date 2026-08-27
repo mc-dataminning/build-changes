@@ -1,31 +1,70 @@
-public class fyi extends gag<byf, fju<byf>> {
-   public fyi(fza.a $$0) {
-      super($$0, new fju<>($$0.a(fni.p)), 0.4F);
-      this.a(new gcn(this, $$0.f()));
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+class fyi {
+   private final Map<hz, dit> a;
+   @Nullable
+   private final List<dnu<dlf>> b;
+   private final boolean c;
+   private final dnm d;
+
+   fyi(dnm $$0) {
+      this.d = $$0;
+      this.c = $$0.F().ah();
+      this.a = ImmutableMap.copyOf($$0.G());
+      if ($$0 instanceof dni) {
+         this.b = null;
+      } else {
+         dnn[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
+
+         for (dnn $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
    }
 
-   public ahh a(byf $$0) {
-      return $$0.gl();
+   @Nullable
+   public dit a(hz $$0) {
+      return this.a.get($$0);
    }
 
-   protected void a(byf $$0, eqk $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b(0.8F, 0.8F, 0.8F);
-   }
+   public dlf b(hz $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dlf $$4 = null;
+         if ($$2 == 60) {
+            $$4 = cyq.hW.o();
+         }
 
-   protected void a(byf $$0, eqk $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = $$0.D($$4);
-      if ($$5 > 0.0F) {
-         $$1.a(0.4F * $$5, 0.15F * $$5, 0.1F * $$5);
-         $$1.a(a.f.rotationDegrees(aup.j($$5, 0.0F, 90.0F)));
-         hx $$6 = $$0.dl();
+         if ($$2 == 70) {
+            $$4 = dqf.a($$1, $$3);
+         }
 
-         for (cfq $$8 : $$0.dL().a(cfq.class, new elx($$6).c(2.0, 2.0, 2.0))) {
-            if ($$8.fD()) {
-               $$1.a(0.15F * $$5, 0.0F, 0.0F);
-               break;
+         return $$4 == null ? cyq.a.o() : $$4;
+      } else if (this.b == null) {
+         return cyq.a.o();
+      } else {
+         try {
+            int $$5 = this.d.e($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               dnu<dlf> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
             }
+
+            return cyq.a.o();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new y($$8);
          }
       }
    }

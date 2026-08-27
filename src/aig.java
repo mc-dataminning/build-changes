@@ -1,166 +1,130 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.UUID;
+import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class aig extends anb {
-   private final ahh h;
-   private final Set<UUID> i = Sets.newHashSet();
-   private int j;
-   private int k = 100;
+public class aig {
+   private static final ave<aif<?>> D = ave.c(16);
+   public static final aif<Byte> a = aif.a(xm.b);
+   public static final aif<Integer> b = aif.a(xm.d);
+   public static final aif<Long> c = aif.a(xm.e);
+   public static final aif<Float> d = aif.a(xm.f);
+   public static final aif<String> e = aif.a(xm.h);
+   public static final aif<vq> f = aif.a(vs.b);
+   public static final aif<Optional<vq>> g = aif.a(vs.b.a(xm::a));
+   public static final aif<coz> h = new aif<coz>() {
+      @Override
+      public xo<? super vb, coz> codec() {
+         return coz.f;
+      }
 
-   public aig(ahh $$0, vg $$1) {
-      super($$1, bjs.a.g, bjs.b.a);
-      this.h = $$0;
-      this.a(0.0F);
-   }
-
-   public ahh a() {
-      return this.h;
-   }
-
-   @Override
-   public void a(anf $$0) {
-      super.a($$0);
-      this.i.add($$0.cw());
-   }
-
-   public void a(UUID $$0) {
-      this.i.add($$0);
-   }
-
-   @Override
-   public void b(anf $$0) {
-      super.b($$0);
-      this.i.remove($$0.cw());
-   }
-
-   @Override
-   public void b() {
-      super.b();
-      this.i.clear();
-   }
-
-   public int c() {
-      return this.j;
-   }
-
-   public int d() {
-      return this.k;
-   }
-
-   public void a(int $$0) {
-      this.j = $$0;
-      this.a(aup.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
-   }
-
-   public void b(int $$0) {
-      this.k = $$0;
-      this.a(aup.a((float)this.j / (float)$$0, 0.0F, 1.0F));
-   }
-
-   public final vg e() {
-      return vj.a(this.j()).a($$0 -> $$0.a(this.l().a()).a(new vm(vm.a.a, vg.b(this.a().toString()))).a(this.a().toString()));
-   }
-
-   public boolean a(Collection<anf> $$0) {
-      Set<UUID> $$1 = Sets.newHashSet();
-      Set<anf> $$2 = Sets.newHashSet();
-
-      for (UUID $$3 : this.i) {
-         boolean $$4 = false;
-
-         for (anf $$5 : $$0) {
-            if ($$5.cw().equals($$3)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            $$1.add($$3);
+      public coz a(coz $$0) {
+         return $$0.q();
+      }
+   };
+   public static final aif<dlf> i = aif.a(xm.a(cyo.q));
+   private static final xo<ByteBuf, Optional<dlf>> E = new xo<ByteBuf, Optional<dlf>>() {
+      public void a(ByteBuf $$0, Optional<dlf> $$1) {
+         if ($$1.isPresent()) {
+            vh.a($$0, cyo.i($$1.get()));
+         } else {
+            vh.a($$0, 0);
          }
       }
 
-      for (anf $$6 : $$0) {
-         boolean $$7 = false;
-
-         for (UUID $$8 : this.i) {
-            if ($$6.cw().equals($$8)) {
-               $$7 = true;
-               break;
-            }
-         }
-
-         if (!$$7) {
-            $$2.add($$6);
-         }
+      public Optional<dlf> a(ByteBuf $$0) {
+         int $$1 = vh.a($$0);
+         return $$1 == 0 ? Optional.empty() : Optional.of(cyo.a($$1));
+      }
+   };
+   public static final aif<Optional<dlf>> j = aif.a(E);
+   public static final aif<Boolean> k = aif.a(xm.a);
+   public static final aif<jx> l = aif.a(jz.aY);
+   public static final aif<ja> m = aif.a(ja.a);
+   public static final aif<hz> n = aif.a(hz.b);
+   public static final aif<Optional<hz>> o = aif.a(hz.b.a(xm::a));
+   public static final aif<ie> p = aif.a(ie.j);
+   public static final aif<Optional<UUID>> q = aif.a(jc.f.a(xm::a));
+   public static final aif<Optional<ii>> r = aif.a(ii.b.a(xm::a));
+   public static final aif<sw> s = new aif<sw>() {
+      @Override
+      public xo<? super vb, sw> codec() {
+         return xm.j;
       }
 
-      for (UUID $$9 : $$1) {
-         for (anf $$10 : this.h()) {
-            if ($$10.cw().equals($$9)) {
-               this.b($$10);
-               break;
-            }
-         }
-
-         this.i.remove($$9);
+      public sw a(sw $$0) {
+         return $$0.h();
+      }
+   };
+   public static final aif<cgv> t = aif.a(cgv.d);
+   private static final xo<ByteBuf, OptionalInt> F = new xo<ByteBuf, OptionalInt>() {
+      public OptionalInt a(ByteBuf $$0) {
+         int $$1 = vh.a($$0);
+         return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
       }
 
-      for (anf $$11 : $$2) {
-         this.a($$11);
+      public void a(ByteBuf $$0, OptionalInt $$1) {
+         vh.a($$0, $$1.orElse(-1) + 1);
       }
+   };
+   public static final aif<OptionalInt> u = aif.a(F);
+   public static final aif<bor> v = aif.a(bor.t);
+   public static final aif<bzx> w = aif.a(xm.a(kg.l));
+   public static final aif<cae> x = aif.a(xm.a(kg.A));
+   public static final aif<ij<cdo>> y = aif.a(xm.b(kg.R));
+   public static final aif<cba.a> z = aif.a(cba.a.d);
+   public static final aif<cci.a> A = aif.a(cci.a.i);
+   public static final aif<Vector3f> B = aif.a(xm.l);
+   public static final aif<Quaternionf> C = aif.a(xm.m);
 
-      return !$$1.isEmpty() || !$$2.isEmpty();
+   public static void a(aif<?> $$0) {
+      D.d($$0);
    }
 
-   public so f() {
-      so $$0 = new so();
-      $$0.a("Name", vg.a.a(this.a));
-      $$0.a("Visible", this.g());
-      $$0.a("Value", this.j);
-      $$0.a("Max", this.k);
-      $$0.a("Color", this.l().b());
-      $$0.a("Overlay", this.m().a());
-      $$0.a("DarkenScreen", this.n());
-      $$0.a("PlayBossMusic", this.o());
-      $$0.a("CreateWorldFog", this.p());
-      su $$1 = new su();
-
-      for (UUID $$2 : this.i) {
-         $$1.add(td.a($$2));
-      }
-
-      $$0.a("Players", $$1);
-      return $$0;
+   @Nullable
+   public static aif<?> a(int $$0) {
+      return D.a($$0);
    }
 
-   public static aig a(so $$0, ahh $$1) {
-      aig $$2 = new aig($$1, vg.a.a($$0.l("Name")));
-      $$2.d($$0.q("Visible"));
-      $$2.a($$0.h("Value"));
-      $$2.b($$0.h("Max"));
-      $$2.a(bjs.a.a($$0.l("Color")));
-      $$2.a(bjs.b.a($$0.l("Overlay")));
-      $$2.a($$0.q("DarkenScreen"));
-      $$2.b($$0.q("PlayBossMusic"));
-      $$2.c($$0.q("CreateWorldFog"));
-
-      for (tl $$4 : $$0.c("Players", 11)) {
-         $$2.a(td.a($$4));
-      }
-
-      return $$2;
+   public static int b(aif<?> $$0) {
+      return D.a($$0);
    }
 
-   public void c(anf $$0) {
-      if (this.i.contains($$0.cw())) {
-         this.a($$0);
-      }
+   private aig() {
    }
 
-   public void d(anf $$0) {
-      super.b($$0);
+   static {
+      a(a);
+      a(b);
+      a(c);
+      a(d);
+      a(e);
+      a(f);
+      a(g);
+      a(h);
+      a(k);
+      a(m);
+      a(n);
+      a(o);
+      a(p);
+      a(q);
+      a(i);
+      a(j);
+      a(s);
+      a(l);
+      a(t);
+      a(u);
+      a(v);
+      a(w);
+      a(x);
+      a(r);
+      a(y);
+      a(A);
+      a(z);
+      a(B);
+      a(C);
    }
 }

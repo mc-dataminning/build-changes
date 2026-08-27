@@ -1,92 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
 
 public class aks {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vg.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vg.b("commands.schedule.cleared.failure", $$0));
-   private static final SuggestionProvider<ds> c = ($$0, $$1) -> dx.b(((ds)$$0.getSource()).l().aY().K().u().a(), $$1);
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.b("Source is not a mob"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.b("Path not found"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vq.b("Target not reached"));
 
-   public static void a(CommandDispatcher<ds> $$0) {
+   public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("schedule").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dt.a("function")
-                     .then(
-                        dt.a("function", fx.a())
-                           .suggests(ajm.b)
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("time", ff.a())
-                                       .executes($$0x -> a((ds)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
-                                    .then(
-                                       dt.a("append")
-                                          .executes(
-                                             $$0x -> a((ds)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
-                                          )
-                                    ))
-                                 .then(
-                                    dt.a("replace")
-                                       .executes($$0x -> a((ds)$$0x.getSource(), fx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               dt.a("clear")
-                  .then(
-                     dt.a("function", StringArgumentType.greedyString())
-                        .suggests(c)
-                        .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("debugpath").requires($$0x -> $$0x.c(2)))
+            .then(dv.a("to", fo.a()).executes($$0x -> a((du)$$0x.getSource(), fo.a($$0x, "to"))))
       );
    }
 
-   private static int a(ds $$0, Pair<ahh, Either<hb<ds>, Collection<hb<ds>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
-      if ($$2 == 0) {
+   private static int a(du $$0, hz $$1) throws CommandSyntaxException {
+      if (!($$0.f() instanceof boi $$3)) {
          throw a.create();
       } else {
-         long $$4 = $$0.e().X() + (long)$$2;
-         ahh $$5 = (ahh)$$1.getFirst();
-         elp<MinecraftServer> $$6 = $$0.l().aY().K().u();
-         ((Either)$$1.getSecond()).ifLeft($$6x -> {
-            String $$7 = $$5.toString();
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new ell($$5));
-            $$0.a(() -> vg.a("commands.schedule.created.function", vg.a($$5), $$2, $$4), true);
-         }).ifRight($$6x -> {
-            String $$7 = "#" + $$5;
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new elm($$5));
-            $$0.a(() -> vg.a("commands.schedule.created.tag", vg.a($$5), $$2, $$4), true);
-         });
-         return Math.floorMod($$4, Integer.MAX_VALUE);
-      }
-   }
-
-   private static int a(ds $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.l().aY().K().u().a($$1);
-      if ($$2 == 0) {
-         throw b.create($$1);
-      } else {
-         $$0.a(() -> vg.a("commands.schedule.cleared.success", $$2, $$1), true);
-         return $$2;
+         bxp $$4 = new bxo($$3, $$0.e());
+         ehe $$5 = $$4.a($$1, 0);
+         aep.a($$0.e(), $$3, $$5, $$4.q());
+         if ($$5 == null) {
+            throw b.create();
+         } else if (!$$5.j()) {
+            throw c.create();
+         } else {
+            $$0.a(() -> vq.b("Made path"), true);
+            return 1;
+         }
       }
    }
 }

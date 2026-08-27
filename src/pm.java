@@ -1,24 +1,42 @@
 import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class pm {
-   public static final ahg<eax> a = a("empty");
+   public static final aix<ecn> a = po.a("pillager_outpost/base_plates");
 
-   public static ahg<eax> a(String $$0) {
-      return ahg.a(ke.aG, new ahh($$0));
-   }
-
-   public static void a(pf<eax> $$0, String $$1, eax $$2) {
-      $$0.a(a($$1), $$2);
-   }
-
-   public static void a(pf<eax> $$0) {
-      ii<eax> $$1 = $$0.a(ke.aG);
-      ih<eax> $$2 = $$1.b(a);
-      $$0.a(a, new eax($$2, ImmutableList.of(), eax.a.b));
-      pb.a($$0);
-      pk.a($$0);
-      qb.a($$0);
-      ow.a($$0);
-      pv.a($$0);
+   public static void a(ph<ecn> $$0) {
+      ik<efc> $$1 = $$0.a(kg.aE);
+      ij<efc> $$2 = $$1.b(pp.q);
+      ik<ecn> $$3 = $$0.a(kg.aG);
+      ij<ecn> $$4 = $$3.b(po.a);
+      $$0.a(a, new ecn($$4, ImmutableList.of(Pair.of(ecl.a("pillager_outpost/base_plate"), 1)), ecn.a.b));
+      po.a(
+         $$0,
+         "pillager_outpost/towers",
+         new ecn(
+            $$4,
+            ImmutableList.of(Pair.of(ecl.b(ImmutableList.of(ecl.a("pillager_outpost/watchtower"), ecl.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
+            ecn.a.b
+         )
+      );
+      po.a($$0, "pillager_outpost/feature_plates", new ecn($$4, ImmutableList.of(Pair.of(ecl.a("pillager_outpost/feature_plate"), 1)), ecn.a.a));
+      po.a(
+         $$0,
+         "pillager_outpost/features",
+         new ecn(
+            $$4,
+            ImmutableList.of(
+               Pair.of(ecl.a("pillager_outpost/feature_cage1"), 1),
+               Pair.of(ecl.a("pillager_outpost/feature_cage2"), 1),
+               Pair.of(ecl.a("pillager_outpost/feature_cage_with_allays"), 1),
+               Pair.of(ecl.a("pillager_outpost/feature_logs"), 1),
+               Pair.of(ecl.a("pillager_outpost/feature_tent1"), 1),
+               Pair.of(ecl.a("pillager_outpost/feature_tent2"), 1),
+               Pair.of(ecl.a("pillager_outpost/feature_targets"), 1),
+               Pair.of(ecl.g(), 6)
+            ),
+            ecn.a.b
+         )
+      );
    }
 }

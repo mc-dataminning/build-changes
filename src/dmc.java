@@ -1,24 +1,23 @@
-import java.util.List;
-import java.util.function.Predicate;
+public enum dmc implements axc {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-public interface dmc<T> {
-   int a(T var1);
+   private final String f;
 
-   boolean a(Predicate<T> var1);
+   private dmc(String $$0) {
+      this.f = $$0;
+   }
 
-   T a(int var1);
+   @Override
+   public String toString() {
+      return this.f;
+   }
 
-   void a(uj var1);
-
-   void b(uj var1);
-
-   int a();
-
-   int b();
-
-   dmc<T> c();
-
-   public interface a {
-      <A> dmc<A> create(int var1, im<A> var2, dmd<A> var3, List<A> var4);
+   @Override
+   public String c() {
+      return this.f;
    }
 }

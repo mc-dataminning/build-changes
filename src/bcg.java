@@ -2,39 +2,35 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import java.util.Locale;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class bcg extends DataFix {
-   private final String a;
+public class bcg extends DataFix {
+   private static final String a = "WorldGenSettings";
+   private static final List<String> b = List.of(
+      "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
+   );
 
-   public bcg(String $$0, Schema $$1, boolean $$2) {
-      super($$1, $$2);
-      this.a = $$0;
+   public bcg(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bbw.y);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bbw.y);
-      Type<Pair<String, String>> $$2 = DSL.named(bbw.w.typeName(), bde.a());
-      if (!Objects.equals(this.getOutputSchema().getType(bbw.w), $$2)) {
-         throw new IllegalStateException("Entity name type is not what was expected.");
-      } else {
-         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
-                  String $$3 = this.a($$2xxx);
-                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
-                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
-                  if (!$$5.equals($$4, true, true)) {
-                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
-                  } else {
-                     return $$3;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(bdn.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Dynamic<?> $$1 = $$0x.get("WorldGenSettings").orElseEmptyMap();
+
+               for (String $$2 : b) {
+                  Optional<? extends Dynamic<?>> $$3 = $$0x.get($$2).result();
+                  if ($$3.isPresent()) {
+                     $$0x = $$0x.remove($$2);
+                     $$1 = $$1.set($$2, $$3.get());
                   }
-               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
-      }
-   }
+               }
 
-   protected abstract String a(String var1);
+               return $$0x.set("WorldGenSettings", $$1);
+            })
+      );
+   }
 }

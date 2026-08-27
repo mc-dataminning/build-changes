@@ -1,31 +1,12 @@
-public class gik extends ghx {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final car p;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public gik(car $$0) {
-      super(art.xM, aru.g, gio.t());
-      this.p = $$0;
-      this.k = gio.a.b;
-      this.i = false;
-      this.j = 0;
-   }
+public record gik(gil d) {
+   public static final gik a = new gik(gil.b);
+   public static final Codec<gik> b = RecordCodecBuilder.create($$0 -> $$0.group(avp.a(gil.a, "scaling", gil.b).forGetter(gik::a)).apply($$0, gik::new));
+   public static final arb<gik> c = arb.a("gui", b);
 
-   @Override
-   public boolean s() {
-      return !this.p.aU();
-   }
-
-   @Override
-   public void q() {
-      if (!this.p.dG() && this.p.q() == null && this.p.gl()) {
-         this.f = (double)((float)this.p.dq());
-         this.g = (double)((float)this.p.ds());
-         this.h = (double)((float)this.p.dw());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
-         this.n();
-      }
+   public gil a() {
+      return this.d;
    }
 }

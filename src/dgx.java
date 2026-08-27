@@ -1,73 +1,31 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dgx extends dhd implements bjv, bkg, bkh {
-   private bkf e = bkf.a;
-   @Nullable
-   private vg f;
+public class dgx extends cye {
+   protected static final MapCodec<kc> c = kf.j
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof kc $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<dgx> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dgx::new));
+   protected final kc e;
 
-   protected dgx(dhf<?> $$0, hx $$1, djp $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   public MapCodec<? extends dgx> a() {
+      return d;
+   }
+
+   protected dgx(kc $$0, dle.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public void a(so $$0) {
-      super.a($$0);
-      this.e = bkf.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.f = vg.a.a($$0.l("CustomName"));
-      }
+   public void a(dlf $$0, cvn $$1, hz $$2, awo $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(jz.ab, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
-
-   @Override
-   protected void b(so $$0) {
-      super.b($$0);
-      this.e.a($$0);
-      if (this.f != null) {
-         $$0.a("CustomName", vg.a.a(this.f));
-      }
-   }
-
-   public void a(vg $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public vg ad() {
-      return this.f != null ? this.f : this.l();
-   }
-
-   @Override
-   public vg Q_() {
-      return this.ad();
-   }
-
-   @Nullable
-   @Override
-   public vg af() {
-      return this.f;
-   }
-
-   protected abstract vg l();
-
-   public boolean d(cfq $$0) {
-      return a($$0, this.e, this.Q_());
-   }
-
-   public static boolean a(cfq $$0, bkf $$1, vg $$2) {
-      if (!$$0.P_() && !$$1.a($$0.eT())) {
-         $$0.a(vg.a("container.isLocked", $$2), true);
-         $$0.a(art.eG, aru.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public cij createMenu(int $$0, cfp $$1, cfq $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract cij a(int var1, cfp var2);
 }

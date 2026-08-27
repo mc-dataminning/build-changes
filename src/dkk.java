@@ -1,14 +1,9 @@
-public enum dkk implements avl {
-   a,
-   b;
+public interface dkk {
+   void a();
 
-   @Override
-   public String toString() {
-      return this.c();
-   }
+   boolean b();
 
-   @Override
-   public String c() {
-      return this == a ? "left" : "right";
-   }
+   hz c();
+
+   String d();
 }

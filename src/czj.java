@@ -1,62 +1,62 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
 
-public class czj extends czd {
-   private static final Logger e = LogUtils.getLogger();
+public class czj extends cxh {
    public static final MapCodec<czj> d = b(czj::new);
-   private static final jj f = new ji();
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
    @Override
    public MapCodec<czj> a() {
       return d;
    }
 
-   public czj(djo.d $$0) {
-      super($$0);
+   public czj(dle.d $$0) {
+      super($$0, jf.c);
    }
 
    @Override
-   protected jj a(cng $$0) {
-      return f;
+   public boolean d(dlf $$0) {
+      return false;
    }
 
-   @Override
-   public dhd a(hx $$0, djp $$1) {
-      return new dhw($$0, $$1);
-   }
-
-   @Override
-   protected void a(ane $$0, djp $$1, hx $$2) {
-      dhv $$3 = $$0.a($$2, dhf.g).orElse(null);
-      if ($$3 == null) {
-         e.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+   protected static boolean a(cvn $$0, cwm.c $$1) {
+      if ($$1 == cwm.c.b) {
+         return $$0.F_().i() < 0.05F;
       } else {
-         jg $$4 = new jg($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.z);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            cng $$6 = $$3.a($$5);
-            if (!$$6.b()) {
-               ic $$7 = $$0.a_($$2).c(b);
-               bjv $$8 = dic.a($$0, $$2.a($$7));
-               cng $$9;
-               if ($$8 == null) {
-                  $$9 = f.dispense($$4, $$6);
-               } else {
-                  $$9 = dic.a($$3, $$8, $$6.p().a(1), $$7.g());
-                  if ($$9.b()) {
-                     $$9 = $$6.p();
-                     $$9.h(1);
-                  } else {
-                     $$9 = $$6.p();
-                  }
-               }
+         return $$1 == cwm.c.c ? $$0.F_().i() < 0.1F : false;
+      }
+   }
 
-               $$3.a($$5, $$9);
-            }
+   @Override
+   public void a(dlf $$0, cvn $$1, hz $$2, cwm.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == cwm.c.b) {
+            $$1.b($$2, cyq.fu.o());
+            $$1.a(null, dpp.c, $$2);
+         } else if ($$3 == cwm.c.c) {
+            $$1.b($$2, cyq.fw.o());
+            $$1.a(null, dpp.c, $$2);
          }
+      }
+   }
+
+   @Override
+   protected boolean a(ego $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dlf $$0, cvn $$1, hz $$2, ego $$3) {
+      if ($$3 == egq.c) {
+         dlf $$4 = cyq.fu.o();
+         $$1.b($$2, $$4);
+         $$1.a(dpp.c, $$2, dpp.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == egq.e) {
+         dlf $$5 = cyq.fv.o();
+         $$1.b($$2, $$5);
+         $$1.a(dpp.c, $$2, dpp.a.a($$5));
+         $$1.c(1046, $$2, 0);
       }
    }
 }

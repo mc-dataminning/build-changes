@@ -1,52 +1,121 @@
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public interface aqj extends aqm {
-   Set<String> a();
+public class aqj {
+   private static final Logger a = LogUtils.getLogger();
 
-   List<aqh> a(ahh var1);
+   public static void a(Path $$0, int $$1) {
+      try {
+         List<aqj.b> $$2 = a($$0);
+         int $$3 = $$2.size() - $$1;
+         if ($$3 <= 0) {
+            return;
+         }
 
-   Map<ahh, aqh> b(String var1, Predicate<ahh> var2);
+         $$2.sort(aqj.b.a);
+         List<aqj.a> $$4 = a($$2);
+         Collections.reverse($$4);
+         $$4.sort(aqj.a.a);
+         Set<Path> $$5 = new HashSet<>();
 
-   Map<ahh, List<aqh>> c(String var1, Predicate<ahh> var2);
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            aqj.a $$7 = $$4.get($$6);
+            Path $$8 = $$7.b;
 
-   Stream<aox> b();
+            try {
+               Files.delete($$8);
+               if ($$7.c == 0) {
+                  $$5.add($$8.getParent());
+               }
+            } catch (IOException var12) {
+               a.warn("Failed to delete cache file {}", $$8, var12);
+            }
+         }
 
-   public static enum a implements aqj {
-      a;
+         $$5.remove($$0);
 
-      @Override
-      public Set<String> a() {
-         return Set.of();
+         for (Path $$10 : $$5) {
+            try {
+               Files.delete($$10);
+            } catch (DirectoryNotEmptyException var10) {
+            } catch (IOException var11) {
+               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
+            }
+         }
+      } catch (UncheckedIOException | IOException var13) {
+         a.error("Failed to vacuum cache dir {}", $$0, var13);
       }
+   }
 
-      @Override
-      public Optional<aqh> getResource(ahh $$0) {
-         return Optional.empty();
-      }
+   private static List<aqj.b> a(final Path $$0) throws IOException {
+      try {
+         final List<aqj.b> $$1 = new ArrayList<>();
+         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
+               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
+                  FileTime $$2 = $$1.lastModifiedTime();
+                  $$1.add(new aqj.b($$0, $$2));
+               }
 
-      @Override
-      public List<aqh> a(ahh $$0) {
+               return FileVisitResult.CONTINUE;
+            }
+         });
+         return $$1;
+      } catch (NoSuchFileException var2) {
          return List.of();
       }
+   }
 
-      @Override
-      public Map<ahh, aqh> b(String $$0, Predicate<ahh> $$1) {
-         return Map.of();
+   private static List<aqj.a> a(List<aqj.b> $$0) {
+      List<aqj.a> $$1 = new ArrayList<>();
+      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
+
+      for (aqj.b $$3 : $$0) {
+         int $$4 = $$2.addTo($$3.b.getParent(), 1);
+         $$1.add(new aqj.a($$3.b, $$4));
       }
 
-      @Override
-      public Map<ahh, List<aqh>> c(String $$0, Predicate<ahh> $$1) {
-         return Map.of();
+      return $$1;
+   }
+
+   static record a(Path b, int c) {
+      public static final Comparator<aqj.a> a = Comparator.comparing(aqj.a::b).reversed();
+
+      public Path a() {
+         return this.b;
       }
 
-      @Override
-      public Stream<aox> b() {
-         return Stream.of();
+      public int b() {
+         return this.c;
+      }
+   }
+
+   static record b(Path b, FileTime c) {
+      public static final Comparator<aqj.b> a = Comparator.comparing(aqj.b::b).reversed();
+
+      public Path a() {
+         return this.b;
+      }
+
+      public FileTime b() {
+         return this.c;
       }
    }
 }

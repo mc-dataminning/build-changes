@@ -1,40 +1,31 @@
-public class zh implements xg<zb> {
-   private final int a;
-   private final hx b;
-   private final int c;
+public record zh(int c, ehe d, float e) implements yy {
+   public static final xo<uq, zh> a = yy.a(zh::a, zh::new);
+   public static final yy.b<zh> b = yy.a("debug/path");
 
-   public zh(int $$0, hx $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private zh(uq $$0) {
+      this($$0.readInt(), ehe.b($$0), $$0.readFloat());
    }
 
-   public zh(uj $$0) {
-      this.a = $$0.n();
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
+   private void a(uq $$0) {
+      $$0.p(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.k(this.c);
+   public yy.b<zh> a() {
+      return b;
    }
 
-   public void a(zb $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public hx d() {
-      return this.b;
-   }
-
-   public int e() {
+   public int b() {
       return this.c;
+   }
+
+   public ehe c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

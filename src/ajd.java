@@ -1,34 +1,18 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.logging.LogUtils;
+import java.io.OutputStream;
+import org.slf4j.Logger;
 
-public class ajd {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vg.b("commands.difficulty.failure", $$0));
+public class ajd extends ajf {
+   private static final Logger b = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<ds> $$0) {
-      LiteralArgumentBuilder<ds> $$1 = dt.a("difficulty");
-
-      for (bjz $$2 : bjz.values()) {
-         $$1.then(dt.a($$2.e()).executes($$1x -> a((ds)$$1x.getSource(), $$2)));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         bjz $$1x = ((ds)$$0x.getSource()).e().ak();
-         ((ds)$$0x.getSource()).a(() -> vg.a("commands.difficulty.query", $$1x.b()), false);
-         return $$1x.a();
-      }));
+   public ajd(String $$0, OutputStream $$1) {
+      super($$0, $$1);
    }
 
-   public static int a(ds $$0, bjz $$1) throws CommandSyntaxException {
-      MinecraftServer $$2 = $$0.l();
-      if ($$2.aY().s() == $$1) {
-         throw a.create($$1.e());
-      } else {
-         $$2.a($$1, true);
-         $$0.a(() -> vg.a("commands.difficulty.success", $$1.b()), true);
-         return 0;
-      }
+   @Override
+   protected void a(String $$0) {
+      StackTraceElement[] $$1 = Thread.currentThread().getStackTrace();
+      StackTraceElement $$2 = $$1[Math.min(3, $$1.length)];
+      b.info("[{}]@.({}:{}): {}", new Object[]{this.a, $$2.getFileName(), $$2.getLineNumber(), $$0});
    }
 }

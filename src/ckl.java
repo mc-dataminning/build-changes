@@ -1,17 +1,7 @@
-public class ckl implements ckm {
-   private final iq<cng> a;
-   private final int b;
+public interface ckl {
+   int a(int var1);
 
-   public ckl(iq<cng> $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   void a(int var1, int var2);
 
-   public iq<cng> a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
+   int a();
 }

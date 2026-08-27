@@ -1,15 +1,20 @@
-public interface dib extends bjv {
-   emv z_ = cwy.a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
-   emv A_ = cwy.a(0.0, 16.0, 0.0, 16.0, 32.0, 16.0);
-   emv e = ems.a(z_, A_);
+import com.mojang.serialization.MapCodec;
 
-   default emv ak_() {
-      return e;
+public class dib extends dcc {
+   public static final MapCodec<dib> c = b(dib::new);
+   public static final eol e = cyo.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+
+   @Override
+   public MapCodec<dib> a() {
+      return c;
    }
 
-   double I();
+   public dib(dle.d $$0) {
+      super($$0, ie.a, e, false);
+   }
 
-   double J();
-
-   double K();
+   @Override
+   protected dcd c() {
+      return (dcd)cyq.oz;
+   }
 }

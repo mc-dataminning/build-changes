@@ -1,135 +1,450 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableFloat;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class ext extends exi {
-   private static final ahh a = new ahh("widget/checkbox_selected_highlighted");
-   private static final ahh b = new ahh("widget/checkbox_selected");
-   private static final ahh c = new ahh("widget/checkbox_highlighted");
-   private static final ahh d = new ahh("widget/checkbox");
-   private static final int f = 14737632;
-   private static final int m = 4;
-   private static final int n = 8;
-   private boolean o;
-   private final ext.b p;
+public class ext {
+   final ext.f a;
 
-   ext(int $$0, int $$1, vg $$2, exc $$3, boolean $$4, ext.b $$5) {
-      super($$0, $$1, a($$3) + 4 + $$3.a($$2), a($$3), $$2);
-      this.o = $$4;
-      this.p = $$5;
+   public ext(ext.f $$0) {
+      this.a = $$0;
    }
 
-   public static ext.a a(vg $$0, exc $$1) {
-      return new ext.a($$0, $$1);
+   public float a(@Nullable String $$0) {
+      if ($$0 == null) {
+         return 0.0F;
+      } else {
+         MutableFloat $$1 = new MutableFloat();
+         axb.c($$0, wn.a, ($$1x, $$2, $$3) -> {
+            $$1.add(this.a.getWidth($$3, $$2));
+            return true;
+         });
+         return $$1.floatValue();
+      }
    }
 
-   private static int a(exc $$0) {
-      return 9 + 8;
+   public float a(vv $$0) {
+      MutableFloat $$1 = new MutableFloat();
+      axb.a($$0, wn.a, ($$1x, $$2, $$3) -> {
+         $$1.add(this.a.getWidth($$3, $$2));
+         return true;
+      });
+      return $$1.floatValue();
    }
 
-   @Override
-   public void b() {
-      this.o = !this.o;
-      this.p.onValueChange(this, this.o);
+   public float a(avt $$0) {
+      MutableFloat $$1 = new MutableFloat();
+      $$0.accept(($$1x, $$2, $$3) -> {
+         $$1.add(this.a.getWidth($$3, $$2));
+         return true;
+      });
+      return $$1.floatValue();
    }
 
-   public boolean a() {
-      return this.o;
+   public int a(String $$0, int $$1, wn $$2) {
+      ext.e $$3 = new ext.e((float)$$1);
+      axb.a($$0, $$2, $$3);
+      return $$3.a();
    }
 
-   @Override
-   public void a(fbk $$0) {
-      $$0.a(fbj.a, this.aM_());
-      if (this.j) {
-         if (this.aK_()) {
-            $$0.a(fbj.d, vg.c("narration.checkbox.usage.focused"));
+   public String b(String $$0, int $$1, wn $$2) {
+      return $$0.substring(0, this.a($$0, $$1, $$2));
+   }
+
+   public String c(String $$0, int $$1, wn $$2) {
+      MutableFloat $$3 = new MutableFloat();
+      MutableInt $$4 = new MutableInt($$0.length());
+      axb.b($$0, $$2, ($$3x, $$4x, $$5) -> {
+         float $$6 = $$3.addAndGet(this.a.getWidth($$5, $$4x));
+         if ($$6 > (float)$$1) {
+            return false;
          } else {
-            $$0.a(fbj.d, vg.c("narration.checkbox.usage.hovered"));
+            $$4.setValue($$3x);
+            return true;
+         }
+      });
+      return $$0.substring($$4.intValue());
+   }
+
+   public int d(String $$0, int $$1, wn $$2) {
+      ext.e $$3 = new ext.e((float)$$1);
+      axb.c($$0, $$2, $$3);
+      return $$3.a();
+   }
+
+   @Nullable
+   public wn a(vv $$0, int $$1) {
+      ext.e $$2 = new ext.e((float)$$1);
+      return $$0.<wn>a(($$1x, $$2x) -> axb.c($$2x, $$1x, $$2) ? Optional.empty() : Optional.of($$1x), wn.a).orElse(null);
+   }
+
+   @Nullable
+   public wn a(avt $$0, int $$1) {
+      ext.e $$2 = new ext.e((float)$$1);
+      MutableObject<wn> $$3 = new MutableObject();
+      $$0.accept(($$2x, $$3x, $$4) -> {
+         if (!$$2.accept($$2x, $$3x, $$4)) {
+            $$3.setValue($$3x);
+            return false;
+         } else {
+            return true;
+         }
+      });
+      return (wn)$$3.getValue();
+   }
+
+   public String e(String $$0, int $$1, wn $$2) {
+      return $$0.substring(0, this.d($$0, $$1, $$2));
+   }
+
+   public vv a(vv $$0, int $$1, wn $$2) {
+      final ext.e $$3 = new ext.e((float)$$1);
+      return $$0.a(new vv.b<vv>() {
+         private final ewx c = new ewx();
+
+         @Override
+         public Optional<vv> accept(wn $$0, String $$1) {
+            $$3.b();
+            if (!axb.c($$1, $$0, $$3)) {
+               String $$2 = $$1.substring(0, $$3.a());
+               if (!$$2.isEmpty()) {
+                  this.c.a(vv.a($$2, $$0));
+               }
+
+               return Optional.of(this.c.b());
+            } else {
+               if (!$$1.isEmpty()) {
+                  this.c.a(vv.a($$1, $$0));
+               }
+
+               return Optional.empty();
+            }
+         }
+      }, $$2).orElse($$0);
+   }
+
+   public int f(String $$0, int $$1, wn $$2) {
+      ext.b $$3 = new ext.b((float)$$1);
+      axb.c($$0, $$2, $$3);
+      return $$3.a();
+   }
+
+   public static int a(String $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$2;
+      boolean $$5 = $$1 < 0;
+      int $$6 = Math.abs($$1);
+
+      for (int $$7 = 0; $$7 < $$6; $$7++) {
+         if ($$5) {
+            while ($$3 && $$4 > 0 && ($$0.charAt($$4 - 1) == ' ' || $$0.charAt($$4 - 1) == '\n')) {
+               $$4--;
+            }
+
+            while ($$4 > 0 && $$0.charAt($$4 - 1) != ' ' && $$0.charAt($$4 - 1) != '\n') {
+               $$4--;
+            }
+         } else {
+            int $$8 = $$0.length();
+            int $$9 = $$0.indexOf(32, $$4);
+            int $$10 = $$0.indexOf(10, $$4);
+            if ($$9 == -1 && $$10 == -1) {
+               $$4 = -1;
+            } else if ($$9 != -1 && $$10 != -1) {
+               $$4 = Math.min($$9, $$10);
+            } else if ($$9 != -1) {
+               $$4 = $$9;
+            } else {
+               $$4 = $$10;
+            }
+
+            if ($$4 == -1) {
+               $$4 = $$8;
+            } else {
+               while ($$3 && $$4 < $$8 && ($$0.charAt($$4) == ' ' || $$0.charAt($$4) == '\n')) {
+                  $$4++;
+               }
+            }
          }
       }
+
+      return $$4;
    }
 
-   @Override
-   public void b(exe $$0, int $$1, int $$2, float $$3) {
-      evr $$4 = evr.O();
-      RenderSystem.enableDepthTest();
-      exc $$5 = $$4.h;
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      ahh $$6;
-      if (this.o) {
-         $$6 = this.aK_() ? a : b;
-      } else {
-         $$6 = this.aK_() ? c : d;
+   public void a(String $$0, int $$1, wn $$2, boolean $$3, ext.d $$4) {
+      int $$5 = 0;
+      int $$6 = $$0.length();
+      wn $$7 = $$2;
+
+      while ($$5 < $$6) {
+         ext.b $$8 = new ext.b((float)$$1);
+         boolean $$9 = axb.a($$0, $$5, $$7, $$2, $$8);
+         if ($$9) {
+            $$4.accept($$7, $$5, $$6);
+            break;
+         }
+
+         int $$10 = $$8.a();
+         char $$11 = $$0.charAt($$10);
+         int $$12 = $$11 != '\n' && $$11 != ' ' ? $$10 : $$10 + 1;
+         $$4.accept($$7, $$5, $$3 ? $$12 : $$10);
+         $$5 = $$12;
+         $$7 = $$8.b();
+      }
+   }
+
+   public List<vv> g(String $$0, int $$1, wn $$2) {
+      List<vv> $$3 = Lists.newArrayList();
+      this.a($$0, $$1, $$2, false, ($$2x, $$3x, $$4) -> $$3.add(vv.a($$0.substring($$3x, $$4), $$2x)));
+      return $$3;
+   }
+
+   public List<vv> b(vv $$0, int $$1, wn $$2) {
+      List<vv> $$3 = Lists.newArrayList();
+      this.a($$0, $$1, $$2, ($$1x, $$2x) -> $$3.add($$1x));
+      return $$3;
+   }
+
+   public List<vv> a(vv $$0, int $$1, wn $$2, vv $$3) {
+      List<vv> $$4 = Lists.newArrayList();
+      this.a($$0, $$1, $$2, ($$2x, $$3x) -> $$4.add($$3x ? vv.a($$3, $$2x) : $$2x));
+      return $$4;
+   }
+
+   public void a(vv $$0, int $$1, wn $$2, BiConsumer<vv, Boolean> $$3) {
+      List<ext.c> $$4 = Lists.newArrayList();
+      $$0.a(($$1x, $$2x) -> {
+         if (!$$2x.isEmpty()) {
+            $$4.add(new ext.c($$2x, $$1x));
+         }
+
+         return Optional.empty();
+      }, $$2);
+      ext.a $$5 = new ext.a($$4);
+      boolean $$6 = true;
+      boolean $$7 = false;
+      boolean $$8 = false;
+
+      while ($$6) {
+         $$6 = false;
+         ext.b $$9 = new ext.b((float)$$1);
+
+         for (ext.c $$10 : $$5.a) {
+            boolean $$11 = axb.a($$10.c, 0, $$10.d, $$2, $$9);
+            if (!$$11) {
+               int $$12 = $$9.a();
+               wn $$13 = $$9.b();
+               char $$14 = $$5.a($$12);
+               boolean $$15 = $$14 == '\n';
+               boolean $$16 = $$15 || $$14 == ' ';
+               $$7 = $$15;
+               vv $$17 = $$5.a($$12, $$16 ? 1 : 0, $$13);
+               $$3.accept($$17, $$8);
+               $$8 = !$$15;
+               $$6 = true;
+               break;
+            }
+
+            $$9.a($$10.c.length());
+         }
       }
 
-      int $$8 = a($$5);
-      int $$9 = this.B() + $$8 + 4;
-      int $$10 = this.C() + (this.h >> 1) - (9 >> 1);
-      $$0.a($$6, this.B(), this.C(), $$8, $$8);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.b($$5, this.x(), $$9, $$10, 14737632 | aup.f(this.l * 255.0F) << 24);
+      vv $$18 = $$5.a();
+      if ($$18 != null) {
+         $$3.accept($$18, $$8);
+      } else if ($$7) {
+         $$3.accept(vv.b, false);
+      }
    }
 
-   public static class a {
-      private final vg a;
-      private final exc b;
-      private int c = 0;
-      private int d = 0;
-      private ext.b e = ext.b.a;
-      private boolean f = false;
-      @Nullable
-      private evu<Boolean> g = null;
-      @Nullable
-      private ezc h = null;
+   static class a {
+      final List<ext.c> a;
+      private String b;
 
-      a(vg $$0, exc $$1) {
+      public a(List<ext.c> $$0) {
          this.a = $$0;
-         this.b = $$1;
+         this.b = $$0.stream().map($$0x -> $$0x.c).collect(Collectors.joining());
       }
 
-      public ext.a a(int $$0, int $$1) {
+      public char a(int $$0) {
+         return this.b.charAt($$0);
+      }
+
+      public vv a(int $$0, int $$1, wn $$2) {
+         ewx $$3 = new ewx();
+         ListIterator<ext.c> $$4 = this.a.listIterator();
+         int $$5 = $$0;
+         boolean $$6 = false;
+
+         while ($$4.hasNext()) {
+            ext.c $$7 = $$4.next();
+            String $$8 = $$7.c;
+            int $$9 = $$8.length();
+            if (!$$6) {
+               if ($$5 > $$9) {
+                  $$3.a($$7);
+                  $$4.remove();
+                  $$5 -= $$9;
+               } else {
+                  String $$10 = $$8.substring(0, $$5);
+                  if (!$$10.isEmpty()) {
+                     $$3.a(vv.a($$10, $$7.d));
+                  }
+
+                  $$5 += $$1;
+                  $$6 = true;
+               }
+            }
+
+            if ($$6) {
+               if ($$5 <= $$9) {
+                  String $$11 = $$8.substring($$5);
+                  if ($$11.isEmpty()) {
+                     $$4.remove();
+                  } else {
+                     $$4.set(new ext.c($$11, $$2));
+                  }
+                  break;
+               }
+
+               $$4.remove();
+               $$5 -= $$9;
+            }
+         }
+
+         this.b = this.b.substring($$0 + $$1);
+         return $$3.b();
+      }
+
+      @Nullable
+      public vv a() {
+         ewx $$0 = new ewx();
+         this.a.forEach($$0::a);
+         this.a.clear();
+         return $$0.a();
+      }
+   }
+
+   class b implements avu {
+      private final float b;
+      private int c = -1;
+      private wn d = wn.a;
+      private boolean e;
+      private float f;
+      private int g = -1;
+      private wn h = wn.a;
+      private int i;
+      private int j;
+
+      public b(float $$0) {
+         this.b = Math.max($$0, 1.0F);
+      }
+
+      @Override
+      public boolean accept(int $$0, wn $$1, int $$2) {
+         int $$3 = $$0 + this.j;
+         switch ($$2) {
+            case 10:
+               return this.a($$3, $$1);
+            case 32:
+               this.g = $$3;
+               this.h = $$1;
+            default:
+               float $$4 = ext.this.a.getWidth($$2, $$1);
+               this.f += $$4;
+               if (!this.e || !(this.f > this.b)) {
+                  this.e |= $$4 != 0.0F;
+                  this.i = $$3 + Character.charCount($$2);
+                  return true;
+               } else {
+                  return this.g != -1 ? this.a(this.g, this.h) : this.a($$3, $$1);
+               }
+         }
+      }
+
+      private boolean a(int $$0, wn $$1) {
          this.c = $$0;
          this.d = $$1;
-         return this;
+         return false;
       }
 
-      public ext.a a(ext.b $$0) {
-         this.e = $$0;
-         return this;
+      private boolean c() {
+         return this.c != -1;
       }
 
-      public ext.a a(boolean $$0) {
-         this.f = $$0;
-         this.g = null;
-         return this;
+      public int a() {
+         return this.c() ? this.c : this.i;
       }
 
-      public ext.a a(evu<Boolean> $$0) {
-         this.g = $$0;
-         this.f = $$0.c();
-         return this;
+      public wn b() {
+         return this.d;
       }
 
-      public ext.a a(ezc $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public ext a() {
-         ext.b $$0 = this.g == null ? this.e : ($$0x, $$1x) -> {
-            this.g.a($$1x);
-            this.e.onValueChange($$0x, $$1x);
-         };
-         ext $$1 = new ext(this.c, this.d, this.a, this.b, this.f, $$0);
-         $$1.a(this.h);
-         return $$1;
+      public void a(int $$0) {
+         this.j += $$0;
       }
    }
 
-   public interface b {
-      ext.b a = ($$0, $$1) -> {
-      };
+   static class c implements vv {
+      final String c;
+      final wn d;
 
-      void onValueChange(ext var1, boolean var2);
+      public c(String $$0, wn $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public <T> Optional<T> a(vv.a<T> $$0) {
+         return $$0.accept(this.c);
+      }
+
+      @Override
+      public <T> Optional<T> a(vv.b<T> $$0, wn $$1) {
+         return $$0.accept(this.d.a($$1), this.c);
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      void accept(wn var1, int var2, int var3);
+   }
+
+   class e implements avu {
+      private float b;
+      private int c;
+
+      public e(float $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public boolean accept(int $$0, wn $$1, int $$2) {
+         this.b = this.b - ext.this.a.getWidth($$2, $$1);
+         if (this.b >= 0.0F) {
+            this.c = $$0 + Character.charCount($$2);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public void b() {
+         this.c = 0;
+      }
+   }
+
+   @FunctionalInterface
+   public interface f {
+      float getWidth(int var1, wn var2);
    }
 }

@@ -1,55 +1,69 @@
-public class fry extends frp {
-   private final fsc b;
-   protected boolean a;
+public class fry extends fua {
+   fry(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
 
-   fry(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fsc $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
-      this.b($$7);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
-   public frl b() {
-      return frl.c;
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
+         }
+      } else {
+         this.k();
+      }
    }
 
-   public static class a implements frk<ka> {
-      private final fsc a;
+   @Override
+   public fte b() {
+      return fte.c;
+   }
 
-      public a(fsc $$0) {
+   public static class a implements ftd<kc> {
+      private final ftv a;
+
+      public a(ftv $$0) {
          this.a = $$0;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fry $$8 = new fry($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fry $$8 = new fry($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class b implements frk<ka> {
-      private final fsc a;
+   public static class b implements ftd<kc> {
+      private final ftv a;
 
-      public b(fsc $$0) {
+      public b(ftv $$0) {
          this.a = $$0;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fry $$8 = new fry($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fry $$8 = new fry($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
+         $$8.a(this.a);
          return $$8;
       }
    }

@@ -1,42 +1,24 @@
 import com.mojang.serialization.Codec;
-import java.util.Collections;
-import java.util.List;
 
-public class eao extends eav {
-   public static final Codec<eao> a = Codec.unit(() -> eao.b);
-   public static final eao b = new eao();
+public class eao extends eak {
+   public static final Codec<eao> a = avp.j.fieldOf("chance").xmap(eao::new, $$0 -> $$0.c).codec();
+   private final int c;
 
-   private eao() {
-      super(eax.a.a);
+   private eao(int $$0) {
+      this.c = $$0;
+   }
+
+   public static eao a(int $$0) {
+      return new eao($$0);
    }
 
    @Override
-   public jb a(edp $$0, ddk $$1) {
-      return jb.g;
+   protected boolean a(eaj $$0, awo $$1, hz $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
    }
 
    @Override
-   public List<edo.c> a(edp $$0, hx $$1, ddk $$2, auw $$3) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public dzg a(edp $$0, hx $$1, ddk $$2) {
-      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
-   }
-
-   @Override
-   public boolean a(edp $$0, cus $$1, cuq $$2, dlm $$3, hx $$4, hx $$5, ddk $$6, dzg $$7, auw $$8, boolean $$9) {
-      return true;
-   }
-
-   @Override
-   public eaw<?> a() {
-      return eaw.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Empty";
+   public eam<?> b() {
+      return eam.b;
    }
 }

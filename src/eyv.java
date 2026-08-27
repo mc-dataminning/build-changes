@@ -1,23 +1,22 @@
-public class eyv {
-   public static final eyv a = new eyv("Merry X-mas!");
-   public static final eyv b = new eyv("Happy new year!");
-   public static final eyv c = new eyv("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+import java.util.Set;
 
-   public eyv(String $$0) {
-      this.f = $$0;
+public class eyv extends ghw {
+   private static final Set<ara<?>> a = Set.of(gie.a, gik.c);
+
+   public eyv(ggv $$0) {
+      super($$0, new aiy("textures/atlas/gui.png"), new aiy("gui"), a);
    }
 
-   public void a(exe $$0, int $$1, exc $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - aup.e(aup.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   @Override
+   public ggu a(aiy $$0) {
+      return super.a($$0);
+   }
+
+   public gil a(ggu $$0) {
+      return this.b($$0).a();
+   }
+
+   private gik b(ggu $$0) {
+      return $$0.e().f().a(gik.c).orElse(gik.a);
    }
 }

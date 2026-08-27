@@ -1,45 +1,33 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
+import java.nio.charset.StandardCharsets;
 
-public class asz implements aqd {
-   private static final Map<ahg<? extends it<?>>, String> a = Map.of(
-      ke.f, "tags/blocks", ke.u, "tags/entity_types", ke.y, "tags/fluids", ke.B, "tags/game_events", ke.F, "tags/items"
-   );
-   private final iu b;
-   private List<asz.a<?>> c = List.of();
+public class asz {
+   public static final int a = 1460;
+   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-   public asz(iu $$0) {
-      this.b = $$0;
+   public static String a(byte[] $$0, int $$1, int $$2) {
+      int $$3 = $$2 - 1;
+      int $$4 = $$1 > $$3 ? $$3 : $$1;
+
+      while (0 != $$0[$$4] && $$4 < $$3) {
+         $$4++;
+      }
+
+      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
    }
 
-   public List<asz.a<?>> a() {
-      return this.c;
+   public static int a(byte[] $$0, int $$1) {
+      return b($$0, $$1, $$0.length);
    }
 
-   public static String a(ahg<? extends it<?>> $$0) {
-      String $$1 = a.get($$0);
-      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
+   public static int b(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
    }
 
-   @Override
-   public CompletableFuture<Void> a(aqd.a $$0, aqj $$1, bgt $$2, bgt $$3, Executor $$4, Executor $$5) {
-      List<? extends CompletableFuture<? extends asz.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
-      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
-         .thenCompose($$0::a)
-         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
+   public static int c(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
    }
 
-   private <T> CompletableFuture<asz.a<T>> a(aqj $$0, Executor $$1, iu.d<T> $$2) {
-      ahg<? extends it<T>> $$3 = $$2.a();
-      it<T> $$4 = $$2.b();
-      asy<ih<T>> $$5 = new asy<>($$4::c, a($$3));
-      return CompletableFuture.supplyAsync(() -> new asz.a<>($$3, $$5.b($$0)), $$1);
-   }
-
-   public static record a<T>(ahg<? extends it<T>> a, Map<ahh, Collection<ih<T>>> b) {
+   public static String a(byte $$0) {
+      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

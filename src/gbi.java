@@ -1,13 +1,15 @@
-public class gbi extends gbb {
-   private static final ahh a = new ahh("textures/entity/skeleton/stray.png");
+public class gbi extends gbz<cfr, fml<cfr>> {
+   private static final aiy a = new aiy("textures/entity/hoglin/hoglin.png");
 
-   public gbi(fza.a $$0) {
-      super($$0, fni.bv, fni.bw, fni.bx);
-      this.a(new gdt<>(this, $$0.f()));
+   public gbi(gat.a $$0) {
+      super($$0, new fml<>($$0.a(fpb.aj)), 0.7F);
    }
 
-   @Override
-   public ahh a(ccf $$0) {
+   public aiy a(cfr $$0) {
       return a;
+   }
+
+   protected boolean b(cfr $$0) {
+      return super.a($$0) || $$0.A();
    }
 }

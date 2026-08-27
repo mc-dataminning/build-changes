@@ -1,51 +1,55 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Locale;
 import org.joml.Vector3f;
 
-public abstract class js implements jv {
-   public static final float e = 0.01F;
-   public static final float f = 4.0F;
-   protected final Vector3f g;
-   protected final float h;
+public class js extends ju {
+   public static final Vector3f a = ens.a(3790560).j();
+   public static final js b = new js(a, jt.a, 1.0F);
+   public static final Codec<js> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avp.d.fieldOf("fromColor").forGetter($$0x -> $$0x.h),
+               avp.d.fieldOf("toColor").forGetter($$0x -> $$0x.j),
+               Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, js::new)
+   );
+   public static final xo<vb, js> d = xo.a(xm.l, $$0 -> $$0.h, xm.l, $$0 -> $$0.j, xm.f, $$0 -> $$0.i, js::new);
+   public static final jx.a<js> e = new jx.a<js>() {
+      public js a(jy<js> $$0, StringReader $$1) throws CommandSyntaxException {
+         Vector3f $$2 = ju.a($$1);
+         $$1.expect(' ');
+         float $$3 = $$1.readFloat();
+         Vector3f $$4 = ju.a($$1);
+         return new js($$2, $$4, $$3);
+      }
+   };
+   private final Vector3f j;
 
-   public js(Vector3f $$0, float $$1) {
-      this.g = $$0;
-      this.h = aup.a($$1, 0.01F, 4.0F);
+   public js(Vector3f $$0, Vector3f $$1, float $$2) {
+      super($$0, $$2);
+      this.j = $$1;
    }
 
-   public static Vector3f a(StringReader $$0) throws CommandSyntaxException {
-      $$0.expect(' ');
-      float $$1 = $$0.readFloat();
-      $$0.expect(' ');
-      float $$2 = $$0.readFloat();
-      $$0.expect(' ');
-      float $$3 = $$0.readFloat();
-      return new Vector3f($$1, $$2, $$3);
+   public Vector3f c() {
+      return this.h;
    }
 
-   public static Vector3f b(uj $$0) {
-      return new Vector3f($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
-   }
-
-   @Override
-   public void a(uj $$0) {
-      $$0.a(this.g.x());
-      $$0.a(this.g.y());
-      $$0.a(this.g.z());
-      $$0.a(this.h);
+   public Vector3f d() {
+      return this.j;
    }
 
    @Override
    public String a() {
-      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f", kd.j.b(this.b()), this.g.x(), this.g.y(), this.g.z(), this.h);
+      return String.format(
+         Locale.ROOT, "%s %.2f %.2f %.2f %.2f %.2f %.2f %.2f", kf.j.b(this.b()), this.h.x(), this.h.y(), this.h.z(), this.i, this.j.x(), this.j.y(), this.j.z()
+      );
    }
 
-   public Vector3f e() {
-      return this.g;
-   }
-
-   public float f() {
-      return this.h;
+   @Override
+   public jy<js> b() {
+      return jz.p;
    }
 }

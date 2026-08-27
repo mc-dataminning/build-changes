@@ -1,30 +1,33 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
 public class bif {
-   private final Set<String> a = new ObjectOpenHashSet();
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bij c = bii.a;
 
-   public Set<bhx> a(Supplier<bgr> $$0) {
-      Set<bhx> $$1 = $$0.get()
-         .e()
-         .stream()
-         .filter($$0x -> !this.a.contains($$0x.getLeft()))
-         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bhw)$$1x.getRight()))
-         .collect(Collectors.toSet());
-
-      for (bhx $$2 : $$1) {
-         this.a.add($$2.d());
-      }
-
-      return $$1;
+   public bif(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static bhx a(Supplier<bgr> $$0, String $$1, bhw $$2) {
-      return bhx.a($$1, $$2, () -> {
-         bgm.a $$2x = $$0.get().c($$1);
-         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)avq.b;
-      });
+   public boolean a() {
+      return this.c != bii.a;
+   }
+
+   public void b() {
+      this.c = bii.a;
+   }
+
+   public void c() {
+      this.c = new bie(this.a, this.b, true);
+   }
+
+   public bil d() {
+      return this.c;
+   }
+
+   public bik e() {
+      return this.c.d();
    }
 }

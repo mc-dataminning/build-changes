@@ -1,225 +1,277 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.function.Function;
-import java.util.stream.IntStream;
-import javax.annotation.concurrent.Immutable;
+import it.unimi.dsi.fastutil.longs.LongConsumer;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-@Immutable
-public class jb implements Comparable<jb> {
-   public static final Codec<jb> f = Codec.INT_STREAM
-      .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new jb($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()));
-   public static final jb g = new jb(0, 0, 0);
-   private int a;
-   private int b;
-   private int c;
+public class jb extends jd {
+   public static final int a = 4;
+   public static final int b = 16;
+   public static final int c = 15;
+   public static final int d = 8;
+   public static final int e = 15;
+   private static final int h = 22;
+   private static final int i = 20;
+   private static final int j = 22;
+   private static final long k = 4194303L;
+   private static final long l = 1048575L;
+   private static final long m = 4194303L;
+   private static final int n = 0;
+   private static final int o = 20;
+   private static final int p = 42;
+   private static final int q = 8;
+   private static final int r = 0;
+   private static final int s = 4;
 
-   public static Codec<jb> v(int $$0) {
-      return atx.a(
-         f,
-         (Function<jb, DataResult<jb>>)($$1 -> Math.abs($$1.u()) < $$0 && Math.abs($$1.v()) < $$0 && Math.abs($$1.w()) < $$0
-               ? DataResult.success($$1)
-               : DataResult.error(() -> "Position out of range, expected at most " + $$0 + ": " + $$1))
-      );
+   jb(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public jb(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static jb a(int $$0, int $$1, int $$2) {
+      return new jb($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof jb $$1)) {
-         return false;
-      } else if (this.u() != $$1.u()) {
-         return false;
+   public static jb a(hz $$0) {
+      return new jb(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   public static jb a(cuu $$0, int $$1) {
+      return new jb($$0.e, $$1, $$0.f);
+   }
+
+   public static jb a(dow $$0) {
+      return a($$0.dm());
+   }
+
+   public static jb a(it $$0) {
+      return new jb(b($$0.a()), b($$0.b()), b($$0.c()));
+   }
+
+   public static jb a(long $$0) {
+      return new jb(b($$0), c($$0), d($$0));
+   }
+
+   public static jb a(dnb $$0) {
+      return a($$0.f(), $$0.an());
+   }
+
+   public static long a(long $$0, ie $$1) {
+      return a($$0, $$1.j(), $$1.k(), $$1.l());
+   }
+
+   public static long a(long $$0, int $$1, int $$2, int $$3) {
+      return b(b($$0) + $$1, c($$0) + $$2, d($$0) + $$3);
+   }
+
+   public static int a(double $$0) {
+      return a(awh.a($$0));
+   }
+
+   public static int a(int $$0) {
+      return $$0 >> 4;
+   }
+
+   public static int b(double $$0) {
+      return awh.a($$0) >> 4;
+   }
+
+   public static int b(int $$0) {
+      return $$0 & 15;
+   }
+
+   public static short b(hz $$0) {
+      int $$1 = b($$0.u());
+      int $$2 = b($$0.v());
+      int $$3 = b($$0.w());
+      return (short)($$1 << 8 | $$3 << 4 | $$2 << 0);
+   }
+
+   public static int a(short $$0) {
+      return $$0 >>> 8 & 15;
+   }
+
+   public static int b(short $$0) {
+      return $$0 >>> 0 & 15;
+   }
+
+   public static int c(short $$0) {
+      return $$0 >>> 4 & 15;
+   }
+
+   public int d(short $$0) {
+      return this.d() + a($$0);
+   }
+
+   public int e(short $$0) {
+      return this.e() + b($$0);
+   }
+
+   public int f(short $$0) {
+      return this.f() + c($$0);
+   }
+
+   public hz g(short $$0) {
+      return new hz(this.d($$0), this.e($$0), this.f($$0));
+   }
+
+   public static int c(int $$0) {
+      return $$0 << 4;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return c($$0) + $$1;
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 << 0 >> 42);
+   }
+
+   public static int c(long $$0) {
+      return (int)($$0 << 44 >> 44);
+   }
+
+   public static int d(long $$0) {
+      return (int)($$0 << 22 >> 42);
+   }
+
+   public int a() {
+      return this.u();
+   }
+
+   public int b() {
+      return this.v();
+   }
+
+   public int c() {
+      return this.w();
+   }
+
+   public int d() {
+      return c(this.a());
+   }
+
+   public int e() {
+      return c(this.b());
+   }
+
+   public int f() {
+      return c(this.c());
+   }
+
+   public int g() {
+      return a(this.a(), 15);
+   }
+
+   public int h() {
+      return a(this.b(), 15);
+   }
+
+   public int i() {
+      return a(this.c(), 15);
+   }
+
+   public static long e(long $$0) {
+      return b(a(hz.a($$0)), a(hz.b($$0)), a(hz.c($$0)));
+   }
+
+   public static long b(int $$0, int $$1) {
+      return f(b($$0, 0, $$1));
+   }
+
+   public static long f(long $$0) {
+      return $$0 & -1048576L;
+   }
+
+   public hz j() {
+      return new hz(c(this.a()), c(this.b()), c(this.c()));
+   }
+
+   public hz q() {
+      int $$0 = 8;
+      return this.j().b(8, 8, 8);
+   }
+
+   public cuu r() {
+      return new cuu(this.a(), this.c());
+   }
+
+   public static long c(hz $$0) {
+      return b(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   public static long b(int $$0, int $$1, int $$2) {
+      long $$3 = 0L;
+      $$3 |= ((long)$$0 & 4194303L) << 42;
+      $$3 |= ((long)$$1 & 1048575L) << 0;
+      return $$3 | ((long)$$2 & 4194303L) << 20;
+   }
+
+   public long s() {
+      return b(this.a(), this.b(), this.c());
+   }
+
+   public jb d(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new jb(this.a() + $$0, this.b() + $$1, this.c() + $$2);
+   }
+
+   public Stream<hz> t() {
+      return hz.a(this.d(), this.e(), this.f(), this.g(), this.h(), this.i());
+   }
+
+   public static Stream<jb> a(jb $$0, int $$1) {
+      int $$2 = $$0.a();
+      int $$3 = $$0.b();
+      int $$4 = $$0.c();
+      return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
+   }
+
+   public static Stream<jb> a(cuu $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0.e;
+      int $$5 = $$0.f;
+      return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);
+   }
+
+   public static Stream<jb> a(final int $$0, final int $$1, final int $$2, final int $$3, final int $$4, final int $$5) {
+      return StreamSupport.stream(new AbstractSpliterator<jb>((long)(($$3 - $$0 + 1) * ($$4 - $$1 + 1) * ($$5 - $$2 + 1)), 64) {
+         final ib a = new ib($$0, $$1, $$2, $$3, $$4, $$5);
+
+         @Override
+         public boolean tryAdvance(Consumer<? super jb> $$0x) {
+            if (this.a.a()) {
+               $$0.accept(new jb(this.a.b(), this.a.c(), this.a.d()));
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }, false);
+   }
+
+   public static void a(hz $$0, LongConsumer $$1) {
+      a($$0.u(), $$0.v(), $$0.w(), $$1);
+   }
+
+   public static void a(long $$0, LongConsumer $$1) {
+      a(hz.a($$0), hz.b($$0), hz.c($$0), $$1);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, LongConsumer $$3) {
+      int $$4 = a($$0 - 1);
+      int $$5 = a($$0 + 1);
+      int $$6 = a($$1 - 1);
+      int $$7 = a($$1 + 1);
+      int $$8 = a($$2 - 1);
+      int $$9 = a($$2 + 1);
+      if ($$4 == $$5 && $$6 == $$7 && $$8 == $$9) {
+         $$3.accept(b($$4, $$6, $$8));
       } else {
-         return this.v() != $$1.v() ? false : this.w() == $$1.w();
+         for (int $$10 = $$4; $$10 <= $$5; $$10++) {
+            for (int $$11 = $$6; $$11 <= $$7; $$11++) {
+               for (int $$12 = $$8; $$12 <= $$9; $$12++) {
+                  $$3.accept(b($$10, $$11, $$12));
+               }
+            }
+         }
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return (this.v() + this.w() * 31) * 31 + this.u();
-   }
-
-   public int i(jb $$0) {
-      if (this.v() == $$0.v()) {
-         return this.w() == $$0.w() ? this.u() - $$0.u() : this.w() - $$0.w();
-      } else {
-         return this.v() - $$0.v();
-      }
-   }
-
-   public int u() {
-      return this.a;
-   }
-
-   public int v() {
-      return this.b;
-   }
-
-   public int w() {
-      return this.c;
-   }
-
-   protected jb u(int $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   protected jb t(int $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   protected jb s(int $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public jb c(int $$0, int $$1, int $$2) {
-      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new jb(this.u() + $$0, this.v() + $$1, this.w() + $$2);
-   }
-
-   public jb f(jb $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
-   }
-
-   public jb e(jb $$0) {
-      return this.c(-$$0.u(), -$$0.v(), -$$0.w());
-   }
-
-   public jb o(int $$0) {
-      if ($$0 == 1) {
-         return this;
-      } else {
-         return $$0 == 0 ? g : new jb(this.u() * $$0, this.v() * $$0, this.w() * $$0);
-      }
-   }
-
-   public jb p() {
-      return this.n(1);
-   }
-
-   public jb n(int $$0) {
-      return this.b(ic.b, $$0);
-   }
-
-   public jb o() {
-      return this.m(1);
-   }
-
-   public jb m(int $$0) {
-      return this.b(ic.a, $$0);
-   }
-
-   public jb n() {
-      return this.l(1);
-   }
-
-   public jb l(int $$0) {
-      return this.b(ic.c, $$0);
-   }
-
-   public jb m() {
-      return this.k(1);
-   }
-
-   public jb k(int $$0) {
-      return this.b(ic.d, $$0);
-   }
-
-   public jb l() {
-      return this.j(1);
-   }
-
-   public jb j(int $$0) {
-      return this.b(ic.e, $$0);
-   }
-
-   public jb k() {
-      return this.i(1);
-   }
-
-   public jb i(int $$0) {
-      return this.b(ic.f, $$0);
-   }
-
-   public jb b(ic $$0) {
-      return this.b($$0, 1);
-   }
-
-   public jb b(ic $$0, int $$1) {
-      return $$1 == 0 ? this : new jb(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
-   }
-
-   public jb b(ic.a $$0, int $$1) {
-      if ($$1 == 0) {
-         return this;
-      } else {
-         int $$2 = $$0 == ic.a.a ? $$1 : 0;
-         int $$3 = $$0 == ic.a.b ? $$1 : 0;
-         int $$4 = $$0 == ic.a.c ? $$1 : 0;
-         return new jb(this.u() + $$2, this.v() + $$3, this.w() + $$4);
-      }
-   }
-
-   public jb d(jb $$0) {
-      return new jb(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
-   }
-
-   public boolean a(jb $$0, double $$1) {
-      return this.j($$0) < aup.k($$1);
-   }
-
-   public boolean a(ir $$0, double $$1) {
-      return this.b($$0) < aup.k($$1);
-   }
-
-   public double j(jb $$0) {
-      return this.d((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-   }
-
-   public double b(ir $$0) {
-      return this.c($$0.a(), $$0.b(), $$0.c());
-   }
-
-   public double c(double $$0, double $$1, double $$2) {
-      double $$3 = (double)this.u() + 0.5 - $$0;
-      double $$4 = (double)this.v() + 0.5 - $$1;
-      double $$5 = (double)this.w() + 0.5 - $$2;
-      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
-   }
-
-   public double d(double $$0, double $$1, double $$2) {
-      double $$3 = (double)this.u() - $$0;
-      double $$4 = (double)this.v() - $$1;
-      double $$5 = (double)this.w() - $$2;
-      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
-   }
-
-   public int k(jb $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.u());
-      float $$2 = (float)Math.abs($$0.v() - this.v());
-      float $$3 = (float)Math.abs($$0.w() - this.w());
-      return (int)($$1 + $$2 + $$3);
-   }
-
-   public int a(ic.a $$0) {
-      return $$0.a(this.a, this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("x", this.u()).add("y", this.v()).add("z", this.w()).toString();
-   }
-
-   public String x() {
-      return this.u() + ", " + this.v() + ", " + this.w();
    }
 }

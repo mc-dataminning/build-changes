@@ -1,129 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class bul<T extends ccw & cda & ccj> extends btk {
-   public static final bjn a = avq.a(1, 2);
-   private final T b;
-   private bul.a c = bul.a.a;
-   private final double d;
-   private final float e;
-   private int f;
-   private int g;
-   private int h;
+public class bul extends bus {
+   private static final int g = 240;
+   private final Predicate<blr> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public bul(T $$0, double $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2 * $$2;
-      this.a(EnumSet.of(btk.a.a, btk.a.b));
+   public bul(boi $$0, Predicate<blr> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public bul(boi $$0, int $$1, Predicate<blr> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean a() {
-      return this.i() && this.h();
+      if (!super.a()) {
+         return false;
+      } else {
+         return !this.d.dM().Z().b(cvj.c) ? false : this.a(this.d.dM().ak()) && !this.h();
+      }
    }
 
-   private boolean h() {
-      return this.b.b(cnj.vP);
+   @Override
+   public void c() {
+      super.c();
+      this.a = 0;
    }
 
    @Override
    public boolean b() {
-      return this.i() && (this.a() || !this.b.N().l()) && this.h();
-   }
-
-   private boolean i() {
-      return this.b.q() != null && this.b.q().bx();
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dk(), 2.0) && this.a(this.d.dM().ak());
    }
 
    @Override
    public void d() {
       super.d();
-      this.b.v(false);
-      this.b.h(null);
-      this.f = 0;
-      if (this.b.fn()) {
-         this.b.ft();
-         this.b.b(false);
-         clp.a(this.b.fp(), false);
-      }
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
+      this.d.dM().a(this.d.aj(), this.e, -1);
    }
 
    @Override
    public void e() {
-      bmo $$0 = this.b.q();
-      if ($$0 != null) {
-         boolean $$1 = this.b.O().a($$0);
-         boolean $$2 = this.f > 0;
-         if ($$1 != $$2) {
-            this.f = 0;
+      super.e();
+      if (this.d.eh().a(20) == 0) {
+         this.d.dM().c(1019, this.e, 0);
+         if (!this.d.aF) {
+            this.d.a(this.d.fo());
          }
+      }
 
-         if ($$1) {
-            this.f++;
-         } else {
-            this.f--;
-         }
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dM().a(this.d.aj(), this.e, $$0);
+         this.b = $$0;
+      }
 
-         double $$3 = this.b.f($$0);
-         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
-         if ($$4) {
-            this.h--;
-            if (this.h <= 0) {
-               this.b.N().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.eg());
-            }
-         } else {
-            this.h = 0;
-            this.b.N().n();
-         }
-
-         this.b.I().a($$0, 30.0F, 30.0F);
-         if (this.c == bul.a.a) {
-            if (!$$4) {
-               this.b.c(cgj.a(this.b, cnj.vP));
-               this.c = bul.a.b;
-               this.b.b(true);
-            }
-         } else if (this.c == bul.a.b) {
-            if (!this.b.fn()) {
-               this.c = bul.a.a;
-            }
-
-            int $$5 = this.b.fr();
-            cng $$6 = this.b.fp();
-            if ($$5 >= clp.k($$6)) {
-               this.b.fs();
-               this.c = bul.a.c;
-               this.g = 20 + this.b.eg().a(20);
-               this.b.b(false);
-            }
-         } else if (this.c == bul.a.c) {
-            this.g--;
-            if (this.g == 0) {
-               this.c = bul.a.d;
-            }
-         } else if (this.c == bul.a.d && $$1) {
-            this.b.a($$0, 1.0F);
-            cng $$7 = this.b.b(cgj.a(this.b, cnj.vP));
-            clp.a($$7, false);
-            this.c = bul.a.a;
-         }
+      if (this.a == this.f() && this.a(this.d.dM().ak())) {
+         this.d.dM().a(this.e, false);
+         this.d.dM().c(1021, this.e, 0);
+         this.d.dM().c(2001, this.e, cyo.i(this.d.dM().a_(this.e)));
       }
    }
 
-   private boolean k() {
-      return this.c == bul.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   private boolean a(blr $$0) {
+      return this.h.test($$0);
    }
 }

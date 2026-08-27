@@ -1,9 +1,8 @@
-public class gfy extends ggd {
-   public gfy(gfc $$0) {
-      super($$0, new ahh("textures/atlas/mob_effects.png"), new ahh("mob_effects"));
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public gfb a(ih<blh> $$0) {
-      return this.a($$0.e().map(ahg::a).orElseGet(ger::b));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gfy {
 }

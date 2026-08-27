@@ -1,29 +1,28 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dxj extends dxk {
-   public static final Codec<dxj> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dxj::new));
+public class dxj<P extends dxi> {
+   public static final dxj<dxd> a = a("blob_foliage_placer", dxd.a);
+   public static final dxj<dxo> b = a("spruce_foliage_placer", dxo.a);
+   public static final dxj<dxm> c = a("pine_foliage_placer", dxm.a);
+   public static final dxj<dxc> d = a("acacia_foliage_placer", dxc.a);
+   public static final dxj<dxe> e = a("bush_foliage_placer", dxe.c);
+   public static final dxj<dxh> f = a("fancy_foliage_placer", dxh.c);
+   public static final dxj<dxk> g = a("jungle_foliage_placer", dxk.a);
+   public static final dxj<dxl> h = a("mega_pine_foliage_placer", dxl.a);
+   public static final dxj<dxg> i = a("dark_oak_foliage_placer", dxg.a);
+   public static final dxj<dxn> j = a("random_spread_foliage_placer", dxn.a);
+   public static final dxj<dxf> k = a("cherry_foliage_placer", dxf.a);
+   private final Codec<P> l;
 
-   public dxj(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends dxi> dxj<P> a(String $$0, Codec<P> $$1) {
+      return iv.a(kf.W, $$0, new dxj<>($$1));
    }
 
-   @Override
-   protected dxl<?> a() {
-      return dxl.a;
+   private dxj(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   public List<dvs.a> a(cud $$0, BiConsumer<hx, djp> $$1, auw $$2, int $$3, hx $$4, dvc $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
-      }
-
-      return ImmutableList.of(new dvs.a($$4.b($$3), 0, false));
+   public Codec<P> a() {
+      return this.l;
    }
 }

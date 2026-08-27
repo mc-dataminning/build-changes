@@ -2,47 +2,94 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public interface eq<T extends ck<?>> extends ArgumentType<T> {
-   static eq.b a() {
-      return new eq.b();
+public class eq implements ArgumentType<eq.a> {
+   private static final Collection<String> a = Arrays.asList("=", ">", "<");
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("arguments.operation.invalid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vq.c("arguments.operation.div0"));
+
+   public static eq a() {
+      return new eq();
    }
 
-   static eq.a b() {
-      return new eq.a();
+   public static eq.a a(CommandContext<du> $$0, String $$1) {
+      return (eq.a)$$0.getArgument($$1, eq.a.class);
    }
 
-   public static class a implements eq<ck.c> {
-      private static final Collection<String> a = Arrays.asList("0..5.2", "0", "-5.4", "-100.76..", "..100");
+   public eq.a a(StringReader $$0) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw b.create();
+      } else {
+         int $$1 = $$0.getCursor();
 
-      public static ck.c a(CommandContext<ds> $$0, String $$1) {
-         return (ck.c)$$0.getArgument($$1, ck.c.class);
-      }
+         while ($$0.canRead() && $$0.peek() != ' ') {
+            $$0.skip();
+         }
 
-      public ck.c a(StringReader $$0) throws CommandSyntaxException {
-         return ck.c.a($$0);
-      }
-
-      public Collection<String> getExamples() {
-         return a;
+         return a($$0.getString().substring($$1, $$0.getCursor()));
       }
    }
 
-   public static class b implements eq<ck.d> {
-      private static final Collection<String> a = Arrays.asList("0..5", "0", "-5", "-100..", "..100");
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return dz.a(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, $$1);
+   }
 
-      public static ck.d a(CommandContext<ds> $$0, String $$1) {
-         return (ck.d)$$0.getArgument($$1, ck.d.class);
-      }
+   public Collection<String> getExamples() {
+      return a;
+   }
 
-      public ck.d a(StringReader $$0) throws CommandSyntaxException {
-         return ck.d.a($$0);
-      }
+   private static eq.a a(String $$0) throws CommandSyntaxException {
+      return (eq.a)($$0.equals("><") ? ($$0x, $$1) -> {
+         int $$2 = $$0x.a();
+         $$0x.a($$1.a());
+         $$1.a($$2);
+      } : b($$0));
+   }
 
-      public Collection<String> getExamples() {
-         return a;
+   private static eq.b b(String $$0) throws CommandSyntaxException {
+      return switch ($$0) {
+         case "=" -> ($$0x, $$1) -> $$1;
+         case "+=" -> Integer::sum;
+         case "-=" -> ($$0x, $$1) -> $$0x - $$1;
+         case "*=" -> ($$0x, $$1) -> $$0x * $$1;
+         case "/=" -> ($$0x, $$1) -> {
+         if ($$1 == 0) {
+            throw c.create();
+         } else {
+            return awh.a($$0x, $$1);
+         }
+      };
+         case "%=" -> ($$0x, $$1) -> {
+         if ($$1 == 0) {
+            throw c.create();
+         } else {
+            return awh.b($$0x, $$1);
+         }
+      };
+         case "<" -> Math::min;
+         case ">" -> Math::max;
+         default -> throw b.create();
+      };
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void apply(eou var1, eou var2) throws CommandSyntaxException;
+   }
+
+   @FunctionalInterface
+   interface b extends eq.a {
+      int apply(int var1, int var2) throws CommandSyntaxException;
+
+      @Override
+      default void apply(eou $$0, eou $$1) throws CommandSyntaxException {
+         $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }
 }

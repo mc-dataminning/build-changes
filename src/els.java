@@ -1,79 +1,45 @@
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class els {
-   private final PathMatcher a;
+public record els(Optional<ck> b, hz c) implements elu {
+   private static final MapCodec<hz> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               avp.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(jd::u),
+               avp.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(jd::v),
+               avp.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(jd::w)
+            )
+            .apply($$0, hz::new)
+   );
+   public static final Codec<els> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avp.a(ck.a, "predicate").forGetter(els::c), d.forGetter(els::d)).apply($$0, els::new)
+   );
 
-   public els(PathMatcher $$0) {
-      this.a = $$0;
+   @Override
+   public elv b() {
+      return elw.o;
    }
 
-   public void a(Path $$0, List<elt> $$1) throws IOException {
-      Path $$2 = Files.readSymbolicLink($$0);
-      if (!this.a.matches($$2)) {
-         $$1.add(new elt($$0, $$2));
-      }
+   public boolean a(eiv $$0) {
+      ens $$1 = $$0.c(elg.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
-   public List<elt> a(Path $$0) throws IOException {
-      List<elt> $$1 = new ArrayList<>();
-      this.a($$0, $$1);
-      return $$1;
+   public static elu.a a(ck.a $$0) {
+      return () -> new els(Optional.of($$0.b()), hz.c);
    }
 
-   public List<elt> a(Path $$0, boolean $$1) throws IOException {
-      List<elt> $$2 = new ArrayList<>();
-
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return $$2;
-      }
-
-      if ($$3.isRegularFile()) {
-         throw new IOException("Path " + $$0 + " is not a directory");
-      } else {
-         if ($$3.isSymbolicLink()) {
-            if (!$$1) {
-               this.a($$0, $$2);
-               return $$2;
-            }
-
-            $$0 = Files.readSymbolicLink($$0);
-         }
-
-         this.b($$0, $$2);
-         return $$2;
-      }
+   public static elu.a a(ck.a $$0, hz $$1) {
+      return () -> new els(Optional.of($$0.b()), $$1);
    }
 
-   public void b(Path $$0, final List<elt> $$1) throws IOException {
-      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            if ($$1.isSymbolicLink()) {
-               els.this.a($$0, $$1);
-            }
-         }
+   public Optional<ck> c() {
+      return this.b;
+   }
 
-         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.preVisitDirectory($$0, $$1);
-         }
-
-         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.visitFile($$0, $$1);
-         }
-      });
+   public hz d() {
+      return this.c;
    }
 }

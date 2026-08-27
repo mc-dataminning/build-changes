@@ -1,22 +1,20 @@
-import javax.annotation.Nullable;
+public record abl(cuu b) implements xx<aag> {
+   public static final xo<uq, abl> a = xx.a(abl::a, abl::new);
 
-public record abl(String a, @Nullable String b) implements xg<zb> {
-   public abl(uj $$0) {
-      this($$0.s(), $$0.c(uj::s));
+   private abl(uq $$0) {
+      this($$0.f());
+   }
+
+   private void a(uq $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, uj::a);
+   public xz<abl> a() {
+      return aeq.E;
    }
 
-   public void a(zb $$0) {
+   public void a(aag $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public String d() {
-      return this.b;
    }
 }

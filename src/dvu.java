@@ -1,39 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvu extends dvs {
+public class dvu implements dvw {
    public static final Codec<dvu> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dvu::new)
+      $$0 -> $$0.group(
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
+               bkz.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
+               bkz.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
+               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
+               bkz.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
+               bkx.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
+               bkx.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
+            )
+            .apply($$0, dvu::new)
    );
-   protected final int b;
+   public final int b;
+   public final bkz c;
+   public final bkz d;
+   public final int e;
+   public final int f;
+   public final bkz g;
+   public final bkx h;
+   public final bkx i;
+   public final float j;
+   public final int k;
+   public final int l;
 
-   public dvu(bjh $$0, bjh $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected dvt<?> a() {
-      return dvt.g;
-   }
-
-   @Override
-   protected void a(cud $$0, dvs.b $$1, auw $$2, dvc $$3, int $$4, dvs.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
-         int $$11 = $$7 + $$5.b() + 1 - $$10;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(auw $$0, int $$1, dvc $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(auw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public dvu(int $$0, bkz $$1, bkz $$2, int $$3, int $$4, bkz $$5, bkx $$6, bkx $$7, float $$8, int $$9, int $$10) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
    }
 }

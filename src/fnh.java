@@ -1,37 +1,62 @@
-public final class fnh {
-   private final ahh a;
-   private final String b;
-
-   public fnh(ahh $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class fnh<T extends cal> extends fnl<T> {
+   public fnh(fpc $$0) {
+      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
    }
 
-   public ahh a() {
-      return this.a;
+   public static fpi c() {
+      fpk $$0 = new fpk();
+      fpl $$1 = $$0.a();
+      $$1.a(
+         "head",
+         fph.c()
+            .a(0, 0)
+            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
+            .a(0, 44)
+            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
+            .a(26, 0)
+            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
+            .a(26, 0)
+            .a()
+            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
+         fpe.a(0.0F, 10.0F, -16.0F)
+      );
+      $$1.a(
+         "body",
+         fph.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
+         fpe.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      int $$2 = 10;
+      fph $$3 = fph.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
+      $$1.a("right_hind_leg", $$3, fpe.a(-4.5F, 14.0F, 6.0F));
+      $$1.a("left_hind_leg", $$3, fpe.a(4.5F, 14.0F, 6.0F));
+      fph $$4 = fph.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
+      $$1.a("right_front_leg", $$4, fpe.a(-3.5F, 14.0F, -8.0F));
+      $$1.a("left_front_leg", $$4, fpe.a(3.5F, 14.0F, -8.0F));
+      return fpi.a($$0, 128, 64);
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$3 - (float)$$0.ag;
+      float $$7 = $$0.E($$6);
+      $$7 *= $$7;
+      float $$8 = 1.0F - $$7;
+      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
+      this.b.c = 9.0F * $$8 + 11.0F * $$7;
+      this.h.c = 14.0F * $$8 - 6.0F * $$7;
+      this.h.d = -8.0F * $$8 - 4.0F * $$7;
+      this.h.e -= $$7 * (float) Math.PI * 0.45F;
+      this.i.c = this.h.c;
+      this.i.d = this.h.d;
+      this.i.e -= $$7 * (float) Math.PI * 0.45F;
+      if (this.e) {
+         this.a.c = 10.0F * $$8 - 9.0F * $$7;
+         this.a.d = -16.0F * $$8 - 7.0F * $$7;
       } else {
-         return !($$0 instanceof fnh $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+         this.a.c = 10.0F * $$8 - 14.0F * $$7;
+         this.a.d = -16.0F * $$8 - 3.0F * $$7;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.a + "#" + this.b;
+      this.a.e += $$7 * (float) Math.PI * 0.15F;
    }
 }

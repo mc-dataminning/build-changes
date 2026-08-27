@@ -1,23 +1,30 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dya extends dxv {
-   public static final Codec<dya> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bim.b(dxv.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dya::new)
-   );
-   private final bim<dxv> b;
+public abstract class dya extends dxx {
+   protected final long c;
+   protected final efs.a d;
+   protected final float e;
+   protected final efs f;
 
-   public dya(bim<dxv> $$0) {
-      this.b = $$0;
+   protected static <P extends dya> P3<Mu<P>, Long, efs.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         efs.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         avp.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   public int a(auw $$0, dpv $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   protected dya(long $$0, efs.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = efs.b(new drn(new dqp($$0)), $$1);
    }
 
-   @Override
-   public dxw<?> a() {
-      return dxw.f;
+   protected double a(hz $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

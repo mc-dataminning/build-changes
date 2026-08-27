@@ -1,46 +1,89 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class due implements dug {
-   public static final Codec<due> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               bjh.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               bjh.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               bjh.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bjf.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bjf.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, due::new)
-   );
-   public final int b;
-   public final bjh c;
-   public final bjh d;
-   public final int e;
-   public final int f;
-   public final bjh g;
-   public final bjf h;
-   public final bjf i;
-   public final float j;
-   public final int k;
-   public final int l;
+public class due extends dts<dwd> {
+   public due(Codec<dwd> $$0) {
+      super($$0);
+   }
 
-   public due(int $$0, bjh $$1, bjh $$2, int $$3, int $$4, bjh $$5, bjf $$6, bjf $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   @Override
+   public boolean a(dtu<dwd> $$0) {
+      hz $$1 = $$0.e();
+      awo $$2 = $$0.d();
+      cwi $$3 = $$0.b();
+
+      while ($$3.u($$1) && $$1.v() > $$3.J_() + 2) {
+         $$1 = $$1.d();
+      }
+
+      if (!$$3.a_($$1).a(cyq.dP)) {
+         return false;
+      } else {
+         $$1 = $$1.b($$2.a(4));
+         int $$4 = $$2.a(4) + 7;
+         int $$5 = $$4 / 4 + $$2.a(2);
+         if ($$5 > 1 && $$2.a(60) == 0) {
+            $$1 = $$1.b(10 + $$2.a(30));
+         }
+
+         for (int $$6 = 0; $$6 < $$4; $$6++) {
+            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
+            int $$8 = awh.f($$7);
+
+            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+               float $$10 = (float)awh.a($$9) - 0.25F;
+
+               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
+                  float $$12 = (float)awh.a($$11) - 0.25F;
+                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
+                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
+                     dlf $$13 = $$3.a_($$1.b($$9, $$6, $$11));
+                     if ($$13.i() || b($$13) || $$13.a(cyq.dP) || $$13.a(cyq.dO)) {
+                        this.a($$3, $$1.b($$9, $$6, $$11), cyq.iC.o());
+                     }
+
+                     if ($$6 != 0 && $$8 > 1) {
+                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
+                        if ($$13.i() || b($$13) || $$13.a(cyq.dP) || $$13.a(cyq.dO)) {
+                           this.a($$3, $$1.b($$9, -$$6, $$11), cyq.iC.o());
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         int $$14 = $$5 - 1;
+         if ($$14 < 0) {
+            $$14 = 0;
+         } else if ($$14 > 1) {
+            $$14 = 1;
+         }
+
+         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
+            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
+               hz $$17 = $$1.b($$15, -1, $$16);
+               int $$18 = 50;
+               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
+                  $$18 = $$2.a(5);
+               }
+
+               while ($$17.v() > 50) {
+                  dlf $$19 = $$3.a_($$17);
+                  if (!$$19.i() && !b($$19) && !$$19.a(cyq.dP) && !$$19.a(cyq.dO) && !$$19.a(cyq.iC)) {
+                     break;
+                  }
+
+                  this.a($$3, $$17, cyq.iC.o());
+                  $$17 = $$17.d();
+                  if (--$$18 <= 0) {
+                     $$17 = $$17.c($$2.a(5) + 1);
+                     $$18 = $$2.a(5);
+                  }
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

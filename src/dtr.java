@@ -1,94 +1,54 @@
-import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
+public class dtr extends dts<dwd> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final hz an = hz.c;
+   private final boolean ao;
 
-public class dtr extends dsc<dvf> {
-   public dtr(Codec<dvf> $$0) {
-      super($$0);
+   public static hz a(hz $$0) {
+      return an.a((jd)$$0);
+   }
+
+   public dtr(boolean $$0) {
+      super(dwd.a);
+      this.ao = $$0;
    }
 
    @Override
-   public boolean a(dse<dvf> $$0) {
-      cus $$1 = $$0.b();
-      dvf $$2 = $$0.f();
-      auw $$3 = $$0.d();
-      hx $$4 = $$0.e();
-      Predicate<djp> $$5 = $$1x -> $$1x.a($$2.b);
-      int $$6 = $$2.j.a($$3) + 1;
-      int $$7 = $$2.j.a($$3) + 1;
-      Set<hx> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
-      return !$$8.isEmpty();
-   }
+   public boolean a(dtu<dwd> $$0) {
+      hz $$1 = $$0.e();
+      cwi $$2 = $$0.b();
 
-   protected Set<hx> a(cus $$0, dvf $$1, auw $$2, hx $$3, Predicate<djp> $$4, int $$5, int $$6) {
-      hx.a $$7 = $$3.j();
-      hx.a $$8 = $$7.j();
-      ic $$9 = $$1.e.a();
-      ic $$10 = $$9.g();
-      Set<hx> $$11 = new HashSet<>();
-
-      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
-         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
-
-         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
-            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
-            boolean $$16 = $$13 || $$15;
-            boolean $$17 = $$13 && $$15;
-            boolean $$18 = $$16 && !$$17;
-            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
-               $$7.a($$3, $$12, 0, $$14);
-
-               for (int $$19 = 0; $$0.a($$7, djo.a::i) && $$19 < $$1.h; $$19++) {
-                  $$7.c($$9);
+      for (hz $$3 : hz.a(new hz($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new hz($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, cyq.F.o());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, cyq.fz.o());
                }
-
-               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.i()) && var25 < $$1.h; var25++) {
-                  $$7.c($$10);
-               }
-
-               $$8.a($$7, $$1.e.a());
-               djp $$20 = $$0.a_($$8);
-               if ($$0.u($$7) && $$20.d($$0, $$8, $$1.e.a().g())) {
-                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
-                  hx $$22 = $$8.i();
-                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
-                  if ($$23) {
-                     $$11.add($$22);
-                  }
-               }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, cyq.a.o());
+            } else if (!$$4) {
+               this.a($$2, $$3, cyq.F.o());
+            } else if (this.ao) {
+               this.a($$2, new hz($$3), cyq.fx.o());
+            } else {
+               this.a($$2, new hz($$3), cyq.a.o());
             }
          }
       }
 
-      return $$11;
-   }
-
-   protected void a(dse<dvf> $$0, cus $$1, dvf $$2, auw $$3, Set<hx> $$4, int $$5, int $$6) {
-      for (hx $$7 : $$4) {
-         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
-            this.a($$1, $$2, $$0.c(), $$3, $$7);
-         }
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), cyq.F.o());
       }
-   }
 
-   protected boolean a(cus $$0, dvf $$1, dlm $$2, auw $$3, hx $$4) {
-      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
-   }
+      hz $$6 = $$1.b(2);
 
-   protected boolean a(cus $$0, dvf $$1, Predicate<djp> $$2, auw $$3, hx.a $$4, int $$5) {
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         djp $$7 = $$1.c.a($$3, $$4);
-         djp $$8 = $$0.a_($$4);
-         if (!$$7.a($$8.b())) {
-            if (!$$2.test($$8)) {
-               return $$6 != 0;
-            }
-
-            $$0.a($$4, $$7, 2);
-            $$4.c($$1.e.a());
-         }
+      for (ie $$7 : ie.c.a) {
+         this.a($$2, $$6.a($$7), cyq.cq.o().a(dho.g, $$7));
       }
 
       return true;

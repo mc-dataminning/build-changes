@@ -1,24 +1,43 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class us extends uh {
-   private static final Logger j = LogUtils.getLogger();
-   private static final vg k = vg.c("disconnect.exceeded_packet_rate");
-   private final int l;
+public class us extends MessageToMessageDecoder<xx<?>> {
+   private final xw a;
+   @Nullable
+   private xw.a b;
 
-   public us(int $$0) {
-      super(xh.a);
-      this.l = $$0;
+   public us(xw $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void e() {
-      super.e();
-      float $$0 = this.q();
-      if ($$0 > (float)this.l) {
-         j.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
-         this.a(new xl(k), uq.a(() -> this.a(k)));
-         this.o();
+   protected void a(ChannelHandlerContext $$0, xx<?> $$1, List<Object> $$2) throws Exception {
+      if (this.b != null) {
+         a($$1);
+         xx<?> $$3 = this.b.a($$1);
+         if ($$3 != null) {
+            this.b = null;
+            $$2.add($$3);
+         }
+      } else {
+         xw.a $$4 = this.a.a($$1);
+         if ($$4 != null) {
+            a($$1);
+            this.b = $$4;
+         } else {
+            $$2.add($$1);
+            if ($$1.d()) {
+               $$0.pipeline().remove($$0.name());
+            }
+         }
+      }
+   }
+
+   private static void a(xx<?> $$0) {
+      if ($$0.d()) {
+         throw new DecoderException("Terminal message received in bundle");
       }
    }
 }

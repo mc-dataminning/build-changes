@@ -1,294 +1,183 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.ProfileLookupCallback;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Comparator;
-import java.util.Date;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.FileSystemAlreadyExistsException;
+import java.nio.file.FileSystemNotFoundException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Consumer;
 import org.slf4j.Logger;
 
 public class aqs {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 1000;
-   private static final int c = 1;
-   private static boolean d;
-   private final Map<String, aqs.a> e = Maps.newConcurrentMap();
-   private final Map<UUID, aqs.a> f = Maps.newConcurrentMap();
-   private final Map<String, CompletableFuture<Optional<GameProfile>>> g = Maps.newConcurrentMap();
-   private final GameProfileRepository h;
-   private final Gson i = new GsonBuilder().create();
-   private final File j;
-   private final AtomicLong k = new AtomicLong();
-   @Nullable
-   private Executor l;
+   private static final Logger b = LogUtils.getLogger();
+   public static Consumer<aqs> a = $$0 -> {
+   };
+   private static final Map<aqp, Path> c = ac.a(() -> {
+      synchronized (aqr.class) {
+         Builder<aqp, Path> $$0 = ImmutableMap.builder();
 
-   public aqs(GameProfileRepository $$0, File $$1) {
-      this.h = $$0;
-      this.j = $$1;
-      Lists.reverse(this.b()).forEach(this::a);
-   }
+         for (aqp $$1 : aqp.values()) {
+            String $$2 = "/" + $$1.a() + "/.mcassetsroot";
+            URL $$3 = aqr.class.getResource($$2);
+            if ($$3 == null) {
+               b.error("File {} does not exist in classpath", $$2);
+            } else {
+               try {
+                  URI $$4 = $$3.toURI();
+                  String $$5 = $$4.getScheme();
+                  if (!"jar".equals($$5) && !"file".equals($$5)) {
+                     b.warn("Assets URL '{}' uses unexpected schema", $$4);
+                  }
 
-   private void a(aqs.a $$0) {
-      GameProfile $$1 = $$0.a();
-      $$0.a(this.e());
-      this.e.put($$1.getName().toLowerCase(Locale.ROOT), $$0);
-      this.f.put($$1.getId(), $$0);
-   }
-
-   private static Optional<GameProfile> a(GameProfileRepository $$0, String $$1) {
-      if (!cfq.c($$1)) {
-         return c($$1);
-      } else {
-         final AtomicReference<GameProfile> $$2 = new AtomicReference<>();
-         ProfileLookupCallback $$3 = new ProfileLookupCallback() {
-            public void onProfileLookupSucceeded(GameProfile $$0) {
-               $$2.set($$0);
+                  Path $$6 = a($$4);
+                  $$0.put($$1, $$6.getParent());
+               } catch (Exception var12) {
+                  b.error("Couldn't resolve path to vanilla assets", var12);
+               }
             }
-
-            public void onProfileLookupFailed(String $$0, Exception $$1) {
-               $$2.set(null);
-            }
-         };
-         $$0.findProfilesByNames(new String[]{$$1}, $$3);
-         GameProfile $$4 = $$2.get();
-         return $$4 != null ? Optional.of($$4) : c($$1);
-      }
-   }
-
-   private static Optional<GameProfile> c(String $$0) {
-      return d() ? Optional.empty() : Optional.of(ja.b($$0));
-   }
-
-   public static void a(boolean $$0) {
-      d = $$0;
-   }
-
-   private static boolean d() {
-      return d;
-   }
-
-   public void a(GameProfile $$0) {
-      Calendar $$1 = Calendar.getInstance();
-      $$1.setTime(new Date());
-      $$1.add(2, 1);
-      Date $$2 = $$1.getTime();
-      aqs.a $$3 = new aqs.a($$0, $$2);
-      this.a($$3);
-      this.c();
-   }
-
-   private long e() {
-      return this.k.incrementAndGet();
-   }
-
-   public Optional<GameProfile> a(String $$0) {
-      String $$1 = $$0.toLowerCase(Locale.ROOT);
-      aqs.a $$2 = this.e.get($$1);
-      boolean $$3 = false;
-      if ($$2 != null && new Date().getTime() >= $$2.b.getTime()) {
-         this.f.remove($$2.a().getId());
-         this.e.remove($$2.a().getName().toLowerCase(Locale.ROOT));
-         $$3 = true;
-         $$2 = null;
-      }
-
-      Optional<GameProfile> $$4;
-      if ($$2 != null) {
-         $$2.a(this.e());
-         $$4 = Optional.of($$2.a());
-      } else {
-         $$4 = a(this.h, $$1);
-         if ($$4.isPresent()) {
-            this.a($$4.get());
-            $$3 = false;
          }
+
+         return $$0.build();
       }
+   });
+   private final Set<Path> d = new LinkedHashSet<>();
+   private final Map<aqp, Set<Path>> e = new EnumMap<>(aqp.class);
+   private aqh f = aqh.a();
+   private final Set<String> g = new HashSet<>();
 
-      if ($$3) {
-         this.c();
+   private static Path a(URI $$0) throws IOException {
+      try {
+         return Paths.get($$0);
+      } catch (FileSystemNotFoundException var3) {
+      } catch (Throwable var4) {
+         b.warn("Unable to get path for: {}", $$0, var4);
       }
-
-      return $$4;
-   }
-
-   public CompletableFuture<Optional<GameProfile>> b(String $$0) {
-      if (this.l == null) {
-         throw new IllegalStateException("No executor");
-      } else {
-         CompletableFuture<Optional<GameProfile>> $$1 = this.g.get($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            CompletableFuture<Optional<GameProfile>> $$2 = CompletableFuture.<Optional<GameProfile>>supplyAsync(() -> this.a($$0), ac.f())
-               .whenCompleteAsync(($$1x, $$2x) -> this.g.remove($$0), this.l);
-            this.g.put($$0, $$2);
-            return $$2;
-         }
-      }
-   }
-
-   public Optional<GameProfile> a(UUID $$0) {
-      aqs.a $$1 = this.f.get($$0);
-      if ($$1 == null) {
-         return Optional.empty();
-      } else {
-         $$1.a(this.e());
-         return Optional.of($$1.a());
-      }
-   }
-
-   public void a(Executor $$0) {
-      this.l = $$0;
-   }
-
-   public void a() {
-      this.l = null;
-   }
-
-   private static DateFormat f() {
-      return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   }
-
-   public List<aqs.a> b() {
-      List<aqs.a> $$0 = Lists.newArrayList();
 
       try {
-         Object var9;
-         try (Reader $$1 = Files.newReader(this.j, StandardCharsets.UTF_8)) {
-            JsonArray $$2 = (JsonArray)this.i.fromJson($$1, JsonArray.class);
-            if ($$2 != null) {
-               DateFormat $$3 = f();
-               $$2.forEach($$2x -> a($$2x, $$3).ifPresent($$0::add));
-               return $$0;
-            }
-
-            var9 = $$0;
-         }
-
-         return (List<aqs.a>)var9;
-      } catch (FileNotFoundException var7) {
-      } catch (JsonParseException | IOException var8) {
-         a.warn("Failed to load profile cache {}", this.j, var8);
+         FileSystems.newFileSystem($$0, Collections.emptyMap());
+      } catch (FileSystemAlreadyExistsException var2) {
       }
 
-      return $$0;
+      return Paths.get($$0);
    }
 
-   public void c() {
-      JsonArray $$0 = new JsonArray();
-      DateFormat $$1 = f();
-      this.a(1000).forEach($$2x -> $$0.add(a($$2x, $$1)));
-      String $$2 = this.i.toJson($$0);
-
-      try (Writer $$3 = Files.newWriter(this.j, StandardCharsets.UTF_8)) {
-         $$3.write($$2);
-      } catch (IOException var9) {
-      }
-   }
-
-   private Stream<aqs.a> a(int $$0) {
-      return ImmutableList.copyOf(this.f.values()).stream().sorted(Comparator.comparing(aqs.a::c).reversed()).limit((long)$$0);
-   }
-
-   private static JsonElement a(aqs.a $$0, DateFormat $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("name", $$0.a().getName());
-      $$2.addProperty("uuid", $$0.a().getId().toString());
-      $$2.addProperty("expiresOn", $$1.format($$0.b()));
-      return $$2;
-   }
-
-   private static Optional<aqs.a> a(JsonElement $$0, DateFormat $$1) {
-      if ($$0.isJsonObject()) {
-         JsonObject $$2 = $$0.getAsJsonObject();
-         JsonElement $$3 = $$2.get("name");
-         JsonElement $$4 = $$2.get("uuid");
-         JsonElement $$5 = $$2.get("expiresOn");
-         if ($$3 != null && $$4 != null) {
-            String $$6 = $$4.getAsString();
-            String $$7 = $$3.getAsString();
-            Date $$8 = null;
-            if ($$5 != null) {
-               try {
-                  $$8 = $$1.parse($$5.getAsString());
-               } catch (ParseException var12) {
-               }
-            }
-
-            if ($$7 != null && $$6 != null && $$8 != null) {
-               UUID $$9;
-               try {
-                  $$9 = UUID.fromString($$6);
-               } catch (Throwable var11) {
-                  return Optional.empty();
-               }
-
-               return Optional.of(new aqs.a(new GameProfile($$9, $$7), $$8));
-            } else {
-               return Optional.empty();
-            }
-         } else {
-            return Optional.empty();
-         }
+   private boolean b(Path $$0) {
+      if (!Files.exists($$0)) {
+         return false;
+      } else if (!Files.isDirectory($$0)) {
+         throw new IllegalArgumentException("Path " + $$0.toAbsolutePath() + " is not directory");
       } else {
-         return Optional.empty();
+         return true;
       }
    }
 
-   static class a {
-      private final GameProfile a;
-      final Date b;
-      private volatile long c;
+   private void c(Path $$0) {
+      if (this.b($$0)) {
+         this.d.add($$0);
+      }
+   }
 
-      a(GameProfile $$0, Date $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private void b(aqp $$0, Path $$1) {
+      if (this.b($$1)) {
+         this.e.computeIfAbsent($$0, $$0x -> new LinkedHashSet<>()).add($$1);
+      }
+   }
+
+   public aqs a() {
+      c.forEach(($$0, $$1) -> {
+         this.c($$1.getParent());
+         this.b($$0, $$1);
+      });
+      return this;
+   }
+
+   public aqs a(aqp $$0, Class<?> $$1) {
+      Enumeration<URL> $$2 = null;
+
+      try {
+         $$2 = $$1.getClassLoader().getResources($$0.a() + "/");
+      } catch (IOException var8) {
       }
 
-      public GameProfile a() {
-         return this.a;
+      while ($$2 != null && $$2.hasMoreElements()) {
+         URL $$3 = $$2.nextElement();
+
+         try {
+            URI $$4 = $$3.toURI();
+            if ("file".equals($$4.getScheme())) {
+               Path $$5 = Paths.get($$4);
+               this.c($$5.getParent());
+               this.b($$0, $$5);
+            }
+         } catch (Exception var7) {
+            b.error("Failed to extract path from {}", $$3, var7);
+         }
       }
 
-      public Date b() {
-         return this.b;
+      return this;
+   }
+
+   public aqs b() {
+      a.accept(this);
+      return this;
+   }
+
+   public aqs a(Path $$0) {
+      this.c($$0);
+
+      for (aqp $$1 : aqp.values()) {
+         this.b($$1, $$0.resolve($$1.a()));
       }
 
-      public void a(long $$0) {
-         this.c = $$0;
+      return this;
+   }
+
+   public aqs a(aqp $$0, Path $$1) {
+      this.c($$1);
+      this.b($$0, $$1);
+      return this;
+   }
+
+   public aqs a(aqh $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public aqs a(String... $$0) {
+      this.g.addAll(Arrays.asList($$0));
+      return this;
+   }
+
+   public aqr c() {
+      Map<aqp, List<Path>> $$0 = new EnumMap<>(aqp.class);
+
+      for (aqp $$1 : aqp.values()) {
+         List<Path> $$2 = a(this.e.getOrDefault($$1, Set.of()));
+         $$0.put($$1, $$2);
       }
 
-      public long c() {
-         return this.c;
-      }
+      return new aqr(this.f, Set.copyOf(this.g), a(this.d), $$0);
+   }
+
+   private static List<Path> a(Collection<Path> $$0) {
+      List<Path> $$1 = new ArrayList<>($$0);
+      Collections.reverse($$1);
+      return List.copyOf($$1);
    }
 }

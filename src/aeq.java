@@ -1,40 +1,169 @@
-public class aeq implements xg<adk> {
-   private final cjx a;
-   private final boolean b;
-   private final boolean c;
+public class aeq {
+   public static final xz<aas> a = a("bundle");
+   public static final xz<aar> b = a("bundle_delimiter");
+   public static final xz<aah> c = a("add_entity");
+   public static final xz<aai> d = a("add_experience_orb");
+   public static final xz<aaj> e = a("animate");
+   public static final xz<aak> f = a("award_stats");
+   public static final xz<aal> g = a("block_changed_ack");
+   public static final xz<aam> h = a("block_destruction");
+   public static final xz<aan> i = a("block_entity_data");
+   public static final xz<aao> j = a("block_event");
+   public static final xz<aap> k = a("block_update");
+   public static final xz<aaq> l = a("boss_event");
+   public static final xz<aat> m = a("change_difficulty");
+   public static final xz<aau> n = a("chunk_batch_finished");
+   public static final xz<aav> o = a("chunk_batch_start");
+   public static final xz<aaw> p = a("chunks_biomes");
+   public static final xz<aax> q = a("clear_titles");
+   public static final xz<aay> r = a("command_suggestions");
+   public static final xz<aaz> s = a("commands");
+   public static final xz<aba> t = a("container_close");
+   public static final xz<abb> u = a("container_set_content");
+   public static final xz<abc> v = a("container_set_data");
+   public static final xz<abd> w = a("container_set_slot");
+   public static final xz<abe> x = a("cooldown");
+   public static final xz<abf> y = a("custom_chat_completions");
+   public static final xz<abg> z = a("damage_event");
+   public static final xz<abh> A = a("delete_chat");
+   public static final xz<abi> B = a("disguised_chat");
+   public static final xz<abj> C = a("entity_event");
+   public static final xz<abk> D = a("explode");
+   public static final xz<abl> E = a("forget_level_chunk");
+   public static final xz<abm> F = a("game_event");
+   public static final xz<abn> G = a("horse_screen_open");
+   public static final xz<abo> H = a("hurt_animation");
+   public static final xz<abp> I = a("initialize_border");
+   public static final xz<abr> J = a("level_chunk_with_light");
+   public static final xz<abs> K = a("level_event");
+   public static final xz<abt> L = a("level_particles");
+   public static final xz<abu> M = a("light_update");
+   public static final xz<abw> N = a("login");
+   public static final xz<abx> O = a("map_item_data");
+   public static final xz<aby> P = a("merchant_offers");
+   public static final xz<abz.a> Q = a("move_entity_pos");
+   public static final xz<abz.b> R = a("move_entity_pos_rot");
+   public static final xz<abz.c> S = a("move_entity_rot");
+   public static final xz<aca> T = a("move_vehicle");
+   public static final xz<acb> U = a("open_book");
+   public static final xz<acc> V = a("open_screen");
+   public static final xz<acd> W = a("open_sign_editor");
+   public static final xz<ace> X = a("place_ghost_recipe");
+   public static final xz<acf> Y = a("player_abilities");
+   public static final xz<acg> Z = a("player_chat");
+   public static final xz<ach> aa = a("player_combat_end");
+   public static final xz<aci> ab = a("player_combat_enter");
+   public static final xz<acj> ac = a("player_combat_kill");
+   public static final xz<ack> ad = a("player_info_remove");
+   public static final xz<acl> ae = a("player_info_update");
+   public static final xz<acm> af = a("player_look_at");
+   public static final xz<acn> ag = a("player_position");
+   public static final xz<aco> ah = a("recipe");
+   public static final xz<acp> ai = a("remove_entities");
+   public static final xz<acq> aj = a("remove_mob_effect");
+   public static final xz<acs> ak = a("respawn");
+   public static final xz<act> al = a("rotate_head");
+   public static final xz<acu> am = a("section_blocks_update");
+   public static final xz<acv> an = a("select_advancements_tab");
+   public static final xz<acw> ao = a("server_data");
+   public static final xz<acx> ap = a("set_action_bar_text");
+   public static final xz<acy> aq = a("set_border_center");
+   public static final xz<acz> ar = a("set_border_lerp_size");
+   public static final xz<ada> as = a("set_border_size");
+   public static final xz<adb> at = a("set_border_warning_delay");
+   public static final xz<adc> au = a("set_border_warning_distance");
+   public static final xz<add> av = a("set_camera");
+   public static final xz<ade> aw = a("set_carried_item");
+   public static final xz<adf> ax = a("set_chunk_cache_center");
+   public static final xz<adg> ay = a("set_chunk_cache_radius");
+   public static final xz<adh> az = a("set_default_spawn_position");
+   public static final xz<adi> aA = a("set_display_objective");
+   public static final xz<adj> aB = a("set_entity_data");
+   public static final xz<adk> aC = a("set_entity_link");
+   public static final xz<adl> aD = a("set_entity_motion");
+   public static final xz<adm> aE = a("set_equipment");
+   public static final xz<adn> aF = a("set_experience");
+   public static final xz<ado> aG = a("set_health");
+   public static final xz<adp> aH = a("set_objective");
+   public static final xz<adq> aI = a("set_passengers");
+   public static final xz<adr> aJ = a("set_player_team");
+   public static final xz<ads> aK = a("set_score");
+   public static final xz<adt> aL = a("set_simulation_distance");
+   public static final xz<adu> aM = a("set_subtitle_text");
+   public static final xz<adv> aN = a("set_time");
+   public static final xz<adw> aO = a("set_title_text");
+   public static final xz<adx> aP = a("set_titles_animation");
+   public static final xz<ady> aQ = a("sound_entity");
+   public static final xz<adz> aR = a("sound");
+   public static final xz<aea> aS = a("start_configuration");
+   public static final xz<aeb> aT = a("stop_sound");
+   public static final xz<aec> aU = a("system_chat");
+   public static final xz<aed> aV = a("tab_list");
+   public static final xz<aee> aW = a("tag_query");
+   public static final xz<aef> aX = a("take_item_entity");
+   public static final xz<aeg> aY = a("teleport_entity");
+   public static final xz<aej> aZ = a("update_advancements");
+   public static final xz<aek> ba = a("update_attributes");
+   public static final xz<ael> bb = a("update_mob_effect");
+   public static final xz<aem> bc = a("update_recipes");
+   public static final xz<aeu> bd = b("accept_teleportation");
+   public static final xz<aev> be = b("block_entity_tag_query");
+   public static final xz<aew> bf = b("change_difficulty");
+   public static final xz<aex> bg = b("chat_ack");
+   public static final xz<aey> bh = b("chat_command");
+   public static final xz<aez> bi = b("chat");
+   public static final xz<afa> bj = b("chat_session_update");
+   public static final xz<afb> bk = b("chunk_batch_received");
+   public static final xz<afc> bl = b("client_command");
+   public static final xz<afd> bm = b("command_suggestion");
+   public static final xz<afe> bn = b("configuration_acknowledged");
+   public static final xz<aff> bo = b("container_button_click");
+   public static final xz<afg> bp = b("container_click");
+   public static final xz<afh> bq = b("container_close");
+   public static final xz<afi> br = b("container_slot_state_changed");
+   public static final xz<afj> bs = b("edit_book");
+   public static final xz<afk> bt = b("entity_tag_query");
+   public static final xz<afl> bu = b("interact");
+   public static final xz<afm> bv = b("jigsaw_generate");
+   public static final xz<afn> bw = b("lock_difficulty");
+   public static final xz<afo.a> bx = b("move_player_pos");
+   public static final xz<afo.b> by = b("move_player_pos_rot");
+   public static final xz<afo.c> bz = b("move_player_rot");
+   public static final xz<afo.d> bA = b("move_player_status_only");
+   public static final xz<afp> bB = b("move_vehicle");
+   public static final xz<afq> bC = b("paddle_boat");
+   public static final xz<afr> bD = b("pick_item");
+   public static final xz<afs> bE = b("place_recipe");
+   public static final xz<aft> bF = b("player_abilities");
+   public static final xz<afu> bG = b("player_action");
+   public static final xz<afv> bH = b("player_command");
+   public static final xz<afw> bI = b("player_input");
+   public static final xz<afx> bJ = b("recipe_book_change_settings");
+   public static final xz<afy> bK = b("recipe_book_seen_recipe");
+   public static final xz<afz> bL = b("rename_item");
+   public static final xz<aga> bM = b("seen_advancements");
+   public static final xz<agb> bN = b("select_trade");
+   public static final xz<agc> bO = b("set_beacon");
+   public static final xz<agd> bP = b("set_carried_item");
+   public static final xz<age> bQ = b("set_command_block");
+   public static final xz<agf> bR = b("set_command_minecart");
+   public static final xz<agg> bS = b("set_creative_mode_slot");
+   public static final xz<agh> bT = b("set_jigsaw_block");
+   public static final xz<agi> bU = b("set_structure_block");
+   public static final xz<agj> bV = b("sign_update");
+   public static final xz<agk> bW = b("swing");
+   public static final xz<agl> bX = b("teleport_to_entity");
+   public static final xz<agm> bY = b("use_item_on");
+   public static final xz<agn> bZ = b("use_item");
+   public static final xz<acr> ca = a("reset_score");
+   public static final xz<aeh> cb = a("ticking_state");
+   public static final xz<aei> cc = a("ticking_step");
 
-   public aeq(cjx $$0, boolean $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private static <T extends xx<aag>> xz<T> a(String $$0) {
+      return new xz<>(xy.b, new aiy($$0));
    }
 
-   public aeq(uj $$0) {
-      this.a = $$0.b(cjx.class);
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
-   }
-
-   @Override
-   public void a(uj $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(adk $$0) {
-      $$0.a(this);
-   }
-
-   public cjx a() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
+   private static <T extends xx<aes>> xz<T> b(String $$0) {
+      return new xz<>(xy.a, new aiy($$0));
    }
 }

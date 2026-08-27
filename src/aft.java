@@ -1,14 +1,36 @@
-public interface aft extends adl {
-   @Override
-   default ui b() {
-      return ui.d;
+public class aft implements xx<aes> {
+   public static final xo<uq, aft> a = xx.a(aft::a, aft::new);
+   private static final int b = 2;
+   private final boolean c;
+
+   public aft(che $$0) {
+      this.c = $$0.b;
    }
 
-   void a(afv var1);
+   private aft(uq $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
+   }
 
-   void a(afw var1);
+   private void a(uq $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
 
-   void a(afu var1);
+      $$0.k($$1);
+   }
 
-   void a(afx var1);
+   @Override
+   public xz<aft> a() {
+      return aeq.bF;
+   }
+
+   public void a(aes $$0) {
+      $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.c;
+   }
 }

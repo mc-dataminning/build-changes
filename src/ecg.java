@@ -1,45 +1,102 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 
-public class ecg extends dzo {
-   public static final Codec<ecg> d = a(ecg::new);
+public class ecg {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final ecn.a e;
 
-   public ecg(dzo.c $$0) {
-      super($$0);
+   public ecg(int $$0, int $$1, int $$2, int $$3, ecn.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public ecn.a e() {
+      return this.e;
+   }
+
+   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      Builder<T, T> $$1 = ImmutableMap.builder();
+      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
+         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
+         .put($$0.createString("source_z"), $$0.createInt(this.c))
+         .put($$0.createString("delta_y"), $$0.createInt(this.d))
+         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
+      return new Dynamic($$0, $$0.createMap($$1.build()));
+   }
+
+   public static <T> ecg a(Dynamic<T> $$0) {
+      return new ecg(
+         $$0.get("source_x").asInt(0),
+         $$0.get("source_ground_y").asInt(0),
+         $$0.get("source_z").asInt(0),
+         $$0.get("delta_y").asInt(0),
+         ecn.a.a($$0.get("dest_proj").asString(""))
+      );
    }
 
    @Override
-   public Optional<dzo.b> a(dzo.a $$0) {
-      return Optional.of(new dzo.b($$0.h().l(), (Consumer<eag>)($$1 -> a($$1, $$0))));
-   }
-
-   private static void a(eag $$0, dzo.a $$1) {
-      int $$2 = 0;
-
-      ecf.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         ecf.a();
-         $$3 = new ecf.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<dzs> $$4 = $$3.c;
-
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            dzs $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ecg $$1 = (ecg)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.d != $$1.d ? false : this.e == $$1.e;
          }
-
-         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public dzx<?> e() {
-      return dzx.n;
+   public int hashCode() {
+      int $$0 = this.a;
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + this.e.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "JigsawJunction{sourceX="
+         + this.a
+         + ", sourceGroundY="
+         + this.b
+         + ", sourceZ="
+         + this.c
+         + ", deltaY="
+         + this.d
+         + ", destProjection="
+         + this.e
+         + "}";
    }
 }

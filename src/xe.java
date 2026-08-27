@@ -1,15 +1,29 @@
-public abstract class xe<T extends up> implements xg<T> {
-   private final Iterable<xg<T>> a;
+import com.mojang.serialization.MapCodec;
 
-   protected xe(Iterable<xg<T>> $$0) {
-      this.a = $$0;
-   }
+public class xe implements xg {
+   public static final xe a = new xe();
+   public static final xh<xe> b = new xh<xe>() {
+      private static final MapCodec<xe> a = MapCodec.unit(xe.a);
+      private static final xo<vb, xe> b = xo.a(xe.a);
 
-   public final Iterable<xg<T>> a() {
-      return this.a;
+      @Override
+      public MapCodec<xe> a() {
+         return a;
+      }
+
+      @Override
+      public xo<vb, xe> b() {
+         return b;
+      }
+   };
+
+   @Override
+   public we a(int $$0) {
+      return vq.i();
    }
 
    @Override
-   public final void a(uj $$0) {
+   public xh<xe> a() {
+      return b;
    }
 }

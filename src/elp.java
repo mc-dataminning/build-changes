@@ -1,119 +1,84 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.google.common.primitives.UnsignedLong;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public class elp<T> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Callback";
-   private static final String c = "Name";
-   private static final String d = "TriggerTime";
-   private final elo<T> e;
-   private final Queue<elp.a<T>> f = new PriorityQueue<>(c());
-   private UnsignedLong g = UnsignedLong.ZERO;
-   private final Table<String, Long, elp.a<T>> h = HashBasedTable.create();
+public record elp(Map<String, eiu> b, eiv.b c) implements elu {
+   public static final Codec<elp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, eiu.a).fieldOf("scores").forGetter(elp::c), eiv.b.e.fieldOf("entity").forGetter(elp::d))
+            .apply($$0, elp::new)
+   );
 
-   private static <T> Comparator<elp.a<T>> c() {
-      return Comparator.<elp.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
+   @Override
+   public elv b() {
+      return elw.i;
    }
 
-   public elp(elo<T> $$0, Stream<? extends Dynamic<?>> $$1) {
-      this($$0);
-      this.f.clear();
-      this.h.clear();
-      this.g = UnsignedLong.ZERO;
-      $$1.forEach($$0x -> {
-         tl $$1x = (tl)$$0x.convert(tc.a).getValue();
-         if ($$1x instanceof so $$2) {
-            this.a($$2);
-         } else {
-            a.warn("Invalid format of events: {}", $$1x);
-         }
-      });
+   @Override
+   public Set<eld<?>> a() {
+      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
    }
 
-   public elp(elo<T> $$0) {
-      this.e = $$0;
-   }
+   public boolean a(eiv $$0) {
+      bno $$1 = $$0.c(this.c.a());
+      if ($$1 == null) {
+         return false;
+      } else {
+         eow $$2 = $$0.d().f();
 
-   public void a(T $$0, long $$1) {
-      while (true) {
-         elp.a<T> $$2 = this.f.peek();
-         if ($$2 == null || $$2.a > $$1) {
-            return;
+         for (Entry<String, eiu> $$3 : this.b.entrySet()) {
+            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
+               return false;
+            }
          }
 
-         this.f.remove();
-         this.h.remove($$2.c, $$1);
-         $$2.d.handle($$0, this, $$1);
+         return true;
       }
    }
 
-   public void a(String $$0, long $$1, eln<T> $$2) {
-      if (!this.h.contains($$0, $$1)) {
-         this.g = this.g.plus(UnsignedLong.ONE);
-         elp.a<T> $$3 = new elp.a<>($$1, this.g, $$0, $$2);
-         this.h.put($$0, $$1, $$3);
-         this.f.add($$3);
+   protected boolean a(eiv $$0, bno $$1, eow $$2, String $$3, eiu $$4) {
+      eoo $$5 = $$2.a($$3);
+      if ($$5 == null) {
+         return false;
+      } else {
+         eos $$6 = $$2.d($$1, $$5);
+         return $$6 == null ? false : $$4.b($$0, $$6.a());
       }
    }
 
-   public int a(String $$0) {
-      Collection<elp.a<T>> $$1 = this.h.row($$0).values();
-      $$1.forEach(this.f::remove);
-      int $$2 = $$1.size();
-      $$1.clear();
-      return $$2;
+   public static elp.a a(eiv.b $$0) {
+      return new elp.a($$0);
    }
 
-   public Set<String> a() {
-      return Collections.unmodifiableSet(this.h.rowKeySet());
+   public Map<String, eiu> c() {
+      return this.b;
    }
 
-   private void a(so $$0) {
-      so $$1 = $$0.p("Callback");
-      eln<T> $$2 = this.e.a($$1);
-      if ($$2 != null) {
-         String $$3 = $$0.l("Name");
-         long $$4 = $$0.i("TriggerTime");
-         this.a($$3, $$4, $$2);
+   public eiv.b d() {
+      return this.c;
+   }
+
+   public static class a implements elu.a {
+      private final Builder<String, eiu> a = ImmutableMap.builder();
+      private final eiv.b b;
+
+      public a(eiv.b $$0) {
+         this.b = $$0;
       }
-   }
 
-   private so a(elp.a<T> $$0) {
-      so $$1 = new so();
-      $$1.a("Name", $$0.c);
-      $$1.a("TriggerTime", $$0.a);
-      $$1.a("Callback", this.e.a($$0.d));
-      return $$1;
-   }
+      public elp.a a(String $$0, eiu $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
 
-   public su b() {
-      su $$0 = new su();
-      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
-      return $$0;
-   }
-
-   public static class a<T> {
-      public final long a;
-      public final UnsignedLong b;
-      public final String c;
-      public final eln<T> d;
-
-      a(long $$0, UnsignedLong $$1, String $$2, eln<T> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      @Override
+      public elu build() {
+         return new elp(this.a.build(), this.b);
       }
    }
 }

@@ -1,77 +1,138 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Pattern;
 
-public class ts extends tt {
-   private int a;
-   private final Set<tn<?>> b;
-   private final Deque<tv> c = new ArrayDeque<>();
+public class ts implements tx {
+   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
+   private final StringBuilder b = new StringBuilder();
 
-   public ts(tu... $$0) {
-      this.a = $$0.length;
-      Builder<tn<?>> $$1 = ImmutableSet.builder();
-      tv $$2 = tv.a();
-
-      for (tu $$3 : $$0) {
-         $$2.a($$3);
-         $$1.add($$3.b());
-      }
-
-      this.c.push($$2);
-      $$1.add(so.b);
-      this.b = $$1.build();
+   public String a(tt $$0) {
+      $$0.a(this);
+      return this.b.toString();
    }
 
    @Override
-   public ti.b b(tn<?> $$0) {
-      return $$0 != so.b ? ti.b.c : super.b($$0);
+   public void a(tr $$0) {
+      this.b.append(tr.b($$0.t_()));
    }
 
    @Override
-   public ti.a a(tn<?> $$0) {
-      tv $$1 = this.c.element();
-      if (this.e() > $$1.b()) {
-         return super.a($$0);
-      } else if (this.a <= 0) {
-         return ti.a.d;
-      } else {
-         return !this.b.contains($$0) ? ti.a.b : super.a($$0);
-      }
+   public void a(su $$0) {
+      this.b.append($$0.l()).append('b');
    }
 
    @Override
-   public ti.a a(tn<?> $$0, String $$1) {
-      tv $$2 = this.c.element();
-      if (this.e() > $$2.b()) {
-         return super.a($$0, $$1);
-      } else if ($$2.c().remove($$1, $$0)) {
-         this.a--;
-         return super.a($$0, $$1);
-      } else {
-         if ($$0 == so.b) {
-            tv $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.c.push($$3);
-               return super.a($$0, $$1);
-            }
+   public void a(to $$0) {
+      this.b.append($$0.l()).append('s');
+   }
+
+   @Override
+   public void a(tb $$0) {
+      this.b.append($$0.l());
+   }
+
+   @Override
+   public void a(te $$0) {
+      this.b.append($$0.l()).append('L');
+   }
+
+   @Override
+   public void a(sz $$0) {
+      this.b.append($$0.k()).append('f');
+   }
+
+   @Override
+   public void a(sx $$0) {
+      this.b.append($$0.j()).append('d');
+   }
+
+   @Override
+   public void a(st $$0) {
+      this.b.append("[B;");
+      byte[] $$1 = $$0.e();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
          }
 
-         return ti.a.b;
+         this.b.append($$1[$$2]).append('B');
       }
+
+      this.b.append(']');
    }
 
    @Override
-   public ti.b b() {
-      if (this.e() == this.c.element().b()) {
-         this.c.pop();
+   public void a(ta $$0) {
+      this.b.append("[I;");
+      int[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]);
       }
 
-      return super.b();
+      this.b.append(']');
    }
 
-   public int c() {
-      return this.a;
+   @Override
+   public void a(td $$0) {
+      this.b.append("[L;");
+      long[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('L');
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(tc $$0) {
+      this.b.append('[');
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         if ($$1 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append(new ts().a($$0.k($$1)));
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(sw $$0) {
+      this.b.append('{');
+      List<String> $$1 = Lists.newArrayList($$0.e());
+      Collections.sort($$1);
+
+      for (String $$2 : $$1) {
+         if (this.b.length() != 1) {
+            this.b.append(',');
+         }
+
+         this.b.append(a($$2)).append(':').append(new ts().a($$0.c($$2)));
+      }
+
+      this.b.append('}');
+   }
+
+   protected static String a(String $$0) {
+      return a.matcher($$0).matches() ? $$0 : tr.b($$0);
+   }
+
+   @Override
+   public void a(sy $$0) {
+      this.b.append("END");
    }
 }

@@ -1,134 +1,67 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bti extends btk {
-   public static final int a = 12;
-   private static final int b = 2;
-   private static final int c = 3;
-   private static final int d = 1;
-   private final bnj e;
-   private bmo f;
-   private final cua g;
-   private final double h;
-   private final bvy i;
-   private int j;
-   private final float k;
-   private final float l;
-   private float m;
-   private final boolean n;
-
-   public bti(bnj $$0, double $$1, float $$2, float $$3, boolean $$4) {
-      this.e = $$0;
-      this.g = $$0.dL();
-      this.h = $$1;
-      this.i = $$0.N();
-      this.l = $$2;
-      this.k = $$3;
-      this.n = $$4;
-      this.a(EnumSet.of(btk.a.a, btk.a.b));
-      if (!($$0.N() instanceof bvx) && !($$0.N() instanceof bvw)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-      }
+public class bti {
+   public static bpx<cgu> a(float $$0) {
+      return btj.a(
+         (Function<btj.b<cgu>, ? extends App<btj.c<cgu>, btm<cgu>>>)($$1 -> $$1.group($$1.b(bxh.d), $$1.c(bxh.c), $$1.b(bxh.g), $$1.a(bxh.m), $$1.a(bxh.n))
+               .apply(
+                  $$1,
+                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                        if ($$7.o_()) {
+                           return false;
+                        } else if ($$7.gr().b() != cgx.b) {
+                           return false;
+                        } else {
+                           hz $$9 = $$1.<ii>b($$2).b();
+                           Optional<ij<bzk>> $$10 = $$6x.y().c($$9);
+                           if ($$10.isEmpty()) {
+                              return true;
+                           } else {
+                              $$1.<List<bog>>b($$4)
+                                 .stream()
+                                 .filter($$1xxx -> $$1xxx instanceof cgu && $$1xxx != $$7)
+                                 .map($$0xxxx -> (cgu)$$0xxxx)
+                                 .filter(bog::bx)
+                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
+                                 .findFirst()
+                                 .ifPresent($$6xx -> {
+                                    $$5.b();
+                                    $$6.b();
+                                    $$2.b();
+                                    if ($$6xx.dO().c(bxh.c).isEmpty()) {
+                                       bpy.a($$6xx, $$9, $$0, 1);
+                                       $$6xx.dO().a(bxh.d, ii.a($$6x.ae(), $$9));
+                                       aep.c($$6x, $$9);
+                                    }
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 
-   @Override
-   public boolean a() {
-      bmo $$0 = this.e.R_();
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.P_()) {
-         return false;
-      } else if (this.h()) {
-         return false;
-      } else if (this.e.f($$0) < (double)(this.l * this.l)) {
-         return false;
-      } else {
-         this.f = $$0;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      if (this.i.l()) {
+   private static boolean a(ij<bzk> $$0, cgu $$1, hz $$2) {
+      boolean $$3 = $$1.dO().c(bxh.d).isPresent();
+      if ($$3) {
          return false;
       } else {
-         return this.h() ? false : !(this.e.f(this.f) <= (double)(this.k * this.k));
-      }
-   }
-
-   private boolean h() {
-      return this.e.gf() || this.e.bO() || this.e.fT();
-   }
-
-   @Override
-   public void c() {
-      this.j = 0;
-      this.m = this.e.a(efk.j);
-      this.e.a(efk.j, 0.0F);
-   }
-
-   @Override
-   public void d() {
-      this.f = null;
-      this.i.n();
-      this.e.a(efk.j, this.m);
-   }
-
-   @Override
-   public void e() {
-      this.e.I().a(this.f, 10.0F, (float)this.e.ab());
-      if (--this.j <= 0) {
-         this.j = this.a(10);
-         if (this.e.f(this.f) >= 144.0) {
-            this.i();
+         Optional<ii> $$4 = $$1.dO().c(bxh.c);
+         cgx $$5 = $$1.gr().b();
+         if ($$5.b().test($$0)) {
+            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
          } else {
-            this.i.a(this.f, this.h);
-         }
-      }
-   }
-
-   private void i() {
-      hx $$0 = this.f.dl();
-
-      for (int $$1 = 0; $$1 < 10; $$1++) {
-         int $$2 = this.a(-3, 3);
-         int $$3 = this.a(-1, 1);
-         int $$4 = this.a(-3, 3);
-         boolean $$5 = this.a($$0.u() + $$2, $$0.v() + $$3, $$0.w() + $$4);
-         if ($$5) {
-            return;
-         }
-      }
-   }
-
-   private boolean a(int $$0, int $$1, int $$2) {
-      if (Math.abs((double)$$0 - this.f.dq()) < 2.0 && Math.abs((double)$$2 - this.f.dw()) < 2.0) {
-         return false;
-      } else if (!this.a(new hx($$0, $$1, $$2))) {
-         return false;
-      } else {
-         this.e.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.e.dB(), this.e.dD());
-         this.i.n();
-         return true;
-      }
-   }
-
-   private boolean a(hx $$0) {
-      efk $$1 = eft.a(this.g, $$0.j());
-      if ($$1 != efk.c) {
-         return false;
-      } else {
-         djp $$2 = this.g.a_($$0.d());
-         if (!this.n && $$2.b() instanceof dbh) {
             return false;
-         } else {
-            hx $$3 = $$0.b(this.e.dl());
-            return this.g.a(this.e, this.e.cH().a($$3));
          }
       }
    }
 
-   private int a(int $$0, int $$1) {
-      return this.e.eg().a($$1 - $$0 + 1) + $$0;
+   private static boolean a(boo $$0, hz $$1, bzk $$2) {
+      ehe $$3 = $$0.N().a($$1, $$2.c());
+      return $$3 != null && $$3.j();
    }
 }

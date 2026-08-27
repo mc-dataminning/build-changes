@@ -1,49 +1,115 @@
-public class fby extends fdo {
-   private static evu<?>[] a(evv $$0) {
-      return new evu[]{
-         $$0.ap(),
-         $$0.T(),
-         $$0.r(),
-         $$0.F(),
-         $$0.p(),
-         $$0.V(),
-         $$0.n(),
-         $$0.o(),
-         $$0.y(),
-         $$0.z(),
-         $$0.Z(),
-         $$0.aa(),
-         $$0.ag(),
-         $$0.ah(),
-         $$0.ai(),
-         $$0.al(),
-         $$0.aj(),
-         $$0.ak(),
-         $$0.b(),
-         $$0.a(),
-         $$0.q(),
-         $$0.c(),
-         $$0.s()
-      };
-   }
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-   public fby(fdm $$0, evv $$1) {
-      super($$0, $$1, vg.c("options.accessibility.title"), a($$1));
+public class fby extends ggf implements ggg {
+   private static final int e = 256;
+   private final fbz f;
+   private final boolean g;
+   private final fby.a h;
+
+   public fby(fbz $$0, boolean $$1) {
+      this.g = $$1;
+      this.h = new fby.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? erb.b.a : erb.b.d, this.a(), 256, 256);
+      this.f = $$0;
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      exp $$0 = this.k.b(this.b.r());
-      if ($$0 != null && !this.f.aa().b().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(ezc.a(vg.c("options.accessibility.high_contrast.error.tooltip")));
+   public void a(asa $$0) {
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @Nullable
+   public fcb a(eqe $$0) {
+      if ($$0.c() != this.g) {
+         return null;
+      } else {
+         fby.a $$1 = this.h.a($$0);
+         if ($$1 != null) {
+            this.c();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new fcb(
+               this.f,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
+         }
       }
    }
 
    @Override
-   protected void j() {
-      this.d(exr.a(vg.c("options.accessibility.link"), fce.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
-      this.d(exr.a(vf.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
+   public void a(aiy $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   }
+
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private fby.a e;
+      @Nullable
+      private fby.a f;
+      private boolean g;
+
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Nullable
+      fby.a a(eqe $$0) {
+         if (this.e != null && this.f != null) {
+            fby.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
+
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new fby.a(this.a, this.b, $$2, this.d);
+                  this.f = new fby.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new fby.a(this.a, this.b, this.c, $$3);
+                  this.f = new fby.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
+
+               return this.e.a($$0);
+            }
+         }
+      }
    }
 }

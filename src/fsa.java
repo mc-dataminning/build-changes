@@ -1,18 +1,83 @@
-public class fsa extends fqq {
-   fsa(foe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fsc $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+public class fsa extends fua {
+   fsa(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.7F;
       this.u = 0.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
+      this.n = false;
+      this.a();
    }
 
-   public static class a implements frk<ka> {
-      private final fsc a;
+   @Override
+   public float b(float $$0) {
+      return this.D * awh.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      public a(fsc $$0) {
+   @Override
+   public void a() {
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
+   }
+
+   @Override
+   public fte b() {
+      return fte.b;
+   }
+
+   public static class a implements ftd<kc> {
+      private final ftv a;
+
+      public a(ftv $$0) {
          this.a = $$0;
       }
 
-      public frh a(ka $$0, foe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fsa($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsa $$8 = new fsa($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements ftd<kc> {
+      private final ftv a;
+
+      public b(ftv $$0) {
+         this.a = $$0;
+      }
+
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsa $$8 = new fsa($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements ftd<kc> {
+      private final ftv a;
+
+      public c(ftv $$0) {
+         this.a = $$0;
+      }
+
+      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsa $$8 = new fsa($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

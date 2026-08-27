@@ -1,92 +1,56 @@
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public interface bye {
-   boolean w();
+public class bye extends byn<boi> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
 
-   void w(boolean var1);
-
-   void l(cng var1);
-
-   void c(so var1);
-
-   cng b();
-
-   ars A();
-
-   @Deprecated
-   static void a(bmq $$0, cng $$1) {
-      so $$2 = $$1.w();
-      if ($$0.ae()) {
-         $$1.a($$0.af());
-      }
-
-      if ($$0.fV()) {
-         $$2.a("NoAI", $$0.fV());
-      }
-
-      if ($$0.aU()) {
-         $$2.a("Silent", $$0.aU());
-      }
-
-      if ($$0.aV()) {
-         $$2.a("NoGravity", $$0.aV());
-      }
-
-      if ($$0.cc()) {
-         $$2.a("Glowing", $$0.cc());
-      }
-
-      if ($$0.cr()) {
-         $$2.a("Invulnerable", $$0.cr());
-      }
-
-      $$2.a("Health", $$0.ev());
+   public bye() {
+      super(20);
    }
 
-   @Deprecated
-   static void a(bmq $$0, so $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.t($$1.q("NoAI"));
-      }
-
-      if ($$1.e("Silent")) {
-         $$0.d($$1.q("Silent"));
-      }
-
-      if ($$1.e("NoGravity")) {
-         $$0.e($$1.q("NoGravity"));
-      }
-
-      if ($$1.e("Glowing")) {
-         $$0.i($$1.q("Glowing"));
-      }
-
-      if ($$1.e("Invulnerable")) {
-         $$0.m($$1.q("Invulnerable"));
-      }
-
-      if ($$1.b("Health", 99)) {
-         $$0.c($$1.j("Health"));
-      }
+   @Override
+   public Set<bxh<?>> a() {
+      return ImmutableSet.of(bxh.w);
    }
 
-   static <T extends bmo & bye> Optional<bkc> a(cfq $$0, bkb $$1, T $$2) {
-      cng $$3 = $$0.b($$1);
-      if ($$3.d() == cnj.qy && $$2.bx()) {
-         $$2.a($$2.A(), 1.0F, 1.0F);
-         cng $$4 = $$2.b();
-         $$2.l($$4);
-         cng $$5 = cni.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         ctx $$6 = $$2.dL();
-         if (!$$6.B) {
-            am.k.a((anf)$$0, $$4);
+   protected void a(aov $$0, boi $$1) {
+      if ($$1.o_()) {
+         this.f = 0;
+         this.g = $$0.X() + (long)$$0.F_().a(20);
+         bzh $$2 = $$0.y();
+         Predicate<hz> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<ij<bzk>, hz>> $$4 = $$2.b($$0x -> $$0x.a(bzl.n), $$3, $$1.dm(), 48, bzh.b.c).collect(Collectors.toSet());
+         ehe $$5 = bpp.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            hz $$6 = $$5.l();
+            Optional<ij<bzk>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dO().a(bxh.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
          }
-
-         $$2.am();
-         return Optional.of(bkc.a($$6.B));
-      } else {
-         return Optional.empty();
       }
    }
 }

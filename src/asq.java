@@ -1,108 +1,45 @@
-public final class asq {
-   public static final asx<cnb> a = a("wool");
-   public static final asx<cnb> b = a("planks");
-   public static final asx<cnb> c = a("stone_bricks");
-   public static final asx<cnb> d = a("wooden_buttons");
-   public static final asx<cnb> e = a("stone_buttons");
-   public static final asx<cnb> f = a("buttons");
-   public static final asx<cnb> g = a("wool_carpets");
-   public static final asx<cnb> h = a("wooden_doors");
-   public static final asx<cnb> i = a("wooden_stairs");
-   public static final asx<cnb> j = a("wooden_slabs");
-   public static final asx<cnb> k = a("wooden_fences");
-   public static final asx<cnb> l = a("fence_gates");
-   public static final asx<cnb> m = a("wooden_pressure_plates");
-   public static final asx<cnb> n = a("wooden_trapdoors");
-   public static final asx<cnb> o = a("doors");
-   public static final asx<cnb> p = a("saplings");
-   public static final asx<cnb> q = a("logs_that_burn");
-   public static final asx<cnb> r = a("logs");
-   public static final asx<cnb> s = a("dark_oak_logs");
-   public static final asx<cnb> t = a("oak_logs");
-   public static final asx<cnb> u = a("birch_logs");
-   public static final asx<cnb> v = a("acacia_logs");
-   public static final asx<cnb> w = a("cherry_logs");
-   public static final asx<cnb> x = a("jungle_logs");
-   public static final asx<cnb> y = a("spruce_logs");
-   public static final asx<cnb> z = a("mangrove_logs");
-   public static final asx<cnb> A = a("crimson_stems");
-   public static final asx<cnb> B = a("warped_stems");
-   public static final asx<cnb> C = a("bamboo_blocks");
-   public static final asx<cnb> D = a("wart_blocks");
-   public static final asx<cnb> E = a("banners");
-   public static final asx<cnb> F = a("sand");
-   public static final asx<cnb> G = a("smelts_to_glass");
-   public static final asx<cnb> H = a("stairs");
-   public static final asx<cnb> I = a("slabs");
-   public static final asx<cnb> J = a("walls");
-   public static final asx<cnb> K = a("anvil");
-   public static final asx<cnb> L = a("rails");
-   public static final asx<cnb> M = a("leaves");
-   public static final asx<cnb> N = a("trapdoors");
-   public static final asx<cnb> O = a("small_flowers");
-   public static final asx<cnb> P = a("beds");
-   public static final asx<cnb> Q = a("fences");
-   public static final asx<cnb> R = a("tall_flowers");
-   public static final asx<cnb> S = a("flowers");
-   public static final asx<cnb> T = a("piglin_repellents");
-   public static final asx<cnb> U = a("piglin_loved");
-   public static final asx<cnb> V = a("ignored_by_piglin_babies");
-   public static final asx<cnb> W = a("piglin_food");
-   public static final asx<cnb> X = a("fox_food");
-   public static final asx<cnb> Y = a("gold_ores");
-   public static final asx<cnb> Z = a("iron_ores");
-   public static final asx<cnb> aa = a("diamond_ores");
-   public static final asx<cnb> ab = a("redstone_ores");
-   public static final asx<cnb> ac = a("lapis_ores");
-   public static final asx<cnb> ad = a("coal_ores");
-   public static final asx<cnb> ae = a("emerald_ores");
-   public static final asx<cnb> af = a("copper_ores");
-   public static final asx<cnb> ag = a("non_flammable_wood");
-   public static final asx<cnb> ah = a("soul_fire_base_blocks");
-   public static final asx<cnb> ai = a("candles");
-   public static final asx<cnb> aj = a("dirt");
-   public static final asx<cnb> ak = a("terracotta");
-   public static final asx<cnb> al = a("completes_find_tree_tutorial");
-   public static final asx<cnb> am = a("boats");
-   public static final asx<cnb> an = a("chest_boats");
-   public static final asx<cnb> ao = a("fishes");
-   public static final asx<cnb> ap = a("signs");
-   public static final asx<cnb> aq = a("music_discs");
-   public static final asx<cnb> ar = a("creeper_drop_music_discs");
-   public static final asx<cnb> as = a("coals");
-   public static final asx<cnb> at = a("arrows");
-   public static final asx<cnb> au = a("lectern_books");
-   public static final asx<cnb> av = a("bookshelf_books");
-   public static final asx<cnb> aw = a("beacon_payment_items");
-   public static final asx<cnb> ax = a("stone_tool_materials");
-   public static final asx<cnb> ay = a("stone_crafting_materials");
-   public static final asx<cnb> az = a("freeze_immune_wearables");
-   public static final asx<cnb> aA = a("axolotl_tempt_items");
-   public static final asx<cnb> aB = a("dampens_vibrations");
-   public static final asx<cnb> aC = a("cluster_max_harvestables");
-   public static final asx<cnb> aD = a("compasses");
-   public static final asx<cnb> aE = a("hanging_signs");
-   public static final asx<cnb> aF = a("creeper_igniters");
-   public static final asx<cnb> aG = a("noteblock_top_instruments");
-   public static final asx<cnb> aH = a("trimmable_armor");
-   public static final asx<cnb> aI = a("trim_materials");
-   public static final asx<cnb> aJ = a("trim_templates");
-   public static final asx<cnb> aK = a("sniffer_food");
-   public static final asx<cnb> aL = a("decorated_pot_sherds");
-   public static final asx<cnb> aM = a("decorated_pot_ingredients");
-   public static final asx<cnb> aN = a("swords");
-   public static final asx<cnb> aO = a("axes");
-   public static final asx<cnb> aP = a("hoes");
-   public static final asx<cnb> aQ = a("pickaxes");
-   public static final asx<cnb> aR = a("shovels");
-   public static final asx<cnb> aS = a("tools");
-   public static final asx<cnb> aT = a("breaks_decorated_pots");
-   public static final asx<cnb> aU = a("villager_plantable_seeds");
+import java.util.List;
 
-   private asq() {
+public class asq {
+   private int a;
+   private int b;
+
+   public boolean a(int $$0) {
+      return this.b >= this.b($$0);
    }
 
-   private static asx<cnb> a(String $$0) {
-      return asx.a(ke.F, new ahh($$0));
+   public boolean a(int $$0, List<aow> $$1) {
+      int $$2 = (int)$$1.stream().filter(chh::fW).count();
+      return $$2 >= this.b($$0);
+   }
+
+   public int b(int $$0) {
+      return Math.max(1, awh.f((float)(this.a * $$0) / 100.0F));
+   }
+
+   public void a() {
+      this.b = 0;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean a(List<aow> $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      this.a = 0;
+      this.b = 0;
+
+      for (aow $$3 : $$0) {
+         if (!$$3.P_()) {
+            this.a++;
+            if ($$3.fD()) {
+               this.b++;
+            }
+         }
+      }
+
+      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

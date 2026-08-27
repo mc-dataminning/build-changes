@@ -1,60 +1,151 @@
-public class bkn {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = avq.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)avq.a / (double)this.b);
+public class bkn<T> implements bjs, bkm<T>, AutoCloseable, Runnable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 1;
+   private static final int c = 2;
+   private final AtomicInteger d = new AtomicInteger(0);
+   private final bkp<? super T, ? extends Runnable> e;
+   private final Executor f;
+   private final String g;
+
+   public static bkn<Runnable> a(Executor $$0, String $$1) {
+      return new bkn<>(new bkp.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
    }
 
-   public float f() {
-      return this.b;
+   public bkn(bkp<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
+      this.f = $$1;
+      this.e = $$0;
+      this.g = $$2;
+      bjq.a.a(this);
    }
 
-   public float g() {
-      return (float)this.c / (float)avq.b;
+   private boolean d() {
+      int $$0;
+      do {
+         $$0 = this.d.get();
+         if (($$0 & 3) != 0) {
+            return false;
+         }
+      } while (!this.d.compareAndSet($$0, $$0 | 2));
+
+      return true;
    }
 
-   public long h() {
-      return this.c;
+   private void e() {
+      int $$0;
+      do {
+         $$0 = this.d.get();
+      } while (!this.d.compareAndSet($$0, $$0 & -3));
    }
 
-   public boolean i() {
-      return this.e;
+   private boolean f() {
+      return (this.d.get() & 1) != 0 ? false : !this.e.b();
    }
 
-   public boolean j() {
-      return this.d > 0;
+   @Override
+   public void close() {
+      int $$0;
+      do {
+         $$0 = this.d.get();
+      } while (!this.d.compareAndSet($$0, $$0 | 1));
    }
 
-   public void c(int $$0) {
-      this.d = $$0;
+   private boolean g() {
+      return (this.d.get() & 2) != 0;
    }
 
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
+   private boolean h() {
+      if (!this.g()) {
+         return false;
+      } else {
+         Runnable $$0 = this.e.a();
+         if ($$0 == null) {
+            return false;
+         } else {
+            ac.a(this.g, $$0).run();
+            return true;
+         }
       }
    }
 
-   public boolean a(blw $$0) {
-      return !this.i() && !($$0 instanceof cfq) && $$0.cU() <= 0;
+   @Override
+   public void run() {
+      try {
+         this.a($$0 -> $$0 == 0);
+      } finally {
+         this.e();
+         this.i();
+      }
+   }
+
+   public void a() {
+      try {
+         this.a($$0 -> true);
+      } finally {
+         this.e();
+         this.i();
+      }
+   }
+
+   @Override
+   public void a(T $$0) {
+      this.e.a($$0);
+      this.i();
+   }
+
+   private void i() {
+      if (this.f() && this.d()) {
+         try {
+            this.f.execute(this);
+         } catch (RejectedExecutionException var4) {
+            try {
+               this.f.execute(this);
+            } catch (RejectedExecutionException var3) {
+               a.error("Cound not schedule mailbox", var3);
+            }
+         }
+      }
+   }
+
+   private int a(Int2BooleanFunction $$0) {
+      int $$1 = 0;
+
+      while ($$0.get($$1) && this.h()) {
+         $$1++;
+      }
+
+      return $$1;
+   }
+
+   public int b() {
+      return this.e.c();
+   }
+
+   public boolean c() {
+      return this.g() && !this.e.b();
+   }
+
+   @Override
+   public String toString() {
+      return this.g + " " + this.d.get() + " " + this.e.b();
+   }
+
+   @Override
+   public String bt() {
+      return this.g;
+   }
+
+   @Override
+   public List<bjp> bq() {
+      return ImmutableList.of(bjp.a(this.g + "-queue-size", bjo.c, this::b));
    }
 }

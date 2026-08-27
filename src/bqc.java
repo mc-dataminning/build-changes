@@ -1,15 +1,37 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
-public class bqc<E extends bmo> extends bot<E> {
-   public bqc(List<Pair<? extends bog<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
+public class bqc extends bpw<bog> {
+   private final bxh<Integer> c;
+
+   public bqc(bxh<Integer> $$0) {
+      super(ImmutableMap.of($$0, bxi.a));
+      this.c = $$0;
    }
 
-   public bqc(Map<bvq<?>, bvr> $$0, List<Pair<? extends bog<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), bot.a.b, bot.b.a, $$1);
+   private Optional<Integer> b(bog $$0) {
+      return $$0.dO().c(this.c);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean a(aov $$0, bog $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
+   }
+
+   @Override
+   protected void c(aov $$0, bog $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dO().a(this.c, $$3.get() - 1);
+   }
+
+   @Override
+   protected void b(aov $$0, bog $$1, long $$2) {
+      $$1.dO().b(this.c);
    }
 }

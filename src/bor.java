@@ -1,16 +1,35 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class bor {
-   public static <E extends bmo> bog<E> a(Predicate<E> $$0, bvq<?> $$1) {
-      return brs.a((Function<brs.b<E>, ? extends App<brs.c<E>, brv<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+public enum bor {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8),
+   j(9),
+   k(10),
+   l(11),
+   m(12),
+   n(13),
+   o(14),
+   p(15),
+   q(16),
+   r(17);
+
+   public static final IntFunction<bor> s = auz.a(bor::a, values(), auz.a.a);
+   public static final xo<ByteBuf, bor> t = xm.a(s, bor::a);
+   private final int u;
+
+   private bor(int $$0) {
+      this.u = $$0;
+   }
+
+   public int a() {
+      return this.u;
    }
 }

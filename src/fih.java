@@ -1,32 +1,59 @@
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface fih {
-   Map<Optional<ahg<dzd>>, fih> a = Map.of(Optional.of(dze.b), ($$0, $$1) -> {
-      dlm $$2 = $$1.d().a();
-      iu $$3 = $$1.a();
-      ii<cuw> $$4 = $$3.b(ke.at);
-      ii<dzu> $$5 = $$3.b(ke.aF);
-      ii<dys> $$6 = $$3.b(ke.aC);
-      return new fci($$0, $$1x -> $$0.o().a(a($$1x)), $$2 instanceof dot ? ((dot)$$2).g() : dxr.a($$4, $$5, $$6));
-   }, Optional.of(dze.e), ($$0, $$1) -> new fch($$0, $$1, $$1x -> $$0.o().a(a($$1x))));
+public abstract class fih extends ffe {
+   private final vq b;
+   @Nullable
+   private final vq c;
+   private final vq k;
+   @Nullable
+   protected ezj a;
+   private faa l = faa.a;
 
-   fdm createEditScreen(fic var1, fik var2);
-
-   private static fik.a a(dxr $$0) {
-      return ($$1, $$2) -> {
-         dlm $$3 = new dot($$0);
-         return $$2.a($$1, $$3);
-      };
+   protected fih(vq $$0, vq $$1, vq $$2) {
+      this($$0, $$1, null, $$2);
    }
 
-   private static fik.a a(ih<cuw> $$0) {
-      return ($$1, $$2) -> {
-         it<dpd> $$3 = $$1.d(ke.aA);
-         ih<dpd> $$4 = $$3.f(dpd.c);
-         cva $$5 = new cvh($$0);
-         dlm $$6 = new dpb($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   protected fih(vq $$0, vq $$1, @Nullable vq $$2, vq $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+      this.k = $$3;
+   }
+
+   protected abstract void a(int var1);
+
+   @Override
+   protected void aQ_() {
+      super.aQ_();
+      this.l = faa.a(this.i, this.b, this.g - 100);
+      int $$0 = (this.l.a() + 1) * this.o();
+      if (this.c != null) {
+         int $$1 = this.i.a(this.c);
+         this.a = ezj.a(this.c, this.i).a(this.g / 2 - $$1 / 2 - 8, 76 + $$0).a();
+         this.d(this.a);
+      }
+
+      this.a($$0);
+   }
+
+   @Override
+   public vq i() {
+      return this.k;
+   }
+
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      int $$4 = this.g / 2 - this.l.b() / 2;
+      this.l.b($$0, $$4, 70, this.o(), 16777215);
+   }
+
+   protected void c(eyu $$0) {
+      $$0.b(this.i, this.e, 25, 30, 16777215);
+   }
+
+   protected int o() {
+      return 9 * 2;
    }
 }

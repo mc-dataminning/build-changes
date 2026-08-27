@@ -1,34 +1,26 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
+public class gfi<T extends bog> extends gfe<T, fnz<T>> {
+   private final fmb<T> a;
 
-public class gfi {
-   private static final BiMap<ahh, gfh> i = HashBiMap.create();
-   public static final gfh a = a("single", gfn.b);
-   public static final gfh b = a("directory", gfk.b);
-   public static final gfh c = a("filter", gfo.b);
-   public static final gfh d = a("unstitch", gfp.b);
-   public static final gfh e = a("paletted_permutations", gfm.b);
-   public static Codec<gfh> f = ahh.a.flatXmap($$0 -> {
-      gfh $$1 = (gfh)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      ahh $$1 = (ahh)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gff> g = f.dispatch(gff::a, gfh::a);
-   public static Codec<List<gff>> h = g.listOf().fieldOf("sources").codec();
+   public gfi(gco<T, fnz<T>> $$0, foy $$1) {
+      super($$0);
+      this.a = new fnz<>($$1.a(fpb.bp));
+   }
 
-   private static gfh a(String $$0, Codec<? extends gff> $$1) {
-      gfh $$2 = new gfh($$1);
-      ahh $$3 = new ahh($$0);
-      gfh $$4 = (gfh)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
+   public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      exh $$10 = exh.O();
+      boolean $$11 = $$10.b($$3) && $$3.ce();
+      if (!$$3.ce() || $$11) {
+         ese $$12;
+         if ($$11) {
+            $$12 = $$1.getBuffer(fvu.r(this.a($$3)));
+         } else {
+            $$12 = $$1.getBuffer(fvu.i(this.a($$3)));
+         }
+
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         this.a.a($$0, $$12, $$2, gbu.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

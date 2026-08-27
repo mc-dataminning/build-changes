@@ -1,119 +1,85 @@
 import javax.annotation.Nullable;
 
-public class ccc extends blw implements bnl {
-   private static final agn<Integer> c = agq.a(ccc.class, agp.b);
-   private static final agn<djp> d = agq.a(ccc.class, agp.i);
-   private static final int e = 80;
-   private static final String f = "block_state";
-   public static final String b = "fuse";
-   @Nullable
-   private bmo g;
+public class ccc extends bvb {
+   private final ccb a;
 
-   public ccc(bmc<? extends ccc> $$0, ctx $$1) {
-      super($$0, $$1);
-      this.I = true;
-   }
-
-   public ccc(ctx $$0, double $$1, double $$2, double $$3, @Nullable bmo $$4) {
-      this(bmc.ba, $$0);
-      this.a_($$1, $$2, $$3);
-      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
-      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.g = $$4;
+   public ccc(ccb $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void c_() {
-      this.an.a(c, 80);
-      this.an.a(d, cxa.ck.o());
+   public boolean a() {
+      return this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), 10.0);
    }
 
    @Override
-   protected blw.b aW() {
-      return blw.b.a;
-   }
+   public void e() {
+      aov $$0 = (aov)this.a.dM();
+      bls $$1 = $$0.d_(this.a.dm());
+      this.a.w(false);
+      this.a.x(true);
+      this.a.c_(0);
+      bof $$2 = bnu.ak.a((cvn)$$0);
+      if ($$2 != null) {
+         $$2.e(this.a.dr(), this.a.dt(), this.a.dx());
+         $$2.a(true);
+         $$0.b($$2);
+         cev $$3 = this.a($$1, this.a);
+         if ($$3 != null) {
+            $$3.m(this.a);
+            $$0.a_($$3);
 
-   @Override
-   public boolean bt() {
-      return !this.dG();
-   }
-
-   @Override
-   public void l() {
-      if (!this.aV()) {
-         this.g(this.do().b(0.0, -0.04, 0.0));
-      }
-
-      this.a(bmu.a, this.do());
-      this.g(this.do().a(0.98));
-      if (this.aC()) {
-         this.g(this.do().d(0.7, -0.5, 0.7));
-      }
-
-      int $$0 = this.s() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.am();
-         if (!this.dL().B) {
-            this.x();
-         }
-      } else {
-         this.bg();
-         if (this.dL().B) {
-            this.dL().a(jx.ab, this.dq(), this.ds() + 0.5, this.dw(), 0.0, 0.0, 0.0);
+            for (int $$4 = 0; $$4 < 3; $$4++) {
+               cbv $$5 = this.a($$1);
+               if ($$5 != null) {
+                  cev $$6 = this.a($$1, $$5);
+                  if ($$6 != null) {
+                     $$6.m($$5);
+                     $$5.j(this.a.eh().a(0.0, 1.1485), 0.0, this.a.eh().a(0.0, 1.1485));
+                     $$0.a_($$5);
+                  }
+               }
+            }
          }
       }
    }
 
-   private void x() {
-      float $$0 = 4.0F;
-      this.dL().a(this, this.dq(), this.e(0.0625), this.dw(), 4.0F, ctx.a.d);
-   }
-
-   @Override
-   protected void b(so $$0) {
-      $$0.a("fuse", (short)this.s());
-      $$0.a("block_state", td.a(this.u()));
-   }
-
-   @Override
-   protected void a(so $$0) {
-      this.b($$0.g("fuse"));
-      if ($$0.b("block_state", 10)) {
-         this.c(td.a(this.dL().a(ke.f), $$0.p("block_state")));
+   @Nullable
+   private cbv a(bls $$0) {
+      ccb $$1 = bnu.aM.a(this.a.dM());
+      if ($$1 != null) {
+         $$1.a((aov)this.a.dM(), $$0, bok.k, null, null);
+         $$1.a_(this.a.dr(), this.a.dt(), this.a.dx());
+         $$1.ak = 60;
+         $$1.fL();
+         $$1.x(true);
+         $$1.c_(0);
       }
+
+      return $$1;
    }
 
    @Nullable
-   public bmo q() {
-      return this.g;
-   }
+   private cev a(bls $$0, cbv $$1) {
+      cev $$2 = bnu.aL.a($$1.dM());
+      if ($$2 != null) {
+         $$2.a((aov)$$1.dM(), $$0, bok.k, null, null);
+         $$2.a_($$1.dr(), $$1.dt(), $$1.dx());
+         $$2.ak = 60;
+         $$2.fL();
+         if ($$2.c(bnv.f).b()) {
+            $$2.a(bnv.f, new coz(cpc.pF));
+         }
 
-   @Override
-   public void v(blw $$0) {
-      super.v($$0);
-      if ($$0 instanceof ccc $$1) {
-         this.g = $$1.g;
+         $$2.a(bnv.a, ctj.a($$2.eh(), this.a($$2.eT()), (int)(5.0F + $$0.d() * (float)$$2.eh().a(18)), false));
+         $$2.a(bnv.f, ctj.a($$2.eh(), this.a($$2.c(bnv.f)), (int)(5.0F + $$0.d() * (float)$$2.eh().a(18)), false));
       }
+
+      return $$2;
    }
 
-   public void b(int $$0) {
-      this.an.b(c, $$0);
-   }
-
-   public int s() {
-      return this.an.b(c);
-   }
-
-   public void c(djp $$0) {
-      this.an.b(d, $$0);
-   }
-
-   public djp u() {
-      return this.an.b(d);
+   private coz a(coz $$0) {
+      $$0.c("Enchantments");
+      return $$0;
    }
 }

@@ -1,154 +1,41 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eeo implements eer {
-   public static final int b = 1;
-   protected final ctz c;
-   @Nullable
-   private final eeq<?, ?> a;
-   @Nullable
-   private final eeq<?, ?> d;
+public class eeo extends eer {
+   public static final Codec<eeo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eeo::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   public eeo(dlz $$0, boolean $$1, boolean $$2) {
-      this.c = $$0.q();
-      this.a = $$1 ? new eeh($$0) : null;
-      this.d = $$2 ? new ees($$0) : null;
-   }
-
-   @Override
-   public void a(hx $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0);
-      }
-   }
-
-   @Override
-   public boolean L_() {
-      return this.d != null && this.d.L_() ? true : this.a != null && this.a.L_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.d != null) {
-         $$0 += this.d.a();
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(iz $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(cte $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(cte $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public eem a(cug $$0) {
-      if ($$0 == cug.b) {
-         return (eem)(this.a == null ? eem.a.a : this.a);
+   public eeo(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
       } else {
-         return (eem)(this.d == null ? eem.a.a : this.d);
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
       }
    }
 
-   public String a(cug $$0, iz $$1) {
-      if ($$0 == cug.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.b($$1.s());
-      }
-
-      return "n/a";
+   @Override
+   public boolean a(hz $$0, hz $$1, hz $$2, awo $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= awh.b(this.b, this.d, awh.g((float)$$4, (float)this.e, (float)this.f));
    }
 
-   public een.b b(cug $$0, iz $$1) {
-      if ($$0 == cug.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.c($$1.s());
-      }
-
-      return een.b.a;
-   }
-
-   public void a(cug $$0, iz $$1, @Nullable dlr $$2) {
-      if ($$0 == cug.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
-         }
-      } else if (this.d != null) {
-         this.d.a($$1.s(), $$2);
-      }
-   }
-
-   public void b(cte $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0, $$1);
-      }
-   }
-
-   public int a(hx $$0, int $$1) {
-      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(iz $$0) {
-      long $$1 = $$0.s();
-      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
-   }
-
-   public int c() {
-      return this.c.am() + 2;
-   }
-
-   public int d() {
-      return this.c.an() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
+   @Override
+   protected ees<?> a() {
+      return ees.b;
    }
 }

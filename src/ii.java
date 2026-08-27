@@ -1,23 +1,27 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-public interface ii<T> {
-   Optional<ih.c<T>> a(ahg<T> var1);
+public record ii(aix<cvn> c, hz d) {
+   public static final Codec<ii> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cvn.g.fieldOf("dimension").forGetter(ii::a), hz.a.fieldOf("pos").forGetter(ii::b)).apply($$0, ii::a)
+   );
+   public static final xo<ByteBuf, ii> b = xo.a(aix.b(kg.aM), ii::a, hz.b, ii::b, ii::a);
 
-   default ih.c<T> b(ahg<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
+   public static ii a(aix<cvn> $$0, hz $$1) {
+      return new ii($$0, $$1);
    }
 
-   Optional<il.c<T>> a(asx<T> var1);
-
-   default il.c<T> b(asx<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
+   @Override
+   public String toString() {
+      return this.c + " " + this.d;
    }
 
-   public interface a {
-      <T> Optional<ii<T>> a(ahg<? extends it<? extends T>> var1);
+   public aix<cvn> a() {
+      return this.c;
+   }
 
-      default <T> ii<T> b(ahg<? extends it<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
-      }
+   public hz b() {
+      return this.d;
    }
 }

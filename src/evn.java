@@ -1,63 +1,31 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class evn {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final fsx[] e = new fsx[9];
-   private boolean f;
+   public final int a;
+   @Nullable
+   public final String b;
 
-   public evn(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new fsx();
-      }
+   evn(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private void b() {
-      try {
-         so $$0 = tb.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
+   public static class a {
+      private int a = -1;
+      private String b;
 
-         int $$1 = td.b($$0, 1343);
-         $$0 = avx.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2].a($$0.c(String.valueOf($$2), 10));
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
-   }
-
-   public void a() {
-      try {
-         so $$0 = td.g(new so());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            $$0.a(String.valueOf($$1), this.a($$1).a());
-         }
-
-         tb.b($$0, this.c);
-      } catch (Exception var3) {
-         b.error("Failed to save creative mode options", var3);
-      }
-   }
-
-   public fsx a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
+      public evn.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      return this.e[$$0];
+      public evn.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public evn a() {
+         return new evn(this.a, this.b);
+      }
    }
 }

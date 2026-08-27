@@ -1,32 +1,26 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.serialization.Dynamic;
 import java.util.Map;
-import java.util.function.Supplier;
 
-public class bei extends bde {
-   public bei(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bei extends bcn {
+   private final Map<String, String> a;
+
+   public bei(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
+      super($$0, false, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register(
-         $$1,
-         "minecraft:wandering_trader",
-         $$1x -> DSL.optionalFields(
-               "Inventory",
-               DSL.list(bbw.t.in($$0)),
-               "Offers",
-               DSL.optionalFields("Recipes", DSL.list(DSL.optionalFields("buy", bbw.t.in($$0), "buyB", bbw.t.in($$0), "sell", bbw.t.in($$0)))),
-               bdf.a($$0)
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
             )
       );
-      $$0.register(
-         $$1,
-         "minecraft:trader_llama",
-         $$1x -> DSL.optionalFields("Items", DSL.list(bbw.t.in($$0)), "SaddleItem", bbw.t.in($$0), "DecorItem", bbw.t.in($$0), bdf.a($$0))
-      );
-      return $$1;
    }
 }

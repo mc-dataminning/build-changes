@@ -1,296 +1,139 @@
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class bzj extends byc {
-   public static final float bU = 0.6F;
-   private static final int bZ = 5;
-   private static final int ca = 8;
-   public static final int bV = 60;
-   private static final double cb = 7.0;
-   private static final agn<bzj.a> cc = agq.a(bzj.class, agp.A);
-   private long cd = 0L;
-   public final bls bX = new bls();
-   public final bls bY = new bls();
-   private int ce;
+public class bzj {
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<bzi> b = new Short2ObjectOpenHashMap();
+   private final Map<ij<bzk>, Set<bzi>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   public bzj(bmc<? extends byc> $$0, ctx $$1) {
-      super($$0, $$1);
-      this.N().a(true);
-      this.ce = this.gp();
+   public static Codec<bzj> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     RecordCodecBuilder.point($$0),
+                     Codec.BOOL.optionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
+                     bzi.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
+                  )
+                  .apply($$1, bzj::new)
+         )
+         .orElseGet(ac.a("Failed to read POI section: ", a::error), () -> new bzj($$0, false, ImmutableList.of()));
    }
 
-   @Nullable
-   @Override
-   public blr a(ane $$0, blr $$1) {
-      return bmc.d.a((ctx)$$0);
+   public bzj(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
    }
 
-   public static bnt.a u() {
-      return bmq.C().a(bnu.n, 12.0).a(bnu.o, 0.14);
+   private bzj(Runnable $$0, boolean $$1, List<bzi> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
    }
 
-   @Override
-   protected void c_() {
-      super.c_();
-      this.an.a(cc, bzj.a.a);
+   public Stream<bzi> a(Predicate<ij<bzk>> $$0, bzh.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((ij<bzk>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
    }
 
-   public boolean w() {
-      return this.an.b(cc) != bzj.a.a;
-   }
-
-   public boolean A() {
-      bzj.a $$0 = this.go();
-      return $$0 == bzj.a.c || $$0 == bzj.a.b && this.cd > 5L;
-   }
-
-   public boolean gf() {
-      return this.go() == bzj.a.b && this.cd > 8L;
-   }
-
-   private bzj.a go() {
-      return this.an.b(cc);
-   }
-
-   @Override
-   protected void Z() {
-      super.Z();
-      adj.a(this);
-   }
-
-   public void a(bzj.a $$0) {
-      this.an.b(cc, $$0);
-   }
-
-   private void x(boolean $$0) {
-      this.a($$0 ? bzj.a.b : bzj.a.a);
-   }
-
-   @Override
-   public void a(agn<?> $$0) {
-      if (cc.equals($$0)) {
-         this.cd = 0L;
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   protected bno.b<bzj> dO() {
-      return bzk.a();
-   }
-
-   @Override
-   protected bno<?> a(Dynamic<?> $$0) {
-      return bzk.a(this.dO().a($$0));
-   }
-
-   @Override
-   protected void aa() {
-      this.dL().af().a("armadilloBrain");
-      ((bno<bzj>)this.bz).a((ane)this.dL(), this);
-      this.dL().af().c();
-      this.dL().af().a("armadilloActivityUpdate");
-      bzk.a(this);
-      this.dL().af().c();
-      if (this.bx() && !this.o_() && --this.ce <= 0) {
-         this.a(art.aj, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
-         this.a(cnj.op);
-         this.b(dnz.t);
-         this.ce = this.gp();
-      }
-
-      super.aa();
-   }
-
-   private int gp() {
-      return this.ag.a(20 * avq.e * 5) + 20 * avq.e * 5;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.dL().y_()) {
-         this.gq();
-      }
-
-      this.cd++;
-   }
-
-   @Override
-   public float dY() {
-      return this.o_() ? 0.6F : 1.0F;
-   }
-
-   private void gq() {
-      switch (this.go()) {
-         case a:
-            this.bX.a();
-            this.bY.a();
-            break;
-         case c:
-            this.bX.b(this.ah);
-            this.bY.a();
-            break;
-         case b:
-            this.bX.a();
-            this.bY.b(this.ah);
+   public void a(hz $$0, ij<bzk> $$1) {
+      if (this.a(new bzi($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
+         this.d.run();
       }
    }
 
-   @Override
-   public boolean m(cng $$0) {
-      return bzk.a.a($$0);
+   private boolean a(bzi $$0) {
+      hz $$1 = $$0.f();
+      ij<bzk> $$2 = $$0.g();
+      short $$3 = jb.b($$1);
+      bzi $$4 = (bzi)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.g())) {
+            return false;
+         }
+
+         ac.a("POI data mismatch: already registered at " + $$1);
+      }
+
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
+      return true;
    }
 
-   public boolean j(bmo $$0) {
-      if (!new elx(this.dj(), this.dj()).g(7.0).d($$0.dj())) {
-         return false;
-      } else if ($$0.ai().a(asl.d)) {
-         return true;
+   public void a(hz $$0) {
+      bzi $$1 = (bzi)this.b.remove(jb.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
       } else {
-         if ($$0 instanceof cfq $$1 && ($$1.bY() || $$1.bO())) {
-            return true;
-         }
-
-         return false;
+         this.c.get($$1.g()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
+         this.d.run();
       }
    }
 
-   @Override
-   public void b(so $$0) {
-      super.b($$0);
-      $$0.a("state", this.go().c());
+   @Deprecated
+   @axl
+   public int b(hz $$0) {
+      return this.e($$0).map(bzi::a).orElse(0);
    }
 
-   @Override
-   public void a(so $$0) {
-      super.a($$0);
-      this.a(bzj.a.a($$0.l("state")));
-   }
-
-   public void gl() {
-      if (!this.w()) {
-         this.V();
-         this.gk();
-         this.b(dnz.u);
-         this.dL().a(null, this.dl(), art.ah, this.db(), 1.0F, 1.0F);
-         this.x(true);
-      }
-   }
-
-   public void w(boolean $$0) {
-      if (this.w()) {
-         this.b(dnz.u);
-         if (!$$0) {
-            this.dL().a(null, this.dl(), art.ak, this.db(), 1.0F, 1.0F);
-         }
-
-         this.x(false);
-      }
-   }
-
-   @Override
-   protected void f(bkv $$0, float $$1) {
-      this.w(true);
-      super.f($$0, $$1);
-   }
-
-   @Override
-   public bkc b(cfq $$0, bkb $$1) {
-      cng $$2 = $$0.b($$1);
-      if (this.dL().B) {
-         boolean $$3 = $$2.a(cnj.xl);
-         return $$3 ? bkc.b : bkc.d;
-      } else if ($$2.a(cnj.xl)) {
-         if (!$$0.fT().d) {
-            $$2.a(16, $$0, $$1x -> $$1x.d($$1));
-         }
-
-         this.gm();
-         return bkc.a;
+   public boolean c(hz $$0) {
+      bzi $$1 = (bzi)this.b.get(jb.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)ac.b(new IllegalStateException("POI never registered at " + $$0));
       } else {
-         return super.b($$0, $$1);
+         boolean $$2 = $$1.c();
+         this.d.run();
+         return $$2;
       }
    }
 
-   public void gm() {
-      this.b(new cng(cnj.op));
-      this.b(dnz.r);
-      this.dL().a(null, this.dl(), art.al, this.db(), 1.0F, 1.0F);
+   public boolean a(hz $$0, Predicate<ij<bzk>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
    }
 
-   public boolean gn() {
-      return !this.gc() && !this.bd() && !this.fT();
+   public Optional<ij<bzk>> d(hz $$0) {
+      return this.e($$0).map(bzi::g);
    }
 
-   @Override
-   public void g(@Nullable cfq $$0) {
-      super.g($$0);
-      this.dL().a(null, this.dl(), art.ac, this.db(), 1.0F, 1.0F);
+   private Optional<bzi> e(hz $$0) {
+      return Optional.ofNullable((bzi)this.b.get(jb.b($$0)));
    }
 
-   @Override
-   public boolean gg() {
-      return super.gg() && !this.w();
-   }
-
-   @Override
-   public ars d(cng $$0) {
-      return art.ac;
-   }
-
-   @Override
-   protected ars y() {
-      return this.w() ? null : art.ae;
-   }
-
-   @Override
-   protected ars n_() {
-      return art.ag;
-   }
-
-   @Override
-   protected ars d(bkv $$0) {
-      return art.ad;
-   }
-
-   @Override
-   protected void b(hx $$0, djp $$1) {
-      this.a(art.af, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected bsi H() {
-      return new bsi(this) {
-         @Override
-         public void a() {
-            if (!bzj.this.w()) {
-               super.a();
-            }
-         }
-      };
-   }
-
-   public static enum a implements avl {
-      a("idle"),
-      b("rolling"),
-      c("scared");
-
-      private static avl.a<bzj.a> e = avl.a(bzj.a::values);
-      final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
+   public void a(Consumer<BiConsumer<hz, ij<bzk>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<bzi> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.b();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = jb.b($$1x);
+            bzi $$4 = (bzi)$$1.computeIfAbsent($$3, $$2x -> new bzi($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
       }
+   }
 
-      public static bzj.a a(String $$0) {
-         return e.a($$0, a);
-      }
+   private void b() {
+      this.b.clear();
+      this.c.clear();
+   }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+   boolean a() {
+      return this.e;
    }
 }

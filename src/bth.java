@@ -1,89 +1,48 @@
-import java.util.EnumSet;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bth extends btk {
-   private final bmq a;
-   private final Predicate<bmq> b;
-   @Nullable
-   private bmq c;
-   private final double d;
-   private final bvy e;
-   private int f;
-   private final float g;
-   private float h;
-   private final float i;
+public class bth extends bpw<cgu> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
 
-   public bth(bmq $$0, double $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
-      this.d = $$1;
-      this.e = $$0.N();
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(btk.a.a, btk.a.b));
-      if (!($$0.N() instanceof bvx) && !($$0.N() instanceof bvw)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
+   public bth() {
+      super(ImmutableMap.of(bxh.c, bxi.a, bxh.n, bxi.c));
+   }
+
+   protected boolean b(aov $$0, cgu $$1) {
+      if ($$0.X() - this.e < 300L) {
+         return false;
+      } else if ($$0.z.a(2) != 0) {
+         return false;
+      } else {
+         this.e = $$0.X();
+         ii $$2 = $$1.dO().c(bxh.c).get();
+         return $$2.a() == $$0.ae() && $$2.b().a($$1.dk(), 1.73);
       }
    }
 
-   @Override
-   public boolean a() {
-      List<bmq> $$0 = this.a.dL().a(bmq.class, this.a.cH().g((double)this.i), this.b);
-      if (!$$0.isEmpty()) {
-         for (bmq $$1 : $$0) {
-            if (!$$1.ce()) {
-               this.c = $$1;
-               return true;
-            }
-         }
+   protected void a(aov $$0, cgu $$1, long $$2) {
+      bpf<cgu> $$3 = $$1.dO();
+      $$3.a(bxh.J, $$2);
+      $$3.c(bxh.c).ifPresent($$1x -> $$3.a(bxh.n, new bpz($$1x.b())));
+      $$1.gv();
+      this.a($$0, $$1);
+      if ($$1.gu()) {
+         $$1.gt();
       }
-
-      return false;
    }
 
-   @Override
-   public boolean b() {
-      return this.c != null && !this.e.l() && this.a.f(this.c) > (double)(this.g * this.g);
+   protected void a(aov $$0, cgu $$1) {
    }
 
-   @Override
-   public void c() {
-      this.f = 0;
-      this.h = this.a.a(efk.j);
-      this.a.a(efk.j, 0.0F);
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-      this.e.n();
-      this.a.a(efk.j, this.h);
-   }
-
-   @Override
-   public void e() {
-      if (this.c != null && !this.a.fT()) {
-         this.a.I().a(this.c, 10.0F, (float)this.a.ab());
-         if (--this.f <= 0) {
-            this.f = this.a(10);
-            double $$0 = this.a.dq() - this.c.dq();
-            double $$1 = this.a.ds() - this.c.ds();
-            double $$2 = this.a.dw() - this.c.dw();
-            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-            if (!($$3 <= (double)(this.g * this.g))) {
-               this.e.a(this.c, this.d);
-            } else {
-               this.e.n();
-               bsm $$4 = this.c.I();
-               if ($$3 <= (double)this.g || $$4.e() == this.a.dq() && $$4.f() == this.a.ds() && $$4.g() == this.a.dw()) {
-                  double $$5 = this.c.dq() - this.a.dq();
-                  double $$6 = this.c.dw() - this.a.dw();
-                  this.e.a(this.a.dq() - $$5, this.a.ds(), this.a.dw() - $$6, this.d);
-               }
-            }
-         }
+   protected boolean b(aov $$0, cgu $$1, long $$2) {
+      Optional<ii> $$3 = $$1.dO().c(bxh.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ii $$4 = $$3.get();
+         return $$4.a() == $$0.ae() && $$4.b().a($$1.dk(), 1.73);
       }
    }
 }

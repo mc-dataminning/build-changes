@@ -1,71 +1,92 @@
-import com.google.common.primitives.Ints;
 import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record vn(List<vs> d) {
-   public static final Codec<vn> a = vs.a.listOf().xmap(vn::new, vn::a);
-   public static vn b = new vn(List.of());
-   public static final int c = 20;
+public record vn(String b, List<vn.a> c, wn d) {
+   public static final Codec<vn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(vn::a),
+               vn.a.d.listOf().fieldOf("parameters").forGetter(vn::b),
+               wn.b.b.optionalFieldOf("style", wn.a).forGetter(vn::c)
+            )
+            .apply($$0, vn::new)
+   );
 
-   public void a(avc.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
+   public static vn a(String $$0) {
+      return new vn($$0, List.of(vn.a.a, vn.a.c), wn.a);
+   }
 
-      for (vs $$1 : this.d) {
-         $$0.update($$1.b());
+   public static vn b(String $$0) {
+      wn $$1 = wn.a.a(n.h).b(true);
+      return new vn($$0, List.of(vn.a.a, vn.a.c), $$1);
+   }
+
+   public static vn c(String $$0) {
+      wn $$1 = wn.a.a(n.h).b(true);
+      return new vn($$0, List.of(vn.a.b, vn.a.c), $$1);
+   }
+
+   public static vn d(String $$0) {
+      return new vn($$0, List.of(vn.a.b, vn.a.a, vn.a.c), wn.a);
+   }
+
+   public vq a(vq $$0, vm.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return vq.a(this.b, $$2).c(this.d);
+   }
+
+   private vq[] b(vq $$0, vm.a $$1) {
+      vq[] $$2 = new vq[this.c.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         vn.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
+
+      return $$2;
    }
 
-   public vn.a a(vt $$0) {
-      return new vn.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
+   public String a() {
+      return this.b;
    }
 
-   public List<vs> a() {
+   public List<vn.a> b() {
+      return this.c;
+   }
+
+   public wn c() {
       return this.d;
    }
 
-   public static record a(List<vs.a> b) {
-      public static final vn.a a = new vn.a(List.of());
+   public static enum a implements axc {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c()),
+      c("content", ($$0, $$1) -> $$0);
 
-      public a(uj $$0) {
-         this($$0.a(uj.a(ArrayList::new, 20), vs.a::a));
+      public static final Codec<vn.a> d = axc.a(vn.a::values);
+      private final String e;
+      private final vn.a.a f;
+
+      private a(String $$0, vn.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      public void a(uj $$0) {
-         $$0.a(this.b, vs.a::a);
+      public vq a(vq $$0, vm.a $$1) {
+         vq $$2 = this.f.select($$0, $$1);
+         return Objects.requireNonNullElse($$2, vp.a);
       }
 
-      public Optional<vn> a(vt $$0) {
-         List<vs> $$1 = new ArrayList<>(this.b.size());
-
-         for (vs.a $$2 : this.b) {
-            Optional<vs> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
-            }
-
-            $$1.add($$3.get());
-         }
-
-         return Optional.of(new vn($$1));
+      @Override
+      public String c() {
+         return this.e;
       }
 
-      public List<vs.a> a() {
-         return this.b;
-      }
-   }
-
-   public static record b(int a, BitSet b) {
-      public b(uj $$0) {
-         this($$0.n(), $$0.e(20));
-      }
-
-      public void a(uj $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
+      public interface a {
+         @Nullable
+         vq select(vq var1, vm.a var2);
       }
    }
 }

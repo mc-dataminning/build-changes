@@ -1,39 +1,99 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dtl extends dsc<dun> {
-   public dtl(Codec<dun> $$0) {
+public class dtl extends dts<dwd> {
+   private static final dlo a = dlo.a(cyq.I);
+   private final dlf b = cyq.I.o();
+   private final dlf c = cyq.jF.o();
+   private final dlf d = cyq.aV.o();
+   private final dlf an = cyq.G.o();
+
+   public dtl(Codec<dwd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dse<dun> $$0) {
-      cus $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      hx.a $$3 = new hx.a();
-      hx.a $$4 = new hx.a();
+   public boolean a(dtu<dwd> $$0) {
+      cwi $$1 = $$0.b();
+      hz $$2 = $$0.e();
+      $$2 = $$2.c();
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(doy.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(ic.a, 1);
-            cuw $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, cxa.dO.o(), 2);
-            }
+      while ($$1.u($$2) && $$2.v() > $$1.J_() + 2) {
+         $$2 = $$2.d();
+      }
 
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, cxa.dN.o(), 2);
-               djp $$11 = $$1.a_($$4);
-               if ($$11.b(deh.c)) {
-                  $$1.a($$4, $$11.a(deh.c, Boolean.valueOf(true)), 2);
+      if (!a.a($$1.a_($$2))) {
+         return false;
+      } else {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
+                  return false;
                }
             }
          }
-      }
 
-      return true;
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.an, 2);
+
+         for (ie $$8 : ie.c.a) {
+            $$1.a($$2.a($$8), this.an, 2);
+         }
+
+         hz $$9 = $$2.d();
+         $$1.a($$9, this.b, 2);
+
+         for (ie $$10 : ie.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<hz> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
+         awo $$18 = $$0.d();
+         b($$1, ac.a($$17, $$18).c(1));
+         b($$1, ac.a($$17, $$18).c(2));
+         return true;
+      }
+   }
+
+   private static void b(cwi $$0, hz $$1) {
+      $$0.a($$1, cyq.J.o(), 3);
+      $$0.a($$1, div.N).ifPresent($$1x -> $$1x.a(eit.aO, $$1.a()));
    }
 }

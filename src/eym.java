@@ -1,356 +1,164 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
 public class eym {
-   public static final int a = Integer.MAX_VALUE;
-   private static final int b = 2;
-   private final exc c;
-   private final List<eym.a> d = Lists.newArrayList();
-   private String e;
-   private int f;
-   private int g;
-   private boolean h;
-   private int i = Integer.MAX_VALUE;
-   private final int j;
-   private Consumer<String> k = $$0x -> {
-   };
-   private Runnable l = () -> {
-   };
+   private static final int a = 256;
+   private final ThreadLocal<eym.b> b = ThreadLocal.withInitial(eym.b::new);
+   private final Long2ObjectLinkedOpenHashMap<eym.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<hz> e;
 
-   public eym(exc $$0, int $$1) {
-      this.c = $$0;
-      this.j = $$1;
-      this.a("");
+   public eym(ToIntFunction<hz> $$0) {
+      this.e = $$0;
    }
 
-   public int a() {
-      return this.i;
-   }
+   public int a(hz $$0) {
+      int $$1 = jb.a($$0.u());
+      int $$2 = jb.a($$0.w());
+      eym.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
+      }
 
-   public void a(int $$0) {
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Character limit cannot be negative");
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
       } else {
-         this.i = $$0;
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
       }
    }
 
-   public boolean b() {
-      return this.i != Integer.MAX_VALUE;
-   }
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
 
-   public void a(Consumer<String> $$0) {
-      this.k = $$0;
-   }
-
-   public void a(Runnable $$0) {
-      this.l = $$0;
-   }
-
-   public void a(String $$0) {
-      this.e = this.c($$0);
-      this.f = this.e.length();
-      this.g = this.f;
-      this.n();
-   }
-
-   public String c() {
-      return this.e;
-   }
-
-   public void b(String $$0) {
-      if (!$$0.isEmpty() || this.i()) {
-         String $$1 = this.d(aa.a($$0, true));
-         eym.a $$2 = this.e();
-         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
-         this.f = $$2.a + $$1.length();
-         this.g = this.f;
-         this.n();
-      }
-   }
-
-   public void b(int $$0) {
-      if (!this.i()) {
-         this.g = aup.a(this.f + $$0, 0, this.e.length());
-      }
-
-      this.b("");
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.h = $$0;
-   }
-
-   public eym.a e() {
-      return new eym.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
-   }
-
-   public int f() {
-      return this.d.size();
-   }
-
-   public int g() {
-      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
-         eym.a $$1 = this.d.get($$0);
-         if (this.f >= $$1.a && this.f <= $$1.b) {
-            return $$0;
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = cuu.c($$0 + $$2, $$1 + $$3);
+               eym.a $$5 = (eym.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
+               }
+            }
          }
-      }
-
-      return -1;
-   }
-
-   public eym.a c(int $$0) {
-      return this.d.get(aup.a($$0, 0, this.d.size() - 1));
-   }
-
-   public void a(ezd $$0, int $$1) {
-      switch ($$0) {
-         case a:
-            this.f = $$1;
-            break;
-         case b:
-            this.f += $$1;
-            break;
-         case c:
-            this.f = this.e.length() + $$1;
-      }
-
-      this.f = aup.a(this.f, 0, this.e.length());
-      this.l.run();
-      if (!this.h) {
-         this.g = this.f;
+      } finally {
+         this.d.writeLock().unlock();
       }
    }
 
-   public void d(int $$0) {
-      if ($$0 != 0) {
-         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
-         eym.a $$2 = this.f($$0);
-         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
-         this.a(ezd.a, $$2.a + $$3);
+   public void a() {
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(eym.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
       }
    }
 
-   public void a(double $$0, double $$1) {
-      int $$2 = aup.a($$0);
-      int $$3 = aup.a($$1 / 9.0);
-      eym.a $$4 = this.d.get(aup.a($$3, 0, this.d.size() - 1));
-      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
-      this.a(ezd.a, $$4.a + $$5);
-   }
+   private eym.a b(int $$0, int $$1) {
+      long $$2 = cuu.c($$0, $$1);
+      this.d.readLock().lock();
 
-   public boolean e(int $$0) {
-      this.h = fdm.v();
-      if (fdm.f($$0)) {
-         this.f = this.e.length();
-         this.g = 0;
-         return true;
-      } else if (fdm.e($$0)) {
-         evr.O().o.a(this.j());
-         return true;
-      } else if (fdm.d($$0)) {
-         this.b(evr.O().o.a());
-         return true;
-      } else if (fdm.c($$0)) {
-         evr.O().o.a(this.j());
-         this.b("");
-         return true;
-      } else {
-         switch ($$0) {
-            case 257:
-            case 335:
-               this.b("\n");
-               return true;
-            case 259:
-               if (fdm.t()) {
-                  eym.a $$3 = this.k();
-                  this.b($$3.a - this.f);
-               } else {
-                  this.b(-1);
-               }
-
-               return true;
-            case 261:
-               if (fdm.t()) {
-                  eym.a $$4 = this.l();
-                  this.b($$4.a - this.f);
-               } else {
-                  this.b(1);
-               }
-
-               return true;
-            case 262:
-               if (fdm.t()) {
-                  eym.a $$2 = this.l();
-                  this.a(ezd.a, $$2.a);
-               } else {
-                  this.a(ezd.b, 1);
-               }
-
-               return true;
-            case 263:
-               if (fdm.t()) {
-                  eym.a $$1 = this.k();
-                  this.a(ezd.a, $$1.a);
-               } else {
-                  this.a(ezd.b, -1);
-               }
-
-               return true;
-            case 264:
-               if (!fdm.t()) {
-                  this.d(1);
-               }
-
-               return true;
-            case 265:
-               if (!fdm.t()) {
-                  this.d(-1);
-               }
-
-               return true;
-            case 266:
-               this.a(ezd.a, 0);
-               return true;
-            case 267:
-               this.a(ezd.c, 0);
-               return true;
-            case 268:
-               if (fdm.t()) {
-                  this.a(ezd.a, 0);
-               } else {
-                  this.a(ezd.a, this.m().a);
-               }
-
-               return true;
-            case 269:
-               if (fdm.t()) {
-                  this.a(ezd.c, 0);
-               } else {
-                  this.a(ezd.a, this.m().b);
-               }
-
-               return true;
-            default:
-               return false;
+      try {
+         eym.a $$3 = (eym.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
          }
+      } finally {
+         this.d.readLock().unlock();
       }
-   }
 
-   public Iterable<eym.a> h() {
-      return this.d;
-   }
+      this.d.writeLock().lock();
 
-   public boolean i() {
-      return this.g != this.f;
-   }
+      eym.a $$5;
+      try {
+         eym.a $$4 = (eym.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new eym.a();
+            if (this.c.size() >= 256) {
+               eym.a $$6 = (eym.a)this.c.removeFirst();
+               if ($$6 != null) {
+                  $$6.b();
+               }
+            }
 
-   @VisibleForTesting
-   public String j() {
-      eym.a $$0 = this.e();
-      return this.e.substring($$0.a, $$0.b);
-   }
-
-   private eym.a m() {
-      return this.f(0);
-   }
-
-   private eym.a f(int $$0) {
-      int $$1 = this.g();
-      if ($$1 < 0) {
-         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
-      } else {
-         return this.d.get(aup.a($$1 + $$0, 0, this.d.size() - 1));
-      }
-   }
-
-   @VisibleForTesting
-   public eym.a k() {
-      if (this.e.isEmpty()) {
-         return eym.a.c;
-      } else {
-         int $$0 = aup.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
+            this.c.put($$2, $$5);
+            return $$5;
          }
 
-         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         return new eym.a($$0, this.g($$0));
-      }
-   }
-
-   @VisibleForTesting
-   public eym.a l() {
-      if (this.e.isEmpty()) {
-         return eym.a.c;
-      } else {
-         int $$0 = aup.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         return new eym.a($$0, this.g($$0));
-      }
-   }
-
-   private int g(int $$0) {
-      int $$1 = $$0;
-
-      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
-         $$1++;
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
       }
 
-      return $$1;
+      return $$5;
    }
 
-   private void n() {
-      this.o();
-      this.k.accept(this.e);
-      this.l.run();
-   }
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = awh.h(16);
+      private volatile boolean d;
 
-   private void o() {
-      this.d.clear();
-      if (this.e.isEmpty()) {
-         this.d.add(eym.a.c);
-      } else {
-         this.c.b().a(this.e, this.j, wd.a, false, ($$0, $$1, $$2) -> this.d.add(new eym.a($$1, $$2)));
-         if (this.e.charAt(this.e.length() - 1) == '\n') {
-            this.d.add(new eym.a(this.e.length(), this.e.length()));
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            }
+         } finally {
+            this.b.readLock().unlock();
          }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
       }
-   }
 
-   private String c(String $$0) {
-      return this.b() ? avm.a($$0, this.i, false) : $$0;
-   }
-
-   private String d(String $$0) {
-      if (this.b()) {
-         int $$1 = this.i - this.e.length();
-         return avm.a($$0, $$1, false);
-      } else {
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
          return $$0;
       }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
+      }
    }
 
-   protected static record a(int a, int b) {
-      static final eym.a c = new eym.a(0, 0);
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      eym.a c;
+
+      private b() {
+      }
    }
 }

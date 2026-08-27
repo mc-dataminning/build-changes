@@ -1,210 +1,93 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ego implements eha {
-   private final ehb a;
-   private final eha b;
+public abstract class ego {
+   public static final ip<egp> c = new ip<>();
+   protected final dlg<ego, egp> d;
+   private egp a;
+   private final ij.c<ego> b = kf.c.g(this);
 
-   public ego(ehb $$0, eha $$1) {
+   protected ego() {
+      dlg.a<ego, egp> $$0 = new dlg.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(ego::g, egp::new);
+      this.f(this.d.b());
+   }
+
+   protected void a(dlg.a<ego, egp> $$0) {
+   }
+
+   public dlg<ego, egp> f() {
+      return this.d;
+   }
+
+   protected final void f(egp $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   @Override
-   public int a() {
-      return this.b.a();
+   public final egp g() {
+      return this.a;
    }
 
-   @Override
-   public int b() {
-      return this.b.b();
+   public abstract cou a();
+
+   protected void a(cvn $$0, hz $$1, egp $$2, awo $$3) {
    }
 
-   @Override
-   public int c() {
-      return this.b.c();
+   protected void b(cvn $$0, hz $$1, egp $$2) {
    }
 
-   @Override
-   public float d() {
-      return this.b.d();
+   protected void b(cvn $$0, hz $$1, egp $$2, awo $$3) {
    }
 
-   @Override
-   public long e() {
-      return this.b.e();
-   }
-
-   @Override
-   public long f() {
-      return this.b.f();
-   }
-
-   @Override
-   public String g() {
-      return this.a.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public boolean k() {
-      return this.b.k();
-   }
-
-   @Override
-   public int l() {
-      return this.b.l();
-   }
-
-   @Override
-   public ctu m() {
-      return this.a.m();
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public void a(float $$0) {
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(hx $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void f(int $$0) {
-   }
-
-   @Override
-   public void a(ctu $$0) {
-   }
-
-   @Override
-   public boolean n() {
-      return this.a.n();
-   }
-
-   @Override
-   public boolean o() {
-      return this.a.o();
-   }
-
-   @Override
-   public boolean p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public ctt q() {
-      return this.a.q();
-   }
-
-   @Override
-   public dlg.c r() {
-      return this.b.r();
-   }
-
-   @Override
-   public void a(dlg.c $$0) {
-   }
-
-   @Override
-   public bjz s() {
-      return this.a.s();
-   }
-
-   @Override
-   public boolean t() {
-      return this.a.t();
-   }
-
-   @Override
-   public elp<MinecraftServer> u() {
-      return this.b.u();
-   }
-
-   @Override
-   public int v() {
-      return 0;
-   }
-
-   @Override
-   public void g(int $$0) {
-   }
-
-   @Override
-   public int w() {
-      return 0;
-   }
-
-   @Override
-   public void h(int $$0) {
-   }
-
-   @Override
-   public UUID x() {
+   @Nullable
+   protected jx h() {
       return null;
    }
 
-   @Override
-   public void a(UUID $$0) {
+   protected abstract boolean a(egp var1, cut var2, hz var3, ego var4, ie var5);
+
+   protected abstract ens a(cut var1, hz var2, egp var3);
+
+   public abstract int a(cvq var1);
+
+   protected boolean i() {
+      return false;
    }
 
-   @Override
-   public void a(p $$0, ctz $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+   protected boolean b() {
+      return false;
+   }
+
+   protected abstract float c();
+
+   public abstract float a(egp var1, cut var2, hz var3);
+
+   public abstract float a(egp var1);
+
+   protected abstract dlf b(egp var1);
+
+   public abstract boolean c(egp var1);
+
+   public abstract int d(egp var1);
+
+   public boolean a(ego $$0) {
+      return $$0 == this;
+   }
+
+   @Deprecated
+   public boolean a(auo<ego> $$0) {
+      return this.b.a($$0);
+   }
+
+   public abstract eol b(egp var1, cut var2, hz var3);
+
+   public Optional<atj> j() {
+      return Optional.empty();
+   }
+
+   @Deprecated
+   public ij.c<ego> k() {
+      return this.b;
    }
 }

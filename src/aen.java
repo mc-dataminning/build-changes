@@ -1,62 +1,22 @@
-public class aen implements xg<adk> {
-   private final hx a;
-   private final ic b;
-   private final aen.a c;
-   private final int d;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public aen(aen.a $$0, hx $$1, ic $$2, int $$3) {
-      this.c = $$0;
-      this.a = $$1.i();
-      this.b = $$2;
-      this.d = $$3;
+public record aen(aix<doo> a, aix<cvn> b, long c, cvk d, @Nullable cvk e, boolean f, boolean g, Optional<ii> h, int i) {
+   public aen(uq $$0) {
+      this(
+         $$0.a(kg.ay), $$0.a(kg.aM), $$0.readLong(), cvk.a($$0.readByte()), cvk.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(uq::h), $$0.n()
+      );
    }
 
-   public aen(aen.a $$0, hx $$1, ic $$2) {
-      this($$0, $$1, $$2, 0);
-   }
-
-   public aen(uj $$0) {
-      this.c = $$0.b(aen.a.class);
-      this.a = $$0.e();
-      this.b = ic.a($$0.readUnsignedByte());
-      this.d = $$0.n();
-   }
-
-   @Override
-   public void a(uj $$0) {
-      $$0.a(this.c);
-      $$0.a(this.a);
-      $$0.k(this.b.d());
-      $$0.c(this.d);
-   }
-
-   public void a(adk $$0) {
-      $$0.a(this);
-   }
-
-   public hx a() {
-      return this.a;
-   }
-
-   public ic d() {
-      return this.b;
-   }
-
-   public aen.a e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g;
+   public void a(uq $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(cvk.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, uq::a);
+      $$0.c(this.i);
    }
 }

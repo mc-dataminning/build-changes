@@ -1,39 +1,84 @@
-public class fwg implements fvt<dil> {
-   private final fmc<?> a;
+public class fwg implements asb {
+   private final fwf a;
+   private final fwi b;
+   private final fuz c;
+   private final fwh d;
+   private final awo e = awo.a();
+   private final eyl f;
 
-   public fwg(fvu.a $$0) {
-      this.a = new fmc($$0.a(fni.bg));
+   public fwg(fwf $$0, fuz $$1, eyl $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new fwi(this.f);
+      this.d = new fwh();
    }
 
-   public void a(dil $$0, float $$1, eqk $$2, ftt $$3, int $$4, int $$5) {
-      ic $$6 = ic.b;
-      if ($$0.n()) {
-         djp $$7 = $$0.i().a_($$0.aE_());
-         if ($$7.b() instanceof ddw) {
-            $$6 = $$7.c(ddw.b);
+   public fwf a() {
+      return this.a;
+   }
+
+   public void a(dlf $$0, hz $$1, cuq $$2, esa $$3, ese $$4) {
+      if ($$0.l() == det.c) {
+         giu $$5 = this.a.b($$0);
+         long $$6 = $$0.a($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, ggl.d);
+      }
+   }
+
+   public void a(dlf $$0, hz $$1, cuq $$2, esa $$3, ese $$4, boolean $$5, awo $$6) {
+      try {
+         det $$7 = $$0.l();
+         if ($$7 == det.c) {
+            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), ggl.d);
+         }
+      } catch (Throwable var11) {
+         o $$9 = o.a(var11, "Tesselating block in world");
+         p $$10 = $$9.a("Block being tesselated");
+         p.a($$10, $$2, $$1, $$0);
+         throw new y($$9);
+      }
+   }
+
+   public void a(hz $$0, cuq $$1, ese $$2, dlf $$3, egp $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new y($$6);
+      }
+   }
+
+   public fwi b() {
+      return this.b;
+   }
+
+   public giu a(dlf $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(dlf $$0, esa $$1, fvm $$2, int $$3, int $$4) {
+      det $$5 = $$0.l();
+      if ($$5 != det.a) {
+         switch ($$5) {
+            case c:
+               giu $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(fvh.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.a(new coz($$0.b()), cow.a, $$1, $$2, $$3, $$4);
          }
       }
+   }
 
-      clv $$8 = $$0.w();
-      ghe $$9;
-      if ($$8 == null) {
-         $$9 = fui.i;
-      } else {
-         $$9 = fui.j.get($$8.a());
-      }
-
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      fnj $$12 = this.a.b();
-      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      eqo $$13 = $$9.a($$3, fub::e);
-      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+   @Override
+   public void a(asa $$0) {
+      this.d.a();
    }
 }

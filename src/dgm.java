@@ -1,54 +1,31 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgm extends cwm {
-   public static final MapCodec<dgm> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dke.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u())
-            .apply($$0, dgm::new)
-   );
-   public static final dkp f = dkf.aT;
-   private final int g;
+public class dgm extends cyo {
+   public static final MapCodec<dgm> a = b(dgm::new);
+   private static final double b = 5.0;
+   private static final eol c = cyo.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<dgm> a() {
-      return e;
+      return a;
    }
 
-   protected dgm(int $$0, dke $$1, djo.d $$2) {
-      super($$2, $$1);
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
-      this.g = $$0;
-   }
-
-   @Override
-   protected int b(ctx $$0, hx $$1) {
-      int $$2 = Math.min(a($$0, c.a($$1), blw.class), this.g);
-      if ($$2 > 0) {
-         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
-         return aup.f($$3 * 15.0F);
-      } else {
-         return 0;
-      }
+   protected dgm(dle.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected int g(djp $$0) {
-      return $$0.c(f);
+   protected det b_(dlf $$0) {
+      return det.a;
    }
 
    @Override
-   protected djp a(djp $$0, int $$1) {
-      return $$0.a(f, Integer.valueOf($$1));
+   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+      return c;
    }
 
    @Override
-   protected int b() {
-      return 10;
-   }
-
-   @Override
-   protected void a(djq.a<cwy, djp> $$0) {
-      $$0.a(f);
+   protected float d(dlf $$0, cut $$1, hz $$2) {
+      return 1.0F;
    }
 }
