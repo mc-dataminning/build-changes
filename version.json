@@ -224,17 +224,17 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "f7dbd08cc7462705fc48dd687e64534811edbbf1",
-      "size": 40356678,
-      "url": "https://piston-data.mojang.com/v1/objects/f7dbd08cc7462705fc48dd687e64534811edbbf1/client.jar"
+      "sha1": "647abf5c48ac9211f7fa26b137519880b36b20a8",
+      "size": 40321754,
+      "url": "https://piston-data.mojang.com/v1/objects/647abf5c48ac9211f7fa26b137519880b36b20a8/client.jar"
     },
     "server": {
-      "sha1": "4d9ebd8b9dc87345ab770ceaf43fbeaeab05903f",
-      "size": 61706056,
-      "url": "https://piston-data.mojang.com/v1/objects/4d9ebd8b9dc87345ab770ceaf43fbeaeab05903f/server.jar"
+      "sha1": "a6e2ae24c95dc838456927661a82434d26936d2f",
+      "size": 61622669,
+      "url": "https://piston-data.mojang.com/v1/objects/a6e2ae24c95dc838456927661a82434d26936d2f/server.jar"
     }
   },
-  "id": "26.3-snapshot-1",
+  "id": "26.3-snapshot-2",
   "javaVersion": {
     "component": "java-runtime-epsilon",
     "majorVersion": 25
@@ -350,13 +350,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/authlib/9.0.75/authlib-9.0.75.jar",
-          "sha1": "d61056a234d5e4b272e09d59b0713f80d6c0b6af",
-          "size": 145285,
-          "url": "https://libraries.minecraft.net/com/mojang/authlib/9.0.75/authlib-9.0.75.jar"
+          "path": "com/mojang/authlib/10.0.76/authlib-10.0.76.jar",
+          "sha1": "c47995657c2a278b8d2e584115b1d745f051d53a",
+          "size": 152727,
+          "url": "https://libraries.minecraft.net/com/mojang/authlib/10.0.76/authlib-10.0.76.jar"
         }
       },
-      "name": "com.mojang:authlib:9.0.75"
+      "name": "com.mojang:authlib:10.0.76"
     },
     {
       "downloads": {
@@ -2312,7 +2312,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2026-06-23T11:57:02+00:00",
-  "time": "2026-06-23T11:57:02+00:00",
+  "releaseTime": "2026-06-30T12:45:43+00:00",
+  "time": "2026-06-30T12:45:43+00:00",
   "type": "snapshot"
 }
